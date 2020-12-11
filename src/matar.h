@@ -2215,8 +2215,8 @@ inline T& RaggedRightArray<T>::operator()(size_t i, size_t j) const {
     
     // asserts
     assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArray");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in RaggedRightArray");  // die if >= stride
-    assert(j+start < length && "j+start is out of bounds in RaggedRightArray");  // die if >= 1D array length)
+    //assert(j < stride(i) && "j is out of stride bounds in RaggedRightArray");  // die if >= stride
+    assert(j+start < length_ && "j+start is out of bounds in RaggedRightArray");  // die if >= 1D array length)
     
     return array_[j + start];
 } // End operator()
@@ -2437,7 +2437,7 @@ T& RaggedDownArray<T>::operator()(size_t i, size_t j) {
     // Make sure we are within array bounds
     assert(i < stride(j) && "i is out of bounds in RaggedDownArray");
     assert(j < dim2_ && "j is out of dim2_ bounds in RaggedDownArray");
-    assert(i+start < length && "i+start is out of bounds in RaggedDOwnArray");  // die if >= 1D array length)
+    assert(i+start < length_ && "i+start is out of bounds in RaggedDOwnArray");  // die if >= 1D array length)
     
     return array_[i + start];
 

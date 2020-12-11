@@ -1,0 +1,2 @@
+cmake -DKOKKOS=1 -DCUDA=1 -DKokkos_ARCH_VOLTA70=1 -DCMAKE_CXX_COMPILER=/home/ddunning/elements/ELEMENTS/Matar/Kokkify/MatarTest/Kokkos/kokkos/bin/nvcc_wrapper ..
+
