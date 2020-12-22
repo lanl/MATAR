@@ -2549,7 +2549,6 @@ size_t DynamicRaggedRightArray<T>::size() const{
     return length_;
 }
 
-
 // Overload operator() to access data as array(i,j),
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T>
@@ -2560,13 +2559,6 @@ inline T& DynamicRaggedRightArray<T>::operator()(size_t i, size_t j) const {
     assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
     
     return array_[j + i*dim2_];
-}
-
-// Destructor
-template <typename T>
-DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
-    delete[] array_;
-    delete[] stride_;
 }
 
 //overload = operator
@@ -2588,12 +2580,21 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
     return *this;
 }
 
+// Destructor
+template <typename T>
+DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
+    delete[] array_;
+    delete[] stride_;
+}
+
+
+
 
 //----end DynamicRaggedRightArray class definitions----
 
 
 //12. DynamicRaggedDownArray
-/*
+
 template <typename T>
 class DynamicRaggedDownArray {
 private:
@@ -2617,15 +2618,22 @@ public:
     size_t& stride(size_t j) const;
     
     // A method to return the size
-    size_t size(size_t j) const
+    size_t size() const;
     
     // Overload operator() to access data as array(i,j),
-    // where i=[0:N-1], j=[stride(i)]
+    // where i=[stride(j)], j=[0:N-1]
     T& operator()(size_t i, size_t j) const;
+    
+    // Overload copy assignment operator
+    DynamicRaggedDownArray& operator= (const DynamicRaggedDownArray &temp);
     
     // Destructor
     ~DynamicRaggedDownArray ();
 };
+
+//nothing
+template <typename T>
+DynamicRaggedDownArray<T>::DynamicRaggedDownArray () {}
 
 // Overloaded constructor
 template <typename T>
@@ -2648,7 +2656,58 @@ DynamicRaggedDownArray<T>::DynamicRaggedDownArray (size_t dim1, size_t dim2) {
     
     // Start index is always = i + j*dim1
 }
-*/
+
+// A method to set the stride size for column j
+template <typename T>
+size_t& DynamicRaggedDownArray<T>::stride(size_t j) const {
+    return stride_[j];
+}
+
+//return size
+template <typename T>
+size_t DynamicRaggedDownArray<T>::size() const{
+    return length_;
+}
+
+// overload operator () to access data as an array(i,j)
+// Note: i = 0:stride(j), j = 0:N-1
+
+template <typename T>
+inline T& DynamicRaggedDownArray<T>::operator()(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArray");  // die if >= dim1
+    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArray");  // die if >= dim2
+    assert(i < stride_[j] && "i is out of stride bounds in DynamicRaggedDownArray");  // die if >= stride
+    
+    return array_[i + j*dim1_];
+}
+
+//overload = operator
+template <typename T>
+inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const DynamicRaggedDownArray &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        stride_ = new size_t[dim1_];
+        for (int j = 0; j < dim2_; j++) {
+            stride_[j] = temp.stride_[j];
+        }
+        array_ = new T[length_];
+    }
+    
+    return *this;
+}
+
+// Destructor
+template <typename T>
+DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
+    delete[] array_;
+    delete[] stride_;
+}
+
 //----end of DynamicRaggedDownArray class definitions-----
 
 
