@@ -1,0 +1,25 @@
+Things to do (in order of what I think should be the preference)
+
+0) 
+Make sure everything is consistent inside of Matar. 
+I know there are some functions available on some objects that should be on similar objects and they're not. 
+Especially when a function was just overlooked but wasn't test (like important ones such as a default constructor...). 
+Probably should also clean up my dumb commented out chunks and add more helpful comments.
+For example, I know RaggedDownKokkos does not have the same stuff as RaggedRightKokkos...
+
+1) 
+Create a test directory have example(s) of CMakeLists, cmake command, and especially Matar data structure usages. 
+Especially helpful for sparse/ragged data structures to have an example of declaring and using with/without Kokkos.
+    1a) Pull over Bob's vector cmake module and put it in the src directory. Currently that part is commented out in the CMakeLists.txt
+    1b) Maybe create a benchmarking directory and pull a lot of work from our 2020 summer work in MatarTest in Kokkoify and our paper.
+
+2) 
+Part of 1, but figure out how to not have to set #ifdef options in the user's main CMakeLists.
+I tried to only have to do it in the MATAR library, but I couldn't quite get it.
+Similarly, in my personal test main.cpp, I had to say #include "MATAR/src/matar.h", obviously would be best if it can just be "matar.h"
+
+3)
+Work to add Kokkos support for SparseArray. Might look similar to the semi-dynamic Ragged
+
+4) Currently only CUDA GPU support (via the typedefs I set) but I think AMD would be helpful and not super complicated. 
+Would have to change typedefs, compile options in CMakeLists.txt, and set a different compiler wrapper (I assume) that is similar to their nvcc_wrapper
