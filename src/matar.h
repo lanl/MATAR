@@ -1,5 +1,41 @@
 #ifndef MATAR_H
 #define MATAR_H
+/*****************************************************************************
+ © 2020. Triad National Security, LLC. All rights reserved.
+ This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
+ National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
+ Department of Energy/National Nuclear Security Administration. All rights in the program are
+ reserved by Triad National Security, LLC, and the U.S. Department of Energy/National Nuclear
+ Security Administration. The Government is granted for itself and others acting on its behalf a
+ nonexclusive, paid-up, irrevocable worldwide license in this material to reproduce, prepare
+ derivative works, distribute copies to the public, perform publicly and display publicly, and
+ to permit others to do so.
+ This program is open source under the BSD-3 License.
+ Redistribution and use in source and binary forms, with or without modification, are permitted
+ provided that the following conditions are met:
+ 
+ 1.  Redistributions of source code must retain the above copyright notice, this list of
+ conditions and the following disclaimer.
+ 
+ 2.  Redistributions in binary form must reproduce the above copyright notice, this list of
+ conditions and the following disclaimer in the documentation and/or other materials
+ provided with the distribution.
+ 
+ 3.  Neither the name of the copyright holder nor the names of its contributors may be used
+ to endorse or promote products derived from this software without specific prior
+ written permission.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **********************************************************************************************/
 
 // Order
 //
@@ -2089,7 +2125,7 @@ public:
     T& operator()(size_t i, size_t j) const;
 
     // method to return total size
-    size_t size();
+    size_t size() const;
 
     RaggedRightArray& operator+= (const size_t i);
 
@@ -2223,7 +2259,7 @@ inline T& RaggedRightArray<T>::operator()(size_t i, size_t j) const {
 
 //return size
 template <typename T>
-size_t RaggedRightArray<T>::size() {
+size_t RaggedRightArray<T>::size() const {
     return length_;
 }
 
@@ -2437,7 +2473,7 @@ T& RaggedDownArray<T>::operator()(size_t i, size_t j) {
     // Make sure we are within array bounds
     assert(i < stride(j) && "i is out of bounds in RaggedDownArray");
     assert(j < dim2_ && "j is out of dim2_ bounds in RaggedDownArray");
-    assert(i+start < length_ && "i+start is out of bounds in RaggedDOwnArray");  // die if >= 1D array length)
+    assert(i+start < length_ && "i+start is out of bounds in RaggedDownArray");  // die if >= 1D array length)
     
     return array_[i + start];
 
@@ -2472,10 +2508,11 @@ RaggedDownArray<T>::~RaggedDownArray() {
 
 //----end of RaggedDownArray----
 
+
 //11. DynamicRaggedRightArray
-/*
+
 template <typename T>
-class DynamicRaggedRightArrayKokkos {
+class DynamicRaggedRightArray {
 private:
     size_t *stride_;
     T * array_;
@@ -2496,16 +2533,23 @@ public:
     // A method to return or set the stride size
     size_t& stride(size_t i) const;
     
-    // A method to increase the stride size
-    void push_back(size_t i) const;
+    // A method to return the size
+    size_t size() const;
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
     T& operator()(size_t i, size_t j) const;
     
+    // Overload copy assignment operator
+    DynamicRaggedRightArray& operator= (const DynamicRaggedRightArray &temp);
+    
     // Destructor
     ~DynamicRaggedRightArray ();
-}; 
+};
+
+//nothing
+template <typename T>
+DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {}
 
 // Overloaded constructor
 template <typename T>
@@ -2527,7 +2571,7 @@ DynamicRaggedRightArray<T>::DynamicRaggedRightArray (size_t dim1, size_t dim2) {
     }
     
     // Start index is always = j + i*dim2
-} 
+}
 
 // A method to set the stride size for row i
 template <typename T>
@@ -2535,11 +2579,10 @@ size_t& DynamicRaggedRightArray<T>::stride(size_t i) const {
     return stride_[i];
 }
 
-
-// A method to increase the stride size for row i
+//return size
 template <typename T>
-void DynamicRaggedRightArray<T>::push_back(size_t i) const {
-    stride_[i]++;
+size_t DynamicRaggedRightArray<T>::size() const{
+    return length_;
 }
 
 // Overload operator() to access data as array(i,j),
@@ -2554,22 +2597,157 @@ inline T& DynamicRaggedRightArray<T>::operator()(size_t i, size_t j) const {
     return array_[j + i*dim2_];
 }
 
+//overload = operator
+template <typename T>
+inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const DynamicRaggedRightArray &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        stride_ = new size_t[dim1_];
+        for (int i = 0; i < dim1_; i++) {
+            stride_[i] = temp.stride_[i];
+        }
+        array_ = new T[length_];
+    }
+    
+    return *this;
+}
+
 // Destructor
 template <typename T>
 DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
     delete[] array_;
     delete[] stride_;
 }
-*/
+
 
 
 
 //----end DynamicRaggedRightArray class definitions----
 
+
 //12. DynamicRaggedDownArray
 
+template <typename T>
+class DynamicRaggedDownArray {
+private:
+    size_t *stride_;
+    T * array_;
+    
+    size_t dim1_;
+    size_t dim2_;
+    size_t length_;
+    
+public:
+    // Default constructor
+    DynamicRaggedDownArray ();
+    
+    //--- 2D array access of a ragged right array ---
+    
+    // overload constructor
+    DynamicRaggedDownArray (size_t dim1, size_t dim2);
+    
+    // A method to return or set the stride size
+    size_t& stride(size_t j) const;
+    
+    // A method to return the size
+    size_t size() const;
+    
+    // Overload operator() to access data as array(i,j),
+    // where i=[stride(j)], j=[0:N-1]
+    T& operator()(size_t i, size_t j) const;
+    
+    // Overload copy assignment operator
+    DynamicRaggedDownArray& operator= (const DynamicRaggedDownArray &temp);
+    
+    // Destructor
+    ~DynamicRaggedDownArray ();
+};
+
+//nothing
+template <typename T>
+DynamicRaggedDownArray<T>::DynamicRaggedDownArray () {}
+
+// Overloaded constructor
+template <typename T>
+DynamicRaggedDownArray<T>::DynamicRaggedDownArray (size_t dim1, size_t dim2) {
+    // The dimensions of the array;
+    dim1_  = dim1;
+    dim2_  = dim2;
+    length_ = dim1*dim2;
+    
+    // Create memory on the heap for the values
+    array_ = new T[dim1*dim2];
+    
+    // Create memory for the stride size in each row
+    stride_ = new size_t[dim2];
+    
+    // Initialize the stride
+    for (int j=0; j<dim2_; j++){
+        stride_[j] = 0;
+    }
+    
+    // Start index is always = i + j*dim1
+}
+
+// A method to set the stride size for column j
+template <typename T>
+size_t& DynamicRaggedDownArray<T>::stride(size_t j) const {
+    return stride_[j];
+}
+
+//return size
+template <typename T>
+size_t DynamicRaggedDownArray<T>::size() const{
+    return length_;
+}
+
+// overload operator () to access data as an array(i,j)
+// Note: i = 0:stride(j), j = 0:N-1
+
+template <typename T>
+inline T& DynamicRaggedDownArray<T>::operator()(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArray");  // die if >= dim1
+    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArray");  // die if >= dim2
+    assert(i < stride_[j] && "i is out of stride bounds in DynamicRaggedDownArray");  // die if >= stride
+    
+    return array_[i + j*dim1_];
+}
+
+//overload = operator
+template <typename T>
+inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const DynamicRaggedDownArray &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        stride_ = new size_t[dim1_];
+        for (int j = 0; j < dim2_; j++) {
+            stride_[j] = temp.stride_[j];
+        }
+        array_ = new T[length_];
+    }
+    
+    return *this;
+}
+
+// Destructor
+template <typename T>
+DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
+    delete[] array_;
+    delete[] stride_;
+}
 
 //----end of DynamicRaggedDownArray class definitions-----
+
+
+
 
 //13. SparseRowArray
 template <typename T>
