@@ -136,26 +136,34 @@ using SHArray1D     = Kokkos::View<size_t *,Layout,Kokkos::HostSpace>;
 //To disable asserts, uncomment the following line
 //#define NDEBUG
 
+
 //---Begin Standard Data Structures---
 
 //1. FArray
+// indicies are [0:N-1]
 template <typename T>
 class FArray {
     
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, length_;
-    T * this_array;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_, length_;
+    T * this_array_;
     
 public:
     
     // default constructor
    FArray ();
    
-    //overload constructors from 1D to 6D
+    //overload constructors from 1D to 7D
      
    FArray(size_t some_dim1);
-   FArray(size_t some_dim1, size_t some_dim2);
-   FArray(size_t some_dim1, size_t some_dim2, size_t some_dim3);
+    
+   FArray(size_t some_dim1,
+          size_t some_dim2);
+    
+   FArray(size_t some_dim1,
+          size_t some_dim2,
+          size_t some_dim3);
+    
    FArray(size_t some_dim1, 
           size_t some_dim2,
           size_t some_dim3,
@@ -174,17 +182,55 @@ public:
           size_t some_dim5,
           size_t some_dim6);
 
+   FArray(size_t some_dim1,
+          size_t some_dim2,
+          size_t some_dim3,
+          size_t some_dim4,
+          size_t some_dim5,
+          size_t some_dim6,
+          size_t some_dim7);
+    
     // overload operator() to access data as array(i,....,n);
-    T& operator()(size_t i);
-    T& operator()(size_t i, size_t j);
-    T& operator()(size_t i, size_t j, size_t k);
-    T& operator()(size_t i, size_t j, size_t k, size_t l);
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m);
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n);
-
+    T& operator()(size_t i) const;
+    
+    T& operator()(size_t i,
+                  size_t j) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n,
+                  size_t o) const;
+    
     //overload = operator
     FArray& operator=(const FArray& temp);
 
+    size_t size() const;
+    
     // deconstructor
     ~FArray ( );
     
@@ -198,56 +244,77 @@ FArray<T>::FArray(){}
 
 //1D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1) {
+FArray<T>::FArray(size_t some_dim1)
+{
     dim1_ = some_dim1;
     length_ = dim1_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
 template <typename T>
-FArray<T>::FArray(size_t some_dim1, size_t some_dim2) {
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = dim1_*dim2_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
 //3D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     length_ = dim1_*dim2_*dim3_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
 //4D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4) {
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     dim4_ = some_dim4;
     length_ = dim1_*dim2_*dim3_*dim4_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
 //5D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5) {
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     dim4_ = some_dim4;
     dim5_ = some_dim5;
     length_ = dim1_*dim2_*dim3_*dim4_*dim5_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
 //6D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5, size_t some_dim6) {
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5,
+                  size_t some_dim6)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -255,76 +322,149 @@ FArray<T>::FArray(size_t some_dim1,size_t some_dim2, size_t some_dim3, size_t so
     dim5_ = some_dim5;
     dim6_ = some_dim6;
     length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_;
-    this_array = new T[length_];
+    this_array_ = new T[length_];
 }
 
-//overload operator () for 1D to 6D
+
+//7D
+template <typename T>
+FArray<T>::FArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5,
+                  size_t some_dim6,
+                  size_t some_dim7)
+{
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_*dim7_;
+    this_array_ = new T[length_];
+        
+}
+
+//overload operator () for 1D to 7D
 //indices are from [0:N-1]
 
 //1D
 template <typename T>
-T& FArray<T>::operator()(size_t i)
+T& FArray<T>::operator()(size_t i) const
 {
     assert( i < dim1_ && "i is out of bounds in FArray 1D!");
-    return this_array[i];
+    return this_array_[i];
 }
 
 //2D
 template <typename T>
-T& FArray<T>::operator()(size_t i, size_t j)
+T& FArray<T>::operator()(size_t i,
+                         size_t j) const
 {
     assert( i < dim1_ && "i is out of bounds in FArray 2D!");
     assert( j < dim2_ && "j is out of bounds in FArray 2D!");
-    return this_array[i + j*dim1_];
+    return this_array_[i + j*dim1_];
 }
 
 //3D
 template <typename T>
-T& FArray<T>::operator()(size_t i, size_t j, size_t k)
+T& FArray<T>::operator()(size_t i,
+                         size_t j,
+                         size_t k) const
 {
     assert( i < dim1_ && "i is out of bounds in FArray 3D!");
     assert( j < dim2_ && "j is out of bounds in Farray 3D!");
     assert( k < dim3_ && "k is out of bounds in FArray 3D!");
-    return this_array[i + j*dim1_ + k*dim1_*dim2_];
+    return this_array_[i + j*dim1_ + k*dim1_*dim2_];
 }
 
 //4D
 template <typename T>
-T& FArray<T>::operator()(size_t i, size_t j, size_t k, size_t l)
+T& FArray<T>::operator()(size_t i,
+                         size_t j,
+                         size_t k,
+                         size_t l) const
 {
     assert( i < dim1_ && "i is out of bounds in FArray 4D!");
     assert( j < dim2_ && "j is out of bounds in FArray 4D!");
     assert( k < dim3_ && "k is out of bounds in FArray 4D!");
     assert( l < dim4_ && "l is out of bounds in FArray 4D!");
-    return this_array[ i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_];
+    return this_array_[ i + j*dim1_
+                          + k*dim1_*dim2_
+                          + l*dim1_*dim2_*dim3_];
 }
 
 //5D
 template <typename T>
-T& FArray<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m)
+T& FArray<T>::operator()(size_t i,
+                         size_t j,
+                         size_t k,
+                         size_t l,
+                         size_t m) const
 {
     assert( i < dim1_ && "i is out of bounds in FArray 5D!");
     assert( j < dim2_ && "j is out of bounds in FArray 5D!");
     assert( k < dim3_ && "k is out of bounds in FArray 5D!");
     assert( l < dim4_ && "l is out of bounds in FArray 5D!");
     assert( m < dim5_ && "m is out of bounds in FArray 5D!");
-    return this_array[i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_ + m*dim1_*dim2_*dim3_*dim4_];
+    return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_];
 }
 
 //6D
 template <typename T>
-T& FArray<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n)
+T& FArray<T>::operator()(size_t i,
+                         size_t j,
+                         size_t k,
+                         size_t l,
+                         size_t m,
+                         size_t n) const
 {
 
-    assert( i < dim1_ && "i is out of bounds in FArray 5D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 5D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 5D!");
-    assert( l < dim4_ && "l is out of bounds in FArray 5D!");
-    assert( m < dim5_ && "m is out of bounds in FArray 5D!");
+    assert( i < dim1_ && "i is out of bounds in FArray 6D!");
+    assert( j < dim2_ && "j is out of bounds in FArray 6D!");
+    assert( k < dim3_ && "k is out of bounds in FArray 6D!");
+    assert( l < dim4_ && "l is out of bounds in FArray 6D!");
+    assert( m < dim5_ && "m is out of bounds in FArray 6D!");
     assert( n < dim6_ && "n is out of bounds in FArray 6D!");
-    return this_array[i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_ + m*dim1_*dim2_*dim3_*dim4_ + n*dim1_*dim2_*dim3_*dim4_*dim5_];
+    return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_
+                         + n*dim1_*dim2_*dim3_*dim4_*dim5_];
 }
 
+//7D
+template <typename T>
+T& FArray<T>::operator()(size_t i,
+                         size_t j,
+                         size_t k,
+                         size_t l,
+                         size_t m,
+                         size_t n,
+                         size_t o) const
+{
+    
+    assert( i < dim1_ && "i is out of bounds in FArray 7D!");
+    assert( j < dim2_ && "j is out of bounds in FArray 7D!");
+    assert( k < dim3_ && "k is out of bounds in FArray 7D!");
+    assert( l < dim4_ && "l is out of bounds in FArray 7D!");
+    assert( m < dim5_ && "m is out of bounds in FArray 7D!");
+    assert( n < dim6_ && "n is out of bounds in FArray 7D!");
+    assert( o < dim7_ && "o is out of bounds in FArray 7D!");
+    return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_
+                         + n*dim1_*dim2_*dim3_*dim4_*dim5_
+                         + o*dim1_*dim2_*dim3_*dim4_*dim5_*dim6_];
+}
+    
 // = operator
 //THIS = FArray <> TEMP(n,m,...)
 template <typename T>
@@ -337,68 +477,123 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
 	  dim4_ = temp.dim4_;
 	  dim5_ = temp.dim5_;
 	  dim6_ = temp.dim6_;
+      dim7_ = temp.dim7_;
 	  length_ = temp.length_;
-	  this_array = new T[length_];
+	  this_array_ = new T[length_];
 	}
   return *this;
-} 
+}
+
+template <typename T>
+inline size_t FArray<T>::size() const {
+    return length_;
+}
 
 //delete FArray
 template <typename T>
 FArray<T>::~FArray(){
-    delete [] this_array;
+    delete [] this_array_;
 }
 
 //---end of FArray class definitions----
 
 //2. ViewFArray
+// indicies are [0:N-1]
 template <typename T>
 class ViewFArray {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
-    T * this_array;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
+    T * this_array_;
     
 public:
     
     // default constructor
     ViewFArray ();
 
-    //---1D array---
-    ViewFArray(T *some_array, size_t some_dim1);
-    T& operator()(size_t i);
+    //---1D to 7D array ---
+    ViewFArray(T *some_array,
+               size_t some_dim1);
     
-    //--- 2D array ---
-    
-    // overloaded constructor
-    ViewFArray (T *some_array, size_t some_dim1, size_t some_dim2);
-    T& operator()(size_t i, size_t j);
-    
-    //--- 3D array ---
-    ViewFArray (T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3);
-    T& operator()(size_t i, size_t j, size_t k);
-    
-    //--- 4D array ---
-    // overloaded constructor
-    ViewFArray (T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4);
-    T& operator()(size_t i, size_t j, size_t k, size_t l);
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2);
 
-    //--- 5D array ---
-    // overloaded constructor
-    ViewFArray (T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5);
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m);
-   
-    //------6D -----
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3);
 
-    ViewFArray (T *some_array,size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5, size_t some_dim6);
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n);
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4);
+    
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5);
 
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5,
+                size_t some_dim6);
+    
+    ViewFArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5,
+                size_t some_dim6,
+                size_t some_dim7);
+    
+    T& operator()(size_t i) const;
+    
+    T& operator()(size_t i,
+                  size_t j) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n,
+                  size_t o) const;
     
 }; // end of viewFArray
 
 //class definitions for viewFArray
 
-//~~~~constructors for viewFArray for 1D to 6D~~~~~~~
+//~~~~constructors for viewFArray for 1D to 7D~~~~~~~
 
 //no dimension
 template <typename T>
@@ -406,118 +601,187 @@ ViewFArray<T>::ViewFArray(){}
 
 //1D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1){
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1)
+{
 	dim1_ = some_dim1;
-	this_array = some_array;
+	this_array_ = some_array;
 }
 
 //2D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1, size_t some_dim2) {
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
-	this_array = some_array;
+	this_array_ = some_array;
 }
 
 //3D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3){
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
-	this_array = some_array;
+	this_array_ = some_array;
 }
 
 //4D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4){
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3,
+                          size_t some_dim4)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
 	dim4_ = some_dim4;
-	this_array = some_array;
+	this_array_ = some_array;
 }
 
 //5D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5){
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3,
+                          size_t some_dim4,
+                          size_t some_dim5)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
 	dim4_ = some_dim4;
 	dim5_ = some_dim5;
-	this_array = some_array;
+	this_array_ = some_array;
 }
 
 //6D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5, size_t some_dim6){
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3,
+                          size_t some_dim4,
+                          size_t some_dim5,
+                          size_t some_dim6)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
 	dim4_ = some_dim4;
 	dim5_ = some_dim5;
 	dim6_ = some_dim6;
-	this_array = some_array;
+	this_array_ = some_array;
+}
+
+//7D
+template <typename T>
+ViewFArray<T>::ViewFArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3,
+                          size_t some_dim4,
+                          size_t some_dim5,
+                          size_t some_dim6,
+                          size_t some_dim7)
+{
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    this_array_ = some_array;
 }
 
 //~~~~~~operator () overload 
-//for dimensions 1D to 6D
+//for dimensions 1D to 7D
 //indices for array are from 0...N-1
 
 //1D
 template <typename T>
-T& ViewFArray<T>::operator()(size_t i)
+T& ViewFArray<T>::operator()(size_t i) const
 {
 	assert(i < dim1_ && "i is out of bounds in ViewFArray 1D!");
-	return this_array[i];
+	return this_array_[i];
 }
 
 //2D
 template <typename T>
-T& ViewFArray<T>::operator()(size_t i, size_t j) 
+T& ViewFArray<T>::operator()(size_t i,
+                             size_t j) const
 {
 	assert( i < dim1_ && "i is out of bounds in ViewFArray 2D!");
 	assert( j < dim2_ && "j is out of bounds in ViewFArray 2D!");
-	return this_array[i + j*dim1_];
+	return this_array_[i + j*dim1_];
 }
 
 //3D
 template <typename T>
-T& ViewFArray<T>::operator()(size_t i, size_t j,size_t k)
+T& ViewFArray<T>::operator()(size_t i,
+                             size_t j,
+                             size_t k) const
 {
 	assert(i < dim1_ && "i is out of bounds in ViewFArray 3D!");
 	assert(j < dim2_ && "j is out of bounds in ViewFArray 3D!");
 	assert(k < dim3_ && "k is out of bounds in ViewFArray 3D!");
-	return this_array[i + j*dim1_ + k*dim1_*dim2_];
+	return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_];
 }
 
 //4D
 template <typename T>
-T& ViewFArray<T>::operator()(size_t i, size_t j, size_t k, size_t l)
+T& ViewFArray<T>::operator()(size_t i,
+                             size_t j,
+                             size_t k,
+                             size_t l) const
 {
 	assert(i < dim1_ && "i is out of bounds in ViewFArray 4D!");
 	assert(j < dim2_ && "j is out of bounds in ViewFArray 4D!");
 	assert(k < dim3_ && "k is out of bounds in ViewFArray 4D!");
 	assert(l < dim4_ && "l is out of bounds in ViewFArray 4D!");
-	return this_array[i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_];
+	return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_];
 }
 
 //5D
 template <typename T>
-T& ViewFArray<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m)
+T& ViewFArray<T>::operator()(size_t i,
+                             size_t j,
+                             size_t k,
+                             size_t l,
+                             size_t m) const
 {
 	assert(i < dim1_ && "i is out of bounds in ViewFArray 5D!");
 	assert(j < dim2_ && "j is out of bounds in ViewFArray 5D!");
 	assert(k < dim3_ && "k is out of bounds in ViewFArray 5D!");
 	assert(l < dim4_ && "l is out of bounds in ViewFArray 5D!");
 	assert(m < dim5_ && "m is out of bounds in ViewFArray 5D!");
-	return this_array[i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_ + m*dim1_*dim2_*dim3_*dim4_];
+	return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_];
 }
 
 //6D
 template <typename T>
-T& ViewFArray<T>:: operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n)
+T& ViewFArray<T>:: operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l,
+                              size_t m,
+                              size_t n) const
 {
 	assert(i < dim1_ && "i is out of bounds in ViewFArray 6D!");
 	assert(j < dim2_ && "j is out of bounds in ViewFArray 6D!");
@@ -525,16 +789,47 @@ T& ViewFArray<T>:: operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
 	assert(l < dim4_ && "l is out of bounds in ViewFArray 6D!");
 	assert(m < dim5_ && "m is out of bounds in ViewFArray 6D!");
 	assert(n < dim6_ && "n is out of bounds in ViewFArray 6D!");
-	return this_array[i + j*dim1_ + k*dim1_*dim2_ + l*dim1_*dim2_*dim3_ + m*dim1_*dim2_*dim3_*dim4_ + n*dim1_*dim2_*dim3_*dim4_*dim5_];
+	return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_
+                         + n*dim1_*dim2_*dim3_*dim4_*dim5_];
 }
+
+//7D
+template <typename T>
+T& ViewFArray<T>:: operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l,
+                              size_t m,
+                              size_t n,
+                              size_t o) const
+{
+    assert(i < dim1_ && "i is out of bounds in ViewFArray 7D!");
+    assert(j < dim2_ && "j is out of bounds in ViewFArray 7D!");
+    assert(k < dim3_ && "k is out of bounds in ViewFArray 7D!");
+    assert(l < dim4_ && "l is out of bounds in ViewFArray 7D!");
+    assert(m < dim5_ && "m is out of bounds in ViewFArray 7D!");
+    assert(n < dim6_ && "n is out of bounds in ViewFArray 7D!");
+    assert(o < dim7_ && "n is out of bounds in ViewFArray 7D!");
+    return this_array_[i + j*dim1_
+                         + k*dim1_*dim2_
+                         + l*dim1_*dim2_*dim3_
+                         + m*dim1_*dim2_*dim3_*dim4_
+                         + n*dim1_*dim2_*dim3_*dim4_*dim5_
+                         + o*dim1_*dim2_*dim3_*dim4_*dim5_*dim6_];
+}
+
 
 //---end of ViewFArray class definitions---
 
 //3. FMatrix
+// indicies are [1:N]
 template <typename T>
 class FMatrix {
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
     size_t length_; // Length of 1D array
     T* this_matrix_;
 
@@ -542,66 +837,79 @@ public:
     // Default constructor
     FMatrix ();
 
-    // --- 1D matrix ---
-    
-    // Overloaded constructor
+    //---1D to 7D matrix ---
     FMatrix (size_t some_dim1);
 
-    // Overload operator() to access data as matrix(i), where i = [1:N]
+    FMatrix (size_t some_dim1,
+             size_t some_dim2);
+
+    FMatrix (size_t some_dim1,
+             size_t some_dim2,
+             size_t some_dim3);
+
+    FMatrix (size_t some_dim1,
+             size_t some_dim2,
+             size_t some_dim3,
+             size_t some_dim4);
+
+    FMatrix (size_t some_dim1,
+             size_t some_dim2,
+             size_t some_dim3,
+             size_t some_dim4,
+             size_t some_dim5);
+
+    FMatrix (size_t some_dim1,
+             size_t some_dim2,
+             size_t some_dim3,
+             size_t some_dim4,
+             size_t some_dim5,
+             size_t some_dim6);
+
+
+    FMatrix (size_t some_dim1,
+             size_t some_dim2,
+             size_t some_dim3,
+             size_t some_dim4,
+             size_t some_dim5,
+             size_t some_dim6,
+             size_t some_dim7);
+    
     T& operator() (size_t i) const;
-
-    // --- 2D matrix ---
     
-    // Overloaded constructor
-    FMatrix (size_t some_dim1, size_t some_dim2);
-
-    // Overload operator() to access data as matrix(i, j),
-    // where i = [1:N], j = [1:N]
-    T& operator() (size_t i, size_t j) const;
-
-    // --- 3D matrix ---
+    T& operator() (size_t i,
+                   size_t j) const;
     
-    // Overloaded constructor
-    FMatrix (size_t some_dim1, size_t some_dim2, size_t some_dim3);
-
-    // Overload operator() to access data as matrix(i, j, k),
-    // where i = [1:N], j = [1:N], k = [1:N]
-    T& operator() (size_t i, size_t j, size_t k) const;
-
-    // --- 4D matrix ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k) const;
     
-    // Overloaded constructor
-    FMatrix (size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-               size_t some_dim4);
-
-    // Overload operator() to access data as matrix(i, j, k, l),
-    // where i = [1:N], j = [1:N], k = [1:N], l = [1:N]
-    T& operator() (size_t i, size_t j, size_t k, size_t l) const;
-
-    // --- 5D matrix ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l) const;
     
-    // Overloaded constructor
-    FMatrix (size_t some_dim1, size_t some_dim2, size_t some_dim3,
-               size_t some_dim4, size_t some_dim5);
-
-    // Overload operator() to access data as matrix(i, j, k, l, m),
-    // where i = [1:N], j = [1:N], k = [1:N], l = [1:N],
-    // m = [1:N]
-    T& operator() (size_t i, size_t j, size_t k, size_t l,
-                          size_t m) const;
-
-    // --- 6D matrix ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m) const;
     
-    // Overloaded constructor
-    FMatrix (size_t some_dim1, size_t some_dim2, size_t some_dim3,
-               size_t some_dim4, size_t some_dim5, size_t some_dim6);
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n) const;
 
-    // Overload operator() to access data as matrix(i, j, k, l, m, n),
-    // where i = [1:N], j = [1:N], k = [1:N], l = [1:N], 
-    // m = [1:N], n = [1:N]
-    T& operator() (size_t i, size_t j, size_t k, size_t l,
-                          size_t m, size_t n) const;
-
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n,
+                   size_t o) const;
+    
+    
     // Overload copy assignment operator
     FMatrix& operator=(const FMatrix& temp);
 
@@ -618,8 +926,8 @@ public:
 
 //1D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1) {
-    // assert(some_dim1 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1)
+{
     dim1_ = some_dim1;
     length_ = dim1_;
     this_matrix_ = new T[length_];
@@ -627,9 +935,9 @@ FMatrix<T>::FMatrix(size_t some_dim1) {
 
 //2D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1,
+                    size_t some_dim2)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = dim1_ * dim2_;
@@ -638,10 +946,10 @@ FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2) {
 
 //3D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -651,12 +959,11 @@ FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
 
 //4D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-                        size_t some_dim4) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -667,13 +974,12 @@ FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3,
 
 //5D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                        size_t some_dim4, size_t some_dim5) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0):
-    // assert(some_dim5 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4,
+                    size_t some_dim5)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -685,14 +991,13 @@ FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3,
 
 //6D
 template <typename T>
-FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                        size_t some_dim4, size_t some_dim5, size_t some_dim6) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0):
-    // assert(some_dim5 > 0);
-    // assert(some_dim6 > 0);
+FMatrix<T>::FMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4,
+                    size_t some_dim5,
+                    size_t some_dim6)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -708,14 +1013,17 @@ FMatrix<T>::FMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3,
 
 //1D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i) const {
+inline T& FMatrix<T>::operator() (size_t i) const
+{
     assert(i >= 1 && i <= dim1_);
     return this_matrix_[i - 1];
 }
 
 //2D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i, size_t j) const {
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j) const
+{
     assert(i >= 1 && i <= dim1_);
     assert(j >= 1 && j <= dim2_);
     return this_matrix_[(i - 1) + ((j - 1) * dim1_)];
@@ -723,7 +1031,10 @@ inline T& FMatrix<T>::operator() (size_t i, size_t j) const {
 
 //3D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k) const {
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j,
+                                  size_t k) const
+{
     assert(i >= 1 && i <= dim1_);
     assert(j >= 1 && j <= dim2_);
     assert(k >= 1 && k <= dim3_);
@@ -733,7 +1044,11 @@ inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k) const {
 
 //4D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l) const {
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j,
+                                  size_t k,
+                                  size_t l) const
+{
     assert(i >= 1 && i <= dim1_);
     assert(j >= 1 && j <= dim2_);
     assert(k >= 1 && k <= dim3_);
@@ -745,8 +1060,12 @@ inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l) const 
 
 //5D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l,
-                                    size_t m) const {
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j,
+                                  size_t k,
+                                  size_t l,
+                                  size_t m) const
+{
     assert(i >= 1 && i <= dim1_);
     assert(j >= 1 && j <= dim2_);
     assert(k >= 1 && k <= dim3_);
@@ -760,8 +1079,13 @@ inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l,
 
 //6D
 template <typename T>
-inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l,
-                                    size_t m, size_t n) const {
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j,
+                                  size_t k,
+                                  size_t l,
+                                  size_t m,
+                                  size_t n) const
+{
     assert(i >= 1 && i <= dim1_);
     assert(j >= 1 && j <= dim2_);
     assert(k >= 1 && k <= dim3_);
@@ -775,6 +1099,32 @@ inline T& FMatrix<T>::operator() (size_t i, size_t j, size_t k, size_t l,
                                 + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)];
 }
 
+//7D
+template <typename T>
+inline T& FMatrix<T>::operator() (size_t i,
+                                  size_t j,
+                                  size_t k,
+                                  size_t l,
+                                  size_t m,
+                                  size_t n,
+                                  size_t o) const
+{
+    assert(i >= 1 && i <= dim1_);
+    assert(j >= 1 && j <= dim2_);
+    assert(k >= 1 && k <= dim3_);
+    assert(l >= 1 && l <= dim4_);
+    assert(m >= 1 && m <= dim5_);
+    assert(n >= 1 && n <= dim6_);
+    assert(o >= 1 && n <= dim7_);
+    return this_matrix_[(i - 1) + ((j - 1) * dim1_)
+                                + ((k - 1) * dim1_ * dim2_)
+                                + ((l - 1) * dim1_ * dim2_ * dim3_)
+                                + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_)
+                                + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)
+                                + ((o - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_)];
+}
+
+
 template <typename T>
 inline FMatrix<T>& FMatrix<T>::operator= (const FMatrix& temp)
 {
@@ -786,6 +1136,7 @@ inline FMatrix<T>& FMatrix<T>::operator= (const FMatrix& temp)
         dim4_ = temp.dim4_;
         dim5_ = temp.dim5_;
         dim6_ = temp.dim6_;
+        dim7_ = temp.dim7_;
         length_ = temp.length_;
         this_matrix_ = new T[length_];
     }
@@ -805,12 +1156,14 @@ FMatrix<T>::~FMatrix() {
 
 //----end of FMatrix class definitions----
 
+
 //4. ViewFMatrix
+//  indices are [1:N]
 template <typename T>
 class ViewFMatrix {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
     size_t length_; // Length of 1D array
     T * this_matrix_;
     
@@ -819,73 +1172,33 @@ public:
     // Default constructor
     ViewFMatrix ();
     
-    //--- 1D matrix ---
-    
-    // Overloaded constructor
+    //--- 1D to 7D matrix ---
+
     ViewFMatrix(T *some_matrix,
                 size_t some_dim1);
     
-    // Overload  operator() to access data as matrix(i,j),
-    // where i = [1:N], j = [1:N]
-    T& operator()(size_t i) const;
-    
-    //--- 2D matrix ---
-    
-    // Overloaded constructor
     ViewFMatrix(T *some_matrix,
                 size_t some_dim1,
                 size_t some_dim2);
     
-    // Overload operator() to access data as matrix(i,j),
-    //  where i=[1:N], j=[1:N]
-    T& operator()(size_t i, size_t j) const;
-    
-    //--- 3D matrix ---
-    
-    // Overloaded constructor
     ViewFMatrix(T *some_matrix,
                 size_t some_dim1,
                 size_t some_dim2,
                 size_t some_dim3);
     
-    // Overload operator() to access data as matrix(i,j,k),
-    // where i = [1:N], j = [1:N], k = [1:N]
-    T& operator()(size_t i, size_t j, size_t k) const;
-    
-    //--- 4D matrix ---
-    
-    // Overloaded constructor
     ViewFMatrix(T *some_matrix,
                 size_t some_dim1,
                 size_t some_dim2,
                 size_t some_dim3,
                 size_t some_dim4);
-        
-    // Overload operator() to access data as matrix(i, j, k, l),
-    // where i = [0:n-1], j = [1:N], k = [1:N], l = [1:N]
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
     
-    //--- 5D matrix ---
-    
-    // Overloaded constructor
     ViewFMatrix (T *some_matrix,
                  size_t some_dim1,
                  size_t some_dim2,
                  size_t some_dim3,
                  size_t some_dim4,
                  size_t some_dim5);
-        
-    // Overload operator() to access data as matrix(i,j,k,l,m),
-    // where i = [1:N], j = [1:N], k = [1:N], l = [1:N], m = [1:N]
-    T& operator() (size_t i, 
-                   size_t j, 
-                   size_t k, 
-                   size_t l, 
-                   size_t m) const;
     
-    //--- 6D matrix ---
-    
-    // Overloaded constructor
     ViewFMatrix (T *some_matrix,
                  size_t some_dim1,
                  size_t some_dim2,
@@ -893,9 +1206,36 @@ public:
                  size_t some_dim4,
                  size_t some_dim5,
                  size_t some_dim6);
-        
-    // Overload operator() to access data as matrix(i,j,k,l,m,n),
-    // where i = [1:N], j = [1:N], k = [1:N], l = [1:N], m = [1:N]
+    
+    ViewFMatrix (T *some_matrix,
+                 size_t some_dim1,
+                 size_t some_dim2,
+                 size_t some_dim3,
+                 size_t some_dim4,
+                 size_t some_dim5,
+                 size_t some_dim6,
+                 size_t some_dim7);
+    
+    T& operator()(size_t i) const;
+    
+    T& operator()(size_t i,
+                  size_t j) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m) const;
+    
     T& operator()(size_t i, 
                   size_t j, 
                   size_t k, 
@@ -903,7 +1243,16 @@ public:
                   size_t m, 
                   size_t n) const;
 
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n,
+                  size_t o) const;
+    
     size_t size() const;
+    
 }; // end of ViewFMatrix
 
 //constructors
@@ -1002,6 +1351,29 @@ ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
     this_matrix_ = some_matrix;
 }
 
+//6D
+template <typename T>
+ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3,
+                            size_t some_dim4,
+                            size_t some_dim5,
+                            size_t some_dim6,
+                            size_t some_dim7)
+{
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_;
+    this_matrix_ = some_matrix;
+}
+
+
 //overload operator ()
 
 //1D
@@ -1078,7 +1450,12 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
 
 //6D
 template <typename T>
-inline T& ViewFMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const
+inline T& ViewFMatrix<T>::operator()(size_t i,
+                                     size_t j,
+                                     size_t k,
+                                     size_t l,
+                                     size_t m,
+                                     size_t n) const
 {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 6D");  // die if >= dim1
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 6D");  // die if >= dim2
@@ -1093,13 +1470,40 @@ inline T& ViewFMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, siz
                                 + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)];
 }
 
+//6D
+template <typename T>
+inline T& ViewFMatrix<T>::operator()(size_t i,
+                                     size_t j,
+                                     size_t k,
+                                     size_t l,
+                                     size_t m,
+                                     size_t n,
+                                     size_t o) const
+{
+    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 7D");  // die if >= dim1
+    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 7D");  // die if >= dim2
+    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 7D");  // die if >= dim3
+    assert(l >= 1 && l <= dim4_ && "l is out of bounds in c_matrix 7D");  // die if >= dim4
+    assert(m >= 1 && m <= dim5_ && "m is out of bounds in c_matrix 7D");  // die if >= dim5
+    assert(n >= 1 && n <= dim6_ && "n is out of bounds in c_matrix 7D");  // die if >= dim6
+    assert(o >= 1 && o <= dim7_ && "o is out of bounds in c_matrix 7D");  // die if >= dim7
+    return this_matrix_[(i - 1) + ((j - 1) * dim1_)
+                                + ((k - 1) * dim1_ * dim2_)
+                                + ((l - 1) * dim1_ * dim2_ * dim3_)
+                                + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_)
+                                + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)
+                                + ((o - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_)];
+}
+
 //-----end ViewFMatrix-----
 
+
 //5. CArray
+// indicies are [0:N-1]
 template <typename T>
 class CArray {
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
     size_t length_; // Length of 1D array
     T* this_array_;
 
@@ -1107,66 +1511,79 @@ public:
     // Default constructor
     CArray ();
 
-    // --- 1D array ---
+    // --- 1D to 7D array ---
     
-    // Overloaded constructor
     CArray (size_t some_dim1);
 
-    // Overload operator() to access data as array(i), where i = [0:N-1]
+    CArray (size_t some_dim1,
+            size_t some_dim2);
+
+    CArray (size_t some_dim1,
+            size_t some_dim2,
+            size_t some_dim3);
+
+    CArray (size_t some_dim1,
+            size_t some_dim2,
+            size_t some_dim3,
+            size_t some_dim4);
+
+    CArray (size_t some_dim1,
+            size_t some_dim2,
+            size_t some_dim3,
+            size_t some_dim4,
+            size_t some_dim5);
+
+    CArray (size_t some_dim1,
+            size_t some_dim2,
+            size_t some_dim3,
+            size_t some_dim4,
+            size_t some_dim5,
+            size_t some_dim6);
+
+    CArray (size_t some_dim1,
+            size_t some_dim2,
+            size_t some_dim3,
+            size_t some_dim4,
+            size_t some_dim5,
+            size_t some_dim6,
+            size_t some_dim7);
+    
+    // Overload operator()
     T& operator() (size_t i) const;
-
-    // --- 2D array ---
     
-    // Overloaded constructor
-    CArray (size_t some_dim1, size_t some_dim2);
-
-    // Overload operator() to access data as array(i, j),
-    // where i = [0:N-1], j = [0:N-1]
-    T& operator() (size_t i, size_t j) const;
-
-    // --- 3D array ---
+    T& operator() (size_t i,
+                   size_t j) const;
     
-    // Overloaded constructor
-    CArray (size_t some_dim1, size_t some_dim2, size_t some_dim3);
-
-    // Overload operator() to access data as array(i, j, k),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1]
-    T& operator() (size_t i, size_t j, size_t k) const;
-
-    // --- 4D array ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k) const;
     
-    // Overloaded constructor
-    CArray (size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-               size_t some_dim4);
-
-    // Overload operator() to access data as array(i, j, k, l),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1], l = [0:N-1]
-    T& operator() (size_t i, size_t j, size_t k, size_t l) const;
-
-    // --- 5D array ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l) const;
     
-    // Overloaded constructor
-    CArray (size_t some_dim1, size_t some_dim2, size_t some_dim3,
-               size_t some_dim4, size_t some_dim5);
-
-    // Overload operator() to access data as array(i, j, k, l, m),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1], l = [0:N-1],
-    // m = [0:N-1]
-    T& operator() (size_t i, size_t j, size_t k, size_t l,
-                          size_t m) const;
-
-    // --- 6D array ---
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m) const;
     
-    // Overloaded constructor
-    CArray (size_t some_dim1, size_t some_dim2, size_t some_dim3,
-               size_t some_dim4, size_t some_dim5, size_t some_dim6);
-
-    // Overload operator() to access data as array(i, j, k, l, m, n),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1], l = [0:N-1], 
-    // m = [0:N-1], n = [0:N-1]
-    T& operator() (size_t i, size_t j, size_t k, size_t l,
-                          size_t m, size_t n) const;
-
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n,
+                   size_t o) const;
+    
     // Overload copy assignment operator
     CArray& operator= (const CArray& temp); 
 
@@ -1187,8 +1604,8 @@ CArray<T>::CArray() {}
 
 //1D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1) {
-    // assert(some_dim1 > 0);
+CArray<T>::CArray(size_t some_dim1)
+{
     dim1_ = some_dim1;
     length_ = dim1_;
     this_array_ = new T[length_];
@@ -1196,9 +1613,9 @@ CArray<T>::CArray(size_t some_dim1) {
 
 //2D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1, size_t some_dim2) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = dim1_ * dim2_;
@@ -1207,10 +1624,10 @@ CArray<T>::CArray(size_t some_dim1, size_t some_dim2) {
 
 //3D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1220,12 +1637,11 @@ CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
 
 //4D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-                        size_t some_dim4) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0);
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1236,13 +1652,11 @@ CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3,
 
 //5D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                        size_t some_dim4, size_t some_dim5) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0):
-    // assert(some_dim5 > 0);
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5) {
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1254,14 +1668,12 @@ CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3,
 
 //6D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                        size_t some_dim4, size_t some_dim5, size_t some_dim6) {
-    // assert(some_dim1 > 0);
-    // assert(some_dim2 > 0);
-    // assert(some_dim3 > 0);
-    // assert(some_dim4 > 0):
-    // assert(some_dim5 > 0);
-    // assert(some_dim6 > 0);
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5,
+                  size_t some_dim6) {
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1270,8 +1682,29 @@ CArray<T>::CArray(size_t some_dim1, size_t some_dim2, size_t some_dim3,
     dim6_ = some_dim6;
     length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_;
     this_array_ = new T[length_];
-
 }
+
+//7D
+template <typename T>
+CArray<T>::CArray(size_t some_dim1,
+                  size_t some_dim2,
+                  size_t some_dim3,
+                  size_t some_dim4,
+                  size_t some_dim5,
+                  size_t some_dim6,
+                  size_t some_dim7) {
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ *dim7_;
+    this_array_ = new T[length_];
+}
+
+
 
 //overload () operator
 
@@ -1284,7 +1717,9 @@ inline T& CArray<T>::operator() (size_t i) const {
 
 //2D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i, size_t j) const {
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j) const
+{
     assert(i < dim1_);
     assert(j < dim2_);
     return this_array_[j + (i * dim2_)];
@@ -1292,7 +1727,10 @@ inline T& CArray<T>::operator() (size_t i, size_t j) const {
 
 //3D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i, size_t j, size_t k) const {
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j,
+                                 size_t k) const
+{
     assert(i < dim1_);
     assert(j < dim2_);
     assert(k < dim3_);
@@ -1301,7 +1739,11 @@ inline T& CArray<T>::operator() (size_t i, size_t j, size_t k) const {
 
 //4D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l) const {
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j,
+                                 size_t k,
+                                 size_t l) const
+{
     assert(i < dim1_);
     assert(j < dim2_);
     assert(k < dim3_);
@@ -1313,8 +1755,12 @@ inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l) const {
 
 //5D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l,
-                                    size_t m) const {
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j,
+                                 size_t k,
+                                 size_t l,
+                                 size_t m) const
+{
     assert(i < dim1_);
     assert(j < dim2_);
     assert(k < dim3_);
@@ -1328,8 +1774,13 @@ inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l,
 
 //6D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l,
-                                    size_t m, size_t n) const {
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j,
+                                 size_t k,
+                                 size_t l,
+                                 size_t m,
+                                 size_t n) const
+{
     assert(i < dim1_);
     assert(j < dim2_);
     assert(k < dim3_);
@@ -1344,6 +1795,33 @@ inline T& CArray<T>::operator() (size_t i, size_t j, size_t k, size_t l,
 
 }
 
+//7D
+template <typename T>
+inline T& CArray<T>::operator() (size_t i,
+                                 size_t j,
+                                 size_t k,
+                                 size_t l,
+                                 size_t m,
+                                 size_t n,
+                                 size_t o) const
+{
+    assert(i < dim1_);
+    assert(j < dim2_);
+    assert(k < dim3_);
+    assert(l < dim4_);
+    assert(m < dim5_);
+    assert(n < dim6_);
+    assert(o < dim7_);
+    return this_array_[o + (n * dim7_)
+                         + (m * dim7_ * dim6_)
+                         + (l * dim7_ * dim6_ * dim5_)
+                         + (k * dim7_ * dim6_ * dim5_ * dim4_)
+                         + (j * dim7_ * dim6_ * dim5_ * dim4_ * dim3_)
+                         + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
+    
+}
+
+
 //overload = operator
 template <typename T>
 inline CArray<T>& CArray<T>::operator= (const CArray& temp)
@@ -1356,6 +1834,7 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
         dim4_ = temp.dim4_;
         dim5_ = temp.dim5_;
         dim6_ = temp.dim6_;
+        dim7_ = temp.dim7_;
         length_ = temp.length_;
         this_array_ = new T[length_];
     }
@@ -1376,12 +1855,14 @@ CArray<T>::~CArray() {
 
 //----endof carray class definitions----
 
+
 //6. ViewCArray
+// indicies are [0:N-1]
 template <typename T>
 class ViewCArray {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
     size_t length_; // Length of 1D array
     T * this_array_;
     
@@ -1390,69 +1871,32 @@ public:
     // Default constructor
     ViewCArray ();
     
-    //--- 1D array ---
-    
-    // Overloaded constructor
+    //--- 1D to 7D array ---
     ViewCArray(T *some_array,
                size_t some_dim1);
-    
-    // Overload  operator() to access data as array(i,j),
-    // where i = [0:N-1], j = [0:N-1]
-    T& operator()(size_t i) const;
-    
-    //--- 2D array ---
-    
-    // Overloaded constructor
+
     ViewCArray(T *some_array,
                size_t some_dim1,
                size_t some_dim2);
     
-    // Overload operator() to access data as array(i,j),
-    //  where i=[0:N-1], j=[0:N-1]
-    T& operator()(size_t i, size_t j) const;
-    
-    //--- 3D array ---
-    
-    // Overloaded constructor
     ViewCArray(T *some_array,
                size_t some_dim1,
                size_t some_dim2,
                size_t some_dim3);
     
-    // Overload operator() to access data as array(i,j,k),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1]
-    T& operator()(size_t i, size_t j, size_t k) const;
-    
-    //--- 4D array ---
-    
-    // Overloaded constructor
     ViewCArray(T *some_array,
                size_t some_dim1,
                size_t some_dim2,
                size_t some_dim3,
                size_t some_dim4);
-        
-    // Overload operator() to access data as array(i, j, k, l),
-    // where i = [0:n-1], j = [0:N-1], k = [0:N-1], l = [0:N-1]
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
     
-    //--- 5D array ---
-    
-    // Overloaded constructor
     ViewCArray (T *some_array,
                 size_t some_dim1,
                 size_t some_dim2,
                 size_t some_dim3,
                 size_t some_dim4,
                 size_t some_dim5);
-        
-    // Overload operator() to access data as array(i,j,k,l,m),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1], l = [0:N-1], m = [0:N-1]
-    T& operator() (size_t i, size_t j, size_t k, size_t l, size_t m) const;
-    
-    //--- 6D array ---
-    
-    // Overloaded constructor
+
     ViewCArray (T *some_array,
                 size_t some_dim1,
                 size_t some_dim2,
@@ -1460,10 +1904,49 @@ public:
                 size_t some_dim4,
                 size_t some_dim5,
                 size_t some_dim6);
-        
-    // Overload operator() to access data as array(i,j,k,l,m,n),
-    // where i = [0:N-1], j = [0:N-1], k = [0:N-1], l = [0:N-1], m = [0:N-1]
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const;
+ 
+    ViewCArray (T *some_array,
+                size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5,
+                size_t some_dim6,
+                size_t some_dim7);
+    
+    T& operator()(size_t i) const;
+    
+    T& operator()(size_t i,
+                  size_t j) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l) const;
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n) const;
+    
+    T& operator()(size_t i,
+                  size_t j,
+                  size_t k,
+                  size_t l,
+                  size_t m,
+                  size_t n,
+                  size_t o) const;
     
     size_t size() const;
     
@@ -1567,6 +2050,28 @@ ViewCArray<T>::ViewCArray(T *some_array,
     this_array_ = some_array;
 }
 
+//7D
+template <typename T>
+ViewCArray<T>::ViewCArray(T *some_array,
+                          size_t some_dim1,
+                          size_t some_dim2,
+                          size_t some_dim3,
+                          size_t some_dim4,
+                          size_t some_dim5,
+                          size_t some_dim6,
+                          size_t some_dim7)
+{
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ *dim7_;
+    this_array_ = some_array;
+}
+
 //overload () operator
 
 //1D
@@ -1643,7 +2148,12 @@ inline T& ViewCArray<T>::operator()(size_t i,
 
 //6D
 template <typename T>
-inline T& ViewCArray<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const
+inline T& ViewCArray<T>::operator()(size_t i,
+                                    size_t j,
+                                    size_t k,
+                                    size_t l,
+                                    size_t m,
+                                    size_t n) const
 {
     assert(i < dim1_ && "i is out of bounds in c_array 6D");  // die if >= dim1
     assert(j < dim2_ && "j is out of bounds in c_array 6D");  // die if >= dim2
@@ -1659,6 +2169,33 @@ inline T& ViewCArray<T>::operator()(size_t i, size_t j, size_t k, size_t l, size
                          + (i * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
 }
 
+//7D
+template <typename T>
+inline T& ViewCArray<T>::operator()(size_t i,
+                                    size_t j,
+                                    size_t k,
+                                    size_t l,
+                                    size_t m,
+                                    size_t n,
+                                    size_t o) const
+{
+    assert(i < dim1_ && "i is out of bounds in c_array 7D");  // die if >= dim1
+    assert(j < dim2_ && "j is out of bounds in c_array 7D");  // die if >= dim2
+    assert(k < dim3_ && "k is out of bounds in c_array 7D");  // die if >= dim3
+    assert(l < dim4_ && "l is out of bounds in c_array 7D");  // die if >= dim4
+    assert(m < dim5_ && "m is out of bounds in c_array 7D");  // die if >= dim5
+    assert(n < dim6_ && "n is out of bounds in c_array 7D");  // die if >= dim6
+    assert(o < dim7_ && "o is out of bounds in c_array 7D");  // die if >= dim7
+    
+    return this_array_[o + (n * dim7_)
+                         + (m * dim7_ * dim6_)
+                         + (l * dim7_ * dim6_ * dim5_)
+                         + (k * dim7_ * dim6_ * dim5_ * dim4_)
+                         + (j * dim7_ * dim6_ * dim5_ * dim4_ * dim3_)
+                         + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
+}
+
+
 //return size    
 template <typename T>
 inline size_t ViewCArray<T>::size() const {
@@ -1673,43 +2210,90 @@ template <typename T>
 class CMatrix {
         
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_,length_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_, length_;
     T * this_matrix;
             
 public:
         
        // default constructor
        CMatrix();
+    
        CMatrix(size_t some_dim1);
-       CMatrix(size_t some_dim1, size_t some_dim2);
-       CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3);
+    
        CMatrix(size_t some_dim1,
-           size_t some_dim2,
-           size_t some_dim3,
-           size_t some_dim4);
+               size_t some_dim2);
+    
        CMatrix(size_t some_dim1,
-           size_t some_dim2,
-           size_t some_dim3,
-           size_t some_dim4,
-           size_t some_dim5);
+               size_t some_dim2,
+               size_t some_dim3);
+    
+       CMatrix(size_t some_dim1,
+               size_t some_dim2,
+               size_t some_dim3,
+               size_t some_dim4);
+    
+       CMatrix(size_t some_dim1,
+               size_t some_dim2,
+               size_t some_dim3,
+               size_t some_dim4,
+               size_t some_dim5);
+    
        CMatrix (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3,
-            size_t some_dim4,
-            size_t some_dim5,
-            size_t some_dim6);
-           
-    //overload operators to access data
-       T& operator()(size_t i);
-       T& operator()(size_t i, size_t j);
-       T& operator()(size_t i, size_t j, size_t k);
-       T& operator()(size_t i, size_t j, size_t k, size_t l);
-       T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m);
-       T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n);
-
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5,
+                size_t some_dim6);
+ 
+       CMatrix (size_t some_dim1,
+                size_t some_dim2,
+                size_t some_dim3,
+                size_t some_dim4,
+                size_t some_dim5,
+                size_t some_dim6,
+                size_t some_dim7);
+    
+       //overload operators to access data
+       T& operator()(size_t i) const;
+    
+       T& operator()(size_t i,
+                     size_t j) const;
+    
+       T& operator()(size_t i,
+                     size_t j,
+                     size_t k) const;
+    
+       T& operator()(size_t i,
+                     size_t j,
+                     size_t k,
+                     size_t l) const;
+    
+       T& operator()(size_t i,
+                     size_t j,
+                     size_t k,
+                     size_t l,
+                     size_t m) const;
+    
+       T& operator()(size_t i,
+                     size_t j,
+                     size_t k,
+                     size_t l,
+                     size_t m,
+                     size_t n) const;
+    
+       T& operator()(size_t i,
+                     size_t j,
+                     size_t k,
+                     size_t l,
+                     size_t m,
+                     size_t n,
+                     size_t o) const;
+    
        //overload = operator
-	CMatrix& operator= (const CMatrix &temp);
-            
+	   CMatrix& operator= (const CMatrix &temp);
+    
+       size_t size() const;
+    
        // deconstructor
        ~CMatrix( );
         
@@ -1727,7 +2311,8 @@ CMatrix<T>::CMatrix() {}
 
 //1D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1) {
+CMatrix<T>::CMatrix(size_t some_dim1)
+{
     dim1_ = some_dim1;
     length_ = dim1_;
     this_matrix = new T[length_];
@@ -1735,7 +2320,9 @@ CMatrix<T>::CMatrix(size_t some_dim1) {
 
 //2D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2) {
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = dim1_*dim2_;
@@ -1744,7 +2331,10 @@ CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2) {
 
 //3D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1754,7 +2344,11 @@ CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3) {
 
 //4D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4) {
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1765,7 +2359,12 @@ CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t
 
 //5D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5) {
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4,
+                    size_t some_dim5)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1777,7 +2376,13 @@ CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t
 
 //6D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5, size_t some_dim6) {
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4,
+                    size_t some_dim5,
+                    size_t some_dim6)
+{
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
@@ -1788,12 +2393,32 @@ CMatrix<T>::CMatrix(size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t
     this_matrix = new T[length_];
 }
 
+//7D
+template <typename T>
+CMatrix<T>::CMatrix(size_t some_dim1,
+                    size_t some_dim2,
+                    size_t some_dim3,
+                    size_t some_dim4,
+                    size_t some_dim5,
+                    size_t some_dim6,
+                    size_t some_dim7)
+{
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_*dim7_;
+    this_matrix = new T[length_];
+}
 
 //overload () operator
 
 //1D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i)
+T& CMatrix<T>::operator()(size_t i) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 1D!");
     return this_matrix[i-1];
@@ -1801,7 +2426,8 @@ T& CMatrix<T>::operator()(size_t i)
 
 //2D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i, size_t j)
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 2D!");
     assert( j < dim2_+1 && "j is out of bounds in CMatrix 2D!");
@@ -1810,40 +2436,60 @@ T& CMatrix<T>::operator()(size_t i, size_t j)
 
 //3D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i, size_t j, size_t k)
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j,
+                          size_t k) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 3D!");
     assert( j < dim2_+1 && "j is out of bounds in CMatrix 3D!");
     assert( k < dim3_+1 && "k is out of bounds in CMatrix 3D!");
-    return this_matrix[(k-1) + (j-1)*dim3_ + (i-1)*dim3_*dim2_];
+    return this_matrix[(k-1) + (j-1)*dim3_
+                             + (i-1)*dim3_*dim2_];
 }
 
 //4D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l)
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j,
+                          size_t k,
+                          size_t l) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 4D!");
     assert( j < dim2_+1 && "j is out of bounds in CMatrix 4D!");
     assert( k < dim3_+1 && "k is out of bounds in CMatrix 4D!");
     assert( l < dim4_+1 && "l is out of bounds in CMatrix 4D!");
-    return this_matrix[ (l-1) + (k-1)*dim4_ + (j-1)*dim4_*dim3_ + (i-1)*dim4_*dim3_*dim2_];
+    return this_matrix[ (l-1) + (k-1)*dim4_
+                              + (j-1)*dim4_*dim3_
+                              + (i-1)*dim4_*dim3_*dim2_];
 }
 
 //5D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l,size_t m)
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j,
+                          size_t k,
+                          size_t l,
+                          size_t m) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 5D!");
     assert( j < dim2_+1 && "j is out of bounds in CMatrix 5D!");
     assert( k < dim3_+1 && "k is out of bounds in CMatrix 5D!");
     assert( l < dim4_+1 && "l is out of bounds in CMatrix 5D!");
     assert( m < dim5_+1 && "m is out of bounds in CMatrix 5D!");
-    return this_matrix[(m-1) + (l-1)*dim5_ + (k-1)*dim5_*dim4_ + (j-1)*dim5_*dim4_*dim3_ + (i-1)*dim5_*dim4_*dim3_*dim2_];
+    return this_matrix[(m-1) + (l-1)*dim5_
+                             + (k-1)*dim5_*dim4_
+                             + (j-1)*dim5_*dim4_*dim3_
+                             + (i-1)*dim5_*dim4_*dim3_*dim2_];
 }
 
 //6D
 template <typename T>
-T& CMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n)
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j,
+                          size_t k,
+                          size_t l,
+                          size_t m,
+                          size_t n) const
 {
     assert( i < dim1_+1 && "i is out of bounds in CMatrix 6D!");
     assert( j < dim2_+1 && "j is out of bounds in CMatrix 6D!");
@@ -1851,7 +2497,37 @@ T& CMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size
     assert( l < dim4_+1 && "l is out of bounds in CMatrix 6D!");
     assert( m < dim5_+1 && "m is out of bounds in CMatrix 6D!");
     assert( n < dim6_+1 && "n is out of bounds in CMatrix 6D!");
-    return this_matrix[ (n-1) + (m-1)*dim6_ + (l-1)*dim6_*dim5_ + (k-1)*dim6_*dim5_*dim4_ + (j-1)*dim6_*dim5_*dim4_*dim3_ + (i-1)*dim6_*dim5_*dim4_*dim3_*dim2_];
+    return this_matrix[ (n-1) + (m-1)*dim6_
+                              + (l-1)*dim6_*dim5_
+                              + (k-1)*dim6_*dim5_*dim4_
+                              + (j-1)*dim6_*dim5_*dim4_*dim3_
+                              + (i-1)*dim6_*dim5_*dim4_*dim3_*dim2_];
+}
+
+//7D
+template <typename T>
+T& CMatrix<T>::operator()(size_t i,
+                          size_t j,
+                          size_t k,
+                          size_t l,
+                          size_t m,
+                          size_t n,
+                          size_t o) const
+{
+    assert( i < dim1_+1 && "i is out of bounds in CMatrix 7D!");
+    assert( j < dim2_+1 && "j is out of bounds in CMatrix 7D!");
+    assert( k < dim3_+1 && "k is out of bounds in CMatrix 7D!");
+    assert( l < dim4_+1 && "l is out of bounds in CMatrix 7D!");
+    assert( m < dim5_+1 && "m is out of bounds in CMatrix 7D!");
+    assert( n < dim6_+1 && "n is out of bounds in CMatrix 7D!");
+    assert( o < dim7_+1 && "n is out of bounds in CMatrix 7D!");
+    
+    return this_matrix[(o-1) + (n-1)*dim7_
+                             + (m-1)*dim7_*dim6_
+                             + (l-1)*dim7_*dim6_*dim5_
+                             + (k-1)*dim7_*dim6_*dim5_*dim4_
+                             + (j-1)*dim7_*dim6_*dim5_*dim4_*dim3_
+                             + (i-1)*dim7_*dim6_*dim5_*dim4_*dim3_*dim2_];
 }
 
 //overload = operator
@@ -1865,10 +2541,16 @@ CMatrix<T> &CMatrix<T>::operator= (const CMatrix &temp) {
         dim4_ = temp.dim4_;
         dim5_ = temp.dim5_;
         dim6_ = temp.dim6_;
+        dim7_ = temp.dim7_;
         length_ = temp.length_;
         this_matrix = new T[length_];
 	}
   return *this;
+}
+
+template <typename T>
+inline size_t CMatrix<T>::size() const {
+    return length_;
 }
 
 // Destructor
@@ -1879,12 +2561,14 @@ CMatrix<T>::~CMatrix(){
 
 //----end of CMatrix class definitions----
 
+
 //8. ViewCMatrix
+//  indices [1:N]
 template <typename T>
 class ViewCMatrix {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_;
+    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
      T * this_matrix;
 		    
 public:
@@ -1895,47 +2579,31 @@ public:
 		    
     //--- 1D array ---	   	    
     // overloaded constructor
-    ViewCMatrix (T *some_matrix,size_t some_dim1);
-    T& operator() (size_t i);
-		    
-    //--- 2D array ---	    
-    // overloaded constructor
-    ViewCMatrix (T *some_matrix, size_t some_dim1, size_t some_dim2);
-		    
-    T& operator() (size_t i, size_t j);
-		    
-    //--- 3D array ---	    
-    // overloaded constructor
+    ViewCMatrix (T *some_matrix,
+                 size_t some_dim1);
+    
+    ViewCMatrix (T *some_matrix,
+                 size_t some_dim1,
+                 size_t some_dim2);
+
     ViewCMatrix (T *some_matrix,
 		size_t some_dim1,
 		size_t some_dim2,
 		size_t some_dim3);
-    T& operator() (size_t i, size_t j, size_t k);
-		    
-    //--- 4D array ---
-		    
-    // overloaded constructor
+
     ViewCMatrix (T *some_matrix,
 		size_t some_dim1,
 		size_t some_dim2,
 		size_t some_dim3,
 		size_t some_dim4);
-		    
-    T& operator() (size_t i, size_t j, size_t k, size_t l);
 
-		    
-    //--- 5D array ---
-    // overloaded constructor
     ViewCMatrix (T *some_matrix,
 		size_t some_dim1,
 		size_t some_dim2,
 		size_t some_dim3,
 		size_t some_dim4,
 		size_t some_dim5);
-    T& operator() (size_t i, size_t j, size_t k, size_t l, size_t m);
 
-    //--- 6D array ---		    
-    // overloaded constructor
     ViewCMatrix (T *some_matrix,
 		   size_t some_dim1,
 		   size_t some_dim2,
@@ -1943,9 +2611,49 @@ public:
 		   size_t some_dim4,
 		   size_t some_dim5,
 		   size_t some_dim6);
-		    
-   T& operator() (size_t i, size_t j, size_t k, size_t l, size_t m, size_t n);
 
+    ViewCMatrix (T *some_matrix,
+                 size_t some_dim1,
+                 size_t some_dim2,
+                 size_t some_dim3,
+                 size_t some_dim4,
+                 size_t some_dim5,
+                 size_t some_dim6,
+                 size_t some_dim7);
+    
+    T& operator() (size_t i) const;
+    
+    T& operator() (size_t i,
+                   size_t j) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m) const;
+    
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n) const;
+    T& operator() (size_t i,
+                   size_t j,
+                   size_t k,
+                   size_t l,
+                   size_t m,
+                   size_t n,
+                   size_t o) const;
 		    
 }; // end of ViewCMatrix
 
@@ -1959,14 +2667,19 @@ ViewCMatrix<T>::ViewCMatrix(){}
 
 //1D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,size_t some_dim1) {
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1)
+{
 	dim1_ = some_dim1;
 	this_matrix = some_matrix;
 }
 
 //2D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2) {
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	this_matrix = some_matrix;
@@ -1974,7 +2687,11 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2) 
 
 //3D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, size_t some_dim3) {
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
@@ -1983,7 +2700,12 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, 
 
 //4D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4){
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3,
+                            size_t some_dim4)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
@@ -1993,7 +2715,13 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, 
 
 //5D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5){
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3,
+                            size_t some_dim4,
+                            size_t some_dim5)
+{
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
@@ -2004,7 +2732,13 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, 
 
 //6D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, size_t some_dim3, size_t some_dim4, size_t some_dim5, size_t some_dim6) {
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3,
+                            size_t some_dim4,
+                            size_t some_dim5,
+                            size_t some_dim6) {
 	dim1_ = some_dim1;
 	dim2_ = some_dim2;
 	dim3_ = some_dim3;
@@ -2014,11 +2748,31 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix, size_t some_dim1, size_t some_dim2, 
 	this_matrix = some_matrix;
 }
 
+//7D
+template <typename T>
+ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
+                            size_t some_dim1,
+                            size_t some_dim2,
+                            size_t some_dim3,
+                            size_t some_dim4,
+                            size_t some_dim5,
+                            size_t some_dim6,
+                            size_t some_dim7) {
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    this_matrix = some_matrix;
+}
+
 //overload () operator
 
 //1D
 template <typename T>
-T& ViewCMatrix<T>:: operator() (size_t i)
+T& ViewCMatrix<T>:: operator() (size_t i) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 1D!");
 	return this_matrix[i-1];
@@ -2026,7 +2780,8 @@ T& ViewCMatrix<T>:: operator() (size_t i)
 
 //2D
 template <typename T>
-T& ViewCMatrix<T>::operator() (size_t i, size_t j)
+T& ViewCMatrix<T>::operator() (size_t i,
+                               size_t j) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 2D!");
 	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 2D!");
@@ -2035,40 +2790,60 @@ T& ViewCMatrix<T>::operator() (size_t i, size_t j)
 
 //3D
 template <typename T>
-T& ViewCMatrix<T>::operator () (size_t i, size_t j, size_t k)
+T& ViewCMatrix<T>::operator () (size_t i,
+                                size_t j,
+                                size_t k) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 3D!");
 	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 3D!");
 	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 3D!");
-	return this_matrix[(k-1) + (j-1)*dim3_ + (i-1)*dim3_*dim2_];
+	return this_matrix[(k-1) + (j-1)*dim3_
+                             + (i-1)*dim3_*dim2_];
 }
 
 //4D
 template <typename T>
-T& ViewCMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l)
+T& ViewCMatrix<T>::operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 4D!");
 	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 4D!");
 	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 4D!");
 	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 4D!");
-	return this_matrix[(l-1) + (k-1)*dim4_ + (j-1)*dim4_*dim3_ + (i-1)*dim4_*dim3_*dim2_];
+	return this_matrix[(l-1) + (k-1)*dim4_
+                             + (j-1)*dim4_*dim3_
+                             + (i-1)*dim4_*dim3_*dim2_];
 }
 
 //5D
 template <typename T>
-T& ViewCMatrix<T>::operator()(size_t i, size_t j, size_t k,size_t l, size_t m)
+T& ViewCMatrix<T>::operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l,
+                              size_t m) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 5D!");
 	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 5D!");
 	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 5D!");
 	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 5D!");
 	assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 5D!");
-	return this_matrix[(m-1) + (l-1)*dim5_ + (k-1)*dim5_*dim4_ + (j-1)*dim5_*dim4_*dim3_ + (i-1)*dim5_*dim4_*dim3_*dim2_];
+	return this_matrix[(m-1) + (l-1)*dim5_
+                             + (k-1)*dim5_*dim4_
+                             + (j-1)*dim5_*dim4_*dim3_
+                             + (i-1)*dim5_*dim4_*dim3_*dim2_];
 }
 
 //6D
 template <typename T>
-T& ViewCMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n)
+T& ViewCMatrix<T>::operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l,
+                              size_t m,
+                              size_t n) const
 {
 	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 6D!");
 	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 6D!");
@@ -2076,7 +2851,36 @@ T& ViewCMatrix<T>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
 	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 6D!");
 	assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 6D!");
 	assert(n < dim6_+1 && "n is out of bounds for ViewCMatrix 6D!");
-	return this_matrix[(n-1)+ (m-1)*dim6_ + (l-1)*dim5_*dim6_ + (k-1)*dim6_*dim5_*dim4_ + (j-1)*dim6_*dim5_*dim4_*dim3_ + (i-1)*dim5_*dim6_*dim4_*dim3_*dim2_];
+	return this_matrix[(n-1) + (m-1)*dim6_
+                             + (l-1)*dim5_*dim6_
+                             + (k-1)*dim6_*dim5_*dim4_
+                             + (j-1)*dim6_*dim5_*dim4_*dim3_
+                             + (i-1)*dim5_*dim6_*dim4_*dim3_*dim2_];
+}
+
+//7D
+template <typename T>
+T& ViewCMatrix<T>::operator()(size_t i,
+                              size_t j,
+                              size_t k,
+                              size_t l,
+                              size_t m,
+                              size_t n,
+                              size_t o) const
+{
+    assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 7D!");
+    assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 7D!");
+    assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 7D!");
+    assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 7D!");
+    assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 7D!");
+    assert(n < dim6_+1 && "n is out of bounds for ViewCMatrix 7D!");
+    assert(o < dim7_+1 && "o is out of bounds for ViewCMatrix 7D!");
+    return this_matrix[(o-1) + (n-1)*dim7_
+                             + (m-1)*dim7_*dim6_
+                             + (l-1)*dim7_*dim5_*dim6_
+                             + (k-1)*dim7_*dim6_*dim5_*dim4_
+                             + (j-1)*dim7_*dim6_*dim5_*dim4_*dim3_
+                             + (i-1)*dim7_*dim5_*dim6_*dim4_*dim3_*dim2_];
 }
 
 
