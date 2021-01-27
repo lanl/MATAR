@@ -4405,7 +4405,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim1, size_t dim2,
     dim4_ = dim4;
     dim5_ = dim5;
     dim6_ = dim6;
-    dim7_ = dim7
+    dim7_ = dim7;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_);
     this_array_ = some_array;
 }
@@ -6044,6 +6044,7 @@ private:
     size_t dim4_;
     size_t dim5_;
     size_t dim6_;
+    size_t dim7_;
     size_t length_;
     T* this_matrix_;
 
@@ -6758,10 +6759,256 @@ RaggedDownArrayKokkos<T>::~RaggedDownArrayKokkos() { }
 // End of RaggedDownArrayKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
+//11. DynamicRaggedRightArray
+/*
+template <typename T>
+class DynamicRaggedRightArrayKokkos {
+
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+private:
+    // THIS WILL BE A GPU POINTER!
+    size_t *stride_;
+    SArray1D start_index_;
+    TArray1D array_; 
+    
+    size_t dim1_;
+    size_t dim2_;
+    size_t length_;
+    
+public:
+    // Default constructor
+    DynamicRaggedRightArrayKokkos ();
+    
+    //--- 2D array access of a ragged right array ---
+    
+    // overload constructor
+    DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2);
+    
+    // A method to return or set the stride size
+    KOKKOS_FUNCTION
+    size_t& stride(size_t i) const;
+    
+    // A method to return the size
+    KOKKOS_FUNCTION
+    size_t size() const;
+    
+    // Overload operator() to access data as array(i,j),
+    // where i=[0:N-1], j=[stride(i)]
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+    
+    // Overload copy assignment operator
+    DynamicRaggedRightArrayKokkos& operator= (const DynamicRaggedRightArrayKokkos &temp);
+    
+    // Destructor
+    ~DynamicRaggedRightArrayKokkos ();
+};
+
+//nothing
+template <typename T>
+DynamicRaggedRightArrayKokkos<T>::DynamicRaggedRightArrayKokkos () {}
+
+// Overloaded constructor
+template <typename T>
+DynamicRaggedRightArrayKokkos<T>::DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2) {
+    // The dimensions of the array;
+    dim1_  = dim1;
+    dim2_  = dim2;
+    length_ = dim1*dim2;
+    
+    // Create memory on the heap for the values
+    array_ = new T[dim1*dim2];
+    
+    // Create memory for the stride size in each row
+    stride_ = new size_t[dim1];
+    
+    // Initialize the stride
+    for (int i=0; i<dim1_; i++){
+        stride_[i] = 0;
+    }
+    
+    // Start index is always = j + i*dim2
+}
+
+// A method to set the stride size for row i
+template <typename T>
+KOKKOS_FUNCTION
+size_t& DynamicRaggedRightArrayKokkos<T>::stride(size_t i) const {
+    return stride_[i];
+}
+
+//return size
+template <typename T>
+KOKKOS_FUNCTION
+size_t DynamicRaggedRightArrayKokkos<T>::size() const{
+    return length_;
+}
+
+// Overload operator() to access data as array(i,j),
+// where i=[0:N-1], j=[0:stride(i)]
+template <typename T>
+KOKKOS_FUNCTION
+inline T& DynamicRaggedRightArrayKokkos<T>::operator()(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedRight");  // die if >= dim1
+    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedRight");  // die if >= dim2
+    assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
+    
+    return array_[j + i*dim2_];
+}
+
+//overload = operator
+template <typename T>
+inline DynamicRaggedRightArrayKokkos<T>& DynamicRaggedRightArrayKokkos<T>::operator= (const DynamicRaggedRightArrayKokkos &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        stride_ = new size_t[dim1_];
+        for (int i = 0; i < dim1_; i++) {
+            stride_[i] = temp.stride_[i];
+        }
+        array_ = new T[length_];
+    }
+    
+    return *this;
+}
+
+// Destructor
+template <typename T>
+DynamicRaggedRightArrayKokkos<T>::~DynamicRaggedRightArrayKokkos() {
+    delete[] array_;
+    delete[] stride_;
+}
+
+
+
+
+//----end DynamicRaggedRightArray class definitions----
+
+
+//12. DynamicRaggedDownArray
+
+template <typename T>
+class DynamicRaggedDownArrayKokkos {
+private:
+    size_t *stride_;
+    T * array_;
+    
+    size_t dim1_;
+    size_t dim2_;
+    size_t length_;
+    
+public:
+    // Default constructor
+    DynamicRaggedDownArrayKokkos ();
+    
+    //--- 2D array access of a ragged right array ---
+    
+    // overload constructor
+    DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2);
+    
+    // A method to return or set the stride size
+    size_t& stride(size_t j) const;
+    
+    // A method to return the size
+    size_t size() const;
+    
+    // Overload operator() to access data as array(i,j),
+    // where i=[stride(j)], j=[0:N-1]
+    T& operator()(size_t i, size_t j) const;
+    
+    // Overload copy assignment operator
+    DynamicRaggedDownArrayKokkos& operator= (const DynamicRaggedDownArrayKokkos &temp);
+    
+    // Destructor
+    ~DynamicRaggedDownArrayKokkos ();
+};
+
+//nothing
+template <typename T>
+DynamicRaggedDownArrayKokkos<T>::DynamicRaggedDownArrayKokkos () {}
+
+// Overloaded constructor
+template <typename T>
+DynamicRaggedDownArrayKokkos<T>::DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2) {
+    // The dimensions of the array;
+    dim1_  = dim1;
+    dim2_  = dim2;
+    length_ = dim1*dim2;
+    
+    // Create memory on the heap for the values
+    array_ = new T[dim1*dim2];
+    
+    // Create memory for the stride size in each row
+    stride_ = new size_t[dim2];
+    
+    // Initialize the stride
+    for (int j=0; j<dim2_; j++){
+        stride_[j] = 0;
+    }
+    
+    // Start index is always = i + j*dim1
+}
+
+// A method to set the stride size for column j
+template <typename T>
+size_t& DynamicRaggedDownArrayKokkos<T>::stride(size_t j) const {
+    return stride_[j];
+}
+
+//return size
+template <typename T>
+size_t DynamicRaggedDownArrayKokkos<T>::size() const{
+    return length_;
+}
+
+// overload operator () to access data as an array(i,j)
+// Note: i = 0:stride(j), j = 0:N-1
+
+template <typename T>
+inline T& DynamicRaggedDownArrayKokkos<T>::operator()(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim1
+    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim2
+    assert(i < stride_[j] && "i is out of stride bounds in DynamicRaggedDownArrayKokkos");  // die if >= stride
+    
+    return array_[i + j*dim1_];
+}
+
+//overload = operator
+template <typename T>
+inline DynamicRaggedDownArrayKokkos<T>& DynamicRaggedDownArrayKokkos<T>::operator= (const DynamicRaggedDownArrayKokkos &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        stride_ = new size_t[dim1_];
+        for (int j = 0; j < dim2_; j++) {
+            stride_[j] = temp.stride_[j];
+        }
+        array_ = new T[length_];
+    }
+    
+    return *this;
+}
+
+// Destructor
+template <typename T>
+DynamicRaggedDownArrayKokkos<T>::~DynamicRaggedDownArrayKokkos() {
+}
+*/
+
 //////////////////////////
 // Inherited Class Array
 //////////////////////////
 
+/*
 //template<class T, class Layout, class ExecSpace>
 template<typename T>
 class InheritedArray2L {
@@ -6902,10 +7149,12 @@ T* InheritedArray2L<T>::pointer() {
 template <typename T>
 KOKKOS_FUNCTION
 InheritedArray2L<T>::~InheritedArray2L() {}
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of InheritedArray2L
 ////////////////////////////////////////////////////////////////////////////////
+
 
 #endif
 
