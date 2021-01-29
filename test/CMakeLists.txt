@@ -5,6 +5,7 @@ project (mtest)
 #include_directories(MATAR)
 
 add_executable(mtest main.cpp)
+add_executable(mtestkokkos main_kokkos.cpp)
 
 if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
@@ -21,4 +22,4 @@ endif()
 #add_subdirectory(MATAR)
 
 target_link_libraries(mtest matar)
-target_link_libraries(mtest Kokkos::kokkos)
+target_link_libraries(mtestkokkos matar Kokkos::kokkos)
