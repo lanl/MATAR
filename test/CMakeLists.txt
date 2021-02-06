@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.1.3)
 
 project (mtest)
 
-#include_directories(MATAR)
-
 add_executable(mtest main.cpp)
-add_executable(mtestkokkos main_kokkos.cpp)
+
 
 if (KOKKOS)
+  add_executable(mtestkokkos main_kokkos.cpp)
+
   add_definitions(-DHAVE_KOKKOS=1)
   #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_KOKKOS)
   if (CUDA)
@@ -17,9 +17,9 @@ if (KOKKOS)
     add_definitions(-DHAVE_OPENMP=1)
     #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_OPENMP)
   endif()
+
+  target_link_libraries(mtestkokkos matar Kokkos::kokkos)
 endif()
 
-#add_subdirectory(MATAR)
 
 target_link_libraries(mtest matar)
-target_link_libraries(mtestkokkos matar Kokkos::kokkos)
