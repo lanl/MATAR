@@ -240,7 +240,9 @@ public:
 
 //constructors
 template <typename T>
-FArray<T>::FArray(){}
+FArray<T>::FArray(){
+    this_array_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -923,6 +925,10 @@ public:
 //---FMatrix class definitions---
 
 //constructors
+template <typename T>
+FMatrix<T>::FMatrix(){
+    this_matrix_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -1601,7 +1607,9 @@ public:
 
 //no dim
 template <typename T>
-CArray<T>::CArray() {}
+CArray<T>::CArray() {
+    this_array_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -2315,7 +2323,9 @@ public:
 
 //1D
 template <typename T>
-CMatrix<T>::CMatrix() {}
+CMatrix<T>::CMatrix() {
+    this_matrix = NULL;
+}
 
 //1D
 template <typename T>
@@ -2949,7 +2959,9 @@ public:
 
 // Default constructor
 template <typename T>
-RaggedRightArray<T>::RaggedRightArray () {}
+RaggedRightArray<T>::RaggedRightArray () {
+    array_ = NULL;
+}
 
 
 // Overloaded constructor with CArray
@@ -3167,7 +3179,9 @@ public:
 
 // Default constructor
 template <typename T>
-RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors () {}
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors () {
+    array_ = NULL;
+}
 
 
 // Overloaded constructor with CArray
@@ -3386,7 +3400,9 @@ public:
 
 //no dims
 template <typename T>
-RaggedDownArray<T>::RaggedDownArray() {}
+RaggedDownArray<T>::RaggedDownArray() {
+    array_ = NULL;
+}
 
 //overload constructor with CArray 
 template <typename T>
@@ -3584,7 +3600,9 @@ public:
 
 //nothing
 template <typename T>
-DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {}
+DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {
+    array_ = NULL;
+}
 
 // Overloaded constructor
 template <typename T>
@@ -3824,7 +3842,11 @@ public:
     ~SparseRowArray ();
 }; 
 
-
+//Default Constructor
+template <typename T>
+SparseRowArray<T>::SparseRowArray (){
+    array_ = NULL;
+}
 // Overloaded constructor
 template <typename T>
 SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
@@ -3976,6 +3998,11 @@ public:
 	~SparseColArray();
 };
 
+//Default Constructor
+template <typename T>
+SparseColArray<T>::SparseColArray (){
+    array_ = NULL;
+}
 //overload constructor with CArray
 template <typename T>
 SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
