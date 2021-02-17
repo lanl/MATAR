@@ -14,7 +14,7 @@ auto A_array = ViewCArray <int> (A, 3, 3); // access as A(i,j)
 // create a 3D array of doubles
 auto B = CArray <double> (3,3,3); // access as B(i,j,k)
 
-// create a slide of the 3D array at index 1
+// create a slice of the 3D array at index 1
 auto C = ViewCArray <double> (&B(1,0,0),3,3); // access as C(i,j)
 
 
