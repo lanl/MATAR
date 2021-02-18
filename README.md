@@ -1,5 +1,5 @@
 # MATAR
-<img src="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png" width="48">
+<img src="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png" width="500">
 
 MATAR addresses the need for simple, fast, and memory-efficient multi-dimensional data representations for dense and sparse storage that arise with numerical methods and in software applications. The data representations are designed to perform well across multiple computer architectures, including CPUs and GPUs. For this purpose, we developed MATAR, a C++ software library that allows for simple creation and use of intricate data representations that is also portable across disparate architectures using Kokkos. The performance aspect is achieved by forcing contiguous memory layout (or as close to contiguous as possible) for multi-dimensional and multi-size dense or sparse MATrix and ARray (hence, MATAR) types. Results show that MATAR has the capability to improve memory utilization, performance, and programmer productivity in scientific computing. This is achieved by fitting more work into the available memory, minimizing memory loads required, and by loading memory in the most efficient order. 
 
