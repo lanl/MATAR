@@ -48,6 +48,10 @@ for (int i=0; i<4; i++){
 ```
 
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
 ## License
 This program is open source under the BSD-3 License.
 
