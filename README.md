@@ -47,6 +47,24 @@ for (int i=0; i<4; i++){
 
 ```
 
+## Standard build
+```
+./cmake .
+make
+```
+
+## Kokkos build
+```
+cmake -DKOKKOS=1 .
+make
+```
+
+## Kokkos with CUDA build
+```
+cmake -DKOKKOS=1  -DCUDA=1 .
+make
+```
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
