@@ -97,6 +97,12 @@ using ExecSpace       = Kokkos::Cuda;
 using Layout          = Kokkos::LayoutLeft;
 #endif
 
+#ifdef HAVE_HIP
+using MemSpace        = Kokkos::HipSpace;
+using ExecSpace       = Kokkos::Hip;
+using Layout          = Kokkos::LayoutLeft;
+#endif
+
 // Won't have both
 #if HAVE_OPENMP
 using MemSpace        = Kokkos::HostSpace;

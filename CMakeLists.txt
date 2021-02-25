@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
+project (MATAR)
 set (CMAKE_CXX_STANDARD 17)
 
 # adds -g and -02
