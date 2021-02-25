@@ -246,7 +246,9 @@ public:
 
 //constructors
 template <typename T>
-FArray<T>::FArray(){}
+FArray<T>::FArray(){
+    this_array_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -929,6 +931,10 @@ public:
 //---FMatrix class definitions---
 
 //constructors
+template <typename T>
+FMatrix<T>::FMatrix(){
+    this_matrix_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -1607,7 +1613,9 @@ public:
 
 //no dim
 template <typename T>
-CArray<T>::CArray() {}
+CArray<T>::CArray() {
+    this_array_ = NULL;
+}
 
 //1D
 template <typename T>
@@ -2321,7 +2329,9 @@ public:
 
 //1D
 template <typename T>
-CMatrix<T>::CMatrix() {}
+CMatrix<T>::CMatrix() {
+    this_matrix = NULL;
+}
 
 //1D
 template <typename T>
@@ -2955,7 +2965,9 @@ public:
 
 // Default constructor
 template <typename T>
-RaggedRightArray<T>::RaggedRightArray () {}
+RaggedRightArray<T>::RaggedRightArray () {
+    array_ = NULL;
+}
 
 
 // Overloaded constructor with CArray
@@ -3115,6 +3127,231 @@ RaggedRightArray<T>::~RaggedRightArray () {
 
 //----end of RaggedRightArray class definitions----
 
+//9. RaggedRightArrayofVectors
+template <typename T>
+class RaggedRightArrayofVectors {
+private:
+    size_t *start_index_;
+    T * array_;
+    
+    size_t dim1_, length_, vector_dim_;
+    size_t num_saved_; // the number saved in the 1D array
+    
+public:
+    // Default constructor
+    RaggedRightArrayofVectors ();
+    
+    //--- 3D array access of a ragged right array storing a vector of size vector_dim_ at each (i,j)---
+    
+    // Overload constructor for a CArray
+    RaggedRightArrayofVectors (CArray<size_t> &strides_array, size_t vector_dim);
+    
+    // Overload constructor for a ViewCArray
+    RaggedRightArrayofVectors (ViewCArray<size_t> &strides_array, size_t vector_dim);
+    
+    // Overloaded constructor for a traditional array
+    RaggedRightArrayofVectors (size_t *strides_array, size_t some_dim1, size_t vector_dim);
+    
+    // Overload constructor for a RaggedRightArray to
+    // support a dynamically built stride_array
+    RaggedRightArrayofVectors (size_t some_dim1, size_t buffer, size_t vector_dim);
+    
+    // A method to return the stride size
+    size_t stride(size_t i) const;
+
+    // A method to return the vector dim
+    size_t vector_dim() const;
+    
+    // A method to increase the number of column entries, i.e.,
+    // the stride size. Used with the constructor for building
+    // the stride_array dynamically.
+    // DO NOT USE with the constructures with a strides_array
+    void push_back(size_t i);
+    
+    // Overload operator() to access data as array(i,j)
+    // where i=[0:N-1], j=[stride(i)], k=[0,vector_dim_]
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    // method to return total size
+    size_t size() const;
+
+    RaggedRightArrayofVectors& operator+= (const size_t i);
+
+    RaggedRightArrayofVectors& operator= (const RaggedRightArrayofVectors &temp);
+
+    // Destructor
+    ~RaggedRightArrayofVectors ( );
+}; // End of RaggedRightArray
+
+// Default constructor
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors () {
+    array_ = NULL;
+}
+
+
+// Overloaded constructor with CArray
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (CArray<size_t> &strides_array, size_t vector_dim){
+    // The length of the stride array is some_dim1;
+    dim1_  = strides_array.size();
+    vector_dim_ = vector_dim;
+    
+    // Create and initialize the starting index of the entries in the 1D array
+    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_[0] = 0; // the 1D array starts at 0
+    
+    // Loop over to find the total length of the 1D array to
+    // represent the ragged-right array and set the starting 1D index
+    size_t count = 0;
+    for (size_t i = 0; i < dim1_; i++){
+        count += strides_array(i)*vector_dim_;
+        start_index_[(i + 1)] = count;
+    } // end for i
+    length_ = count;
+    
+    array_ = new T[length_];
+} // End constructor
+
+// Overloaded constructor with a view c array
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (ViewCArray<size_t> &strides_array, size_t vector_dim) {
+    // The length of the stride array is some_dim1;
+    dim1_  = strides_array.size();
+    vector_dim_ = vector_dim;
+    
+    // Create and initialize the starting index of the entries in the 1D array
+    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_[0] = 0; // the 1D array starts at 0
+    
+    // Loop over to find the total length of the 1D array to
+    // represent the ragged-right array and set the starting 1D index
+    size_t count = 0;
+    for (size_t i = 0; i < dim1_; i++){
+        count += strides_array(i)*vector_dim_;
+        start_index_[(i + 1)] = count;
+    } // end for i
+    length_ = count;
+    
+    array_ = new T[length_];
+} // End constructor
+
+// Overloaded constructor with a regular cpp array
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t *strides_array, size_t dim1, size_t vector_dim){
+    // The length of the stride array is some_dim1;
+    dim1_ = dim1;
+    vector_dim_ = vector_dim;
+
+    // Create and initialize the starting index of the entries in the 1D array
+    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_[0] = 0; // the 1D array starts at 0
+    
+    // Loop over to find the total length of the 1D array to
+    // represent the ragged-right array of vectors and set the starting 1D index
+    size_t count = 0;
+    for (size_t i = 0; i < dim1_; i++){
+        count += strides_array[i]*vector_dim_;
+        start_index_[(i + 1)] = count;
+    } // end for i
+    length_ = count;
+    
+    array_ = new T[length_];
+} // End constructor
+
+// overloaded constructor for a dynamically built strides_array.
+// buffer is the max number of columns needed
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t some_dim1, size_t buffer, size_t vector_dim){
+    
+    dim1_ = some_dim1;
+    vector_dim_ = vector_dim;
+
+    // create and initialize the starting index of the entries in the 1D array
+    start_index_ = new size_t[dim1_+1]();  // note the dim1+1
+    //start_index_[0] = 0; // the 1D array starts at 0
+
+    num_saved_ = 0;
+    
+    length_ = some_dim1*buffer*vector_dim;
+    array_ = new T[some_dim1*buffer];
+    
+} // end constructor
+
+// A method to return the stride size
+template <typename T>
+inline size_t RaggedRightArrayofVectors<T>::stride(size_t i) const {
+    // Ensure that i is within bounds
+    assert(i < (dim1_ + 1) && "i is greater than dim1_ in RaggedRightArray");
+
+    return (start_index_[(i + 1)] - start_index_[i])/vector_dim_;
+}
+
+// A method to increase the stride size, in other words,
+// this is used to build the stride array dynamically
+// DO NOT USE with constructors that are given a stride array
+template <typename T>
+void RaggedRightArrayofVectors<T>::push_back(size_t i){
+    num_saved_ += vector_dim_;
+    start_index_[i+1] = num_saved_;
+}
+
+// Overload operator() to access data as array(i,j,k)
+// where i=[0:N-1], j=[0:stride(i)], k=[0:vector_dim_]
+template <typename T>
+inline T& RaggedRightArrayofVectors<T>::operator()(size_t i, size_t j, size_t k) const {
+    // get the 1D array index
+    size_t start = start_index_[i];
+    
+    // asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArray");  // die if >= dim1
+    //assert(j < stride(i) && "j is out of stride bounds in RaggedRightArray");  // die if >= stride
+    assert(j*vector_dim_+start + k < length_ && "j+start is out of bounds in RaggedRightArray");  // die if >= 1D array length)
+    
+    return array_[j*vector_dim_ + start + k];
+} // End operator()
+
+//return size
+template <typename T>
+size_t RaggedRightArrayofVectors<T>::size() const {
+    return length_;
+}
+
+template <typename T>
+RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator+= (const size_t i) {
+    this->num_saved_ += vector_dim_;
+    this->start_index_[i+1] = num_saved_;
+    return *this;
+}
+
+//overload = operator
+template <typename T>
+RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const RaggedRightArrayofVectors &temp) {
+
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        vector_dim_ = temp.vector_dim_;
+        length_ = temp.length_;
+        num_saved_ = temp.num_saved_;
+        start_index_ = new size_t[dim1_ + 1];
+        for (int j = 0; j < dim1_; j++) {
+            start_index_[j] = temp.start_index_[j];  
+        }
+        array_ = new T[length_];
+    }
+	
+    return *this;
+}
+
+// Destructor
+template <typename T>
+RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {
+    delete[] array_;
+    delete[] start_index_;
+}
+
+//----end of RaggedRightArrayofVectors class definitions----
+
 //10. RaggedDownArray
 template <typename T>
 class RaggedDownArray { 
@@ -3169,7 +3406,9 @@ public:
 
 //no dims
 template <typename T>
-RaggedDownArray<T>::RaggedDownArray() {}
+RaggedDownArray<T>::RaggedDownArray() {
+    array_ = NULL;
+}
 
 //overload constructor with CArray 
 template <typename T>
@@ -3367,7 +3606,9 @@ public:
 
 //nothing
 template <typename T>
-DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {}
+DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {
+    array_ = NULL;
+}
 
 // Overloaded constructor
 template <typename T>
@@ -3607,7 +3848,11 @@ public:
     ~SparseRowArray ();
 }; 
 
-
+//Default Constructor
+template <typename T>
+SparseRowArray<T>::SparseRowArray (){
+    array_ = NULL;
+}
 // Overloaded constructor
 template <typename T>
 SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
@@ -3759,6 +4004,11 @@ public:
 	~SparseColArray();
 };
 
+//Default Constructor
+template <typename T>
+SparseColArray<T>::SparseColArray (){
+    array_ = NULL;
+}
 //overload constructor with CArray
 template <typename T>
 SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
