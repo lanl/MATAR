@@ -2,7 +2,6 @@
 //  parent.h
 //  
 //
-//  Created by nmorgan on 3/18/20.
 //
 #ifndef PARENT_H
 #define PARENT_H
@@ -20,8 +19,8 @@ class parent_variables{
         double *child_p; // var
 
 
-        // a variables
-        double *hypo_fake1;
+        // variables
+        double *var_fake1;
 
 
     // ...
