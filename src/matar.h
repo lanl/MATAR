@@ -89,6 +89,8 @@ using u_int  = unsigned int;
 #define kfree(pnt)        (  Kokkos::kokkos_free(pnt) ) 
 #define ProfileRegionStart  ( Kokkos::Profiling::pushRegion )
 #define ProfileRegionEnd  ( Kokkos::Profiling::popRegion )
+using HostSpace    = Kokkos::HostSpace;
+using MemoryUnmanaged = Kokkos::MemoryUnmanaged;
 
 #ifdef HAVE_CUDA
 //using UVMMemSpace     = Kokkos::CudaUVMSpace;
@@ -7239,6 +7241,331 @@ DynamicRaggedDownArrayKokkos<T>& DynamicRaggedDownArrayKokkos<T>::operator= (con
 template <typename T>
 DynamicRaggedDownArrayKokkos<T>::~DynamicRaggedDownArrayKokkos() {
 }
+
+
+/////////////////////////
+//// CArrayKokkosPtr ////
+/////////////////////////
+template <typename T>
+class CArrayKokkosPtr {
+
+    // this is always unmanaged
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    // this is manage
+    using TArray1D     = Kokkos::View<T*, Layout, ExecSpace>;
+    
+private:
+    size_t dim1_;
+    size_t dim2_;
+    size_t dim3_;
+    size_t dim4_;
+    size_t dim5_;
+    size_t dim6_;
+    size_t dim7_;
+    size_t length_;
+    TArray1D this_array_; 
+    TArray1DHost this_array_host_; 
+    //typename Kokkos::View<T*, Layout, ExecSpace>::HostMirror  h_this_array_;
+
+public:
+    CArrayKokkosPtr();
+    
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, size_t some_dim3);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, size_t some_dim3, 
+                 size_t some_dim4);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, size_t some_dim3,
+                 size_t some_dim4, size_t some_dim5);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, size_t some_dim3,
+                 size_t some_dim4, size_t some_dim5, size_t some_dim6);
+
+    CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, size_t some_dim3,
+                 size_t some_dim4, size_t some_dim5, size_t some_dim6,
+                 size_t some_dim7);
+    
+    KOKKOS_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    CArrayKokkosPtr& operator=(const CArrayKokkosPtr& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    size_t extent();
+
+    // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    T* pointer();
+
+    // Deconstructor
+    KOKKOS_FUNCTION
+    ~CArrayKokkosPtr ();
+}; // End of CArrayKokkosPtr
+
+
+// Default constructor
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr() {}
+
+// Overloaded 1D constructor
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1) {
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+    dim1_ = some_dim1;
+    length_ = dim1_;
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+}
+
+// Overloaded 2D constructor
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2) {
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    length_ = (dim1_ * dim2_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, 
+                              size_t some_dim3) {
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    length_ = (dim1_ * dim2_ * dim3_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, 
+                              size_t some_dim3, size_t some_dim4) {
+    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    length_ = (dim1_ * dim2_ * dim3_ * dim4_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, 
+                              size_t some_dim3, size_t some_dim4, 
+                              size_t some_dim5) {
+
+    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2, 
+                              size_t some_dim3, size_t some_dim4, 
+                              size_t some_dim5, size_t some_dim6) {
+    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2,
+                              size_t some_dim3, size_t some_dim4,
+                              size_t some_dim5, size_t some_dim6,
+                              size_t some_dim7) {
+    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dim1_ = some_dim1;
+    dim2_ = some_dim2;
+    dim3_ = some_dim3;
+    dim4_ = some_dim4;
+    dim5_ = some_dim5;
+    dim6_ = some_dim6;
+    dim7_ = some_dim7;
+    length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_);
+    this_array_ = TArray1D("this_array_", length_);
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 1D!");
+    return this_array_(i);
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 2D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 2D!");
+    return this_array_(j + (i * dim2_));
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j, size_t k) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 3D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 3D!");
+    assert(k < dim3_ && "k is out of bounds in CArrayKokkosPtr 3D!");
+    return this_array_(k + (j * dim3_) 
+                         + (i * dim3_ * dim2_));
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 4D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 4D!");
+    assert(k < dim3_ && "k is out of bounds in CArrayKokkosPtr 4D!");
+    assert(l < dim4_ && "l is out of bounds in CArrayKokkosPtr 4D!");
+    return this_array_(l + (k * dim4_) 
+                         + (j * dim4_ * dim3_)  
+                         + (i * dim4_ * dim3_ * dim2_));
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 5D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 5D!");
+    assert(k < dim3_ && "k is out of bounds in CArrayKokkosPtr 5D!");
+    assert(l < dim4_ && "l is out of bounds in CArrayKokkosPtr 5D!");
+    assert(m < dim5_ && "m is out of bounds in CArrayKokkosPtr 5D!");
+    return this_array_(m + (l * dim5_) 
+                         + (k * dim5_ * dim4_) 
+                         + (j * dim5_ * dim4_ * dim3_) 
+                         + (i * dim5_ * dim4_ * dim3_ * dim2_));
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 6D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 6D!");
+    assert(k < dim3_ && "k is out of bounds in CArrayKokkosPtr 6D!");
+    assert(l < dim4_ && "l is out of bounds in CArrayKokkosPtr 6D!");
+    assert(m < dim5_ && "m is out of bounds in CArrayKokkosPtr 6D!");
+    assert(n < dim6_ && "n is out of bounds in CArrayKokkosPtr 6D!");
+    return this_array_(n + (m * dim6_) 
+                         + (l * dim6_ * dim5_)  
+                         + (k * dim6_ * dim5_ * dim4_) 
+                         + (j * dim6_ * dim5_ * dim4_ * dim3_)  
+                         + (i * dim6_ * dim5_ * dim4_ * dim3_ * dim2_));
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+T& CArrayKokkosPtr<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(i < dim1_ && "i is out of bounds in CArrayKokkosPtr 7D!");
+    assert(j < dim2_ && "j is out of bounds in CArrayKokkosPtr 7D!");
+    assert(k < dim3_ && "k is out of bounds in CArrayKokkosPtr 7D!");
+    assert(l < dim4_ && "l is out of bounds in CArrayKokkosPtr 7D!");
+    assert(m < dim5_ && "m is out of bounds in CArrayKokkosPtr 7D!");
+    assert(n < dim6_ && "n is out of bounds in CArrayKokkosPtr 7D!");
+    assert(o < dim7_ && "o is out of bounds in CArrayKokkosPtr 7D!");
+    return this_array_(o + (n * dim7_)
+                         + (m * dim7_ * dim6_)
+                         + (l * dim7_ * dim6_ * dim5_)
+                         + (k * dim7_ * dim6_ * dim5_ * dim4_)
+                         + (j * dim7_ * dim6_ * dim5_ * dim4_ * dim3_)
+                         + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_));
+}
+
+template <typename T>
+CArrayKokkosPtr<T>& CArrayKokkosPtr<T>::operator= (const CArrayKokkosPtr& temp) {
+    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        dim3_ = temp.dim3_;
+        dim4_ = temp.dim4_;
+        dim5_ = temp.dim5_;
+        dim6_ = temp.dim6_;
+        dim7_ = temp.dim7_;
+        length_ = temp.length_;
+        this_array_ = TArray1D("this_array_", length_);
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T>
+KOKKOS_FUNCTION
+size_t CArrayKokkosPtr<T>::size() {
+    return length_;
+}
+
+template <typename T>
+size_t CArrayKokkosPtr<T>::extent() {
+    return length_;
+}
+
+template <typename T>
+T* CArrayKokkosPtr<T>::pointer() {
+    return this_array_.data();
+}
+
+template <typename T>
+KOKKOS_FUNCTION
+CArrayKokkosPtr<T>::~CArrayKokkosPtr() {}
+// End CArrayKokkosPtr
+
 
 //////////////////////////
 // Inherited Class Array

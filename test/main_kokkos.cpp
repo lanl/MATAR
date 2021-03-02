@@ -19,6 +19,13 @@ int main() {
             } 
     });
 
+    
+    std::array<int, 9> A1d;
+    CArrayKokkosPtr <int> cakp;
+    cakp = CArrayKokkosPtr <int> (&A1d[0], 9);
+    Kokkos::parallel_for("CAKPTest", 9, KOKKOS_LAMBDA(const int i) {
+        cakp(i) = i;
+    });
     }   
     Kokkos::finalize();
 
