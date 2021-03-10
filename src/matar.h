@@ -3817,7 +3817,7 @@ private:
     
     T * array_;
     
-    size_t dim1_;
+    size_t dim1_, length_;
     
 public:
     // Default constructor
@@ -3838,7 +3838,7 @@ public:
     size_t stride(size_t i) const;
     
     // A method to return the column index as array.column_index(i,j)
-    size_t column_index(size_t i, size_t j) const;
+    size_t& column_index(size_t i, size_t j) const;
     
     // A method to access data as array.value(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -3871,6 +3871,7 @@ SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
         start_index_[i+1] = count;
     } // end for i
     
+    length_ = count;
     array_ = new T[count];
     column_index_ = new size_t[count];
 } 
@@ -3894,6 +3895,7 @@ SparseRowArray<T>::SparseRowArray (ViewCArray<size_t> &strides_array) {
         start_index_[i+1] = count;
     } // end for i
     
+    length_ = count;
     array_ = new T[count];
     column_index_ = new size_t[count];
 } 
@@ -3916,6 +3918,7 @@ SparseRowArray<T>::SparseRowArray (size_t *strides_array, size_t dim1) {
         start_index_[i+1] = count;
     } // end for i
     
+    length_ = count;
     array_ = new T[count];
     column_index_ = new size_t[count];
 } 
@@ -3929,7 +3932,7 @@ size_t SparseRowArray<T>::stride(size_t i) const {
 
 // A method to return the column index
 template <typename T>
-size_t SparseRowArray<T>::column_index(size_t i, size_t j) const {
+size_t& SparseRowArray<T>::column_index(size_t i, size_t j) const {
     // Get the 1D array index
     size_t start = start_index_[i];
     
@@ -3975,7 +3978,7 @@ private:
 	size_t *row_index_;
 	T * array_;
 
-	size_t dim2_;
+	size_t dim2_, length_;
 
 public:
 
@@ -4024,7 +4027,8 @@ SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
 	  count+= strides_array(j);
 	  start_index_[j+1] = count;
 	}
-
+    
+    length_ = count;
 	array_ = new T[count];
 	row_index_ = new T[count];
 
@@ -4047,7 +4051,8 @@ SparseColArray<T>::SparseColArray(ViewCArray<size_t> &strides_array) {
 	  count += strides_array(j);
 	  start_index_[j+1] = count;
 	}
-
+    
+    length_ = count;
 	array_ = new T[count];
 	row_index_ = new T[count];
 
@@ -4069,7 +4074,8 @@ SparseColArray<T>::SparseColArray(size_t *strides_array, size_t dim2) {
 	  count += strides_array[j];
 	  start_index_[j+1] = count;
 	}
-
+    
+    length_ = count;
 	array_ = new T[count];
 	row_index_ = new T[count];
 
