@@ -3832,7 +3832,7 @@ public:
     size_t stride(size_t i) const;
     
     // A method to return the column index as array.column_index(i,j)
-    size_t column_index(size_t i, size_t j) const;
+    size_t& column_index(size_t i, size_t j) const;
     
     // A method to access data as array.value(i,j),
     // where i=[0:N-1], j=[stride(i)]
