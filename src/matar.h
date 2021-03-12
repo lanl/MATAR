@@ -228,8 +228,12 @@ public:
     
     //overload = operator
     FArray& operator=(const FArray& temp);
-
+    
+    //return array size
     size_t size() const;
+
+    //return pointer
+    T* get_pointer() const;
     
     // deconstructor
     ~FArray ( );
@@ -489,6 +493,11 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
 template <typename T>
 inline size_t FArray<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline T* FArray<T>::get_pointer() const {
+    return this_array_;
 }
 
 //delete FArray
@@ -917,6 +926,9 @@ public:
 
     size_t size() const;
 
+    //return pointer
+    T* get_pointer() const;
+
     // Deconstructor
     ~FMatrix ();
 
@@ -1153,6 +1165,11 @@ inline FMatrix<T>& FMatrix<T>::operator= (const FMatrix& temp)
 template <typename T>
 inline size_t FMatrix<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline T* FMatrix<T>::get_pointer() const{
+    return this_matrix_;
 }
 
 template <typename T>
@@ -1596,6 +1613,9 @@ public:
 
     size_t size() const;
 
+    //return pointer
+    T* get_pointer() const;
+
     // Deconstructor
     ~CArray ();
 
@@ -1861,6 +1881,11 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
 template <typename T>
 inline size_t CArray<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline T* CArray<T>::get_pointer() const{
+    return this_array_;
 }
 
 //destructor
@@ -2309,6 +2334,9 @@ public:
 	   CMatrix& operator= (const CMatrix &temp);
     
        size_t size() const;
+
+       //return pointer
+       T* get_pointer() const;
     
        // deconstructor
        ~CMatrix( );
@@ -2569,6 +2597,11 @@ CMatrix<T> &CMatrix<T>::operator= (const CMatrix &temp) {
 template <typename T>
 inline size_t CMatrix<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline T* CMatrix<T>::get_pointer() const{
+    return this_matrix;
 }
 
 // Destructor
@@ -2949,6 +2982,12 @@ public:
     // method to return total size
     size_t size() const;
 
+    //return pointer
+    T* get_pointer() const;
+    
+    //get row starts array
+    size_t* get_starts() const;
+
     RaggedRightArray& operator+= (const size_t i);
 
     RaggedRightArray& operator= (const RaggedRightArray &temp);
@@ -3112,6 +3151,16 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
     return *this;
 }
 
+template <typename T>
+inline T* RaggedRightArray<T>::get_pointer() const{
+    return array_;
+}
+
+template <typename T>
+inline size_t* RaggedRightArray<T>::get_starts() const{
+    return start_index_;
+}
+
 // Destructor
 template <typename T>
 RaggedRightArray<T>::~RaggedRightArray () {
@@ -3168,6 +3217,12 @@ public:
 
     // method to return total size
     size_t size() const;
+
+    //return pointer
+    T* get_pointer() const;
+    
+    //get row starts array
+    size_t* get_starts() const;
 
     RaggedRightArrayofVectors& operator+= (const size_t i);
 
@@ -3337,6 +3392,16 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
     return *this;
 }
 
+template <typename T>
+inline T* RaggedRightArrayofVectors<T>::get_pointer() const{
+    return array_;
+}
+
+template <typename T>
+inline size_t* RaggedRightArrayofVectors<T>::get_starts() const{
+    return start_index_;
+}
+
 // Destructor
 template <typename T>
 RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {
@@ -3389,6 +3454,12 @@ public:
 
     // method to return total size
     size_t size();
+
+    //return pointer
+    T* get_pointer() const;
+    
+    //get row starts array
+    size_t* get_starts() const;
 
     //overload = operator
     RaggedDownArray& operator= (const RaggedDownArray &temp);
@@ -3548,6 +3619,17 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
     return *this;
 }
 
+template <typename T>
+inline T* RaggedDownArray<T>::get_pointer() const{
+    return array_;
+}
+
+
+template <typename T>
+inline size_t* RaggedDownArray<T>::get_starts() const{
+    return start_index_;
+}
+
 // Destructor
 template <typename T>
 RaggedDownArray<T>::~RaggedDownArray() {
@@ -3586,6 +3668,9 @@ public:
     
     // A method to return the size
     size_t size() const;
+
+    //return pointer
+    T* get_pointer() const;
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -3669,6 +3754,11 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
     return *this;
 }
 
+template <typename T>
+inline T* DynamicRaggedRightArray<T>::get_pointer() const{
+    return array_;
+}
+
 // Destructor
 template <typename T>
 DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
@@ -3715,6 +3805,9 @@ public:
     
     // Overload copy assignment operator
     DynamicRaggedDownArray& operator= (const DynamicRaggedDownArray &temp);
+
+    //return pointer
+    T* get_pointer() const;
     
     // Destructor
     ~DynamicRaggedDownArray ();
@@ -3790,6 +3883,11 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
     return *this;
 }
 
+template <typename T>
+inline T* DynamicRaggedDownArray<T>::get_pointer() const{
+    return array_;
+}
+
 // Destructor
 template <typename T>
 DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
@@ -3837,6 +3935,15 @@ public:
     // A method to access data as array.value(i,j),
     // where i=[0:N-1], j=[stride(i)]
     T& value(size_t i, size_t j) const;
+
+    // A method to return the total size of the array
+    size_t size() const;
+
+    //return pointer
+    T* get_pointer() const;
+
+    //get row starts array
+    size_t* get_starts() const;
     
     // Destructor
     ~SparseRowArray ();
@@ -3951,6 +4058,22 @@ inline T& SparseRowArray<T>::value(size_t i, size_t j) const {
     return array_[j + start];
 } 
 
+//return size
+template <typename T>
+size_t SparseRowArray<T>::size() const{
+    return length_;
+}
+
+template <typename T>
+inline T* SparseRowArray<T>::get_pointer() const{
+    return array_;
+}
+
+template <typename T>
+inline size_t* SparseRowArray<T>::get_starts() const{
+    return start_index_;
+}
+
 // Destructor
 template <typename T>
 SparseRowArray<T>::~SparseRowArray() {
@@ -3996,6 +4119,15 @@ public:
 
 	//method access data as an array
 	T& value(size_t i, size_t j) const;
+
+    // A method to return the total size of the array
+    size_t size() const;
+
+    //return pointer
+    T* get_pointer() const;
+
+    //get row starts array
+    size_t* get_starts() const;
 
 	//destructor
 	~SparseColArray();
@@ -4111,6 +4243,22 @@ T& SparseColArray<T>::value(size_t i, size_t j) const {
 
 	return array_[i + start];
 
+}
+
+//return size
+template <typename T>
+size_t SparseColArray<T>::size() const{
+    return length_;
+}
+
+template <typename T>
+inline T* SparseColArray<T>::get_pointer() const{
+    return array_;
+}
+
+template <typename T>
+inline size_t* SparseColArray<T>::get_starts() const{
+    return start_index_;
 }
 
 //destructor
