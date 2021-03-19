@@ -92,16 +92,16 @@ using u_int  = unsigned int;
 
 #ifdef HAVE_CUDA
 //using UVMMemSpace     = Kokkos::CudaUVMSpace;
-using MemSpace        = Kokkos::CudaSpace;
-using ExecSpace       = Kokkos::Cuda;
-using Layout          = Kokkos::LayoutLeft;
+using DefaultMemSpace  = Kokkos::CudaSpace;
+using DefaultExecSpace = Kokkos::Cuda;
+using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 
 // Won't have both
 #if HAVE_OPENMP
-using MemSpace        = Kokkos::HostSpace;
-using ExecSpace       = Kokkos::OpenMP;
-using Layout          = Kokkos::LayoutRight;
+using DefaultMemSpace  = Kokkos::HostSpace;
+using DefaultExecSpace = Kokkos::OpenMP;
+using DefaultLayout    = Kokkos::LayoutRight;
 #endif
 
 using policy1D = Kokkos::RangePolicy<ExecSpace>;
@@ -4282,10 +4282,10 @@ SparseColArray<T>::~SparseColArray() {
  *  used in Kokkos-specific code.
  */
 #ifdef HAVE_KOKKOS
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class FArrayKokkos {
 
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
     
 private:
 
@@ -4399,12 +4399,12 @@ public:
 }; //end of FArrayKokkos declarations
 
 // Default constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1){
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1){
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -4413,8 +4413,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1){
 }
 
 // Overloaded 2D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -4425,8 +4425,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2) {
 }
 
 // Overloaded 3D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -4439,8 +4439,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 4D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -4454,8 +4454,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 5D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
                               size_t some_dim5) {
 
@@ -4471,8 +4471,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 6D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
                               size_t some_dim5, size_t some_dim6) {
 
@@ -4489,8 +4489,8 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 7D constructor
-template <typename T>
-FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
                               size_t some_dim3, size_t some_dim4,
                               size_t some_dim5, size_t some_dim6,
                               size_t some_dim7) {
@@ -4513,26 +4513,26 @@ FArrayKokkos<T>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
 // Note: the indices for array all start at 0
 
 // 1D
-template<typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()( size_t i) const {
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()( size_t i) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 1D!");
     return this_array_(i);
 }
 
 // 2D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j) const {
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 2D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 2D!");
     return this_array_(i + (j * dim1_));
 }
 
 // 3D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 3D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 3D!");
     assert( k < dim3_ && "k is out of bounds in FArrayKokkos 3D!");
@@ -4541,9 +4541,9 @@ T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
 }
 
 // 4D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 4D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 4D!");
     assert( k < dim3_ && "k is out of bounds in FArrayKokkos 4D!");
@@ -4554,9 +4554,9 @@ T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
 }
 
 // 5D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                size_t m) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 5D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 5D!");
@@ -4570,9 +4570,9 @@ T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 // 6D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                size_t m, size_t n) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 6D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 6D!");
@@ -4588,9 +4588,9 @@ T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 // 7D
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 7D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 7D!");
@@ -4609,8 +4609,8 @@ T& FArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 
 // Overload = operator
 // for object assingment THIS = FArrayKokkos<> TEMP(n,m,,,,)
-template <typename T>
-FArrayKokkos<T>& FArrayKokkos<T>::operator= (const FArrayKokkos& temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& FArrayKokkos<T>::operator= (const FArrayKokkos& temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     if (this != &temp) {
@@ -4627,26 +4627,26 @@ FArrayKokkos<T>& FArrayKokkos<T>::operator= (const FArrayKokkos& temp) {
     return *this;
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t FArrayKokkos<T>::size() {
+size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
 
-template <typename T>
-size_t FArrayKokkos<T>::extent() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
-template <typename T>
-T* FArrayKokkos<T>::pointer() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }
 
 // Destructor
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-FArrayKokkos<T>::~FArrayKokkos() {}
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~FArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of FArrayKokkos
@@ -4933,7 +4933,7 @@ ViewFArrayKokkos<T>::~ViewFArrayKokkos() {}
 /*! \brief Kokkos version of the serial FMatrix class.
  *
  */
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class FMatrixKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -5010,12 +5010,12 @@ public:
 }; // End of FMatrixKokkos
 
 // Default constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos() {}
 
 // Overloaded 1D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -5024,8 +5024,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1) {
 }
 
 // Overloaded 2D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -5035,8 +5035,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2) {
 }
 
 // Overloaded 3D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5048,8 +5048,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 4D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5062,8 +5062,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 5D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4, 
                                 size_t some_dim5) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -5078,8 +5078,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 5D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4, 
                                 size_t some_dim5, size_t some_dim6) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -5095,8 +5095,8 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 5D constructor
-template <typename T>
-FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
                                 size_t some_dim3, size_t some_dim4,
                                 size_t some_dim5, size_t some_dim6,
                                 size_t some_dim7) {
@@ -5113,24 +5113,24 @@ FMatrixKokkos<T>::FMatrixKokkos(size_t some_dim1, size_t some_dim2,
     this_matrix_ = TArray1D("this_matrix_", length_);
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i) const {
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 1D!");
     return this_matrix_((i - 1));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j) const {
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 2D!");
     return this_matrix_((i - 1) + ((j - 1) * dim1_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 3D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 3D!");
     assert(k >= 1 && k <= dim3_ && "k is out of bounds in FMatrixKokkos in 3D!");
@@ -5138,9 +5138,9 @@ T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
                                 + ((k - 1) * dim1_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 4D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 4D!");
     assert(k >= 1 && k <= dim3_ && "k is out of bounds in FMatrixKokkos in 4D!");
@@ -5150,9 +5150,9 @@ T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
                                 + ((l - 1) * dim1_ * dim2_ * dim3_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 5D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 5D!");
@@ -5165,9 +5165,9 @@ T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 6D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 6D!");
@@ -5182,9 +5182,9 @@ T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)];
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 7D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 7D!");
@@ -5201,8 +5201,8 @@ T& FMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 + ((o - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_)];
 }
 
-template <typename T>
-FMatrixKokkos<T>& FMatrixKokkos<T>::operator=(const FMatrixKokkos& temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& FMatrixKokkos<T>::operator=(const FMatrixKokkos& temp) {
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
         dim1_ = temp.dim1_;
@@ -5220,25 +5220,25 @@ FMatrixKokkos<T>& FMatrixKokkos<T>::operator=(const FMatrixKokkos& temp) {
 
 
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t FMatrixKokkos<T>::size() {
+size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
 
-template <typename T>
-size_t FMatrixKokkos<T>::extent() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
-template <typename T>
-T* FMatrixKokkos<T>::pointer() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-FMatrixKokkos<T>::~FMatrixKokkos() {}
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~FMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of FMatrixKokkos
@@ -5529,7 +5529,7 @@ ViewFMatrixKokkos<T>::~ViewFMatrixKokkos() {}
 /*! \brief Kokkos version of the serial CArray class.
  *
  */
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class CArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -5610,12 +5610,12 @@ public:
 }; // End of CArrayKokkos
 
 // Default constructor
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {}
 
 // Overloaded 1D constructor
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -5624,8 +5624,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1) {
 }
 
 // Overloaded 2D constructor
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -5634,8 +5634,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2) {
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5646,8 +5646,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -5659,8 +5659,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
                               size_t some_dim5) {
 
@@ -5675,8 +5675,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
                               size_t some_dim5, size_t some_dim6) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
@@ -5691,8 +5691,8 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
-CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
                               size_t some_dim3, size_t some_dim4,
                               size_t some_dim5, size_t some_dim6,
                               size_t some_dim7) {
@@ -5709,24 +5709,24 @@ CArrayKokkos<T>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
     this_array_ = TArray1D("this_array_", length_);
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i) const {
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 1D!");
     return this_array_(i);
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j) const {
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 2D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 2D!");
     return this_array_(j + (i * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 3D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 3D!");
     assert(k < dim3_ && "k is out of bounds in CArrayKokkos 3D!");
@@ -5734,9 +5734,9 @@ T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
                          + (i * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 4D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 4D!");
     assert(k < dim3_ && "k is out of bounds in CArrayKokkos 4D!");
@@ -5746,9 +5746,9 @@ T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
                          + (i * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 5D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 5D!");
@@ -5761,9 +5761,9 @@ T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                          + (i * dim5_ * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 6D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 6D!");
@@ -5778,9 +5778,9 @@ T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                          + (i * dim6_ * dim5_ * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 7D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 7D!");
@@ -5797,8 +5797,8 @@ T& CArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                          + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
-CArrayKokkos<T>& CArrayKokkos<T>::operator= (const CArrayKokkos& temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& CArrayKokkos<T>::operator= (const CArrayKokkos& temp) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     // Do nothing if the assignment is of the form x = x
@@ -5818,25 +5818,25 @@ CArrayKokkos<T>& CArrayKokkos<T>::operator= (const CArrayKokkos& temp) {
 }
 
 // Return size
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t CArrayKokkos<T>::size() {
+size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
 
-template <typename T>
-size_t CArrayKokkos<T>::extent() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
-template <typename T>
-T* CArrayKokkos<T>::pointer() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-CArrayKokkos<T>::~CArrayKokkos() {}
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~CArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of CArrayKokkos
@@ -6121,7 +6121,7 @@ ViewCArrayKokkos<T>::~ViewCArrayKokkos() {}
 /*! \brief Kokkos version of the serial CMatrix class.
  *
  */
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class CMatrixKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -6197,12 +6197,12 @@ public:
 }; // End of CMatrixKokkos
 
 // Default constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos() {}
 
 // Overloaded 1D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1) { 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1) { 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -6211,8 +6211,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1) {
 }
 
 // Overloaded 2D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2) { 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2) { 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
@@ -6222,8 +6222,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2) {
 }
 
 // Overloaded 3D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -6235,8 +6235,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 4D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -6249,8 +6249,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 5D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4, 
                                 size_t some_dim5) {
 
@@ -6266,8 +6266,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 6D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2, 
                                 size_t some_dim3, size_t some_dim4, 
                                 size_t some_dim5, size_t some_dim6) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -6283,8 +6283,8 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
 }
 
 // Overloaded 7D constructor
-template <typename T>
-CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
                                 size_t some_dim3, size_t some_dim4,
                                 size_t some_dim5, size_t some_dim6,
                                 size_t some_dim7) {
@@ -6301,24 +6301,24 @@ CMatrixKokkos<T>::CMatrixKokkos(size_t some_dim1, size_t some_dim2,
     this_matrix_ = TArray1D("this_matrix_", length_);
 }
 
-template<typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i) const {
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 1D!");
     return this_matrix_((i - 1));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j) const {
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 2D!");
     return this_matrix_((j - 1) + ((i - 1) * dim2_));
 }
 
-template<typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 3D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 3D!");
     assert(k >= 1 && k <= dim3_ && "k is out of bounds in CMatrixKokkos 3D!");
@@ -6326,9 +6326,9 @@ T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
                                 + ((i - 1) * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 4D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 4D!");
     assert(k >= 1 && k <= dim3_ && "k is out of bounds in CMatrixKokkos 4D!");
@@ -6338,9 +6338,9 @@ T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l) const {
                                 + ((i - 1) * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                 size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 5D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 5D!");
@@ -6353,9 +6353,9 @@ T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 + ((i - 1) * dim5_ * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                 size_t m, size_t n) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 6D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 6D!");
@@ -6370,9 +6370,9 @@ T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 + ((i - 1) * dim6_ * dim5_ * dim4_ * dim3_ * dim2_));
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 7D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 7D!");
@@ -6391,8 +6391,8 @@ T& CMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 
 // Overload = operator
 // for object assignment THIS = CMatrixKokkos <> temp
-template <typename T>
-CMatrixKokkos<T> & CMatrixKokkos<T>::operator=(const CMatrixKokkos &temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> & CMatrixKokkos<T>::operator=(const CMatrixKokkos &temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
     if( this != &temp) {
@@ -6410,26 +6410,26 @@ CMatrixKokkos<T> & CMatrixKokkos<T>::operator=(const CMatrixKokkos &temp) {
     return *this;
 }
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t CMatrixKokkos<T>::size() {
+size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
 
-template <typename T>
-size_t CMatrixKokkos<T>::extent() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
-template <typename T>
-T* CMatrixKokkos<T>::pointer() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
 // Deconstructor
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-CMatrixKokkos<T>::~CMatrixKokkos() {}
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~CMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of CMatrixKokkos
@@ -6704,7 +6704,7 @@ ViewCMatrixKokkos<T>::~ViewCMatrixKokkos() {}
 /*! \brief Kokkos version of the serial RaggedRightArray class.
  *
  */
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class RaggedRightArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -6769,24 +6769,24 @@ public:
     ~RaggedRightArrayKokkos ( );
 }; // End of RaggedRightArray
 
-template <typename T>
-RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedRightArrayKokkos() {}
 
 // Overloaded constructor
-template <typename T>
-RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos(CArrayKokkos<size_t> &strides_array) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedRightArrayKokkos(CArrayKokkos<size_t> &strides_array) {
     mystrides_ = strides_array.pointer();
     dim1_ = strides_array.extent();
 } // End constructor
 
 // Overloaded constructor
-template <typename T>
-RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos(ViewCArray<size_t> &strides_array) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedRightArrayKokkos(ViewCArray<size_t> &strides_array) {
 } // End constructor
 
 // Overloaded constructor
-template <typename T>
-RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos(size_t* strides_array, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedRightArrayKokkos(size_t* strides_array, 
                                                   size_t some_dim1) {
     mystrides_ = strides_array;
     dim1_ = some_dim1;
@@ -6794,8 +6794,8 @@ RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos(size_t* strides_array,
 
 // overloaded constructor for a dynamically built strides_array.
 // buffer is the max number of columns needed
-template <typename T>
-RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos (size_t some_dim1, size_t buffer) 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedRightArrayKokkos (size_t some_dim1, size_t buffer) 
 {
     dim1_ = some_dim1;
 
@@ -6812,24 +6812,24 @@ RaggedRightArrayKokkos<T>::RaggedRightArrayKokkos (size_t some_dim1, size_t buff
 } // end constructor
 
 // A method to return the stride size
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t RaggedRightArrayKokkos<T>::stride(size_t i) const {
+size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t i) const {
     // Ensure that i is within bounds
     assert(i < (dim1_ + 1) && "i is greater than dim1_ in RaggedRightArray");
     return start_index_((i + 1)) - start_index_(i);
 }
 
 // Method to build the stride (non-Kokkos push back)
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t& RaggedRightArrayKokkos<T>::build_stride(const size_t i) const {
+size_t& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::build_stride(const size_t i) const {
     return start_index_(i+1);
 }
 
 // Method to finalize stride
-template <typename T>
-void RaggedRightArrayKokkos<T>::stride_finalize() const {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride_finalize() const {
     
     Kokkos::parallel_scan("StartValues", dim1_, KOKKOS_CLASS_LAMBDA(const int i, double& update, const bool final) {
             // Load old value in case we update it before accumulating
@@ -6846,9 +6846,9 @@ void RaggedRightArrayKokkos<T>::stride_finalize() const {
 
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& RaggedRightArrayKokkos<T>::operator()(size_t i, size_t j) const {
+T& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Get the 1D array index
     size_t start = start_index_(i);
     
@@ -6859,14 +6859,14 @@ T& RaggedRightArrayKokkos<T>::operator()(size_t i, size_t j) const {
     return array_(j + start);
 } // End operator()
 
-template <typename T>
-T* RaggedRightArrayKokkos<T>::pointer() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return array_.data();
 }
 
 
-template <typename T>
-RaggedRightArrayKokkos<T> & RaggedRightArrayKokkos<T>::operator= (const RaggedRightArrayKokkos &temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedRightArrayKokkos<T>::operator= (const RaggedRightArrayKokkos &temp) {
 
   if (this != &temp) {
       /*
@@ -6959,9 +6959,9 @@ RaggedRightArrayKokkos<T> & RaggedRightArrayKokkos<T>::operator= (const RaggedRi
 }
 
 // Destructor
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-RaggedRightArrayKokkos<T>::~RaggedRightArrayKokkos() { }
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~RaggedRightArrayKokkos() { }
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of RaggedRightArrayKokkos
@@ -6970,7 +6970,7 @@ RaggedRightArrayKokkos<T>::~RaggedRightArrayKokkos() { }
 /*! \brief Kokkos version of the serial RaggedDownArray class.
  *
  */
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class RaggedDownArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -7018,33 +7018,33 @@ public:
     ~RaggedDownArrayKokkos ( );
 }; // End of RaggedDownArray
 
-template <typename T>
-RaggedDownArrayKokkos<T>::RaggedDownArrayKokkos() {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedDownArrayKokkos() {}
 
 // Overloaded constructor
-template <typename T>
-RaggedDownArrayKokkos<T>::RaggedDownArrayKokkos(CArrayKokkos<size_t> &strides_array) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedDownArrayKokkos(CArrayKokkos<size_t> &strides_array) {
     mystrides_ = strides_array.pointer();
     dim2_ = strides_array.extent();
 } // End constructor
 
 // Overloaded constructor
-template <typename T>
-RaggedDownArrayKokkos<T>::RaggedDownArrayKokkos(ViewCArray<size_t> &strides_array) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedDownArrayKokkos(ViewCArray<size_t> &strides_array) {
 } // End constructor
 
 // Overloaded constructor
-template <typename T>
-RaggedDownArrayKokkos<T>::RaggedDownArrayKokkos(size_t* strides_array, 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedDownArrayKokkos(size_t* strides_array, 
                                                   size_t some_dim2) {
     mystrides_ = strides_array;
     dim2_ = some_dim2;
 } // End constructor
 
 // A method to return the stride size
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t RaggedDownArrayKokkos<T>::stride(size_t j) const {
+size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t j) const {
     // Ensure that j is within bounds
     assert(j < (dim2_ + 1) && "j is greater than dim1_ in RaggedDownArray");
 
@@ -7053,9 +7053,9 @@ size_t RaggedDownArrayKokkos<T>::stride(size_t j) const {
 
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& RaggedDownArrayKokkos<T>::operator()(size_t i, size_t j) const {
+T& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Get the 1D array index
     size_t start = start_index_(j);
     
@@ -7066,8 +7066,8 @@ T& RaggedDownArrayKokkos<T>::operator()(size_t i, size_t j) const {
     return array_(i + start);
 } // End operator()
 
-template <typename T>
-RaggedDownArrayKokkos<T> & RaggedDownArrayKokkos<T>::operator= (const RaggedDownArrayKokkos &temp) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedDownArrayKokkos<T>::operator= (const RaggedDownArrayKokkos &temp) {
 
   if (this != &temp) {
       /*
@@ -7155,16 +7155,16 @@ RaggedDownArrayKokkos<T> & RaggedDownArrayKokkos<T>::operator= (const RaggedDown
 }
 
 // Destructor
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-RaggedDownArrayKokkos<T>::~RaggedDownArrayKokkos() { }
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~RaggedDownArrayKokkos() { }
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of RaggedDownArrayKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
 //11. DynamicRaggedRightArray
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class DynamicRaggedRightArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -7208,12 +7208,12 @@ public:
 };
 
 //nothing
-template <typename T>
-DynamicRaggedRightArrayKokkos<T>::DynamicRaggedRightArrayKokkos () {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos () {}
 
 // Overloaded constructor
-template <typename T>
-DynamicRaggedRightArrayKokkos<T>::DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2) {
     // The dimensions of the array;
     dim1_  = dim1;
     dim2_  = dim2;
@@ -7221,24 +7221,24 @@ DynamicRaggedRightArrayKokkos<T>::DynamicRaggedRightArrayKokkos (size_t dim1, si
 }
 
 // A method to set the stride size for row i
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t& DynamicRaggedRightArrayKokkos<T>::stride(size_t i) const {
+size_t& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t i) const {
     return stride_(i);
 }
 
 //return size
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t DynamicRaggedRightArrayKokkos<T>::size() const{
+size_t DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
 }
 
 // Overload operator() to access data as array(i,j),
 // where i=[0:N-1], j=[0:stride(i)]
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-inline T& DynamicRaggedRightArrayKokkos<T>::operator()(size_t i, size_t j) const {
+inline T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
     assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedRight");  // die if >= dim1
     assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedRight");  // die if >= dim2
@@ -7249,8 +7249,8 @@ inline T& DynamicRaggedRightArrayKokkos<T>::operator()(size_t i, size_t j) const
 }
 
 //overload = operator
-template <typename T>
-inline DynamicRaggedRightArrayKokkos<T>& DynamicRaggedRightArrayKokkos<T>::operator= (const DynamicRaggedRightArrayKokkos &temp)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicRaggedRightArrayKokkos<T>::operator= (const DynamicRaggedRightArrayKokkos &temp)
 {
     
     if( this != &temp) {
@@ -7268,8 +7268,8 @@ inline DynamicRaggedRightArrayKokkos<T>& DynamicRaggedRightArrayKokkos<T>::opera
 }
 
 // Destructor
-template <typename T>
-DynamicRaggedRightArrayKokkos<T>::~DynamicRaggedRightArrayKokkos() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedRightArrayKokkos() {
 }
 
 
@@ -7280,7 +7280,7 @@ DynamicRaggedRightArrayKokkos<T>::~DynamicRaggedRightArrayKokkos() {
 
 //12. DynamicRaggedDownArray
 
-template <typename T>
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class DynamicRaggedDownArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
@@ -7323,12 +7323,12 @@ public:
 };
 
 //nothing
-template <typename T>
-DynamicRaggedDownArrayKokkos<T>::DynamicRaggedDownArrayKokkos () {}
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos () {}
 
 // Overloaded constructor
-template <typename T>
-DynamicRaggedDownArrayKokkos<T>::DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2) {
     // The dimensions of the array;
     dim1_  = dim1;
     dim2_  = dim2;
@@ -7336,25 +7336,25 @@ DynamicRaggedDownArrayKokkos<T>::DynamicRaggedDownArrayKokkos (size_t dim1, size
 }
 
 // A method to set the stride size for column j
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t& DynamicRaggedDownArrayKokkos<T>::stride(size_t j) const {
+size_t& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t j) const {
     return stride_(j);
 }
 
 //return size
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-size_t DynamicRaggedDownArrayKokkos<T>::size() const{
+size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
 }
 
 // overload operator () to access data as an array(i,j)
 // Note: i = 0:stride(j), j = 0:N-1
 
-template <typename T>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_FUNCTION
-T& DynamicRaggedDownArrayKokkos<T>::operator()(size_t i, size_t j) const {
+T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
     assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim1
     assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim2
@@ -7365,8 +7365,8 @@ T& DynamicRaggedDownArrayKokkos<T>::operator()(size_t i, size_t j) const {
 }
 
 //overload = operator
-template <typename T>
-DynamicRaggedDownArrayKokkos<T>& DynamicRaggedDownArrayKokkos<T>::operator= (const DynamicRaggedDownArrayKokkos &temp)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicRaggedDownArrayKokkos<T>::operator= (const DynamicRaggedDownArrayKokkos &temp)
 {
     
     if( this != &temp) {
@@ -7384,8 +7384,8 @@ DynamicRaggedDownArrayKokkos<T>& DynamicRaggedDownArrayKokkos<T>::operator= (con
 }
 
 // Destructor
-template <typename T>
-DynamicRaggedDownArrayKokkos<T>::~DynamicRaggedDownArrayKokkos() {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDownArrayKokkos() {
 }
 
 //////////////////////////
