@@ -6929,8 +6929,8 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride_finalize() 
 
         });
     #else
-    finalize_stride_functor policy_functor;
-    Kokkos::parallel_scan("StartValues", dim1_,policy_functor);
+    finalize_stride_functor execution_functor;
+    Kokkos::parallel_scan("StartValues", dim1_,execution_functor);
     #endif
     Kokkos::fence();
 }
@@ -6983,8 +6983,8 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedRightArrayKokkos
             start_index_(0) = 0;
         });
     #else
-    assignment_init_functor init_policy_functor;
-    Kokkos::parallel_for("StartFirst", 1, init_policy_functor);
+    assignment_init_functor init_execution_functor;
+    Kokkos::parallel_for("StartFirst", 1, init_execution_functor);
     #endif
     Kokkos::fence();
     
@@ -7001,8 +7001,8 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedRightArrayKokkos
 
         });
     #else
-    assignment_scan_functor scan_policy_functor(temp);
-    Kokkos::parallel_scan("StartValues", dim1_, scan_policy_functor);
+    assignment_scan_functor scan_execution_functor(temp);
+    Kokkos::parallel_scan("StartValues", dim1_, scan_execution_functor);
     #endif
     Kokkos::fence();
 
@@ -7028,8 +7028,8 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedRightArrayKokkos
             //length_ = start_index_(dim1_);
         });
     #else
-    templen_functor templen_policy_functor(templen);
-    Kokkos::parallel_for("ArrayLength", 1, templen_policy_functor);
+    templen_functor templen_execution_functor(templen);
+    Kokkos::parallel_for("ArrayLength", 1, templen_execution_functor);
     #endif
     Kokkos::fence();
     Kokkos::deep_copy(h_templen, templen);
@@ -7250,8 +7250,8 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedDownArrayKokkos<T
             start_index_(0) = 0;
         });
     #else
-    assignment_init_functor init_policy_functor;
-    Kokkos::parallel_for("StartFirst", 1, init_policy_functor);
+    assignment_init_functor init_execution_functor;
+    Kokkos::parallel_for("StartFirst", 1, init_execution_functor);
     #endif
     Kokkos::fence();
     
@@ -7268,8 +7268,8 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedDownArrayKokkos<T
 
         });
     #else
-    assignment_scan_functor scan_policy_functor(temp);
-    Kokkos::parallel_scan("StartValues", dim2_, scan_policy_functor);
+    assignment_scan_functor scan_execution_functor(temp);
+    Kokkos::parallel_scan("StartValues", dim2_, scan_execution_functor);
     #endif
     Kokkos::fence();
 
@@ -7295,8 +7295,8 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedDownArrayKokkos<T
             //length_ = start_index_(dim2_);
         });
     #else
-    templen_functor templen_policy_functor(templen);
-    Kokkos::parallel_for("ArrayLength", 1, templen_policy_functor);
+    templen_functor templen_execution_functor(templen);
+    Kokkos::parallel_for("ArrayLength", 1, templen_execution_functor);
     #endif
     Kokkos::fence();
     deep_copy(h_templen, templen);
@@ -7309,8 +7309,8 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> & RaggedDownArrayKokkos<T
             printf("%d) Start %ld\n", j, start_index_(j));
         });
     #else
-    stride_check_functor check_policy_functor;
-    Kokkos::parallel_for("StartCheck", dim2_+1, check_policy_functor);
+    stride_check_functor check_execution_functor;
+    Kokkos::parallel_for("StartCheck", dim2_+1, check_execution_functor);
     #endif
     Kokkos::fence();
     
@@ -7462,8 +7462,8 @@ inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
             stride_(i) = 0;
         });
         #else
-        stride_zero_functor policy_functor;
-        Kokkos::parallel_for("StrideZeroOut", dim1_, policy_functor);
+        stride_zero_functor execution_functor;
+        Kokkos::parallel_for("StrideZeroOut", dim1_, execution_functor);
         #endif
     }
     
@@ -7602,8 +7602,8 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
             stride_(j) = 0;
         });
         #else
-        stride_zero_functor policy_functor;
-        Kokkos::parallel_for("StrideZeroOut", dim2_, policy_functor);
+        stride_zero_functor execution_functor;
+        Kokkos::parallel_for("StrideZeroOut", dim2_, execution_functor);
         #endif
     }
     
