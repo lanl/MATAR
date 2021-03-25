@@ -103,6 +103,10 @@ using DefaultLayout    = Kokkos::LayoutRight;
 using DefaultMemSpace  = void;
 using DefaultExecSpace = void;
 using DefaultLayout    = void;
+#elif HAVE_HIP
+using DefaultMemSpace  = Kokkos::HipSpace;
+using DefaultExecSpace = Kokkos::Hip;
+using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 
 using policy1D = Kokkos::RangePolicy<DefaultExecSpace>;
