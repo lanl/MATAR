@@ -7265,6 +7265,7 @@ private:
     size_t length_;
     TArray1D this_array_; 
     TArray1DHost this_array_host_; 
+    T * temp_inp_array_;
     //typename Kokkos::View<T*, Layout, ExecSpace>::HostMirror  h_this_array_;
 
 public:
@@ -7346,6 +7347,8 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1) {
     length_ = dim1_;
     // Create a 1D host view of the external allocation
     this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
@@ -7353,12 +7356,19 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1) {
 // Overloaded 2D constructor
 template <typename T>
 CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some_dim2) {
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    //using TArray1Dtemp = TArray1D::HostMirror;
     
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = (dim1_ * dim2_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7370,7 +7380,12 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     length_ = (dim1_ * dim2_ * dim3_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7383,7 +7398,12 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some
     dim3_ = some_dim3;
     dim4_ = some_dim4;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7399,7 +7419,12 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some
     dim4_ = some_dim4;
     dim5_ = some_dim5;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7415,7 +7440,12 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some
     dim5_ = some_dim5;
     dim6_ = some_dim6;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7433,7 +7463,12 @@ CArrayKokkosPtr<T>::CArrayKokkosPtr(T * inp_array, size_t some_dim1, size_t some
     dim6_ = some_dim6;
     dim7_ = some_dim7;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_);
-    this_array_ = TArray1D("this_array_", length_);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
 }
 
 template <typename T>
@@ -7538,7 +7573,9 @@ CArrayKokkosPtr<T>& CArrayKokkosPtr<T>::operator= (const CArrayKokkosPtr& temp) 
         dim6_ = temp.dim6_;
         dim7_ = temp.dim7_;
         length_ = temp.length_;
-        this_array_ = TArray1D("this_array_", length_);
+        temp_inp_array_ = temp.temp_inp_array_;
+        this_array_host_ = TArray1DHost(temp_inp_array_, length_);
+        this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
     }
     
     return *this;
