@@ -152,8 +152,9 @@ template <typename T>
 class FArray {
     
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_, length_;
-    T * this_array_;
+    size_t dims_[7];
+    size_t length_;
+    T * array_;
     
 public:
     
@@ -162,40 +163,40 @@ public:
    
     //overload constructors from 1D to 7D
      
-   FArray(size_t some_dim1);
+   FArray(size_t dim0);
     
-   FArray(size_t some_dim1,
-          size_t some_dim2);
+   FArray(size_t dim0,
+          size_t dim1);
     
-   FArray(size_t some_dim1,
-          size_t some_dim2,
-          size_t some_dim3);
+   FArray(size_t dim0,
+          size_t dim1,
+          size_t dim2);
     
-   FArray(size_t some_dim1, 
-          size_t some_dim2,
-          size_t some_dim3,
-          size_t some_dim4);
+   FArray(size_t dim0,
+          size_t dim1,
+          size_t dim2,
+          size_t dim3);
     
-   FArray(size_t some_dim1,
-          size_t some_dim2,
-          size_t some_dim3,
-          size_t some_dim4,
-          size_t some_dim5);
+   FArray(size_t dim0,
+          size_t dim1,
+          size_t dim2,
+          size_t dim3,
+          size_t dim4);
 
-   FArray(size_t some_dim1,
-          size_t some_dim2,
-          size_t some_dim3,
-          size_t some_dim4,
-          size_t some_dim5,
-          size_t some_dim6);
+   FArray(size_t dim0,
+          size_t dim1,
+          size_t dim2,
+          size_t dim3,
+          size_t dim4,
+          size_t dim5);
 
-   FArray(size_t some_dim1,
-          size_t some_dim2,
-          size_t some_dim3,
-          size_t some_dim4,
-          size_t some_dim5,
-          size_t some_dim6,
-          size_t some_dim7);
+   FArray(size_t dim0,
+          size_t dim1,
+          size_t dim2,
+          size_t dim3,
+          size_t dim4,
+          size_t dim5,
+          size_t dim6);
     
     // overload operator() to access data as array(i,....,n);
     T& operator()(size_t i) const;
@@ -239,6 +240,8 @@ public:
     //return array size
     size_t size() const;
 
+    size_t dims(size_t i) const;
+    
     //return pointer
     T* get_pointer() const;
     
@@ -252,112 +255,112 @@ public:
 //constructors
 template <typename T>
 FArray<T>::FArray(){
-    this_array_ = NULL;
+    array_ = NULL;
 }
 
 //1D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1)
+FArray<T>::FArray(size_t dim0)
 {
-    dim1_ = some_dim1;
-    length_ = dim1_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    length_ = dim0;
+    array_ = new T[length_];
 }
 
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    length_ = dim1_*dim2_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    length_ = dim0*dim1;
+    array_ = new T[length_];
 }
 
 //3D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    length_ = dim1_*dim2_*dim3_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    length_ = dim0*dim1*dim2;
+    array_ = new T[length_];
 }
 
 //4D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    length_ = dim1_*dim2_*dim3_*dim4_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    length_ = dim0*dim1*dim2*dim3;
+    array_ = new T[length_];
 }
 
 //5D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    length_ = dim0*dim1*dim2*dim3*dim4;
+    array_ = new T[length_];
 }
 
 //6D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5,
-                  size_t some_dim6)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4,
+                  size_t dim5)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    length_ = dim0*dim1*dim2*dim3*dim4*dim5;
+    array_ = new T[length_];
 }
 
 
 //7D
 template <typename T>
-FArray<T>::FArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5,
-                  size_t some_dim6,
-                  size_t some_dim7)
+FArray<T>::FArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4,
+                  size_t dim5,
+                  size_t dim6)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_*dim7_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    length_ = dim0*dim1*dim2*dim3*dim4*dim5*dim6;
+    array_ = new T[length_];
         
 }
 
@@ -368,8 +371,8 @@ FArray<T>::FArray(size_t some_dim1,
 template <typename T>
 T& FArray<T>::operator()(size_t i) const
 {
-    assert( i < dim1_ && "i is out of bounds in FArray 1D!");
-    return this_array_[i];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 1D!");
+    return array_[i];
 }
 
 //2D
@@ -377,9 +380,9 @@ template <typename T>
 T& FArray<T>::operator()(size_t i,
                          size_t j) const
 {
-    assert( i < dim1_ && "i is out of bounds in FArray 2D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 2D!");
-    return this_array_[i + j*dim1_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 2D!");
+    return array_[i + j*dims_[0]];
 }
 
 //3D
@@ -388,10 +391,10 @@ T& FArray<T>::operator()(size_t i,
                          size_t j,
                          size_t k) const
 {
-    assert( i < dim1_ && "i is out of bounds in FArray 3D!");
-    assert( j < dim2_ && "j is out of bounds in Farray 3D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 3D!");
-    return this_array_[i + j*dim1_ + k*dim1_*dim2_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in Farray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 3D!");
+    return array_[i + j*dims_[0] + k*dims_[0]*dims_[1]];
 }
 
 //4D
@@ -401,13 +404,13 @@ T& FArray<T>::operator()(size_t i,
                          size_t k,
                          size_t l) const
 {
-    assert( i < dim1_ && "i is out of bounds in FArray 4D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 4D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 4D!");
-    assert( l < dim4_ && "l is out of bounds in FArray 4D!");
-    return this_array_[ i + j*dim1_
-                          + k*dim1_*dim2_
-                          + l*dim1_*dim2_*dim3_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 4D!");
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]];
 }
 
 //5D
@@ -418,15 +421,15 @@ T& FArray<T>::operator()(size_t i,
                          size_t l,
                          size_t m) const
 {
-    assert( i < dim1_ && "i is out of bounds in FArray 5D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 5D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 5D!");
-    assert( l < dim4_ && "l is out of bounds in FArray 5D!");
-    assert( m < dim5_ && "m is out of bounds in FArray 5D!");
-    return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 5D!");
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]];
 }
 
 //6D
@@ -439,17 +442,17 @@ T& FArray<T>::operator()(size_t i,
                          size_t n) const
 {
 
-    assert( i < dim1_ && "i is out of bounds in FArray 6D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 6D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 6D!");
-    assert( l < dim4_ && "l is out of bounds in FArray 6D!");
-    assert( m < dim5_ && "m is out of bounds in FArray 6D!");
-    assert( n < dim6_ && "n is out of bounds in FArray 6D!");
-    return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_
-                         + n*dim1_*dim2_*dim3_*dim4_*dim5_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in FArray 6D!");
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]
+                    + n*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]];
 }
 
 //7D
@@ -463,19 +466,19 @@ T& FArray<T>::operator()(size_t i,
                          size_t o) const
 {
     
-    assert( i < dim1_ && "i is out of bounds in FArray 7D!");
-    assert( j < dim2_ && "j is out of bounds in FArray 7D!");
-    assert( k < dim3_ && "k is out of bounds in FArray 7D!");
-    assert( l < dim4_ && "l is out of bounds in FArray 7D!");
-    assert( m < dim5_ && "m is out of bounds in FArray 7D!");
-    assert( n < dim6_ && "n is out of bounds in FArray 7D!");
-    assert( o < dim7_ && "o is out of bounds in FArray 7D!");
-    return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_
-                         + n*dim1_*dim2_*dim3_*dim4_*dim5_
-                         + o*dim1_*dim2_*dim3_*dim4_*dim5_*dim6_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in FArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in FArray 7D!");
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]
+                    + n*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]
+                    + o*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]*dims_[5]];
 }
     
 // = operator
@@ -484,15 +487,15 @@ template <typename T>
 FArray<T>& FArray<T>::operator= (const FArray& temp)
 {
 	if(this != & temp) {
-	  dim1_ = temp.dim1_;
-	  dim2_ = temp.dim2_;
-	  dim3_ = temp.dim3_;
-	  dim4_ = temp.dim4_;
-	  dim5_ = temp.dim5_;
-	  dim6_ = temp.dim6_;
-      dim7_ = temp.dim7_;
+	  dims_[0] = temp.dims_[0];
+	  dims_[1] = temp.dims_[1];
+	  dims_[2] = temp.dims_[2];
+	  dims_[3] = temp.dims_[3];
+	  dims_[4] = temp.dims_[4];
+	  dims_[5] = temp.dims_[5];
+      dims_[6] = temp.dims_[6];
 	  length_ = temp.length_;
-	  this_array_ = new T[length_];
+	  array_ = new T[length_];
 	}
   return *this;
 }
@@ -503,17 +506,23 @@ inline size_t FArray<T>::size() const {
 }
 
 template <typename T>
+inline size_t FArray<T>::dims(size_t i) const {
+    return dims_[i];
+}
+
+template <typename T>
 inline T* FArray<T>::get_pointer() const {
-    return this_array_;
+    return array_;
 }
 
 //delete FArray
 template <typename T>
 FArray<T>::~FArray(){
-    delete [] this_array_;
+    delete [] array_;
 }
 
 //---end of FArray class definitions----
+
 
 //2. ViewFArray
 // indicies are [0:N-1]
@@ -521,8 +530,9 @@ template <typename T>
 class ViewFArray {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
-    T * this_array_;
+    size_t dims_[7];
+    size_t length_; // Length of 1D array
+    T * array_;
     
 public:
     
@@ -530,47 +540,47 @@ public:
     ViewFArray ();
 
     //---1D to 7D array ---
-    ViewFArray(T *some_array,
-               size_t some_dim1);
+    ViewFArray(T *array,
+               size_t dim0);
     
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1);
 
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1,
+                size_t dim2);
 
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3);
     
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4);
 
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4,
+                size_t dim5);
     
-    ViewFArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6,
-                size_t some_dim7);
+    ViewFArray (T *array,
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4,
+                size_t dim5,
+                size_t dim6);
     
     T& operator()(size_t i) const;
     
@@ -607,6 +617,16 @@ public:
                   size_t n,
                   size_t o) const;
     
+    // calculate C = math(A,B)
+    template <typename M>
+    void operator=(M do_this_math);
+    
+    //return array size
+    size_t size() const;
+    
+    //return array size
+    size_t dims(size_t i) const;
+    
 }; // end of viewFArray
 
 //class definitions for viewFArray
@@ -619,107 +639,114 @@ ViewFArray<T>::ViewFArray(){}
 
 //1D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0)
 {
-	dim1_ = some_dim1;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    length_ = dim0;
+	array_  = array;
 }
 
 //2D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    length_ = dim0*dim1;
+	array_  = array;
 }
 
 //3D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    length_ = dim0*dim1*dim2;
+	array_  = array;
 }
 
 //4D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    length_ = dim0*dim1*dim2*dim3;
+	array_  = array;
 }
 
 //5D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	dim5_ = some_dim5;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    length_ = dim0*dim1*dim2*dim3*dim4;
+	array_  = array;
 }
 
 //6D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5,
-                          size_t some_dim6)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4,
+                          size_t dim5)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	dim5_ = some_dim5;
-	dim6_ = some_dim6;
-	this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    length_ = dim0*dim1*dim2*dim3*dim4*dim5;
+	array_  = array;
 }
 
 //7D
 template <typename T>
-ViewFArray<T>::ViewFArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5,
-                          size_t some_dim6,
-                          size_t some_dim7)
+ViewFArray<T>::ViewFArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4,
+                          size_t dim5,
+                          size_t dim6)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    length_ = dim0*dim1*dim2*dim3*dim4*dim5*dim6;
+    array_  = array;
 }
 
 //~~~~~~operator () overload 
@@ -730,8 +757,8 @@ ViewFArray<T>::ViewFArray(T *some_array,
 template <typename T>
 T& ViewFArray<T>::operator()(size_t i) const
 {
-	assert(i < dim1_ && "i is out of bounds in ViewFArray 1D!");
-	return this_array_[i];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 1D!");
+	return array_[i];
 }
 
 //2D
@@ -739,9 +766,9 @@ template <typename T>
 T& ViewFArray<T>::operator()(size_t i,
                              size_t j) const
 {
-	assert( i < dim1_ && "i is out of bounds in ViewFArray 2D!");
-	assert( j < dim2_ && "j is out of bounds in ViewFArray 2D!");
-	return this_array_[i + j*dim1_];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 2D!");
+	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 2D!");
+	return array_[i + j*dims_[0]];
 }
 
 //3D
@@ -750,11 +777,11 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t j,
                              size_t k) const
 {
-	assert(i < dim1_ && "i is out of bounds in ViewFArray 3D!");
-	assert(j < dim2_ && "j is out of bounds in ViewFArray 3D!");
-	assert(k < dim3_ && "k is out of bounds in ViewFArray 3D!");
-	return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 3D!");
+	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 3D!");
+	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 3D!");
+	return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]];
 }
 
 //4D
@@ -764,13 +791,13 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t k,
                              size_t l) const
 {
-	assert(i < dim1_ && "i is out of bounds in ViewFArray 4D!");
-	assert(j < dim2_ && "j is out of bounds in ViewFArray 4D!");
-	assert(k < dim3_ && "k is out of bounds in ViewFArray 4D!");
-	assert(l < dim4_ && "l is out of bounds in ViewFArray 4D!");
-	return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 4D!");
+	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 4D!");
+	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 4D!");
+	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 4D!");
+	return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]];
 }
 
 //5D
@@ -781,15 +808,15 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t l,
                              size_t m) const
 {
-	assert(i < dim1_ && "i is out of bounds in ViewFArray 5D!");
-	assert(j < dim2_ && "j is out of bounds in ViewFArray 5D!");
-	assert(k < dim3_ && "k is out of bounds in ViewFArray 5D!");
-	assert(l < dim4_ && "l is out of bounds in ViewFArray 5D!");
-	assert(m < dim5_ && "m is out of bounds in ViewFArray 5D!");
-	return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 5D!");
+	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 5D!");
+	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 5D!");
+	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 5D!");
+	assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 5D!");
+	return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]];
 }
 
 //6D
@@ -801,17 +828,17 @@ T& ViewFArray<T>:: operator()(size_t i,
                               size_t m,
                               size_t n) const
 {
-	assert(i < dim1_ && "i is out of bounds in ViewFArray 6D!");
-	assert(j < dim2_ && "j is out of bounds in ViewFArray 6D!");
-	assert(k < dim3_ && "k is out of bounds in ViewFArray 6D!");
-	assert(l < dim4_ && "l is out of bounds in ViewFArray 6D!");
-	assert(m < dim5_ && "m is out of bounds in ViewFArray 6D!");
-	assert(n < dim6_ && "n is out of bounds in ViewFArray 6D!");
-	return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_
-                         + n*dim1_*dim2_*dim3_*dim4_*dim5_];
+	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 6D!");
+	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 6D!");
+	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 6D!");
+	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 6D!");
+	assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 6D!");
+	assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 6D!");
+	return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]
+                    + n*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]];
 }
 
 //7D
@@ -824,23 +851,40 @@ T& ViewFArray<T>:: operator()(size_t i,
                               size_t n,
                               size_t o) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewFArray 7D!");
-    assert(j < dim2_ && "j is out of bounds in ViewFArray 7D!");
-    assert(k < dim3_ && "k is out of bounds in ViewFArray 7D!");
-    assert(l < dim4_ && "l is out of bounds in ViewFArray 7D!");
-    assert(m < dim5_ && "m is out of bounds in ViewFArray 7D!");
-    assert(n < dim6_ && "n is out of bounds in ViewFArray 7D!");
-    assert(o < dim7_ && "n is out of bounds in ViewFArray 7D!");
-    return this_array_[i + j*dim1_
-                         + k*dim1_*dim2_
-                         + l*dim1_*dim2_*dim3_
-                         + m*dim1_*dim2_*dim3_*dim4_
-                         + n*dim1_*dim2_*dim3_*dim4_*dim5_
-                         + o*dim1_*dim2_*dim3_*dim4_*dim5_*dim6_];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "n is out of bounds in ViewFArray 7D!");
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]
+                    + l*dims_[0]*dims_[1]*dims_[2]
+                    + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]
+                    + n*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]
+                    + o*dims_[0]*dims_[1]*dims_[2]*dims_[3]*dims_[4]*dims_[5]];
 }
 
+// calculate this ViewFArray object = math(A,B)
+template <typename T>
+template <typename M>
+void ViewFArray<T>::operator=(M do_this_math){
+    do_this_math(*this); // pass in this ViewFArray object
+}// end of math opperation
+
+template <typename T>
+inline size_t ViewFArray<T>::dims(size_t i) const {
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t ViewFArray<T>::size() const {
+    return length_;
+}
 
 //---end of ViewFArray class definitions---
+
 
 //3. FMatrix
 // indicies are [1:N]
