@@ -430,7 +430,8 @@ T& FArray<T>::operator()(size_t i,
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 3D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in Farray 3D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 3D!");
-    return array_[i + j*dims_[0] + k*dims_[0]*dims_[1]];
+    return array_[i + j*dims_[0]
+                    + k*dims_[0]*dims_[1]];
 }
 
 //4D
@@ -524,19 +525,19 @@ T& FArray<T>::operator()(size_t i,
 template <typename T>
 FArray<T>& FArray<T>::operator= (const FArray& temp)
 {
-	if(this != & temp) {
-	  dims_[0] = temp.dims_[0];
-	  dims_[1] = temp.dims_[1];
-	  dims_[2] = temp.dims_[2];
-	  dims_[3] = temp.dims_[3];
-	  dims_[4] = temp.dims_[4];
-	  dims_[5] = temp.dims_[5];
-      dims_[6] = temp.dims_[6];
-      order_  = temp.order_;
-	  length_ = temp.length_;
-	  array_ = new T[length_];
-	}
-  return *this;
+    if(this != & temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_ = new T[length_];
+    }
+    return *this;
 }
 
 template <typename T>
@@ -547,7 +548,7 @@ inline size_t FArray<T>::size() const {
 template <typename T>
 inline size_t FArray<T>::dims(size_t i) const {
     assert(i < order_ && "FArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to Array dims is out of bounds!");
+    assert(i >= 0 && dims_[i]>0 && "Access to FArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -702,7 +703,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 1;
     length_ = dim0;
-	array_  = array;
+    array_  = array;
 }
 
 //2D
@@ -720,7 +721,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 2;
     length_ = dim0*dim1;
-	array_  = array;
+    array_  = array;
 }
 
 //3D
@@ -739,7 +740,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 3;
     length_ = dim0*dim1*dim2;
-	array_  = array;
+    array_  = array;
 }
 
 //4D
@@ -759,7 +760,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 4;
     length_ = dim0*dim1*dim2*dim3;
-	array_  = array;
+    array_  = array;
 }
 
 //5D
@@ -780,7 +781,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 5;
     length_ = dim0*dim1*dim2*dim3*dim4;
-	array_  = array;
+    array_  = array;
 }
 
 //6D
@@ -802,7 +803,7 @@ ViewFArray<T>::ViewFArray(T *array,
     dims_[6] = 0;
     order_ = 6;
     length_ = dim0*dim1*dim2*dim3*dim4*dim5;
-	array_  = array;
+    array_  = array;
 }
 
 //7D
@@ -837,8 +838,8 @@ template <typename T>
 T& ViewFArray<T>::operator()(size_t i) const
 {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewFArray 1D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 1D!");
-	return array_[i];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 1D!");
+    return array_[i];
 }
 
 //2D
@@ -847,9 +848,9 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t j) const
 {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewFArray 2D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 2D!");
-	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 2D!");
-	return array_[i + j*dims_[0]];
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 2D!");
+    return array_[i + j*dims_[0]];
 }
 
 //3D
@@ -859,10 +860,10 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t k) const
 {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewFArray 3D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 3D!");
-	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 3D!");
-	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 3D!");
-	return array_[i + j*dims_[0]
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 3D!");
+    return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]];
 }
 
@@ -874,11 +875,11 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t l) const
 {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewFArray 4D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 4D!");
-	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 4D!");
-	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 4D!");
-	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 4D!");
-	return array_[i + j*dims_[0]
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 4D!");
+    return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]];
 }
@@ -892,12 +893,12 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t m) const
 {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewFArray 5D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 5D!");
-	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 5D!");
-	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 5D!");
-	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 5D!");
-	assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 5D!");
-	return array_[i + j*dims_[0]
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 5D!");
+    return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
                     + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]];
@@ -913,13 +914,13 @@ T& ViewFArray<T>:: operator()(size_t i,
                               size_t n) const
 {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewFArray 6D!");
-	assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 6D!");
-	assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 6D!");
-	assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 6D!");
-	assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 6D!");
-	assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 6D!");
-	assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 6D!");
-	return array_[i + j*dims_[0]
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 6D!");
+    return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
                     + m*dims_[0]*dims_[1]*dims_[2]*dims_[3]
@@ -1408,9 +1409,10 @@ template <typename T>
 class ViewFMatrix {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
+    size_t dims_[7];
     size_t length_; // Length of 1D array
-    T * this_matrix_;
+    size_t order_;  // tensor order (rank)
+    T * matrix_;
     
 public:
     
@@ -1419,47 +1421,47 @@ public:
     
     //--- 1D to 7D matrix ---
 
-    ViewFMatrix(T *some_matrix,
-                size_t some_dim1);
+    ViewFMatrix(T *matrix,
+                size_t dim1);
     
     ViewFMatrix(T *some_matrix,
-                size_t some_dim1,
-                size_t some_dim2);
+                size_t dim1,
+                size_t dim2);
     
-    ViewFMatrix(T *some_matrix,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3);
+    ViewFMatrix(T *matrix,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3);
     
-    ViewFMatrix(T *some_matrix,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4);
+    ViewFMatrix(T *matrix,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4);
     
-    ViewFMatrix (T *some_matrix,
-                 size_t some_dim1,
-                 size_t some_dim2,
-                 size_t some_dim3,
-                 size_t some_dim4,
-                 size_t some_dim5);
+    ViewFMatrix (T *matrix,
+                 size_t dim1,
+                 size_t dim2,
+                 size_t dim3,
+                 size_t dim4,
+                 size_t dim5);
     
-    ViewFMatrix (T *some_matrix,
-                 size_t some_dim1,
-                 size_t some_dim2,
-                 size_t some_dim3,
-                 size_t some_dim4,
-                 size_t some_dim5,
-                 size_t some_dim6);
+    ViewFMatrix (T *matrix,
+                 size_t dim1,
+                 size_t dim2,
+                 size_t dim3,
+                 size_t dim4,
+                 size_t dim5,
+                 size_t dim6);
     
-    ViewFMatrix (T *some_matrix,
-                 size_t some_dim1,
-                 size_t some_dim2,
-                 size_t some_dim3,
-                 size_t some_dim4,
-                 size_t some_dim5,
-                 size_t some_dim6,
-                 size_t some_dim7);
+    ViewFMatrix (T *matrix,
+                 size_t dim1,
+                 size_t dim2,
+                 size_t dim3,
+                 size_t dim4,
+                 size_t dim5,
+                 size_t dim6,
+                 size_t dim7);
     
     T& operator()(size_t i) const;
     
@@ -1496,7 +1498,18 @@ public:
                   size_t n,
                   size_t o) const;
     
+    // calculate C = math(A,B)
+    template <typename M>
+    void operator=(M do_this_math);
+    
+    // length of 1D array
     size_t size() const;
+    
+    // matrix dims
+    size_t dims(size_t i) const;
+    
+    // return matrix order (rank)
+    size_t order() const;
     
 }; // end of ViewFMatrix
 
@@ -1508,114 +1521,142 @@ ViewFMatrix<T>::ViewFMatrix() {}
 
 //1D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1)
 {
-    dim1_ = some_dim1;
-    length_ = dim1_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = 0;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 1;
+    length_ = dim1;
+    matrix_ = matrix;
 }
 
 //2D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    length_ = dim1_ * dim2_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 2;
+    length_ = dim1 * dim2;
+    matrix_ = matrix;
 }
 
 //3D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix (T *some_matrix,
-                             size_t some_dim1,
-                             size_t some_dim2,
-                             size_t some_dim3)
+ViewFMatrix<T>::ViewFMatrix (T *matrix,
+                             size_t dim1,
+                             size_t dim2,
+                             size_t dim3)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    length_ = dim1_ * dim2_ * dim3_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 3;
+    length_ = dim1 * dim2 * dim3;
+    matrix_ = matrix;
 }
 
 //4D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 4;
+    length_ = dim1 * dim2 * dim3 * dim4;
+    matrix_ = matrix;
 }
 
 //5D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 5;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5;
+    matrix_ = matrix;
 }
 
 //6D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5,
-                            size_t some_dim6)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5,
+                            size_t dim6)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = 0;
+    order_ = 6;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
+    matrix_ = matrix;
 }
 
 //6D
 template <typename T>
-ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5,
-                            size_t some_dim6,
-                            size_t some_dim7)
+ViewFMatrix<T>::ViewFMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5,
+                            size_t dim6,
+                            size_t dim7)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_;
-    this_matrix_ = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
+    matrix_ = matrix;
 }
 
 
@@ -1625,9 +1666,10 @@ ViewFMatrix<T>::ViewFMatrix(T *some_matrix,
 template <typename T>
 inline T& ViewFMatrix<T>::operator()(size_t i) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 1D");  // die if >= dim1
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewFArray 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 1D");  // die if >= dim1
         
-    return this_matrix_[(i - 1)];
+    return matrix_[(i - 1)];
 }
 
 //2D
@@ -1635,11 +1677,11 @@ template <typename T>
 inline T& ViewFMatrix<T>::operator()(size_t i, 
                                      size_t j) const
 {
-       
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 2D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 2D");  // die if >= dim2
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewFArray 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 2D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 2D");  // die if >= dim2
         
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_)];
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])];
 }
 
 //3D
@@ -1648,12 +1690,13 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
                                      size_t j, 
                                      size_t k) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 3D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 3D");  // die if >= dim2
-    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 3D");  // die if >= dim3
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewFArray 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 3D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 3D");  // die if >= dim2
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrix 3D");  // die if >= dim3
         
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_) 
-                                + ((k - 1) * dim1_ * dim2_)];
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])
+                           + ((k - 1) * dims_[0] * dims_[1])];
 }
 
 //4D
@@ -1663,14 +1706,15 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
                                      size_t k, 
                                      size_t l) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 4D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 4D");  // die if >= dim2
-    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 4D");  // die if >= dim3
-    assert(l >= 1 && l <= dim4_ && "l is out of bounds in c_matrix 4D");  // die if >= dim4
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewFArray 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 4D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 4D");  // die if >= dim2
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrix 4D");  // die if >= dim3
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrix 4D");  // die if >= dim4
         
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_) 
-                                + ((k - 1) * dim1_ * dim2_) 
-                                + ((l - 1) * dim1_ * dim2_ * dim3_)];
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])
+                           + ((k - 1) * dims_[0] * dims_[1])
+                           + ((l - 1) * dims_[0] * dims_[1] * dims_[2])];
 }
 
 //5D
@@ -1681,16 +1725,17 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
                                      size_t l, 
                                      size_t m) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 5D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 5D");  // die if >= dim2
-    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 5D");  // die if >= dim3
-    assert(l >= 1 && l <= dim4_ && "l is out of bounds in c_matrix 5D");  // die if >= dim4
-    assert(m >= 1 && m <= dim5_ && "m is out of bounds in c_matrix 5D");  // die if >= dim5
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewFArray 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 5D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 5D");  // die if >= dim2
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrix 5D");  // die if >= dim3
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrix 5D");  // die if >= dim4
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrix 5D");  // die if >= dim5
        
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_) 
-                                + ((k - 1) * dim1_ * dim2_) 
-                                + ((l - 1) * dim1_ * dim2_ * dim3_)
-                                + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_)];
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])
+                           + ((k - 1) * dims_[0] * dims_[1])
+                           + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                           + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])];
 }
 
 //6D
@@ -1702,17 +1747,18 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
                                      size_t m,
                                      size_t n) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 6D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 6D");  // die if >= dim2
-    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 6D");  // die if >= dim3
-    assert(l >= 1 && l <= dim4_ && "l is out of bounds in c_matrix 6D");  // die if >= dim4
-    assert(m >= 1 && m <= dim5_ && "m is out of bounds in c_matrix 6D");  // die if >= dim5
-    assert(n >= 1 && n <= dim6_ && "n is out of bounds in c_matrix 6D");  // die if >= dim6
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_) 
-                                + ((k - 1) * dim1_ * dim2_) 
-                                + ((l - 1) * dim1_ * dim2_ * dim3_)
-                                + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_)
-                                + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)];
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewFArray 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 6D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 6D");  // die if >= dim2
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrix 6D");  // die if >= dim3
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrix 6D");  // die if >= dim4
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrix 6D");  // die if >= dim5
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewFMatrix 6D");  // die if >= dim6
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])
+                           + ((k - 1) * dims_[0] * dims_[1])
+                           + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                           + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                           + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])];
 }
 
 //6D
@@ -1725,22 +1771,42 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
                                      size_t n,
                                      size_t o) const
 {
-    assert(i >= 1 && i <= dim1_ && "i is out of bounds in c_matrix 7D");  // die if >= dim1
-    assert(j >= 1 && j <= dim2_ && "j is out of bounds in c_matrix 7D");  // die if >= dim2
-    assert(k >= 1 && k <= dim3_ && "k is out of bounds in c_matrix 7D");  // die if >= dim3
-    assert(l >= 1 && l <= dim4_ && "l is out of bounds in c_matrix 7D");  // die if >= dim4
-    assert(m >= 1 && m <= dim5_ && "m is out of bounds in c_matrix 7D");  // die if >= dim5
-    assert(n >= 1 && n <= dim6_ && "n is out of bounds in c_matrix 7D");  // die if >= dim6
-    assert(o >= 1 && o <= dim7_ && "o is out of bounds in c_matrix 7D");  // die if >= dim7
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewFArray 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrix 7D");  // die if >= dim1
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrix 7D");  // die if >= dim2
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrix 7D");  // die if >= dim3
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrix 7D");  // die if >= dim4
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrix 7D");  // die if >= dim5
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewFMatrix 7D");  // die if >= dim6
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in ViewFMatrix 7D");  // die if >= dim7
     
-    return this_matrix_[(i - 1) + ((j - 1) * dim1_)
-                                + ((k - 1) * dim1_ * dim2_)
-                                + ((l - 1) * dim1_ * dim2_ * dim3_)
-                                + ((m - 1) * dim1_ * dim2_ * dim3_ * dim4_)
-                                + ((n - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_)
-                                + ((o - 1) * dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_)];
+    return matrix_[(i - 1) + ((j - 1) * dims_[0])
+                           + ((k - 1) * dims_[0] * dims_[1])
+                           + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                           + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                           + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                           + ((o - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5])];
 }
 
+// calculate this ViewFMatrix object = math(A,B)
+template <typename T>
+template <typename M>
+void ViewFMatrix<T>::operator=(M do_this_math){
+    do_this_math(*this); // pass in this ViewFArray object
+}// end of math opperation
+
+template <typename T>
+inline size_t ViewFMatrix<T>::dims(size_t i) const {
+    i--; // i starts at 1
+    assert(i < order_ && "ViewFMatrix order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewFMatrix dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t ViewFMatrix<T>::order() const {
+    return order_;
+}
 //-----end ViewFMatrix-----
 
 
@@ -1748,10 +1814,12 @@ inline T& ViewFMatrix<T>::operator()(size_t i,
 // indicies are [0:N-1]
 template <typename T>
 class CArray {
+    
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
+    size_t dims_[7];
     size_t length_; // Length of 1D array
-    T* this_array_;
+    size_t order_;  // tensor order (rank)
+    T* array_;
 
 public:
     // Default constructor
@@ -1759,40 +1827,40 @@ public:
 
     // --- 1D to 7D array ---
     
-    CArray (size_t some_dim1);
+    CArray (size_t dim0);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2);
+    CArray (size_t dim0,
+            size_t dim1);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3);
+    CArray (size_t dim0,
+            size_t dim1,
+            size_t dim2);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3,
-            size_t some_dim4);
+    CArray (size_t dim0,
+            size_t dim1,
+            size_t dim2,
+            size_t dim3);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3,
-            size_t some_dim4,
-            size_t some_dim5);
+    CArray (size_t dim0,
+            size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3,
-            size_t some_dim4,
-            size_t some_dim5,
-            size_t some_dim6);
+    CArray (size_t dim0,
+            size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4,
+            size_t dim5);
 
-    CArray (size_t some_dim1,
-            size_t some_dim2,
-            size_t some_dim3,
-            size_t some_dim4,
-            size_t some_dim5,
-            size_t some_dim6,
-            size_t some_dim7);
+    CArray (size_t dim0,
+            size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4,
+            size_t dim5,
+            size_t dim6);
     
     // Overload operator()
     T& operator() (size_t i) const;
@@ -1833,8 +1901,15 @@ public:
     // Overload copy assignment operator
     CArray& operator= (const CArray& temp); 
 
+     //return array size
     size_t size() const;
 
+    // return array dims
+    size_t dims(size_t i) const;
+    
+    // return array order (rank)
+    size_t order() const;
+    
     //return pointer
     T* get_pointer() const;
 
@@ -1850,109 +1925,137 @@ public:
 //no dim
 template <typename T>
 CArray<T>::CArray() {
-    this_array_ = NULL;
+    array_ = NULL;
 }
 
 //1D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1)
+CArray<T>::CArray(size_t dim0)
 {
-    dim1_ = some_dim1;
-    length_ = dim1_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = 0;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 1;
+    length_ = dim0;
+    array_ = new T[length_];
 }
 
 //2D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2)
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    length_ = dim1_ * dim2_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 2;
+    length_ = dim0 * dim1;
+    array_ = new T[length_];
 }
 
 //3D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3)
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    length_ = dim1_ * dim2_ * dim3_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 3;
+    length_ = dim0 * dim1 * dim2;
+    array_ = new T[length_];
 }
 
 //4D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4)
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_;
-    this_array_ = new T[length_];
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 4;
+    length_ = dim0 * dim1 * dim2 * dim3;
+    array_ = new T[length_];
 }
 
 //5D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5) {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_;
-    this_array_ = new T[length_];
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 5;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4;
+    array_ = new T[length_];
 }
 
 //6D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5,
-                  size_t some_dim6) {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_;
-    this_array_ = new T[length_];
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4,
+                  size_t dim5) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = 0;
+    order_ = 6;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5;
+    array_ = new T[length_];
 }
 
 //7D
 template <typename T>
-CArray<T>::CArray(size_t some_dim1,
-                  size_t some_dim2,
-                  size_t some_dim3,
-                  size_t some_dim4,
-                  size_t some_dim5,
-                  size_t some_dim6,
-                  size_t some_dim7) {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_;
-    this_array_ = new T[length_];
+CArray<T>::CArray(size_t dim0,
+                  size_t dim1,
+                  size_t dim2,
+                  size_t dim3,
+                  size_t dim4,
+                  size_t dim5,
+                  size_t dim6) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
+    array_ = new T[length_];
 }
 
 
@@ -1961,9 +2064,12 @@ CArray<T>::CArray(size_t some_dim1,
 
 //1D
 template <typename T>
-inline T& CArray<T>::operator() (size_t i) const {
-    assert(i < dim1_ && "i is out of bounds in CArray 1D");  // die if >= dim1
-    return this_array_[i];
+inline T& CArray<T>::operator() (size_t i) const
+{
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in CArray 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 1D!");
+
+    return array_[i];
 }
 
 //2D
@@ -1971,10 +2077,11 @@ template <typename T>
 inline T& CArray<T>::operator() (size_t i,
                                  size_t j) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 2D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 2D");  // die if >= dim2
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in CArray 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 2D!");
     
-    return this_array_[j + (i * dim2_)];
+    return array_[j + (i *  dims_[1])];
 }
 
 //3D
@@ -1983,11 +2090,13 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t j,
                                  size_t k) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 3D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 3D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in CArray 3D");  // die if >= dim3
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in CArray 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in Carray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 3D!");
     
-    return this_array_[k + (j * dim3_) + (i * dim3_ * dim2_)];
+    return array_[k + (j * dims_[2])
+                    + (i * dims_[2] *  dims_[1])];
 }
 
 //4D
@@ -1997,15 +2106,15 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t k,
                                  size_t l) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 4D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 4D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in CArray 4D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in CArray 4D");  // die if >= dim4
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in CArray 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 4D");  // die if >= dim0
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 4D");  // die if >= dim1
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 4D");  // die if >= dim2
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 4D");  // die if >= dim3
 
-    
-    return this_array_[l + (k * dim4_) 
-                         + (j * dim4_ * dim3_)  
-                         + (i * dim4_ * dim3_ * dim2_)];
+    return array_[l + (k * dims_[3])
+                    + (j * dims_[3] * dims_[2])
+                    + (i * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //5D
@@ -2016,16 +2125,17 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t l,
                                  size_t m) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 5D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 5D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in CArray 5D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in CArray 5D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in CArray 5D");  // die if >= dim5
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in CArray 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 5D!");
     
-    return this_array_[m + (l * dim5_) 
-                         + (k * dim5_ * dim4_) 
-                         + (j * dim5_ * dim4_ * dim3_) 
-                         + (i * dim5_ * dim4_ * dim3_ * dim2_)];
+    return array_[m + (l * dims_[4])
+                    + (k * dims_[4] * dims_[3])
+                    + (j * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //6D
@@ -2037,19 +2147,19 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t m,
                                  size_t n) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 6D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 6D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in CArray 6D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in CArray 6D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in CArray 6D");  // die if >= dim5
-    assert(n < dim6_ && "n is out of bounds in CArray 6D");  // die if >= dim6
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in CArray 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in CArray 6D!");
     
-    return this_array_[n + (m * dim6_) 
-                         + (l * dim6_ * dim5_)  
-                         + (k * dim6_ * dim5_ * dim4_) 
-                         + (j * dim6_ * dim5_ * dim4_ * dim3_)  
-                         + (i * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
-
+    return array_[n + (m * dims_[5])
+                    + (l * dims_[5] * dims_[4])
+                    + (k * dims_[5] * dims_[4] * dims_[3])
+                    + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //7D
@@ -2062,20 +2172,21 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t n,
                                  size_t o) const
 {
-    assert(i < dim1_ && "i is out of bounds in CArray 7D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in CArray 7D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in CArray 7D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in CArray 7D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in CArray 7D");  // die if >= dim5
-    assert(n < dim6_ && "n is out of bounds in CArray 7D");  // die if >= dim6
-    assert(o < dim7_ && "o is out of bounds in CArray 7D");  // die if >= dim7
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in CArray 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in CArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in CArray 7D!");
     
-    return this_array_[o + (n * dim7_)
-                         + (m * dim7_ * dim6_)
-                         + (l * dim7_ * dim6_ * dim5_)
-                         + (k * dim7_ * dim6_ * dim5_ * dim4_)
-                         + (j * dim7_ * dim6_ * dim5_ * dim4_ * dim3_)
-                         + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
+    return array_[o + (n * dims_[6])
+                    + (m * dims_[6] * dims_[5])
+                    + (l * dims_[6] * dims_[5] * dims_[4])
+                    + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                    + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
     
 }
 
@@ -2086,15 +2197,16 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
 {
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
-        dim1_ = temp.dim1_;
-        dim2_ = temp.dim2_;
-        dim3_ = temp.dim3_;
-        dim4_ = temp.dim4_;
-        dim5_ = temp.dim5_;
-        dim6_ = temp.dim6_;
-        dim7_ = temp.dim7_;
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        order_  = temp.order_;
         length_ = temp.length_;
-        this_array_ = new T[length_];
+        array_ = new T[length_];
     }
     return *this;
 }
@@ -2106,14 +2218,27 @@ inline size_t CArray<T>::size() const {
 }
 
 template <typename T>
+inline size_t CArray<T>::dims(size_t i) const {
+    assert(i < order_ && "CArray order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to CArray dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t CArray<T>::order() const {
+    return order_;
+}
+
+
+template <typename T>
 inline T* CArray<T>::get_pointer() const{
-    return this_array_;
+    return array_;
 }
 
 //destructor
 template <typename T>
 CArray<T>::~CArray() {
-    delete[] this_array_;
+    delete[] array_;
 }
 
 //----endof carray class definitions----
@@ -2125,9 +2250,10 @@ template <typename T>
 class ViewCArray {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
+    size_t dims_[7];
     size_t length_; // Length of 1D array
-    T * this_array_;
+    size_t order_;  // tensor order (rank)
+    T * array_;
     
 public:
     
@@ -2135,47 +2261,47 @@ public:
     ViewCArray ();
     
     //--- 1D to 7D array ---
-    ViewCArray(T *some_array,
-               size_t some_dim1);
+    ViewCArray(T *array,
+               size_t dim0);
 
-    ViewCArray(T *some_array,
-               size_t some_dim1,
-               size_t some_dim2);
+    ViewCArray(T *array,
+               size_t dim0,
+               size_t dim1);
     
     ViewCArray(T *some_array,
-               size_t some_dim1,
-               size_t some_dim2,
-               size_t some_dim3);
+               size_t dim0,
+               size_t dim1,
+               size_t dim2);
     
     ViewCArray(T *some_array,
-               size_t some_dim1,
-               size_t some_dim2,
-               size_t some_dim3,
-               size_t some_dim4);
+               size_t dim0,
+               size_t dim1,
+               size_t dim2,
+               size_t dim3);
     
     ViewCArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5);
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4);
 
     ViewCArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6);
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4,
+                size_t dim5);
  
     ViewCArray (T *some_array,
-                size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6,
-                size_t some_dim7);
+                size_t dim0,
+                size_t dim1,
+                size_t dim2,
+                size_t dim3,
+                size_t dim4,
+                size_t dim5,
+                size_t dim6);
     
     T& operator()(size_t i) const;
     
@@ -2210,8 +2336,19 @@ public:
                   size_t m,
                   size_t n,
                   size_t o) const;
+
+    // calculate C = math(A,B)
+    template <typename M>
+    void operator=(M do_this_math);
     
+    //return array size
     size_t size() const;
+    
+    // return array dims
+    size_t dims(size_t i) const;
+    
+    // return array order (rank)
+    size_t order() const;
     
 }; // end of ViewCArray
 
@@ -2225,114 +2362,142 @@ ViewCArray<T>::ViewCArray() {}
 
 //1D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0)
 {
-    dim1_ = some_dim1;
-    length_ = dim1_;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = 0;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 1;
+    length_ = dim0;
+    array_ = array;
 }
 
 //2D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0,
+                          size_t dim1)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    length_ = dim1_ * dim2_;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 2;
+    length_ = dim0 * dim1;
+    array_ = array;
 }
 
 //3D
 template <typename T>
-ViewCArray<T>::ViewCArray (T *some_array,
-                           size_t some_dim1,
-                           size_t some_dim2,
-                           size_t some_dim3)
+ViewCArray<T>::ViewCArray (T *array,
+                           size_t dim0,
+                           size_t dim1,
+                           size_t dim2)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    length_ = dim1_ * dim2_ * dim3_;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 3;
+    length_ = dim0 * dim1 * dim2;
+    array_ = array;
 }
 
 //4D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    length_ = (dim1_ * dim2_ * dim3_ * dim4_);
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 4;
+    length_ = dim0 * dim1 * dim2 * dim3;
+    array_ = array;
 }
 
 //5D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_);
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 5;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4;
+    array_ = array;
 }
 
 //6D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5,
-                          size_t some_dim6)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4,
+                          size_t dim5)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = 0;
+    order_ = 6;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5;
+    array_ = array;
 }
 
 //7D
 template <typename T>
-ViewCArray<T>::ViewCArray(T *some_array,
-                          size_t some_dim1,
-                          size_t some_dim2,
-                          size_t some_dim3,
-                          size_t some_dim4,
-                          size_t some_dim5,
-                          size_t some_dim6,
-                          size_t some_dim7)
+ViewCArray<T>::ViewCArray(T *array,
+                          size_t dim0,
+                          size_t dim1,
+                          size_t dim2,
+                          size_t dim3,
+                          size_t dim4,
+                          size_t dim5,
+                          size_t dim6)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    length_ = dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_;
-    this_array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
+    array_ = array;
 }
 
 //overload () operator
@@ -2341,9 +2506,10 @@ ViewCArray<T>::ViewCArray(T *some_array,
 template <typename T>
 inline T& ViewCArray<T>::operator()(size_t i) const
 {
-    assert(i < dim1_ && "i is out of bounds in c_array 1D");  // die if >= dim1
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewCArray 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 1D!");
     
-    return this_array_[i];
+    return array_[i];
 }
 
 //2D
@@ -2352,10 +2518,11 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t j) const
 {
    
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 2D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 2D");  // die if >= dim2
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in CArray 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 2D!");
     
-    return this_array_[j + (i * dim2_)];
+    return array_[j + (i *  dims_[1])];
 }
 
 //3D
@@ -2364,12 +2531,13 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t j, 
                                     size_t k) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 3D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 3D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in ViewCArray 3D");  // die if >= dim3
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in CArray 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCarray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 3D!");
     
-    return this_array_[k + (j * dim3_) 
-                         + (i * dim3_ * dim2_)];
+    return array_[k + (j * dims_[2])
+                    + (i * dims_[2] *  dims_[1])];
 }
 
 //4D
@@ -2379,14 +2547,15 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t k, 
                                     size_t l) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 4D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 4D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in ViewCArray 4D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in ViewCArray 4D");  // die if >= dim4
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in CArray 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 4D");  // die if >= dim0
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 4D");  // die if >= dim1
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 4D");  // die if >= dim2
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 4D");  // die if >= dim3
     
-    return this_array_[l + (k * dim4_) 
-                         + (j * dim4_ * dim3_) 
-                         + (i * dim4_ * dim3_ * dim2_)];
+    return array_[l + (k * dims_[3])
+                    + (j * dims_[3] * dims_[2])
+                    + (i * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //5D
@@ -2397,16 +2566,17 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t l, 
                                     size_t m) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 5D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 5D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in ViewCArray 5D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in ViewCArray 5D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in ViewCArray 5D");  // die if >= dim5
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewCArray 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 5D!");
     
-    return this_array_[m + (l * dim5_) 
-                         + (k * dim5_ * dim4_) 
-                         + (j * dim5_ * dim4_ * dim3_)
-                         + (i * dim5_ * dim4_ * dim3_ * dim2_)];
+    return array_[m + (l * dims_[4])
+                    + (k * dims_[4] * dims_[3])
+                    + (j * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //6D
@@ -2418,18 +2588,19 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t m,
                                     size_t n) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 6D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 6D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in ViewCArray 6D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in ViewCArray 6D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in ViewCArray 6D");  // die if >= dim5
-    assert(n < dim6_ && "n is out of bounds in ViewCArray 6D");  // die if >= dim6
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewCArray 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewCArray 6D!");
     
-    return this_array_[n + (m * dim6_) 
-                         + (l * dim6_ * dim5_) 
-                         + (k * dim6_ * dim5_ * dim4_)
-                         + (j * dim6_ * dim5_ * dim4_ * dim3_) 
-                         + (i * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
+    return array_[n + (m * dims_[5])
+                    + (l * dims_[5] * dims_[4])
+                    + (k * dims_[5] * dims_[4] * dims_[3])
+                    + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
 }
 
 //7D
@@ -2442,27 +2613,47 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t n,
                                     size_t o) const
 {
-    assert(i < dim1_ && "i is out of bounds in ViewCArray 7D");  // die if >= dim1
-    assert(j < dim2_ && "j is out of bounds in ViewCArray 7D");  // die if >= dim2
-    assert(k < dim3_ && "k is out of bounds in ViewCArray 7D");  // die if >= dim3
-    assert(l < dim4_ && "l is out of bounds in ViewCArray 7D");  // die if >= dim4
-    assert(m < dim5_ && "m is out of bounds in ViewCArray 7D");  // die if >= dim5
-    assert(n < dim6_ && "n is out of bounds in ViewCArray 7D");  // die if >= dim6
-    assert(o < dim7_ && "o is out of bounds in ViewCArray 7D");  // die if >= dim7
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewCArray 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewCArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in ViewCArray 7D!");
     
-    return this_array_[o + (n * dim7_)
-                         + (m * dim7_ * dim6_)
-                         + (l * dim7_ * dim6_ * dim5_)
-                         + (k * dim7_ * dim6_ * dim5_ * dim4_)
-                         + (j * dim7_ * dim6_ * dim5_ * dim4_ * dim3_)
-                         + (i * dim7_ * dim6_ * dim5_ * dim4_ * dim3_ * dim2_)];
+    return array_[o + (n * dims_[6])
+                    + (m * dims_[6] * dims_[5])
+                    + (l * dims_[6] * dims_[5] * dims_[4])
+                    + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                    + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                    + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] *  dims_[1])];
 }
 
+
+// calculate this ViewFArray object = math(A,B)
+template <typename T>
+template <typename M>
+void ViewCArray<T>::operator=(M do_this_math){
+    do_this_math(*this); // pass in this ViewFArray object
+}// end of math opperation
 
 //return size    
 template <typename T>
 inline size_t ViewCArray<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline size_t ViewCArray<T>::dims(size_t i) const {
+    assert(i < order_ && "ViewCArray order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewCArray dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t ViewCArray<T>::order() const {
+    return order_;
 }
 
 //---end of ViewCArray class definitions----
@@ -2473,95 +2664,104 @@ template <typename T>
 class CMatrix {
         
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_, length_;
-    T * this_matrix;
+    size_t dims_[7];
+    size_t length_; // Length of 1D array
+    size_t order_;  // tensor order (rank)
+    T * matrix_;
             
 public:
         
-       // default constructor
-       CMatrix();
-    
-       CMatrix(size_t some_dim1);
-    
-       CMatrix(size_t some_dim1,
-               size_t some_dim2);
-    
-       CMatrix(size_t some_dim1,
-               size_t some_dim2,
-               size_t some_dim3);
-    
-       CMatrix(size_t some_dim1,
-               size_t some_dim2,
-               size_t some_dim3,
-               size_t some_dim4);
-    
-       CMatrix(size_t some_dim1,
-               size_t some_dim2,
-               size_t some_dim3,
-               size_t some_dim4,
-               size_t some_dim5);
-    
-       CMatrix (size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6);
- 
-       CMatrix (size_t some_dim1,
-                size_t some_dim2,
-                size_t some_dim3,
-                size_t some_dim4,
-                size_t some_dim5,
-                size_t some_dim6,
-                size_t some_dim7);
-    
-       //overload operators to access data
-       T& operator()(size_t i) const;
-    
-       T& operator()(size_t i,
-                     size_t j) const;
-    
-       T& operator()(size_t i,
-                     size_t j,
-                     size_t k) const;
-    
-       T& operator()(size_t i,
-                     size_t j,
-                     size_t k,
-                     size_t l) const;
-    
-       T& operator()(size_t i,
-                     size_t j,
-                     size_t k,
-                     size_t l,
-                     size_t m) const;
-    
-       T& operator()(size_t i,
-                     size_t j,
-                     size_t k,
-                     size_t l,
-                     size_t m,
-                     size_t n) const;
-    
-       T& operator()(size_t i,
-                     size_t j,
-                     size_t k,
-                     size_t l,
-                     size_t m,
-                     size_t n,
-                     size_t o) const;
-    
-       //overload = operator
-	   CMatrix& operator= (const CMatrix &temp);
-    
-       size_t size() const;
+    // default constructor
+    CMatrix();
 
-       //return pointer
-       T* get_pointer() const;
+    CMatrix(size_t dim1);
+
+    CMatrix(size_t dim1,
+            size_t dim2);
+
+    CMatrix(size_t dim1,
+            size_t dim2,
+            size_t dim3);
+
+    CMatrix(size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4);
+
+    CMatrix(size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4,
+            size_t dim5);
+
+    CMatrix (size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4,
+            size_t dim5,
+            size_t dim6);
+
+    CMatrix (size_t dim1,
+            size_t dim2,
+            size_t dim3,
+            size_t dim4,
+            size_t dim5,
+            size_t dim6,
+            size_t dim7);
+
+    //overload operators to access data
+    T& operator()(size_t i) const;
+
+    T& operator()(size_t i,
+                    size_t j) const;
+
+    T& operator()(size_t i,
+                    size_t j,
+                    size_t k) const;
+
+    T& operator()(size_t i,
+                    size_t j,
+                    size_t k,
+                    size_t l) const;
+
+    T& operator()(size_t i,
+                    size_t j,
+                    size_t k,
+                    size_t l,
+                    size_t m) const;
+
+    T& operator()(size_t i,
+                    size_t j,
+                    size_t k,
+                    size_t l,
+                    size_t m,
+                    size_t n) const;
+
+    T& operator()(size_t i,
+                    size_t j,
+                    size_t k,
+                    size_t l,
+                    size_t m,
+                    size_t n,
+                    size_t o) const;
+
+    //overload = operator
+    CMatrix& operator= (const CMatrix &temp);
+
+    //return array size
+    size_t size() const;
     
-       // deconstructor
-       ~CMatrix( );
+    // return array dims
+    size_t dims(size_t i) const;
+    
+    // return array order (rank)
+    size_t order() const;
+
+    //return pointer
+    T* get_pointer() const;
+    
+    // deconstructor
+    ~CMatrix( );
         
 }; // end of CMatrix
 
@@ -2574,112 +2774,140 @@ public:
 //1D
 template <typename T>
 CMatrix<T>::CMatrix() {
-    this_matrix = NULL;
+    matrix_ = NULL;
 }
 
 //1D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1)
+CMatrix<T>::CMatrix(size_t dim1)
 {
-    dim1_ = some_dim1;
-    length_ = dim1_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = 0;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 1;
+    length_ = dim1;
+    matrix_ = new T[length_];
 }
 
 //2D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    length_ = dim1_*dim2_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 2;
+    length_ = dim1 * dim2;
+    matrix_ = new T[length_];
 }
 
 //3D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2,
-                    size_t some_dim3)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2,
+                    size_t dim3)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    length_ = dim1_*dim2_*dim3_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 3;
+    length_ = dim1 * dim2 * dim3;
+    matrix_ = new T[length_];
 }
 
 //4D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2,
-                    size_t some_dim3,
-                    size_t some_dim4)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2,
+                    size_t dim3,
+                    size_t dim4)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    length_ = dim1_*dim2_*dim3_*dim4_;
-    this_matrix= new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 4;
+    length_ = dim1 * dim2 * dim3 * dim4;
+    matrix_ = new T[length_];
 }   
 
 //5D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2,
-                    size_t some_dim3,
-                    size_t some_dim4,
-                    size_t some_dim5)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2,
+                    size_t dim3,
+                    size_t dim4,
+                    size_t dim5)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 5;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5;
+    matrix_ = new T[length_];
 }
 
 //6D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2,
-                    size_t some_dim3,
-                    size_t some_dim4,
-                    size_t some_dim5,
-                    size_t some_dim6)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2,
+                    size_t dim3,
+                    size_t dim4,
+                    size_t dim5,
+                    size_t dim6)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = 0;
+    order_ = 6;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
+    matrix_ = new T[length_];
 }
 
 //7D
 template <typename T>
-CMatrix<T>::CMatrix(size_t some_dim1,
-                    size_t some_dim2,
-                    size_t some_dim3,
-                    size_t some_dim4,
-                    size_t some_dim5,
-                    size_t some_dim6,
-                    size_t some_dim7)
+CMatrix<T>::CMatrix(size_t dim1,
+                    size_t dim2,
+                    size_t dim3,
+                    size_t dim4,
+                    size_t dim5,
+                    size_t dim6,
+                    size_t dim7)
 {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    length_ = dim1_*dim2_*dim3_*dim4_*dim5_*dim6_*dim7_;
-    this_matrix = new T[length_];
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
+    matrix_ = new T[length_];
 }
 
 //overload () operator
@@ -2688,8 +2916,10 @@ CMatrix<T>::CMatrix(size_t some_dim1,
 template <typename T>
 T& CMatrix<T>::operator()(size_t i) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 1D!");
-    return this_matrix[i-1];
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in CMatrix 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 1D!");
+    
+    return matrix_[i-1];
 }
 
 //2D
@@ -2697,9 +2927,11 @@ template <typename T>
 T& CMatrix<T>::operator()(size_t i,
                           size_t j) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 2D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 2D!");
-    return this_matrix[(j-1) + (i-1)*dim2_];
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in CMatrix 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 2D!");
+    
+    return matrix_[(j-1) + (i-1)*dims_[1]];
 }
 
 //3D
@@ -2708,11 +2940,13 @@ T& CMatrix<T>::operator()(size_t i,
                           size_t j,
                           size_t k) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 3D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 3D!");
-    assert( k < dim3_+1 && "k is out of bounds in CMatrix 3D!");
-    return this_matrix[(k-1) + (j-1)*dim3_
-                             + (i-1)*dim3_*dim2_];
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in CMatrix 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrix 3D!");
+    
+    return matrix_[(k-1) + (j-1)*dims_[2]
+                         + (i-1)*dims_[2]*dims_[1]];
 }
 
 //4D
@@ -2722,13 +2956,15 @@ T& CMatrix<T>::operator()(size_t i,
                           size_t k,
                           size_t l) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 4D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 4D!");
-    assert( k < dim3_+1 && "k is out of bounds in CMatrix 4D!");
-    assert( l < dim4_+1 && "l is out of bounds in CMatrix 4D!");
-    return this_matrix[ (l-1) + (k-1)*dim4_
-                              + (j-1)*dim4_*dim3_
-                              + (i-1)*dim4_*dim3_*dim2_];
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in CMatrix 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 4D");  // die if >= dim0
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 4D");  // die if >= dim1
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrix 4D");  // die if >= dim2
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrix 4D");  // die if >= dim3
+    
+    return matrix_[(l-1) + (k-1)*dims_[3]
+                         + (j-1)*dims_[3]*dims_[2]
+                         + (i-1)*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //5D
@@ -2739,15 +2975,17 @@ T& CMatrix<T>::operator()(size_t i,
                           size_t l,
                           size_t m) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 5D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 5D!");
-    assert( k < dim3_+1 && "k is out of bounds in CMatrix 5D!");
-    assert( l < dim4_+1 && "l is out of bounds in CMatrix 5D!");
-    assert( m < dim5_+1 && "m is out of bounds in CMatrix 5D!");
-    return this_matrix[(m-1) + (l-1)*dim5_
-                             + (k-1)*dim5_*dim4_
-                             + (j-1)*dim5_*dim4_*dim3_
-                             + (i-1)*dim5_*dim4_*dim3_*dim2_];
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in CMatrix 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrix 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrix 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrix 5D!");
+    
+    return matrix_[(m-1) + (l-1)*dims_[4]
+                         + (k-1)*dims_[4]*dims_[3]
+                         + (j-1)*dims_[4]*dims_[3]*dims_[2]
+                         + (i-1)*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //6D
@@ -2759,17 +2997,19 @@ T& CMatrix<T>::operator()(size_t i,
                           size_t m,
                           size_t n) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 6D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 6D!");
-    assert( k < dim3_+1 && "k is out of bounds in CMatrix 6D!");
-    assert( l < dim4_+1 && "l is out of bounds in CMatrix 6D!");
-    assert( m < dim5_+1 && "m is out of bounds in CMatrix 6D!");
-    assert( n < dim6_+1 && "n is out of bounds in CMatrix 6D!");
-    return this_matrix[ (n-1) + (m-1)*dim6_
-                              + (l-1)*dim6_*dim5_
-                              + (k-1)*dim6_*dim5_*dim4_
-                              + (j-1)*dim6_*dim5_*dim4_*dim3_
-                              + (i-1)*dim6_*dim5_*dim4_*dim3_*dim2_];
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in CMatrix 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrix 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrix 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrix 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in CMatrix 6D!");
+    
+    return matrix_[ (n-1) + (m-1)*dims_[5]
+                          + (l-1)*dims_[5]*dims_[4]
+                          + (k-1)*dims_[5]*dims_[4]*dims_[3]
+                          + (j-1)*dims_[5]*dims_[4]*dims_[3]*dims_[2]
+                          + (i-1)*dims_[5]*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //7D
@@ -2782,20 +3022,21 @@ T& CMatrix<T>::operator()(size_t i,
                           size_t n,
                           size_t o) const
 {
-    assert( i < dim1_+1 && "i is out of bounds in CMatrix 7D!");
-    assert( j < dim2_+1 && "j is out of bounds in CMatrix 7D!");
-    assert( k < dim3_+1 && "k is out of bounds in CMatrix 7D!");
-    assert( l < dim4_+1 && "l is out of bounds in CMatrix 7D!");
-    assert( m < dim5_+1 && "m is out of bounds in CMatrix 7D!");
-    assert( n < dim6_+1 && "n is out of bounds in CMatrix 7D!");
-    assert( o < dim7_+1 && "n is out of bounds in CMatrix 7D!");
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in CMatrix 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrix 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrix 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrix 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrix 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrix 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in CMatrix 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in CMatrix 7D!");
     
-    return this_matrix[(o-1) + (n-1)*dim7_
-                             + (m-1)*dim7_*dim6_
-                             + (l-1)*dim7_*dim6_*dim5_
-                             + (k-1)*dim7_*dim6_*dim5_*dim4_
-                             + (j-1)*dim7_*dim6_*dim5_*dim4_*dim3_
-                             + (i-1)*dim7_*dim6_*dim5_*dim4_*dim3_*dim2_];
+    return matrix_[(o-1) + (n-1)*dims_[6]
+                         + (m-1)*dims_[6]*dims_[5]
+                         + (l-1)*dims_[6]*dims_[5]*dims_[4]
+                         + (k-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]
+                         + (j-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]*dims_[2]
+                         + (i-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //overload = operator
@@ -2803,15 +3044,16 @@ T& CMatrix<T>::operator()(size_t i,
 template <typename T>
 CMatrix<T> &CMatrix<T>::operator= (const CMatrix &temp) {
 	if(this != &temp) {
-        dim1_ = temp.dim1_;
-        dim2_ = temp.dim2_;
-        dim3_ = temp.dim3_;
-        dim4_ = temp.dim4_;
-        dim5_ = temp.dim5_;
-        dim6_ = temp.dim6_;
-        dim7_ = temp.dim7_;
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        order_  = temp.order_;
         length_ = temp.length_;
-        this_matrix = new T[length_];
+        matrix_ = new T[length_];
 	}
   return *this;
 }
@@ -2822,14 +3064,27 @@ inline size_t CMatrix<T>::size() const {
 }
 
 template <typename T>
+inline size_t CMatrix<T>::dims(size_t i) const {
+    i--; // i starts at 1
+    assert(i < order_ && "CMatrix order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to CMatrix dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t CMatrix<T>::order() const {
+    return order_;
+}
+
+template <typename T>
 inline T* CMatrix<T>::get_pointer() const{
-    return this_matrix;
+    return matrix_;
 }
 
 // Destructor
 template <typename T>
 CMatrix<T>::~CMatrix(){
-    delete[] this_matrix;
+    delete[] matrix_;
 }
 
 //----end of CMatrix class definitions----
@@ -2841,8 +3096,10 @@ template <typename T>
 class ViewCMatrix {
 
 private:
-    size_t dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_;
-     T * this_matrix;
+    size_t dims_[7];
+    size_t length_; // Length of 1D array
+    size_t order_;  // tensor order (rank)
+     T * matrix_;
 		    
 public:
 		    
@@ -2852,47 +3109,47 @@ public:
 		    
     //--- 1D array ---	   	    
     // overloaded constructor
-    ViewCMatrix (T *some_matrix,
-                 size_t some_dim1);
+    ViewCMatrix (T *matrix,
+                 size_t dim1);
     
-    ViewCMatrix (T *some_matrix,
-                 size_t some_dim1,
-                 size_t some_dim2);
+    ViewCMatrix (T *matrix,
+                 size_t dim1,
+                 size_t dim2);
 
-    ViewCMatrix (T *some_matrix,
-		size_t some_dim1,
-		size_t some_dim2,
-		size_t some_dim3);
+    ViewCMatrix (T *matrix,
+		size_t dim1,
+		size_t dim2,
+		size_t dim3);
 
-    ViewCMatrix (T *some_matrix,
-		size_t some_dim1,
-		size_t some_dim2,
-		size_t some_dim3,
-		size_t some_dim4);
+    ViewCMatrix (T *matrix,
+		size_t dim1,
+		size_t dim2,
+		size_t dim3,
+		size_t dim4);
 
-    ViewCMatrix (T *some_matrix,
-		size_t some_dim1,
-		size_t some_dim2,
-		size_t some_dim3,
-		size_t some_dim4,
-		size_t some_dim5);
+    ViewCMatrix (T *matrix,
+		size_t dim1,
+		size_t dim2,
+		size_t dim3,
+		size_t dim4,
+		size_t dim5);
 
-    ViewCMatrix (T *some_matrix,
-		   size_t some_dim1,
-		   size_t some_dim2,
-		   size_t some_dim3,
-		   size_t some_dim4,
-		   size_t some_dim5,
-		   size_t some_dim6);
+    ViewCMatrix (T *matrix,
+		   size_t dim1,
+		   size_t dim2,
+		   size_t dim3,
+		   size_t dim4,
+		   size_t dim5,
+		   size_t dim6);
 
-    ViewCMatrix (T *some_matrix,
-                 size_t some_dim1,
-                 size_t some_dim2,
-                 size_t some_dim3,
-                 size_t some_dim4,
-                 size_t some_dim5,
-                 size_t some_dim6,
-                 size_t some_dim7);
+    ViewCMatrix (T *matrix,
+                 size_t dim1,
+                 size_t dim2,
+                 size_t dim3,
+                 size_t dim4,
+                 size_t dim5,
+                 size_t dim6,
+                 size_t dim7);
     
     T& operator() (size_t i) const;
     
@@ -2927,7 +3184,20 @@ public:
                    size_t m,
                    size_t n,
                    size_t o) const;
-		    
+
+    // calculate C = math(A,B)
+    template <typename M>
+    void operator=(M do_this_math);
+    
+    //return array size
+    size_t size() const;
+    
+    // return array dims
+    size_t dims(size_t i) const;
+    
+    // return array order (rank)
+    size_t order() const;
+    
 }; // end of ViewCMatrix
 
 //class definitions
@@ -2940,105 +3210,140 @@ ViewCMatrix<T>::ViewCMatrix(){}
 
 //1D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1)
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1)
 {
-	dim1_ = some_dim1;
-	this_matrix = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = 0;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 1;
+    length_ = dim1;
+	matrix_ = matrix;
 }
 
 //2D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2)
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	this_matrix = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = 0;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 2;
+    length_ = dim1 * dim2;
+	matrix_ = matrix;
 }
 
 //3D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3)
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	this_matrix = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = 0;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 3;
+    length_ = dim1 * dim2 * dim3;
+	matrix_ = matrix;
 }
 
 //4D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4)
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	this_matrix = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = 0;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 4;
+    length_ = dim1 * dim2 * dim3 * dim4;
+	matrix_ = matrix;
 }
 
 //5D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5)
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5)
 {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	dim5_ = some_dim5;
-	this_matrix = some_matrix;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = 0;
+    dims_[6] = 0;
+    order_ = 5;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5;
+	matrix_ = matrix;
 }
 
 //6D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5,
-                            size_t some_dim6) {
-	dim1_ = some_dim1;
-	dim2_ = some_dim2;
-	dim3_ = some_dim3;
-	dim4_ = some_dim4;
-	dim5_ = some_dim5;
-	dim6_ = some_dim6;
-	this_matrix = some_matrix;
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5,
+                            size_t dim6) {
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = 0;
+    order_ = 6;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
+	matrix_ = matrix;
 }
 
 //7D
 template <typename T>
-ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
-                            size_t some_dim1,
-                            size_t some_dim2,
-                            size_t some_dim3,
-                            size_t some_dim4,
-                            size_t some_dim5,
-                            size_t some_dim6,
-                            size_t some_dim7) {
-    dim1_ = some_dim1;
-    dim2_ = some_dim2;
-    dim3_ = some_dim3;
-    dim4_ = some_dim4;
-    dim5_ = some_dim5;
-    dim6_ = some_dim6;
-    dim7_ = some_dim7;
-    this_matrix = some_matrix;
+ViewCMatrix<T>::ViewCMatrix(T *matrix,
+                            size_t dim1,
+                            size_t dim2,
+                            size_t dim3,
+                            size_t dim4,
+                            size_t dim5,
+                            size_t dim6,
+                            size_t dim7) {
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
+    matrix = matrix_;
 }
 
 //overload () operator
@@ -3047,8 +3352,10 @@ ViewCMatrix<T>::ViewCMatrix(T *some_matrix,
 template <typename T>
 T& ViewCMatrix<T>:: operator() (size_t i) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 1D!");
-	return this_matrix[i-1];
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewCMatrix 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 1D!");
+    
+	return matrix_[i-1];
 }
 
 //2D
@@ -3056,9 +3363,11 @@ template <typename T>
 T& ViewCMatrix<T>::operator() (size_t i,
                                size_t j) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 2D!");
-	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 2D!");
-	return this_matrix[(i-1)*dim2_ + (j-1)];
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewCMatrix 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 2D!");
+    
+    return matrix_[(j-1) + (i-1)*dims_[1]];
 }
 
 //3D
@@ -3067,11 +3376,13 @@ T& ViewCMatrix<T>::operator () (size_t i,
                                 size_t j,
                                 size_t k) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 3D!");
-	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 3D!");
-	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 3D!");
-	return this_matrix[(k-1) + (j-1)*dim3_
-                             + (i-1)*dim3_*dim2_];
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewCMatrix 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrix 3D!");
+    
+    return matrix_[(k-1) + (j-1)*dims_[2]
+                         + (i-1)*dims_[2]*dims_[1]];
 }
 
 //4D
@@ -3081,13 +3392,15 @@ T& ViewCMatrix<T>::operator()(size_t i,
                               size_t k,
                               size_t l) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 4D!");
-	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 4D!");
-	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 4D!");
-	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 4D!");
-	return this_matrix[(l-1) + (k-1)*dim4_
-                             + (j-1)*dim4_*dim3_
-                             + (i-1)*dim4_*dim3_*dim2_];
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewCMatrix 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 4D");  // die if >= dim0
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 4D");  // die if >= dim1
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrix 4D");  // die if >= dim2
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewCMatrix 4D");  // die if >= dim3
+    
+    return matrix_[(l-1) + (k-1)*dims_[3]
+                         + (j-1)*dims_[3]*dims_[2]
+                         + (i-1)*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //5D
@@ -3098,15 +3411,17 @@ T& ViewCMatrix<T>::operator()(size_t i,
                               size_t l,
                               size_t m) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 5D!");
-	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 5D!");
-	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 5D!");
-	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 5D!");
-	assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 5D!");
-	return this_matrix[(m-1) + (l-1)*dim5_
-                             + (k-1)*dim5_*dim4_
-                             + (j-1)*dim5_*dim4_*dim3_
-                             + (i-1)*dim5_*dim4_*dim3_*dim2_];
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewCMatrix 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrix 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewCMatrix 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewCMatrix 5D!");
+    
+    return matrix_[(m-1) + (l-1)*dims_[4]
+                         + (k-1)*dims_[4]*dims_[3]
+                         + (j-1)*dims_[4]*dims_[3]*dims_[2]
+                         + (i-1)*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //6D
@@ -3118,17 +3433,19 @@ T& ViewCMatrix<T>::operator()(size_t i,
                               size_t m,
                               size_t n) const
 {
-	assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 6D!");
-	assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 6D!");
-	assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 6D!");
-	assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 6D!");
-	assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 6D!");
-	assert(n < dim6_+1 && "n is out of bounds for ViewCMatrix 6D!");
-	return this_matrix[(n-1) + (m-1)*dim6_
-                             + (l-1)*dim5_*dim6_
-                             + (k-1)*dim6_*dim5_*dim4_
-                             + (j-1)*dim6_*dim5_*dim4_*dim3_
-                             + (i-1)*dim5_*dim6_*dim4_*dim3_*dim2_];
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewCMatrix 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrix 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewCMatrix 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewCMatrix 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewCMatrix 6D!");
+    
+    return matrix_[(n-1) + (m-1)*dims_[5]
+                         + (l-1)*dims_[5]*dims_[4]
+                         + (k-1)*dims_[5]*dims_[4]*dims_[3]
+                         + (j-1)*dims_[5]*dims_[4]*dims_[3]*dims_[2]
+                         + (i-1)*dims_[5]*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
 }
 
 //7D
@@ -3141,19 +3458,46 @@ T& ViewCMatrix<T>::operator()(size_t i,
                               size_t n,
                               size_t o) const
 {
-    assert(i < dim1_+1 && "i is out of bounds for ViewCMatrix 7D!");
-    assert(j < dim2_+1 && "j is out of bounds for ViewCMatrix 7D!");
-    assert(k < dim3_+1 && "k is out of bounds for ViewCMatrix 7D!");
-    assert(l < dim4_+1 && "l is out of bounds for ViewCMatrix 7D!");
-    assert(m < dim5_+1 && "m is out of bounds for ViewCMatrix 7D!");
-    assert(n < dim6_+1 && "n is out of bounds for ViewCMatrix 7D!");
-    assert(o < dim7_+1 && "o is out of bounds for ViewCMatrix 7D!");
-    return this_matrix[(o-1) + (n-1)*dim7_
-                             + (m-1)*dim7_*dim6_
-                             + (l-1)*dim7_*dim5_*dim6_
-                             + (k-1)*dim7_*dim6_*dim5_*dim4_
-                             + (j-1)*dim7_*dim6_*dim5_*dim4_*dim3_
-                             + (i-1)*dim7_*dim5_*dim6_*dim4_*dim3_*dim2_];
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewCMatrix 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrix 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrix 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrix 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewCMatrix 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewCMatrix 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewCMatrix 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in ViewCMatrix 7D!");
+    
+    return matrix_[(o-1) + (n-1)*dims_[6]
+                         + (m-1)*dims_[6]*dims_[5]
+                         + (l-1)*dims_[6]*dims_[5]*dims_[4]
+                         + (k-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]
+                         + (j-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]*dims_[2]
+                         + (i-1)*dims_[6]*dims_[5]*dims_[4]*dims_[3]*dims_[2]*dims_[1]];
+}
+
+// calculate this ViewFArray object = math(A,B)
+template <typename T>
+template <typename M>
+void ViewCMatrix<T>::operator=(M do_this_math){
+    do_this_math(*this); // pass in this ViewFArray object
+}// end of math opperation
+
+template <typename T>
+inline size_t ViewCMatrix<T>::size() const {
+    return length_;
+}
+
+template <typename T>
+inline size_t ViewCMatrix<T>::dims(size_t i) const {
+    i--; // i starts at 1
+    assert(i < order_ && "ViewCMatrix order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewCMatrix dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+inline size_t ViewCMatrix<T>::order() const {
+    return order_;
 }
 
 
