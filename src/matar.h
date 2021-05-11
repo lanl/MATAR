@@ -2129,6 +2129,18 @@ inline T& ViewCArray<T>::operator()(size_t i) const
     return this_array_[i];
 }
 
+/*
+//specification for CArray type
+//1D
+template <typename T>
+inline T& ViewCArray<CArray<T>>::operator()(size_t i) const
+{
+    assert(i < dim1_ && "i is out of bounds in c_array 1D");  // die if >= dim1
+    
+    return (*this_array_)(i);
+}
+*/
+
 //2D
 template <typename T>
 inline T& ViewCArray<T>::operator()(size_t i, 
