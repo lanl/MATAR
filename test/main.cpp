@@ -6,11 +6,7 @@ int main() {
 
     printf("Hello World\n");
 
-    Kokkos::initialize();
-    {   
-    auto test = CArrayKokkos <int> (5, 5); 
-    }   
-    Kokkos::finalize();
+    auto test = CArray <int> (5, 5); 
 
     return 0;
 }
