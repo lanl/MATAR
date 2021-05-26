@@ -3703,7 +3703,7 @@ RaggedRightArray<T>::RaggedRightArray (size_t some_dim1, size_t buffer){
 template <typename T>
 inline size_t RaggedRightArray<T>::stride(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dim1_ + 1) && "i is greater than dim1_ in RaggedRightArray");
+    assert(i < dim1_ && "i is greater than dim1_ in RaggedRightArray");
 
     return start_index_[(i + 1)] - start_index_[i];
 }
@@ -3755,7 +3755,7 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
         num_saved_ = temp.num_saved_;
         delete[] start_index_;
         start_index_ = new size_t[dim1_ + 1];
-        for (int j = 0; j < dim1_; j++) {
+        for (int j = 0; j < dim1_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
         delete[] array_;
@@ -3950,7 +3950,7 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t some_dim1, size_
 template <typename T>
 inline size_t RaggedRightArrayofVectors<T>::stride(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dim1_ + 1) && "i is greater than dim1_ in RaggedRightArray");
+    assert(i < dim1_ && "i is greater than dim1_ in RaggedRightArray");
 
     return (start_index_[(i + 1)] - start_index_[i])/vector_dim_;
 }
@@ -4003,7 +4003,7 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
         num_saved_ = temp.num_saved_;
         delete[] start_index_;
         start_index_ = new size_t[dim1_ + 1];
-        for (int j = 0; j < dim1_; j++) {
+        for (int j = 0; j < dim1_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
         delete[] array_;
@@ -4192,6 +4192,8 @@ RaggedDownArray<T>::RaggedDownArray (size_t some_dim2, size_t buffer){
 // Check the stride size
 template <typename T>
 size_t RaggedDownArray<T>::stride(size_t j) {
+    assert(j < dim2_ && "j is greater than dim2_ in RaggedDownArray");
+
     return start_index_[j+1] - start_index_[j];
 }
 
@@ -4237,7 +4239,7 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
         num_saved_ = temp.num_saved_;
         delete[] start_index_;
         start_index_ = new size_t[dim2_ + 1];
-        for (int j = 0; j < dim2_; j++) {
+        for (int j = 0; j < dim2_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
         delete[] array_;
