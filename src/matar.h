@@ -4192,7 +4192,7 @@ RaggedDownArray<T>::RaggedDownArray (size_t some_dim2, size_t buffer){
 // Check the stride size
 template <typename T>
 size_t RaggedDownArray<T>::stride(size_t j) {
-    assert(j < dim2_ && "j is greater than dim2_ in RaggedRightArray");
+    assert(j < dim2_ && "j is greater than dim2_ in RaggedDownArray");
 
     return start_index_[j+1] - start_index_[j];
 }
