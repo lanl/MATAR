@@ -7144,23 +7144,30 @@ private:
     T* this_matrix_;
 
 public:
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos();
 
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1);
 
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2);
 
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3);
 
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3, 
                       size_t dim4);
 
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3, 
                       size_t dim4, size_t dim5);
-
+    
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3,
                       size_t dim4, size_t dim5, size_t dim6);
-
+    KOKKOS_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3,
                       size_t dim4, size_t dim5, size_t dim6, size_t dim7);
     
@@ -7184,9 +7191,21 @@ public:
 
     KOKKOS_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const;
+	
+    KOKKOS_FUNCTION
+    ViewCMatrixKokkos& operator=    (const ViewCMatrixKokkos& temp);
+	
+    KOKKOS_FUNCTION
+    ViewCMatrixKokkos& set          (const ViewCMatrixKokkos& temp);
+    
+    KOKKOS_FUNCTION
+    ViewCMatrixKokkos& operator=    (const       T& temp);
 
     KOKKOS_FUNCTION
     size_t size();
+	
+    KOKKOS_FUNCTION
+    size_t dimsize(size_t) const;
 
     size_t extent();
 
@@ -7197,10 +7216,12 @@ public:
 
 // Default constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){ }
 
 // Overloaded 1D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1) {
     dim1_ = dim1;
     length_ = dim1_;
@@ -7209,6 +7230,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1) {
 
 // Overloaded 2D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, 
                                         size_t dim2) {
     dim1_ = dim1;
@@ -7219,6 +7241,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 3D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3) {
     dim1_ = dim1;
@@ -7230,6 +7253,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 4D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4) {
     dim1_ = dim1;
@@ -7242,6 +7266,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 5D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5) {
     dim1_ = dim1;
@@ -7255,6 +7280,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5,
                                         size_t dim6) {
@@ -7270,6 +7296,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 7D constructor
 template <typename T>
+KOKKOS_FUNCTION 
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5,
                                         size_t dim6, size_t dim7) {
@@ -7374,9 +7401,62 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 
 
 template <typename T>
+KOKKOS_FUNCTION 
+ViewCMatrixKokkos<T>& ViewCMatrixKokkos<T>::operator=  (const ViewCMatrixKokkos <T>& temp)
+{
+	for (size_t i = 0; i < length_; i++) { this_matrix_[i] = temp.this_matrix_[i]; }
+
+	return *this;
+}
+
+template <typename T> 
+KOKKOS_FUNCTION 
+ViewCMatrixKokkos<T>& ViewCMatrixKokkos<T>::set(const ViewCMatrixKokkos <T>& temp)
+{
+	if (this != &temp) {
+		dim1_ = temp.dim1_;
+		dim2_ = temp.dim2_;
+		dim3_ = temp.dim3_;
+		dim4_ = temp.dim4_;
+		dim5_ = temp.dim5_;
+		dim6_ = temp.dim6_;
+
+		length_ = temp.length_;
+
+		this_matrix_ = temp.this_matrix_;
+	}
+	return *this;
+}
+
+template <typename T> 
+KOKKOS_FUNCTION
+ViewCMatrixKokkos<T>& ViewCMatrixKokkos<T>::operator=  (const T& temp) {
+
+	for (size_t i = 0; i < length_; i++) this_matrix_[i] = temp;
+
+	return *this;
+}
+
+
+template <typename T>
 KOKKOS_FUNCTION
 size_t ViewCMatrixKokkos<T>::size() {
     return length_;
+}
+
+template <typename T> 
+KOKKOS_FUNCTION 
+size_t ViewCMatrixKokkos<T>::dimsize(size_t i) const {
+	switch (i)
+	{
+	case 1: return dim1_;
+	case 2: return dim2_;
+	case 3: return dim3_;
+	case 4: return dim4_;
+	case 5: return dim5_;
+	case 6: return dim6_;
+	}
+	return length_;
 }
 
 template <typename T>
