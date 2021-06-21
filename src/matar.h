@@ -7406,15 +7406,11 @@ class RaggedRightArrayKokkos {
     using Strides1D = Kokkos::View<size_t *,ILayout, ExecSpace, MemoryTraits>;
     
 private:
-    SArray1D start_index_;
     TArray1D array_; 
     
     size_t dim1_;
     size_t length_;
     size_t num_saved_;
-
-    // THIS WILL BE A GPU POINTER!
-    Strides1D mystrides_;
     
 public:
     // Default constructor
@@ -7457,16 +7453,22 @@ public:
     T& operator()(size_t i, size_t j) const;
 
     // method to return total size
-    size_t size();
-
-    void start_index_setup();
+    KOKKOS_FUNCTION
+    size_t size(){
+      return length_;
+    }
+    
+    //setup start indices
+    void data_setup();
 
     T* pointer();
 
     //return the view
     TArray1D get_kokkos_view();
 
-    //setup start indices
+    // Kokkos views of strides and start indices
+    Strides1D mystrides_;
+    SArray1D start_index_;
 
     RaggedRightArrayKokkos& operator= (const RaggedRightArrayKokkos &temp);
     
@@ -7487,16 +7489,30 @@ public:
     class setup_start_indices_functor{
         public:
         SArray1D mystart_index_;
-        setup_start_indices_functor(SArray1D tempstart_index_){
+        Strides1D mytemp_strides_;
+        setup_start_indices_functor(SArray1D tempstart_index_, Strides1D temp_strides_){
           mystart_index_ = tempstart_index_;
+          mytemp_strides_ = temp_strides_;
         }
         KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
           // Load old value in case we update it before accumulating
-            const size_t count = mystart_index_(index+1);
+            const size_t count = mytemp_strides_(index);
             update += count;
             if (final) {
                 mystart_index_((index+1)) = update;
             }   
+        }
+    };
+
+    //setup length of view
+    class setup_length_functor{
+        public:
+        Strides1D mytemp_strides_;
+        setup_length_functor(Strides1D temp_strides_){
+          mytemp_strides_ = temp_strides_;
+        }
+        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update) const {
+            update += mytemp_strides_(index);
         }
     };
 
@@ -7567,7 +7583,7 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
     //mystrides_.assign_data(strides_array.pointer());
     mystrides_ = strides_array.get_kokkos_view();
     dim1_ = strides_array.extent();
-    start_index_setup();
+    data_setup();
 } // End constructor
 
 //// Overloaded constructor
@@ -7589,7 +7605,7 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
                                                   size_t some_dim1) {
     mystrides_.assign_data(strides_array);
     dim1_ = some_dim1;
-    start_index_setup();
+    data_setup();
 } // End constructor
 
 // overloaded constructor for a dynamically built strides_array.
@@ -7607,13 +7623,13 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
     
     length_ = some_dim1*buffer;
     mystrides_ = Strides1D("tempstrides", dim1_ + 1);
-    start_index_setup();
+    data_setup();
 } // end constructor
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_FUNCTION
-void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::start_index_setup() {
+void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup() {
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
       start_index_((i) = 0;
@@ -7634,9 +7650,23 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::start_inde
 
         });
     #else
-    setup_start_indices_functor setup_execution_functor(start_index_);
+    setup_start_indices_functor setup_execution_functor(start_index_, mystrides_);
     Kokkos::parallel_scan("StartValuesSetup", dim1_,setup_execution_functor);
     #endif
+
+    //compute length of the storage
+    #ifdef HAVE_CLASS_LAMBDA
+    Kokkos::parallel_reduce("LengthSetup", dim1_, KOKKOS_CLASS_LAMBDA(const int i, int& update) {
+            // Load old value in case we update it before accumulating
+            update += mystrides_(i);   
+        }, length_);
+    #else
+    setup_length_functor length_functor(mystrides_);
+    //Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor,length_);
+    #endif
+
+    //allocate view
+    array_ = TArray1D("array_", length_);
 }
 
 // A method to return the stride size
@@ -7808,15 +7838,11 @@ class RaggedRightArrayofVectorsKokkos {
     using Strides1D = Kokkos::View<size_t *,ILayout, ExecSpace, MemoryTraits>;
     
 private:
-    SArray1D start_index_;
     TArray1D array_; 
     
     size_t dim1_, vector_dim_;
     size_t length_;
     size_t num_saved_;
-
-    // THIS WILL BE A GPU POINTER!
-    Strides1D mystrides_;
     
 public:
     // Default constructor
@@ -7859,15 +7885,22 @@ public:
     T& operator()(size_t i, size_t j, size_t k) const;
 
     // method to return total size
-    size_t size();
+    KOKKOS_FUNCTION
+    size_t size(){
+      return length_;
+    }
     
     //setup start indices
-    void start_index_setup();
+    void data_setup();
 
     T* pointer();
 
     //return the view
     TArray1D get_kokkos_view();
+
+    // Kokkos views of strides and start indices
+    Strides1D mystrides_;
+    SArray1D start_index_;
 
     RaggedRightArrayofVectorsKokkos& operator= (const RaggedRightArrayofVectorsKokkos &temp);
 
@@ -7888,16 +7921,30 @@ public:
     class setup_start_indices_functor{
         public:
         SArray1D mystart_index_;
-        setup_start_indices_functor(SArray1D tempstart_index_){
+        Strides1D mytemp_strides_;
+        setup_start_indices_functor(SArray1D tempstart_index_, Strides1D temp_strides_){
           mystart_index_ = tempstart_index_;
+          mytemp_strides_ = temp_strides_;
         }
         KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
           // Load old value in case we update it before accumulating
-            const size_t count = mystart_index_(index+1);
+            const size_t count = mytemp_strides_(index);
             update += count;
             if (final) {
                 mystart_index_((index+1)) = update;
             }   
+        }
+    };
+
+    //setup length of view
+    class setup_length_functor{
+        public:
+        Strides1D mytemp_strides_;
+        setup_length_functor(Strides1D temp_strides_){
+          mytemp_strides_ = temp_strides_;
+        }
+        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update) const {
+            update += mytemp_strides_(index);
         }
     };
 
@@ -7970,7 +8017,7 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
     vector_dim_ = vector_dim;
     mystrides_ = strides_array.get_kokkos_view();
     dim1_ = strides_array.extent();
-    start_index_setup();
+    data_setup();
 } // End constructor
 
 /*
@@ -7995,7 +8042,7 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
     vector_dim_ = vector_dim;
     mystrides_.assign_data(strides_array);
     dim1_ = some_dim1;
-    start_index_setup();
+    data_setup();
 } // End constructor
 
 // overloaded constructor for a dynamically built strides_array.
@@ -8014,13 +8061,13 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
     
     length_ = some_dim1*buffer;
     mystrides_ = Strides1D("tempstrides", dim1_ + 1);
-    start_index_setup();
+    data_setup();
 } // end constructor
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_FUNCTION
-void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::start_index_setup() {
+void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup() {
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
       start_index_((i) = 0;
@@ -8041,9 +8088,23 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::s
 
         });
     #else
-    setup_start_indices_functor setup_execution_functor(start_index_);
+    setup_start_indices_functor setup_execution_functor(start_index_, mystrides_);
     Kokkos::parallel_scan("StartValuesSetup", dim1_,setup_execution_functor);
     #endif
+
+    //compute length of the storage
+    #ifdef HAVE_CLASS_LAMBDA
+    Kokkos::parallel_reduce("LengthSetup", dim1_, KOKKOS_CLASS_LAMBDA(const int i, int& update) {
+            // Load old value in case we update it before accumulating
+            update += mystrides_(i)*vector_dim_;   
+        }, length_);
+    #else
+    setup_length_functor length_functor(mystrides_);
+    //Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor,length_);
+    #endif
+
+    //allocate view
+    array_ = TArray1D("array_", length_);
 }
 
 // A method to return the stride size
@@ -8149,16 +8210,13 @@ class RaggedDownArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
     using SArray1D = Kokkos::View<size_t *,Layout, ExecSpace, MemoryTraits>;
+    using Strides1D = Kokkos::View<size_t *,Layout, ExecSpace, MemoryTraits>;
     
 private:
-    SArray1D start_index_;
     TArray1D array_; 
     
     size_t dim2_;
     size_t length_;
-
-    // THIS WILL BE A GPU POINTER!
-    SArray1D mystrides_;
     
 public:
     // Default constructor
@@ -8190,6 +8248,10 @@ public:
     TArray1D get_kokkos_view();
 
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
+
+    // Kokkos views of strides and start indices
+    Strides1D mystrides_;
+    SArray1D start_index_;
     
     //kokkos policy functors
     //initializes start(0); not sure if this is useful but copying from the LAMBDA implementation.
