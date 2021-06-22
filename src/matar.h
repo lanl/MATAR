@@ -5014,35 +5014,35 @@ public:
     // Overload operator() to acces data
     // from 1D to 6D
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k,
                    size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k,
                    size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k,
                    size_t l, size_t m, size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k,
                    size_t l, size_t m, size_t n, size_t o) const;
 
     // Overload = operator
     FArrayKokkos& operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp);
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
@@ -5053,7 +5053,7 @@ public:
     TArray1D get_kokkos_view();
 
     // Destructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~FArrayKokkos();    
 
 }; //end of FArrayKokkos declarations
@@ -5174,7 +5174,7 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
 
 // 1D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()( size_t i) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 1D!");
     return this_array_(i);
@@ -5182,7 +5182,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()( size_t i) const {
 
 // 2D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 2D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 2D!");
@@ -5191,7 +5191,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j)
 
 // 3D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 3D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 3D!");
@@ -5202,7 +5202,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 
 // 4D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 4D!");
     assert( j < dim2_ && "j is out of bounds in FArrayKokkos 4D!");
@@ -5215,7 +5215,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 
 // 5D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                size_t m) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 5D!");
@@ -5231,7 +5231,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 
 // 6D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                size_t m, size_t n) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 6D!");
@@ -5249,7 +5249,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 
 // 7D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
     assert( i < dim1_ && "i is out of bounds in FArrayKokkos 7D!");
@@ -5288,7 +5288,7 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& FArrayKokkos<T,Layout,ExecSpace,M
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
@@ -5311,7 +5311,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpac
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~FArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5356,38 +5356,38 @@ public:
     ViewFArrayKokkos(T* some_array, size_t dim1, size_t dim2, size_t dim3,
                      size_t dim4, size_t dim5, size_t dim6, size_t dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const; 
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k,
                   size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k,
                   size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k,
                   size_t l, size_t m, size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k,
                   size_t l, size_t m, size_t n, size_t o) const;
 
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~ViewFArrayKokkos();
 
 }; // End of ViewFArrayKokkos declarations
@@ -5482,7 +5482,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim1, size_t dim2,
 
 // Overloaded operator() for 1D array access
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i) const {
     assert( i < dim1_ && "i is out of bounds in ViewFArrayKokkos 1D!");
     return this_array_[i];
@@ -5490,7 +5490,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i) const {
 
 //2D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j) const {
     assert(i < dim1_ && "i is out of bounds in ViewFArrayKokkos 2D!");
     assert(j < dim2_ && "j is out of bounds in ViewFArrayKokkos 2D!");
@@ -5499,7 +5499,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j) const {
 
 //3D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
     assert(i < dim1_ && "i is out of bounds in ViewFArrayKokkos 3D!");
     assert(j < dim2_ && "j is out of bounds in ViewFArrayKokkos 3D!");
@@ -5510,7 +5510,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
 
 //4D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, 
                                    size_t l) const {
     assert(i < dim1_ && "i is out of bounds in ViewFArrayKokkos 4D!");
@@ -5524,7 +5524,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
 
 //5D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, 
                                    size_t l, size_t m) const {
     assert(i < dim1_ && "i is out of bounds in ViewFArrayKokkos 5D!");
@@ -5540,7 +5540,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
 
 //6D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, 
                                    size_t l, size_t m, size_t n) const {
     assert(i < dim1_ && "i is out of bounds in ViewFArrayKokkos 6D!");
@@ -5558,7 +5558,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
 
 //7D
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l, size_t m, size_t n,
                                    size_t o) const {
@@ -5578,7 +5578,7 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::size() {
     return length_;
 }
@@ -5589,7 +5589,7 @@ size_t ViewFArrayKokkos<T>::extent() {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::~ViewFArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5638,32 +5638,32 @@ public:
                   size_t some_dim4, size_t some_dim5, size_t some_dim6,
                   size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
     FMatrixKokkos& operator=(const FMatrixKokkos& temp);
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
@@ -5673,7 +5673,7 @@ public:
     //return kokkos view
     TArray1D get_kokkos_view();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~FMatrixKokkos();
 
 }; // End of FMatrixKokkos
@@ -5783,14 +5783,14 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t some_dim1, 
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 1D!");
     return this_matrix_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 2D!");
@@ -5798,7 +5798,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 3D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 3D!");
@@ -5808,7 +5808,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 4D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in FMatrixKokkos in 4D!");
@@ -5820,7 +5820,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 5D!");
@@ -5835,7 +5835,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 6D!");
@@ -5852,7 +5852,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in FMatrixKokkos in 7D!");
@@ -5890,7 +5890,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& FMatrixKokkos<T,Layout,ExecSpace
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
@@ -5912,7 +5912,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpa
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~FMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5962,35 +5962,35 @@ public:
                       size_t some_dim3, size_t some_dim4, size_t some_dim5,
                       size_t some_dim6, size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
         
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
  
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~ViewFMatrixKokkos();
     
 }; // end of ViewFMatrixKokkos
@@ -6090,14 +6090,14 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t some_dim1,
 
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewFMatrixKokkos 1D!"); 
     return this_matrix_[(i - 1)];
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewFMatrixKokkos 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in ViewFMatrixKokkos 2D!");  
@@ -6105,7 +6105,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j) const {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const
 {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewFMatrixKokkos 3D!");  
@@ -6117,7 +6117,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, 
                                     size_t l) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewFMatrixKokkos 4D!");
@@ -6130,7 +6130,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                     size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewFMatrixKokkos 5D!");
@@ -6145,7 +6145,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                     size_t m, size_t n) const
 {
@@ -6163,7 +6163,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n, size_t o) const
 {
@@ -6183,7 +6183,7 @@ T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::size() {
     return length_;
 }
@@ -6194,7 +6194,7 @@ size_t ViewFMatrixKokkos<T>::extent() {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::~ViewFMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -6242,26 +6242,26 @@ public:
                  size_t some_dim4, size_t some_dim5, size_t some_dim6,
                  size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
@@ -6269,7 +6269,7 @@ public:
 
     // GPU Method
     // Method that returns size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size() const;
 
     // Host Method
@@ -6283,7 +6283,7 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Deconstructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~CArrayKokkos ();
 }; // End of CArrayKokkos
 
@@ -6388,14 +6388,14 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, si
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 1D!");
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 2D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 2D!");
@@ -6403,7 +6403,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j)
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 3D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 3D!");
@@ -6413,7 +6413,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 4D!");
     assert(j < dim2_ && "j is out of bounds in CArrayKokkos 4D!");
@@ -6425,7 +6425,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 5D!");
@@ -6440,7 +6440,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 6D!");
@@ -6457,7 +6457,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
     assert(i < dim1_ && "i is out of bounds in CArrayKokkos 7D!");
@@ -6497,7 +6497,7 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& CArrayKokkos<T,Layout,ExecSpace,M
 
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
@@ -6519,7 +6519,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpac
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~CArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -6567,35 +6567,35 @@ public:
                      size_t some_dim3, size_t some_dim4, size_t some_dim5,
                      size_t some_dim6, size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
         
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator() (size_t i, size_t j, size_t k, size_t l, size_t m) const;
         
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
  
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~ViewCArrayKokkos();
     
 }; // end of ViewCArrayKokkos
@@ -6695,14 +6695,14 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t some_dim1,
 
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 1D!");
     return this_array_[i];
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 2D!");
     assert(j < dim2_ && "j is out of bounds in ViewCArrayKokkos 2D!");  
@@ -6710,7 +6710,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j) const {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 3D!");
     assert(j < dim2_ && "j is out of bounds in ViewCArrayKokkos 3D!");
@@ -6720,7 +6720,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, 
                                    size_t l) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 4D!");
@@ -6733,7 +6733,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                    size_t m) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 5D!");
@@ -6748,7 +6748,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                    size_t m, size_t n) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 6D!");
@@ -6765,7 +6765,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                    size_t m, size_t n, size_t o) const {
     assert(i < dim1_ && "i is out of bounds in ViewCArrayKokkos 7D!");
@@ -6784,7 +6784,7 @@ T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::size() {
     return length_;
 }
@@ -6795,7 +6795,7 @@ size_t ViewCArrayKokkos<T>::extent() {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::~ViewCArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -6843,32 +6843,32 @@ public:
                   size_t some_dim4, size_t some_dim5, size_t some_dim6,
                   size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
     CMatrixKokkos& operator=(const CMatrixKokkos &temp);
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
@@ -6878,7 +6878,7 @@ public:
     //return the view
     TArray1D get_kokkos_view();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~CMatrixKokkos();
 
 }; // End of CMatrixKokkos
@@ -6989,14 +6989,14 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t some_dim1, 
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 1D!");
     return this_matrix_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 2D!");
@@ -7004,7 +7004,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 3D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 3D!");
@@ -7014,7 +7014,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 4D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in CMatrixKokkos 4D!");
@@ -7026,7 +7026,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                 size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 5D!");
@@ -7041,7 +7041,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                 size_t m, size_t n) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 6D!");
@@ -7058,7 +7058,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in CMatrixKokkos 7D!");
@@ -7098,7 +7098,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> & CMatrixKokkos<T,Layout,ExecSpac
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
@@ -7121,7 +7121,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpa
 
 // Deconstructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~CMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7166,33 +7166,33 @@ public:
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3,
                       size_t dim4, size_t dim5, size_t dim6, size_t dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j , size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k , size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     size_t extent();
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~ViewCMatrixKokkos();
 
 }; // End of ViewCMatrixKokkos
@@ -7287,14 +7287,14 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewCMatrixKokkos 1D!");
     return this_matrix_[(i - 1)];
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewCMatrixKokkos 2D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in ViewCMatrixKokkos 2D!");
@@ -7302,7 +7302,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j) const {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewCMatrixKokkos 3D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in ViewCMatrixKokkos 3D!");
@@ -7312,7 +7312,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j , size_t k, size_t l) const { 
     assert(i >= 1 && i <= dim1_ && "i is out of bounds in ViewCMatrixKokkos 4D!");
     assert(j >= 1 && j <= dim2_ && "j is out of bounds in ViewCMatrixKokkos 4D!");
@@ -7324,7 +7324,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j , size_t k, size_t l) con
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                     size_t m) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds for ViewCMatrixKokkos 5D!");
@@ -7339,7 +7339,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l, 
                                     size_t m, size_t n) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds for ViewCMatrixKokkos 6D!");
@@ -7356,7 +7356,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n, size_t o) const {
     assert(i >= 1 && i <= dim1_ && "i is out of bounds for ViewCMatrixKokkos 7D!");
@@ -7376,7 +7376,7 @@ T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
 
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::size() {
     return length_;
 }
@@ -7387,7 +7387,7 @@ size_t ViewCMatrixKokkos<T>::extent() {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::~ViewCMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7435,25 +7435,25 @@ public:
     RaggedRightArrayKokkos (size_t some_dim1, size_t buffer);
     
     // A method to return the stride size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t stride(size_t i) const;
     
     // A method to increase the number of column entries, i.e.,
     // the stride size. Used with the constructor for building
     // the stride_array dynamically.
     // DO NOT USE with the constructures with a strides_array
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
 
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
     // where i=[0:N-1], j=[stride(i)]
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
     // method to return total size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size(){
       return length_;
     }
@@ -7507,11 +7507,17 @@ public:
     //setup length of view
     class setup_length_functor{
         public:
+        //kokkos needs this typedef named
+        typedef size_t value_type;
+        // This is helpful for determining the right index type,
+        // especially if you expect to need a 64-bit index.
+        //typedef Kokkos::View<size_t*>::size_type size_type;
         Strides1D mytemp_strides_;
         setup_length_functor(Strides1D temp_strides_){
           mytemp_strides_ = temp_strides_;
         }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update) const {
+        KOKKOS_INLINE_FUNCTION void operator()(const int index, size_t& update) const {
+            //const size_t count = mytemp_strides_(index);
             update += mytemp_strides_(index);
         }
     };
@@ -7560,17 +7566,17 @@ public:
 
     class templen_functor{
         public:
-        SArray1D* mytemplen;
-        templen_functor(SArray1D &templen){
-            mytemplen = &templen;
+        SArray1D mytemplen;
+        templen_functor(SArray1D templen){
+            mytemplen = templen;
         }
         KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          (*mytemplen)(0) = start_index_(dim1_);
+          mytemplen(0) = start_index_(dim1_);
         }
     };
 
     // Destructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~RaggedRightArrayKokkos ( );
 }; // End of RaggedRightArray
 
@@ -7628,8 +7634,10 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup() {
+    //allocate start indices
+    start_index_ = SArray1D("Ragged Right Start Indices",dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
       start_index_((i) = 0;
@@ -7662,7 +7670,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
         }, length_);
     #else
     setup_length_functor length_functor(mystrides_);
-    //Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor,length_);
+    Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor, length_);
     #endif
 
     //allocate view
@@ -7671,7 +7679,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
 
 // A method to return the stride size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t i) const {
     // Ensure that i is within bounds
     assert(i < (dim1_) && "i is greater than dim1_ in RaggedRightArray");
@@ -7680,7 +7688,7 @@ size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(s
 
 // Method to build the stride (non-Kokkos push back)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::build_stride(const size_t i) const {
     return start_index_(i+1);
 }
@@ -7710,7 +7718,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_fin
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(size_t i, size_t j) const {
     // Get the 1D array index
     size_t start = start_index_(i);
@@ -7820,7 +7828,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layou
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::~RaggedRightArrayKokkos() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7867,25 +7875,25 @@ public:
     RaggedRightArrayofVectorsKokkos (size_t some_dim1, size_t buffer, size_t vector_dim);
     
     // A method to return the stride size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t stride(size_t i) const;
     
     // A method to increase the number of column entries, i.e.,
     // the stride size. Used with the constructor for building
     // the stride_array dynamically.
     // DO NOT USE with the constructures with a strides_array
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
 
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
     // where i=[0:N-1], j=[stride(i)]
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
     // method to return total size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size(){
       return length_;
     }
@@ -7922,13 +7930,15 @@ public:
         public:
         SArray1D mystart_index_;
         Strides1D mytemp_strides_;
-        setup_start_indices_functor(SArray1D tempstart_index_, Strides1D temp_strides_){
+        size_t myvector_dim_;
+        setup_start_indices_functor(SArray1D tempstart_index_, Strides1D temp_strides_, size_t myvector_dim){
           mystart_index_ = tempstart_index_;
           mytemp_strides_ = temp_strides_;
+          myvector_dim_ = myvector_dim;
         }
         KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
           // Load old value in case we update it before accumulating
-            const size_t count = mytemp_strides_(index);
+            const size_t count = mytemp_strides_(index)*myvector_dim_;
             update += count;
             if (final) {
                 mystart_index_((index+1)) = update;
@@ -7939,12 +7949,22 @@ public:
     //setup length of view
     class setup_length_functor{
         public:
+        //kokkos needs this typedef named
+        typedef size_t value_type;
+        // This is helpful for determining the right index type,
+        // especially if you expect to need a 64-bit index.
+        //typedef Kokkos::View<size_t*>::size_type size_type;
+
         Strides1D mytemp_strides_;
-        setup_length_functor(Strides1D temp_strides_){
+        size_t myvector_dim_;
+
+        setup_length_functor(Strides1D temp_strides_, size_t myvector_dim){
           mytemp_strides_ = temp_strides_;
+          myvector_dim_ = myvector_dim;
         }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update) const {
-            update += mytemp_strides_(index);
+        KOKKOS_INLINE_FUNCTION void operator()(const int index, size_t& update) const {
+            //const size_t count = mytemp_strides_(index)*myvector_dim_;
+            update += mytemp_strides_(index)*myvector_dim_;;
         }
     };
 
@@ -8002,7 +8022,7 @@ public:
     };
 
     // Destructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~RaggedRightArrayofVectorsKokkos ( );
 }; // End of RaggedRightArrayofVectorsKokkos
 
@@ -8066,8 +8086,11 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup() {
+
+    //allocate start indices
+    start_index_ = SArray1D("Ragged Right Start Indices",dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
       start_index_((i) = 0;
@@ -8088,7 +8111,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
 
         });
     #else
-    setup_start_indices_functor setup_execution_functor(start_index_, mystrides_);
+    setup_start_indices_functor setup_execution_functor(start_index_, mystrides_, vector_dim_);
     Kokkos::parallel_scan("StartValuesSetup", dim1_,setup_execution_functor);
     #endif
 
@@ -8099,8 +8122,8 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
             update += mystrides_(i)*vector_dim_;   
         }, length_);
     #else
-    setup_length_functor length_functor(mystrides_);
-    //Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor,length_);
+    setup_length_functor length_functor(mystrides_, vector_dim_);
+    Kokkos::parallel_reduce("LengthSetup", dim1_, length_functor,length_);
     #endif
 
     //allocate view
@@ -8109,7 +8132,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
 
 // A method to return the stride size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t i) const {
     // Ensure that i is within bounds
     assert(i < (dim1_) && "i is greater than dim1_ in RaggedRightArray");
@@ -8118,7 +8141,7 @@ size_t RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>:
 
 // Method to build the stride (non-Kokkos push back)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::build_stride(const size_t i) const {
     return start_index_(i+1);
 }
@@ -8148,7 +8171,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::s
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(size_t i, size_t j, size_t k) const {
     // Get the 1D array index
     size_t start = start_index_(i);
@@ -8195,7 +8218,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokko
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::~RaggedRightArrayofVectorsKokkos() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8234,12 +8257,12 @@ public:
     RaggedDownArrayKokkos(size_t* strides_array, size_t some_dim2);
 
     // A method to return the stride size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t stride(size_t j) const;
     
     // Overload operator() to access data as array(i,j)
     // where i=[0:N-1], j=[stride(i)]
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
     T* pointer();
@@ -8297,7 +8320,7 @@ public:
     
 
     // Destructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~RaggedDownArrayKokkos ( );
 }; // End of RaggedDownArray
 
@@ -8326,7 +8349,7 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::RaggedDownArrayKokkos(si
 
 // A method to return the stride size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t j) const {
     // Ensure that j is within bounds
     assert(j < (dim2_) && "j is greater than dim1_ in RaggedDownArray");
@@ -8337,7 +8360,7 @@ size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t j) 
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Get the 1D array index
     size_t start = start_index_(j);
@@ -8468,7 +8491,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~RaggedDownArrayKokkos() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8501,11 +8524,11 @@ public:
     DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2);
     
     // A method to return or set the stride size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t& stride(size_t i) const;
     
     // A method to return the size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size() const;
 
     //return the view
@@ -8513,7 +8536,7 @@ public:
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
@@ -8547,14 +8570,14 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
 
 // A method to set the stride size for row i
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t i) const {
     return stride_(i);
 }
 
 //return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
 }
@@ -8562,8 +8585,8 @@ size_t DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() co
 // Overload operator() to access data as array(i,j),
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
-inline T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+KOKKOS_INLINE_FUNCTION
+T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
     assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedRight");  // die if >= dim1
     assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedRight");  // die if >= dim2
@@ -8643,11 +8666,11 @@ public:
     DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2);
     
     // A method to return or set the stride size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t& stride(size_t j) const;
     
     // A method to return the size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size() const;
 
     //return the view
@@ -8655,7 +8678,7 @@ public:
     
     // Overload operator() to access data as array(i,j),
     // where i=[stride(j)], j=[0:N-1]
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
@@ -8689,14 +8712,14 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDown
 
 // A method to set the stride size for column j
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t j) const {
     return stride_(j);
 }
 
 //return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
 }
@@ -8705,7 +8728,7 @@ size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() con
 // Note: i = 0:stride(j), j = 0:N-1
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
     assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim1
@@ -8807,26 +8830,26 @@ public:
                  size_t some_dim4, size_t some_dim5, size_t some_dim6,
                  size_t some_dim7);
     
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
                   size_t n) const;
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
@@ -8834,7 +8857,7 @@ public:
 
     // GPU Method
     // Method that returns size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     // Host Method
@@ -8845,7 +8868,7 @@ public:
     T* pointer();
 
     // Deconstructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~DViewCArrayKokkos ();
 }; // End of DViewCArrayKokkos
 
@@ -8989,14 +9012,14 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 1D!");
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 2D!");
     assert(j < dim2_ && "j is out of bounds in DViewCArrayKokkos 2D!");
@@ -9004,7 +9027,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 3D!");
     assert(j < dim2_ && "j is out of bounds in DViewCArrayKokkos 3D!");
@@ -9014,7 +9037,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 4D!");
     assert(j < dim2_ && "j is out of bounds in DViewCArrayKokkos 4D!");
@@ -9026,7 +9049,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 5D!");
@@ -9041,7 +9064,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 6D!");
@@ -9058,7 +9081,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
     assert(i < dim1_ && "i is out of bounds in DViewCArrayKokkos 7D!");
@@ -9100,7 +9123,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCArrayKokkos<T,Layout,E
 
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
@@ -9116,7 +9139,7 @@ T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCArrayKokkos() {}
 // End DViewCArrayKokkos
 
@@ -9143,7 +9166,7 @@ public:
     
     InheritedArray2L(size_t some_dim1);
 
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t dest) const;
 
     template <typename U>
@@ -9161,7 +9184,7 @@ public:
 
     // GPU Method
     // Method that returns size
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     size_t size();
 
     // Host Method
@@ -9172,7 +9195,7 @@ public:
     T* pointer();
 
     // Deconstructor
-    KOKKOS_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~InheritedArray2L ();
 }; // End of InheritedArray2L
 
@@ -9192,7 +9215,7 @@ InheritedArray2L<T>::InheritedArray2L(size_t some_dim1) {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 T& InheritedArray2L<T>::operator()(size_t i, size_t dest) const {
     assert(i < dim1_ && "i is out of bounds in InheritedArray2L 1D!");
     assert(dest < 2 && "dest is out of bounds in InheritedArray2L 1D!");
@@ -9248,7 +9271,7 @@ InheritedArray2L<T>& InheritedArray2L<T>::operator= (const InheritedArray2L& tem
 
 // Return size
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 size_t InheritedArray2L<T>::size() {
     return length_;
 }
@@ -9264,7 +9287,7 @@ T* InheritedArray2L<T>::pointer() {
 }
 
 template <typename T>
-KOKKOS_FUNCTION
+KOKKOS_INLINE_FUNCTION
 InheritedArray2L<T>::~InheritedArray2L() {}
 */
 
