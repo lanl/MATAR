@@ -74,7 +74,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string>
 #include <assert.h>
 
 using real_t = double;
@@ -89,6 +89,7 @@ using u_int  = unsigned int;
 #define kfree(pnt)        (  Kokkos::kokkos_free(pnt) ) 
 #define ProfileRegionStart  ( Kokkos::Profiling::pushRegion )
 #define ProfileRegionEnd  ( Kokkos::Profiling::popRegion )
+#define DEFAULTSTRING "array_"
 using HostSpace    = Kokkos::HostSpace;
 using MemoryUnmanaged = Kokkos::MemoryUnmanaged;
 
@@ -4977,7 +4978,7 @@ public:
 
         \param some_dim1 the length of the first dimension
      */
-    FArrayKokkos(size_t some_dim1);
+    FArrayKokkos(size_t some_dim1, std::string mystring = DEFAULTSTRING);
 
     /*!
      * \brief An overloaded constructor used to construct a 2D FArrayKokkos
@@ -4986,7 +4987,7 @@ public:
         \param some_dim1 the length of the first dimension
         \param some_dim2 the length of the second dimension
      */
-    FArrayKokkos(size_t some_dim1, size_t some_dim2);
+    FArrayKokkos(size_t some_dim1, size_t some_dim2, std::string mystring = DEFAULTSTRING);
 
     /*!
      * \brief An overloaded constructor used to construct a 3D FArrayKokkos
@@ -4996,20 +4997,20 @@ public:
         \param some_dim2 the length of the second dimension
         \param some_dim3 the length of the third dimension
      */
-    FArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3);
+    FArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3, std::string mystring = DEFAULTSTRING);
 
     FArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-                 size_t some_dim4);
+                 size_t some_dim4, std::string mystring = DEFAULTSTRING);
 
     FArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-                 size_t some_dim4, size_t some_dim5); 
+                 size_t some_dim4, size_t some_dim5, std::string mystring = DEFAULTSTRING); 
 
     FArrayKokkos(size_t some_dim1, size_t sone_dim2, size_t some_dim3, 
-                 size_t some_dim4, size_t some_dim5, size_t some_dim6);
+                 size_t some_dim4, size_t some_dim5, size_t some_dim6, std::string mystring = DEFAULTSTRING);
 
     FArrayKokkos(size_t some_dim1, size_t sone_dim2, size_t some_dim3,
                  size_t some_dim4, size_t some_dim5, size_t some_dim6,
-                 size_t some_dim7);
+                 size_t some_dim7, std::string mystring = DEFAULTSTRING);
     
     // Overload operator() to acces data
     // from 1D to 6D
@@ -5064,30 +5065,29 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1){
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, std::string mystring){
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
     dim1_ = some_dim1;
     length_ = dim1_;
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2) {
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, std::string mystring) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = (dim1_ * dim2_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 3D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
-                              size_t some_dim3) {
+                              size_t some_dim3, std::string mystring) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5095,13 +5095,13 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     length_ = (dim1_ * dim2_ * dim3_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 4D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
-                              size_t some_dim3, size_t some_dim4) {
+                              size_t some_dim3, size_t some_dim4, std::string mystring) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5110,14 +5110,14 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
     dim3_ = some_dim3;
     dim4_ = some_dim4;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 5D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
-                              size_t some_dim5) {
+                              size_t some_dim5, std::string mystring) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5127,14 +5127,14 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
     dim4_ = some_dim4;
     dim5_ = some_dim5;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 6D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
-                              size_t some_dim5, size_t some_dim6) {
+                              size_t some_dim5, size_t some_dim6, std::string mystring) {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5145,7 +5145,7 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
     dim5_ = some_dim5;
     dim6_ = some_dim6;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 7D constructor
@@ -5153,7 +5153,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, size_t some_dim2,
                               size_t some_dim3, size_t some_dim4,
                               size_t some_dim5, size_t some_dim6,
-                              size_t some_dim7) {
+                              size_t some_dim7, std::string mystring) {
     
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5165,7 +5165,7 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t some_dim1, si
     dim6_ = some_dim6;
     dim7_ = some_dim7;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Definitions of overload operator()
@@ -6223,24 +6223,24 @@ private:
 public:
     CArrayKokkos();
     
-    CArrayKokkos(size_t some_dim1);
+    CArrayKokkos(size_t some_dim1, std::string mystring = DEFAULTSTRING);
 
-    CArrayKokkos(size_t some_dim1, size_t some_dim2);
+    CArrayKokkos(size_t some_dim1, size_t some_dim2, std::string mystring = DEFAULTSTRING);
 
-    CArrayKokkos (size_t some_dim1, size_t some_dim2, size_t some_dim3);
+    CArrayKokkos (size_t some_dim1, size_t some_dim2, size_t some_dim3, std::string mystring = DEFAULTSTRING);
 
     CArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3, 
-                 size_t some_dim4);
+                 size_t some_dim4, std::string mystring = DEFAULTSTRING);
 
     CArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                 size_t some_dim4, size_t some_dim5);
+                 size_t some_dim4, size_t some_dim5, std::string mystring = DEFAULTSTRING);
 
     CArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3,
-                 size_t some_dim4, size_t some_dim5, size_t some_dim6);
+                 size_t some_dim4, size_t some_dim5, size_t some_dim6, std::string mystring = DEFAULTSTRING);
 
     CArrayKokkos(size_t some_dim1, size_t some_dim2, size_t some_dim3,
                  size_t some_dim4, size_t some_dim5, size_t some_dim6,
-                 size_t some_dim7);
+                 size_t some_dim7, std::string mystring = DEFAULTSTRING);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -6293,40 +6293,40 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1) {
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, std::string mystring) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
     length_ = dim1_;
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2) {
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, std::string mystring) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     length_ = (dim1_ * dim2_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
-                              size_t some_dim3) {
+                              size_t some_dim3, std::string mystring) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dim1_ = some_dim1;
     dim2_ = some_dim2;
     dim3_ = some_dim3;
     length_ = (dim1_ * dim2_ * dim3_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
-                              size_t some_dim3, size_t some_dim4) {
+                              size_t some_dim3, size_t some_dim4, std::string mystring) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dim1_ = some_dim1;
@@ -6334,13 +6334,13 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, si
     dim3_ = some_dim3;
     dim4_ = some_dim4;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
-                              size_t some_dim5) {
+                              size_t some_dim5, std::string mystring) {
 
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -6350,13 +6350,13 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, si
     dim4_ = some_dim4;
     dim5_ = some_dim5;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2, 
                               size_t some_dim3, size_t some_dim4, 
-                              size_t some_dim5, size_t some_dim6) {
+                              size_t some_dim5, size_t some_dim6, std::string mystring) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dim1_ = some_dim1;
@@ -6366,14 +6366,14 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, si
     dim5_ = some_dim5;
     dim6_ = some_dim6;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, size_t some_dim2,
                               size_t some_dim3, size_t some_dim4,
                               size_t some_dim5, size_t some_dim6,
-                              size_t some_dim7) {
+                              size_t some_dim7, std::string mystring) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dim1_ = some_dim1;
@@ -6384,7 +6384,7 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t some_dim1, si
     dim6_ = some_dim6;
     dim7_ = some_dim7;
     length_ = (dim1_ * dim2_ * dim3_ * dim4_ * dim5_ * dim6_ * dim7_);
-    this_array_ = TArray1D("this_array_", length_);
+    this_array_ = TArray1D(mystring, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
