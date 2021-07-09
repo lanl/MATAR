@@ -120,6 +120,8 @@ This program is open source under the BSD-3 License.
 @article{MATAR,
 title = "{MATAR: A Performance Portability and Productivity Implementation of Data-Oriented Design with Kokkos}",
 journal = {accepted to Journal of Parallel and Distributed Computing},
+pages = {86-104},
+volume = {157},
 year = {2021},
 author = {Daniel J. Dunning and Nathaniel R. Morgan and Jacob L. Moore and Eappen Nelluvelil and Tanya V. Tafolla and Robert W. Robey},
 keywords = {Performance, Portability, Productivity, Memory Efficiency, GPUs, dense and sparse storage}
