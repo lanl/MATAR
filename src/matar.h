@@ -9222,7 +9222,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCArrayKokkos<T,Layout,E
         dim7_ = temp.dim7_;
         length_ = temp.length_;
         temp_inp_array_ = temp.temp_inp_array_;
-        this_array_host_ = temp.this_array_host;
+        this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
     }
     
