@@ -24,8 +24,8 @@ int main() {
     for (int init = 0; init < 9; init++) { A1d[init] = init+1; }
     using policy2D = Kokkos::MDRangePolicy<Kokkos::Rank<2>>;
     policy2D CAKPpol = policy2D({0,0}, {3, 3});
-    CArrayKokkosPtr <int> cakp;
-    cakp = CArrayKokkosPtr <int> (&A1d[0], 3, 3);
+    DViewCArrayKokkos <int> cakp;
+    cakp = DViewCArrayKokkos <int> (&A1d[0], 3, 3);
     Kokkos::parallel_for("CAKPTest", CAKPpol, KOKKOS_LAMBDA(const int i, const int j) {
         //cakp(i, j) = i * 3 + j;
         printf("%d) %d\n", i * 3 + j, cakp(i, j));
