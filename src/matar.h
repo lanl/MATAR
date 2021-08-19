@@ -103,13 +103,13 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 using DefaultMemSpace  = Kokkos::HostSpace;
 using DefaultExecSpace = Kokkos::OpenMP;
 using DefaultLayout    = Kokkos::LayoutRight;
-#elif TRILINOS_INTERFACE
-using DefaultMemSpace  = void;
-using DefaultExecSpace = void;
-using DefaultLayout    = void;
 #elif HAVE_HIP
 using DefaultMemSpace  = Kokkos::HipSpace;
 using DefaultExecSpace = Kokkos::Hip;
+using DefaultLayout    = Kokkos::LayoutLeft;
+#else
+using DefaultMemSpace  = Kokkos::Serial;
+using DefaultExecSpace = Kokkos::Serial;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 
