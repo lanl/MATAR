@@ -84,13 +84,6 @@ using u_int  = unsigned int;
 #ifdef HAVE_KOKKOS
 #include <Kokkos_Core.hpp>
 
-//MACROS to make the code less scary
-#define kmalloc(size) ( Kokkos::kokkos_malloc<MemSpace>(size) )
-#define kfree(pnt)        (  Kokkos::kokkos_free(pnt) ) 
-#define ProfileRegionStart  ( Kokkos::Profiling::pushRegion )
-#define ProfileRegionEnd  ( Kokkos::Profiling::popRegion )
-#define DEFAULTSTRINGARRAY "array_"
-#define DEFAULTSTRINGMATRIX "matrix_"
 using HostSpace    = Kokkos::HostSpace;
 using MemoryUnmanaged = Kokkos::MemoryUnmanaged;
 
@@ -112,6 +105,14 @@ using DefaultMemSpace  = Kokkos::Serial;
 using DefaultExecSpace = Kokkos::Serial;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
+
+//MACROS to make the code less scary
+#define kmalloc(size) ( Kokkos::kokkos_malloc<DefaultMemSpace>(size) )
+#define kfree(pnt)        (  Kokkos::kokkos_free(pnt) ) 
+#define ProfileRegionStart  ( Kokkos::Profiling::pushRegion )
+#define ProfileRegionEnd  ( Kokkos::Profiling::popRegion )
+#define DEFAULTSTRINGARRAY "array_"
+#define DEFAULTSTRINGMATRIX "matrix_"
 
 using policy1D = Kokkos::RangePolicy<DefaultExecSpace>;
 using policy2D = Kokkos::MDRangePolicy< Kokkos::Rank<2> >;
