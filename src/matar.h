@@ -538,7 +538,8 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
         dims_[6] = temp.dims_[6];
         order_  = temp.order_;
         length_ = temp.length_;
-        delete[] array_;
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -573,6 +574,7 @@ inline T* FArray<T>::get_pointer() const {
 //delete FArray
 template <typename T>
 FArray<T>::~FArray(){
+    if(array_!=NULL)
     delete [] array_;
 }
 
@@ -1377,7 +1379,8 @@ inline FMatrix<T>& FMatrix<T>::operator= (const FMatrix& temp)
         dims_[6] = temp.dims_[6];
         order_  = temp.order_;
         length_ = temp.length_;
-        delete[] matrix_;
+        if(matrix_!=NULL)
+          delete[] matrix_;
         matrix_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -1412,7 +1415,8 @@ inline T* FMatrix<T>::get_pointer() const{
 
 template <typename T>
 FMatrix<T>::~FMatrix() {
-    delete[] matrix_;
+    if(matrix_!=NULL)
+      delete[] matrix_;
 }
 
 //----end of FMatrix class definitions----
@@ -2226,7 +2230,7 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
         order_  = temp.order_;
         length_ = temp.length_;
         if(array_!=NULL)
-        delete[] array_;
+          delete[] array_;
         array_ = NULL;
         if(length_!=0)
         array_ = new T[length_];
@@ -2264,7 +2268,8 @@ inline T* CArray<T>::get_pointer() const{
 //destructor
 template <typename T>
 CArray<T>::~CArray() {
-    delete[] array_;
+    if(array_!=NULL)
+      delete[] array_;
 }
 
 //----endof carray class definitions----
@@ -3095,7 +3100,8 @@ CMatrix<T> &CMatrix<T>::operator= (const CMatrix &temp) {
         dims_[6] = temp.dims_[6];
         order_  = temp.order_;
         length_ = temp.length_;
-        delete[] matrix_;
+        if(matrix_!=NULL)
+          delete[] matrix_;
         matrix_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -3130,7 +3136,8 @@ inline T* CMatrix<T>::get_pointer() const{
 // Destructor
 template <typename T>
 CMatrix<T>::~CMatrix(){
-    delete[] matrix_;
+    if(matrix_!=NULL)
+      delete[] matrix_;
 }
 
 //----end of CMatrix class definitions----
@@ -3758,12 +3765,15 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
         dim1_ = temp.dim1_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        delete[] start_index_;
+        if(start_index_!=NULL)
+          delete[] start_index_;
         start_index_ = new size_t[dim1_ + 1];
         for (int j = 0; j < dim1_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
-        delete[] array_;
+
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -3786,8 +3796,10 @@ inline size_t* RaggedRightArray<T>::get_starts() const{
 // Destructor
 template <typename T>
 RaggedRightArray<T>::~RaggedRightArray () {
-    delete[] array_;
-    delete[] start_index_;
+    if(array_!=NULL)
+      delete[] array_;
+    if(start_index_!=NULL)
+      delete[] start_index_;
 }
 
 //----end of RaggedRightArray class definitions----
@@ -4006,12 +4018,15 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
         vector_dim_ = temp.vector_dim_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        delete[] start_index_;
+        if(start_index_!=NULL)
+          delete[] start_index_;
         start_index_ = new size_t[dim1_ + 1];
         for (int j = 0; j < dim1_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
-        delete[] array_;
+
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -4034,8 +4049,10 @@ inline size_t* RaggedRightArrayofVectors<T>::get_starts() const{
 // Destructor
 template <typename T>
 RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {
-    delete[] array_;
-    delete[] start_index_;
+    if(array_!=NULL)
+      delete[] array_;
+    if(start_index_!=NULL)
+      delete[] start_index_;
 }
 
 //----end of RaggedRightArrayofVectors class definitions----
@@ -4242,12 +4259,16 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
         dim2_ = temp.dim2_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        delete[] start_index_;
+        if(start_index_!=NULL)
+          delete[] start_index_;
+
         start_index_ = new size_t[dim2_ + 1];
         for (int j = 0; j < dim2_ + 1; j++) {
             start_index_[j] = temp.start_index_[j];  
         }
-        delete[] array_;
+
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -4271,7 +4292,9 @@ inline size_t* RaggedDownArray<T>::get_starts() const{
 // Destructor
 template <typename T>
 RaggedDownArray<T>::~RaggedDownArray() {
+  if(array_!=NULL)
     delete[] array_;
+  if(start_index_!=NULL)
     delete[] start_index_;
 
 } // End destructor
@@ -4384,12 +4407,15 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
         dim1_ = temp.dim1_;
         dim2_ = temp.dim2_;
         length_ = temp.length_;
-        delete[] stride_;
+        if(stride_!=NULL)
+          delete[] stride_;
         stride_ = new size_t[dim1_];
         for (int i = 0; i < dim1_; i++) {
             stride_[i] = temp.stride_[i];
         }
-        delete[] array_;
+
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -4407,8 +4433,10 @@ inline T* DynamicRaggedRightArray<T>::get_pointer() const{
 // Destructor
 template <typename T>
 DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
-    delete[] array_;
-    delete[] stride_;
+    if(array_!=NULL)
+      delete[] array_;
+    if(stride_!=NULL)
+      delete[] stride_;
 }
 
 
@@ -4522,12 +4550,14 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
         dim1_ = temp.dim1_;
         dim2_ = temp.dim2_;
         length_ = temp.length_;
-        delete[] stride_;
+        if(stride_!=NULL)
+          delete[] stride_;
         stride_ = new size_t[dim1_];
         for (int j = 0; j < dim2_; j++) {
             stride_[j] = temp.stride_[j];
         }
-        delete[] array_;
+        if(array_!=NULL)
+          delete[] array_;
         array_ = new T[length_];
         //copy contents
         for(int iter = 0; iter < length_; iter++)
@@ -4545,8 +4575,10 @@ inline T* DynamicRaggedDownArray<T>::get_pointer() const{
 // Destructor
 template <typename T>
 DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
-    delete[] array_;
-    delete[] stride_;
+    if(array_!=NULL)
+      delete[] array_;
+    if(stride_!=NULL)
+      delete[] stride_;
 }
 
 //----end of DynamicRaggedDownArray class definitions-----
@@ -4734,9 +4766,12 @@ inline size_t* SparseRowArray<T>::get_starts() const{
 // Destructor
 template <typename T>
 SparseRowArray<T>::~SparseRowArray() {
-    delete[] array_;
-    delete[] start_index_;
-    delete[] column_index_;
+    if(array_!=NULL)
+      delete[] array_;
+    if(start_index_!=NULL)
+      delete[] start_index_;
+    if(column_index_!=NULL)
+      delete[] column_index_;
 }
 
 //---- end of SparseRowArray class definitions-----
@@ -4924,9 +4959,12 @@ inline size_t* SparseColArray<T>::get_starts() const{
 //destructor
 template <typename T>
 SparseColArray<T>::~SparseColArray() {
-	delete [] array_;
-	delete [] start_index_;
-	delete [] row_index_;
+    if(array_!=NULL)
+	  delete [] array_;
+    if(start_index_!=NULL)
+	  delete [] start_index_;
+    if(row_index_!=NULL)
+	  delete [] row_index_;
 }
 
 //----end SparseColArray----
