@@ -7465,10 +7465,6 @@ public:
     
     // Overloaded constructor for a traditional array
     RaggedRightArrayKokkos(size_t* strides_array, size_t some_dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    // Overload constructor for a RaggedRightArray to
-    // support a dynamically built stride_array
-    RaggedRightArrayKokkos (size_t some_dim1, size_t buffer, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     // A method to return the stride size
     KOKKOS_INLINE_FUNCTION
@@ -7507,8 +7503,7 @@ public:
     SArray1D start_index_;
 
     RaggedRightArrayKokkos& operator= (const RaggedRightArrayKokkos &temp);
-    
-    //functors for kokkos execution policies
+
     //initialize start indices view
     class init_start_indices_functor{
       public:
@@ -7642,23 +7637,6 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
     dim1_ = some_dim1;
     data_setup(tag_string);
 } // End constructor
-
-// overloaded constructor for a dynamically built strides_array.
-// buffer is the max number of columns needed
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayKokkos (size_t some_dim1, size_t buffer, 
-                                                                                         const std::string& tag_string) 
-{
-    dim1_ = some_dim1;
-
-    // create and initialize the starting index of the entries in the 1D array
-    //start_index_ = new size_t[dim1_+1]();  // note the dim1+1
-    //start_index_[0] = 0; // the 1D array starts at 0
-    
-    length_ = some_dim1*buffer;
-    mystrides_ = Strides1D("tempstrides", dim1_ + 1);
-    data_setup(tag_string);
-} // end constructor
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7900,10 +7878,6 @@ public:
     
     // Overloaded constructor for a traditional array
     RaggedRightArrayofVectorsKokkos(size_t* strides_array, size_t some_dim1, size_t vector_dim, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    // Overload constructor for a RaggedRightArray to
-    // support a dynamically built stride_array
-    RaggedRightArrayofVectorsKokkos (size_t some_dim1, size_t buffer, size_t vector_dim, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     // A method to return the stride size
     KOKKOS_INLINE_FUNCTION
@@ -8098,24 +8072,6 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
     dim1_ = some_dim1;
     data_setup(tag_string);
 } // End constructor
-
-// overloaded constructor for a dynamically built strides_array.
-// buffer is the max number of columns needed
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayofVectorsKokkos(size_t some_dim1, size_t buffer, size_t vector_dim,
-                                                                                                          const std::string& tag_string) 
-{
-    vector_dim_ = vector_dim;
-    dim1_ = some_dim1;
-
-    // create and initialize the starting index of the entries in the 1D array
-    //start_index_ = new size_t[dim1_+1]();  // note the dim1+1
-    //start_index_[0] = 0; // the 1D array starts at 0
-    
-    length_ = some_dim1*buffer;
-    mystrides_ = Strides1D("tempstrides", dim1_ + 1);
-    data_setup(tag_string);
-} // end constructor
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -8668,7 +8624,7 @@ public:
     //--- 2D array access of a ragged right array ---
     
     // overload constructor
-    DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2);
+    DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     // A method to return or set the stride size
     KOKKOS_INLINE_FUNCTION
@@ -8690,12 +8646,20 @@ public:
     DynamicRaggedRightArrayKokkos& operator= (const DynamicRaggedRightArrayKokkos &temp);
     
     //kokkos policy functors
-    //set strides to 0 functor
-    class stride_zero_functor{
-        stride_zero_functor(){}
-        void operator()(const int index) const {
-          stride_(index) = 0;
-        }
+
+    //functors for kokkos execution policies
+    //set strides to a constant value
+    class set_strides_functor{
+      public:
+      SArray1D functor_strides_;
+      size_t init_stride_;
+      set_strides_functor(size_t init_stride, SArray1D temp_strides_){
+        init_stride_ = init_stride;
+        functor_strides_ = temp_strides_;
+      }
+      KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
+        functor_strides_(index) = init_stride_; 
+      }
     };
     
     // Destructor
@@ -8708,11 +8672,31 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2) {
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string) {
     // The dimensions of the array;
     dim1_  = dim1;
     dim2_  = dim2;
     length_ = dim1*dim2;
+    
+    std::string append_stride_string("strides");
+    std::string append_array_string("array");
+    std::string temp_copy_string = tag_string;
+    std::string strides_tag_string = temp_copy_string.append(append_stride_string);
+    temp_copy_string = tag_string;
+    std::string array_tag_string = temp_copy_string.append(append_array_string);
+
+    stride_ = SArray1D(strides_tag_string, dim1_);
+    #ifdef HAVE_CLASS_LAMBDA
+    Kokkos::parallel_for("StridesInit", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
+      strides_((i) = 0;
+    });
+    #else
+    set_strides_functor execution_functor(0, stride_);
+    Kokkos::parallel_for("StridesInit", dim1_,execution_functor);
+    #endif
+
+    //allocate view
+    array_ = TArray1D(array_tag_string, length_);
 }
 
 // A method to set the stride size for row i
@@ -8736,7 +8720,7 @@ KOKKOS_INLINE_FUNCTION
 T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
     assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedRight");  // die if >= dim1
-    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedRight");  // die if >= dim2
+    assert(j < stride_(i) && "j is out of stride bounds in DynamicRaggedRight");  // die if >= dim2
     // Cannot assert on Kokkos View
     //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
     
@@ -8810,7 +8794,7 @@ public:
     //--- 2D array access of a ragged right array ---
     
     // overload constructor
-    DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2);
+    DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     // A method to return or set the stride size
     KOKKOS_INLINE_FUNCTION
@@ -8833,11 +8817,18 @@ public:
 
     //kokkos policy functors
     //set strides to 0 functor
-    class stride_zero_functor{
-        stride_zero_functor(){}
-        void operator()(const int index) const {
-          stride_(index) = 0;
-        }
+    //set strides to a constant value
+    class set_strides_functor{
+      public:
+      SArray1D functor_strides_;
+      size_t init_stride_;
+      set_strides_functor(size_t init_stride, SArray1D temp_strides_){
+        init_stride_ = init_stride;
+        functor_strides_ = temp_strides_;
+      }
+      KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
+        functor_strides_(index) = init_stride_; 
+      }
     };
     
     // Destructor
@@ -8850,11 +8841,31 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDown
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2) {
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string) {
     // The dimensions of the array;
     dim1_  = dim1;
     dim2_  = dim2;
     length_ = dim1*dim2;
+
+    std::string append_stride_string("strides");
+    std::string append_array_string("array");
+    std::string temp_copy_string = tag_string;
+    std::string strides_tag_string = temp_copy_string.append(append_stride_string);
+    temp_copy_string = tag_string;
+    std::string array_tag_string = temp_copy_string.append(append_array_string);
+
+    stride_ = SArray1D(strides_tag_string, dim2_);
+    #ifdef HAVE_CLASS_LAMBDA
+    Kokkos::parallel_for("StridesInit", dim2_, KOKKOS_CLASS_LAMBDA(const int i) {
+      strides_((i) = 0;
+    });
+    #else
+    set_strides_functor execution_functor(0, stride_);
+    Kokkos::parallel_for("StridesInit", dim2_,execution_functor);
+    #endif
+
+    //allocate view
+    array_ = TArray1D(array_tag_string, length_);
 }
 
 // A method to set the stride size for column j
@@ -8878,8 +8889,8 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim1
     assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim2
+    assert(i < stride(j) && "i is out of stride bounds in DynamicRaggedDownArrayKokkos");  // die if >= stride(j)
     // Can't do this assert with a Kokkos View
     //assert(i < stride_[j] && "i is out of stride bounds in DynamicRaggedDownArrayKokkos");  // die if >= stride
     
