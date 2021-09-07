@@ -101,6 +101,11 @@ cmake -DKOKKOS=1 .
 make
 ```
 
+## Kokkos with OpenMP build
+```
+cmake -DKOKKOS=1 -DOPENMP=1 .
+```
+    
 ## Kokkos with CUDA build
 ```
 cmake -DKOKKOS=1  -DCUDA=1 .
