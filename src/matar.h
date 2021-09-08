@@ -7569,42 +7569,6 @@ public:
             }   
         }
     };
-    //initializes start(0); not sure if this is useful but copying from the LAMBDA implementation.
-    class assignment_init_functor{
-        public:
-        assignment_init_functor(){}
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
-    
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        public:
-        RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>* mytemp;
-        assignment_scan_functor(const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp){
-          mytemp = &temp;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp->mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        public:
-        SArray1D mytemplen;
-        templen_functor(SArray1D templen){
-            mytemplen = templen;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          mytemplen(0) = start_index_(dim1_);
-        }
-    };
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7989,42 +7953,6 @@ public:
             }   
         }
     };
-    //initializes start(0); not sure if this is useful but copying from the LAMBDA implementation.
-    class assignment_init_functor{
-        public:
-        assignment_init_functor(){}
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
-    
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        public:
-        RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>* mytemp;
-        assignment_scan_functor(const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp){
-          mytemp = &temp;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp->mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        public:
-        SArray1D* mytemplen;
-        templen_functor(SArray1D &templen){
-            mytemplen = &templen;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          (*mytemplen)(0) = start_index_(dim1_);
-        }
-    };
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -8324,45 +8252,7 @@ public:
             update += mytemp_strides_(index);
         }
     };
-
-    class assignment_init_functor{
-        assignment_init_functor(){}
-        void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
     
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> mytemp;
-        assignment_scan_functor(const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> temp){
-          mytemp = temp;
-        }
-        void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp.mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        SArray1D* mytemplen;
-        templen_functor(SArray1D &templen){
-            mytemplen = &templen;
-        }
-        void operator()(const int index) const {
-          (*mytemplen)(0) = start_index_(dim2_);
-        }
-    };
-    
-    class stride_check_functor{
-        stride_check_functor(){}
-        void operator()(const int index) const {
-          printf("%d) Start %ld\n", index, start_index_(index));
-        }
     };
     
 
