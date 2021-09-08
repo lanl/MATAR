@@ -8252,9 +8252,6 @@ public:
             update += mytemp_strides_(index);
         }
     };
-    
-    };
-    
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
