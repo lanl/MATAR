@@ -59,7 +59,7 @@
 
 template <typename F>
 void for_all (int i_start, int i_end,
-              const F lambda_fcn){
+              const F &lambda_fcn){
     
         for (int i=i_start; i<i_end; i++){
             lambda_fcn(i);
@@ -118,7 +118,7 @@ void for_reduce (int i_start, int i_end,
     
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
-            lambda_fcn(i,j, var);
+            lambda_fcn(i, j, var);
         }
     }
     
@@ -131,7 +131,7 @@ void for_reduce (int i_start, int i_end,
                  int j_start, int j_end,
                  int k_start, int k_end,
                  T &var,
-                 const F &lambda_fcn, T &result){
+                 const F &lambda_fcn,  T &result){
     
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
@@ -168,8 +168,7 @@ void for_reduce (int i_start, int i_end,
 #define \
     VARS4(i, x0, x1,fcn) \
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( (x0), (x1)), \
-                          KOKKOS_LAMBDA(const int (i) ) \
-    {fcn} )
+                          KOKKOS_LAMBDA( const int (i) ){fcn} )
 // 2D FOR loop has 7 inputs
 #define \
     VARS7(i, x0, x1, j, y0, y1,fcn) \
@@ -223,19 +222,19 @@ void for_reduce (int i_start, int i_end,
 // the FOR_ALL loop
 // 1D FOR loop has 4 inputs
 #define \
-    VARS4(i, x0, x1,fcn) \
+    VARS4(i, x0, x1, fcn) \
     for_all( (x0), (x1), \
-             [=]( const int (i) ){fcn} )
+             [&]( const int &(i) ){fcn} )
 // 2D FOR loop has 7 inputs
 #define \
-    VARS7(i, x0, x1, j, y0, y1,fcn)  \
+    VARS7(i, x0, x1, j, y0, y1, fcn)  \
     for_all( (x0), (x1), (y0), (y1), \
-             [=]( const int (i), const int (j) ){fcn} )
+             [&]( const int (i), const int (j) ){fcn} )
 // 3D FOR loop has 10 inputs
 #define \
     VARS10(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
     for_all( (x0), (x1), (y0), (y1), (z0), (z1), \
-             [=]( const int (i), const int (j), const int (k) ) {fcn} )
+             [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     FOR_ALL(...) \
     GET_MACRO(__VA_ARGS__, _12, _11, VARS10, _9, _8, VARS7, _6, _5, VARS4)(__VA_ARGS__)
@@ -244,17 +243,17 @@ void for_reduce (int i_start, int i_end,
 #define \
     VARS6(i, x0, x1, var, fcn, result) \
     for_reduce((x0), (x1), (var),  \
-                [=]( const int (i), decltype(var) &(var) ){fcn}, \
+                [&]( const int (i), decltype(var) &(var) ){fcn}, \
                 (result) )
 #define \
     VARS9(i, x0, x1, j, y0, y1, var, fcn, result) \
     for_reduce((x0), (x1), (y0), (y1), (var),  \
-               [=]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+               [&]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
                (result) )
 #define \
     VARS12(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
-    for_reduce((x0), (x1), (y0), (y1), (z1), (z2), (var),  \
-               [=]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+    for_reduce((x0), (x1), (y0), (y1), (z0), (z1), (var),  \
+               [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
                (result) )
 
 #define \

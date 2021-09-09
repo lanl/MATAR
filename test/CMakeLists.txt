@@ -4,6 +4,10 @@ project (mtest)
 
 add_executable(mtest main.cpp)
 
+if (NOT KOKKOS)
+   add_executable(test_for test_for.cpp)
+   target_link_libraries(test_for matar)
+endif()
 
 if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
@@ -25,6 +29,7 @@ endif()
 
 
 target_link_libraries(mtest matar)
+
 
 include_directories(virtualFcnKokkos)
 add_subdirectory(virtualFcnKokkos)

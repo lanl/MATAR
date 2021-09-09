@@ -2219,6 +2219,7 @@ inline T& CArray<T>::operator() (size_t i,
 template <typename T>
 inline CArray<T>& CArray<T>::operator= (const CArray& temp)
 {
+    
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
         dims_[0] = temp.dims_[0];
@@ -2230,8 +2231,9 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
         dims_[6] = temp.dims_[6];
         order_  = temp.order_;
         length_ = temp.length_;
-        if(array_!=NULL)
-          delete[] array_;
+        if(array_!=NULL){
+            delete[] array_;
+        }
         array_ = NULL;
         if(length_!=0)
         array_ = new T[length_];
@@ -2269,8 +2271,9 @@ inline T* CArray<T>::get_pointer() const{
 //destructor
 template <typename T>
 CArray<T>::~CArray() {
-    if(array_!=NULL)
-      delete[] array_;
+    if(array_!=NULL){
+        delete[] array_;
+    }
 }
 
 //----endof carray class definitions----
