@@ -201,6 +201,8 @@ public:
           size_t dim4,
           size_t dim5,
           size_t dim6);
+
+    FArray (const FArray& temp);
     
     // overload operator() to access data as array(i,....,n);
     T& operator()(size_t i) const;
@@ -400,6 +402,35 @@ FArray<T>::FArray(size_t dim0,
     array_ = new T[length_];
         
 }
+
+//Copy constructor
+
+template <typename T>
+FArray<T>::FArray(const FArray& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        array_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            array_[iter] = temp.array_[iter];
+    } // end if
+    
+} // end constructor
 
 //overload operator () for 1D to 7D
 //indices are from [0:N-1]
@@ -1035,7 +1066,6 @@ public:
              size_t dim5,
              size_t dim6);
 
-
     FMatrix (size_t dim1,
              size_t dim2,
              size_t dim3,
@@ -1043,6 +1073,8 @@ public:
              size_t dim5,
              size_t dim6,
              size_t dim7);
+    
+    FMatrix (const FMatrix& temp);
     
     T& operator() (size_t i) const;
     
@@ -1242,6 +1274,34 @@ FMatrix<T>::FMatrix(size_t dim1,
     matrix_ = new T[length_];
     
 }
+
+template <typename T>
+FMatrix<T>::FMatrix(const FMatrix& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        matrix_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            matrix_[iter] = temp.matrix_[iter];
+    } // end if
+    
+} // end constructor
+
 
 //overload operators
 
@@ -2087,13 +2147,11 @@ CArray<T>::CArray(size_t dim0,
 //Copy constructor
 
 template <typename T>
-
 CArray<T>::CArray(const CArray& temp) {
     
     // Do nothing if the assignment is of the form x = x
     
     if (this != &temp) {
-        
         dims_[0] = temp.dims_[0];
         dims_[1] = temp.dims_[1];
         dims_[2] = temp.dims_[2];
@@ -2111,7 +2169,6 @@ CArray<T>::CArray(const CArray& temp) {
         
         for(int iter = 0; iter < length_; iter++)
             array_[iter] = temp.array_[iter];
-        
     } // end if
     
 } // end constructor
@@ -2794,6 +2851,8 @@ public:
             size_t dim6,
             size_t dim7);
 
+    CMatrix(const CMatrix& temp);
+    
     //overload operators to access data
     T& operator()(size_t i) const;
 
@@ -2995,6 +3054,33 @@ CMatrix<T>::CMatrix(size_t dim1,
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
     matrix_ = new T[length_];
 }
+
+template <typename T>
+CMatrix<T>::CMatrix(const CMatrix& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        matrix_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            matrix_[iter] = temp.matrix_[iter];
+    } // end if
+    
+} // end constructor
 
 //overload () operator
 
