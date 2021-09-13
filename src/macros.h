@@ -28,21 +28,22 @@
  2.  The syntax to use the FOR_REDUCE is as follows:
 
  // reduce over a single loop
- FOR_REDUCE(i, 0, 100,
+ REDUCE_SUM(i, 0, 100,
             local_answer,
-           { loop contents is here }, answer);
+            { loop contents is here }, answer);
 
- FOR_REDUCE(i, 0, 100,
+ REDUCE_SUM(i, 0, 100,
             j, 0, 100,
             local_answer,
            { loop contents is here }, answer);
  
- FOR_REDUCE(i, 0, 100,
+ REDUCE_SUM(i, 0, 100,
             j, 0, 100,
             k, 0, 100,
             local_answer,
            { loop contents is here }, answer);
  
+ // other reduces are: RDUCE_MAX and REDUCE_MIN
  **********************************************************************************************/
 
 
@@ -51,19 +52,152 @@
 #include <matar.h>
 
 
+
+
+
+// -----------------------------------------
+// MACROS used with both Kokkos and non-kokkos versions
+// -----------------------------------------
+// a macro to select the name of a macro based on the number of inputs
+#define \
+    GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, NAME,...) NAME
+
+
+// -----------------------------------------
+// MACROS for kokkos
+// -----------------------------------------
+
+#ifdef HAVE_KOKKOS
+
+// CArray nested loop convention use Right, FArray use Left
+#define LOOP_ORDER Kokkos::Iterate::Right
+
+
+// the FOR_ALL loop
+#define \
+    FOR1D(i, x0, x1,fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( (x0), (x1)), \
+                          KOKKOS_LAMBDA( const int (i) ){fcn} )
+
+#define \
+    FOR2D(i, x0, x1, j, y0, y1,fcn) \
+    Kokkos::parallel_for( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+        KOKKOS_LAMBDA( const int (i), const int (j) ){fcn} )
+
+#define \
+    FOR3D(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    Kokkos::parallel_for( \
+         Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+         KOKKOS_LAMBDA( const int (i), const int (j), const int (k) ) {fcn} )
+
+#define \
+    FOR_ALL(...) \
+    GET_MACRO(__VA_ARGS__, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
+
+
+// the REDUCE SUM loop
+#define \
+    RSUM1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                             KOKKOS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, (result))
+
+#define \
+    RSUM2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+        KOKKOS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+           (result) )
+
+#define \
+    RSUM3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+        KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+            (result) )
+
+#define \
+    REDUCE_SUM(...) \
+    GET_MACRO(__VA_ARGS__, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
+
+
+
+// the REDUCE MAX loop
+
+#define \
+    RMAX1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+    RMAX2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                        KOKKOS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+    RMAX3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                        KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+    REDUCE_MAX(...) \
+    GET_MACRO(__VA_ARGS__, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+
+
+
+// the REDUCE MIN loop
+#define \
+    RMIN1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_LAMBDA( const int (i), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result))
+
+#define \
+    RMIN2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                        KOKKOS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result) )
+
+#define \
+    RMIN3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                        KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result) )
+
+#define \
+    REDUCE_MIN(...) \
+    GET_MACRO(__VA_ARGS__, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+
+#endif
+// end of KOKKOS routines
+
+
+
+
 // -----------------------------------------
 // The for_all and for_reduce functions that
 // are used with the non-kokkos MACROS
 // -----------------------------------------
 
+#ifndef HAVE_KOKKOS
+#include <limits>  // for the max and min values of a int, double, etc.
 
 template <typename F>
 void for_all (int i_start, int i_end,
               const F &lambda_fcn){
     
-        for (int i=i_start; i<i_end; i++){
-            lambda_fcn(i);
-        }
+    for (int i=i_start; i<i_end; i++){
+        lambda_fcn(i);
+    }
     
 }; // end for_all
 
@@ -99,10 +233,12 @@ void for_all (int i_start, int i_end,
 }; // end for_all
 
 
+// SUM
 template <typename T, typename F>
-void for_reduce (int i_start, int i_end, T &var,
+void reduce_sum (int i_start, int i_end,
+                 T var,
                  const F &lambda_fcn, T &result){
-    
+    var = 0;
     for (int i=i_start; i<i_end; i++){
         lambda_fcn(i, var);
     }
@@ -111,14 +247,14 @@ void for_reduce (int i_start, int i_end, T &var,
 
 
 template <typename T, typename F>
-void for_reduce (int i_start, int i_end,
+void reduce_sum (int i_start, int i_end,
                  int j_start, int j_end,
-                 T &var,
+                 T var,
                  const F &lambda_fcn, T &result){
-    
+    var = 0;
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
-            lambda_fcn(i, j, var);
+            lambda_fcn(i,j,var);
         }
     }
     
@@ -127,12 +263,12 @@ void for_reduce (int i_start, int i_end,
 
 
 template <typename T, typename F>
-void for_reduce (int i_start, int i_end,
+void reduce_sum (int i_start, int i_end,
                  int j_start, int j_end,
                  int k_start, int k_end,
-                 T &var,
+                 T  var,
                  const F &lambda_fcn,  T &result){
-    
+    var = 0;
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
             for (int k=k_start; k<k_end; k++){
@@ -145,71 +281,101 @@ void for_reduce (int i_start, int i_end,
 };  // end for_reduce
 
 
-// -----------------------------------------
-// MACROS used with both Kokkos and non-kokkos versions
-// -----------------------------------------
-// a macro to select the name of a macro based on the number of inputs
-#define \
-    GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, NAME,...) NAME
+// MIN
+template <typename T, typename F>
+void reduce_min (int i_start, int i_end,
+                 T var,
+                 const F &lambda_fcn, T &result){
+    var = std::numeric_limits<T>::max(); //2147483647;
+    for (int i=i_start; i<i_end; i++){
+        lambda_fcn(i, var);
+    }
+    result = var;
+};  // end for_reduce
 
 
-// -----------------------------------------
-// MACROS for kokkos
-// -----------------------------------------
+template <typename T, typename F>
+void reduce_min (int i_start, int i_end,
+                 int j_start, int j_end,
+                 T var,
+                 const F &lambda_fcn, T &result){
+    var = std::numeric_limits<T>::max(); //2147483647;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            lambda_fcn(i,j,var);
+        }
+    }
+    
+    result = var;
+};  // end for_reduce
 
-#ifdef HAVE_KOKKOS
 
-// CArray nested loop convention use Right, FArray use Left
-#define LOOP_ORDER Kokkos::Iterate::Right
+template <typename T, typename F>
+void reduce_min (int i_start, int i_end,
+                 int j_start, int j_end,
+                 int k_start, int k_end,
+                 T  var,
+                 const F &lambda_fcn,  T &result){
+    var = std::numeric_limits<T>::max(); //2147483647;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            for (int k=k_start; k<k_end; k++){
+                lambda_fcn(i,j,k,var);
+            }
+        }
+    }
+    
+    result = var;
+};  // end for_reduce
+
+// MAX
+template <typename T, typename F>
+void reduce_max (int i_start, int i_end,
+                 T var,
+                 const F &lambda_fcn, T &result){
+    var = std::numeric_limits<T>::min(); // -2147483647 - 1;
+    for (int i=i_start; i<i_end; i++){
+        lambda_fcn(i, var);
+    }
+    result = var;
+};  // end for_reduce
 
 
-// the FOR_ALL loop
-// 1D FOR loop has 4 inputs
-#define \
-    VARS4(i, x0, x1,fcn) \
-    Kokkos::parallel_for( Kokkos::RangePolicy<> ( (x0), (x1)), \
-                          KOKKOS_LAMBDA( const int (i) ){fcn} )
-// 2D FOR loop has 7 inputs
-#define \
-    VARS7(i, x0, x1, j, y0, y1,fcn) \
-    Kokkos::parallel_for( \
-        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
-        KOKKOS_LAMBDA( const int (i), const int (j) ){fcn} )
-// 3D FOR loop has 10 inputs
-#define \
-    VARS10(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
-    Kokkos::parallel_for( \
-         Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
-         KOKKOS_LAMBDA( const int (i), const int (j), const int (k) ) {fcn} )
+template <typename T, typename F>
+void reduce_max (int i_start, int i_end,
+                 int j_start, int j_end,
+                 T var,
+                 const F &lambda_fcn, T &result){
+    var = std::numeric_limits<T>::min(); //-2147483647 - 1;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            lambda_fcn(i,j,var);
+        }
+    }
+    
+    result = var;
+};  // end for_reduce
 
-#define \
-    FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, VARS10, _9, _8, VARS7, _6, _5, VARS4)(__VA_ARGS__)
 
-// the FOR_REDUCE loop
-#define \
-    VARS6(i, x0, x1, var, fcn, result) \
-    Kokkos::parallel_reduce( Kokkos::RangePolicy<> ( (x0), (x1) ),  \
-                             KOKKOS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, (result))
+template <typename T, typename F>
+void reduce_max (int i_start, int i_end,
+                 int j_start, int j_end,
+                 int k_start, int k_end,
+                 T  var,
+                 const F &lambda_fcn,  T &result){
+    var = std::numeric_limits<T>::min(); // -2147483647 - 1;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            for (int k=k_start; k<k_end; k++){
+                lambda_fcn(i,j,k,var);
+            }
+        }
+    }
+    
+    result = var;
+};  // end for_reduce
 
-#define \
-    VARS9(i, x0, x1, j, y0, y1, var, fcn, result) \
-    Kokkos::parallel_reduce( \
-        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
-        KOKKOS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
-           (result) )
-#define \
-    VARS12(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
-    Kokkos::parallel_reduce( \
-        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
-        KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
-            (result) )
-
-#define \
-    FOR_REDUCE(...) \
-    GET_MACRO(__VA_ARGS__, VARS12, _11, _10, VARS9, _8, _7, VARS6)(__VA_ARGS__)
-#endif
-
+#endif  // if not kokkos
 
 // -----------------------------------------
 // MACROS for none kokkos loops
@@ -217,50 +383,93 @@ void for_reduce (int i_start, int i_end,
 
 #ifndef HAVE_KOKKOS
 
+
 // the FOR_ALL loop is chosen based on the number of inputs
 
 // the FOR_ALL loop
 // 1D FOR loop has 4 inputs
 #define \
-    VARS4(i, x0, x1, fcn) \
+    FOR1D(i, x0, x1, fcn) \
     for_all( (x0), (x1), \
-             [&]( const int &(i) ){fcn} )
+             [&]( const int (i) ){fcn} )
 // 2D FOR loop has 7 inputs
 #define \
-    VARS7(i, x0, x1, j, y0, y1, fcn)  \
+    FOR2D(i, x0, x1, j, y0, y1, fcn)  \
     for_all( (x0), (x1), (y0), (y1), \
              [&]( const int (i), const int (j) ){fcn} )
 // 3D FOR loop has 10 inputs
 #define \
-    VARS10(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    FOR3D(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
     for_all( (x0), (x1), (y0), (y1), (z0), (z1), \
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, VARS10, _9, _8, VARS7, _6, _5, VARS4)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
 
-// the FOR_REDUCE loop ******* A work in progress ********
+
+// the REDUCE loops, no kokkos
 #define \
-    VARS6(i, x0, x1, var, fcn, result) \
-    for_reduce((x0), (x1), (var),  \
-                [&]( const int (i), decltype(var) &(var) ){fcn}, \
+    RSUM1D(i, x0, x1, var, fcn, result) \
+    reduce_sum( (x0), (x1), (var),  \
+                [=]( const int (i), decltype(var) &(var) ){fcn}, \
                 (result) )
 #define \
-    VARS9(i, x0, x1, j, y0, y1, var, fcn, result) \
-    for_reduce((x0), (x1), (y0), (y1), (var),  \
-               [&]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
-               (result) )
+    RSUM2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    reduce_sum( (x0), (x1), (y0), (y1), (var),  \
+                [=]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                (result) )
 #define \
-    VARS12(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
-    for_reduce((x0), (x1), (y0), (y1), (z0), (z1), (var),  \
-               [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
-               (result) )
+    RSUM3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    reduce_sum( (x0), (x1), (y0), (y1), (z0), (z1), (var),  \
+                [=]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                (result) )
 
 #define \
-    FOR_REDUCE(...) \
-    GET_MACRO(__VA_ARGS__, VARS12, _11, _10, VARS9, _8, _7, VARS6)(__VA_ARGS__)
+    REDUCE_SUM(...) \
+    GET_MACRO(__VA_ARGS__, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
-#endif
+#define \
+    RMAX1D(i, x0, x1, var, fcn, result) \
+    reduce_max( (x0), (x1), (var),  \
+                [=]( const int (i), decltype(var) &(var) ){fcn}, \
+                (result) )
+#define \
+    RMAX2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    reduce_max( (x0), (x1), (y0), (y1), (var),  \
+                [=]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                (result) )
+#define \
+    RMAX3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    reduce_max( (x0), (x1), (y0), (y1), (z0), (z1), (var),  \
+                [=]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                (result) )
+
+#define \
+    REDUCE_MAX(...) \
+    GET_MACRO(__VA_ARGS__, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+
+
+#define \
+    RMIN1D(i, x0, x1, var, fcn, result) \
+    reduce_min( (x0), (x1), (var),  \
+                [=]( const int (i), decltype(var) &(var) ){fcn}, \
+                (result) )
+#define \
+    RMIN2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    reduce_min( (x0), (x1), (y0), (y1), (var),  \
+                [=]( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                (result) )
+#define \
+    RMIN3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    reduce_min( (x0), (x1), (y0), (y1), (z0), (z1), (var),  \
+                [=]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                (result) )
+
+#define \
+    REDUCE_MIN(...) \
+    GET_MACRO(__VA_ARGS__, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+
+#endif  // if not kokkos
 
 
 

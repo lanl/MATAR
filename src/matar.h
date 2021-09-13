@@ -1885,6 +1885,8 @@ public:
             size_t dim5,
             size_t dim6);
     
+    CArray (const CArray& temp);
+    
     // Overload operator()
     T& operator() (size_t i) const;
     
@@ -2082,6 +2084,37 @@ CArray<T>::CArray(size_t dim0,
     array_ = new T[length_];
 }
 
+//Copy constructor
+
+template <typename T>
+
+CArray<T>::CArray(const CArray& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        array_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            array_[iter] = temp.array_[iter];
+        
+    } // end if
+    
+} // end constructor
 
 
 //overload () operator
@@ -2243,6 +2276,8 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
     }
     return *this;
 }
+
+
 
 //return size
 template <typename T>

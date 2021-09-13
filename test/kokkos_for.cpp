@@ -36,7 +36,7 @@ int main(){
 
     int loc_sum = 0;
     int result = 0;
-    FOR_REDUCE(i, 0, 10,
+    REDUCE_SUM(i, 0, 10,
                loc_sum, {
         loc_sum += arr(i)*arr(i);
     }, result);
@@ -51,7 +51,7 @@ int main(){
     
     loc_sum = 0;
     result = 0;
-    FOR_REDUCE(i, 0, 10,
+    REDUCE_SUM(i, 0, 10,
                j, 0, 10,
                loc_sum, {
                    loc_sum += arr_2D(i,j)*arr_2D(i,j);
@@ -69,7 +69,7 @@ int main(){
     
     loc_sum = 0;
     result = 0;
-    FOR_REDUCE(i, 0, 10,
+    REDUCE_SUM(i, 0, 10,
                j, 0, 10,
                k, 0, 10,
                loc_sum, {
@@ -87,6 +87,49 @@ int main(){
     }
     std::cout << "3D reduce : " << result << " vs. " << loc_sum << " \n";
     
+    result = 0;
+    int loc_max = 2000;
+    REDUCE_MAX(i, 0, 10,
+               j, 0, 10,
+               k, 0, 10,
+               loc_max, {
+
+                   if(loc_max < arr_3D(i,j,k)){
+                       loc_max = arr_3D(i,j,k);
+                   }
+                   
+               },
+               result);
+    
+    std::cout << "3D reduce MAX : " << result << " \n";
+    
+    // verbose version
+    double loc_max_value = 20000;
+    double max_value = 20000;
+    Kokkos::parallel_reduce(
+                            Kokkos::MDRangePolicy<Kokkos::Rank<2>>({0,0}, {10,10}),
+                            KOKKOS_LAMBDA(const int i, const int j, double& loc_max_value)
+                            {
+                                if(arr_2D(i,j) > loc_max_value) loc_max_value = arr_2D(i,j);
+                            },
+                            Kokkos::Max<double>(max_value)
+                            );
+    std::cout << "2D reduce MAX kokkos verbose : " << max_value << " \n";
+    
+    result = 0;
+    int loc_min = 2000;
+    REDUCE_MIN(i, 0, 10,
+               j, 0, 10,
+               k, 0, 10,
+               loc_min, {
+                   
+                   if(loc_min > arr_3D(i,j,k)){
+                       loc_min = arr_3D(i,j,k); }
+                   
+               },
+               result);
+    
+    std::cout << "3D reduce MIN : " << result << " \n";
     
 
     std::cout << "done" << std::endl;
