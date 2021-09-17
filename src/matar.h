@@ -253,7 +253,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // deconstructor
     ~FArray ( );
@@ -599,7 +599,7 @@ inline size_t FArray<T>::order() const {
 
 
 template <typename T>
-inline T* FArray<T>::get_pointer() const {
+inline T* FArray<T>::pointer() const {
     return array_;
 }
 
@@ -1125,7 +1125,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     // Deconstructor
     ~FMatrix ();
@@ -1470,7 +1470,7 @@ inline size_t FMatrix<T>::order() const {
 }
 
 template <typename T>
-inline T* FMatrix<T>::get_pointer() const{
+inline T* FMatrix<T>::pointer() const{
     return matrix_;
 }
 
@@ -1996,7 +1996,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     // Deconstructor
     ~CArray ();
@@ -2356,7 +2356,7 @@ inline size_t CArray<T>::order() const {
 
 
 template <typename T>
-inline T* CArray<T>::get_pointer() const{
+inline T* CArray<T>::pointer() const{
     return array_;
 }
 
@@ -2902,7 +2902,7 @@ public:
     size_t order() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // deconstructor
     ~CMatrix( );
@@ -3254,7 +3254,7 @@ inline size_t CMatrix<T>::order() const {
 }
 
 template <typename T>
-inline T* CMatrix<T>::get_pointer() const{
+inline T* CMatrix<T>::pointer() const{
     return matrix_;
 }
 
@@ -3730,7 +3730,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -3909,7 +3909,7 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
 }
 
 template <typename T>
-inline T* RaggedRightArray<T>::get_pointer() const{
+inline T* RaggedRightArray<T>::pointer() const{
     return array_;
 }
 
@@ -3978,7 +3978,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -4162,7 +4162,7 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
 }
 
 template <typename T>
-inline T* RaggedRightArrayofVectors<T>::get_pointer() const{
+inline T* RaggedRightArrayofVectors<T>::pointer() const{
     return array_;
 }
 
@@ -4227,7 +4227,7 @@ public:
     size_t size();
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -4404,7 +4404,7 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
 }
 
 template <typename T>
-inline T* RaggedDownArray<T>::get_pointer() const{
+inline T* RaggedDownArray<T>::pointer() const{
     return array_;
 }
 
@@ -4456,7 +4456,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -4551,7 +4551,7 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
 }
 
 template <typename T>
-inline T* DynamicRaggedRightArray<T>::get_pointer() const{
+inline T* DynamicRaggedRightArray<T>::pointer() const{
     return array_;
 }
 
@@ -4605,7 +4605,7 @@ public:
     DynamicRaggedDownArray& operator= (const DynamicRaggedDownArray &temp);
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // Destructor
     ~DynamicRaggedDownArray ();
@@ -4693,7 +4693,7 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
 }
 
 template <typename T>
-inline T* DynamicRaggedDownArray<T>::get_pointer() const{
+inline T* DynamicRaggedDownArray<T>::pointer() const{
     return array_;
 }
 
@@ -4751,7 +4751,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     //get row starts array
     size_t* get_starts() const;
@@ -4879,7 +4879,7 @@ size_t SparseRowArray<T>::size() const{
 }
 
 template <typename T>
-inline T* SparseRowArray<T>::get_pointer() const{
+inline T* SparseRowArray<T>::pointer() const{
     return array_;
 }
 
@@ -4941,7 +4941,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     //get row starts array
     size_t* get_starts() const;
@@ -5072,7 +5072,7 @@ size_t SparseColArray<T>::size() const{
 }
 
 template <typename T>
-inline T* SparseColArray<T>::get_pointer() const{
+inline T* SparseColArray<T>::pointer() const{
     return array_;
 }
 
