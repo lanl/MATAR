@@ -34,3 +34,6 @@ target_link_libraries(mtest matar)
 include_directories(virtualFcnKokkos)
 add_subdirectory(virtualFcnKokkos)
 
+include_directories(laplace)
+add_subdirectory(laplace)
+
