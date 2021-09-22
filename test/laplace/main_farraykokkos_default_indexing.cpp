@@ -3,8 +3,8 @@
 #include <chrono>
 #include <matar.h>
 
-const int width = 8000;
-const int height = 8000;
+const int width = 1000;
+const int height = 1000;
 const double temp_tolerance = 0.01;
 
 void initialize(FArrayKokkos<double> &temperature_previous);
