@@ -1,1 +1,1 @@
-The examples in this folder shows the correct and incorrect use of the MATAR arrays by using the Lplace equation for steady-state temperature distribution using Jacobi iteration as a case study. The results of the tests are detailed in "report.pdf".
+This folder shows the correct and incorrect use of MATAR arrays and the consequences on performance. The numerical solution of the Laplace equation for steady-state temperature distribution using Jacobi iteration is used as a case study. The results of the tests are detailed in "report.pdf".
