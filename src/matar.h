@@ -5206,16 +5206,20 @@ public:
                    size_t l, size_t m, size_t n, size_t o) const;
 
     // Overload = operator
+    KOKKOS_INLINE_FUNCTION
     FArrayKokkos& operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
     
     //return kokkos view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Destructor
@@ -5435,6 +5439,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 // Overload = operator
 // for object assingment THIS = FArrayKokkos<> TEMP(n,m,,,,)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5459,17 +5464,20 @@ size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_array_;
 }
@@ -5549,7 +5557,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -5749,6 +5758,7 @@ size_t ViewFArrayKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::extent() {
     return length_;
 }
@@ -5826,16 +5836,20 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     FMatrixKokkos& operator=(const FMatrixKokkos& temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
     
     //return kokkos view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     KOKKOS_INLINE_FUNCTION
@@ -6036,6 +6050,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
@@ -6061,17 +6076,20 @@ size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_matrix_;
 }
@@ -6152,7 +6170,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -6354,6 +6373,7 @@ size_t ViewFMatrixKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::extent() {
     return length_;
 }
@@ -6430,6 +6450,7 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     CArrayKokkos& operator=(const CArrayKokkos& temp);
 
     // GPU Method
@@ -6439,12 +6460,15 @@ public:
 
     // Host Method
     // Method that returns size
+    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
     T* pointer() const;
     
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
 
     // Deconstructor
@@ -6641,6 +6665,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -6668,17 +6693,20 @@ size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
@@ -6757,7 +6785,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -6955,6 +6984,7 @@ size_t ViewCArrayKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::extent() {
     return length_;
 }
@@ -7031,16 +7061,20 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     CMatrixKokkos& operator=(const CMatrixKokkos &temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     KOKKOS_INLINE_FUNCTION
@@ -7244,6 +7278,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 // Overload = operator
 // for object assignment THIS = CMatrixKokkos <> temp
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> & CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> &temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
@@ -7269,17 +7304,20 @@ size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_matrix_;
 }
@@ -7355,6 +7393,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t size();
 
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -7547,6 +7586,7 @@ size_t ViewCMatrixKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::extent() {
     return length_;
 }
@@ -7601,7 +7641,8 @@ public:
     // DO NOT USE with the constructures with a strides_array
     KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
@@ -7616,17 +7657,21 @@ public:
     }
     
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
     SArray1D start_index_;
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedRightArrayKokkos& operator= (const RaggedRightArrayKokkos &temp);
 
     //initialize start indices view
@@ -7797,6 +7842,7 @@ size_t& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::build_s
 
 // Method to finalize stride
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_finalize() const {
     
     #ifdef HAVE_CLASS_LAMBDA
@@ -7833,12 +7879,14 @@ T& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(s
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
     return array_.data();
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
   operator= (const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -7923,6 +7971,7 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArr
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -7978,7 +8027,8 @@ public:
     // DO NOT USE with the constructures with a strides_array
     KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
@@ -7993,17 +8043,21 @@ public:
     }
     
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
     SArray1D start_index_;
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedRightArrayofVectorsKokkos& operator= (const RaggedRightArrayofVectorsKokkos &temp);
 
     //functors for kokkos execution policies
@@ -8197,6 +8251,7 @@ size_t& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>
 
 // Method to finalize stride
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_finalize() const {
     
     #ifdef HAVE_CLASS_LAMBDA
@@ -8234,12 +8289,14 @@ T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::ope
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
     return array_.data();
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
   operator= (const RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -8260,6 +8317,7 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & Ragge
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -8310,18 +8368,22 @@ public:
     size_t stride(size_t j) const;
 
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
     
     // Overload operator() to access data as array(i,j)
     // where i=[0:N-1], j=[stride(i)]
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
 
     // Kokkos views of strides and start indices
@@ -8487,6 +8549,7 @@ T& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(si
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
 operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -8600,6 +8663,7 @@ operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> 
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -8647,6 +8711,7 @@ public:
     size_t size() const;
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
     
     // Overload operator() to access data as array(i,j),
@@ -8655,6 +8720,7 @@ public:
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
+    KOKKOS_INLINE_FUNCTION
     DynamicRaggedRightArrayKokkos& operator= (const DynamicRaggedRightArrayKokkos &temp);
     
     //kokkos policy functors
@@ -8675,6 +8741,7 @@ public:
     };
     
     // Destructor
+    KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedRightArrayKokkos ();
 };
 
@@ -8741,7 +8808,8 @@ T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(si
 
 //overload = operator
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
+KOKKOS_INLINE_FUNCTION
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
        DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
 {
     
@@ -8768,12 +8836,14 @@ inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
 }
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedRightArrayKokkos() {
 }
 
@@ -8817,6 +8887,7 @@ public:
     size_t size() const;
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
     
     // Overload operator() to access data as array(i,j),
@@ -8825,6 +8896,7 @@ public:
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
+    KOKKOS_INLINE_FUNCTION
     DynamicRaggedDownArrayKokkos& operator= (const DynamicRaggedDownArrayKokkos &temp);
 
     //kokkos policy functors
@@ -8844,6 +8916,7 @@ public:
     };
     
     // Destructor
+    KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedDownArrayKokkos ();
 };
 
@@ -8911,6 +8984,7 @@ T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(siz
 
 //overload = operator
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
   DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
 {
@@ -8938,12 +9012,14 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
 }
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDownArrayKokkos() {
 }
 
@@ -9023,6 +9099,7 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     DViewCArrayKokkos& operator=(const DViewCArrayKokkos& temp);
 
     // GPU Method
@@ -9032,9 +9109,11 @@ public:
 
     // Host Method
     // Method that returns size
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     // Deconstructor
@@ -9270,6 +9349,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DViewCArrayKokkos& temp) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -9299,11 +9379,13 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }
