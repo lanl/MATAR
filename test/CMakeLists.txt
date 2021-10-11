@@ -4,9 +4,14 @@ project (mtest)
 
 add_executable(mtest main.cpp)
 
+if (NOT KOKKOS)
+   add_executable(test_for test_for.cpp)
+   target_link_libraries(test_for matar)
+endif()
 
 if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
+  add_executable(test_kokkos_for kokkos_for.cpp)
 
   add_definitions(-DHAVE_KOKKOS=1)
   #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_KOKKOS)
@@ -19,11 +24,16 @@ if (KOKKOS)
   endif()
 
   target_link_libraries(mtestkokkos matar Kokkos::kokkos)
+  target_link_libraries(test_kokkos_for Kokkos::kokkos)
 endif()
 
 
 target_link_libraries(mtest matar)
 
+
 include_directories(virtualFcnKokkos)
 add_subdirectory(virtualFcnKokkos)
+
+include_directories(laplace)
+add_subdirectory(laplace)
 

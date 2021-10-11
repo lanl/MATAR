@@ -1,4 +1,12 @@
 cmake_minimum_required(VERSION 3.1.3)
+
+# set wrapper if compiling for CUDA and using gcc compiler
+if (KOKKOS)
+  if (CUDA)
+    set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/src/Kokkos/kokkos/bin/nvcc_wrapper CACHE FILEPATH "")
+  endif()
+endif()
+
 project (MATAR)
 set (CMAKE_CXX_STANDARD 17)
 

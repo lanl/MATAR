@@ -1,6 +1,6 @@
 #ifndef MATAR_H
 #define MATAR_H
-/*****************************************************************************
+/**********************************************************************************************
  © 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
@@ -76,6 +76,7 @@
 #include <stdlib.h>
 #include <string>
 #include <assert.h>
+#include "macros.h"
 
 using real_t = double;
 using u_int  = unsigned int;
@@ -200,6 +201,8 @@ public:
           size_t dim4,
           size_t dim5,
           size_t dim6);
+
+    FArray (const FArray& temp);
     
     // overload operator() to access data as array(i,....,n);
     T& operator()(size_t i) const;
@@ -250,7 +253,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // deconstructor
     ~FArray ( );
@@ -399,6 +402,35 @@ FArray<T>::FArray(size_t dim0,
     array_ = new T[length_];
         
 }
+
+//Copy constructor
+
+template <typename T>
+FArray<T>::FArray(const FArray& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        array_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            array_[iter] = temp.array_[iter];
+    } // end if
+    
+} // end constructor
 
 //overload operator () for 1D to 7D
 //indices are from [0:N-1]
@@ -567,7 +599,7 @@ inline size_t FArray<T>::order() const {
 
 
 template <typename T>
-inline T* FArray<T>::get_pointer() const {
+inline T* FArray<T>::pointer() const {
     return array_;
 }
 
@@ -1034,7 +1066,6 @@ public:
              size_t dim5,
              size_t dim6);
 
-
     FMatrix (size_t dim1,
              size_t dim2,
              size_t dim3,
@@ -1042,6 +1073,8 @@ public:
              size_t dim5,
              size_t dim6,
              size_t dim7);
+    
+    FMatrix (const FMatrix& temp);
     
     T& operator() (size_t i) const;
     
@@ -1092,7 +1125,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     // Deconstructor
     ~FMatrix ();
@@ -1241,6 +1274,34 @@ FMatrix<T>::FMatrix(size_t dim1,
     matrix_ = new T[length_];
     
 }
+
+template <typename T>
+FMatrix<T>::FMatrix(const FMatrix& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        matrix_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            matrix_[iter] = temp.matrix_[iter];
+    } // end if
+    
+} // end constructor
+
 
 //overload operators
 
@@ -1409,7 +1470,7 @@ inline size_t FMatrix<T>::order() const {
 }
 
 template <typename T>
-inline T* FMatrix<T>::get_pointer() const{
+inline T* FMatrix<T>::pointer() const{
     return matrix_;
 }
 
@@ -1884,6 +1945,8 @@ public:
             size_t dim5,
             size_t dim6);
     
+    CArray (const CArray& temp);
+    
     // Overload operator()
     T& operator() (size_t i) const;
     
@@ -1933,7 +1996,7 @@ public:
     size_t order() const;
     
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     // Deconstructor
     ~CArray ();
@@ -2081,6 +2144,34 @@ CArray<T>::CArray(size_t dim0,
     array_ = new T[length_];
 }
 
+//Copy constructor
+
+template <typename T>
+CArray<T>::CArray(const CArray& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        array_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            array_[iter] = temp.array_[iter];
+    } // end if
+    
+} // end constructor
 
 
 //overload () operator
@@ -2218,6 +2309,7 @@ inline T& CArray<T>::operator() (size_t i,
 template <typename T>
 inline CArray<T>& CArray<T>::operator= (const CArray& temp)
 {
+    
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
         dims_[0] = temp.dims_[0];
@@ -2229,8 +2321,9 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
         dims_[6] = temp.dims_[6];
         order_  = temp.order_;
         length_ = temp.length_;
-        if(array_!=NULL)
-          delete[] array_;
+        if(array_!=NULL){
+            delete[] array_;
+        }
         array_ = NULL;
         if(length_!=0)
         array_ = new T[length_];
@@ -2240,6 +2333,8 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
     }
     return *this;
 }
+
+
 
 //return size
 template <typename T>
@@ -2261,15 +2356,16 @@ inline size_t CArray<T>::order() const {
 
 
 template <typename T>
-inline T* CArray<T>::get_pointer() const{
+inline T* CArray<T>::pointer() const{
     return array_;
 }
 
 //destructor
 template <typename T>
 CArray<T>::~CArray() {
-    if(array_!=NULL)
-      delete[] array_;
+    if(array_!=NULL){
+        delete[] array_;
+    }
 }
 
 //----endof carray class definitions----
@@ -2755,6 +2851,8 @@ public:
             size_t dim6,
             size_t dim7);
 
+    CMatrix(const CMatrix& temp);
+    
     //overload operators to access data
     T& operator()(size_t i) const;
 
@@ -2804,7 +2902,7 @@ public:
     size_t order() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // deconstructor
     ~CMatrix( );
@@ -2956,6 +3054,33 @@ CMatrix<T>::CMatrix(size_t dim1,
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
     matrix_ = new T[length_];
 }
+
+template <typename T>
+CMatrix<T>::CMatrix(const CMatrix& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    
+    if (this != &temp) {
+        dims_[0] = temp.dims_[0];
+        dims_[1] = temp.dims_[1];
+        dims_[2] = temp.dims_[2];
+        dims_[3] = temp.dims_[3];
+        dims_[4] = temp.dims_[4];
+        dims_[5] = temp.dims_[5];
+        dims_[6] = temp.dims_[6];
+        
+        order_  = temp.order_;
+        length_ = temp.length_;
+        
+        matrix_ = new T[length_];
+        
+        //copy contents
+        
+        for(int iter = 0; iter < length_; iter++)
+            matrix_[iter] = temp.matrix_[iter];
+    } // end if
+    
+} // end constructor
 
 //overload () operator
 
@@ -3129,7 +3254,7 @@ inline size_t CMatrix<T>::order() const {
 }
 
 template <typename T>
-inline T* CMatrix<T>::get_pointer() const{
+inline T* CMatrix<T>::pointer() const{
     return matrix_;
 }
 
@@ -3605,7 +3730,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -3784,7 +3909,7 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
 }
 
 template <typename T>
-inline T* RaggedRightArray<T>::get_pointer() const{
+inline T* RaggedRightArray<T>::pointer() const{
     return array_;
 }
 
@@ -3853,7 +3978,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -4037,7 +4162,7 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
 }
 
 template <typename T>
-inline T* RaggedRightArrayofVectors<T>::get_pointer() const{
+inline T* RaggedRightArrayofVectors<T>::pointer() const{
     return array_;
 }
 
@@ -4102,7 +4227,7 @@ public:
     size_t size();
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     //get row starts array
     size_t* get_starts() const;
@@ -4279,7 +4404,7 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
 }
 
 template <typename T>
-inline T* RaggedDownArray<T>::get_pointer() const{
+inline T* RaggedDownArray<T>::pointer() const{
     return array_;
 }
 
@@ -4331,7 +4456,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -4426,7 +4551,7 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
 }
 
 template <typename T>
-inline T* DynamicRaggedRightArray<T>::get_pointer() const{
+inline T* DynamicRaggedRightArray<T>::pointer() const{
     return array_;
 }
 
@@ -4480,7 +4605,7 @@ public:
     DynamicRaggedDownArray& operator= (const DynamicRaggedDownArray &temp);
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
     
     // Destructor
     ~DynamicRaggedDownArray ();
@@ -4568,7 +4693,7 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
 }
 
 template <typename T>
-inline T* DynamicRaggedDownArray<T>::get_pointer() const{
+inline T* DynamicRaggedDownArray<T>::pointer() const{
     return array_;
 }
 
@@ -4626,7 +4751,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     //get row starts array
     size_t* get_starts() const;
@@ -4754,7 +4879,7 @@ size_t SparseRowArray<T>::size() const{
 }
 
 template <typename T>
-inline T* SparseRowArray<T>::get_pointer() const{
+inline T* SparseRowArray<T>::pointer() const{
     return array_;
 }
 
@@ -4816,7 +4941,7 @@ public:
     size_t size() const;
 
     //return pointer
-    T* get_pointer() const;
+    T* pointer() const;
 
     //get row starts array
     size_t* get_starts() const;
@@ -4947,7 +5072,7 @@ size_t SparseColArray<T>::size() const{
 }
 
 template <typename T>
-inline T* SparseColArray<T>::get_pointer() const{
+inline T* SparseColArray<T>::pointer() const{
     return array_;
 }
 
@@ -5081,16 +5206,20 @@ public:
                    size_t l, size_t m, size_t n, size_t o) const;
 
     // Overload = operator
+    KOKKOS_INLINE_FUNCTION
     FArrayKokkos& operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
     
     //return kokkos view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Destructor
@@ -5310,6 +5439,7 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 // Overload = operator
 // for object assingment THIS = FArrayKokkos<> TEMP(n,m,,,,)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -5334,17 +5464,20 @@ size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_array_;
 }
@@ -5424,7 +5557,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -5624,6 +5758,7 @@ size_t ViewFArrayKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::extent() {
     return length_;
 }
@@ -5701,16 +5836,20 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     FMatrixKokkos& operator=(const FMatrixKokkos& temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
     
     //return kokkos view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     KOKKOS_INLINE_FUNCTION
@@ -5911,6 +6050,7 @@ T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
@@ -5936,17 +6076,20 @@ size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_matrix_;
 }
@@ -6027,7 +6170,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -6229,6 +6373,7 @@ size_t ViewFMatrixKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::extent() {
     return length_;
 }
@@ -6305,6 +6450,7 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     CArrayKokkos& operator=(const CArrayKokkos& temp);
 
     // GPU Method
@@ -6314,12 +6460,15 @@ public:
 
     // Host Method
     // Method that returns size
+    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
     T* pointer() const;
     
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
 
     // Deconstructor
@@ -6516,6 +6665,7 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -6543,17 +6693,20 @@ size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
@@ -6632,7 +6785,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -6830,6 +6984,7 @@ size_t ViewCArrayKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::extent() {
     return length_;
 }
@@ -6906,16 +7061,20 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     CMatrixKokkos& operator=(const CMatrixKokkos &temp);
 
     KOKKOS_INLINE_FUNCTION
     size_t size();
-
+    
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     KOKKOS_INLINE_FUNCTION
@@ -7119,6 +7278,7 @@ T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 // Overload = operator
 // for object assignment THIS = CMatrixKokkos <> temp
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> & CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> &temp) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
@@ -7144,17 +7304,20 @@ size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_matrix_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return this_matrix_;
 }
@@ -7230,6 +7393,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t size();
 
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     KOKKOS_INLINE_FUNCTION
@@ -7422,6 +7586,7 @@ size_t ViewCMatrixKokkos<T>::size() {
 }
 
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::extent() {
     return length_;
 }
@@ -7476,7 +7641,8 @@ public:
     // DO NOT USE with the constructures with a strides_array
     KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
@@ -7491,17 +7657,21 @@ public:
     }
     
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
     SArray1D start_index_;
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedRightArrayKokkos& operator= (const RaggedRightArrayKokkos &temp);
 
     //initialize start indices view
@@ -7567,42 +7737,6 @@ public:
             if (final) {
                 mystart_index_((index+1)) = update;
             }   
-        }
-    };
-    //initializes start(0); not sure if this is useful but copying from the LAMBDA implementation.
-    class assignment_init_functor{
-        public:
-        assignment_init_functor(){}
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
-    
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        public:
-        RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>* mytemp;
-        assignment_scan_functor(const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp){
-          mytemp = &temp;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp->mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        public:
-        SArray1D mytemplen;
-        templen_functor(SArray1D templen){
-            mytemplen = templen;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          mytemplen(0) = start_index_(dim1_);
         }
     };
 
@@ -7708,6 +7842,7 @@ size_t& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::build_s
 
 // Method to finalize stride
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_finalize() const {
     
     #ifdef HAVE_CLASS_LAMBDA
@@ -7744,12 +7879,14 @@ T& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(s
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
     return array_.data();
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
   operator= (const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -7834,6 +7971,7 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArr
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -7889,7 +8027,8 @@ public:
     // DO NOT USE with the constructures with a strides_array
     KOKKOS_INLINE_FUNCTION
     size_t& build_stride(const size_t i) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     void stride_finalize() const;
     
     // Overload operator() to access data as array(i,j)
@@ -7904,17 +8043,21 @@ public:
     }
     
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
     SArray1D start_index_;
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedRightArrayofVectorsKokkos& operator= (const RaggedRightArrayofVectorsKokkos &temp);
 
     //functors for kokkos execution policies
@@ -7987,42 +8130,6 @@ public:
             if (final) {
                 mystart_index_((index+1)) = update;
             }   
-        }
-    };
-    //initializes start(0); not sure if this is useful but copying from the LAMBDA implementation.
-    class assignment_init_functor{
-        public:
-        assignment_init_functor(){}
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
-    
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        public:
-        RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>* mytemp;
-        assignment_scan_functor(const RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp){
-          mytemp = &temp;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp->mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        public:
-        SArray1D* mytemplen;
-        templen_functor(SArray1D &templen){
-            mytemplen = &templen;
-        }
-        KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
-          (*mytemplen)(0) = start_index_(dim1_);
         }
     };
 
@@ -8144,6 +8251,7 @@ size_t& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>
 
 // Method to finalize stride
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_finalize() const {
     
     #ifdef HAVE_CLASS_LAMBDA
@@ -8181,12 +8289,14 @@ T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::ope
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
     return array_.data();
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
   operator= (const RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -8207,6 +8317,7 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & Ragge
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -8257,18 +8368,22 @@ public:
     size_t stride(size_t j) const;
 
     //setup start indices
+    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
     
     // Overload operator() to access data as array(i,j)
     // where i=[0:N-1], j=[stride(i)]
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
-
+    
+    KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
 
     // Kokkos views of strides and start indices
@@ -8324,47 +8439,6 @@ public:
             update += mytemp_strides_(index);
         }
     };
-
-    class assignment_init_functor{
-        assignment_init_functor(){}
-        void operator()(const int index) const {
-          start_index_(0) = 0;
-        }
-    };
-    
-    //used in the assignment operator overload
-    class assignment_scan_functor{
-        RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> mytemp;
-        assignment_scan_functor(const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> temp){
-          mytemp = temp;
-        }
-        void operator()(const int index, int& update, bool final) const {
-          // Load old value in case we update it before accumulating
-            const size_t count = mytemp.mystrides_(index);
-            update += count;
-            if (final) {
-                start_index_((index+1)) = update;
-            }   
-        }
-    };
-
-    class templen_functor{
-        SArray1D* mytemplen;
-        templen_functor(SArray1D &templen){
-            mytemplen = &templen;
-        }
-        void operator()(const int index) const {
-          (*mytemplen)(0) = start_index_(dim2_);
-        }
-    };
-    
-    class stride_check_functor{
-        stride_check_functor(){}
-        void operator()(const int index) const {
-          printf("%d) Start %ld\n", index, start_index_(index));
-        }
-    };
-    
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -8475,6 +8549,7 @@ T& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(si
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::
 operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> &temp) {
 
@@ -8588,6 +8663,7 @@ operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> 
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
 }
@@ -8635,6 +8711,7 @@ public:
     size_t size() const;
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
     
     // Overload operator() to access data as array(i,j),
@@ -8643,6 +8720,7 @@ public:
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
+    KOKKOS_INLINE_FUNCTION
     DynamicRaggedRightArrayKokkos& operator= (const DynamicRaggedRightArrayKokkos &temp);
     
     //kokkos policy functors
@@ -8663,6 +8741,7 @@ public:
     };
     
     // Destructor
+    KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedRightArrayKokkos ();
 };
 
@@ -8729,7 +8808,8 @@ T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(si
 
 //overload = operator
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
+KOKKOS_INLINE_FUNCTION
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
        DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
 {
     
@@ -8756,12 +8836,14 @@ inline DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
 }
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedRightArrayKokkos() {
 }
 
@@ -8805,6 +8887,7 @@ public:
     size_t size() const;
 
     //return the view
+    KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
     
     // Overload operator() to access data as array(i,j),
@@ -8813,6 +8896,7 @@ public:
     T& operator()(size_t i, size_t j) const;
     
     // Overload copy assignment operator
+    KOKKOS_INLINE_FUNCTION
     DynamicRaggedDownArrayKokkos& operator= (const DynamicRaggedDownArrayKokkos &temp);
 
     //kokkos policy functors
@@ -8832,6 +8916,7 @@ public:
     };
     
     // Destructor
+    KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedDownArrayKokkos ();
 };
 
@@ -8899,6 +8984,7 @@ T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(siz
 
 //overload = operator
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
   DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
 {
@@ -8926,12 +9012,14 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
 }
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDownArrayKokkos() {
 }
 
@@ -9011,6 +9099,7 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    KOKKOS_INLINE_FUNCTION
     DViewCArrayKokkos& operator=(const DViewCArrayKokkos& temp);
 
     // GPU Method
@@ -9020,9 +9109,11 @@ public:
 
     // Host Method
     // Method that returns size
+    KOKKOS_INLINE_FUNCTION
     size_t extent();
 
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     // Deconstructor
@@ -9258,6 +9349,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DViewCArrayKokkos& temp) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -9287,11 +9379,13 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
 }

@@ -7,6 +7,8 @@ MATAR is a C++ library that addresses the need for simple, fast, and memory-effi
 ## Examples
 * [ELEMENTS](https://github.com/lanl/ELEMENTS/):   MATAR is a part of the ELEMENTS Library (LANL C# C20058) and it underpins the routines implemented in ELEMENTS.  MATAR is available in a stand-alone directory outside of the ELEMENTS directory because it can aid many code applications.  The dense and sparse storage types in MATAR are the foundation for the ELEMENTS library, which contains mathematical functions to support a very broad range of element types including: linear, quadratic, and cubic serendipity elements in 2D and 3D; high-order spectral elements; and a linear 4D element. An unstructured high-order mesh class is available in ELEMENTS and it takes advantage of MATAR for efficient access of various mesh entities. 
 
+* [Fierro](https://github.com/lanl/Fierro): The MATAR library underpins the Fierro code that is designed to simulate quasi-static solid mechanics problems and material dynamics problems.  
+    
 * Simple examples are in the /test folder
 
 ## Descriptions
@@ -101,6 +103,11 @@ cmake -DKOKKOS=1 .
 make
 ```
 
+## Kokkos with OpenMP build
+```
+cmake -DKOKKOS=1 -DOPENMP=1 .
+```
+    
 ## Kokkos with CUDA build
 ```
 cmake -DKOKKOS=1  -DCUDA=1 .
