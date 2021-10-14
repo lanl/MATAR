@@ -37,3 +37,5 @@ add_subdirectory(virtualFcnKokkos)
 include_directories(laplace)
 add_subdirectory(laplace)
 
+#include_directories(phaseField/src)
+#add_subdirectory(phaseField/src)
