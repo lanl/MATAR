@@ -14,7 +14,7 @@ If compiling for the CPU with OpenMP backend, ensure that [FFTW](http://www.fftw
 ```
 link_directories("/usr/local/lib")
 ```
-Nothing needs to be done if compiling for the GPU with CUDA backend.
+Nothing needs to be done if compiling for the GPU with CUDA backend.\
 Use `-DOUT_OF_PLACE_FFT=1` or `-DIN_PLACE_FFT=1` to experiment with out-of-place or in-place FFT, respectively. Note that `-DOUT_OF_PLACE_FFT=1` is set by default.
 
 ### Simulation parameters
