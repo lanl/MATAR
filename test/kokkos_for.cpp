@@ -130,7 +130,6 @@ int main(){
                result);
     
     std::cout << "3D reduce MIN : " << result << " \n";
-    
 
     std::cout << "done" << std::endl;
 

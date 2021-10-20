@@ -111,6 +111,16 @@ int main(){
     std::cout << "3D reduce MIN : " << result << " \n";
     
     
+    REDUCE_MIN_CLASS(i, 0, 10,
+               j, 0, 10,
+               k, 0, 10,
+               loc_min, {
+                   loc_min = std::min<int>(arr_3D(i,j,k), loc_min);
+               }, result);
+    
+    std::cout << "3D reduce MIN CLASS : " << result << " \n";
+    
+    
     std::cout << "done" << std::endl;
 
     return 0;

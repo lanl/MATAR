@@ -176,7 +176,115 @@
     REDUCE_MIN(...) \
     GET_MACRO(__VA_ARGS__, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
 
+
+
+// the FOR_ALL loop with variables in a class
+#define \
+FORCLASS1D(i, x0, x1,fcn) \
+Kokkos::parallel_for( Kokkos::RangePolicy<> ( (x0), (x1)), \
+                     KOKKOS_CLASS_LAMBDA( const int (i) ){fcn} )
+
+#define \
+FORCLASS2D(i, x0, x1, j, y0, y1,fcn) \
+Kokkos::parallel_for( \
+                     Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                     KOKKOS_CLASS_LAMBDA( const int (i), const int (j) ){fcn} )
+
+#define \
+FORCLASS3D(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+Kokkos::parallel_for( \
+                     Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                     KOKKOS_CLASS_LAMBDA( const int (i), const int (j), const int (k) ) {fcn} )
+
+#define \
+FOR_ALL_CLASS(...) \
+GET_MACRO(__VA_ARGS__, _12, _11, FORCLASS3D, _9, _8, FORCLASS2D, _6, _5, FORCLASS1D)(__VA_ARGS__)
+
+
+// the REDUCE SUM loop
+#define \
+RSUMCLASS1D(i, x0, x1, var, fcn, result) \
+Kokkos::parallel_reduce( Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_CLASS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, (result))
+
+#define \
+RSUMCLASS2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                        (result) )
+
+#define \
+RSUMCLASS3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                        (result) )
+
+#define \
+REDUCE_SUM_CLASS(...) \
+GET_MACRO(__VA_ARGS__, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__)
+
+
+
+// the REDUCE MAX loop with variables in a class
+
+#define \
+RMAXCLASS1D(i, x0, x1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_CLASS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+RMAXCLASS2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+RMAXCLASS3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+REDUCE_MAX_CLASS(...) \
+GET_MACRO(__VA_ARGS__, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__)
+
+
+
+// the REDUCE MIN loop with variables in a class
+#define \
+RMINCLASS1D(i, x0, x1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_CLASS_LAMBDA( const int (i), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result))
+
+#define \
+RMINCLASS2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result) )
+
+#define \
+RMINCLASS3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                        KOKKOS_CLASS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                        Kokkos::Min< decltype(result) >(result) )
+
+#define \
+REDUCE_MIN_CLASS(...) \
+GET_MACRO(__VA_ARGS__, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
+
 #endif
+
+
 // end of KOKKOS routines
 
 
@@ -382,6 +490,11 @@ void reduce_max (int i_start, int i_end,
 
 #ifndef HAVE_KOKKOS
 
+// replace the CLASS loops to be the nominal loops
+#define FOR_ALL_CLASS FOR_ALL
+#define REDUCE_SUM_CLASS REDUCE_SUM
+#define REDUCE_MAX_CLASS REDUCE_MAX
+#define REDUCE_MIN_CLASS REDUCE_MIN
 
 // the FOR_ALL loop is chosen based on the number of inputs
 
