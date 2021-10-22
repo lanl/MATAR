@@ -35,16 +35,10 @@ void initialize_comp(SimParameters& sp, CArrayKokkos<double> &comp)
     auto temp_comp_dual_view = DViewCArrayKokkos<double>(&temp_comp[0], nx, ny, nz);
 
     // write "temp_comp_dual_view" to "comp"
-    //FOR_ALL(i, 0, nx,
-    //        j, 0, ny,
-    //        k, 0, nz, {
-    //            comp(i,j,k) = temp_comp_dual_view(i,j,k);
-    //});
-
-    Kokkos::parallel_for(
-        Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx,ny,nz}),
-        KOKKOS_LAMBDA(const int i, const int j, const int k){
-                comp(i,j,k) = temp_comp_dual_view(i,j,k);
+    FOR_ALL(i, 0, nx,
+            j, 0, ny,
+            k, 0, nz, {
+        comp(i,j,k) = temp_comp_dual_view(i,j,k);
     });
 
 

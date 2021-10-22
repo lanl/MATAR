@@ -34,9 +34,7 @@ FourierSpace::FourierSpace(int* nn, double* delta)
 void FourierSpace::set_kx_ky_kz_()
 {
     // calculate kx_
-    Kokkos::parallel_for(
-        Kokkos::RangePolicy<>(0, nx_),
-        KOKKOS_CLASS_LAMBDA(const int i){
+    FOR_ALL_CLASS(i, 0, nx_, {
             int ti;
             ti = i;
             if (ti > nx_/2) ti = ti - nx_;
@@ -45,9 +43,7 @@ void FourierSpace::set_kx_ky_kz_()
 
 
     // calculate ky_
-    Kokkos::parallel_for(
-        Kokkos::RangePolicy<>(0, ny_),
-        KOKKOS_CLASS_LAMBDA(const int j){
+    FOR_ALL_CLASS(j, 0, ny_, {
             int tj;
             tj = j;
             if (tj > ny_/2) tj = tj - ny_;
@@ -57,18 +53,14 @@ void FourierSpace::set_kx_ky_kz_()
 
     // calculate kz_ for in-place-fft
 #ifdef IN_PLACE_FFT
-    Kokkos::parallel_for(
-        Kokkos::RangePolicy<>(0, nz_),
-        KOKKOS_CLASS_LAMBDA(const int k){
+    FOR_ALL_CLASS(k, 0, nz_, {
             int tk;
             tk = k;
             if (tk > nz_/2) tk = tk - nz_;
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);
     });
 #elif OUT_OF_PLACE_FFT
-    Kokkos::parallel_for(
-        Kokkos::RangePolicy<>(0, nz21_),
-        KOKKOS_CLASS_LAMBDA(const int k){
+    FOR_ALL_CLASS(k, 0, nz_, {
             int tk;
             tk = k;
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);

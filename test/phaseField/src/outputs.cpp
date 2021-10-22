@@ -14,66 +14,39 @@ void track_progress(int iter, int* nn, CArrayKokkos<double> &comp)
     // sum of comp field
     double sum_comp = 0.0;
     double loc_sum = 0.0;
-    //REDUCE_SUM(i, 0, nx,
-    //           j, 0, ny,
-    //           k, 0, nz,
-    //           loc_sum, {
-    //               loc_sum += comp(i,j,k);
-    //           }, sum_comp);
-
-    Kokkos::parallel_reduce(
-        Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx,ny,nz}),
-        KOKKOS_LAMBDA(const int i, const int j, const int k, double& loc_sum){
-            loc_sum += comp(i,j,k);
-        }, sum_comp);
+    REDUCE_SUM(i, 0, nx,
+               j, 0, ny,
+               k, 0, nz,
+               loc_sum, {
+                   loc_sum += comp(i,j,k);
+               }, sum_comp);
 
 
     // max of comp field
     double max_comp;
     double loc_max;
-    //REDUCE_MAX(i, 0, nx,
-    //           j, 0, ny,
-    //           k, 0, nz,
-    //           loc_max, {
-    //
-    //               if(loc_max < comp(i,j,k)){
-    //                   loc_max = comp(i,j,k);
-    //               }
-    //               
-    //           },
-    //           max_comp);
-
-    Kokkos::parallel_reduce(
-        Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx,ny,nz}),
-        KOKKOS_LAMBDA(const int i, const int j, const int k, double& loc_max){
-            if(loc_max < comp(i,j,k)) loc_max = comp(i,j,k);
-        },
-        Kokkos::Max<double>(max_comp)
-    );
+    REDUCE_MAX(i, 0, nx,
+               j, 0, ny,
+               k, 0, nz,
+               loc_max, {
+                   if(loc_max < comp(i,j,k)){
+                       loc_max = comp(i,j,k);
+                   }    
+               },
+               max_comp);
 
 
     // min of comp field
     double min_comp;
     double loc_min;
-    //REDUCE_MIN(i, 0, nx,
-    //           j, 0, ny,
-    //           k, 0, nz,
-    //           loc_min, {
-    //               
-    //               if(loc_min > comp(i,j,k)){
-    //                   loc_min = comp(i,j,k); }
-    //               
-    //           },
-    //           min_comp);
-
-    Kokkos::parallel_reduce(
-        Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx,ny,nz}),
-        KOKKOS_LAMBDA(const int i, const int j, const int k, double& loc_min){
-            if(loc_min > comp(i,j,k)) loc_min = comp(i,j,k);
-        },
-        Kokkos::Min<double>(min_comp)
-    );
-
+    REDUCE_MIN(i, 0, nx,
+               j, 0, ny,
+               k, 0, nz,
+               loc_min, {                  
+                   if(loc_min > comp(i,j,k)){
+                       loc_min = comp(i,j,k); }                   
+               },
+               min_comp);
 
     printf("\n----------------------------------------------------\n");
     printf("Iteration : %d\n", iter);
