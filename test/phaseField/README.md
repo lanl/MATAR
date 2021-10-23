@@ -10,7 +10,7 @@ In the `.../test/CMakeLists.txt` file uncomment:
 include_directories(phaseField/src)
 add_subdirectory(phaseField/src)
 ```
-Here, `src` is either `srcMacros` or `srcKokkosVerbose`. Both produce the same results. <br />
+Here, `src` is either `srcMacros` or `srcKokkosVerbose`. Both produce the same results. The difference between `srcMacros` or `srcKokkosVerbose` is to illustrate the use of kokkos parallel region versus MATAR Macros. <br />
 If compiling for the CPU with OpenMP backend, ensure that [FFTW](http://www.fftw.org/download.html) is installed. Specify the link directory for `fftw3_threads` and `fftw3` libraries in the `.../phaseField/src/CMakeLists.txt` file: 
 ```
 link_directories("/usr/local/lib")
