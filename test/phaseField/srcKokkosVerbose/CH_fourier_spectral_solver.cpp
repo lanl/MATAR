@@ -57,14 +57,6 @@ void CHFourierSpectralSolver::set_kpow2_()
     auto kz = fs.get_kz();
     
     // calculate kpow2_
-    //FOR_ALL(i, 0, nn_img_[0],
-    //        j, 0, nn_img_[1],
-    //        k, 0, nn_img_[2], {
-    //    kpow2_(i,j,k) =   kx(i) * kx(i)
-    //                    + ky(j) * ky(j)
-    //                    + kz(k) * kz(k);
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nn_img_[0], nn_img_[1], nn_img_[2]}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -79,12 +71,6 @@ void CHFourierSpectralSolver::set_kpow2_()
 void CHFourierSpectralSolver::set_denominator_()
 {
     // calculate denominator_
-    //FOR_ALL(i, 0, nn_img_[0],
-    //        j, 0, nn_img_[1],
-    //        k, 0, nn_img_[2], {
-    //    denominator_(i,j,k) = 1.0 + (dt_ * M_ * kappa_ * kpow2_(i,j,k) * kpow2_(i,j,k));
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nn_img_[0], nn_img_[1], nn_img_[2]}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -111,16 +97,6 @@ void CHFourierSpectralSolver::time_march(CArrayKokkos<double> &comp, CArrayKokko
     fft_manager.perform_forward_fft(dfdc, dfdc_img_);
 
     // solve Cahn Hilliard equation in fourier space
-    //FOR_ALL(i, 0, nn_img_[0],
-    //        j, 0, nn_img_[1],
-    //        k, 0, nn_img_[2], {
-    //    comp_img_(i,j,k,0) =   (comp_img_(i,j,k,0) - (dt_ * M_ * kpow2_(i,j,k)) * dfdc_img_(i,j,k,0))
-    //                         / (denominator_(i,j,k));
-    //
-    //    comp_img_(i,j,k,1) =   (comp_img_(i,j,k,1) - (dt_ * M_ * kpow2_(i,j,k)) * dfdc_img_(i,j,k,1)) 
-    //                         / (denominator_(i,j,k));
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nn_img_[0], nn_img_[1], nn_img_[2]}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -137,12 +113,6 @@ void CHFourierSpectralSolver::time_march(CArrayKokkos<double> &comp, CArrayKokko
     fft_manager.perform_backward_fft(comp_img_, comp);
 
     // normalize after inverse fft
-    //FOR_ALL (i, 0, nx_, 
-    //         j, 0, ny_,
-    //         k, 0, nz_,{
-    //    comp(i,j,k) = comp(i,j,k) / double(nx_ * ny_ * nz_);
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx_, ny_, nz_}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){

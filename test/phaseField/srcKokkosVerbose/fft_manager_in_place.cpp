@@ -32,13 +32,6 @@ void FFTManagerInPlace::prep_for_forward_fft_(CArrayKokkos<double> &input)
     // in order to ready "data_" for in-place forward fft.
 
     // write input to data for in-place forward fft
-    //FOR_ALL (i, 0, nx_,
-    //         j, 0, ny_,
-    //         k, 0, nz_, {
-    //    data_(i,j,k,0) = input(i,j,k);
-    //    data_(i,j,k,1) = 0.0;
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx_, ny_, nz_}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -55,13 +48,6 @@ void FFTManagerInPlace::get_forward_fft_result_(CArrayKokkos<double> &output)
     // in "data_" array into "output" array.
 
     // write data to output after in-place fft
-    //FOR_ALL (i, 0, nx_,
-    //         j, 0, ny_,
-    //         k, 0, nz_, {
-    //    output(i,j,k,0) = data_(i,j,k,0);
-    //    output(i,j,k,1) = data_(i,j,k,1);
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx_, ny_, nz_}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -79,13 +65,6 @@ void FFTManagerInPlace::prep_for_backward_fft_(CArrayKokkos<double> &input)
     // in order to ready "data_" for in-place backward fft.
 
     // write input to data for in-place fft
-    //FOR_ALL (i, 0, nx_,
-    //         j, 0, ny_,
-    //         k, 0, nz_, {
-    //    data_(i,j,k,0) = input(i,j,k,0);
-    //    data_(i,j,k,1) = input(i,j,k,1);
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx_, ny_, nz_}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
@@ -102,12 +81,6 @@ void FFTManagerInPlace::get_backward_fft_result_(CArrayKokkos<double> &output)
     // in "data_" array into "output" array.
 
     // write data to output after in-place fft
-    //FOR_ALL (i, 0, nx_,
-    //         j, 0, ny_,
-    //         k, 0, nz_, {
-    //    output(i,j,k) = data_(i,j,k,0);
-    //});
-
     Kokkos::parallel_for(
         Kokkos::MDRangePolicy<Kokkos::Rank<3>>({0,0,0}, {nx_, ny_, nz_}),
         KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k){
