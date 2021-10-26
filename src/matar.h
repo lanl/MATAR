@@ -9149,7 +9149,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
-    // Create host ViewCArray
+    // Create host ViewCArray. Note: inp_array and this_array_host_.data() are the same pointer 
     host = ViewCArray <T> (inp_array, dim1_);
 }
 
