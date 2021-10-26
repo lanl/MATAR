@@ -96,11 +96,22 @@ for (int i=0; i<4; i++){
 cmake .
 make
 ```
+## Debug build
+
+To build MATAR in the debug mode, please use
+```
+cmake -DCMAKE_BUILD_TYPE=Debug .
+```
+The debug flag includes checks on array and matrix dimensions and index bounds.
 
 ## Kokkos build
 ```
 cmake -DKOKKOS=1 .
 make
+```
+The kokkos build can be built in the debug mode using
+```
+cmake -DKOKKOS=1 -DCMAKE_BUILD_TYPE=Debug .
 ```
 
 ## Kokkos with OpenMP build
