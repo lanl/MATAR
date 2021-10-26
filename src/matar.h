@@ -9116,6 +9116,15 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
+    // Data member to access host view
+    ViewCArray <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
     ~DViewCArrayKokkos ();
@@ -9140,6 +9149,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray. Note: inp_array and this_array_host_.data() are the same pointer 
+    host = ViewCArray <T> (inp_array, dim1_);
 }
 
 // Overloaded 2D constructor
@@ -9158,6 +9169,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9175,6 +9188,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_, dim3_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9193,6 +9208,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_, dim3_, dim4_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9214,6 +9231,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_, dim3_, dim4_, dim5_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9235,6 +9254,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_, dim3_, dim4_, dim5_, dim6_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9258,6 +9279,8 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (inp_array, dim1_, dim2_, dim3_, dim4_, dim5_, dim6_, dim7_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9388,6 +9411,18 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
     return this_array_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    // Deep copy of device view to host view
+    deep_copy(this_array_host_, this_array_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    // Deep copy of host view to device view
+    deep_copy(this_array_, this_array_host_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
