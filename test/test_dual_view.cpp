@@ -113,8 +113,10 @@ void two_D_example()
     Kokkos::fence();
 
     printf("Printing host copy of dual view:\n");
-    for (int i = 0; i < nx*ny; i++){
-        printf("%d\n", A_2D.host(i));       
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            printf("%d\n", A_2D.host(i,j)); 
+        }
     }
 
     // Manupulate A_2D on device
@@ -129,13 +131,17 @@ void two_D_example()
 
     // Print host copy of A_2D 
     printf("Printing host copy of dual view (Updated to 2 on device):\n");
-    for (int i = 0; i < nx*ny; i++){
-        printf("%d\n", A_2D.host(i));
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            printf("%d\n", A_2D.host(i,j)); 
+        }
     }
 
     // Manupulate A_2D on host
-    for (int i = 0; i < nx*ny; i++){
-        A_2D.host(i) = 3;
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            A_2D.host(i,j) = 3; 
+        }
     }
 
     // Update A_2D on device
@@ -180,8 +186,12 @@ void three_D_example()
     Kokkos::fence();
 
     printf("Printing host copy of dual view:\n");
-    for (int i = 0; i < nx*ny*nz; i++){
-        printf("%d\n", A_3D.host(i));       
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            for (int k = 0; k < nz; k++){
+                printf("%d\n", A_3D.host(i,j,k));
+            }
+        }
     }
 
     // Manupulate A_3D on device
@@ -197,14 +207,21 @@ void three_D_example()
 
     // Print host copy of A_3D 
     printf("Printing host copy of dual view (Updated to 2 on device):\n");
-    for (int i = 0; i < nx*ny*nz; i++){
-        printf("%d\n", A_3D.host(i));
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            for (int k = 0; k < nz; k++){
+                printf("%d\n", A_3D.host(i,j,k));
+            }
+        }
     }
 
-
     // Manupulate A_3D on host
-    for (int i = 0; i < nx*ny*nz; i++){
-        A_3D.host(i) = 3;
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < ny; j++){
+            for (int k = 0; k < nz; k++){
+                A_3D.host(i,j,k) = 3;
+            }
+        }
     }
 
     // Update A_3D on device
