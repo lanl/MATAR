@@ -9242,7 +9242,6 @@ public:
     T* pointer();
 
     // Data member to access host view
-    KOKKOS_INLINE_FUNCTION
     ViewCArray <T> host;
 
     // Method that update host view
