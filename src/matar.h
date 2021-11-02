@@ -9245,11 +9245,9 @@ public:
     ViewCArray <T> host;
 
     // Method that update host view
-    KOKKOS_INLINE_FUNCTION
     void update_host();
 
     // Method that update device view
-    KOKKOS_INLINE_FUNCTION
     void update_device();
 
     // Deconstructor
@@ -9556,14 +9554,12 @@ T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
     // Deep copy of device view to host view
     deep_copy(this_array_host_, this_array_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     // Deep copy of host view to device view
     deep_copy(this_array_, this_array_host_);

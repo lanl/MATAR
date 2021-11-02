@@ -21,7 +21,6 @@ public:
     // overload constructor to set dimensions
     Data(u_int nx, u_int ny, u_int nz);
     
-    KOKKOS_INLINE_FUNCTION
     void some_fcn();
     
 }; // end class Data
@@ -38,7 +37,6 @@ Data::Data(u_int nx, u_int ny, u_int nz){
 };
 
 
-KOKKOS_INLINE_FUNCTION
 void Data::some_fcn(){
     
     // parallel loop inside a class
