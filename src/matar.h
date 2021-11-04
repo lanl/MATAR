@@ -84,6 +84,7 @@ using u_int  = unsigned int;
 
 #ifdef HAVE_KOKKOS
 #include <Kokkos_Core.hpp>
+#include <Kokkos_DualView.hpp>
 
 using HostSpace    = Kokkos::HostSpace;
 using MemoryUnmanaged = Kokkos::MemoryUnmanaged;
@@ -8967,9 +8968,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent();
 
-    // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    // Method returns the raw device pointer of the Kokkos View
     KOKKOS_INLINE_FUNCTION
-    T* pointer();
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
 
     // Data member to access host view
     ViewCArray <T> host;
@@ -9276,8 +9281,14 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() {
+T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
     return this_array_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_array_host_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9296,6 +9307,373 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCArrayKokkos() {}
 // End DViewCArrayKokkos
+
+
+/////////////////////////
+// DCArrayKokkos:  Dual type for managing data on both CPU and GPU.
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DCArrayKokkos {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_array_; 
+
+public:
+    DCArrayKokkos();
+    
+    DCArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, 
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DCArrayKokkos& operator=(const DCArrayKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewCArray <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DCArrayKokkos ();
+}; // End of DCArrayKokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    order_ = 1;
+    length_ = dim0;
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_ = 2;
+    length_ = (dim0 * dim1);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dim0 * dim1 * dim2);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dim0 * dim1 * dim2 * dim3);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, size_t dim5, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3,
+                              size_t dim4, size_t dim5,
+                              size_t dim6, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 1D!");
+    return this_array_.d_view(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 2D!");
+    return this_array_.d_view(j + (i * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 3D!");
+    return this_array_.d_view(k + (j * dims_[2]) 
+                                + (i * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 4D!");
+    return this_array_.d_view(l + (k * dims_[3]) 
+                                + (j * dims_[3] * dims_[2])  
+                                + (i * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 5D!");
+    return this_array_.d_view(m + (l * dims_[4]) 
+                                + (k * dims_[4] * dims_[3]) 
+                                + (j * dims_[4] * dims_[3] * dims_[2]) 
+                                + (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 6D!");
+    return this_array_.d_view(n + (m * dims_[5]) 
+                                + (l * dims_[5] * dims_[4])  
+                                + (k * dims_[5] * dims_[4] * dims_[3]) 
+                                + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])  
+                                + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DCArrayKokkos 7D!");
+    return this_array_.d_view(o + (n * dims_[6])
+                                + (m * dims_[6] * dims_[5])
+                                + (l * dims_[6] * dims_[5] * dims_[4])
+                                + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                                + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                                + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DCArrayKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        this_array_ = temp.this_array_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_array_.d_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_array_.h_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCArrayKokkos() {}
+// End DCArrayKokkos
 
 
 //////////////////////////

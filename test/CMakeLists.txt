@@ -12,7 +12,7 @@ endif()
 if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
   add_executable(test_kokkos_for kokkos_for.cpp)
-  add_executable(test_dual_view test_dual_view.cpp)
+  add_executable(test_dual_types test_dual_types.cpp)
 
   add_definitions(-DHAVE_KOKKOS=1)
   #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_KOKKOS)
@@ -26,7 +26,7 @@ if (KOKKOS)
 
   target_link_libraries(mtestkokkos matar Kokkos::kokkos)
   target_link_libraries(test_kokkos_for Kokkos::kokkos)
-  target_link_libraries(test_dual_view matar Kokkos::kokkos)
+  target_link_libraries(test_dual_types matar Kokkos::kokkos)
 endif()
 
 
