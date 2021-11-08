@@ -21,7 +21,7 @@ FFTManagerOutOfPlace::FFTManagerOutOfPlace(int * nn)
 
 
 
-void FFTManagerOutOfPlace::perform_forward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output)
+void FFTManagerOutOfPlace::perform_forward_fft(double *input, double *output)
 {
     // this function performs forward fft on "input" array and 
     // writes the result to "output" array.
@@ -31,14 +31,14 @@ void FFTManagerOutOfPlace::perform_forward_fft(CArrayKokkos<double> &input, CArr
     // perform foward fft
     isign_ = -1;
     #ifdef HAVE_CUDA
-        fftc_cufft_out_of_place_(input.pointer(), output.pointer(), nn_, &ndim_, &isign_);
+        fftc_cufft_out_of_place_(input, output, nn_, &ndim_, &isign_);
     #else
-        fftc_fftw_out_of_place_(input.pointer(), output.pointer(), nn_, &ndim_, &isign_);
+        fftc_fftw_out_of_place_(input, output, nn_, &ndim_, &isign_);
     #endif
 
 }
 
-void FFTManagerOutOfPlace::perform_backward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output)
+void FFTManagerOutOfPlace::perform_backward_fft(double *input, double *output)
 {
     // this function performs backward fft on "input" array and 
     // writes the result to "output" array.
@@ -48,9 +48,9 @@ void FFTManagerOutOfPlace::perform_backward_fft(CArrayKokkos<double> &input, CAr
     // perform backward fft
     isign_ = 1;
     #ifdef HAVE_CUDA
-        fftc_cufft_out_of_place_(input.pointer(), output.pointer(), nn_, &ndim_, &isign_);
+        fftc_cufft_out_of_place_(input, output, nn_, &ndim_, &isign_);
     #else
-        fftc_fftw_out_of_place_(input.pointer(), output.pointer(), nn_, &ndim_, &isign_);
+        fftc_fftw_out_of_place_(input, output, nn_, &ndim_, &isign_);
     #endif
 }
 

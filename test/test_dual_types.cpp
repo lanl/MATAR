@@ -13,7 +13,7 @@ int main() {
     Kokkos::initialize();
     { 
 
-    // Run DCArrayKokkos 2D example
+    // Run DViewCArrayKokkos 2D example
     DViewCArrayKokkosTwoDimensionExample();
 
     // Run DCArrayKokkos 2D example

@@ -17,13 +17,13 @@ class FFTManagerInPlace
 
     public:
         FFTManagerInPlace(int * nn);
-        void perform_forward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output);
-        void perform_backward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output);
+        void perform_forward_fft(double *input, double *output);
+        void perform_backward_fft(double *input, double *output);
 
-        void prep_for_forward_fft_(CArrayKokkos<double> &input);
-        void get_forward_fft_result_(CArrayKokkos<double> &output);
-        void prep_for_backward_fft_(CArrayKokkos<double> &input);
-        void get_backward_fft_result_(CArrayKokkos<double> &output);
+        void prep_for_forward_fft_(double *input);
+        void get_forward_fft_result_(double *output);
+        void prep_for_backward_fft_(double *input);
+        void get_backward_fft_result_(double *output);
 
 };
 

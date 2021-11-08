@@ -34,5 +34,5 @@ class CHFourierSpectralSolver
         CHFourierSpectralSolver(SimParameters &sp);
         void set_kpow2_();
         void set_denominator_();
-        void time_march(CArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc);
+        void time_march(DCArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc);
 };

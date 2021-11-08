@@ -17,8 +17,8 @@ class FFTManagerOutOfPlace
 
     public:
         FFTManagerOutOfPlace(int * nn);
-        void perform_forward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output);
-        void perform_backward_fft(CArrayKokkos<double> &input, CArrayKokkos<double> &output);
+        void perform_forward_fft(double *input, double *output);
+        void perform_backward_fft(double *input, double *output);
 
 };
 

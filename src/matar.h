@@ -8884,14 +8884,1948 @@ KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDownArrayKokkos() {
 }
 
+/////////////////////////
+// DFArrayKokkos:  Dual type for managing data on both CPU and GPU.
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DFArrayKokkos {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_array_;
+
+public:
+    DFArrayKokkos();
+    
+    DFArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, 
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DFArrayKokkos& operator=(const DFArrayKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewFArray <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DFArrayKokkos ();  
+
+}; // End of DFArrayKokkos declarations
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    order_ = 1;
+    length_ = dim0;
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_ = 2;
+    length_ = (dim0 * dim1);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dim0 * dim1 * dim2);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dim0 * dim1 * dim2 * dim3);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, size_t dim5, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3,
+                              size_t dim4, size_t dim5,
+                              size_t dim6, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DFArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 1D!");
+    return this_array_.d_view(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DFArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 2D!");
+    return this_array_.d_view(i + (j * dims_[0]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DFArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DFArrayKokkos 3D!");
+    return this_array_.d_view(i + (j * dims_[0]) 
+                                + (k * dims_[0] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DFArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DFArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DFArrayKokkos 4D!");
+    return this_array_.d_view(i + (j * dims_[0]) 
+                                + (k * dims_[0] * dims_[1]) 
+                                + (l * dims_[0] * dims_[1] * dims_[2]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DFArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DFArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DFArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DFArrayKokkos 5D!");
+    return this_array_.d_view(i + (j * dims_[0]) 
+                                + (k * dims_[0] * dims_[1]) 
+                                + (l * dims_[0] * dims_[1] * dims_[2]) 
+                                + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DFArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DFArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DFArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DFArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DFArrayKokkos 6D!");
+    return this_array_.d_view(i + (j * dims_[0]) 
+                                + (k * dims_[0] * dims_[1]) 
+                                + (l * dims_[0] * dims_[1] * dims_[2]) 
+                                + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) 
+                                + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DFArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DFArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DFArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DFArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DFArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DFArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DFArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DFArrayKokkos 7D!");
+    return this_array_.d_view(i + (j * dims_[0])
+                                + (k * dims_[0] * dims_[1])
+                                + (l * dims_[0] * dims_[1] * dims_[2])
+                                + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                                + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                                + (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DFArrayKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        this_array_ = temp.this_array_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_array_.d_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_array_.h_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFArrayKokkos() {}
+// End DFArrayKokkos
+
 
 /////////////////////////
-// DViewCArrayKokkos:  The DView means dual view of the data, where data is on both CPU and GPU.
+// DViewFArrayKokkos:  The DView means dual view of the data, where data is on both CPU and GPU.
 //
 // This MATAR type is for accepting a pointer to data on the CPU via the constructor and then it copies the data
 // data to the GPU where the member functions and overloads access the data on the GPU. The corresponding
-// CArrayKokkos type creates memory on the GPU; likewise, the viewCArrayKokkos accesses data already on the GPU.
+// FArrayKokkos type creates memory on the GPU; likewise, the viewFArrayKokkos accesses data already on the GPU.
 // To emphasize, the data must be on the CPU prior to calling the constructor for the DView data type.
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DViewFArrayKokkos {
+
+    // this is always unmanaged
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    // this is manage
+    using TArray1D     = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_array_; 
+    TArray1DHost this_array_host_; 
+    T * temp_inp_array_;
+
+public:
+    DViewFArrayKokkos();
+    
+    DViewFArrayKokkos(T * inp_array, size_t dim0);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DViewFArrayKokkos& operator=(const DViewFArrayKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewFArray <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DViewFArrayKokkos ();
+}; // End of DViewFArrayKokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0) {
+    //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+    dims_[0] = dim0;
+    order_ = 1;
+    length_ = dim0;
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray. Note: inp_array and this_array_host_.data() are the same pointer 
+    host = ViewFArray <T> (inp_array, dim0);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1) {
+    //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    //using TArray1Dtemp = TArray1D::HostMirror;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_ = 2;
+    length_ = (dim0 * dim1);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
+                              size_t dim2) {
+    //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dim0 * dim1 * dim2);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3) {
+    //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dim0 * dim1 * dim2 * dim3);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3, 
+                              size_t dim4) {
+
+    //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, size_t dim5) {
+    //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3,
+                              size_t dim4, size_t dim5,
+                              size_t dim6) {
+    //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    // Create a 1D host view of the external allocation
+    this_array_host_ = TArray1DHost(inp_array, length_);
+    // Assign temp point to inp_array pointer that is passed in
+    temp_inp_array_ = inp_array;
+    // Create a device copy of that host view
+    this_array_ = create_mirror_view_and_copy(ExecSpace(), this_array_host_);
+    // Create host ViewFArray
+    host = ViewFArray <T> (inp_array, dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 1D!");
+    return this_array_(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 2D!");
+    return this_array_(i + (j * dims_[0]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 3D!");
+    return this_array_(i + (j * dims_[0]) 
+                         + (k * dims_[0] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 4D!");
+    return this_array_(i + (j * dims_[0]) 
+                         + (k * dims_[0] * dims_[1]) 
+                         + (l * dims_[0] * dims_[1] * dims_[2]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 5D!");
+    return this_array_(i + (j * dims_[0]) 
+                         + (k * dims_[0] * dims_[1]) 
+                         + (l * dims_[0] * dims_[1] * dims_[2]) 
+                         + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 6D!");
+    return this_array_(i + (j * dims_[0]) 
+                         + (k * dims_[0] * dims_[1]) 
+                         + (l * dims_[0] * dims_[1] * dims_[2]) 
+                         + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) 
+                         + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DViewFArrayKokkos 7D!");
+    return this_array_(i + (j * dims_[0])
+                         + (k * dims_[0] * dims_[1])
+                         + (l * dims_[0] * dims_[1] * dims_[2])
+                         + (m * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                         + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                         + (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DViewFArrayKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        temp_inp_array_ = temp.temp_inp_array_;
+        this_array_host_ = temp.this_array_host_;
+        this_array_ = temp.this_array_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_array_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_array_host_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    // Deep copy of device view to host view
+    deep_copy(this_array_host_, this_array_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    // Deep copy of host view to device view
+    deep_copy(this_array_, this_array_host_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewFArrayKokkos() {}
+// End DViewFArrayKokkos
+
+
+/////////////////////////
+// DFMatrixKokkos
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DFMatrixKokkos {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_matrix_;
+
+public:
+    DFMatrixKokkos();
+    
+    DFMatrixKokkos(size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos(size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos (size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos(size_t dim1, size_t dim2, size_t dim3, 
+                 size_t dim4, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DFMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6,
+                 size_t dim7, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DFMatrixKokkos& operator=(const DFMatrixKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewFMatrix <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DFMatrixKokkos ();  
+
+}; // End of DFMatrixKokkos declarations
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    order_ = 1;
+    length_ = dim1;
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    order_ = 2;
+    length_ = (dim1 * dim2);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    order_ = 3;
+    length_ = (dim1 * dim2 * dim3);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    order_ = 4;
+    length_ = (dim1 * dim2 * dim3 * dim4);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    order_ = 5;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, size_t dim6, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    order_ = 6;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4,
+                              size_t dim5, size_t dim6,
+                              size_t dim7, const std::string& tag_string) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 1D!");
+    return this_matrix_.d_view((i - 1));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 2D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 3D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0]) 
+                                       + ((k - 1) * dims_[0] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 4D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 4D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 4D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 4D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0])  
+                                       + ((k - 1) * dims_[0] * dims_[1])  
+                                       + ((l - 1) * dims_[0] * dims_[1] * dims_[2]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 5D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0])  
+                                       + ((k - 1) * dims_[0] * dims_[1])  
+                                       + ((l - 1) * dims_[0] * dims_[1] * dims_[2]) 
+                                       + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DFMatrixKokkos 6D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0])  
+                                       + ((k - 1) * dims_[0] * dims_[1])  
+                                       + ((l - 1) * dims_[0] * dims_[1] * dims_[2])  
+                                       + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])  
+                                       + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DFMatrixKokkos 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DFMatrixKokkos 7D!");
+    return this_matrix_.d_view((i - 1) + ((j - 1) * dims_[0])
+                                       + ((k - 1) * dims_[0] * dims_[1])
+                                       + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                                       + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                                       + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                                       + ((o - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DFMatrixKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        this_matrix_ = temp.this_matrix_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_matrix_.d_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_matrix_.h_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    this_matrix_.template modify<typename TArray1D::execution_space>();
+    this_matrix_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    this_matrix_.template modify<typename TArray1D::host_mirror_space>();
+    this_matrix_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFMatrixKokkos() {}
+// End DFMatrixKokkos
+
+
+/////////////////////////
+// DViewFMatrixKokkos
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DViewFMatrixKokkos {
+
+    // this is always unmanaged
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    // this is manage
+    using TArray1D     = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_matrix_; 
+    TArray1DHost this_matrix_host_; 
+    T * temp_inp_matrix_;
+
+public:
+    DViewFMatrixKokkos();
+    
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6,
+                 size_t dim7);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DViewFMatrixKokkos& operator=(const DViewFMatrixKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewFMatrix <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DViewFMatrixKokkos ();
+}; // End of DViewFMatrixKokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1) {
+    
+    dims_[0] = dim1;
+    order_ = 1;
+    length_ = dim1;
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer 
+    host = ViewFMatrix <T> (inp_matrix, dim1);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    order_ = 2;
+    length_ = (dim1 * dim2);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    order_ = 3;
+    length_ = (dim1 * dim2 * dim3);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    order_ = 4;
+    length_ = (dim1 * dim2 * dim3 * dim4);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4, 
+                              size_t dim5) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    order_ = 5;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, size_t dim6) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    order_ = 6;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4,
+                              size_t dim5, size_t dim6,
+                              size_t dim7) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewFMatrix
+    host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 1D!");
+    return this_matrix_((i - 1));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 2D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 3D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0]) 
+                                + ((k - 1) * dims_[0] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 4D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 4D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 4D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 4D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0]) 
+                                + ((k - 1) * dims_[0] * dims_[1])
+                                + ((l - 1) * dims_[0] * dims_[1] * dims_[2]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 5D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0]) 
+                                + ((k - 1) * dims_[0] * dims_[1]) 
+                                + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                                + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewFMatrixKokkos 6D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0]) 
+                                + ((k - 1) * dims_[0] * dims_[1]) 
+                                + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                                + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                                + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewFMatrixKokkos 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DViewFMatrixKokkos 7D!");
+    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+                                + ((k - 1) * dims_[0] * dims_[1])
+                                + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
+                                + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
+                                + ((n - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                                + ((o - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DViewFMatrixKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        temp_inp_matrix_ = temp.temp_inp_matrix_;
+        this_matrix_host_ = temp.this_matrix_host_;
+        this_matrix_ = temp.this_matrix_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_matrix_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_matrix_host_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    // Deep copy of device view to host view
+    deep_copy(this_matrix_host_, this_matrix_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    // Deep copy of host view to device view
+    deep_copy(this_matrix_, this_matrix_host_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewFMatrixKokkos() {}
+// End DViewFMatrixKokkos
+
+
+/////////////////////////
+// DCArrayKokkos:  Dual type for managing data on both CPU and GPU.
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DCArrayKokkos {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_array_; 
+
+public:
+    DCArrayKokkos();
+    
+    DCArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, 
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DCArrayKokkos& operator=(const DCArrayKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method that return array order (rank)
+    KOKKOS_INLINE_FUNCTION
+    size_t order();
+
+    // Method returns the raw device pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewCArray <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DCArrayKokkos ();
+}; // End of DCArrayKokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    order_ = 1;
+    length_ = dim0;
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_ = 2;
+    length_ = (dim0 * dim1);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dim0 * dim1 * dim2);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dim0 * dim1 * dim2 * dim3);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
+                              size_t dim2, size_t dim3, 
+                              size_t dim4, size_t dim5, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1,
+                              size_t dim2, size_t dim3,
+                              size_t dim4, size_t dim5,
+                              size_t dim6, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 7;
+    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 1D!");
+    return this_array_.d_view(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 2D!");
+    return this_array_.d_view(j + (i * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 3D!");
+    return this_array_.d_view(k + (j * dims_[2]) 
+                                + (i * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 4D!");
+    return this_array_.d_view(l + (k * dims_[3]) 
+                                + (j * dims_[3] * dims_[2])  
+                                + (i * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 5D!");
+    return this_array_.d_view(m + (l * dims_[4]) 
+                                + (k * dims_[4] * dims_[3]) 
+                                + (j * dims_[4] * dims_[3] * dims_[2]) 
+                                + (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 6D!");
+    return this_array_.d_view(n + (m * dims_[5]) 
+                                + (l * dims_[5] * dims_[4])  
+                                + (k * dims_[5] * dims_[4] * dims_[3]) 
+                                + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])  
+                                + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DCArrayKokkos 7D!");
+    return this_array_.d_view(o + (n * dims_[6])
+                                + (m * dims_[6] * dims_[5])
+                                + (l * dims_[6] * dims_[5] * dims_[4])
+                                + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                                + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                                + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DCArrayKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        this_array_ = temp.this_array_;
+        host = temp.host;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_array_.d_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_array_.h_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCArrayKokkos() {}
+// End DCArrayKokkos
+
+
+/////////////////////////
+// DViewCArrayKokkos
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class DViewCArrayKokkos {
@@ -9261,6 +11195,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCArrayKokkos<T,Layout,E
         temp_inp_array_ = temp.temp_inp_array_;
         this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
+        host = temp.host;
     }
     
     return *this;
@@ -9310,41 +11245,41 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCArrayKokkos() {}
 
 
 /////////////////////////
-// DCArrayKokkos:  Dual type for managing data on both CPU and GPU.
+// DCMatrixKokkos
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class DCArrayKokkos {
+class DCMatrixKokkos {
 
     // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    using TArray1D = Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits>;
     
 private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    TArray1D this_array_; 
+    TArray1D this_matrix_;
 
 public:
-    DCArrayKokkos();
+    DCMatrixKokkos();
     
-    DCArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos (size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, 
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, size_t dim2, size_t dim3, 
+                 size_t dim4, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DCMatrixKokkos(size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6,
+                 size_t dim7, const std::string& tag_string = DEFAULTSTRINGMATRIX);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -9370,7 +11305,7 @@ public:
                   size_t n, size_t o) const;
     
     KOKKOS_INLINE_FUNCTION
-    DCArrayKokkos& operator=(const DCArrayKokkos& temp);
+    DCMatrixKokkos& operator=(const DCMatrixKokkos& temp);
 
     // GPU Method
     // Method that returns size
@@ -9391,7 +11326,7 @@ public:
     T* host_pointer();
 
     // Data member to access host view
-    ViewCArray <T> host;
+    ViewCMatrix <T> host;
 
     // Method that update host view
     void update_host();
@@ -9401,221 +11336,221 @@ public:
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
-    ~DCArrayKokkos ();
-}; // End of DCArrayKokkos
+    ~DCMatrixKokkos ();  
 
+}; // End of DCMatrixKokkos declarations
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {}
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, const std::string& tag_string) {
     
-    dims_[0] = dim0;
+    dims_[0] = dim1;
     order_ = 1;
-    length_ = dim0;
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+    length_ = dim1;
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
     order_ = 2;
-    length_ = (dim0 * dim1);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
+    length_ = (dim1 * dim2);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
-                              size_t dim2, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
     order_ = 3;
-    length_ = (dim0 * dim1 * dim2);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
+    length_ = (dim1 * dim2 * dim3);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
-                              size_t dim2, size_t dim3, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
     order_ = 4;
-    length_ = (dim0 * dim1 * dim2 * dim3);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
+    length_ = (dim1 * dim2 * dim3 * dim4);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
-                              size_t dim2, size_t dim3, 
-                              size_t dim4, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
     order_ = 5;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, 
-                              size_t dim2, size_t dim3, 
-                              size_t dim4, size_t dim5, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2, 
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, size_t dim6, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
     order_ = 6;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5, dim6);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4,
+                              size_t dim5, size_t dim6,
+                              size_t dim7, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
     order_ = 7;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
+    this_matrix_ = TArray1D(tag_string, length_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (this_matrix_.h_view.data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCArrayKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 1D!");
-    return this_array_.d_view(i);
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 1D!");
+    return this_matrix_.d_view((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCArrayKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 2D!");
-    return this_array_.d_view(j + (i * dims_[1]));
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 2D!");
+    return this_matrix_.d_view((j - 1) + ((i - 1) * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCArrayKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 3D!");
-    return this_array_.d_view(k + (j * dims_[2]) 
-                                + (i * dims_[2] * dims_[1]));
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 3D!");
+    return this_matrix_.d_view((k - 1) + ((j - 1) * dims_[2]) 
+                                       + ((i - 1) * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCArrayKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 4D!");
-    return this_array_.d_view(l + (k * dims_[3]) 
-                                + (j * dims_[3] * dims_[2])  
-                                + (i * dims_[3] * dims_[2] * dims_[1]));
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 4D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 4D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 4D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 4D!");
+    return this_matrix_.d_view((l - 1) + ((k - 1) * dims_[3]) 
+                                       + ((j - 1) * dims_[3] * dims_[2]) 
+                                       + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCArrayKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 5D!");
-    return this_array_.d_view(m + (l * dims_[4]) 
-                                + (k * dims_[4] * dims_[3]) 
-                                + (j * dims_[4] * dims_[3] * dims_[2]) 
-                                + (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 5D!");
+    return this_matrix_.d_view((m - 1) + ((l - 1) * dims_[4]) 
+                                       + ((k - 1) * dims_[4] * dims_[3]) 
+                                       + ((j - 1) * dims_[4] * dims_[3] * dims_[2]) 
+                                       + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCArrayKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 6D!");
-    return this_array_.d_view(n + (m * dims_[5]) 
-                                + (l * dims_[5] * dims_[4])  
-                                + (k * dims_[5] * dims_[4] * dims_[3]) 
-                                + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])  
-                                + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DCMatrixKokkos 6D!");
+    return this_matrix_.d_view((n - 1) + ((m - 1) * dims_[5]) 
+                                       + ((l - 1) * dims_[5] * dims_[4]) 
+                                       + ((k - 1) * dims_[5] * dims_[4] * dims_[3]) 
+                                       + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2]) 
+                                       + ((i - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCArrayKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DCArrayKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DCArrayKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DCArrayKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DCArrayKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DCArrayKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DCArrayKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DCArrayKokkos 7D!");
-    return this_array_.d_view(o + (n * dims_[6])
-                                + (m * dims_[6] * dims_[5])
-                                + (l * dims_[6] * dims_[5] * dims_[4])
-                                + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
-                                + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                                + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DCMatrixKokkos 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DCMatrixKokkos 7D!");
+    return this_matrix_.d_view((o-1) + ((n - 1) * dims_[6])
+                                     + ((m - 1) * dims_[6] * dims_[5])
+                                     + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
+                                     + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                                     + ((j - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                                     + ((i - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DCArrayKokkos& temp) {
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DCMatrixKokkos& temp) {
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
@@ -9625,7 +11560,8 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace
 
         order_ = temp.order_;
         length_ = temp.length_;
-        this_array_ = temp.this_array_;
+        this_matrix_ = temp.this_matrix_;
+        host = temp.host;
     }
     
     return *this;
@@ -9634,46 +11570,453 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
-    return this_array_.d_view.data();
+T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_matrix_.d_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
-    return this_array_.h_view.data();
+T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_matrix_.h_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
-    this_array_.template modify<typename TArray1D::execution_space>();
-    this_array_.template sync<typename TArray1D::host_mirror_space>();
+    this_matrix_.template modify<typename TArray1D::execution_space>();
+    this_matrix_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
-    this_array_.template modify<typename TArray1D::host_mirror_space>();
-    this_array_.template sync<typename TArray1D::execution_space>();
+    this_matrix_.template modify<typename TArray1D::host_mirror_space>();
+    this_matrix_.template sync<typename TArray1D::execution_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCArrayKokkos() {}
-// End DCArrayKokkos
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCMatrixKokkos() {}
+// End DCMatrixKokkos
+
+
+/////////////////////////
+// DViewCMatrixKokkos
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DViewCMatrixKokkos {
+
+    // this is always unmanaged
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    // this is manage
+    using TArray1D     = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
+    
+private:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    TArray1D this_matrix_; 
+    TArray1DHost this_matrix_host_; 
+    T * temp_inp_matrix_;
+
+public:
+    DViewCMatrixKokkos();
+    
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6,
+                 size_t dim7);
+    
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+                  size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                  size_t n, size_t o) const;
+    
+    KOKKOS_INLINE_FUNCTION
+    DViewCMatrixKokkos& operator=(const DViewCMatrixKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size();
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent();
+
+    // Method returns the raw device pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer();
+
+    // Method returns the raw host pointer of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer();
+
+    // Data member to access host view
+    ViewCMatrix <T> host;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DViewCMatrixKokkos ();
+}; // End of DViewCMatrixKokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos() {}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1) {
+    
+    dims_[0] = dim1;
+    order_ = 1;
+    length_ = dim1;
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer 
+    host = ViewCMatrix <T> (inp_matrix, dim1);
+}
+
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    order_ = 2;
+    length_ = (dim1 * dim2);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    order_ = 3;
+    length_ = (dim1 * dim2 * dim3);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    order_ = 4;
+    length_ = (dim1 * dim2 * dim3 * dim4);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4, 
+                              size_t dim5) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    order_ = 5;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4, 
+                              size_t dim5, size_t dim6) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    order_ = 6;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
+                              size_t dim3, size_t dim4,
+                              size_t dim5, size_t dim6,
+                              size_t dim7) {
+    
+    dims_[0] = dim1;
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+    dims_[3] = dim4;
+    dims_[4] = dim5;
+    dims_[5] = dim6;
+    dims_[6] = dim7;
+    order_ = 7;
+    length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
+    // Create a 1D host view of the external allocation
+    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    // Assign temp point to inp_matrix pointer that is passed in
+    temp_inp_matrix_ = inp_matrix;
+    // Create a device copy of that host view
+    this_matrix_ = create_mirror_view_and_copy(ExecSpace(), this_matrix_host_);
+    // Create host ViewCMatrix
+    host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 1D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 1D!");
+    return this_matrix_((i - 1));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 2D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 2D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 2D!");
+    return this_matrix_((j - 1) + ((i - 1) * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 3D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 3D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 3D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 3D!");
+    return this_matrix_((k - 1) + ((j - 1) * dims_[2]) 
+                                + ((i - 1) * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 4D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 4D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 4D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 4D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 4D!");
+    return this_matrix_((l - 1) + ((k - 1) * dims_[3]) 
+                                + ((j - 1) * dims_[3] * dims_[2]) 
+                                + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 5D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 5D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 5D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 5D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 5D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 5D!");
+    return this_matrix_((m - 1) + ((l - 1) * dims_[4])
+                                + ((k - 1) * dims_[4] * dims_[3])
+                                + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
+                                + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 6D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 6D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 6D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 6D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 6D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 6D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewCMatrixKokkos 6D!");
+    return this_matrix_((n - 1) + ((m - 1) * dims_[5])
+                                + ((l - 1) * dims_[5] * dims_[4])
+                                + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
+                                + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                                + ((i - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 7D!");
+    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewCMatrixKokkos 7D!");
+    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DViewCMatrixKokkos 7D!");
+    return this_matrix_(o + ((n - 1) * dims_[6])
+                          + ((m - 1) * dims_[6] * dims_[5])
+                          + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
+                          + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
+                          + ((j - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
+                          + ((i - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DViewCMatrixKokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        temp_inp_matrix_ = temp.temp_inp_matrix_;
+        this_matrix_host_ = temp.this_matrix_host_;
+        this_matrix_ = temp.this_matrix_;
+        host = temp.host;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() {
+    return this_matrix_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() {
+    return this_matrix_host_.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    // Deep copy of device view to host view
+    deep_copy(this_matrix_host_, this_matrix_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    // Deep copy of host view to device view
+    deep_copy(this_matrix_, this_matrix_host_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCMatrixKokkos() {}
+// End DViewCMatrixKokkos
 
 
 //////////////////////////

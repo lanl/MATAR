@@ -81,7 +81,7 @@ void CHFourierSpectralSolver::set_denominator_()
 }
 
 
-void CHFourierSpectralSolver::time_march(CArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc)
+void CHFourierSpectralSolver::time_march(DCArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc)
 {
     // initialize fft manager
 #ifdef IN_PLACE_FFT
@@ -91,10 +91,10 @@ void CHFourierSpectralSolver::time_march(CArrayKokkos<double> &comp, CArrayKokko
 #endif
     
     // get foward fft of comp
-    fft_manager.perform_forward_fft(comp, comp_img_);
+    fft_manager.perform_forward_fft(comp.device_pointer(), comp_img_.pointer());
 
     // get foward fft of dfdc
-    fft_manager.perform_forward_fft(dfdc, dfdc_img_);
+    fft_manager.perform_forward_fft(dfdc.pointer(), dfdc_img_.pointer());
 
     // solve Cahn Hilliard equation in fourier space
     Kokkos::parallel_for(
@@ -110,7 +110,7 @@ void CHFourierSpectralSolver::time_march(CArrayKokkos<double> &comp, CArrayKokko
 
 
     // get backward fft of comp_img
-    fft_manager.perform_backward_fft(comp_img_, comp);
+    fft_manager.perform_backward_fft(comp_img_.pointer(), comp.device_pointer());
 
     // normalize after inverse fft
     Kokkos::parallel_for(

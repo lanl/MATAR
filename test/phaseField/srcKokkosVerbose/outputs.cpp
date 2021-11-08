@@ -3,7 +3,7 @@
 #include "outputs.h"
 #include "local_free_energy.h"
 
-void track_progress(int iter, int* nn, CArrayKokkos<double> &comp)
+void track_progress(int iter, int* nn, DCArrayKokkos<double> &comp)
 {
     // unpack simimulation parameters needed 
     // for calculations in this function
@@ -55,7 +55,7 @@ void track_progress(int iter, int* nn, CArrayKokkos<double> &comp)
 
 
 
-void write_vtk(int iter, int* nn, double* delta, CArrayKokkos<double> &comp)
+void write_vtk(int iter, int* nn, double* delta, DCArrayKokkos<double> &comp)
 {
     // unpack simimulation parameters needed 
     // for calculations in this function
@@ -66,9 +66,8 @@ void write_vtk(int iter, int* nn, double* delta, CArrayKokkos<double> &comp)
     double dy = delta[1];
     double dz = delta[2];
 
-    // make a deep copy of "comp_" from device to host
-    auto comp_host = create_mirror_view_and_copy(Kokkos::HostSpace(), comp.get_kokkos_view());
-    auto comp_host_view = ViewFArray <double> (comp_host.data(), nx, ny, nz);
+    // update host copy of comp
+    comp.update_host();
 
     // output file management
     FILE* output_file;
@@ -110,7 +109,7 @@ void write_vtk(int iter, int* nn, double* delta, CArrayKokkos<double> &comp)
     for (int k = 0; k < nz; ++k) {
         for (int j = 0; j < ny; ++j) {
             for (int i = 0; i < nx; ++i) {         
-                fprintf(output_file, " %12.6E\n", comp_host_view(i,j,k));
+                fprintf(output_file, " %12.6E\n", comp.host(i,j,k));
             }
         }
     }
@@ -122,7 +121,7 @@ void write_vtk(int iter, int* nn, double* delta, CArrayKokkos<double> &comp)
 
 
 void output_total_free_energy(int iter, int print_rate, int num_steps, int* nn, 
-                              double* delta, double kappa, CArrayKokkos<double> &comp)
+                              double* delta, double kappa, DCArrayKokkos<double> &comp)
 {
     // get total_free_energy
     double total_free_energy = calculate_total_free_energy(nn, delta, kappa, comp);

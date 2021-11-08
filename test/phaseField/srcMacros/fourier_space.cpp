@@ -60,7 +60,7 @@ void FourierSpace::set_kx_ky_kz_()
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);
     });
 #elif OUT_OF_PLACE_FFT
-    FOR_ALL_CLASS(k, 0, nz_, {
+    FOR_ALL_CLASS(k, 0, nz21_, {
             int tk;
             tk = k;
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);
