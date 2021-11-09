@@ -1,7 +1,7 @@
 #include "local_free_energy.h"
 
 
-double calculate_total_free_energy(int* nn, double* delta, double kappa, CArrayKokkos<double> &comp)
+double calculate_total_free_energy(int* nn, double* delta, double kappa, DCArrayKokkos<double> &comp)
 {
     // this function calculates the total free energy of the system.
 
@@ -32,7 +32,7 @@ double calculate_total_free_energy(int* nn, double* delta, double kappa, CArrayK
     return total_energy;
 }
 
-void calculate_dfdc(int* nn, CArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc)
+void calculate_dfdc(int* nn, DCArrayKokkos<double> &comp, CArrayKokkos<double> &dfdc)
 {
     // this function calculates the derivitive of local free energy density (f) 
     // with respect to composition (c) (df/dc).

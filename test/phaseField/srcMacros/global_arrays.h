@@ -3,7 +3,7 @@
 
 struct GlobalArrays
 {
-    CArrayKokkos<double> comp;
+    DCArrayKokkos<double> comp;
     CArrayKokkos<double> dfdc;
 
     GlobalArrays(int* nn);

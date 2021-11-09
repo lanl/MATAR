@@ -32,7 +32,7 @@ if (KOKKOS)
   elseif(IN_PLACE_FFT)
     add_definitions(-DIN_PLACE_FFT=1)
   else ()
-    add_definitions(-DIN_PLACE_FFT=1)
+    add_definitions(-DOUT_OF_PLACE_FFT=1)
   endif()
 
 endif()
