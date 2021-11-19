@@ -560,7 +560,7 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
 template <typename T>
 FArray<T> FArray<T>::operator+ (const FArray& temp)
 {
-    assert(this->order_ == temp.order_ && "Addition of FArray of different orders (ranks)");
+    assert(this->order_ == temp.order_ && "Addition of FArray of different orders (ranks)!");
 
     FArray<T> result;
     
