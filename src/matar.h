@@ -243,6 +243,9 @@ public:
     
     //overload = operator
     FArray& operator=(const FArray& temp);
+
+    //overload + operator
+    FArray operator+(const FArray& temp);
     
     //return array size
     size_t size() const;
@@ -551,6 +554,28 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
           array_[iter] = temp.array_[iter];
     }
     return *this;
+}
+
+// + operator
+template <typename T>
+FArray<T> FArray<T>::operator+ (const FArray& temp)
+{
+    FArray<T> result;
+    
+    for (int iter = 0; iter < temp.order_; iter++) {
+        assert(this->dims_[iter] == temp.dims_[iter] && "Addition of FArray with different dimensions!");
+        result.dims_[iter] = this->dims_[iter];
+    }
+    
+    result.order_  = temp.order_;
+    result.length_ = temp.length_;
+    result.array_ = new T[length_];
+
+    for (int iter = 0; iter < temp.length_; iter++){      
+        result.array_[iter] = this->array_[iter] + temp.array_[iter];     
+    }
+
+    return result;
 }
 
 template <typename T>

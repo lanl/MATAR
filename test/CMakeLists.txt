@@ -7,6 +7,9 @@ add_executable(mtest main.cpp)
 if (NOT KOKKOS)
    add_executable(test_for test_for.cpp)
    target_link_libraries(test_for matar)
+
+   add_executable(test_addition_operator test_addition_operator.cpp)
+   target_link_libraries(test_addition_operator matar)
 endif()
 
 if (KOKKOS)
