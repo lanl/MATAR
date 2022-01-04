@@ -5309,23 +5309,31 @@ private:
     T* this_array_;
 
 public:
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos();
 
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0);
     
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1);
-    
+
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2);
     
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, 
                      size_t dim3);
     
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, 
                      size_t dim3, size_t dim4);
     
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, 
                      size_t dim3, size_t dim4, size_t dim5);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2,
                      size_t dim3, size_t dim4, size_t dim5, size_t dim6);
     
@@ -5368,10 +5376,12 @@ public:
 
 // Default constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0) {
     dims_[0] = dim0;
     order_ = 1;
@@ -5381,6 +5391,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0) {
 
 // Overloaded 2D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1) {
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -5391,6 +5402,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1) {
 
 // Overloaded 3D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1, 
                                       size_t dim2) {
     dims_[0] = dim0;
@@ -5403,6 +5415,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
 
 // Overloaded 4D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1, 
                                       size_t dim2, size_t dim3) {
     dims_[0] = dim0;
@@ -5416,6 +5429,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
 
 // Overloaded 5D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1, 
                                       size_t dim2, size_t dim3, size_t dim4) {
     dims_[0] = dim0;
@@ -5430,6 +5444,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1, 
                                       size_t dim2, size_t dim3, size_t dim4, 
                                       size_t dim5) {
@@ -5446,6 +5461,7 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
 
 // Overloaded 7D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
                                       size_t dim2, size_t dim3, size_t dim4,
                                       size_t dim5, size_t dim6) {
@@ -5937,26 +5953,34 @@ private:
     T* this_matrix_;
     
 public:
-    
+
+    KOKKOS_INLINE_FUNCTION 
     ViewFMatrixKokkos();
     
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                       size_t dim3);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                       size_t dim3, size_t dim4);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                       size_t dim3, size_t dim4, size_t dim5);
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, 
                       size_t dim3, size_t dim4, size_t dim5,
                       size_t dim6);
     
+    KOKKOS_INLINE_FUNCTION
     ViewFMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                       size_t dim3, size_t dim4, size_t dim5,
                       size_t dim6, size_t dim7);
@@ -5997,10 +6021,12 @@ public:
 
 // Default constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1) {
     dims_[0] = dim1;
     order_ = 1;
@@ -6010,6 +6036,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1) {
 
 // Overloaded 2D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2) {
     dims_[0] = dim1;
@@ -6021,6 +6048,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 3D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2, size_t dim3) {
     dims_[0] = dim1;
@@ -6033,6 +6061,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 4D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2, size_t dim3,
                                         size_t dim4) {
@@ -6047,6 +6076,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 5D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2, size_t dim3,
                                         size_t dim4, size_t dim5) {
@@ -6062,6 +6092,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2, size_t dim3,
                                         size_t dim4, size_t dim5,
@@ -6079,6 +6110,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
                                         size_t dim2, size_t dim3,
                                         size_t dim4, size_t dim5,
@@ -6569,25 +6601,33 @@ private:
     T* this_array_;
     
 public:
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos();
-
+    
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1,
                      size_t dim2);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1,
                      size_t dim2, size_t dim3);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1,
                      size_t dim2, size_t dim3, size_t dim4);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1,
                      size_t dim2, size_t dim3, size_t dim4,
                      size_t dim5);
     
+    KOKKOS_INLINE_FUNCTION
     ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1,
                      size_t dim2, size_t dim3, size_t dim4,
                      size_t dim5, size_t dim6);;
@@ -6628,10 +6668,12 @@ public:
 
 // Default constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos() {}
 
 // Overloaded 1D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0) {
     dims_[0] = dim0;
     order_ = 1;
@@ -6641,6 +6683,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0) {
 
 // Overloaded 2D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, 
                                       size_t dim1) {
     dims_[0] = dim0;
@@ -6652,6 +6695,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 
 // Overloaded 3D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
                                       size_t dim1, size_t dim2) {
     dims_[0] = dim0;
@@ -6664,6 +6708,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 
 // Overloaded 4D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
                                       size_t dim1, size_t dim2,
                                       size_t dim3) {
@@ -6678,6 +6723,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 
 // Overloaded 5D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
                                       size_t dim1, size_t dim2,
                                       size_t dim3, size_t dim4) {
@@ -6693,6 +6739,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
                                       size_t dim1, size_t dim2,
                                       size_t dim3, size_t dim4,
@@ -6710,6 +6757,7 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 
 // Overloaded 7D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
                                       size_t dim1, size_t dim2,
                                       size_t dim3, size_t dim4,
@@ -7196,23 +7244,31 @@ private:
     T* this_matrix_;
 
 public:
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos();
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3, 
                       size_t dim4);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3, 
                       size_t dim4, size_t dim5);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3,
                       size_t dim4, size_t dim5, size_t dim6);
 
+    KOKKOS_INLINE_FUNCTION
     ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2, size_t dim3,
                       size_t dim4, size_t dim5, size_t dim6, size_t dim7);
     
@@ -7250,10 +7306,12 @@ public:
 
 // Default constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){ }
 
 // Overloaded 1D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1) {
     dims_[0] = dim1;
     order_ = 1;
@@ -7263,6 +7321,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1) {
 
 // Overloaded 2D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, 
                                         size_t dim2) {
     dims_[0] = dim1;
@@ -7274,6 +7333,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1,
 
 // Overloaded 3D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3) {
     dims_[0] = dim1;
@@ -7286,6 +7346,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 4D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4) {
     dims_[0] = dim1;
@@ -7299,6 +7360,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 5D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5) {
     dims_[0] = dim1;
@@ -7313,6 +7375,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 6D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5,
                                         size_t dim6) {
@@ -7329,6 +7392,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
 
 // Overloaded 7D constructor
 template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2,
                                         size_t dim3, size_t dim4, size_t dim5,
                                         size_t dim6, size_t dim7) {
