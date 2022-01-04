@@ -9265,6 +9265,7 @@ DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DFArrayKokkos<T,Layout,ExecSpace
         order_ = temp.order_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
+	host = temp.host;
     }
     
     return *this;
@@ -9689,6 +9690,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFArrayKokkos<T,Layout,E
         temp_inp_array_ = temp.temp_inp_array_;
         this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
+	host = temp.host;
     }
     
     return *this;
@@ -9830,7 +9832,6 @@ public:
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
     ~DFMatrixKokkos ();  
-
 }; // End of DFMatrixKokkos declarations
 
 // Default constructor
@@ -10054,6 +10055,7 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DFMatrixKokkos<T,Layout,ExecSpa
         order_ = temp.order_;
         length_ = temp.length_;
         this_matrix_ = temp.this_matrix_;
+	host = temp.host;
     }
     
     return *this;
@@ -10462,6 +10464,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFMatrixKokkos<T,Layout
         temp_inp_matrix_ = temp.temp_inp_matrix_;
         this_matrix_host_ = temp.this_matrix_host_;
         this_matrix_ = temp.this_matrix_;
+	host = temp.host;
     }
     
     return *this;
