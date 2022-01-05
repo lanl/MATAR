@@ -76,6 +76,7 @@
 #include <stdlib.h>
 #include <string>
 #include <assert.h>
+#include <memory> // for shared_ptr
 #include "macros.h"
 
 using real_t = double;
@@ -159,7 +160,7 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    T * array_;
+    std::shared_ptr <T []> array_;
     
 public:
     
@@ -257,7 +258,7 @@ public:
     T* pointer() const;
     
     // deconstructor
-    ~FArray ( );
+    ~FArray ();
     
 }; // end of f_array_t
 
@@ -277,7 +278,7 @@ FArray<T>::FArray(size_t dim0)
     dims_[0] = dim0;
     length_ = dim0;
     order_ = 1;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 template <typename T>
@@ -288,7 +289,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[1] = dim1;
     order_ = 2;
     length_ = dim0*dim1;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //3D
@@ -302,7 +303,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[2] = dim2;
     order_ = 3;
     length_ = dim0*dim1*dim2;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //4D
@@ -318,7 +319,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[3] = dim3;
     order_ = 4;
     length_ = dim0*dim1*dim2*dim3;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //5D
@@ -336,7 +337,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[4] = dim4;
     order_ = 5;
     length_ = dim0*dim1*dim2*dim3*dim4;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //6D
@@ -356,7 +357,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[5] = dim5;
     order_ = 6;
     length_ = dim0*dim1*dim2*dim3*dim4*dim5;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 
@@ -379,7 +380,7 @@ FArray<T>::FArray(size_t dim0,
     dims_[6] = dim6;
     order_ = 7;
     length_ = dim0*dim1*dim2*dim3*dim4*dim5*dim6;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]);
         
 }
 
@@ -397,12 +398,7 @@ FArray<T>::FArray(const FArray& temp) {
         
         order_  = temp.order_;
         length_ = temp.length_;       
-        array_ = new T[length_];
-        
-        //copy contents
-        
-        for(int iter = 0; iter < length_; iter++)
-            array_[iter] = temp.array_[iter];
+        array_ = temp.array_;
     } // end if
     
 } // end constructor
@@ -542,13 +538,7 @@ FArray<T>& FArray<T>::operator= (const FArray& temp)
 
         order_  = temp.order_;
         length_ = temp.length_;
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        array_  = temp.array_;
     }
     return *this;
 }
@@ -573,15 +563,12 @@ inline size_t FArray<T>::order() const {
 
 template <typename T>
 inline T* FArray<T>::pointer() const {
-    return array_;
+    return array_.get();
 }
 
 //delete FArray
 template <typename T>
-FArray<T>::~FArray(){
-    if(array_!=NULL)
-    delete [] array_;
-}
+FArray<T>::~FArray(){}
 
 //---end of FArray class definitions----
 
@@ -992,7 +979,7 @@ private:
     size_t dims_[7];
     size_t length_; // Length of 1D array
     size_t order_;  // tensor order (rank)
-    T* matrix_;
+    std::shared_ptr <T []> matrix_;
 
 public:
     // Default constructor
@@ -1108,7 +1095,7 @@ FMatrix<T>::FMatrix(size_t dim1)
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //2D
@@ -1120,7 +1107,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[1] = dim2;
     order_ = 2;
     length_ = dim1 * dim2;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //3D
@@ -1134,7 +1121,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[2] = dim3;
     order_ = 3;
     length_ = dim1 * dim2 * dim3;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //4D
@@ -1150,7 +1137,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[3] = dim4;
     order_ = 4;
     length_ = dim1 * dim2 * dim3 * dim4;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //5D
@@ -1168,7 +1155,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[4] = dim5;
     order_ = 5;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 }
 
 //6D
@@ -1188,7 +1175,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[5] = dim6;
     order_ = 6;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
 
 }
 
@@ -1210,7 +1197,7 @@ FMatrix<T>::FMatrix(size_t dim1,
     dims_[6] = dim7;
     order_ = 7;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T []> (new T[length_]);
     
 }
 
@@ -1226,13 +1213,7 @@ FMatrix<T>::FMatrix(const FMatrix& temp) {
         
         order_  = temp.order_;
         length_ = temp.length_;
-        
-        matrix_ = new T[length_];
-        
-        //copy contents
-        
-        for(int iter = 0; iter < length_; iter++)
-            matrix_[iter] = temp.matrix_[iter];
+        matrix_ = temp.matrix_;
     } // end if
     
 } // end constructor
@@ -1372,13 +1353,7 @@ inline FMatrix<T>& FMatrix<T>::operator= (const FMatrix& temp)
 
         order_  = temp.order_;
         length_ = temp.length_;
-        if(matrix_!=NULL)
-          delete[] matrix_;
-        matrix_ = new T[length_];
-
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          matrix_[iter] = temp.matrix_[iter];
+	matrix_ = temp.matrix_;
     }
     
     return *this;
@@ -1404,14 +1379,11 @@ inline size_t FMatrix<T>::order() const {
 
 template <typename T>
 inline T* FMatrix<T>::pointer() const{
-    return matrix_;
+    return matrix_.get();
 }
 
 template <typename T>
-FMatrix<T>::~FMatrix() {
-    if(matrix_!=NULL)
-      delete[] matrix_;
-}
+FMatrix<T>::~FMatrix() {}
 
 //----end of FMatrix class definitions----
 
@@ -1822,7 +1794,7 @@ private:
     size_t dims_[7];
     size_t length_; // Length of 1D array
     size_t order_;  // tensor order (rank)
-    T* array_;
+    std::shared_ptr <T []> array_;
 
 public:
     // Default constructor
@@ -1941,7 +1913,7 @@ CArray<T>::CArray(size_t dim0)
     dims_[0] = dim0;
     order_ = 1;
     length_ = dim0;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //2D
@@ -1953,7 +1925,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[1] = dim1;
     order_ = 2;
     length_ = dim0 * dim1;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //3D
@@ -1967,7 +1939,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[2] = dim2;
     order_ = 3;
     length_ = dim0 * dim1 * dim2;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //4D
@@ -1983,7 +1955,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[3] = dim3;
     order_ = 4;
     length_ = dim0 * dim1 * dim2 * dim3;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //5D
@@ -2000,7 +1972,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[4] = dim4;
     order_ = 5;
     length_ = dim0 * dim1 * dim2 * dim3 * dim4;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //6D
@@ -2019,7 +1991,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[5] = dim5;
     order_ = 6;
     length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //7D
@@ -2040,7 +2012,7 @@ CArray<T>::CArray(size_t dim0,
     dims_[6] = dim6;
     order_ = 7;
     length_ = dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //Copy constructor
@@ -2057,13 +2029,7 @@ CArray<T>::CArray(const CArray& temp) {
         
         order_  = temp.order_;
         length_ = temp.length_;
-        
-        array_ = new T[length_];
-        
-        //copy contents
-        
-        for(int iter = 0; iter < length_; iter++)
-            array_[iter] = temp.array_[iter];
+        array_ = temp.array_;
     } // end if
     
 } // end constructor
@@ -2213,15 +2179,7 @@ inline CArray<T>& CArray<T>::operator= (const CArray& temp)
 
         order_  = temp.order_;
         length_ = temp.length_;
-        if(array_!=NULL){
-            delete[] array_;
-        }
-        array_ = NULL;
-        if(length_!=0)
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        array_  = temp.array_;
     }
     return *this;
 }
@@ -2249,16 +2207,12 @@ inline size_t CArray<T>::order() const {
 
 template <typename T>
 inline T* CArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 //destructor
 template <typename T>
-CArray<T>::~CArray() {
-    if(array_!=NULL){
-        delete[] array_;
-    }
-}
+CArray<T>::~CArray() {}
 
 //----endof carray class definitions----
 
@@ -2688,7 +2642,7 @@ private:
     size_t dims_[7];
     size_t length_; // Length of 1D array
     size_t order_;  // tensor order (rank)
-    T * matrix_;
+    std::shared_ptr <T []> matrix_;
             
 public:
         
@@ -2808,7 +2762,7 @@ CMatrix<T>::CMatrix(size_t dim1)
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //2D
@@ -2820,7 +2774,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[1] = dim2;
     order_ = 2;
     length_ = dim1 * dim2;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //3D
@@ -2834,7 +2788,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[2] = dim3;
     order_ = 3;
     length_ = dim1 * dim2 * dim3;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //4D
@@ -2850,7 +2804,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[3] = dim4;
     order_ = 4;
     length_ = dim1 * dim2 * dim3 * dim4;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }   
 
 //5D
@@ -2868,7 +2822,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[4] = dim5;
     order_ = 5;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //6D
@@ -2888,7 +2842,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[5] = dim6;
     order_ = 6;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 //7D
@@ -2910,7 +2864,7 @@ CMatrix<T>::CMatrix(size_t dim1,
     dims_[6] = dim7;
     order_ = 7;
     length_ = dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7;
-    matrix_ = new T[length_];
+    matrix_ = std::shared_ptr <T[]> (new T[length_]);
 }
 
 template <typename T>
@@ -2925,13 +2879,7 @@ CMatrix<T>::CMatrix(const CMatrix& temp) {
         
         order_  = temp.order_;
         length_ = temp.length_;
-        
-        matrix_ = new T[length_];
-        
-        //copy contents
-        
-        for(int iter = 0; iter < length_; iter++)
-            matrix_[iter] = temp.matrix_[iter];
+        matrix_ = temp.matrix_;
     } // end if
     
 } // end constructor
@@ -3076,13 +3024,7 @@ CMatrix<T> &CMatrix<T>::operator= (const CMatrix &temp) {
 
         order_  = temp.order_;
         length_ = temp.length_;
-        if(matrix_!=NULL)
-          delete[] matrix_;
-        matrix_ = new T[length_];
-
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          matrix_[iter] = temp.matrix_[iter];
+        matrix_ = temp.matrix_;
     }
   return *this;
 }
@@ -3107,15 +3049,12 @@ inline size_t CMatrix<T>::order() const {
 
 template <typename T>
 inline T* CMatrix<T>::pointer() const{
-    return matrix_;
+    return matrix_.get();
 }
 
 // Destructor
 template <typename T>
-CMatrix<T>::~CMatrix(){
-    if(matrix_!=NULL)
-      delete[] matrix_;
-}
+CMatrix<T>::~CMatrix(){}
 
 //----end of CMatrix class definitions----
 
