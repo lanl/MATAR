@@ -692,6 +692,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // return pointer
+    T* pointer() const;
     
 }; // end of viewFArray
 
@@ -971,6 +974,11 @@ inline size_t ViewFArray<T>::order() const {
 template <typename T>
 inline size_t ViewFArray<T>::size() const {
     return length_;
+}
+
+template <typename T>
+inline T* ViewFArray<T>::pointer() const {
+    return array_;
 }
 
 //---end of ViewFArray class definitions---
@@ -1515,6 +1523,9 @@ public:
     
     // return matrix order (rank)
     size_t order() const;
+
+    // return pointer
+    T* pointer() const;
     
 }; // end of ViewFMatrix
 
@@ -1793,6 +1804,11 @@ inline size_t ViewFMatrix<T>::dims(size_t i) const {
 template <typename T>
 inline size_t ViewFMatrix<T>::order() const {
     return order_;
+}
+
+template <typename T>
+inline T* ViewFMatrix<T>::pointer() const {
+    return matrix_;
 }
 //-----end ViewFMatrix-----
 
@@ -2352,6 +2368,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // return pointer
+    T* pointer() const;
     
 }; // end of ViewCArray
 
@@ -2651,6 +2670,11 @@ inline size_t ViewCArray<T>::dims(size_t i) const {
 template <typename T>
 inline size_t ViewCArray<T>::order() const {
     return order_;
+}
+
+template <typename T>
+inline T* ViewCArray<T>::pointer() const {
+    return array_;
 }
 
 //---end of ViewCArray class definitions----
@@ -3203,6 +3227,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // return pointer
+    T* pointer() const;
     
 }; // end of ViewCMatrix
 
@@ -3486,6 +3513,11 @@ inline size_t ViewCMatrix<T>::dims(size_t i) const {
 template <typename T>
 inline size_t ViewCMatrix<T>::order() const {
     return order_;
+}
+
+template <typename T>
+inline T* ViewCMatrix<T>::pointer() const {
+    return matrix_;
 }
 
 
@@ -5282,8 +5314,7 @@ T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
+KOKKOS_INLINE_FUNCTIONKokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
 
@@ -5368,6 +5399,9 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
+
+    KOKKOS_INLINE_FUNCTION
+    T* pointer() const;
 
     KOKKOS_INLINE_FUNCTION
     ~ViewFArrayKokkos();
@@ -5591,6 +5625,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::extent() const {
     return length_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+T* ViewFArrayKokkos<T>::pointer() const {
+    return this_array_;
 }
 
 template <typename T>
@@ -6015,6 +6055,9 @@ public:
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
+    T* pointer();
+
+    KOKKOS_INLINE_FUNCTION
     ~ViewFMatrixKokkos();
     
 }; // end of ViewFMatrixKokkos
@@ -6238,6 +6281,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::extent() const {
     return length_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+T* ViewFMatrixKokkos<T>::pointer() const {
+    return this_matrix_;
 }
 
 template <typename T>
@@ -6662,6 +6711,9 @@ public:
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
+    T* pointer() const;
+
+    KOKKOS_INLINE_FUNCTION
     ~ViewCArrayKokkos();
     
 }; // end of ViewCArrayKokkos
@@ -6880,6 +6932,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::extent() const {
     return length_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+T* ViewCArrayKokkos<T>::pointer() const {
+    return this_array_;
 }
 
 template <typename T>
@@ -7300,6 +7358,9 @@ public:
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
+    T* pointer() const;
+
+    KOKKOS_INLINE_FUNCTION
     ~ViewCMatrixKokkos();
 
 }; // End of ViewCMatrixKokkos
@@ -7514,6 +7575,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::extent() const {
     return length_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+T* ViewCMatrixKokkos<T>::pointer() const {
+    return this_matrix_;
 }
 
 template <typename T>
