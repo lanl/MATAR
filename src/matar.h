@@ -5314,7 +5314,8 @@ T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTIONKokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
+KOKKOS_INLINE_FUNCTION
+Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
 
@@ -6055,7 +6056,7 @@ public:
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
-    T* pointer();
+    T* pointer() const;
 
     KOKKOS_INLINE_FUNCTION
     ~ViewFMatrixKokkos();
