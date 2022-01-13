@@ -22,7 +22,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 
 # Macros and packages
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
 # --- custom targets: ---
 if (NOT TARGET distclean)
