@@ -7,6 +7,9 @@ add_executable(mtest main.cpp)
 if (NOT KOKKOS)
    add_executable(test_for test_for.cpp)
    target_link_libraries(test_for matar)
+
+   add_executable(test_shared_ptr test_shared_ptr.cpp)
+   target_link_libraries(test_shared_ptr matar)
 endif()
 
 if (KOKKOS)
