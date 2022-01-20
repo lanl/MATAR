@@ -47,6 +47,3 @@ add_subdirectory(laplace)
 
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)
-
-include_directories(/vast/home/cyenusah/EVPFFT_MATAR/MATAR/test/EVPFFT)
-add_subdirectory(/vast/home/cyenusah/EVPFFT_MATAR/MATAR/test/EVPFFT EVPFFT)
