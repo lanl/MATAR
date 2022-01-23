@@ -10,8 +10,8 @@ const double temp_tolerance = 0.01;
 void initialize(CArrayKokkos<double> &temperature_previous);
 void track_progress(int iteration, CArrayKokkos<double> &temperature);
 
-int main() {
-    Kokkos::initialize();
+int main(int argc, char* argv[]) {
+    Kokkos::initialize(argc, argv);
     {
 
     auto temperature = CArrayKokkos<double>(height+2, width+2);

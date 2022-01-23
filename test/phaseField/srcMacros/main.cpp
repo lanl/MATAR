@@ -10,9 +10,9 @@
 #include "outputs.h"
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    Kokkos::initialize();
+    Kokkos::initialize(argc, argv);
     {
 
     // simulation parameters

@@ -99,6 +99,10 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 using DefaultMemSpace  = Kokkos::HostSpace;
 using DefaultExecSpace = Kokkos::OpenMP;
 using DefaultLayout    = Kokkos::LayoutRight;
+#elif HAVE_THREADS
+using DefaultMemSpace  = Kokkos::HostSpace;
+using DefaultExecSpace = Kokkos::Threads;
+using DefaultLayout    = Kokkos::LayoutLeft;
 #elif HAVE_HIP
 using DefaultMemSpace  = Kokkos::HipSpace;
 using DefaultExecSpace = Kokkos::Hip;
