@@ -122,10 +122,13 @@ cmake -DKOKKOS=1 -DOPENMP=1 .
 ## Kokkos with Threads build
 ```
 cmake -DKOKKOS=1 -DTHREADS=1 .
-
+```
+    
 To specify number of threads, run with command line arguments as
+```
 --kokkos-threads=4
 ```
+
     
 ## Kokkos with CUDA build
 ```
