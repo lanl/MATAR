@@ -24,6 +24,10 @@ if (KOKKOS)
     add_definitions(-DHAVE_OPENMP=1)
     #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_OPENMP)
     target_link_libraries(phasefield matar Kokkos::kokkos fftw3_threads fftw3)
+  elseif (THREADS)
+    add_definitions(-DHAVE_THREADS=1)
+    #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_THREADS)
+    target_link_libraries(phasefield matar Kokkos::kokkos fftw3_threads fftw3)
   endif()
 
 
