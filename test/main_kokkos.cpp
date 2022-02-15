@@ -181,10 +181,28 @@ int main() {
         Kokkos::parallel_for("DRRAKTest", size_i, KOKKOS_LAMBDA(const int i) {
             for (int j = 0; j < (i % size_j) + 1; j++) {
                 drrak.stride(i)++;
+                drrak(i,j) = j;
                 //printf("(%i) stride is %d\n", i, j);
             }
         });
         Kokkos::fence();
+        
+        // testing MATAR FOR_ALL loop
+        DynamicRaggedRightArrayKokkos <int> my_dyn_ragged(size_i, size_j);
+        FOR_ALL(i, 0, size_i, {
+            for (int j = 0; j <= (i % size_j); j++) {
+                my_dyn_ragged.stride(i)++;
+                my_dyn_ragged(i,j) = j;
+            }// end for
+        });// end parallel for
+        Kokkos::fence();
+        
+        // serial loop checking MATAR FOR_ALL loop against Kokkos::parallel_for
+        for (int i=0; i<size_i; i++) {
+            for (int j = 0; j <= (i % size_j); j++) {
+                printf(" dyn_ragged_right error = %i \n", my_dyn_ragged(i,j)-drrak(i,j));
+            }// end for
+        } // end for
         
         
         // -----------------------

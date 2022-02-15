@@ -137,6 +137,13 @@ make
 ```
 
 
+## Cloning the code
+If your SSH keys are set in github, then from the terminal type:
+```
+git clone --recursive ssh://git@github.com/lanl/MATAR.git
+```
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -148,7 +155,7 @@ This program is open source under the BSD-3 License.
 ```
 @article{MATAR,
 title = "{MATAR: A Performance Portability and Productivity Implementation of Data-Oriented Design with Kokkos}",
-journal = {accepted to Journal of Parallel and Distributed Computing},
+journal = {Journal of Parallel and Distributed Computing},
 pages = {86-104},
 volume = {157},
 year = {2021},
