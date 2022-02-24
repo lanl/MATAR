@@ -197,12 +197,6 @@ int main() {
         });// end parallel for
         Kokkos::fence();
         
-        // serial loop checking MATAR FOR_ALL loop against Kokkos::parallel_for
-        for (int i=0; i<size_i; i++) {
-            for (int j = 0; j <= (i % size_j); j++) {
-                printf(" dyn_ragged_right error = %i \n", my_dyn_ragged(i,j)-drrak(i,j));
-            }// end for
-        } // end for
         
         
         // -----------------------
