@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <array>
+#include <variant>
 
 #include "matar.h"
+
+
+// helper type for selecting variant type set by user
+template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
+// explicit deduction guide (not needed as of C++20)
+template<class... Ts> overloaded(Ts...) -> overloaded<Ts...>;
 
 
 // A notional class
@@ -65,11 +72,172 @@ void Data::some_fcn(){
 
 
 
+// functions called INSIDE a kokkos parallel loop
+KOKKOS_INLINE_FUNCTION
+void pass_by_ref(const FMatrixKokkos<int> &matrix);
+
+KOKKOS_INLINE_FUNCTION
+void pass_view_by_ref(const ViewFMatrixKokkos<int> &matrix);
+
+KOKKOS_INLINE_FUNCTION
+void pass_by_val(const FMatrixKokkos<int> matrix);
+
+
+// functions NOT called in a kokkos parallel loop
+void pass_by_ref_two(const FMatrixKokkos<int> &matrix);
+
+FMatrixKokkos <int> return_by_val();
+
+
+
+// function objects ModelA and ModelB with parallel loops inside
+class ModelA{
+
+private:
+
+    // initial variables
+    
+public:
+
+    // default constructor
+    ModelA (){};
+    
+    // overload constructor to set initial values
+    
+    // overload()
+    void operator()(FMatrixKokkos<int> &matrix){
+        
+    printf("inside ModelA \n");
+    
+        int loc_sum;
+        int val = 0;
+    
+        // NOTE: if private vars are accessed, requires REDUCE_SUM_CLASS
+        // do summation in parallel on GPU
+        REDUCE_SUM_CLASS(k, 1, 6,
+                         j, 1, 5,
+                         i, 1, 4,
+                         loc_sum, {
+                         loc_sum += matrix(i,j,k,1);
+                        }, val);
+        Kokkos::fence();
+
+        printf(" val = %i \n", val);
+     
+     } // end overload
+    
+}; // end function object ModelA
+
+// another functor
+class ModelB{
+
+private:
+
+    // initial variables
+    
+public:
+
+    // default constructor
+    ModelB (){};
+    
+    // overload constructor to set initial values
+    
+    // overload()
+    void operator()(FMatrixKokkos<int> &matrix){
+        
+    printf("inside ModelB \n");
+    
+        int loc_sum;
+        int val = 0;
+    
+        // NOTE: if private vars are accessed, requires REDUCE_SUM_CLASS
+        // do summation in parallel on GPU
+        REDUCE_SUM_CLASS(k, 1, 6,
+                         j, 1, 5,
+                         i, 1, 4,
+                         loc_sum, {
+                         loc_sum += matrix(i,j,k,1);
+                        }, val);
+        Kokkos::fence();
+
+        printf(" val = %i \n", val);
+     
+     } // end overload
+    
+}; // end function object ModelB
+
+// collection of Models in a std::variant
+using models = std::variant<ModelA, ModelB>;
+
+
+
+// function objects called inside a parallel loop
+
+class MethodA{
+
+private:
+
+    // initial variables
+    
+public:
+
+    // default constructor
+    MethodA (){};
+    
+    // overload constructor to set initial values
+    
+    // overload()
+    KOKKOS_INLINE_FUNCTION
+    void operator()(const FMatrixKokkos<int> &matrix) const{
+        
+    printf("inside MethodA \n");
+    
+    int idx = matrix(1,1,1,1);
+    
+    matrix(1,1,1,1) = idx;  // do something pointless
+
+    } // end overload
+    
+}; // end function object MethodA
+
+// another functor
+class MethodB{
+
+private:
+
+    // initial variables
+    
+public:
+
+    // default constructor
+    MethodB (){};
+    
+    // overload constructor to set initial values
+    
+    // overload()
+    KOKKOS_INLINE_FUNCTION
+    void operator()(const FMatrixKokkos<int> &matrix) const{
+        
+    printf("inside MethodB \n");
+    
+    int idx = matrix(1,1,1,1);
+    
+    matrix(1,1,1,1) = idx;  // do something pointless
+
+    } // end overload
+    
+}; // end function object MethodB
+
+// a collection of Methods in a std::variant
+using methods = std::variant<MethodA, MethodB>;
+
+
+
 // Main function
 int main() {
 
     Kokkos::initialize();
-    {   
+    {
 
         // -----------------------
         // parameters for examples
@@ -132,30 +300,36 @@ int main() {
                 });
         Kokkos::fence();
         
+    
         // -----------------------
         // CMatrix
         // -----------------------
         
         printf("\n3D CMatrix\n");
         auto cmk3D = CMatrixKokkos <int> (size_i, size_j, size_k);
+        printf("made 3D CMatrix\n");
+        printf("made CMATARkokkos\n");
         Kokkos::parallel_for("3DCMatrix", Mtx_policy_3d, KOKKOS_LAMBDA(const int i, const int j, const int k) {
             int idx = (i-1) * size_j * size_k + (j-1) * size_k + (k-1);
             cmk3D(i, j, k) = idx;
-            //printf("%d) %d\n", i, cmk3D(i, j, k));
+            printf("%d) %d\n", i, cmk3D(i, j, k));
         });
         Kokkos::fence();
         
         
         // the marco for a parallel 3D nested loop
-        FOR_ALL(i, 1, size_i,
-                j, 1, size_j,
-                k, 1, size_k,
+        auto cmk3D_two = CMatrixKokkos <int> (size_i, size_j, size_k);
+        FOR_ALL(i, 1, size_i+1,
+                j, 1, size_j+1,
+                k, 1, size_k+1,
                 {
                 int idx = (i-1) * size_j * size_k + (j-1) * size_k + (k-1);
-                cmk3D(i, j, k) = idx;
-                //printf("%d) %d\n", i, cmk3D(i, j, k));
+                cmk3D_two(i, j, k) = idx;
+                
+                //printf("index %d) CMatrix = %d and %d\n", idx, cmk3D_two(i, j, k), cmk3D(i, j, k));
                 });
         Kokkos::fence();
+    
         
         // -----------------------
         // FMatrix
@@ -163,15 +337,161 @@ int main() {
         
         printf("\n4D FMatrix\n");
         auto fmk4D = FMatrixKokkos <int> (size_i, size_j, size_k, size_l);
+    
         Kokkos::parallel_for("4DFMatrix", Mtx_policy_4d, KOKKOS_LAMBDA(const int i, const int j, const int k, const int l) {
             int idx = (l-1) * size_i * size_j * size_k + (k-1) * size_i * size_j + (j-1) * size_i + (i-1);
             fmk4D(i, j, k, l) = idx;
-            //printf("%d) %d\n", idx, fmk4D(i, j, k, l));
+        });
+        Kokkos::fence();
+    
+    
+        
+        // -- functions exectuted on device inside a parallel for loop ---
+        // A parallel loop
+        FOR_ALL(i,0,1,{
+            pass_by_ref(fmk4D);
+            pass_by_val(fmk4D);
         });
         Kokkos::fence();
         
+        
+        // --- call a function that has kokkos parallel loops inside it ---
+        
+        // get a FMatrix from a function
+        fmk4D = return_by_val();
+        
+        // verify the values are correct
+        FOR_ALL(i,0,1,{
+            pass_by_ref(fmk4D);
+        });
+        Kokkos::fence();
+        
+        // call a function that has kokkos parallel loops inside it
+        pass_by_ref_two(fmk4D);
+        
+        
+        
         // -----------------------
-        // RaggedRightArray
+        // ViewFMatrix
+        // -----------------------
+        
+        printf("\n3D ViewFMatrix\n");
+        
+        // slice off the last dimension of FMatrix at L=1
+        FOR_ALL(L,1,2,{
+            // MATAR views by default are on the device
+            auto viewfmk3D = ViewFMatrixKokkos <int> (&fmk4D(1,1,1,L),size_i, size_j, size_k);
+            
+            // pass this view to a function
+            pass_view_by_ref(viewfmk3D);
+        });
+        Kokkos::fence();
+        
+        
+        
+        // -----------------------
+        // functors
+        // -----------------------
+        printf("\nfunctors\n");
+        ModelA model_a;
+        model_a(fmk4D);
+        
+        // --
+        MethodA method_a;
+        FOR_ALL(i,1,2,{
+            method_a(fmk4D);
+        });
+        Kokkos::fence();
+        
+        
+        // -----------------------
+        // std::variant access
+        // -----------------------
+        
+        printf("\nstd::variant with functors\n");
+        
+        models my_model = ModelA(); // set model type
+        
+        size_t idx = my_model.index();
+        printf("index of model in variant is = %lu \n",idx);
+        
+        // find and execute the model selected
+        std::visit(overloaded {
+            [&fmk4D](ModelA model) {
+                printf("ModelA is being executed\n");
+                
+                model(fmk4D);
+                
+            },
+            [&fmk4D](ModelB model) {
+                printf("ModelB is being executed\n");
+                model(fmk4D);
+            }
+        }, my_model);
+        
+        
+        
+        printf("\nCArray of std::variants with functors\n");
+        
+        // MATAR CArray of std::variants to hold models
+        CArray <models> mat_models(3);
+        mat_models(0) = ModelB(); // material 0 physics model
+        mat_models(1) = ModelA(); // material 1 physics model
+        mat_models(2) = ModelB(); // material 2 physics model
+        
+        idx = mat_models(0).index();
+        printf("index of model in variant is = %lu \n",idx);
+        
+        for (int mat_id=0; mat_id<3; mat_id++){
+            // find and execute the model selected
+            std::visit(overloaded {
+                [&fmk4D](ModelA model) {
+                    printf("ModelA is being executed\n");
+                    model(fmk4D);
+                },
+                [&fmk4D](ModelB model) {
+                    printf("ModelB is being executed\n");
+                    model(fmk4D);
+                }
+            }, mat_models(mat_id));
+        } // end of loop over materials
+        
+        
+        // MATAR CArray of std::variants to hold methods
+        CArray <methods> mat_methods(3);
+        mat_methods(0) = MethodB(); // material 0 numerical method
+        mat_methods(1) = MethodA(); // material 1 numerical method
+        mat_methods(2) = MethodB(); // material 2 numerical method
+        
+        for (int mat_id=0; mat_id<3; mat_id++){
+            // find and execute the model selected
+            std::visit(overloaded {
+                [&fmk4D](MethodA method) {
+                    printf("ModelA is being executed\n");
+                    
+                    // e.g., loop over the cells in the mesh in parallel
+                    FOR_ALL(i,1,2,{
+                        method(fmk4D);
+                    });
+                    Kokkos::fence();
+                    
+                },
+                [&fmk4D](MethodB method) {
+                    printf("ModelB is being executed\n");
+                    
+                    // e.g., loop over the cells in the mesh in parallel
+                    FOR_ALL(i,1,2,{
+                        method(fmk4D);
+                    });
+                    Kokkos::fence();
+                }
+            }, mat_methods(mat_id));
+        } // end of loop over materials
+        
+        
+        
+        // -----------------------
+        // DynamicRaggedRightArray
         // -----------------------
         
         printf("\nDynamic Ragged Right Array\n");
@@ -186,18 +506,21 @@ int main() {
             }
         });
         Kokkos::fence();
-        
+    
+        printf("\ntesting macro FOR_ALL\n");
+    
         // testing MATAR FOR_ALL loop
         DynamicRaggedRightArrayKokkos <int> my_dyn_ragged(size_i, size_j);
         FOR_ALL(i, 0, size_i, {
             for (int j = 0; j <= (i % size_j); j++) {
                 my_dyn_ragged.stride(i)++;
                 my_dyn_ragged(i,j) = j;
+                printf(" dyn_ragged_right error = %i \n", my_dyn_ragged(i,j)-drrak(i,j));
             }// end for
         });// end parallel for
         Kokkos::fence();
         
-        
+
         
         // -----------------------
         // CArray view
@@ -223,6 +546,7 @@ int main() {
         printf("\nCArray in a class\n");
         Data my_data(size_i, size_j, size_k);
         my_data.some_fcn();
+    
         
     } // end of kokkos scope
     
@@ -232,3 +556,132 @@ int main() {
 
     return 0;
 }
+
+
+
+// -----  Functions called INSIDE a kokkos parallel loop -----
+
+KOKKOS_INLINE_FUNCTION
+void pass_by_ref(const FMatrixKokkos<int> &matrix){
+  printf("inside pass_by_ref function,");
+
+
+  int val = 0;
+  for (int k=1; k<=5; k++){
+    for (int j=1; j<=4; j++){
+      for (int i=1; i<=3; i++){
+        
+        val += matrix(i,j,k,1);
+        
+      } // end for i
+    } // end for j
+  } // end for k
+
+  printf(" val = %i \n", val);
+
+}
+
+
+KOKKOS_INLINE_FUNCTION
+void pass_by_val(const FMatrixKokkos<int> matrix){
+  printf("inside pass_by_val function,");
+
+  int val = 0;
+  
+  // do summation in serial
+  for (int k=1; k<=5; k++){
+    for (int j=1; j<=4; j++){
+      for (int i=1; i<=3; i++){
+        
+        val += matrix(i,j,k,1);
+        
+      } // end for i
+    } // end for j
+  } // end for k
+
+  printf(" val = %i, \n", val);
+
+}
+
+
+KOKKOS_INLINE_FUNCTION
+void pass_view_by_ref(const ViewFMatrixKokkos<int> &matrix){
+
+  // remember that MATAR views are always on the device
+  
+  printf("inside pass_view_by_ref function,");
+
+  int val = 0;
+  
+  // do summation in serial
+  for (int k=1; k<=5; k++){
+    for (int j=1; j<=4; j++){
+      for (int i=1; i<=3; i++){
+        
+        val += matrix(i,j,k);
+        
+      } // end for i
+    } // end for j
+  } // end for k
+
+  printf(" val = %i, \n", val);
+
+} // end function
+
+
+
+
+
+
+// -----  Functions NOT called in a kokkos parallel loop -----
+
+void pass_by_ref_two(const FMatrixKokkos<int> &matrix){
+  printf("inside pass_by_ref_two function (parallel loops),");
+
+    int loc_sum;
+    int val = 0;
+    
+    // do summation in parallel on GPU
+    REDUCE_SUM(k, 1, 6,
+               j, 1, 5,
+               i, 1, 4,
+               loc_sum, {
+                   loc_sum += matrix(i,j,k,1);
+               }, val);
+
+  printf(" val = %i \n", val);
+
+}
+
+
+FMatrixKokkos <int> return_by_val(){
+
+        printf("inside return_by_val \n");
+
+        // -----------------------
+        // parameters for examples
+        // -----------------------
+        u_int size_i, size_j, size_k, size_l;
+        size_i = 3; size_j = 4; size_k = 5; size_l = 6;
+        
+        policy4D Mtx_policy_4d = policy4D({1, 1, 1, 1}, {size_i+1, size_j+1, size_k+1, size_l+1});
+
+        FMatrixKokkos <int> fmk4D_local(size_i, size_j, size_k, size_l);
+    
+        Kokkos::parallel_for("4DFMatrix", Mtx_policy_4d,
+            KOKKOS_LAMBDA(const int i, const int j, const int k, const int l) {
+            int idx = (l-1) * size_i * size_j * size_k +
+                      (k-1) * size_i * size_j + (j-1) * size_i + (i-1);
+            fmk4D_local(i, j, k, l) = idx;
+        });
+        Kokkos::fence();
+    
+    return fmk4D_local;
+}
+
+
+
+
+
+
+
