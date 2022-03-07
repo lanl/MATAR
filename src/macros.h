@@ -71,6 +71,11 @@
 // CArray nested loop convention use Right, FArray use Left
 #define LOOP_ORDER Kokkos::Iterate::Right
 
+// run once on the device
+#define \
+    RUN(fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, 1), \
+                          KOKKOS_LAMBDA(const int i){fcn} )
 
 // the FOR_ALL loop
 #define \
