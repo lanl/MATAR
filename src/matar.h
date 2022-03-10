@@ -104,8 +104,8 @@ using DefaultMemSpace  = Kokkos::HostSpace;
 using DefaultExecSpace = Kokkos::Threads;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #elif HAVE_HIP
-using DefaultMemSpace  = Kokkos::HipSpace;
-using DefaultExecSpace = Kokkos::Hip;
+using DefaultMemSpace  = Kokkos::Experimental::HIPSpace;
+using DefaultExecSpace = Kokkos::Experimental::HIP;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #else
 using DefaultMemSpace  = Kokkos::Serial;

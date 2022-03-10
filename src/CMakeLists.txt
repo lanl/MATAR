@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 #set (CMAKE_CXX_STANDARD 17)
 
 if (KOKKOS)
+  find_package(Kokkos REQUIRED) #new
   if (CUDA)
     set(Kokkos_ENABLE_CUDA ON CACHE BOOL "")
     set(Kokkos_ENABLE_CUDA_LAMBDA ON CACHE BOOL "")
@@ -18,12 +19,12 @@ if (KOKKOS)
 endif ()
 
 
-if (KOKKOS)
-    include_directories(Kokkos)
-    add_subdirectory(Kokkos/kokkos)
-    get_property(KOKKOS_INCLUDE_DIRS DIRECTORY Kokkos/kokkos/core/src PROPERTY INCLUDE_DIRECTORIES)
-    include_directories(${KOKKOS_INCLUDE_DIRS})
-endif()
+###if (KOKKOS)
+###    include_directories(Kokkos)
+###    add_subdirectory(Kokkos/kokkos)
+###    get_property(KOKKOS_INCLUDE_DIRS DIRECTORY Kokkos/kokkos/core/src PROPERTY INCLUDE_DIRECTORIES)
+###    include_directories(${KOKKOS_INCLUDE_DIRS})
+###endif()
 
 #add_library(matar INTERFACE)
 

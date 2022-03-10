@@ -8,7 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 # set wrapper if compiling for CUDA and using gcc compiler
 if (KOKKOS)
   if (CUDA)
-    set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/src/Kokkos/kokkos/bin/nvcc_wrapper CACHE FILEPATH "")
+    #set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/src/Kokkos/kokkos/bin/nvcc_wrapper CACHE FILEPATH "")
+    set(CMAKE_CXX_COMPILER ${KOKKOS_INSTALL_DIR}/bin/nvcc_wrapper CACHE FILEPATH "")
   endif()
 endif()
 
