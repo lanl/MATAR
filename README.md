@@ -90,6 +90,13 @@ for (int i=0; i<4; i++){
 
 
 ```
+    
+## Cloning the code
+If your SSH keys are set in github, then from the terminal type:
+```
+git clone --recursive ssh://git@github.com/lanl/MATAR.git
+    
+```
 
 ## Standard build
 ```
@@ -134,13 +141,6 @@ To specify number of threads, run with command line arguments as
 ```
 cmake -DKOKKOS=1  -DCUDA=1 .
 make
-```
-
-
-## Cloning the code
-If your SSH keys are set in github, then from the terminal type:
-```
-git clone --recursive ssh://git@github.com/lanl/MATAR.git
 ```
 
 
