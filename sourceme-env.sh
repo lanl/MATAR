@@ -6,13 +6,14 @@ module load rocm/4.3.1
 module list
 
 export basedir=`pwd`
-export srcdir=${basedir}
+export srcdir=${basedir}/src
 export builddir=${basedir}/build
-export installdir=${basedir}/src/install
-export KOKKOS_SOURCE_DIR=${srcdir}/src/kokkos
+export installdir=${srcdir}/install
+export KOKKOS_SOURCE_DIR=${srcdir}/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos
 
+export MATAR_BASE_DIR=${basedir}
 export MATAR_SOURCE_DIR=${srcdir}
 export MATAR_BUILD_DIR=${builddir}
 

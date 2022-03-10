@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-cd ${MATAR_SOURCE_DIR}/src
-git clone git@github.com:kokkos/kokkos.git
-cd ${MATAR_SOURCE_DIR}
-
 rm -rf ${KOKKOS_BUILD_DIR} ${KOKKOS_INSTALL_DIR}
 mkdir -p ${KOKKOS_BUILD_DIR}
 cd ${KOKKOS_BUILD_DIR}
