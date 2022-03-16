@@ -90,6 +90,12 @@ for (int i=0; i<4; i++){
 
 
 ```
+    
+## Cloning the code
+If your SSH keys are set in github, then from the terminal type:
+```
+git clone --recursive ssh://git@github.com/lanl/MATAR.git    
+```
 
 ## Standard build
 ```
@@ -113,6 +119,18 @@ The kokkos build can be built in the debug mode using
 ```
 cmake -DKOKKOS=1 -DCMAKE_BUILD_TYPE=Debug .
 ```
+    
+## Building with Kokkos
+Building with Kokkos is done by installing Kokkos within the library and then linking to the target executable. To start, source the script to set up your environment
+```
+source sourceme-env.sh
+```
+This  script is where you will load necessary module files for your given machine/architecture combination.
+Next, we will install Kokkos using the version that was cloned recursively within MATAR
+```
+./kokkos-install.sh
+```
+Within this script is where you need to set any Kokkos specific variables for your project. The architecture variables will need to be modified based on the architecture being used. At a minimum, CPU architecture needs to be given if running serial or OpenMP projects; GPU architecture is needed for GPU runs.
 
 ## Kokkos with OpenMP build
 ```
@@ -134,13 +152,6 @@ To specify number of threads, run with command line arguments as
 ```
 cmake -DKOKKOS=1  -DCUDA=1 .
 make
-```
-
-
-## Cloning the code
-If your SSH keys are set in github, then from the terminal type:
-```
-git clone --recursive ssh://git@github.com/lanl/MATAR.git
 ```
 
 
