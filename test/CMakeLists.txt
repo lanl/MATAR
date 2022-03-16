@@ -44,8 +44,10 @@ endif()
 target_link_libraries(mtest matar)
 
 ### HIP Linking error, will add back in after fixed
-###include_directories(virtualFcnKokkos)
-###add_subdirectory(virtualFcnKokkos)
+if (NOT HIP)
+    include_directories(virtualFcnKokkos)
+    add_subdirectory(virtualFcnKokkos)
+endif()
 
 include_directories(laplace)
 add_subdirectory(laplace)

@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 if (KOKKOS)
   if (CUDA)
     #set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/src/Kokkos/kokkos/bin/nvcc_wrapper CACHE FILEPATH "")
-    set(CMAKE_CXX_COMPILER ${KOKKOS_INSTALL_DIR}/bin/nvcc_wrapper CACHE FILEPATH "")
+    #set(CMAKE_CXX_COMPILER ${KOKKOS_INSTALL_DIR}/bin/nvcc_wrapper CACHE FILEPATH "")
   endif()
 endif()
 

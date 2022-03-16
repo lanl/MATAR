@@ -1,21 +1,21 @@
 cmake_minimum_required(VERSION 3.12)
-#set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD 17)
 
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
   if (CUDA)
-    set(Kokkos_ENABLE_CUDA ON CACHE BOOL "")
-    set(Kokkos_ENABLE_CUDA_LAMBDA ON CACHE BOOL "")
-    set(Kokkos_ENABLE_CUDA_RELOCATABLE_DEVICE_CODE ON CACHE BOOL "")
+    #set(Kokkos_ENABLE_CUDA ON CACHE BOOL "")
+    #set(Kokkos_ENABLE_CUDA_LAMBDA ON CACHE BOOL "")
+    #set(Kokkos_ENABLE_CUDA_RELOCATABLE_DEVICE_CODE ON CACHE BOOL "")
   elseif (HIP)
-    set(Kokkos_ENABLE_HIP ON CACHE BOOL "")
-    set(Kokkos_ENABLE_HIP_RELOCATABLE_DEVICE_CODE ON CACHE BOOL "")
+    #set(Kokkos_ENABLE_HIP ON CACHE BOOL "")
+    #set(Kokkos_ENABLE_HIP_RELOCATABLE_DEVICE_CODE ON CACHE BOOL "")
   elseif (OPENMP)
     set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "")
   elseif (THREADS)
     set(Kokkos_ENABLE_PTHREAD ON CACHE BOOL "")
   endif ()
-  set(Kokkos_ENABLE_SERIAL ON CACHE BOOL "")
+  #set(Kokkos_ENABLE_SERIAL ON CACHE BOOL "")
 endif ()
 
 
