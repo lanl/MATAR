@@ -122,7 +122,7 @@ sourceme-env.sh
 kokkos-install.sh
 backend-cmake-build.sh
 ```
-The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn't use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, these scripts are only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially. 
+The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn't use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, running all the scripts is only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory.  The environment variables will need to be set when logging into a compute node or when changing to a different kokkos backend. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially. 
 ```
 build-it.sh
 ```

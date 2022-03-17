@@ -298,6 +298,13 @@ void multiply(const T){
 
 
 
+// struct that stores data inside
+struct code_data_t{
+   	double field_one[100];
+ 	int field_two[200];	
+};
+
+
 
 //=============================================================
 //
@@ -564,21 +571,48 @@ int main() {
         
 	
 	
-        // -----------------------
-        // std::variant loop
-        // -----------------------
-	/*
-	printf("\nloop over variant\n");
-	// e.g., loop over the cells in the mesh in parallel
-        FOR_ALL(i,1,2,{
-	     printf("inside loop\n");
-	     size_t idx2 = mat_models(0).index();
-	     printf("idx2 = %lu", idx2);
-	     
+	
+    	// -----------------------
+    	// DualView types
+    	// -----------------------
+	
+	printf("\nDual views\n");
+	
+	code_data_t my_code_data;  // struct with arrays of data 
+
+	
+	// create a dual view of the data held inside my_code_data struct
+	auto field_one = DViewCArrayKokkos <double> (&my_code_data.field_one[0], 100);
+	auto field_two = DViewCArrayKokkos <int> (&my_code_data.field_two[0], 200);
+	
+	printf("modifying the dual view fields on the device\n");
+	
+	// modify the values in field one on the device 
+    	FOR_ALL(i,0,100,{
+	     field_one(i) = 12.345;
 	});
-	Kokkos::fence(); 
-	printf("\n");
-	*/
+	Kokkos::fence();
+	field_one.update_host();  // copy data from devise to the host 
+	
+	printf("dual view of field_one = %f, struct field_one = %f \n", field_one.host(0), my_code_data.field_one[0]);
+	
+	// modify the values in field two on the device 
+    	FOR_ALL(i,0,200,{
+	     field_two(i) = 3;
+	});
+	Kokkos::fence();
+	field_two.update_host();  // copy data from devise to the host 
+	
+	printf("dual view of field_two = %i, struct field_two = %i \n", field_two.host(0), my_code_data.field_two[0]);
+	
+	printf("modifying struct field_one = 314.5 \n");
+	for (int i=0; i<100; i++){
+	    my_code_data.field_one[i] = 314.15;
+	} // end for loop
+	printf("dual view of field_one = %f, struct field_one = %f \n", field_one.host(0), my_code_data.field_one[0]);
+	
+	
+	
         
         // -----------------------
         // DynamicRaggedRightArray
