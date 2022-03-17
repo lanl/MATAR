@@ -173,10 +173,10 @@ The sourceme-env.sh script (the first step) sets the number of threads to 16 by 
 
 
     
-### Kokkos with pthreads build
+### pthreads compilation script
 To build the project with ptheads, the last step is to type
 ```
-source threads-cmake-build.sh
+source pthreads-cmake-build.sh
 ```    
 To specify number of threads when running a code with the Kokkos pthread backend, add the following command line arguments
 ```
