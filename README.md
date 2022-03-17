@@ -97,62 +97,96 @@ If your SSH keys are set in github, then from the terminal type:
 git clone --recursive ssh://git@github.com/lanl/MATAR.git    
 ```
 
-## Standard build
+## Basic build
+The basic build is for users only interested in the serial CPU only MATAR data types.  For this build, we recommend making a folder perhaps called build then go into the build folder and type
 ```
-cmake .
+cmake ..
 make
 ```
-## Debug build
+The compiled code will be in the build folder.
 
-To build MATAR in the debug mode, please use
+## Debug basic build 
+
+To build serial CPU only MATAR data types in the debug mode, please use
 ```
-cmake -DCMAKE_BUILD_TYPE=Debug .
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
 ```
 The debug flag includes checks on array and matrix dimensions and index bounds.
 
-## Kokkos build
+
+## Building MATAR with Kokkos
+A suite of build scripts are provided to build MATAR with Kokkos for performance portability across computer architectures (CPUs and GPUs).  The scripts for various Kokkos backends (e.g., CUDA, HIP, OpenMP, and pthreads) are located within the scripts folder.  The provided scripts are configured for particular hardware, the user will likely need to alter the inputs to reflect their hardware.  There are three scripts in each folder that are sourced to build MATAR with Kokkos.  The scripts are
 ```
-cmake -DKOKKOS=1 .
-make
+sourceme-env.sh
+kokkos-install.sh
+backend-cmake-build.sh
 ```
-The kokkos build can be built in the debug mode using
+The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn't use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, these scripts are only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially. 
 ```
-cmake -DKOKKOS=1 -DCMAKE_BUILD_TYPE=Debug .
+build-it.sh
 ```
-    
-## Building with Kokkos
-Building with Kokkos is done by installing Kokkos within the library and then linking to the target executable. To start, source the script to set up your environment
+Before using the build-it.sh script, the user must verify that the settings in the other scripts that build MATAR with a Kokkos backend are correctly set.  After running the build-it.sh script, the entire project is compiled and stored in a directory that is named with the respective Kokkos backend e.g., build-kokkos-cuda.  Further details are provided on the three scripts to configure and build MATAR with a Kokkos backend.
+
+
+### Environment configuration script
+To start, the environment variables and modules must be configured by sourcing the following script
 ```
 source sourceme-env.sh
 ```
-This  script is where you will load necessary module files for your given machine/architecture combination.
-Next, we will install Kokkos using the version that was cloned recursively within MATAR
-```
-./kokkos-install.sh
-```
-Within this script is where you need to set any Kokkos specific variables for your project. The architecture variables will need to be modified based on the architecture being used. At a minimum, CPU architecture needs to be given if running serial or OpenMP projects; GPU architecture is needed for GPU runs.
+This script is where the user will load the necessary module files for their given machine/architecture combination.  This script also creates the build directory for the project e.g., build-kokkos-cuda, build-kokkos-hip, build-kokkos-openmp, etc.
 
-## Kokkos with OpenMP build
+
+### Install Kokkos script
+The next step is to install Kokkos, using the version that was cloned recursively within MATAR, and configure the Kokkos build for specific hardware and a backend.  
 ```
-cmake -DKOKKOS=1 -DOPENMP=1 .
+source kokkos-install.sh
 ```
+Within this script, the user will need to set any Kokkos specific variables for their project. The architecture variables will need to be modified based on the architecture being used. The provided scripts are set for a particular hardware that might differ from what a user might be using.  CPU architecture information needs to be listed if running with the Kokkos serial or OpenMP backends; GPU architecture information must be listed if using a Kokkos GPU backend.  We refer the user to Kokkos compiling page to see the large list of compilation options,
+```
+https://github.com/kokkos/kokkos/wiki/Compiling
+```
+
+
+
+### CUDA compilation script
+To build the project with cuda, the last step is to type
+```
+source cuda-cmake-build.sh
+```
+
+
+### HIP compilation script
+To build the project with hip, the last step is to type
+```
+source hip-cmake-build.sh
+```
+
+
+### openMP compilation script
+To build the project with openMP, the last step is to type
+
+```
+source openmp-cmake-build.sh
+```
+The sourceme-env.sh script (the first step) sets the number of threads to 16 by default.  Changing the number of threads used with openMP requires manually setting the environment variable OMP_NUM_THREADS.  
+
+
     
-## Kokkos with Threads build
+### Kokkos with pthreads build
+To build the project with ptheads, the last step is to type
 ```
-cmake -DKOKKOS=1 -DTHREADS=1 .
-```
-    
-To specify number of threads, run with command line arguments as
+source threads-cmake-build.sh
+```    
+To specify number of threads when running a code with the Kokkos pthread backend, add the following command line arguments
 ```
 --kokkos-threads=4
 ```
 
-    
-## Kokkos with CUDA build
-```
-cmake -DKOKKOS=1  -DCUDA=1 .
-make
-```
+
+### Automate build process
+A build-it.sh script is provided that runs all scripts sequentially for the user.  The build-it.sh script obviates the need to manually source each script.  The user must verify the settings are correct in each script prior to using the build-it.sh script.  If the build-it.sh script fails to build the project correctly, the user should carefully look at the loaded modules and settings for building Kokkos.   
+
 
 
 ## Contributing

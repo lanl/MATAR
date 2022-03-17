@@ -1,8 +1,11 @@
 module purge
 ### Load environment modules here
-module load cmake/3.17.0
+module load cmake
 module load gcc/9.4.0
 module list
+
+export scriptdir=`pwd`
+cd ../..
 
 export basedir=`pwd`
 export srcdir=${basedir}/src
@@ -17,6 +20,8 @@ export KOKKOS_SOURCE_DIR=${srcdir}/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos
 
-export OMP_NUM_THREADS=4
+cd $scriptdir
+
+export OMP_NUM_THREADS=16
 export OMP_PROC_BIND=true
 export OMP_PROC_BIND=spread

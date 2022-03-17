@@ -9,7 +9,6 @@ OPTIONS=(
 -D CMAKE_INSTALL_PREFIX="${KOKKOS_INSTALL_DIR}"
 -D CMAKE_CXX_COMPILER=hipcc
 -D CMAKE_CXX_STANDARD=17
--D CMAKE_CXX_FLAGS=-std=c++17
 -D Kokkos_ENABLE_SERIAL=ON
 -D Kokkos_ENABLE_HIP=ON
 -D Kokkos_ARCH_ZEN=ON
@@ -20,3 +19,5 @@ OPTIONS=(
 cmake "${OPTIONS[@]}" "${KOKKOS_SOURCE_DIR:-../}"
 make -j -l32
 make install
+
+cd $scriptdir

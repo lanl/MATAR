@@ -6,8 +6,7 @@ cd ${MATAR_BUILD_DIR}
 
 OPTIONS=(
 -D KOKKOS=ON
--D HIP=ON
--D CMAKE_CXX_COMPILER=hipcc
+-D THREADS=ON
 -D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib64/cmake/Kokkos
 )
 set -x
