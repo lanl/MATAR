@@ -305,6 +305,45 @@ struct code_data_t{
 };
 
 
+// a struct that stores MATAR dual arrays inside
+struct cell_data_t{
+
+    DCArrayKokkos <double> den;  
+    DCArrayKokkos <double> pres;
+    
+    
+    KOKKOS_INLINE_FUNCTION
+    void initialize(const int i, const int j, const int k) const{
+        den(i,j,k)  = 0.0;
+	pres(i,j,k) = 0.0;
+    };
+    
+};
+
+
+// data in an exisiting framework that is managed
+struct framework_data_t{
+    
+    // a 10 X 10 X 10 mesh
+    int dim1 = 10;
+    int dim2 = 10;
+    int dim3 = 10;
+    
+    double data1[1000];  // notional data, could be dynammically allocated
+    double data2[1000];  // ...
+    
+};
+
+// view of data in an exisiting framework
+struct framework_matar_t{
+
+    DViewCArrayKokkos <double> data1;  // Views of the notional data on CPU and GPU
+    DViewCArrayKokkos <double> data2;  // ...
+    
+};
+
+
+
 
 //=============================================================
 //
@@ -610,6 +649,96 @@ int main() {
 	    my_code_data.field_one[i] = 314.15;
 	} // end for loop
 	printf("dual view of field_one = %f, struct field_one = %f \n", field_one.host(0), my_code_data.field_one[0]);
+	
+
+
+	// -----------------------
+    // Dual Array types in an object
+    // -----------------------
+	
+	printf("\nDual types inside struct\n");
+	
+	// struct with MATAR arrays of data 
+	cell_data_t cell_data;  // allocate the data sizes: 10X10x10 mesh
+        
+	printf("allocate dual type sizes held in struct\n");
+	cell_data.den  = DCArrayKokkos <double> (10,10,10);
+	cell_data.pres = DCArrayKokkos <double> (10,10,10);
+
+	
+	// set the values inside the cell_data struct on the device
+	
+	printf("setting the dual type values and calling initialize functions \n");
+        FOR_ALL(i, 0, 10,
+                j, 0, 10,
+                k, 0, 10,
+                {
+		   cell_data.initialize(i,j,k);
+		   
+                   cell_data.den(i,j,k) = 3.14159;
+		   cell_data.pres(i,j,k) = 1.0;
+                });
+        Kokkos::fence();
+	
+	// update the host side
+	cell_data.den.update_host();
+	cell_data.pres.update_host();
+	printf("The host values of the dual CArrays in the struct = %f and %f \n", cell_data.den.host(0,0,0), cell_data.pres.host(0,0,0));
+	
+	
+	
+	printf("\nDualView types inside struct\n");
+	framework_data_t  framework_data;  // data is allocated by some framework across CPUs.
+	
+	// use MATAR to get the data onto the device e.g., GPU and make multiD views of the data
+	framework_matar_t mtr_data;
+	
+	
+	// get the mesh dims from the framework struct
+	int mesh_dim1 = framework_data.dim1;
+	int mesh_dim2 = framework_data.dim2;
+	int mesh_dim3 = framework_data.dim3;
+	
+	printf("allocate data from the framework on the device\n");
+	mtr_data.data1  = DViewCArrayKokkos <double> (&framework_data.data1[0], 
+	    					      mesh_dim1, 
+						      mesh_dim2,
+						      mesh_dim3);
+	mtr_data.data2  = DViewCArrayKokkos <double> (&framework_data.data2[0], 
+	    					      mesh_dim1, 
+						      mesh_dim2,
+						      mesh_dim3);
+
+		   
+	printf("setting the dual type values\n");
+	// set the framework values inside the struct on the device
+        FOR_ALL(i, 0, mesh_dim1,
+                j, 0, mesh_dim2,
+                k, 0, mesh_dim3,
+                {
+                   mtr_data.data1(i,j,k) = 5.6;
+		   mtr_data.data2(i,j,k) = 9.2;
+                });
+        Kokkos::fence();
+	
+	// update the host side
+	mtr_data.data1.update_host();
+	mtr_data.data2.update_host();
+	printf("The 1st values of framework struct arrays = %f and %f \n", framework_data.data1[0], framework_data.data2[0]);
+	// note how MATAR modified the data in the framework on the device
+	
+	// The dualView type also gives a view of the 1D framework data on the host side
+	printf("The views of 1st host values of framework data  = %f and %f \n", mtr_data.data1.host(0,0,0), mtr_data.data2.host(0,0,0));
+	
+	framework_data.data1[0] = 77.77;
+	framework_data.data1[1] = 88.88;
+	mtr_data.data1.update_device();
+	RUN({
+	    printf("value on device after update = %f, %f", mtr_data.data1(0,0,0), mtr_data.data1(0,0,1));
+	});
+	Kokkos::fence();
+	
+	printf("\n");	
 	
 	
 	
