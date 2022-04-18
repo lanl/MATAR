@@ -7593,7 +7593,6 @@ public:
     }
     
     //setup start indices
-    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
     
     KOKKOS_INLINE_FUNCTION
@@ -7710,7 +7709,6 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
     //allocate start indices
     std::string append_indices_string("start_indices");

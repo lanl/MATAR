@@ -773,7 +773,24 @@ int main() {
         });// end parallel for
         Kokkos::fence();
         
-
+        // -----------------------
+        // RaggedRightArray
+        // -----------------------
+        printf("\nRagged Right Array\n");
+        // testing ragged initialized with CArrayKokkos for strides
+        CArrayKokkos <size_t> some_strides(4);
+        
+        // create a lower-triangular array
+        RUN({
+            some_strides(0) = 1;
+            some_strides(1) = 2;
+            some_strides(2) = 3;
+            some_strides(3) = 4;
+        });
+        
+        RaggedRightArrayKokkos <int> lower_tri(some_strides);
+        
+        
         
         
         // -----------------------
