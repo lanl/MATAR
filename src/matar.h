@@ -7977,7 +7977,6 @@ public:
     }
     
     //setup start indices
-    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
     
     KOKKOS_INLINE_FUNCTION
@@ -8116,7 +8115,6 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::Ragged
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
 
     //allocate start indices
@@ -8302,7 +8300,6 @@ public:
     size_t stride(size_t j) const;
 
     //setup start indices
-    KOKKOS_INLINE_FUNCTION
     void data_setup(const std::string& tag_string);
     
     // Overload operator() to access data as array(i,j)
@@ -8407,7 +8404,6 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedDownArrayK
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
     //allocate start indices
     std::string append_indices_string("start_indices");
