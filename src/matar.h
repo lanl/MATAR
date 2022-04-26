@@ -4984,6 +4984,12 @@ public:
     size_t extent() const;
     
     KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+   
+    KOKKOS_INLINE_FUNCTION
     T* pointer() const;
     
     //return kokkos view
@@ -5251,6 +5257,20 @@ size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "FArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to FArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
@@ -5344,6 +5364,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
@@ -5573,6 +5599,20 @@ size_t ViewFArrayKokkos<T>::extent() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+size_t ViewFArrayKokkos<T>::dims(size_t i) const {
+    assert(i < order_ && "ViewFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewFArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+size_t ViewFArrayKokkos<T>::order() const {
+    return order_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 T* ViewFArrayKokkos<T>::pointer() const {
     return this_array_;
 }
@@ -5653,7 +5693,13 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
-    
+
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+ 
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+   
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
     
@@ -5904,6 +5950,21 @@ size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "FMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to FMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_matrix_.data();
 }
@@ -5998,6 +6059,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
@@ -6229,6 +6296,21 @@ size_t ViewFMatrixKokkos<T>::extent() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+size_t ViewFMatrixKokkos<T>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "ViewFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewFMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+size_t ViewFMatrixKokkos<T>::order() const {
+    return order_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 T* ViewFMatrixKokkos<T>::pointer() const {
     return this_matrix_;
 }
@@ -6313,6 +6395,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
@@ -6562,6 +6650,20 @@ size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "CArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to CArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
@@ -6654,6 +6756,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
@@ -6880,6 +6988,20 @@ size_t ViewCArrayKokkos<T>::extent() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+size_t ViewCArrayKokkos<T>::dims(size_t i) const {
+    assert(i < order_ && "ViewCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewCArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+size_t ViewCArrayKokkos<T>::order() const {
+    return order_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 T* ViewCArrayKokkos<T>::pointer() const {
     return this_array_;
 }
@@ -6959,7 +7081,13 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
-    
+
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+ 
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+   
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
@@ -7213,6 +7341,21 @@ size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "CMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to CMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_matrix_.data();
 }
@@ -7301,6 +7444,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
@@ -7519,6 +7668,21 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::extent() const {
     return length_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+size_t ViewCMatrixKokkos<T>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "ViewCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to ViewCMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+size_t ViewCMatrixKokkos<T>::order() const {
+    return order_;
 }
 
 template <typename T>
@@ -9026,6 +9190,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -9291,6 +9461,20 @@ size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DFArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_array_.d_view.data();
 }
@@ -9403,6 +9587,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -9716,6 +9906,20 @@ size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DViewFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DViewFArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_array_.data();
 }
@@ -9817,6 +10021,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -10081,6 +10291,21 @@ size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "DFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DFMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_matrix_.d_view.data();
 }
@@ -10188,6 +10413,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -10490,6 +10721,21 @@ size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "DViewFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DViewFMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_matrix_.data();
 }
@@ -10591,10 +10837,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
-    // Method that return array order (rank)
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
     KOKKOS_INLINE_FUNCTION
     size_t order() const;
-
+ 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -10860,6 +11108,14 @@ size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DCArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
     return order_;
 }
@@ -10974,6 +11230,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -11288,6 +11550,20 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DViewCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DViewCArrayKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_array_.data();
 }
@@ -11389,6 +11665,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -11654,6 +11936,21 @@ size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "DCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DCMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_matrix_.d_view.data();
 }
@@ -11761,6 +12058,12 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t order() const;
+ 
     // Method returns the raw device pointer of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* device_pointer() const;
@@ -12059,6 +12362,21 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    i--;
+    assert(i < order_ && "DViewCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DViewCMatrixKokkos dims is out of bounds!");
+    return dims_[i];
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return order_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
