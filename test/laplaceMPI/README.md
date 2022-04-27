@@ -2,7 +2,7 @@ This example shows the MPI+MATAR implementation of the Laplace equation for stea
 The test can be built with MPI+(serial,openMP,CUDA,HIP) kokkos backend.
 The strong scaling results on multi-CPU and multi-GPU are detailed in "report.pdf".
 
-The Laplace solver application accepts two command line arguments -height ${height} -width ${width}. 
+The Laplace solver application accepts two command line arguments `-height ${height} -width ${width}`. 
 If the arguments are not provided default value of 1000 is used for both.
 
 To run the Laplace solver app on the CPU using 4 cores:
