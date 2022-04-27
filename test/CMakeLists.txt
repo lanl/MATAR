@@ -48,6 +48,9 @@ endif()
 include_directories(laplace)
 add_subdirectory(laplace)
 
+#include_directories(laplaceMPI)
+#add_subdirectory(laplaceMPI)
+
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)
 
