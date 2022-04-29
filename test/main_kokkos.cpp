@@ -70,6 +70,10 @@ void Data::some_fcn(){
                   });
     Kokkos::fence();
     
+    RUN_CLASS({
+        printf("inside RUN_CLASS\n");
+    });
+    
 }; // end member function
 
 

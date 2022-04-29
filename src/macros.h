@@ -79,7 +79,14 @@
 #define \
     RUN(fcn) \
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, 1), \
-                          KOKKOS_LAMBDA(const int i){fcn} )
+                          KOKKOS_LAMBDA(const int ijkabc){fcn} )
+
+// run once on the device inside a class
+#define \
+    RUN_CLASS(fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, 1), \
+                          KOKKOS_CLASS_LAMBDA(const int ijkabc){fcn} )
+			  
 
 // the FOR_ALL loop
 #define \
