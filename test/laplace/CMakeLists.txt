@@ -17,6 +17,7 @@ endif()
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
 
+  add_executable(kokkosview main_kokkosview.cpp)
   add_executable(carraykokkos_default_indexing main_carraykokkos_default_indexing.cpp)
   add_executable(carraykokkos_c_indexing main_carraykokkos_c_indexing.cpp)
   add_executable(farraykokkos_default_indexing main_farraykokkos_default_indexing.cpp)
@@ -38,6 +39,7 @@ if (KOKKOS)
     #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_THREADS)
   endif()
 
+  target_link_libraries(kokkosview matar Kokkos::kokkos)
   target_link_libraries(carraykokkos_default_indexing matar Kokkos::kokkos)
   target_link_libraries(carraykokkos_c_indexing matar Kokkos::kokkos)
   target_link_libraries(farraykokkos_default_indexing matar Kokkos::kokkos)
