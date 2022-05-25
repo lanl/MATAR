@@ -56,3 +56,13 @@ add_subdirectory(laplace)
 
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)
+
+
+
+#-------------------------------------------
+# Testing stuff
+#-------------------------------------------
+if (TEST)
+  add_subdirectory(googletest)
+  add_subdirectory(test_cases)
+endif(TEST)
