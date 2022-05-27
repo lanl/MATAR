@@ -3470,8 +3470,8 @@ inline T* ViewCMatrix<T>::pointer() const {
 template <typename T>
 class RaggedRightArray {
 private:
-    size_t *start_index_;
-    T * array_;
+    std::shared_ptr <size_t[]> start_index_;
+    std::shared_ptr <T[]> array_;
     
     size_t dim1_, length_;
     size_t num_saved_; // the number saved in the 1D array
@@ -3494,6 +3494,9 @@ public:
     // Overload constructor for a RaggedRightArray to
     // support a dynamically built stride_array
     RaggedRightArray (size_t some_dim1, size_t buffer);
+
+    // Copy constructor
+    RaggedRightArray (const RaggedRightArray& temp);
     
     // A method to return the stride size
     size_t stride(size_t i) const;
@@ -3541,7 +3544,7 @@ RaggedRightArray<T>::RaggedRightArray (CArray<size_t> &strides_array){
     dim1_  = strides_array.size();
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3553,7 +3556,7 @@ RaggedRightArray<T>::RaggedRightArray (CArray<size_t> &strides_array){
     } // end for i
     length_ = count;
     
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]); 
 } // End constructor
 
 // Overloaded constructor with a view c array
@@ -3563,7 +3566,7 @@ RaggedRightArray<T>::RaggedRightArray (ViewCArray<size_t> &strides_array) {
     dim1_  = strides_array.size();
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3574,8 +3577,8 @@ RaggedRightArray<T>::RaggedRightArray (ViewCArray<size_t> &strides_array) {
         start_index_[(i + 1)] = count;
     } // end for i
     length_ = count;
-    
-    array_ = new T[length_];
+
+    array_ = std::shared_ptr <T []> (new T[length_]);    
 } // End constructor
 
 // Overloaded constructor with a regular cpp array
@@ -3585,7 +3588,7 @@ RaggedRightArray<T>::RaggedRightArray (size_t *strides_array, size_t dim1){
     dim1_ = dim1;
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3596,8 +3599,8 @@ RaggedRightArray<T>::RaggedRightArray (size_t *strides_array, size_t dim1){
         start_index_[(i + 1)] = count;
     } // end for i
     length_ = count;
-    
-    array_ = new T[length_];
+
+    array_ = std::shared_ptr <T []> (new T[length_]); 
 } // End constructor
 
 // overloaded constructor for a dynamically built strides_array.
@@ -3608,15 +3611,30 @@ RaggedRightArray<T>::RaggedRightArray (size_t some_dim1, size_t buffer){
     dim1_ = some_dim1;
     
     // create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim1_+1]();  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     //start_index_[0] = 0; // the 1D array starts at 0
 
     num_saved_ = 0;
     
     length_ = some_dim1*buffer;
-    array_ = new T[some_dim1*buffer];
+    array_ = std::shared_ptr <T []> (new T[length_]);
     
 } // end constructor
+
+// Copy constructor
+template <typename T>
+RaggedRightArray<T>::RaggedRightArray (const RaggedRightArray& temp) {
+
+    if (this != &temp) {
+        dim1_ = temp.dim1_;
+        length_ = temp.length_;
+        num_saved_ = temp.num_saved_;
+
+        // shared_ptr
+        start_index_ = temp.start_index_;
+        array_ = temp.array_;
+    }
+}
 
 // A method to return the stride size
 template <typename T>
@@ -3672,19 +3690,10 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
         dim1_ = temp.dim1_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        if(start_index_!=NULL)
-          delete[] start_index_;
-        start_index_ = new size_t[dim1_ + 1];
-        for (int j = 0; j < dim1_ + 1; j++) {
-            start_index_[j] = temp.start_index_[j];  
-        }
 
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        // shared_ptr
+        start_index_ = temp.start_index_;
+        array_ = temp.array_;
     }
 	
     return *this;
@@ -3692,22 +3701,17 @@ RaggedRightArray<T> & RaggedRightArray<T>::operator= (const RaggedRightArray &te
 
 template <typename T>
 inline T* RaggedRightArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 template <typename T>
 inline size_t* RaggedRightArray<T>::get_starts() const{
-    return start_index_;
+    return start_index_.get();
 }
 
 // Destructor
 template <typename T>
-RaggedRightArray<T>::~RaggedRightArray () {
-    if(array_!=NULL)
-      delete[] array_;
-    if(start_index_!=NULL)
-      delete[] start_index_;
-}
+RaggedRightArray<T>::~RaggedRightArray () {}
 
 //----end of RaggedRightArray class definitions----
 
@@ -3715,8 +3719,8 @@ RaggedRightArray<T>::~RaggedRightArray () {
 template <typename T>
 class RaggedRightArrayofVectors {
 private:
-    size_t *start_index_;
-    T * array_;
+    std::shared_ptr <T[]> start_index_;
+    std::shared_ptr <T[]> array_;
     
     size_t dim1_, length_, vector_dim_;
     size_t num_saved_; // the number saved in the 1D array
@@ -3739,6 +3743,9 @@ public:
     // Overload constructor for a RaggedRightArray to
     // support a dynamically built stride_array
     RaggedRightArrayofVectors (size_t some_dim1, size_t buffer, size_t vector_dim);
+
+    // Copy constructor
+    RaggedRightArrayofVectors (const RaggedRightArrayofVectors& temp);
     
     // A method to return the stride size
     size_t stride(size_t i) const;
@@ -3790,7 +3797,7 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (CArray<size_t> &strides
     vector_dim_ = vector_dim;
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3802,7 +3809,7 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (CArray<size_t> &strides
     } // end for i
     length_ = count;
     
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T []> (new T[length_]); 
 } // End constructor
 
 // Overloaded constructor with a view c array
@@ -3813,7 +3820,7 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (ViewCArray<size_t> &str
     vector_dim_ = vector_dim;
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3824,8 +3831,8 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (ViewCArray<size_t> &str
         start_index_[(i + 1)] = count;
     } // end for i
     length_ = count;
-    
-    array_ = new T[length_];
+
+    array_ = std::shared_ptr <T []> (new T[length_]);    
 } // End constructor
 
 // Overloaded constructor with a regular cpp array
@@ -3836,7 +3843,7 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t *strides_array, 
     vector_dim_ = vector_dim;
 
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[(dim1_ + 1)];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -3847,8 +3854,8 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t *strides_array, 
         start_index_[(i + 1)] = count;
     } // end for i
     length_ = count;
-    
-    array_ = new T[length_];
+   
+    array_ = std::shared_ptr <T []> (new T[length_]); 
 } // End constructor
 
 // overloaded constructor for a dynamically built strides_array.
@@ -3860,15 +3867,31 @@ RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (size_t some_dim1, size_
     vector_dim_ = vector_dim;
 
     // create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim1_+1]();  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim1_ + 1)]); // note the dim1+1
     //start_index_[0] = 0; // the 1D array starts at 0
 
     num_saved_ = 0;
     
     length_ = some_dim1*buffer*vector_dim;
-    array_ = new T[some_dim1*buffer];
+    array_ = std::shared_ptr <T []> (new T[some_dim1*buffer]);
     
 } // end constructor
+
+// Copy constructor
+template <typename T>
+RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors (const RaggedRightArrayofVectors& temp) {
+
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        vector_dim_ = temp.vector_dim_;
+        length_ = temp.length_;
+        num_saved_ = temp.num_saved_;
+        
+        // shared pointer
+        start_index_ = temp.start_index_;
+        array_ = temp.start_index_;
+    }
+} // end copy constructor
 
 // A method to return the stride size
 template <typename T>
@@ -3925,19 +3948,10 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
         vector_dim_ = temp.vector_dim_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        if(start_index_!=NULL)
-          delete[] start_index_;
-        start_index_ = new size_t[dim1_ + 1];
-        for (int j = 0; j < dim1_ + 1; j++) {
-            start_index_[j] = temp.start_index_[j];  
-        }
-
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        
+        // shared pointer
+        start_index_ = temp.start_index_;
+        array_ = temp.start_index_;
     }
 	
     return *this;
@@ -3945,22 +3959,17 @@ RaggedRightArrayofVectors<T> & RaggedRightArrayofVectors<T>::operator= (const Ra
 
 template <typename T>
 inline T* RaggedRightArrayofVectors<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 template <typename T>
 inline size_t* RaggedRightArrayofVectors<T>::get_starts() const{
-    return start_index_;
+    return start_index_.get();
 }
 
 // Destructor
 template <typename T>
-RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {
-    if(array_!=NULL)
-      delete[] array_;
-    if(start_index_!=NULL)
-      delete[] start_index_;
-}
+RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {}
 
 //----end of RaggedRightArrayofVectors class definitions----
 
@@ -3968,10 +3977,10 @@ RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {
 template <typename T>
 class RaggedDownArray { 
 private:
-    size_t *start_index_;
-	T * array_;
+    std::shared_ptr <size_t[]> start_index_;
+    std::shared_ptr <T[]> array_;
 
-	size_t dim2_;
+    size_t dim2_;
     size_t length_;
     size_t num_saved_; // the number saved in the 1D array
 
@@ -3980,21 +3989,24 @@ public:
     RaggedDownArray() ;
 
     //~~~~2D`~~~~
-	//overload constructor with CArray
-	RaggedDownArray(CArray<size_t> &strides_array);
+    //overload constructor with CArray
+    RaggedDownArray(CArray<size_t> &strides_array);
 
-	//overload with ViewCArray
-	RaggedDownArray(ViewCArray <size_t> &strides_array);
+    //overload with ViewCArray
+    RaggedDownArray(ViewCArray <size_t> &strides_array);
 
-	//overload with traditional array
-	RaggedDownArray(size_t *strides_array, size_t dome_dim1);
+    //overload with traditional array
+    RaggedDownArray(size_t *strides_array, size_t dome_dim1);
 
     // Overload constructor for a RaggedDownArray to
     // support a dynamically built stride_array
     RaggedDownArray (size_t some_dim2, size_t buffer);
+
+    // Copy constructor
+    RaggedDownArray (const RaggedDownArray& temp);
     
-	//method to return stride size
-	size_t stride(size_t j);
+    //method to return stride size
+    size_t stride(size_t j);
 
     // A method to increase the number of column entries, i.e.,
     // the stride size. Used with the constructor for building
@@ -4002,8 +4014,8 @@ public:
     // DO NOT USE with the constructures with a strides_array
     void push_back(size_t j);
     
-	//overload () operator to access data as array (i,j)
-	T& operator()(size_t i, size_t j);
+    //overload () operator to access data as array (i,j)
+    T& operator()(size_t i, size_t j);
 
     // method to return total size
     size_t size();
@@ -4037,12 +4049,12 @@ RaggedDownArray<T>::RaggedDownArray( CArray <size_t> &strides_array) {
     //dim2_ = strides_array.size();
 
     // Create and initialize startding indices
-    start_index_ = new size_t[dim2_+1]; //theres a plus 1, because 
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim2_ + 1)]); // note the dim2+1
     start_index_[0] = 0; //1D array starts at 0
 
 		
-	//length of strides
-	dim2_ = strides_array.size();
+    //length of strides
+    dim2_ = strides_array.size();
 
     // Loop to find total length of 1D array
     size_t count = 0;
@@ -4052,7 +4064,7 @@ RaggedDownArray<T>::RaggedDownArray( CArray <size_t> &strides_array) {
     } 
     length_ = count;
 
-    array_ = new T[length_];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 
 } // End constructor 
 
@@ -4063,7 +4075,7 @@ RaggedDownArray<T>::RaggedDownArray( ViewCArray <size_t> &strides_array) {
     //dim2_ = strides_array.size();
 
     //create array for holding start indices
-    start_index_ = new size_t[dim2_+1];
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim2_ + 1)]); // note the dim2+1
     start_index_[0] = 0;
 
     size_t count = 0;
@@ -4072,8 +4084,8 @@ RaggedDownArray<T>::RaggedDownArray( ViewCArray <size_t> &strides_array) {
         count += strides_array(j);
         start_index_[j+1] = count;
     }
-    length_ = count;	
-    array_ = new T[length_];
+    length_ = count;
+    array_ = std::shared_ptr <T []> (new T[length_]);
 
 } // End constructor 
 
@@ -4084,7 +4096,7 @@ RaggedDownArray<T>::RaggedDownArray( size_t *strides_array, size_t dim2){
     dim2_ = dim2;
 
     // Create and initialize starting index of entries
-    start_index_ = new size_t[dim2_+1];
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim2_ + 1)]); // note the dim2+1
     start_index_[0] = 0;
 
     // Loop over to find length of 1D array
@@ -4093,10 +4105,9 @@ RaggedDownArray<T>::RaggedDownArray( size_t *strides_array, size_t dim2){
     for(size_t j = 0; j < dim2_; j++) {
         count += strides_array[j];
         start_index_[j+1] = count;
-	}
-
-    length_ = count;	
-    array_ = new T[length_];
+    }
+    length_ = count;
+    array_ = std::shared_ptr <T[]> (new T[length_]);
 
 } //end construnctor
 
@@ -4108,15 +4119,29 @@ RaggedDownArray<T>::RaggedDownArray (size_t some_dim2, size_t buffer){
     dim2_ = some_dim2;
     
     // create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim2_+1]();  // note the dim2+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim2_ + 1)]); // note the dim2+1
     //start_index_[0] = 0; // the 1D array starts at 0
     
     num_saved_ = 0;
     
     length_ = some_dim2*buffer;
-    array_ = new T[some_dim2*buffer];
+    array_ = std::shared_ptr <T[]> (new T[length_]);
     
 } // end constructor
+
+// Copy constructor
+template <typename T>
+RaggedDownArray<T>::RaggedDownArray (const RaggedDownArray& temp) {
+    if( this != &temp) {
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        num_saved_ = temp.num_saved_;
+
+        // shared pointer
+        start_index_ = temp.start_index_;  
+        array_ = temp.array_;
+    }
+} // end copy constructor
 
 // Check the stride size
 template <typename T>
@@ -4166,20 +4191,10 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
         dim2_ = temp.dim2_;
         length_ = temp.length_;
         num_saved_ = temp.num_saved_;
-        if(start_index_!=NULL)
-          delete[] start_index_;
 
-        start_index_ = new size_t[dim2_ + 1];
-        for (int j = 0; j < dim2_ + 1; j++) {
-            start_index_[j] = temp.start_index_[j];  
-        }
-
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        // shared pointer
+        start_index_ = temp.start_index_;  
+        array_ = temp.array_;
     }
 	
     return *this;
@@ -4187,24 +4202,19 @@ RaggedDownArray<T> & RaggedDownArray<T>::operator= (const RaggedDownArray &temp)
 
 template <typename T>
 inline T* RaggedDownArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 
 template <typename T>
 inline size_t* RaggedDownArray<T>::get_starts() const{
-    return start_index_;
+    return start_index_.get();
 }
 
 // Destructor
 template <typename T>
-RaggedDownArray<T>::~RaggedDownArray() {
-  if(array_!=NULL)
-    delete[] array_;
-  if(start_index_!=NULL)
-    delete[] start_index_;
-
-} // End destructor
+RaggedDownArray<T>::~RaggedDownArray() {} 
+// End destructor
 
 
 //----end of RaggedDownArray----
@@ -4215,8 +4225,8 @@ RaggedDownArray<T>::~RaggedDownArray() {
 template <typename T>
 class DynamicRaggedRightArray {
 private:
-    size_t *stride_;
-    T * array_;
+    std::shared_ptr <size_t[]> stride_;
+    std::shared_ptr <T[]> array_;
     
     size_t dim1_;
     size_t dim2_;
@@ -4230,7 +4240,10 @@ public:
     
     // overload constructor
     DynamicRaggedRightArray (size_t dim1, size_t dim2);
-    
+
+    // Copy constructor
+    DynamicRaggedRightArray (const DynamicRaggedRightArray& temp);
+
     // A method to return or set the stride size
     size_t& stride(size_t i) const;
     
@@ -4268,10 +4281,10 @@ DynamicRaggedRightArray<T>::DynamicRaggedRightArray (size_t dim1, size_t dim2) {
     length_ = dim1*dim2;
     
     // Create memory on the heap for the values
-    array_ = new T[dim1*dim2];
+    array_ = std::shared_ptr <T[]> (new T[dim1*dim2]);
     
     // Create memory for the stride size in each row
-    stride_ = new size_t[dim1];
+    stride_ = std::shared_ptr <size_t[]> (new size_t[dim1]);
     
     // Initialize the stride
     for (int i=0; i<dim1_; i++){
@@ -4280,6 +4293,20 @@ DynamicRaggedRightArray<T>::DynamicRaggedRightArray (size_t dim1, size_t dim2) {
     
     // Start index is always = j + i*dim2
 }
+
+// Copy constructor
+template <typename T>
+DynamicRaggedRightArray<T>::DynamicRaggedRightArray (const DynamicRaggedRightArray& temp) {
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+
+        // shared pointer
+        stride_ = temp.stride_;
+        array_ = temp.array_;
+    }
+} // end copy constructor
 
 // A method to set the stride size for row i
 template <typename T>
@@ -4314,19 +4341,10 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
         dim1_ = temp.dim1_;
         dim2_ = temp.dim2_;
         length_ = temp.length_;
-        if(stride_!=NULL)
-          delete[] stride_;
-        stride_ = new size_t[dim1_];
-        for (int i = 0; i < dim1_; i++) {
-            stride_[i] = temp.stride_[i];
-        }
 
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+        // shared pointer
+        stride_ = temp.stride_;
+        array_ = temp.array_;
     }
     
     return *this;
@@ -4334,17 +4352,12 @@ inline DynamicRaggedRightArray<T>& DynamicRaggedRightArray<T>::operator= (const 
 
 template <typename T>
 inline T* DynamicRaggedRightArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 // Destructor
 template <typename T>
-DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
-    if(array_!=NULL)
-      delete[] array_;
-    if(stride_!=NULL)
-      delete[] stride_;
-}
+DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {}
 
 
 
@@ -4357,8 +4370,8 @@ DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {
 template <typename T>
 class DynamicRaggedDownArray {
 private:
-    size_t *stride_;
-    T * array_;
+    std::shared_ptr <size_t[]> stride_;
+    std::shared_ptr <T[]> array_;
     
     size_t dim1_;
     size_t dim2_;
@@ -4372,7 +4385,10 @@ public:
     
     // overload constructor
     DynamicRaggedDownArray (size_t dim1, size_t dim2);
-    
+   
+    // Copy constructor
+    DynamicRaggedDownArray (const DynamicRaggedDownArray& temp);
+ 
     // A method to return or set the stride size
     size_t& stride(size_t j) const;
     
@@ -4410,10 +4426,10 @@ DynamicRaggedDownArray<T>::DynamicRaggedDownArray (size_t dim1, size_t dim2) {
     length_ = dim1*dim2;
     
     // Create memory on the heap for the values
-    array_ = new T[dim1*dim2];
+    array_ = std::shared_ptr <T[]> (new T[dim1*dim2]);
     
     // Create memory for the stride size in each row
-    stride_ = new size_t[dim2];
+    stride_ = std::shared_ptr <size_t[]> (new size_t[dim2]);
     
     // Initialize the stride
     for (int j=0; j<dim2_; j++){
@@ -4422,6 +4438,21 @@ DynamicRaggedDownArray<T>::DynamicRaggedDownArray (size_t dim1, size_t dim2) {
     
     // Start index is always = i + j*dim1
 }
+
+// Copy constructor
+template <typename T>
+DynamicRaggedDownArray<T>::DynamicRaggedDownArray (const DynamicRaggedDownArray& temp) {
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+
+        // shared pointer
+        stride_ = temp.stride_;
+        array_ = temp.array_;
+    }
+} // end copy constructor
+
 
 // A method to set the stride size for column j
 template <typename T>
@@ -4457,18 +4488,10 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
         dim1_ = temp.dim1_;
         dim2_ = temp.dim2_;
         length_ = temp.length_;
-        if(stride_!=NULL)
-          delete[] stride_;
-        stride_ = new size_t[dim1_];
-        for (int j = 0; j < dim2_; j++) {
-            stride_[j] = temp.stride_[j];
-        }
-        if(array_!=NULL)
-          delete[] array_;
-        array_ = new T[length_];
-        //copy contents
-        for(int iter = 0; iter < length_; iter++)
-          array_[iter] = temp.array_[iter];
+
+        // shared pointer
+        stride_ = temp.stride_;
+        array_ = temp.array_;
     }
     
     return *this;
@@ -4476,17 +4499,12 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
 
 template <typename T>
 inline T* DynamicRaggedDownArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 // Destructor
 template <typename T>
-DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
-    if(array_!=NULL)
-      delete[] array_;
-    if(stride_!=NULL)
-      delete[] stride_;
-}
+DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {}
 
 //----end of DynamicRaggedDownArray class definitions-----
 
@@ -4497,11 +4515,11 @@ DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {
 template <typename T>
 class SparseRowArray {
 private:
-    size_t *start_index_;
-    size_t *column_index_;
+    std::shared_ptr <size_t[]> start_index_;
+    std::shared_ptr <size_t[]> column_index_;
     
-    T * array_;
-    
+    std::shared_ptr <T[]> array_;
+
     size_t dim1_, length_;
     
 public:
@@ -4518,7 +4536,10 @@ public:
     
     // Overloaded constructor for a traditional array
     SparseRowArray (size_t *strides_array, size_t some_dim1);
-    
+
+    // Copy constructor
+    SparseRowArray (const SparseRowArray& temp);
+
     // A method to return the stride size
     size_t stride(size_t i) const;
     
@@ -4537,6 +4558,9 @@ public:
 
     //get row starts array
     size_t* get_starts() const;
+
+    // overloaded = operator
+    SparseRowArray& operator=(const SparseRowArray& temp);
     
     // Destructor
     ~SparseRowArray ();
@@ -4557,7 +4581,7 @@ SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
     dim1_  = strides_array.size();
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim1_+1];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]); // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -4569,8 +4593,8 @@ SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
     } // end for i
     
     length_ = count;
-    array_ = new T[count];
-    column_index_ = new size_t[count];
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
 } 
 
 
@@ -4581,7 +4605,7 @@ SparseRowArray<T>::SparseRowArray (ViewCArray<size_t> &strides_array) {
     dim1_  = strides_array.size();
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim1_+1];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]);  // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -4593,8 +4617,8 @@ SparseRowArray<T>::SparseRowArray (ViewCArray<size_t> &strides_array) {
     } // end for i
     
     length_ = count;
-    array_ = new T[count];
-    column_index_ = new size_t[count];
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
 } 
 
 // Overloaded constructor
@@ -4604,7 +4628,7 @@ SparseRowArray<T>::SparseRowArray (size_t *strides_array, size_t dim1) {
     dim1_ = dim1;
     
     // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = new size_t[dim1_+1];  // note the dim1+1
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]);  // note the dim1+1
     start_index_[0] = 0; // the 1D array starts at 0
     
     // Loop over to find the total length of the 1D array to
@@ -4616,10 +4640,23 @@ SparseRowArray<T>::SparseRowArray (size_t *strides_array, size_t dim1) {
     } // end for i
     
     length_ = count;
-    array_ = new T[count];
-    column_index_ = new size_t[count];
-} 
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
+}
 
+// Copy constructor
+template <typename T>
+SparseRowArray<T>::SparseRowArray (const SparseRowArray& temp) {
+    if (this != &temp) {
+        dim1_ = temp.dim1_;
+        length_ = temp.length_;
+
+        // shared pointer
+        start_index_ = temp.start_index_;
+        column_index_ = temp.column_index_;
+        array_ = temp.array_;
+    }
+} // end copy constructor
 
 // A method to return the stride size
 template <typename T>
@@ -4654,7 +4691,7 @@ inline T& SparseRowArray<T>::value(size_t i, size_t j) const {
     return array_[j + start];
 } 
 
-//return size
+// return size
 template <typename T>
 size_t SparseRowArray<T>::size() const{
     return length_;
@@ -4662,24 +4699,31 @@ size_t SparseRowArray<T>::size() const{
 
 template <typename T>
 inline T* SparseRowArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 template <typename T>
 inline size_t* SparseRowArray<T>::get_starts() const{
-    return start_index_;
+    return start_index_.get();
+}
+
+template <typename T>
+SparseRowArray<T>& SparseRowArray<T>::operator= (const SparseRowArray& temp) {
+    if (this != &temp) {
+        dim1_ = temp.dim1_;
+        length_ = temp.length_;
+
+        // shared pointer
+        start_index_ = temp.start_index_;
+        column_index_ = temp.column_index_;
+        array_ = temp.array_;
+    }
+    return *this;
 }
 
 // Destructor
 template <typename T>
-SparseRowArray<T>::~SparseRowArray() {
-    if(array_!=NULL)
-      delete[] array_;
-    if(start_index_!=NULL)
-      delete[] start_index_;
-    if(column_index_!=NULL)
-      delete[] column_index_;
-}
+SparseRowArray<T>::~SparseRowArray() {}
 
 //---- end of SparseRowArray class definitions-----
 
@@ -4690,34 +4734,37 @@ template <typename T>
 class SparseColArray {
 
 private:
-	size_t *start_index_;
-	size_t *row_index_;
-	T * array_;
+    std::shared_ptr <size_t[]> start_index_;
+    std::shared_ptr <size_t[]> row_index_;
+    std::shared_ptr <T[]> array_;
 
-	size_t dim2_, length_;
+    size_t dim2_, length_;
 
 public:
 
-	//default constructor
-	SparseColArray ();
+    //default constructor
+    SparseColArray ();
 
-	//constructor with CArray
-	SparseColArray(CArray<size_t> &strides_array);
+    //constructor with CArray
+    SparseColArray(CArray<size_t> &strides_array);
 
-	//constructor with ViewCArray
-	SparseColArray(ViewCArray<size_t> &strides_array);
+    //constructor with ViewCArray
+    SparseColArray(ViewCArray<size_t> &strides_array);
 
-	//constructor with regular array
-	SparseColArray(size_t *strides_array, size_t some_dim1);
+    //constructor with regular array
+    SparseColArray(size_t *strides_array, size_t some_dim1);
 
-	//method return stride size
-	size_t stride(size_t j) const;
+    // Copy constructor
+    SparseColArray(const SparseColArray& temp);
 
-	//method return row index ass array.row_index(i,j)
-	size_t& row_index(size_t i, size_t j) const;
+    //method return stride size
+    size_t stride(size_t j) const;
 
-	//method access data as an array
-	T& value(size_t i, size_t j) const;
+    //method return row index ass array.row_index(i,j)
+    size_t& row_index(size_t i, size_t j) const;
+
+    //method access data as an array
+    T& value(size_t i, size_t j) const;
 
     // A method to return the total size of the array
     size_t size() const;
@@ -4728,8 +4775,12 @@ public:
     //get row starts array
     size_t* get_starts() const;
 
-	//destructor
-	~SparseColArray();
+    // Overload copy assignment operator
+    SparseColArray& operator= (const SparseColArray& temp);
+    
+
+    //destructor
+    ~SparseColArray();
 };
 
 //Default Constructor
@@ -4744,21 +4795,21 @@ SparseColArray<T>::SparseColArray (){
 template <typename T>
 SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
 
-	dim2_ = strides_array.size();
+    dim2_ = strides_array.size();
 
-	start_index_ = new size_t[dim2_+1];
-	start_index_[0] = 0;
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_+1]);
+    start_index_[0] = 0;
 
-	//loop over to find total length of the 1D array
-	size_t count = 0;
-	for(size_t j = 0; j < dim2_; j++) {
-	  count+= strides_array(j);
-	  start_index_[j+1] = count;
-	}
+    //loop over to find total length of the 1D array
+    size_t count = 0;
+    for(size_t j = 0; j < dim2_; j++) {
+        count+= strides_array(j);
+        start_index_[j+1] = count;
+    }
     
     length_ = count;
-	array_ = new T[count];
-	row_index_ = new T[count];
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
 
 } //end constructor with CArray
 
@@ -4767,22 +4818,22 @@ SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
 template <typename T>
 SparseColArray<T>::SparseColArray(ViewCArray<size_t> &strides_array) {
 
-	dim2_ = strides_array.size();
+    dim2_ = strides_array.size();
 
-	//create and initialize starting index of 1D array
-	start_index_ = new size_t[dim2_+1];
-	start_index_[0] = 0;
+    //create and initialize starting index of 1D array
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_+1]);
+    start_index_[0] = 0;
 
-	//loop over to find total length of 1D array
-	size_t count = 0;
-	for(size_t j = 0; j < dim2_ ; j++) {
-	  count += strides_array(j);
-	  start_index_[j+1] = count;
-	}
+    //loop over to find total length of 1D array
+    size_t count = 0;
+    for(size_t j = 0; j < dim2_ ; j++) {
+        count += strides_array(j);
+        start_index_[j+1] = count;
+    }
     
     length_ = count;
-	array_ = new T[count];
-	row_index_ = new T[count];
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
 
 } //end constructor
 
@@ -4790,29 +4841,43 @@ SparseColArray<T>::SparseColArray(ViewCArray<size_t> &strides_array) {
 template <typename T>
 SparseColArray<T>::SparseColArray(size_t *strides_array, size_t dim2) {
 
-	dim2_ = dim2;
+    dim2_ = dim2;
 
-	//create and initialize the starting index 
-	start_index_ = new size_t[dim2_ +1];
-	start_index_[0] = 0;
+    //create and initialize the starting index 
+    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_ +1]);
+    start_index_[0] = 0;
 
-	//loop over to find the total length of the 1D array
-	size_t count = 0;
-	for(size_t j = 0; j < dim2_; j++) {
-	  count += strides_array[j];
-	  start_index_[j+1] = count;
-	}
+    //loop over to find the total length of the 1D array
+    size_t count = 0;
+    for(size_t j = 0; j < dim2_; j++) {
+        count += strides_array[j];
+        start_index_[j+1] = count;
+    }
     
     length_ = count;
-	array_ = new T[count];
-	row_index_ = new T[count];
+    array_ = std::shared_ptr <T[]> (new T[count]);
+    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
 
 } //end constructor
+
+// copy constructor
+template <typename T>
+SparseColArray<T>::SparseColArray(const SparseColArray& temp) {
+    if (this != &temp) {
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+
+        // shared pointer
+        start_index_ = temp.start_index_;
+        row_index_ = temp.row_index_;
+        array_ = temp.array_;
+    }
+} // end copy constructor
 
 //method to return stride size
 template <typename T>
 size_t SparseColArray<T>::stride(size_t j) const{
-	return start_index_[j+1] - start_index_[j];
+    return start_index_[j+1] - start_index_[j];
 }
 
 //acces data ass arrow.row_index(i,j)
@@ -4820,14 +4885,14 @@ size_t SparseColArray<T>::stride(size_t j) const{
 template <typename T>
 size_t& SparseColArray<T>::row_index(size_t i, size_t j) const {
 
-	//get 1D array index
-	size_t start = start_index_[j];
+    //get 1D array index
+    size_t start = start_index_[j];
 
-	//asserts to make sure we are in bounds
-	assert(i < stride(j) && "i is out of stride bounnds in SparseColArray!");
-	assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
+    //asserts to make sure we are in bounds
+    assert(i < stride(j) && "i is out of stride bounnds in SparseColArray!");
+    assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
 
-	return row_index_[i + start];
+    return row_index_[i + start];
 
 } //end row index method	
 
@@ -4837,14 +4902,13 @@ size_t& SparseColArray<T>::row_index(size_t i, size_t j) const {
 template <typename T>
 T& SparseColArray<T>::value(size_t i, size_t j) const {
 
-	size_t start = start_index_[j];
+    size_t start = start_index_[j];
 
-	//asserts
-	assert(i < stride(j) && "i is out of stride boundns in SparseColArray");
-	assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
+    //asserts
+    assert(i < stride(j) && "i is out of stride boundns in SparseColArray");
+    assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
 
-	return array_[i + start];
-
+    return array_[i + start];
 }
 
 //return size
@@ -4855,24 +4919,31 @@ size_t SparseColArray<T>::size() const{
 
 template <typename T>
 inline T* SparseColArray<T>::pointer() const{
-    return array_;
+    return array_.get();
 }
 
 template <typename T>
 inline size_t* SparseColArray<T>::get_starts() const{
-    return start_index_;
+    return start_index_.get();
+}
+
+template <typename T>
+SparseColArray<T>& SparseColArray<T>::operator= (const SparseColArray& temp) {
+    if (this != &temp) {
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+
+        // shared pointer
+        start_index_ = temp.start_index_;
+        row_index_ = temp.row_index_;
+        array_ = temp.array_;
+    }
+    return *this;
 }
 
 //destructor
 template <typename T>
-SparseColArray<T>::~SparseColArray() {
-    if(array_!=NULL)
-	  delete [] array_;
-    if(start_index_!=NULL)
-	  delete [] start_index_;
-    if(row_index_!=NULL)
-	  delete [] row_index_;
-}
+SparseColArray<T>::~SparseColArray() {}
 
 //----end SparseColArray----
 

@@ -7,7 +7,6 @@ cd ${MATAR_BUILD_DIR}
 OPTIONS=(
 -D KOKKOS=ON
 -D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib64/cmake/Kokkos
--D TEST=ON
 )
 set -x
 cmake "${OPTIONS[@]}" "${MATAR_BASE_DIR:-../}"
