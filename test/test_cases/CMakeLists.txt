@@ -10,6 +10,9 @@ add_executable(${This} ${Sources})
 
 target_link_libraries(${This}
     matar
-    Kokkos::kokkos
     gtest_main
 )
+
+if (KOKKOKS)
+  target_link_libraries(${This} Kokkos::kokkos)
+endif (KOKKOS)
