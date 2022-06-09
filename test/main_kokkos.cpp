@@ -353,10 +353,10 @@ struct framework_matar_t{
 //
 // Main function
 //
-int main() {
+int main(int argc, char *argv[]) {
 
 
-    Kokkos::initialize();
+    Kokkos::initialize(argc, argv);
     {   
 
         // -----------------------
