@@ -18,6 +18,7 @@ if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
   add_executable(test_kokkos_for kokkos_for.cpp)
   add_executable(test_dual_types test_dual_types.cpp)
+  add_executable(test_fibonnaci_array test_fibonnaci_array.cpp)
 
   add_definitions(-DHAVE_KOKKOS=1)
 
@@ -27,6 +28,8 @@ if (KOKKOS)
     add_definitions(-DHAVE_HIP=1)
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
+    add_executable(parallel_hello_world parallel_hello_world.cpp)
+    target_link_libraries(parallel_hello_world matar Kokkos::kokkos)
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
@@ -34,6 +37,7 @@ if (KOKKOS)
   target_link_libraries(mtestkokkos matar Kokkos::kokkos)
   target_link_libraries(test_kokkos_for Kokkos::kokkos)
   target_link_libraries(test_dual_types matar Kokkos::kokkos)
+  target_link_libraries(test_fibonnaci_array matar Kokkos::kokkos)
 endif()
 
 
@@ -47,6 +51,12 @@ endif()
 
 include_directories(laplace)
 add_subdirectory(laplace)
+
+include_directories(couette_flow)
+add_subdirectory(couette_flow)
+
+include_directories(halfspace_cooling)
+add_subdirectory(halfspace_cooling)
 
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
