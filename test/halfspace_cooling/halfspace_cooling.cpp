@@ -1,1 +1,58 @@
+// the idea is to populate a dynamic ragged down array with the 
+// temperatures from the halfspace cooling model as a function of
+// age and depth
 
+// T = Tm erf(z/sqrt(4kt))
+
+// The mantle temperature is 1350, temp will be 1350 at the ridge axis
+// the x direction is controlled by increasing age
+// the y direction is depth
+// k = thermal diffusivity (1 x 10^-6)
+// calculate every 1 million years for 750 Ma years, ignoring that 
+// the max oceanic plate age is 120 Ma
+// have depth increase by 1 km
+
+#include <stdio.h>
+#include <math.h>
+#include <cmath>
+#include <chrono>
+#include <matar.h>
+
+// set up constant parameters
+const int max_age = 750;
+const double mantle_temp = 1350.0;
+const double thermal_diff = 0.000001;
+
+int main() {
+    int depth = 0;
+    auto begin = std::chrono::high_resolution_clock::now(); // start clock
+
+    DynamicRaggedDownArray <double> dyn_ragged_down(max_age, depth); // create array
+
+    // populate array using halfspace cooling
+    for (int i = 0; i <= max_age; i++) {
+        for (int j = 0; j <= depth; j++) {
+            if (i == 0 && j == 0) {  // when depth and age are 0, give mantle_temp
+                dyn_ragged_down(i,j) = mantle_temp;
+            }
+            dyn_ragged_down(i,j) = mantle_temp * erf(j / (2.0 * sqrt(thermal_diff * (i * 1e6))));
+            depth++;
+            // printf("%f \n", dyn_ragged_down(i,j));
+
+            // check if we have reached the mantle, if yes, move on to next age
+            if (round(dyn_ragged_down(i,j)) == 1350) {
+                printf("Depth to mantle %d km, age of lithosphere %d Ma \n", depth, i);
+                depth = 0;
+                break;
+            } 
+        } 
+    }
+    
+    // Stop counting time and calculate elapsed time
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin);
+
+    printf("Total time was %f seconds.\n", elapsed.count() * 1e-9);
+
+    return 0;
+}
