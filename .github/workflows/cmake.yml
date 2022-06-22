@@ -21,9 +21,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Serial Build
-      run: |
-        cd scripts/serial/
-        source build-it.sh
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DTEST=ON
     
 
     #- name: Configure CMake
