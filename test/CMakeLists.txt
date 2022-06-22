@@ -27,6 +27,8 @@ if (KOKKOS)
     add_definitions(-DHAVE_HIP=1)
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
+    add_executable(parallel_hello_world parallel_hello_world.cpp)
+    target_link_libraries(parallel_hello_world matar Kokkos::kokkos)
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
@@ -47,6 +49,9 @@ endif()
 
 include_directories(laplace)
 add_subdirectory(laplace)
+
+include_directories(halfspace_cooling)
+add_subdirectory(halfspace_cooling)
 
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
