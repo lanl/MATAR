@@ -7,6 +7,7 @@ cd ${MATAR_BUILD_DIR}
 OPTIONS=(
 -D CMAKE_BUILD_TYPE=Release
 -D TEST=ON
+-D ENABLE_UNIT_TESTS=ON
 )
 set -x
 cmake "${OPTIONS[@]}" "${MATAR_BASE_DIR:-../}"
