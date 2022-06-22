@@ -8,8 +8,7 @@
 // the x direction is controlled by increasing age
 // the y direction is depth
 // k = thermal diffusivity (1 x 10^-6)
-// calculate every 1 million years for 750 Ma years, ignoring that 
-// the max oceanic plate age is 120 Ma
+// calculate every 1 million years for 1000 Ma years
 // have depth increase by 1 km
 
 #include <stdio.h>
@@ -33,44 +32,6 @@ int main() {
     auto begin = std::chrono::high_resolution_clock::now(); // start clock
 
     DynamicRaggedDownArray <double> dyn_ragged_down(max_age, depth); // create array
-
-    // populate array using halfspace cooling
-    // for (int i = 0; i <= max_age; i++) {
-    //     for (int j = 0; j <= depth; j++) {
-    //         if (i == 0 && j == 0) {  // when depth and age are 0, give mantle_temp
-    //             dyn_ragged_down.stride(j)++;
-    //             dyn_ragged_down(i,j) = mantle_temp;
-    //         }
-    //         dyn_ragged_down.stride(j)++;
-    //         dyn_ragged_down(i,j) = mantle_temp * erf(j / (2.0 * sqrt(thermal_diff * (i * 1e6))));
-    //         //depth++;
-    //         // check if we have reached the mantle, if yes, move on to next age
-    //         if (round(dyn_ragged_down(i,j)) == 1350) {
-    //             printf("Depth to mantle %d km, age of lithosphere %d Ma \n", j, i);
-    //             break;
-    //         } 
-    //     } 
-    // }
-
-    // To run this in parallel
-  //  FOR_ALL(i, 0, max_age,
-  //          j, 0, depth, {
-  //              if (i == 0 && j == 0)
-  //              { // when depth and age are 0, give mantle_temp
-  //                  dyn_ragged_down.stride(j)++;
-  //                  dyn_ragged_down(i, j) = mantle_temp;
-  //              }
-  //              double temp = mantle_temp * erf(j / (2.0 * sqrt(thermal_diff * (i * 1e6))));
-  //              dyn_ragged_down.stride(j)++;
-  //              dyn_ragged_down(i, j) = temp;
-
-                // check if we have reached the mantle, if yes, move on to next age
-            //     if (round(dyn_ragged_down(i, j)) == 1350)
-            //     {
-            //         printf("Depth to mantle %d km, age of lithosphere %d Ma \n", j, i);
-            //         break;
-            //     }
-            // });
 
     DO_ALL(i, 0, max_age, {
             for (int j = 0; j <= depth; j++) {
