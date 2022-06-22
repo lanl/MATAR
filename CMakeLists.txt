@@ -7,6 +7,9 @@ project (MATAR)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+# Tell CMake to respect PkgName_ROOT variables (old behavior is deprecated)
+cmake_policy(SET CMP0074 NEW)
+
 
 # CMAKE_BUILD_TYPE:
 # 1. Release: `-O3 -DNDEBUG`
