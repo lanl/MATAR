@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.1.3)
+cmake_minimum_required(VERSION 3.13)
 
 project (mtest)
 
 add_executable(mtest main.cpp)
 
-if (NOT KOKKOS)
+if (NOT MATAR_ENABLE_KOKKOS)
    add_executable(test_for test_for.cpp)
    target_link_libraries(test_for matar)
 
@@ -12,7 +12,7 @@ if (NOT KOKKOS)
    target_link_libraries(test_shared_ptr matar)
 endif()
 
-if (KOKKOS)
+if (MATAR_ENABLE_KOKKOS)
   find_package(Kokkos REQUIRED) #new
 
   add_executable(mtestkokkos main_kokkos.cpp)
@@ -21,18 +21,18 @@ if (KOKKOS)
 
   add_definitions(-DHAVE_KOKKOS=1)
 
-  if (CUDA)
+  if (MATAR_ENABLE_KOKKOS_CUDA)
     add_definitions(-DHAVE_CUDA=1)
-  elseif (HIP)
+  elseif (MATAR_ENABLE_KOKKOS_HIP)
     add_definitions(-DHAVE_HIP=1)
-  elseif (OPENMP)
+  elseif (MATAR_ENABLE_KOKKOS_OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
-  elseif (THREADS)
+  elseif (MATAR_ENABLE_KOKKOS_THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
   target_link_libraries(mtestkokkos matar Kokkos::kokkos)
-  target_link_libraries(test_kokkos_for Kokkos::kokkos)
+  target_link_libraries(test_kokkos_for matar Kokkos::kokkos)
   target_link_libraries(test_dual_types matar Kokkos::kokkos)
 endif()
 
@@ -40,7 +40,7 @@ endif()
 target_link_libraries(mtest matar)
 
 ### HIP Linking error, will add back in after fixed
-if (NOT HIP)
+if (NOT MATAR_ENABLE_KOKKOS_HIP)
     include_directories(virtualFcnKokkos)
     add_subdirectory(virtualFcnKokkos)
 endif()
