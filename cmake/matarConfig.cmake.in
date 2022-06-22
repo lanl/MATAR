@@ -1,0 +1,83 @@
+#-----------------------------------------------------------------------------
+# MATAR configuration file template
+#-----------------------------------------------------------------------------
+
+# Compiler Definitions
+set(CMAKE_CXX_COMPILER @CMAKE_CXX_COMPILER@ CACHE FILEPATH "CXX Compiler used for compiling MATAR")
+
+# Compiler flags to use (particularly the vectorization flags)
+# Add vectorization flags to compiler flags
+set(CMAKE_Fortran_FLAGS_RELEASE @CMAKE_Fortran_FLAGS_RELEASE@ CACHE STRING
+ "Fortran flags for compiling release version of MATAR")
+set(CMAKE_C_FLAGS_RELEASE @CMAKE_C_FLAGS_RELEASE@ CACHE STRING "C flags for compiling release version of MATAR")
+set(CMAKE_CXX_FLAGS_RELEASE @CMAKE_CXX_FLAGS_RELEASE@ CACHE STRING "CXX flags for compiling release version of MATAR")
+
+
+# MATAR installation path
+set(MATAR_ROOT @CMAKE_INSTALL_PREFIX@ CACHE PATH "Path to MATAR installation")
+
+# MATAR library 
+set(MATAR_LIBRARIES @MATAR_LIBRARIES@ CACHE STRING "Name of the MATAR library target")
+
+# MATAR includes
+set(MATAR_INCLUDE_DIR @CMAKE_INSTALL_PREFIX@/include CACHE PATH "MATAR include file locations")
+
+# MATAR options
+set(MATAR_ENABLE_KOKKOS @MATAR_ENABLE_KOKKOS@ CACHE BOOL "If MATAR has Kokkos enabled")
+set(Kokkos_ROOT @Kokkos_ROOT@ CACHE PATH "Kokkos directory")
+
+if (MATAR_ENABLE_KOKKOS)
+  set(MATAR_ENABLE_KOKKOS_CUDA @MATAR_ENABLE_KOKKOS_CUDA@ CACHE BOOL "If MATAR has CUDA enabled")
+  set(MATAR_ENABLE_KOKKOS_HIP @MATAR_ENABLE_KOKKOS_HIP@ CACHE BOOL "If MATAR has HIP enabled")
+  set(MATAR_ENABLE_KOKKOS_OPENMP @MATAR_ENABLE_KOKKOS_OPENMP@ CACHE BOOL "if MATAR has OpenMP enabled")
+  set(MATAR_ENABLE_KOKKOS_THREADS @MATAR_ENABLE_KOKKOS_THREADS@ CACHE BOOL " if MATAR has THREADS enabled")
+endif()
+
+
+if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.15)
+  set(CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE)  # search for PkgConfig.cmake files first
+endif ()
+
+
+# Find target dependencies
+
+# Temporarily modify CMAKE module path so we can find our custom
+# modules for packages that don't have config files
+
+set(SAVED_CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH})
+if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.15)
+  list(PREPEND CMAKE_MODULE_PATH @CMAKE_INSTALL_PREFIX@/lib/cmake/matar/modules)
+else ()
+  set(CMAKE_MODULE_PATH "@CMAKE_INSTALL_PREFIX@/lib/cmake/matar/modules;${CMAKE_MODULE_PATH}")
+endif ()
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(Vector)  # find vectorization options for compiler
+
+if (MATAR_ENABLE_KOKKOS)
+  find_dependency(Kokkos)
+  if (MATAR_ENABLE_KOKKOS_OPENMP)
+    find_dependency(OpenMP)
+  endif ()
+  if (MATAR_ENABLE_KOKKOS_CUDA)
+    enable_language(CUDA)
+  endif ()
+  if (MATAR_ENABLE_KOKKOS_HIP)
+    find_dependency(HIP)
+  endif ()
+  if (MATAR_ENABLE_KOKKOS_THREADS)
+    find_dependency(THREADS)
+  endif ()
+  find_dependency(Kokkos)
+endif ()
+
+# Restore original CMAKE_MODULE_PATH
+set(CMAKE_MODULE_PATH ${SAVED_CMAKE_MODULE_PATH})
+
+
+#
+# Import MATAR targets
+#
+
+include("@CMAKE_INSTALL_PREFIX@/lib/cmake/matar/matarTargets.cmake")

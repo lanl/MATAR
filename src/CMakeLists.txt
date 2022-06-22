@@ -1,25 +1,20 @@
-cmake_minimum_required(VERSION 3.12)
-set (CMAKE_CXX_STANDARD 17)
 
-if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
-endif ()
+set(matar_SOURCES
+  matar.cpp
+  )
 
+target_sources(matar PRIVATE ${matar_SOURCES})
 
-add_library(matar matar.cpp matar.h)
+set(matar_HEADERS
+  matar.h
+  macros.h
+  )
 
-if (KOKKOS)
-  set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_KOKKOS)
-  if (CUDA)
-    set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_CUDA)
-  elseif (HIP)
-    set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_HIP)
-  elseif (OPENMP)
-    set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_OPENMP)
-  elseif (THREADS)
-    set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_THREADS)
-  endif()
+list(TRANSFORM matar_HEADERS PREPEND "${CMAKE_CURRENT_SOURCE_DIR}/")
 
-  target_link_libraries(matar  Kokkos::kokkos)
-endif()
+set_target_properties(matar PROPERTIES
+  PUBLIC_HEADER "${matar_HEADERS}")
 
+target_include_directories(matar PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:include>)
