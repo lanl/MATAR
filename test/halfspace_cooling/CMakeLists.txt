@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1.3)
 project (halfspace_cooling)
 
 if (NOT KOKKOS)
-  add_executable(halfspace_cooling_serial halfspace_cooling.cpp)
+  add_executable(halfspace_cooling halfspace_cooling.cpp)
 
   target_link_libraries(halfspace_cooling matar)
 endif()
