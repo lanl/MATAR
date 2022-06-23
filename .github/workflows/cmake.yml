@@ -36,7 +36,7 @@ jobs:
       if: contains(matrix.config.name, 'KOKKOS')
       run: |
         cmake \
-          -S ${{ github.workspace }}/Kokkos/kokkos
+          -S ${{ github.workspace }}/src/Kokkos/kokkos
           -B ${{ github.workspace }}/build-kokkos-serial/kokkos \
           ${{ matrix.config.kokkos_build_args }}
           
@@ -52,7 +52,7 @@ jobs:
       shell: bash
       run: |
         cmake \
-          -B ${{ github.workspace }}/build \
+          -B ${{ github.workspace }}/build-kokkos-serial \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
             
     - name: Build MATAR
