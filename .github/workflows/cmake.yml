@@ -20,8 +20,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", build_args: ""}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", build_args: "-DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
+        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_build_args: "", kokkos_build_args: ""}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_build_args: "-DKOKKOS=ON", kokkos_build_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
 
     steps:
     - name: Checkout repository
@@ -30,17 +30,35 @@ jobs:
     - name: Checkout submodules
       run: git submodule update --init --recursive
   
-    - name: Configure CMake
+    # Kokkos configure and build------------------------------------------
+    - name: Configure Kokkos CMake
+      shell: bash
+      if: contains(matrix.config.name, 'KOKKOS')
+      run: |
+        cmake \
+          -S ${{ github.workspace }}/Kokkos/kokkos
+          -B ${{ github.workspace }}/build-kokkos-serial/kokkos \
+          ${{ matrix.config.kokkos_build_args }}
+          
+    - name: Build Kokkos
+      shell: bash
+      if: contains(matrix.config.name, 'KOKKOS')
+      run: cmake --build ${{ github.workspace }}/build-kokkos-serial/kokkos
+    # End Kokkos configure and build------------------------------------------
+  
+  
+    # MATAR configure and build------------------------------------------
+    - name: Configure MATAR CMake
       shell: bash
       run: |
         cmake \
           -B ${{ github.workspace }}/build \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-          ${{ matrix.config.build_args }}
-    
-    - name: Build
+            
+    - name: Build MATAR
       shell: bash
-      run: cmake --build ${{github.workspace}}/build --config ${{ matrix.config.build_type }}
+      run: cmake --build ${{github.workspace}}/build
+    # End MATAR configure and build------------------------------------------
 
     #- name: Test
     #  working-directory: ${{github.workspace}}/build
