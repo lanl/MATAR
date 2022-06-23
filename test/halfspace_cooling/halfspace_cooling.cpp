@@ -31,7 +31,7 @@ int main() {
     int depth = 200;
     auto begin = std::chrono::high_resolution_clock::now(); // start clock
 
-    DynamicRaggedDownArray <double> dyn_ragged_down(max_age, depth); // create array
+    DynamicRaggedDownArrayKokkos <double> dyn_ragged_down(max_age, depth); // create array
 
     DO_ALL(i, 0, max_age, {
             for (int j = 0; j <= depth; j++) {
@@ -57,8 +57,6 @@ int main() {
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin);
     
-
-    //printf("Depth to mantle at %i Ma, %i \n", max_age, last_depth); 
     printf("Total time was %f seconds.\n", elapsed.count() * 1e-9);
 }
     Kokkos::finalize();
