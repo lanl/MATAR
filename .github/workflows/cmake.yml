@@ -20,8 +20,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_build_args: "", kokkos_build_args: ""}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_build_args: "-DKOKKOS=ON", kokkos_build_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
+        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_config_args: "", kokkos_config_args: ""}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_config_args: "-DKOKKOS=ON", kokkos_config_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
 
     steps:
     - name: Checkout repository
@@ -38,7 +38,8 @@ jobs:
         cmake \
           -S ${{ github.workspace }}/src/Kokkos/kokkos \
           -B ${{ github.workspace }}/build-kokkos-serial/kokkos \
-          ${{ matrix.config.kokkos_build_args }}
+          -D CMAKE_INSTALL_PREFIX=${{ github.workspace }}/build-kokkos-serial/kokkos \
+          ${{ matrix.config.kokkos_config_args }}
           
     - name: Build Kokkos
       shell: bash
@@ -48,17 +49,28 @@ jobs:
   
   
     # MATAR configure and build------------------------------------------
-    - name: Configure MATAR CMake
+    - if: false == contains(matrix.config.name, 'KOKKOS')
+      name: Configure MATAR CMake
       shell: bash
       run: |
         cmake \
-          -B ${{ github.workspace }}/build-kokkos-serial \
+          -B ${{ github.workspace }}/build-kokkos-serial/matar \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-          ${{ matrix.config.matar_build_args }}
+          ${{ matrix.config.matar_config_args }}
+          
+    - if: contains(matrix.config.name, 'KOKKOS')
+      name: Configure MATAR CMake
+      shell: bash
+      run: |
+        cmake \
+          -B ${{ github.workspace }}/build-kokkos-serial/matar \
+          -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
+          ${{ matrix.config.matar_config_args }} \
+          -DKokkos_ROOT=${{ github.workspace }}/build-kokkos-serial/kokkos
             
     - name: Build MATAR
       shell: bash
-      run: cmake --build ${{github.workspace}}/build-kokkos-serial
+      run: cmake --build ${{github.workspace}}/build-kokkos-serial/matar
     # End MATAR configure and build------------------------------------------
 
     #- name: Test
