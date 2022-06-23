@@ -30,10 +30,10 @@ jobs:
     - name: Checkout submodules
       run: git submodule update --init --recursive
   
-    # Kokkos configure and build------------------------------------------
-    - name: Configure Kokkos CMake
+    # Kokkos configure, build, and install------------------------------------------
+    - if: contains(matrix.config.name, 'KOKKOS')
+      name: Configure Kokkos CMake
       shell: bash
-      if: contains(matrix.config.name, 'KOKKOS')
       run: |
         cmake \
           -S ${{ github.workspace }}/src/Kokkos/kokkos \
@@ -41,11 +41,17 @@ jobs:
           -D CMAKE_INSTALL_PREFIX=${{ github.workspace }}/build-kokkos-serial/kokkos \
           ${{ matrix.config.kokkos_config_args }}
           
-    - name: Build Kokkos
+    - if: contains(matrix.config.name, 'KOKKOS')
+      name: Build Kokkos
       shell: bash
-      if: contains(matrix.config.name, 'KOKKOS')
       run: cmake --build ${{ github.workspace }}/build-kokkos-serial/kokkos
-    # End Kokkos configure and build------------------------------------------
+      
+    - if: contains(matrix.config.name, 'KOKKOS')
+      name: Install Kokkos
+      shell: bash
+      run: cmake --install ${{ github.workspace }}/build-kokkos-serial/kokkos
+      
+    # End Kokkos configure, build, and install------------------------------------------
   
   
     # MATAR configure and build------------------------------------------
@@ -66,7 +72,7 @@ jobs:
           -B ${{ github.workspace }}/build-kokkos-serial/matar \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
           ${{ matrix.config.matar_config_args }} \
-          -DKokkos_DIR=${{ github.workspace }}/build-kokkos-serial/kokkos/lib64/cmake/Kokkos/Kokkos
+          -DKokkos_DIR=${{ github.workspace }}/build-kokkos-serial/kokkos/lib64/cmake/Kokkos
             
     - name: Build MATAR
       shell: bash
