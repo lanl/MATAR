@@ -57,7 +57,7 @@ jobs:
             
     - name: Build MATAR
       shell: bash
-      run: cmake --build ${{github.workspace}}/build
+      run: cmake --build ${{github.workspace}}/build-kokkos-serial
     # End MATAR configure and build------------------------------------------
 
     #- name: Test
