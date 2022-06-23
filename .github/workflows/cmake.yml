@@ -50,7 +50,7 @@ jobs:
   
     # MATAR configure and build------------------------------------------
     - if: false == contains(matrix.config.name, 'KOKKOS')
-      name: Configure MATAR CMake
+      name: Configure MATAR CMake Without Kokkos
       shell: bash
       run: |
         cmake \
@@ -59,14 +59,14 @@ jobs:
           ${{ matrix.config.matar_config_args }}
           
     - if: contains(matrix.config.name, 'KOKKOS')
-      name: Configure MATAR CMake
+      name: Configure MATAR CMake With Kokkos
       shell: bash
       run: |
         cmake \
           -B ${{ github.workspace }}/build-kokkos-serial/matar \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
           ${{ matrix.config.matar_config_args }} \
-          -DKokkos_ROOT=${{ github.workspace }}/build-kokkos-serial/kokkos
+          -DKokkos_DIR=${{ github.workspace }}/build-kokkos-serial/kokkos/lib64/cmake/Kokkos
             
     - name: Build MATAR
       shell: bash
