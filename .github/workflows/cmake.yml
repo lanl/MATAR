@@ -36,7 +36,7 @@ jobs:
       if: contains(matrix.config.name, 'KOKKOS')
       run: |
         cmake \
-          -S ${{ github.workspace }}/src/Kokkos/kokkos
+          -S ${{ github.workspace }}/src/Kokkos/kokkos \
           -B ${{ github.workspace }}/build-kokkos-serial/kokkos \
           ${{ matrix.config.kokkos_build_args }}
           
