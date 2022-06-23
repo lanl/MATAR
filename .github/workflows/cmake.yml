@@ -54,6 +54,7 @@ jobs:
         cmake \
           -B ${{ github.workspace }}/build-kokkos-serial \
           -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
+          ${{ matrix.config.matar_build_args }}
             
     - name: Build MATAR
       shell: bash
