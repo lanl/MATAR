@@ -175,6 +175,10 @@ if(CMAKE_C_COMPILER_LOADED)
     set(VECTOR_NOVEC_C_FLAGS "${VECTOR_BASE_C_FLAGS} ${VECTOR_NOVEC_C_OPT}")
     set(VECTOR_C_FLAGS "${VECTOR_BASE_C_FLAGS} ${VECTOR_C_OPTS} ${VECTOR_C_FPOPTS} ${VECTOR_OPENMP_SIMD_C_FLAGS}")
 
+    # Always set to found
+    include(FindPackageHandleStandardArgs)
+    find_package_handle_standard_args(Vector FOUND_VAR Vector_FOUND REQUIRED_VARS VECTOR_C_FLAGS)
+
     mark_as_advanced(VECTOR_C_FLAGS
                      VECTOR_NOVEC_C_FLAGS
                      VECTOR_C_VERBOSE
@@ -315,6 +319,10 @@ if(CMAKE_CXX_COMPILER_LOADED)
     set(VECTOR_NOVEC_CXX_FLAGS "${VECTOR_BASE_CXX_FLAGS} ${VECTOR_NOVEC_CXX_OPT}")
     set(VECTOR_CXX_FLAGS "${VECTOR_BASE_CXX_FLAGS} ${VECTOR_CXX_OPTS} ${VECTOR_CXX_FPOPTS} ${VECTOR_OPENMP_SIMD_CXX_FLAGS}")
 
+    # Always set to found
+    include(FindPackageHandleStandardArgs)
+    find_package_handle_standard_args(Vector FOUND_VAR Vector_FOUND REQUIRED_VARS VECTOR_CXX_FLAGS)
+
     mark_as_advanced(VECTOR_CXX_FLAGS
                      VECTOR_NOVEC_CXX_FLAGS
                      VECTOR_CXX_VERBOSE
@@ -437,6 +445,10 @@ if(CMAKE_Fortran_COMPILER_LOADED)
     set(VECTOR_BASE_Fortran_FLAGS "${VECTOR_ALIASING_Fortran_FLAGS} ${VECTOR_ARCH_Fortran_FLAGS} ${VECTOR_FPMODEL_Fortran_FLAGS}")
     set(VECTOR_NOVEC_Fortran_FLAGS "${VECTOR_BASE_Fortran_FLAGS} ${VECTOR_NOVEC_Fortran_OPT}")
     set(VECTOR_Fortran_FLAGS "${VECTOR_BASE_Fortran_FLAGS} ${VECTOR_Fortran_OPTS} ${VECTOR_Fortran_FPOPTS} ${VECTOR_OPENMP_SIMD_Fortran_FLAGS}")
+
+    # Always set to found
+    include(FindPackageHandleStandardArgs)
+    find_package_handle_standard_args(Vector FOUND_VAR Vector_FOUND REQUIRED_VARS VECTOR_Fortran_FLAGS)
 
     mark_as_advanced(VECTOR_Fortran_FLAGS
                      VECTOR_NOVEC_Fortran_FLAGS
