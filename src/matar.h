@@ -4969,6 +4969,16 @@ class CSRArray {
      */ 
     CSRArray(CArray<T> array, CArray<T> column_index_, CArray<T> start_index_, size_t dim1, size_t dim2);
 
+    /*
+     * Overloaded Constructor
+     */
+    CSRArray(CArray<T> dense); 
+
+    /*
+     * Overloaded copy operator
+     */
+    CSRArray(const CSRArray &temp); 
+
     T& operator()(size_t i, size_t j) const;
     T& value(size_t i, size_t j) const; 
 
@@ -5011,7 +5021,7 @@ class CSRArray {
     T& getValFlat(size_t k); 
     size_t getColFlat(size_t k);
     // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-    int flatIndex(size_t i, size_t j);    
+    size_t flatIndex(size_t i, size_t j);    
     // Convertor
     int toCSC(CArray<T> &array, CArray<size_t> &start_index, CArray<size_t> &row_index); 
     void todense(CArray<T>& A);
@@ -5043,6 +5053,46 @@ CSRArray<T>::CSRArray(CArray<T> array, CArray<T> column_index, CArray<T> start_i
     nnz_ = nnz; 
 }
 
+template<typename T>
+CSRArray<T>::CSRArray(const CSRArray<T> &temp){
+    if(this != temp) {
+        nnz_ = temp.nnz_;
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        
+        start_index_ = temp.start_index_;
+        column_index_ = temp.column_index_;
+        array_ = temp.array_;
+    }
+}
+
+template<typename T>
+CSRArray<T>::CSRArray(CArray<T> dense){
+    dim1_ = dense.dims(0);
+    dim2_ = dense.dims(1);
+    nnz_ = dense.size();
+    start_index_ = std::shared_ptr<size_t []> (new size_t[dim1_ + 1]);
+    array_ = std::shared_ptr<T []> (new T[nnz_ + 1]);
+    column_index_ = std::shared_ptr<size_t []> (new size_t[nnz_]);
+    size_t i,j;
+    size_t cur = 0; 
+    for(i = 0; i < dim1_; i++){
+        for(j = 0; i < dim2_; j++){
+            if(j != 0){
+                    start_index_[i+1] += 1;
+                    column_index_[cur] = j;
+                    array_[cur] = dense(i,j);
+                    cur++;
+            }
+        }
+    }
+    start_index_[0] = 0;
+    for(i = 1; i <= dim1_; i++){
+        start_index_[i] = start_index_[i] + start_index_[i+1];    
+    }
+
+
+}
 
 template<typename T>
 T& CSRArray<T>::operator()(size_t i, size_t j) const {
@@ -5191,7 +5241,7 @@ size_t CSRArray<T>::getColFlat(size_t k){
 
 
 template<typename T>
-int CSRArray<T>::flatIndex(size_t i, size_t j){
+size_t CSRArray<T>::flatIndex(size_t i, size_t j){
     size_t k;
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
@@ -13099,7 +13149,7 @@ class CSRArrayKokkos {
     using SArray1D = Kokkos::View<size_t*, Layout, ExecSpace, MemoryTraits>;
 
   private: // What ought to be private ? 
-    size_t nrows_, ncols_;
+    size_t dim1_, dim2_;
     size_t nnz_; 
     TArray1D array_;
     SArray1D column_index_;
@@ -13148,13 +13198,13 @@ class CSRArrayKokkos {
      * get number of columns 
      */ 
     KOKKOS_INLINE_FUNCTION
-    size_t getNcols() const ;
+    size_t dim2() const ;
     
     /** 
      * get number of rows
      */ 
     KOKKOS_INLINE_FUNCTION
-    size_t getNrows() const;
+    size_t dim1() const;
     /* 
      * Iterators for row i.   
      */
@@ -13273,8 +13323,8 @@ KOKKOS_INLINE_FUNCTION
 CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator=(const CSRArrayKokkos<T, Layout,ExecSpace,MemoryTraits> &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
-        ncols_ = temp.ncols_;
-        nrows_ = temp.rows_;
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
         
         start_index_ = temp.start_index_;
         column_index_ = temp.column_index_;
@@ -13309,31 +13359,31 @@ void CSRArray<T>::todense(CArray<T>& A){
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::stride(size_t i) const {
-   assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+   assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 }
 
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::getNcols() const {
-    return ncols_;
+size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim2() const {
+    return dim2_;
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::getNrows() const{
-    return nrows_;
+size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim1() const{
+    return dim1_;
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin()"); 
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.end()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
@@ -13341,14 +13391,14 @@ T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::beginFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.beginFlat()");
     return start_index_[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::endFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.beginFlat()");
     return start_index_[i+1];
 }
 
