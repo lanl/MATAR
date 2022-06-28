@@ -4953,14 +4953,22 @@ class CSRArray {
   private: // What ought to be private ? 
     size_t nrows_, ncols_;
     size_t nnz_; 
-    std::shared_ptr <T []> data_;
-    std::shared_ptr <size_t[]> col_ptr_;
-    std::shared_ptr <size_t[]> row_ptr_;
+    std::shared_ptr <T []> array_;
+    std::shared_ptr <size_t[]> column_index_;
+    std::shared_ptr <size_t[]> start_index_;
     
   public:
     CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
     T& operator()(size_t i, size_t j) const;
+    T& value(size_t i, size_t j) const; 
+
+
+    CSRArray& operator=(const CSRArray &temp); 
+    
+    T* pointer() const;
+    size_t* get_starts() const; 
+
     void printer(); //debugging tool     
 
     size_t getNcols();
@@ -4969,6 +4977,12 @@ class CSRArray {
     // Iterators for row i.   
     T* begin(size_t i); 
     T* end(size_t i);
+
+    /// 
+    /// This returnst the stride, the number of elements to the next row 
+    /// 
+    size_t stride(size_t i) const;
+
 
     // iterator for the raw data at row i
     // i.e. return the index each element is the index in the 1 array 
@@ -5001,16 +5015,16 @@ CSRArray<T>::CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, si
     nrows_ = rows;
     ncols_ = cols; 
     size_t nnz = data.size();
-    row_ptr_ = std::shared_ptr<size_t []> (new size_t[nrows_ + 1]);
-    data_ = std::shared_ptr<T []> (new T[nnz+1]);
-    col_ptr_ = std::shared_ptr<size_t []> (new size_t[nnz]);
+    start_index_ = std::shared_ptr<size_t []> (new size_t[nrows_ + 1]);
+    array_ = std::shared_ptr<T []> (new T[nnz+1]);
+    column_index_ = std::shared_ptr<size_t []> (new size_t[nnz]);
     size_t i ;
     for(i = 0; i < nnz; i++){
-        data_[i] = data(i);
-        col_ptr_[i] = col_ptrs(i);
+        array_[i] = data(i);
+        column_index_[i] = col_ptrs(i);
     }
     for(i = 0; i < nrows_ + 1; i++){
-        row_ptr_[i] = row_ptrs(i);
+        start_index_[i] = row_ptrs(i);
     } 
     nnz_ = nnz; 
 }
@@ -5018,16 +5032,55 @@ CSRArray<T>::CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, si
 
 template<typename T>
 T& CSRArray<T>::operator()(size_t i, size_t j) const {
-    size_t row_start = row_ptr_[i];
-    size_t row_end = row_ptr_[i+1];
+    size_t row_start = start_index_[i];
+    size_t row_end = start_index_[i+1];
     size_t k;
     for(k = 0; k < row_end - row_start; k++){
-        if(col_ptr_[row_start + k] == j){
-            return data_[row_start + k];
+        if(column_index_[row_start + k] == j){
+            return array_[row_start + k];
         }
     }
-    data_[nnz_] = (T) NULL;
-    return data_[nnz_];
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+
+template<typename T>
+T& CSRArray<T>::value(size_t i, size_t j) const {
+    size_t row_start = start_index_[i];
+    size_t row_end = start_index_[i+1];
+    size_t k;
+    for(k = 0; k < row_end - row_start; k++){
+        if(column_index_[row_start + k] == j){
+            return array_[row_start + k];
+        }
+    }
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+template<typename T>
+T* CSRArray<T>::pointer() const{
+    return array_.get();
+}
+
+template<typename T>
+size_t* CSRArray<T>::get_starts() const {
+    return start_index_.get();
+}
+
+template<typename T>
+CSRArray<T>& CSRArray<T>::operator=(const CSRArray &temp){
+    if(this != temp) {
+        nnz_ = temp.nnz_;
+        ncols_ = temp.ncols_;
+        nrows_ = temp.rows_;
+        
+        start_index_ = temp.start_index_;
+        column_index_ = temp.column_index_;
+        array_ = temp.array_;
+    }
+    return *this;
 }
 
 //debugging tool primarily 
@@ -5045,15 +5098,6 @@ void CSRArray<T>::printer(){
 template<typename T>
 void CSRArray<T>::todense(CArray<T>& A){
     size_t i,j;
-    /* use something like this if we assume A is initiliazed with 0s
-     * size_t cur_row = 0;
-     * for(i = 0; i < nnz_; i++){
-        while(row_ptr_[cur_row + 1] <= i){
-                cur_row++;
-        }
-        A(cur_row, col_ptr_[i]) = data_[i];
-
-    } */
     for(i = 0; i < nrows_; i++){
         for(j = 0; j < ncols_; j++){
             A(i,j) = (*this)(i,j);
@@ -5061,6 +5105,14 @@ void CSRArray<T>::todense(CArray<T>& A){
     }
 
 }
+
+template<typename T>
+size_t CSRArray<T>::stride(size_t i) const {
+   assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+   return start_index_[i+i] - start_index_[i];
+
+}
+
 
 template<typename T>
 size_t CSRArray<T>::getNcols(){
@@ -5074,67 +5126,62 @@ size_t CSRArray<T>::getNrows(){
 
 template<typename T>
 T* CSRArray<T>::begin(size_t i){
-    if( i > nrows_){
-        return  NULL; // Access check 
-    }
-    size_t row_start = row_ptr_[i];
-    return &data_[row_start];
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin()"); 
+    size_t row_start = start_index_[i];
+    return &array_[row_start];
 }
 
 template<typename T>
 T* CSRArray<T>::end(size_t i){
-    if( i > nrows_){
-        return  NULL; // Access check 
-    }
-    size_t row_start = row_ptr_[i+1];
-    return &data_[row_start];
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.end()");
+    size_t row_start = start_index_[i+1];
+    return &array_[row_start];
 }
 
 template<typename T>
 size_t CSRArray<T>::beginFlat(size_t i){
-    if( i < nrows_){
-        return row_ptr_[i];
-    }
-    return 0;
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+    return start_index_[i];
 }
 
 template<typename T>
 size_t CSRArray<T>::endFlat(size_t i){
-    if( i < nrows_){
-        return row_ptr_[i + 1];
-    }
-    return 0;
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+    return start_index_[i+1];
 }
 
 template<typename T>
 size_t CSRArray<T>::nnz(){
-    return row_ptr_[nrows_]; 
+    return nnz_; 
 }
 
 template<typename T>
 size_t CSRArray<T>::nnz(size_t i){
-    return row_ptr_[i+1] - row_ptr_[i];
+    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+    return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
 T& CSRArray<T>::getValFlat(size_t k){
-    return data_[k];
+   assert(k < nnz_ && "Index k is out of bounds in CSRArray.getValFlat()"); 
+   return array_[k];
 }
 
 template<typename T>
 size_t CSRArray<T>::getColFlat(size_t k){
-    return col_ptr_[k];
+    assert(k < nnz_ && "Index k is out of bounds in CSRArray.getColFlat()"); 
+    return column_index_[k];
 }
 
 
 template<typename T>
 int CSRArray<T>::flatIndex(size_t i, size_t j){
     size_t k;
-    size_t row_start = row_ptr_[i];
-    size_t row_end = row_ptr_[i+1];
+    size_t row_start = start_index_[i];
+    size_t row_end = start_index_[i+1];
     for(k = 0; k < row_end - row_start; k++){
-        if(col_ptr_[row_start+k] == j){
+        if(column_index_[row_start+k] == j){
             return row_start+k;
         }
     }
@@ -5156,13 +5203,15 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
         col_counts[i] = 0;
     }
     nnz_cols[ncols_] = 0;
+    col_ptrs(0) = 0;
     for(i =0; i < nnz_; i++){
-        nnz_cols[col_ptr_[i] + 1] += 1;
+        nnz_cols[column_index_[i] + 1] += 1;
     }
     // What we actually care about is how many elements are 
     // in all the  columns preceeding this column. 
-    for(i = 1; i < ncols_; i++){
+    for(i = 1; i <= ncols_; i++){
         nnz_cols[i] = nnz_cols[i-1] + nnz_cols[i];
+        col_ptrs(i) = nnz_cols[i];
     }
     size_t row = 1;
     // if b is at A(i,j)  stored in csr format
@@ -5172,12 +5221,12 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
     // For row we simply keep track of what row we are currently in 
     // as we scan through the 1d array of data.  
     for(i = 0; i < nnz_; i++){
-        if(i >= row_ptr_[row]){
+        if(i >= start_index_[row]){
             row++;
         } 
-        int idx = nnz_cols[col_ptr_[i]] + col_counts[col_ptr_[i]];
-        col_counts[col_ptr_[i]] += 1;
-        data(idx) = data_[i];
+        int idx = nnz_cols[column_index_[i]] + col_counts[column_index_[i]];
+        col_counts[column_index_[i]] += 1;
+        data(idx) = array_[i];
         row_ptrs(idx) = row - 1; 
     }
     // I return an int because I thought I might need to return an error code
@@ -5196,14 +5245,24 @@ class CSCArray {
   private: // What ought to be private ? 
     size_t nrows_, ncols_;
     size_t nnz_; 
-    std::shared_ptr <T []> data_;
-    std::shared_ptr <size_t[]> col_ptr_;
-    std::shared_ptr <size_t[]> row_ptr_;
+    std::shared_ptr <T []> array_;
+    std::shared_ptr <size_t[]> start_index_;
+    std::shared_ptr <size_t[]> row_index_;
     
   public:
     CSCArray(CArray<T> data, CArray<T> row_ptrs, CArray<T> row_pts, size_t rows, size_t cols);
 
     T& operator()(size_t i, size_t j) const;
+    
+    CSCArray& operator=(const CSCArray &temp);
+
+    T* pointer() const; 
+
+    size_t stride(size_t i) const;
+    T& value(size_t i, size_t j) const;
+
+    size_t* get_starts() const;
+
     void printer(); //debugging tool     
 
     size_t getNcols();
@@ -5227,12 +5286,12 @@ class CSCArray {
     
     // Use the index into the 1d array to get what value is stored there and what is the corresponding row
     T& getValFlat(size_t k); 
-    size_t getColFlat(size_t k);
+    size_t getRowFlat(size_t k);
     // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
     int flatIndex(size_t i, size_t j);    
     // Convertor
     int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs); 
-    void todense(CArray<T>& A);
+    void todense(FArray<T>& A);
     //destructor 
    ~CSCArray(); 
 
@@ -5244,16 +5303,16 @@ CSCArray<T>::CSCArray(CArray<T> data, CArray<T> row_ptrs, CArray<T> col_ptrs, si
     nrows_ = rows;
     ncols_ = cols; 
     size_t nnz = data.size();
-    col_ptr_ = std::shared_ptr<size_t []> (new size_t[ncols_ + 1]);
-    data_ = std::shared_ptr<T []> (new T[nnz+1]);
-    row_ptr_ = std::shared_ptr<size_t []> (new size_t[nnz]);
+    start_index_ = std::shared_ptr<size_t []> (new size_t[ncols_ + 1]);
+    array_ = std::shared_ptr<T []> (new T[nnz+1]);
+    row_index_ = std::shared_ptr<size_t []> (new size_t[nnz]);
     size_t i ;
     for(i = 0; i < nnz; i++){
-        data_[i] = data(i);
-        row_ptr_[i] = row_ptrs(i);
+        array_[i] = data(i);
+        row_index_[i] = row_ptrs(i);
     }
     for(i = 0; i < ncols_ + 1; i++){
-        col_ptr_[i] = col_ptrs(i);
+        start_index_[i] = col_ptrs(i);
     } 
     nnz_ = nnz; 
 }
@@ -5261,24 +5320,68 @@ CSCArray<T>::CSCArray(CArray<T> data, CArray<T> row_ptrs, CArray<T> col_ptrs, si
 
 template<typename T>
 T& CSCArray<T>::operator()(size_t i, size_t j) const {
-    size_t col_start = col_ptr_[j];
-    size_t col_end = col_ptr_[j+1];
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j+1];
     size_t k;
     for(k =0; k < col_end - col_start;k++){
-        if(row_ptr_[col_start + k] == i){
-                return data_[col_start + k];
+        if(row_index_[col_start + k] == i){
+                return array_[col_start + k];
         }
     }
-    data_[nnz_] = (T) NULL;
-    return data_[nnz_];
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+template<typename T>
+T* CSCArray<T>::pointer() const {
+    return array_.get();
+}
+
+template<typename T>
+T& CSCArray<T>::value(size_t i, size_t j) const {
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j+1];
+    size_t k;
+    for(k =0; k < col_end - col_start;k++){
+        if(row_index_[col_start + k] == i){
+                return array_[col_start + k];
+        }
+    }
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+template<typename T>
+size_t* CSCArray<T>::get_starts() const{
+    return &start_index_[0];
+}
+
+template<typename T>
+CSCArray<T>& CSCArray<T>::operator=(const CSCArray &temp){
+    if(this != temp) {
+        nnz_ = temp.nnz_;
+        ncols_ = temp.ncols_;
+        nrows_ = temp.rows_;
+        
+        start_index_ = temp.start_index_;
+        row_index_ = temp.row_row_index_;
+        array_ = temp.array_;
+    }
+    return *this;
+}
+
+template<typename T>
+size_t CSCArray<T>::stride(size_t i) const{
+    assert(i < ncols_ && "i is out of bounds in CSCArray.stride()");
+    return start_index_[i+1] - start_index_[i];
 }
 
 //debugging tool primarily 
 template <typename T>
 void CSCArray<T>::printer(){
     size_t i,j;
-    for(i = 0; i < nrows_; i++){
-        for(j = 0; j < ncols_; j++){
+    for(i = 0; i < ncols_; i++){
+        for(j = 0; j < nrows_; j++){
             printf(" %d ", (*this)(i,j));
         }
         printf("\n");
@@ -5286,19 +5389,10 @@ void CSCArray<T>::printer(){
 }
 
 template<typename T>
-void CSCArray<T>::todense(CArray<T>& A){
+void CSCArray<T>::todense(FArray<T>& A){
     size_t i,j;
-    /* use something like this if we assume A is initiliazed with 0s
-     * size_t cur_row = 0;
-     * for(i = 0; i < nnz_; i++){
-        while(row_ptr_[cur_row + 1] <= i){
-                cur_row++;
-        }
-        A(cur_row, col_ptr_[i]) = data_[i];
-
-    } */
-    for(j = 0; j < nrows_; j++){
-        for(i = 0; i < ncols_; i++){
+    for(j = 0; j < ncols_; j++){
+        for(i = 0; i < nrows_; i++){
             A(i,j) = (*this)(i,j);
         }
     }
@@ -5317,36 +5411,28 @@ size_t CSCArray<T>::getNrows(){
 
 template<typename T>
 T* CSCArray<T>::begin(size_t i){
-    if( i > ncols_){
-        return  NULL; // Access check 
-    }
-    size_t col_start = col_ptr_[i];
-    return &data_[col_start];
+    assert(i <= ncols_ && "index i out of bounds at CSCArray.begin()");
+    size_t col_start = start_index_[i];
+    return &array_[col_start];
 }
 
 template<typename T>
 T* CSCArray<T>::end(size_t i){
-    if( i > ncols_){
-        return  NULL; // Access check 
-    }
-    size_t col_start = col_ptr_[i+1];
-    return &data_[col_start];
+    assert(i <= ncols_ && "index i out of bounds at CSCArray.endt()");
+    size_t col_start = start_index_[i+1];
+    return &array_[col_start];
 }
 
 template<typename T>
 size_t CSCArray<T>::beginFlat(size_t i){
-    if( i < ncols_){
-        return col_ptr_[i];
-    }
-    return 0;
+    assert(i <= ncols_ && "index i out of bounds at CSCArray.beginFlat()");
+    return start_index_[i ];
 }
 
 template<typename T>
 size_t CSCArray<T>::endFlat(size_t i){
-    if( i < ncols_){
-        return col_ptr_[i + 1];
-    }
-    return 0;
+    assert(i <= ncols_ && "index i out of bounds at CSCArray.endFlat()");
+    return start_index_[i + 1];
 }
 
 template<typename T>
@@ -5356,28 +5442,28 @@ size_t CSCArray<T>::nnz(){
 
 template<typename T>
 size_t CSCArray<T>::nnz(size_t i){
-    return col_ptr_[i+1] - col_ptr_[i];
+    return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
 T& CSCArray<T>::getValFlat(size_t k){
-    return data_[k];
+    return array_[k];
 }
 
 template<typename T>
-size_t CSCArray<T>::getColFlat(size_t k){
-    return col_ptr_[k];
+size_t CSCArray<T>::getRowFlat(size_t k){
+    return row_index_[k];
 }
 
 
 template<typename T>
 int CSCArray<T>::flatIndex(size_t i, size_t j){
-    size_t col_start = col_ptr_[j];
-    size_t col_end = col_ptr_[j+1];
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j+1];
     size_t k;
     for(k =0; k < col_end - col_start;k++){
-        if(row_ptr_[col_start + k] == i){
+        if(row_index_[col_start + k] == i){
                 return col_start + k;
         }
     }
@@ -5399,13 +5485,15 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
         row_counts[i] = 0;
     }
     nnz_rows[nrows_] = 0;
+    row_ptrs(i) = 0 ;
     for(i =0; i < nnz_; i++){
-        nnz_rows[row_ptr_[i] + 1] += 1;
+        nnz_rows[row_index_[i] + 1] += 1;
     }
     // What we actually care about is how many elements are 
     // in all the columns preceeding this column. 
     for(i = 1; i < nrows_; i++){
         nnz_rows[i] = nnz_rows[i-1] + nnz_rows[i];
+        row_ptrs(i) = nnz_rows[i];
     }
     size_t col = 1;
     // if b is at A(i,j)  stored in csr format
@@ -5415,12 +5503,12 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
     // For row we simply keep track of what row we are currently in 
     // as we scan through the 1d array of data.  
     for(i = 0; i < nnz_; i++){
-        if(i >= col_ptr_[col]){
+        if(i >= start_index_[col]){
             col++;
         } 
-        int idx = nnz_rows[row_ptr_[i]] + row_counts[row_ptr_[i]];
-        row_counts[row_ptr_[i]] += 1;
-        data(idx) = data_[i];
+        int idx = nnz_rows[row_index_[i]] + row_counts[row_index_[i]];
+        row_counts[row_index_[i]] += 1;
+        data(idx) = array_[i];
         col_ptrs(idx) = col - 1; 
     }
     // I return an int because I thought I might need to return an error code
