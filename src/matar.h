@@ -12834,6 +12834,9 @@ KOKKOS_INLINE_FUNCTION
 DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDownArrayKokkos() {
 }
 
+////// END DynamicRaggedDownArrayKokkos 
+
+
 // KokkosCSRArray
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class SparseRowArrayKokkos {
@@ -13220,6 +13223,383 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::~SparseRowArrayKokkos() {}
 
 
+// 16 SparseColArrayKokkos
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class SparseColArrayKokkos
+{
+
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>
+    using SArray1D = Kokkos::View<size_t*, Layout, ExecSpace, MemoryTraits> 
+private: // What ought to be private ? 
+    size_t dim1_, dim2_;
+    size_t nnz_; 
+    TArray1D array_;
+    SArray1D start_index_;
+    SArray1D row_index_;
+    
+  public:
+
+      /**
+       * @brief Construct a new empty Sparse Col Array object
+       * 
+       */
+      SparseColArrayKokkos();
+
+      /**
+      * @brief Construct a new Sparse Col Array object
+      * 
+      * @param array: 1d array of data values in order as read top to bottom, left to right
+      * @param row_index: 1d array that marks what row each element is in 
+      * @param start_index: 1d array that marks where the first element of each column starts 
+      * @param dim1: number of rows the matrix should have
+      * @param dim2: number of columns the matrix should have
+      */
+      //SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
+
+      /**
+       * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated 
+       * 
+       * @param i : row  
+       * @param j : column
+       * @return T& : address of array_ that corresponds to A(i,j)
+       */
+      KOKKOS_INLINE_FUNCTION
+      T &operator()(size_t i, size_t j) const;
+
+      /**
+       * @brief Overloaded copy operator 
+       * 
+       * @param temp : Array to copy 
+       * @return SparseColArray& 
+       */
+      KOKKOS_INLINE_FUNCTION
+      SparseColArrayKokkos &operator=(const SparseColArrayKokkos &temp);
+
+      /**
+       * @brief  returns pointer to array_
+       * 
+       */
+      KOKKOS_INLINE_FUNCTION
+      T *pointer() const;
+
+      /**
+       * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
+       * 
+       * @param i : row 
+       * @return size_t 
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t stride(size_t i) const;
+      
+      /**
+       * @brief Same functionality as operator() included for compatibility with the rest of matar 
+       * 
+       * @param i: row 
+       * @param j: column
+       * @return T& 
+       */
+      KOKKOS_INLINE_FUNCTION
+      T &value(size_t i, size_t j) const;
+
+      /**
+       * @brief Get the start_index array
+       * 
+       * @return size_t* : returns start_index_
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t *get_starts() const;
+
+      /**
+       * @brief Get number of rows 
+       * 
+       * @return size_t  number of rows
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t dim1() const;
+      
+      /**
+       * @brief Get number of columns 
+       * 
+       * @return size_t number of columns 
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t dim2() const;
+
+      /**
+       * @brief iterator notation for iterating through the non zeros values of row i.  
+       * 
+       * @param i : row  
+       * @return T* 
+       */
+      KOKKOS_INLINE_FUNCTION
+      T *begin(size_t i);
+ 
+       /**
+       * @brief iterator notation for iterating through the non zeros values of row i.  
+       * 
+       * @param i : row  
+       * @return T* 
+       */     
+      KOKKOS_INLINE_FUNCTION
+      T *end(size_t i);
+
+      // iterator for the raw data at row i
+      // i.e. return the index each element is the index in the 1 array
+      // This as the use of providing a reasonable way to get the column
+      // index and data value in the case you need both
+      KOKKOS_INLINE_FUNCTION
+      size_t beginFlat(size_t i);
+
+      KOKKOS_INLINE_FUNCTION
+      size_t endFlat(size_t i);
+
+      /**
+       * @brief Get the number of non zero elements in row i
+       * 
+       * @param i : row to get
+       * @return size_t  : size of row
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t nnz(size_t i);
+      
+      /**
+       * @brief Get number of non zero elements total in array 
+       * 
+       * @return size_t 
+       */
+      KOKKOS_INLINE_FUNCTION
+      size_t nnz();
+
+      // Use the index into the 1d array to get what value is stored there and what is the corresponding row
+      KOKKOS_INLINE_FUNCTION
+      T &getValFlat(size_t k);
+
+      KOKKOS_INLINE_FUNCTION
+      size_t getRowFlat(size_t k);
+      
+      // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
+      KOKKOS_INLINE_FUNCTION
+      int flatIndex(size_t i, size_t j);
+      
+      // Convertor
+      //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
+      //void todense(FArray<T> &A);
+      // destructor
+      ~SparseColArrayKokkos();
+};
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+SparseColArray<T, Layout, ExecSpace, MemoryTraits>() {}
+
+/*template <typename T>
+SparseColArray<T>::SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+    dim1_ = dim1;
+    dim2_ = dim2;
+    size_t nnz = array.size();
+    start_index_ = std::shared_ptr<size_t []> (new size_t[dim2_ + 1]);
+    array_ = std::shared_ptr<T []> (new T[nnz+1]);
+    row_index_ = std::shared_ptr<size_t []> (new size_t[nnz]);
+    size_t i ;
+    for(i = 0; i < nnz; i++){
+        array_[i] = array(i);
+        row_index_[i] = row_index(i);
+    }
+    for(i = 0; i < dim2_ + 1; i++){
+        start_index_[i] = start_index(i);
+    } 
+    nnz_ = nnz; 
+} */
+
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& SparseColArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j) const {
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j + 1];
+    size_t k;
+    for(k =0; k < col_end - col_start;k++){
+        if(row_index_[col_start + k] == i){
+                return array_[col_start + k];
+        }
+    }
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::pointer() const {
+    return array_.get();
+}
+
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j) const {
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j + 1];
+    size_t k;
+    for(k =0; k < col_end - col_start;k++){
+        if(row_index_[col_start + k] == i){
+                return array_[col_start + k];
+        }
+    }
+    array_[nnz_] = (T) NULL;
+    return array_[nnz_];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_starts() const{
+    return &start_index_[0];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& SparseColArray<T>::operator=(const SparseColArray<T,Layout,ExecSpace,MemoryTraits> &temp){
+    if(this != temp) {
+        nnz_ = temp.nnz_;
+        dim2_ = temp.dim2_;
+        dim1_ = temp.dim1_;;
+        
+        start_index_ = temp.start_index_;
+        row_index_ = temp.row_row_index_;
+        array_ = temp.array_;
+    }
+    return *this;
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::stride(size_t i) const{
+    assert(i < dim2_ && "i is out of bounds in SparseColArray.stride()");
+    return start_index_[i+1] - start_index_[i];
+}
+
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::todense(FArray<T>& A){
+    size_t i,j;
+    for (j = 0; j < dim2_; j++)
+    {
+        for(i = 0; i < dim1_; i++){
+            A(i,j) = (*this)(i,j);
+        }
+    }
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::dim1() const {
+    return dim1_;
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::dim2() const{
+    return dim2_;
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at SparseColArray.begin()");
+    size_t col_start = start_index_[i];
+    return &array_[col_start];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.endt()");
+    size_t col_start = start_index_[i+1];
+    return &array_[col_start];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>:beginFlat(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.beginFlat()");
+    return start_index_[i];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::endFlat(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at SparseColArray.endFlat()");
+    return start_index_[i + 1];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(){
+    return nnz_; 
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(size_t i){
+    return start_index_[i+1] - start_index_[i];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::getValFlat(size_t k){
+    return array_[k];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::getRowFlat(size_t k){
+    return row_index_[k];
+}
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+int SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flatIndex(size_t i, size_t j){
+    size_t col_start = start_index_[j];
+    size_t col_end = start_index_[j+1];
+    size_t k;
+    for (k = 0; k < col_end - col_start; k++)
+    {
+        if(row_index_[col_start + k] == i){
+                return col_start + k;
+        }
+    }
+    return  -1;
+}
+
+// Assumes that data, col_ptrs, and row_ptrs 
+// have been allocated size already before this call
+// Returns the data in this csr format but as represented as the appropriatte vectors 
+// for a csc format
+/*template<typename T>
+int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+    int nnz_rows[dim1_ + 1];
+    int row_counts[dim1_];
+    int i = 0;
+    // How many elements are each column
+    for(i =0 ; i < dim1_; i++){
+        nnz_rows[i] = 0;
+        row_counts[i] = 0;
+    }
+    nnz_rows[dim1_] = 0;
+    row_ptrs(i) = 0 ;
+    for(i =0; i < nnz_; i++){
+        nnz_rows[row_index_[i] + 1] += 1;
+    }
+    // What we actually care about is how many elements are 
+    // in all the columns preceeding this column. 
+    for(i = 1; i < dim1_; i++){
+        nnz_rows[i] = nnz_rows[i-1] + nnz_rows[i];
+        row_ptrs(i) = nnz_rows[i];
+    }
+    size_t col = 1;
+    // if b is at A(i,j)  stored in csr format
+    // it needs to go where the where the ith column starts
+    // + how many things we have put in the "window"
+    // we allocated for this column already
+    // For row we simply keep track of what row we are currently in 
+    // as we scan through the 1d array of data.  
+    for(i = 0; i < nnz_; i++){
+        if(i >= start_index_[col]){
+            col++;
+        } 
+        int idx = nnz_rows[row_index_[i]] + row_counts[row_index_[i]];
+        row_counts[row_index_[i]] += 1;
+        data(idx) = array_[i];
+        col_ptrs(idx) = col - 1; 
+    }
+    // I return an int because I thought I might need to return an error code
+    // Not sure that is true 
+    return 0;
+} */
+
+template <typename T>
+SparseColArray<T>::~SparseColArray() {}
 
 //////////////////////////
 // Inherited Class Array
