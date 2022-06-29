@@ -4521,50 +4521,113 @@ class SparseRowArray {
     
   public:
     
-    /*
-     * Default Constructor 
-     */ 
+    /**
+     * @brief Construct a new Sparse Row Array object
+     * 
+     */
     SparseRowArray(); 
 
-    /*
-     * Overloaded Constructor 
-     */ 
-    SparseRowArray(CArray<T> array, CArray<T> column_index_, CArray<T> start_index_, size_t dim1, size_t dim2);
 
-    /*
-     * Overloaded Constructor
+    /**
+     * @brief Construct a new Sparse Row Array object
+     * 
+     * @param array 1d array of data values in order read left to right top to bottom 
+     * @param column_index_ 1d array specifying for each data value what column it is found 
+     * @param start_index_  1d array that marks the index for array and column where each row starts
+     * @param dim1 number of rows 
+     * @param dim2 number of columns
+     */
+    SparseRowArray(CArray<T> array, CArray<T> column_index, CArray<T> start_index, size_t dim1, size_t dim2);
+
+    /**
+     * @brief Constructor for a new Sparse Row Array object using the data from a dense matrix
+     * 
+     * @param dense  matrix to get the value from
      */
     SparseRowArray(CArray<T> dense); 
 
-    /*
-     * Overloaded copy operator
+    /**
+     * @brief Copy a new Sparse Row Array object 
+     * 
+     * @param temp array to copy 
      */
     SparseRowArray(const SparseRowArray &temp); 
 
+    /**
+     * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not alocated 
+     * 
+     * @param i row  
+     * @param j column
+     * @return T& 
+     */
     T& operator()(size_t i, size_t j) const;
+    
+    /**
+     * @brief Same functionality as operator(). Used for compatibility with other matar types
+     * 
+     * @param i Row 
+     * @param j Column
+     * @return T& 
+     */
     T& value(size_t i, size_t j) const; 
 
-
+    /**
+     * @brief Assignment operator. Uses shared pointers to the data of temp instead of making a fresh copy
+     * 
+     * @param temp SparseRowArray to copy values of 
+     * @return SparseRowArray& 
+     */
     SparseRowArray& operator=(const SparseRowArray &temp); 
     
+    /**
+     * @brief get start of array_ data
+     * 
+     * @return T* 
+     */
     T* pointer() const;
+
+    /**
+     * @brief Get the start_index_ object
+     * 
+     * @return size_t* 
+     */
     size_t* get_starts() const; 
 
     void printer(); //debugging tool     
 
-    // Iterators for row i.   
+    /**
+     * @brief Iterator notation to go through the non zero values of row i. 
+     * 
+     * @param i  row  
+     * @return T*  pointer to first non zero element of row i
+     */
     T* begin(size_t i); 
+    
+    /**
+     * @brief Iterator notation to go through the non zeros values of row i
+     * 
+     * @param i  row 
+     * @return T*  pointer to first non zero element of row i+1
+     */
     T* end(size_t i);
 
-    /// 
-    /// This returnst the stride, the number of elements to the next row 
-    /// 
+    /**
+     * @brief Return number of non zero elements in row i. Included for compatibility with other matar types
+     * 
+     * @param i row 
+     */
     size_t stride(size_t i) const;
 
-    /*
-     *  gets the size of given axis i.e. 1-> N rows 2 -> cols
+    /**
+     * @brief Number of rows 
+     * 
      */
+
     size_t dim1() const;
+    /**
+     * @brief Number of Columns 
+     * 
+     */
     size_t dim2() const;
 
     // iterator for the raw data at row i
