@@ -54,8 +54,8 @@
 //   12. DynamicRaggedDownArray
 //   13. SparseRowArray
 //   14. SparseColArray
-//   15. CSRArray 
-//   16. CSCArray //todo 
+//   15. SparseRowArray
+//   16. SparseColArray //todo
 //
 //   Kokkos Data structures
 //   17. FArrayKokkos
@@ -72,7 +72,6 @@
 //   28. DynamicRaggedDownArrayKokkos
 //   29. SparseRowArrayKokkos
 //   29. SparseColArrayKokkos
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -4510,446 +4509,9 @@ DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {}
 //----end of DynamicRaggedDownArray class definitions-----
 
 
- 
-//13. SparseRowArray
+// 15SparseRowArrayy
 template <typename T>
 class SparseRowArray {
-private:
-    std::shared_ptr <size_t[]> start_index_;
-    std::shared_ptr <size_t[]> column_index_;
-    
-    std::shared_ptr <T[]> array_;
-
-    size_t dim1_, length_;
-    
-public:
-    // Default constructor
-    SparseRowArray ();
-    
-    //--- 2D array access of a ragged right array ---
-    
-    // Overload constructor for a CArray
-    SparseRowArray (CArray<size_t> &strides_array);
-    
-    // Overload constructor for a ViewCArray
-    SparseRowArray (ViewCArray<size_t> &strides_array);
-    
-    // Overloaded constructor for a traditional array
-    SparseRowArray (size_t *strides_array, size_t some_dim1);
-
-    // Copy constructor
-    SparseRowArray (const SparseRowArray& temp);
-
-    // A method to return the stride size
-    size_t stride(size_t i) const;
-    
-    // A method to return the column index as array.column_index(i,j)
-    size_t& column_index(size_t i, size_t j) const;
-    
-    // A method to access data as array.value(i,j),
-    // where i=[0:N-1], j=[stride(i)]
-    T& value(size_t i, size_t j) const;
-
-    // A method to return the total size of the array
-    size_t size() const;
-
-    //return pointer
-    T* pointer() const;
-
-    //get row starts array
-    size_t* get_starts() const;
-
-    // overloaded = operator
-    SparseRowArray& operator=(const SparseRowArray& temp);
-    
-    // Destructor
-    ~SparseRowArray ();
-}; 
-
-//Default Constructor
-template <typename T>
-SparseRowArray<T>::SparseRowArray (){
-    array_ = NULL;
-    start_index_ = NULL;
-    column_index_ = NULL;
-    length_ = 0;
-}
-// Overloaded constructor
-template <typename T>
-SparseRowArray<T>::SparseRowArray (CArray<size_t> &strides_array) {
-    // The length of the stride array is some_dim1;
-    dim1_  = strides_array.size();
-    
-    // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]); // note the dim1+1
-    start_index_[0] = 0; // the 1D array starts at 0
-    
-    // Loop over to find the total length of the 1D array to
-    // represent the ragged-right array and set the starting 1D index
-    size_t count = 0;
-    for (size_t i = 0; i < dim1_; i++){
-        count += strides_array(i);
-        start_index_[i+1] = count;
-    } // end for i
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-} 
-
-
-// Overloaded constructor
-template <typename T>
-SparseRowArray<T>::SparseRowArray (ViewCArray<size_t> &strides_array) {
-    // The length of the stride array is some_dim1;
-    dim1_  = strides_array.size();
-    
-    // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]);  // note the dim1+1
-    start_index_[0] = 0; // the 1D array starts at 0
-    
-    // Loop over to find the total length of the 1D array to
-    // represent the ragged-right array and set the starting 1D index
-    size_t count = 0;
-    for (size_t i = 0; i < dim1_; i++){
-        count += strides_array(i);
-        start_index_[i+1] = count;
-    } // end for i
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-} 
-
-// Overloaded constructor
-template <typename T>
-SparseRowArray<T>::SparseRowArray (size_t *strides_array, size_t dim1) {
-    // The length of the stride array is some_dim1;
-    dim1_ = dim1;
-    
-    // Create and initialize the starting index of the entries in the 1D array
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim1_+1]);  // note the dim1+1
-    start_index_[0] = 0; // the 1D array starts at 0
-    
-    // Loop over to find the total length of the 1D array to
-    // represent the ragged-right array and set the starting 1D index
-    size_t count = 0;
-    for (size_t i = 0; i < dim1_; i++){
-        count += strides_array[i];
-        start_index_[i+1] = count;
-    } // end for i
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    column_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-}
-
-// Copy constructor
-template <typename T>
-SparseRowArray<T>::SparseRowArray (const SparseRowArray& temp) {
-    if (this != &temp) {
-        dim1_ = temp.dim1_;
-        length_ = temp.length_;
-
-        // shared pointer
-        start_index_ = temp.start_index_;
-        column_index_ = temp.column_index_;
-        array_ = temp.array_;
-    }
-} // end copy constructor
-
-// A method to return the stride size
-template <typename T>
-size_t SparseRowArray<T>::stride(size_t i) const {
-    return start_index_[i+1] - start_index_[i];
-}
-
-// A method to return the column index
-template <typename T>
-size_t& SparseRowArray<T>::column_index(size_t i, size_t j) const {
-    // Get the 1D array index
-    size_t start = start_index_[i];
-    
-    // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in SparseRowArray");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in SparseRowArray");  // die if >= stride
-    
-    return column_index_[j + start];
-}
-
-// Access data as array.value(i,j), 
-// where i=[0:N-1], j=[0:stride(i)]
-template <typename T>
-inline T& SparseRowArray<T>::value(size_t i, size_t j) const {
-    // Get the 1D array index
-    size_t start = start_index_[i];
-    
-    // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in sparseRowArray");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in sparseRowArray");  // die if >= stride
-    
-    return array_[j + start];
-} 
-
-// return size
-template <typename T>
-size_t SparseRowArray<T>::size() const{
-    return length_;
-}
-
-template <typename T>
-inline T* SparseRowArray<T>::pointer() const{
-    return array_.get();
-}
-
-template <typename T>
-inline size_t* SparseRowArray<T>::get_starts() const{
-    return start_index_.get();
-}
-
-template <typename T>
-SparseRowArray<T>& SparseRowArray<T>::operator= (const SparseRowArray& temp) {
-    if (this != &temp) {
-        dim1_ = temp.dim1_;
-        length_ = temp.length_;
-
-        // shared pointer
-        start_index_ = temp.start_index_;
-        column_index_ = temp.column_index_;
-        array_ = temp.array_;
-    }
-    return *this;
-}
-
-// Destructor
-template <typename T>
-SparseRowArray<T>::~SparseRowArray() {}
-
-//---- end of SparseRowArray class definitions-----
-
-
-//14. SparseColArray
-template <typename T>
-class SparseColArray {
-
-private:
-    std::shared_ptr <size_t[]> start_index_;
-    std::shared_ptr <size_t[]> row_index_;
-    std::shared_ptr <T[]> array_;
-
-    size_t dim2_, length_;
-
-public:
-
-    //default constructor
-    SparseColArray ();
-
-    //constructor with CArray
-    SparseColArray(CArray<size_t> &strides_array);
-
-    //constructor with ViewCArray
-    SparseColArray(ViewCArray<size_t> &strides_array);
-
-    //constructor with regular array
-    SparseColArray(size_t *strides_array, size_t some_dim1);
-
-    // Copy constructor
-    SparseColArray(const SparseColArray& temp);
-
-    //method return stride size
-    size_t stride(size_t j) const;
-
-    //method return row index ass array.row_index(i,j)
-    size_t& row_index(size_t i, size_t j) const;
-
-    //method access data as an array
-    T& value(size_t i, size_t j) const;
-
-    // A method to return the total size of the array
-    size_t size() const;
-
-    //return pointer
-    T* pointer() const;
-
-    //get row starts array
-    size_t* get_starts() const;
-
-    // Overload copy assignment operator
-    SparseColArray& operator= (const SparseColArray& temp);
-    
-
-    //destructor
-    ~SparseColArray();
-};
-
-//Default Constructor
-template <typename T>
-SparseColArray<T>::SparseColArray (){
-    array_ = NULL;
-    start_index_ = NULL;
-    row_index_ = NULL;
-    length_ = 0;
-}
-//overload constructor with CArray
-template <typename T>
-SparseColArray<T>::SparseColArray(CArray<size_t> &strides_array) {
-
-    dim2_ = strides_array.size();
-
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_+1]);
-    start_index_[0] = 0;
-
-    //loop over to find total length of the 1D array
-    size_t count = 0;
-    for(size_t j = 0; j < dim2_; j++) {
-        count+= strides_array(j);
-        start_index_[j+1] = count;
-    }
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-
-} //end constructor with CArray
-
-
-//overload constructor with ViewCArray
-template <typename T>
-SparseColArray<T>::SparseColArray(ViewCArray<size_t> &strides_array) {
-
-    dim2_ = strides_array.size();
-
-    //create and initialize starting index of 1D array
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_+1]);
-    start_index_[0] = 0;
-
-    //loop over to find total length of 1D array
-    size_t count = 0;
-    for(size_t j = 0; j < dim2_ ; j++) {
-        count += strides_array(j);
-        start_index_[j+1] = count;
-    }
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-
-} //end constructor
-
-//overload constructor with traditional array
-template <typename T>
-SparseColArray<T>::SparseColArray(size_t *strides_array, size_t dim2) {
-
-    dim2_ = dim2;
-
-    //create and initialize the starting index 
-    start_index_ = std::shared_ptr <size_t[]> (new size_t[dim2_ +1]);
-    start_index_[0] = 0;
-
-    //loop over to find the total length of the 1D array
-    size_t count = 0;
-    for(size_t j = 0; j < dim2_; j++) {
-        count += strides_array[j];
-        start_index_[j+1] = count;
-    }
-    
-    length_ = count;
-    array_ = std::shared_ptr <T[]> (new T[count]);
-    row_index_ = std::shared_ptr <size_t[]> (new size_t[count]);
-
-} //end constructor
-
-// copy constructor
-template <typename T>
-SparseColArray<T>::SparseColArray(const SparseColArray& temp) {
-    if (this != &temp) {
-        dim2_ = temp.dim2_;
-        length_ = temp.length_;
-
-        // shared pointer
-        start_index_ = temp.start_index_;
-        row_index_ = temp.row_index_;
-        array_ = temp.array_;
-    }
-} // end copy constructor
-
-//method to return stride size
-template <typename T>
-size_t SparseColArray<T>::stride(size_t j) const{
-    return start_index_[j+1] - start_index_[j];
-}
-
-//acces data ass arrow.row_index(i,j)
-// where i = 0:stride(j), j = 0:N-1
-template <typename T>
-size_t& SparseColArray<T>::row_index(size_t i, size_t j) const {
-
-    //get 1D array index
-    size_t start = start_index_[j];
-
-    //asserts to make sure we are in bounds
-    assert(i < stride(j) && "i is out of stride bounnds in SparseColArray!");
-    assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
-
-    return row_index_[i + start];
-
-} //end row index method	
-
-
-//access values as array.value(i,j)
-// where i = 0:stride(j), j = 0:N-1
-template <typename T>
-T& SparseColArray<T>::value(size_t i, size_t j) const {
-
-    size_t start = start_index_[j];
-
-    //asserts
-    assert(i < stride(j) && "i is out of stride boundns in SparseColArray");
-    assert(j < dim2_ && "j is out of dim1 bounds in SparseColArray");
-
-    return array_[i + start];
-}
-
-//return size
-template <typename T>
-size_t SparseColArray<T>::size() const{
-    return length_;
-}
-
-template <typename T>
-inline T* SparseColArray<T>::pointer() const{
-    return array_.get();
-}
-
-template <typename T>
-inline size_t* SparseColArray<T>::get_starts() const{
-    return start_index_.get();
-}
-
-template <typename T>
-SparseColArray<T>& SparseColArray<T>::operator= (const SparseColArray& temp) {
-    if (this != &temp) {
-        dim2_ = temp.dim2_;
-        length_ = temp.length_;
-
-        // shared pointer
-        start_index_ = temp.start_index_;
-        row_index_ = temp.row_index_;
-        array_ = temp.array_;
-    }
-    return *this;
-}
-
-//destructor
-template <typename T>
-SparseColArray<T>::~SparseColArray() {}
-
-
-//----end SparseColArray----
-
-// 15 CSRArray
-template <typename T>
-class CSRArray {
   private: // What ought to be private ? 
     size_t dim1_, dim2_; // dim1_ is number of rows dim2_ is number of columns
     size_t nnz_; 
@@ -4962,28 +4524,28 @@ class CSRArray {
     /*
      * Default Constructor 
      */ 
-    CSRArray(); 
+    SparseRowArray(); 
 
     /*
      * Overloaded Constructor 
      */ 
-    CSRArray(CArray<T> array, CArray<T> column_index_, CArray<T> start_index_, size_t dim1, size_t dim2);
+    SparseRowArray(CArray<T> array, CArray<T> column_index_, CArray<T> start_index_, size_t dim1, size_t dim2);
 
     /*
      * Overloaded Constructor
      */
-    CSRArray(CArray<T> dense); 
+    SparseRowArray(CArray<T> dense); 
 
     /*
      * Overloaded copy operator
      */
-    CSRArray(const CSRArray &temp); 
+    SparseRowArray(const SparseRowArray &temp); 
 
     T& operator()(size_t i, size_t j) const;
     T& value(size_t i, size_t j) const; 
 
 
-    CSRArray& operator=(const CSRArray &temp); 
+    SparseRowArray& operator=(const SparseRowArray &temp); 
     
     T* pointer() const;
     size_t* get_starts() const; 
@@ -5026,16 +4588,16 @@ class CSRArray {
     int toCSC(CArray<T> &array, CArray<size_t> &start_index, CArray<size_t> &row_index); 
     void todense(CArray<T>& A);
     //destructor 
-   ~CSRArray(); 
+   ~SparseRowArray(); 
 
    
 };
 
 template<typename T>
-CSRArray<T>::CSRArray(){} 
+SparseRowArray<T>::SparseRowArray(){} 
 
 template <typename T>
-CSRArray<T>::CSRArray(CArray<T> array, CArray<T> column_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+SparseRowArray<T>::SparseRowArray(CArray<T> array, CArray<T> column_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
     dim2_ = dim2; 
     size_t nnz = array.size();
@@ -5054,7 +4616,7 @@ CSRArray<T>::CSRArray(CArray<T> array, CArray<T> column_index, CArray<T> start_i
 }
 
 template<typename T>
-CSRArray<T>::CSRArray(const CSRArray<T> &temp){
+SparseRowArray<T>::SparseRowArray(const SparseRowArray<T> &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim1_ = temp.dim1_;
@@ -5067,7 +4629,7 @@ CSRArray<T>::CSRArray(const CSRArray<T> &temp){
 }
 
 template<typename T>
-CSRArray<T>::CSRArray(CArray<T> dense){
+SparseRowArray<T>::SparseRowArray(CArray<T> dense){
     dim1_ = dense.dims(0);
     dim2_ = dense.dims(1);
     nnz_ = dense.size();
@@ -5095,7 +4657,7 @@ CSRArray<T>::CSRArray(CArray<T> dense){
 }
 
 template<typename T>
-T& CSRArray<T>::operator()(size_t i, size_t j) const {
+T& SparseRowArray<T>::operator()(size_t i, size_t j) const {
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
     size_t k;
@@ -5110,7 +4672,7 @@ T& CSRArray<T>::operator()(size_t i, size_t j) const {
 
 
 template<typename T>
-T& CSRArray<T>::value(size_t i, size_t j) const {
+T& SparseRowArray<T>::value(size_t i, size_t j) const {
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
     size_t k;
@@ -5124,17 +4686,17 @@ T& CSRArray<T>::value(size_t i, size_t j) const {
 }
 
 template<typename T>
-T* CSRArray<T>::pointer() const{
+T* SparseRowArray<T>::pointer() const{
     return array_.get();
 }
 
 template<typename T>
-size_t* CSRArray<T>::get_starts() const {
+size_t* SparseRowArray<T>::get_starts() const {
     return start_index_.get();
 }
 
 template<typename T>
-CSRArray<T>& CSRArray<T>::operator=(const CSRArray &temp){
+SparseRowArray<T>& SparseRowArray<T>::operator=(const SparseRowArray &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim1_ = temp.dim1_;
@@ -5149,7 +4711,7 @@ CSRArray<T>& CSRArray<T>::operator=(const CSRArray &temp){
 
 //debugging tool primarily 
 template <typename T>
-void CSRArray<T>::printer(){
+void SparseRowArray<T>::printer(){
     size_t i,j;
     for(i = 0; i < dim1_; i++){
         for(j = 0; j < dim2_; j++){
@@ -5160,7 +4722,7 @@ void CSRArray<T>::printer(){
 }
 
 template<typename T>
-void CSRArray<T>::todense(CArray<T>& A){
+void SparseRowArray<T>::todense(CArray<T>& A){
     size_t i,j;
     for(i = 0; i < dim1_; i++){
         for(j = 0; j < dim2_; j++){
@@ -5171,77 +4733,77 @@ void CSRArray<T>::todense(CArray<T>& A){
 }
 
 template<typename T>
-size_t CSRArray<T>::stride(size_t i) const {
-   assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+size_t SparseRowArray<T>::stride(size_t i) const {
+   assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 
 }
 
 
 template<typename T>
-size_t CSRArray<T>::dim1() const {
+size_t SparseRowArray<T>::dim1() const {
         return dim1_;
 }
 
 template<typename T>
-size_t CSRArray<T>::dim2() const {
+size_t SparseRowArray<T>::dim2() const {
         return dim2_;
 }
 
 
 template<typename T>
-T* CSRArray<T>::begin(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin()"); 
+T* SparseRowArray<T>::begin(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 
 template<typename T>
-T* CSRArray<T>::end(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.end()");
+T* SparseRowArray<T>::end(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
 
 template<typename T>
-size_t CSRArray<T>::beginFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+size_t SparseRowArray<T>::beginFlat(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.beginFlat()");
     return start_index_[i];
 }
 
 template<typename T>
-size_t CSRArray<T>::endFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.beginFlat()");
+size_t SparseRowArray<T>::endFlat(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.beginFlat()");
     return start_index_[i+1];
 }
 
 template<typename T>
-size_t CSRArray<T>::nnz(){
+size_t SparseRowArray<T>::nnz(){
     return nnz_; 
 }
 
 template<typename T>
-size_t CSRArray<T>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+size_t SparseRowArray<T>::nnz(size_t i){
+    assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
-T& CSRArray<T>::getValFlat(size_t k){
-   assert(k < nnz_ && "Index k is out of bounds in CSRArray.getValFlat()"); 
+T& SparseRowArray<T>::getValFlat(size_t k){
+   assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getValFlat()"); 
    return array_[k];
 }
 
 template<typename T>
-size_t CSRArray<T>::getColFlat(size_t k){
-    assert(k < nnz_ && "Index k is out of bounds in CSRArray.getColFlat()"); 
+size_t SparseRowArray<T>::getColFlat(size_t k){
+    assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getColFlat()"); 
     return column_index_[k];
 }
 
 
 template<typename T>
-size_t CSRArray<T>::flatIndex(size_t i, size_t j){
+size_t SparseRowArray<T>::flatIndex(size_t i, size_t j){
     size_t k;
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
@@ -5258,7 +4820,7 @@ size_t CSRArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int SparseRowArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_cols[dim2_ + 1];
     int col_counts[dim2_];
     int i = 0;
@@ -5300,14 +4862,15 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 }
 
 template <typename T>
-CSRArray<T>::~CSRArray() {}
+SparseRowArray<T>::~SparseRowArray() {}
 
-// End CSRArray
+// EndSparseRowArrayy
 
-// 16 CSCArray
+// 16 SparseColArray
 template <typename T>
-class CSCArray {
-  private: // What ought to be private ? 
+class SparseColArray
+{
+private: // What ought to be private ? 
     size_t dim1_, dim2_;
     size_t nnz_; 
     std::shared_ptr <T []> array_;
@@ -5316,62 +4879,131 @@ class CSCArray {
     
   public:
 
-    /*
-     * Empty constructor
-     */ 
-    CSCArray(); 
+      /**
+       * @brief Construct a new empty Sparse Col Array object
+       * 
+       */
+      SparseColArray();
 
-    /*
-     * Overloaded Constructor
-     */ 
-    CSCArray(CArray<T> array, CArray<T> row_index , CArray<T> start_index, size_t dim1, size_t dim2);
+      /**
+      * @brief Construct a new Sparse Col Array object
+      * 
+      * @param array: 1d array of data values in order as read top to bottom, left to right
+      * @param row_index: 1d array that marks what row each element is in 
+      * @param start_index: 1d array that marks where the first element of each column starts 
+      * @param dim1: number of rows the matrix should have
+      * @param dim2: number of columns the matrix should have
+      */
+      SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
 
-    T& operator()(size_t i, size_t j) const;
-    
-    CSCArray& operator=(const CSCArray &temp);
+      /**
+       * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated 
+       * 
+       * @param i : row  
+       * @param j : column
+       * @return T& : address of array_ that corresponds to A(i,j)
+       */
+      T &operator()(size_t i, size_t j) const;
 
-    T* pointer() const; 
+      /**
+       * @brief Overloaded copy operator 
+       * 
+       * @param temp : Array to copy 
+       * @return SparseColArray& 
+       */
+      SparseColArray &operator=(const SparseColArray &temp);
 
-    size_t stride(size_t i) const;
-    T& value(size_t i, size_t j) const;
+      T *pointer() const;
 
-    size_t* get_starts() const;
+      /**
+       * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
+       * 
+       * @param i : row 
+       * @return size_t 
+       */
+      size_t stride(size_t i) const;
+      
+      /**
+       * @brief Same functionality as operator() included for compatibility with the rest of matar 
+       * 
+       * @param i: row 
+       * @param j: column
+       * @return T& 
+       */
+      T &value(size_t i, size_t j) const;
 
-    size_t dim1() const;
-    size_t dim2() const; 
+      /**
+       * @brief Get the start_index array
+       * 
+       * @return size_t* : returns start_index_
+       */
+      size_t *get_starts() const;
 
-    // Iterators for row i.   
-    T* begin(size_t i); 
-    T* end(size_t i);
+      /**
+       * @brief Get number of rows 
+       * 
+       * @return size_t  number of rows
+       */
+      size_t dim1() const;
+      
+      /**
+       * @brief Get number of columns 
+       * 
+       * @return size_t number of columns 
+       */
+      size_t dim2() const;
 
-    // iterator for the raw data at row i
-    // i.e. return the index each element is the index in the 1 array 
-    // This as the use of providing a reasonable way to get the column
-    // index and data value in the case you need both 
-    size_t beginFlat(size_t i);
-    size_t endFlat(size_t i); 
+      /**
+       * @brief iterator notation for iterating through the non zeros values of row i.  
+       * 
+       * @param i : row  
+       * @return T* 
+       */
+      T *begin(size_t i);
+ 
+       /**
+       * @brief iterator notation for iterating through the non zeros values of row i.  
+       * 
+       * @param i : row  
+       * @return T* 
+       */     
+      T *end(size_t i);
 
-    // Get number of non zero elements in row i
-    size_t nnz(size_t i);
-    // Get total number of non zero elements 
-    size_t nnz();    
-    
-    // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-    T& getValFlat(size_t k); 
-    size_t getRowFlat(size_t k);
-    // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-    int flatIndex(size_t i, size_t j);    
-    // Convertor
-    int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs); 
-    void todense(FArray<T>& A);
-    //destructor 
-   ~CSCArray(); 
+      // iterator for the raw data at row i
+      // i.e. return the index each element is the index in the 1 array
+      // This as the use of providing a reasonable way to get the column
+      // index and data value in the case you need both
+      size_t beginFlat(size_t i);
+      size_t endFlat(size_t i);
 
-   
+      /**
+       * @brief Get the number of non zero elements in row i
+       * 
+       * @param i : row to get
+       * @return size_t  : size of row
+       */
+      size_t nnz(size_t i);
+      /**
+       * @brief Get number of non zero elements total in array 
+       * 
+       * @return size_t 
+       */
+      size_t nnz();
+
+      // Use the index into the 1d array to get what value is stored there and what is the corresponding row
+      T &getValFlat(size_t k);
+      size_t getRowFlat(size_t k);
+      // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
+      int flatIndex(size_t i, size_t j);
+      // Convertor
+      int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
+      void todense(FArray<T> &A);
+      // destructor
+      ~SparseColArray();
 };
 
 template <typename T>
-CSCArray<T>::CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+SparseColArray<T>::SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
     dim2_ = dim2;
     size_t nnz = array.size();
@@ -5391,9 +5023,9 @@ CSCArray<T>::CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_inde
 
 
 template<typename T>
-T& CSCArray<T>::operator()(size_t i, size_t j) const {
+T& SparseColArray<T>::operator()(size_t i, size_t j) const {
     size_t col_start = start_index_[j];
-    size_t col_end = start_index_[j+1];
+    size_t col_end = start_index_[j + 1];
     size_t k;
     for(k =0; k < col_end - col_start;k++){
         if(row_index_[col_start + k] == i){
@@ -5405,14 +5037,14 @@ T& CSCArray<T>::operator()(size_t i, size_t j) const {
 }
 
 template<typename T>
-T* CSCArray<T>::pointer() const {
+T* SparseColArray<T>::pointer() const {
     return array_.get();
 }
 
 template<typename T>
-T& CSCArray<T>::value(size_t i, size_t j) const {
+T& SparseColArray<T>::value(size_t i, size_t j) const {
     size_t col_start = start_index_[j];
-    size_t col_end = start_index_[j+1];
+    size_t col_end = start_index_[j + 1];
     size_t k;
     for(k =0; k < col_end - col_start;k++){
         if(row_index_[col_start + k] == i){
@@ -5424,12 +5056,12 @@ T& CSCArray<T>::value(size_t i, size_t j) const {
 }
 
 template<typename T>
-size_t* CSCArray<T>::get_starts() const{
+size_t* SparseColArray<T>::get_starts() const{
     return &start_index_[0];
 }
 
 template<typename T>
-CSCArray<T>& CSCArray<T>::operator=(const CSCArray &temp){
+SparseColArray<T>& SparseColArray<T>::operator=(const SparseColArray &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim2_ = temp.dim2_;
@@ -5443,87 +5075,86 @@ CSCArray<T>& CSCArray<T>::operator=(const CSCArray &temp){
 }
 
 template<typename T>
-size_t CSCArray<T>::stride(size_t i) const{
-    assert(i < dim2_ && "i is out of bounds in CSCArray.stride()");
+size_t SparseColArray<T>::stride(size_t i) const{
+    assert(i < dim2_ && "i is out of bounds in SparseColArray.stride()");
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
-void CSCArray<T>::todense(FArray<T>& A){
+void SparseColArray<T>::todense(FArray<T>& A){
     size_t i,j;
-    for(j = 0; j < dim2_; j++){
+    for (j = 0; j < dim2_; j++)
+    {
         for(i = 0; i < dim1_; i++){
             A(i,j) = (*this)(i,j);
         }
     }
-
 }
 
 template<typename T>
-size_t CSCArray<T>::dim1() const {
+size_t SparseColArray<T>::dim1() const {
     return dim1_;
 }
 
 template<typename T>
-size_t CSCArray<T>::dim2() const{
+size_t SparseColArray<T>::dim2() const{
     return dim2_;
 }
 
 template<typename T>
-T* CSCArray<T>::begin(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin()");
+T* SparseColArray<T>::begin(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at SparseColArray.begin()");
     size_t col_start = start_index_[i];
     return &array_[col_start];
 }
 
 template<typename T>
-T* CSCArray<T>::end(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.endt()");
+T* SparseColArray<T>::end(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.endt()");
     size_t col_start = start_index_[i+1];
     return &array_[col_start];
 }
 
 template<typename T>
-size_t CSCArray<T>::beginFlat(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.beginFlat()");
-    return start_index_[i ];
+size_t SparseColArray<T>::beginFlat(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.beginFlat()");
+    return start_index_[i];
 }
 
 template<typename T>
-size_t CSCArray<T>::endFlat(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.endFlat()");
+size_t SparseColArray<T>::endFlat(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at SparseColArray.endFlat()");
     return start_index_[i + 1];
 }
 
 template<typename T>
-size_t CSCArray<T>::nnz(){
+size_t SparseColArray<T>::nnz(){
     return nnz_; 
 }
 
 template<typename T>
-size_t CSCArray<T>::nnz(size_t i){
+size_t SparseColArray<T>::nnz(size_t i){
     return start_index_[i+1] - start_index_[i];
 }
 
-
 template<typename T>
-T& CSCArray<T>::getValFlat(size_t k){
+T& SparseColArray<T>::getValFlat(size_t k){
     return array_[k];
 }
 
 template<typename T>
-size_t CSCArray<T>::getRowFlat(size_t k){
+size_t SparseColArray<T>::getRowFlat(size_t k){
     return row_index_[k];
 }
 
-
 template<typename T>
-int CSCArray<T>::flatIndex(size_t i, size_t j){
+int SparseColArray<T>::flatIndex(size_t i, size_t j){
     size_t col_start = start_index_[j];
     size_t col_end = start_index_[j+1];
     size_t k;
-    for(k =0; k < col_end - col_start;k++){
+    for (k = 0; k < col_end - col_start; k++)
+    {
         if(row_index_[col_start + k] == i){
                 return col_start + k;
         }
@@ -5536,7 +5167,7 @@ int CSCArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_rows[dim1_ + 1];
     int row_counts[dim1_];
     int i = 0;
@@ -5578,10 +5209,9 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 }
 
 template <typename T>
-CSCArray<T>::~CSCArray() {}
+SparseColArray<T>::~SparseColArray() {}
 
-
-// End of CSCArray
+// End of SparseColArray
 //=======================================================================
 //	end of standard MATAR data-types
 //========================================================================
@@ -13158,7 +12788,7 @@ class CSRArrayKokkos {
   public:
 
     CSRArrayKokkos(); 
-    //CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
+    //SparseRowArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
     /// 
     ///  Access method to A(i,j) returns a dummy value of 0 if value 
@@ -13256,7 +12886,7 @@ template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::CSRArrayKokkos() {} 
 
 /* template <typename T>
-CSRArray<T>::CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols ){
+SparseRowArray<T>::SparseRowArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols ){
     nrows_ = rows;
     ncols_ = cols; 
     size_t nnz = data.size();
@@ -13336,7 +12966,7 @@ CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSRArrayKokkos<T, Layout, Exe
 /*
 //debugging tool primarily 
 template <typename T>
-void CSRArray<T>::printer(){
+void SparseRowArray<T>::printer(){
     size_t i,j;
     for(i = 0; i < nrows_; i++){
         for(j = 0; j < ncols_; j++){
@@ -13347,7 +12977,7 @@ void CSRArray<T>::printer(){
 }
 
 template<typename T>
-void CSRArray<T>::todense(CArray<T>& A){
+void SparseRowArray<T>::todense(CArray<T>& A){
     size_t i,j;
     for(i = 0; i < nrows_; i++){
         for(j = 0; j < ncols_; j++){
@@ -13359,7 +12989,7 @@ void CSRArray<T>::todense(CArray<T>& A){
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::stride(size_t i) const {
-   assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
+   assert(i <= dim1_ && "Index i out of bounds in SparseRowArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 }
 
@@ -13376,14 +13006,14 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim1() const{
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()"); 
+    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
+    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
@@ -13391,45 +13021,45 @@ T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::beginFlat(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.beginFlat()");
+    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.beginFlat()");
     return start_index_[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::endFlat(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.beginFlat()");
+    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.beginFlat()");
     return start_index_[i+1];
 }
 
 /*
 template<typename T>
-size_t CSRArray<T>::nnz(){
+size_t SparseRowArray<T>::nnz(){
     return nnz_; 
 }
 
 template<typename T>
-size_t CSRArray<T>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+size_t SparseRowArray<T>::nnz(size_t i){
+    assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
-T& CSRArray<T>::getValFlat(size_t k){
-   assert(k < nnz_ && "Index k is out of bounds in CSRArray.getValFlat()"); 
+T& SparseRowArray<T>::getValFlat(size_t k){
+   assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getValFlat()"); 
    return array_[k];
 }
 
 template<typename T>
-size_t CSRArray<T>::getColFlat(size_t k){
-    assert(k < nnz_ && "Index k is out of bounds in CSRArray.getColFlat()"); 
+size_t SparseRowArray<T>::getColFlat(size_t k){
+    assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getColFlat()"); 
     return column_index_[k];
 }
 
 
 template<typename T>
-int CSRArray<T>::flatIndex(size_t i, size_t j){
+int SparseRowArray<T>::flatIndex(size_t i, size_t j){
     size_t k;
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
@@ -13446,7 +13076,7 @@ int CSRArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int SparseRowArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_cols[ncols_ + 1];
     int col_counts[ncols_];
     int i = 0;
