@@ -12961,12 +12961,19 @@ class SparseRowArrayKokkos {
     KOKKOS_INLINE_FUNCTION
     size_t endFlat(size_t i); 
 
-    /*
-    // Get number of non zero elements in row i
+    /**
+     * @brief get the number of non zero elements in row i 
+     */
+    KOKKOS_INLINE_FUNCTION 
     size_t nnz(size_t i);
-    // Get total number of non zero elements 
-    size_t nnz();    
     
+    /**
+     * @brief get the total number of non zero elements
+     */
+    KOKKOS_INLINE_FUNCTION
+    size_t nnz();    
+   
+    /* 
     // Use the index into the 1d array to get what value is stored there and what is the corresponding row
     T& getValFlat(size_t k); 
     size_t getColFlat(size_t k);
@@ -13133,19 +13140,20 @@ size_t SparseRowArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::endFlat(size_t i){
     return start_index_[i+1];
 }
 
-/*
-template<typename T>
-size_t SparseRowArray<T>::nnz(){
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::nnz(){
     return nnz_; 
 }
 
-template<typename T>
-size_t SparseRowArray<T>::nnz(size_t i){
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t SparseRowArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
     assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
-
+/*
 template<typename T>
 T& SparseRowArray<T>::getValFlat(size_t k){
    assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getValFlat()"); 
