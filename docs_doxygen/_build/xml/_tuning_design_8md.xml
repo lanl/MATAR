@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_tuning_design_8md" kind="file" language="Markdown">
+    <compoundname>TuningDesign.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#Kokkos<sp/>Tuning</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>a<sp/>design<sp/>document<sp/>describing<sp/>the<sp/>motivation,<sp/>ideas,<sp/>design,<sp/>and<sp/>prototype<sp/>implementation<sp/>of<sp/>the<sp/>Kokkos<sp/>Tuning<sp/>System</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Motivation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Currently,<sp/>Kokkos<sp/>makes<sp/>a<sp/>lot<sp/>of<sp/>decisions<sp/>about<sp/>tuning<sp/>parameters<sp/>(CUDA<sp/>block<sp/>sizes,<sp/>different<sp/>kernel<sp/>implementations)</highlight></codeline>
+<codeline><highlight class="normal">by<sp/>picking<sp/>an<sp/>option<sp/>that<sp/>results<sp/>in<sp/>the<sp/>best<sp/>performance<sp/>for<sp/>the<sp/>widest<sp/>array<sp/>of<sp/>applications<sp/>and<sp/>architectures<sp/>at<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">time<sp/>the<sp/>choice<sp/>is<sp/>made.<sp/>This<sp/>approach<sp/>leaves<sp/>performance<sp/>on<sp/>the<sp/>table,<sp/>and<sp/>appears<sp/>increasingly<sp/>untenable<sp/>as<sp/>the<sp/>number</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>architectures<sp/>and<sp/>applications<sp/>grows,<sp/>and<sp/>as<sp/>software<sp/>versions<sp/>change.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>Kokkos<sp/>team<sp/>would<sp/>like<sp/>to<sp/>instead<sp/>open<sp/>up<sp/>the<sp/>ability<sp/>to<sp/>set<sp/>the<sp/>parameters<sp/>as<sp/>part<sp/>of<sp/>the<sp/>tooling<sp/>system<sp/>so<sp/>that</highlight></codeline>
+<codeline><highlight class="normal">these<sp/>parameters<sp/>can<sp/>be<sp/>tuned<sp/>for<sp/>individual<sp/>applications<sp/>across<sp/>all<sp/>the<sp/>architectures<sp/>they<sp/>might<sp/>run<sp/>on.<sp/>In<sp/>order<sp/>to<sp/>match<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">feel<sp/>of<sp/>past<sp/>Kokkos<sp/>tooling<sp/>efforts,<sp/>we&apos;d<sp/>like<sp/>to<sp/>achieve<sp/>this<sp/>with<sp/>a<sp/>callback<sp/>system.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Ideas</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>Kokkos<sp/>Tuning<sp/>system<sp/>should<sp/>be<sp/>as<sp/>small<sp/>as<sp/>is<sp/>wise<sp/>while<sp/>achieving<sp/>the<sp/>following<sp/>goals</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Expose<sp/>to<sp/>tools<sp/>enough<sp/>data<sp/>about<sp/>the<sp/>_context_<sp/>of<sp/>the<sp/>running<sp/>application<sp/>to<sp/>tune<sp/>intelligently.<sp/>In<sp/>autotuning<sp/>terms,<sp/>decribe<sp/>the<sp/>_features_</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Expose<sp/>to<sp/>tools<sp/>enough<sp/>data<sp/>about<sp/>tuning<sp/>parameters<sp/>that<sp/>they<sp/>might<sp/>know<sp/>how<sp/>to<sp/>optimize<sp/>what<sp/>they&apos;re<sp/>asked<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Expose<sp/>to<sp/>applications<sp/>an<sp/>interface<sp/>that<sp/>they<sp/>might<sp/>inform<sp/>a<sp/>tool<sp/>about<sp/>their<sp/>current<sp/>application<sp/>context</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Expose<sp/>to<sp/>tools<sp/>the<sp/>results<sp/>of<sp/>their<sp/>choices</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>No<sp/>perturbation<sp/>of<sp/>Kokkos<sp/>Core<sp/>when<sp/>this<sp/>system<sp/>is<sp/>disabled</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Shared<sp/>among<sp/>the<sp/>first<sp/>three<sp/>of<sp/>these<sp/>goals<sp/>is<sp/>a<sp/>need<sp/>for<sp/>some<sp/>way<sp/>to<sp/>describe<sp/>the<sp/>semantics<sp/>of<sp/>variables<sp/>(tuning<sp/>parameters,<sp/>context<sp/>variables)</highlight></codeline>
+<codeline><highlight class="normal">internal<sp/>to<sp/>Kokkos<sp/>or<sp/>an<sp/>application<sp/>to<sp/>an<sp/>outside<sp/>tool.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Semantics<sp/>of<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>think<sp/>it&apos;s<sp/>best<sp/>to<sp/>talk<sp/>about<sp/>the<sp/>semantics<sp/>of<sp/>variables<sp/>with<sp/>concrete<sp/>examples.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Suppose<sp/>Kokkos<sp/>wants<sp/>a<sp/>tool<sp/>to<sp/>choose<sp/>a<sp/>block<sp/>size<sp/>for<sp/>it.<sp/>Suppose<sp/>all<sp/>the<sp/>application<sp/>context<sp/>is<sp/>perfectly<sp/>understood,<sp/>that<sp/>the<sp/>tool<sp/>knows</highlight></codeline>
+<codeline><highlight class="normal">that<sp/>the<sp/>application<sp/>has<sp/>10,000,000<sp/>particles<sp/>active<sp/>and<sp/>that<sp/>it&apos;s<sp/>running<sp/>a<sp/>kernel<sp/>called<sp/>&quot;make_particles_go,&quot;<sp/>which<sp/>is<sp/>a<sp/>parallel_for<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>&quot;cuda&quot;<sp/>execution<sp/>space.<sp/>Even<sp/>with<sp/>this<sp/>knowledge,<sp/>the<sp/>tool<sp/>needs<sp/>to<sp/>know<sp/>several<sp/>things<sp/>about<sp/>what<sp/>a<sp/>block<sp/>size<sp/>_is_<sp/>for<sp/>this<sp/>to<sp/>be<sp/>generic<sp/>and<sp/>practical</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Is<sp/>it<sp/>an<sp/>integer<sp/>value?<sp/>A<sp/>float?<sp/>A<sp/>string?<sp/>(Type)</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Relatedly,<sp/>what<sp/>are<sp/>the<sp/>mathematical<sp/>semantics<sp/>which<sp/>are<sp/>valid<sp/>for<sp/>it?<sp/>Is<sp/>it<sp/>something</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>which<sp/>a<sp/>list<sp/>can<sp/>be<sp/>sorted?<sp/>Do<sp/>the<sp/>distances<sp/>between<sp/>items<sp/>in<sp/>a<sp/>sorted<sp/>list<sp/>make<sp/>sense?</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>I<sp/>divide<sp/>two<sp/>values,<sp/>does<sp/>the<sp/>ratio<sp/>have<sp/>some<sp/>meaning?<sp/>(semantics)</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>What<sp/>are<sp/>the<sp/>valid<sp/>choices<sp/>for<sp/>this<sp/>value?<sp/>Is<sp/>a<sp/>block<sp/>size<sp/>of<sp/>-128<sp/>okay?<sp/>How<sp/>about<sp/>7?<sp/>(candidates)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Semantics<sp/>(as<sp/>always)<sp/>are<sp/>likely<sp/>the<sp/>source<sp/>of<sp/>the<sp/>most<sp/>confusion<sp/>here,<sp/>so<sp/>a<sp/>bit<sp/>of<sp/>detail<sp/>is<sp/>good.<sp/>Here<sp/>I&apos;m<sp/>leaning<sp/>heavily<sp/>on<sp/>the<sp/>field</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>statistics<sp/>to<sp/>enable<sp/>tools<sp/>to<sp/>do<sp/>intelligent<sp/>searching.<sp/>If<sp/>ordering<sp/>doesn&apos;t<sp/>make<sp/>sense,<sp/>if<sp/>a<sp/>value<sp/>is<sp/>&quot;categorical&quot;,<sp/>the<sp/>only<sp/>thing</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>tool<sp/>can<sp/>do<sp/>is<sp/>try<sp/>all<sp/>possible<sp/>values<sp/>for<sp/>a<sp/>tuning<sp/>value.<sp/>If<sp/>they&apos;re<sp/>ordered<sp/>(ordinal),<sp/>the<sp/>search<sp/>can<sp/>take<sp/>advantage<sp/>of<sp/>this<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">using<sp/>the<sp/>concept<sp/>of<sp/>a<sp/>directional<sp/>search.<sp/>If<sp/>the<sp/>distances<sp/>between<sp/>elements<sp/>matter<sp/>(interval<sp/>data)<sp/>you<sp/>can<sp/>cheat<sp/>with<sp/>things<sp/>like</highlight></codeline>
+<codeline><highlight class="normal">bisection.<sp/>Finally<sp/>if<sp/>ratios<sp/>matter<sp/>you<sp/>can<sp/>play<sp/>games<sp/>where<sp/>you<sp/>increase<sp/>by<sp/>a<sp/>factor<sp/>of<sp/>10<sp/>in<sp/>your<sp/>searches.<sp/>Note<sp/>that<sp/>one<sp/>good<sp/>point<sp/>in<sp/>favor<sp/>of<sp/>this<sp/>design<sp/>is<sp/>that<sp/>it<sp/>matches<sp/>up<sp/>nicely<sp/>with<sp/>scikit-opt<sp/>(a<sp/>happy<sp/>accident).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>describing<sp/>the<sp/>candidate<sp/>values<sp/>in<sp/>(3),<sp/>users<sp/>have<sp/>two<sp/>options:<sp/>sets<sp/>or<sp/>ranges.<sp/>A<sp/>set<sp/>has<sp/>a<sp/>number<sp/>of<sp/>entries<sp/>of<sp/>the<sp/>given<sp/>type,<sp/>a<sp/>range<sp/>has<sp/>lower<sp/>and<sp/>upper<sp/>bounds<sp/>and<sp/>a<sp/>step<sp/>size.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Claim:<sp/>the<sp/>combination<sp/>of<sp/>context,<sp/>candidates,<sp/>semantics,<sp/>and<sp/>types<sp/>gives<sp/>a<sp/>tool<sp/>enough<sp/>to<sp/>intelligently<sp/>explore<sp/>the<sp/>search<sp/>space<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">tuning<sp/>parameters</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Context</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Suppose<sp/>a<sp/>tool<sp/>perfectly<sp/>understands<sp/>what<sp/>a<sp/>block<sp/>size<sp/>is.<sp/>To<sp/>effectively<sp/>tune<sp/>one,<sp/>it<sp/>needs<sp/>to<sp/>know<sp/>something<sp/>about<sp/>the<sp/>application.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>a<sp/>trivial<sp/>case,<sp/>the<sp/>tool<sp/>knows<sp/>absolutely<sp/>nothing<sp/>other<sp/>than<sp/>candidate<sp/>values<sp/>for<sp/>the<sp/>block<sp/>size,<sp/>and<sp/>tries<sp/>to<sp/>make<sp/>a<sp/>choice<sp/>that<sp/>optimizes<sp/>across<sp/>all</highlight></codeline>
+<codeline><highlight class="normal">invocations<sp/>of<sp/>kernels.<sp/>This<sp/>isn&apos;t<sp/>_that_<sp/>far<sp/>from<sp/>what<sp/>Kokkos<sp/>does<sp/>now,<sp/>so<sp/>it&apos;s<sp/>not<sp/>unreasonable<sp/>for<sp/>this<sp/>to<sp/>produce<sp/>decent<sp/>results.</highlight></codeline>
+<codeline><highlight class="normal">That<sp/>said,<sp/>we<sp/>could<sp/>quickly<sp/>add<sp/>some<sp/>context<sp/>from<sp/>Kokkos,<sp/>stuff<sp/>like<sp/>the<sp/>name<sp/>and<sp/>type<sp/>of<sp/>the<sp/>kernel,<sp/>the<sp/>execution<sp/>space,<sp/>all<sp/>with<sp/>the<sp/>semantic<sp/>information<sp/>described<sp/>above.<sp/>That<sp/>way<sp/>a<sp/>tuning<sp/>tool<sp/>could<sp/>differentiate<sp/>based<sp/>on<sp/>all<sp/>the<sp/>information<sp/>available<sp/>to<sp/>Kokkos.<sp/>Going<sp/>a<sp/>little<sp/>further,<sp/>we<sp/>could<sp/>expose<sp/>this<sp/>ability<sp/>to<sp/>provide<sp/>context<sp/>to<sp/>our<sp/>applications.<sp/>What<sp/>if<sp/>the<sp/>tools<sp/>wasn&apos;t<sp/>just<sp/>tuning<sp/>to<sp/>the<sp/>fact<sp/>that<sp/>the<sp/>kernel<sp/>name<sp/>was<sp/>&quot;GEMM&quot;,<sp/>but<sp/>that<sp/>&quot;matrix_size&quot;<sp/>was<sp/>a<sp/>million?<sp/>Or<sp/>that<sp/>&quot;live_particles&quot;<sp/>had<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">certain<sp/>value?<sp/>The<sp/>more<sp/>(relevant)<sp/>context<sp/>we<sp/>provide<sp/>to<sp/>a<sp/>tool,<sp/>the<sp/>better<sp/>it<sp/>will<sp/>be<sp/>able<sp/>to<sp/>tune.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Intended<sp/>Tool<sp/>Workflow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Okay,<sp/>so<sp/>a<sp/>tool<sp/>knows<sp/>what<sp/>it&apos;s<sp/>tuning,<sp/>and<sp/>it<sp/>knows<sp/>the<sp/>context<sp/>of<sp/>the<sp/>application<sp/>well<sp/>enough<sp/>to<sp/>do<sp/>clever<sp/>ML<sp/>things,<sp/>all<sp/>of<sp/>this<sp/>with<sp/>happy<sp/>semantic<sp/>information<sp/>so<sp/>that<sp/>everything<sp/>make<sp/>.<sp/>What<sp/>should<sp/>a<sp/>workflow<sp/>look<sp/>like?<sp/>A<sp/>tool<sp/>should</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1)<sp/>Listen<sp/>to<sp/>declarations<sp/>about<sp/>the<sp/>semantics<sp/>of<sp/>context<sp/>and<sp/>tuning<sp/>variables</highlight></codeline>
+<codeline><highlight class="normal">2)<sp/>Make<sp/>tuning<sp/>decisions</highlight></codeline>
+<codeline><highlight class="normal">3)<sp/>Measure<sp/>their<sp/>feedback</highlight></codeline>
+<codeline><highlight class="normal">4)<sp/>Get<sp/>better<sp/>at<sp/>(2)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>easier<sp/>we<sp/>make<sp/>this<sp/>loop,<sp/>the<sp/>better</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Design</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>design<sp/>of<sp/>this<sp/>system<sp/>is<sp/>intended<sp/>to<sp/>reflect<sp/>the<sp/>above<sp/>ideas<sp/>with<sp/>the<sp/>minimal<sp/>necessary<sp/>additions<sp/>to<sp/>make<sp/>the<sp/>mechanics<sp/>work.<sp/>This<sp/>section<sp/>is<sp/>almost<sp/>entirely<sp/>describing<sp/>the<sp/>small<sp/>holes<sp/>in<sp/>the<sp/>above<sp/>descriptions.<sp/>Variable<sp/>declaration<sp/>works<sp/>exactly<sp/>as<sp/>described<sp/>above,<sp/>except<sp/>that<sp/>we<sp/>associate<sp/>types<sp/>and<sp/>associated<sp/>values<sp/>using<sp/>a<sp/>type_id<sp/>with<sp/>each<sp/>type<sp/>at<sp/>declaration<sp/>time.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Any<sp/>time<sp/>a<sp/>value<sp/>of<sp/>a<sp/>variable<sp/>is<sp/>declared<sp/>(context)<sp/>or<sp/>requested<sp/>(tuning),<sp/>it<sp/>is<sp/>also<sp/>associated<sp/>with<sp/>a<sp/>context<sp/>ID<sp/>that<sp/>says<sp/>how<sp/>long<sp/>that<sp/>declaration<sp/>is<sp/>valid<sp/>for.<sp/>So<sp/>if<sp/>a<sp/>user<sp/>sees</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">startContext(contextId(0))</highlight></codeline>
+<codeline><highlight class="normal">declare_value(&quot;is_safe_to_push_button&quot;,true,contextId(0));</highlight></codeline>
+<codeline><highlight class="normal">foo();</highlight></codeline>
+<codeline><highlight class="normal">endContext(contextId(0));</highlight></codeline>
+<codeline><highlight class="normal">bar();</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">They<sp/>should<sp/>know<sp/>in<sp/>`bar`<sp/>that<sp/>it<sp/>is<sp/>no<sp/>longer<sp/>safe<sp/>to<sp/>push<sp/>the<sp/>button.<sp/>Similarly,<sp/>if<sp/>tools<sp/>have<sp/>provided<sp/>tuning<sp/>values<sp/>to<sp/>contextId(0),<sp/>when<sp/>contextId(0)<sp/>ends,<sp/>that<sp/>is<sp/>when<sp/>the<sp/>tool<sp/>takes<sp/>measurements<sp/>related<sp/>to<sp/>those<sp/>tuning<sp/>values<sp/>and<sp/>learns<sp/>things.<sp/>*For<sp/>most<sp/>tools,<sp/>when<sp/>they<sp/>see<sp/>a<sp/>call<sp/>to<sp/>startContext<sp/>associated<sp/>with<sp/>a<sp/>contextId,<sp/>they&apos;ll<sp/>do<sp/>a<sp/>starting<sp/>measurement,<sp/>and<sp/>at<sp/>endContext<sp/>they&apos;ll<sp/>stop<sp/>that<sp/>measurement*.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">One<sp/>ugly<sp/>bit<sp/>of<sp/>semantic<sp/>complexity<sp/>is<sp/>in<sp/>variables<sp/>with<sp/>complicated<sp/>sets<sp/>of<sp/>candidates.<sp/>Taking<sp/>the<sp/>exmaple<sp/>of<sp/>GPU<sp/>block<sp/>size,<sp/>for<sp/>different<sp/>kernels<sp/>an<sp/>application<sp/>might<sp/>have<sp/>different<sp/>sets<sp/>of<sp/>valid<sp/>block<sp/>sizes.<sp/>This<sp/>means<sp/>that<sp/>while<sp/>&quot;block<sp/>size&quot;<sp/>might<sp/>make<sp/>sense<sp/>as<sp/>a<sp/>type,<sp/>there<sp/>could<sp/>be<sp/>different<sp/>types,<sp/>&quot;block_sizes_up_to_1024,&quot;<sp/>&quot;block_sizes_up_to_2048,&quot;<sp/>that<sp/>cover<sp/>the<sp/>concept<sp/>of<sp/>block<sp/>size.<sp/>In<sp/>our<sp/>experience<sp/>every<sp/>solution<sp/>to<sp/>this<sp/>problem<sp/>is<sp/>ugly,<sp/>our<sp/>alternate<sp/>answers<sp/>were<sp/>much<sp/>uglier.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>section<sp/>describes<sp/>the<sp/>implementation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you&apos;re<sp/>writing<sp/>a<sp/>tool,<sp/>you<sp/>care<sp/>about<sp/>tool<sp/>implementation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>want<sp/>tools<sp/>to<sp/>know<sp/>about<sp/>information<sp/>from<sp/>your<sp/>application,<sp/>you<sp/>care<sp/>about<sp/>application<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you&apos;re<sp/>a<sp/>Kokkos<sp/>developer,<sp/>you<sp/>care<sp/>about<sp/>the<sp/>application<sp/>implementation<sp/>and<sp/>Kokkos<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Tool<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>past,<sp/>tools<sp/>have<sp/>responded<sp/>to<sp/>the<sp/>[profiling<sp/>hooks<sp/>in<sp/>Kokkos](https://github.com/kokkos/kokkos-tools/wiki/Profiling-Hooks).<sp/>This<sp/>effort<sp/>adds<sp/>to<sp/>that,<sp/>there<sp/>are<sp/>now<sp/>a<sp/>few<sp/>more<sp/>functions<sp/>(note<sp/>that<sp/>I&apos;m<sp/>using<sp/>the<sp/>C<sp/>names<sp/>for<sp/>types.<sp/>In<sp/>general<sp/>you<sp/>can<sp/>replace<sp/>Kokkos_Tools_<sp/>with<sp/>Kokkos::Tools::<sp/>in<sp/>C++<sp/>tools)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>kokkosp_declare_output_type(const<sp/>char*<sp/>name,<sp/>const<sp/>size_t<sp/>id,<sp/>Kokkos_Tools_VariableInfo&amp;<sp/>info);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Declares<sp/>a<sp/>tuning<sp/>variable<sp/>named<sp/>`name`<sp/>with<sp/>uniqueId<sp/>`id`<sp/>and<sp/>all<sp/>the<sp/>semantic<sp/>information<sp/>stored<sp/>in<sp/>`info`.<sp/>Note<sp/>that<sp/>the<sp/>VariableInfo<sp/>struct<sp/>has<sp/>a<sp/>`void*`<sp/>field<sp/>called<sp/>`toolProvidedInfo`.<sp/>If<sp/>you<sp/>fill<sp/>this<sp/>in,<sp/>every<sp/>time<sp/>you<sp/>get<sp/>a<sp/>value<sp/>of<sp/>that<sp/>type<sp/>you&apos;ll<sp/>also<sp/>get<sp/>back<sp/>that<sp/>same<sp/>pointer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>kokkosp_declare_input_type(const<sp/>char*,<sp/>const<sp/>size_t,<sp/>Kokkos_Tools_VariableInfo&amp;<sp/>info);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>almost<sp/>exactly<sp/>like<sp/>declaring<sp/>a<sp/>tuning<sp/>variable.<sp/>The<sp/>only<sp/>difference<sp/>is<sp/>that<sp/>in<sp/>cases<sp/>where<sp/>the<sp/>candidate<sp/>values<sp/>aren&apos;t<sp/>known,<sp/>`info.valueQuantity`<sp/>will<sp/>be<sp/>set<sp/>to<sp/>`kokkos_value_unbounded`.<sp/>This<sp/>is<sp/>fairly<sp/>common,<sp/>Kokkos<sp/>can<sp/>tell<sp/>you<sp/>that<sp/>`kernel_name`<sp/>is<sp/>a<sp/>string,<sp/>but<sp/>we<sp/>can&apos;t<sp/>tell<sp/>you<sp/>what<sp/>strings<sp/>a<sp/>user<sp/>might<sp/>provide.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>kokkosp_request_values(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>size_t<sp/>contextId,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>size_t<sp/>numContextVariables,<sp/>const<sp/>Kokkos_Tools_VariableValue*<sp/>contextVariableValues,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>size_t<sp/>numTuningVariables,<sp/>Kokkos_Tools_VariableValue*<sp/>tuningVariableValues);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>Kokkos<sp/>is<sp/>requesting<sp/>the<sp/>values<sp/>of<sp/>tuning<sp/>variables,<sp/>and<sp/>most<sp/>of<sp/>the<sp/>meat<sp/>is<sp/>here.<sp/>The<sp/>contextId<sp/>tells<sp/>us<sp/>the<sp/>scope<sp/>across<sp/>which<sp/>these<sp/>variables<sp/>were<sp/>used.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>next<sp/>two<sp/>arguments<sp/>describe<sp/>the<sp/>context<sp/>you&apos;re<sp/>tuning<sp/>in.<sp/>You<sp/>have<sp/>the<sp/>number<sp/>of<sp/>context<sp/>variables,<sp/>and<sp/>an<sp/>array<sp/>of<sp/>that<sp/>size<sp/>containing<sp/>their<sp/>values.<sp/>Note<sp/>that<sp/>the<sp/>Kokkos_Tuning_VariableValue<sp/>has<sp/>a<sp/>field<sp/>called<sp/>`metadata`<sp/>containing<sp/>all<sp/>the<sp/>info<sp/>(type,<sp/>semantics,<sp/>and<sp/>critically,<sp/>candidates)<sp/>about<sp/>that<sp/>variable.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>two<sp/>arguments<sp/>following<sp/>those<sp/>describe<sp/>the<sp/>Tuning<sp/>Variables.<sp/>First<sp/>the<sp/>number<sp/>of<sp/>them,<sp/>then<sp/>an<sp/>array<sp/>of<sp/>that<sp/>size<sp/>which<sp/>you<sp/>can<sp/>overwrite.<sp/>*Overwriting<sp/>those<sp/>values<sp/>is<sp/>how<sp/>you<sp/>give<sp/>values<sp/>back<sp/>to<sp/>the<sp/>application*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Critically,<sp/>as<sp/>tuningVariableValues<sp/>comes<sp/>preloaded<sp/>with<sp/>default<sp/>values,<sp/>if<sp/>your<sp/>function<sp/>body<sp/>is<sp/>`return;`<sp/>you<sp/>will<sp/>not<sp/>crash<sp/>Kokkos,<sp/>only<sp/>make<sp/>us<sp/>use<sp/>our<sp/>defaults.<sp/>If<sp/>you<sp/>don&apos;t<sp/>know,<sp/>you<sp/>are<sp/>allowed<sp/>to<sp/>punt<sp/>and<sp/>let<sp/>Kokkos<sp/>do<sp/>what<sp/>it<sp/>would.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>kokkosp_begin_context(size_t<sp/>contextId);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>starts<sp/>the<sp/>context<sp/>pointed<sp/>at<sp/>by<sp/>contextId.<sp/>If<sp/>tools<sp/>use<sp/>measurements<sp/>to<sp/>drive<sp/>tuning,<sp/>this<sp/>is<sp/>where<sp/>they&apos;ll<sp/>do<sp/>their<sp/>starting<sp/>measurement.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>kokkosp_end_context(const<sp/>size_t<sp/>contextId);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>simply<sp/>says<sp/>that<sp/>the<sp/>contextId<sp/>in<sp/>the<sp/>argument<sp/>is<sp/>now<sp/>over.<sp/>If<sp/>you<sp/>provided<sp/>tuning<sp/>values<sp/>associated<sp/>with<sp/>that<sp/>context,<sp/>those<sp/>values<sp/>can<sp/>now<sp/>be<sp/>associated<sp/>with<sp/>a<sp/>result.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>App<sp/>Implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>99%<sp/>of<sp/>applications,<sp/>all<sp/>you<sp/>need<sp/>to<sp/>do<sp/>to<sp/>interact<sp/>with<sp/>Kokkos<sp/>Tuning<sp/>Tools<sp/>in<sp/>your<sp/>code<sp/>is<sp/>nothing.<sp/>The<sp/>only<sp/>exceptions<sp/>are<sp/>if<sp/>you<sp/>want<sp/>the<sp/>tuning<sp/>to<sp/>be<sp/>aware<sp/>of<sp/>what&apos;s<sp/>happening<sp/>in<sp/>your<sp/>application<sp/>(number<sp/>of<sp/>particles<sp/>active,<sp/>whether<sp/>different<sp/>physics<sp/>are<sp/>active)<sp/>if</highlight></codeline>
+<codeline><highlight class="normal">you<sp/>think<sp/>that<sp/>might<sp/>change<sp/>what<sp/>the<sp/>Tuning<sp/>decides.<sp/>If<sp/>you&apos;re<sp/>feeling<sp/>especially<sp/>brave,<sp/>you<sp/>can<sp/>also<sp/>use<sp/>the<sp/>Tuning<sp/>interface<sp/>to<sp/>tune<sp/>parameters<sp/>within<sp/>your<sp/>own<sp/>application.<sp/>For<sp/>making<sp/>people<sp/>aware<sp/>of<sp/>your<sp/>application<sp/>context,<sp/>you<sp/>need<sp/>to<sp/>know<sp/>about<sp/>a<sp/>few<sp/>functions</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">size_t<sp/>Kokkos::Tools::Experimental::declare_input_type(const<sp/>std::string&amp;<sp/>variableName</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VariableInfo<sp/>info,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>tells<sp/>a<sp/>tool<sp/>that<sp/>you<sp/>have<sp/>some<sp/>variable<sp/>they<sp/>should<sp/>know<sp/>about<sp/>when<sp/>tuning.<sp/>The<sp/>info<sp/>describes<sp/>the<sp/>semantics<sp/>of<sp/>your<sp/>variable.<sp/>This<sp/>is<sp/>discussed<sp/>in<sp/>great<sp/>detail<sp/>under<sp/>&quot;Semantics<sp/>of<sp/>Variables&quot;,<sp/>but<sp/>you<sp/>need<sp/>to<sp/>say<sp/>whether<sp/>the<sp/>values<sp/>will<sp/>be<sp/>text,<sp/>int,<sp/>or<sp/>float,<sp/>whether<sp/>they&apos;re<sp/>categorical,<sp/>ordinal,interval,<sp/>or<sp/>ratio<sp/>data,<sp/>and<sp/>whether<sp/>the<sp/>candidate<sp/>values<sp/>are<sp/>&quot;unbounded&quot;<sp/>(if<sp/>you<sp/>don&apos;t<sp/>know<sp/>the<sp/>full<sp/>set<sp/>of<sp/>values),<sp/>a<sp/>set,<sp/>or<sp/>a<sp/>range.<sp/>This<sp/>returns<sp/>a<sp/>`size_t`<sp/>that<sp/>you<sp/>should<sp/>store,<sp/>it&apos;s<sp/>how<sp/>you&apos;ll<sp/>later<sp/>identify<sp/>what<sp/>values<sp/>you&apos;re<sp/>providing<sp/>or<sp/>requesting<sp/>from<sp/>the<sp/>tool.<sp/>Note<sp/>that<sp/>this<sp/>call<sp/>doesn&apos;t<sp/>actually<sp/>tell<sp/>the<sp/>tools<sp/>about<sp/>values,<sp/>it<sp/>simply<sp/>tells<sp/>the<sp/>tool<sp/>about<sp/>the<sp/>nature<sp/>of<sp/>values<sp/>you&apos;ll<sp/>provide<sp/>later.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">size_t<sp/>Kokkos::Tools::Experimental::get_new_context_id();</highlight></codeline>
+<codeline><highlight class="normal">size_t<sp/>Kokkos::Tools::Experimental::get_current_context_id();</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>In<sp/>this<sp/>interface,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>you<sp/>will<sp/>associate<sp/>values<sp/>with</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&quot;contexts&quot;<sp/>in<sp/>order<sp/>to<sp/>decide<sp/>when<sp/>a<sp/>given<sp/>declaration<sp/>of<sp/>a<sp/>value<sp/>has<sp/>gone</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>of<sp/>scope.The<sp/>first<sp/>gets<sp/>you<sp/>a<sp/>new<sp/>context</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ID<sp/>if<sp/>you<sp/>&apos;re<sp/>starting<sp/>some<sp/>new<sp/>set<sp/>of<sp/>values.<sp/>If<sp/>you<sp/>need<sp/>to<sp/>recover<sp/>the<sp/>last<sp/>context<sp/>ID<sp/>so<sp/>you<sp/>can<sp/>append<sp/>to<sp/>that<sp/>context,<sp/>rather<sp/>than<sp/>overwriting<sp/>it<sp/>with<sp/>a<sp/>new<sp/>one,<sp/>you<sp/>can<sp/>use<sp/>`get_current_context_id()`.<sp/>You&apos;<sp/>ll</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>use<sp/>that<sp/>context<sp/>id<sp/>to<sp/>start<sp/>a<sp/>context<sp/>in<sp/>the<sp/>function</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++<sp/>void<sp/>Kokkos::Tools::Experimental::begin_context(size_t<sp/>context_id);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>tells<sp/>the<sp/>tool<sp/>that<sp/>you&apos;re<sp/>beginning<sp/>a<sp/>region<sp/>in<sp/>which<sp/>you&apos;ll<sp/>be<sp/>setting<sp/>and<sp/>requesting<sp/>values.<sp/>If<sp/>the<sp/>tool<sp/>optimizes<sp/>for<sp/>time,<sp/>you&apos;re<sp/>telling<sp/>them<sp/>to<sp/>start<sp/>their<sp/>timer.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>Kokkos::Tools::Experimental::set_input_values(size_t<sp/>contextId,<sp/>size_t<sp/>count,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VariableValue*<sp/>values);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>you<sp/>tell<sp/>tools<sp/>the<sp/>values<sp/>for<sp/>your<sp/>context<sp/>variables.<sp/>The<sp/>contextId<sp/>is<sp/>used<sp/>to<sp/>later<sp/>tell<sp/>when<sp/>this<sp/>has<sp/>gone<sp/>out<sp/>of<sp/>scope,<sp/>the<sp/>count<sp/>is<sp/>how<sp/>many<sp/>variables<sp/>you&apos;re<sp/>declaring,<sp/>and<sp/>the<sp/>values<sp/>should<sp/>come<sp/>from<sp/>calling<sp/>`Kokkos::Tools::Experimental::make_variable_value`<sp/>with<sp/>the<sp/>appropriate<sp/>variable<sp/>ID<sp/>and<sp/>value.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>Kokkos::Tools::Experimental::end_context(size_t<sp/>contextId);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>This<sp/>tells<sp/>the<sp/>tool<sp/>that<sp/>values<sp/>from<sp/>this<sp/>context<sp/>are<sp/>no<sp/>longer<sp/>valid,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>and<sp/>that<sp/>the<sp/>tool<sp/>should<sp/>stop<sp/>their<sp/>timers.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>For<sp/>those<sp/>who<sp/>want<sp/>to<sp/>declare<sp/>and<sp/>request<sp/>tuning<sp/>variables,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>you<sp/>only<sp/>need<sp/>two<sp/>more<sp/>functions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++<sp/>void<sp/>Kokkos::Tools::Experimental::declare_output_type(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::string&amp;variableName<sp/>VariableInfo<sp/>info);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>This<sp/>is<sp/>exactly<sp/>like<sp/>declareContextVariable.The<sp/>only<sp/>difference<sp/>is<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ID&apos;s<sp/>this<sp/>returns<sp/>should<sp/>be<sp/>passed<sp/>to<sp/>request_output_values,<sp/>and<sp/>that<sp/>the<sp/>`candidates`<sp/>field<sp/>in<sp/>the<sp/>info<sp/>_must_<sp/>list<sp/>valid<sp/>values<sp/>for<sp/>the<sp/>tool<sp/>to<sp/>provide.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++<sp/>void<sp/>Kokkos::Tools::Experimental::request_output_values(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size_t<sp/>contextId,<sp/>size_t<sp/>count,<sp/>VariableValue*<sp/>values,<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>is<sp/>where<sp/>you<sp/>request<sp/>that<sp/>the<sp/>tool<sp/>give<sp/>you<sp/>a<sp/>set<sp/>of<sp/>values.<sp/>You<sp/>need<sp/>a<sp/>contextId<sp/>so<sp/>that<sp/>the<sp/>tool<sp/>can<sp/>know<sp/>when<sp/>you&apos;re<sp/>done<sp/>using<sp/>the<sp/>value<sp/>and<sp/>measure<sp/>results.<sp/>The<sp/>count<sp/>tells<sp/>the<sp/>tool<sp/>how<sp/>many<sp/>variables<sp/>it&apos;s<sp/>providing<sp/>values<sp/>for.<sp/>Values<sp/>is<sp/>an<sp/>array<sp/>of<sp/>your<sp/>default<sp/>values<sp/>for<sp/>that<sp/>parameter,<sp/>it<sp/>must<sp/>not<sp/>crash<sp/>your<sp/>program<sp/>if<sp/>unchanged.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Kokkos<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>past,<sp/>Kokkos<sp/>and<sp/>Kokkos-tools<sp/>didn&apos;t<sp/>share<sp/>source<sp/>code.<sp/>Except<sp/>for<sp/>a<sp/>&quot;SpaceHandle&quot;<sp/>struct<sp/>which<sp/>users<sp/>manually<sp/>copied<sp/>to<sp/>their<sp/>tools,<sp/>nothing<sp/>from<sp/>Kokkos<sp/>hit<sp/>the<sp/>tools<sp/>repo,<sp/>the<sp/>interface<sp/>consisted<sp/>entirely<sp/>of<sp/>basic<sp/>C<sp/>types.<sp/>If<sp/>you<sp/>read<sp/>the<sp/>ideas<sp/>section,<sp/>it<sp/>translates<sp/>to<sp/>a<sp/>lot<sp/>of<sp/>structs<sp/>and<sp/>enums.<sp/>Despite<sp/>my<sp/>best<sp/>efforts<sp/>to<sp/>minimize<sp/>them,<sp/>I<sp/>think<sp/>we<sp/>now<sp/>need<sp/>to<sp/>share<sp/>some<sp/>header<sp/>files<sp/>with<sp/>kokkos-tools.<sp/>Andrew<sp/>Gaspar<sp/>did<sp/>really<sp/>excellent<sp/>work<sp/>making<sp/>this<sp/>practical,<sp/>we<sp/>have</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1)<sp/>Kokkos_Profiling_C_Interface.h<sp/>,<sp/>which<sp/>is<sp/>(shockingly)<sp/>a<sp/>C<sp/>interface<sp/>that<sp/>everything<sp/>in<sp/>Kokkos<sp/>tools<sp/>boils<sp/>down<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">2)<sp/>Kokkos_Profiling_Interface.hpp,<sp/>nice<sp/>C++<sp/>wrappers<sp/>around<sp/>the<sp/>C<sp/>so<sp/>that<sp/>the<sp/>C<sp/>idioms<sp/>don&apos;t<sp/>hit<sp/>Kokkos</highlight></codeline>
+<codeline><highlight class="normal">3)<sp/>Kokkos_Profiling.[cpp/hpp],<sp/>which<sp/>contain<sp/>things<sp/>Kokkos<sp/>needs<sp/>to<sp/>implement<sp/>tooling,<sp/>but<sp/>the<sp/>tools<sp/>don&apos;t<sp/>need<sp/>to<sp/>know<sp/>about</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">All<sp/>of<sp/>our<sp/>function<sp/>pointer<sp/>initialization<sp/>and<sp/>all<sp/>that<sp/>mess<sp/>now<sp/>go<sp/>into<sp/>Kokkos_Profiling.[cpp/hpp],<sp/>all<sp/>the<sp/>types<sp/>are<sp/>in<sp/>the<sp/>Interface<sp/>files.<sp/>The<sp/>interface<sp/>files<sp/>will<sp/>be<sp/>shared<sp/>with<sp/>kokkos/kokkos-tools.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>terms<sp/>of<sp/>build<sp/>changes,<sp/>we<sp/>now<sp/>install<sp/>the<sp/>above<sp/>.h<sp/>file,<sp/>and<sp/>have<sp/>a<sp/>KOKKOS_ENABLE_TUNING<sp/>option</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/doc/TuningDesign.md"/>
+  </compounddef>
+</doxygen>

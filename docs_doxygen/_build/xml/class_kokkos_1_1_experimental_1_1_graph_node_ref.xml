@@ -1,0 +1,724 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_graph_node_ref" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::GraphNodeRef</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+      <param>
+        <type>class Kernel</type>
+      </param>
+      <param>
+        <type>class Predecessor</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1aa3d33314294710e60e2188bcb2482254" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="100" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a07e0a0147f1380d2c424a58943e9eb59" prot="public" static="no">
+        <type>Kernel</type>
+        <definition>using Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::graph_kernel =  Kernel</definition>
+        <argsstring></argsstring>
+        <name>graph_kernel</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::graph_kernel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="101" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1aa3a061213da4f458dab6c378bb8ef19d" prot="public" static="no">
+        <type>Predecessor</type>
+        <definition>using Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::graph_predecessor =  Predecessor</definition>
+        <argsstring></argsstring>
+        <name>graph_predecessor</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::graph_predecessor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="102" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1abd456976da4a35ef173f2dcb39725fcf" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">Kokkos::Impl::GraphImpl</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::graph_impl_t =  Kokkos::Impl::GraphImpl&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>graph_impl_t</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::graph_impl_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="121" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a0ad1ca6e7747d0f2a78a2362323c4095" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">Kokkos::Impl::GraphNodeImpl</ref>&lt; ExecutionSpace, Kernel, Predecessor &gt;</type>
+        <definition>using Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::node_impl_t =  Kokkos::Impl::GraphNodeImpl&lt;ExecutionSpace, Kernel, Predecessor&gt;</definition>
+        <argsstring></argsstring>
+        <name>node_impl_t</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::node_impl_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="130" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af36c382f6f6b525ebeb464f5e0828cd1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class GraphNodeRef</definition>
+        <argsstring></argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="112" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a35f12dbc41a809868b048b41140a291a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct</type>
+        <definition>friend struct Kokkos::Impl::GraphAccess</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::GraphAccess</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphAccess</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_access" kindref="compound">Kokkos::Impl::GraphAccess</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="113" column="17" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af33f41556caa10c445ca2f5801054972" prot="private" static="no" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">graph_impl_t</ref> &gt;</type>
+        <definition>std::weak_ptr&lt;graph_impl_t&gt; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::m_graph_impl</definition>
+        <argsstring></argsstring>
+        <name>m_graph_impl</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::m_graph_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="122" column="17" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a3c2d1b3de7363d9dd83a88459ff8f790" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">node_impl_t</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;node_impl_t&gt; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::m_node_impl</definition>
+        <argsstring></argsstring>
+        <name>m_node_impl</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::m_node_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="132" column="19" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a4987ed48b34d0cc9e1835787a9b5b0c4" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">node_impl_t</ref> &amp;</type>
+        <definition>node_impl_t &amp; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::get_node_impl</definition>
+        <argsstring>() const</argsstring>
+        <name>get_node_impl</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::get_node_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="141" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a268e9428929adfb3a87e08eb78420a43" prot="private" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">node_impl_t</ref> &gt; const &amp;</type>
+        <definition>std::shared_ptr&lt; node_impl_t &gt; const  &amp; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::get_node_ptr</definition>
+        <argsstring>() const &amp;</argsstring>
+        <name>get_node_ptr</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::get_node_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="142" column="25" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ab8adfed484909784ba236f5023a42ff8" prot="private" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">node_impl_t</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; node_impl_t &gt; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::get_node_ptr</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>get_node_ptr</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::get_node_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="145" column="19" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="145" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a5fdfd44a7ee67899e9ce9ccd15f7c818" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::weak_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">graph_impl_t</ref> &gt;</type>
+        <definition>std::weak_ptr&lt; graph_impl_t &gt; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::get_graph_weak_ptr</definition>
+        <argsstring>() const</argsstring>
+        <name>get_graph_weak_ptr</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::get_graph_weak_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="148" column="17" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="148" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af91d28efac6d477c60ecd4169d10394d" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class NextKernelDeduced</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::_then_kernel</definition>
+        <argsstring>(NextKernelDeduced &amp;&amp;arg_kernel) const</argsstring>
+        <name>_then_kernel</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::_then_kernel</qualifiedname>
+        <param>
+          <type>NextKernelDeduced &amp;&amp;</type>
+          <declname>arg_kernel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="158" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="158" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a5c84134a27b159ebf2c0c22d38367579" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::GraphNodeRef</definition>
+        <argsstring>(std::weak_ptr&lt; graph_impl_t &gt; arg_graph_impl, std::shared_ptr&lt; node_impl_t &gt; arg_node_impl)</argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <param>
+          <type>std::weak_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">graph_impl_t</ref> &gt;</type>
+          <declname>arg_graph_impl</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">node_impl_t</ref> &gt;</type>
+          <declname>arg_node_impl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="197" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="197" bodyend="200"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9a78f9571c874cc02f50971af2444963" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::GraphNodeRef</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="213" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a99b96e38e6db784bffe86d91791530cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::GraphNodeRef</definition>
+        <argsstring>(GraphNodeRef const &amp;)=default</argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="214" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9800151757690de9dc3595e1986a0e02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::GraphNodeRef</definition>
+        <argsstring>(GraphNodeRef &amp;&amp;) noexcept=default</argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="215" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a71fc08e751ab570962e68f0f3a0de8aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> &amp;</type>
+        <definition>GraphNodeRef &amp; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::operator=</definition>
+        <argsstring>(GraphNodeRef const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="216" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a0d66a400546458640d40a5161c9b22a7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> &amp;</type>
+        <definition>GraphNodeRef &amp; Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::operator=</definition>
+        <argsstring>(GraphNodeRef &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="217" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9fc3f933be2b20fb45e1bf8506e38874" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::~GraphNodeRef</definition>
+        <argsstring>()=default</argsstring>
+        <name>~GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::~GraphNodeRef</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="218" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a977600493f279c89a7b8358d4e2a57bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class OtherKernel</type>
+          </param>
+          <param>
+            <type>class OtherPredecessor</type>
+          </param>
+          <param>
+            <type>typename std::enable_if_t&lt; !std::is_same&lt; <ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref>, <ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref>&lt; execution_space, OtherKernel, OtherPredecessor &gt; &gt;::value &amp;&amp;<ref refid="struct_kokkos_1_1_impl_1_1is__compatible__type__erasure" kindref="compound">Kokkos::Impl::is_compatible_type_erasure</ref>&lt; OtherKernel, graph_kernel &gt;::value &amp;&amp;<ref refid="struct_kokkos_1_1_impl_1_1is__compatible__type__erasure" kindref="compound">Kokkos::Impl::is_compatible_type_erasure</ref>&lt; OtherPredecessor, graph_predecessor &gt;::value, int &gt;</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::GraphNodeRef</definition>
+        <argsstring>(GraphNodeRef&lt; execution_space, OtherKernel, OtherPredecessor &gt; const &amp;other)</argsstring>
+        <name>GraphNodeRef</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::GraphNodeRef</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_graph_node_ref" kindref="compound">GraphNodeRef</ref>&lt; execution_space, OtherKernel, OtherPredecessor &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="240" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af8b9f3f76b2c272b8ac1d879ea9db248" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__execution__policy" kindref="compound">is_execution_policy</ref>&lt; Kokkos::Impl::remove_cvref_t&lt; <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &gt; &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_for</definition>
+        <argsstring>(std::string arg_name, Policy &amp;&amp;arg_policy, Functor &amp;&amp;functor) const</argsstring>
+        <name>then_parallel_for</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_for</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>arg_name</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;&amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="265" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="265" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ab1f2ff285f0b73a7335fbf7d44e3b7ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__execution__policy" kindref="compound">is_execution_policy</ref>&lt; Kokkos::Impl::remove_cvref_t&lt; <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &gt; &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_for</definition>
+        <argsstring>(Policy &amp;&amp;policy, Functor &amp;&amp;functor) const</argsstring>
+        <name>then_parallel_for</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_for</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;&amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="307" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="307" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ac3dc62ad74d13757a8f1f416aaa40c68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_for</definition>
+        <argsstring>(std::string name, std::size_t n, Functor &amp;&amp;functor) const</argsstring>
+        <name>then_parallel_for</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_for</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="314" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="314" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af4fda292d530eb2e490ed705340ccee5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_for</definition>
+        <argsstring>(std::size_t n, Functor &amp;&amp;functor) const</argsstring>
+        <name>then_parallel_for</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_for</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="323" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="323" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a881bed9c8cbf3910f909e65c540eaff3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class ReturnType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__execution__policy" kindref="compound">is_execution_policy</ref>&lt; Kokkos::Impl::remove_cvref_t&lt; <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &gt; &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_reduce</definition>
+        <argsstring>(std::string arg_name, Policy &amp;&amp;arg_policy, Functor &amp;&amp;functor, ReturnType &amp;&amp;return_value) const</argsstring>
+        <name>then_parallel_reduce</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_reduce</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>arg_name</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;&amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>ReturnType &amp;&amp;</type>
+          <declname>return_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="342" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="342" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a47a790ef49a69afe469b057333bab4c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class ReturnType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__execution__policy" kindref="compound">is_execution_policy</ref>&lt; Kokkos::Impl::remove_cvref_t&lt; <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &gt; &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_reduce</definition>
+        <argsstring>(Policy &amp;&amp;arg_policy, Functor &amp;&amp;functor, ReturnType &amp;&amp;return_value) const</argsstring>
+        <name>then_parallel_reduce</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_reduce</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;&amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>ReturnType &amp;&amp;</type>
+          <declname>return_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="428" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="428" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a437db1bfc868add88f99d2662121dedb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class ReturnType</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_reduce</definition>
+        <argsstring>(std::string label, typename execution_space::size_type idx_end, Functor &amp;&amp;functor, ReturnType &amp;&amp;return_value) const</argsstring>
+        <name>then_parallel_reduce</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_reduce</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>typename execution_space::size_type</type>
+          <declname>idx_end</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>ReturnType &amp;&amp;</type>
+          <declname>return_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="436" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="436" bodyend="443"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_graph_node_ref_1acb7a37b649cf117375835cbccbd82e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class ReturnType</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::GraphNodeRef&lt; ExecutionSpace, Kernel, Predecessor &gt;::then_parallel_reduce</definition>
+        <argsstring>(typename execution_space::size_type idx_end, Functor &amp;&amp;functor, ReturnType &amp;&amp;return_value) const</argsstring>
+        <name>then_parallel_reduce</name>
+        <qualifiedname>Kokkos::Experimental::GraphNodeRef::then_parallel_reduce</qualifiedname>
+        <param>
+          <type>typename execution_space::size_type</type>
+          <declname>idx_end</declname>
+        </param>
+        <param>
+          <type>Functor &amp;&amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>ReturnType &amp;&amp;</type>
+          <declname>return_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="446" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="446" bodyend="451"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" line="66" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp" bodystart="66" bodyend="457"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af91d28efac6d477c60ecd4169d10394d" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>_then_kernel</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1aa3d33314294710e60e2188bcb2482254" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a5fdfd44a7ee67899e9ce9ccd15f7c818" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>get_graph_weak_ptr</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a4987ed48b34d0cc9e1835787a9b5b0c4" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>get_node_impl</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a268e9428929adfb3a87e08eb78420a43" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>get_node_ptr</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ab8adfed484909784ba236f5023a42ff8" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>get_node_ptr</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1abd456976da4a35ef173f2dcb39725fcf" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>graph_impl_t</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a07e0a0147f1380d2c424a58943e9eb59" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>graph_kernel</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1aa3a061213da4f458dab6c378bb8ef19d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>graph_predecessor</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af36c382f6f6b525ebeb464f5e0828cd1" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a5c84134a27b159ebf2c0c22d38367579" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9a78f9571c874cc02f50971af2444963" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a99b96e38e6db784bffe86d91791530cf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9800151757690de9dc3595e1986a0e02" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a977600493f279c89a7b8358d4e2a57bf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>GraphNodeRef</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a35f12dbc41a809868b048b41140a291a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>Kokkos::Impl::GraphAccess</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af33f41556caa10c445ca2f5801054972" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>m_graph_impl</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a3c2d1b3de7363d9dd83a88459ff8f790" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>m_node_impl</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a0ad1ca6e7747d0f2a78a2362323c4095" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>node_impl_t</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a71fc08e751ab570962e68f0f3a0de8aa" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a0d66a400546458640d40a5161c9b22a7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af8b9f3f76b2c272b8ac1d879ea9db248" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_for</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ab1f2ff285f0b73a7335fbf7d44e3b7ba" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_for</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1ac3dc62ad74d13757a8f1f416aaa40c68" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_for</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1af4fda292d530eb2e490ed705340ccee5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_for</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a881bed9c8cbf3910f909e65c540eaff3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_reduce</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a47a790ef49a69afe469b057333bab4c7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_reduce</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a437db1bfc868add88f99d2662121dedb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_reduce</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1acb7a37b649cf117375835cbccbd82e3d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>then_parallel_reduce</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_graph_node_ref_1a9fc3f933be2b20fb45e1bf8506e38874" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::GraphNodeRef</scope><name>~GraphNodeRef</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

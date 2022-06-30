@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_extract_vector_length" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ExtractVectorLength</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class iType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_extract_vector_length_1ab876bbd83a3feb4ecd04a1af3da01f68" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>iType</type>
+        <definition>static iType Kokkos::Impl::ExtractVectorLength&lt; iType, Args &gt;::value</definition>
+        <argsstring>(typename std::enable_if&lt; std::is_integral&lt; iType &gt;::value, iType &gt;::type val, Args...)</argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Impl::ExtractVectorLength::value</qualifiedname>
+        <param>
+          <type>typename std::enable_if&lt; std::is_integral&lt; iType &gt;::value, iType &gt;::type</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="445" column="23" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="445" bodyend="449"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_extract_vector_length_1a2550e97607c0bd97af49b7dbdb57fd18" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::enable_if&lt;!std::is_integral&lt; iType &gt;::value, int &gt;::type</type>
+        <definition>static std::enable_if&lt;!std::is_integral&lt; iType &gt;::value, int &gt;::type Kokkos::Impl::ExtractVectorLength&lt; iType, Args &gt;::value</definition>
+        <argsstring>(typename std::enable_if&lt;!std::is_integral&lt; iType &gt;::value, iType &gt;::type, Args...)</argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Impl::ExtractVectorLength::value</qualifiedname>
+        <param>
+          <type>typename std::enable_if&lt;!std::is_integral&lt; iType &gt;::value, iType &gt;::type</type>
+        </param>
+        <param>
+          <type>Args...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="452" column="7" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="452" bodyend="456"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="444" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="444" bodyend="457"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_extract_vector_length_1ab876bbd83a3feb4ecd04a1af3da01f68" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExtractVectorLength</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_extract_vector_length_1a2550e97607c0bd97af49b7dbdb57fd18" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExtractVectorLength</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

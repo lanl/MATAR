@@ -1,0 +1,809 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="df/d07/class_d_view_f_matrix_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>DViewFMatrixKokkos</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>DefaultLayout</defval>
+      </param>
+      <param>
+        <type>typename ExecSpace</type>
+        <defval>DefaultExecSpace</defval>
+      </param>
+      <param>
+        <type>typename MemoryTraits</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="df/d07/class_d_view_f_matrix_kokkos_1a4c6da8bfedb10cdce0590ec49a0b9384" prot="private" static="no">
+        <type>Kokkos::View&lt; T *, Layout, HostSpace, MemoryUnmanaged &gt;</type>
+        <definition>using DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::TArray1DHost =  Kokkos::View&lt;T*, Layout, HostSpace, MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1DHost</name>
+        <qualifiedname>DViewFMatrixKokkos::TArray1DHost</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7888" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7888" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="df/d07/class_d_view_f_matrix_kokkos_1aaac11941ef46cd22089701c8d39c7b23" prot="private" static="no">
+        <type>Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::TArray1D =  Kokkos::View&lt;T*, Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1D</name>
+        <qualifiedname>DViewFMatrixKokkos::TArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7890" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7890" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1ac8fc220a839c2582f41dd84f6bf14aa3" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>DViewFMatrixKokkos::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7893" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7893" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1a6a7fa4a69c4708a61299c533b02d7cec" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>DViewFMatrixKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7894" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7894" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1a6576a6c865cd50e98ae480cd6761e60a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>DViewFMatrixKokkos::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7895" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7895" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1a9e8f75f3c4b26692e6cc1f4ba7c51314" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::this_matrix_</definition>
+        <argsstring></argsstring>
+        <name>this_matrix_</name>
+        <qualifiedname>DViewFMatrixKokkos::this_matrix_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7896" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7896" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1aabc65fdbb1b9ebd32028d13c8d577056" prot="private" static="no" mutable="no">
+        <type>TArray1DHost</type>
+        <definition>TArray1DHost DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::this_matrix_host_</definition>
+        <argsstring></argsstring>
+        <name>this_matrix_host_</name>
+        <qualifiedname>DViewFMatrixKokkos::this_matrix_host_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7897" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7897" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1ab4d2112fb3a47fca3a26161844b65298" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::temp_inp_matrix_</definition>
+        <argsstring></argsstring>
+        <name>temp_inp_matrix_</name>
+        <qualifiedname>DViewFMatrixKokkos::temp_inp_matrix_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7898" column="8" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7898" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="df/d07/class_d_view_f_matrix_kokkos_1aea62dafa28da4efac3b37375bdddeacd" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/d41/class_view_f_matrix" kindref="compound">ViewFMatrix</ref>&lt; T &gt;</type>
+        <definition>ViewFMatrix&lt;T&gt; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>DViewFMatrixKokkos::host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7973" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7973" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a739d126b52588f38bceb2243d4f655db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7901" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7989" bodyend="7989"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a17a2c9879725fb355704d74974d46dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7903" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7993" bodyend="8006"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a35c6fba72d5d2e0d5dc1d97af99fb593" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7905" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8010" bodyend="8024"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a317b96154496f6d02e1523b77f389642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2, size_t dim3)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7907" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8027" bodyend="8043"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1ac23d00319859fa7f5a537f4b0a95f89f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7909" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8046" bodyend="8063"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a0946b44bb87f05d67d707c07adec22a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7912" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8066" bodyend="8085"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a6e8adaa6eaf160a908dca4134a59a184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7915" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8088" bodyend="8108"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a9241fd020171a00601503c3759061496" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DViewFMatrixKokkos</definition>
+        <argsstring>(T *inp_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, size_t dim7)</argsstring>
+        <name>DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::DViewFMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>inp_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7918" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8111" bodyend="8133"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a4a2df71b318ff986f9b0eea90fad2d82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7923" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8137" bodyend="8141"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1aba7a2bfea2adcebd1965da0bb85e3ac7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7926" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8145" bodyend="8150"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a4c758a68332552ecd9ebeea66048ef7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7929" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8154" bodyend="8161"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a1bc75712bd3492efa91f3d6d5c2f1b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7932" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8165" bodyend="8174"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a5ea4fc7edf547cb036893cc623571d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7935" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8178" bodyend="8190"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a3e7cade4a17c2e03073db134e3a14762" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7938" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8194" bodyend="8208"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a07bc1c22ef8cebd665797f58ad7da4aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DViewFMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7942" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8212" bodyend="8228"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a5f9690056ffa91e66c0c77cf42d6dbdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="df/d07/class_d_view_f_matrix_kokkos" kindref="compound">DViewFMatrixKokkos</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp; DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator=</definition>
+        <argsstring>(const DViewFMatrixKokkos &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>DViewFMatrixKokkos::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="df/d07/class_d_view_f_matrix_kokkos" kindref="compound">DViewFMatrixKokkos</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7946" column="24" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8232" bodyend="8249"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a1aa10e0b85dd1a7e30e5b3151e192b86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>DViewFMatrixKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7951" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8254" bodyend="8256"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a394d7b351a2a81e2987539b90179d4fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <qualifiedname>DViewFMatrixKokkos::extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7956" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8260" bodyend="8262"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a2ff4a68a48b004453d2f4773a9146915" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>DViewFMatrixKokkos::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7959" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8266" bodyend="8271"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a91535afbe2fcc4422ce4afccd93ca526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>DViewFMatrixKokkos::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7962" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8275" bodyend="8277"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a1f2d8c605f9e0cef378d82e8b73bc88f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::device_pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>device_pointer</name>
+        <qualifiedname>DViewFMatrixKokkos::device_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7966" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8281" bodyend="8283"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a382d9b9082b8a6e95583f410ffedcd0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::host_pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>host_pointer</name>
+        <qualifiedname>DViewFMatrixKokkos::host_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7970" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8287" bodyend="8289"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a8335091139a35a753e461e4fab58ffb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::update_host</definition>
+        <argsstring>()</argsstring>
+        <name>update_host</name>
+        <qualifiedname>DViewFMatrixKokkos::update_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7976" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8292" bodyend="8295"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1a7e07e51e255ceb1468ca75c586eab802" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::update_device</definition>
+        <argsstring>()</argsstring>
+        <name>update_device</name>
+        <qualifiedname>DViewFMatrixKokkos::update_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7979" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8298" bodyend="8301"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d07/class_d_view_f_matrix_kokkos_1af1c0dfc50f6f0c28da5049a75ef2dea8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION DViewFMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::~DViewFMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~DViewFMatrixKokkos</name>
+        <qualifiedname>DViewFMatrixKokkos::~DViewFMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7983" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="8305" bodyend="8305"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="7885" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="7885" bodyend="7984"/>
+    <listofallmembers>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a1f2d8c605f9e0cef378d82e8b73bc88f" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>device_pointer</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a2ff4a68a48b004453d2f4773a9146915" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>dims</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1ac8fc220a839c2582f41dd84f6bf14aa3" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>dims_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a739d126b52588f38bceb2243d4f655db" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a17a2c9879725fb355704d74974d46dd3" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a35c6fba72d5d2e0d5dc1d97af99fb593" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a317b96154496f6d02e1523b77f389642" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1ac23d00319859fa7f5a537f4b0a95f89f" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a0946b44bb87f05d67d707c07adec22a6" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a6e8adaa6eaf160a908dca4134a59a184" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a9241fd020171a00601503c3759061496" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>DViewFMatrixKokkos</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a394d7b351a2a81e2987539b90179d4fd" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>extent</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1aea62dafa28da4efac3b37375bdddeacd" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>host</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a382d9b9082b8a6e95583f410ffedcd0a" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>host_pointer</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a6a7fa4a69c4708a61299c533b02d7cec" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>length_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a4a2df71b318ff986f9b0eea90fad2d82" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1aba7a2bfea2adcebd1965da0bb85e3ac7" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a4c758a68332552ecd9ebeea66048ef7e" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a1bc75712bd3492efa91f3d6d5c2f1b49" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a5ea4fc7edf547cb036893cc623571d09" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a3e7cade4a17c2e03073db134e3a14762" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a07bc1c22ef8cebd665797f58ad7da4aa" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a5f9690056ffa91e66c0c77cf42d6dbdf" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>operator=</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a91535afbe2fcc4422ce4afccd93ca526" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>order</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a6576a6c865cd50e98ae480cd6761e60a" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>order_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a1aa10e0b85dd1a7e30e5b3151e192b86" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>size</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1aaac11941ef46cd22089701c8d39c7b23" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>TArray1D</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a4c6da8bfedb10cdce0590ec49a0b9384" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>TArray1DHost</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1ab4d2112fb3a47fca3a26161844b65298" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>temp_inp_matrix_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a9e8f75f3c4b26692e6cc1f4ba7c51314" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>this_matrix_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1aabc65fdbb1b9ebd32028d13c8d577056" prot="private" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>this_matrix_host_</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a7e07e51e255ceb1468ca75c586eab802" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>update_device</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1a8335091139a35a753e461e4fab58ffb4" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>update_host</name></member>
+      <member refid="df/d07/class_d_view_f_matrix_kokkos_1af1c0dfc50f6f0c28da5049a75ef2dea8" prot="public" virt="non-virtual"><scope>DViewFMatrixKokkos</scope><name>~DViewFMatrixKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

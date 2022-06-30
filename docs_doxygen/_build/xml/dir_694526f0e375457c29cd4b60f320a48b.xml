@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_694526f0e375457c29cd4b60f320a48b" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/virtual_functions</compoundname>
+    <innerfile refid="classes_8cpp">classes.cpp</innerfile>
+    <innerfile refid="classes_8hpp">classes.hpp</innerfile>
+    <innerfile refid="example_2virtual__functions_2main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/virtual_functions/"/>
+  </compounddef>
+</doxygen>

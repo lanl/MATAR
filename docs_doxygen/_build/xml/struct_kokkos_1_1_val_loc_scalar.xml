@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_val_loc_scalar" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::ValLocScalar</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Index</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_val_loc_scalar_1ab4de20f432e39e481c7293e5606953d4" prot="public" static="no" mutable="no">
+        <type>Scalar</type>
+        <definition>Scalar Kokkos::ValLocScalar&lt; Scalar, Index &gt;::val</definition>
+        <argsstring></argsstring>
+        <name>val</name>
+        <qualifiedname>Kokkos::ValLocScalar::val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="443" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_val_loc_scalar_1a965990673870b65bdee57eeb38eb8e1e" prot="public" static="no" mutable="no">
+        <type>Index</type>
+        <definition>Index Kokkos::ValLocScalar&lt; Scalar, Index &gt;::loc</definition>
+        <argsstring></argsstring>
+        <name>loc</name>
+        <qualifiedname>Kokkos::ValLocScalar::loc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="444" column="9" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="444" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_val_loc_scalar_1aff1dc1f88fc70b47ec1302810fd291dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::ValLocScalar&lt; Scalar, Index &gt;::operator=</definition>
+        <argsstring>(const ValLocScalar &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::ValLocScalar::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">ValLocScalar</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="447" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="447" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_val_loc_scalar_1a46f60ff5c0fab7c0e6206d0818b0e32e" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::ValLocScalar&lt; Scalar, Index &gt;::operator=</definition>
+        <argsstring>(const volatile ValLocScalar &amp;rhs) volatile</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::ValLocScalar::operator=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">ValLocScalar</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="453" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="453" bodyend="456"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="442" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="442" bodyend="457"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_val_loc_scalar_1a965990673870b65bdee57eeb38eb8e1e" prot="public" virt="non-virtual"><scope>Kokkos::ValLocScalar</scope><name>loc</name></member>
+      <member refid="struct_kokkos_1_1_val_loc_scalar_1aff1dc1f88fc70b47ec1302810fd291dc" prot="public" virt="non-virtual"><scope>Kokkos::ValLocScalar</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_val_loc_scalar_1a46f60ff5c0fab7c0e6206d0818b0e32e" prot="public" virt="non-virtual"><scope>Kokkos::ValLocScalar</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_val_loc_scalar_1ab4de20f432e39e481c7293e5606953d4" prot="public" virt="non-virtual"><scope>Kokkos::ValLocScalar</scope><name>val</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

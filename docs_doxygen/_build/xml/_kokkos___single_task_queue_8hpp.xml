@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___single_task_queue_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_SingleTaskQueue.hpp</compoundname>
+    <includes refid="_kokkos___macros_8hpp" local="no">Kokkos_Macros.hpp</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_SingleTaskQueue.hpp</label>
+        <link refid="_kokkos___single_task_queue_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="3">
+        <label>KokkosCore_config.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKOS_IMPL_SINGLETASKQUEUE_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_IMPL_SINGLETASKQUEUE_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(KOKKOS_ENABLE_TASKDAG)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_TaskScheduler_fwd.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Core_fwd.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_MemoryPool.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_TaskBase.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_TaskResult.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_TaskQueueMemoryManager.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_TaskQueueCommon.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_kokkos___atomic_8hpp" kindref="compound">Kokkos_Atomic.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_OptionalRef.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_LIFO.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ExecSpace,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MemorySpace,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TaskQueueTraits,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">MemoryPool</ref>&gt;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SingleTaskQueue</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>TaskQueueMemoryManager&lt;ExecSpace,<sp/>MemorySpace,<sp/>MemoryPool&gt;,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>TaskQueueCommonMixin&lt;SingleTaskQueue&lt;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ExecSpace,<sp/>MemorySpace,<sp/>TaskQueueTraits,<sp/>MemoryPool&gt;&gt;<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">base_t<sp/>=<sp/>TaskQueueMemoryManager&lt;ExecSpace,<sp/>MemorySpace,<sp/>MemoryPool&gt;;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">common_mixin_t<sp/>=<sp/>TaskQueueCommonMixin&lt;SingleTaskQueue&gt;;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">EmptyTeamSchedulerInfo<sp/>{};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">EmptyTaskSchedulingInfo<sp/>{};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">task_queue_type<sp/><sp/><sp/>=<sp/>SingleTaskQueue;<sp/><sp/></highlight><highlight class="comment">//<sp/>mark<sp/>as<sp/>task_queue<sp/>concept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">task_queue_traits<sp/>=<sp/>TaskQueueTraits;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">task_base_type<sp/><sp/><sp/><sp/>=<sp/>TaskNode&lt;TaskQueueTraits&gt;;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ready_queue_type<sp/>=</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TaskQueueTraits::template<sp/>ready_queue_type&lt;task_base_type&gt;;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">team_scheduler_info_type<sp/><sp/>=<sp/>EmptyTeamSchedulerInfo;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">task_scheduling_info_type<sp/>=<sp/>EmptyTaskSchedulingInfo;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">runnable_task_base_type<sp/>=<sp/>RunnableTaskBase&lt;TaskQueueTraits&gt;;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Functor,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Scheduler&gt;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>requires<sp/>TaskScheduler&lt;Scheduler&gt;<sp/>&amp;&amp;<sp/>TaskFunctor&lt;Functor&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">runnable_task_type<sp/>=</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>RunnableTask&lt;task_queue_traits,<sp/>Scheduler,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Functor::value_type,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Functor&gt;;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">aggregate_task_type<sp/>=</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>AggregateTask&lt;task_queue_traits,<sp/>task_scheduling_info_type&gt;;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>allowed<sp/>priorities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NumQueue<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>ready_queue_type<sp/>m_ready_queues[NumQueue][2];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;editor-fold<sp/>desc=&quot;Constructors,<sp/>destructors,<sp/>and<sp/>assignment&quot;&gt;<sp/>{{{2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>SingleTaskQueue()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>SingleTaskQueue(SingleTaskQueue<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>SingleTaskQueue(SingleTaskQueue&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>SingleTaskQueue&amp;<sp/>operator=(SingleTaskQueue<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>SingleTaskQueue&amp;<sp/>operator=(SingleTaskQueue&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>SingleTaskQueue(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>base_t::execution_space<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>base_t::memory_space<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>base_t::memory_pool<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>arg_memory_pool)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>base_t(arg_memory_pool)<sp/>{}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>~SingleTaskQueue()<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i_priority<sp/>=<sp/>0;<sp/>i_priority<sp/>&lt;<sp/>NumQueue;<sp/>++i_priority)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>KOKKOS_EXPECTS(m_ready_queues[i_priority][TaskTeam].empty());</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>KOKKOS_EXPECTS(m_ready_queues[i_priority][TaskSingle].empty());</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;/editor-fold&gt;<sp/>end<sp/>Constructors,<sp/>destructors,<sp/>and<sp/>assignment<sp/>}}}2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>KOKKOS_FUNCTION</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>schedule_runnable(runnable_task_base_type&amp;&amp;<sp/>task,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>team_scheduler_info_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>info)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;schedule_runnable_to_queue(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(task),</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_ready_queues[</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(task.get_priority())][</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(task.get_task_type())],</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Task<sp/>may<sp/>be<sp/>enqueued<sp/>and<sp/>may<sp/>be<sp/>run<sp/>at<sp/>any<sp/>point;<sp/>don&apos;t<sp/>touch<sp/>it<sp/>(hence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>use<sp/>of<sp/>move<sp/>semantics)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>KOKKOS_FUNCTION</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>OptionalRef&lt;task_base_type&gt;<sp/>pop_ready_task(</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>team_scheduler_info_type<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/></highlight><highlight class="comment">/*info*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>OptionalRef&lt;task_base_type&gt;<sp/>return_value;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>always<sp/>loop<sp/>in<sp/>order<sp/>of<sp/>priority<sp/>first,<sp/>then<sp/>prefer<sp/>team<sp/>tasks<sp/>over</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>single<sp/>tasks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i_priority<sp/>=<sp/>0;<sp/>i_priority<sp/>&lt;<sp/>NumQueue;<sp/>++i_priority)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>a<sp/>team<sp/>task<sp/>with<sp/>this<sp/>priority</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return_value<sp/>=<sp/>m_ready_queues[i_priority][TaskTeam].pop();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_value)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>return_value;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>a<sp/>single<sp/>task<sp/>with<sp/>this<sp/>priority</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return_value<sp/>=<sp/>m_ready_queues[i_priority][TaskSingle].pop();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_value)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>return_value;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>nothing<sp/>was<sp/>found,<sp/>return<sp/>a<sp/>default-constructed<sp/>(empty)<sp/>OptionalRef</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>return_value;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>team_scheduler_info_type<sp/>initial_team_scheduler_info(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>Impl<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>Kokkos<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>#if<sp/>defined(<sp/>KOKKOS_ENABLE_TASKDAG<sp/>)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>#ifndef<sp/>KOKKOS_IMPL_SINGLETASKQUEUE_HPP<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SingleTaskQueue.hpp"/>
+  </compounddef>
+</doxygen>

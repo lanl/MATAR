@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestReducers::MinLocFunctorTag</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag_1af90139cdc0f43bc95c4d685654298272" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const Scalar *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;const Scalar*, ExecSpace&gt; Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinLocFunctorTag::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>Test::TestReducers::MinLocFunctorTag::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="212" column="18" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag_1a3c3141fe81368b9497b76081724e07b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinLocFunctorTag::operator()</definition>
+        <argsstring>(const ReducerTag, const int &amp;i, typename Kokkos::MinLoc&lt; Scalar, int &gt;::value_type &amp;value) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestReducers::MinLocFunctorTag::operator()</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>ReducerTag</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="struct_kokkos_1_1_min_loc" kindref="compound">Kokkos::MinLoc</ref>&lt; Scalar, int &gt;::value_type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="215" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="215" bodyend="222"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinLocFunctorTag</label>
+        <link refid="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; const Scalar *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; const Scalar *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="211" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="211" bodyend="223"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag_1a3c3141fe81368b9497b76081724e07b4" prot="public" virt="non-virtual"><scope>Test::TestReducers::MinLocFunctorTag</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_reducers_1_1_min_loc_functor_tag_1af90139cdc0f43bc95c4d685654298272" prot="public" virt="non-virtual"><scope>Test::TestReducers::MinLocFunctorTag</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

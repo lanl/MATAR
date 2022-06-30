@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_logical_space_shares_access_1_1no__shared__access" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::LogicalSpaceSharesAccess::no_shared_access</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="66" bodyend="66"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

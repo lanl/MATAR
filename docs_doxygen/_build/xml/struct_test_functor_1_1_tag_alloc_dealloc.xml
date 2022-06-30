@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_functor_1_1_tag_alloc_dealloc" kind="struct" language="C++" prot="public">
+    <compoundname>TestFunctor::TagAllocDealloc</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="145" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="145" bodyend="145"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

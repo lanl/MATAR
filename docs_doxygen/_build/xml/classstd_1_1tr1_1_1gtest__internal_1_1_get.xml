@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classstd_1_1tr1_1_1gtest__internal_1_1_get" kind="class" language="C++" prot="public">
+    <compoundname>std::tr1::gtest_internal::Get</compoundname>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>k</declname>
+        <defname>k</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="782" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="782" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

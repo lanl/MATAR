@@ -1,0 +1,453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</compoundname>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>Container</declname>
+        <defname>Container</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>MaxDimensionSize</declname>
+        <defname>MaxDimensionSize</defname>
+        <defval>100</defval>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>TemplateArguments</declname>
+        <defname>TemplateArguments</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aa038e9d7aca387fe5f258795e7f38fae" prot="public" static="no">
+        <type>Container&lt; TemplateArguments... &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::ProblemSpaceInput =  Container&lt;TemplateArguments...&gt;</definition>
+        <argsstring></argsstring>
+        <name>ProblemSpaceInput</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::ProblemSpaceInput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="303" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a26d429a0bfed0fcee2c3ebe40b5de506" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_map_type_converter" kindref="compound">Impl::MapTypeConverter</ref>&lt; ProblemSpaceInput &gt;::type</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::StoredProblemSpace =  typename Impl::MapTypeConverter&lt;ProblemSpaceInput&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>StoredProblemSpace</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::StoredProblemSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="315" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ad1baf3a1fbe7e7bdef1c94b4d21dee9f" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor" kindref="compound">Impl::ValueHierarchyConstructor</ref>&lt; Container&lt; TemplateArguments... &gt; &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::HierarchyConstructor =  typename Impl::ValueHierarchyConstructor&lt;Container&lt;TemplateArguments...&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>HierarchyConstructor</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::HierarchyConstructor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="317" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a88ad994aabd35b2b03ffc24d77fb9d7f" prot="public" static="no">
+        <type>std::array&lt; <ref refid="struct_kokkos___tools___variable_value" kindref="compound">Kokkos::Tools::Experimental::VariableValue</ref>, space_dimensionality &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::ValueArray =  std::array&lt;Kokkos::Tools::Experimental::VariableValue, space_dimensionality&gt;</definition>
+        <argsstring></argsstring>
+        <name>ValueArray</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::ValueArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="320" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a721ecf230b64bced8c3dda91f690b464" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class Key</type>
+          </param>
+          <param>
+            <type>class Value</type>
+          </param>
+        </templateparamlist>
+        <type>std::map&lt; Key, Value &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::extended_map =  std::map&lt;Key, Value&gt;</definition>
+        <argsstring></argsstring>
+        <name>extended_map</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::extended_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="323" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ab544a9823031695c6a54e4b908355a7e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename Key</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem" kindref="compound">MultidimensionalSparseTuningProblem</ref>&lt; extended_map, MaxDimensionSize, Key, ProblemSpaceInput &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::extended_problem =  MultidimensionalSparseTuningProblem&lt;extended_map, MaxDimensionSize, Key, ProblemSpaceInput&gt;</definition>
+        <argsstring></argsstring>
+        <name>extended_problem</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::extended_problem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="325" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a03626c0bfe5dd48cba0114a277c1cb5f" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename Key</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+          </param>
+        </templateparamlist>
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_map_type_converter" kindref="compound">Impl::MapTypeConverter</ref>&lt; extended_map&lt; Key, Value &gt; &gt;::type</type>
+        <definition>using Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::ExtendedProblemSpace =  typename Impl::MapTypeConverter&lt;extended_map&lt;Key, Value&gt; &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>ExtendedProblemSpace</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::ExtendedProblemSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="329" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a62ca4fce998742bb57b3dff939ff6da4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::space_dimensionality</definition>
+        <argsstring></argsstring>
+        <name>space_dimensionality</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::space_dimensionality</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1get__space__dimensionality" kindref="compound">Impl::get_space_dimensionality</ref>&lt;ProblemSpaceInput&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="304" column="24" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a7ba78b86709cad9e12a999f8e8ef2507" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::max_space_dimension_size</definition>
+        <argsstring></argsstring>
+        <name>max_space_dimension_size</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::max_space_dimension_size</qualifiedname>
+        <initializer>= MaxDimensionSize</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="306" column="27" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aeb0abe7e6122dafce057603ce26f3ef8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::tuning_min</definition>
+        <argsstring></argsstring>
+        <name>tuning_min</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::tuning_min</qualifiedname>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="307" column="27" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aa838299a265b2b17e63f1a7bce3c2922" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::tuning_max</definition>
+        <argsstring></argsstring>
+        <name>tuning_max</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::tuning_max</qualifiedname>
+        <initializer>= 0.999</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="308" column="27" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ac9d0c1d82a65c407b6e016778e0b03f4" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::tuning_step</definition>
+        <argsstring></argsstring>
+        <name>tuning_step</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::tuning_step</qualifiedname>
+        <initializer>= tuning_max / max_space_dimension_size</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="313" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a7153c6d06ec2e7e0973822e6805a07a5" prot="private" static="no" mutable="no">
+        <type>StoredProblemSpace</type>
+        <definition>StoredProblemSpace Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::m_space</definition>
+        <argsstring></argsstring>
+        <name>m_space</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::m_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="350" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a25b1853fb17858c8db37d2b9b5b85b7a" prot="private" static="no" mutable="no">
+        <type>std::array&lt; size_t, space_dimensionality &gt;</type>
+        <definition>std::array&lt;size_t, space_dimensionality&gt; Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::variable_ids</definition>
+        <argsstring></argsstring>
+        <name>variable_ids</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::variable_ids</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="351" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="351" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a1eec4a2b188b8e91b6ecf6a059c8a3d3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::m_variable_names</definition>
+        <argsstring></argsstring>
+        <name>m_variable_names</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::m_variable_names</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="352" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1af02e1f43d6b9c797f0aa1a66cd9449d0" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="353" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1abcb9b2bf73f21300e1afffd84c5f7dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Key</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::extend</definition>
+        <argsstring>(const std::string &amp;axis_name, const std::vector&lt; Key &gt; &amp;new_tuning_axis) const -&gt; extended_problem&lt; Key &gt;</argsstring>
+        <name>extend</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::extend</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>axis_name</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; Key &gt; &amp;</type>
+          <declname>new_tuning_axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="333" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="333" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ae324e77c36437221c79d95a4461f5ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::MultidimensionalSparseTuningProblem</definition>
+        <argsstring>()=default</argsstring>
+        <name>MultidimensionalSparseTuningProblem</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::MultidimensionalSparseTuningProblem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="356" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a48a8749a3bee6d5891969e224d61e74e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::MultidimensionalSparseTuningProblem</definition>
+        <argsstring>(StoredProblemSpace space, const std::vector&lt; std::string &gt; &amp;names)</argsstring>
+        <name>MultidimensionalSparseTuningProblem</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::MultidimensionalSparseTuningProblem</qualifiedname>
+        <param>
+          <type>StoredProblemSpace</type>
+          <declname>space</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>names</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="358" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="358" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a28f680915f577ed643681ead6207d835" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::MultidimensionalSparseTuningProblem</definition>
+        <argsstring>(ProblemSpaceInput space, const std::vector&lt; std::string &gt; &amp;names)</argsstring>
+        <name>MultidimensionalSparseTuningProblem</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::MultidimensionalSparseTuningProblem</qualifiedname>
+        <param>
+          <type>ProblemSpaceInput</type>
+          <declname>space</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>names</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="375" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="375" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a26ffd2aabe0410ff0d0e392fb12d3506" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Coordinates</declname>
+            <defname>Coordinates</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::get_point</definition>
+        <argsstring>(Coordinates... coordinates)</argsstring>
+        <name>get_point</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::get_point</qualifiedname>
+        <param>
+          <type>Coordinates...</type>
+          <declname>coordinates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="381" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="381" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a9c32d6859d308ae98f944b23e0ddd59d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="389" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="389" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a1597c83b845c4e65e614d0afc68f6bbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem&lt; Container, MaxDimensionSize, TemplateArguments &gt;::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="401" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="401" bodyend="401"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="301" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="301" bodyend="402"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a9c32d6859d308ae98f944b23e0ddd59d" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>begin</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1af02e1f43d6b9c797f0aa1a66cd9449d0" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>context</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a1597c83b845c4e65e614d0afc68f6bbe" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>end</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1abcb9b2bf73f21300e1afffd84c5f7dd2" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>extend</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a721ecf230b64bced8c3dda91f690b464" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>extended_map</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ab544a9823031695c6a54e4b908355a7e" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>extended_problem</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a03626c0bfe5dd48cba0114a277c1cb5f" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>ExtendedProblemSpace</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a26ffd2aabe0410ff0d0e392fb12d3506" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>get_point</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ad1baf3a1fbe7e7bdef1c94b4d21dee9f" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>HierarchyConstructor</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a7153c6d06ec2e7e0973822e6805a07a5" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>m_space</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a1eec4a2b188b8e91b6ecf6a059c8a3d3" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>m_variable_names</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a7ba78b86709cad9e12a999f8e8ef2507" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>max_space_dimension_size</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ae324e77c36437221c79d95a4461f5ce9" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>MultidimensionalSparseTuningProblem</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a48a8749a3bee6d5891969e224d61e74e" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>MultidimensionalSparseTuningProblem</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a28f680915f577ed643681ead6207d835" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>MultidimensionalSparseTuningProblem</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aa038e9d7aca387fe5f258795e7f38fae" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>ProblemSpaceInput</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a62ca4fce998742bb57b3dff939ff6da4" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>space_dimensionality</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a26d429a0bfed0fcee2c3ebe40b5de506" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>StoredProblemSpace</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aa838299a265b2b17e63f1a7bce3c2922" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>tuning_max</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1aeb0abe7e6122dafce057603ce26f3ef8" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>tuning_min</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1ac9d0c1d82a65c407b6e016778e0b03f4" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>tuning_step</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a88ad994aabd35b2b03ffc24d77fb9d7f" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>ValueArray</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_multidimensional_sparse_tuning_problem_1a25b1853fb17858c8db37d2b9b5b85b7a" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MultidimensionalSparseTuningProblem</scope><name>variable_ids</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

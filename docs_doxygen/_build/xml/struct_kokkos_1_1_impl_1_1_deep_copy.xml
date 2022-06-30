@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_deep_copy" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::DeepCopy</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DstSpace</type>
+      </param>
+      <param>
+        <type>class SrcSpace</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+        <defval>typename DstSpace::execution_space</defval>
+      </param>
+      <param>
+        <type>class Enable</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" line="258" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" bodystart="258" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

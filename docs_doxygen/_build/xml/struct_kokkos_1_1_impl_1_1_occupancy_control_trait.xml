@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_occupancy_control_trait" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OccupancyControlTrait</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_trait_specification_base" prot="public" virt="non-virtual">Kokkos::Impl::TraitSpecificationBase&lt; OccupancyControlTrait &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_occupancy_control_trait_1_1base__traits" prot="public">Kokkos::Impl::OccupancyControlTrait::base_traits</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_occupancy_control_trait_1a104b66c1723018447f372b29c1f0b812" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class OccControl</type>
+          </param>
+          <param>
+            <type>class AnalyzeNextTrait</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_occupancy_control_policy_mixin" kindref="compound">OccupancyControlPolicyMixin</ref>&lt; OccControl, AnalyzeNextTrait &gt;</type>
+        <definition>using Kokkos::Impl::OccupancyControlTrait::mixin_matching_trait =  OccupancyControlPolicyMixin&lt;OccControl, AnalyzeNextTrait&gt;</definition>
+        <argsstring></argsstring>
+        <name>mixin_matching_trait</name>
+        <qualifiedname>Kokkos::Impl::OccupancyControlTrait::mixin_matching_trait</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" line="101" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_occupancy_control_trait_1a21d57f3060aa7b4196c49c5067dc1c0b" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>std::integral_constant&lt; bool, std::is_same&lt; T, <ref refid="struct_kokkos_1_1_experimental_1_1_desired_occupancy" kindref="compound">Kokkos::Experimental::DesiredOccupancy</ref> &gt;::value||std::is_same&lt; T, <ref refid="struct_kokkos_1_1_experimental_1_1_maximize_occupancy" kindref="compound">Kokkos::Experimental::MaximizeOccupancy</ref> &gt;::value &gt;</type>
+        <definition>using Kokkos::Impl::OccupancyControlTrait::trait_matches_specification =  std::integral_constant&lt; bool, std::is_same&lt;T, Kokkos::Experimental::DesiredOccupancy&gt;::value || std::is_same&lt;T, Kokkos::Experimental::MaximizeOccupancy&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>trait_matches_specification</name>
+        <qualifiedname>Kokkos::Impl::OccupancyControlTrait::trait_matches_specification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" line="104" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::OccupancyControlTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_occupancy_control_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; OccupancyControlTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::OccupancyControlTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_occupancy_control_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; OccupancyControlTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" line="91" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_OccupancyControlTrait.hpp" bodystart="91" bodyend="108"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_occupancy_control_trait_1a104b66c1723018447f372b29c1f0b812" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OccupancyControlTrait</scope><name>mixin_matching_trait</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1a57561cfb7b2706c4a465343686f28380" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OccupancyControlTrait</scope><name>policy_with_trait</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_occupancy_control_trait_1a21d57f3060aa7b4196c49c5067dc1c0b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OccupancyControlTrait</scope><name>trait_matches_specification</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1af7b3d83d4c9873c2176a5092d73b2ea4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OccupancyControlTrait</scope><name>trait_specification</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

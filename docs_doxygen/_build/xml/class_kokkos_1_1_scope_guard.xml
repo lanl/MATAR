@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_scope_guard" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::ScopeGuard</compoundname>
+    <includes refid="_kokkos___core_8hpp" local="no">Kokkos_Core.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_scope_guard_1a104e59dc7a537c332077575f897b4dcc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::ScopeGuard::sg_init</definition>
+        <argsstring></argsstring>
+        <name>sg_init</name>
+        <qualifiedname>Kokkos::ScopeGuard::sg_init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="273" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_scope_guard_1a7c62d850bcfa13c066679228e62f7c52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::ScopeGuard::ScopeGuard</definition>
+        <argsstring>(int &amp;narg, char *arg[])</argsstring>
+        <name>ScopeGuard</name>
+        <qualifiedname>Kokkos::ScopeGuard::ScopeGuard</qualifiedname>
+        <param>
+          <type>int &amp;</type>
+          <declname>narg</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>arg</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="250" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_scope_guard_1a17dddf0c2fa85187db655c9ea20ab7a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::ScopeGuard::ScopeGuard</definition>
+        <argsstring>(const InitArguments &amp;args=InitArguments())</argsstring>
+        <name>ScopeGuard</name>
+        <qualifiedname>Kokkos::ScopeGuard::ScopeGuard</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_init_arguments" kindref="compound">InitArguments</ref> &amp;</type>
+          <declname>args</declname>
+          <defval><ref refid="struct_kokkos_1_1_init_arguments" kindref="compound">InitArguments</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="258" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="258" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_scope_guard_1a47220c18f546ae89e3a03f14648f5bed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::ScopeGuard::~ScopeGuard</definition>
+        <argsstring>()</argsstring>
+        <name>~ScopeGuard</name>
+        <qualifiedname>Kokkos::ScopeGuard::~ScopeGuard</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="266" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="266" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_scope_guard_1aa1ff6910edfeca13b0771cb03a55b49b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref> &amp;</type>
+        <definition>ScopeGuard &amp; Kokkos::ScopeGuard::operator=</definition>
+        <argsstring>(const ScopeGuard &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::ScopeGuard::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="275" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_scope_guard_1aefe5a586b297ccd8af301e209b1a5196" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::ScopeGuard::ScopeGuard</definition>
+        <argsstring>(const ScopeGuard &amp;)=delete</argsstring>
+        <name>ScopeGuard</name>
+        <qualifiedname>Kokkos::ScopeGuard::ScopeGuard</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="276" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref> Some user scope issues have been identified with some Kokkos::finalize calls; <ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref> aims to correct these issues. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Two requirements for <ref refid="class_kokkos_1_1_scope_guard" kindref="compound">ScopeGuard</ref>: if Kokkos::is_initialized() in the constructor, don&apos;t call Kokkos::initialize or Kokkos::finalize it is not copyable or assignable </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="248" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="248" bodyend="277"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_scope_guard_1aa1ff6910edfeca13b0771cb03a55b49b" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_scope_guard_1a7c62d850bcfa13c066679228e62f7c52" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>ScopeGuard</name></member>
+      <member refid="class_kokkos_1_1_scope_guard_1a17dddf0c2fa85187db655c9ea20ab7a1" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>ScopeGuard</name></member>
+      <member refid="class_kokkos_1_1_scope_guard_1aefe5a586b297ccd8af301e209b1a5196" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>ScopeGuard</name></member>
+      <member refid="class_kokkos_1_1_scope_guard_1a104e59dc7a537c332077575f897b4dcc" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>sg_init</name></member>
+      <member refid="class_kokkos_1_1_scope_guard_1a47220c18f546ae89e3a03f14648f5bed" prot="public" virt="non-virtual"><scope>Kokkos::ScopeGuard</scope><name>~ScopeGuard</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

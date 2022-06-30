@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_hex_grad" kind="struct" language="C++" prot="public">
+    <compoundname>Test::HexGrad</compoundname>
+    <innerclass refid="struct_test_1_1_hex_grad_1_1_init" prot="public">Test::HexGrad::Init</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+      <param>
+        <type>typename CoordScalarType</type>
+        <defval>double</defval>
+      </param>
+      <param>
+        <type>typename GradScalarType</type>
+        <defval>float</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_hex_grad_1a8527db09a827b4801efe62eb99fd5475" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@34</name>
+        <qualifiedname>Test::HexGrad::@34</qualifiedname>
+        <enumvalue id="struct_test_1_1_hex_grad_1a8527db09a827b4801efe62eb99fd5475acf605b98afd6aafab81862b174b78d76" prot="public">
+          <name>NSpace</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_hex_grad_1a8527db09a827b4801efe62eb99fd5475a786580a4ecf6cf28750fd1d787cd7ca2" prot="public">
+          <name>NNode</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_hex_grad_1acb9c20a8370927796efa24cbc383e664" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@35</name>
+        <qualifiedname>Test::HexGrad::@35</qualifiedname>
+        <enumvalue id="struct_test_1_1_hex_grad_1acb9c20a8370927796efa24cbc383e664a26223053af25915d479593c979ba4cbf" prot="public">
+          <name>FLOPS</name>
+          <initializer>= 318</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_hex_grad_1a653b64e3a0aa50996e4874c2ecf32fa9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@36</name>
+        <qualifiedname>Test::HexGrad::@36</qualifiedname>
+        <enumvalue id="struct_test_1_1_hex_grad_1a653b64e3a0aa50996e4874c2ecf32fa9ae5a68c2602fbf200abb2cd7a2d3586cb" prot="public">
+          <name>READS</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_hex_grad_1afdd14c64873a99fd7753709afbfc4190" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@37</name>
+        <qualifiedname>Test::HexGrad::@37</qualifiedname>
+        <enumvalue id="struct_test_1_1_hex_grad_1afdd14c64873a99fd7753709afbfc4190ab513517f834a5cbdeb4b58c0f3cb7089" prot="public">
+          <name>WRITES</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_hex_grad_1afd543bc45e0037c4c1c0b1461fd35824" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::HexGrad::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="54" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_hex_grad_1ab205f786ce2302dd3e3850582efc3565" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Test::HexGrad::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="55" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_hex_grad_1a18db1ec228eb54dbe050be4b73381f6e" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_hex_grad" kindref="compound">HexGrad</ref>&lt; DeviceType, CoordScalarType, GradScalarType &gt;</type>
+        <definition>using Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::self_type =  HexGrad&lt;DeviceType, CoordScalarType, GradScalarType&gt;</definition>
+        <argsstring></argsstring>
+        <name>self_type</name>
+        <qualifiedname>Test::HexGrad::self_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="57" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_hex_grad_1ab8f1478145634edc419bd9d83c92f657" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; CoordScalarType *[NSpace][NNode], execution_space &gt;</type>
+        <definition>using Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::elem_coord_type =  Kokkos::View&lt;CoordScalarType * [NSpace][NNode], execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>elem_coord_type</name>
+        <qualifiedname>Test::HexGrad::elem_coord_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_hex_grad_1a791e5ef9c6b69cf6dc45e0d9800fa0ce" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; GradScalarType *[NSpace][NNode], execution_space &gt;</type>
+        <definition>using Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::elem_grad_type =  Kokkos::View&lt;GradScalarType * [NSpace][NNode], execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>elem_grad_type</name>
+        <qualifiedname>Test::HexGrad::elem_grad_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_hex_grad_1a2a39e4eec1ec0023a2518fde2cb5b3ee" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">elem_coord_type</ref></type>
+        <definition>elem_coord_type Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::coords</definition>
+        <argsstring></argsstring>
+        <name>coords</name>
+        <qualifiedname>Test::HexGrad::coords</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="69" column="19" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_hex_grad_1adcc7c6160f27b8caaa3b6b28036b2f79" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">elem_grad_type</ref></type>
+        <definition>elem_grad_type Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::grad_op</definition>
+        <argsstring></argsstring>
+        <name>grad_op</name>
+        <qualifiedname>Test::HexGrad::grad_op</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="70" column="18" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_hex_grad_1aae43b17a8cd0d6d5d4f64466a5ad5dc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::HexGrad</definition>
+        <argsstring>(const elem_coord_type &amp;arg_coords, const elem_grad_type &amp;arg_grad_op)</argsstring>
+        <name>HexGrad</name>
+        <qualifiedname>Test::HexGrad::HexGrad</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">elem_coord_type</ref> &amp;</type>
+          <declname>arg_coords</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">elem_grad_type</ref> &amp;</type>
+          <declname>arg_grad_op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="76" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_hex_grad_1a9dcbf0f52a890349d078c8bb440f93b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::operator()</definition>
+        <argsstring>(size_type ielem) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::HexGrad::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>ielem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="127" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="127" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_hex_grad_1a924b3bdfe406a02a719f700f5c75dde8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::grad</definition>
+        <argsstring>(const CoordScalarType x[], const CoordScalarType z[], GradScalarType grad_y[])</argsstring>
+        <name>grad</name>
+        <qualifiedname>Test::HexGrad::grad</qualifiedname>
+        <param>
+          <type>const CoordScalarType</type>
+          <declname>x</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const CoordScalarType</type>
+          <declname>z</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>GradScalarType</type>
+          <declname>grad_y</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="79" column="38" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="79" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_hex_grad_1a094ff16bf052139130e1d437914e5aaa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;::test</definition>
+        <argsstring>(const int count, const int iter=1)</argsstring>
+        <name>test</name>
+        <qualifiedname>Test::HexGrad::test</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>iter</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="226" column="17" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="226" bodyend="249"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::HexGrad&lt; DeviceType, CoordScalarType, GradScalarType &gt;</label>
+        <link refid="struct_test_1_1_hex_grad"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>coords</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>grad_op</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *[NSpace][NNode], execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; float *[NSpace][NNode], execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; float *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" line="53" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestHexGrad.cpp" bodystart="53" bodyend="250"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_hex_grad_1a2a39e4eec1ec0023a2518fde2cb5b3ee" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>coords</name></member>
+      <member refid="struct_test_1_1_hex_grad_1ab8f1478145634edc419bd9d83c92f657" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>elem_coord_type</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a791e5ef9c6b69cf6dc45e0d9800fa0ce" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>elem_grad_type</name></member>
+      <member refid="struct_test_1_1_hex_grad_1afd543bc45e0037c4c1c0b1461fd35824" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_hex_grad_1acb9c20a8370927796efa24cbc383e664a26223053af25915d479593c979ba4cbf" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>FLOPS</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a924b3bdfe406a02a719f700f5c75dde8" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>grad</name></member>
+      <member refid="struct_test_1_1_hex_grad_1adcc7c6160f27b8caaa3b6b28036b2f79" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>grad_op</name></member>
+      <member refid="struct_test_1_1_hex_grad_1aae43b17a8cd0d6d5d4f64466a5ad5dc5" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>HexGrad</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a8527db09a827b4801efe62eb99fd5475a786580a4ecf6cf28750fd1d787cd7ca2" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>NNode</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a8527db09a827b4801efe62eb99fd5475acf605b98afd6aafab81862b174b78d76" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>NSpace</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a9dcbf0f52a890349d078c8bb440f93b9" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a653b64e3a0aa50996e4874c2ecf32fa9ae5a68c2602fbf200abb2cd7a2d3586cb" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>READS</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a18db1ec228eb54dbe050be4b73381f6e" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>self_type</name></member>
+      <member refid="struct_test_1_1_hex_grad_1ab205f786ce2302dd3e3850582efc3565" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>size_type</name></member>
+      <member refid="struct_test_1_1_hex_grad_1a094ff16bf052139130e1d437914e5aaa" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>test</name></member>
+      <member refid="struct_test_1_1_hex_grad_1afdd14c64873a99fd7753709afbfc4190ab513517f834a5cbdeb4b58c0f3cb7089" prot="public" virt="non-virtual"><scope>Test::HexGrad</scope><name>WRITES</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_0a41f61ec27f608dde4d9d88757658a1" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts</compoundname>
+    <innerfile refid="data__layouts_8cpp">data_layouts.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/"/>
+  </compounddef>
+</doxygen>

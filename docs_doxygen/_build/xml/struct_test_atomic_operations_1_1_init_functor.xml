@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_atomic_operations_1_1_init_functor" kind="struct" language="C++" prot="public">
+    <compoundname>TestAtomicOperations::InitFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class DEVICE_TYPE</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_atomic_operations_1_1_init_functor_1ab8200922de7b9cc3f94a98edc529466a" prot="public" static="no">
+        <type>DEVICE_TYPE</type>
+        <definition>using TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::execution_space =  DEVICE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_operations_1_1_init_functor_1a814d4a7d26731dec1d8eb485c30c9c97" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space &gt;</type>
+        <definition>using TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::type =  typename Kokkos::View&lt;T, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_operations_1_1_init_functor_1a4f0d617a89c2afa67cc306712aa1124c" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space &gt;::HostMirror</type>
+        <definition>using TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::h_type =  typename Kokkos::View&lt;T, execution_space&gt;::HostMirror</definition>
+        <argsstring></argsstring>
+        <name>h_type</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::h_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_atomic_operations_1_1_init_functor_1a986a59713849bc84861195df5e6dc24d" prot="public" static="no" mutable="no">
+        <type>type</type>
+        <definition>type TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="75" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_operations_1_1_init_functor_1abd415fc7ed3a8fe649422aa1a1f16a6e" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::init_value</definition>
+        <argsstring></argsstring>
+        <name>init_value</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::init_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="76" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_atomic_operations_1_1_init_functor_1a6c544259b3685be99efe8edd4baf757d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::operator()</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="79" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_operations_1_1_init_functor_1ad24a97435b6f18801b432d9fc23c2c1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;::InitFunctor</definition>
+        <argsstring>(T _init_value)</argsstring>
+        <name>InitFunctor</name>
+        <qualifiedname>TestAtomicOperations::InitFunctor::InitFunctor</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>_init_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="81" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestAtomicOperations::InitFunctor&lt; T, DEVICE_TYPE &gt;</label>
+        <link refid="struct_test_atomic_operations_1_1_init_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; T, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; T, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="70" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="70" bodyend="82"/>
+    <listofallmembers>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1a986a59713849bc84861195df5e6dc24d" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>data</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1ab8200922de7b9cc3f94a98edc529466a" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>execution_space</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1a4f0d617a89c2afa67cc306712aa1124c" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>h_type</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1abd415fc7ed3a8fe649422aa1a1f16a6e" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>init_value</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1ad24a97435b6f18801b432d9fc23c2c1c" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>InitFunctor</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1a6c544259b3685be99efe8edd4baf757d" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_atomic_operations_1_1_init_functor_1a814d4a7d26731dec1d8eb485c30c9c97" prot="public" virt="non-virtual"><scope>TestAtomicOperations::InitFunctor</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

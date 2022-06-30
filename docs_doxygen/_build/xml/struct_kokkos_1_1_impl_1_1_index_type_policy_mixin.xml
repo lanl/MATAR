@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::IndexTypePolicyMixin</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">AnalyzeNextTrait</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class IntegralIndexType</type>
+      </param>
+      <param>
+        <type>class AnalyzeNextTrait</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1adfa248f23845998cb3eca4118dc8b0dc" prot="public" static="no">
+        <type>AnalyzeNextTrait</type>
+        <definition>using Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;::base_t =  AnalyzeNextTrait</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::IndexTypePolicyMixin::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" line="103" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1ab6b9b6993703fb9f863108685b810f3d" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_index_type" kindref="compound">Kokkos::IndexType</ref>&lt; IntegralIndexType &gt;</type>
+        <definition>using Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;::index_type =  Kokkos::IndexType&lt;IntegralIndexType&gt;</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::IndexTypePolicyMixin::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" line="115" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1aa77efbed1b4c6688be53167277aef560" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;::show_index_type_error_in_compilation_message</definition>
+        <argsstring></argsstring>
+        <name>show_index_type_error_in_compilation_message</name>
+        <qualifiedname>Kokkos::Impl::IndexTypePolicyMixin::show_index_type_error_in_compilation_message</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_impl_1_1show__extra__index__type__erroneously__given__to__execution__policy" kindref="compound">show_extra_index_type_erroneously_given_to_execution_policy</ref>&lt;
+          std::conditional_t&lt;base_t::index_type_is_defaulted, void,
+                             typename base_t::schedule_type&gt;&gt;{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" line="105" column="25" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1a0cb4d5c7cfc86970fb21ac41acf6469e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;::index_type_is_defaulted</definition>
+        <argsstring></argsstring>
+        <name>index_type_is_defaulted</name>
+        <qualifiedname>Kokkos::Impl::IndexTypePolicyMixin::index_type_is_defaulted</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" line="114" column="25" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AnalyzeNextTrait</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AnalyzeNextTrait</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::IndexTypePolicyMixin&lt; IntegralIndexType, AnalyzeNextTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" line="102" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IndexTypeTrait.hpp" bodystart="102" bodyend="116"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1adfa248f23845998cb3eca4118dc8b0dc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::IndexTypePolicyMixin</scope><name>base_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1ab6b9b6993703fb9f863108685b810f3d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::IndexTypePolicyMixin</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1a0cb4d5c7cfc86970fb21ac41acf6469e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::IndexTypePolicyMixin</scope><name>index_type_is_defaulted</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_index_type_policy_mixin_1aa77efbed1b4c6688be53167277aef560" prot="public" virt="non-virtual"><scope>Kokkos::Impl::IndexTypePolicyMixin</scope><name>show_index_type_error_in_compilation_message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

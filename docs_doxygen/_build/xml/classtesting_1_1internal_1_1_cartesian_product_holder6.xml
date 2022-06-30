@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_cartesian_product_holder6" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::CartesianProductHolder6</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Generator1</type>
+      </param>
+      <param>
+        <type>class Generator2</type>
+      </param>
+      <param>
+        <type>class Generator3</type>
+      </param>
+      <param>
+        <type>class Generator4</type>
+      </param>
+      <param>
+        <type>class Generator5</type>
+      </param>
+      <param>
+        <type>class Generator6</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1afc75796d0a193b4aa71295d4d5fbf2f9" prot="private" static="no" mutable="no">
+        <type>const Generator1</type>
+        <definition>const Generator1 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g1_</definition>
+        <argsstring></argsstring>
+        <name>g1_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15581" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15581" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a185518a6b93cca4e81bb9b5e3ca7da0f" prot="private" static="no" mutable="no">
+        <type>const Generator2</type>
+        <definition>const Generator2 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g2_</definition>
+        <argsstring></argsstring>
+        <name>g2_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15582" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15582" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a1af93c009cd3025e89dab8f683b5d8f8" prot="private" static="no" mutable="no">
+        <type>const Generator3</type>
+        <definition>const Generator3 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g3_</definition>
+        <argsstring></argsstring>
+        <name>g3_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15583" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15583" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a1990e6efc632ee98355e47d52a3b75d1" prot="private" static="no" mutable="no">
+        <type>const Generator4</type>
+        <definition>const Generator4 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g4_</definition>
+        <argsstring></argsstring>
+        <name>g4_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g4_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15584" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15584" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a6ad540ef1089ead5b0236cf093ba69bc" prot="private" static="no" mutable="no">
+        <type>const Generator5</type>
+        <definition>const Generator5 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g5_</definition>
+        <argsstring></argsstring>
+        <name>g5_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g5_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15585" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15585" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7dd7b7c05d778735c54a6aa72715e609" prot="private" static="no" mutable="no">
+        <type>const Generator6</type>
+        <definition>const Generator6 testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::g6_</definition>
+        <argsstring></argsstring>
+        <name>g6_</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::g6_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15586" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15586" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7bb6f9224a1a6766e3634eb392e1b5f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::CartesianProductHolder6</definition>
+        <argsstring>(const Generator1 &amp;g1, const Generator2 &amp;g2, const Generator3 &amp;g3, const Generator4 &amp;g4, const Generator5 &amp;g5, const Generator6 &amp;g6)</argsstring>
+        <name>CartesianProductHolder6</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::CartesianProductHolder6</qualifiedname>
+        <param>
+          <type>const Generator1 &amp;</type>
+          <declname>g1</declname>
+        </param>
+        <param>
+          <type>const Generator2 &amp;</type>
+          <declname>g2</declname>
+        </param>
+        <param>
+          <type>const Generator3 &amp;</type>
+          <declname>g3</declname>
+        </param>
+        <param>
+          <type>const Generator4 &amp;</type>
+          <declname>g4</declname>
+        </param>
+        <param>
+          <type>const Generator5 &amp;</type>
+          <declname>g5</declname>
+        </param>
+        <param>
+          <type>const Generator6 &amp;</type>
+          <declname>g6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15560" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15560" bodyend="15563"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a796b55c8cd6f7606354ededaa39ca76d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+          <param>
+            <type>typename T3</type>
+          </param>
+          <param>
+            <type>typename T4</type>
+          </param>
+          <param>
+            <type>typename T5</type>
+          </param>
+          <param>
+            <type>typename T6</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15566" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15566" bodyend="15575"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7bb6f9224a1a6766e3634eb392e1b5f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::CartesianProductHolder6</definition>
+        <argsstring>(const Generator1 &amp;g1, const Generator2 &amp;g2, const Generator3 &amp;g3, const Generator4 &amp;g4, const Generator5 &amp;g5, const Generator6 &amp;g6)</argsstring>
+        <name>CartesianProductHolder6</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::CartesianProductHolder6</qualifiedname>
+        <param>
+          <type>const Generator1 &amp;</type>
+          <declname>g1</declname>
+        </param>
+        <param>
+          <type>const Generator2 &amp;</type>
+          <declname>g2</declname>
+        </param>
+        <param>
+          <type>const Generator3 &amp;</type>
+          <declname>g3</declname>
+        </param>
+        <param>
+          <type>const Generator4 &amp;</type>
+          <declname>g4</declname>
+        </param>
+        <param>
+          <type>const Generator5 &amp;</type>
+          <declname>g5</declname>
+        </param>
+        <param>
+          <type>const Generator6 &amp;</type>
+          <declname>g6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="15560" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="15560" bodyend="15563"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a796b55c8cd6f7606354ededaa39ca76d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+          <param>
+            <type>typename T3</type>
+          </param>
+          <param>
+            <type>typename T4</type>
+          </param>
+          <param>
+            <type>typename T5</type>
+          </param>
+          <param>
+            <type>typename T6</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="15566" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="15566" bodyend="15575"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a279f22f21fb24fd716b958ad20116979" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::operator=</definition>
+        <argsstring>(const CartesianProductHolder6 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_cartesian_product_holder6" kindref="compound">CartesianProductHolder6</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15579" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_holder6_1a279f22f21fb24fd716b958ad20116979" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductHolder6&lt; Generator1, Generator2, Generator3, Generator4, Generator5, Generator6 &gt;::operator=</definition>
+        <argsstring>(const CartesianProductHolder6 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::CartesianProductHolder6::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_cartesian_product_holder6" kindref="compound">CartesianProductHolder6</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="15579" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="15558" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="15558" bodyend="15587"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7bb6f9224a1a6766e3634eb392e1b5f6" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>CartesianProductHolder6</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7bb6f9224a1a6766e3634eb392e1b5f6" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>CartesianProductHolder6</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1afc75796d0a193b4aa71295d4d5fbf2f9" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a185518a6b93cca4e81bb9b5e3ca7da0f" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a1af93c009cd3025e89dab8f683b5d8f8" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a1990e6efc632ee98355e47d52a3b75d1" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g4_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a6ad540ef1089ead5b0236cf093ba69bc" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g5_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a7dd7b7c05d778735c54a6aa72715e609" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>g6_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a796b55c8cd6f7606354ededaa39ca76d" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a796b55c8cd6f7606354ededaa39ca76d" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>operator ParamGenerator&lt; ::std::tr1::tuple&lt; T1, T2, T3, T4, T5, T6 &gt; &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a279f22f21fb24fd716b958ad20116979" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_holder6_1a279f22f21fb24fd716b958ad20116979" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductHolder6</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

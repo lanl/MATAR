@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_universal_printer_3_01_t_0f_n_0e_4" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::UniversalPrinter&lt; T[N]&gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_universal_printer_3_01_t_0f_n_0e_4_1a1cf0e7c8db59c090f769116c6421b212" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal::UniversalPrinter&lt; T[N]&gt;::Print</definition>
+        <argsstring>(const T(&amp;a)[N], ::std::ostream *os)</argsstring>
+        <name>Print</name>
+        <qualifiedname>testing::internal::UniversalPrinter&lt; T[N]&gt;::Print</qualifiedname>
+        <param>
+          <type>const T(&amp;)</type>
+          <declname>a</declname>
+          <array>[N]</array>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9841" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9841" bodyend="9843"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_universal_printer_3_01_t_0f_n_0e_4_1a1cf0e7c8db59c090f769116c6421b212" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal::UniversalPrinter&lt; T[N]&gt;::Print</definition>
+        <argsstring>(const T(&amp;a)[N], ::std::ostream *os)</argsstring>
+        <name>Print</name>
+        <qualifiedname>testing::internal::UniversalPrinter&lt; T[N]&gt;::Print</qualifiedname>
+        <param>
+          <type>const T(&amp;)</type>
+          <declname>a</declname>
+          <array>[N]</array>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9841" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9841" bodyend="9843"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9837" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9837" bodyend="9844"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_universal_printer_3_01_t_0f_n_0e_4_1a1cf0e7c8db59c090f769116c6421b212" prot="public" virt="non-virtual"><scope>testing::internal::UniversalPrinter&lt; T[N]&gt;</scope><name>Print</name></member>
+      <member refid="classtesting_1_1internal_1_1_universal_printer_3_01_t_0f_n_0e_4_1a1cf0e7c8db59c090f769116c6421b212" prot="public" virt="non-virtual"><scope>testing::internal::UniversalPrinter&lt; T[N]&gt;</scope><name>Print</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_graph_row_view_const" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::GraphRowViewConst</compoundname>
+    <includes refid="_kokkos___static_crs_graph_8hpp" local="no">Kokkos_StaticCrsGraph.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class GraphType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" prot="public" static="no">
+        <type>const typename GraphType::data_type</type>
+        <definition>using Kokkos::GraphRowViewConst&lt; GraphType &gt;::ordinal_type =  const typename GraphType::data_type</definition>
+        <argsstring></argsstring>
+        <name>ordinal_type</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::ordinal_type</qualifiedname>
+        <briefdescription>
+<para>The type of the column indices in the row. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="173" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_graph_row_view_const_1aaa9f69973863b4d595fe0364db988123" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> *</type>
+        <definition>ordinal_type* Kokkos::GraphRowViewConst&lt; GraphType &gt;::colidx_</definition>
+        <argsstring></argsstring>
+        <name>colidx_</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::colidx_</qualifiedname>
+        <briefdescription>
+<para><ref refid="struct_kokkos_1_1_array" kindref="compound">Array</ref> of (local) column indices in the row. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="177" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_graph_row_view_const_1ab64ab09fc4a2519f9a71663e80e402b6" prot="private" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref></type>
+        <definition>const ordinal_type Kokkos::GraphRowViewConst&lt; GraphType &gt;::stride_</definition>
+        <argsstring></argsstring>
+        <name>stride_</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::stride_</qualifiedname>
+        <briefdescription>
+<para>Stride between successive entries in the row. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For compressed sparse row (CSR) storage, this is always one. This might be greater than one for storage formats like ELLPACK or Jagged Diagonal. Nevertheless, the stride can never be greater than the number of rows or columns in the matrix. Thus, <computeroutput>ordinal_type</computeroutput> is the correct type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="185" column="22" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_graph_row_view_const_1a5bcea9257f9208bf3403c8823e6638f2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref></type>
+        <definition>const ordinal_type Kokkos::GraphRowViewConst&lt; GraphType &gt;::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::length</qualifiedname>
+        <briefdescription>
+<para>Number of entries in the row. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a public const field rather than a public const method, in order to avoid possible overhead of a method call if the compiler is unable to inline that method call.</para>
+<para>We assume that rows contain no duplicate entries (i.e., entries with the same column index). Thus, a row may have up to A.numCols() entries. This means that the correct type of &apos;length&apos; is ordinal_type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="231" column="22" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_graph_row_view_const_1a0e80d579fdf7d42d6d6eaf5d0ac3e353" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::GraphRowViewConst&lt; GraphType &gt;::GraphRowViewConst</definition>
+        <argsstring>(ordinal_type *const colidx_in, const ordinal_type &amp;stride, const ordinal_type &amp;count)</argsstring>
+        <name>GraphRowViewConst</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::GraphRowViewConst</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> *const</type>
+          <declname>colidx_in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>stride</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] <ref refid="struct_kokkos_1_1_array" kindref="compound">Array</ref> of the row&apos;s values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colidx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] <ref refid="struct_kokkos_1_1_array" kindref="compound">Array</ref> of the row&apos;s column indices. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stride</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] (Constant) stride between matrix entries in each of the above arrays. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Number of entries in the row. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="196" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="196" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_graph_row_view_const_1a11d613441c8ccfbbb69190c0b9e22bd7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class OffsetType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::GraphRowViewConst&lt; GraphType &gt;::GraphRowViewConst</definition>
+        <argsstring>(const typename GraphType::entries_type &amp;colidx_in, const ordinal_type &amp;stride, const ordinal_type &amp;count, const OffsetType &amp;idx, const typename std::enable_if&lt; std::is_integral&lt; OffsetType &gt;::value, int &gt;::type &amp;=0)</argsstring>
+        <name>GraphRowViewConst</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::GraphRowViewConst</qualifiedname>
+        <param>
+          <type>const typename GraphType::entries_type &amp;</type>
+          <declname>colidx_in</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>stride</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const OffsetType &amp;</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>const typename std::enable_if&lt; std::is_integral&lt; OffsetType &gt;::value, int &gt;::type &amp;</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Constructor with offset into <computeroutput>colidx</computeroutput> array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>colidx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] <ref refid="struct_kokkos_1_1_array" kindref="compound">Array</ref> of the row&apos;s column indices. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stride</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] (Constant) stride between matrix entries in each of the above arrays. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Number of entries in the row. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Start offset into <computeroutput>colidx</computeroutput> array</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>OffsetType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of <computeroutput>idx</computeroutput> (see above). Must be a built-in integer type. This may differ from ordinal_type. For example, the matrix may have dimensions that fit in int, but a number of entries that does not fit in int. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="213" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="213" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_graph_row_view_const_1a4acca6483e2e5240446f2478ab2b01c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION ordinal_type &amp; Kokkos::GraphRowViewConst&lt; GraphType &gt;::colidx</definition>
+        <argsstring>(const ordinal_type &amp;i) const</argsstring>
+        <name>colidx</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::colidx</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>(Const) reference to the column index of entry i in this row of the sparse matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>&quot;Entry i&quot; is not necessarily the entry with column index i, nor does i necessarily correspond to the (local) row index. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="239" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_graph_row_view_const_1aedef5f0273b52d2c7edfe1ab75a1bd73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION ordinal_type &amp; Kokkos::GraphRowViewConst&lt; GraphType &gt;::operator()</definition>
+        <argsstring>(const ordinal_type &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::GraphRowViewConst::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref> &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>An alias for colidx. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="245" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="245" bodyend="245"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> of a row of a sparse graph. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>GraphType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sparse graph type, such as (but not limited to) <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+This class provides a generic view of a row of a sparse graph. We intended this class to view a row of a <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref>, but GraphType need not necessarily be CrsMatrix.</para>
+<para>The row view is suited for computational kernels like sparse matrix-vector multiply, as well as for modifying entries in the sparse matrix. The view is always const as it does not allow graph modification.</para>
+<para>Here is an example loop over the entries in the row: <programlisting><codeline><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">GraphRowViewConst&lt;MatrixType&gt;::ordinal_type</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">GraphRowView&lt;GraphType&gt;<sp/>G_i<sp/>=<sp/>...;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref><sp/>numEntries<sp/>=<sp/>G_i.length;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>numEntries;<sp/>++k)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" kindref="member">ordinal_type</ref><sp/>j<sp/>=<sp/>G_i.colidx<sp/>(k);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>do<sp/>something<sp/>with<sp/>A_ij<sp/>and<sp/>j<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>GraphType must provide the <computeroutput>data_type</computeroutput> aliases. In addition, it must make sense to use <ref refid="struct_kokkos_1_1_graph_row_view_const" kindref="compound">GraphRowViewConst</ref> to view a row of GraphType. In particular, column indices of a row must be accessible using the <computeroutput>entries</computeroutput> resp. <computeroutput>colidx</computeroutput> arrays given to the constructor of this class, with a constant <computeroutput>stride</computeroutput> between successive entries. The stride is one for the compressed sparse row storage format (as is used by CrsMatrix), but may be greater than one for other sparse matrix storage formats (e.g., ELLPACK or jagged diagonal). </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="171" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="171" bodyend="246"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1a4acca6483e2e5240446f2478ab2b01c6" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>colidx</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1aaa9f69973863b4d595fe0364db988123" prot="private" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>colidx_</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1a0e80d579fdf7d42d6d6eaf5d0ac3e353" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>GraphRowViewConst</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1a11d613441c8ccfbbb69190c0b9e22bd7" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>GraphRowViewConst</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1a5bcea9257f9208bf3403c8823e6638f2" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>length</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1aedef5f0273b52d2c7edfe1ab75a1bd73" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1abe5ed9992cc5b96b016b547265410b7b" prot="public" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>ordinal_type</name></member>
+      <member refid="struct_kokkos_1_1_graph_row_view_const_1ab64ab09fc4a2519f9a71663e80e402b6" prot="private" virt="non-virtual"><scope>Kokkos::GraphRowViewConst</scope><name>stride_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

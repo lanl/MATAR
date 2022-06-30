@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="union_kokkos___tools___variable_value___value_union_set" kind="union" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_VariableValue_ValueUnionSet</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_set_1a9303541a70b2efd8ff3d21777565bb3f" prot="public" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* Kokkos_Tools_VariableValue_ValueUnionSet::int_value</definition>
+        <argsstring></argsstring>
+        <name>int_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnionSet::int_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="168" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_set_1ab3c92f1b572be38f02d22119d8c1febd" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* Kokkos_Tools_VariableValue_ValueUnionSet::double_value</definition>
+        <argsstring></argsstring>
+        <name>double_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnionSet::double_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="169" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_set_1a4f43aaaf209e069353315752375db285" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_Tuning_String *</type>
+        <definition>Kokkos_Tools_Tuning_String* Kokkos_Tools_VariableValue_ValueUnionSet::string_value</definition>
+        <argsstring></argsstring>
+        <name>string_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnionSet::string_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="170" column="30" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="167" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="167" bodyend="171"/>
+    <listofallmembers>
+      <member refid="union_kokkos___tools___variable_value___value_union_set_1ab3c92f1b572be38f02d22119d8c1febd" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnionSet</scope><name>double_value</name></member>
+      <member refid="union_kokkos___tools___variable_value___value_union_set_1a9303541a70b2efd8ff3d21777565bb3f" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnionSet</scope><name>int_value</name></member>
+      <member refid="union_kokkos___tools___variable_value___value_union_set_1a4f43aaaf209e069353315752375db285" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnionSet</scope><name>string_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

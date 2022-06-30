@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_4a93018e5764b8341d1faf30f38962f6" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/05_simple_atomics</compoundname>
+    <innerfile refid="simple__atomics_8cpp">simple_atomics.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/05_simple_atomics/"/>
+  </compounddef>
+</doxygen>

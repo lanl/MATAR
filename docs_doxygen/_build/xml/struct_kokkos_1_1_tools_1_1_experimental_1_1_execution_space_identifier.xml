@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1a8872bfb4ef46eea8bc620037030e9b55" prot="public" static="no" mutable="no">
+        <type>DeviceType</type>
+        <definition>DeviceType Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" line="80" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1aa33344aaaf236702f501b34e30219f15" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::device_id</definition>
+        <argsstring></argsstring>
+        <name>device_id</name>
+        <qualifiedname>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::device_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" line="81" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1a933ef99baf81a77e7f5c8468ece9fbc3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::instance_id</definition>
+        <argsstring></argsstring>
+        <name>instance_id</name>
+        <qualifiedname>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier::instance_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" line="82" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" line="79" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp" bodystart="79" bodyend="83"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1aa33344aaaf236702f501b34e30219f15" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier</scope><name>device_id</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1a933ef99baf81a77e7f5c8468ece9fbc3" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier</scope><name>instance_id</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_execution_space_identifier_1a8872bfb4ef46eea8bc620037030e9b55" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::ExecutionSpaceIdentifier</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

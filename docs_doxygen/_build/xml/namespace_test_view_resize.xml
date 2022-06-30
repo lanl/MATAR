@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test_view_resize" kind="namespace" language="C++">
+    <compoundname>TestViewResize</compoundname>
+    <innerclass refid="struct_test_view_resize_1_1_default" prot="public">TestViewResize::Default</innerclass>
+    <innerclass refid="struct_test_view_resize_1_1_without_initializing" prot="public">TestViewResize::WithoutInitializing</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_resize_8hpp_1a8562785a18998414cd83f61d57fcb2c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename View</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewResize::resize_dispatch</definition>
+        <argsstring>(Default, View &amp;v, Args &amp;&amp;... args)</argsstring>
+        <name>resize_dispatch</name>
+        <qualifiedname>TestViewResize::resize_dispatch</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_view_resize_1_1_default" kindref="compound">Default</ref></type>
+        </param>
+        <param>
+          <type>View &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" line="56" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_resize_8hpp_1ae495f7faa81a2703569bf5e8e3e791f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename View</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewResize::resize_dispatch</definition>
+        <argsstring>(WithoutInitializing, View &amp;v, Args &amp;&amp;... args)</argsstring>
+        <name>resize_dispatch</name>
+        <qualifiedname>TestViewResize::resize_dispatch</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_view_resize_1_1_without_initializing" kindref="compound">WithoutInitializing</ref></type>
+        </param>
+        <param>
+          <type>View &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" line="61" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_resize_8hpp_1ae15022edb97b022227076cabe44d1ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+          <param>
+            <type>class Tag</type>
+            <defval>Default</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewResize::impl_testResize</definition>
+        <argsstring>()</argsstring>
+        <name>impl_testResize</name>
+        <qualifiedname>TestViewResize::impl_testResize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" line="66" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" bodystart="66" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_resize_8hpp_1a0be06d5045dd0311c49a6af3942f85df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewResize::testResize</definition>
+        <argsstring>()</argsstring>
+        <name>testResize</name>
+        <qualifiedname>TestViewResize::testResize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" line="390" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" bodystart="390" bodyend="398"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestResize.hpp" line="50" column="1"/>
+  </compounddef>
+</doxygen>

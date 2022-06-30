@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___tools___variable_value" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_VariableValue</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___tools___variable_value_1a6cde2340d3cf2a1ea235432e13b8cab1" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos_Tools_VariableValue::type_id</definition>
+        <argsstring></argsstring>
+        <name>type_id</name>
+        <qualifiedname>Kokkos_Tools_VariableValue::type_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="232" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___variable_value_1add9c758a772f0069aedefc5655c38553" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref></type>
+        <definition>union Kokkos_Tools_VariableValue_ValueUnion Kokkos_Tools_VariableValue::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="233" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___variable_value_1a64eea90cbbdf61431890be6aaa596046" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="struct_kokkos___tools___variable_info" kindref="compound">Kokkos_Tools_VariableInfo</ref> *</type>
+        <definition>struct Kokkos_Tools_VariableInfo* Kokkos_Tools_VariableValue::metadata</definition>
+        <argsstring></argsstring>
+        <name>metadata</name>
+        <qualifiedname>Kokkos_Tools_VariableValue::metadata</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="234" column="35" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="7">
+        <label>Kokkos_Tools_ValueRange</label>
+        <link refid="struct_kokkos___tools___value_range"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>lower</edgelabel>
+          <edgelabel>step</edgelabel>
+          <edgelabel>upper</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos_Tools_ValueSet</label>
+        <link refid="struct_kokkos___tools___value_set"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos_Tools_VariableInfo</label>
+        <link refid="struct_kokkos___tools___variable_info"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>candidates</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos_Tools_VariableInfo_SetOrRange</label>
+        <link refid="union_kokkos___tools___variable_info___set_or_range"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>set</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos_Tools_VariableValue</label>
+        <link refid="struct_kokkos___tools___variable_value"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Tools_VariableValue_ValueUnion</label>
+        <link refid="union_kokkos___tools___variable_value___value_union"/>
+      </node>
+      <node id="6">
+        <label>Kokkos_Tools_VariableValue_ValueUnionSet</label>
+        <link refid="union_kokkos___tools___variable_value___value_union_set"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="231" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="231" bodyend="235"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___tools___variable_value_1a64eea90cbbdf61431890be6aaa596046" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue</scope><name>metadata</name></member>
+      <member refid="struct_kokkos___tools___variable_value_1a6cde2340d3cf2a1ea235432e13b8cab1" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue</scope><name>type_id</name></member>
+      <member refid="struct_kokkos___tools___variable_value_1add9c758a772f0069aedefc5655c38553" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename TrueType</type>
+      </param>
+      <param>
+        <type>typename FalseType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ad3da32cf9be8f032ca44b8bf4168119b" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@88</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::@88</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ad3da32cf9be8f032ca44b8bf4168119ba2610db8eb6d310e4b2a0c6fefc00b5d4" prot="public">
+          <name>value</name>
+          <initializer>= true</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="190" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="190" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a1ee1f23be5437dc35a42c650978a5817" prot="public" static="no">
+        <type>TrueType</type>
+        <definition>using Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::type =  TrueType</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="192" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a68b18d9f593fc02818e50d3f9589f2c2" prot="public" static="no">
+        <type>typename std::remove_const&lt; typename std::remove_reference&lt; type &gt;::type &gt;::type</type>
+        <definition>using Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::value_type =  typename std::remove_const&lt; typename std::remove_reference&lt;type&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="194" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ac2f96f077f744cbaceb212c018784919" prot="public" static="no">
+        <type>typename std::add_const&lt; value_type &gt;::type</type>
+        <definition>using Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::const_value_type =  typename std::add_const&lt;value_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="197" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1af7b090a085be2dfd196b8d790c9030be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type &amp;</type>
+        <definition>static KOKKOS_INLINE_FUNCTION const_value_type &amp; Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</definition>
+        <argsstring>(const_value_type &amp;v)</argsstring>
+        <name>select</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="199" column="50" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1aebf956e5b8f86b37d24b39b0f9483f08" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>static KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</definition>
+        <argsstring>(value_type &amp;v)</argsstring>
+        <name>select</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="203" column="44" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="203" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a2f5a9360e3354ed64520a255b1a16249" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>static KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</definition>
+        <argsstring>(const T &amp;)</argsstring>
+        <name>select</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="206" column="44" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="206" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ad2d3f628d41bd9e695e8b03d183bfc8a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION const_value_type &amp;</type>
+        <definition>static KOKKOS_INLINE_FUNCTION const_value_type &amp; Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</definition>
+        <argsstring>(const_value_type &amp;v, const F &amp;)</argsstring>
+        <name>select</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const F &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="212" column="50" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="212" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a905f8dd2cbc65859059e311c1a6b637c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class F</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>static KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</definition>
+        <argsstring>(value_type &amp;v, const F &amp;)</argsstring>
+        <name>select</name>
+        <qualifiedname>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;::select</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const F &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="218" column="44" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="218" bodyend="220"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="189" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="189" bodyend="221"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ac2f96f077f744cbaceb212c018784919" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1af7b090a085be2dfd196b8d790c9030be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>select</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1aebf956e5b8f86b37d24b39b0f9483f08" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>select</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a2f5a9360e3354ed64520a255b1a16249" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>select</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ad2d3f628d41bd9e695e8b03d183bfc8a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>select</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a905f8dd2cbc65859059e311c1a6b637c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>select</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a1ee1f23be5437dc35a42c650978a5817" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1ad3da32cf9be8f032ca44b8bf4168119ba2610db8eb6d310e4b2a0c6fefc00b5d4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1if__c_3_01true_00_01_true_type_00_01_false_type_01_4_1a68b18d9f593fc02818e50d3f9589f2c2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::if_c&lt; true, TrueType, FalseType &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

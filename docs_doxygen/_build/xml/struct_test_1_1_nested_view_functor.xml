@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_nested_view_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::NestedViewFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_nested_view_functor_1ad21846ac37c82fe197c142ea3bda5a8d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="struct_test_1_1_nested_view" kindref="compound">NestedView</ref>&lt; Space &gt; *, Space &gt;</type>
+        <definition>Kokkos::View&lt;NestedView&lt;Space&gt; *, Space&gt; Test::NestedViewFunctor&lt; Space &gt;::nested</definition>
+        <argsstring></argsstring>
+        <name>nested</name>
+        <qualifiedname>Test::NestedViewFunctor::nested</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" line="79" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_nested_view_functor_1aef81c3b261ba470a69262d96e9143e97" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, Space &gt;</type>
+        <definition>Kokkos::View&lt;int *, Space&gt; Test::NestedViewFunctor&lt; Space &gt;::array</definition>
+        <argsstring></argsstring>
+        <name>array</name>
+        <qualifiedname>Test::NestedViewFunctor::array</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" line="80" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_nested_view_functor_1a2a12b1d41b8700f8bee4f3c86ad475ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::NestedViewFunctor&lt; Space &gt;::NestedViewFunctor</definition>
+        <argsstring>(const Kokkos::View&lt; NestedView&lt; Space &gt; *, Space &gt; &amp;arg_nested, const Kokkos::View&lt; int *, Space &gt; &amp;arg_array)</argsstring>
+        <name>NestedViewFunctor</name>
+        <qualifiedname>Test::NestedViewFunctor::NestedViewFunctor</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="struct_test_1_1_nested_view" kindref="compound">NestedView</ref>&lt; Space &gt; *, Space &gt; &amp;</type>
+          <declname>arg_nested</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, Space &gt; &amp;</type>
+          <declname>arg_array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" line="82" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_nested_view_functor_1a20b2ef4c17bf358bd4b3b5a9d108d0de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::NestedViewFunctor&lt; Space &gt;::operator()</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::NestedViewFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" line="87" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" bodystart="87" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::NestedViewFunctor&lt; Space &gt;</label>
+        <link refid="struct_test_1_1_nested_view_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>nested</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>array</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Test::NestedView&lt; Space &gt; *, Space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int *, Space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Test::NestedView&lt; Space &gt; *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" line="78" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp" bodystart="78" bodyend="88"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_nested_view_functor_1aef81c3b261ba470a69262d96e9143e97" prot="public" virt="non-virtual"><scope>Test::NestedViewFunctor</scope><name>array</name></member>
+      <member refid="struct_test_1_1_nested_view_functor_1ad21846ac37c82fe197c142ea3bda5a8d" prot="public" virt="non-virtual"><scope>Test::NestedViewFunctor</scope><name>nested</name></member>
+      <member refid="struct_test_1_1_nested_view_functor_1a2a12b1d41b8700f8bee4f3c86ad475ee" prot="public" virt="non-virtual"><scope>Test::NestedViewFunctor</scope><name>NestedViewFunctor</name></member>
+      <member refid="struct_test_1_1_nested_view_functor_1a20b2ef4c17bf358bd4b3b5a9d108d0de" prot="public" virt="non-virtual"><scope>Test::NestedViewFunctor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

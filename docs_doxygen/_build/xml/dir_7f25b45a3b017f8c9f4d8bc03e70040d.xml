@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_7f25b45a3b017f8c9f4d8bc03e70040d" kind="dir">
+    <compoundname>src/Kokkos/kokkos/benchmarks/stream</compoundname>
+    <innerfile refid="stream-kokkos_8cpp">stream-kokkos.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/stream/"/>
+  </compounddef>
+</doxygen>

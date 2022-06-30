@@ -1,0 +1,911 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_kokkos_1_1_tools_1_1_impl" kind="namespace" language="C++">
+    <compoundname>Kokkos::Tools::Impl</compoundname>
+    <innerclass refid="struct_kokkos_1_1_tools_1_1_impl_1_1_reduction_switcher" prot="public">Kokkos::Tools::Impl::ReductionSwitcher</innerclass>
+    <innerclass refid="struct_kokkos_1_1_tools_1_1_impl_1_1_reduction_switcher_3_01_kokkos_1_1_invalid_type_01_4" prot="public">Kokkos::Tools::Impl::ReductionSwitcher&lt; Kokkos::InvalidType &gt;</innerclass>
+    <innernamespace refid="namespace_kokkos_1_1_tools_1_1_impl_1_1_impl">Kokkos::Tools::Impl::Impl</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_kokkos___profiling_8hpp_1a6e5db7366a6c798c73bc7043805ff3ae" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+        </templateparamlist>
+        <type>std::map&lt; std::string, <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner" kindref="compound">Kokkos::Tools::Experimental::MDRangeTuner</ref>&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref> &gt; &gt;</type>
+        <definition>using Kokkos::Tools::Impl::MDRangeTuningMap = typedef std::map&lt;std::string, Kokkos::Tools::Experimental::MDRangeTuner&lt;Rank&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>MDRangeTuningMap</name>
+        <qualifiedname>Kokkos::Tools::Impl::MDRangeTuningMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="261" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_kokkos___profiling_8hpp_1a1d8fc38d7afd6d439abff392bdc65404" prot="public" static="yes" mutable="no">
+        <type>std::map&lt; std::string, <ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">Kokkos::Tools::Experimental::TeamSizeTuner</ref> &gt;</type>
+        <definition>std::map&lt;std::string, Kokkos::Tools::Experimental::TeamSizeTuner&gt; Kokkos::Tools::Impl::team_tuners</definition>
+        <argsstring></argsstring>
+        <name>team_tuners</name>
+        <qualifiedname>Kokkos::Tools::Impl::team_tuners</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="258" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_kokkos___profiling_8hpp_1ad37340623990cb25ee780c90ea9e4f4c" prot="public" static="yes" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+        </templateparamlist>
+        <type>MDRangeTuningMap&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref> &gt;</type>
+        <definition>MDRangeTuningMap&lt;Rank&gt; Kokkos::Tools::Impl::mdrange_tuners</definition>
+        <argsstring></argsstring>
+        <name>mdrange_tuners</name>
+        <qualifiedname>Kokkos::Tools::Impl::mdrange_tuners</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="265" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a6dcf25ad31d65445169ef04ed71241eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>typename TagType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;, ExecPolicy &amp;, const Functor &amp;, TagType)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <param>
+          <type>ExecPolicy &amp;</type>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+        </param>
+        <param>
+          <type>TagType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="269" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="269" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a9e0d1afbc315588077648b3c0eb7d70e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>typename TagType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;, ExecPolicy &amp;, const Functor &amp;, const TagType &amp;)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <param>
+          <type>ExecPolicy &amp;</type>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="274" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="274" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a9346aa21ed6893f674feea765c781e46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuner</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class TuningPermissionFunctor</type>
+          </param>
+          <param>
+            <type>class Map</type>
+          </param>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::generic_tune_policy</definition>
+        <argsstring>(const std::string &amp;label_in, Map &amp;map, Policy &amp;policy, const Functor &amp;functor, const TagType &amp;tag, const TuningPermissionFunctor &amp;should_tune)</argsstring>
+        <name>generic_tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::generic_tune_policy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type>Map &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const TuningPermissionFunctor &amp;</type>
+          <declname>should_tune</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="370" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="370" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a129b6d9641351ff5395899d5421978a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuner</type>
+          </param>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class TuningPermissionFunctor</type>
+          </param>
+          <param>
+            <type>class Map</type>
+          </param>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::generic_tune_policy</definition>
+        <argsstring>(const std::string &amp;label_in, Map &amp;map, Policy &amp;policy, const Functor &amp;functor, const TagType &amp;tag, const TuningPermissionFunctor &amp;should_tune)</argsstring>
+        <name>generic_tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::generic_tune_policy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type>Map &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const TuningPermissionFunctor &amp;</type>
+          <declname>should_tune</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="396" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="396" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1af79a726c718b442d3726ac4d5160cd92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::TeamPolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="425" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="425" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a9ed6b94386913420829116da32cb7076" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::TeamPolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="438" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="438" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1aeab28e62b09b6a81008b98892febc4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::MDRangePolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="451" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="451" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a8a0c57557f5aa1b58102446b6377fe59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::tune_policy</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::MDRangePolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>tune_policy</name>
+        <qualifiedname>Kokkos::Tools::Impl::tune_policy</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="465" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="465" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a0d4c55b9cf04202ae851bac5f04d31c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuner</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class TuningPermissionFunctor</type>
+          </param>
+          <param>
+            <type>class Map</type>
+          </param>
+          <param>
+            <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::generic_report_results</definition>
+        <argsstring>(const std::string &amp;label_in, Map &amp;map, Policy &amp;policy, const Functor &amp;, const TagType &amp;, const TuningPermissionFunctor &amp;should_tune)</argsstring>
+        <name>generic_report_results</name>
+        <qualifiedname>Kokkos::Tools::Impl::generic_report_results</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type>Map &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+        </param>
+        <param>
+          <type>const TuningPermissionFunctor &amp;</type>
+          <declname>should_tune</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="503" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="503" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a925043d02ef63465ea14500f0f1ec10a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>typename TagType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::report_policy_results</definition>
+        <argsstring>(const size_t, const std::string &amp;, ExecPolicy &amp;, const Functor &amp;, const TagType &amp;)</argsstring>
+        <name>report_policy_results</name>
+        <qualifiedname>Kokkos::Tools::Impl::report_policy_results</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <param>
+          <type>ExecPolicy &amp;</type>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="522" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="522" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1aceafb012a1fb1b19454febb87701cf60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::report_policy_results</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::TeamPolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>report_policy_results</name>
+        <qualifiedname>Kokkos::Tools::Impl::report_policy_results</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="527" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="527" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1aa2659acd770cfbae471a52109bd9ebab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Functor</type>
+          </param>
+          <param>
+            <type>class TagType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::report_policy_results</definition>
+        <argsstring>(const size_t, const std::string &amp;label_in, Kokkos::MDRangePolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag)</argsstring>
+        <name>report_policy_results</name>
+        <qualifiedname>Kokkos::Tools::Impl::report_policy_results</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+          <briefdescription><para>tuning_context </para>
+</briefdescription>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label_in</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="541" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="541" bodyend="552"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1af40f49263408fbf501a8c2b81afaae06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::begin_parallel_for</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>begin_parallel_for</name>
+        <qualifiedname>Kokkos::Tools::Impl::begin_parallel_for</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="555" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="555" bodyend="573"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a1a07f4a6b6dba2c1ea1e2a619343746c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::end_parallel_for</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>end_parallel_for</name>
+        <qualifiedname>Kokkos::Tools::Impl::end_parallel_for</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="576" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="576" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a8257b10e7d004454916d67a14d5279fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::begin_parallel_scan</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>begin_parallel_scan</name>
+        <qualifiedname>Kokkos::Tools::Impl::begin_parallel_scan</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="595" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="595" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a7247df7a409afcd859e61a9ff46afb0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::end_parallel_scan</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>end_parallel_scan</name>
+        <qualifiedname>Kokkos::Tools::Impl::end_parallel_scan</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="616" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="616" bodyend="632"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a7094f3d5c33d3b1d9f735bd854d76e13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::begin_parallel_reduce</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>begin_parallel_reduce</name>
+        <qualifiedname>Kokkos::Tools::Impl::begin_parallel_reduce</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="635" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="635" bodyend="652"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___profiling_8hpp_1a9ad0e031a615d7e5bedf3c279967eb02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+          <param>
+            <type>class ExecPolicy</type>
+          </param>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Impl::end_parallel_reduce</definition>
+        <argsstring>(ExecPolicy &amp;policy, FunctorType &amp;functor, const std::string &amp;label, uint64_t &amp;kpID)</argsstring>
+        <name>end_parallel_reduce</name>
+        <qualifiedname>Kokkos::Tools::Impl::end_parallel_reduce</qualifiedname>
+        <param>
+          <type>ExecPolicy &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>kpID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="655" column="6" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="655" bodyend="671"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="255" column="1"/>
+  </compounddef>
+</doxygen>

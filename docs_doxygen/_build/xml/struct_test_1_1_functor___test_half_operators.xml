@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_functor___test_half_operators" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Functor_TestHalfOperators</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1a0283f95dfcf07998779ed72156bfdcf2" prot="public" static="no" mutable="no">
+        <type>half_t</type>
+        <definition>half_t Test::Functor_TestHalfOperators&lt; view_type &gt;::h_lhs</definition>
+        <argsstring></argsstring>
+        <name>h_lhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::h_lhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="353" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1a3c27c2e953130f3a35e69c3c96d52801" prot="public" static="no" mutable="no">
+        <type>half_t</type>
+        <definition>half_t Test::Functor_TestHalfOperators&lt; view_type &gt;::h_rhs</definition>
+        <argsstring></argsstring>
+        <name>h_rhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::h_rhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="353" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1a4a78faa6b85d235eacde5461a18a0c0d" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Test::Functor_TestHalfOperators&lt; view_type &gt;::d_lhs</definition>
+        <argsstring></argsstring>
+        <name>d_lhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::d_lhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="354" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1a3833eb290d73e086f1a6a3d4610d1188" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Test::Functor_TestHalfOperators&lt; view_type &gt;::d_rhs</definition>
+        <argsstring></argsstring>
+        <name>d_rhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::d_rhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="354" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1a60bf358c86d64f61d811de39667a0ad9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::Functor_TestHalfOperators&lt; view_type &gt;::actual_lhs</definition>
+        <argsstring></argsstring>
+        <name>actual_lhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::actual_lhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="355" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor___test_half_operators_1ab061c56d437b7685cf596ffd1230b982" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::Functor_TestHalfOperators&lt; view_type &gt;::expected_lhs</definition>
+        <argsstring></argsstring>
+        <name>expected_lhs</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::expected_lhs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="355" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1a52ea07516080556e206e8b0ef7d4e344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Functor_TestHalfOperators&lt; view_type &gt;::Functor_TestHalfOperators</definition>
+        <argsstring>(half_t lhs=half_t(0), half_t rhs=half_t(0))</argsstring>
+        <name>Functor_TestHalfOperators</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::Functor_TestHalfOperators</qualifiedname>
+        <param>
+          <type>half_t</type>
+          <declname>lhs</declname>
+          <defval>half_t(0)</defval>
+        </param>
+        <param>
+          <type>half_t</type>
+          <declname>rhs</declname>
+          <defval>half_t(0)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="357" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="357" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1ad6869075da0ef95c9707caafdba4ea88" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class LhsType</type>
+          </param>
+          <param>
+            <type>class RhsType</type>
+          </param>
+          <param>
+            <type>class ExpectedResultType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Functor_TestHalfOperators&lt; view_type &gt;::test_add</definition>
+        <argsstring>(int op_test_idx, int op_test_sz_idx) const</argsstring>
+        <name>test_add</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::test_add</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>op_test_idx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>op_test_sz_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="375" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="375" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1a7740a5ef30e5a379bd6a418ee3e8fc6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class LhsType</type>
+          </param>
+          <param>
+            <type>class RhsType</type>
+          </param>
+          <param>
+            <type>class ExpectedResultType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Functor_TestHalfOperators&lt; view_type &gt;::test_sub</definition>
+        <argsstring>(int op_test_idx, int op_test_sz_idx) const</argsstring>
+        <name>test_sub</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::test_sub</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>op_test_idx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>op_test_sz_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="395" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="395" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1a42af134cb91677afc960a5136b4dc9b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class LhsType</type>
+          </param>
+          <param>
+            <type>class RhsType</type>
+          </param>
+          <param>
+            <type>class ExpectedResultType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Functor_TestHalfOperators&lt; view_type &gt;::test_mul</definition>
+        <argsstring>(int op_test_idx, int op_test_sz_idx) const</argsstring>
+        <name>test_mul</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::test_mul</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>op_test_idx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>op_test_sz_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="415" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="415" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1a0849a9f33111250be0f22046c051dc82" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class LhsType</type>
+          </param>
+          <param>
+            <type>class RhsType</type>
+          </param>
+          <param>
+            <type>class ExpectedResultType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Functor_TestHalfOperators&lt; view_type &gt;::test_div</definition>
+        <argsstring>(int op_test_idx, int op_test_sz_idx) const</argsstring>
+        <name>test_div</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::test_div</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>op_test_idx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>op_test_sz_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="435" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="435" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor___test_half_operators_1a9c04c591a59a6b9adadf7157f9f7ecb4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::Functor_TestHalfOperators&lt; view_type &gt;::operator()</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Functor_TestHalfOperators::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="456" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="456" bodyend="899"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::Functor_TestHalfOperators&lt; view_type &gt;</label>
+        <link refid="struct_test_1_1_functor___test_half_operators"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>actual_lhs</edgelabel>
+          <edgelabel>expected_lhs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *[3]&gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" line="352" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestHalfOperators.hpp" bodystart="352" bodyend="900"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a60bf358c86d64f61d811de39667a0ad9" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>actual_lhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a4a78faa6b85d235eacde5461a18a0c0d" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>d_lhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a3833eb290d73e086f1a6a3d4610d1188" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>d_rhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1ab061c56d437b7685cf596ffd1230b982" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>expected_lhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a52ea07516080556e206e8b0ef7d4e344" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>Functor_TestHalfOperators</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a0283f95dfcf07998779ed72156bfdcf2" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>h_lhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a3c27c2e953130f3a35e69c3c96d52801" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>h_rhs</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a9c04c591a59a6b9adadf7157f9f7ecb4" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1ad6869075da0ef95c9707caafdba4ea88" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>test_add</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a0849a9f33111250be0f22046c051dc82" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>test_div</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a42af134cb91677afc960a5136b4dc9b7" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>test_mul</name></member>
+      <member refid="struct_test_1_1_functor___test_half_operators_1a7740a5ef30e5a379bd6a418ee3e8fc6a" prot="public" virt="non-virtual"><scope>Test::Functor_TestHalfOperators</scope><name>test_sub</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

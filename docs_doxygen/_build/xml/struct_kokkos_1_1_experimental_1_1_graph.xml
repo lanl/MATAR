@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_graph" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Graph</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_graph_1a629cf8df697f6a116a5aecb391981795" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Experimental::Graph::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_graph_1ab200dff140a1bac9dcc451ce5bd5b9f4" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_graph" kindref="compound">Graph</ref></type>
+        <definition>using Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::graph =  Graph</definition>
+        <argsstring></argsstring>
+        <name>graph</name>
+        <qualifiedname>Kokkos::Experimental::Graph::graph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="75" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_graph_1a64e40d074bfe245d6c69646204ce6c60" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">Kokkos::Impl::GraphImpl</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::impl_t =  Kokkos::Impl::GraphImpl&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>impl_t</name>
+        <qualifiedname>Kokkos::Experimental::Graph::impl_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="92" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="struct_kokkos_1_1_experimental_1_1_graph_1a35f12dbc41a809868b048b41140a291a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct</type>
+        <definition>friend struct Kokkos::Impl::GraphAccess</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::GraphAccess</name>
+        <qualifiedname>Kokkos::Experimental::Graph::GraphAccess</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_access" kindref="compound">Kokkos::Impl::GraphAccess</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="84" column="17" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_graph_1a5dd0f822710e0efa016cef30efb6ef85" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">impl_t</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;impl_t&gt; Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::m_impl_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_impl_ptr</name>
+        <qualifiedname>Kokkos::Experimental::Graph::m_impl_ptr</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="93" column="19" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_graph_1a832d50d45fd3df365a329ad1366da650" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::Graph</definition>
+        <argsstring>(std::shared_ptr&lt; impl_t &gt; arg_impl_ptr)</argsstring>
+        <name>Graph</name>
+        <qualifiedname>Kokkos::Experimental::Graph::Graph</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">impl_t</ref> &gt;</type>
+          <declname>arg_impl_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="104" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="104" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_graph_1a31745a65d09ae3bd46aca3d20c6a63bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ExecutionSpace const &amp;</type>
+        <definition>ExecutionSpace const  &amp; Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::get_execution_space</definition>
+        <argsstring>() const</argsstring>
+        <name>get_execution_space</name>
+        <qualifiedname>Kokkos::Experimental::Graph::get_execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="111" column="24" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_graph_1ad28c320b889c863bb74b1664465b0ac3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Graph&lt; ExecutionSpace &gt;::submit</definition>
+        <argsstring>() const</argsstring>
+        <name>submit</name>
+        <qualifiedname>Kokkos::Experimental::Graph::submit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="115" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" line="69" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp" bodystart="69" bodyend="119"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a629cf8df697f6a116a5aecb391981795" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a31745a65d09ae3bd46aca3d20c6a63bc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>get_execution_space</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1ab200dff140a1bac9dcc451ce5bd5b9f4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>graph</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a832d50d45fd3df365a329ad1366da650" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>Graph</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a64e40d074bfe245d6c69646204ce6c60" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>impl_t</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a35f12dbc41a809868b048b41140a291a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>Kokkos::Impl::GraphAccess</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1a5dd0f822710e0efa016cef30efb6ef85" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>m_impl_ptr</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_graph_1ad28c320b889c863bb74b1664465b0ac3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Graph</scope><name>submit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1_1_v_o_i_d_d_u_m_m_y" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::ViewCtorProp::VOIDDUMMY</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="215" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="215" bodyend="215"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

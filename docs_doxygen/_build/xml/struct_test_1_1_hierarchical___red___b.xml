@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_hierarchical___red___b" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Hierarchical_Red_B</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_hierarchical___red___b_1a3b1df481a86be5bb7a3500ffd956b93d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::Hierarchical_Red_B&lt; ExecSpace &gt;::run</definition>
+        <argsstring>(const int pN, const int sX)</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::Hierarchical_Red_B::run</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>pN</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>sX</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test13b_ParallelRed_TeamVectorRange.hpp" line="59" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test13b_ParallelRed_TeamVectorRange.hpp" bodystart="59" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test13b_ParallelRed_TeamVectorRange.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test13b_ParallelRed_TeamVectorRange.hpp" bodystart="58" bodyend="93"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_hierarchical___red___b_1a3b1df481a86be5bb7a3500ffd956b93d" prot="public" virt="non-virtual"><scope>Test::Hierarchical_Red_B</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor" kind="class" language="C++" prot="public">
+    <compoundname>DynamicRaggedDownArrayKokkos::set_strides_functor</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1ae90d5a84ff7baad57f5d37c573077696" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::functor_strides_</definition>
+        <argsstring></argsstring>
+        <name>functor_strides_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::set_strides_functor::functor_strides_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12654" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12654" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a3785244ab605fd9184c6252bf383aade" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::init_stride_</definition>
+        <argsstring></argsstring>
+        <name>init_stride_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::set_strides_functor::init_stride_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12655" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12655" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a1c146f2cbf7c33c25ce250b938516b03" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::set_strides_functor</definition>
+        <argsstring>(size_t init_stride, SArray1D temp_strides_)</argsstring>
+        <name>set_strides_functor</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::set_strides_functor::set_strides_functor</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>init_stride</declname>
+        </param>
+        <param>
+          <type>SArray1D</type>
+          <declname>temp_strides_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12656" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12656" bodyend="12659"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1aec1fa3fde9b7e10e9ce52bdf89cbf15a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::operator()</definition>
+        <argsstring>(const int index) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::set_strides_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12660" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12660" bodyend="12662"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12652" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12652" bodyend="12663"/>
+    <listofallmembers>
+      <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1ae90d5a84ff7baad57f5d37c573077696" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>functor_strides_</name></member>
+      <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a3785244ab605fd9184c6252bf383aade" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>init_stride_</name></member>
+      <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1aec1fa3fde9b7e10e9ce52bdf89cbf15a" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>operator()</name></member>
+      <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a1c146f2cbf7c33c25ce250b938516b03" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>set_strides_functor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1greater__equal" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::greater_equal</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1greater__equal_1a4f3a00b3e142c59bd65f2de064f23996" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::greater_equal&lt; T &gt;::first_argument_type =  T</definition>
+        <argsstring></argsstring>
+        <name>first_argument_type</name>
+        <qualifiedname>Kokkos::greater_equal::first_argument_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="137" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1greater__equal_1aebf411ba63b03884f38311381b8a313d" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::greater_equal&lt; T &gt;::second_argument_type =  T</definition>
+        <argsstring></argsstring>
+        <name>second_argument_type</name>
+        <qualifiedname>Kokkos::greater_equal::second_argument_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="138" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1greater__equal_1a84ab93516c5ed8e41678e794c8501db5" prot="public" static="no">
+        <type>bool</type>
+        <definition>using Kokkos::greater_equal&lt; T &gt;::result_type =  bool</definition>
+        <argsstring></argsstring>
+        <name>result_type</name>
+        <qualifiedname>Kokkos::greater_equal::result_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="139" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1greater__equal_1a0f9244bd1fc5fd8e51cd5b0bf7a3566e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION bool</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION bool Kokkos::greater_equal&lt; T &gt;::operator()</definition>
+        <argsstring>(T const &amp;a, T const &amp;b) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::greater_equal::operator()</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="142" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="142" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="136" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="136" bodyend="143"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1greater__equal_1a4f3a00b3e142c59bd65f2de064f23996" prot="public" virt="non-virtual"><scope>Kokkos::greater_equal</scope><name>first_argument_type</name></member>
+      <member refid="struct_kokkos_1_1greater__equal_1a0f9244bd1fc5fd8e51cd5b0bf7a3566e" prot="public" virt="non-virtual"><scope>Kokkos::greater_equal</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1greater__equal_1a84ab93516c5ed8e41678e794c8501db5" prot="public" virt="non-virtual"><scope>Kokkos::greater_equal</scope><name>result_type</name></member>
+      <member refid="struct_kokkos_1_1greater__equal_1aebf411ba63b03884f38311381b8a313d" prot="public" virt="non-virtual"><scope>Kokkos::greater_equal</scope><name>second_argument_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

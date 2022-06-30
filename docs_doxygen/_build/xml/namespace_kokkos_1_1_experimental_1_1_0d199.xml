@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_kokkos_1_1_experimental_1_1_0d199" kind="namespace" language="C++">
+    <compoundname>Kokkos::Experimental::@199</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="67" column="1"/>
+  </compounddef>
+</doxygen>

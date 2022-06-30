@@ -1,0 +1,1364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_atomic_data_element" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::AtomicDataElement</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa02eaa1ceff4e6a264c279c67ef7cd28" prot="public" static="no">
+        <type>typename ViewTraits::value_type</type>
+        <definition>using Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::value_type =  typename ViewTraits::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a4df723d634d5989d0752230e2cde7acc" prot="public" static="no">
+        <type>typename ViewTraits::const_value_type</type>
+        <definition>using Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::const_value_type =  typename ViewTraits::const_value_type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a949650d5a1c16356497bda0ff87e590e" prot="public" static="no">
+        <type>typename ViewTraits::non_const_value_type</type>
+        <definition>using Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::non_const_value_type =  typename ViewTraits::non_const_value_type</definition>
+        <argsstring></argsstring>
+        <name>non_const_value_type</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::non_const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1abef6971b6d6403f6d14410832ad389f2" prot="public" static="no" mutable="no">
+        <type>volatile value_type *const</type>
+        <definition>volatile value_type* const Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="63" column="29" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a01da80573d05ef11bc2608ee2511db31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::AtomicDataElement</definition>
+        <argsstring>(value_type *ptr_, AtomicViewConstTag)</argsstring>
+        <name>AtomicDataElement</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::AtomicDataElement</qualifiedname>
+        <param>
+          <type>value_type *</type>
+          <declname>ptr_</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_atomic_view_const_tag" kindref="compound">AtomicViewConstTag</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a59eb932cb301c37f4556df533a8c6ec3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="69" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a8e82d73769677b12e953a943d55bb1f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="74" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a647ef025e61d572692697c2216998a7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::inc</definition>
+        <argsstring>() const</argsstring>
+        <name>inc</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::inc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="80" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a35804ec1eb5e128a5edbc3f047cb2a47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::dec</definition>
+        <argsstring>() const</argsstring>
+        <name>dec</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::dec</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="83" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1af21aaef261a34d6b2f76ceca7e4185f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator++</definition>
+        <argsstring>() const</argsstring>
+        <name>operator++</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator++</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="86" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="86" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab5ef352c2a6ce0375740e577aa7bc78e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator--</definition>
+        <argsstring>() const</argsstring>
+        <name>operator--</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator--</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="93" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2533fbb0d4642a64c188abf96f53dc9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator++</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator++</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator++</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="100" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa638da206e39616e1608d74bae7bb012" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator--</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator--</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator--</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="105" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1abc10ec084f0a96945dd810ac1745e8fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator+=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator+=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="110" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1af9b68e9ca25e17ec4c64c2bbcc84f1c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator+=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator+=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="115" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9c81210a122cb6ea87ae6de090254ed1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator-=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator-=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="121" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aef9a58ad191cbd3bc583a8bae84dde5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator-=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator-=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="126" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ac918809f3e303e856ad003b55dd90f44" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator*=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator*=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="132" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a22020abeebb6f55ea199166d5e80eb68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator*=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator*=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="136" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a04019c6e96afeda547ed308bdbeede74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator/=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator/=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="141" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a19d905915ba0190721e4a286eb1e0cff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator/=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator/=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="145" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="145" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa13c17e7c230914718b8fd3e5b47e4f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator%=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator%=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator%=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="150" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="150" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a852ccc03fef19bd397c7510351099f25" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator%=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator%=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator%=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="154" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aef05ae10e7172655b8cc5139ab0ff243" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="159" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aae8a3877a8f171b1d6e25ec5867c94cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="163" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="163" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aae4ab5ebe668dccb1d580e2bb0c310ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator^=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator^=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator^=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="168" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ac79e9c5fe2aa09d293422321677ded73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator^=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator^=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator^=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="172" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1acfe40c096490dbd42438cbabfe3cc5c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator|=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator|=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="177" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="177" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1abf416d6dd5a3832b5fdb70f94901f0bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator|=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator|=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="181" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2b8ab7ac79cb326ca0d4ed4d81ecab47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;&lt;=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;&lt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;&lt;=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="186" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="186" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9d24ce0d264f6b6b643956dda642fdf3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;&lt;=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;&lt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;&lt;=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="190" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="190" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a17d6220a5b2cf4d7eca4132fb7ae6e40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;&gt;=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;&gt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;&gt;=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="195" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="195" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab8e20b86740b3ccb0e5684508464f59d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;&gt;=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;&gt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;&gt;=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="199" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a47520041e4637734655efd7e6938d40c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator+</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator+</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="204" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9d7e7bef5c7b171f999e3e4d97889f7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator+</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator+</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="206" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="206" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a05ad981992cbf196b1c470b1470d7270" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator-</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator-</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="211" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad9168e74f3cf64067e04e9977bfc9f9f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator-</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator-</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="213" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2919c2d28b9abc43fc2d24e8c05ad712" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator*</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator*</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="218" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2a29fbd8987dca859e4fd909790d10a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator*</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator*</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="220" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="220" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad526d64d507c9b798c094ce8a6e86425" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator/</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator/</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator/</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="225" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a15b590765bce9b1c66d7c7080ed6a3e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator/</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator/</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator/</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="227" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="227" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a42663ee1882e9926118f27e8ff8769b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator%</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator%</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator%</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="232" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2d6d490eb569106e6c6ca23119d83a62" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator%</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator%</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator%</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="234" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="234" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa96c00c1837acd577f69f69858dd70f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator!</definition>
+        <argsstring>() const</argsstring>
+        <name>operator!</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator!</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="239" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab4cdbbb2c497528aad8548131a4bf06b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;&amp;</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;&amp;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;&amp;</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="242" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="242" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ae02384a014f3196e5693ec89f8ebb319" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;&amp;</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;&amp;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;&amp;</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="246" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="246" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7b7e0b6d1fa0baab148d81e4f259dc55" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator||</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator||</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator||</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="251" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="251" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a02f873a671e8874b289be632c523a25b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator||</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator||</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator||</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="255" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a8e3911ab5d36e6789c52c6a3ae7a1c5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="260" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaa2d1fab7b636463d5a3139dc57603aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&amp;</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&amp;</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="262" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="262" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1af7554f66882279ebbc2ddd8a19ea135b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator|</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator|</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator|</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="267" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="267" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a76bb4a6769400bc7ea1254f958bc0ca7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator|</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator|</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator|</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="269" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="269" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a15c55ed0a62d7b1b12befb640a953fb7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator^</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator^</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator^</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="274" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="274" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7358bbade49b3e0f1dc5005e658d46ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator^</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator^</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator^</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="276" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="276" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a456c322125589d6fdc9eba15a07aa01c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator~</definition>
+        <argsstring>() const</argsstring>
+        <name>operator~</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator~</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="281" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="281" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a71874023a4f6fb6a9f2ed67858318eca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;&lt;</definition>
+        <argsstring>(const unsigned int &amp;val) const</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="284" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="284" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaf5e5bf58f74c7d7cbfdbeed76b0725b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;&lt;</definition>
+        <argsstring>(volatile const unsigned int &amp;val) const</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>volatile const unsigned int &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="288" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="288" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2a75d972546433c6ab06712ac060e7ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;&gt;</definition>
+        <argsstring>(const unsigned int &amp;val) const</argsstring>
+        <name>operator&gt;&gt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;&gt;</qualifiedname>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="293" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="293" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aeadd0d6e20ca5b0c7757914c8378d068" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const_value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION const_value_type Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;&gt;</definition>
+        <argsstring>(volatile const unsigned int &amp;val) const</argsstring>
+        <name>operator&gt;&gt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;&gt;</qualifiedname>
+        <param>
+          <type>volatile const unsigned int &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="297" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="297" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa7cabc7c732ddc462b35903a7ed86c93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator==</definition>
+        <argsstring>(const AtomicDataElement &amp;val) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_atomic_data_element" kindref="compound">AtomicDataElement</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="302" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad89bb791aeba22b1bf23885af9d72a43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator==</definition>
+        <argsstring>(volatile const AtomicDataElement &amp;val) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator==</qualifiedname>
+        <param>
+          <type>volatile const <ref refid="class_kokkos_1_1_impl_1_1_atomic_data_element" kindref="compound">AtomicDataElement</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="304" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="304" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a31a89c295b68c9c5512ea08ec8cdd853" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator!=</definition>
+        <argsstring>(const AtomicDataElement &amp;val) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_atomic_data_element" kindref="compound">AtomicDataElement</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="309" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="309" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a3529cbeb2d62dfbcea5faaa1da89ed6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator!=</definition>
+        <argsstring>(volatile const AtomicDataElement &amp;val) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator!=</qualifiedname>
+        <param>
+          <type>volatile const <ref refid="class_kokkos_1_1_impl_1_1_atomic_data_element" kindref="compound">AtomicDataElement</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="311" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="311" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2c7b95bab24e56e8459724175f2a1a1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="316" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="316" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aca1595b75754fe553d8066d34dee1316" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="318" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="318" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a0d828aeed1da825a6fe8c4c8c26d570c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;=</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;=</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="321" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="321" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a54642645fcd99150f1b21b9bb3fa3386" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;=</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;=</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="323" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="323" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7dc9e6872a7963aeba48ece058c8dcb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="326" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="326" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaf1c55f8bfe496a2bc6defe7fb9c25be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&lt;</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&lt;</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="328" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="328" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a483c3a92868944ed15f0b7aa9de6bf9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;</definition>
+        <argsstring>(const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;</qualifiedname>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="331" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="331" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a0b7c1cdb048eefc0c594eaf8125389c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator&gt;</definition>
+        <argsstring>(volatile const_value_type &amp;val) const</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator&gt;</qualifiedname>
+        <param>
+          <type>volatile const_value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="333" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="333" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7c681e0ce4c7ee064375b291cdd5a86c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator const_value_type</definition>
+        <argsstring>() const</argsstring>
+        <name>operator const_value_type</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="336" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="336" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_atomic_data_element_1a6c2ab400d7912fe380ec03694cc973ac" prot="public" static="no" const="yes" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::AtomicDataElement&lt; ViewTraits &gt;::operator non_const_value_type</definition>
+        <argsstring>() volatile const</argsstring>
+        <name>operator non_const_value_type</name>
+        <qualifiedname>Kokkos::Impl::AtomicDataElement::operator non_const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="342" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="342" bodyend="344"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp" bodystart="58" bodyend="345"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a01da80573d05ef11bc2608ee2511db31" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>AtomicDataElement</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a4df723d634d5989d0752230e2cde7acc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a35804ec1eb5e128a5edbc3f047cb2a47" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>dec</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a647ef025e61d572692697c2216998a7b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>inc</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a949650d5a1c16356497bda0ff87e590e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7c681e0ce4c7ee064375b291cdd5a86c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator const_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a6c2ab400d7912fe380ec03694cc973ac" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa96c00c1837acd577f69f69858dd70f0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator!</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a31a89c295b68c9c5512ea08ec8cdd853" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator!=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a3529cbeb2d62dfbcea5faaa1da89ed6c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator!=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a42663ee1882e9926118f27e8ff8769b1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator%</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2d6d490eb569106e6c6ca23119d83a62" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator%</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa13c17e7c230914718b8fd3e5b47e4f8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator%=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a852ccc03fef19bd397c7510351099f25" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator%=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a8e3911ab5d36e6789c52c6a3ae7a1c5c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaa2d1fab7b636463d5a3139dc57603aa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab4cdbbb2c497528aad8548131a4bf06b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;&amp;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ae02384a014f3196e5693ec89f8ebb319" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;&amp;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aef05ae10e7172655b8cc5139ab0ff243" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aae8a3877a8f171b1d6e25ec5867c94cc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&amp;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2919c2d28b9abc43fc2d24e8c05ad712" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator*</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2a29fbd8987dca859e4fd909790d10a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator*</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ac918809f3e303e856ad003b55dd90f44" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a22020abeebb6f55ea199166d5e80eb68" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a47520041e4637734655efd7e6938d40c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator+</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9d7e7bef5c7b171f999e3e4d97889f7a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator+</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1af21aaef261a34d6b2f76ceca7e4185f2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator++</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2533fbb0d4642a64c188abf96f53dc9d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator++</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1abc10ec084f0a96945dd810ac1745e8fb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1af9b68e9ca25e17ec4c64c2bbcc84f1c4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a05ad981992cbf196b1c470b1470d7270" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator-</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad9168e74f3cf64067e04e9977bfc9f9f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator-</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab5ef352c2a6ce0375740e577aa7bc78e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator--</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa638da206e39616e1608d74bae7bb012" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator--</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9c81210a122cb6ea87ae6de090254ed1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator-=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aef9a58ad191cbd3bc583a8bae84dde5d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator-=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad526d64d507c9b798c094ce8a6e86425" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator/</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a15b590765bce9b1c66d7c7080ed6a3e4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator/</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a04019c6e96afeda547ed308bdbeede74" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator/=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a19d905915ba0190721e4a286eb1e0cff" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator/=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7dc9e6872a7963aeba48ece058c8dcb3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaf1c55f8bfe496a2bc6defe7fb9c25be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a71874023a4f6fb6a9f2ed67858318eca" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aaf5e5bf58f74c7d7cbfdbeed76b0725b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2b8ab7ac79cb326ca0d4ed4d81ecab47" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;&lt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a9d24ce0d264f6b6b643956dda642fdf3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;&lt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a0d828aeed1da825a6fe8c4c8c26d570c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a54642645fcd99150f1b21b9bb3fa3386" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&lt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a59eb932cb301c37f4556df533a8c6ec3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a8e82d73769677b12e953a943d55bb1f9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa7cabc7c732ddc462b35903a7ed86c93" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator==</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ad89bb791aeba22b1bf23885af9d72a43" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator==</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a483c3a92868944ed15f0b7aa9de6bf9d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a0b7c1cdb048eefc0c594eaf8125389c1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2c7b95bab24e56e8459724175f2a1a1b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aca1595b75754fe553d8066d34dee1316" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a2a75d972546433c6ab06712ac060e7ba" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;&gt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aeadd0d6e20ca5b0c7757914c8378d068" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;&gt;</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a17d6220a5b2cf4d7eca4132fb7ae6e40" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;&gt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ab8e20b86740b3ccb0e5684508464f59d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator&gt;&gt;=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a15c55ed0a62d7b1b12befb640a953fb7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator^</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7358bbade49b3e0f1dc5005e658d46ad" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator^</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aae4ab5ebe668dccb1d580e2bb0c310ba" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator^=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1ac79e9c5fe2aa09d293422321677ded73" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator^=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1af7554f66882279ebbc2ddd8a19ea135b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator|</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a76bb4a6769400bc7ea1254f958bc0ca7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator|</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1acfe40c096490dbd42438cbabfe3cc5c4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator|=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1abf416d6dd5a3832b5fdb70f94901f0bc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator|=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a7b7e0b6d1fa0baab148d81e4f259dc55" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator||</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a02f873a671e8874b289be632c523a25b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator||</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1a456c322125589d6fdc9eba15a07aa01c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>operator~</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1abef6971b6d6403f6d14410832ad389f2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_atomic_data_element_1aa02eaa1ceff4e6a264c279c67ef7cd28" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AtomicDataElement</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

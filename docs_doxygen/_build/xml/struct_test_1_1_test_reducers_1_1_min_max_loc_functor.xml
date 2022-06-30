@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_reducers_1_1_min_max_loc_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestReducers::MinMaxLocFunctor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_reducers_1_1_min_max_loc_functor_1a7ea6d0fe38c5ee96cb704f34f97921b1" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const Scalar *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;const Scalar*, ExecSpace&gt; Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinMaxLocFunctor::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>Test::TestReducers::MinMaxLocFunctor::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="121" column="18" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_reducers_1_1_min_max_loc_functor_1a00b54b3cd739e255ab22a1fd729d5dfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinMaxLocFunctor::operator()</definition>
+        <argsstring>(const int &amp;i, typename Kokkos::MinMaxLoc&lt; Scalar, int &gt;::value_type &amp;value) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestReducers::MinMaxLocFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="struct_kokkos_1_1_min_max_loc" kindref="compound">Kokkos::MinMaxLoc</ref>&lt; Scalar, int &gt;::value_type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="124" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="124" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestReducers&lt; Scalar, ExecSpace &gt;::MinMaxLocFunctor</label>
+        <link refid="struct_test_1_1_test_reducers_1_1_min_max_loc_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; const Scalar *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; const Scalar *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="120" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="120" bodyend="137"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_reducers_1_1_min_max_loc_functor_1a00b54b3cd739e255ab22a1fd729d5dfd" prot="public" virt="non-virtual"><scope>Test::TestReducers::MinMaxLocFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_reducers_1_1_min_max_loc_functor_1a7ea6d0fe38c5ee96cb704f34f97921b1" prot="public" virt="non-virtual"><scope>Test::TestReducers::MinMaxLocFunctor</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

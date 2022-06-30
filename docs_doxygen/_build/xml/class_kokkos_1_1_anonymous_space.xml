@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_anonymous_space" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::AnonymousSpace</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_anonymous_space_1a9173132f501dc226178eb245917162ff" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref></type>
+        <definition>using Kokkos::AnonymousSpace::memory_space =  AnonymousSpace</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::AnonymousSpace::memory_space</qualifiedname>
+        <briefdescription>
+<para>Tag this class as a kokkos memory space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_anonymous_space_1a8ff5d3ec3a04004554074dbf251d18bc" prot="public" static="no">
+        <type>Kokkos::DefaultExecutionSpace</type>
+        <definition>using Kokkos::AnonymousSpace::execution_space =  Kokkos::DefaultExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::AnonymousSpace::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_anonymous_space_1ab2dd9b5605ce0e9a18d1d29ae5c6d96f" prot="public" static="no">
+        <type>size_t</type>
+        <definition>using Kokkos::AnonymousSpace::size_type =  size_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::AnonymousSpace::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_anonymous_space_1acc9bd9b58da2566ffa513bdeb575a0a8" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; execution_space, <ref refid="class_kokkos_1_1_anonymous_space_1a9173132f501dc226178eb245917162ff" kindref="member">memory_space</ref> &gt;</type>
+        <definition>using Kokkos::AnonymousSpace::device_type =  Kokkos::Device&lt;execution_space, memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::AnonymousSpace::device_type</qualifiedname>
+        <briefdescription>
+<para>This memory space preferred device_type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1a8c66af92a58055c8bab2f79716a4d418" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::AnonymousSpace::AnonymousSpace</definition>
+        <argsstring>()=default</argsstring>
+        <name>AnonymousSpace</name>
+        <qualifiedname>Kokkos::AnonymousSpace::AnonymousSpace</qualifiedname>
+        <briefdescription>
+<para>Default memory space instance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="67" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1a1c5334150760ad2495acd86f26ae0135" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::AnonymousSpace::AnonymousSpace</definition>
+        <argsstring>(AnonymousSpace &amp;&amp;rhs)=default</argsstring>
+        <name>AnonymousSpace</name>
+        <qualifiedname>Kokkos::AnonymousSpace::AnonymousSpace</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="68" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1ada4fdc54f56793f1264e3e8d7f8d731b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::AnonymousSpace::AnonymousSpace</definition>
+        <argsstring>(const AnonymousSpace &amp;rhs)=default</argsstring>
+        <name>AnonymousSpace</name>
+        <qualifiedname>Kokkos::AnonymousSpace::AnonymousSpace</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="69" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1a7a16128fb8a873f9527048e986d004fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;</type>
+        <definition>AnonymousSpace &amp; Kokkos::AnonymousSpace::operator=</definition>
+        <argsstring>(AnonymousSpace &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::AnonymousSpace::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="70" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1abd7d5d3d929e84cb7942c7dac2a32298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;</type>
+        <definition>AnonymousSpace &amp; Kokkos::AnonymousSpace::operator=</definition>
+        <argsstring>(const AnonymousSpace &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::AnonymousSpace::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">AnonymousSpace</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="71" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1a00fe2fcbca2176891f216bb6b0630c9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::AnonymousSpace::~AnonymousSpace</definition>
+        <argsstring>()=default</argsstring>
+        <name>~AnonymousSpace</name>
+        <qualifiedname>Kokkos::AnonymousSpace::~AnonymousSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="72" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_anonymous_space_1a68570b3379a659d827586b23028575f4" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>static constexpr const char * Kokkos::AnonymousSpace::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <qualifiedname>Kokkos::AnonymousSpace::name</qualifiedname>
+        <briefdescription>
+<para>Return Name of the MemorySpace. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="75" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" line="56" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_AnonymousSpace.hpp" bodystart="56" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_anonymous_space_1a8c66af92a58055c8bab2f79716a4d418" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>AnonymousSpace</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a1c5334150760ad2495acd86f26ae0135" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>AnonymousSpace</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1ada4fdc54f56793f1264e3e8d7f8d731b" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>AnonymousSpace</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1acc9bd9b58da2566ffa513bdeb575a0a8" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a8ff5d3ec3a04004554074dbf251d18bc" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a9173132f501dc226178eb245917162ff" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>memory_space</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a68570b3379a659d827586b23028575f4" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>name</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a7a16128fb8a873f9527048e986d004fa" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1abd7d5d3d929e84cb7942c7dac2a32298" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1ab2dd9b5605ce0e9a18d1d29ae5c6d96f" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_anonymous_space_1a00fe2fcbca2176891f216bb6b0630c9b" prot="public" virt="non-virtual"><scope>Kokkos::AnonymousSpace</scope><name>~AnonymousSpace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

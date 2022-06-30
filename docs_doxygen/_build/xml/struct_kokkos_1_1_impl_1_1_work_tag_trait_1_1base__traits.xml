@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_work_tag_trait_1_1base__traits" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::WorkTagTrait::base_traits</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_tag_trait_1_1base__traits_1a7c9a48aacf7fb89e2c312b5d7d65252c" prot="public" static="no">
+        <type>void</type>
+        <definition>using Kokkos::Impl::WorkTagTrait::base_traits::work_tag =  void</definition>
+        <argsstring></argsstring>
+        <name>work_tag</name>
+        <qualifiedname>Kokkos::Impl::WorkTagTrait::base_traits::work_tag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" line="79" column="5" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" bodystart="78" bodyend="80"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_tag_trait_1_1base__traits_1a7c9a48aacf7fb89e2c312b5d7d65252c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkTagTrait::base_traits</scope><name>work_tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

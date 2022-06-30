@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d1/da5/class_dynamic_ragged_down_array_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>DynamicRaggedDownArrayKokkos</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <innerclass refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor" prot="public">DynamicRaggedDownArrayKokkos::set_strides_functor</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>DefaultLayout</defval>
+      </param>
+      <param>
+        <type>typename ExecSpace</type>
+        <defval>DefaultExecSpace</defval>
+      </param>
+      <param>
+        <type>typename MemoryTraits</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a9557cb83009a67f0401453803c070715" prot="private" static="no">
+        <type>Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::TArray1D =  Kokkos::View&lt;T*, Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1D</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::TArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12608" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12608" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a54e9304100232cefa144f788a47a02ed" prot="private" static="no">
+        <type>Kokkos::View&lt; size_t *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::SArray1D =  Kokkos::View&lt;size_t *,Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>SArray1D</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::SArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12609" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12609" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a8a107c37a2cc206e451de6c6144e18cd" prot="private" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::stride_</definition>
+        <argsstring></argsstring>
+        <name>stride_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::stride_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12612" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12612" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1af024c40c792169ae3fb45183336ce4db" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12613" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12613" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a1357df0fc1201f60df799df24f2d19e6" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dim1_</definition>
+        <argsstring></argsstring>
+        <name>dim1_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::dim1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12615" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12615" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a147f2af2e93705ab7fd54cf02213dddd" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dim2_</definition>
+        <argsstring></argsstring>
+        <name>dim2_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::dim2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12616" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12616" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a8b44a742a58e00f2aa706ede0af4fd43" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12617" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12617" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a7231affd6d09f2536bc98ac0bd085b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DynamicRaggedDownArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>DynamicRaggedDownArrayKokkos</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::DynamicRaggedDownArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12621" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12672" bodyend="12672"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a240170fe3543b19128bdaee06bc4bd72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DynamicRaggedDownArrayKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DynamicRaggedDownArrayKokkos</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::DynamicRaggedDownArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12626" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12676" bodyend="12701"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a22b4509eb9078988f178c5efd7582cc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t &amp; DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::stride</definition>
+        <argsstring>(size_t j) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::stride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12630" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12706" bodyend="12708"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a9e236c3fcb771bd4eaf0b8346525e393" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12634" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12713" bodyend="12715"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a35b53953264527d39faf3a45be9dddce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION TArray1D</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt; DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::get_kokkos_view</definition>
+        <argsstring>()</argsstring>
+        <name>get_kokkos_view</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::get_kokkos_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12638" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12763" bodyend="12765"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a705e8ba3094eda352163a88ba2836de5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12643" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12722" bodyend="12730"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1ae430eb147160cc1e7c390770a24bc2f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="d1/da5/class_dynamic_ragged_down_array_kokkos" kindref="compound">DynamicRaggedDownArrayKokkos</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp; DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator=</definition>
+        <argsstring>(const DynamicRaggedDownArrayKokkos &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="d1/da5/class_dynamic_ragged_down_array_kokkos" kindref="compound">DynamicRaggedDownArrayKokkos</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12647" column="34" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12736" bodyend="12758"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/da5/class_dynamic_ragged_down_array_kokkos_1a41a72c9c12461180b3699a73416ba450" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::~DynamicRaggedDownArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~DynamicRaggedDownArrayKokkos</name>
+        <qualifiedname>DynamicRaggedDownArrayKokkos::~DynamicRaggedDownArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12667" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12770" bodyend="12771"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12606" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12606" bodyend="12668"/>
+    <listofallmembers>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1af024c40c792169ae3fb45183336ce4db" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>array_</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a1357df0fc1201f60df799df24f2d19e6" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>dim1_</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a147f2af2e93705ab7fd54cf02213dddd" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>dim2_</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a7231affd6d09f2536bc98ac0bd085b43" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>DynamicRaggedDownArrayKokkos</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a240170fe3543b19128bdaee06bc4bd72" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>DynamicRaggedDownArrayKokkos</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a35b53953264527d39faf3a45be9dddce" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>get_kokkos_view</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a8b44a742a58e00f2aa706ede0af4fd43" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>length_</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a705e8ba3094eda352163a88ba2836de5" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1ae430eb147160cc1e7c390770a24bc2f4" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>operator=</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a54e9304100232cefa144f788a47a02ed" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>SArray1D</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a9e236c3fcb771bd4eaf0b8346525e393" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>size</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a22b4509eb9078988f178c5efd7582cc9" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>stride</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a8a107c37a2cc206e451de6c6144e18cd" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>stride_</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a9557cb83009a67f0401453803c070715" prot="private" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>TArray1D</name></member>
+      <member refid="d1/da5/class_dynamic_ragged_down_array_kokkos_1a41a72c9c12461180b3699a73416ba450" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos</scope><name>~DynamicRaggedDownArrayKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

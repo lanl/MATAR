@@ -1,0 +1,2486 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___profiling___c___interface_8h" kind="file" language="C++">
+    <compoundname>Kokkos_Profiling_C_Interface.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="_kokkos___profiling___device_info_8hpp" local="no">src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_DeviceInfo.hpp</includedby>
+    <includedby refid="_kokkos___profiling___interface_8hpp" local="no">src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp</includedby>
+    <includedby refid="_test_c_interface_8c" local="no">src/Kokkos/kokkos/core/unit_test/tools/TestCInterface.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h</label>
+        <link refid="_kokkos___profiling___c___interface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp</label>
+        <link refid="_kokkos___random_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp</label>
+        <link refid="_kokkos___sort_8hpp_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp</label>
+        <link refid="_test_random_8hpp_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/Kokkos/kokkos/algorithms/unit_tests/TestRandomCommon.hpp</label>
+        <link refid="_test_random_common_8hpp_source"/>
+      </node>
+      <node id="10">
+        <label>src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp</label>
+        <link refid="_test_sort_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/Kokkos/kokkos/algorithms/unit_tests/TestSortCommon.hpp</label>
+        <link refid="_test_sort_common_8hpp_source"/>
+      </node>
+      <node id="15">
+        <label>src/Kokkos/kokkos/benchmarks/bytes_and_flops/bench.hpp</label>
+        <link refid="bench_8hpp_source"/>
+      </node>
+      <node id="13">
+        <label>src/Kokkos/kokkos/benchmarks/gather/gather.hpp</label>
+        <link refid="gather_8hpp_source"/>
+      </node>
+      <node id="12">
+        <label>src/Kokkos/kokkos/benchmarks/gather/gather_unroll.hpp</label>
+        <link refid="gather__unroll_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp</label>
+        <link refid="policy__perf__test_8hpp_source"/>
+      </node>
+      <node id="17">
+        <label>src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp</label>
+        <link refid="_test_dyn_rank_view_8hpp_source"/>
+      </node>
+      <node id="18">
+        <label>src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp</label>
+        <link refid="_test_global2_local_ids_8hpp_source"/>
+      </node>
+      <node id="40">
+        <label>src/Kokkos/kokkos/containers/performance_tests/TestScatterView.hpp</label>
+        <link refid="performance__tests_2_test_scatter_view_8hpp_source"/>
+      </node>
+      <node id="19">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp</label>
+        <link refid="_kokkos___bitset_8hpp_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp</label>
+        <link refid="_kokkos___dual_view_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp</label>
+        <link refid="_kokkos___dyn_rank_view_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp</label>
+        <link refid="_kokkos___dynamic_view_8hpp_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp</label>
+        <link refid="_kokkos___error_reporter_8hpp_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp</label>
+        <link refid="_kokkos___offset_view_8hpp_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp</label>
+        <link refid="_kokkos___scatter_view_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp</label>
+        <link refid="_kokkos___static_crs_graph_8hpp_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp</label>
+        <link refid="_kokkos___unordered_map_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp</label>
+        <link refid="_kokkos___vector_8hpp_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp</label>
+        <link refid="_test_bitset_8hpp_source"/>
+      </node>
+      <node id="28">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDualView.hpp</label>
+        <link refid="_test_dual_view_8hpp_source"/>
+      </node>
+      <node id="30">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp</label>
+        <link refid="_test_dyn_view_a_p_i_8hpp_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI_generic.hpp</label>
+        <link refid="_test_dyn_view_a_p_i__generic_8hpp_source"/>
+      </node>
+      <node id="32">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI_rank12345.hpp</label>
+        <link refid="_test_dyn_view_a_p_i__rank12345_8hpp_source"/>
+      </node>
+      <node id="33">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI_rank67.hpp</label>
+        <link refid="_test_dyn_view_a_p_i__rank67_8hpp_source"/>
+      </node>
+      <node id="36">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestDynamicView.hpp</label>
+        <link refid="_test_dynamic_view_8hpp_source"/>
+      </node>
+      <node id="25">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp</label>
+        <link refid="_test_error_reporter_8hpp_source"/>
+      </node>
+      <node id="38">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestOffsetView.hpp</label>
+        <link refid="_test_offset_view_8hpp_source"/>
+      </node>
+      <node id="41">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestScatterView.hpp</label>
+        <link refid="unit__tests_2_test_scatter_view_8hpp_source"/>
+      </node>
+      <node id="42">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestStaticCrsGraph.hpp</label>
+        <link refid="_test_static_crs_graph_8hpp_source"/>
+      </node>
+      <node id="21">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp</label>
+        <link refid="_test_unordered_map_8hpp_source"/>
+      </node>
+      <node id="27">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp</label>
+        <link refid="_test_vector_8hpp_source"/>
+      </node>
+      <node id="34">
+        <label>src/Kokkos/kokkos/containers/unit_tests/TestViewCtorPropEmbeddedDim.hpp</label>
+        <link refid="containers_2unit__tests_2_test_view_ctor_prop_embedded_dim_8hpp_source"/>
+      </node>
+      <node id="43">
+        <label>src/Kokkos/kokkos/core/perf_test/PerfTest_ViewCopy.hpp</label>
+        <link refid="_perf_test___view_copy_8hpp_source"/>
+      </node>
+      <node id="44">
+        <label>src/Kokkos/kokkos/core/perf_test/PerfTest_ViewFill.hpp</label>
+        <link refid="_perf_test___view_fill_8hpp_source"/>
+      </node>
+      <node id="45">
+        <label>src/Kokkos/kokkos/core/perf_test/PerfTest_ViewResize.hpp</label>
+        <link refid="_perf_test___view_resize_8hpp_source"/>
+      </node>
+      <node id="184">
+        <label>src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp</label>
+        <link refid="_kokkos___cuda___instance_8hpp_source"/>
+      </node>
+      <node id="201">
+        <label>src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Parallel_MDRange.hpp</label>
+        <link refid="_kokkos___h_i_p___parallel___m_d_range_8hpp_source"/>
+      </node>
+      <node id="202">
+        <label>src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Parallel_Range.hpp</label>
+        <link refid="_kokkos___h_i_p___parallel___range_8hpp_source"/>
+      </node>
+      <node id="203">
+        <label>src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Parallel_Team.hpp</label>
+        <link refid="_kokkos___h_i_p___parallel___team_8hpp_source"/>
+      </node>
+      <node id="218">
+        <label>src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_UniqueToken.hpp</label>
+        <link refid="_kokkos___h_i_p___unique_token_8hpp_source"/>
+      </node>
+      <node id="197">
+        <label>src/Kokkos/kokkos/core/src/KokkosExp_InterOp.hpp</label>
+        <link refid="_kokkos_exp___inter_op_8hpp_source"/>
+      </node>
+      <node id="46">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_AcquireUniqueTokenImpl.hpp</label>
+        <link refid="_kokkos___acquire_unique_token_impl_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Atomic.hpp</label>
+        <link refid="_kokkos___atomic_8hpp"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+        <childnode refid="221" relation="include">
+        </childnode>
+        <childnode refid="222" relation="include">
+        </childnode>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="223" relation="include">
+        </childnode>
+        <childnode refid="226" relation="include">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp</label>
+        <link refid="_kokkos___complex_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp</label>
+        <link refid="_kokkos___copy_views_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Core.hpp</label>
+        <link refid="_kokkos___core_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+      </node>
+      <node id="198">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp</label>
+        <link refid="_kokkos___crs_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+      </node>
+      <node id="208">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Graph.hpp</label>
+        <link refid="_kokkos___graph_8hpp_source"/>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_GraphNode.hpp</label>
+        <link refid="_kokkos___graph_node_8hpp_source"/>
+        <childnode refid="208" relation="include">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp</label>
+        <link refid="_kokkos___host_space_8hpp_source"/>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp</label>
+        <link refid="_kokkos___logical_spaces_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_MathematicalSpecialFunctions.hpp</label>
+        <link refid="_kokkos___mathematical_special_functions_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="189">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_MemoryPool.hpp</label>
+        <link refid="_kokkos___memory_pool_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="200">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Parallel.hpp</label>
+        <link refid="_kokkos___parallel_8hpp"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+      </node>
+      <node id="210">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp</label>
+        <link refid="_kokkos___parallel___reduce_8hpp_source"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp</label>
+        <link refid="_kokkos___profiling___profile_section_8hpp_source"/>
+      </node>
+      <node id="5">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp</label>
+        <link refid="_kokkos___tuners_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_View.hpp</label>
+        <link refid="_kokkos___view_8hpp_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="213" relation="include">
+        </childnode>
+        <childnode refid="214" relation="include">
+        </childnode>
+      </node>
+      <node id="199">
+        <label>src/Kokkos/kokkos/core/src/Kokkos_WorkGraphPolicy.hpp</label>
+        <link refid="_kokkos___work_graph_policy_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="190">
+        <label>src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp</label>
+        <link refid="_kokkos___open_m_p_target___exec_8hpp_source"/>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Instance.hpp</label>
+        <link refid="_kokkos___open_m_p_target___instance_8hpp_source"/>
+      </node>
+      <node id="191">
+        <label>src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp</label>
+        <link refid="_kokkos___open_m_p_target___parallel_8hpp_source"/>
+      </node>
+      <node id="192">
+        <label>src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp</label>
+        <link refid="_kokkos___open_m_p_target___parallel___m_d_range_8hpp_source"/>
+      </node>
+      <node id="182">
+        <label>src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp</label>
+        <link refid="_kokkos___s_y_c_l___instance_8hpp_source"/>
+      </node>
+      <node id="229">
+        <label>src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp</label>
+        <link refid="_kokkos___s_y_c_l___parallel___range_8hpp_source"/>
+      </node>
+      <node id="205">
+        <label>src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp</label>
+        <link refid="_kokkos___s_y_c_l___parallel___team_8hpp_source"/>
+      </node>
+      <node id="219">
+        <label>src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp</label>
+        <link refid="_kokkos___s_y_c_l___unique_token_8hpp_source"/>
+      </node>
+      <node id="228">
+        <label>src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp</label>
+        <link refid="_kokkos_exp___iterate_tile_g_p_u_8hpp_source"/>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+      </node>
+      <node id="216">
+        <label>src/Kokkos/kokkos/core/src/impl/KokkosExp_ViewMapping.hpp</label>
+        <link refid="_kokkos_exp___view_mapping_8hpp_source"/>
+      </node>
+      <node id="193">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Compare_Exchange_Weak.hpp</label>
+        <link refid="_kokkos___atomic___compare___exchange___weak_8hpp_source"/>
+      </node>
+      <node id="194">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_View.hpp</label>
+        <link refid="_kokkos___atomic___view_8hpp_source"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp</label>
+        <link refid="_kokkos___combined___reducer_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="217">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_ConcurrentBitset.hpp</label>
+        <link refid="_kokkos___concurrent_bitset_8hpp_source"/>
+        <childnode refid="218" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="219" relation="include">
+        </childnode>
+        <childnode refid="220" relation="include">
+        </childnode>
+      </node>
+      <node id="206">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Default_GraphNodeKernel.hpp</label>
+        <link refid="_kokkos___default___graph_node_kernel_8hpp_source"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Default_GraphNode_Impl.hpp</label>
+        <link refid="_kokkos___default___graph_node___impl_8hpp_source"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+      </node>
+      <node id="207">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp</label>
+        <link refid="_kokkos___default___graph___impl_8hpp_source"/>
+        <childnode refid="208" relation="include">
+        </childnode>
+      </node>
+      <node id="221">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_FixedBufferMemoryPool.hpp</label>
+        <link refid="_kokkos___fixed_buffer_memory_pool_8hpp_source"/>
+      </node>
+      <node id="222">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostBarrier.hpp</label>
+        <link refid="_kokkos___host_barrier_8hpp_source"/>
+        <childnode refid="223" relation="include">
+        </childnode>
+      </node>
+      <node id="224">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp</label>
+        <link refid="_kokkos___host_shared_ptr_8hpp_source"/>
+        <childnode refid="225" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="223">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp</label>
+        <link refid="_kokkos___host_thread_team_8hpp_source"/>
+      </node>
+      <node id="213">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_PhysicalLayout.hpp</label>
+        <link refid="_kokkos___physical_layout_8hpp_source"/>
+      </node>
+      <node id="180">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp</label>
+        <link refid="_kokkos___profiling_8hpp_source"/>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h</label>
+        <link refid="_kokkos___profiling___c___interface_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_DeviceInfo.hpp</label>
+        <link refid="_kokkos___profiling___device_info_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_Interface.hpp</label>
+        <link refid="_kokkos___profiling___interface_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+      </node>
+      <node id="227">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc_timpl.hpp</label>
+        <link refid="_kokkos___shared_alloc__timpl_8hpp_source"/>
+      </node>
+      <node id="226">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Spinwait.hpp</label>
+        <link refid="_kokkos___spinwait_8hpp_source"/>
+        <childnode refid="190" relation="include">
+        </childnode>
+      </node>
+      <node id="183">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_Tools.hpp</label>
+        <link refid="_kokkos___tools_8hpp_source"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="215" relation="include">
+        </childnode>
+      </node>
+      <node id="214">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp</label>
+        <link refid="_kokkos___view_layout_tiled_8hpp_source"/>
+        <childnode refid="131" relation="include">
+        </childnode>
+      </node>
+      <node id="215">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp</label>
+        <link refid="_kokkos___view_mapping_8hpp_source"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp</label>
+        <link refid="_test_atomic_operations_8hpp_source"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_complexdouble.hpp</label>
+        <link refid="_test_atomic_operations__complexdouble_8hpp_source"/>
+      </node>
+      <node id="50">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_complexfloat.hpp</label>
+        <link refid="_test_atomic_operations__complexfloat_8hpp_source"/>
+      </node>
+      <node id="51">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_double.hpp</label>
+        <link refid="_test_atomic_operations__double_8hpp_source"/>
+      </node>
+      <node id="52">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_float.hpp</label>
+        <link refid="_test_atomic_operations__float_8hpp_source"/>
+      </node>
+      <node id="53">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_int.hpp</label>
+        <link refid="_test_atomic_operations__int_8hpp_source"/>
+      </node>
+      <node id="54">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_longint.hpp</label>
+        <link refid="_test_atomic_operations__longint_8hpp_source"/>
+      </node>
+      <node id="55">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_longlongint.hpp</label>
+        <link refid="_test_atomic_operations__longlongint_8hpp_source"/>
+      </node>
+      <node id="56">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_unsignedint.hpp</label>
+        <link refid="_test_atomic_operations__unsignedint_8hpp_source"/>
+      </node>
+      <node id="57">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicOperations_unsignedlongint.hpp</label>
+        <link refid="_test_atomic_operations__unsignedlongint_8hpp_source"/>
+      </node>
+      <node id="59">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp</label>
+        <link refid="_test_atomic_views_8hpp_source"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>src/Kokkos/kokkos/core/unit_test/TestAtomics.hpp</label>
+        <link refid="_test_atomics_8hpp_source"/>
+      </node>
+      <node id="61">
+        <label>src/Kokkos/kokkos/core/unit_test/TestBlockSizeDeduction.hpp</label>
+        <link refid="_test_block_size_deduction_8hpp_source"/>
+      </node>
+      <node id="62">
+        <label>src/Kokkos/kokkos/core/unit_test/TestCXX11.hpp</label>
+        <link refid="_test_c_x_x11_8hpp_source"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp</label>
+        <link refid="_test_c_x_x11_deduction_8hpp_source"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>src/Kokkos/kokkos/core/unit_test/TestCompilerMacros.hpp</label>
+        <link refid="_test_compiler_macros_8hpp_source"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>src/Kokkos/kokkos/core/unit_test/TestComplex.hpp</label>
+        <link refid="_test_complex_8hpp_source"/>
+      </node>
+      <node id="69">
+        <label>src/Kokkos/kokkos/core/unit_test/TestConcepts.hpp</label>
+        <link refid="_test_concepts_8hpp_source"/>
+      </node>
+      <node id="220">
+        <label>src/Kokkos/kokkos/core/unit_test/TestConcurrentBitset.hpp</label>
+        <link refid="_test_concurrent_bitset_8hpp_source"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>src/Kokkos/kokkos/core/unit_test/TestCrs.hpp</label>
+        <link refid="_test_crs_8hpp_source"/>
+      </node>
+      <node id="71">
+        <label>src/Kokkos/kokkos/core/unit_test/TestDeepCopyAlignment.hpp</label>
+        <link refid="_test_deep_copy_alignment_8hpp_source"/>
+      </node>
+      <node id="72">
+        <label>src/Kokkos/kokkos/core/unit_test/TestDefaultDeviceTypeInit.hpp</label>
+        <link refid="_test_default_device_type_init_8hpp_source"/>
+      </node>
+      <node id="73">
+        <label>src/Kokkos/kokkos/core/unit_test/TestExecSpacePartitioning.hpp</label>
+        <link refid="_test_exec_space_partitioning_8hpp_source"/>
+      </node>
+      <node id="74">
+        <label>src/Kokkos/kokkos/core/unit_test/TestExecutionSpace.hpp</label>
+        <link refid="_test_execution_space_8hpp_source"/>
+      </node>
+      <node id="75">
+        <label>src/Kokkos/kokkos/core/unit_test/TestFunctorAnalysis.hpp</label>
+        <link refid="_test_functor_analysis_8hpp_source"/>
+      </node>
+      <node id="76">
+        <label>src/Kokkos/kokkos/core/unit_test/TestGraph.hpp</label>
+        <link refid="_test_graph_8hpp_source"/>
+      </node>
+      <node id="225">
+        <label>src/Kokkos/kokkos/core/unit_test/TestHostSharedPtr.hpp</label>
+        <link refid="_test_host_shared_ptr_8hpp_source"/>
+      </node>
+      <node id="77">
+        <label>src/Kokkos/kokkos/core/unit_test/TestHostSharedPtrAccessOnDevice.hpp</label>
+        <link refid="_test_host_shared_ptr_access_on_device_8hpp_source"/>
+      </node>
+      <node id="67">
+        <label>src/Kokkos/kokkos/core/unit_test/TestInit.hpp</label>
+        <link refid="_test_init_8hpp_source"/>
+      </node>
+      <node id="78">
+        <label>src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp</label>
+        <link refid="_test_irregular_layout_8hpp_source"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>src/Kokkos/kokkos/core/unit_test/TestLocalDeepCopy.hpp</label>
+        <link refid="_test_local_deep_copy_8hpp_source"/>
+      </node>
+      <node id="81">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange.hpp</label>
+        <link refid="_test_m_d_range_8hpp_source"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_a.hpp</label>
+        <link refid="_test_m_d_range__a_8hpp_source"/>
+      </node>
+      <node id="83">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_b.hpp</label>
+        <link refid="_test_m_d_range__b_8hpp_source"/>
+      </node>
+      <node id="84">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_c.hpp</label>
+        <link refid="_test_m_d_range__c_8hpp_source"/>
+      </node>
+      <node id="85">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_d.hpp</label>
+        <link refid="_test_m_d_range__d_8hpp_source"/>
+      </node>
+      <node id="86">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_e.hpp</label>
+        <link refid="_test_m_d_range__e_8hpp_source"/>
+      </node>
+      <node id="87">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMDRange_f.hpp</label>
+        <link refid="_test_m_d_range__f_8hpp_source"/>
+      </node>
+      <node id="88">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp</label>
+        <link refid="_test_mathematical_functions_8hpp_source"/>
+      </node>
+      <node id="89">
+        <label>src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp</label>
+        <link refid="_test_mathematical_special_functions_8hpp_source"/>
+      </node>
+      <node id="90">
+        <label>src/Kokkos/kokkos/core/unit_test/TestNonTrivialScalarTypes.hpp</label>
+        <link refid="_test_non_trivial_scalar_types_8hpp_source"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp</label>
+        <link refid="_test_numeric_traits_8hpp_source"/>
+      </node>
+      <node id="63">
+        <label>src/Kokkos/kokkos/core/unit_test/TestOther.hpp</label>
+        <link refid="_test_other_8hpp_source"/>
+      </node>
+      <node id="96">
+        <label>src/Kokkos/kokkos/core/unit_test/TestPolicyConstruction.hpp</label>
+        <link refid="_test_policy_construction_8hpp_source"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>src/Kokkos/kokkos/core/unit_test/TestRange.hpp</label>
+        <link refid="_test_range_8hpp_source"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>src/Kokkos/kokkos/core/unit_test/TestRangePolicy.hpp</label>
+        <link refid="_test_range_policy_8hpp_source"/>
+      </node>
+      <node id="99">
+        <label>src/Kokkos/kokkos/core/unit_test/TestRangePolicyRequire.hpp</label>
+        <link refid="_test_range_policy_require_8hpp_source"/>
+      </node>
+      <node id="100">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReduce.hpp</label>
+        <link refid="_test_reduce_8hpp_source"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp</label>
+        <link refid="_test_reduce_combinatorical_8hpp_source"/>
+      </node>
+      <node id="102">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReducers.hpp</label>
+        <link refid="_test_reducers_8hpp_source"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReducers_a.hpp</label>
+        <link refid="_test_reducers__a_8hpp_source"/>
+      </node>
+      <node id="104">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReducers_b.hpp</label>
+        <link refid="_test_reducers__b_8hpp_source"/>
+      </node>
+      <node id="105">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReducers_c.hpp</label>
+        <link refid="_test_reducers__c_8hpp_source"/>
+      </node>
+      <node id="91">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReducers_d.hpp</label>
+        <link refid="_test_reducers__d_8hpp_source"/>
+      </node>
+      <node id="65">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReductions.hpp</label>
+        <link refid="_test_reductions_8hpp_source"/>
+      </node>
+      <node id="106">
+        <label>src/Kokkos/kokkos/core/unit_test/TestReductions_DeviceView.hpp</label>
+        <link refid="_test_reductions___device_view_8hpp_source"/>
+      </node>
+      <node id="107">
+        <label>src/Kokkos/kokkos/core/unit_test/TestResize.hpp</label>
+        <link refid="_test_resize_8hpp_source"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>src/Kokkos/kokkos/core/unit_test/TestScan.hpp</label>
+        <link refid="_test_scan_8hpp_source"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp</label>
+        <link refid="_test_shared_alloc_8hpp_source"/>
+      </node>
+      <node id="111">
+        <label>src/Kokkos/kokkos/core/unit_test/TestStackTrace.hpp</label>
+        <link refid="_test_stack_trace_8hpp_source"/>
+      </node>
+      <node id="138">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_a.hpp</label>
+        <link refid="_test_sub_view__a_8hpp_source"/>
+      </node>
+      <node id="139">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_b.hpp</label>
+        <link refid="_test_sub_view__b_8hpp_source"/>
+      </node>
+      <node id="140">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c01.hpp</label>
+        <link refid="_test_sub_view__c01_8hpp_source"/>
+      </node>
+      <node id="141">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c02.hpp</label>
+        <link refid="_test_sub_view__c02_8hpp_source"/>
+      </node>
+      <node id="142">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c03.hpp</label>
+        <link refid="_test_sub_view__c03_8hpp_source"/>
+      </node>
+      <node id="143">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c04.hpp</label>
+        <link refid="_test_sub_view__c04_8hpp_source"/>
+      </node>
+      <node id="144">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c05.hpp</label>
+        <link refid="_test_sub_view__c05_8hpp_source"/>
+      </node>
+      <node id="145">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c06.hpp</label>
+        <link refid="_test_sub_view__c06_8hpp_source"/>
+      </node>
+      <node id="146">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c07.hpp</label>
+        <link refid="_test_sub_view__c07_8hpp_source"/>
+      </node>
+      <node id="147">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c08.hpp</label>
+        <link refid="_test_sub_view__c08_8hpp_source"/>
+      </node>
+      <node id="148">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c09.hpp</label>
+        <link refid="_test_sub_view__c09_8hpp_source"/>
+      </node>
+      <node id="149">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c10.hpp</label>
+        <link refid="_test_sub_view__c10_8hpp_source"/>
+      </node>
+      <node id="150">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c11.hpp</label>
+        <link refid="_test_sub_view__c11_8hpp_source"/>
+      </node>
+      <node id="151">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c12.hpp</label>
+        <link refid="_test_sub_view__c12_8hpp_source"/>
+      </node>
+      <node id="152">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c13.hpp</label>
+        <link refid="_test_sub_view__c13_8hpp_source"/>
+      </node>
+      <node id="153">
+        <label>src/Kokkos/kokkos/core/unit_test/TestSubView_c14.hpp</label>
+        <link refid="_test_sub_view__c14_8hpp_source"/>
+      </node>
+      <node id="112">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeam.hpp</label>
+        <link refid="_test_team_8hpp_source"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamBasic.hpp</label>
+        <link refid="_test_team_basic_8hpp_source"/>
+      </node>
+      <node id="113">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamReductionScan.hpp</label>
+        <link refid="_test_team_reduction_scan_8hpp_source"/>
+      </node>
+      <node id="115">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamScan.hpp</label>
+        <link refid="_test_team_scan_8hpp_source"/>
+      </node>
+      <node id="114">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamScratch.hpp</label>
+        <link refid="_test_team_scratch_8hpp_source"/>
+      </node>
+      <node id="116">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamTeamSize.hpp</label>
+        <link refid="_test_team_team_size_8hpp_source"/>
+      </node>
+      <node id="92">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp</label>
+        <link refid="_test_team_vector_8hpp_source"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp</label>
+        <link refid="_test_team_vector_range_8hpp_source"/>
+      </node>
+      <node id="118">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTemplateMetaFunctions.hpp</label>
+        <link refid="_test_template_meta_functions_8hpp_source"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="119">
+        <label>src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp</label>
+        <link refid="_test_unique_token_8hpp_source"/>
+      </node>
+      <node id="120">
+        <label>src/Kokkos/kokkos/core/unit_test/TestUtilities.hpp</label>
+        <link refid="_test_utilities_8hpp_source"/>
+      </node>
+      <node id="121">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp</label>
+        <link refid="_test_view_a_p_i_8hpp_source"/>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI_a.hpp</label>
+        <link refid="_test_view_a_p_i__a_8hpp_source"/>
+      </node>
+      <node id="123">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI_b.hpp</label>
+        <link refid="_test_view_a_p_i__b_8hpp_source"/>
+      </node>
+      <node id="124">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI_c.hpp</label>
+        <link refid="_test_view_a_p_i__c_8hpp_source"/>
+      </node>
+      <node id="125">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI_d.hpp</label>
+        <link refid="_test_view_a_p_i__d_8hpp_source"/>
+      </node>
+      <node id="126">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewAPI_e.hpp</label>
+        <link refid="_test_view_a_p_i__e_8hpp_source"/>
+      </node>
+      <node id="127">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewCopy_a.hpp</label>
+        <link refid="_test_view_copy__a_8hpp_source"/>
+      </node>
+      <node id="128">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewCopy_b.hpp</label>
+        <link refid="_test_view_copy__b_8hpp_source"/>
+      </node>
+      <node id="129">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewCtorPropEmbeddedDim.hpp</label>
+        <link refid="core_2unit__test_2_test_view_ctor_prop_embedded_dim_8hpp_source"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewIsAssignable.hpp</label>
+        <link refid="_test_view_is_assignable_8hpp_source"/>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewLayoutStrideAssignment.hpp</label>
+        <link refid="_test_view_layout_stride_assignment_8hpp_source"/>
+      </node>
+      <node id="131">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewLayoutTiled.hpp</label>
+        <link refid="_test_view_layout_tiled_8hpp_source"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp</label>
+        <link refid="_test_view_mapping__a_8hpp_source"/>
+      </node>
+      <node id="133">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp</label>
+        <link refid="_test_view_mapping__b_8hpp_source"/>
+      </node>
+      <node id="134">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp</label>
+        <link refid="_test_view_mapping__subview_8hpp_source"/>
+      </node>
+      <node id="135">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewOfClass.hpp</label>
+        <link refid="_test_view_of_class_8hpp_source"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewResize.hpp</label>
+        <link refid="_test_view_resize_8hpp_source"/>
+      </node>
+      <node id="136">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewSpaceAssign.hpp</label>
+        <link refid="_test_view_space_assign_8hpp_source"/>
+      </node>
+      <node id="137">
+        <label>src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp</label>
+        <link refid="_test_view_subview_8hpp_source"/>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>src/Kokkos/kokkos/core/unit_test/TestView_64bit.hpp</label>
+        <link refid="_test_view__64bit_8hpp_source"/>
+      </node>
+      <node id="155">
+        <label>src/Kokkos/kokkos/core/unit_test/TestWorkGraph.hpp</label>
+        <link refid="_test_work_graph_8hpp_source"/>
+      </node>
+      <node id="156">
+        <label>src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp</label>
+        <link refid="_test___inter_op___streams_8hpp_source"/>
+      </node>
+      <node id="157">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test01_execspace.hpp</label>
+        <link refid="_test01__execspace_8hpp_source"/>
+      </node>
+      <node id="158">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test02_atomic_host.hpp</label>
+        <link refid="_test02__atomic__host_8hpp_source"/>
+      </node>
+      <node id="159">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test03a_MemorySpace_malloc.hpp</label>
+        <link refid="_test03a___memory_space__malloc_8hpp_source"/>
+      </node>
+      <node id="160">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test03b_MemorySpace_free.hpp</label>
+        <link refid="_test03b___memory_space__free_8hpp_source"/>
+      </node>
+      <node id="161">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp</label>
+        <link refid="_test04___parallel_for___range_policy_8hpp_source"/>
+      </node>
+      <node id="162">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp</label>
+        <link refid="_test05___parallel_reduce___range_policy_8hpp_source"/>
+      </node>
+      <node id="163">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp</label>
+        <link refid="_test06___parallel_for___m_d_range_policy_8hpp_source"/>
+      </node>
+      <node id="164">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test08_deep_copy.hpp</label>
+        <link refid="_test08__deep__copy_8hpp_source"/>
+      </node>
+      <node id="165">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test10_HierarchicalBasics.hpp</label>
+        <link refid="_test10___hierarchical_basics_8hpp_source"/>
+      </node>
+      <node id="166">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test11a_ParallelFor_TeamThreadRange.hpp</label>
+        <link refid="_test11a___parallel_for___team_thread_range_8hpp_source"/>
+      </node>
+      <node id="167">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test11b_ParallelFor_TeamVectorRange.hpp</label>
+        <link refid="_test11b___parallel_for___team_vector_range_8hpp_source"/>
+      </node>
+      <node id="168">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test11c_ParallelFor_ThreadVectorRange.hpp</label>
+        <link refid="_test11c___parallel_for___thread_vector_range_8hpp_source"/>
+      </node>
+      <node id="169">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test12a_ThreadScratch.hpp</label>
+        <link refid="_test12a___thread_scratch_8hpp_source"/>
+      </node>
+      <node id="170">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test12b_TeamScratch.hpp</label>
+        <link refid="_test12b___team_scratch_8hpp_source"/>
+      </node>
+      <node id="171">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test13a_ParallelRed_TeamThreadRange.hpp</label>
+        <link refid="_test13a___parallel_red___team_thread_range_8hpp_source"/>
+      </node>
+      <node id="172">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test13b_ParallelRed_TeamVectorRange.hpp</label>
+        <link refid="_test13b___parallel_red___team_vector_range_8hpp_source"/>
+      </node>
+      <node id="173">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test13c_ParallelRed_ThreadVectorRange.hpp</label>
+        <link refid="_test13c___parallel_red___thread_vector_range_8hpp_source"/>
+      </node>
+      <node id="174">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test14_MDRangeReduce.hpp</label>
+        <link refid="_test14___m_d_range_reduce_8hpp_source"/>
+      </node>
+      <node id="175">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test16_ParallelScan.hpp</label>
+        <link refid="_test16___parallel_scan_8hpp_source"/>
+      </node>
+      <node id="176">
+        <label>src/Kokkos/kokkos/core/unit_test/incremental/Test17_CompleteAtomic.hpp</label>
+        <link refid="_test17___complete_atomic_8hpp_source"/>
+      </node>
+      <node id="58">
+        <label>src/Kokkos/kokkos/core/unit_test/openmp/TestOpenMP.hpp</label>
+        <link refid="_test_open_m_p_8hpp_source"/>
+      </node>
+      <node id="94">
+        <label>src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp</label>
+        <link refid="_test_open_m_p_target_8hpp_source"/>
+      </node>
+      <node id="177">
+        <label>src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp</label>
+        <link refid="_test_event_correctness_8hpp_source"/>
+      </node>
+      <node id="178">
+        <label>src/Kokkos/kokkos/core/unit_test/tools/TestLogicalSpaces.hpp</label>
+        <link refid="_test_logical_spaces_8hpp_source"/>
+      </node>
+      <node id="179">
+        <label>src/Kokkos/kokkos/example/virtual_functions/classes.hpp</label>
+        <link refid="classes_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_kokkos___profiling___kokkos_p_device_info" prot="public">Kokkos_Profiling_KokkosPDeviceInfo</innerclass>
+    <innerclass refid="struct_kokkos___profiling___space_handle" prot="public">Kokkos_Profiling_SpaceHandle</innerclass>
+    <innerclass refid="struct_kokkos___tools___tool_programming_interface" prot="public">Kokkos_Tools_ToolProgrammingInterface</innerclass>
+    <innerclass refid="struct_kokkos___tools___tool_settings" prot="public">Kokkos_Tools_ToolSettings</innerclass>
+    <innerclass refid="union_kokkos___tools___variable_value___value_union" prot="public">Kokkos_Tools_VariableValue_ValueUnion</innerclass>
+    <innerclass refid="union_kokkos___tools___variable_value___value_union_set" prot="public">Kokkos_Tools_VariableValue_ValueUnionSet</innerclass>
+    <innerclass refid="struct_kokkos___tools___value_set" prot="public">Kokkos_Tools_ValueSet</innerclass>
+    <innerclass refid="struct_kokkos___tools___optimzation_goal" prot="public">Kokkos_Tools_OptimzationGoal</innerclass>
+    <innerclass refid="struct_kokkos___tools___value_range" prot="public">Kokkos_Tools_ValueRange</innerclass>
+    <innerclass refid="union_kokkos___tools___variable_info___set_or_range" prot="public">Kokkos_Tools_VariableInfo_SetOrRange</innerclass>
+    <innerclass refid="struct_kokkos___tools___variable_info" prot="public">Kokkos_Tools_VariableInfo</innerclass>
+    <innerclass refid="struct_kokkos___tools___variable_value" prot="public">Kokkos_Tools_VariableValue</innerclass>
+    <innerclass refid="struct_kokkos___profiling___event_set" prot="public">Kokkos_Profiling_EventSet</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_kokkos___profiling___c___interface_8h_1a8cb6863445d50d47dda6214cc5efd20d" prot="public" static="no">
+        <name>KOKKOSP_INTERFACE_VERSION</name>
+        <initializer>20210623</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="57" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_kokkos___profiling___c___interface_8h_1acc1fee09f03fc2f9d8470aa8c75237cf" prot="public" static="no">
+        <name>KOKKOS_TOOLS_TUNING_STRING_LENGTH</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="159" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_kokkos___profiling___c___interface_8h_1ad28a181e8ba980d4842d9858d3321525" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Kokkos_Tools_OptimizationType</name>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ad28a181e8ba980d4842d9858d3321525a66e9d3bf7430074ab1266f54c5c3bad7" prot="public">
+          <name>Kokkos_Tools_Minimize</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ad28a181e8ba980d4842d9858d3321525a097e057cb45a09e124fc9731afc2db53" prot="public">
+          <name>Kokkos_Tools_Maximize</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="178" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="enum" id="_kokkos___profiling___c___interface_8h_1a3574eb348cb72b1ce3207e8de95b0915" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Kokkos_Tools_VariableInfo_ValueType</name>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1a3574eb348cb72b1ce3207e8de95b0915a7549959727938fe37b1ce90cf82fc602" prot="public">
+          <name>kokkos_value_double</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1a3574eb348cb72b1ce3207e8de95b0915a4524ff34ef8486839adbc106e415ae27" prot="public">
+          <name>kokkos_value_int64</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1a3574eb348cb72b1ce3207e8de95b0915a38080caee9a9831129738c6c515098c0" prot="public">
+          <name>kokkos_value_string</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="196" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="196" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="enum" id="_kokkos___profiling___c___interface_8h_1ab2f012ce8a07e85f229158da1a2f195a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Kokkos_Tools_VariableInfo_StatisticalCategory</name>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ab2f012ce8a07e85f229158da1a2f195aab65c54eb63d5f0a7128434b60fcccdf8" prot="public">
+          <name>kokkos_value_categorical</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ab2f012ce8a07e85f229158da1a2f195aa709abc2ca688f608d399c61943f61298" prot="public">
+          <name>kokkos_value_ordinal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ab2f012ce8a07e85f229158da1a2f195aaaf7488ef7acccb1ea2281e0713908e48" prot="public">
+          <name>kokkos_value_interval</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1ab2f012ce8a07e85f229158da1a2f195aaab5a70c445ed61c6c9fe29dd5c5422c2" prot="public">
+          <name>kokkos_value_ratio</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="202" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="202" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="enum" id="_kokkos___profiling___c___interface_8h_1aa2ad2a5c6e314f6fdae9c8227992a658" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Kokkos_Tools_VariableInfo_CandidateValueType</name>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1aa2ad2a5c6e314f6fdae9c8227992a658a6156203da6eb573e6a39cc86126077aa" prot="public">
+          <name>kokkos_value_set</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1aa2ad2a5c6e314f6fdae9c8227992a658a4b130eac2d7dd0d1032fc9350d0d9a76" prot="public">
+          <name>kokkos_value_range</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___profiling___c___interface_8h_1aa2ad2a5c6e314f6fdae9c8227992a658a36970dd595123fb7846d8b8fffcbff61" prot="public">
+          <name>kokkos_value_unbounded</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="210" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="210" bodyend="216"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1af76e9bed9041c53fa37a643616c1bd8a" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_initFunction) (const int, const uint64_t, const uint32_t, struct Kokkos_Profiling_KokkosPDeviceInfo *)</definition>
+        <argsstring>)(const int, const uint64_t, const uint32_t, struct Kokkos_Profiling_KokkosPDeviceInfo *)</argsstring>
+        <name>Kokkos_Profiling_initFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="70" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a8c47af0960fdf523b9a635dc02c96ae4" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_finalizeFunction) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>Kokkos_Profiling_finalizeFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="74" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a09fa8153fe8893158634db7ee325affe" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_parseArgsFunction) (int, char **)</definition>
+        <argsstring>)(int, char **)</argsstring>
+        <name>Kokkos_Profiling_parseArgsFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="76" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1adbd1c079b2aee10f3f21c7f4d6ee351c" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_printHelpFunction) (char *)</definition>
+        <argsstring>)(char *)</argsstring>
+        <name>Kokkos_Profiling_printHelpFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="78" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a94bd25b66c55763e959cfcb2f57d0504" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_beginFunction) (const char *, const uint32_t, uint64_t *)</definition>
+        <argsstring>)(const char *, const uint32_t, uint64_t *)</argsstring>
+        <name>Kokkos_Profiling_beginFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="80" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a56fbcc148980b6786cde295aeaaa520c" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_endFunction) (uint64_t)</definition>
+        <argsstring>)(uint64_t)</argsstring>
+        <name>Kokkos_Profiling_endFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="83" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1ad114ac8971086f930461a35a1bdc0165" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_pushFunction) (const char *)</definition>
+        <argsstring>)(const char *)</argsstring>
+        <name>Kokkos_Profiling_pushFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="86" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a92783a0e32db4e522ee1030a3f2c5615" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_popFunction) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>Kokkos_Profiling_popFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="88" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a8a3bcb3b9daff2a1e4bdcdba921595c1" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_allocateDataFunction) (const struct Kokkos_Profiling_SpaceHandle, const char *, const void *, const uint64_t)</definition>
+        <argsstring>)(const struct Kokkos_Profiling_SpaceHandle, const char *, const void *, const uint64_t)</argsstring>
+        <name>Kokkos_Profiling_allocateDataFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="91" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a7d9d5279303f501ae8a8d9e2cc6f4a5a" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_deallocateDataFunction) (const struct Kokkos_Profiling_SpaceHandle, const char *, const void *, const uint64_t)</definition>
+        <argsstring>)(const struct Kokkos_Profiling_SpaceHandle, const char *, const void *, const uint64_t)</argsstring>
+        <name>Kokkos_Profiling_deallocateDataFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="95" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a00843269a79d5ebf42bc37e4f8625fa5" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_createProfileSectionFunction) (const char *, uint32_t *)</definition>
+        <argsstring>)(const char *, uint32_t *)</argsstring>
+        <name>Kokkos_Profiling_createProfileSectionFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="100" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a40bd67839ba8ca09b9964cc79466cf23" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_startProfileSectionFunction) (const uint32_t)</definition>
+        <argsstring>)(const uint32_t)</argsstring>
+        <name>Kokkos_Profiling_startProfileSectionFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="103" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1ae3ae23c6f90ac4a6b4c8ab954cebad56" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_stopProfileSectionFunction) (const uint32_t)</definition>
+        <argsstring>)(const uint32_t)</argsstring>
+        <name>Kokkos_Profiling_stopProfileSectionFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="105" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a43ee88c9524d8f05b4c57063943d3461" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_destroyProfileSectionFunction) (const uint32_t)</definition>
+        <argsstring>)(const uint32_t)</argsstring>
+        <name>Kokkos_Profiling_destroyProfileSectionFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="107" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a214b076494eecd50d1c7b6bfa0f83b9c" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_profileEventFunction) (const char *)</definition>
+        <argsstring>)(const char *)</argsstring>
+        <name>Kokkos_Profiling_profileEventFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="110" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a97291db84a56f8e02a5521f4735a1f48" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_beginDeepCopyFunction) (struct Kokkos_Profiling_SpaceHandle, const char *, const void *, struct Kokkos_Profiling_SpaceHandle, const char *, const void *, uint64_t)</definition>
+        <argsstring>)(struct Kokkos_Profiling_SpaceHandle, const char *, const void *, struct Kokkos_Profiling_SpaceHandle, const char *, const void *, uint64_t)</argsstring>
+        <name>Kokkos_Profiling_beginDeepCopyFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="113" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a00081403252d25a7fcca0d4c23b773ad" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_endDeepCopyFunction) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>Kokkos_Profiling_endDeepCopyFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="117" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a362ec561424954773aec85363536debe" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_beginFenceFunction) (const char *, const uint32_t, uint64_t *)</definition>
+        <argsstring>)(const char *, const uint32_t, uint64_t *)</argsstring>
+        <name>Kokkos_Profiling_beginFenceFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="118" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a62dae6fc92e3ba8a0b91c1c3fb6674f3" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_endFenceFunction) (uint64_t)</definition>
+        <argsstring>)(uint64_t)</argsstring>
+        <name>Kokkos_Profiling_endFenceFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="120" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a16d9c6552ddc22869352194b21f45b53" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_dualViewSyncFunction) (const char *, const void *const, bool)</definition>
+        <argsstring>)(const char *, const void *const, bool)</argsstring>
+        <name>Kokkos_Profiling_dualViewSyncFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="123" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a170ca8e5a405e90b3789c72d3eb60097" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_dualViewModifyFunction) (const char *, const void *const, bool)</definition>
+        <argsstring>)(const char *, const void *const, bool)</argsstring>
+        <name>Kokkos_Profiling_dualViewModifyFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="126" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1aa498108e36d1866b4948d1c80209dd47" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Profiling_declareMetadataFunction) (const char *, const char *)</definition>
+        <argsstring>)(const char *, const char *)</argsstring>
+        <name>Kokkos_Profiling_declareMetadataFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="131" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1afa31f2a082fbe3450d95cc9c888d1909" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_toolInvokedFenceFunction) (const uint32_t)</definition>
+        <argsstring>)(const uint32_t)</argsstring>
+        <name>Kokkos_Tools_toolInvokedFenceFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="135" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a95df7a277a426f1879036274a5a67897" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_functionPointer) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>Kokkos_Tools_functionPointer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="138" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a698b37f34f1288181bcebfcb05860c28" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_provideToolProgrammingInterfaceFunction) (const uint32_t, struct Kokkos_Tools_ToolProgrammingInterface)</definition>
+        <argsstring>)(const uint32_t, struct Kokkos_Tools_ToolProgrammingInterface)</argsstring>
+        <name>Kokkos_Tools_provideToolProgrammingInterfaceFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="151" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1ae96de84e22dfa773b277dd35aaa2d060" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_requestToolSettingsFunction) (const uint32_t, struct Kokkos_Tools_ToolSettings *)</definition>
+        <argsstring>)(const uint32_t, struct Kokkos_Tools_ToolSettings *)</argsstring>
+        <name>Kokkos_Tools_requestToolSettingsFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="154" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1aeaba8b279959084d12fa415f81722820" prot="public" static="no">
+        <type>char</type>
+        <definition>typedef char Kokkos_Tools_Tuning_String[64]</definition>
+        <argsstring>[64]</argsstring>
+        <name>Kokkos_Tools_Tuning_String</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="160" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a9d862c39a484fd7b16142d1c1ef9eb0c" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_outputTypeDeclarationFunction) (const char *, const size_t, struct Kokkos_Tools_VariableInfo *info)</definition>
+        <argsstring>)(const char *, const size_t, struct Kokkos_Tools_VariableInfo *info)</argsstring>
+        <name>Kokkos_Tools_outputTypeDeclarationFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="237" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a95b9ca4c01194920c61629663f099dd5" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_inputTypeDeclarationFunction) (const char *, const size_t, struct Kokkos_Tools_VariableInfo *info)</definition>
+        <argsstring>)(const char *, const size_t, struct Kokkos_Tools_VariableInfo *info)</argsstring>
+        <name>Kokkos_Tools_inputTypeDeclarationFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="239" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1ac805f36044c1ea43c448f0f90770c399" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_requestValueFunction) (const size_t, const size_t, const struct Kokkos_Tools_VariableValue *, const size_t count, struct Kokkos_Tools_VariableValue *)</definition>
+        <argsstring>)(const size_t, const size_t, const struct Kokkos_Tools_VariableValue *, const size_t count, struct Kokkos_Tools_VariableValue *)</argsstring>
+        <name>Kokkos_Tools_requestValueFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="242" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1ab8a6a2ce6234dcec1bafa44820465a2a" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_contextBeginFunction) (const size_t)</definition>
+        <argsstring>)(const size_t)</argsstring>
+        <name>Kokkos_Tools_contextBeginFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="245" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1aa17b35f60e818914db7847de88b51fa7" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_contextEndFunction) (const size_t, struct Kokkos_Tools_VariableValue)</definition>
+        <argsstring>)(const size_t, struct Kokkos_Tools_VariableValue)</argsstring>
+        <name>Kokkos_Tools_contextEndFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="246" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_kokkos___profiling___c___interface_8h_1a522606fe7a7a93bed42552574c928c4e" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Kokkos_Tools_optimizationGoalDeclarationFunction) (const size_t, const struct Kokkos_Tools_OptimzationGoal goal)</definition>
+        <argsstring>)(const size_t, const struct Kokkos_Tools_OptimzationGoal goal)</argsstring>
+        <name>Kokkos_Tools_optimizationGoalDeclarationFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="248" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKOS_PROFILING_C_INTERFACE_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_PROFILING_C_INTERFACE_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOSP_INTERFACE_VERSION<sp/>20210623</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Profiling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="struct_kokkos___profiling___kokkos_p_device_info" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___kokkos_p_device_info" kindref="compound">Kokkos_Profiling_KokkosPDeviceInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>deviceID;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="struct_kokkos___profiling___space_handle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos_Profiling_SpaceHandle</ref><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>name[64];</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_initFunction)(</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>int,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___kokkos_p_device_info" kindref="compound">Kokkos_Profiling_KokkosPDeviceInfo</ref>*);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_finalizeFunction)();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_parseArgsFunction)(int,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_printHelpFunction)(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_beginFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t*);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_endFunction)(uint64_t);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_pushFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_popFunction)();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_allocateDataFunction)(</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos_Profiling_SpaceHandle</ref>,<sp/>const<sp/>char*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_deallocateDataFunction)(</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos_Profiling_SpaceHandle</ref>,<sp/>const<sp/>char*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_createProfileSectionFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t*);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_startProfileSectionFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_stopProfileSectionFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_destroyProfileSectionFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_profileEventFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_beginDeepCopyFunction)(</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos_Profiling_SpaceHandle</ref>,<sp/>const<sp/>char*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos_Profiling_SpaceHandle</ref>,<sp/>const<sp/>char*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/>uint64_t);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_endDeepCopyFunction)();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_beginFenceFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t*);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_endFenceFunction)(uint64_t);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_dualViewSyncFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">,<sp/>bool);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_dualViewModifyFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Profiling_declareMetadataFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_toolInvokedFenceFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_functionPointer)();</highlight></codeline>
+<codeline lineno="139" refid="struct_kokkos___tools___tool_programming_interface" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___tool_programming_interface" kindref="compound">Kokkos_Tools_ToolProgrammingInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>Kokkos_Tools_toolInvokedFenceFunction<sp/>fence;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>allow<sp/>addition<sp/>of<sp/>more<sp/>actions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>Kokkos_Tools_functionPointer<sp/>padding[31];</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="struct_kokkos___tools___tool_settings" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___tool_settings" kindref="compound">Kokkos_Tools_ToolSettings</ref><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>requires_global_fencing;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>padding[255];</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_provideToolProgrammingInterfaceFunction)(</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___tool_programming_interface" kindref="compound">Kokkos_Tools_ToolProgrammingInterface</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOLINTNEXTLINE(modernize-use-using):<sp/>C<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_requestToolSettingsFunction)(</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___tool_settings" kindref="compound">Kokkos_Tools_ToolSettings</ref>*);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tuning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_TOOLS_TUNING_STRING_LENGTH<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>Kokkos_Tools_Tuning_String[KOKKOS_TOOLS_TUNING_STRING_LENGTH];</highlight></codeline>
+<codeline lineno="161" refid="union_kokkos___tools___variable_value___value_union" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>int64_t<sp/>int_value;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>double_value;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>Kokkos_Tools_Tuning_String<sp/>string_value;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="union_kokkos___tools___variable_value___value_union_set" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union_set" kindref="compound">Kokkos_Tools_VariableValue_ValueUnionSet</ref><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>int64_t*<sp/>int_value;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>double_value;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>Kokkos_Tools_Tuning_String*<sp/>string_value;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="struct_kokkos___tools___value_set" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___value_set" kindref="compound">Kokkos_Tools_ValueSet</ref><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union_set" kindref="compound">Kokkos_Tools_VariableValue_ValueUnionSet</ref><sp/>values;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_OptimizationType<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>Kokkos_Tools_Minimize,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>Kokkos_Tools_Maximize</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="struct_kokkos___tools___optimzation_goal" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___optimzation_goal" kindref="compound">Kokkos_Tools_OptimzationGoal</ref><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>type_id;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_OptimizationType<sp/>goal;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="struct_kokkos___tools___value_range" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___value_range" kindref="compound">Kokkos_Tools_ValueRange</ref><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref><sp/>lower;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref><sp/>upper;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref><sp/>step;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>openLower;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>openUpper;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_ValueType<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>kokkos_value_double,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>kokkos_value_int64,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>kokkos_value_string,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_StatisticalCategory<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>kokkos_value_categorical,<sp/><sp/></highlight><highlight class="comment">//<sp/>unordered<sp/>distinct<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>kokkos_value_ordinal,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ordered<sp/>distinct<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>kokkos_value_interval,<sp/><sp/></highlight><highlight class="comment">//<sp/>ordered<sp/>distinct<sp/>objects<sp/>for<sp/>which<sp/>distance<sp/>matters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>kokkos_value_ratio<sp/><sp/></highlight><highlight class="comment">//<sp/>ordered<sp/>distinct<sp/>objects<sp/>for<sp/>which<sp/>distance<sp/>matters,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>division<sp/>matters,<sp/>and<sp/>the<sp/>concept<sp/>of<sp/>zero<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_CandidateValueType<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>kokkos_value_set,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I<sp/>am<sp/>one<sp/>of<sp/>[2,3,4,5]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>kokkos_value_range,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I<sp/>am<sp/>somewhere<sp/>in<sp/>[2,12)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>kokkos_value_unbounded<sp/><sp/></highlight><highlight class="comment">//<sp/>I<sp/>am<sp/>[text/int/float],<sp/>but<sp/>we<sp/>don&apos;t<sp/>know<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>declaration<sp/>time<sp/>what<sp/>values<sp/>are<sp/>appropriate.<sp/>Only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>valid<sp/>for<sp/>Context<sp/>Variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="union_kokkos___tools___variable_info___set_or_range" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_info___set_or_range" kindref="compound">Kokkos_Tools_VariableInfo_SetOrRange</ref><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___value_set" kindref="compound">Kokkos_Tools_ValueSet</ref><sp/>set;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___value_range" kindref="compound">Kokkos_Tools_ValueRange</ref><sp/>range;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="struct_kokkos___tools___variable_info" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_info" kindref="compound">Kokkos_Tools_VariableInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_ValueType<sp/>type;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_StatisticalCategory<sp/>category;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Kokkos_Tools_VariableInfo_CandidateValueType<sp/>valueQuantity;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_info___set_or_range" kindref="compound">Kokkos_Tools_VariableInfo_SetOrRange</ref><sp/>candidates;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>toolProvidedInfo;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="struct_kokkos___tools___variable_value" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_value" kindref="compound">Kokkos_Tools_VariableValue</ref><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>type_id;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref><sp/>value;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_info" kindref="compound">Kokkos_Tools_VariableInfo</ref>*<sp/>metadata;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_outputTypeDeclarationFunction)(</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_info" kindref="compound">Kokkos_Tools_VariableInfo</ref>*<sp/>info);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_inputTypeDeclarationFunction)(</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_info" kindref="compound">Kokkos_Tools_VariableInfo</ref>*<sp/>info);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_requestValueFunction)(</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_value" kindref="compound">Kokkos_Tools_VariableValue</ref>*,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_value" kindref="compound">Kokkos_Tools_VariableValue</ref>*);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_contextBeginFunction)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_contextEndFunction)(</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___variable_value" kindref="compound">Kokkos_Tools_VariableValue</ref>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Kokkos_Tools_optimizationGoalDeclarationFunction)(</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>size_t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___tools___optimzation_goal" kindref="compound">Kokkos_Tools_OptimzationGoal</ref><sp/>goal);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="struct_kokkos___profiling___event_set" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos___profiling___event_set" kindref="compound">Kokkos_Profiling_EventSet</ref><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_initFunction<sp/>init;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_finalizeFunction<sp/>finalize;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_parseArgsFunction<sp/>parse_args;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_printHelpFunction<sp/>print_help;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_beginFunction<sp/>begin_parallel_for;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_endFunction<sp/>end_parallel_for;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_beginFunction<sp/>begin_parallel_reduce;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_endFunction<sp/>end_parallel_reduce;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_beginFunction<sp/>begin_parallel_scan;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_endFunction<sp/>end_parallel_scan;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_pushFunction<sp/>push_region;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_popFunction<sp/>pop_region;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_allocateDataFunction<sp/>allocate_data;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_deallocateDataFunction<sp/>deallocate_data;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_createProfileSectionFunction<sp/>create_profile_section;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_startProfileSectionFunction<sp/>start_profile_section;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_stopProfileSectionFunction<sp/>stop_profile_section;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_destroyProfileSectionFunction<sp/>destroy_profile_section;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_profileEventFunction<sp/>profile_event;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_beginDeepCopyFunction<sp/>begin_deep_copy;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_endDeepCopyFunction<sp/>end_deep_copy;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_beginFenceFunction<sp/>begin_fence;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_endFenceFunction<sp/>end_fence;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_dualViewSyncFunction<sp/>sync_dual_view;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_dualViewModifyFunction<sp/>modify_dual_view;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>Kokkos_Profiling_declareMetadataFunction<sp/>declare_metadata;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>Kokkos_Tools_provideToolProgrammingInterfaceFunction</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>provide_tool_programming_interface;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>Kokkos_Tools_requestToolSettingsFunction<sp/>request_tool_settings;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>profiling_padding[9<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(Kokkos_Tools_functionPointer)];</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>Kokkos_Tools_outputTypeDeclarationFunction<sp/>declare_output_type;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/>Kokkos_Tools_inputTypeDeclarationFunction<sp/>declare_input_type;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>Kokkos_Tools_requestValueFunction<sp/>request_output_values;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>Kokkos_Tools_contextBeginFunction<sp/>begin_tuning_context;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>Kokkos_Tools_contextEndFunction<sp/>end_tuning_context;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/>Kokkos_Tools_optimizationGoalDeclarationFunction<sp/>declare_optimization_goal;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>padding[232<sp/>*</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos_Tools_functionPointer)];<sp/><sp/></highlight><highlight class="comment">//<sp/>allows<sp/>us<sp/>to<sp/>add<sp/>another</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>256<sp/>events<sp/>to<sp/>the<sp/>Tools</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>interface<sp/>without</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>changing<sp/>struct<sp/>layout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>KOKKOS_PROFILING_C_INTERFACE_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h"/>
+  </compounddef>
+</doxygen>

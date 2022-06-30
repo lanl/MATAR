@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1linked__ptr__internal" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::linked_ptr_internal</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1linked__ptr__internal_1ac296303bbee49f6693c120685a9e2405" prot="private" static="no" mutable="yes">
+        <type><ref refid="classtesting_1_1internal_1_1linked__ptr__internal" kindref="compound">linked_ptr_internal</ref> const  *</type>
+        <definition>linked_ptr_internal const  * testing::internal::linked_ptr_internal::next_</definition>
+        <argsstring></argsstring>
+        <name>next_</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::next_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9096" column="37" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9096" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1a742af1f65df2d5e2b7198a1b74264a83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::linked_ptr_internal::join_new</definition>
+        <argsstring>()</argsstring>
+        <name>join_new</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::join_new</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9056" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9056" bodyend="9058"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1a41918df82256ae6ab7a6888ed628dd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::linked_ptr_internal::join</definition>
+        <argsstring>(linked_ptr_internal const *ptr)</argsstring>
+        <name>join</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::join</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1linked__ptr__internal" kindref="compound">linked_ptr_internal</ref> const *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9072" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9072" bodyend="9080"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1ab916efbc0c2776dacaa06222ea2e11e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::linked_ptr_internal::depart</definition>
+        <argsstring>()</argsstring>
+        <name>depart</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::depart</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9084" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9084" bodyend="9093"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1a742af1f65df2d5e2b7198a1b74264a83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::linked_ptr_internal::join_new</definition>
+        <argsstring>()</argsstring>
+        <name>join_new</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::join_new</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9056" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9056" bodyend="9058"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1a41918df82256ae6ab7a6888ed628dd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::linked_ptr_internal::join</definition>
+        <argsstring>(linked_ptr_internal const *ptr)</argsstring>
+        <name>join</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::join</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1linked__ptr__internal" kindref="compound">linked_ptr_internal</ref> const *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9072" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9072" bodyend="9080"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1linked__ptr__internal_1ab916efbc0c2776dacaa06222ea2e11e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::linked_ptr_internal::depart</definition>
+        <argsstring>()</argsstring>
+        <name>depart</name>
+        <qualifiedname>testing::internal::linked_ptr_internal::depart</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9084" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9084" bodyend="9093"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9053" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9053" bodyend="9097"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1ab916efbc0c2776dacaa06222ea2e11e5" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>depart</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1ab916efbc0c2776dacaa06222ea2e11e5" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>depart</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1a41918df82256ae6ab7a6888ed628dd0a" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>join</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1a41918df82256ae6ab7a6888ed628dd0a" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>join</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1a742af1f65df2d5e2b7198a1b74264a83" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>join_new</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1a742af1f65df2d5e2b7198a1b74264a83" prot="public" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>join_new</name></member>
+      <member refid="classtesting_1_1internal_1_1linked__ptr__internal_1ac296303bbee49f6693c120685a9e2405" prot="private" virt="non-virtual"><scope>testing::internal::linked_ptr_internal</scope><name>next_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

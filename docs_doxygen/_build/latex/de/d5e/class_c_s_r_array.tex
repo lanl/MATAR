@@ -1,0 +1,88 @@
+\hypertarget{class_c_s_r_array}{}\doxysection{CSRArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_c_s_r_array}\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a3aade48632c48bed08c8b5e373c7f380}\label{class_c_s_r_array_a3aade48632c48bed08c8b5e373c7f380}} 
+{\bfseries CSRArray} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ column\+\_\+index\+\_\+, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ start\+\_\+index\+\_\+, size\+\_\+t dim1, size\+\_\+t dim2)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}\label{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}} 
+{\bfseries CSRArray} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ dense)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}\label{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}} 
+{\bfseries CSRArray} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}\label{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}} 
+T \& {\bfseries operator()} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}\label{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}} 
+T \& {\bfseries value} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}\label{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}} 
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}\label{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}} 
+T $\ast$ {\bfseries pointer} () const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}\label{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}} 
+size\+\_\+t $\ast$ {\bfseries get\+\_\+starts} () const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}\label{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}} 
+void {\bfseries printer} ()
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}\label{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}} 
+T $\ast$ {\bfseries begin} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}\label{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}} 
+T $\ast$ {\bfseries end} (size\+\_\+t i)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}{stride}} (size\+\_\+t i) const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}\label{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}} 
+size\+\_\+t {\bfseries dim1} () const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}\label{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}} 
+size\+\_\+t {\bfseries dim2} () const
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_ae03829b4b7f4bd6c66d726110830dc92}\label{class_c_s_r_array_ae03829b4b7f4bd6c66d726110830dc92}} 
+size\+\_\+t {\bfseries begin\+Flat} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a740ef012fe62d345e65e444cd476ea42}\label{class_c_s_r_array_a740ef012fe62d345e65e444cd476ea42}} 
+size\+\_\+t {\bfseries end\+Flat} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}\label{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}} 
+size\+\_\+t {\bfseries nnz} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}\label{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}} 
+size\+\_\+t {\bfseries nnz} ()
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_add83fb15e6c1381bc3f0a9c0e2121f33}\label{class_c_s_r_array_add83fb15e6c1381bc3f0a9c0e2121f33}} 
+T \& {\bfseries get\+Val\+Flat} (size\+\_\+t k)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a85f795595580117dc541e9b1e3027c8c}\label{class_c_s_r_array_a85f795595580117dc541e9b1e3027c8c}} 
+size\+\_\+t {\bfseries get\+Col\+Flat} (size\+\_\+t k)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a01b06b2ca3062ea4082dad7f48b75bd6}\label{class_c_s_r_array_a01b06b2ca3062ea4082dad7f48b75bd6}} 
+size\+\_\+t {\bfseries flat\+Index} (size\+\_\+t i, size\+\_\+t j)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}\label{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}} 
+int {\bfseries to\+CSC} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&start\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&row\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_c_s_r_array_a7479c224e8f8f00d184d7c1f78ee14f3}\label{class_c_s_r_array_a7479c224e8f8f00d184d7c1f78ee14f3}} 
+void {\bfseries todense} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&A)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}\label{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!stride@{stride}}
+\index{stride@{stride}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+This returnst the stride, the number of elements to the next row 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/matar.\+h\end{DoxyCompactItemize}

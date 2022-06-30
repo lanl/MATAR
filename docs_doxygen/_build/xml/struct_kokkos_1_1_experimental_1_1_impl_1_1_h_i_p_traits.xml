@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::HIPTraits</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a89104b38b21cc72bb00825391a916515" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::WarpSize</definition>
+        <argsstring></argsstring>
+        <name>WarpSize</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::WarpSize</qualifiedname>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="60" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a367f7204fe6ab7ca743130dca5748788" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::WarpIndexMask</definition>
+        <argsstring></argsstring>
+        <name>WarpIndexMask</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::WarpIndexMask</qualifiedname>
+        <initializer>= 0x003f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="61" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a0a0e77a3f625495c68b5d4eaf74cf5bf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::WarpIndexShift</definition>
+        <argsstring></argsstring>
+        <name>WarpIndexShift</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::WarpIndexShift</qualifiedname>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="62" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a5b26d356dcef5b01907177e71bfe7cac" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::ConservativeThreadsPerBlock</definition>
+        <argsstring></argsstring>
+        <name>ConservativeThreadsPerBlock</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::ConservativeThreadsPerBlock</qualifiedname>
+        <initializer>=
+      256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="63" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a8b8731fc2747a906e62ea995ec0fd63f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::MaxThreadsPerBlock</definition>
+        <argsstring></argsstring>
+        <name>MaxThreadsPerBlock</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::MaxThreadsPerBlock</qualifiedname>
+        <initializer>=
+      1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="65" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a7560a55703fcc0686d2b55432a0e4654" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::ConstantMemoryUsage</definition>
+        <argsstring></argsstring>
+        <name>ConstantMemoryUsage</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::ConstantMemoryUsage</qualifiedname>
+        <initializer>= 0x008000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="67" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a8c12c70f513b2f6b6afbdf0aae2c81c3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::KernelArgumentLimit</definition>
+        <argsstring></argsstring>
+        <name>KernelArgumentLimit</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::KernelArgumentLimit</qualifiedname>
+        <initializer>= 0x001000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="68" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a33fab281b3a14831d022d640883f7684" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int constexpr</type>
+        <definition>int constexpr Kokkos::Experimental::Impl::HIPTraits::ConstantMemoryUseThreshold</definition>
+        <argsstring></argsstring>
+        <name>ConstantMemoryUseThreshold</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPTraits::ConstantMemoryUseThreshold</qualifiedname>
+        <initializer>= 0x000200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="69" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="59" bodyend="70"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a5b26d356dcef5b01907177e71bfe7cac" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>ConservativeThreadsPerBlock</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a7560a55703fcc0686d2b55432a0e4654" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>ConstantMemoryUsage</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a33fab281b3a14831d022d640883f7684" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>ConstantMemoryUseThreshold</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a8c12c70f513b2f6b6afbdf0aae2c81c3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>KernelArgumentLimit</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a8b8731fc2747a906e62ea995ec0fd63f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>MaxThreadsPerBlock</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a367f7204fe6ab7ca743130dca5748788" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>WarpIndexMask</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a0a0e77a3f625495c68b5d4eaf74cf5bf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>WarpIndexShift</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits_1a89104b38b21cc72bb00825391a916515" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPTraits</scope><name>WarpSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_map_type_converter" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::MapTypeConverter</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class NestedMap</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>For a given nested map type, we need a way to declare the equivalent <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_node" kindref="compound">ValueHierarchyNode</ref> structure </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="126" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="126" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1is__memory__traits" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::is_memory_traits</compoundname>
+    <innerclass refid="struct_kokkos_1_1is__memory__traits_1_1have" prot="private">Kokkos::is_memory_traits::have</innerclass>
+    <innerclass refid="struct_kokkos_1_1is__memory__traits_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3_01typen843c28bd022b0c1acdb3c6de5540b7be" prot="private">Kokkos::is_memory_traits::have&lt; U, typename std::is_base_of&lt; typename U::memory_traits, U &gt;::type &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1is__memory__traits_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3_01typend44043898477493b769f16b7ea587fda" prot="private">Kokkos::is_memory_traits::have&lt; U, typename std::is_base_of&lt; typename U::memory_traits_type, U &gt;::type &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1is__memory__traits_1a32938347412610f506cbf3300b43d4ac" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::is_memory_traits&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::is_memory_traits::value</qualifiedname>
+        <initializer>=   <ref refid="struct_kokkos_1_1is__memory__traits" kindref="compound">is_memory_traits</ref> ::template have&lt;typename std::remove_cv&lt;T&gt;::type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="172" column="227" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1is__memory__traits_1a2a69725e81bc054c537e184fe5332de9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::is_memory_traits&lt; T &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Kokkos::is_memory_traits::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="172" column="246" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="172" bodyend="172"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="172" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="172" bodyend="172"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1is__memory__traits_1a2a69725e81bc054c537e184fe5332de9" prot="public" virt="non-virtual"><scope>Kokkos::is_memory_traits</scope><name>operator bool</name></member>
+      <member refid="struct_kokkos_1_1is__memory__traits_1a32938347412610f506cbf3300b43d4ac" prot="public" virt="non-virtual"><scope>Kokkos::is_memory_traits</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

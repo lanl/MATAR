@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_dummy16_byte_value" kind="struct" language="C++" prot="public">
+    <compoundname>desul::Dummy16ByteValue</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structdesul_1_1_dummy16_byte_value_1ae09338771dd59edee7ea9adf07aa04d5" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t desul::Dummy16ByteValue::value1</definition>
+        <argsstring></argsstring>
+        <name>value1</name>
+        <qualifiedname>desul::Dummy16ByteValue::value1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="18" column="11" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structdesul_1_1_dummy16_byte_value_1aea041c0c78287978e2c397c0d0d3fe64" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t desul::Dummy16ByteValue::value2</definition>
+        <argsstring></argsstring>
+        <name>value2</name>
+        <qualifiedname>desul::Dummy16ByteValue::value2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="19" column="11" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structdesul_1_1_dummy16_byte_value_1ac67ba30bde4bdbb3ae950550ce96dd4c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool desul::Dummy16ByteValue::operator!=</definition>
+        <argsstring>(Dummy16ByteValue v) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>desul::Dummy16ByteValue::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="structdesul_1_1_dummy16_byte_value" kindref="compound">Dummy16ByteValue</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="20" column="8" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="structdesul_1_1_dummy16_byte_value_1a9bb605a1ff621ebe733b7716c3e11a46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool desul::Dummy16ByteValue::operator==</definition>
+        <argsstring>(Dummy16ByteValue v) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>desul::Dummy16ByteValue::operator==</qualifiedname>
+        <param>
+          <type><ref refid="structdesul_1_1_dummy16_byte_value" kindref="compound">Dummy16ByteValue</ref></type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="23" column="8" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="17" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="17" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_dummy16_byte_value_1ac67ba30bde4bdbb3ae950550ce96dd4c" prot="public" virt="non-virtual"><scope>desul::Dummy16ByteValue</scope><name>operator!=</name></member>
+      <member refid="structdesul_1_1_dummy16_byte_value_1a9bb605a1ff621ebe733b7716c3e11a46" prot="public" virt="non-virtual"><scope>desul::Dummy16ByteValue</scope><name>operator==</name></member>
+      <member refid="structdesul_1_1_dummy16_byte_value_1ae09338771dd59edee7ea9adf07aa04d5" prot="public" virt="non-virtual"><scope>desul::Dummy16ByteValue</scope><name>value1</name></member>
+      <member refid="structdesul_1_1_dummy16_byte_value_1aea041c0c78287978e2c397c0d0d3fe64" prot="public" virt="non-virtual"><scope>desul::Dummy16ByteValue</scope><name>value2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

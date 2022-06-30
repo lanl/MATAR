@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init" kind="struct" language="C++" prot="public">
+    <compoundname>Test::MultiDimRangePerf3D::Init</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1af4cfa8bdad9664d705aafb4895f76ac8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="95" column="15" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ab1317bcac4108cf2ff2cc64e9437bd54" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::irange</definition>
+        <argsstring></argsstring>
+        <name>irange</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::irange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="96" column="16" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1a005e1ab2798a2cc7286dc7e282bd15c5" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::jrange</definition>
+        <argsstring></argsstring>
+        <name>jrange</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::jrange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="97" column="16" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1a9836f621cafc81d8defa1b730f1c6202" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::krange</definition>
+        <argsstring></argsstring>
+        <name>krange</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::krange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="98" column="16" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ac6f6797da7e66fd10188a4c9cf89eb91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::Init</definition>
+        <argsstring>(const view_type &amp;input_, const long &amp;irange_, const long &amp;jrange_, const long &amp;krange_)</argsstring>
+        <name>Init</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::Init</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+          <declname>input_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>irange_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>jrange_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>krange_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="80" column="5" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1adf4a447fb4c4ca10102f552f551d907b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::operator()</definition>
+        <argsstring>(const long i, const long j, const long k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::operator()</qualifiedname>
+        <param>
+          <type>const long</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="85" column="10" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ac2307bb44156dd63623d72d5c7e0bb4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init::operator()</definition>
+        <argsstring>(const InitZeroTag &amp;, const long i, const long j, const long k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::MultiDimRangePerf3D::Init::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_zero_tag" kindref="compound">InitZeroTag</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="90" column="10" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::MultiDimRangePerf3D&lt; DeviceType, ScalarType, TestLayout &gt;::Init</label>
+        <link refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>input</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; ScalarType ***, TestLayout, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; ScalarType ***, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="79" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="79" bodyend="99"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ac6f6797da7e66fd10188a4c9cf89eb91" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>Init</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1af4cfa8bdad9664d705aafb4895f76ac8" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>input</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ab1317bcac4108cf2ff2cc64e9437bd54" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>irange</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1a005e1ab2798a2cc7286dc7e282bd15c5" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>jrange</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1a9836f621cafc81d8defa1b730f1c6202" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>krange</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1adf4a447fb4c4ca10102f552f551d907b" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_1ac2307bb44156dd63623d72d5c7e0bb4a" prot="public" virt="non-virtual"><scope>Test::MultiDimRangePerf3D::Init</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

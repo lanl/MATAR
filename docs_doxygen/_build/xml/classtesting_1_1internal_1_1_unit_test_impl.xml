@@ -1,0 +1,1319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_unit_test_impl" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::UnitTestImpl</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ReactionToSharding</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ReactionToSharding</qualifiedname>
+        <enumvalue id="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43abec11f1c4bb8a3e2b99fa8328bccd58c" prot="public">
+          <name>HONOR_SHARDING_PROTOCOL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43a68bd0b7e6a7bead14c93d1a42144095a" prot="public">
+          <name>IGNORE_SHARDING_PROTOCOL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1127" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1127" bodyend="1130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classtesting_1_1internal_1_1_unit_test_impl_1a893404438388dec058dc5c02e8f9a014" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class ::testing::UnitTest</definition>
+        <argsstring></argsstring>
+        <name>::testing::UnitTest</name>
+        <qualifiedname>testing::internal::UnitTestImpl::UnitTest</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_unit_test" kindref="compound">::testing::UnitTest</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1216" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1216" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1adabbbc8985202ce655d50746bd383eae" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> *const</type>
+        <definition>UnitTest* const testing::internal::UnitTestImpl::parent_</definition>
+        <argsstring></argsstring>
+        <name>parent_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::parent_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1223" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1aaf1f1d4cbb2f681ded9bbf4c6075430c" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_file_path" kindref="compound">internal::FilePath</ref></type>
+        <definition>internal::FilePath testing::internal::UnitTestImpl::original_working_dir_</definition>
+        <argsstring></argsstring>
+        <name>original_working_dir_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::original_working_dir_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1227" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a645122eda4d8250f3e8139309510705e" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_default_global_test_part_result_reporter" kindref="compound">DefaultGlobalTestPartResultReporter</ref></type>
+        <definition>DefaultGlobalTestPartResultReporter testing::internal::UnitTestImpl::default_global_test_part_result_reporter_</definition>
+        <argsstring></argsstring>
+        <name>default_global_test_part_result_reporter_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::default_global_test_part_result_reporter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1230" column="39" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a261ddbea097ad3b43b8b510a4964f390" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter" kindref="compound">DefaultPerThreadTestPartResultReporter</ref></type>
+        <definition>DefaultPerThreadTestPartResultReporter testing::internal::UnitTestImpl::default_per_thread_test_part_result_reporter_</definition>
+        <argsstring></argsstring>
+        <name>default_per_thread_test_part_result_reporter_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::default_per_thread_test_part_result_reporter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1232" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1ab9a275094df6adc7e16a92133a692c3e" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+        <definition>TestPartResultReporterInterface* testing::internal::UnitTestImpl::global_test_part_result_repoter_</definition>
+        <argsstring></argsstring>
+        <name>global_test_part_result_repoter_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::global_test_part_result_repoter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1235" column="35" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a57153c5c8caa229f0a62f35ab99f0a56" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_mutex" kindref="compound">internal::Mutex</ref></type>
+        <definition>internal::Mutex testing::internal::UnitTestImpl::global_test_part_result_reporter_mutex_</definition>
+        <argsstring></argsstring>
+        <name>global_test_part_result_reporter_mutex_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::global_test_part_result_reporter_mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1238" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a23ebe35dfe19dcda8e7b17e81f2cb4bc" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_thread_local" kindref="compound">internal::ThreadLocal</ref>&lt; <ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> * &gt;</type>
+        <definition>internal::ThreadLocal&lt;TestPartResultReporterInterface*&gt; testing::internal::UnitTestImpl::per_thread_test_part_result_reporter_</definition>
+        <argsstring></argsstring>
+        <name>per_thread_test_part_result_reporter_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::per_thread_test_part_result_reporter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1242" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a1d2320ba1e4e1cad8d624bbb222501fb" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classtesting_1_1_environment" kindref="compound">Environment</ref> * &gt;</type>
+        <definition>std::vector&lt;Environment*&gt; testing::internal::UnitTestImpl::environments_</definition>
+        <argsstring></argsstring>
+        <name>environments_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::environments_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1246" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a79ec0f733ada2898efd1a7fbd8587fb3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> * &gt;</type>
+        <definition>std::vector&lt;TestCase*&gt; testing::internal::UnitTestImpl::test_cases_</definition>
+        <argsstring></argsstring>
+        <name>test_cases_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::test_cases_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1250" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a9b30891f1a9d5b5c25de2bef0f0bb49a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; testing::internal::UnitTestImpl::test_case_indices_</definition>
+        <argsstring></argsstring>
+        <name>test_case_indices_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::test_case_indices_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1256" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1afd663a104bb0a6df2c5143454f78e305" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::last_death_test_case_</definition>
+        <argsstring></argsstring>
+        <name>last_death_test_case_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::last_death_test_case_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1268" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a3b346729d3940f065e05c69c434ebb3f" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+        <definition>TestCase* testing::internal::UnitTestImpl::current_test_case_</definition>
+        <argsstring></argsstring>
+        <name>current_test_case_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_case_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1274" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a56128aac0fb5be45993715d1130b0610" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> *</type>
+        <definition>TestInfo* testing::internal::UnitTestImpl::current_test_info_</definition>
+        <argsstring></argsstring>
+        <name>current_test_info_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_info_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1280" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a15355228a7140a08f9e2f333aa934ccd" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_result" kindref="compound">TestResult</ref></type>
+        <definition>TestResult testing::internal::UnitTestImpl::ad_hoc_test_result_</definition>
+        <argsstring></argsstring>
+        <name>ad_hoc_test_result_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ad_hoc_test_result_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1290" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a16c3caa0bac1a8dce650649760de30d2" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_event_listeners" kindref="compound">TestEventListeners</ref></type>
+        <definition>TestEventListeners testing::internal::UnitTestImpl::listeners_</definition>
+        <argsstring></argsstring>
+        <name>listeners_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::listeners_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1294" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a16b34d9194ca9552f581e472e9b18494" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface" kindref="compound">OsStackTraceGetterInterface</ref> *</type>
+        <definition>OsStackTraceGetterInterface* testing::internal::UnitTestImpl::os_stack_trace_getter_</definition>
+        <argsstring></argsstring>
+        <name>os_stack_trace_getter_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::os_stack_trace_getter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1300" column="31" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1ab4c7d8a9ff3edbd8a98f91c4afaf3bb8" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::post_flag_parse_init_performed_</definition>
+        <argsstring></argsstring>
+        <name>post_flag_parse_init_performed_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::post_flag_parse_init_performed_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1303" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a0afcc95308ebfacb8d0f53790e77e1ab" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::random_seed_</definition>
+        <argsstring></argsstring>
+        <name>random_seed_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::random_seed_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1306" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a08551d7ff0ebb976ec82294ded8113ea" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_random" kindref="compound">internal::Random</ref></type>
+        <definition>internal::Random testing::internal::UnitTestImpl::random_</definition>
+        <argsstring></argsstring>
+        <name>random_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::random_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1309" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a2114799ed634ee849b9dcd9728f9b7b6" prot="private" static="no" mutable="no">
+        <type>TimeInMillis</type>
+        <definition>TimeInMillis testing::internal::UnitTestImpl::start_timestamp_</definition>
+        <argsstring></argsstring>
+        <name>start_timestamp_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::start_timestamp_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1313" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a06e0445298c6026bee71bb2bb7aae604" prot="private" static="no" mutable="no">
+        <type>TimeInMillis</type>
+        <definition>TimeInMillis testing::internal::UnitTestImpl::elapsed_time_</definition>
+        <argsstring></argsstring>
+        <name>elapsed_time_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::elapsed_time_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1316" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a73a797cf2b20129cb252b14c5fd9a0af" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_thread_local" kindref="compound">internal::ThreadLocal</ref>&lt; std::vector&lt; <ref refid="structtesting_1_1internal_1_1_trace_info" kindref="compound">TraceInfo</ref> &gt; &gt;</type>
+        <definition>internal::ThreadLocal&lt;std::vector&lt;TraceInfo&gt; &gt; testing::internal::UnitTestImpl::gtest_trace_stack_</definition>
+        <argsstring></argsstring>
+        <name>gtest_trace_stack_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::gtest_trace_stack_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1326" column="25" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_unit_test_impl_1a2cc0c6f466730b1d6e884738344b8e33" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::catch_exceptions_</definition>
+        <argsstring></argsstring>
+        <name>catch_exceptions_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::catch_exceptions_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1330" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1330" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a5fb75faa88ee71f26e16473455b70839" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::UnitTestImpl::UnitTestImpl</definition>
+        <argsstring>(UnitTest *parent)</argsstring>
+        <name>UnitTestImpl</name>
+        <qualifiedname>testing::internal::UnitTestImpl::UnitTestImpl</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="911" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5480" bodyend="5517"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ae8bfe40adf9772237ea51299af113575" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>testing::internal::UnitTestImpl::~UnitTestImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~UnitTestImpl</name>
+        <qualifiedname>testing::internal::UnitTestImpl::~UnitTestImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="912" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5519" bodyend="5527"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a1cd291fd6751654924362164735d4b49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+        <definition>TestPartResultReporterInterface * testing::internal::UnitTestImpl::GetGlobalTestPartResultReporter</definition>
+        <argsstring>()</argsstring>
+        <name>GetGlobalTestPartResultReporter</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GetGlobalTestPartResultReporter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="922" column="35" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2167" bodyend="2170"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a892b0e25b28af5e4400cf6fac336f2d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::SetGlobalTestPartResultReporter</definition>
+        <argsstring>(TestPartResultReporterInterface *reporter)</argsstring>
+        <name>SetGlobalTestPartResultReporter</name>
+        <qualifiedname>testing::internal::UnitTestImpl::SetGlobalTestPartResultReporter</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+          <declname>reporter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="925" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2173" bodyend="2177"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a5fb3dd8bc839e10b62eba07790704132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+        <definition>TestPartResultReporterInterface * testing::internal::UnitTestImpl::GetTestPartResultReporterForCurrentThread</definition>
+        <argsstring>()</argsstring>
+        <name>GetTestPartResultReporterForCurrentThread</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GetTestPartResultReporterForCurrentThread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="929" column="35" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2181" bodyend="2183"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a1403fc10aebcc64479c5ee980c9b4eb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::SetTestPartResultReporterForCurrentThread</definition>
+        <argsstring>(TestPartResultReporterInterface *reporter)</argsstring>
+        <name>SetTestPartResultReporterForCurrentThread</name>
+        <qualifiedname>testing::internal::UnitTestImpl::SetTestPartResultReporterForCurrentThread</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+          <declname>reporter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="932" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2186" bodyend="2189"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a2db3a2b3fed8065dbdd768ee407bf67e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::successful_test_case_count</definition>
+        <argsstring>() const</argsstring>
+        <name>successful_test_case_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::successful_test_case_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="936" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2192" bodyend="2194"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1af981a537231e1dad4c1f092c6fdec1ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::failed_test_case_count</definition>
+        <argsstring>() const</argsstring>
+        <name>failed_test_case_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::failed_test_case_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="939" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2197" bodyend="2199"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac1d81d6b146b2dbce460f9a0a57d4f9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::total_test_case_count</definition>
+        <argsstring>() const</argsstring>
+        <name>total_test_case_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::total_test_case_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="942" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2202" bodyend="2204"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aff65061646c6b9857b37097423500bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::test_case_to_run_count</definition>
+        <argsstring>() const</argsstring>
+        <name>test_case_to_run_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::test_case_to_run_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="946" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2208" bodyend="2210"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac363f681cbecf10fea5c04408b98e744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::successful_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>successful_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::successful_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="949" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2213" bodyend="2215"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ad0abe95b66466268363d7fa407bac41b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::failed_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>failed_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::failed_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="952" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2218" bodyend="2220"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a04827d118a329af68a1de2d6b93eb4e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::reportable_disabled_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>reportable_disabled_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::reportable_disabled_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="955" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2223" bodyend="2226"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0c18b2a9cb240722b1e38a3530aa2269" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::disabled_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>disabled_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::disabled_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="958" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2229" bodyend="2231"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1addb3896c4e0973bb5d2744fcb158afce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::reportable_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>reportable_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::reportable_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="961" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2234" bodyend="2236"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a89e8531ee2ba3f0aadc27a95ac6149f1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::total_test_count</definition>
+        <argsstring>() const</argsstring>
+        <name>total_test_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::total_test_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="964" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2239" bodyend="2241"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0f15365d1d1ce00eaeb6f8a1370113ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::test_to_run_count</definition>
+        <argsstring>() const</argsstring>
+        <name>test_to_run_count</name>
+        <qualifiedname>testing::internal::UnitTestImpl::test_to_run_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="967" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2244" bodyend="2246"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1abb02dfd689760c6323acec725d9631d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TimeInMillis</type>
+        <definition>TimeInMillis testing::internal::UnitTestImpl::start_timestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>start_timestamp</name>
+        <qualifiedname>testing::internal::UnitTestImpl::start_timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="971" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="971" bodyend="971"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a4376881063f945dcc8ec4dbb38b5ecc1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TimeInMillis</type>
+        <definition>TimeInMillis testing::internal::UnitTestImpl::elapsed_time</definition>
+        <argsstring>() const</argsstring>
+        <name>elapsed_time</name>
+        <qualifiedname>testing::internal::UnitTestImpl::elapsed_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="974" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="974" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ae8e461369acfec902da382bc02297fe5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::Passed</definition>
+        <argsstring>() const</argsstring>
+        <name>Passed</name>
+        <qualifiedname>testing::internal::UnitTestImpl::Passed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="977" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="977" bodyend="977"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0c95d1b56b5f33057afc516db05ac313" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::Failed</definition>
+        <argsstring>() const</argsstring>
+        <name>Failed</name>
+        <qualifiedname>testing::internal::UnitTestImpl::Failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="981" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="981" bodyend="983"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac068f08191712109d720fb4b020cb79f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+        <definition>const TestCase * testing::internal::UnitTestImpl::GetTestCase</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>GetTestCase</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GetTestCase</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="987" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="987" bodyend="990"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0afbf2899759cf7ffeda65a0c828eac7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+        <definition>TestCase * testing::internal::UnitTestImpl::GetMutableTestCase</definition>
+        <argsstring>(int i)</argsstring>
+        <name>GetMutableTestCase</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GetMutableTestCase</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="994" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="994" bodyend="997"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a22544d28679e9d1e2eaa3735607c8b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_event_listeners" kindref="compound">TestEventListeners</ref> *</type>
+        <definition>TestEventListeners * testing::internal::UnitTestImpl::listeners</definition>
+        <argsstring>()</argsstring>
+        <name>listeners</name>
+        <qualifiedname>testing::internal::UnitTestImpl::listeners</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1000" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1000" bodyend="1000"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aba3caef4ad23ce98be80250aeb0cc787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_result" kindref="compound">TestResult</ref> *</type>
+        <definition>TestResult * testing::internal::UnitTestImpl::current_test_result</definition>
+        <argsstring>()</argsstring>
+        <name>current_test_result</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1004" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6080" bodyend="6083"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a79b8b8c8b89e361faf2e9a3028447407" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classtesting_1_1_test_result" kindref="compound">TestResult</ref> *</type>
+        <definition>const TestResult * testing::internal::UnitTestImpl::ad_hoc_test_result</definition>
+        <argsstring>() const</argsstring>
+        <name>ad_hoc_test_result</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ad_hoc_test_result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1007" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1007" bodyend="1007"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a3306f7d2b19bca54b841006e4a2e0260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::set_os_stack_trace_getter</definition>
+        <argsstring>(OsStackTraceGetterInterface *getter)</argsstring>
+        <name>set_os_stack_trace_getter</name>
+        <qualifiedname>testing::internal::UnitTestImpl::set_os_stack_trace_getter</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface" kindref="compound">OsStackTraceGetterInterface</ref> *</type>
+          <declname>getter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1014" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6059" bodyend="6065"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a71753679854f7fbba6c1568eb422fecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface" kindref="compound">OsStackTraceGetterInterface</ref> *</type>
+        <definition>OsStackTraceGetterInterface * testing::internal::UnitTestImpl::os_stack_trace_getter</definition>
+        <argsstring>()</argsstring>
+        <name>os_stack_trace_getter</name>
+        <qualifiedname>testing::internal::UnitTestImpl::os_stack_trace_getter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1019" column="31" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6070" bodyend="6076"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a61c0a51ac4e57d9f884f646ca6dd2210" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::internal::UnitTestImpl::CurrentOsStackTraceExceptTop</definition>
+        <argsstring>(int skip_count) GTEST_NO_INLINE_</argsstring>
+        <name>CurrentOsStackTraceExceptTop</name>
+        <qualifiedname>testing::internal::UnitTestImpl::CurrentOsStackTraceExceptTop</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>skip_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1031" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2258" bodyend="2261"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac5684d824a59e963cb3274c79d0b6df3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+        <definition>TestCase * testing::internal::UnitTestImpl::GetTestCase</definition>
+        <argsstring>(const char *test_case_name, const char *type_param, Test::SetUpTestCaseFunc set_up_tc, Test::TearDownTestCaseFunc tear_down_tc)</argsstring>
+        <name>GetTestCase</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GetTestCase</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>test_case_name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>type_param</declname>
+        </param>
+        <param>
+          <type>Test::SetUpTestCaseFunc</type>
+          <declname>set_up_tc</declname>
+        </param>
+        <param>
+          <type>Test::TearDownTestCaseFunc</type>
+          <declname>tear_down_tc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1043" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5659" bodyend="5692"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a1cc87dfc91377ebec4a3ff4192dfcba9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::AddTestInfo</definition>
+        <argsstring>(Test::SetUpTestCaseFunc set_up_tc, Test::TearDownTestCaseFunc tear_down_tc, TestInfo *test_info)</argsstring>
+        <name>AddTestInfo</name>
+        <qualifiedname>testing::internal::UnitTestImpl::AddTestInfo</qualifiedname>
+        <param>
+          <type>Test::SetUpTestCaseFunc</type>
+          <declname>set_up_tc</declname>
+        </param>
+        <param>
+          <type>Test::TearDownTestCaseFunc</type>
+          <declname>tear_down_tc</declname>
+        </param>
+        <param>
+          <type><ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> *</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1055" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1055" bodyend="1075"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a7f0e79bdabd28819cc857e316a36a350" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::set_current_test_case</definition>
+        <argsstring>(TestCase *a_current_test_case)</argsstring>
+        <name>set_current_test_case</name>
+        <qualifiedname>testing::internal::UnitTestImpl::set_current_test_case</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+          <declname>a_current_test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1086" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1086" bodyend="1088"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ab72211c99ce4427dfb472d6ecea62989" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::set_current_test_info</definition>
+        <argsstring>(TestInfo *a_current_test_info)</argsstring>
+        <name>set_current_test_info</name>
+        <qualifiedname>testing::internal::UnitTestImpl::set_current_test_info</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> *</type>
+          <declname>a_current_test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1093" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1093" bodyend="1095"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1af84d2515f1a272a8783f00a3e8c0aff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::RegisterParameterizedTests</definition>
+        <argsstring>()</argsstring>
+        <name>RegisterParameterizedTests</name>
+        <qualifiedname>testing::internal::UnitTestImpl::RegisterParameterizedTests</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1103" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="3773" bodyend="3780"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a1fb6be9971f4768c4136a05aa9e7e375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::RunAllTests</definition>
+        <argsstring>()</argsstring>
+        <name>RunAllTests</name>
+        <qualifiedname>testing::internal::UnitTestImpl::RunAllTests</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1109" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5708" bodyend="5839"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a96c2a5b23541ef01020c402644563ba1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::ClearNonAdHocTestResult</definition>
+        <argsstring>()</argsstring>
+        <name>ClearNonAdHocTestResult</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ClearNonAdHocTestResult</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1112" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1112" bodyend="1114"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac44629cc4fa12b788779d4aa76939510" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::ClearAdHocTestResult</definition>
+        <argsstring>()</argsstring>
+        <name>ClearAdHocTestResult</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ClearAdHocTestResult</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1117" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1117" bodyend="1119"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a15e4af4df167d2504decbc8fcc108a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::RecordProperty</definition>
+        <argsstring>(const TestProperty &amp;test_property)</argsstring>
+        <name>RecordProperty</name>
+        <qualifiedname>testing::internal::UnitTestImpl::RecordProperty</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_property" kindref="compound">TestProperty</ref> &amp;</type>
+          <declname>test_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1125" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5534" bodyend="5549"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1abd47e447f0c2557ed528db0350671bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::FilterTests</definition>
+        <argsstring>(ReactionToSharding shard_tests)</argsstring>
+        <name>FilterTests</name>
+        <qualifiedname>testing::internal::UnitTestImpl::FilterTests</qualifiedname>
+        <param>
+          <type>ReactionToSharding</type>
+          <declname>shard_tests</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1138" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5941" bodyend="5992"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ad2cfedef41d3d29aad23c2c64214e6f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::ListTestsMatchingFilter</definition>
+        <argsstring>()</argsstring>
+        <name>ListTestsMatchingFilter</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ListTestsMatchingFilter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1141" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6017" bodyend="6052"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1af16ec9a7a57d4a198fe10fa93852dac9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+        <definition>const TestCase * testing::internal::UnitTestImpl::current_test_case</definition>
+        <argsstring>() const</argsstring>
+        <name>current_test_case</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_case</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1143" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1143" bodyend="1143"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aae2009f581b6c1129ae084d8a2c1e781" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> *</type>
+        <definition>TestInfo * testing::internal::UnitTestImpl::current_test_info</definition>
+        <argsstring>()</argsstring>
+        <name>current_test_info</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_info</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1144" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1144" bodyend="1144"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ab0c759ee568a1ff6ed5cfd54dbd25646" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> *</type>
+        <definition>const TestInfo * testing::internal::UnitTestImpl::current_test_info</definition>
+        <argsstring>() const</argsstring>
+        <name>current_test_info</name>
+        <qualifiedname>testing::internal::UnitTestImpl::current_test_info</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1145" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1145" bodyend="1145"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac0756bc092288072201acda0903b4a82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classtesting_1_1_environment" kindref="compound">Environment</ref> * &gt; &amp;</type>
+        <definition>std::vector&lt; Environment * &gt; &amp; testing::internal::UnitTestImpl::environments</definition>
+        <argsstring>()</argsstring>
+        <name>environments</name>
+        <qualifiedname>testing::internal::UnitTestImpl::environments</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1149" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1149" bodyend="1149"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1ac6212d90a1321cf51035a09b5bdede46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structtesting_1_1internal_1_1_trace_info" kindref="compound">TraceInfo</ref> &gt; &amp;</type>
+        <definition>std::vector&lt; TraceInfo &gt; &amp; testing::internal::UnitTestImpl::gtest_trace_stack</definition>
+        <argsstring>()</argsstring>
+        <name>gtest_trace_stack</name>
+        <qualifiedname>testing::internal::UnitTestImpl::gtest_trace_stack</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1152" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1152" bodyend="1154"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0480e61a32e930aafb0681494e8ac893" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="structtesting_1_1internal_1_1_trace_info" kindref="compound">TraceInfo</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; TraceInfo &gt; &amp; testing::internal::UnitTestImpl::gtest_trace_stack</definition>
+        <argsstring>() const</argsstring>
+        <name>gtest_trace_stack</name>
+        <qualifiedname>testing::internal::UnitTestImpl::gtest_trace_stack</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1155" column="21" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1155" bodyend="1157"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a21cd7b2928de03a55b5252f29dd5ae6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::ConfigureXmlOutput</definition>
+        <argsstring>()</argsstring>
+        <name>ConfigureXmlOutput</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ConfigureXmlOutput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1183" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5562" bodyend="5572"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a772894193104b1b2516f16e6ff813168" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::PostFlagParsingInit</definition>
+        <argsstring>()</argsstring>
+        <name>PostFlagParsingInit</name>
+        <qualifiedname>testing::internal::UnitTestImpl::PostFlagParsingInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1196" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5598" bodyend="5622"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a625b9fb6d17b008c44fc902255e6343c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::UnitTestImpl::random_seed</definition>
+        <argsstring>() const</argsstring>
+        <name>random_seed</name>
+        <qualifiedname>testing::internal::UnitTestImpl::random_seed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1199" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1199" bodyend="1199"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a0df7a76078e9b91e3bbb3c13024b51a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_random" kindref="compound">internal::Random</ref> *</type>
+        <definition>internal::Random * testing::internal::UnitTestImpl::random</definition>
+        <argsstring>()</argsstring>
+        <name>random</name>
+        <qualifiedname>testing::internal::UnitTestImpl::random</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1202" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1202" bodyend="1202"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aaaa38e6a4372e6bb9bbe3143a3a32b65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::ShuffleTests</definition>
+        <argsstring>()</argsstring>
+        <name>ShuffleTests</name>
+        <qualifiedname>testing::internal::UnitTestImpl::ShuffleTests</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1206" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6087" bodyend="6099"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a1ee7db3bf8284dd9dce4dc857564bce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::UnshuffleTests</definition>
+        <argsstring>()</argsstring>
+        <name>UnshuffleTests</name>
+        <qualifiedname>testing::internal::UnitTestImpl::UnshuffleTests</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1209" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="6102" bodyend="6109"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aa311b980783a9cfb547831f7b19e3f3a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestImpl::catch_exceptions</definition>
+        <argsstring>() const</argsstring>
+        <name>catch_exceptions</name>
+        <qualifiedname>testing::internal::UnitTestImpl::catch_exceptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1213" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1213" bodyend="1213"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1aefec23506cd772c3abc536cda301d926" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::UnitTestImpl::set_catch_exceptions</definition>
+        <argsstring>(bool value)</argsstring>
+        <name>set_catch_exceptions</name>
+        <qualifiedname>testing::internal::UnitTestImpl::set_catch_exceptions</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1220" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1220" bodyend="1220"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_impl_1a9c8a7b2571705040ead6a61645278e18" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::UnitTestImpl::GTEST_DISALLOW_COPY_AND_ASSIGN_</definition>
+        <argsstring>(UnitTestImpl)</argsstring>
+        <name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name>
+        <qualifiedname>testing::internal::UnitTestImpl::GTEST_DISALLOW_COPY_AND_ASSIGN_</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_unit_test_impl" kindref="compound">UnitTestImpl</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="1332" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="909" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="909" bodyend="1333"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a893404438388dec058dc5c02e8f9a014" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>::testing::UnitTest</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a79b8b8c8b89e361faf2e9a3028447407" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ad_hoc_test_result</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a15355228a7140a08f9e2f333aa934ccd" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ad_hoc_test_result_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1cc87dfc91377ebec4a3ff4192dfcba9" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>AddTestInfo</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aa311b980783a9cfb547831f7b19e3f3a" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>catch_exceptions</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a2cc0c6f466730b1d6e884738344b8e33" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>catch_exceptions_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac44629cc4fa12b788779d4aa76939510" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ClearAdHocTestResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a96c2a5b23541ef01020c402644563ba1" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ClearNonAdHocTestResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a21cd7b2928de03a55b5252f29dd5ae6d" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ConfigureXmlOutput</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1af16ec9a7a57d4a198fe10fa93852dac9" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_case</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a3b346729d3940f065e05c69c434ebb3f" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_case_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aae2009f581b6c1129ae084d8a2c1e781" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_info</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ab0c759ee568a1ff6ed5cfd54dbd25646" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_info</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a56128aac0fb5be45993715d1130b0610" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_info_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aba3caef4ad23ce98be80250aeb0cc787" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>current_test_result</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a61c0a51ac4e57d9f884f646ca6dd2210" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>CurrentOsStackTraceExceptTop</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a645122eda4d8250f3e8139309510705e" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>default_global_test_part_result_reporter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a261ddbea097ad3b43b8b510a4964f390" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>default_per_thread_test_part_result_reporter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0c18b2a9cb240722b1e38a3530aa2269" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>disabled_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a4376881063f945dcc8ec4dbb38b5ecc1" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>elapsed_time</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a06e0445298c6026bee71bb2bb7aae604" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>elapsed_time_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac0756bc092288072201acda0903b4a82" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>environments</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1d2320ba1e4e1cad8d624bbb222501fb" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>environments_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0c95d1b56b5f33057afc516db05ac313" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>Failed</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1af981a537231e1dad4c1f092c6fdec1ff" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>failed_test_case_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ad0abe95b66466268363d7fa407bac41b" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>failed_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1abd47e447f0c2557ed528db0350671bed" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>FilterTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1cd291fd6751654924362164735d4b49" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GetGlobalTestPartResultReporter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0afbf2899759cf7ffeda65a0c828eac7" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GetMutableTestCase</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac068f08191712109d720fb4b020cb79f" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GetTestCase</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac5684d824a59e963cb3274c79d0b6df3" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GetTestCase</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a5fb3dd8bc839e10b62eba07790704132" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GetTestPartResultReporterForCurrentThread</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a57153c5c8caa229f0a62f35ab99f0a56" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>global_test_part_result_reporter_mutex_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ab9a275094df6adc7e16a92133a692c3e" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>global_test_part_result_repoter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a9c8a7b2571705040ead6a61645278e18" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac6212d90a1321cf51035a09b5bdede46" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>gtest_trace_stack</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0480e61a32e930aafb0681494e8ac893" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>gtest_trace_stack</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a73a797cf2b20129cb252b14c5fd9a0af" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>gtest_trace_stack_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43abec11f1c4bb8a3e2b99fa8328bccd58c" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>HONOR_SHARDING_PROTOCOL</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43a68bd0b7e6a7bead14c93d1a42144095a" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>IGNORE_SHARDING_PROTOCOL</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1afd663a104bb0a6df2c5143454f78e305" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>last_death_test_case_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a22544d28679e9d1e2eaa3735607c8b63" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>listeners</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a16c3caa0bac1a8dce650649760de30d2" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>listeners_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ad2cfedef41d3d29aad23c2c64214e6f3" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ListTestsMatchingFilter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aaf1f1d4cbb2f681ded9bbf4c6075430c" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>original_working_dir_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a71753679854f7fbba6c1568eb422fecb" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>os_stack_trace_getter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a16b34d9194ca9552f581e472e9b18494" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>os_stack_trace_getter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1adabbbc8985202ce655d50746bd383eae" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>parent_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ae8e461369acfec902da382bc02297fe5" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>Passed</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a23ebe35dfe19dcda8e7b17e81f2cb4bc" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>per_thread_test_part_result_reporter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ab4c7d8a9ff3edbd8a98f91c4afaf3bb8" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>post_flag_parse_init_performed_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a772894193104b1b2516f16e6ff813168" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>PostFlagParsingInit</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0df7a76078e9b91e3bbb3c13024b51a7" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>random</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a08551d7ff0ebb976ec82294ded8113ea" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>random_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a625b9fb6d17b008c44fc902255e6343c" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>random_seed</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0afcc95308ebfacb8d0f53790e77e1ab" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>random_seed_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1acc5ffd3f9bc2e87bb3dba4218f58af43" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ReactionToSharding</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a15e4af4df167d2504decbc8fcc108a6f" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>RecordProperty</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1af84d2515f1a272a8783f00a3e8c0aff8" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>RegisterParameterizedTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a04827d118a329af68a1de2d6b93eb4e5" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>reportable_disabled_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1addb3896c4e0973bb5d2744fcb158afce" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>reportable_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1fb6be9971f4768c4136a05aa9e7e375" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>RunAllTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aefec23506cd772c3abc536cda301d926" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>set_catch_exceptions</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a7f0e79bdabd28819cc857e316a36a350" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>set_current_test_case</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ab72211c99ce4427dfb472d6ecea62989" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>set_current_test_info</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a3306f7d2b19bca54b841006e4a2e0260" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>set_os_stack_trace_getter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a892b0e25b28af5e4400cf6fac336f2d8" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>SetGlobalTestPartResultReporter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1403fc10aebcc64479c5ee980c9b4eb4" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>SetTestPartResultReporterForCurrentThread</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aaaa38e6a4372e6bb9bbe3143a3a32b65" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>ShuffleTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1abb02dfd689760c6323acec725d9631d5" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>start_timestamp</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a2114799ed634ee849b9dcd9728f9b7b6" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>start_timestamp_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a2db3a2b3fed8065dbdd768ee407bf67e" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>successful_test_case_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac363f681cbecf10fea5c04408b98e744" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>successful_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a9b30891f1a9d5b5c25de2bef0f0bb49a" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>test_case_indices_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1aff65061646c6b9857b37097423500bfe" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>test_case_to_run_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a79ec0f733ada2898efd1a7fbd8587fb3" prot="private" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>test_cases_</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a0f15365d1d1ce00eaeb6f8a1370113ec" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>test_to_run_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ac1d81d6b146b2dbce460f9a0a57d4f9e" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>total_test_case_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a89e8531ee2ba3f0aadc27a95ac6149f1" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>total_test_count</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a5fb75faa88ee71f26e16473455b70839" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>UnitTestImpl</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1a1ee7db3bf8284dd9dce4dc857564bce3" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestImpl</scope><name>UnshuffleTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_impl_1ae8bfe40adf9772237ea51299af113575" prot="public" virt="virtual"><scope>testing::internal::UnitTestImpl</scope><name>~UnitTestImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

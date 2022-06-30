@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a5d91c75a4a9ddd61a9a929bb7246e674" prot="public" static="no">
+        <type>typename std::remove_cv&lt; Scalar &gt;::type</type>
+        <definition>using Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::value_type =  typename std::remove_cv&lt;Scalar&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a8445b5dd61839f9a1644b53a0fd3e2be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::join</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="123" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1aeb07b16dff3941d842c2fbf84109fcb6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="126" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="126" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a2594b36e6208c708f97f4d2c31483de8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::init</definition>
+        <argsstring>(value_type &amp;val)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="131" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="116" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="116" bodyend="134"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a2594b36e6208c708f97f4d2c31483de8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a8445b5dd61839f9a1644b53a0fd3e2be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1aeb07b16dff3941d842c2fbf84109fcb6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_prod_3_01_scalar_00_01_space_01_4_01_4_1a5d91c75a4a9ddd61a9a929bb7246e674" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Prod&lt; Scalar, Space &gt; &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

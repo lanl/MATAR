@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_team_vector_1_1functor__team__reduce" kind="struct" language="C++" prot="public">
+    <compoundname>TestTeamVector::functor_team_reduce</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__team__reduce_1abbc4cd2871ac87141083e36372d51668" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::policy_type =  Kokkos::TeamPolicy&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="126" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__team__reduce_1a7363471ae2f2b92f51b45c26bd7d38a8" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="127" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__team__reduce_1a77b17cbe41c6cebbbfc06a8ffcd25176" prot="public" static="no">
+        <type>typename ExecutionSpace::scratch_memory_space</type>
+        <definition>using TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::shmem_space =  typename ExecutionSpace::scratch_memory_space</definition>
+        <argsstring></argsstring>
+        <name>shmem_space</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::shmem_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="135" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__team__reduce_1af64b2d2039ea68639bf402e9d26f642b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar *, shmem_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryUnmanaged</ref> &gt;</type>
+        <definition>using TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::shared_scalar_t =  Kokkos::View&lt;Scalar *, shmem_space, Kokkos::MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>shared_scalar_t</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::shared_scalar_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="136" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_team_vector_1_1functor__team__reduce_1ae69a334eb310b162f1ddefaeeccbe2bd" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+        <definition>Kokkos::View&lt;int, Kokkos::LayoutLeft, ExecutionSpace&gt; TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::flag</definition>
+        <argsstring></argsstring>
+        <name>flag</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="129" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__team__reduce_1a5eee5868e3abbce648aca566f184a6a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::functor_team_reduce</definition>
+        <argsstring>(Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt; flag_)</argsstring>
+        <name>functor_team_reduce</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::functor_team_reduce</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+          <declname>flag_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="131" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__team__reduce_1a0ec5410e91c8b49efcae7af5b9dce489" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::team_shmem_size</definition>
+        <argsstring>(int team_size) const</argsstring>
+        <name>team_shmem_size</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::team_shmem_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>team_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="138" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__team__reduce_1a6799d94413c999dfe08a17fb79e579ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(typename policy_type::member_type team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestTeamVector::functor_team_reduce::operator()</qualifiedname>
+        <param>
+          <type>typename policy_type::member_type</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="143" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="143" bodyend="194"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestTeamVector::functor_team_reduce&lt; Scalar, ExecutionSpace &gt;</label>
+        <link refid="struct_test_team_vector_1_1functor__team__reduce"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>flag</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="125" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="125" bodyend="195"/>
+    <listofallmembers>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1a7363471ae2f2b92f51b45c26bd7d38a8" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>execution_space</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1ae69a334eb310b162f1ddefaeeccbe2bd" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>flag</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1a5eee5868e3abbce648aca566f184a6a3" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>functor_team_reduce</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1a6799d94413c999dfe08a17fb79e579ae" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>operator()</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1abbc4cd2871ac87141083e36372d51668" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>policy_type</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1af64b2d2039ea68639bf402e9d26f642b" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>shared_scalar_t</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1a77b17cbe41c6cebbbfc06a8ffcd25176" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>shmem_space</name></member>
+      <member refid="struct_test_team_vector_1_1functor__team__reduce_1a0ec5410e91c8b49efcae7af5b9dce489" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_team_reduce</scope><name>team_shmem_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacehpx_1_1parallel_1_1execution" kind="namespace" language="C++">
+    <compoundname>hpx::parallel::execution</compoundname>
+    <innerclass refid="structhpx_1_1parallel_1_1execution_1_1is__bulk__two__way__executor_3_01_kokkos_1_1_impl_1_1_chunked_round_robin_executor_01_4" prot="public">hpx::parallel::execution::is_bulk_two_way_executor&lt; Kokkos::Impl::ChunkedRoundRobinExecutor &gt;</innerclass>
+    <innerclass refid="structhpx_1_1parallel_1_1execution_1_1is__one__way__executor_3_01_kokkos_1_1_impl_1_1_chunked_round_robin_executor_01_4" prot="public">hpx::parallel::execution::is_one_way_executor&lt; Kokkos::Impl::ChunkedRoundRobinExecutor &gt;</innerclass>
+    <innerclass refid="structhpx_1_1parallel_1_1execution_1_1is__two__way__executor_3_01_kokkos_1_1_impl_1_1_chunked_round_robin_executor_01_4" prot="public">hpx::parallel::execution::is_two_way_executor&lt; Kokkos::Impl::ChunkedRoundRobinExecutor &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_ChunkedRoundRobinExecutor.hpp" line="190" column="1"/>
+  </compounddef>
+</doxygen>

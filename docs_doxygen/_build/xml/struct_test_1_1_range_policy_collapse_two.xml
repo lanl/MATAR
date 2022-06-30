@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_range_policy_collapse_two" kind="struct" language="C++" prot="public">
+    <compoundname>Test::RangePolicyCollapseTwo</compoundname>
+    <innerclass refid="struct_test_1_1_range_policy_collapse_two_1_1_init" prot="public">Test::RangePolicyCollapseTwo::Init</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+      <param>
+        <type>typename ScalarType</type>
+        <defval>double</defval>
+      </param>
+      <param>
+        <type>typename <ref refid="struct_test_1_1_test_layout" kindref="compound">TestLayout</ref></type>
+        <defval><ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1a65175514632732c8122695180cf81654" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="309" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1a4f271a073ab31963e2bd88812f3efc42" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="310" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1a734d36f7f23e0f3783270b824c6cb7d3" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_test_layout" kindref="compound">TestLayout</ref></type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::layout =  TestLayout</definition>
+        <argsstring></argsstring>
+        <name>layout</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="311" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1aa1402a18740f6380dcfb9d0ef10405db" prot="public" static="no">
+        <type>Kokkos::Iterate</type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::iterate_type =  Kokkos::Iterate</definition>
+        <argsstring></argsstring>
+        <name>iterate_type</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::iterate_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="313" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1a024b488ac50efa20a233a296e1233914" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; ScalarType ***, <ref refid="struct_test_1_1_test_layout" kindref="compound">TestLayout</ref>, DeviceType &gt;</type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::view_type =  Kokkos::View&lt;ScalarType ***, TestLayout, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="315" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_range_policy_collapse_two_1a1e29b3a9b299d8903fd94697dc5cccbb" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">view_type::HostMirror</ref></type>
+        <definition>using Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::host_view_type =  typename view_type::HostMirror</definition>
+        <argsstring></argsstring>
+        <name>host_view_type</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::host_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="316" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_range_policy_collapse_two_1a18dec12bf2a534f4d5f4cb2aaef1ca08" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::A</definition>
+        <argsstring></argsstring>
+        <name>A</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::A</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="318" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_range_policy_collapse_two_1a5acc1dc1b4b0b31a198af0c0ee72bfcb" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::B</definition>
+        <argsstring></argsstring>
+        <name>B</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::B</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="319" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_range_policy_collapse_two_1aefacf33f72ed1d6d4345e2a209c836c7" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::irange</definition>
+        <argsstring></argsstring>
+        <name>irange</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::irange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="320" column="14" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_range_policy_collapse_two_1a8cd3e45ba15a194c3847203b08f5f3fb" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::jrange</definition>
+        <argsstring></argsstring>
+        <name>jrange</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::jrange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="321" column="14" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_range_policy_collapse_two_1a9c2ca2d3f98df762711375f7db9d8bef" prot="public" static="no" mutable="no">
+        <type>const long</type>
+        <definition>const long Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::krange</definition>
+        <argsstring></argsstring>
+        <name>krange</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::krange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="322" column="14" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_range_policy_collapse_two_1ac20e95763f87e8158d34d4240af859ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::RangePolicyCollapseTwo</definition>
+        <argsstring>(view_type &amp;A_, const view_type &amp;B_, const long &amp;irange_, const long &amp;jrange_, const long &amp;krange_)</argsstring>
+        <name>RangePolicyCollapseTwo</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::RangePolicyCollapseTwo</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+          <declname>A_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+          <declname>B_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>irange_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>jrange_</declname>
+        </param>
+        <param>
+          <type>const long &amp;</type>
+          <declname>krange_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="324" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="324" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_range_policy_collapse_two_1a2cdae24bf4378004c4e204862d18aa89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::operator()</definition>
+        <argsstring>(const long r) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::operator()</qualifiedname>
+        <param>
+          <type>const long</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="330" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="330" bodyend="354"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_range_policy_collapse_two_1a2a19920e236e2afa6c8a42ac88b4e341" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;::test_index_collapse_two</definition>
+        <argsstring>(const unsigned int icount, const unsigned int jcount, const unsigned int kcount, const long iter=1)</argsstring>
+        <name>test_index_collapse_two</name>
+        <qualifiedname>Test::RangePolicyCollapseTwo::test_index_collapse_two</qualifiedname>
+        <param>
+          <type>const unsigned int</type>
+          <declname>icount</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>jcount</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>kcount</declname>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>iter</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="384" column="17" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="384" bodyend="475"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::RangePolicyCollapseTwo&lt; DeviceType, ScalarType, TestLayout &gt;</label>
+        <link refid="struct_test_1_1_range_policy_collapse_two"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>A</edgelabel>
+          <edgelabel>B</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double ***, Kokkos::LayoutRight, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double ***, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="305" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="305" bodyend="476"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a18dec12bf2a534f4d5f4cb2aaef1ca08" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>A</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a5acc1dc1b4b0b31a198af0c0ee72bfcb" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>B</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a65175514632732c8122695180cf81654" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a1e29b3a9b299d8903fd94697dc5cccbb" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>host_view_type</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1aefacf33f72ed1d6d4345e2a209c836c7" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>irange</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1aa1402a18740f6380dcfb9d0ef10405db" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>iterate_type</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a8cd3e45ba15a194c3847203b08f5f3fb" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>jrange</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a9c2ca2d3f98df762711375f7db9d8bef" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>krange</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a734d36f7f23e0f3783270b824c6cb7d3" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>layout</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a2cdae24bf4378004c4e204862d18aa89" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1ac20e95763f87e8158d34d4240af859ed" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>RangePolicyCollapseTwo</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a4f271a073ab31963e2bd88812f3efc42" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>size_type</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a2a19920e236e2afa6c8a42ac88b4e341" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>test_index_collapse_two</name></member>
+      <member refid="struct_test_1_1_range_policy_collapse_two_1a024b488ac50efa20a233a296e1233914" prot="public" virt="non-virtual"><scope>Test::RangePolicyCollapseTwo</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

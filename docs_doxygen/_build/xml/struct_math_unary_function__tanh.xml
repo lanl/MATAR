@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_math_unary_function__tanh" kind="struct" language="C++" prot="public">
+    <compoundname>MathUnaryFunction_tanh</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_math_unary_function__tanh_1a05b91ee98daaf61e1a72561f30fffd9f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION auto</type>
+        <definition>static KOKKOS_FUNCTION auto MathUnaryFunction_tanh::eval</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval</name>
+        <qualifiedname>MathUnaryFunction_tanh::eval</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="340" column="71" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="340" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__tanh_1ab71f848a7854ae1bab2462ac5c7f1cdb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto MathUnaryFunction_tanh::eval_std</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval_std</name>
+        <qualifiedname>MathUnaryFunction_tanh::eval_std</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="340" column="277" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="340" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__tanh_1a2ab919b8b8de0aacb0517f6b86ff8af7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>static KOKKOS_FUNCTION double MathUnaryFunction_tanh::ulp_factor</definition>
+        <argsstring>()</argsstring>
+        <name>ulp_factor</name>
+        <qualifiedname>MathUnaryFunction_tanh::ulp_factor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="340" column="457" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="340" bodyend="340"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="340" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="340" bodyend="340"/>
+    <listofallmembers>
+      <member refid="struct_math_unary_function__tanh_1a05b91ee98daaf61e1a72561f30fffd9f" prot="public" virt="non-virtual"><scope>MathUnaryFunction_tanh</scope><name>eval</name></member>
+      <member refid="struct_math_unary_function__tanh_1ab71f848a7854ae1bab2462ac5c7f1cdb" prot="public" virt="non-virtual"><scope>MathUnaryFunction_tanh</scope><name>eval_std</name></member>
+      <member refid="struct_math_unary_function__tanh_1a2ab919b8b8de0aacb0517f6b86ff8af7" prot="public" virt="non-virtual"><scope>MathUnaryFunction_tanh</scope><name>ulp_factor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

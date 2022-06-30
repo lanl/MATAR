@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_atomic_views_1_1_init_functor___mod_shift" kind="struct" language="C++" prot="public">
+    <compoundname>TestAtomicViews::InitFunctor_ModShift</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class execution_space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1a84e0039f26a9852d21b8a71db1dbc31b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *, execution_space &gt;</type>
+        <definition>using TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::view_type =  Kokkos::View&lt;T*, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="348" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1a2af169d402448c3135a85ca17b4a19ec" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="350" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1a45e754c6af606e35ed43af937357a459" prot="public" static="no" mutable="no">
+        <type>const int64_t</type>
+        <definition>const int64_t TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="351" column="17" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="351" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1a31c3dd1bed0766ee525eb93b4ebbcfd2" prot="public" static="no" mutable="no">
+        <type>const int64_t</type>
+        <definition>const int64_t TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::remainder</definition>
+        <argsstring></argsstring>
+        <name>remainder</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::remainder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="352" column="17" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1a2a5de5e91cbebf0f4332e9de236348b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::InitFunctor_ModShift</definition>
+        <argsstring>(view_type &amp;input_, const int64_t length_, const int64_t remainder_)</argsstring>
+        <name>InitFunctor_ModShift</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::InitFunctor_ModShift</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+          <declname>input_</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>length_</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>remainder_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="354" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="354" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_init_functor___mod_shift_1ace059c0e1089db5b9a9b9f03ccf44728" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;::operator()</definition>
+        <argsstring>(const int64_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestAtomicViews::InitFunctor_ModShift::operator()</qualifiedname>
+        <param>
+          <type>const int64_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="359" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="359" bodyend="365"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestAtomicViews::InitFunctor_ModShift&lt; T, execution_space &gt;</label>
+        <link refid="struct_test_atomic_views_1_1_init_functor___mod_shift"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>input</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; T *, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; T *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="347" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="347" bodyend="366"/>
+    <listofallmembers>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1a2a5de5e91cbebf0f4332e9de236348b0" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>InitFunctor_ModShift</name></member>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1a2af169d402448c3135a85ca17b4a19ec" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>input</name></member>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1a45e754c6af606e35ed43af937357a459" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>length</name></member>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1ace059c0e1089db5b9a9b9f03ccf44728" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>operator()</name></member>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1a31c3dd1bed0766ee525eb93b4ebbcfd2" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>remainder</name></member>
+      <member refid="struct_test_atomic_views_1_1_init_functor___mod_shift_1a84e0039f26a9852d21b8a71db1dbc31b" prot="public" virt="non-virtual"><scope>TestAtomicViews::InitFunctor_ModShift</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

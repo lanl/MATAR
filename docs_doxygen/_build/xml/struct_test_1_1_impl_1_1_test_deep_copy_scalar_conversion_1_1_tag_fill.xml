@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1_test_deep_copy_scalar_conversion_1_1_tag_fill" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::TestDeepCopyScalarConversion::TagFill</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestDeepCopyAlignment.hpp" line="219" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestDeepCopyAlignment.hpp" bodystart="219" bodyend="219"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

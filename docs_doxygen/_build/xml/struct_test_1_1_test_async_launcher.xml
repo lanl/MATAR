@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_async_launcher" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestAsyncLauncher</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_async_launcher_1a7b4d3f4b075d18ec1f5e0962dab7dded" prot="public" static="no" mutable="no">
+        <type>size_t *</type>
+        <definition>size_t* Test::TestAsyncLauncher::m_flag</definition>
+        <argsstring></argsstring>
+        <name>m_flag</name>
+        <qualifiedname>Test::TestAsyncLauncher::m_flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="51" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_async_launcher_1aa5a7140b1b904cd4eb32a6f1e6683273" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Test::TestAsyncLauncher::m_value</definition>
+        <argsstring></argsstring>
+        <name>m_value</name>
+        <qualifiedname>Test::TestAsyncLauncher::m_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="52" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_async_launcher_1a371e75bd16c4e2c3053f090dc39ff988" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestAsyncLauncher::operator()</definition>
+        <argsstring>(const int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestAsyncLauncher::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="55" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_async_launcher_1ab84a6cf362a7453f2599b179611ac184" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestAsyncLauncher::TestAsyncLauncher</definition>
+        <argsstring>(size_t *flag, int value)</argsstring>
+        <name>TestAsyncLauncher</name>
+        <qualifiedname>Test::TestAsyncLauncher::TestAsyncLauncher</qualifiedname>
+        <param>
+          <type>size_t *</type>
+          <declname>flag</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_async_launcher_1aec961a2457b69819e4937fe528008581" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestAsyncLauncher::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestAsyncLauncher::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="62" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="62" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" line="50" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_AsyncLauncher.cpp" bodystart="50" bodyend="65"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_async_launcher_1a7b4d3f4b075d18ec1f5e0962dab7dded" prot="public" virt="non-virtual"><scope>Test::TestAsyncLauncher</scope><name>m_flag</name></member>
+      <member refid="struct_test_1_1_test_async_launcher_1aa5a7140b1b904cd4eb32a6f1e6683273" prot="public" virt="non-virtual"><scope>Test::TestAsyncLauncher</scope><name>m_value</name></member>
+      <member refid="struct_test_1_1_test_async_launcher_1a371e75bd16c4e2c3053f090dc39ff988" prot="public" virt="non-virtual"><scope>Test::TestAsyncLauncher</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_async_launcher_1aec961a2457b69819e4937fe528008581" prot="public" virt="non-virtual"><scope>Test::TestAsyncLauncher</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_async_launcher_1ab84a6cf362a7453f2599b179611ac184" prot="public" virt="non-virtual"><scope>Test::TestAsyncLauncher</scope><name>TestAsyncLauncher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

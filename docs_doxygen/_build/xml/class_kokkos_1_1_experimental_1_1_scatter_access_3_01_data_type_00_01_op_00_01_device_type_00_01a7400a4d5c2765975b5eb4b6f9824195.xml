@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename DataType</type>
+      </param>
+      <param>
+        <type>typename Op</type>
+      </param>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+      </param>
+      <param>
+        <type>typename Contribution</type>
+      </param>
+      <param>
+        <type>typename OverrideContribution</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a07f931a62693a92ffef3a2dc96cb35e5" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_scatter_view" kindref="compound">ScatterView</ref>&lt; DataType, Layout, DeviceType, Op, <ref refid="struct_kokkos_1_1_experimental_1_1_scatter_non_duplicated" kindref="compound">ScatterNonDuplicated</ref>, Contribution &gt;</type>
+        <definition>using Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::view_type =  ScatterView&lt;DataType, Layout, DeviceType, Op, ScatterNonDuplicated, Contribution&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="892" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="893" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a1f99589372a708c4f27ea676ca12e733" prot="public" static="no">
+        <type>typename view_type::original_value_type</type>
+        <definition>using Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::original_value_type =  typename view_type::original_value_type</definition>
+        <argsstring></argsstring>
+        <name>original_value_type</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::original_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="894" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="894" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1aa32ace87e854f66741267d0252e1a798" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value" kindref="compound">Kokkos::Impl::Experimental::ScatterValue</ref>&lt; original_value_type, Op, DeviceType, OverrideContribution &gt;</type>
+        <definition>using Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::value_type =  Kokkos::Impl::Experimental::ScatterValue&lt; original_value_type, Op, DeviceType, OverrideContribution&gt;</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="895" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="896" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a9dc9403f92c926e2bc1f1afdb1f81683" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_scatter_view_3_01_data_type_00_01_layout_00_01_device_type_00_409a5fbc737b0890b5a2b8c7d57d6447" kindref="compound">view_type</ref> const  &amp;</type>
+        <definition>view_type const&amp; Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::view</definition>
+        <argsstring></argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="921" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="921" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a05dc2deededd28b92f931f3e45610edb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::ScatterAccess</definition>
+        <argsstring>()</argsstring>
+        <name>ScatterAccess</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::ScatterAccess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="899" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="899" bodyend="899"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1ab3811d51d71543e95a45a783b2e8cbd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::ScatterAccess</definition>
+        <argsstring>(view_type const &amp;view_in)</argsstring>
+        <name>ScatterAccess</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::ScatterAccess</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_scatter_view_3_01_data_type_00_01_layout_00_01_device_type_00_409a5fbc737b0890b5a2b8c7d57d6447" kindref="compound">view_type</ref> const &amp;</type>
+          <declname>view_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="902" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="902" bodyend="902"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a18f5156a73bfaf735d18a706b66452f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::~ScatterAccess</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ScatterAccess</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::~ScatterAccess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="904" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1aa1aa0687efead85b5114709f425b8c88" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION <ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value" kindref="compound">value_type</ref></type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION value_type Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::operator()</definition>
+        <argsstring>(Args... args) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::operator()</qualifiedname>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="907" column="42" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="907" bodyend="909"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a899fbbfdc990b6af1271dbd678864ab5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Arg</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt; view_type::original_view_type::rank==1 &amp;&amp;std::is_integral&lt; Arg &gt;::value, <ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value" kindref="compound">value_type</ref> &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt; view_type::original_view_type::rank==1 &amp;&amp;std::is_integral&lt; Arg &gt;::value, value_type &gt;::type Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::operator[]</definition>
+        <argsstring>(Arg arg) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;::operator[]</qualifiedname>
+        <param>
+          <type>Arg</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="916" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="916" bodyend="918"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="889" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="890" bodyend="922"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1aa1aa0687efead85b5114709f425b8c88" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a899fbbfdc990b6af1271dbd678864ab5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a1f99589372a708c4f27ea676ca12e733" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>original_value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a05dc2deededd28b92f931f3e45610edb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>ScatterAccess</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1ab3811d51d71543e95a45a783b2e8cbd3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>ScatterAccess</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1aa32ace87e854f66741267d0252e1a798" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a9dc9403f92c926e2bc1f1afdb1f81683" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>view</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a07f931a62693a92ffef3a2dc96cb35e5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>view_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_scatter_access_3_01_data_type_00_01_op_00_01_device_type_00_01a7400a4d5c2765975b5eb4b6f9824195_1a18f5156a73bfaf735d18a706b66452f4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ScatterAccess&lt; DataType, Op, DeviceType, Layout, ScatterNonDuplicated, Contribution, OverrideContribution &gt;</scope><name>~ScatterAccess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

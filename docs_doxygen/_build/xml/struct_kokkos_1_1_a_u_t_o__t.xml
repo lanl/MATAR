@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_a_u_t_o__t" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::AUTO_t</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_a_u_t_o__t_1aac3d5f59904192aa182dcad8919001b7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">AUTO_t</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr const AUTO_t &amp; Kokkos::AUTO_t::operator()</definition>
+        <argsstring>() const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::AUTO_t::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" line="72" column="26" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" line="70" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" bodystart="70" bodyend="73"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_a_u_t_o__t_1aac3d5f59904192aa182dcad8919001b7" prot="public" virt="non-virtual"><scope>Kokkos::AUTO_t</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

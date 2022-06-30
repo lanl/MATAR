@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>testing::internal::TuplePrefixPrinter&lt; 0 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a6c8435142294685c1a4b7248ec37ad35" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void testing::internal::TuplePrefixPrinter&lt; 0 &gt;::PrintPrefixTo</definition>
+        <argsstring>(const Tuple &amp;, ::std::ostream *)</argsstring>
+        <name>PrintPrefixTo</name>
+        <qualifiedname>testing::internal::TuplePrefixPrinter&lt; 0 &gt;::PrintPrefixTo</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9991" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9991" bodyend="9991"/>
+      </memberdef>
+      <memberdef kind="function" id="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a634e1811ae45ef3f02e3559a5c28e999" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void testing::internal::TuplePrefixPrinter&lt; 0 &gt;::TersePrintPrefixToStrings</definition>
+        <argsstring>(const Tuple &amp;, Strings *)</argsstring>
+        <name>TersePrintPrefixToStrings</name>
+        <qualifiedname>testing::internal::TuplePrefixPrinter&lt; 0 &gt;::TersePrintPrefixToStrings</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+        </param>
+        <param>
+          <type>Strings *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9994" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9994" bodyend="9994"/>
+      </memberdef>
+      <memberdef kind="function" id="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a6c8435142294685c1a4b7248ec37ad35" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void testing::internal::TuplePrefixPrinter&lt; 0 &gt;::PrintPrefixTo</definition>
+        <argsstring>(const Tuple &amp;, ::std::ostream *)</argsstring>
+        <name>PrintPrefixTo</name>
+        <qualifiedname>testing::internal::TuplePrefixPrinter&lt; 0 &gt;::PrintPrefixTo</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9991" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9991" bodyend="9991"/>
+      </memberdef>
+      <memberdef kind="function" id="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a634e1811ae45ef3f02e3559a5c28e999" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void testing::internal::TuplePrefixPrinter&lt; 0 &gt;::TersePrintPrefixToStrings</definition>
+        <argsstring>(const Tuple &amp;, Strings *)</argsstring>
+        <name>TersePrintPrefixToStrings</name>
+        <qualifiedname>testing::internal::TuplePrefixPrinter&lt; 0 &gt;::TersePrintPrefixToStrings</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+        </param>
+        <param>
+          <type>Strings *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9994" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9994" bodyend="9994"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9989" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9989" bodyend="9995"/>
+    <listofallmembers>
+      <member refid="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a6c8435142294685c1a4b7248ec37ad35" prot="public" virt="non-virtual"><scope>testing::internal::TuplePrefixPrinter&lt; 0 &gt;</scope><name>PrintPrefixTo</name></member>
+      <member refid="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a6c8435142294685c1a4b7248ec37ad35" prot="public" virt="non-virtual"><scope>testing::internal::TuplePrefixPrinter&lt; 0 &gt;</scope><name>PrintPrefixTo</name></member>
+      <member refid="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a634e1811ae45ef3f02e3559a5c28e999" prot="public" virt="non-virtual"><scope>testing::internal::TuplePrefixPrinter&lt; 0 &gt;</scope><name>TersePrintPrefixToStrings</name></member>
+      <member refid="structtesting_1_1internal_1_1_tuple_prefix_printer_3_010_01_4_1a634e1811ae45ef3f02e3559a5c28e999" prot="public" virt="non-virtual"><scope>testing::internal::TuplePrefixPrinter&lt; 0 &gt;</scope><name>TersePrintPrefixToStrings</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

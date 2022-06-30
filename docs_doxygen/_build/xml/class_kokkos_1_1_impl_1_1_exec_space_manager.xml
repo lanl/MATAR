@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_exec_space_manager" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ExecSpaceManager</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a4dcf799b4aeb336eec5e46a93f53bd50" prot="private" static="no" mutable="no">
+        <type>std::map&lt; std::string, std::unique_ptr&lt; <ref refid="class_kokkos_1_1_impl_1_1_exec_space_initializer_base" kindref="compound">ExecSpaceInitializerBase</ref> &gt; &gt;</type>
+        <definition>std::map&lt;std::string, std::unique_ptr&lt;ExecSpaceInitializerBase&gt; &gt; Kokkos::Impl::ExecSpaceManager::exec_space_factory_list</definition>
+        <argsstring></argsstring>
+        <name>exec_space_factory_list</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::exec_space_factory_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="116" column="7" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a457d7b8ab22f6f4fcdb363d6e4d8384d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ExecSpaceManager::ExecSpaceManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>ExecSpaceManager</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::ExecSpaceManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="119" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1ad24b09efd800b155806096393c0052ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::register_space_factory</definition>
+        <argsstring>(std::string name, std::unique_ptr&lt; ExecSpaceInitializerBase &gt; ptr)</argsstring>
+        <name>register_space_factory</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::register_space_factory</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="class_kokkos_1_1_impl_1_1_exec_space_initializer_base" kindref="compound">ExecSpaceInitializerBase</ref> &gt;</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="121" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a7497bb29b3d92ac22f95812cf25c0518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::initialize_spaces</definition>
+        <argsstring>(const Kokkos::InitArguments &amp;args)</argsstring>
+        <name>initialize_spaces</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::initialize_spaces</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_init_arguments" kindref="compound">Kokkos::InitArguments</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="123" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="112" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a8b1f89b3a3bba0495fd00641bb511313" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::finalize_spaces</definition>
+        <argsstring>(const bool all_spaces)</argsstring>
+        <name>finalize_spaces</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::finalize_spaces</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>all_spaces</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="124" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="122" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a4fd3c51eab76f1592a44d29c81c3df6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::static_fence</definition>
+        <argsstring>()</argsstring>
+        <name>static_fence</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::static_fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="125" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="128" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a8e5cc3beac3d5ab460477f225199c7fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::static_fence</definition>
+        <argsstring>(const std::string &amp;)</argsstring>
+        <name>static_fence</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::static_fence</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <defname>name</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="126" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="133" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1ab25fb7d9068f7310da6009d980cd094b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ExecSpaceManager::print_configuration</definition>
+        <argsstring>(std::ostream &amp;msg, const bool detail)</argsstring>
+        <name>print_configuration</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::print_configuration</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>detail</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="127" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="138" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_exec_space_manager_1a9c4cacdbd63d16490420c1d71ba10ec2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_exec_space_manager" kindref="compound">ExecSpaceManager</ref> &amp;</type>
+        <definition>ExecSpaceManager &amp; Kokkos::Impl::ExecSpaceManager::get_instance</definition>
+        <argsstring>()</argsstring>
+        <name>get_instance</name>
+        <qualifiedname>Kokkos::Impl::ExecSpaceManager::get_instance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="128" column="27" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Core.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" line="114" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core.hpp" bodystart="114" bodyend="129"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a4dcf799b4aeb336eec5e46a93f53bd50" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>exec_space_factory_list</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a457d7b8ab22f6f4fcdb363d6e4d8384d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>ExecSpaceManager</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a8b1f89b3a3bba0495fd00641bb511313" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>finalize_spaces</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a9c4cacdbd63d16490420c1d71ba10ec2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>get_instance</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a7497bb29b3d92ac22f95812cf25c0518" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>initialize_spaces</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1ab25fb7d9068f7310da6009d980cd094b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>print_configuration</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1ad24b09efd800b155806096393c0052ce" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>register_space_factory</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a4fd3c51eab76f1592a44d29c81c3df6e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>static_fence</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_exec_space_manager_1a8e5cc3beac3d5ab460477f225199c7fa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecSpaceManager</scope><name>static_fence</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

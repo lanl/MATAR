@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_hook4" kind="struct" language="C++" prot="public">
+    <compoundname>Hook4</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_hook4_1ad963c51b502c86ea77a955a4bb4d3c7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Hook4::operator()</definition>
+        <argsstring>() const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Hook4::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/UnitTest_PushFinalizeHook.cpp" line="80" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/UnitTest_PushFinalizeHook.cpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/UnitTest_PushFinalizeHook.cpp" line="79" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/UnitTest_PushFinalizeHook.cpp" bodystart="79" bodyend="81"/>
+    <listofallmembers>
+      <member refid="struct_hook4_1ad963c51b502c86ea77a955a4bb4d3c7a" prot="public" virt="non-virtual"><scope>Hook4</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

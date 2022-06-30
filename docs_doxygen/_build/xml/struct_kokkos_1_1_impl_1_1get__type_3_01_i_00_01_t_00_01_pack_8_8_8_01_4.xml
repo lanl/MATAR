@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1get__type_3_01_i_00_01_t_00_01_pack_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::get_type&lt; I, T, Pack... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Pack</declname>
+        <defname>Pack</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1get__type_3_01_i_00_01_t_00_01_pack_8_8_8_01_4_1a44c90c49928e5fa137c7795b29d9fa54" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1get__type" kindref="compound">get_type</ref>&lt; I - 1, Pack... &gt;::type</type>
+        <definition>using Kokkos::Impl::get_type&lt; I, T, Pack... &gt;::type =  typename get_type&lt;I - 1, Pack...&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::get_type&lt; I, T, Pack... &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="72" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="72" bodyend="74"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1get__type_3_01_i_00_01_t_00_01_pack_8_8_8_01_4_1a44c90c49928e5fa137c7795b29d9fa54" prot="public" virt="non-virtual"><scope>Kokkos::Impl::get_type&lt; I, T, Pack... &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

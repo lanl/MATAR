@@ -1,0 +1,501 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_native_array" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::NativeArray</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Element</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1a12216d686e16e4cc63d952fada5b2ba9" prot="public" static="no">
+        <type>Element</type>
+        <definition>typedef Element testing::internal::NativeArray&lt; Element &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>testing::internal::NativeArray::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7931" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7931" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1ac1301a57977b57a1ad013e4e25fc2a72" prot="public" static="no">
+        <type>Element *</type>
+        <definition>typedef Element* testing::internal::NativeArray&lt; Element &gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>testing::internal::NativeArray::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7932" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7932" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1a9ce7c8408460d7158a2870456d134557" prot="public" static="no">
+        <type>const Element *</type>
+        <definition>typedef const Element* testing::internal::NativeArray&lt; Element &gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>testing::internal::NativeArray::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7933" column="25" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7933" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1a12216d686e16e4cc63d952fada5b2ba9" prot="public" static="no">
+        <type>Element</type>
+        <definition>typedef Element testing::internal::NativeArray&lt; Element &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>testing::internal::NativeArray::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7931" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7931" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1ac1301a57977b57a1ad013e4e25fc2a72" prot="public" static="no">
+        <type>Element *</type>
+        <definition>typedef Element* testing::internal::NativeArray&lt; Element &gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>testing::internal::NativeArray::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7932" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7932" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_native_array_1a9ce7c8408460d7158a2870456d134557" prot="public" static="no">
+        <type>const Element *</type>
+        <definition>typedef const Element* testing::internal::NativeArray&lt; Element &gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>testing::internal::NativeArray::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7933" column="25" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7933" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_native_array_1acf61ba53a7fe308f1fa9e51aad43116b" prot="private" static="no" mutable="no">
+        <type>const Element *</type>
+        <definition>const Element * testing::internal::NativeArray&lt; Element &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>testing::internal::NativeArray::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7978" column="17" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7978" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_native_array_1aa7e4251de39aaa75f697f0eaeedbf06e" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t testing::internal::NativeArray&lt; Element &gt;::size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <qualifiedname>testing::internal::NativeArray::size_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7979" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7979" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_native_array_1a0b049bda351a94f4d1b9aa4e1fbed4d5" prot="private" static="no" mutable="no">
+        <type>RelationToSource</type>
+        <definition>RelationToSource testing::internal::NativeArray&lt; Element &gt;::relation_to_source_</definition>
+        <argsstring></argsstring>
+        <name>relation_to_source_</name>
+        <qualifiedname>testing::internal::NativeArray::relation_to_source_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7980" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7980" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a568de999aca0fc0c2cc574fac2405872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::NativeArray</definition>
+        <argsstring>(const Element *array, size_t count, RelationToSource relation)</argsstring>
+        <name>NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::NativeArray</qualifiedname>
+        <param>
+          <type>const Element *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>RelationToSource</type>
+          <declname>relation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7936" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7936" bodyend="7938"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1abb346ac3040f5da733f594cc2d5958bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::NativeArray</definition>
+        <argsstring>(const NativeArray &amp;rhs)</argsstring>
+        <name>NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::NativeArray</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7941" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7941" bodyend="7943"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a55ab5948d473a487303dcf6e02ad1f60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::~NativeArray</definition>
+        <argsstring>()</argsstring>
+        <name>~NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::~NativeArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7945" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7945" bodyend="7952"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1af96a4a5ca0cdd5d163c47a081f08bd89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t testing::internal::NativeArray&lt; Element &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>testing::internal::NativeArray::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7955" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7955" bodyend="7955"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a3046d93cfa23097e7b7c91f5f982dc78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator testing::internal::NativeArray&lt; Element &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>testing::internal::NativeArray::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7956" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7956" bodyend="7956"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1ae1cda748e49c6906421c6183c4d07c5a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator testing::internal::NativeArray&lt; Element &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>testing::internal::NativeArray::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7957" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7957" bodyend="7957"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a81b90f5739ed812610e68dc34c9e3850" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::NativeArray&lt; Element &gt;::operator==</definition>
+        <argsstring>(const NativeArray &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>testing::internal::NativeArray::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7958" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7958" bodyend="7961"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a568de999aca0fc0c2cc574fac2405872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::NativeArray</definition>
+        <argsstring>(const Element *array, size_t count, RelationToSource relation)</argsstring>
+        <name>NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::NativeArray</qualifiedname>
+        <param>
+          <type>const Element *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>RelationToSource</type>
+          <declname>relation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7936" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7936" bodyend="7938"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1abb346ac3040f5da733f594cc2d5958bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::NativeArray</definition>
+        <argsstring>(const NativeArray &amp;rhs)</argsstring>
+        <name>NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::NativeArray</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7941" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7941" bodyend="7943"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a55ab5948d473a487303dcf6e02ad1f60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::NativeArray&lt; Element &gt;::~NativeArray</definition>
+        <argsstring>()</argsstring>
+        <name>~NativeArray</name>
+        <qualifiedname>testing::internal::NativeArray::~NativeArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7945" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7945" bodyend="7952"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1af96a4a5ca0cdd5d163c47a081f08bd89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t testing::internal::NativeArray&lt; Element &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>testing::internal::NativeArray::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7955" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7955" bodyend="7955"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a3046d93cfa23097e7b7c91f5f982dc78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator testing::internal::NativeArray&lt; Element &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>testing::internal::NativeArray::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7956" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7956" bodyend="7956"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1ae1cda748e49c6906421c6183c4d07c5a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator testing::internal::NativeArray&lt; Element &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>testing::internal::NativeArray::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7957" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7957" bodyend="7957"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a81b90f5739ed812610e68dc34c9e3850" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::NativeArray&lt; Element &gt;::operator==</definition>
+        <argsstring>(const NativeArray &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>testing::internal::NativeArray::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7958" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7958" bodyend="7961"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1af00d4432fa60b7d8999c95d496e72cff" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::NativeArray&lt; Element &gt;::Init</definition>
+        <argsstring>(const Element *array, size_t a_size, RelationToSource relation)</argsstring>
+        <name>Init</name>
+        <qualifiedname>testing::internal::NativeArray::Init</qualifiedname>
+        <param>
+          <type>const Element *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>a_size</declname>
+        </param>
+        <param>
+          <type>RelationToSource</type>
+          <declname>relation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7966" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7966" bodyend="7976"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a283d6194ecc3ff379cbd860bd793c029" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::NativeArray&lt; Element &gt;::operator=</definition>
+        <argsstring>(NativeArray const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::NativeArray::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7982" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1af00d4432fa60b7d8999c95d496e72cff" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::NativeArray&lt; Element &gt;::Init</definition>
+        <argsstring>(const Element *array, size_t a_size, RelationToSource relation)</argsstring>
+        <name>Init</name>
+        <qualifiedname>testing::internal::NativeArray::Init</qualifiedname>
+        <param>
+          <type>const Element *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>a_size</declname>
+        </param>
+        <param>
+          <type>RelationToSource</type>
+          <declname>relation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7966" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="7966" bodyend="7976"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_native_array_1a283d6194ecc3ff379cbd860bd793c029" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::NativeArray&lt; Element &gt;::operator=</definition>
+        <argsstring>(NativeArray const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::NativeArray::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_native_array" kindref="compound">NativeArray</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="7982" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="7928" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="7928" bodyend="7983"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_native_array_1acf61ba53a7fe308f1fa9e51aad43116b" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>array_</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a3046d93cfa23097e7b7c91f5f982dc78" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>begin</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a3046d93cfa23097e7b7c91f5f982dc78" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>begin</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a9ce7c8408460d7158a2870456d134557" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>const_iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a9ce7c8408460d7158a2870456d134557" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>const_iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1ae1cda748e49c6906421c6183c4d07c5a" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>end</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1ae1cda748e49c6906421c6183c4d07c5a" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>end</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1af00d4432fa60b7d8999c95d496e72cff" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>Init</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1af00d4432fa60b7d8999c95d496e72cff" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>Init</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1ac1301a57977b57a1ad013e4e25fc2a72" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1ac1301a57977b57a1ad013e4e25fc2a72" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a568de999aca0fc0c2cc574fac2405872" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>NativeArray</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1abb346ac3040f5da733f594cc2d5958bc" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>NativeArray</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a568de999aca0fc0c2cc574fac2405872" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>NativeArray</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1abb346ac3040f5da733f594cc2d5958bc" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>NativeArray</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a283d6194ecc3ff379cbd860bd793c029" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a283d6194ecc3ff379cbd860bd793c029" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a81b90f5739ed812610e68dc34c9e3850" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>operator==</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a81b90f5739ed812610e68dc34c9e3850" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>operator==</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a0b049bda351a94f4d1b9aa4e1fbed4d5" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>relation_to_source_</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1af96a4a5ca0cdd5d163c47a081f08bd89" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>size</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1af96a4a5ca0cdd5d163c47a081f08bd89" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>size</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1aa7e4251de39aaa75f697f0eaeedbf06e" prot="private" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>size_</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a12216d686e16e4cc63d952fada5b2ba9" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>value_type</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a12216d686e16e4cc63d952fada5b2ba9" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>value_type</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a55ab5948d473a487303dcf6e02ad1f60" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>~NativeArray</name></member>
+      <member refid="classtesting_1_1internal_1_1_native_array_1a55ab5948d473a487303dcf6e02ad1f60" prot="public" virt="non-virtual"><scope>testing::internal::NativeArray</scope><name>~NativeArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d8/dad/class_view_c_matrix" kind="class" language="C++" prot="public">
+    <compoundname>ViewCMatrix</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d8/dad/class_view_c_matrix_1a3bc70826c74cd0e0a663098b6ca0fa56" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>ViewCMatrix::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3072" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3072" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d8/dad/class_view_c_matrix_1ad41d92b22ffd9bc3cbf4a5889388395b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>ViewCMatrix::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3073" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3073" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d8/dad/class_view_c_matrix_1a7cdd260d97cf46f0fdf044819819c66e" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>ViewCMatrix::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3074" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3074" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d8/dad/class_view_c_matrix_1a7b17ce024225818423ab9779b84b50bd" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* ViewCMatrix&lt; T &gt;::matrix_</definition>
+        <argsstring></argsstring>
+        <name>matrix_</name>
+        <qualifiedname>ViewCMatrix::matrix_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3075" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3075" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1ade5ce07bac712dc14cbc99982b18375a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3080" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3185" bodyend="3188"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1aa6332d83e559a4fe8d652af49fe80c5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3085" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3192" bodyend="3199"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a2aa7f3b7426f460c2a16e609ba7fde27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3088" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3203" bodyend="3212"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1ab925982b38b1a8154c8e7ee9154bf330" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2, size_t dim3)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3092" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3216" bodyend="3227"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1afbb16964d693441b0b3b41723afd85f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3097" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3231" bodyend="3244"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a19983d6036c0beb49691dead264f0fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3103" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3248" bodyend="3263"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1aad2d8beb8c801229e4bae63048b73e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3110" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3267" bodyend="3283"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1aca69cd9bef82af0b83757d61c58aa0c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ViewCMatrix&lt; T &gt;::ViewCMatrix</definition>
+        <argsstring>(T *matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, size_t dim7)</argsstring>
+        <name>ViewCMatrix</name>
+        <qualifiedname>ViewCMatrix::ViewCMatrix</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3118" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3287" bodyend="3305"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a8616383265935b4b6c1ff12776fc4044" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3127" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3311" bodyend="3317"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1ad3ff83776031c7d65a2feb1a1053a37b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3129" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3321" bodyend="3329"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a81c9908ccbe6f146bf870f4ff98b76e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3132" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3333" bodyend="3344"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a518dd98ca24972de5bbe0c2ddd52dc1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3136" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3348" bodyend="3362"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a1f909d7448399f463bc48d915e6ca35d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3141" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3366" bodyend="3383"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1af9dd7b3db2daf4719e9cfd8a3fddf3b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3147" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3387" bodyend="3407"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a7123277fd1837449295774ba4ee5bbb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; ViewCMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrix::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3153" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3411" bodyend="3434"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a16cb37144c29686d5722433aaa01d336" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename M</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ViewCMatrix&lt; T &gt;::operator=</definition>
+        <argsstring>(M do_this_math)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ViewCMatrix::operator=</qualifiedname>
+        <param>
+          <type>M</type>
+          <declname>do_this_math</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3163" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3439" bodyend="3441"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a240de11e99dd2e8cf09423079fdf173e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>ViewCMatrix::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3166" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3444" bodyend="3446"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a629d80bda0709af488c2e15d16c4bb2b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>ViewCMatrix::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3169" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3449" bodyend="3454"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a76b349a6e81262a8f09c118296eaaa61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrix&lt; T &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>ViewCMatrix::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3172" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3457" bodyend="3459"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dad/class_view_c_matrix_1a9798baf5824c42dfea5d1afcd269977d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * ViewCMatrix&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>ViewCMatrix::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3175" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3462" bodyend="3464"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3069" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3069" bodyend="3177"/>
+    <listofallmembers>
+      <member refid="d8/dad/class_view_c_matrix_1a629d80bda0709af488c2e15d16c4bb2b" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>dims</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a3bc70826c74cd0e0a663098b6ca0fa56" prot="private" virt="non-virtual"><scope>ViewCMatrix</scope><name>dims_</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1ad41d92b22ffd9bc3cbf4a5889388395b" prot="private" virt="non-virtual"><scope>ViewCMatrix</scope><name>length_</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a7b17ce024225818423ab9779b84b50bd" prot="private" virt="non-virtual"><scope>ViewCMatrix</scope><name>matrix_</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a8616383265935b4b6c1ff12776fc4044" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1ad3ff83776031c7d65a2feb1a1053a37b" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a81c9908ccbe6f146bf870f4ff98b76e1" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a518dd98ca24972de5bbe0c2ddd52dc1e" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a1f909d7448399f463bc48d915e6ca35d" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1af9dd7b3db2daf4719e9cfd8a3fddf3b9" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a7123277fd1837449295774ba4ee5bbb9" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator()</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a16cb37144c29686d5722433aaa01d336" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>operator=</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a76b349a6e81262a8f09c118296eaaa61" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>order</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a7cdd260d97cf46f0fdf044819819c66e" prot="private" virt="non-virtual"><scope>ViewCMatrix</scope><name>order_</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a9798baf5824c42dfea5d1afcd269977d" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>pointer</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a240de11e99dd2e8cf09423079fdf173e" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>size</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1ade5ce07bac712dc14cbc99982b18375a" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1aa6332d83e559a4fe8d652af49fe80c5b" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a2aa7f3b7426f460c2a16e609ba7fde27" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1ab925982b38b1a8154c8e7ee9154bf330" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1afbb16964d693441b0b3b41723afd85f2" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1a19983d6036c0beb49691dead264f0fba" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1aad2d8beb8c801229e4bae63048b73e97" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+      <member refid="d8/dad/class_view_c_matrix_1aca69cd9bef82af0b83757d61c58aa0c4" prot="public" virt="non-virtual"><scope>ViewCMatrix</scope><name>ViewCMatrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

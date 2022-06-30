@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1__fold__comma__emulation__return" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::_fold_comma_emulation_return</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="112" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="112" bodyend="112"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

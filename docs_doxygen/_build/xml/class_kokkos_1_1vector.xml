@@ -1,0 +1,967 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1vector" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::vector</compoundname>
+    <basecompoundref refid="class_kokkos_1_1_dual_view" prot="public" virt="non-virtual">Kokkos::DualView&lt; Scalar *, LayoutLeft, void &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1vector_1_1impl__is__input__iterator" prot="private">Kokkos::vector::impl_is_input_iterator</innerclass>
+    <innerclass refid="struct_kokkos_1_1vector_1_1set__functor" prot="public">Kokkos::vector::set_functor</innerclass>
+    <innerclass refid="struct_kokkos_1_1vector_1_1set__functor__host" prot="public">Kokkos::vector::set_functor_host</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Arg1Type</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a9dc09abc2dca9ef104c013b43087d0d4" prot="public" static="no">
+        <type>Scalar</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::value_type =  Scalar</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::vector::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a809abf4e8e540420996862c55be8b9ab" prot="public" static="no">
+        <type>Scalar *</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::pointer =  Scalar*</definition>
+        <argsstring></argsstring>
+        <name>pointer</name>
+        <qualifiedname>Kokkos::vector::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a609348ce8f22468b75f0ec0670dc8376" prot="public" static="no">
+        <type>const Scalar *</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::const_pointer =  const Scalar*</definition>
+        <argsstring></argsstring>
+        <name>const_pointer</name>
+        <qualifiedname>Kokkos::vector::const_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1ac74743c307edea8f0b619096115e696c" prot="public" static="no">
+        <type>Scalar &amp;</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::reference =  Scalar&amp;</definition>
+        <argsstring></argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::vector::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a954eb7ca4dc8cc4f09bd30df2653764e" prot="public" static="no">
+        <type>const Scalar &amp;</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::const_reference =  const Scalar&amp;</definition>
+        <argsstring></argsstring>
+        <name>const_reference</name>
+        <qualifiedname>Kokkos::vector::const_reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="65" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a6162cd8211252f5958943dd780892c0d" prot="public" static="no">
+        <type>Scalar *</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::iterator =  Scalar*</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>Kokkos::vector::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a49d70a628a989abc233cc67a63ce5467" prot="public" static="no">
+        <type>const Scalar *</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::const_iterator =  const Scalar*</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>Kokkos::vector::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="67" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1af1f225c4abfab1b1d01027fe586caf57" prot="public" static="no">
+        <type>size_t</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::size_type =  size_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::vector::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1vector_1a89a0ad73d78a46cae6136a74fd6aff05" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&lt; Scalar *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">LayoutLeft</ref>, Arg1Type &gt;</type>
+        <definition>using Kokkos::vector&lt; Scalar, Arg1Type &gt;::DV =  DualView&lt;Scalar*, LayoutLeft, Arg1Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>DV</name>
+        <qualifiedname>Kokkos::vector::DV</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1vector_1af914e661b46f645d31de36639b5c0a4a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::vector&lt; Scalar, Arg1Type &gt;::_size</definition>
+        <argsstring></argsstring>
+        <name>_size</name>
+        <qualifiedname>Kokkos::vector::_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="71" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1vector_1a6c1b57bbb4774a911013a7831c3a703c" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Kokkos::vector&lt; Scalar, Arg1Type &gt;::_extra_storage</definition>
+        <argsstring></argsstring>
+        <name>_extra_storage</name>
+        <qualifiedname>Kokkos::vector::_extra_storage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="72" column="9" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a4c7d1e6cf5ec085c6fe3373cdf7ea3e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>reference</type>
+        <definition>reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::operator()</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::vector::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="84" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a51db201e9fba8caf46941628ee78f521" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>reference</type>
+        <definition>reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::operator[]</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::vector::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="85" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a3302cd0e62e27205227afde7c701fd4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::vector&lt; Scalar, Arg1Type &gt;::vector</definition>
+        <argsstring>()</argsstring>
+        <name>vector</name>
+        <qualifiedname>Kokkos::vector::vector</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="90" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1aabd9c5073db38365b2fe532a25d88d66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::vector&lt; Scalar, Arg1Type &gt;::vector</definition>
+        <argsstring>(int n, Scalar val=Scalar())</argsstring>
+        <name>vector</name>
+        <qualifiedname>Kokkos::vector::vector</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>Scalar</type>
+          <declname>val</declname>
+          <defval>Scalar()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="95" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="95" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a86f879d35de7a8cd52e7379b6e580cf5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::resize</definition>
+        <argsstring>(size_t n)</argsstring>
+        <name>resize</name>
+        <qualifiedname>Kokkos::vector::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="104" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="104" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a6e35837924f07e5b7c23240766e0aca0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::resize</definition>
+        <argsstring>(size_t n, const Scalar &amp;val)</argsstring>
+        <name>resize</name>
+        <qualifiedname>Kokkos::vector::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const Scalar &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="109" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a7d3e102943f68dc8deb10f32baa985fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::assign</definition>
+        <argsstring>(size_t n, const Scalar &amp;val)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::vector::assign</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const Scalar &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="111" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="111" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ab9730420c70218c2c83246c3d4693114" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::reserve</definition>
+        <argsstring>(size_t n)</argsstring>
+        <name>reserve</name>
+        <qualifiedname>Kokkos::vector::reserve</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="134" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a70b0476ee284d5f9ab3a7bb17a89872d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::push_back</definition>
+        <argsstring>(Scalar val)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>Kokkos::vector::push_back</qualifiedname>
+        <param>
+          <type>Scalar</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="136" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="136" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a04af142447cf1bfeec2e571b13623e54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::pop_back</definition>
+        <argsstring>()</argsstring>
+        <name>pop_back</name>
+        <qualifiedname>Kokkos::vector::pop_back</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="149" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1affd3cdf0ed4195339d8ce16f06f3a12e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>Kokkos::vector::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="151" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="151" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a04385466e99009fcd89de503a78933fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator Kokkos::vector&lt; Scalar, Arg1Type &gt;::insert</definition>
+        <argsstring>(iterator it, const value_type &amp;val)</argsstring>
+        <name>insert</name>
+        <qualifiedname>Kokkos::vector::insert</qualifiedname>
+        <param>
+          <type>iterator</type>
+          <declname>it</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="153" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ad3e24db696afb9988dad3b9d70d944ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator Kokkos::vector&lt; Scalar, Arg1Type &gt;::insert</definition>
+        <argsstring>(iterator it, size_type count, const value_type &amp;val)</argsstring>
+        <name>insert</name>
+        <qualifiedname>Kokkos::vector::insert</qualifiedname>
+        <param>
+          <type>iterator</type>
+          <declname>it</declname>
+        </param>
+        <param>
+          <type>size_type</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="157" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="157" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a48e5061a10e37690758f55ce16565875" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; impl_is_input_iterator&lt; InputIterator &gt;::value, iterator &gt;::type</type>
+        <definition>std::enable_if&lt; impl_is_input_iterator&lt; InputIterator &gt;::value, iterator &gt;::type Kokkos::vector&lt; Scalar, Arg1Type &gt;::insert</definition>
+        <argsstring>(iterator it, InputIterator b, InputIterator e)</argsstring>
+        <name>insert</name>
+        <qualifiedname>Kokkos::vector::insert</qualifiedname>
+        <param>
+          <type>iterator</type>
+          <declname>it</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="190" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="190" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a379b72b28e6875aa5fe2898c37de5bcb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::vector&lt; Scalar, Arg1Type &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::vector::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="217" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ae9e368de04fa47da8c102f8c2d814f6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type Kokkos::vector&lt; Scalar, Arg1Type &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::vector::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="221" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1acaeede8a030fb5355746724ac095c2b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type Kokkos::vector&lt; Scalar, Arg1Type &gt;::max_size</definition>
+        <argsstring>() const</argsstring>
+        <name>max_size</name>
+        <qualifiedname>Kokkos::vector::max_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="222" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a2c4b6bd3f1925e2f58c7b0980360262a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type Kokkos::vector&lt; Scalar, Arg1Type &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::vector::span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="223" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a0bacf18bfa2fab1dc0aa0df67a7872fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::vector&lt; Scalar, Arg1Type &gt;::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <qualifiedname>Kokkos::vector::empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="224" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ab0f959d0935b5d5ae9c74bff98e4c296" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>pointer</type>
+        <definition>pointer Kokkos::vector&lt; Scalar, Arg1Type &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::vector::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="226" column="11" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ae3c016abc74a1b5dcf2826fe8043bed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator Kokkos::vector&lt; Scalar, Arg1Type &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>Kokkos::vector::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="228" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="228" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a7e9182571d418093145f268bcc46c890" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator Kokkos::vector&lt; Scalar, Arg1Type &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::vector::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="230" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="230" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a4603556cdc8782972e35e009b2a381d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>reference</type>
+        <definition>reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::front</definition>
+        <argsstring>()</argsstring>
+        <name>front</name>
+        <qualifiedname>Kokkos::vector::front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="234" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="234" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a031ad9c25c09caff3d4b12cf0b4e00f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>reference</type>
+        <definition>reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::back</definition>
+        <argsstring>()</argsstring>
+        <name>back</name>
+        <qualifiedname>Kokkos::vector::back</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="236" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a4a66155b08cebee21ad1d0ee70ae3a16" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_reference</type>
+        <definition>const_reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::front</definition>
+        <argsstring>() const</argsstring>
+        <name>front</name>
+        <qualifiedname>Kokkos::vector::front</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="238" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="238" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1aada3da4021487b1ac5dd4cf0c97f47bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const_reference</type>
+        <definition>const_reference Kokkos::vector&lt; Scalar, Arg1Type &gt;::back</definition>
+        <argsstring>() const</argsstring>
+        <name>back</name>
+        <qualifiedname>Kokkos::vector::back</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="240" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="240" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1aefa90bec1b4998faa3a5e3e5117cc54c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t Kokkos::vector&lt; Scalar, Arg1Type &gt;::lower_bound</definition>
+        <argsstring>(const size_t &amp;start, const size_t &amp;theEnd, const Scalar &amp;comp_val) const</argsstring>
+        <name>lower_bound</name>
+        <qualifiedname>Kokkos::vector::lower_bound</qualifiedname>
+        <param>
+          <type>const size_t &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const size_t &amp;</type>
+          <declname>theEnd</declname>
+        </param>
+        <param>
+          <type>const Scalar &amp;</type>
+          <declname>comp_val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="245" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="245" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a9412d8d8a854292613be982010a9938f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::vector&lt; Scalar, Arg1Type &gt;::is_sorted</definition>
+        <argsstring>()</argsstring>
+        <name>is_sorted</name>
+        <qualifiedname>Kokkos::vector::is_sorted</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="275" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="275" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a065a810f648acffd5c1c1cc40e6307d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator Kokkos::vector&lt; Scalar, Arg1Type &gt;::find</definition>
+        <argsstring>(Scalar val) const</argsstring>
+        <name>find</name>
+        <qualifiedname>Kokkos::vector::find</qualifiedname>
+        <param>
+          <type>Scalar</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="282" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="282" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a79023c55e6533f1780d4e28a4b17b525" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::device_to_host</definition>
+        <argsstring>()</argsstring>
+        <name>device_to_host</name>
+        <qualifiedname>Kokkos::vector::device_to_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="308" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="308" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a41d711c2010947734b33e2077c37bbbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::host_to_device</definition>
+        <argsstring>() const</argsstring>
+        <name>host_to_device</name>
+        <qualifiedname>Kokkos::vector::host_to_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="309" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="309" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a4bc5ba589586e62641c71a3654461669" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::on_host</definition>
+        <argsstring>()</argsstring>
+        <name>on_host</name>
+        <qualifiedname>Kokkos::vector::on_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="311" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="311" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1a5666b01e70d88afff815f50b6a3eb28c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::on_device</definition>
+        <argsstring>()</argsstring>
+        <name>on_device</name>
+        <qualifiedname>Kokkos::vector::on_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="312" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="312" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1vector_1ab89ae041046eee3900261a26383abf0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::vector&lt; Scalar, Arg1Type &gt;::set_overallocation</definition>
+        <argsstring>(float extra)</argsstring>
+        <name>set_overallocation</name>
+        <qualifiedname>Kokkos::vector::set_overallocation</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>extra</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="314" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="314" bodyend="314"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::DualView&lt; Scalar *, LayoutLeft, void &gt;</label>
+        <link refid="class_kokkos_1_1_dual_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::vector&lt; Scalar, Arg1Type &gt;</label>
+        <link refid="class_kokkos_1_1vector"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Scalar *, LayoutLeft, void, void &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::DualView&lt; Scalar *, LayoutLeft, void &gt;</label>
+        <link refid="class_kokkos_1_1_dual_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>modified_flags</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>d_view</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>h_view</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Kokkos::View&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::vector&lt; Scalar, Arg1Type &gt;</label>
+        <link refid="class_kokkos_1_1vector"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos::View&lt; typename traits::data_type, LayoutLeft, void, void &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; unsigned int[2], LayoutLeft, Kokkos::HostSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Scalar *, LayoutLeft, void, void &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="7">
+        <label>Kokkos::ViewTraits&lt; typename traits::data_type, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; unsigned int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="59" bodyend="339"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1vector_1a6c1b57bbb4774a911013a7831c3a703c" prot="private" virt="non-virtual"><scope>Kokkos::vector</scope><name>_extra_storage</name></member>
+      <member refid="class_kokkos_1_1vector_1af914e661b46f645d31de36639b5c0a4a" prot="private" virt="non-virtual"><scope>Kokkos::vector</scope><name>_size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1vector_1a7d3e102943f68dc8deb10f32baa985fd" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>assign</name></member>
+      <member refid="class_kokkos_1_1vector_1a031ad9c25c09caff3d4b12cf0b4e00f5" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>back</name></member>
+      <member refid="class_kokkos_1_1vector_1aada3da4021487b1ac5dd4cf0c97f47bf" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>back</name></member>
+      <member refid="class_kokkos_1_1vector_1ae3c016abc74a1b5dcf2826fe8043bed0" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>begin</name></member>
+      <member refid="class_kokkos_1_1vector_1affd3cdf0ed4195339d8ce16f06f3a12e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>clear</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a475b1efeaca830d9ab4267f75108aea8" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>clear_sync_state</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_data_type</name></member>
+      <member refid="class_kokkos_1_1vector_1a49d70a628a989abc233cc67a63ce5467" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_iterator</name></member>
+      <member refid="class_kokkos_1_1vector_1a609348ce8f22468b75f0ec0670dc8376" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_pointer</name></member>
+      <member refid="class_kokkos_1_1vector_1a954eb7ca4dc8cc4f09bd30df2653764e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_reference</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ad7b035c052519ac2ba4cc4918169b296" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>d_view</name></member>
+      <member refid="class_kokkos_1_1vector_1ab0f959d0935b5d5ae9c74bff98e4c296" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>data</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>data_type</name></member>
+      <member refid="class_kokkos_1_1vector_1a79023c55e6533f1780d4e28a4b17b525" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>device_to_host</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>dimension</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ace8ebfeb3a05bd2231f9e6293016702b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4165171274bf0f775b67d4c0b24bfa3c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aece40c57e16f48bb27016a97abea7b2e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acd071d0056aa1c72778b1a045cc4b4d1" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a8b3b40c01ba7bb39be5293978f2c28e1" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4b4ee867410e802a5a11ace44a4f7ff8" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1vector_1a89a0ad73d78a46cae6136a74fd6aff05" prot="private" virt="non-virtual"><scope>Kokkos::vector</scope><name>DV</name></member>
+      <member refid="class_kokkos_1_1vector_1a0bacf18bfa2fab1dc0aa0df67a7872fd" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>empty</name></member>
+      <member refid="class_kokkos_1_1vector_1a7e9182571d418093145f268bcc46c890" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>end</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a92ce3d1f709e070939de94b11a0a009d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a158dbabd501f79fdb74d9dccf2a91390" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>extent_int</name></member>
+      <member refid="class_kokkos_1_1vector_1a065a810f648acffd5c1c1cc40e6307d7" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>find</name></member>
+      <member refid="class_kokkos_1_1vector_1a4603556cdc8782972e35e009b2a381d5" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>front</name></member>
+      <member refid="class_kokkos_1_1vector_1a4a66155b08cebee21ad1d0ee70ae3a16" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>front</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1afbaf959e490f9796f16d2fe74435d81c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>get_device_side</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a5757763417fc8a9436666f711a5f9675" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>h_view</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a8954ce8f585911b9d530b4b8c3956b24" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1vector_1a41d711c2010947734b33e2077c37bbbe" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>host_to_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a574b4ba6d32f37a80714f0b8bf363d4c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>impl_report_device_modification</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a68693ac63b931dc0acd48b72fac9c070" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>impl_report_device_sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6698679073feb5d87f7e6267cc649128" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>impl_report_host_modification</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ab3c4791255e5e3280f60a6827b330f1d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>impl_report_host_sync</name></member>
+      <member refid="class_kokkos_1_1vector_1a04385466e99009fcd89de503a78933fa" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>insert</name></member>
+      <member refid="class_kokkos_1_1vector_1ad3e24db696afb9988dad3b9d70d944ce" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>insert</name></member>
+      <member refid="class_kokkos_1_1vector_1a48e5061a10e37690758f55ce16565875" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>insert</name></member>
+      <member refid="class_kokkos_1_1vector_1a379b72b28e6875aa5fe2898c37de5bcb" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>is_allocated</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>is_hostspace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>is_random_access</name></member>
+      <member refid="class_kokkos_1_1vector_1a9412d8d8a854292613be982010a9938f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>is_sorted</name></member>
+      <member refid="class_kokkos_1_1vector_1a6162cd8211252f5958943dd780892c0d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>iterator</name></member>
+      <member refid="class_kokkos_1_1vector_1aefa90bec1b4998faa3a5e3e5117cc54c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>lower_bound</name></member>
+      <member refid="class_kokkos_1_1vector_1acaeede8a030fb5355746724ac095c2b3" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>max_size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>memory_traits</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a566055b78119b89c858ab5d64ba9a535" prot="protected" virt="non-virtual"><scope>Kokkos::vector</scope><name>modified_flags</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>modify_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a721550697a480c0d156ccf7d08983a8e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>need_sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6232fe6ba8984196e8d1bb781e0bf0b7" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>need_sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2530a9028a39ae43c9e9082e38062708" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>need_sync_host</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1vector_1a5666b01e70d88afff815f50b6a3eb28c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>on_device</name></member>
+      <member refid="class_kokkos_1_1vector_1a4bc5ba589586e62641c71a3654461669" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>on_host</name></member>
+      <member refid="class_kokkos_1_1vector_1a4c7d1e6cf5ec085c6fe3373cdf7ea3e9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1vector_1a51db201e9fba8caf46941628ee78f521" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1vector_1a809abf4e8e540420996862c55be8b9ab" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>pointer</name></member>
+      <member refid="class_kokkos_1_1vector_1a04af142447cf1bfeec2e571b13623e54" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>pop_back</name></member>
+      <member refid="class_kokkos_1_1vector_1a70b0476ee284d5f9ab3a7bb17a89872d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>push_back</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>rank_dynamic</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aa59eff9d2022542fc2c34ab9b180516c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>realloc</name></member>
+      <member refid="class_kokkos_1_1vector_1ac74743c307edea8f0b619096115e696c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1vector_1ab9730420c70218c2c83246c3d4693114" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>reserve</name></member>
+      <member refid="class_kokkos_1_1vector_1a86f879d35de7a8cd52e7379b6e580cf5" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>resize</name></member>
+      <member refid="class_kokkos_1_1vector_1a6e35837924f07e5b7c23240766e0aca0" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>resize</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a32e66d8c44d549a3a096179f77073fd0" prot="public" virt="non-virtual" ambiguityscope="DualView&lt; Scalar *, LayoutLeft, void &gt;::"><scope>Kokkos::vector</scope><name>resize</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1vector_1ab89ae041046eee3900261a26383abf0a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>set_overallocation</name></member>
+      <member refid="class_kokkos_1_1vector_1ae9e368de04fa47da8c102f8c2d814f6b" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>size</name></member>
+      <member refid="class_kokkos_1_1vector_1af1f225c4abfab1b1d01027fe586caf57" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1vector_1a2c4b6bd3f1925e2f58c7b0980360262a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0420274d1b913b396f3a39ed3e91cb81" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>specialize</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0112d07bcb76faa6abd4c5a0061e0a92" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1af819f1764028f0afa048c16677cbc6c1" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a82966f7200378027d177a52369f4bbdf" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a5a37af0e368bfc9441102fa78cedc968" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2e79984a292b89f999d59fc5e4888a0d" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1addd97570bc1746f2cc8eb407aef754a9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a29db499d21b37410174ca5e92882d017" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acc8c8b25d9982780737b346ba399260c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_device_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1af6e3c518a87ec999751d54468950361e" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acad59540bdb329b770bee1e8473af4a7" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a93c36794b910e5ffa79bd51e56e6abe8" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_host_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ae0bd04b6c74ae3ea47f3dba503e86be9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aceefa1a8f1ea36b4afcd481d117ec2a5" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>sync_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6347d603c2c534094c749faf25d4eee5" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev_const</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a9f3b7433c40958c131380a0421fb49aa" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev_const_randomread</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abd85a0839927b458717ab3969cf88812" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev_const_randomread_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ac4a93ef5add78bdc6a996093e6da3224" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev_const_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a7e6c45c9a3e1cb06c9477e85b8b33d45" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_dev_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2d64ed88c3b9c8d8c74f142fb585026a" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host_const</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abc890399e5491a26051f18bab6a8d9e9" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host_const_randomread</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a484018b1824a2deee5af4a11989e15b1" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host_const_randomread_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ae6e363495df0324d5a8d63f055e08b49" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host_const_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abd851c1f250e714db4283b587931b33f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_host_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1adabbbcad80b6888f606a220f6861c691" prot="protected" virt="non-virtual"><scope>Kokkos::vector</scope><name>t_modified_flags</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a7b073fd5d6094440ec2ae1f3a91c6f7c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1vector_1a9dc09abc2dca9ef104c013b43087d0d4" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1vector_1a3302cd0e62e27205227afde7c701fd4c" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>vector</name></member>
+      <member refid="class_kokkos_1_1vector_1aabd9c5073db38365b2fe532a25d88d66" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>vector</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aebeb1904a5cf300be0ec5a61cd6d7cde" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>view</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0de9a76e4ed5433c340381af786ececb" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>view_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a59a46a2653539de23abbf9d79403ad9f" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>view_header_size</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aa0f5bb4eea5b9190e6282128189daada" prot="public" virt="non-virtual"><scope>Kokkos::vector</scope><name>view_host</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

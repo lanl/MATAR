@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_1_1_test_scan_team" kind="class" language="C++" prot="public">
+    <compoundname>Test::TestScanTeam</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+      <param>
+        <type>class ScheduleType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_test_1_1_test_scan_team_1a66ad5cbc2bdd26a03e0a553424a74f63" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::TestScanTeam::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="445" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_scan_team_1ae933af2b1cc16f9a539f9650f10d9807" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>using Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::value_type =  int64_t</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::TestScanTeam::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="446" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_scan_team_1a171416d5848360d8bad90bb88ddc37d2" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ScheduleType, execution_space &gt;</type>
+        <definition>using Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::policy_type =  Kokkos::TeamPolicy&lt;ScheduleType, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>Test::TestScanTeam::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="447" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_scan_team_1a347c02c84ffed44df36c371b29d53fde" prot="public" static="no">
+        <type><ref refid="class_test_1_1_scan_team_functor" kindref="compound">Test::ScanTeamFunctor</ref>&lt; DeviceType, ScheduleType &gt;</type>
+        <definition>using Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::functor_type =  Test::ScanTeamFunctor&lt;DeviceType, ScheduleType&gt;</definition>
+        <argsstring></argsstring>
+        <name>functor_type</name>
+        <qualifiedname>Test::TestScanTeam::functor_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="448" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_1_1_test_scan_team_1acbcd934b26ea91b47019a8b1a6d8aa24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::TestScanTeam</definition>
+        <argsstring>(const size_t nteam)</argsstring>
+        <name>TestScanTeam</name>
+        <qualifiedname>Test::TestScanTeam::TestScanTeam</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>nteam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="450" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="450" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_test_scan_team_1a65114519d444be6a18a7176228fc0ff3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestScanTeam&lt; DeviceType, ScheduleType &gt;::run_test</definition>
+        <argsstring>(const size_t nteam)</argsstring>
+        <name>run_test</name>
+        <qualifiedname>Test::TestScanTeam::run_test</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>nteam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="452" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="452" bodyend="488"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="443" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="443" bodyend="489"/>
+    <listofallmembers>
+      <member refid="class_test_1_1_test_scan_team_1a66ad5cbc2bdd26a03e0a553424a74f63" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>execution_space</name></member>
+      <member refid="class_test_1_1_test_scan_team_1a347c02c84ffed44df36c371b29d53fde" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>functor_type</name></member>
+      <member refid="class_test_1_1_test_scan_team_1a171416d5848360d8bad90bb88ddc37d2" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>policy_type</name></member>
+      <member refid="class_test_1_1_test_scan_team_1a65114519d444be6a18a7176228fc0ff3" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>run_test</name></member>
+      <member refid="class_test_1_1_test_scan_team_1acbcd934b26ea91b47019a8b1a6d8aa24" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>TestScanTeam</name></member>
+      <member refid="class_test_1_1_test_scan_team_1ae933af2b1cc16f9a539f9650f10d9807" prot="public" virt="non-virtual"><scope>Test::TestScanTeam</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_i_n_a_c_c_e_s_s_i_b_l_e___t_a_g" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Experimental::Impl::ChunkedArrayManager::INACCESSIBLE_TAG</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="94" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="94" bodyend="94"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

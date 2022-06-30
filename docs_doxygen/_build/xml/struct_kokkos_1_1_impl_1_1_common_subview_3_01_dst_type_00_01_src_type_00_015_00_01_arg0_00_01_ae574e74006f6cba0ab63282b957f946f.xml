@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DstType</type>
+      </param>
+      <param>
+        <type>class SrcType</type>
+      </param>
+      <param>
+        <type>class Arg0</type>
+      </param>
+      <param>
+        <type>class Arg1</type>
+      </param>
+      <param>
+        <type>class Arg2</type>
+      </param>
+      <param>
+        <type>class Arg3</type>
+      </param>
+      <param>
+        <type>class Arg4</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a6def38c258e3f7c259990ba439cf86d3" prot="public" static="no">
+        <type>typename Kokkos::Subview&lt; DstType, Arg0, Arg1, Arg2, Arg3, Arg4 &gt;</type>
+        <definition>using Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::dst_subview_type =  typename Kokkos::Subview&lt;DstType, Arg0, Arg1, Arg2, Arg3, Arg4&gt;</definition>
+        <argsstring></argsstring>
+        <name>dst_subview_type</name>
+        <qualifiedname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::dst_subview_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="789" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="790" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a2f92985aafecf47feccb5680281f0512" prot="public" static="no">
+        <type>typename Kokkos::Subview&lt; SrcType, Arg0, Arg1, Arg2, Arg3, Arg4 &gt;</type>
+        <definition>using Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::src_subview_type =  typename Kokkos::Subview&lt;SrcType, Arg0, Arg1, Arg2, Arg3, Arg4&gt;</definition>
+        <argsstring></argsstring>
+        <name>src_subview_type</name>
+        <qualifiedname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::src_subview_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="791" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="792" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1ac3233fb10d778650168f9c69105bfdcc" prot="public" static="no" mutable="no">
+        <type>dst_subview_type</type>
+        <definition>dst_subview_type Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::dst_sub</definition>
+        <argsstring></argsstring>
+        <name>dst_sub</name>
+        <qualifiedname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::dst_sub</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="793" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="793" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a216192d91631c194244a651698660e85" prot="public" static="no" mutable="no">
+        <type>src_subview_type</type>
+        <definition>src_subview_type Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::src_sub</definition>
+        <argsstring></argsstring>
+        <name>src_sub</name>
+        <qualifiedname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::src_sub</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="794" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="794" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a5685ba321a5266099bb7867c506751df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::CommonSubview</definition>
+        <argsstring>(const DstType &amp;dst, const SrcType &amp;src, const Arg0 &amp;arg0, const Arg1 &amp;arg1, const Arg2 &amp;arg2, const Arg3 &amp;arg3, const Arg4 &amp;arg4, const Args...)</argsstring>
+        <name>CommonSubview</name>
+        <qualifiedname>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;::CommonSubview</qualifiedname>
+        <param>
+          <type>const DstType &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const SrcType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const Arg0 &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>const Arg1 &amp;</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>const Arg2 &amp;</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>const Arg3 &amp;</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>const Arg4 &amp;</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>const</type>
+          <declname>Args...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="795" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="795" bodyend="799"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="787" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="788" bodyend="800"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a5685ba321a5266099bb7867c506751df" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</scope><name>CommonSubview</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1ac3233fb10d778650168f9c69105bfdcc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</scope><name>dst_sub</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a6def38c258e3f7c259990ba439cf86d3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</scope><name>dst_subview_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a216192d91631c194244a651698660e85" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</scope><name>src_sub</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_common_subview_3_01_dst_type_00_01_src_type_00_015_00_01_arg0_00_01_ae574e74006f6cba0ab63282b957f946f_1a2f92985aafecf47feccb5680281f0512" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CommonSubview&lt; DstType, SrcType, 5, Arg0, Arg1, Arg2, Arg3, Arg4, Args... &gt;</scope><name>src_subview_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

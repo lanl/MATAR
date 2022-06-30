@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_7e22bc43a4b5866bee06301989dd5cc1" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism</compoundname>
+    <innerdir refid="dir_785b7300f50e1fe0d607c2874308bb6d">src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/01_thread_teams</innerdir>
+    <innerdir refid="dir_493875accd30332185e522cb148a354d">src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/01_thread_teams_lambda</innerdir>
+    <innerdir refid="dir_0578e95d28448e4db018463f3a953bad">src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/02_nested_parallel_for</innerdir>
+    <innerdir refid="dir_01ae013a39c866c6543d09e1f4adcc5e">src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization</innerdir>
+    <innerdir refid="dir_66f331ebd008c056bbc37ee1f090e17d">src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test_view_subview_1_1_impl" kind="namespace" language="C++">
+    <compoundname>TestViewSubview::Impl</compoundname>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__1_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_1D_1D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__2_d__3_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_2D_3D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__3_d__3_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_3D_3D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__3_d__4_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_3D_4D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__3_d__5_d" prot="public">TestViewSubview::Impl::CheckSubviewCorrectness_3D_5D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_fill_view__1_d" prot="public">TestViewSubview::Impl::FillView_1D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_fill_view__3_d" prot="public">TestViewSubview::Impl::FillView_3D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_fill_view__4_d" prot="public">TestViewSubview::Impl::FillView_4D</innerclass>
+    <innerclass refid="struct_test_view_subview_1_1_impl_1_1_fill_view__5_d" prot="public">TestViewSubview::Impl::FillView_5D</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_test_view_subview_8hpp_1ae86a61e96b77383302fc4a9249823d90" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int TestViewSubview::Impl::N0</definition>
+        <argsstring></argsstring>
+        <name>N0</name>
+        <qualifiedname>TestViewSubview::Impl::N0</qualifiedname>
+        <initializer>= 113</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="858" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="858" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_view_subview_8hpp_1a60ca5bc83d90011ad759046691c6d4ad" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int TestViewSubview::Impl::N1</definition>
+        <argsstring></argsstring>
+        <name>N1</name>
+        <qualifiedname>TestViewSubview::Impl::N1</qualifiedname>
+        <initializer>= 11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="859" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="859" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_view_subview_8hpp_1a1103e2355bc47a97cdc8a18758fb7791" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int TestViewSubview::Impl::N2</definition>
+        <argsstring></argsstring>
+        <name>N2</name>
+        <qualifiedname>TestViewSubview::Impl::N2</qualifiedname>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="860" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="860" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_view_subview_8hpp_1ab015373c5934984110f0d4e7171e4936" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int TestViewSubview::Impl::N3</definition>
+        <argsstring></argsstring>
+        <name>N3</name>
+        <qualifiedname>TestViewSubview::Impl::N3</qualifiedname>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="861" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="861" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_view_subview_8hpp_1a53696d200946916a6813c7960955bd23" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int TestViewSubview::Impl::N4</definition>
+        <argsstring></argsstring>
+        <name>N4</name>
+        <qualifiedname>TestViewSubview::Impl::N4</qualifiedname>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="862" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="862" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a6c56c0c91a8af6249d67f506f44350cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SubView</type>
+          </param>
+          <param>
+            <type>class View</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_Check1D</definition>
+        <argsstring>(SubView a, View b, Kokkos::pair&lt; int, int &gt; range)</argsstring>
+        <name>test_Check1D</name>
+        <qualifiedname>TestViewSubview::Impl::test_Check1D</qualifiedname>
+        <param>
+          <type>SubView</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>View</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int, int &gt;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1191" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1191" bodyend="1194"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a65a1b73e0bae959765de87f3f4147ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SubView</type>
+          </param>
+          <param>
+            <type>class View</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_Check1D2D</definition>
+        <argsstring>(SubView a, View b, int i0, std::pair&lt; int, int &gt; range)</argsstring>
+        <name>test_Check1D2D</name>
+        <qualifiedname>TestViewSubview::Impl::test_Check1D2D</qualifiedname>
+        <param>
+          <type>SubView</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>View</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>std::pair&lt; int, int &gt;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1197" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1197" bodyend="1200"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1ae78bcc0a65b1fe93214d6c4dee66fa56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SubView</type>
+          </param>
+          <param>
+            <type>class View</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_Check2D3D</definition>
+        <argsstring>(SubView a, View b, int i0, std::pair&lt; int, int &gt; range1, std::pair&lt; int, int &gt; range2)</argsstring>
+        <name>test_Check2D3D</name>
+        <qualifiedname>TestViewSubview::Impl::test_Check2D3D</qualifiedname>
+        <param>
+          <type>SubView</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>View</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>std::pair&lt; int, int &gt;</type>
+          <declname>range1</declname>
+        </param>
+        <param>
+          <type>std::pair&lt; int, int &gt;</type>
+          <declname>range2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1203" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1203" bodyend="1208"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1ab5ce39b6820f561d975bd9ba730e21e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SubView</type>
+          </param>
+          <param>
+            <type>class View</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_Check3D5D</definition>
+        <argsstring>(SubView a, View b, int i0, int i1, Kokkos::pair&lt; int, int &gt; range2, Kokkos::pair&lt; int, int &gt; range3, Kokkos::pair&lt; int, int &gt; range4)</argsstring>
+        <name>test_Check3D5D</name>
+        <qualifiedname>TestViewSubview::Impl::test_Check3D5D</qualifiedname>
+        <param>
+          <type>SubView</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>View</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int, int &gt;</type>
+          <declname>range2</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int, int &gt;</type>
+          <declname>range3</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int, int &gt;</type>
+          <declname>range4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1211" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1211" bodyend="1218"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a34a31fe8d39693d03926495a26c5e639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Space</type>
+          </param>
+          <param>
+            <type>class LayoutSub</type>
+          </param>
+          <param>
+            <type>class Layout</type>
+          </param>
+          <param>
+            <type>class LayoutOrg</type>
+          </param>
+          <param>
+            <type>class MemTraits</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_1d_assign_impl</definition>
+        <argsstring>()</argsstring>
+        <name>test_1d_assign_impl</name>
+        <qualifiedname>TestViewSubview::Impl::test_1d_assign_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1222" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1222" bodyend="1257"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a89eb7d323c4c761e7adff4b8dcd2a1e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Space</type>
+          </param>
+          <param>
+            <type>class Type</type>
+          </param>
+          <param>
+            <type>class TypeSub</type>
+          </param>
+          <param>
+            <type>class LayoutSub</type>
+          </param>
+          <param>
+            <type>class Layout</type>
+          </param>
+          <param>
+            <type>class LayoutOrg</type>
+          </param>
+          <param>
+            <type>class MemTraits</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_2d_subview_3d_impl_type</definition>
+        <argsstring>()</argsstring>
+        <name>test_2d_subview_3d_impl_type</name>
+        <qualifiedname>TestViewSubview::Impl::test_2d_subview_3d_impl_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1261" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1261" bodyend="1279"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a49a4dc48a0bc249128e4ab853e1cff57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Space</type>
+          </param>
+          <param>
+            <type>class LayoutSub</type>
+          </param>
+          <param>
+            <type>class Layout</type>
+          </param>
+          <param>
+            <type>class LayoutOrg</type>
+          </param>
+          <param>
+            <type>class MemTraits</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_2d_subview_3d_impl_layout</definition>
+        <argsstring>()</argsstring>
+        <name>test_2d_subview_3d_impl_layout</name>
+        <qualifiedname>TestViewSubview::Impl::test_2d_subview_3d_impl_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1283" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1283" bodyend="1339"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1ac2fbf7277430c5ffa307656f3f39b73f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Space</type>
+          </param>
+          <param>
+            <type>class Type</type>
+          </param>
+          <param>
+            <type>class TypeSub</type>
+          </param>
+          <param>
+            <type>class LayoutSub</type>
+          </param>
+          <param>
+            <type>class Layout</type>
+          </param>
+          <param>
+            <type>class LayoutOrg</type>
+          </param>
+          <param>
+            <type>class MemTraits</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_3d_subview_5d_impl_type</definition>
+        <argsstring>()</argsstring>
+        <name>test_3d_subview_5d_impl_type</name>
+        <qualifiedname>TestViewSubview::Impl::test_3d_subview_5d_impl_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1343" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1343" bodyend="1361"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a4cab253f4b482802f88ce37ac9396186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Space</type>
+          </param>
+          <param>
+            <type>class LayoutSub</type>
+          </param>
+          <param>
+            <type>class Layout</type>
+          </param>
+          <param>
+            <type>class LayoutOrg</type>
+          </param>
+          <param>
+            <type>class MemTraits</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_3d_subview_5d_impl_layout</definition>
+        <argsstring>()</argsstring>
+        <name>test_3d_subview_5d_impl_layout</name>
+        <qualifiedname>TestViewSubview::Impl::test_3d_subview_5d_impl_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1365" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1365" bodyend="1487"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a416d1838c74387a953016584a48ef00f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_subview_legal_args_right</definition>
+        <argsstring>()</argsstring>
+        <name>test_subview_legal_args_right</name>
+        <qualifiedname>TestViewSubview::Impl::test_subview_legal_args_right</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1489" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1489" bodyend="1720"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_view_subview_8hpp_1a9fbf190ded599d2f1bd91512641c1790" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::test_subview_legal_args_left</definition>
+        <argsstring>()</argsstring>
+        <name>test_subview_legal_args_left</name>
+        <qualifiedname>TestViewSubview::Impl::test_subview_legal_args_left</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1722" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1722" bodyend="1969"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="856" column="1"/>
+  </compounddef>
+</doxygen>

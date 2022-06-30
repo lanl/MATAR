@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structfind__2__tuples" kind="struct" language="C++" prot="public">
+    <compoundname>find_2_tuples</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfind__2__tuples_1a909cf1222b19a0ebeb28299d25f49bcc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int find_2_tuples::chunk_size</definition>
+        <argsstring></argsstring>
+        <name>chunk_size</name>
+        <qualifiedname>find_2_tuples::chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="60" column="7" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfind__2__tuples_1a2eaf5397b58740844c361cb64bbfc40f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const int * &gt;</type>
+        <definition>Kokkos::View&lt;const int*&gt; find_2_tuples::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>find_2_tuples::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="61" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfind__2__tuples_1ae669fd3d23a35e0f08a246ff428eb9cf" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ** &gt;</type>
+        <definition>Kokkos::View&lt;int**&gt; find_2_tuples::histogram</definition>
+        <argsstring></argsstring>
+        <name>histogram</name>
+        <qualifiedname>find_2_tuples::histogram</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="62" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfind__2__tuples_1a10394771e0e60ea87f84f782b30a6f33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>find_2_tuples::find_2_tuples</definition>
+        <argsstring>(int chunk_size_, Kokkos::DualView&lt; int * &gt; data_, Kokkos::DualView&lt; int ** &gt; histogram_)</argsstring>
+        <name>find_2_tuples</name>
+        <qualifiedname>find_2_tuples::find_2_tuples</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>chunk_size_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">Kokkos::DualView</ref>&lt; int * &gt;</type>
+          <declname>data_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">Kokkos::DualView</ref>&lt; int ** &gt;</type>
+          <declname>histogram_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="64" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="structfind__2__tuples_1a47ad41dd7fbf92754bccee9b28df8bdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void find_2_tuples::operator()</definition>
+        <argsstring>(const team_member &amp;dev) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>find_2_tuples::operator()</qualifiedname>
+        <param>
+          <type>const team_member &amp;</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="75" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="75" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="structfind__2__tuples_1a50bd9d7f7428f006765b6397ee016559" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t find_2_tuples::team_shmem_size</definition>
+        <argsstring>(int team_size) const</argsstring>
+        <name>team_shmem_size</name>
+        <qualifiedname>find_2_tuples::team_shmem_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>team_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="102" column="10" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="102" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::View&lt; const int * &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int ** &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; const int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; int **, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="1">
+        <label>find_2_tuples</label>
+        <link refid="structfind__2__tuples"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>histogram</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/04_team_scan/team_scan.cpp" bodystart="59" bodyend="108"/>
+    <listofallmembers>
+      <member refid="structfind__2__tuples_1a909cf1222b19a0ebeb28299d25f49bcc" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>chunk_size</name></member>
+      <member refid="structfind__2__tuples_1a2eaf5397b58740844c361cb64bbfc40f" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>data</name></member>
+      <member refid="structfind__2__tuples_1a10394771e0e60ea87f84f782b30a6f33" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>find_2_tuples</name></member>
+      <member refid="structfind__2__tuples_1ae669fd3d23a35e0f08a246ff428eb9cf" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>histogram</name></member>
+      <member refid="structfind__2__tuples_1a47ad41dd7fbf92754bccee9b28df8bdb" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>operator()</name></member>
+      <member refid="structfind__2__tuples_1a50bd9d7f7428f006765b6397ee016559" prot="public" virt="non-virtual"><scope>find_2_tuples</scope><name>team_shmem_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

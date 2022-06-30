@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_work_item_property_trait" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::WorkItemPropertyTrait</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_trait_specification_base" prot="public" virt="non-virtual">Kokkos::Impl::TraitSpecificationBase&lt; WorkItemPropertyTrait &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1base__traits" prot="public">Kokkos::Impl::WorkItemPropertyTrait::base_traits</innerclass>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait" prot="public">Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1a95a0f7467bd9632dfffb320e884dee43" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1is__work__item__property" kindref="compound">Kokkos::Experimental::is_work_item_property</ref>&lt; T &gt;</type>
+        <definition>using Kokkos::Impl::WorkItemPropertyTrait::trait_matches_specification =  Kokkos::Experimental::is_work_item_property&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>trait_matches_specification</name>
+        <qualifiedname>Kokkos::Impl::WorkItemPropertyTrait::trait_matches_specification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::WorkItemPropertyTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; WorkItemPropertyTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::WorkItemPropertyTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; WorkItemPropertyTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="59" bodyend="72"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1a57561cfb7b2706c4a465343686f28380" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait</scope><name>policy_with_trait</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1a95a0f7467bd9632dfffb320e884dee43" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait</scope><name>trait_matches_specification</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1af7b3d83d4c9873c2176a5092d73b2ea4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait</scope><name>trait_specification</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

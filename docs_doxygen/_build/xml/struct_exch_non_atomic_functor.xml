@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_exch_non_atomic_functor" kind="struct" language="C++" prot="public">
+    <compoundname>ExchNonAtomicFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class DEVICE_TYPE</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_exch_non_atomic_functor_1a70a88ced528546d88e493eeee7a5673a" prot="public" static="no">
+        <type>DEVICE_TYPE</type>
+        <definition>using ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;::execution_space =  DEVICE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>ExchNonAtomicFunctor::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="312" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_exch_non_atomic_functor_1a60dcfd45027b4bed99e668f059b4c825" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space &gt;</type>
+        <definition>using ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;::type =  Kokkos::View&lt;T, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>ExchNonAtomicFunctor::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="313" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_exch_non_atomic_functor_1afe1ed71b38336ca2e1b4ec3bb2de99f2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">type</ref></type>
+        <definition>type ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>ExchNonAtomicFunctor::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="314" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_exch_non_atomic_functor_1a7790f81561aeb1654e61696cb358729c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">type</ref></type>
+        <definition>type ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;::data2</definition>
+        <argsstring></argsstring>
+        <name>data2</name>
+        <qualifiedname>ExchNonAtomicFunctor::data2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="314" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_exch_non_atomic_functor_1aabd8804d6114f3e6c9f77f02d3c0f794" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;::operator()</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ExchNonAtomicFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="317" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="317" bodyend="321"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>ExchNonAtomicFunctor&lt; T, DEVICE_TYPE &gt;</label>
+        <link refid="struct_exch_non_atomic_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>data</edgelabel>
+          <edgelabel>data2</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; T, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; T, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" line="311" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/test_atomic.cpp" bodystart="311" bodyend="322"/>
+    <listofallmembers>
+      <member refid="struct_exch_non_atomic_functor_1afe1ed71b38336ca2e1b4ec3bb2de99f2" prot="public" virt="non-virtual"><scope>ExchNonAtomicFunctor</scope><name>data</name></member>
+      <member refid="struct_exch_non_atomic_functor_1a7790f81561aeb1654e61696cb358729c" prot="public" virt="non-virtual"><scope>ExchNonAtomicFunctor</scope><name>data2</name></member>
+      <member refid="struct_exch_non_atomic_functor_1a70a88ced528546d88e493eeee7a5673a" prot="public" virt="non-virtual"><scope>ExchNonAtomicFunctor</scope><name>execution_space</name></member>
+      <member refid="struct_exch_non_atomic_functor_1aabd8804d6114f3e6c9f77f02d3c0f794" prot="public" virt="non-virtual"><scope>ExchNonAtomicFunctor</scope><name>operator()</name></member>
+      <member refid="struct_exch_non_atomic_functor_1a60dcfd45027b4bed99e668f059b4c825" prot="public" virt="non-virtual"><scope>ExchNonAtomicFunctor</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

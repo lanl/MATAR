@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_non_trivial_reduce_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::NonTrivialReduceFunctor</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1ab5612eef0e26a8b35c57accef1f7d0d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::NonTrivialReduceFunctor::operator()</definition>
+        <argsstring>(const int i, double &amp;UpdateSum) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>UpdateSum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="67" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a9efa4bfa316778afb29c0657cf2131e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</definition>
+        <argsstring>()=default</argsstring>
+        <name>NonTrivialReduceFunctor</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="71" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a3a44c07da1edaa5822ba4f17e59bdb86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</definition>
+        <argsstring>(NonTrivialReduceFunctor const &amp;)=default</argsstring>
+        <name>NonTrivialReduceFunctor</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="72" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a75b01a5f73c9eaa8c88bc0d8000a06d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</definition>
+        <argsstring>(NonTrivialReduceFunctor &amp;&amp;)=default</argsstring>
+        <name>NonTrivialReduceFunctor</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::NonTrivialReduceFunctor</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="73" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a8207a520a5427e0d735b2415bb54cbda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> &amp;</type>
+        <definition>NonTrivialReduceFunctor &amp; Test::NonTrivialReduceFunctor::operator=</definition>
+        <argsstring>(NonTrivialReduceFunctor &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="74" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a19466ec32b4a81051c3099fcef09cc55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> &amp;</type>
+        <definition>NonTrivialReduceFunctor &amp; Test::NonTrivialReduceFunctor::operator=</definition>
+        <argsstring>(NonTrivialReduceFunctor const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_1_1_non_trivial_reduce_functor" kindref="compound">NonTrivialReduceFunctor</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="75" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_non_trivial_reduce_functor_1a7566f3f7e2832baa02d0ca916f7a1b57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::NonTrivialReduceFunctor::~NonTrivialReduceFunctor</definition>
+        <argsstring>()</argsstring>
+        <name>~NonTrivialReduceFunctor</name>
+        <qualifiedname>Test::NonTrivialReduceFunctor::~NonTrivialReduceFunctor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" line="65" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test05_ParallelReduce_RangePolicy.hpp" bodystart="65" bodyend="77"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a9efa4bfa316778afb29c0657cf2131e1" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>NonTrivialReduceFunctor</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a3a44c07da1edaa5822ba4f17e59bdb86" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>NonTrivialReduceFunctor</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a75b01a5f73c9eaa8c88bc0d8000a06d3" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>NonTrivialReduceFunctor</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1ab5612eef0e26a8b35c57accef1f7d0d6" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a8207a520a5427e0d735b2415bb54cbda" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>operator=</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a19466ec32b4a81051c3099fcef09cc55" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>operator=</name></member>
+      <member refid="struct_test_1_1_non_trivial_reduce_functor_1a7566f3f7e2832baa02d0ca916f7a1b57" prot="public" virt="non-virtual"><scope>Test::NonTrivialReduceFunctor</scope><name>~NonTrivialReduceFunctor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

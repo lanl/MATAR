@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_reduce_functor_has_init" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ReduceFunctorHasInit</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class Enable</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_reduce_functor_has_init_1a2bbc9ca40121f2dcf03eb643277d196a" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@51</name>
+        <qualifiedname>Kokkos::Impl::ReduceFunctorHasInit::@51</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_reduce_functor_has_init_1a2bbc9ca40121f2dcf03eb643277d196aa2a9c6ad24682276ab26ed1b23ce5346c" prot="public">
+          <name>value</name>
+          <initializer>= false</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="59" bodyend="61"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_reduce_functor_has_init_1a2bbc9ca40121f2dcf03eb643277d196aa2a9c6ad24682276ab26ed1b23ce5346c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ReduceFunctorHasInit</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

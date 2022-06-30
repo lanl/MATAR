@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test_memory_pool" kind="namespace" language="C++">
+    <compoundname>TestMemoryPool</compoundname>
+    <innerclass refid="struct_test_memory_pool_1_1_test_memory_pool___functor" prot="public">TestMemoryPool::TestMemoryPool_Functor</innerclass>
+    <innerclass refid="struct_test_memory_pool_1_1_test_memory_pool_corners" prot="public">TestMemoryPool::TestMemoryPoolCorners</innerclass>
+    <innerclass refid="struct_test_memory_pool_1_1_test_memory_pool_huge" prot="public">TestMemoryPool::TestMemoryPoolHuge</innerclass>
+    <innerclass refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7" prot="public">TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1a8273c84ef4f873fa174c4b8a90aaf1aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename MemSpace</type>
+            <defval><ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref></defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::test_host_memory_pool_defaults</definition>
+        <argsstring>()</argsstring>
+        <name>test_host_memory_pool_defaults</name>
+        <qualifiedname>TestMemoryPool::test_host_memory_pool_defaults</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="58" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="58" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1ab33bf3d4877360c7cfc6bae7796a27ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename MemSpace</type>
+            <defval><ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref></defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::test_host_memory_pool_stats</definition>
+        <argsstring>()</argsstring>
+        <name>test_host_memory_pool_stats</name>
+        <qualifiedname>TestMemoryPool::test_host_memory_pool_stats</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="134" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="134" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1a620fdc1d33aa2b493f7398afec65f28b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class PoolType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::print_memory_pool_stats</definition>
+        <argsstring>(typename PoolType::usage_statistics const &amp;stats)</argsstring>
+        <name>print_memory_pool_stats</name>
+        <qualifiedname>TestMemoryPool::print_memory_pool_stats</qualifiedname>
+        <param>
+          <type>typename PoolType::usage_statistics const &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="250" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="250" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1aa102364d41611fd85492497cec3f68f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::test_memory_pool_v2</definition>
+        <argsstring>(const bool print_statistics, const bool print_superblocks)</argsstring>
+        <name>test_memory_pool_v2</name>
+        <qualifiedname>TestMemoryPool::test_memory_pool_v2</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>print_statistics</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>print_superblocks</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="269" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="269" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1a167a38c44569f7f111fdf940c2d3d84f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::test_memory_pool_corners</definition>
+        <argsstring>(const bool print_statistics, const bool print_superblocks)</argsstring>
+        <name>test_memory_pool_corners</name>
+        <qualifiedname>TestMemoryPool::test_memory_pool_corners</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>print_statistics</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>print_superblocks</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="408" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="408" bodyend="471"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_memory_pool_8hpp_1a1c8b116d47389b4f0d7d60d6cb2d10ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void TestMemoryPool::test_memory_pool_huge</definition>
+        <argsstring>()</argsstring>
+        <name>test_memory_pool_huge</name>
+        <qualifiedname>TestMemoryPool::test_memory_pool_huge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="543" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="543" bodyend="555"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="55" column="1"/>
+  </compounddef>
+</doxygen>

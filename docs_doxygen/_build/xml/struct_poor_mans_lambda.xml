@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_poor_mans_lambda" kind="struct" language="C++" prot="public">
+    <compoundname>PoorMansLambda</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_poor_mans_lambda_1ac5f1d593d1c1e019cc133f2f89938b67" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename MemberType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void PoorMansLambda::operator()</definition>
+        <argsstring>(MemberType const &amp;) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>PoorMansLambda::operator()</qualifiedname>
+        <param>
+          <type>MemberType const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestBlockSizeDeduction.hpp" line="57" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestBlockSizeDeduction.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestBlockSizeDeduction.hpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestBlockSizeDeduction.hpp" bodystart="55" bodyend="58"/>
+    <listofallmembers>
+      <member refid="struct_poor_mans_lambda_1ac5f1d593d1c1e019cc133f2f89938b67" prot="public" virt="non-virtual"><scope>PoorMansLambda</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

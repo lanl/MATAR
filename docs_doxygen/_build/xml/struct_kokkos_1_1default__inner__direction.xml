@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1default__inner__direction" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::default_inner_direction</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1default__inner__direction_1aa6ecc7d9a83e57c1ce26355beeb5140e" prot="public" static="no">
+        <type>Iterate</type>
+        <definition>using Kokkos::default_inner_direction&lt; ExecSpace &gt;::type =  Iterate</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::default_inner_direction::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1default__inner__direction_1afe5bf3c06bf787b7fd1e1670481e27ac" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::default_inner_direction&lt; ExecSpace &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::default_inner_direction::value</qualifiedname>
+        <initializer>= Iterate::Right</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="79" column="28" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="77" column="1" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="77" bodyend="80"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1default__inner__direction_1aa6ecc7d9a83e57c1ce26355beeb5140e" prot="public" virt="non-virtual"><scope>Kokkos::default_inner_direction</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1default__inner__direction_1afe5bf3c06bf787b7fd1e1670481e27ac" prot="public" virt="non-virtual"><scope>Kokkos::default_inner_direction</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

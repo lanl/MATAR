@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher_3_01void_00_01type__list_3_4_00_01_trait_00_01_traits_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, type_list&lt;&gt;, Trait, Traits... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Trait</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher_3_01void_00_01type__list_3_4_00_01_trait_00_01_traits_8_8_8_01_4_1acb09b61910651251d9699cf3b912ef06" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, type_list&lt;&gt;, Trait, Traits... &gt;::trigger_error_message</definition>
+        <argsstring></argsstring>
+        <name>trigger_error_message</name>
+        <qualifiedname>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, type_list&lt;&gt;, Trait, Traits... &gt;::trigger_error_message</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_impl_1_1show__name__of__invalid__execution__policy__trait" kindref="compound">show_name_of_invalid_execution_policy_trait</ref>&lt;Trait&gt;{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="171" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="170" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="170" bodyend="178"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher_3_01void_00_01type__list_3_4_00_01_trait_00_01_traits_8_8_8_01_4_1acb09b61910651251d9699cf3b912ef06" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, type_list&lt;&gt;, Trait, Traits... &gt;</scope><name>trigger_error_message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

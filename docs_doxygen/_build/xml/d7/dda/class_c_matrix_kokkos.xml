@@ -1,0 +1,725 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d7/dda/class_c_matrix_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>CMatrixKokkos</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>DefaultLayout</defval>
+      </param>
+      <param>
+        <type>typename ExecSpace</type>
+        <defval>DefaultExecSpace</defval>
+      </param>
+      <param>
+        <type>typename MemoryTraits</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="d7/dda/class_c_matrix_kokkos_1a64900be2709acfc254cb0310d5554a91" prot="private" static="no">
+        <type>Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::TArray1D =  Kokkos::View&lt;T*, Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1D</name>
+        <qualifiedname>CMatrixKokkos::TArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9006" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9006" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d7/dda/class_c_matrix_kokkos_1a03cfbbbcb041776bfb4c93f852c813dc" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>CMatrixKokkos::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9009" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9009" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dda/class_c_matrix_kokkos_1ab15a3987b01a600c32eb46d5024285e6" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>CMatrixKokkos::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9010" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9010" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dda/class_c_matrix_kokkos_1ae6a66ef61eb9b575efb4c9fa8c1f8773" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>CMatrixKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9011" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9011" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dda/class_c_matrix_kokkos_1ae553739cbb60b23e7175b132f91d96cf" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::this_matrix_</definition>
+        <argsstring></argsstring>
+        <name>this_matrix_</name>
+        <qualifiedname>CMatrixKokkos::this_matrix_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9012" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9012" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1afc19b49b54bd54375b6746146120b721" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9015" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9088" bodyend="9088"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1ab62a4edd26a9f0325bc055ed1b8fb9e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9017" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9092" bodyend="9099"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1abc68ed552427af5330d27e4d5ccc5583" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9019" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9103" bodyend="9111"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a61ecb19cc77cea56822d20074876e4c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, size_t dim3, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9021" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9115" bodyend="9125"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a7ad9f727ce72157738f8207a5d5c2afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9023" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9129" bodyend="9140"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a498a6343e74e4d3238c355cc6da68165" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9026" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9144" bodyend="9158"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a238dc5d739872c4f309b4ea7beb27829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9029" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9162" bodyend="9176"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1adc44f1d5777af3ccd285d2120e010872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CMatrixKokkos</definition>
+        <argsstring>(size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, size_t dim7, const std::string &amp;tag_string=DEFAULTSTRINGMATRIX)</argsstring>
+        <name>CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::CMatrixKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim7</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGMATRIX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9032" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9180" bodyend="9196"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a375bfbcf2001c0cc107b695f10cc1962" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9037" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9200" bodyend="9204"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1affcfe57e249dd531eecf86f5e6b2431d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9040" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9208" bodyend="9213"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a3ddc9ac491e034005dc1d5762a63babd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9043" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9217" bodyend="9224"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1ab831b1027ae6d400580a9c8d69e74ba1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9046" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9228" bodyend="9237"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a0c76b6e5d0d55a13fd189b341630ba7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9049" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9241" bodyend="9253"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a9091f241e53fcc36327df7ff4c8d775c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9052" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9257" bodyend="9271"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a8f262d76bfa20028ffbc3bd0ee678774" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9056" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9275" bodyend="9291"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a066cf798cced2907279780cbe488e2d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="d7/dda/class_c_matrix_kokkos" kindref="compound">CMatrixKokkos</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator=</definition>
+        <argsstring>(const CMatrixKokkos &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>CMatrixKokkos::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="d7/dda/class_c_matrix_kokkos" kindref="compound">CMatrixKokkos</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9060" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9297" bodyend="9311"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a555c405ae6e6b2b8ba6f19a55933d8c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>CMatrixKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9063" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9315" bodyend="9317"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a31ea3c0d423409944deba2f00f5fef13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <qualifiedname>CMatrixKokkos::extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9066" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9321" bodyend="9323"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a3af344d95ecb395a0f01395546ea3d3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>CMatrixKokkos::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9069" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9327" bodyend="9332"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a2e87bdeee3d1f7340b4ddfd54522a6c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>CMatrixKokkos::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9072" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9336" bodyend="9338"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1ad03fe0387096066606eddbe4ad4413dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>CMatrixKokkos::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9075" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9342" bodyend="9344"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a54a9a1024e022df4a0d4ac2175262388" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION TArray1D</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt; CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::get_kokkos_view</definition>
+        <argsstring>() const</argsstring>
+        <name>get_kokkos_view</name>
+        <qualifiedname>CMatrixKokkos::get_kokkos_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9079" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9349" bodyend="9351"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/dda/class_c_matrix_kokkos_1a7a8f53f2f09b492b4e76249e66ac2d3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION CMatrixKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::~CMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~CMatrixKokkos</name>
+        <qualifiedname>CMatrixKokkos::~CMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9082" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9356" bodyend="9356"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Kokkos version of the serial <ref refid="d2/dcb/class_c_matrix" kindref="compound">CMatrix</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9004" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9004" bodyend="9084"/>
+    <listofallmembers>
+      <member refid="d7/dda/class_c_matrix_kokkos_1afc19b49b54bd54375b6746146120b721" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ab62a4edd26a9f0325bc055ed1b8fb9e3" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1abc68ed552427af5330d27e4d5ccc5583" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a61ecb19cc77cea56822d20074876e4c2" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a7ad9f727ce72157738f8207a5d5c2afc" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a498a6343e74e4d3238c355cc6da68165" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a238dc5d739872c4f309b4ea7beb27829" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1adc44f1d5777af3ccd285d2120e010872" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>CMatrixKokkos</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a3af344d95ecb395a0f01395546ea3d3d" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>dims</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a03cfbbbcb041776bfb4c93f852c813dc" prot="private" virt="non-virtual"><scope>CMatrixKokkos</scope><name>dims_</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a31ea3c0d423409944deba2f00f5fef13" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>extent</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a54a9a1024e022df4a0d4ac2175262388" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>get_kokkos_view</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ae6a66ef61eb9b575efb4c9fa8c1f8773" prot="private" virt="non-virtual"><scope>CMatrixKokkos</scope><name>length_</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a375bfbcf2001c0cc107b695f10cc1962" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1affcfe57e249dd531eecf86f5e6b2431d" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a3ddc9ac491e034005dc1d5762a63babd" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ab831b1027ae6d400580a9c8d69e74ba1" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a0c76b6e5d0d55a13fd189b341630ba7e" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a9091f241e53fcc36327df7ff4c8d775c" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a8f262d76bfa20028ffbc3bd0ee678774" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a066cf798cced2907279780cbe488e2d0" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>operator=</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a2e87bdeee3d1f7340b4ddfd54522a6c7" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>order</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ab15a3987b01a600c32eb46d5024285e6" prot="private" virt="non-virtual"><scope>CMatrixKokkos</scope><name>order_</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ad03fe0387096066606eddbe4ad4413dc" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>pointer</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a555c405ae6e6b2b8ba6f19a55933d8c7" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>size</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a64900be2709acfc254cb0310d5554a91" prot="private" virt="non-virtual"><scope>CMatrixKokkos</scope><name>TArray1D</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1ae553739cbb60b23e7175b132f91d96cf" prot="private" virt="non-virtual"><scope>CMatrixKokkos</scope><name>this_matrix_</name></member>
+      <member refid="d7/dda/class_c_matrix_kokkos_1a7a8f53f2f09b492b4e76249e66ac2d3c" prot="public" virt="non-virtual"><scope>CMatrixKokkos</scope><name>~CMatrixKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

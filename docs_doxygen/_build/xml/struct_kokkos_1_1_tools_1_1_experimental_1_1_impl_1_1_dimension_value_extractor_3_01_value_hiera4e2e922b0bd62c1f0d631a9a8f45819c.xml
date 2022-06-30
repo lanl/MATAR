@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_dimension_value_extractor_3_01_value_hiera4e2e922b0bd62c1f0d631a9a8f45819c" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::DimensionValueExtractor&lt; ValueHierarchyNode&lt; RootType, Subtype &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class RootType</type>
+      </param>
+      <param>
+        <type>class Subtype</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_dimension_value_extractor_3_01_value_hiera4e2e922b0bd62c1f0d631a9a8f45819c_1aa3a946eb95d0602d80bcb141a0454ade" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>RootType</type>
+        <definition>static RootType Kokkos::Tools::Experimental::Impl::DimensionValueExtractor&lt; ValueHierarchyNode&lt; RootType, Subtype &gt; &gt;::get</definition>
+        <argsstring>(const ValueHierarchyNode&lt; RootType, Subtype &gt; &amp;dimension, double fraction_to_traverse)</argsstring>
+        <name>get</name>
+        <qualifiedname>Kokkos::Tools::Experimental::Impl::DimensionValueExtractor&lt; ValueHierarchyNode&lt; RootType, Subtype &gt; &gt;::get</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_node" kindref="compound">ValueHierarchyNode</ref>&lt; RootType, Subtype &gt; &amp;</type>
+          <declname>dimension</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>fraction_to_traverse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="223" column="19" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="223" bodyend="227"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="222" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="222" bodyend="228"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_dimension_value_extractor_3_01_value_hiera4e2e922b0bd62c1f0d631a9a8f45819c_1aa3a946eb95d0602d80bcb141a0454ade" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::Impl::DimensionValueExtractor&lt; ValueHierarchyNode&lt; RootType, Subtype &gt; &gt;</scope><name>get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

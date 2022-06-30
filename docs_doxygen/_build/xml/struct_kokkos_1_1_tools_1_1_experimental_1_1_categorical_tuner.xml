@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::CategoricalTuner</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Choice</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1aeff1697cdf96d50fd4677dcfaaa5db7c" prot="public" static="no">
+        <type>std::vector&lt; Choice &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::choice_list =  std::vector&lt;Choice&gt;</definition>
+        <argsstring></argsstring>
+        <name>choice_list</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::choice_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="620" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="620" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1ab4537fb4e19e03c96e0c17c0bb414f1b" prot="public" static="no" mutable="no">
+        <type>choice_list</type>
+        <definition>choice_list Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::choices</definition>
+        <argsstring></argsstring>
+        <name>choices</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::choices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="621" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="621" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1abd2528ee1409689f54b4ac6ebae565e6" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="622" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="622" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1a97652d00e8b5260e6b7fe0c0827193cf" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::tuning_variable_id</definition>
+        <argsstring></argsstring>
+        <name>tuning_variable_id</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::tuning_variable_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="623" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="623" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1af6bba401abb54c4c67b16a5b9f3fbfdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::CategoricalTuner</definition>
+        <argsstring>(std::string name, choice_list m_choices)</argsstring>
+        <name>CategoricalTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::CategoricalTuner</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>choice_list</type>
+          <declname>m_choices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="624" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="624" bodyend="636"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1a12d548aa5fe618a16bb55df7be14a303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const Choice &amp;</type>
+        <definition>const Choice &amp; Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="637" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="637" bodyend="643"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1ae45a72739b4ce45b11f8b0dbc00e2b8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::CategoricalTuner&lt; Choice &gt;::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::Tools::Experimental::CategoricalTuner::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="644" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="644" bodyend="644"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="619" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="619" bodyend="645"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1a12d548aa5fe618a16bb55df7be14a303" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>begin</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1af6bba401abb54c4c67b16a5b9f3fbfdf" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>CategoricalTuner</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1aeff1697cdf96d50fd4677dcfaaa5db7c" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>choice_list</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1ab4537fb4e19e03c96e0c17c0bb414f1b" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>choices</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1abd2528ee1409689f54b4ac6ebae565e6" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>context</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1ae45a72739b4ce45b11f8b0dbc00e2b8f" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>end</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_categorical_tuner_1a97652d00e8b5260e6b7fe0c0827193cf" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::CategoricalTuner</scope><name>tuning_variable_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl_3_01_entry_00_01type__list_3_01_entr4e3a050b84a2f18054a093ec4f362a94" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt; Entry, Ts... &gt;, type_list&lt; OutTs... &gt; &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl" prot="public" virt="non-virtual">Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt;&gt;, type_list&lt; OutTs..., Ts... &gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Entry</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Ts</declname>
+        <defname>Ts</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>OutTs</declname>
+        <defname>OutTs</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt; Entry, Ts... &gt;, type_list&lt; OutTs... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl_3_01_entry_00_01type__list_3_01_entr4e3a050b84a2f18054a093ec4f362a94"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt;&gt;, type_list&lt; OutTs..., Ts... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt; Entry, Ts... &gt;, type_list&lt; OutTs... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl_3_01_entry_00_01type__list_3_01_entr4e3a050b84a2f18054a093ec4f362a94"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::_type_list_remove_first_impl&lt; Entry, type_list&lt;&gt;, type_list&lt; OutTs..., Ts... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__type__list__remove__first__impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="169" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="172" bodyend="172"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

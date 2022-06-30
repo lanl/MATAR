@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1radix" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::radix</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper" prot="public" virt="non-virtual">Kokkos::Experimental::Impl::radix_helper&lt; T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Experimental::radix&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1radix"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::Impl::radix_helper&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Experimental::radix&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1radix"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::Impl::radix_helper&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="245" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="245" bodyend="245"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

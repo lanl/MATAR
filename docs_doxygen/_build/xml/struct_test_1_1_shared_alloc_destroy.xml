@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_shared_alloc_destroy" kind="struct" language="C++" prot="public">
+    <compoundname>Test::SharedAllocDestroy</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_shared_alloc_destroy_1a08d1a80020ece77e680304fc762e275a" prot="public" static="no" mutable="no">
+        <type>volatile int *</type>
+        <definition>volatile int* Test::SharedAllocDestroy::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <qualifiedname>Test::SharedAllocDestroy::count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" line="58" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_shared_alloc_destroy_1a1fad511a53ef8c76c8b40cbdf73638cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Test::SharedAllocDestroy::SharedAllocDestroy</definition>
+        <argsstring>()=default</argsstring>
+        <name>SharedAllocDestroy</name>
+        <qualifiedname>Test::SharedAllocDestroy::SharedAllocDestroy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" line="60" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_shared_alloc_destroy_1aee385bf57c14bc09f5c6cd4a84945d11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::SharedAllocDestroy::SharedAllocDestroy</definition>
+        <argsstring>(int *arg)</argsstring>
+        <name>SharedAllocDestroy</name>
+        <qualifiedname>Test::SharedAllocDestroy::SharedAllocDestroy</qualifiedname>
+        <param>
+          <type>int *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_shared_alloc_destroy_1a139592da91d68f6afdcdb5c2c6d9363d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::SharedAllocDestroy::destroy_shared_allocation</definition>
+        <argsstring>()</argsstring>
+        <name>destroy_shared_allocation</name>
+        <qualifiedname>Test::SharedAllocDestroy::destroy_shared_allocation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" line="63" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestSharedAlloc.hpp" bodystart="57" bodyend="64"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_shared_alloc_destroy_1a08d1a80020ece77e680304fc762e275a" prot="public" virt="non-virtual"><scope>Test::SharedAllocDestroy</scope><name>count</name></member>
+      <member refid="struct_test_1_1_shared_alloc_destroy_1a139592da91d68f6afdcdb5c2c6d9363d" prot="public" virt="non-virtual"><scope>Test::SharedAllocDestroy</scope><name>destroy_shared_allocation</name></member>
+      <member refid="struct_test_1_1_shared_alloc_destroy_1a1fad511a53ef8c76c8b40cbdf73638cd" prot="public" virt="non-virtual"><scope>Test::SharedAllocDestroy</scope><name>SharedAllocDestroy</name></member>
+      <member refid="struct_test_1_1_shared_alloc_destroy_1aee385bf57c14bc09f5c6cd4a84945d11" prot="public" virt="non-virtual"><scope>Test::SharedAllocDestroy</scope><name>SharedAllocDestroy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

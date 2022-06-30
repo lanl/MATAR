@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1afacb4b8403aaa283c4f0f09e2f8e07b8" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Kokkos::RangePolicy</ref>&lt; Traits... &gt;</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::Policy =  Kokkos::RangePolicy&lt;Traits...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::Policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a48737afa60cbf6f6a4f6624312303d75" prot="private" static="no">
+        <type>typename Policy::work_tag</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::WorkTag =  typename Policy::work_tag</definition>
+        <argsstring></argsstring>
+        <name>WorkTag</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::WorkTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a8d3cff17b26720d43457cd7a3e5189c9" prot="private" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_range_policy_1_1_work_range" kindref="compound">Policy::WorkRange</ref></type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::WorkRange =  typename Policy::WorkRange</definition>
+        <argsstring></argsstring>
+        <name>WorkRange</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::WorkRange</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1aef84afa2fb8a243f95a45d4d8859d4b9" prot="private" static="no">
+        <type>typename Policy::member_type</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::Member =  typename Policy::member_type</definition>
+        <argsstring></argsstring>
+        <name>Member</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::Member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a4242c5f27cac7eebfab196b07b2c0f35" prot="private" static="no" mutable="no">
+        <type>const FunctorType</type>
+        <definition>const FunctorType Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="66" column="21" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1aed41c5c098b00f1fd9b0ab3e1872a5a0" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+        <definition>const Policy Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="67" column="16" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a763b4e6812db6f0efca1b8318d2c29e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::execute</definition>
+        <argsstring>() const</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="70" column="8" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a4ea1d9cfae2b1521e6d392414008fcc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class TagType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::execute_impl</definition>
+        <argsstring>() const</argsstring>
+        <name>execute_impl</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::execute_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="73" column="8" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="73" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a0899ab255a52cb702ab4d0b825147c6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::ParallelFor</definition>
+        <argsstring>(const FunctorType &amp;arg_functor, Policy arg_policy)</argsstring>
+        <name>ParallelFor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;::ParallelFor</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          <declname>arg_policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="95" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="95" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel.hpp" bodystart="59" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a763b4e6812db6f0efca1b8318d2c29e1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a4ea1d9cfae2b1521e6d392414008fcc9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_impl</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a4242c5f27cac7eebfab196b07b2c0f35" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1aed41c5c098b00f1fd9b0ab3e1872a5a0" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1aef84afa2fb8a243f95a45d4d8859d4b9" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>Member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a0899ab255a52cb702ab4d0b825147c6e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ParallelFor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1afacb4b8403aaa283c4f0f09e2f8e07b8" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>Policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a8d3cff17b26720d43457cd7a3e5189c9" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>WorkRange</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_range_policy_3_01_trai6d3765af87fc5ea460db09876e3be480_1a48737afa60cbf6f6a4f6624312303d75" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::RangePolicy&lt; Traits... &gt;, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>WorkTag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

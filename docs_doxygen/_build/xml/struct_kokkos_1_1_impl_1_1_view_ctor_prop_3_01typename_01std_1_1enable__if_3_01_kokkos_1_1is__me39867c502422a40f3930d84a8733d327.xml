@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1af4ba36f1817e59751555fbe431401dde" prot="public" static="no">
+        <type>Space</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::type =  Space</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="155" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a826f7aa208d65f7ee22aa77c33635dfc" prot="public" static="no" mutable="no">
+        <type>type</type>
+        <definition>type Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="159" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a756ce558d87c6719ec7b5b126e4a9eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</definition>
+        <argsstring>()=default</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="151" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a5475acdf6d4d724a782ecd4ebca04673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</definition>
+        <argsstring>(const ViewCtorProp &amp;)=default</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">ViewCtorProp</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="152" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1aad1417ce6355f5d6340bed15b224e9b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">ViewCtorProp</ref> &amp;</type>
+        <definition>ViewCtorProp &amp; Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::operator=</definition>
+        <argsstring>(const ViewCtorProp &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">ViewCtorProp</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="153" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1ab1d4f6aae0f60694b9fea758e623c0a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</definition>
+        <argsstring>(const type &amp;arg)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;::ViewCtorProp</qualifiedname>
+        <param>
+          <type>const type &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="157" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="157" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="147" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="150" bodyend="160"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1aad1417ce6355f5d6340bed15b224e9b5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1af4ba36f1817e59751555fbe431401dde" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a826f7aa208d65f7ee22aa77c33635dfc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a756ce558d87c6719ec7b5b126e4a9eb6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1a5475acdf6d4d724a782ecd4ebca04673" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01typename_01std_1_1enable__if_3_01_kokkos_1_1is__me39867c502422a40f3930d84a8733d327_1ab1d4f6aae0f60694b9fea758e623c0a7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; typename std::enable_if&lt; Kokkos::is_memory_space&lt; Space &gt;::value||Kokkos::is_execution_space&lt; Space &gt;::value &gt;::type, Space &gt;</scope><name>ViewCtorProp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

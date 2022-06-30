@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1test__random__functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::test_random_functor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class GeneratorPool</type>
+      </param>
+      <param>
+        <type>class Scalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__random__functor_1a330bcb9aa755877ed08ecf9d6bd2a772" prot="public" static="no">
+        <type>typename GeneratorPool::generator_type</type>
+        <definition>using Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::rnd_type =  typename GeneratorPool::generator_type</definition>
+        <argsstring></argsstring>
+        <name>rnd_type</name>
+        <qualifiedname>Test::Impl::test_random_functor::rnd_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="124" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__random__functor_1afb8666ff181479dc0f63f3f986842d10" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_impl_1_1_random_properties" kindref="compound">RandomProperties</ref></type>
+        <definition>using Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::value_type =  RandomProperties</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::Impl::test_random_functor::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="126" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__random__functor_1a4bc69cd8d361db8ad620f00f6a3f6788" prot="public" static="no">
+        <type>typename GeneratorPool::device_type</type>
+        <definition>using Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::device_type =  typename GeneratorPool::device_type</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Test::Impl::test_random_functor::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="127" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__random__functor_1a0e5744acc7391c546e075f2061757f48" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int[(24 *24 *24)+1], typename GeneratorPool::device_type &gt;</type>
+        <definition>using Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::type_1d =  Kokkos::View&lt;int[ ( 24 * 24 * 24 ) + 1], typename GeneratorPool::device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>type_1d</name>
+        <qualifiedname>Test::Impl::test_random_functor::type_1d</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="138" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__random__functor_1a732a3cb8e61490dc68ed8febd9bec97a" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int[24+1][24+1][24+1], typename GeneratorPool::device_type &gt;</type>
+        <definition>using Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::type_3d =  Kokkos::View&lt;int[ 24 + 1][ 24 + 1][ 24 + 1], typename GeneratorPool::device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>type_3d</name>
+        <qualifiedname>Test::Impl::test_random_functor::type_3d</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="141" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1test__random__functor_1a803de0c0e9f41c86b0e01976e776489c" prot="public" static="no" mutable="no">
+        <type>GeneratorPool</type>
+        <definition>GeneratorPool Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::rand_pool</definition>
+        <argsstring></argsstring>
+        <name>rand_pool</name>
+        <qualifiedname>Test::Impl::test_random_functor::rand_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="129" column="17" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1test__random__functor_1a949355113b913a79e28e49894cc9e6b0" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::mean</definition>
+        <argsstring></argsstring>
+        <name>mean</name>
+        <qualifiedname>Test::Impl::test_random_functor::mean</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="130" column="16" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1test__random__functor_1aca7b604f4e338a6c08bec6ec77ffb1c9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">type_1d</ref></type>
+        <definition>type_1d Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::density_1d</definition>
+        <argsstring></argsstring>
+        <name>density_1d</name>
+        <qualifiedname>Test::Impl::test_random_functor::density_1d</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="140" column="11" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1test__random__functor_1a4959541ad85c50bbac9aa8105ff704f8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">type_3d</ref></type>
+        <definition>type_3d Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::density_3d</definition>
+        <argsstring></argsstring>
+        <name>density_3d</name>
+        <qualifiedname>Test::Impl::test_random_functor::density_3d</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="144" column="11" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1test__random__functor_1ade90435573a41f728bf28a25f1ff7f1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::test_random_functor</definition>
+        <argsstring>(GeneratorPool rand_pool_, type_1d d1d, type_3d d3d)</argsstring>
+        <name>test_random_functor</name>
+        <qualifiedname>Test::Impl::test_random_functor::test_random_functor</qualifiedname>
+        <param>
+          <type>GeneratorPool</type>
+          <declname>rand_pool_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">type_1d</ref></type>
+          <declname>d1d</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">type_3d</ref></type>
+          <declname>d3d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="146" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="146" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1test__random__functor_1aab190fd5541712a519e461127c8126e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;::operator()</definition>
+        <argsstring>(int, RandomProperties &amp;prop) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::test_random_functor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type><ref refid="struct_test_1_1_impl_1_1_random_properties" kindref="compound">RandomProperties</ref> &amp;</type>
+          <declname>prop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="153" column="8" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="153" bodyend="247"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::Impl::test_random_functor&lt; GeneratorPool, Scalar &gt;</label>
+        <link refid="struct_test_1_1_impl_1_1test__random__functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>density_1d</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>density_3d</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int[(24 *24 *24)+1], typename GeneratorPool::device_type &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int[24+1][24+1][24+1], typename GeneratorPool::device_type &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" line="123" column="1" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestRandom.hpp" bodystart="123" bodyend="248"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1aca7b604f4e338a6c08bec6ec77ffb1c9" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>density_1d</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a4959541ad85c50bbac9aa8105ff704f8" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>density_3d</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a4bc69cd8d361db8ad620f00f6a3f6788" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>device_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a949355113b913a79e28e49894cc9e6b0" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>mean</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1aab190fd5541712a519e461127c8126e0" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a803de0c0e9f41c86b0e01976e776489c" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>rand_pool</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a330bcb9aa755877ed08ecf9d6bd2a772" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>rnd_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1ade90435573a41f728bf28a25f1ff7f1a" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>test_random_functor</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a0e5744acc7391c546e075f2061757f48" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>type_1d</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1a732a3cb8e61490dc68ed8febd9bec97a" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>type_3d</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__random__functor_1afb8666ff181479dc0f63f3f986842d10" prot="public" virt="non-virtual"><scope>Test::Impl::test_random_functor</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_team_scratch" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TeamScratch</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_team_scratch_1a867067293380066b7de33535261e3235" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TeamScratch&lt; ExecSpace &gt;::run</definition>
+        <argsstring>(const int pN, const int sX, const int sY)</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TeamScratch::run</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>pN</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>sX</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>sY</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test12b_TeamScratch.hpp" line="57" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test12b_TeamScratch.hpp" bodystart="57" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test12b_TeamScratch.hpp" line="56" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test12b_TeamScratch.hpp" bodystart="56" bodyend="115"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_team_scratch_1a867067293380066b7de33535261e3235" prot="public" virt="non-virtual"><scope>Test::TeamScratch</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

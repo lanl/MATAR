@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_1_1_combined_reduce_functor_same_type" kind="class" language="C++" prot="public">
+    <compoundname>Test::CombinedReduceFunctorSameType</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ValueType</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_test_1_1_combined_reduce_functor_same_type_1a0fe103c595ad22dc96c95b61b530d520" prot="public" static="no">
+        <type>typename DeviceType::execution_space</type>
+        <definition>using Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::execution_space =  typename DeviceType::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="262" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_combined_reduce_functor_same_type_1a380f2f54f6e50cb066c0f0b4aee00576" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="263" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_test_1_1_combined_reduce_functor_same_type_1ac43a36233d67e83090dc0e4c84470bbc" prot="public" static="no" mutable="no">
+        <type>const size_type</type>
+        <definition>const size_type Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::nwork</definition>
+        <argsstring></argsstring>
+        <name>nwork</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::nwork</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="265" column="19" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_1_1_combined_reduce_functor_same_type_1a12e5e35af41985fc32de782b1a3948bb" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::CombinedReduceFunctorSameType</definition>
+        <argsstring>(const size_type &amp;arg_nwork)</argsstring>
+        <name>CombinedReduceFunctorSameType</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::CombinedReduceFunctorSameType</qualifiedname>
+        <param>
+          <type>const size_type &amp;</type>
+          <declname>arg_nwork</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="268" column="22" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="268" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_combined_reduce_functor_same_type_1a8c59dd96225b3cc1bb0f8532780bac34" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::CombinedReduceFunctorSameType</definition>
+        <argsstring>(const CombinedReduceFunctorSameType &amp;rhs)=default</argsstring>
+        <name>CombinedReduceFunctorSameType</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::CombinedReduceFunctorSameType</qualifiedname>
+        <param>
+          <type>const <ref refid="class_test_1_1_combined_reduce_functor_same_type" kindref="compound">CombinedReduceFunctorSameType</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="272" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_combined_reduce_functor_same_type_1aa2557f931eed052c756bfdcfa91d49c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::operator()</definition>
+        <argsstring>(size_type iwork, ValueType &amp;dst1, ValueType &amp;dst2, ValueType &amp;dst3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>iwork</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst1</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst2</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="276" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="276" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_combined_reduce_functor_same_type_1a1192dd142adaefb2244d214f77c0f406" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::CombinedReduceFunctorSameType&lt; ValueType, DeviceType &gt;::operator()</definition>
+        <argsstring>(size_type iwork, size_type always_zero_1, size_type always_zero_2, ValueType &amp;dst1, ValueType &amp;dst2, ValueType &amp;dst3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::CombinedReduceFunctorSameType::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>iwork</declname>
+        </param>
+        <param>
+          <type>size_type</type>
+          <declname>always_zero_1</declname>
+        </param>
+        <param>
+          <type>size_type</type>
+          <declname>always_zero_2</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst1</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst2</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>dst3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="284" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="284" bodyend="290"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="260" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="260" bodyend="291"/>
+    <listofallmembers>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1a12e5e35af41985fc32de782b1a3948bb" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>CombinedReduceFunctorSameType</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1a8c59dd96225b3cc1bb0f8532780bac34" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>CombinedReduceFunctorSameType</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1a0fe103c595ad22dc96c95b61b530d520" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>execution_space</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1ac43a36233d67e83090dc0e4c84470bbc" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>nwork</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1aa2557f931eed052c756bfdcfa91d49c6" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>operator()</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1a1192dd142adaefb2244d214f77c0f406" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>operator()</name></member>
+      <member refid="class_test_1_1_combined_reduce_functor_same_type_1a380f2f54f6e50cb066c0f0b4aee00576" prot="public" virt="non-virtual"><scope>Test::CombinedReduceFunctorSameType</scope><name>size_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

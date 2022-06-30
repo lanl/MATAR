@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename S</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Pack</declname>
+        <defname>Pack</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a024686ab06f9873d1a113f2cf03d6d6f" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@80</name>
+        <qualifiedname>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;::@80</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a024686ab06f9873d1a113f2cf03d6d6fae419776865a61fbcc95d9a61c979c3b5" prot="private">
+          <name>self_value</name>
+          <initializer>= std::is_same&lt;T, S&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="84" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a74065cc9a3374f72dfd855eef013f1ba" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1has__type" kindref="compound">has_type</ref>&lt; T, Pack... &gt;</type>
+        <definition>using Kokkos::Impl::has_type&lt; T, S, Pack... &gt;::next =  has_type&lt;T, Pack...&gt;</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <qualifiedname>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;::next</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="86" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a38e5d83d942056bdeba9c95b94522285" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@81</name>
+        <qualifiedname>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;::@81</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a38e5d83d942056bdeba9c95b94522285a14b45034ab6c3d1d66c859b193071162" prot="public">
+          <name>value</name>
+          <initializer>= self_value || next::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="93" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="82" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="82" bodyend="94"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a74065cc9a3374f72dfd855eef013f1ba" prot="private" virt="non-virtual"><scope>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;</scope><name>next</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a024686ab06f9873d1a113f2cf03d6d6fae419776865a61fbcc95d9a61c979c3b5" prot="private" virt="non-virtual"><scope>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;</scope><name>self_value</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1has__type_3_01_t_00_01_s_00_01_pack_8_8_8_01_4_1a38e5d83d942056bdeba9c95b94522285a14b45034ab6c3d1d66c859b193071162" prot="public" virt="non-virtual"><scope>Kokkos::Impl::has_type&lt; T, S, Pack... &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

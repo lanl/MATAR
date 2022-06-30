@@ -1,0 +1,513 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_r_e" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::RE</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_r_e_1a45d8a808d19f22e6bff42f57ae6c9152" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char * testing::internal::RE::pattern_</definition>
+        <argsstring></argsstring>
+        <name>pattern_</name>
+        <qualifiedname>testing::internal::RE::pattern_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2092" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2092" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_r_e_1af9062fefab96529ff785f50097416d64" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::internal::RE::is_valid_</definition>
+        <argsstring></argsstring>
+        <name>is_valid_</name>
+        <qualifiedname>testing::internal::RE::is_valid_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2093" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2093" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_r_e_1a1627cf3c6e38a83518e7aefd659b938b" prot="private" static="no" mutable="no">
+        <type>regex_t</type>
+        <definition>regex_t testing::internal::RE::full_regex_</definition>
+        <argsstring></argsstring>
+        <name>full_regex_</name>
+        <qualifiedname>testing::internal::RE::full_regex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2097" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2097" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_r_e_1a1b3e42916c61db479ae90c7a96c22a58" prot="private" static="no" mutable="no">
+        <type>regex_t</type>
+        <definition>regex_t testing::internal::RE::partial_regex_</definition>
+        <argsstring></argsstring>
+        <name>partial_regex_</name>
+        <qualifiedname>testing::internal::RE::partial_regex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2098" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2098" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1ab215dbc2565fce641e1746ca43e9d68a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const RE &amp;other)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2041" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2041" bodyend="2041"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a8840bd639642f3d4769a94a68ce463c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const ::std::string &amp;regex)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2044" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2044" bodyend="2044"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a908ea936a5b7a14479a1b292a7189ca6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const char *regex)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2052" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2052" bodyend="2052"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1af3ad18e6c0b433f3d85ed23eda8119f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::~RE</definition>
+        <argsstring>()</argsstring>
+        <name>~RE</name>
+        <qualifiedname>testing::internal::RE::~RE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2053" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a755aa35fb49255d8d17bd5451cdedc5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::internal::RE::pattern</definition>
+        <argsstring>() const</argsstring>
+        <name>pattern</name>
+        <qualifiedname>testing::internal::RE::pattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2056" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2056" bodyend="2056"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1ab215dbc2565fce641e1746ca43e9d68a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const RE &amp;other)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2041" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2041" bodyend="2041"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a8840bd639642f3d4769a94a68ce463c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const ::std::string &amp;regex)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2044" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2044" bodyend="2044"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a908ea936a5b7a14479a1b292a7189ca6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::RE</definition>
+        <argsstring>(const char *regex)</argsstring>
+        <name>RE</name>
+        <qualifiedname>testing::internal::RE::RE</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2052" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2052" bodyend="2052"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1af3ad18e6c0b433f3d85ed23eda8119f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::RE::~RE</definition>
+        <argsstring>()</argsstring>
+        <name>~RE</name>
+        <qualifiedname>testing::internal::RE::~RE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2053" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a755aa35fb49255d8d17bd5451cdedc5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::internal::RE::pattern</definition>
+        <argsstring>() const</argsstring>
+        <name>pattern</name>
+        <qualifiedname>testing::internal::RE::pattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2056" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2056" bodyend="2056"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1aa79a950758d0f1d62f7762d1e9cefe86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::FullMatch</definition>
+        <argsstring>(const ::std::string &amp;str, const RE &amp;re)</argsstring>
+        <name>FullMatch</name>
+        <qualifiedname>testing::internal::RE::FullMatch</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2065" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2065" bodyend="2067"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a1e81f9a87211bdca645e025f8f0236c8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::PartialMatch</definition>
+        <argsstring>(const ::std::string &amp;str, const RE &amp;re)</argsstring>
+        <name>PartialMatch</name>
+        <qualifiedname>testing::internal::RE::PartialMatch</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2068" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2068" bodyend="2070"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a2b13ec1f6ccd6c32f7efa01e21588f0b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::FullMatch</definition>
+        <argsstring>(const char *str, const RE &amp;re)</argsstring>
+        <name>FullMatch</name>
+        <qualifiedname>testing::internal::RE::FullMatch</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2083" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a97495dd4c2bb9589522823f060c8e8ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::PartialMatch</definition>
+        <argsstring>(const char *str, const RE &amp;re)</argsstring>
+        <name>PartialMatch</name>
+        <qualifiedname>testing::internal::RE::PartialMatch</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2084" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1aa79a950758d0f1d62f7762d1e9cefe86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::FullMatch</definition>
+        <argsstring>(const ::std::string &amp;str, const RE &amp;re)</argsstring>
+        <name>FullMatch</name>
+        <qualifiedname>testing::internal::RE::FullMatch</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2065" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2065" bodyend="2067"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a1e81f9a87211bdca645e025f8f0236c8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::PartialMatch</definition>
+        <argsstring>(const ::std::string &amp;str, const RE &amp;re)</argsstring>
+        <name>PartialMatch</name>
+        <qualifiedname>testing::internal::RE::PartialMatch</qualifiedname>
+        <param>
+          <type>const ::std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2068" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2068" bodyend="2070"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a2b13ec1f6ccd6c32f7efa01e21588f0b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::FullMatch</definition>
+        <argsstring>(const char *str, const RE &amp;re)</argsstring>
+        <name>FullMatch</name>
+        <qualifiedname>testing::internal::RE::FullMatch</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2083" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a97495dd4c2bb9589522823f060c8e8ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool testing::internal::RE::PartialMatch</definition>
+        <argsstring>(const char *str, const RE &amp;re)</argsstring>
+        <name>PartialMatch</name>
+        <qualifiedname>testing::internal::RE::PartialMatch</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> &amp;</type>
+          <declname>re</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2084" column="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a4c3a519ce849abc57d6d5fffbf1e04dc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::RE::Init</definition>
+        <argsstring>(const char *regex)</argsstring>
+        <name>Init</name>
+        <qualifiedname>testing::internal::RE::Init</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2087" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a5e938c0ace885bc96d774e212957c439" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::RE::operator=</definition>
+        <argsstring>(RE const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::RE::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2106" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a4c3a519ce849abc57d6d5fffbf1e04dc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::RE::Init</definition>
+        <argsstring>(const char *regex)</argsstring>
+        <name>Init</name>
+        <qualifiedname>testing::internal::RE::Init</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>regex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2087" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_r_e_1a5e938c0ace885bc96d774e212957c439" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::RE::operator=</definition>
+        <argsstring>(RE const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::RE::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_r_e" kindref="compound">RE</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2106" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2037" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2037" bodyend="2107"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a1627cf3c6e38a83518e7aefd659b938b" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>full_regex_</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1aa79a950758d0f1d62f7762d1e9cefe86" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>FullMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a2b13ec1f6ccd6c32f7efa01e21588f0b" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>FullMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1aa79a950758d0f1d62f7762d1e9cefe86" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>FullMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a2b13ec1f6ccd6c32f7efa01e21588f0b" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>FullMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a4c3a519ce849abc57d6d5fffbf1e04dc" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>Init</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a4c3a519ce849abc57d6d5fffbf1e04dc" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>Init</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1af9062fefab96529ff785f50097416d64" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>is_valid_</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a5e938c0ace885bc96d774e212957c439" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a5e938c0ace885bc96d774e212957c439" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a1b3e42916c61db479ae90c7a96c22a58" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>partial_regex_</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a1e81f9a87211bdca645e025f8f0236c8" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>PartialMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a97495dd4c2bb9589522823f060c8e8ba" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>PartialMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a1e81f9a87211bdca645e025f8f0236c8" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>PartialMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a97495dd4c2bb9589522823f060c8e8ba" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>PartialMatch</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a755aa35fb49255d8d17bd5451cdedc5e" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>pattern</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a755aa35fb49255d8d17bd5451cdedc5e" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>pattern</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a45d8a808d19f22e6bff42f57ae6c9152" prot="private" virt="non-virtual"><scope>testing::internal::RE</scope><name>pattern_</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1ab215dbc2565fce641e1746ca43e9d68a" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a8840bd639642f3d4769a94a68ce463c2" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a908ea936a5b7a14479a1b292a7189ca6" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1ab215dbc2565fce641e1746ca43e9d68a" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a8840bd639642f3d4769a94a68ce463c2" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1a908ea936a5b7a14479a1b292a7189ca6" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1af3ad18e6c0b433f3d85ed23eda8119f3" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>~RE</name></member>
+      <member refid="classtesting_1_1internal_1_1_r_e_1af3ad18e6c0b433f3d85ed23eda8119f3" prot="public" virt="non-virtual"><scope>testing::internal::RE</scope><name>~RE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

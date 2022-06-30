@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test06" kind="namespace" language="C++">
+    <compoundname>Test06</compoundname>
+    <innerclass refid="struct_test06_1_1_m_d_functor" prot="public">Test06::MDFunctor</innerclass>
+    <innerclass refid="struct_test06_1_1_test_m_d_range_policy" prot="public">Test06::TestMDRangePolicy</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_test06_1ac6615b1fdd37492f2a07db061882e124" prot="public" static="no">
+        <type>double</type>
+        <definition>using Test06::value_type = typedef double</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test06::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>@Kokkos_Feature_Level_Required:6 </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="55" column="1"/>
+  </compounddef>
+</doxygen>

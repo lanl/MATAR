@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_scan_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestScanFunctor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_scan_functor_1ac161efe399107def6f13115743510504" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestScanFunctor::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Test::TestScanFunctor::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="90" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_scan_functor_1a6bcb439935572a981c4a7aed15e063f9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestScanFunctor::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>Test::TestScanFunctor::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="91" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_scan_functor_1aeb44353d2a6d4165c878491a29fc91f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestScanFunctor::TestScanFunctor</definition>
+        <argsstring>(int N)</argsstring>
+        <name>TestScanFunctor</name>
+        <qualifiedname>Test::TestScanFunctor::TestScanFunctor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="93" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_scan_functor_1ad9905482b2d64e3b55598e6e64555ba8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestScanFunctor::operator()</definition>
+        <argsstring>(int i, double &amp;val, bool final) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestScanFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>final</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="96" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_scan_functor_1ad6314b12012bdbc5d3c44cd391621c14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double Test::TestScanFunctor::time_par_scan</definition>
+        <argsstring>()</argsstring>
+        <name>time_par_scan</name>
+        <qualifiedname>Test::TestScanFunctor::time_par_scan</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="101" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="101" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestScanFunctor</label>
+        <link refid="struct_test_1_1_test_scan_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+          <edgelabel>b</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double * &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" line="89" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugSerialExecution.cpp" bodystart="89" bodyend="109"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_scan_functor_1ac161efe399107def6f13115743510504" prot="public" virt="non-virtual"><scope>Test::TestScanFunctor</scope><name>a</name></member>
+      <member refid="struct_test_1_1_test_scan_functor_1a6bcb439935572a981c4a7aed15e063f9" prot="public" virt="non-virtual"><scope>Test::TestScanFunctor</scope><name>b</name></member>
+      <member refid="struct_test_1_1_test_scan_functor_1ad9905482b2d64e3b55598e6e64555ba8" prot="public" virt="non-virtual"><scope>Test::TestScanFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_scan_functor_1aeb44353d2a6d4165c878491a29fc91f3" prot="public" virt="non-virtual"><scope>Test::TestScanFunctor</scope><name>TestScanFunctor</name></member>
+      <member refid="struct_test_1_1_test_scan_functor_1ad6314b12012bdbc5d3c44cd391621c14" prot="public" virt="non-virtual"><scope>Test::TestScanFunctor</scope><name>time_par_scan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

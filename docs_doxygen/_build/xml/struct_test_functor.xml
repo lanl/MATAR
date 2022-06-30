@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_functor" kind="struct" language="C++" prot="public">
+    <compoundname>TestFunctor</compoundname>
+    <innerclass refid="struct_test_functor_1_1_tag_alloc_dealloc" prot="public">TestFunctor::TagAllocDealloc</innerclass>
+    <innerclass refid="struct_test_functor_1_1_tag_del" prot="public">TestFunctor::TagDel</innerclass>
+    <innerclass refid="struct_test_functor_1_1_tag_fill" prot="public">TestFunctor::TagFill</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_functor_1a4e2f6c71c801ec16abc1cc7795a0b065" prot="public" static="no" strong="no">
+        <type>unsigned</type>
+        <name>@38</name>
+        <qualifiedname>TestFunctor::@38</qualifiedname>
+        <enumvalue id="struct_test_functor_1a4e2f6c71c801ec16abc1cc7795a0b065a0ce0f2b2673cf917b9d5bd812d8dae91" prot="public">
+          <name>chunk</name>
+          <initializer>= 32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_functor_1a4ea4f982a2451c9eea24cce6064fab81" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; uintptr_t *, ExecSpace &gt;</type>
+        <definition>using TestFunctor::ptrs_type =  Kokkos::View&lt;uintptr_t*, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>ptrs_type</name>
+        <qualifiedname>TestFunctor::ptrs_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_functor_1afa7dcaa54ac7ddee69eea4a17be8ae27" prot="public" static="no">
+        <type>long</type>
+        <definition>using TestFunctor::value_type =  long</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>TestFunctor::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="90" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_functor_1a1392482bcb473d5a9697183d728eaec5" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">MemoryPool</ref></type>
+        <definition>MemoryPool TestFunctor::pool</definition>
+        <argsstring></argsstring>
+        <name>pool</name>
+        <qualifiedname>TestFunctor::pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="63" column="14" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_functor_1ab2deca084a786890c45a32a73287d72d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ptrs_type</ref></type>
+        <definition>ptrs_type TestFunctor::ptrs</definition>
+        <argsstring></argsstring>
+        <name>ptrs</name>
+        <qualifiedname>TestFunctor::ptrs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="64" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_functor_1a77d4d12b5edff86bfdaf246e20309335" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned TestFunctor::chunk_span</definition>
+        <argsstring></argsstring>
+        <name>chunk_span</name>
+        <qualifiedname>TestFunctor::chunk_span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="65" column="12" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_functor_1acf70ac19f056eae4787323a6e8d0f4dd" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned TestFunctor::fill_stride</definition>
+        <argsstring></argsstring>
+        <name>fill_stride</name>
+        <qualifiedname>TestFunctor::fill_stride</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="66" column="12" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_functor_1a2d40780eafc9f25f6adaf4e551c5652d" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned TestFunctor::range_iter</definition>
+        <argsstring></argsstring>
+        <name>range_iter</name>
+        <qualifiedname>TestFunctor::range_iter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="67" column="12" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_functor_1a809218b2f4d74436ae831bf311303d75" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned TestFunctor::repeat_inner</definition>
+        <argsstring></argsstring>
+        <name>repeat_inner</name>
+        <qualifiedname>TestFunctor::repeat_inner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="68" column="12" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_functor_1a2c79e279cfcbc2528da5c7482f57a8cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestFunctor::TestFunctor</definition>
+        <argsstring>(size_t total_alloc_size, unsigned min_superblock_size, unsigned number_alloc, unsigned arg_stride_alloc, unsigned arg_chunk_span, unsigned arg_repeat)</argsstring>
+        <name>TestFunctor</name>
+        <qualifiedname>TestFunctor::TestFunctor</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>total_alloc_size</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>min_superblock_size</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>number_alloc</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>arg_stride_alloc</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>arg_chunk_span</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>arg_repeat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="70" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1a8258c14e6d5a8046f91e144da0af00ae" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestFunctor::operator()</definition>
+        <argsstring>(TagFill, int i, value_type &amp;update) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestFunctor::operator()</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_functor_1_1_tag_fill" kindref="compound">TagFill</ref></type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="97" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="97" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1a4d4a0f1b671fe1325e5cc9eb6504e77a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TestFunctor::test_fill</definition>
+        <argsstring>()</argsstring>
+        <name>test_fill</name>
+        <qualifiedname>TestFunctor::test_fill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="109" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="109" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1a3e996ed65fc7e0f911e4ac3561b0d99c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestFunctor::operator()</definition>
+        <argsstring>(TagDel, int i) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestFunctor::operator()</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_functor_1_1_tag_del" kindref="compound">TagDel</ref></type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="126" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="126" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1aa0869d3ac9f81ca81b5edc5f9cdb4552" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestFunctor::test_del</definition>
+        <argsstring>()</argsstring>
+        <name>test_del</name>
+        <qualifiedname>TestFunctor::test_del</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="136" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="136" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1a31b615a21c95cb223bf20e36ee59e204" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestFunctor::operator()</definition>
+        <argsstring>(TagAllocDealloc, int i, long &amp;update) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestFunctor::operator()</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_functor_1_1_tag_alloc_dealloc" kindref="compound">TagAllocDealloc</ref></type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="148" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="148" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_functor_1a847a150917419dbcecef2743aa095561" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TestFunctor::test_alloc_dealloc</definition>
+        <argsstring>()</argsstring>
+        <name>test_alloc_dealloc</name>
+        <qualifiedname>TestFunctor::test_alloc_dealloc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="166" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="166" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::MemoryPool&lt; ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_memory_pool"/>
+      </node>
+      <node id="1">
+        <label>TestFunctor</label>
+        <link refid="struct_test_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pool</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ptrs</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::View&lt; uintptr_t *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::ViewTraits&lt; uintptr_t *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/test_mempool.cpp" bodystart="58" bodyend="175"/>
+    <listofallmembers>
+      <member refid="struct_test_functor_1a4e2f6c71c801ec16abc1cc7795a0b065a0ce0f2b2673cf917b9d5bd812d8dae91" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>chunk</name></member>
+      <member refid="struct_test_functor_1a77d4d12b5edff86bfdaf246e20309335" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>chunk_span</name></member>
+      <member refid="struct_test_functor_1acf70ac19f056eae4787323a6e8d0f4dd" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>fill_stride</name></member>
+      <member refid="struct_test_functor_1a8258c14e6d5a8046f91e144da0af00ae" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_functor_1a3e996ed65fc7e0f911e4ac3561b0d99c" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_functor_1a31b615a21c95cb223bf20e36ee59e204" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_functor_1a1392482bcb473d5a9697183d728eaec5" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>pool</name></member>
+      <member refid="struct_test_functor_1ab2deca084a786890c45a32a73287d72d" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>ptrs</name></member>
+      <member refid="struct_test_functor_1a4ea4f982a2451c9eea24cce6064fab81" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>ptrs_type</name></member>
+      <member refid="struct_test_functor_1a2d40780eafc9f25f6adaf4e551c5652d" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>range_iter</name></member>
+      <member refid="struct_test_functor_1a809218b2f4d74436ae831bf311303d75" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>repeat_inner</name></member>
+      <member refid="struct_test_functor_1a847a150917419dbcecef2743aa095561" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>test_alloc_dealloc</name></member>
+      <member refid="struct_test_functor_1aa0869d3ac9f81ca81b5edc5f9cdb4552" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>test_del</name></member>
+      <member refid="struct_test_functor_1a4d4a0f1b671fe1325e5cc9eb6504e77a" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>test_fill</name></member>
+      <member refid="struct_test_functor_1a2c79e279cfcbc2528da5c7482f57a8cc" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>TestFunctor</name></member>
+      <member refid="struct_test_functor_1afa7dcaa54ac7ddee69eea4a17be8ae27" prot="public" virt="non-virtual"><scope>TestFunctor</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

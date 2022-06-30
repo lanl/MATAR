@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</compoundname>
+    <includes refid="_kokkos___view_mapping_8hpp" local="no">Kokkos_ViewMapping.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class DstTraits</type>
+      </param>
+      <param>
+        <type>class SrcTraits</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a95737bb316fbb509a56fd5ea376c41b4" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@152</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@152</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a95737bb316fbb509a56fd5ea376c41b4a4432fa04eb0e732e1952b74aaba9c22c" prot="private">
+          <name>is_assignable_space</name>
+          <initializer>= Kokkos::Impl::MemorySpaceAccess&lt;
+        typename DstTraits::memory_space,
+        typename SrcTraits::memory_space&gt;::assignable</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3422" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3422" bodyend="3426"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a86e52eec3e458baa7ce4fc3db5ccc33d" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@153</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@153</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a86e52eec3e458baa7ce4fc3db5ccc33da8db8f610e1339ee5a2650c918413e218" prot="private">
+          <name>is_assignable_value_type</name>
+          <initializer>=
+        std::is_same&lt;typename DstTraits::value_type,
+                     typename SrcTraits::value_type&gt;::value ||
+        std::is_same&lt;typename DstTraits::value_type,
+                     typename SrcTraits::const_value_type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3428" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3428" bodyend="3434"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a0c78c689c67e1007724c74c488d34a9e" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@154</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@154</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a0c78c689c67e1007724c74c488d34a9ea1edc8314048cd296bdf6599ef743cc3b" prot="private">
+          <name>is_assignable_dimension</name>
+          <initializer>=
+        ViewDimensionAssignable&lt;typename DstTraits::dimension,
+                                typename SrcTraits::dimension&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3436" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3436" bodyend="3440"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a269ae8ccc8d5cb6b16135867081a8d22" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@155</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@155</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a269ae8ccc8d5cb6b16135867081a8d22a74d61af62f967bea9f945ae14a4ca43e" prot="private">
+          <name>is_assignable_layout</name>
+          <initializer>=
+        std::is_same&lt;typename DstTraits::array_layout,
+                     typename SrcTraits::array_layout&gt;::value ||
+        std::is_same&lt;typename DstTraits::array_layout,
+                     Kokkos::LayoutStride&gt;::value ||
+        (DstTraits::dimension::rank == 0) ||
+        (DstTraits::dimension::rank == 1 &amp;&amp;
+         DstTraits::dimension::rank_dynamic == 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3442" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3442" bodyend="3451"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1aaf5b60417c0d586d8bf8d55bd17930cc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@156</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@156</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1aaf5b60417c0d586d8bf8d55bd17930cca2e4842c99980e27ae30dca3bf832e4b4" prot="public">
+          <name>is_assignable_data_type</name>
+          <initializer>=
+        is_assignable_value_type &amp;&amp; is_assignable_dimension</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3454" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3454" bodyend="3457"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1ad8b9c4617a20c52c828adae564aca9b3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@157</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::@157</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1ad8b9c4617a20c52c828adae564aca9b3aee99535549a35553c21e2c960ab9cae5" prot="public">
+          <name>is_assignable</name>
+          <initializer>= is_assignable_space &amp;&amp; is_assignable_value_type &amp;&amp;
+                    is_assignable_dimension &amp;&amp; is_assignable_layout</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3458" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3458" bodyend="3461"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1af636e8cfa03e1de15b61b754910c308e" prot="public" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::TrackType =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>TrackType</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::TrackType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3463" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3463" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a3728d6d974b04829521edc979893bf53" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">ViewMapping</ref>&lt; DstTraits, void &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::DstType =  ViewMapping&lt;DstTraits, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>DstType</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::DstType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3464" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3464" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a410ebf3f4ceac9f697825ba9c0c23283" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">ViewMapping</ref>&lt; SrcTraits, void &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::SrcType =  ViewMapping&lt;SrcTraits, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>SrcType</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::SrcType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3465" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3465" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1ab2f52756e42ecc2cc6b3648e9283dcaa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::assign</definition>
+        <argsstring>(DstType &amp;dst, const SrcType &amp;src, const TrackType &amp;src_track)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;::assign</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">DstType</ref> &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">SrcType</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">TrackType</ref> &amp;</type>
+          <declname>src_track</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3468" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3468" bodyend="3529"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Assign compatible default mappings. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3395" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3420" bodyend="3530"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1ab2f52756e42ecc2cc6b3648e9283dcaa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>assign</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a3728d6d974b04829521edc979893bf53" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>DstType</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1ad8b9c4617a20c52c828adae564aca9b3aee99535549a35553c21e2c960ab9cae5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1aaf5b60417c0d586d8bf8d55bd17930cca2e4842c99980e27ae30dca3bf832e4b4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable_data_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a0c78c689c67e1007724c74c488d34a9ea1edc8314048cd296bdf6599ef743cc3b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable_dimension</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a269ae8ccc8d5cb6b16135867081a8d22a74d61af62f967bea9f945ae14a4ca43e" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable_layout</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a95737bb316fbb509a56fd5ea376c41b4a4432fa04eb0e732e1952b74aaba9c22c" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a86e52eec3e458baa7ce4fc3db5ccc33da8db8f610e1339ee5a2650c918413e218" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>is_assignable_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1a410ebf3f4ceac9f697825ba9c0c23283" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>SrcType</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_dst_traits_00_01_src_traits_00_01typename_01std_1_1e1c3c077b111785296d2fc9410bbe05b1_1af636e8cfa03e1de15b61b754910c308e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; DstTraits, SrcTraits, typename std::enable_if&lt;(!(std::is_same&lt; typename SrcTraits::array_layout, LayoutStride &gt;::value) &amp;&amp;std::is_same&lt; typename DstTraits::specialize, void &gt;::value &amp;&amp;std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename DstTraits::array_layout, typename SrcTraits::array_layout &gt;::value||((std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename DstTraits::array_layout, Kokkos::LayoutStride &gt;::value) &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))))&gt;::type &gt;</scope><name>TrackType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_scatter_view" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::ScatterView</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename DataType</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>Kokkos::DefaultExecutionSpace::array_layout</defval>
+      </param>
+      <param>
+        <type>typename DeviceType</type>
+        <defval>Kokkos::DefaultExecutionSpace</defval>
+      </param>
+      <param>
+        <type>typename Op</type>
+        <defval><ref refid="struct_kokkos_1_1_experimental_1_1_scatter_sum" kindref="compound">Kokkos::Experimental::ScatterSum</ref></defval>
+      </param>
+      <param>
+        <type>typename Duplication</type>
+        <defval>typename Kokkos::Impl::Experimental:: DefaultDuplication&lt;typename DeviceType::execution_space&gt;::type</defval>
+      </param>
+      <param>
+        <type>typename Contribution</type>
+        <defval>typename <ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_default_contribution" kindref="compound">Kokkos::Impl::Experimental::DefaultContribution</ref>&lt;                  typename DeviceType::execution_space, Duplication&gt;::type</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="744" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="744" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

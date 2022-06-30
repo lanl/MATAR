@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::MirrorOffsetViewType</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>P</declname>
+        <defname>P</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a07295434dfcb7fbd661819365032038e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@26</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::@26</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a07295434dfcb7fbd661819365032038ea92065cd63afd7ff5454eb27ef57fe629" prot="public">
+          <name>is_same_memspace</name>
+          <initializer>=
+        std::is_same&lt;memory_space, typename src_view_type::memory_space&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1883" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1883" bodyend="1886"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a45b93a87c8adb1b1958fbe5413b2aa40" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">Kokkos::Experimental::OffsetView</ref>&lt; T, P... &gt;</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::src_view_type =  typename Kokkos::Experimental::OffsetView&lt;T, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>src_view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::src_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1879" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1879" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a0e938ba74239304ded0f6556d97cd970" prot="public" static="no">
+        <type>typename Space::memory_space</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::memory_space =  typename Space::memory_space</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1881" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1881" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1ae40d44dcbaf418e6d165c7ce6e52c99f" prot="public" static="no">
+        <type>typename src_view_type::array_layout</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::array_layout =  typename src_view_type::array_layout</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1888" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1888" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1aaf3fc7d07896b98cc38209ed36ee8f66" prot="public" static="no">
+        <type>typename src_view_type::non_const_data_type</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::data_type =  typename src_view_type::non_const_data_type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1891" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1891" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a286160081290c150521a42443571856e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">Kokkos::Experimental::OffsetView</ref>&lt; data_type, array_layout, Space &gt;</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::dest_view_type =  Kokkos::Experimental::OffsetView&lt;data_type, array_layout, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>dest_view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::dest_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1893" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1894" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a51dca2444aef9bc395715caef670e8cc" prot="public" static="no">
+        <type>typename std::conditional&lt; is_same_memspace, src_view_type, <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">dest_view_type</ref> &gt;::type</type>
+        <definition>using Kokkos::Impl::MirrorOffsetViewType&lt; Space, T, P &gt;::view_type =  typename std::conditional&lt;is_same_memspace, src_view_type, dest_view_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorOffsetViewType::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1897" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1898" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1877" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1877" bodyend="1899"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1ae40d44dcbaf418e6d165c7ce6e52c99f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1aaf3fc7d07896b98cc38209ed36ee8f66" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a286160081290c150521a42443571856e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>dest_view_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a07295434dfcb7fbd661819365032038ea92065cd63afd7ff5454eb27ef57fe629" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>is_same_memspace</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a0e938ba74239304ded0f6556d97cd970" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a45b93a87c8adb1b1958fbe5413b2aa40" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>src_view_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_offset_view_type_1a51dca2444aef9bc395715caef670e8cc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorOffsetViewType</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

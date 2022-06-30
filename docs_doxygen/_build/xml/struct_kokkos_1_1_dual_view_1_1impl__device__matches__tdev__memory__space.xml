@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::DualView::impl_device_matches_tdev_memory_space</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space_1a586d7f09e90c63f5b94acd536ba73c2d" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@11</name>
+        <qualifiedname>Kokkos::DualView::impl_device_matches_tdev_memory_space::@11</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space_1a586d7f09e90c63f5b94acd536ba73c2dac39a982f5a7a211f2e4c19881b24785f" prot="public">
+          <name>value</name>
+          <initializer>= std::is_same&lt;typename t_dev::memory_space,
+                           typename Device::memory_space&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="359" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="359" bodyend="362"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="358" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="358" bodyend="363"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space_1a586d7f09e90c63f5b94acd536ba73c2dac39a982f5a7a211f2e4c19881b24785f" prot="public" virt="non-virtual"><scope>Kokkos::DualView::impl_device_matches_tdev_memory_space</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

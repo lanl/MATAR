@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test" kind="struct" language="C++" prot="public">
+    <compoundname>Performance::InitViewFunctor::SumComputationTest</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a32ea80a9bb7b6d375dac1525e97e0e38" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double ***, DeviceType &gt;</type>
+        <definition>using Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::inviewtype =  Kokkos::View&lt;double ***, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>inviewtype</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::inviewtype</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="76" column="5" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1ae102730d398744ffda433ca464efb9b5" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, DeviceType &gt;</type>
+        <definition>using Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::outviewtype =  Kokkos::View&lt;double *, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>outviewtype</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::outviewtype</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="79" column="5" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1aeba2b6738adc2953a09d29eca865e85d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">inviewtype</ref></type>
+        <definition>inviewtype Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::_inview</definition>
+        <argsstring></argsstring>
+        <name>_inview</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::_inview</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="77" column="16" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a95605ca5f03129ca889c2027ffd42af9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">outviewtype</ref></type>
+        <definition>outviewtype Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::_outview</definition>
+        <argsstring></argsstring>
+        <name>_outview</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::_outview</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="80" column="17" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a6384341b640d5bc029823792f05cf46a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::SumComputationTest</definition>
+        <argsstring>(inviewtype &amp;inview_, outviewtype &amp;outview_)</argsstring>
+        <name>SumComputationTest</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::SumComputationTest</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">inviewtype</ref> &amp;</type>
+          <declname>inview_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">outviewtype</ref> &amp;</type>
+          <declname>outview_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="83" column="5" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="83" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a6e71d78e8ffa30c077e9ce451d8d8989" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest::operator()</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Performance::InitViewFunctor::SumComputationTest::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="87" column="10" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="87" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Performance::InitViewFunctor&lt; DeviceType &gt;::SumComputationTest</label>
+        <link refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_inview</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_outview</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double ***, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; double *, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double ***, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="75" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="75" bodyend="94"/>
+    <listofallmembers>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1aeba2b6738adc2953a09d29eca865e85d" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>_inview</name></member>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a95605ca5f03129ca889c2027ffd42af9" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>_outview</name></member>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a32ea80a9bb7b6d375dac1525e97e0e38" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>inviewtype</name></member>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a6e71d78e8ffa30c077e9ce451d8d8989" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>operator()</name></member>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1ae102730d398744ffda433ca464efb9b5" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>outviewtype</name></member>
+      <member refid="struct_performance_1_1_init_view_functor_1_1_sum_computation_test_1a6384341b640d5bc029823792f05cf46a" prot="public" virt="non-virtual"><scope>Performance::InitViewFunctor::SumComputationTest</scope><name>SumComputationTest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

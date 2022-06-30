@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_math_unary_function__trunc" kind="struct" language="C++" prot="public">
+    <compoundname>MathUnaryFunction_trunc</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_math_unary_function__trunc_1a682949dcf0e8e55d02b03efb021873e1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION auto</type>
+        <definition>static KOKKOS_FUNCTION auto MathUnaryFunction_trunc::eval</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval</name>
+        <qualifiedname>MathUnaryFunction_trunc::eval</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="355" column="72" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="355" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__trunc_1adce8465cbc6774adf1b702d21d36da9f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto MathUnaryFunction_trunc::eval_std</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval_std</name>
+        <qualifiedname>MathUnaryFunction_trunc::eval_std</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="355" column="280" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="355" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__trunc_1a09438bc6c7db8c699560dabf3f4ffd2c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>static KOKKOS_FUNCTION double MathUnaryFunction_trunc::ulp_factor</definition>
+        <argsstring>()</argsstring>
+        <name>ulp_factor</name>
+        <qualifiedname>MathUnaryFunction_trunc::ulp_factor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="355" column="462" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="355" bodyend="355"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="355" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="355" bodyend="355"/>
+    <listofallmembers>
+      <member refid="struct_math_unary_function__trunc_1a682949dcf0e8e55d02b03efb021873e1" prot="public" virt="non-virtual"><scope>MathUnaryFunction_trunc</scope><name>eval</name></member>
+      <member refid="struct_math_unary_function__trunc_1adce8465cbc6774adf1b702d21d36da9f" prot="public" virt="non-virtual"><scope>MathUnaryFunction_trunc</scope><name>eval_std</name></member>
+      <member refid="struct_math_unary_function__trunc_1a09438bc6c7db8c699560dabf3f4ffd2c" prot="public" virt="non-virtual"><scope>MathUnaryFunction_trunc</scope><name>ulp_factor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

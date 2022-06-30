@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::SYCLQueueScratchTestFunctor</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a4b9a227d3163f446fd882eaadd935c54" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Kokkos::Experimental::SYCL &gt;::member_type</type>
+        <definition>using Test::Impl::SYCLQueueScratchTestFunctor::team_t =  Kokkos::TeamPolicy&lt;Kokkos::Experimental::SYCL&gt;::member_type</definition>
+        <argsstring></argsstring>
+        <name>team_t</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::team_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="53" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1af4e353f11d61e5a30b9043ee00591f64" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t *, Kokkos::Experimental::SYCL::scratch_memory_space &gt;</type>
+        <definition>using Test::Impl::SYCLQueueScratchTestFunctor::scratch_t =  Kokkos::View&lt;int64_t*, Kokkos::Experimental::SYCL::scratch_memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>scratch_t</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::scratch_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="54" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1ae065e094882522e76f227de8e2ed390d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t, Kokkos::Experimental::SYCLDeviceUSMSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>Kokkos::View&lt;int64_t, Kokkos::Experimental::SYCLDeviceUSMSpace, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt; Test::Impl::SYCLQueueScratchTestFunctor::counter</definition>
+        <argsstring></argsstring>
+        <name>counter</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::counter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="59" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a1471c338a57b481f7d8d3b123f1ca396" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::Impl::SYCLQueueScratchTestFunctor::N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::N</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="60" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a325abb73a26b125cb7fdc5fa80be434a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::Impl::SYCLQueueScratchTestFunctor::M</definition>
+        <argsstring></argsstring>
+        <name>M</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::M</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="60" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1ad1fe3ff7d0b5a8eff3509e5a798beb80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::SYCLQueueScratchTestFunctor::SYCLQueueScratchTestFunctor</definition>
+        <argsstring>(Kokkos::View&lt; int64_t, Kokkos::Experimental::SYCLDeviceUSMSpace &gt; counter_, int N_, int M_)</argsstring>
+        <name>SYCLQueueScratchTestFunctor</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::SYCLQueueScratchTestFunctor</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t, Kokkos::Experimental::SYCLDeviceUSMSpace &gt;</type>
+          <declname>counter_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>N_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>M_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a46e9364f26ac2f4932afb5a80c9482f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::Impl::SYCLQueueScratchTestFunctor::operator()</definition>
+        <argsstring>(const team_t &amp;team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::SYCLQueueScratchTestFunctor::operator()</qualifiedname>
+        <param>
+          <type>const team_t &amp;</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="67" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="67" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::Impl::SYCLQueueScratchTestFunctor</label>
+        <link refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>counter</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int64_t, Kokkos::Experimental::SYCLDeviceUSMSpace, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int64_t, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" line="52" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_TeamScratchStreams.cpp" bodystart="52" bodyend="81"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1ae065e094882522e76f227de8e2ed390d" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>counter</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a325abb73a26b125cb7fdc5fa80be434a" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>M</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a1471c338a57b481f7d8d3b123f1ca396" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>N</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a46e9364f26ac2f4932afb5a80c9482f0" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1af4e353f11d61e5a30b9043ee00591f64" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>scratch_t</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1ad1fe3ff7d0b5a8eff3509e5a798beb80" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>SYCLQueueScratchTestFunctor</name></member>
+      <member refid="struct_test_1_1_impl_1_1_s_y_c_l_queue_scratch_test_functor_1a4b9a227d3163f446fd882eaadd935c54" prot="public" virt="non-virtual"><scope>Test::Impl::SYCLQueueScratchTestFunctor</scope><name>team_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

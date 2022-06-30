@@ -1,0 +1,1222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</compoundname>
+    <includes refid="_kokkos___view_array_8hpp" local="no">Kokkos_ViewArray.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Traits</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae53d2582048a50c9b1e7280896abfda0" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@93</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@93</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae53d2582048a50c9b1e7280896abfda0a7e3bb20af904e9c2f4aa1443db1cfe13" prot="private">
+          <name>is_contiguous_reference</name>
+          <initializer>=
+        (Traits::rank == 0) || (std::is_same&lt;typename Traits::array_layout,
+                                             Kokkos::LayoutRight&gt;::value)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="135" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="135" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a365fb967fe01552eaf88e64f974e6839" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@94</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@94</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a365fb967fe01552eaf88e64f974e6839a04921405db30a81be1b08f49d8755f54" prot="private">
+          <name>Array_N</name>
+          <initializer>= Traits::value_type::size()</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="141" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a927c4be30538f93f55ec934ab15439b0" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@95</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@95</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a927c4be30538f93f55ec934ab15439b0a60739fb76d6d3072222031305c2c97a9" prot="private">
+          <name>Array_S</name>
+          <initializer>= is_contiguous_reference ? Array_N : 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="142" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="142" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a7e9f6ea46b0b21099d6687d00c32df70" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@97</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@97</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a7e9f6ea46b0b21099d6687d00c32df70aa4c7b72050ba34f0884da83dad60322e" prot="private">
+          <name>MemorySpanMask</name>
+          <initializer>= 8 - 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="326" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="326" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a74d7326b6b816b8cab5a534e2ccbf5d0" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@98</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@98</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a74d7326b6b816b8cab5a534e2ccbf5d0a945987aaf6034246b982e2c9bcc0eee1" prot="private">
+          <name>MemorySpanSize</name>
+          <initializer>= sizeof(scalar_type)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="327" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="327" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2273fb1ae92281625f1054aea26b25ca" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref>&lt; typename Traits::dimension, typename Traits::array_layout, void &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::offset_type =  ViewOffset&lt;typename Traits::dimension, typename Traits::array_layout, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>offset_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::offset_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a331591d72953e7ff448cfbfd1f0debf6" prot="private" static="no">
+        <type>typename Traits::value_type::pointer</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::handle_type =  typename Traits::value_type::pointer</definition>
+        <argsstring></argsstring>
+        <name>handle_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::handle_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="122" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aece64d7e2fbbe5b619c146a140499cc5" prot="private" static="no">
+        <type>typename Traits::value_type::value_type</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::scalar_type =  typename Traits::value_type::value_type</definition>
+        <argsstring></argsstring>
+        <name>scalar_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::scalar_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="128" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae7db84462eb3e38ac8a33814ffd1a817" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; scalar_type,(~std::size_t(0)), <ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt;&gt;::contiguous &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::contiguous_reference =  Kokkos::Array&lt;scalar_type, (~std::size_t(0)), Kokkos::Array&lt;&gt;::contiguous&gt;</definition>
+        <argsstring></argsstring>
+        <name>contiguous_reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::contiguous_reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="130" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3555301f1157f3cf30da661ab76f8f62" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; scalar_type,(~std::size_t(0)), <ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt;&gt;::strided &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::strided_reference =  Kokkos::Array&lt;scalar_type, (~std::size_t(0)), Kokkos::Array&lt;&gt;::strided&gt;</definition>
+        <argsstring></argsstring>
+        <name>strided_reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::strided_reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="132" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a48b903322e582fd33b52301e6d55dced" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@96</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::@96</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a48b903322e582fd33b52301e6d55dceda1a5f8c08f7d93effca82e4da3226756e" prot="public">
+          <name>Rank</name>
+          <initializer>= Traits::dimension::rank</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="154" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a53670549071730750d2be0cf249f123f" prot="public" static="no">
+        <type>typename offset_type::is_regular</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::is_regular =  typename offset_type::is_regular</definition>
+        <argsstring></argsstring>
+        <name>is_regular</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::is_regular</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="192" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a27701e2cce5cf8768e9ca03a6cf829eb" prot="public" static="no">
+        <type>typename std::conditional&lt; is_contiguous_reference, <ref refid="struct_kokkos_1_1_array" kindref="compound">contiguous_reference</ref>, <ref refid="struct_kokkos_1_1_array" kindref="compound">strided_reference</ref> &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference_type =  typename std::conditional&lt;is_contiguous_reference, contiguous_reference, strided_reference&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="232" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a0229efb6df062eb8c0a185cf3307be65" prot="public" static="no">
+        <type>handle_type</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::pointer_type =  handle_type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="236" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aeabbd162a7499cfaa77ba11da09ab1ee" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class ViewMapping</definition>
+        <argsstring></argsstring>
+        <name>ViewMapping</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">ViewMapping</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="115" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a4604926ff7556af89144749e8d33e90f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class Kokkos::View</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::View</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::View</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="117" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1acecf44a2d9908c7f5ea6ee9f18489f02" prot="private" static="no" mutable="no">
+        <type>handle_type</type>
+        <definition>handle_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_impl_handle</definition>
+        <argsstring></argsstring>
+        <name>m_impl_handle</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_impl_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="124" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a64fc2a9a741e93cbbdd1a4e97f527994" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">offset_type</ref></type>
+        <definition>offset_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_impl_offset</definition>
+        <argsstring></argsstring>
+        <name>m_impl_offset</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_impl_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="125" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3dc8d8af5b23c3556ba78e9b7d49fd8b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_stride</definition>
+        <argsstring></argsstring>
+        <name>m_stride</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::m_stride</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="126" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a51b967815de45697c0da211014f543a3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</definition>
+        <argsstring>(const handle_type &amp;arg_handle, const offset_type &amp;arg_offset)</argsstring>
+        <name>ViewMapping</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</qualifiedname>
+        <param>
+          <type>const handle_type &amp;</type>
+          <declname>arg_handle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">offset_type</ref> &amp;</type>
+          <declname>arg_offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="145" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="145" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2e55c7d4661cd5713d5ef18c6bb4a9eb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::extent</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::extent</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="157" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="157" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a129131f9e72c3239789d78b37de67e76" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr Traits::array_layout</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Traits::array_layout Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::layout</definition>
+        <argsstring>() const</argsstring>
+        <name>layout</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="161" column="66" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="161" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a87b03cc5bec99b14f92b550091fadfae" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_0</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_0</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="166" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="166" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a889d58c3d54104e8ec6a97926945686d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_1</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_1</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="169" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="169" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1adeb09ebd31cb282e01e548d853e97131" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_2</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_2</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="172" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a241c3235dd35870fd3ff8fa695af0085" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_3</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_3</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="175" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="175" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab9ab0d1a0927e8093ae3bb1ff8f07af6" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_4</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_4</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="178" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="178" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a93995dd6078a85b7c40bc377bb999df7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_5</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_5</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="181" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3f9096538f6304582875ad92366f22b0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_6</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_6</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="184" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="184" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ade908d9cbb45ebfe24b3823e792d7145" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_7</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_7</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::dimension_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="187" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="187" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aa1ed766edaf9f2b877f3b3782879fe96" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_0</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_0</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="194" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="194" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af88e73bc258140efd48050c37235a223" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_1</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_1</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="197" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="197" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a8331ecbcc06ef3273100baedc5f5f370" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_2</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_2</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="200" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="200" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aea08511fed211899d15521dad4490274" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_3</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_3</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="203" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab23f292df501758e5c0b2291c710f36c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_4</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_4</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="206" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="206" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a409f2f858f6b95b020a2ad339b063c5b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_5</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_5</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="209" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af2f0c59f73af729761b5591b86d0c35f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_6</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_6</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="212" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="212" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a7d2a2a66946944f3f41480ac5197a380" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_7</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_7</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::stride_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="215" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae4fbb43be81556f354ac211d4bd86af7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::span</qualifiedname>
+        <briefdescription>
+<para>Span of the mapped range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="223" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="223" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a1f57e0cce61a3b8c886c16e2ff85eecc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::span_is_contiguous</qualifiedname>
+        <briefdescription>
+<para>Is the mapped range span contiguous. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="228" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="228" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aabcd18e320d683a02379d60847dee119" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr pointer_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr pointer_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::data</qualifiedname>
+        <briefdescription>
+<para>If data references are lvalue_reference than can query pointer to memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="240" column="49" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af2fff04459b358b95fb0d310800e1ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>() const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="249" column="18" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="249" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aa709342467a8fb56d787b603a074e55e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="254" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="254" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab73051b4d04fda782da696d348a2b92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="260" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="260" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ac3f636d72bbd04090627799184207288" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="267" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="267" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ac8726e770a69082dc0cb31490ed4c8fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="276" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="276" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a8c379de5e7cdc73b3b858b1b167d28d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="283" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="283" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae90b551aaaaecf311bb4717cc43fb213" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="296" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="296" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a01096eea5b7577aa2ffcda8beff8aff1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="306" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="306" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2d3a5f5faceeeb48dd5edbc6cb0c31f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+          <param>
+            <type>typename I7</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6, const I7 &amp;i7) const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::reference</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <param>
+          <type>const I7 &amp;</type>
+          <declname>i7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="316" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="316" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af431de2d25882c307e8390a25bcb62f4" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::memory_span</definition>
+        <argsstring>() const</argsstring>
+        <name>memory_span</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::memory_span</qualifiedname>
+        <briefdescription>
+<para>Span, in bytes, of the referenced memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="331" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="331" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a9eb7e887f4a4f1e236450119d29ff710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</definition>
+        <argsstring>()=default</argsstring>
+        <name>ViewMapping</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="338" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae33640d0a4b8a7fae0bd42587f9d3edd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</definition>
+        <argsstring>(pointer_type ptr, Args... args)</argsstring>
+        <name>ViewMapping</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::ViewMapping</qualifiedname>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="343" column="26" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="343" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1acf483abb1e207379a28639c2028eb8e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">Kokkos::Impl::SharedAllocationRecord</ref> *</type>
+        <definition>Kokkos::Impl::SharedAllocationRecord * Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::allocate_shared</definition>
+        <argsstring>(Kokkos::Impl::ViewCtorProp&lt; P... &gt; const &amp;arg_prop, typename Traits::array_layout const &amp;arg_layout)</argsstring>
+        <name>allocate_shared</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;::allocate_shared</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; const &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename Traits::array_layout const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="351" column="4" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="351" bodyend="400"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> mapping for non-specialized data type and standard layout. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" line="112" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewArray.hpp" bodystart="112" bodyend="401"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1acf483abb1e207379a28639c2028eb8e0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>allocate_shared</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a365fb967fe01552eaf88e64f974e6839a04921405db30a81be1b08f49d8755f54" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>Array_N</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a927c4be30538f93f55ec934ab15439b0a60739fb76d6d3072222031305c2c97a9" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>Array_S</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae7db84462eb3e38ac8a33814ffd1a817" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>contiguous_reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aabcd18e320d683a02379d60847dee119" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>data</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a87b03cc5bec99b14f92b550091fadfae" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_0</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a889d58c3d54104e8ec6a97926945686d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_1</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1adeb09ebd31cb282e01e548d853e97131" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_2</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a241c3235dd35870fd3ff8fa695af0085" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_3</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab9ab0d1a0927e8093ae3bb1ff8f07af6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_4</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a93995dd6078a85b7c40bc377bb999df7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_5</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3f9096538f6304582875ad92366f22b0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_6</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ade908d9cbb45ebfe24b3823e792d7145" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>dimension_7</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2e55c7d4661cd5713d5ef18c6bb4a9eb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a331591d72953e7ff448cfbfd1f0debf6" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>handle_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae53d2582048a50c9b1e7280896abfda0a7e3bb20af904e9c2f4aa1443db1cfe13" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>is_contiguous_reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a53670549071730750d2be0cf249f123f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>is_regular</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a4604926ff7556af89144749e8d33e90f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>Kokkos::View</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a129131f9e72c3239789d78b37de67e76" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>layout</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1acecf44a2d9908c7f5ea6ee9f18489f02" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>m_impl_handle</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a64fc2a9a741e93cbbdd1a4e97f527994" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>m_impl_offset</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3dc8d8af5b23c3556ba78e9b7d49fd8b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>m_stride</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af431de2d25882c307e8390a25bcb62f4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>memory_span</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a7e9f6ea46b0b21099d6687d00c32df70aa4c7b72050ba34f0884da83dad60322e" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>MemorySpanMask</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a74d7326b6b816b8cab5a534e2ccbf5d0a945987aaf6034246b982e2c9bcc0eee1" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>MemorySpanSize</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2273fb1ae92281625f1054aea26b25ca" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>offset_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a0229efb6df062eb8c0a185cf3307be65" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>pointer_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a48b903322e582fd33b52301e6d55dceda1a5f8c08f7d93effca82e4da3226756e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>Rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af2fff04459b358b95fb0d310800e1ce5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aa709342467a8fb56d787b603a074e55e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab73051b4d04fda782da696d348a2b92b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ac3f636d72bbd04090627799184207288" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ac8726e770a69082dc0cb31490ed4c8fe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a8c379de5e7cdc73b3b858b1b167d28d4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae90b551aaaaecf311bb4717cc43fb213" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a01096eea5b7577aa2ffcda8beff8aff1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a2d3a5f5faceeeb48dd5edbc6cb0c31f5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a27701e2cce5cf8768e9ca03a6cf829eb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aece64d7e2fbbe5b619c146a140499cc5" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>scalar_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae4fbb43be81556f354ac211d4bd86af7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a1f57e0cce61a3b8c886c16e2ff85eecc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>span_is_contiguous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aa1ed766edaf9f2b877f3b3782879fe96" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_0</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af88e73bc258140efd48050c37235a223" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_1</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a8331ecbcc06ef3273100baedc5f5f370" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_2</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aea08511fed211899d15521dad4490274" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_3</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ab23f292df501758e5c0b2291c710f36c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_4</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a409f2f858f6b95b020a2ad339b063c5b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_5</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1af2f0c59f73af729761b5591b86d0c35f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_6</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a7d2a2a66946944f3f41480ac5197a380" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>stride_7</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a3555301f1157f3cf30da661ab76f8f62" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>strided_reference</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1aeabbd162a7499cfaa77ba11da09ab1ee" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>ViewMapping</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a51b967815de45697c0da211014f543a3" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>ViewMapping</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1a9eb7e887f4a4f1e236450119d29ff710" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>ViewMapping</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01_traits_00_01_kokkos_1_1_array_3_4_01_4_1ae33640d0a4b8a7fae0bd42587f9d3edd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; Traits, Kokkos::Array&lt;&gt; &gt;</scope><name>ViewMapping</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

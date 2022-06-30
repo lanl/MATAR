@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::DeduceTeamShmem</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+        <defval>Functor</defval>
+      </param>
+      <param>
+        <type>typename</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem_1a03732ed5891c5123d16596903112c568" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@67</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::DeduceTeamShmem::@67</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem_1a03732ed5891c5123d16596903112c568ae7d19a8798fcc8f7997c8b20a25737f0" prot="public">
+          <name>value</name>
+          <initializer>= false</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="678" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="678" bodyend="678"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem_1a465d14e91eee9bd32ce63048235347da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>static size_t Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::DeduceTeamShmem&lt; F, typename &gt;::team_shmem_size</definition>
+        <argsstring>(F const &amp;, int)</argsstring>
+        <name>team_shmem_size</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::DeduceTeamShmem::team_shmem_size</qualifiedname>
+        <param>
+          <type>F const &amp;</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="680" column="19" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="680" bodyend="680"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="677" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="677" bodyend="681"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem_1a465d14e91eee9bd32ce63048235347da" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::DeduceTeamShmem</scope><name>team_shmem_size</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_team_shmem_1a03732ed5891c5123d16596903112c568ae7d19a8798fcc8f7997c8b20a25737f0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::DeduceTeamShmem</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

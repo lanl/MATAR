@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_complex_special_functions" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestComplexSpecialFunctions</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_special_functions_1a3bad23f4104579d882b41a774c1806b3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;Kokkos::complex&lt;double&gt; *, ExecSpace&gt; Test::TestComplexSpecialFunctions&lt; ExecSpace &gt;::d_results</definition>
+        <argsstring></argsstring>
+        <name>d_results</name>
+        <qualifiedname>Test::TestComplexSpecialFunctions::d_results</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="288" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_special_functions_1a7a632baa4a69d3b494d350a96813fbfe" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, ExecSpace &gt;::HostMirror</type>
+        <definition>Kokkos::View&lt;Kokkos::complex&lt;double&gt;*,ExecSpace&gt;::HostMirror Test::TestComplexSpecialFunctions&lt; ExecSpace &gt;::h_results</definition>
+        <argsstring></argsstring>
+        <name>h_results</name>
+        <qualifiedname>Test::TestComplexSpecialFunctions::h_results</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="290" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_complex_special_functions_1a32e44e47bb74d35c1933bb092d219251" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestComplexSpecialFunctions&lt; ExecSpace &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::TestComplexSpecialFunctions::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="292" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="292" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_complex_special_functions_1aae4b14b4dc683662e4eb80680b668a7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestComplexSpecialFunctions&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(const int &amp;) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestComplexSpecialFunctions::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="367" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="367" bodyend="390"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestComplexSpecialFunctions&lt; ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_test_complex_special_functions"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>d_results</edgelabel>
+          <edgelabel>h_results</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Kokkos::complex&lt; double &gt; *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Kokkos::complex&lt; double &gt; *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="287" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="287" bodyend="391"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_complex_special_functions_1a3bad23f4104579d882b41a774c1806b3" prot="public" virt="non-virtual"><scope>Test::TestComplexSpecialFunctions</scope><name>d_results</name></member>
+      <member refid="struct_test_1_1_test_complex_special_functions_1a7a632baa4a69d3b494d350a96813fbfe" prot="public" virt="non-virtual"><scope>Test::TestComplexSpecialFunctions</scope><name>h_results</name></member>
+      <member refid="struct_test_1_1_test_complex_special_functions_1aae4b14b4dc683662e4eb80680b668a7c" prot="public" virt="non-virtual"><scope>Test::TestComplexSpecialFunctions</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_complex_special_functions_1a32e44e47bb74d35c1933bb092d219251" prot="public" virt="non-virtual"><scope>Test::TestComplexSpecialFunctions</scope><name>testit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

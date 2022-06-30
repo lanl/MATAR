@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a4e4f2e6b8790f47114a7b81fdb2a5f90" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt;&gt;::member_type</type>
+        <definition>using Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::team_type =  Kokkos::TeamPolicy&lt;&gt;::member_type</definition>
+        <argsstring></argsstring>
+        <name>team_type</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::team_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="288" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a1f46b126a2872f7da15a8dd04b24a34d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double &gt;</type>
+        <definition>Kokkos::View&lt;double&gt; Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="290" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1aeadd737570ad58102e1acb78f8457035" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::FunctorScalarJoinInit</definition>
+        <argsstring>(Kokkos::View&lt; double &gt; r)</argsstring>
+        <name>FunctorScalarJoinInit</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::FunctorScalarJoinInit</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double &gt;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="292" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="292" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a4132f65552b3d5f5eb2de15691da35b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::operator()</definition>
+        <argsstring>(const team_type &amp;team, double &amp;update) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::operator()</qualifiedname>
+        <param>
+          <type>const team_type &amp;</type>
+          <declname>team</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="295" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="295" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1ac3e8e617bce3c04f5a3e155957877fee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::join</definition>
+        <argsstring>(volatile double &amp;dst, const volatile double &amp;update) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::join</qualifiedname>
+        <param>
+          <type>volatile double &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile double &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="300" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="300" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1aaaee1963c05ffaae0192c72ff0ab9e14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::init</definition>
+        <argsstring>(double &amp;update) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;::init</qualifiedname>
+        <param>
+          <type>double &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="305" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="305" bodyend="305"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</label>
+        <link refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>result</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="287" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="287" bodyend="306"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1aeadd737570ad58102e1acb78f8457035" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>FunctorScalarJoinInit</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1aaaee1963c05ffaae0192c72ff0ab9e14" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>init</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1ac3e8e617bce3c04f5a3e155957877fee" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>join</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a4132f65552b3d5f5eb2de15691da35b6" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a1f46b126a2872f7da15a8dd04b24a34d" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>result</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_join_init_3_011_01_4_1a4e4f2e6b8790f47114a7b81fdb2a5f90" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarJoinInit&lt; 1 &gt;</scope><name>team_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

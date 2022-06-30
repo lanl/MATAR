@@ -1,0 +1,908 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_cuda_internal" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CudaInternal</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_cuda_internal_1abff5695433b07804ab4ddee9c8e0a7b8" prot="public" static="no">
+        <type>Cuda::size_type</type>
+        <definition>using Kokkos::Impl::CudaInternal::size_type =  Cuda::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="86" column="3" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a850b0230769cedf24d5b7d39ae159795" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_cudaDev</definition>
+        <argsstring></argsstring>
+        <name>m_cudaDev</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_cudaDev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="88" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ad3be4b0f07a099d1ecb3baa8f93331a6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_cudaArch</definition>
+        <argsstring></argsstring>
+        <name>m_cudaArch</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_cudaArch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="91" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ab36bb65fe0f5f2847ee6da112524a094" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Impl::CudaInternal::m_multiProcCount</definition>
+        <argsstring></argsstring>
+        <name>m_multiProcCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_multiProcCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="92" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aef6bb325421ed88bd5791936487df6ed" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Impl::CudaInternal::m_maxWarpCount</definition>
+        <argsstring></argsstring>
+        <name>m_maxWarpCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxWarpCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="93" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a99f7c7aaaf8b5121f3a5616a5bcd8d6b" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Impl::CudaInternal::m_maxBlock</definition>
+        <argsstring></argsstring>
+        <name>m_maxBlock</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxBlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="94" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ab70ae070a1d611698392d5dab65761cd" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Impl::CudaInternal::m_maxSharedWords</definition>
+        <argsstring></argsstring>
+        <name>m_maxSharedWords</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxSharedWords</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="95" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a2d766a3273cdd855509f1192b23b561d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Impl::CudaInternal::m_maxConcurrency</definition>
+        <argsstring></argsstring>
+        <name>m_maxConcurrency</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxConcurrency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="96" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a2ebb7dbaff76ec675a3827c8da157a03" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_shmemPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_shmemPerSM</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_shmemPerSM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="97" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aa631224ae2276ae426b88a51509e0525" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_maxShmemPerBlock</definition>
+        <argsstring></argsstring>
+        <name>m_maxShmemPerBlock</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxShmemPerBlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="98" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a0e325ff38cd87555977ac7c9a02bc044" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_regsPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_regsPerSM</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_regsPerSM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="99" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1afb50699b80b6dbf754bf8a57337b62b6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_maxBlocksPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_maxBlocksPerSM</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxBlocksPerSM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="100" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a5a79f471fccd08318736f28ae03d156b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_maxThreadsPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_maxThreadsPerSM</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxThreadsPerSM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="101" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a972426774eea4cf42b4e1d177841074e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_maxThreadsPerBlock</definition>
+        <argsstring></argsstring>
+        <name>m_maxThreadsPerBlock</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_maxThreadsPerBlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="102" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a7a7ca14e5bcf84ec22b5faa4d09232be" prot="public" static="no" mutable="no">
+        <type>cudaDeviceProp</type>
+        <definition>cudaDeviceProp Kokkos::Impl::CudaInternal::m_deviceProp</definition>
+        <argsstring></argsstring>
+        <name>m_deviceProp</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_deviceProp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="104" column="18" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1adccdb023f23c6fb8e23b9e9c5aa24fa4" prot="public" static="no" mutable="yes">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_scratchSpaceCount</definition>
+        <argsstring></argsstring>
+        <name>m_scratchSpaceCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchSpaceCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="107" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a94caee91b8048b7c62306d47df82aeaf" prot="public" static="no" mutable="yes">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_scratchFlagsCount</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFlagsCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchFlagsCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="108" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ae60a1692e5b6232509f1aeffd9ebb2c8" prot="public" static="no" mutable="yes">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_scratchUnifiedCount</definition>
+        <argsstring></argsstring>
+        <name>m_scratchUnifiedCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchUnifiedCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="109" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a409aafd15f5b131feb95090562d46d76" prot="public" static="no" mutable="yes">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_scratchFunctorSize</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFunctorSize</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchFunctorSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="110" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aa8482915144c5fa03dabba0f82457acf" prot="public" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_scratchUnifiedSupported</definition>
+        <argsstring></argsstring>
+        <name>m_scratchUnifiedSupported</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchUnifiedSupported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="112" column="13" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a0c5942b8b0a1f374d1b66e5ab6f1cf11" prot="public" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::CudaInternal::m_streamCount</definition>
+        <argsstring></argsstring>
+        <name>m_streamCount</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_streamCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="113" column="13" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a122993d7ad1b450673558a21aa6cdf54" prot="public" static="no" mutable="yes">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Impl::CudaInternal::m_scratchSpace</definition>
+        <argsstring></argsstring>
+        <name>m_scratchSpace</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="114" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aa02a4423f870f32bc8f2ccc38f85eef6" prot="public" static="no" mutable="yes">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Impl::CudaInternal::m_scratchFlags</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFlags</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchFlags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="115" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ac2532cf5344b33ba92a43320609b7063" prot="public" static="no" mutable="yes">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Impl::CudaInternal::m_scratchUnified</definition>
+        <argsstring></argsstring>
+        <name>m_scratchUnified</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchUnified</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="116" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aa0bfdfbe1888896e23cbe7cba25764f1" prot="public" static="no" mutable="yes">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Impl::CudaInternal::m_scratchFunctor</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFunctor</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchFunctor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="117" column="21" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ae990ed27a78cff337c3327f87bf66e44" prot="public" static="no" mutable="no">
+        <type>uint32_t *</type>
+        <definition>uint32_t* Kokkos::Impl::CudaInternal::m_scratchConcurrentBitset</definition>
+        <argsstring></argsstring>
+        <name>m_scratchConcurrentBitset</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_scratchConcurrentBitset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="118" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ace4a77d92f73ce588dab907953a4b3e9" prot="public" static="no" mutable="no">
+        <type>cudaStream_t</type>
+        <definition>cudaStream_t Kokkos::Impl::CudaInternal::m_stream</definition>
+        <argsstring></argsstring>
+        <name>m_stream</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="119" column="16" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a01d7c122becfc7a399368eff5224289c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Impl::CudaInternal::m_instance_id</definition>
+        <argsstring></argsstring>
+        <name>m_instance_id</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_instance_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="120" column="12" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a432033172f890dfa38b4aec3db770476" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::CudaInternal::m_manage_stream</definition>
+        <argsstring></argsstring>
+        <name>m_manage_stream</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_manage_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="121" column="8" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a1ff50ca4a64bd7f622a665c42e0ec115" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::m_n_team_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_n_team_scratch</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_n_team_scratch</qualifiedname>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="124" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a1b064af3298f0a40568c5cba66e17ec8" prot="public" static="no" mutable="yes">
+        <type>int64_t</type>
+        <definition>int64_t Kokkos::Impl::CudaInternal::m_team_scratch_current_size[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>m_team_scratch_current_size</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_team_scratch_current_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="125" column="19" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ab71cd6734ab8c507d081267f497cfec2" prot="public" static="no" mutable="yes">
+        <type>void *</type>
+        <definition>void* Kokkos::Impl::CudaInternal::m_team_scratch_ptr[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>m_team_scratch_ptr</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_team_scratch_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="126" column="16" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1acbfaea2ae616b1d10a2cc39357663e6d" prot="public" static="no" mutable="yes">
+        <type>std::atomic_int</type>
+        <definition>std::atomic_int Kokkos::Impl::CudaInternal::m_team_scratch_pool[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>m_team_scratch_pool</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::m_team_scratch_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="127" column="27" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a6c6b359416e2fc1979194c8a6fa046ec" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::CudaInternal::was_initialized</definition>
+        <argsstring></argsstring>
+        <name>was_initialized</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::was_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="129" column="8" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a3750faff80d5c489acf7bc2c84af8f81" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::CudaInternal::was_finalized</definition>
+        <argsstring></argsstring>
+        <name>was_finalized</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::was_finalized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="130" column="8" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a04577592a5944ad679e6e09945414984" prot="public" static="yes" mutable="no">
+        <type>unsigned long *</type>
+        <definition>unsigned long* Kokkos::Impl::CudaInternal::constantMemHostStaging</definition>
+        <argsstring></argsstring>
+        <name>constantMemHostStaging</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::constantMemHostStaging</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="134" column="24" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a8388936558274d8916cc39331f2c1f84" prot="public" static="yes" mutable="no">
+        <type>cudaEvent_t</type>
+        <definition>cudaEvent_t Kokkos::Impl::CudaInternal::constantMemReusable</definition>
+        <argsstring></argsstring>
+        <name>constantMemReusable</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::constantMemReusable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="135" column="22" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a03f4a7b86c0f441964cc2fe1c4013ad3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::CudaInternal::CudaInternal</definition>
+        <argsstring>(const CudaInternal &amp;)</argsstring>
+        <name>CudaInternal</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::CudaInternal</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_cuda_internal" kindref="compound">CudaInternal</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="79" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ade9506372f6140918f8a53e816fd9f3b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_cuda_internal" kindref="compound">CudaInternal</ref> &amp;</type>
+        <definition>CudaInternal &amp; Kokkos::Impl::CudaInternal::operator=</definition>
+        <argsstring>(const CudaInternal &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_cuda_internal" kindref="compound">CudaInternal</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="80" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1aea02b597b27ab096c3a618631871121b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_cuda_internal" kindref="compound">CudaInternal</ref> &amp;</type>
+        <definition>static CudaInternal &amp; Kokkos::Impl::CudaInternal::singleton</definition>
+        <argsstring>()</argsstring>
+        <name>singleton</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::singleton</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="137" column="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1af43a289510c749701561e5b638b5fa44" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::verify_is_initialized</definition>
+        <argsstring>(const char *const label) const</argsstring>
+        <name>verify_is_initialized</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::verify_is_initialized</qualifiedname>
+        <param>
+          <type>const char *const</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="139" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a0a46b8bd445e3baeed3dfcbd3b99f787" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::CudaInternal::is_initialized</definition>
+        <argsstring>() const</argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::is_initialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="141" column="7" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a37738f512545c393e3334f32558312f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::CudaInternal::initialize</definition>
+        <argsstring>(int cuda_device_id, cudaStream_t stream=nullptr, bool manage_stream=false)</argsstring>
+        <name>initialize</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::initialize</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>cuda_device_id</declname>
+        </param>
+        <param>
+          <type>cudaStream_t</type>
+          <declname>stream</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>manage_stream</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="145" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a30dde0fb9668d114b6f0f43dfd3b6d6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::CudaInternal::finalize</definition>
+        <argsstring>()</argsstring>
+        <name>finalize</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::finalize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="147" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a7470e109b98a232269a94bf6e6ab24b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::CudaInternal::print_configuration</definition>
+        <argsstring>(std::ostream &amp;) const</argsstring>
+        <name>print_configuration</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::print_configuration</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="149" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a95d2acc9e435057d5418024ec26a4932" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::CudaInternal::fence</definition>
+        <argsstring>(const std::string &amp;) const</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::fence</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="156" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a4f8b374c9c5a0cabaacd5faff32d6487" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::CudaInternal::fence</definition>
+        <argsstring>() const</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="157" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a60be7aceb467543fb165098a73765b8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::CudaInternal::~CudaInternal</definition>
+        <argsstring>()</argsstring>
+        <name>~CudaInternal</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::~CudaInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="159" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a792f5ea996439df02d57ccbc2ffacd18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::CudaInternal::CudaInternal</definition>
+        <argsstring>()</argsstring>
+        <name>CudaInternal</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::CudaInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="161" column="3" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="161" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a20ffa70ec7e4aafff07fd6118b8b660b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>size_type * Kokkos::Impl::CudaInternal::scratch_space</definition>
+        <argsstring>(const size_type size) const</argsstring>
+        <name>scratch_space</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::scratch_space</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="198" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a67fda74646e4d33b162d65ffb0a3ad04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>size_type * Kokkos::Impl::CudaInternal::scratch_flags</definition>
+        <argsstring>(const size_type size) const</argsstring>
+        <name>scratch_flags</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::scratch_flags</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="199" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a9e72cb33bd76ab33d5c2db1f40e6ab9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>size_type * Kokkos::Impl::CudaInternal::scratch_unified</definition>
+        <argsstring>(const size_type size) const</argsstring>
+        <name>scratch_unified</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::scratch_unified</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="200" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a5dceb011be923db49fab8c234b24dac7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>size_type * Kokkos::Impl::CudaInternal::scratch_functor</definition>
+        <argsstring>(const size_type size) const</argsstring>
+        <name>scratch_functor</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::scratch_functor</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="201" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1ad210fc6dd6e5c4cd298f8698b9d6edc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Impl::CudaInternal::impl_get_instance_id</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_get_instance_id</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::impl_get_instance_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="202" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_cuda_internal_1a7bab8abe932e662b0add96703418c806" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; void *, int &gt;</type>
+        <definition>std::pair&lt; void *, int &gt; Kokkos::Impl::CudaInternal::resize_team_scratch_space</definition>
+        <argsstring>(std::int64_t bytes, bool force_shrink=false)</argsstring>
+        <name>resize_team_scratch_space</name>
+        <qualifiedname>Kokkos::Impl::CudaInternal::resize_team_scratch_space</qualifiedname>
+        <param>
+          <type>std::int64_t</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>force_shrink</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="204" column="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="77" column="1" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="77" bodyend="206"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a04577592a5944ad679e6e09945414984" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>constantMemHostStaging</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a8388936558274d8916cc39331f2c1f84" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>constantMemReusable</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a03f4a7b86c0f441964cc2fe1c4013ad3" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>CudaInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a792f5ea996439df02d57ccbc2ffacd18" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>CudaInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a95d2acc9e435057d5418024ec26a4932" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>fence</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a4f8b374c9c5a0cabaacd5faff32d6487" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>fence</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a30dde0fb9668d114b6f0f43dfd3b6d6a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>finalize</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ad210fc6dd6e5c4cd298f8698b9d6edc7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>impl_get_instance_id</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a37738f512545c393e3334f32558312f0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>initialize</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a0a46b8bd445e3baeed3dfcbd3b99f787" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>is_initialized</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ad3be4b0f07a099d1ecb3baa8f93331a6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_cudaArch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a850b0230769cedf24d5b7d39ae159795" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_cudaDev</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a7a7ca14e5bcf84ec22b5faa4d09232be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_deviceProp</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a01d7c122becfc7a399368eff5224289c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_instance_id</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a432033172f890dfa38b4aec3db770476" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_manage_stream</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a99f7c7aaaf8b5121f3a5616a5bcd8d6b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxBlock</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1afb50699b80b6dbf754bf8a57337b62b6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxBlocksPerSM</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a2d766a3273cdd855509f1192b23b561d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxConcurrency</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ab70ae070a1d611698392d5dab65761cd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxSharedWords</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aa631224ae2276ae426b88a51509e0525" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxShmemPerBlock</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a972426774eea4cf42b4e1d177841074e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxThreadsPerBlock</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a5a79f471fccd08318736f28ae03d156b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxThreadsPerSM</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aef6bb325421ed88bd5791936487df6ed" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_maxWarpCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ab36bb65fe0f5f2847ee6da112524a094" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_multiProcCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a1ff50ca4a64bd7f622a665c42e0ec115" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_n_team_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a0e325ff38cd87555977ac7c9a02bc044" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_regsPerSM</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ae990ed27a78cff337c3327f87bf66e44" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchConcurrentBitset</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aa02a4423f870f32bc8f2ccc38f85eef6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchFlags</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a94caee91b8048b7c62306d47df82aeaf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchFlagsCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aa0bfdfbe1888896e23cbe7cba25764f1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchFunctor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a409aafd15f5b131feb95090562d46d76" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchFunctorSize</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a122993d7ad1b450673558a21aa6cdf54" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchSpace</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1adccdb023f23c6fb8e23b9e9c5aa24fa4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchSpaceCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ac2532cf5344b33ba92a43320609b7063" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchUnified</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ae60a1692e5b6232509f1aeffd9ebb2c8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchUnifiedCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aa8482915144c5fa03dabba0f82457acf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_scratchUnifiedSupported</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a2ebb7dbaff76ec675a3827c8da157a03" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_shmemPerSM</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ace4a77d92f73ce588dab907953a4b3e9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_stream</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a0c5942b8b0a1f374d1b66e5ab6f1cf11" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_streamCount</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a1b064af3298f0a40568c5cba66e17ec8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_team_scratch_current_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1acbfaea2ae616b1d10a2cc39357663e6d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_team_scratch_pool</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ab71cd6734ab8c507d081267f497cfec2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>m_team_scratch_ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1ade9506372f6140918f8a53e816fd9f3b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a7470e109b98a232269a94bf6e6ab24b0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>print_configuration</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a7bab8abe932e662b0add96703418c806" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>resize_team_scratch_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a67fda74646e4d33b162d65ffb0a3ad04" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>scratch_flags</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a5dceb011be923db49fab8c234b24dac7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>scratch_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a20ffa70ec7e4aafff07fd6118b8b660b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>scratch_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a9e72cb33bd76ab33d5c2db1f40e6ab9b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>scratch_unified</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1aea02b597b27ab096c3a618631871121b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>singleton</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1abff5695433b07804ab4ddee9c8e0a7b8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1af43a289510c749701561e5b638b5fa44" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>verify_is_initialized</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a3750faff80d5c489acf7bc2c84af8f81" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>was_finalized</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a6c6b359416e2fc1979194c8a6fa046ec" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>was_initialized</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_cuda_internal_1a60be7aceb467543fb165098a73765b8e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaInternal</scope><name>~CudaInternal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

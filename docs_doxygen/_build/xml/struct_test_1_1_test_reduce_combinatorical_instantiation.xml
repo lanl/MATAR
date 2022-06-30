@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_reduce_combinatorical_instantiation" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestReduceCombinatoricalInstantiation</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+        <defval>Kokkos::DefaultExecutionSpace</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a88fd3389363d3ad24f7b101cf0e44b27" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::CallParallelReduce</definition>
+        <argsstring>(Args... args)</argsstring>
+        <name>CallParallelReduce</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::CallParallelReduce</qualifiedname>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="392" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="392" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a9c0b3802bf43666f68994bebaa86ecd8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddReturnArgument</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddReturnArgument</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddReturnArgument</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="397" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="397" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1ab46a9e8259457df59e97fd851eb45b62" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddLambdaRange</definition>
+        <argsstring>(int N, void *, Args... args)</argsstring>
+        <name>AddLambdaRange</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddLambdaRange</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="468" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="468" bodyend="471"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a8390022fac7c50d200ce1a60431381ad" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddLambdaTeam</definition>
+        <argsstring>(int N, void *, Args... args)</argsstring>
+        <name>AddLambdaTeam</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddLambdaTeam</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="474" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="474" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1ae3f71993164badb0ffcaba471477897b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddLambdaRange</definition>
+        <argsstring>(int, Kokkos::InvalidType, Args...)</argsstring>
+        <name>AddLambdaRange</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddLambdaRange</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_invalid_type" kindref="compound">Kokkos::InvalidType</ref></type>
+        </param>
+        <param>
+          <type>Args...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="484" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="484" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a24c2db96995e7bd614fe6c6bb4e0765f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddLambdaTeam</definition>
+        <argsstring>(int, Kokkos::InvalidType, Args...)</argsstring>
+        <name>AddLambdaTeam</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddLambdaTeam</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_invalid_type" kindref="compound">Kokkos::InvalidType</ref></type>
+        </param>
+        <param>
+          <type>Args...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="487" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="487" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a56c2590405473fe2ecd87efecd2a38d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>ISTEAM</declname>
+            <defname>ISTEAM</defname>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddFunctor</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddFunctor</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddFunctor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="490" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="490" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a9c2d705a76df92ac1963c0b74e6c5fc5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddFunctorLambdaRange</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddFunctorLambdaRange</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddFunctorLambdaRange</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="543" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="543" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a00f65f627b7bc59574dd202a23cd6202" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddFunctorLambdaTeam</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddFunctorLambdaTeam</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddFunctorLambdaTeam</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="556" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="556" bodyend="566"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a40e7178e0796718c0f5a65771198d853" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddPolicy_1</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddPolicy_1</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddPolicy_1</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="569" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="569" bodyend="575"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a848be17c9bfea7de2de74c513894efab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddPolicy_2</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddPolicy_2</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddPolicy_2</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="578" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="578" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1af0848802c4fe12f76c61430a8ee24d7a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::AddPolicy_3</definition>
+        <argsstring>(int N, Args... args)</argsstring>
+        <name>AddPolicy_3</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::AddPolicy_3</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="595" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="595" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a1654dc45224473cf219791e5b7617e9a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_a1</definition>
+        <argsstring>()</argsstring>
+        <name>execute_a1</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_a1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="614" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="614" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a88152c3c659a3e1f27c114141bf7b7c5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_b1</definition>
+        <argsstring>()</argsstring>
+        <name>execute_b1</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_b1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="616" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="616" bodyend="623"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1ad21a26a1c5fbb8c47b0c3a25a9ea0132" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_c1</definition>
+        <argsstring>()</argsstring>
+        <name>execute_c1</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_c1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="625" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="625" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a84b6c2274643eddcaf97a7d2488c2ee1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_a2</definition>
+        <argsstring>()</argsstring>
+        <name>execute_a2</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_a2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="630" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="630" bodyend="630"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a838b9a6ef6b7a69bc82d21d89dcd2597" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_b2</definition>
+        <argsstring>()</argsstring>
+        <name>execute_b2</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_b2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="632" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="632" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a152536072d190a2cf08d54cf9dc1ff5a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_c2</definition>
+        <argsstring>()</argsstring>
+        <name>execute_c2</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_c2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="641" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="641" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a98b55d7e9ab54387fe053d6c3230468a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_a3</definition>
+        <argsstring>()</argsstring>
+        <name>execute_a3</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_a3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="646" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="646" bodyend="650"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1a463d906a060dfb4521e2b7df99ceb4f8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_b3</definition>
+        <argsstring>()</argsstring>
+        <name>execute_b3</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_b3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="652" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="652" bodyend="659"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_reduce_combinatorical_instantiation_1ae3b5582d9d5fd96149ec18d8d20d62d0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestReduceCombinatoricalInstantiation&lt; ExecSpace &gt;::execute_c3</definition>
+        <argsstring>()</argsstring>
+        <name>execute_c3</name>
+        <qualifiedname>Test::TestReduceCombinatoricalInstantiation::execute_c3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="661" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="661" bodyend="666"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="390" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="390" bodyend="667"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a56c2590405473fe2ecd87efecd2a38d5" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddFunctor</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a9c2d705a76df92ac1963c0b74e6c5fc5" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddFunctorLambdaRange</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a00f65f627b7bc59574dd202a23cd6202" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddFunctorLambdaTeam</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1ab46a9e8259457df59e97fd851eb45b62" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddLambdaRange</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1ae3f71993164badb0ffcaba471477897b" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddLambdaRange</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a8390022fac7c50d200ce1a60431381ad" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddLambdaTeam</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a24c2db96995e7bd614fe6c6bb4e0765f" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddLambdaTeam</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a40e7178e0796718c0f5a65771198d853" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddPolicy_1</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a848be17c9bfea7de2de74c513894efab" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddPolicy_2</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1af0848802c4fe12f76c61430a8ee24d7a" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddPolicy_3</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a9c0b3802bf43666f68994bebaa86ecd8" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>AddReturnArgument</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a88fd3389363d3ad24f7b101cf0e44b27" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>CallParallelReduce</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a1654dc45224473cf219791e5b7617e9a" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_a1</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a84b6c2274643eddcaf97a7d2488c2ee1" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_a2</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a98b55d7e9ab54387fe053d6c3230468a" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_a3</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a88152c3c659a3e1f27c114141bf7b7c5" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_b1</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a838b9a6ef6b7a69bc82d21d89dcd2597" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_b2</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a463d906a060dfb4521e2b7df99ceb4f8" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_b3</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1ad21a26a1c5fbb8c47b0c3a25a9ea0132" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_c1</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1a152536072d190a2cf08d54cf9dc1ff5a" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_c2</name></member>
+      <member refid="struct_test_1_1_test_reduce_combinatorical_instantiation_1ae3b5582d9d5fd96149ec18d8d20d62d0" prot="public" virt="non-virtual"><scope>Test::TestReduceCombinatoricalInstantiation</scope><name>execute_c3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

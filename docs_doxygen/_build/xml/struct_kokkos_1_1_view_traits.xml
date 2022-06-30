@@ -1,0 +1,521 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_view_traits" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::ViewTraits</compoundname>
+    <includes refid="_kokkos___view_8hpp" local="no">Kokkos_View.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class DataType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@237</name>
+        <qualifiedname>Kokkos::ViewTraits::@237</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public">
+          <name>rank</name>
+          <initializer>= dimension::rank</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="322" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="322" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@238</name>
+        <qualifiedname>Kokkos::ViewTraits::@238</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public">
+          <name>rank_dynamic</name>
+          <initializer>= dimension::rank_dynamic</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="323" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="323" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@239</name>
+        <qualifiedname>Kokkos::ViewTraits::@239</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public">
+          <name>is_hostspace</name>
+          <initializer>= std::is_same&lt;MemorySpace, HostSpace&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="336" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="336" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511ccca" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@240</name>
+        <qualifiedname>Kokkos::ViewTraits::@240</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public">
+          <name>is_managed</name>
+          <initializer>= MemoryTraits::is_unmanaged == 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="337" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="337" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@241</name>
+        <qualifiedname>Kokkos::ViewTraits::@241</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public">
+          <name>is_random_access</name>
+          <initializer>= MemoryTraits::is_random_access == 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="338" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="338" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" static="no">
+        <type>typename data_analysis::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::data_type =  typename data_analysis::type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>Kokkos::ViewTraits::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="291" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" static="no">
+        <type>typename data_analysis::const_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::const_data_type =  typename data_analysis::const_type</definition>
+        <argsstring></argsstring>
+        <name>const_data_type</name>
+        <qualifiedname>Kokkos::ViewTraits::const_data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="292" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" static="no">
+        <type>typename data_analysis::non_const_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::non_const_data_type =  typename data_analysis::non_const_type</definition>
+        <argsstring></argsstring>
+        <name>non_const_data_type</name>
+        <qualifiedname>Kokkos::ViewTraits::non_const_data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="293" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" static="no">
+        <type>typename data_analysis::scalar_array_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::scalar_array_type =  typename data_analysis::scalar_array_type</definition>
+        <argsstring></argsstring>
+        <name>scalar_array_type</name>
+        <qualifiedname>Kokkos::ViewTraits::scalar_array_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="298" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" static="no">
+        <type>typename data_analysis::const_scalar_array_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::const_scalar_array_type =  typename data_analysis::const_scalar_array_type</definition>
+        <argsstring></argsstring>
+        <name>const_scalar_array_type</name>
+        <qualifiedname>Kokkos::ViewTraits::const_scalar_array_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="299" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" static="no">
+        <type>typename data_analysis::non_const_scalar_array_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::non_const_scalar_array_type =  typename data_analysis::non_const_scalar_array_type</definition>
+        <argsstring></argsstring>
+        <name>non_const_scalar_array_type</name>
+        <qualifiedname>Kokkos::ViewTraits::non_const_scalar_array_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="301" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a0631d00217a48c25e30a5273b12869ae" prot="public" static="no">
+        <type>typename data_analysis::value_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::value_type =  typename data_analysis::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::ViewTraits::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="307" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" static="no">
+        <type>typename data_analysis::const_value_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::const_value_type =  typename data_analysis::const_value_type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::ViewTraits::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="308" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" static="no">
+        <type>typename data_analysis::non_const_value_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::non_const_value_type =  typename data_analysis::non_const_value_type</definition>
+        <argsstring></argsstring>
+        <name>non_const_value_type</name>
+        <qualifiedname>Kokkos::ViewTraits::non_const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="309" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" static="no">
+        <type>ArrayLayout</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::array_layout =  ArrayLayout</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::ViewTraits::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="314" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" static="no">
+        <type>typename data_analysis::dimension</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::dimension =  typename data_analysis::dimension</definition>
+        <argsstring></argsstring>
+        <name>dimension</name>
+        <qualifiedname>Kokkos::ViewTraits::dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="315" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" static="no">
+        <type>typename std::conditional&lt; std::is_same&lt; typename data_analysis::specialize, void &gt;::value, typename prop::specialize, typename data_analysis::specialize &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::specialize =  typename std::conditional&lt; std::is_same&lt;typename data_analysis::specialize, void&gt;::value, typename prop::specialize, typename data_analysis::specialize&gt;:: type</definition>
+        <argsstring></argsstring>
+        <name>specialize</name>
+        <qualifiedname>Kokkos::ViewTraits::specialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="317" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::ViewTraits::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="328" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" static="no">
+        <type>MemorySpace</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::memory_space =  MemorySpace</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::ViewTraits::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="329" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="329" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; ExecutionSpace, MemorySpace &gt;</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::device_type =  Kokkos::Device&lt;ExecutionSpace, MemorySpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::ViewTraits::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="330" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" static="no">
+        <type>MemoryTraits</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::memory_traits =  MemoryTraits</definition>
+        <argsstring></argsstring>
+        <name>memory_traits</name>
+        <qualifiedname>Kokkos::ViewTraits::memory_traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="331" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1adb25197c9f561855af9dce11ae625f1c" prot="public" static="no">
+        <type>HostMirrorSpace</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::host_mirror_space =  HostMirrorSpace</definition>
+        <argsstring></argsstring>
+        <name>host_mirror_space</name>
+        <qualifiedname>Kokkos::ViewTraits::host_mirror_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="332" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" static="no">
+        <type>typename MemorySpace::size_type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::size_type =  typename MemorySpace::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::ViewTraits::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="334" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1ae42521e9e3a403847a63faa2cd5a48c2" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; void, Properties... &gt;</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::prop =  ViewTraits&lt;void, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>prop</name>
+        <qualifiedname>Kokkos::ViewTraits::prop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="260" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a2b2f7cc46f6773b5e6120c3ea7f03dc6" prot="private" static="no">
+        <type>typename std::conditional&lt; !std::is_same&lt; typename prop::execution_space, void &gt;::value, typename prop::execution_space, Kokkos::DefaultExecutionSpace &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::ExecutionSpace =  typename std::conditional&lt; !std::is_same&lt;typename prop::execution_space, void&gt;::value, typename prop::execution_space, Kokkos::DefaultExecutionSpace&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>ExecutionSpace</name>
+        <qualifiedname>Kokkos::ViewTraits::ExecutionSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="262" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a889ed4a6b66c20284291a15e8876beb2" prot="private" static="no">
+        <type>typename std::conditional&lt; !std::is_same&lt; typename prop::memory_space, void &gt;::value, typename prop::memory_space, typename ExecutionSpace::memory_space &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::MemorySpace =  typename std::conditional&lt; !std::is_same&lt;typename prop::memory_space, void&gt;::value, typename prop::memory_space, typename ExecutionSpace::memory_space&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>MemorySpace</name>
+        <qualifiedname>Kokkos::ViewTraits::MemorySpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="266" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a2fb627c3499110bf177a326b78dcb50b" prot="private" static="no">
+        <type>typename std::conditional&lt; !std::is_same&lt; typename prop::array_layout, void &gt;::value, typename prop::array_layout, typename ExecutionSpace::array_layout &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::ArrayLayout =  typename std::conditional&lt; !std::is_same&lt;typename prop::array_layout, void&gt;::value, typename prop::array_layout, typename ExecutionSpace::array_layout&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>ArrayLayout</name>
+        <qualifiedname>Kokkos::ViewTraits::ArrayLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="270" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a1e075b48a10d60f69a6f139518239de6" prot="private" static="no">
+        <type>typename std::conditional&lt; !std::is_same&lt; typename prop::HostMirrorSpace, void &gt;::value, typename prop::HostMirrorSpace, typename <ref refid="struct_kokkos_1_1_impl_1_1_host_mirror" kindref="compound">Kokkos::Impl::HostMirror</ref>&lt; ExecutionSpace &gt;::Space &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::HostMirrorSpace =  typename std::conditional&lt; !std::is_same&lt;typename prop::HostMirrorSpace, void&gt;::value, typename prop::HostMirrorSpace, typename Kokkos::Impl::HostMirror&lt;ExecutionSpace&gt;::Space&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>HostMirrorSpace</name>
+        <qualifiedname>Kokkos::ViewTraits::HostMirrorSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="274" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1aab09c815a5088ba41ad9a3ef50c72bdd" prot="private" static="no">
+        <type>typename std::conditional&lt; !std::is_same&lt; typename prop::memory_traits, void &gt;::value, typename prop::memory_traits, typename <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryManaged</ref> &gt;::type</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::MemoryTraits =  typename std::conditional&lt; !std::is_same&lt;typename prop::memory_traits, void&gt;::value, typename prop::memory_traits, typename Kokkos::MemoryManaged&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>MemoryTraits</name>
+        <qualifiedname>Kokkos::ViewTraits::MemoryTraits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="279" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_view_traits_1a484c80879d51c019e4f6d2c527dbc79e" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_data_analysis" kindref="compound">Kokkos::Impl::ViewDataAnalysis</ref>&lt; DataType, ArrayLayout &gt;</type>
+        <definition>using Kokkos::ViewTraits&lt; DataType, Properties &gt;::data_analysis =  Kokkos::Impl::ViewDataAnalysis&lt;DataType, ArrayLayout&gt;</definition>
+        <argsstring></argsstring>
+        <name>data_analysis</name>
+        <qualifiedname>Kokkos::ViewTraits::data_analysis</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="285" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Traits class for accessing attributes of a <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is an implementation detail of <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>. It is only of interest to developers implementing a new specialization of <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>.</para>
+<para>Template argument options:<itemizedlist>
+<listitem><para>View&lt; DataType &gt;</para>
+</listitem><listitem><para>View&lt; DataType , Space &gt;</para>
+</listitem><listitem><para>View&lt; DataType , Space , MemoryTraits &gt;</para>
+</listitem><listitem><para>View&lt; DataType , ArrayLayout &gt;</para>
+</listitem><listitem><para>View&lt; DataType , ArrayLayout , Space &gt;</para>
+</listitem><listitem><para>View&lt; DataType , ArrayLayout , MemoryTraits &gt;</para>
+</listitem><listitem><para>View&lt; DataType , ArrayLayout , Space , MemoryTraits &gt;</para>
+</listitem><listitem><para>View&lt; DataType , MemoryTraits &gt; </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" line="151" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_View.hpp" bodystart="257" bodyend="341"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a2fb627c3499110bf177a326b78dcb50b" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>ArrayLayout</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a484c80879d51c019e4f6d2c527dbc79e" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>data_analysis</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>dimension</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a2b2f7cc46f6773b5e6120c3ea7f03dc6" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>ExecutionSpace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1adb25197c9f561855af9dce11ae625f1c" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>host_mirror_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1e075b48a10d60f69a6f139518239de6" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>HostMirrorSpace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>is_hostspace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>is_random_access</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>memory_traits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a889ed4a6b66c20284291a15e8876beb2" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>MemorySpace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aab09c815a5088ba41ad9a3ef50c72bdd" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>MemoryTraits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>non_const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ae42521e9e3a403847a63faa2cd5a48c2" prot="private" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>prop</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>rank_dynamic</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>size_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>specialize</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a0631d00217a48c25e30a5273b12869ae" prot="public" virt="non-virtual"><scope>Kokkos::ViewTraits</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

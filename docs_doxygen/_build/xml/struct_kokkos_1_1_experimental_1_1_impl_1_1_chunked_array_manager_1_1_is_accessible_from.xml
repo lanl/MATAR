@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::ChunkedArrayManager::IsAccessibleFrom</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Space</type>
+      </param>
+      <param>
+        <type>typename Enable_</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="106" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="106" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

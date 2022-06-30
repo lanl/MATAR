@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structmath__binary__function__return__type_3_01long_01double_00_01unsigned_01long_01long_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>math_binary_function_return_type&lt; long double, unsigned long long &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structmath__binary__function__return__type_3_01long_01double_00_01unsigned_01long_01long_01_4_1a3d7cfb41c1623a7ac850481297563c66" prot="public" static="no">
+        <type>long double</type>
+        <definition>using math_binary_function_return_type&lt; long double, unsigned long long &gt;::type =  long double</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>math_binary_function_return_type&lt; long double, unsigned long long &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="209" column="51" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="209" column="11" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="209" bodyend="209"/>
+    <listofallmembers>
+      <member refid="structmath__binary__function__return__type_3_01long_01double_00_01unsigned_01long_01long_01_4_1a3d7cfb41c1623a7ac850481297563c66" prot="public" virt="non-virtual"><scope>math_binary_function_return_type&lt; long double, unsigned long long &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

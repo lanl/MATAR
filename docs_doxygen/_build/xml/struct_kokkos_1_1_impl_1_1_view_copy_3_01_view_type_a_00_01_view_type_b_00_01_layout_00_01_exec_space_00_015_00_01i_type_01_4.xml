@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ViewTypeA</type>
+      </param>
+      <param>
+        <type>class ViewTypeB</type>
+      </param>
+      <param>
+        <type>class Layout</type>
+      </param>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+      <param>
+        <type>typename iType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ad347f5dd76a9ef5d3307167acf96c9f2" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_rank" kindref="compound">Kokkos::Rank</ref>&lt; 5, outer_iteration_pattern, inner_iteration_pattern &gt;</type>
+        <definition>using Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::iterate_type =  Kokkos::Rank&lt;5, outer_iteration_pattern, inner_iteration_pattern&gt;</definition>
+        <argsstring></argsstring>
+        <name>iterate_type</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::iterate_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="413" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="414" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a4da2a308eccdda7725ef73f2b642012e" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; ExecSpace, <ref refid="struct_kokkos_1_1_rank" kindref="compound">iterate_type</ref>, <ref refid="struct_kokkos_1_1_index_type" kindref="compound">Kokkos::IndexType</ref>&lt; iType &gt; &gt;</type>
+        <definition>using Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::policy_type =  Kokkos::MDRangePolicy&lt;ExecSpace, iterate_type, Kokkos::IndexType&lt;iType&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="415" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="416" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1af15c41523257c3991021f6690bd46361" prot="public" static="no" mutable="no">
+        <type>ViewTypeA</type>
+        <definition>ViewTypeA Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="406" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="406" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ac29410760ab23c80e4c7fc033b003665" prot="public" static="no" mutable="no">
+        <type>ViewTypeB</type>
+        <definition>ViewTypeB Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="407" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a1ce7d80565ea3b3de7d46dd62e897aab" prot="public" static="yes" mutable="no">
+        <type>const Kokkos::Iterate</type>
+        <definition>const Kokkos::Iterate Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::outer_iteration_pattern</definition>
+        <argsstring></argsstring>
+        <name>outer_iteration_pattern</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::outer_iteration_pattern</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1layout__iterate__type__selector" kindref="compound">Kokkos::layout_iterate_type_selector</ref>&lt;Layout&gt;::outer_iteration_pattern</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="409" column="32" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="409" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a4056401f3594fc5bfc9dc0d19dcb4b94" prot="public" static="yes" mutable="no">
+        <type>const Kokkos::Iterate</type>
+        <definition>const Kokkos::Iterate Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::inner_iteration_pattern</definition>
+        <argsstring></argsstring>
+        <name>inner_iteration_pattern</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::inner_iteration_pattern</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1layout__iterate__type__selector" kindref="compound">Kokkos::layout_iterate_type_selector</ref>&lt;Layout&gt;::inner_iteration_pattern</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="411" column="32" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="411" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a0a212ea56d97b874d7e77d69722eeafb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::ViewCopy</definition>
+        <argsstring>(const ViewTypeA &amp;a_, const ViewTypeB &amp;b_, const ExecSpace space=ExecSpace())</argsstring>
+        <name>ViewCopy</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::ViewCopy</qualifiedname>
+        <param>
+          <type>const ViewTypeA &amp;</type>
+          <declname>a_</declname>
+        </param>
+        <param>
+          <type>const ViewTypeB &amp;</type>
+          <declname>b_</declname>
+        </param>
+        <param>
+          <type>const ExecSpace</type>
+          <declname>space</declname>
+          <defval>ExecSpace()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="418" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="418" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ad08ee799f918310c6f02733999c0c5aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::operator()</definition>
+        <argsstring>(const iType &amp;i0, const iType &amp;i1, const iType &amp;i2, const iType &amp;i3, const iType &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;::operator()</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="429" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="429" bodyend="432"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="405" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="405" bodyend="433"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1af15c41523257c3991021f6690bd46361" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>a</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ac29410760ab23c80e4c7fc033b003665" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>b</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a4056401f3594fc5bfc9dc0d19dcb4b94" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>inner_iteration_pattern</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ad347f5dd76a9ef5d3307167acf96c9f2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>iterate_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1ad08ee799f918310c6f02733999c0c5aa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a1ce7d80565ea3b3de7d46dd62e897aab" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>outer_iteration_pattern</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a4da2a308eccdda7725ef73f2b642012e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>policy_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_copy_3_01_view_type_a_00_01_view_type_b_00_01_layout_00_01_exec_space_00_015_00_01i_type_01_4_1a0a212ea56d97b874d7e77d69722eeafb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCopy&lt; ViewTypeA, ViewTypeB, Layout, ExecSpace, 5, iType &gt;</scope><name>ViewCopy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

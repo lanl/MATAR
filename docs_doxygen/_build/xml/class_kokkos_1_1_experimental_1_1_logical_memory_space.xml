@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_logical_memory_space" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::LogicalMemorySpace</compoundname>
+    <includes refid="_kokkos___logical_spaces_8hpp" local="no">Kokkos_LogicalSpaces.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class BaseSpace</type>
+      </param>
+      <param>
+        <type>class DefaultBaseExecutionSpace</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>class Namer</type>
+        <defval><ref refid="struct_kokkos_1_1_experimental_1_1_default_memory_space_namer" kindref="compound">DefaultMemorySpaceNamer</ref></defval>
+      </param>
+      <param>
+        <type>class SharesAccessWithBase</type>
+        <defval><ref refid="struct_kokkos_1_1_experimental_1_1_logical_space_shares_access_1_1shared__access" kindref="compound">LogicalSpaceSharesAccess::shared_access</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ad91f2e7fa63694c1ce9810c73c4f2ebf" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space" kindref="compound">LogicalMemorySpace</ref>&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;</type>
+        <definition>using Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::memory_space =  LogicalMemorySpace&lt;BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase&gt;</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::memory_space</qualifiedname>
+        <briefdescription>
+<para>Tag this class as a kokkos memory space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="89" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a729929a9a182020743bcb950dea2063f" prot="public" static="no">
+        <type>typename BaseSpace::size_type</type>
+        <definition>using Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::size_type =  typename BaseSpace::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="91" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a785c2e810152fcdb85a97d770de4347d" prot="public" static="no">
+        <type>typename std::conditional&lt; std::is_void&lt; DefaultBaseExecutionSpace &gt;::value, typename BaseSpace::execution_space, DefaultBaseExecutionSpace &gt;::type</type>
+        <definition>Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::execution_space</qualifiedname>
+        <briefdescription>
+<para>Default execution space for this memory space. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Every memory space has a default execution space. This is useful for things like initializing a <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> (which happens in parallel using the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&apos;s default execution space). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="100" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a2e5358973f970df8e399a6aabd27b596" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; <ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a785c2e810152fcdb85a97d770de4347d" kindref="member">execution_space</ref>, <ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ad91f2e7fa63694c1ce9810c73c4f2ebf" kindref="member">memory_space</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::device_type =  Kokkos::Device&lt;execution_space, memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="105" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1adfb470b0d7ac66fb3661fe0c23c6c756" prot="private" static="no" mutable="no">
+        <type>BaseSpace</type>
+        <definition>BaseSpace Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::underlying_space</definition>
+        <argsstring></argsstring>
+        <name>underlying_space</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::underlying_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="136" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a1a45e6a7c2de98a45c205e9972f058e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class LogicalMemorySpace</definition>
+        <argsstring></argsstring>
+        <name>LogicalMemorySpace</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::LogicalMemorySpace</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space" kindref="compound">LogicalMemorySpace</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="138" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a9c1d3a28501af1c5f525f738fb5b34ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Kokkos::Impl::SharedAllocationRecord&lt; memory_space, void &gt;</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::SharedAllocationRecord&lt; memory_space, void &gt;</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::SharedAllocationRecord&lt; memory_space, void &gt;</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">Kokkos::Impl::SharedAllocationRecord</ref>&lt; <ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ad91f2e7fa63694c1ce9810c73c4f2ebf" kindref="member">memory_space</ref>, void &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="138" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a73b325bc471630b452dc06e48ed9abef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::LogicalMemorySpace</definition>
+        <argsstring>()=default</argsstring>
+        <name>LogicalMemorySpace</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::LogicalMemorySpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="107" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ace32683532cf69d7d83c19b9bc265a56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::LogicalMemorySpace</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>LogicalMemorySpace</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::LogicalMemorySpace</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="110" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a6ea94ba5ce22bb6b88fe7015647d4fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::allocate</definition>
+        <argsstring>(const size_t arg_alloc_size) const</argsstring>
+        <name>allocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::allocate</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <briefdescription>
+<para>Allocate untracked memory in the space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="113" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="113" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a1447ffba4ea0add01576474f4061cbdd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::allocate</definition>
+        <argsstring>(const char *arg_label, const size_t arg_alloc_size, const size_t arg_logical_size=0) const</argsstring>
+        <name>allocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::allocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="116" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1af1f0152851f25c524f19d09e74e920b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::deallocate</definition>
+        <argsstring>(void *const arg_alloc_ptr, const size_t arg_alloc_size) const</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::deallocate</qualifiedname>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <briefdescription>
+<para>Deallocate untracked memory in the space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="122" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a8acaad65748e5343d24c186c42e9094d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::deallocate</definition>
+        <argsstring>(const char *arg_label, void *const arg_alloc_ptr, const size_t arg_alloc_size, const size_t arg_logical_size=0) const</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::deallocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="126" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="126" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a92c543e285ea0237a6224501a10633dd" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>static constexpr const char * Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::name</qualifiedname>
+        <briefdescription>
+<para>Return Name of the MemorySpace. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="133" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="133" bodyend="133"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a13e38d16fb0e3fbae859ed2e36f558d9" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::impl_allocate</definition>
+        <argsstring>(const char *arg_label, const size_t arg_alloc_size, const size_t arg_logical_size=0, Kokkos::Tools::SpaceHandle arg_handle=Kokkos::Tools::make_space_handle(name())) const</argsstring>
+        <name>impl_allocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::impl_allocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos::Tools::SpaceHandle</ref></type>
+          <declname>arg_handle</declname>
+          <defval>Kokkos::Tools::make_space_handle(<ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a92c543e285ea0237a6224501a10633dd" kindref="member">name</ref>())</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="141" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="141" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a93f354e171f680ee8cd623d5d23a0586" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessWithBase &gt;::impl_deallocate</definition>
+        <argsstring>(const char *arg_label, void *const arg_alloc_ptr, const size_t arg_alloc_size, const size_t arg_logical_size=0, const Kokkos::Tools::SpaceHandle arg_handle=Kokkos::Tools::make_space_handle(name())) const</argsstring>
+        <name>impl_deallocate</name>
+        <qualifiedname>Kokkos::Experimental::LogicalMemorySpace::impl_deallocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos::Tools::SpaceHandle</ref></type>
+          <declname>arg_handle</declname>
+          <defval>Kokkos::Tools::make_space_handle(<ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a92c543e285ea0237a6224501a10633dd" kindref="member">name</ref>())</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="148" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="148" bodyend="155"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space" kindref="compound">LogicalMemorySpace</ref> is a space that is identical to another space, but differentiable by name and template argument. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="69" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="77" bodyend="156"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a6ea94ba5ce22bb6b88fe7015647d4fe9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>allocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a1447ffba4ea0add01576474f4061cbdd" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>allocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1af1f0152851f25c524f19d09e74e920b1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>deallocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a8acaad65748e5343d24c186c42e9094d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>deallocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a2e5358973f970df8e399a6aabd27b596" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a785c2e810152fcdb85a97d770de4347d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a13e38d16fb0e3fbae859ed2e36f558d9" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>impl_allocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a93f354e171f680ee8cd623d5d23a0586" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>impl_deallocate</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a9c1d3a28501af1c5f525f738fb5b34ea" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>Kokkos::Impl::SharedAllocationRecord&lt; memory_space, void &gt;</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a1a45e6a7c2de98a45c205e9972f058e3" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>LogicalMemorySpace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a73b325bc471630b452dc06e48ed9abef" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>LogicalMemorySpace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ace32683532cf69d7d83c19b9bc265a56" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>LogicalMemorySpace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1ad91f2e7fa63694c1ce9810c73c4f2ebf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>memory_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a92c543e285ea0237a6224501a10633dd" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>name</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1a729929a9a182020743bcb950dea2063f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_logical_memory_space_1adfb470b0d7ac66fb3661fe0c23c6c756" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::LogicalMemorySpace</scope><name>underlying_space</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

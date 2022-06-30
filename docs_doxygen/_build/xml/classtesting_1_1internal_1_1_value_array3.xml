@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_value_array3" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::ValueArray3</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T1</type>
+      </param>
+      <param>
+        <type>typename T2</type>
+      </param>
+      <param>
+        <type>typename T3</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array3_1a72d173633c44c1482e7726c62ec6fe7b" prot="private" static="no" mutable="no">
+        <type>const T1</type>
+        <definition>const T1 testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::v1_</definition>
+        <argsstring></argsstring>
+        <name>v1_</name>
+        <qualifiedname>testing::internal::ValueArray3::v1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10746" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10746" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array3_1abfbdc2c05ceb0773b3b8ab2165747beb" prot="private" static="no" mutable="no">
+        <type>const T2</type>
+        <definition>const T2 testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::v2_</definition>
+        <argsstring></argsstring>
+        <name>v2_</name>
+        <qualifiedname>testing::internal::ValueArray3::v2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10747" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10747" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array3_1a408ef38b7ae8700dfe16170a62f68820" prot="private" static="no" mutable="no">
+        <type>const T3</type>
+        <definition>const T3 testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::v3_</definition>
+        <argsstring></argsstring>
+        <name>v3_</name>
+        <qualifiedname>testing::internal::ValueArray3::v3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10748" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10748" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1aa83b0671fed7a231ba127600c904246d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::ValueArray3</definition>
+        <argsstring>(T1 v1, T2 v2, T3 v3)</argsstring>
+        <name>ValueArray3</name>
+        <qualifiedname>testing::internal::ValueArray3::ValueArray3</qualifiedname>
+        <param>
+          <type>T1</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>v3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10733" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10733" bodyend="10733"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1a4922d1cf7af801e82bdead15817b23fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::operator ParamGenerator&lt; T &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; T &gt;</name>
+        <qualifiedname>testing::internal::ValueArray3::operator ParamGenerator&lt; T &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10736" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10736" bodyend="10740"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1aa83b0671fed7a231ba127600c904246d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::ValueArray3</definition>
+        <argsstring>(T1 v1, T2 v2, T3 v3)</argsstring>
+        <name>ValueArray3</name>
+        <qualifiedname>testing::internal::ValueArray3::ValueArray3</qualifiedname>
+        <param>
+          <type>T1</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>v3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10733" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10733" bodyend="10733"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1a4922d1cf7af801e82bdead15817b23fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::operator ParamGenerator&lt; T &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; T &gt;</name>
+        <qualifiedname>testing::internal::ValueArray3::operator ParamGenerator&lt; T &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10736" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10736" bodyend="10740"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1a916b3dbd999ad49477e8482c4c72d00b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::operator=</definition>
+        <argsstring>(const ValueArray3 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValueArray3::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_value_array3" kindref="compound">ValueArray3</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10744" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array3_1a916b3dbd999ad49477e8482c4c72d00b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValueArray3&lt; T1, T2, T3 &gt;::operator=</definition>
+        <argsstring>(const ValueArray3 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValueArray3::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_value_array3" kindref="compound">ValueArray3</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10744" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10731" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10731" bodyend="10749"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a4922d1cf7af801e82bdead15817b23fc" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>operator ParamGenerator&lt; T &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a4922d1cf7af801e82bdead15817b23fc" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>operator ParamGenerator&lt; T &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a916b3dbd999ad49477e8482c4c72d00b" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a916b3dbd999ad49477e8482c4c72d00b" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a72d173633c44c1482e7726c62ec6fe7b" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>v1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1abfbdc2c05ceb0773b3b8ab2165747beb" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>v2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1a408ef38b7ae8700dfe16170a62f68820" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>v3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1aa83b0671fed7a231ba127600c904246d" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>ValueArray3</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array3_1aa83b0671fed7a231ba127600c904246d" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray3</scope><name>ValueArray3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

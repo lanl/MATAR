@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::NoUniqueAddressMemberEmulation</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation" prot="private" virt="non-virtual">Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, NoCtorsNotOnDevice &gt;</basecompoundref>
+    <includes refid="_kokkos___e_b_o_8hpp" local="no">Kokkos_EBO.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>CtorsNotOnDevice</declname>
+        <defname>CtorsNotOnDevice</defname>
+        <defval><ref refid="struct_kokkos_1_1_impl_1_1_no_ctors_not_on_device" kindref="compound">NoCtorsNotOnDevice</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a681e23c3383b56deb770c9bc04257d57" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation" kindref="compound">StandardLayoutNoUniqueAddressMemberEmulation</ref>&lt; T, CtorsNotOnDevice &gt;</type>
+        <definition>using Kokkos::Impl::NoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::base_t =  StandardLayoutNoUniqueAddressMemberEmulation&lt;T, CtorsNotOnDevice&gt;</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="245" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1aac3702b5e4cc5f194c782fca6d7c3366" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr T &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr T &amp; Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::no_unique_address_data_member</definition>
+        <argsstring>() &amp;</argsstring>
+        <name>no_unique_address_data_member</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::no_unique_address_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="210" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1ad593d1f3854c4dbf2d9172eae6d74f4c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr T const &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr T const  &amp; Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::no_unique_address_data_member</definition>
+        <argsstring>() const &amp;</argsstring>
+        <name>no_unique_address_data_member</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::no_unique_address_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a47a92dd054d8fa163ed4fc344c077883" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION T volatile &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION T volatile &amp; Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::no_unique_address_data_member</definition>
+        <argsstring>() volatile &amp;</argsstring>
+        <name>no_unique_address_data_member</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::no_unique_address_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="220" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a9b89867db7ea3acad3fd4ed0401bf210" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION T const volatile &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION T const volatile &amp; Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::no_unique_address_data_member</definition>
+        <argsstring>() const volatile &amp;</argsstring>
+        <name>no_unique_address_data_member</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::no_unique_address_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="225" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1aeea173cdcd7afbe1b14e82ac76d15648" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr T &amp;&amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr T &amp;&amp; Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;::no_unique_address_data_member</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>no_unique_address_data_member</name>
+        <qualifiedname>Kokkos::Impl::NoUniqueAddressMemberEmulation::no_unique_address_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="230" bodyend="232"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Kokkos::Impl::EBOBaseImpl&lt; T, std::is_empty&lt; T &gt;::value, NoCtorsNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::NoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, NoCtorsNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Kokkos::Impl::EBOBaseImpl&lt; T, std::is_empty&lt; T &gt;::value, NoCtorsNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::NoUniqueAddressMemberEmulation&lt; T, CtorsNotOnDevice &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; T, NoCtorsNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="241" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="243" bodyend="251"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a681e23c3383b56deb770c9bc04257d57" prot="private" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>base_t</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1aac3702b5e4cc5f194c782fca6d7c3366" prot="public" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>no_unique_address_data_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1ad593d1f3854c4dbf2d9172eae6d74f4c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>no_unique_address_data_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a47a92dd054d8fa163ed4fc344c077883" prot="public" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>no_unique_address_data_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1a9b89867db7ea3acad3fd4ed0401bf210" prot="public" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>no_unique_address_data_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation_1aeea173cdcd7afbe1b14e82ac76d15648" prot="public" virt="non-virtual"><scope>Kokkos::Impl::NoUniqueAddressMemberEmulation</scope><name>no_unique_address_data_member</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

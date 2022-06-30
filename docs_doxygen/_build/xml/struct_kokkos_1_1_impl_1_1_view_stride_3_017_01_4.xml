@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewStride&lt; 7 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1ab3320bd57c03fa9128a94b07c00b631f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@147</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::@147</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1ab3320bd57c03fa9128a94b07c00b631fac7546411d7a505ab7d8bf82ee5d6d977" prot="public">
+          <name>S7</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2289" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2289" bodyend="2289"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a50884ec68c6b1aaa4d285f44b1024dc9" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S0</definition>
+        <argsstring></argsstring>
+        <name>S0</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a35c6ac4bd7bcfc24e6b95740e1d636bb" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S1</definition>
+        <argsstring></argsstring>
+        <name>S1</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a89ad66dd2bf3506b838a0caad979b4b2" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S2</definition>
+        <argsstring></argsstring>
+        <name>S2</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1ade4e54a260679335fd4feccd0e7ff87c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S3</definition>
+        <argsstring></argsstring>
+        <name>S3</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="19" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a1d4f92b6c895ab10f91088b5532fea6a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S4</definition>
+        <argsstring></argsstring>
+        <name>S4</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="22" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1aac2abc69630da03bbd0374b8c7f84f0a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S5</definition>
+        <argsstring></argsstring>
+        <name>S5</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a93b30d2632faac6cf319ad1752e0232e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::ViewStride&lt; 7 &gt;::S6</definition>
+        <argsstring></argsstring>
+        <name>S6</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::S6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2288" column="28" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2288" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1af50425a5275099f6d64d1dc8c79b402f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</definition>
+        <argsstring>()=default</argsstring>
+        <name>ViewStride</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2291" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a504bb8ebac03fb05cd0465f7ab371698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</definition>
+        <argsstring>(const ViewStride &amp;)=default</argsstring>
+        <name>ViewStride</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_stride" kindref="compound">ViewStride</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2292" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1aa9bfb2efae4f68f36f08bffe57123b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_stride" kindref="compound">ViewStride</ref> &amp;</type>
+        <definition>ViewStride &amp; Kokkos::Impl::ViewStride&lt; 7 &gt;::operator=</definition>
+        <argsstring>(const ViewStride &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_stride" kindref="compound">ViewStride</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2293" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a20f201254d7e2f9db835b5cfc04327a5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</definition>
+        <argsstring>(size_t aS0, size_t aS1, size_t aS2, size_t aS3, size_t aS4, size_t aS5, size_t aS6, size_t)</argsstring>
+        <name>ViewStride</name>
+        <qualifiedname>Kokkos::Impl::ViewStride&lt; 7 &gt;::ViewStride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>aS0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>aS6</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2296" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2296" bodyend="2298"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2287" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2287" bodyend="2299"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1aa9bfb2efae4f68f36f08bffe57123b51" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a50884ec68c6b1aaa4d285f44b1024dc9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S0</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a35c6ac4bd7bcfc24e6b95740e1d636bb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S1</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a89ad66dd2bf3506b838a0caad979b4b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S2</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1ade4e54a260679335fd4feccd0e7ff87c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S3</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a1d4f92b6c895ab10f91088b5532fea6a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S4</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1aac2abc69630da03bbd0374b8c7f84f0a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S5</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a93b30d2632faac6cf319ad1752e0232e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1ab3320bd57c03fa9128a94b07c00b631fac7546411d7a505ab7d8bf82ee5d6d977" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>S7</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1af50425a5275099f6d64d1dc8c79b402f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>ViewStride</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a504bb8ebac03fb05cd0465f7ab371698" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>ViewStride</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_stride_3_017_01_4_1a20f201254d7e2f9db835b5cfc04327a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewStride&lt; 7 &gt;</scope><name>ViewStride</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

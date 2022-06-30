@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___cuda___work_graph_policy_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_Cuda_WorkGraphPolicy.hpp</compoundname>
+    <includes refid="_kokkos___cuda_8hpp" local="no">Kokkos_Cuda.hpp</includes>
+    <includes refid="_kokkos___cuda___kernel_launch_8hpp" local="no">Cuda/Kokkos_Cuda_KernelLaunch.hpp</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>Cuda/Kokkos_Cuda_KernelLaunch.hpp</label>
+        <link refid="_kokkos___cuda___kernel_launch_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_WorkGraphPolicy.hpp</label>
+        <link refid="_kokkos___cuda___work_graph_policy_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Cuda.hpp</label>
+        <link refid="_kokkos___cuda_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="4">
+        <label>KokkosCore_config.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_0187ab9c7691b7b8e6bc707176aea8f42d" prot="public">Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Cuda &gt;</innerclass>
+    <innernamespace refid="namespace_kokkos">Kokkos</innernamespace>
+    <innernamespace refid="namespace_kokkos_1_1_impl">Kokkos::Impl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKOS_CUDA_WORKGRAPHPOLICY_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_CUDA_WORKGRAPHPOLICY_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Cuda.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Cuda/Kokkos_Cuda_KernelLaunch.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FunctorType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">...<sp/>Traits&gt;</highlight></codeline>
+<codeline lineno="55" refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_0187ab9c7691b7b8e6bc707176aea8f42d" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_impl_1_1_parallel_for" kindref="compound">ParallelFor</ref>&lt;FunctorType,<sp/>Kokkos::<ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">WorkGraphPolicy</ref>&lt;Traits...&gt;,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::Cuda&gt;<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref><sp/>=<sp/><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Kokkos::WorkGraphPolicy</ref>&lt;Traits...&gt;;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_impl_1_1_parallel_for" kindref="compound">Self</ref><sp/><sp/><sp/>=<sp/><ref refid="class_kokkos_1_1_impl_1_1_parallel_for" kindref="compound">ParallelFor&lt;FunctorType, Policy, Kokkos::Cuda&gt;</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref><sp/>m_policy;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>FunctorType<sp/>m_functor;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TagType&gt;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>__device__<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;std::is_same&lt;TagType,<sp/>void&gt;::value&gt;::type</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>exec_one(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::int32_t<sp/>w)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>m_functor(w);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>TagType&gt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>__device__<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;!std::is_same&lt;TagType,<sp/>void&gt;::value&gt;::type</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>exec_one(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::int32_t<sp/>w)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TagType<sp/>t{};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>m_functor(t,<sp/>w);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>get_policy()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_policy;<sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>__device__<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator()()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>(threadIdx.y<sp/>%<sp/>16))<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Spin<sp/>until<sp/>COMPLETED_TOKEN.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>END_TOKEN<sp/>indicates<sp/>no<sp/>work<sp/>is<sp/>currently<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::int32_t<sp/>w<sp/>=<sp/>Policy::END_TOKEN;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Policy::COMPLETED_TOKEN<sp/>!=<sp/>(w<sp/>=<sp/>m_policy.<ref refid="class_kokkos_1_1_work_graph_policy_1ad582d2db637d39216c676cb47e7d83b0" kindref="member">pop_work</ref>());)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Policy::END_TOKEN<sp/>!=<sp/>w)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exec_one&lt;typename<sp/>Policy::work_tag&gt;(w);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_policy.completed_work(w);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>execute()<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>warps_per_block<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dim3<sp/>grid(Kokkos::Impl::cuda_internal_multiprocessor_count(),<sp/>1,<sp/>1);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dim3<sp/>block(1,<sp/>Kokkos::Impl::CudaTraits::WarpSize,<sp/>warps_per_block);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shared<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::Impl::CudaParallelLaunch&lt;Self&gt;(</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>grid,<sp/>block,<sp/>shared,<sp/>Cuda().impl_internal_space_instance(),</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_impl_1_1_parallel_for" kindref="compound">ParallelFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FunctorType&amp;<sp/>arg_functor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref>&amp;<sp/>arg_policy)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>m_policy(arg_policy),<sp/>m_functor(arg_functor)<sp/>{}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Kokkos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>KOKKOS_CUDA_WORKGRAPHPOLICY_HPP<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_WorkGraphPolicy.hpp"/>
+  </compounddef>
+</doxygen>

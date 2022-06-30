@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ExecPolicyTraitsWithDefaults</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">AnalysisResults</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class AnalysisResults</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults_1a52cc4eb076884c80a9612a0a01de4de8" prot="public" static="no">
+        <type>AnalysisResults</type>
+        <definition>using Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalysisResults &gt;::base_t =  AnalysisResults</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::ExecPolicyTraitsWithDefaults::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="195" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults_1a0589019a678b24d949a1ddb6d2a06bcd" prot="public" static="no">
+        <type>typename std::conditional_t&lt; base_t::index_type_is_defaulted, <ref refid="struct_kokkos_1_1_index_type" kindref="compound">Kokkos::IndexType</ref>&lt; typename base_t::execution_space::size_type &gt;, typename base_t::index_type &gt;::type</type>
+        <definition>using Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalysisResults &gt;::index_type =  typename std::conditional_t&lt; base_t::index_type_is_defaulted, Kokkos::IndexType&lt;typename base_t::execution_space::size_type&gt;, typename base_t::index_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::ExecPolicyTraitsWithDefaults::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="201" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AnalysisResults</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalysisResults &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AnalysisResults</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalysisResults &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="194" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="194" bodyend="205"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults_1a52cc4eb076884c80a9612a0a01de4de8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecPolicyTraitsWithDefaults</scope><name>base_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults_1a0589019a678b24d949a1ddb6d2a06bcd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ExecPolicyTraitsWithDefaults</scope><name>index_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

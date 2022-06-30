@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_math_unary_function" kind="struct" language="C++" prot="public">
+    <compoundname>TestMathUnaryFunction</compoundname>
+    <basecompoundref refid="struct_floating_point_comparison" prot="public" virt="non-virtual">FloatingPointComparison</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class Func</type>
+      </param>
+      <param>
+        <type>class Arg</type>
+      </param>
+      <param>
+        <type>std::size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>class Ret</type>
+        <defval>math_unary_function_return_type_t&lt;Arg&gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_math_unary_function_1abd49072b864a6fc2877bcea5034fab02" prot="public" static="no" mutable="no">
+        <type>Arg</type>
+        <definition>Arg TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;::val_[N]</definition>
+        <argsstring>[N]</argsstring>
+        <name>val_</name>
+        <qualifiedname>TestMathUnaryFunction::val_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="415" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="415" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_math_unary_function_1a9b8b2d4ead33e7125fa29b4d3288e0c0" prot="public" static="no" mutable="no">
+        <type>Ret</type>
+        <definition>Ret TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;::res_[N]</definition>
+        <argsstring>[N]</argsstring>
+        <name>res_</name>
+        <qualifiedname>TestMathUnaryFunction::res_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="416" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="416" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_math_unary_function_1a36594bc3fe801293e5d7b8dbaa60589c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;::TestMathUnaryFunction</definition>
+        <argsstring>(const Arg(&amp;val)[N])</argsstring>
+        <name>TestMathUnaryFunction</name>
+        <qualifiedname>TestMathUnaryFunction::TestMathUnaryFunction</qualifiedname>
+        <param>
+          <type>const Arg(&amp;)</type>
+          <declname>val</declname>
+          <array>[N]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="417" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="417" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_math_unary_function_1a07e799db7f444c1be285abe444456f7e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>TestMathUnaryFunction::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="425" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="425" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_math_unary_function_1a6052e82705dae7fe1a05f8cfb4f680c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;::operator()</definition>
+        <argsstring>(int i, int &amp;e) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestMathUnaryFunction::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="430" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="430" bodyend="439"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>FloatingPointComparison</label>
+        <link refid="struct_floating_point_comparison"/>
+      </node>
+      <node id="1">
+        <label>TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;</label>
+        <link refid="struct_test_math_unary_function"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>FloatingPointComparison</label>
+        <link refid="struct_floating_point_comparison"/>
+      </node>
+      <node id="1">
+        <label>TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;</label>
+        <link refid="struct_test_math_unary_function"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="414" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="414" bodyend="440"/>
+    <listofallmembers>
+      <member refid="struct_floating_point_comparison_1af8eb17f968014cc75e694af558c916c7" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>compare</name></member>
+      <member refid="struct_floating_point_comparison_1a489631d849e31d394872a17e583b0055" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>compare_near_zero</name></member>
+      <member refid="struct_test_math_unary_function_1a6052e82705dae7fe1a05f8cfb4f680c6" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>operator()</name></member>
+      <member refid="struct_test_math_unary_function_1a9b8b2d4ead33e7125fa29b4d3288e0c0" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>res_</name></member>
+      <member refid="struct_test_math_unary_function_1a07e799db7f444c1be285abe444456f7e" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>run</name></member>
+      <member refid="struct_test_math_unary_function_1a36594bc3fe801293e5d7b8dbaa60589c" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>TestMathUnaryFunction</name></member>
+      <member refid="struct_test_math_unary_function_1abd49072b864a6fc2877bcea5034fab02" prot="public" virt="non-virtual"><scope>TestMathUnaryFunction</scope><name>val_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

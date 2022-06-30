@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="scripts_2trilinos-integration_2_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">![Kokkos](https://avatars2.githubusercontent.com/u/10199860?s=200&amp;v=4)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Kokkos:<sp/>Promotion<sp/>Test<sp/>Debugging</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>explains<sp/>the<sp/>use<sp/>(and<sp/>basic<sp/>implementation<sp/>details)<sp/>of<sp/>promotion<sp/>testing</highlight></codeline>
+<codeline><highlight class="normal">new<sp/>Kokkos<sp/>and<sp/>Kokkos<sp/>Kernels<sp/>branches.<sp/>We<sp/>first<sp/>introduce<sp/>a<sp/>test<sp/>for<sp/>first</highlight></codeline>
+<codeline><highlight class="normal">validating<sp/>an<sp/>existing<sp/>Trilinos<sp/>branch<sp/>that<sp/>all<sp/>tests<sp/>should<sp/>be<sp/>passing<sp/>on<sp/>(usually<sp/>the<sp/>develop,<sp/>master,<sp/>or<sp/>kokkos-promotion<sp/>branch<sp/>of<sp/>Trilinos).</highlight></codeline>
+<codeline><highlight class="normal">After<sp/>validating<sp/>a<sp/>clean<sp/>promotion<sp/>branch,<sp/>we<sp/>show<sp/>how<sp/>to<sp/>test<sp/>the<sp/>same<sp/>Trilinos<sp/>branch</highlight></codeline>
+<codeline><highlight class="normal">with<sp/>an<sp/>updated<sp/>Kokkoks<sp/>and<sp/>Kokkos<sp/>Kernels.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Clean<sp/>Promotion<sp/>Test</highlight></codeline>
+<codeline><highlight class="normal">There<sp/>is<sp/>a<sp/>script<sp/>called<sp/>`clean_promotion_test`<sp/>in<sp/>`scripts/trilinos-integration`<sp/>that<sp/>tests<sp/>a<sp/>self-contained</highlight></codeline>
+<codeline><highlight class="normal">Trilinos<sp/>branch<sp/>with<sp/>its<sp/>default<sp/>included<sp/>Kokkos<sp/>and<sp/>Kokkos<sp/>Kernels<sp/>packages.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>script<sp/>takes<sp/>two<sp/>arguments:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">./clean_promotion_test<sp/>&lt;ENV_FILE&gt;<sp/>&lt;TRILINOS_ROOT&gt;</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>running<sp/>CUDA<sp/>tests<sp/>on<sp/>the<sp/>platform<sp/>called<sp/>White,<sp/>e.g.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">./clean_promotion_test<sp/>white_cuda_env.sh<sp/>$TRILINOS_ROOT</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">Based<sp/>on<sp/>the<sp/>Trilinos<sp/>path<sp/>and<sp/>ENV<sp/>file,<sp/>a<sp/>unique<sp/>hash<sp/>`X`<sp/>is<sp/>generated.</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>CMake<sp/>configuration<sp/>is<sp/>then<sp/>run<sp/>in<sp/>the<sp/>folder<sp/>`clean-test-X`.</highlight></codeline>
+<codeline><highlight class="normal">Output<sp/>of<sp/>the<sp/>configuration<sp/>will<sp/>appear<sp/>in<sp/>a<sp/>`config.out`.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>the<sp/>configuration<sp/>succeeds,<sp/>you<sp/>can<sp/>`cd`<sp/>into<sp/>the<sp/>folder<sp/>and<sp/>run:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>source<sp/>../&lt;ENV_FILE&gt;</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>make<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>validate<sp/>the<sp/>build.<sp/>The<sp/>configure<sp/>and<sp/>build<sp/>steps<sp/>are<sp/>deliberately<sp/>separated</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>allow<sp/>incremental<sp/>debugging<sp/>of<sp/>each<sp/>step.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>New<sp/>Branch<sp/>Promotion<sp/>Test</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>the<sp/>clean<sp/>test<sp/>is<sp/>passing,<sp/>you<sp/>can<sp/>now<sp/>test<sp/>your<sp/>updates<sp/>to<sp/>Kokkos.</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>start<sp/>the<sp/>tests,<sp/>there<sp/>is<sp/>a<sp/>script<sp/>that<sp/>now<sp/>takes<sp/>four<sp/>arguments:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">./config_promotion_test<sp/>&lt;ENV_FILE&gt;<sp/>&lt;TRILINOS_ROOT&gt;<sp/>&lt;KOKKOS_ROOT&gt;<sp/>&lt;KERNELS_ROOT&gt;</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">where<sp/>the<sp/>two<sp/>additional<sp/>arguments<sp/>are<sp/>the<sp/>locations<sp/>of<sp/>Kokkos<sp/>and<sp/>Kokkos<sp/>Kernels</highlight></codeline>
+<codeline><highlight class="normal">branches<sp/>containing<sp/>updated.<sp/>Again,<sp/>a<sp/>unique<sp/>hash<sp/>`X`<sp/>is<sp/>generated.</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>CMake<sp/>configuration<sp/>is<sp/>then<sp/>run<sp/>in<sp/>the<sp/>folder<sp/>`promotion-test-X`.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>the<sp/>configuration<sp/>succeeds,<sp/>you<sp/>can<sp/>`cd`<sp/>into<sp/>the<sp/>folder<sp/>and<sp/>run:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>source<sp/>../&lt;ENV_FILE&gt;</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>make<sp/>-j</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>script<sp/>uses<sp/>the<sp/>the<sp/>source<sp/>override<sp/>feature<sp/>of<sp/>the<sp/>Trilinos<sp/>build<sp/>system.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>creates<sp/>symlinks<sp/>in<sp/>the<sp/>Trilinos<sp/>folder<sp/>to<sp/>your<sp/>updated<sp/>Kokkos</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>Kokkos<sp/>Kernels<sp/>branches.<sp/>Trilinos<sp/>is<sp/>then<sp/>redirected<sp/>to<sp/>build<sp/>with<sp/>the<sp/>updated</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>via<sp/>a<sp/>CMake<sp/>option<sp/>`-DKokkos_SOURCE_DIR_OVERRIDE=kokkos`.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>[LICENSE](https://github.com/kokkos/kokkos/blob/master/LICENSE)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/scripts/trilinos-integration/README.md"/>
+  </compounddef>
+</doxygen>

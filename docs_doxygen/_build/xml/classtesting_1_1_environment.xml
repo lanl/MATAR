@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_environment" kind="class" language="C++" prot="public">
+    <compoundname>testing::Environment</compoundname>
+    <innerclass refid="structtesting_1_1_environment_1_1_setup__should__be__spelled___set_up" prot="private">testing::Environment::Setup_should_be_spelled_SetUp</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_environment_1a0e41c320362576d752cd1f44cabd57d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::Environment::~Environment</definition>
+        <argsstring>()</argsstring>
+        <name>~Environment</name>
+        <qualifiedname>testing::Environment::~Environment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18360" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18360" bodyend="18360"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1a1bf8cafaa9d4eba9feb98655ee434eb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::Environment::SetUp</definition>
+        <argsstring>()</argsstring>
+        <name>SetUp</name>
+        <qualifiedname>testing::Environment::SetUp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18363" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18363" bodyend="18363"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1a039bdaa705c46b9b88234cf4d3bb6254" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::Environment::TearDown</definition>
+        <argsstring>()</argsstring>
+        <name>TearDown</name>
+        <qualifiedname>testing::Environment::TearDown</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18366" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18366" bodyend="18366"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1a0e41c320362576d752cd1f44cabd57d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::Environment::~Environment</definition>
+        <argsstring>()</argsstring>
+        <name>~Environment</name>
+        <qualifiedname>testing::Environment::~Environment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18360" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18360" bodyend="18360"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1a1bf8cafaa9d4eba9feb98655ee434eb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::Environment::SetUp</definition>
+        <argsstring>()</argsstring>
+        <name>SetUp</name>
+        <qualifiedname>testing::Environment::SetUp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18363" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18363" bodyend="18363"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1a039bdaa705c46b9b88234cf4d3bb6254" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::Environment::TearDown</definition>
+        <argsstring>()</argsstring>
+        <name>TearDown</name>
+        <qualifiedname>testing::Environment::TearDown</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18366" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18366" bodyend="18366"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1_environment_1aa3159e63ba6d567c53f6e4228f1d5dda" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>Setup_should_be_spelled_SetUp *</type>
+        <definition>virtual Setup_should_be_spelled_SetUp * testing::Environment::Setup</definition>
+        <argsstring>()</argsstring>
+        <name>Setup</name>
+        <qualifiedname>testing::Environment::Setup</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18371" column="41" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18371" bodyend="18371"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_environment_1aa3159e63ba6d567c53f6e4228f1d5dda" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>Setup_should_be_spelled_SetUp *</type>
+        <definition>virtual Setup_should_be_spelled_SetUp * testing::Environment::Setup</definition>
+        <argsstring>()</argsstring>
+        <name>Setup</name>
+        <qualifiedname>testing::Environment::Setup</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18371" column="41" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18371" bodyend="18371"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18357" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18357" bodyend="18372"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_environment_1a1bf8cafaa9d4eba9feb98655ee434eb3" prot="public" virt="virtual"><scope>testing::Environment</scope><name>SetUp</name></member>
+      <member refid="classtesting_1_1_environment_1a1bf8cafaa9d4eba9feb98655ee434eb3" prot="public" virt="virtual"><scope>testing::Environment</scope><name>SetUp</name></member>
+      <member refid="classtesting_1_1_environment_1aa3159e63ba6d567c53f6e4228f1d5dda" prot="private" virt="virtual"><scope>testing::Environment</scope><name>Setup</name></member>
+      <member refid="classtesting_1_1_environment_1aa3159e63ba6d567c53f6e4228f1d5dda" prot="private" virt="virtual"><scope>testing::Environment</scope><name>Setup</name></member>
+      <member refid="classtesting_1_1_environment_1a039bdaa705c46b9b88234cf4d3bb6254" prot="public" virt="virtual"><scope>testing::Environment</scope><name>TearDown</name></member>
+      <member refid="classtesting_1_1_environment_1a039bdaa705c46b9b88234cf4d3bb6254" prot="public" virt="virtual"><scope>testing::Environment</scope><name>TearDown</name></member>
+      <member refid="classtesting_1_1_environment_1a0e41c320362576d752cd1f44cabd57d4" prot="public" virt="virtual"><scope>testing::Environment</scope><name>~Environment</name></member>
+      <member refid="classtesting_1_1_environment_1a0e41c320362576d752cd1f44cabd57d4" prot="public" virt="virtual"><scope>testing::Environment</scope><name>~Environment</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

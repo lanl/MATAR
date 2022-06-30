@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_modified_gram_schmidt" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ModifiedGramSchmidt</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_modified_gram_schmidt_1a3761237e608b1d32282d662f721a0f9a" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="113" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_modified_gram_schmidt_1a0ce317137b596f1baef32dd58c0fdc39" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="114" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_modified_gram_schmidt_1ad878724f7b33517c33a0afd97fe83196" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar **, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, execution_space &gt;</type>
+        <definition>using Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::multivector_type =  Kokkos::View&lt;Scalar**, Kokkos::LayoutLeft, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>multivector_type</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::multivector_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="116" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_modified_gram_schmidt_1a454b92c0c4757d4dea092b66dde2144a" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, execution_space &gt;</type>
+        <definition>using Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::vector_type =  Kokkos::View&lt;Scalar*, Kokkos::LayoutLeft, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>vector_type</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::vector_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_modified_gram_schmidt_1a49118bc6dec4674e83e01da79944d331" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, execution_space &gt;</type>
+        <definition>using Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::value_view =  Kokkos::View&lt;Scalar, Kokkos::LayoutLeft, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>value_view</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::value_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="122" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_modified_gram_schmidt_1a1cbaf9038ebe0fe5a1c6e845d5110ae4" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">multivector_type</ref></type>
+        <definition>multivector_type Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::Q</definition>
+        <argsstring></argsstring>
+        <name>Q</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::Q</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="124" column="20" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_modified_gram_schmidt_1adf11c2a45e6ef1b2335b45ece18915d5" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">multivector_type</ref></type>
+        <definition>multivector_type Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::R</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="125" column="20" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_modified_gram_schmidt_1a0370a2d715ce91cc4a8616a9255041bd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::factorization</definition>
+        <argsstring>(const multivector_type Q_, const multivector_type R_)</argsstring>
+        <name>factorization</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::factorization</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">multivector_type</ref></type>
+          <declname>Q_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">multivector_type</ref></type>
+          <declname>R_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="127" column="17" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="127" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_modified_gram_schmidt_1a5051cde51a27b972c73e754388b6653e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;::test</definition>
+        <argsstring>(const size_type length, const size_type count, const size_t iter=1)</argsstring>
+        <name>test</name>
+        <qualifiedname>Test::ModifiedGramSchmidt::test</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>const size_type</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>iter</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="168" column="17" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="168" bodyend="199"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::ModifiedGramSchmidt&lt; Scalar, DeviceType &gt;</label>
+        <link refid="struct_test_1_1_modified_gram_schmidt"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Q</edgelabel>
+          <edgelabel>R</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Scalar **, Kokkos::LayoutLeft, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Scalar **, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="112" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="112" bodyend="200"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a3761237e608b1d32282d662f721a0f9a" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a0370a2d715ce91cc4a8616a9255041bd" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>factorization</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1ad878724f7b33517c33a0afd97fe83196" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>multivector_type</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a1cbaf9038ebe0fe5a1c6e845d5110ae4" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>Q</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1adf11c2a45e6ef1b2335b45ece18915d5" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>R</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a0ce317137b596f1baef32dd58c0fdc39" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>size_type</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a5051cde51a27b972c73e754388b6653e" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>test</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a49118bc6dec4674e83e01da79944d331" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>value_view</name></member>
+      <member refid="struct_test_1_1_modified_gram_schmidt_1a454b92c0c4757d4dea092b66dde2144a" prot="public" virt="non-virtual"><scope>Test::ModifiedGramSchmidt</scope><name>vector_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

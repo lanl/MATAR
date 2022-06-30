@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1python__view__type__impl_3_01_view_t_3_01_value_t_01_4_00_01type__list_3_01_types_8_8_8_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::python_view_type_impl&lt; ViewT&lt; ValueT &gt;, type_list&lt; Types... &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>template&lt; typename... &gt; class</type>
+        <declname>ViewT</declname>
+        <defname>ViewT</defname>
+      </param>
+      <param>
+        <type>typename ValueT</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Types</declname>
+        <defname>Types</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1python__view__type__impl_3_01_view_t_3_01_value_t_01_4_00_01type__list_3_01_types_8_8_8_01_4_01_4_1a70414a76ddb589f53401505d21d014fa" prot="public" static="no">
+        <type>ViewT&lt; ValueT, device_memory_space_t&lt; Types &gt;... &gt;</type>
+        <definition>using Kokkos::Impl::python_view_type_impl&lt; ViewT&lt; ValueT &gt;, type_list&lt; Types... &gt; &gt;::type =  ViewT&lt;ValueT, device_memory_space_t&lt;Types&gt;...&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::python_view_type_impl&lt; ViewT&lt; ValueT &gt;, type_list&lt; Types... &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_InterOp.hpp" line="85" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_InterOp.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/KokkosExp_InterOp.hpp" line="84" column="1" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_InterOp.hpp" bodystart="84" bodyend="86"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1python__view__type__impl_3_01_view_t_3_01_value_t_01_4_00_01type__list_3_01_types_8_8_8_01_4_01_4_1a70414a76ddb589f53401505d21d014fa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::python_view_type_impl&lt; ViewT&lt; ValueT &gt;, type_list&lt; Types... &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

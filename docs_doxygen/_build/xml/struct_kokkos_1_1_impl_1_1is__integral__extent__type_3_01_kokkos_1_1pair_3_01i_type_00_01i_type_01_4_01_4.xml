@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__integral__extent__type_3_01_kokkos_1_1pair_3_01i_type_00_01i_type_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::is_integral_extent_type&lt; Kokkos::pair&lt; iType, iType &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class iType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1is__integral__extent__type_3_01_kokkos_1_1pair_3_01i_type_00_01i_type_01_4_01_4_1afe2ff395e9ee8ff694df20eb384603e1" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@121</name>
+        <qualifiedname>Kokkos::Impl::is_integral_extent_type&lt; Kokkos::pair&lt; iType, iType &gt; &gt;::@121</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1is__integral__extent__type_3_01_kokkos_1_1pair_3_01i_type_00_01i_type_01_4_01_4_1afe2ff395e9ee8ff694df20eb384603e1a56429466edda248edd0766585b923f79" prot="public">
+          <name>value</name>
+          <initializer>= std::is_integral&lt;iType&gt;::value ? 1 : 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="337" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="337" bodyend="337"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="336" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="336" bodyend="338"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1is__integral__extent__type_3_01_kokkos_1_1pair_3_01i_type_00_01i_type_01_4_01_4_1afe2ff395e9ee8ff694df20eb384603e1a56429466edda248edd0766585b923f79" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_integral_extent_type&lt; Kokkos::pair&lt; iType, iType &gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test_compiler_macros" kind="namespace" language="C++">
+    <compoundname>TestCompilerMacros</compoundname>
+    <innerclass refid="struct_test_compiler_macros_1_1_add_functor" prot="public">TestCompilerMacros::AddFunctor</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_compiler_macros_8hpp_1a9dd041ecdb6d28529a049c8b927112c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool TestCompilerMacros::Test</definition>
+        <argsstring>()</argsstring>
+        <name>Test</name>
+        <qualifiedname>TestCompilerMacros::Test</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestCompilerMacros.hpp" line="96" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestCompilerMacros.hpp" bodystart="96" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestCompilerMacros.hpp" line="59" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_join_add" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::JoinAdd</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename ValueType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_join_add_1adf0613c08b0b733898e7d299f567029c" prot="public" static="no">
+        <type>ValueType</type>
+        <definition>using Kokkos::Impl::JoinAdd&lt; ValueType &gt;::value_type =  ValueType</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::JoinAdd::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1816" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1816" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_join_add_1a083bb19828764249dac7d48eaad6c3a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::JoinAdd&lt; ValueType &gt;::JoinAdd</definition>
+        <argsstring>()=default</argsstring>
+        <name>JoinAdd</name>
+        <qualifiedname>Kokkos::Impl::JoinAdd::JoinAdd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1819" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_join_add_1ab79b67c5e4edeb592e6f9250d858b45c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::JoinAdd&lt; ValueType &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dst, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::JoinAdd::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1822" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1822" bodyend="1824"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_join_add_1a8d81eafb1ecf01d8b9e3880792f5d085" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::JoinAdd&lt; ValueType &gt;::operator()</definition>
+        <argsstring>(value_type &amp;dst, const value_type &amp;src) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::JoinAdd::operator()</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1826" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1826" bodyend="1826"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_join_add_1a42bf99eac1cc2e09c71b255899aeb632" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::JoinAdd&lt; ValueType &gt;::operator()</definition>
+        <argsstring>(volatile value_type &amp;dst, const volatile value_type &amp;src) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::JoinAdd::operator()</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1828" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1828" bodyend="1831"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1815" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1815" bodyend="1832"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_join_add_1ab79b67c5e4edeb592e6f9250d858b45c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::JoinAdd</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_join_add_1a083bb19828764249dac7d48eaad6c3a1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::JoinAdd</scope><name>JoinAdd</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_join_add_1a8d81eafb1ecf01d8b9e3880792f5d085" prot="public" virt="non-virtual"><scope>Kokkos::Impl::JoinAdd</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_join_add_1a42bf99eac1cc2e09c71b255899aeb632" prot="public" virt="non-virtual"><scope>Kokkos::Impl::JoinAdd</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_join_add_1adf0613c08b0b733898e7d299f567029c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::JoinAdd</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

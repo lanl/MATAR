@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor" kind="class" language="C++" prot="public">
+    <compoundname>DynamicRaggedRightArrayKokkos::set_strides_functor</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1a242ef0e7245907229c5e772dc159b06d" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D DynamicRaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::functor_strides_</definition>
+        <argsstring></argsstring>
+        <name>functor_strides_</name>
+        <qualifiedname>DynamicRaggedRightArrayKokkos::set_strides_functor::functor_strides_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12479" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12479" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1aabd835c8f99592e6c54a8f7d09cc5c41" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DynamicRaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::init_stride_</definition>
+        <argsstring></argsstring>
+        <name>init_stride_</name>
+        <qualifiedname>DynamicRaggedRightArrayKokkos::set_strides_functor::init_stride_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12480" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12480" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1aaf0108af02f460d4c415093393dd6be1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DynamicRaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::set_strides_functor</definition>
+        <argsstring>(size_t init_stride, SArray1D temp_strides_)</argsstring>
+        <name>set_strides_functor</name>
+        <qualifiedname>DynamicRaggedRightArrayKokkos::set_strides_functor::set_strides_functor</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>init_stride</declname>
+        </param>
+        <param>
+          <type>SArray1D</type>
+          <declname>temp_strides_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12481" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12481" bodyend="12484"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1a379ffcb3eb53edf635bc906bd73c0d1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void DynamicRaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor::operator()</definition>
+        <argsstring>(const int index) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DynamicRaggedRightArrayKokkos::set_strides_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12485" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12485" bodyend="12487"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12477" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12477" bodyend="12488"/>
+    <listofallmembers>
+      <member refid="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1a242ef0e7245907229c5e772dc159b06d" prot="public" virt="non-virtual"><scope>DynamicRaggedRightArrayKokkos::set_strides_functor</scope><name>functor_strides_</name></member>
+      <member refid="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1aabd835c8f99592e6c54a8f7d09cc5c41" prot="public" virt="non-virtual"><scope>DynamicRaggedRightArrayKokkos::set_strides_functor</scope><name>init_stride_</name></member>
+      <member refid="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1a379ffcb3eb53edf635bc906bd73c0d1b" prot="public" virt="non-virtual"><scope>DynamicRaggedRightArrayKokkos::set_strides_functor</scope><name>operator()</name></member>
+      <member refid="d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor_1aaf0108af02f460d4c415093393dd6be1" prot="public" virt="non-virtual"><scope>DynamicRaggedRightArrayKokkos::set_strides_functor</scope><name>set_strides_functor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

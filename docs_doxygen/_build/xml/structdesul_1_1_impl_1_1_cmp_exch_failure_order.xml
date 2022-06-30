@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_impl_1_1_cmp_exch_failure_order" kind="struct" language="C++" prot="public">
+    <compoundname>desul::Impl::CmpExchFailureOrder</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename MemoryOrder</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structdesul_1_1_impl_1_1_cmp_exch_failure_order_1a0852dda77a755e563000e7bd07d6c614" prot="public" static="no">
+        <type>std::conditional_t&lt; std::is_same&lt; MemoryOrder, <ref refid="structdesul_1_1_memory_order_acq_rel" kindref="compound">MemoryOrderAcqRel</ref> &gt;{}, <ref refid="structdesul_1_1_memory_order_acquire" kindref="compound">MemoryOrderAcquire</ref>, std::conditional_t&lt; std::is_same&lt; MemoryOrder, <ref refid="structdesul_1_1_memory_order_release" kindref="compound">MemoryOrderRelease</ref> &gt;{}, <ref refid="structdesul_1_1_memory_order_relaxed" kindref="compound">MemoryOrderRelaxed</ref>, MemoryOrder &gt; &gt;</type>
+        <definition>using desul::Impl::CmpExchFailureOrder&lt; MemoryOrder &gt;::memory_order =  std::conditional_t&lt; std::is_same&lt;MemoryOrder, MemoryOrderAcqRel&gt;{}, MemoryOrderAcquire, std::conditional_t&lt;std::is_same&lt;MemoryOrder, MemoryOrderRelease&gt;{}, MemoryOrderRelaxed, MemoryOrder&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>memory_order</name>
+        <qualifiedname>desul::Impl::CmpExchFailureOrder::memory_order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="126" column="3" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="125" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="125" bodyend="132"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_impl_1_1_cmp_exch_failure_order_1a0852dda77a755e563000e7bd07d6c614" prot="public" virt="non-virtual"><scope>desul::Impl::CmpExchFailureOrder</scope><name>memory_order</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

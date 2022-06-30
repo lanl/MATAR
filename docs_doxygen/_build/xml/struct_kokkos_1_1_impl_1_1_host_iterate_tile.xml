@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_host_iterate_tile" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::HostIterateTile</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename RP</type>
+      </param>
+      <param>
+        <type>typename Functor</type>
+      </param>
+      <param>
+        <type>typename Tag</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>typename ValueType</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>typename Enable</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1523" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1523" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

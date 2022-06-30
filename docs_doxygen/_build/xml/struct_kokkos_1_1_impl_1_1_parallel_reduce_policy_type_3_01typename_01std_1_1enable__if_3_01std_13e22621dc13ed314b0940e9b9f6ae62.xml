@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class PolicyType</type>
+      </param>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1a1fda0ed0acc0015fc3e03861c4853386" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_functor_policy_execution_space" kindref="compound">Impl::FunctorPolicyExecutionSpace</ref>&lt; FunctorType, void &gt;::execution_space</type>
+        <definition>using Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::execution_space =  typename Impl::FunctorPolicyExecutionSpace&lt;FunctorType, void&gt;::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="824" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="826" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1aad905c9fa1ffd7e1616a3ab3c3a1a32e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Kokkos::RangePolicy</ref>&lt; execution_space &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::policy_type =  Kokkos::RangePolicy&lt;execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="828" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="828" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1a25a6bbd1ccce4ffec6b5767c75bdfd61" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">policy_type</ref></type>
+        <definition>static policy_type Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::policy</definition>
+        <argsstring>(const PolicyType &amp;policy_)</argsstring>
+        <name>policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;::policy</qualifiedname>
+        <param>
+          <type>const PolicyType &amp;</type>
+          <declname>policy_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="830" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="830" bodyend="832"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="821" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="823" bodyend="833"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1a1fda0ed0acc0015fc3e03861c4853386" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1a25a6bbd1ccce4ffec6b5767c75bdfd61" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;</scope><name>policy</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_policy_type_3_01typename_01std_1_1enable__if_3_01std_13e22621dc13ed314b0940e9b9f6ae62_1aad905c9fa1ffd7e1616a3ab3c3a1a32e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReducePolicyType&lt; typename std::enable_if&lt; std::is_integral&lt; PolicyType &gt;::value &gt;::type, PolicyType, FunctorType &gt;</scope><name>policy_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

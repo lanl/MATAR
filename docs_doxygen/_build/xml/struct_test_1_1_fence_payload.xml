@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_fence_payload" kind="struct" language="C++" prot="public">
+    <compoundname>Test::FencePayload</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8" prot="public" static="no" strong="no">
+        <type></type>
+        <name>distinguishable_devices</name>
+        <qualifiedname>Test::FencePayload::distinguishable_devices</qualifiedname>
+        <enumvalue id="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8a563bca4975e9c37a67ca70d105cbd5ec" prot="public">
+          <name>yes</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8a1bf52b4811efafba2a2840dca9819b7f" prot="public">
+          <name>no</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_fence_payload_1a705e447b026a8fc1ede8106a2612c172" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Test::FencePayload::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>Test::FencePayload::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="65" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_fence_payload_1a8216ebac5d4d48f1efc608baf483ff40" prot="public" static="no" mutable="no">
+        <type>distinguishable_devices</type>
+        <definition>distinguishable_devices Test::FencePayload::distinguishable</definition>
+        <argsstring></argsstring>
+        <name>distinguishable</name>
+        <qualifiedname>Test::FencePayload::distinguishable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="67" column="27" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_fence_payload_1acb59e00b436e481eaf6e5dd9f542c570" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Test::FencePayload::dev_id</definition>
+        <argsstring></argsstring>
+        <name>dev_id</name>
+        <qualifiedname>Test::FencePayload::dev_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="68" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="64" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="64" bodyend="69"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_fence_payload_1acb59e00b436e481eaf6e5dd9f542c570" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>dev_id</name></member>
+      <member refid="struct_test_1_1_fence_payload_1a8216ebac5d4d48f1efc608baf483ff40" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>distinguishable</name></member>
+      <member refid="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>distinguishable_devices</name></member>
+      <member refid="struct_test_1_1_fence_payload_1a705e447b026a8fc1ede8106a2612c172" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>name</name></member>
+      <member refid="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8a1bf52b4811efafba2a2840dca9819b7f" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>no</name></member>
+      <member refid="struct_test_1_1_fence_payload_1a461d527e19e079ee9e6a147579dbb1a8a563bca4975e9c37a67ca70d105cbd5ec" prot="public" virt="non-virtual"><scope>Test::FencePayload</scope><name>yes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

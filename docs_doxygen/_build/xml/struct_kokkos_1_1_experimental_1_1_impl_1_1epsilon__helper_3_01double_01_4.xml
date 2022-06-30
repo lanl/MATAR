@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01double_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::epsilon_helper&lt; double &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01double_01_4_1afb5fbb78e74f21729b7b3c7662f88702" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double Kokkos::Experimental::Impl::epsilon_helper&lt; double &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Experimental::Impl::epsilon_helper&lt; double &gt;::value</qualifiedname>
+        <initializer>= DBL_EPSILON</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="110" column="57" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="110" column="11" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="110" bodyend="110"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01double_01_4_1afb5fbb78e74f21729b7b3c7662f88702" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::epsilon_helper&lt; double &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

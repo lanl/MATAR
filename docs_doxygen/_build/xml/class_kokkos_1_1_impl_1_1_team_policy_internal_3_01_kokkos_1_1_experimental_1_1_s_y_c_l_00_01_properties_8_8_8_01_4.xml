@@ -1,0 +1,1217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_policy_traits" prot="public" virt="non-virtual">Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ac6716a6d96aea34644af572630ae396e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref></type>
+        <definition>using Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::execution_policy =  TeamPolicyInternal</definition>
+        <argsstring></argsstring>
+        <name>execution_policy</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::execution_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5512b3392ef95f2d75e5bd6b553ca2f1" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_policy_traits" kindref="compound">PolicyTraits</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::traits =  PolicyTraits&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a4915ce8b4dfde9a88d1851dd83581767" prot="public" static="no">
+        <type>Kokkos::Experimental::SYCL</type>
+        <definition>using Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::execution_space =  Kokkos::Experimental::SYCL</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="80" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5a6ddd249b9a6a6685100103787c7979" prot="public" static="no">
+        <type>Kokkos::Impl::SYCLTeamMember</type>
+        <definition>using Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::member_type =  Kokkos::Impl::SYCLTeamMember</definition>
+        <argsstring></argsstring>
+        <name>member_type</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::member_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="319" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a42fdd60a5343f06b45452b4df217eb83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ExecSpace</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class TeamPolicyInternal</definition>
+        <argsstring></argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="66" column="16" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a05c7e2f348bedcabb974203becc24544" prot="private" static="no" mutable="no">
+        <type>traits::execution_space</type>
+        <definition>traits::execution_space Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_space</definition>
+        <argsstring></argsstring>
+        <name>m_space</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="69" column="36" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a01a8f2ddf034bb376dc34c77f6af1af1" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_league_size</definition>
+        <argsstring></argsstring>
+        <name>m_league_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="70" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaf315e5eee23b674414b2d51bd0e16a5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_team_size</definition>
+        <argsstring></argsstring>
+        <name>m_team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="71" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aebbf3beaf71682dc6622c6398051731a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_vector_length</definition>
+        <argsstring></argsstring>
+        <name>m_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_vector_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="72" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a244fb25c9702023d0abef0a410fa048f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_team_scratch_size[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_team_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_team_scratch_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="73" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a39f73aff230819f6c7ab85f32baa59db" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_thread_scratch_size[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_thread_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_thread_scratch_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="74" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5509601eb5423f2ad811f04bd15956a2" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_chunk_size</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="75" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5ba5849df3b53c42cca020b5899e622b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_tune_team_size</definition>
+        <argsstring></argsstring>
+        <name>m_tune_team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_tune_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="76" column="8" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaeb97b2a8503953a6d949eda334b7070" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_tune_vector_length</definition>
+        <argsstring></argsstring>
+        <name>m_tune_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::m_tune_vector_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="77" column="8" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aef9441ebf87ba95fa482d48c0245a022" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(TeamPolicyInternal&lt; OtherProperties... &gt; const &amp;p)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref>&lt; OtherProperties... &gt; const &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="83" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="83" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a57c5c75423d38eb7f55e3e0217fa8a57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</definition>
+        <argsstring>(FunctorType const &amp;f, ParallelForTag const &amp;) const</argsstring>
+        <name>team_size_max</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_parallel_for_tag" kindref="compound">ParallelForTag</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="98" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a07234b40106f0cc1a2ce4f625c6e21ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</definition>
+        <argsstring>(const FunctorType &amp;f, const ParallelReduceTag &amp;) const</argsstring>
+        <name>team_size_max</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_parallel_reduce_tag" kindref="compound">ParallelReduceTag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="103" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a79b2df73cd60950b418aee027cd426ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</definition>
+        <argsstring>(const FunctorType &amp;f, const ReducerType &amp;, const ParallelReduceTag &amp;) const</argsstring>
+        <name>team_size_max</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_max</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>const ReducerType &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_parallel_reduce_tag" kindref="compound">ParallelReduceTag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="109" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a163566c0ce92fd99d19f1c664e0ade23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</definition>
+        <argsstring>(FunctorType const &amp;f, ParallelForTag const &amp;) const</argsstring>
+        <name>team_size_recommended</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_parallel_for_tag" kindref="compound">ParallelForTag</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="115" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a012675d3993f0fd62c9d6e2aa73bc0b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</definition>
+        <argsstring>(FunctorType const &amp;f, ParallelReduceTag const &amp;) const</argsstring>
+        <name>team_size_recommended</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_parallel_reduce_tag" kindref="compound">ParallelReduceTag</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="120" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="120" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6d58ae6253bdc28fc2eba5e48277193c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+          <param>
+            <type>class ReducerType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</definition>
+        <argsstring>(FunctorType const &amp;f, ReducerType const &amp;, ParallelReduceTag const &amp;) const</argsstring>
+        <name>team_size_recommended</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size_recommended</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>ReducerType const &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_parallel_reduce_tag" kindref="compound">ParallelReduceTag</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="126" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a827c884e37feaf3ce3bc05017f762a86" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_auto_vector_length</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_auto_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_auto_vector_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="130" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="130" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a23783a6e7e13c5b6b7922217af32c7fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_auto_team_size</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_auto_team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_auto_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="131" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="131" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a72a1fe0ef81f0fb00e32cd540537d2f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_set_vector_length</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>impl_set_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_set_vector_length</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="164" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="164" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a1778663ff7162ae19831b9397c3acab9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_set_team_size</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>impl_set_team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_set_team_size</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="165" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae831766df80afa2cbdd82350941aded6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_vector_length</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::impl_vector_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="166" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8050b6563cecfa9c029ec2ffb09660e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size</definition>
+        <argsstring>() const</argsstring>
+        <name>team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="171" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a37caca5dadfd3085245d8c4881e84342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::league_size</definition>
+        <argsstring>() const</argsstring>
+        <name>league_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="173" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae9d7920782f8b8f0086e7cff0d22e81e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::scratch_size</definition>
+        <argsstring>(int level, int team_size_=-1) const</argsstring>
+        <name>scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="175" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="175" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a0e1ab82524fa75ef638f2b1b7a45c164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_scratch_size</definition>
+        <argsstring>(int level) const</argsstring>
+        <name>team_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::team_scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="181" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="181" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a648b335a95d8046248c2f6b227cd2759" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::thread_scratch_size</definition>
+        <argsstring>(int level) const</argsstring>
+        <name>thread_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::thread_scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="183" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae58eaa044728e2875133af8bfd940339" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>traits::execution_space</type>
+        <definition>traits::execution_space Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::space</definition>
+        <argsstring>() const</argsstring>
+        <name>space</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="187" column="36" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="187" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a9a8b4fe1aea01f607f1b8c94aba11868" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>()</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="189" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="189" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a7fe724295456fcc05ad287a9d80befb0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(const execution_space space_, int league_size_, int team_size_request, int vector_length_request=1)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>const execution_space</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Specify league size, request team size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="201" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="201" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6f239030535a545e84f834d191846afd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(const execution_space space_, int league_size_, const Kokkos::AUTO_t &amp;, int vector_length_request=1)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>const execution_space</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Specify league size, request team size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="233" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="233" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a2e4615d5ef40c561540ec14733a134d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(const execution_space space_, int league_size_, int team_size_request, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>const execution_space</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Specify league size and team size, request vector length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="239" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="239" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae484431b5a68e591a5ca5c431ddeb893" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(const execution_space space_, int league_size_, const Kokkos::AUTO_t &amp;, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>const execution_space</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Specify league size, request team size and vector length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="248" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="248" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a90b7e9dc3035d908ec1c9dd63aef0294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(int league_size_, int team_size_request, int vector_length_request=1)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="257" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="257" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a1eb9fbcf2348ec3344340c15c881cd3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(int league_size_, const Kokkos::AUTO_t &amp;, int vector_length_request=1)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="262" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="262" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6043e5bcf216f603d60bf4bdc3391d27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(int league_size_, int team_size_request, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Specify league size and team size, request vector length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="269" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="269" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6bbe4cb8c893aad823483b6d88f0b368" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</definition>
+        <argsstring>(int league_size_, const Kokkos::AUTO_t &amp;, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicyInternal</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::TeamPolicyInternal</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Specify league size, request team size and vector length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="279" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="279" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8d43934bf44526ea9aa02bce4dbafefd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::chunk_size</definition>
+        <argsstring>() const</argsstring>
+        <name>chunk_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="287" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8043f5da6b05c9f2772c6f9f6a7f61d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref> &amp;</type>
+        <definition>TeamPolicyInternal &amp; Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_chunk_size</definition>
+        <argsstring>(typename traits::index_type chunk_size_)</argsstring>
+        <name>set_chunk_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_chunk_size</qualifiedname>
+        <param>
+          <type>typename traits::index_type</type>
+          <declname>chunk_size_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="289" column="22" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="289" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5c6d154def860de830b169c26ab09a98" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref> &amp;</type>
+        <definition>TeamPolicyInternal &amp; Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</definition>
+        <argsstring>(int level, PerTeamValue const &amp;per_team)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_per_team_value" kindref="compound">PerTeamValue</ref> const &amp;</type>
+          <declname>per_team</declname>
+        </param>
+        <briefdescription>
+<para>set per team scratch size for a specific level of the scratch hierarchy </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="296" column="22" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="296" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a3978f09519387b21897052ed917582c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref> &amp;</type>
+        <definition>TeamPolicyInternal &amp; Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</definition>
+        <argsstring>(int level, PerThreadValue const &amp;per_thread)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_per_thread_value" kindref="compound">PerThreadValue</ref> const &amp;</type>
+          <declname>per_thread</declname>
+        </param>
+        <briefdescription>
+<para>set per thread scratch size for a specific level of the scratch hierarchy </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="304" column="22" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="304" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aeccd3e51e9aa1a582f807774937df13e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref> &amp;</type>
+        <definition>TeamPolicyInternal &amp; Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</definition>
+        <argsstring>(int level, PerTeamValue const &amp;per_team, PerThreadValue const &amp;per_thread)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::set_scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_per_team_value" kindref="compound">PerTeamValue</ref> const &amp;</type>
+          <declname>per_team</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_per_thread_value" kindref="compound">PerThreadValue</ref> const &amp;</type>
+          <declname>per_thread</declname>
+        </param>
+        <briefdescription>
+<para>set per thread and per team scratch size for a specific level of the scratch hierarchy </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="312" column="22" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="312" bodyend="317"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aea04bca5ac0613b1b19a820afd459d0c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::vector_length_max</definition>
+        <argsstring>()</argsstring>
+        <name>vector_length_max</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::vector_length_max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="134" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="134" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a234915ccf6cbbfaba0c63573b87db58e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::scratch_size_max</definition>
+        <argsstring>(int level)</argsstring>
+        <name>scratch_size_max</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::scratch_size_max</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="159" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="159" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ad1d9b5a4bbe585e21633139a1cfd48f7" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::verify_requested_vector_length</definition>
+        <argsstring>(int requested_vector_length)</argsstring>
+        <name>verify_requested_vector_length</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::verify_requested_vector_length</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>requested_vector_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="144" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="144" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6e6d3f94983cce56e9b291be2457bb70" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_max_for</definition>
+        <argsstring>(const FunctorType &amp;) const</argsstring>
+        <name>internal_team_size_max_for</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_max_for</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="323" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="323" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1af57d1b122f1295945507c0d6da5d2323" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_max_reduce</definition>
+        <argsstring>(const FunctorType &amp;f) const</argsstring>
+        <name>internal_team_size_max_reduce</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_max_reduce</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="340" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="340" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaf160e9e55824c6e35c3e26db8c29b45" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_recommended_for</definition>
+        <argsstring>(const FunctorType &amp;f) const</argsstring>
+        <name>internal_team_size_recommended_for</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_recommended_for</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="365" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="365" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a85d8e3162b7332c4b94e7e6bc4f2813f" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FunctorType</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_recommended_reduce</definition>
+        <argsstring>(const FunctorType &amp;f) const</argsstring>
+        <name>internal_team_size_recommended_reduce</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;::internal_team_size_recommended_reduce</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="371" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="371" bodyend="374"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="59" bodyend="375"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_policy_traits_1a24bd124fcc0bfd0f826263510bd9a239" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>base_t</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8d43934bf44526ea9aa02bce4dbafefd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>chunk_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ac6716a6d96aea34644af572630ae396e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>execution_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a4915ce8b4dfde9a88d1851dd83581767" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a23783a6e7e13c5b6b7922217af32c7fd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>impl_auto_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a827c884e37feaf3ce3bc05017f762a86" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>impl_auto_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a1778663ff7162ae19831b9397c3acab9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>impl_set_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a72a1fe0ef81f0fb00e32cd540537d2f1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>impl_set_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae831766df80afa2cbdd82350941aded6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>impl_vector_length</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults_1a0589019a678b24d949a1ddb6d2a06bcd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>index_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6e6d3f94983cce56e9b291be2457bb70" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>internal_team_size_max_for</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1af57d1b122f1295945507c0d6da5d2323" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>internal_team_size_max_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaf160e9e55824c6e35c3e26db8c29b45" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>internal_team_size_recommended_for</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a85d8e3162b7332c4b94e7e6bc4f2813f" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>internal_team_size_recommended_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a37caca5dadfd3085245d8c4881e84342" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5509601eb5423f2ad811f04bd15956a2" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_chunk_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a01a8f2ddf034bb376dc34c77f6af1af1" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a05c7e2f348bedcabb974203becc24544" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a244fb25c9702023d0abef0a410fa048f" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_team_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaf315e5eee23b674414b2d51bd0e16a5" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a39f73aff230819f6c7ab85f32baa59db" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_thread_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5ba5849df3b53c42cca020b5899e622b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_tune_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aaeb97b2a8503953a6d949eda334b7070" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_tune_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aebbf3beaf71682dc6622c6398051731a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>m_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5a6ddd249b9a6a6685100103787c7979" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>member_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae9d7920782f8b8f0086e7cff0d22e81e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a234915ccf6cbbfaba0c63573b87db58e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>scratch_size_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8043f5da6b05c9f2772c6f9f6a7f61d3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>set_chunk_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5c6d154def860de830b169c26ab09a98" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a3978f09519387b21897052ed917582c5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aeccd3e51e9aa1a582f807774937df13e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae58eaa044728e2875133af8bfd940339" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a0e1ab82524fa75ef638f2b1b7a45c164" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a8050b6563cecfa9c029ec2ffb09660e2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a57c5c75423d38eb7f55e3e0217fa8a57" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a07234b40106f0cc1a2ce4f625c6e21ef" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a79b2df73cd60950b418aee027cd426ee" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a163566c0ce92fd99d19f1c664e0ade23" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a012675d3993f0fd62c9d6e2aa73bc0b4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6d58ae6253bdc28fc2eba5e48277193c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a42fdd60a5343f06b45452b4df217eb83" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aef9441ebf87ba95fa482d48c0245a022" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a9a8b4fe1aea01f607f1b8c94aba11868" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a7fe724295456fcc05ad287a9d80befb0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6f239030535a545e84f834d191846afd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a2e4615d5ef40c561540ec14733a134d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ae484431b5a68e591a5ca5c431ddeb893" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a90b7e9dc3035d908ec1c9dd63aef0294" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a1eb9fbcf2348ec3344340c15c881cd3c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6043e5bcf216f603d60bf4bdc3391d27" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a6bbe4cb8c893aad823483b6d88f0b368" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a648b335a95d8046248c2f6b227cd2759" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>thread_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1a5512b3392ef95f2d75e5bd6b553ca2f1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1aea04bca5ac0613b1b19a820afd459d0c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>vector_length_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4_1ad1d9b5a4bbe585e21633139a1cfd48f7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal&lt; Kokkos::Experimental::SYCL, Properties... &gt;</scope><name>verify_requested_vector_length</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

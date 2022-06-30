@@ -1,0 +1,634 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</compoundname>
+    <derivedcompoundref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common" prot="public" virt="non-virtual">Kokkos::Impl::SharedAllocationRecordCommon&lt; Kokkos::HostSpace &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_experimental_1_1_logical_memo0fa40d7d5cf99ce617ad6ae12584a9cf" prot="public" virt="non-virtual">Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessSemanticsWithBase &gt;, void &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_memory_space_00_01void_01_4" prot="public" virt="non-virtual">Kokkos::Impl::SharedAllocationRecord&lt; MemorySpace, void &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common" prot="public" virt="non-virtual">Kokkos::Impl::SharedAllocationRecordCommon&lt; MemorySpace &gt;</derivedcompoundref>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae04dea3a53d36c0ae8e0007c44684f09" prot="protected" static="no">
+        <type>void(*)(<ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref>&lt; void, void &gt; *)</type>
+        <definition>using Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::function_type =  void (*)(SharedAllocationRecord&lt;void, void&gt;*)</definition>
+        <argsstring></argsstring>
+        <name>function_type</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::function_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="127" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae4c4f28fe00e24653519a045901f6779" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class SharedAllocationRecord</definition>
+        <argsstring></argsstring>
+        <name>SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="121" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a29920904fcda9a0c3285ed97352cc200" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class SharedAllocationRecordCommon</definition>
+        <argsstring></argsstring>
+        <name>SharedAllocationRecordCommon</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecordCommon</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common" kindref="compound">SharedAllocationRecordCommon</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="123" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a31455a14788f145c702d68207f94c40f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class HostInaccessibleSharedAllocationRecordCommon</definition>
+        <argsstring></argsstring>
+        <name>HostInaccessibleSharedAllocationRecordCommon</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::HostInaccessibleSharedAllocationRecordCommon</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_host_inaccessible_shared_allocation_record_common" kindref="compound">HostInaccessibleSharedAllocationRecordCommon</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="125" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae92edfd41420f525f21b622c0b121f68" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_header" kindref="compound">SharedAllocationHeader</ref> *const</type>
+        <definition>SharedAllocationHeader* const Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_alloc_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_alloc_ptr</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_alloc_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="129" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ac01c913db288212a2b7756c1d18fda1b" prot="protected" static="no" mutable="no">
+        <type>size_t const</type>
+        <definition>size_t const Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_alloc_size</definition>
+        <argsstring></argsstring>
+        <name>m_alloc_size</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_alloc_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="130" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ad83e5f52fe115ec2511f9d1505b0ff35" prot="protected" static="no" mutable="no">
+        <type>function_type const</type>
+        <definition>function_type const Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_dealloc</definition>
+        <argsstring></argsstring>
+        <name>m_dealloc</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_dealloc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="131" column="23" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae30a86e0d3068203959a8e7a86f2b774" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_count</definition>
+        <argsstring></argsstring>
+        <name>m_count</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::m_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="137" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a31b8a95dec4459b029742810014970ca" prot="private" static="yes" mutable="no">
+        <type>KOKKOS_THREAD_LOCAL int</type>
+        <definition>KOKKOS_THREAD_LOCAL int Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::t_tracking_enabled</definition>
+        <argsstring></argsstring>
+        <name>t_tracking_enabled</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::t_tracking_enabled</qualifiedname>
+        <initializer>=
+    1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="154" column="34" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a1b8fb5d10ad1277c3571a83c55ba9132" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::maximum_label_length</definition>
+        <argsstring></argsstring>
+        <name>maximum_label_length</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::maximum_label_length</qualifiedname>
+        <initializer>=
+      SharedAllocationHeader::maximum_label_length</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="203" column="29" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ab94b7cd48b7fb8d650969e696993d09b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</definition>
+        <argsstring>(SharedAllocationRecord &amp;&amp;)=delete</argsstring>
+        <name>SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="139" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a28a0e94e11913352e549c1d050db7dd1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</definition>
+        <argsstring>(const SharedAllocationRecord &amp;)=delete</argsstring>
+        <name>SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="140" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a84a91a70287e686ff16fccfbcf4d0e94" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;</type>
+        <definition>SharedAllocationRecord &amp; Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::operator=</definition>
+        <argsstring>(SharedAllocationRecord &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="141" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a09f34884f4a365d611922a56e17ce3a3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;</type>
+        <definition>SharedAllocationRecord &amp; Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::operator=</definition>
+        <argsstring>(const SharedAllocationRecord &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="142" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a2e68846debfc4712bd4cfb58a88b44b4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</definition>
+        <argsstring>(SharedAllocationHeader *arg_alloc_ptr, size_t arg_alloc_size, function_type arg_dealloc)</argsstring>
+        <name>SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_header" kindref="compound">SharedAllocationHeader</ref> *</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>function_type</type>
+          <declname>arg_dealloc</declname>
+        </param>
+        <briefdescription>
+<para>Construct and insert into &apos;arg_root&apos; tracking set. use_count is zero. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="147" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ada7a543fd356e81d18bd861bdf4ea10e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::get_label</definition>
+        <argsstring>() const</argsstring>
+        <name>get_label</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::get_label</qualifiedname>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common_1a1790f05b86fa61b05ecddb29380c02a0">get_label</reimplementedby>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common_1a1790f05b86fa61b05ecddb29380c02a0">get_label</reimplementedby>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_host_inaccessible_shared_allocation_record_common_1ad84b627f5e14a354598a3cae2ce5bdd6">get_label</reimplementedby>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_experimental_1_1_logical_memo0fa40d7d5cf99ce617ad6ae12584a9cf_1a84b3d62052c81fa1588c01886213e8d0">get_label</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="157" column="23" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="157" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1af6281bbd7a8412f5e38b81ff17a9ccc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::~SharedAllocationRecord</definition>
+        <argsstring>()=default</argsstring>
+        <name>~SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::~SharedAllocationRecord</qualifiedname>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_host_space_00_01void_01_4_1affa0346df1e6283a7271167078cfa84f">~SharedAllocationRecord</reimplementedby>
+        <reimplementedby refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_experimental_1_1_logical_memo0fa40d7d5cf99ce617ad6ae12584a9cf_1a5fc65d88b3801a8598d4cba75aa78a19">~SharedAllocationRecord</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="187" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a3504fa322b6bc47c41108a54aebd5ebe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</definition>
+        <argsstring>()</argsstring>
+        <name>SharedAllocationRecord</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::SharedAllocationRecord</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="189" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="189" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ac6efae5b8ae28d6320438b4b889628d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_header" kindref="compound">SharedAllocationHeader</ref> *</type>
+        <definition>KOKKOS_INLINE_FUNCTION const SharedAllocationHeader * Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::head</definition>
+        <argsstring>() const</argsstring>
+        <name>head</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::head</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="207" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a65fd0175c623fd0cfdefd69092d5c366" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void *</type>
+        <definition>KOKKOS_INLINE_FUNCTION void * Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="211" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a10781ee7402ffbe0b131e1642c99cb04" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="214" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a4d73dd16dc41aa85a3904854fe670909" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::use_count</definition>
+        <argsstring>() const</argsstring>
+        <name>use_count</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::use_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="217" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="217" bodyend="217"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a35cf594c81cc4e424fa396b46cec3831" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_IMPL_HOST_FUNCTION int</type>
+        <definition>static KOKKOS_IMPL_HOST_FUNCTION int Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_enabled</definition>
+        <argsstring>()</argsstring>
+        <name>tracking_enabled</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="166" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="166" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a36e6abc3798a0d6ed85b796f5c50500b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_disable</definition>
+        <argsstring>()</argsstring>
+        <name>tracking_disable</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_disable</qualifiedname>
+        <briefdescription>
+<para>A host process thread claims and disables the shared allocation tracking flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="176" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="176" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a1127773c5af8f1eb74bce3e0c7d67df5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_enable</definition>
+        <argsstring>()</argsstring>
+        <name>tracking_enable</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::tracking_enable</qualifiedname>
+        <briefdescription>
+<para>A host process thread releases and enables the shared allocation tracking flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="183" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a16f998202738dc5ffb036586aab78069" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_IMPL_HOST_FUNCTION void</type>
+        <definition>void Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::increment</definition>
+        <argsstring>(SharedAllocationRecord *)</argsstring>
+        <name>increment</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::increment</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="227" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.cpp" bodystart="224" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a09aecc0922390da3eb3c8e0108691a55" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_IMPL_HOST_FUNCTION <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *</type>
+        <definition>SharedAllocationRecord&lt; void, void &gt; * Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::decrement</definition>
+        <argsstring>(SharedAllocationRecord *)</argsstring>
+        <name>decrement</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::decrement</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="238" column="33" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.cpp" bodystart="235" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ad9fde769dcfc28647cb52d2946ab4aa3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *</type>
+        <definition>SharedAllocationRecord&lt; void, void &gt; * Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::find</definition>
+        <argsstring>(SharedAllocationRecord *const, void *const)</argsstring>
+        <name>find</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::find</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> * const</type>
+        </param>
+        <param>
+          <type>void * const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="241" column="33" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.cpp" bodystart="162" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a0889218e270802287646b01159860e7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::is_sane</definition>
+        <argsstring>(SharedAllocationRecord *)</argsstring>
+        <name>is_sane</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::is_sane</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="248" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.cpp" bodystart="122" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a5785c435c1fedb4dda3e9246f19d3b7e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::print_host_accessible_records</definition>
+        <argsstring>(std::ostream &amp;, const char *const space_name, const SharedAllocationRecord *const root, const bool detail)</argsstring>
+        <name>print_host_accessible_records</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;::print_host_accessible_records</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const char *const</type>
+          <declname>space_name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref> *const</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>detail</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="251" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.cpp" bodystart="362" bodyend="368"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7">
+        <label>Kokkos::Impl::HostInaccessibleSharedAllocationRecordCommon&lt; MemorySpace &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_host_inaccessible_shared_allocation_record_common"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccessSemanticsWithBase &gt;, void &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_experimental_1_1_logical_memo0fa40d7d5cf99ce617ad6ae12584a9cf"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::HostSpace, void &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_kokkos_1_1_host_space_00_01void_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::Impl::SharedAllocationRecord&lt; MemorySpace, void &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01_memory_space_00_01void_01_4"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4"/>
+      </node>
+      <node id="6">
+        <label>Kokkos::Impl::SharedAllocationRecordCommon&lt; MemorySpace &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::SharedAllocationRecordCommon&lt; Kokkos::HostSpace &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_common"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Impl::SharedAllocationHeader</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_header"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_alloc_ptr</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="115" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="115" bodyend="254"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a65fd0175c623fd0cfdefd69092d5c366" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>data</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a09aecc0922390da3eb3c8e0108691a55" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>decrement</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ad9fde769dcfc28647cb52d2946ab4aa3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>find</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae04dea3a53d36c0ae8e0007c44684f09" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>function_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ada7a543fd356e81d18bd861bdf4ea10e" prot="public" virt="virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>get_label</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ac6efae5b8ae28d6320438b4b889628d1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>head</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a31455a14788f145c702d68207f94c40f" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>HostInaccessibleSharedAllocationRecordCommon</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a16f998202738dc5ffb036586aab78069" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>increment</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a0889218e270802287646b01159860e7f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>is_sane</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae92edfd41420f525f21b622c0b121f68" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>m_alloc_ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ac01c913db288212a2b7756c1d18fda1b" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>m_alloc_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae30a86e0d3068203959a8e7a86f2b774" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>m_count</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ad83e5f52fe115ec2511f9d1505b0ff35" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>m_dealloc</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a1b8fb5d10ad1277c3571a83c55ba9132" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>maximum_label_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a84a91a70287e686ff16fccfbcf4d0e94" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a09f34884f4a365d611922a56e17ce3a3" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a5785c435c1fedb4dda3e9246f19d3b7e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>print_host_accessible_records</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ae4c4f28fe00e24653519a045901f6779" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecord</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1ab94b7cd48b7fb8d650969e696993d09b" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecord</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a28a0e94e11913352e549c1d050db7dd1" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecord</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a2e68846debfc4712bd4cfb58a88b44b4" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecord</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a3504fa322b6bc47c41108a54aebd5ebe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecord</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a29920904fcda9a0c3285ed97352cc200" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>SharedAllocationRecordCommon</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a10781ee7402ffbe0b131e1642c99cb04" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a31b8a95dec4459b029742810014970ca" prot="private" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>t_tracking_enabled</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a36e6abc3798a0d6ed85b796f5c50500b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>tracking_disable</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a1127773c5af8f1eb74bce3e0c7d67df5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>tracking_enable</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a35cf594c81cc4e424fa396b46cec3831" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>tracking_enabled</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1a4d73dd16dc41aa85a3904854fe670909" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>use_count</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4_1af6281bbd7a8412f5e38b81ff17a9ccc1" prot="public" virt="virtual"><scope>Kokkos::Impl::SharedAllocationRecord&lt; void, void &gt;</scope><name>~SharedAllocationRecord</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

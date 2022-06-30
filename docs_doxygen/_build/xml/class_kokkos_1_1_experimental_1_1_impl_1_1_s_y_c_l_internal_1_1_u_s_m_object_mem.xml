@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</compoundname>
+    <templateparamlist>
+      <param>
+        <type>sycl::usm::alloc</type>
+        <declname>Kind</declname>
+        <defname>Kind</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a98520f21f69982429df640b1d29a06f1" prot="private" static="no">
+        <type>std::conditional_t&lt; Kind==sycl::usm::alloc::device, Kokkos::Experimental::SYCLDeviceUSMSpace, std::conditional_t&lt; Kind==sycl::usm::alloc::shared, Kokkos::Experimental::SYCLSharedUSMSpace, Kokkos::Experimental::SYCLHostUSMSpace &gt; &gt;</type>
+        <definition>using Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::AllocationSpace =  std::conditional_t&lt; Kind == sycl::usm::alloc::device, Kokkos::Experimental::SYCLDeviceUSMSpace, std::conditional_t&lt;Kind == sycl::usm::alloc::shared, Kokkos::Experimental::SYCLSharedUSMSpace, Kokkos::Experimental::SYCLHostUSMSpace&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>AllocationSpace</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::AllocationSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="133" column="5" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a8bd75878f371ba0d77a8245da8e65b2f" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; sycl::queue &gt;</type>
+        <definition>std::optional&lt;sycl::queue&gt; Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::m_q</definition>
+        <argsstring></argsstring>
+        <name>m_q</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::m_q</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="185" column="19" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a8985bf07f9c85b9b7a31b9e48689da0a" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::m_data</definition>
+        <argsstring></argsstring>
+        <name>m_data</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::m_data</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="186" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a55f80a96daa3a270ad7ecbb9a59dd415" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::m_capacity</definition>
+        <argsstring></argsstring>
+        <name>m_capacity</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::m_capacity</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="187" column="12" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a7c77d06e1d5288c5d79404e0d01851d9" prot="private" static="no" mutable="no">
+        <type>sycl::event</type>
+        <definition>sycl::event Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::m_last_event</definition>
+        <argsstring></argsstring>
+        <name>m_last_event</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::m_last_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="188" column="17" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a947a367e2a11cd35774e7913b8c631c8" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::m_instance_id</definition>
+        <argsstring></argsstring>
+        <name>m_instance_id</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::m_instance_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="190" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a0d072697017579a4e0af1103039f866e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="105" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" bodystart="328" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a22b548dd3fa9ae76590960c31e224dca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::reset</definition>
+        <argsstring>(sycl::queue q, uint32_t instance_id)</argsstring>
+        <name>reset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::reset</qualifiedname>
+        <param>
+          <type>sycl::queue</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>instance_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="107" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="107" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a62aef9f581a1669034a4e53e15416863" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::USMObjectMem</definition>
+        <argsstring>()=default</argsstring>
+        <name>USMObjectMem</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::USMObjectMem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="112" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b83dca814e58fad54a85b28483b4145" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::USMObjectMem</definition>
+        <argsstring>(sycl::queue q, uint32_t instance_id) noexcept</argsstring>
+        <name>USMObjectMem</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::USMObjectMem</qualifiedname>
+        <param>
+          <type>sycl::queue</type>
+          <declname>q</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>instance_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="113" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="113" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a854674dc799cece7090d135dc589f7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::USMObjectMem</definition>
+        <argsstring>(USMObjectMem const &amp;)=delete</argsstring>
+        <name>USMObjectMem</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::USMObjectMem</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="116" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1aba7d2b91dfcd9a4cb981b95105701bad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::USMObjectMem</definition>
+        <argsstring>(USMObjectMem &amp;&amp;)=delete</argsstring>
+        <name>USMObjectMem</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::USMObjectMem</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="117" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4fa4e4d79c63ba4b57090503de37553f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> &amp;</type>
+        <definition>USMObjectMem &amp; Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::operator=</definition>
+        <argsstring>(USMObjectMem &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="118" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a6d9a8f0d9f6de1799d680d9c12b029f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> &amp;</type>
+        <definition>USMObjectMem &amp; Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::operator=</definition>
+        <argsstring>(USMObjectMem const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">USMObjectMem</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="119" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b47ac6a34eda6f5b0be98447150cb78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::~USMObjectMem</definition>
+        <argsstring>()</argsstring>
+        <name>~USMObjectMem</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::~USMObjectMem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="121" column="5" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="121" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1ac32c90278d2313b06a084d8e45aebc14" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::data</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="123" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1ae8cdfb29903de7d7c9ac86fce9c2f60c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const void *</type>
+        <definition>const void * Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::data</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="124" column="16" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b902d5c20d227558d42a32af1638346" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::capacity</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>capacity</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::capacity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="126" column="12" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a008283469d2cae709d2b46d1d4ec19f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::reserve</definition>
+        <argsstring>(size_t n)</argsstring>
+        <name>reserve</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::reserve</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="130" column="12" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" bodystart="308" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a5c88736a87dd73c1b00b71ff5e1c81cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T &amp;</type>
+        <definition>T &amp; Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::copy_from</definition>
+        <argsstring>(const T &amp;t)</argsstring>
+        <name>copy_from</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::copy_from</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="144" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="144" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a61eaf8aad5857c18d0df2b7446c2ba4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::fence</definition>
+        <argsstring>()</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="159" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="159" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a720ea56623a8a51099b6bb4d8d8bf492" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem&lt; Kind &gt;::register_event</definition>
+        <argsstring>(sycl::event event)</argsstring>
+        <name>register_event</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem::register_event</qualifiedname>
+        <param>
+          <type>sycl::event</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="167" column="10" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="167" bodyend="172"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="103" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="103" bodyend="191"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a98520f21f69982429df640b1d29a06f1" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>AllocationSpace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b902d5c20d227558d42a32af1638346" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>capacity</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a5c88736a87dd73c1b00b71ff5e1c81cd" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>copy_from</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1ac32c90278d2313b06a084d8e45aebc14" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>data</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1ae8cdfb29903de7d7c9ac86fce9c2f60c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>data</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a61eaf8aad5857c18d0df2b7446c2ba4a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>fence</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a55f80a96daa3a270ad7ecbb9a59dd415" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>m_capacity</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a8985bf07f9c85b9b7a31b9e48689da0a" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>m_data</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a947a367e2a11cd35774e7913b8c631c8" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>m_instance_id</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a7c77d06e1d5288c5d79404e0d01851d9" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>m_last_event</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a8bd75878f371ba0d77a8245da8e65b2f" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>m_q</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4fa4e4d79c63ba4b57090503de37553f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a6d9a8f0d9f6de1799d680d9c12b029f7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a720ea56623a8a51099b6bb4d8d8bf492" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>register_event</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a008283469d2cae709d2b46d1d4ec19f9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>reserve</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a0d072697017579a4e0af1103039f866e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>reset</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a22b548dd3fa9ae76590960c31e224dca" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>reset</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a62aef9f581a1669034a4e53e15416863" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>USMObjectMem</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b83dca814e58fad54a85b28483b4145" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>USMObjectMem</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a854674dc799cece7090d135dc589f7c5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>USMObjectMem</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1aba7d2b91dfcd9a4cb981b95105701bad" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>USMObjectMem</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem_1a4b47ac6a34eda6f5b0be98447150cb78" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLInternal::USMObjectMem</scope><name>~USMObjectMem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

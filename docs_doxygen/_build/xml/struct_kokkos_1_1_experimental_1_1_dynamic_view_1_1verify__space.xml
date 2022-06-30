@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_dynamic_view_1_1verify__space" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Experimental::DynamicView::verify_space</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <defval><ref refid="struct_kokkos_1_1_impl_1_1_memory_space_access" kindref="compound">Kokkos::Impl::MemorySpaceAccess</ref>&lt;                             Space, device_space&gt;::accessible</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_dynamic_view_1_1verify__space_1a2693cd28b5b2fba80f2d92e147b40ee8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>static KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::verify_space&lt; Space, bool &gt;::check</definition>
+        <argsstring>()</argsstring>
+        <name>check</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::verify_space::check</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="287" column="45" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="287" bodyend="287"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="286" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="286" bodyend="288"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_dynamic_view_1_1verify__space_1a2693cd28b5b2fba80f2d92e147b40ee8" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView::verify_space</scope><name>check</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

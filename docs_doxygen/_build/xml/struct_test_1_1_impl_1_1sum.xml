@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1sum" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::sum</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+      <param>
+        <type>class Scalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1sum_1ab951f58b23b12c634cf7f3925903e1d2" prot="public" static="no">
+        <type>double</type>
+        <definition>using Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;::value_type =  double</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::Impl::sum::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1sum_1abbb2808be2e9768c160891fd4fb67f03" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::Impl::sum::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1sum_1aa6b18ebb283f9b4705706f978b814f8c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar *, ExecutionSpace &gt;</type>
+        <definition>Kokkos::View&lt;Scalar*, ExecutionSpace&gt; Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;::keys</definition>
+        <argsstring></argsstring>
+        <name>keys</name>
+        <qualifiedname>Test::Impl::sum::keys</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="75" column="16" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1sum_1a964df5567c25bc18d4bfed74da9ba5be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;::sum</definition>
+        <argsstring>(Kokkos::View&lt; Scalar *, ExecutionSpace &gt; keys_)</argsstring>
+        <name>sum</name>
+        <qualifiedname>Test::Impl::sum::sum</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; Scalar *, ExecutionSpace &gt;</type>
+          <declname>keys_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1sum_1a304a4d82071e4b996e7d67e5af14fdf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;::operator()</definition>
+        <argsstring>(int i, double &amp;count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::sum::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="79" column="8" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="79" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::Impl::sum&lt; ExecutionSpace, Scalar &gt;</label>
+        <link refid="struct_test_1_1_impl_1_1sum"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Scalar *, ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Scalar *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" line="71" column="1" bodyfile="src/Kokkos/kokkos/algorithms/unit_tests/TestSort.hpp" bodystart="71" bodyend="80"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1sum_1abbb2808be2e9768c160891fd4fb67f03" prot="public" virt="non-virtual"><scope>Test::Impl::sum</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_impl_1_1sum_1aa6b18ebb283f9b4705706f978b814f8c" prot="public" virt="non-virtual"><scope>Test::Impl::sum</scope><name>keys</name></member>
+      <member refid="struct_test_1_1_impl_1_1sum_1a304a4d82071e4b996e7d67e5af14fdf6" prot="public" virt="non-virtual"><scope>Test::Impl::sum</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1sum_1a964df5567c25bc18d4bfed74da9ba5be" prot="public" virt="non-virtual"><scope>Test::Impl::sum</scope><name>sum</name></member>
+      <member refid="struct_test_1_1_impl_1_1sum_1ab951f58b23b12c634cf7f3925903e1d2" prot="public" virt="non-virtual"><scope>Test::Impl::sum</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

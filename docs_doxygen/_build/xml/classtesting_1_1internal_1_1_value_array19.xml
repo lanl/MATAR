@@ -1,0 +1,623 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_value_array19" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::ValueArray19</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T1</type>
+      </param>
+      <param>
+        <type>typename T2</type>
+      </param>
+      <param>
+        <type>typename T3</type>
+      </param>
+      <param>
+        <type>typename T4</type>
+      </param>
+      <param>
+        <type>typename T5</type>
+      </param>
+      <param>
+        <type>typename T6</type>
+      </param>
+      <param>
+        <type>typename T7</type>
+      </param>
+      <param>
+        <type>typename T8</type>
+      </param>
+      <param>
+        <type>typename T9</type>
+      </param>
+      <param>
+        <type>typename T10</type>
+      </param>
+      <param>
+        <type>typename T11</type>
+      </param>
+      <param>
+        <type>typename T12</type>
+      </param>
+      <param>
+        <type>typename T13</type>
+      </param>
+      <param>
+        <type>typename T14</type>
+      </param>
+      <param>
+        <type>typename T15</type>
+      </param>
+      <param>
+        <type>typename T16</type>
+      </param>
+      <param>
+        <type>typename T17</type>
+      </param>
+      <param>
+        <type>typename T18</type>
+      </param>
+      <param>
+        <type>typename T19</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a4ec4db71d948ba09ceeca513a78dbb93" prot="private" static="no" mutable="no">
+        <type>const T1</type>
+        <definition>const T1 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v1_</definition>
+        <argsstring></argsstring>
+        <name>v1_</name>
+        <qualifiedname>testing::internal::ValueArray19::v1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11308" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a47e4ed63a4a6eb02b3b827caac4c2cdb" prot="private" static="no" mutable="no">
+        <type>const T2</type>
+        <definition>const T2 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v2_</definition>
+        <argsstring></argsstring>
+        <name>v2_</name>
+        <qualifiedname>testing::internal::ValueArray19::v2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11309" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a418bd7e76a5730e309b5d069eb637f66" prot="private" static="no" mutable="no">
+        <type>const T3</type>
+        <definition>const T3 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v3_</definition>
+        <argsstring></argsstring>
+        <name>v3_</name>
+        <qualifiedname>testing::internal::ValueArray19::v3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11310" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a56a6fad9f57de43fe7326b7a6fe60eea" prot="private" static="no" mutable="no">
+        <type>const T4</type>
+        <definition>const T4 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v4_</definition>
+        <argsstring></argsstring>
+        <name>v4_</name>
+        <qualifiedname>testing::internal::ValueArray19::v4_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11311" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1aff6abab62d51d789cf77e9a22e85bfc2" prot="private" static="no" mutable="no">
+        <type>const T5</type>
+        <definition>const T5 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v5_</definition>
+        <argsstring></argsstring>
+        <name>v5_</name>
+        <qualifiedname>testing::internal::ValueArray19::v5_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11312" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a1e6f4e7d31ec00b771fe742212795b5f" prot="private" static="no" mutable="no">
+        <type>const T6</type>
+        <definition>const T6 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v6_</definition>
+        <argsstring></argsstring>
+        <name>v6_</name>
+        <qualifiedname>testing::internal::ValueArray19::v6_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11313" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1abad6f3467287eb6c283dc6e77eecdf77" prot="private" static="no" mutable="no">
+        <type>const T7</type>
+        <definition>const T7 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v7_</definition>
+        <argsstring></argsstring>
+        <name>v7_</name>
+        <qualifiedname>testing::internal::ValueArray19::v7_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11314" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1af9deb0787f635238eb6feb733e26dc85" prot="private" static="no" mutable="no">
+        <type>const T8</type>
+        <definition>const T8 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v8_</definition>
+        <argsstring></argsstring>
+        <name>v8_</name>
+        <qualifiedname>testing::internal::ValueArray19::v8_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11315" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1adefeeec6e3380d302de325d29fa04e92" prot="private" static="no" mutable="no">
+        <type>const T9</type>
+        <definition>const T9 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v9_</definition>
+        <argsstring></argsstring>
+        <name>v9_</name>
+        <qualifiedname>testing::internal::ValueArray19::v9_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11316" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1ab3cd971a3f7c6953a934c8805b39e7cc" prot="private" static="no" mutable="no">
+        <type>const T10</type>
+        <definition>const T10 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v10_</definition>
+        <argsstring></argsstring>
+        <name>v10_</name>
+        <qualifiedname>testing::internal::ValueArray19::v10_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11317" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1aa65a5fce9121feb8ad8670b6c72cda8b" prot="private" static="no" mutable="no">
+        <type>const T11</type>
+        <definition>const T11 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v11_</definition>
+        <argsstring></argsstring>
+        <name>v11_</name>
+        <qualifiedname>testing::internal::ValueArray19::v11_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11318" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1abfd2d9b87b6eb6d227df0fa3d8040300" prot="private" static="no" mutable="no">
+        <type>const T12</type>
+        <definition>const T12 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v12_</definition>
+        <argsstring></argsstring>
+        <name>v12_</name>
+        <qualifiedname>testing::internal::ValueArray19::v12_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11319" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a9aa65fd2603d7cb79ba9d02956aa5dc6" prot="private" static="no" mutable="no">
+        <type>const T13</type>
+        <definition>const T13 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v13_</definition>
+        <argsstring></argsstring>
+        <name>v13_</name>
+        <qualifiedname>testing::internal::ValueArray19::v13_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11320" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a419c262ad4e651ed45f3958ab9d60add" prot="private" static="no" mutable="no">
+        <type>const T14</type>
+        <definition>const T14 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v14_</definition>
+        <argsstring></argsstring>
+        <name>v14_</name>
+        <qualifiedname>testing::internal::ValueArray19::v14_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11321" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1ac7b401b0b4f7f1d46fc1361311183199" prot="private" static="no" mutable="no">
+        <type>const T15</type>
+        <definition>const T15 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v15_</definition>
+        <argsstring></argsstring>
+        <name>v15_</name>
+        <qualifiedname>testing::internal::ValueArray19::v15_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11322" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11322" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1aaddabb8a82594de5a693b94b49b56166" prot="private" static="no" mutable="no">
+        <type>const T16</type>
+        <definition>const T16 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v16_</definition>
+        <argsstring></argsstring>
+        <name>v16_</name>
+        <qualifiedname>testing::internal::ValueArray19::v16_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11323" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a3e242b3b1ba3c0483910a8ce904c9eb7" prot="private" static="no" mutable="no">
+        <type>const T17</type>
+        <definition>const T17 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v17_</definition>
+        <argsstring></argsstring>
+        <name>v17_</name>
+        <qualifiedname>testing::internal::ValueArray19::v17_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11324" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a8c2021c3091b316f6b9189407b8898c4" prot="private" static="no" mutable="no">
+        <type>const T18</type>
+        <definition>const T18 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v18_</definition>
+        <argsstring></argsstring>
+        <name>v18_</name>
+        <qualifiedname>testing::internal::ValueArray19::v18_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11325" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_value_array19_1a3b06d486aac2ba46d6c51d0d90212559" prot="private" static="no" mutable="no">
+        <type>const T19</type>
+        <definition>const T19 testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::v19_</definition>
+        <argsstring></argsstring>
+        <name>v19_</name>
+        <qualifiedname>testing::internal::ValueArray19::v19_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11326" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11326" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1a1ffcdacd1ffb1d6718187a66458c09e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::ValueArray19</definition>
+        <argsstring>(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8, T9 v9, T10 v10, T11 v11, T12 v12, T13 v13, T14 v14, T15 v15, T16 v16, T17 v17, T18 v18, T19 v19)</argsstring>
+        <name>ValueArray19</name>
+        <qualifiedname>testing::internal::ValueArray19::ValueArray19</qualifiedname>
+        <param>
+          <type>T1</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>v3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>v4</declname>
+        </param>
+        <param>
+          <type>T5</type>
+          <declname>v5</declname>
+        </param>
+        <param>
+          <type>T6</type>
+          <declname>v6</declname>
+        </param>
+        <param>
+          <type>T7</type>
+          <declname>v7</declname>
+        </param>
+        <param>
+          <type>T8</type>
+          <declname>v8</declname>
+        </param>
+        <param>
+          <type>T9</type>
+          <declname>v9</declname>
+        </param>
+        <param>
+          <type>T10</type>
+          <declname>v10</declname>
+        </param>
+        <param>
+          <type>T11</type>
+          <declname>v11</declname>
+        </param>
+        <param>
+          <type>T12</type>
+          <declname>v12</declname>
+        </param>
+        <param>
+          <type>T13</type>
+          <declname>v13</declname>
+        </param>
+        <param>
+          <type>T14</type>
+          <declname>v14</declname>
+        </param>
+        <param>
+          <type>T15</type>
+          <declname>v15</declname>
+        </param>
+        <param>
+          <type>T16</type>
+          <declname>v16</declname>
+        </param>
+        <param>
+          <type>T17</type>
+          <declname>v17</declname>
+        </param>
+        <param>
+          <type>T18</type>
+          <declname>v18</declname>
+        </param>
+        <param>
+          <type>T19</type>
+          <declname>v19</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11286" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11286" bodyend="11290"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1a8ddd6c1de46e25310cf844895c7c8cf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::operator ParamGenerator&lt; T &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; T &gt;</name>
+        <qualifiedname>testing::internal::ValueArray19::operator ParamGenerator&lt; T &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11293" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11293" bodyend="11302"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1a1ffcdacd1ffb1d6718187a66458c09e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::ValueArray19</definition>
+        <argsstring>(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, T6 v6, T7 v7, T8 v8, T9 v9, T10 v10, T11 v11, T12 v12, T13 v13, T14 v14, T15 v15, T16 v16, T17 v17, T18 v18, T19 v19)</argsstring>
+        <name>ValueArray19</name>
+        <qualifiedname>testing::internal::ValueArray19::ValueArray19</qualifiedname>
+        <param>
+          <type>T1</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>v3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>v4</declname>
+        </param>
+        <param>
+          <type>T5</type>
+          <declname>v5</declname>
+        </param>
+        <param>
+          <type>T6</type>
+          <declname>v6</declname>
+        </param>
+        <param>
+          <type>T7</type>
+          <declname>v7</declname>
+        </param>
+        <param>
+          <type>T8</type>
+          <declname>v8</declname>
+        </param>
+        <param>
+          <type>T9</type>
+          <declname>v9</declname>
+        </param>
+        <param>
+          <type>T10</type>
+          <declname>v10</declname>
+        </param>
+        <param>
+          <type>T11</type>
+          <declname>v11</declname>
+        </param>
+        <param>
+          <type>T12</type>
+          <declname>v12</declname>
+        </param>
+        <param>
+          <type>T13</type>
+          <declname>v13</declname>
+        </param>
+        <param>
+          <type>T14</type>
+          <declname>v14</declname>
+        </param>
+        <param>
+          <type>T15</type>
+          <declname>v15</declname>
+        </param>
+        <param>
+          <type>T16</type>
+          <declname>v16</declname>
+        </param>
+        <param>
+          <type>T17</type>
+          <declname>v17</declname>
+        </param>
+        <param>
+          <type>T18</type>
+          <declname>v18</declname>
+        </param>
+        <param>
+          <type>T19</type>
+          <declname>v19</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="11286" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="11286" bodyend="11290"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1a8ddd6c1de46e25310cf844895c7c8cf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::operator ParamGenerator&lt; T &gt;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ParamGenerator&lt; T &gt;</name>
+        <qualifiedname>testing::internal::ValueArray19::operator ParamGenerator&lt; T &gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="11293" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="11293" bodyend="11302"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1ae7dce5c33d0426de645afd700e1d432d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::operator=</definition>
+        <argsstring>(const ValueArray19 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValueArray19::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_value_array19" kindref="compound">ValueArray19</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11306" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_value_array19_1ae7dce5c33d0426de645afd700e1d432d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValueArray19&lt; T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19 &gt;::operator=</definition>
+        <argsstring>(const ValueArray19 &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValueArray19::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_value_array19" kindref="compound">ValueArray19</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="11306" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="11284" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="11284" bodyend="11327"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a8ddd6c1de46e25310cf844895c7c8cf6" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>operator ParamGenerator&lt; T &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a8ddd6c1de46e25310cf844895c7c8cf6" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>operator ParamGenerator&lt; T &gt;</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1ae7dce5c33d0426de645afd700e1d432d" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1ae7dce5c33d0426de645afd700e1d432d" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1ab3cd971a3f7c6953a934c8805b39e7cc" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v10_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1aa65a5fce9121feb8ad8670b6c72cda8b" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v11_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1abfd2d9b87b6eb6d227df0fa3d8040300" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v12_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a9aa65fd2603d7cb79ba9d02956aa5dc6" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v13_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a419c262ad4e651ed45f3958ab9d60add" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v14_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1ac7b401b0b4f7f1d46fc1361311183199" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v15_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1aaddabb8a82594de5a693b94b49b56166" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v16_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a3e242b3b1ba3c0483910a8ce904c9eb7" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v17_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a8c2021c3091b316f6b9189407b8898c4" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v18_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a3b06d486aac2ba46d6c51d0d90212559" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v19_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a4ec4db71d948ba09ceeca513a78dbb93" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a47e4ed63a4a6eb02b3b827caac4c2cdb" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a418bd7e76a5730e309b5d069eb637f66" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a56a6fad9f57de43fe7326b7a6fe60eea" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v4_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1aff6abab62d51d789cf77e9a22e85bfc2" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v5_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a1e6f4e7d31ec00b771fe742212795b5f" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v6_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1abad6f3467287eb6c283dc6e77eecdf77" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v7_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1af9deb0787f635238eb6feb733e26dc85" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v8_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1adefeeec6e3380d302de325d29fa04e92" prot="private" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>v9_</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a1ffcdacd1ffb1d6718187a66458c09e2" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>ValueArray19</name></member>
+      <member refid="classtesting_1_1internal_1_1_value_array19_1a1ffcdacd1ffb1d6718187a66458c09e2" prot="public" virt="non-virtual"><scope>testing::internal::ValueArray19</scope><name>ValueArray19</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

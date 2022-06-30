@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::PolicyTraitAdaptor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class TraitSpec</type>
+      </param>
+      <param>
+        <type>class <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+      </param>
+      <param>
+        <type>class NewTrait</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_Traits_fwd.hpp" line="69" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_Traits_fwd.hpp" bodystart="69" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_space_handle" kind="struct" language="C++" prot="public">
+    <compoundname>SpaceHandle</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_space_handle_1a688b8c0728100afc4b57d3a5242dffac" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char SpaceHandle::name[64]</definition>
+        <argsstring>[64]</argsstring>
+        <name>name</name>
+        <qualifiedname>SpaceHandle::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/printing-tool.cpp" line="17" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/printing-tool.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/tools/printing-tool.cpp" line="16" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/printing-tool.cpp" bodystart="16" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct_space_handle_1a688b8c0728100afc4b57d3a5242dffac" prot="public" virt="non-virtual"><scope>SpaceHandle</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,629 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::ChunkedArrayManager</compoundname>
+    <includes refid="_kokkos___dynamic_view_8hpp" local="no">Kokkos_DynamicView.hpp</includes>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_a_c_c_e_s_s_i_b_l_e___t_a_g" prot="private">Kokkos::Experimental::Impl::ChunkedArrayManager::ACCESSIBLE_TAG</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy" prot="private">Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_i_n_a_c_c_e_s_s_i_b_l_e___t_a_g" prot="private">Kokkos::Experimental::Impl::ChunkedArrayManager::INACCESSIBLE_TAG</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" prot="public">Kokkos::Experimental::Impl::ChunkedArrayManager::IsAccessibleFrom</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from_3_01_sp0c64573db61d393981878987f769c285" prot="public">Kokkos::Experimental::Impl::ChunkedArrayManager::IsAccessibleFrom&lt; Space, typename std::enable_if_t&lt; Kokkos::Impl::MemorySpaceAccess&lt; MemorySpace, Space &gt;::accessible &gt; &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from_3_01_sp762f0d2c4e96e59a9b340a5dc512b22b" prot="public">Kokkos::Experimental::Impl::ChunkedArrayManager::IsAccessibleFrom&lt; Space, typename std::enable_if_t&lt;!Kokkos::Impl::MemorySpaceAccess&lt; MemorySpace, Space &gt;::accessible &gt; &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename MemorySpace</type>
+      </param>
+      <param>
+        <type>typename ValueType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1abf2d2a8433479adeb57b7421fe7f77b3" prot="public" static="no">
+        <type>ValueType</type>
+        <definition>using Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::value_type =  ValueType</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a0a1ebe76aa4eeb1c790f22c467ce8efb" prot="public" static="no">
+        <type>ValueType *</type>
+        <definition>using Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::pointer_type =  ValueType*</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a24bc836a47befb5bdcbeccb5f34d2f27" prot="public" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="65" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aab4be0bbb781cd2ec6b66551ba491a5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct ChunkedArrayManager</definition>
+        <argsstring></argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="74" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aded8d760fad05ff08d77a44ac3bd0ebe" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::m_valid</definition>
+        <argsstring></argsstring>
+        <name>m_valid</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::m_valid</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="245" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1d9c3b90cf8b794d78e24f46789a7a86" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::m_chunk_max</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_max</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::m_chunk_max</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="246" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1ab0277b1d185f52ddec37f6f14f95c8e3" prot="private" static="no" mutable="no">
+        <type>pointer_type *</type>
+        <definition>pointer_type* Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::m_chunks</definition>
+        <argsstring></argsstring>
+        <name>m_chunks</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::m_chunks</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="247" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aeff252efe9a687e6b76fb8d7aea7e421" prot="private" static="no" mutable="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref></type>
+        <definition>track_type Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::m_track</definition>
+        <argsstring></argsstring>
+        <name>m_track</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::m_track</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="248" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1ad4eb54c534f223ca262c354735c0007c" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::m_chunk_size</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_size</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::m_chunk_size</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="249" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a27920cf042315eb3f0c6841463cb6f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="67" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1f319109853b214b66f5a8cff9d5b2fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(ChunkedArrayManager const &amp;)=default</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="68" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a3c3d90ea168ce27b2d1849b459dee3a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(ChunkedArrayManager &amp;&amp;)=default</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="69" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a523dccfc80f645be641c35ec2d75bff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> &amp;</type>
+        <definition>ChunkedArrayManager &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::operator=</definition>
+        <argsstring>(ChunkedArrayManager &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="70" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a0d3ea575d9cf35aac52f3a9e1f54f58e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> &amp;</type>
+        <definition>ChunkedArrayManager &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::operator=</definition>
+        <argsstring>(const ChunkedArrayManager &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="71" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a4b295dfd90f45554a4a3a275be5b3cc2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+          <param>
+            <type>typename Value</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(const ChunkedArrayManager&lt; Space, Value &gt; &amp;rhs)</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; Space, Value &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="77" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="77" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a16136b72a7b118a6f442135c58201093" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(const unsigned arg_chunk_max, const unsigned arg_chunk_size)</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_max</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="88" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a2947a2befd08cacba7ab6b964a135e76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::allocate_device</definition>
+        <argsstring>(const std::string &amp;label)</argsstring>
+        <name>allocate_device</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::allocate_device</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="139" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="139" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1c21c9c4f05d79b5dfc643592d97a5fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::initialize</definition>
+        <argsstring>()</argsstring>
+        <name>initialize</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="146" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="146" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a5f75799938164d2c9a4dbf353242742f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::allocate_with_destroy</definition>
+        <argsstring>(const std::string &amp;label, pointer_type *linked_allocation=nullptr)</argsstring>
+        <name>allocate_with_destroy</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::allocate_with_destroy</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>pointer_type *</type>
+          <declname>linked_allocation</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="200" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="200" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1affee5154e0a713e307d64bdcaed46970" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>pointer_type *</type>
+        <definition>pointer_type * Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::get_ptr</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ptr</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::get_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="218" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1abba35df905e212ab688daf85050fdae6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;!<ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" kindref="compound">IsAccessibleFrom</ref>&lt; Space &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt;!IsAccessibleFrom&lt; Space &gt;::value &gt;::type Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::deep_copy_to</definition>
+        <argsstring>(ChunkedArrayManager&lt; Space, ValueType &gt; const &amp;other)</argsstring>
+        <name>deep_copy_to</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::deep_copy_to</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; Space, ValueType &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="221" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="221" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a036bc9c971f8283877f8f6900284e2e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" kindref="compound">IsAccessibleFrom</ref>&lt; Space &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt; IsAccessibleFrom&lt; Space &gt;::value &gt;::type Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::deep_copy_to</definition>
+        <argsstring>(ChunkedArrayManager&lt; Space, ValueType &gt; const &amp;)</argsstring>
+        <name>deep_copy_to</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::deep_copy_to</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; Space, ValueType &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="228" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="228" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a4df51bd9b77462d577bbc5b6a7f138dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION pointer_type *</type>
+        <definition>KOKKOS_INLINE_FUNCTION pointer_type * Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::operator+</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::operator+</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="234" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="234" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a7e92c165beb1b1ceb476aa78e871ff32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION pointer_type &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION pointer_type &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::operator[]</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="237" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="237" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a48d59fab5fa82958f226305450024ca6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref> const &amp;</type>
+        <definition>track_type const  &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::track</definition>
+        <argsstring>() const</argsstring>
+        <name>track</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::track</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="239" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a14fcb9a20f4c1da77c3003f1e34c8bef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::valid</definition>
+        <argsstring>() const</argsstring>
+        <name>valid</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="242" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="242" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a52845cdfe90ea7a4a44afc86c529e4d9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(ACCESSIBLE_TAG, pointer_type *arg_chunks, const unsigned arg_chunk_max)</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type>ACCESSIBLE_TAG</type>
+        </param>
+        <param>
+          <type>pointer_type *</type>
+          <declname>arg_chunks</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="96" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a7706adbcdd23b562852ed5acdbdbb251" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::ChunkedArrayManager</definition>
+        <argsstring>(INACCESSIBLE_TAG, const unsigned arg_chunk_max, const unsigned arg_chunk_size)</argsstring>
+        <name>ChunkedArrayManager</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::ChunkedArrayManager</qualifiedname>
+        <param>
+          <type>INACCESSIBLE_TAG</type>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_max</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="100" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="100" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a13f4c41fc29f3df1c6a0d2f6e6aa4a45" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; Space, ValueType &gt;</type>
+        <definition>static ChunkedArrayManager&lt; Space, ValueType &gt; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::create_mirror</definition>
+        <argsstring>(ChunkedArrayManager&lt; MemorySpace, ValueType &gt; const &amp;other, typename std::enable_if&lt; IsAccessibleFrom&lt; Space &gt;::value &gt;::type *=nullptr)</argsstring>
+        <name>create_mirror</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::create_mirror</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; MemorySpace, ValueType &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" kindref="compound">IsAccessibleFrom</ref>&lt; Space &gt;::value &gt;::type *</type>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="119" column="30" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="119" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1acc37c4a5affd8ae15d14064d672cd9b7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Space</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; Space, ValueType &gt;</type>
+        <definition>static ChunkedArrayManager&lt; Space, ValueType &gt; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::create_mirror</definition>
+        <argsstring>(ChunkedArrayManager&lt; MemorySpace, ValueType &gt; const &amp;other, typename std::enable_if&lt;!IsAccessibleFrom&lt; Space &gt;::value &gt;::type *=nullptr)</argsstring>
+        <name>create_mirror</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::create_mirror</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">ChunkedArrayManager</ref>&lt; MemorySpace, ValueType &gt; const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt;!<ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_is_accessible_from" kindref="compound">IsAccessibleFrom</ref>&lt; Space &gt;::value &gt;::type *</type>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="128" column="30" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="128" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Utility class to manage memory for chunked arrays on the host and device. Allocates/deallocates memory on both the host and device along with providing utilities for creating mirrors and deep copying between them. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="62" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="62" bodyend="250"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a2947a2befd08cacba7ab6b964a135e76" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>allocate_device</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a5f75799938164d2c9a4dbf353242742f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>allocate_with_destroy</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aab4be0bbb781cd2ec6b66551ba491a5c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a27920cf042315eb3f0c6841463cb6f31" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1f319109853b214b66f5a8cff9d5b2fc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a3c3d90ea168ce27b2d1849b459dee3a5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a4b295dfd90f45554a4a3a275be5b3cc2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a16136b72a7b118a6f442135c58201093" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a52845cdfe90ea7a4a44afc86c529e4d9" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a7706adbcdd23b562852ed5acdbdbb251" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>ChunkedArrayManager</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a13f4c41fc29f3df1c6a0d2f6e6aa4a45" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>create_mirror</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1acc37c4a5affd8ae15d14064d672cd9b7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>create_mirror</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1abba35df905e212ab688daf85050fdae6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>deep_copy_to</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a036bc9c971f8283877f8f6900284e2e7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>deep_copy_to</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1affee5154e0a713e307d64bdcaed46970" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>get_ptr</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1c21c9c4f05d79b5dfc643592d97a5fa" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>initialize</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a1d9c3b90cf8b794d78e24f46789a7a86" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>m_chunk_max</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1ad4eb54c534f223ca262c354735c0007c" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>m_chunk_size</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1ab0277b1d185f52ddec37f6f14f95c8e3" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>m_chunks</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aeff252efe9a687e6b76fb8d7aea7e421" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>m_track</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1aded8d760fad05ff08d77a44ac3bd0ebe" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>m_valid</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a4df51bd9b77462d577bbc5b6a7f138dd" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>operator+</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a523dccfc80f645be641c35ec2d75bff9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a0d3ea575d9cf35aac52f3a9e1f54f58e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a7e92c165beb1b1ceb476aa78e871ff32" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>operator[]</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a0a1ebe76aa4eeb1c790f22c467ce8efb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>pointer_type</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a48d59fab5fa82958f226305450024ca6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>track</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a24bc836a47befb5bdcbeccb5f34d2f27" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>track_type</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1a14fcb9a20f4c1da77c3003f1e34c8bef" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>valid</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1abf2d2a8433479adeb57b7421fe7f77b3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

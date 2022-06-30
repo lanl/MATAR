@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::HasNewFatalFailureHelper</compoundname>
+    <basecompoundref refid="classtesting_1_1_test_part_result_reporter_interface" prot="public" virt="non-virtual">testing::TestPartResultReporterInterface</basecompoundref>
+    <basecompoundref refid="classtesting_1_1_test_part_result_reporter_interface" prot="public" virt="non-virtual">testing::TestPartResultReporterInterface</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a172103f6aefee8c387a44679888fee30" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure_</definition>
+        <argsstring></argsstring>
+        <name>has_new_fatal_failure_</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17216" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ad2e9a8294e86486bade80a710f0adb76" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1_test_part_result_reporter_interface" kindref="compound">TestPartResultReporterInterface</ref> *</type>
+        <definition>TestPartResultReporterInterface * testing::internal::HasNewFatalFailureHelper::original_reporter_</definition>
+        <argsstring></argsstring>
+        <name>original_reporter_</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::original_reporter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17217" column="35" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17217" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a59190a7188db558c00b4c6bf9251859a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</definition>
+        <argsstring>()</argsstring>
+        <name>HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17211" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="9465" bodyend="9470"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a913b1bc7c372868c9b2dbb009044ee97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>testing::internal::HasNewFatalFailureHelper::~HasNewFatalFailureHelper</definition>
+        <argsstring>()</argsstring>
+        <name>~HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::~HasNewFatalFailureHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17212" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="9472" bodyend="9475"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a2d2e1faa1f3669b82810df97ac678a27" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::HasNewFatalFailureHelper::ReportTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;result)</argsstring>
+        <name>ReportTestPartResult</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::ReportTestPartResult</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_part_result_reporter_interface_1aa2f920e7a5a0a6d0faf19e3727928c22">ReportTestPartResult</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17213" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="9477" bodyend="9482"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a91b7bac47f09076db4be0304a2110a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure</definition>
+        <argsstring>() const</argsstring>
+        <name>has_new_fatal_failure</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17214" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17214" bodyend="17214"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a59190a7188db558c00b4c6bf9251859a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</definition>
+        <argsstring>()</argsstring>
+        <name>HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17211" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ae9207df58c9ca17b8243b6b664b402fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::HasNewFatalFailureHelper::~HasNewFatalFailureHelper</definition>
+        <argsstring>()</argsstring>
+        <name>~HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::~HasNewFatalFailureHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17212" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ac7b5e77c9847b2b057cb97193ba82441" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::HasNewFatalFailureHelper::ReportTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;result)</argsstring>
+        <name>ReportTestPartResult</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::ReportTestPartResult</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_part_result_reporter_interface_1aa2f920e7a5a0a6d0faf19e3727928c22">ReportTestPartResult</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17213" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a91b7bac47f09076db4be0304a2110a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure</definition>
+        <argsstring>() const</argsstring>
+        <name>has_new_fatal_failure</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::has_new_fatal_failure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17214" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17214" bodyend="17214"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a7ffe64e11d3629e33b1a4239c931fd75" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</definition>
+        <argsstring>(HasNewFatalFailureHelper const &amp;)</argsstring>
+        <name>HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper" kindref="compound">HasNewFatalFailureHelper</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17219" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1af22b92342808fcaf7186cf8471750e7a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::HasNewFatalFailureHelper::operator=</definition>
+        <argsstring>(HasNewFatalFailureHelper const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper" kindref="compound">HasNewFatalFailureHelper</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17219" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a7ffe64e11d3629e33b1a4239c931fd75" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</definition>
+        <argsstring>(HasNewFatalFailureHelper const &amp;)</argsstring>
+        <name>HasNewFatalFailureHelper</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::HasNewFatalFailureHelper</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper" kindref="compound">HasNewFatalFailureHelper</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17219" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1af22b92342808fcaf7186cf8471750e7a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::HasNewFatalFailureHelper::operator=</definition>
+        <argsstring>(HasNewFatalFailureHelper const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::HasNewFatalFailureHelper::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper" kindref="compound">HasNewFatalFailureHelper</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17219" column="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::TestPartResultReporterInterface</label>
+        <link refid="classtesting_1_1_test_part_result_reporter_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::HasNewFatalFailureHelper</label>
+        <link refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::TestPartResultReporterInterface</label>
+        <link refid="classtesting_1_1_test_part_result_reporter_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::HasNewFatalFailureHelper</label>
+        <link refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17208" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17209" bodyend="17220"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a91b7bac47f09076db4be0304a2110a9e" prot="public" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>has_new_fatal_failure</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a91b7bac47f09076db4be0304a2110a9e" prot="public" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>has_new_fatal_failure</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a172103f6aefee8c387a44679888fee30" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>has_new_fatal_failure_</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a59190a7188db558c00b4c6bf9251859a" prot="public" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a7ffe64e11d3629e33b1a4239c931fd75" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a59190a7188db558c00b4c6bf9251859a" prot="public" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a7ffe64e11d3629e33b1a4239c931fd75" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1af22b92342808fcaf7186cf8471750e7a" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1af22b92342808fcaf7186cf8471750e7a" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ad2e9a8294e86486bade80a710f0adb76" prot="private" virt="non-virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>original_reporter_</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a2d2e1faa1f3669b82810df97ac678a27" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>ReportTestPartResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ac7b5e77c9847b2b057cb97193ba82441" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>ReportTestPartResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1a913b1bc7c372868c9b2dbb009044ee97" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>~HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1internal_1_1_has_new_fatal_failure_helper_1ae9207df58c9ca17b8243b6b664b402fa" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>~HasNewFatalFailureHelper</name></member>
+      <member refid="classtesting_1_1_test_part_result_reporter_interface_1a338b51591ed654f84dc0feaaf2b66917" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>~TestPartResultReporterInterface</name></member>
+      <member refid="classtesting_1_1_test_part_result_reporter_interface_1a338b51591ed654f84dc0feaaf2b66917" prot="public" virt="virtual"><scope>testing::internal::HasNewFatalFailureHelper</scope><name>~TestPartResultReporterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_01443b2ff9abb00e327fc501e4ee6abdff" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt; NonMatchingTrait, ToProcessTraits... &gt;, NewTrait, std::enable_if_t&lt;!PolicyTraitMatcher&lt; TraitSpec, NonMatchingTrait &gt;::value &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class TraitSpec</type>
+      </param>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>PolicyTemplate</declname>
+        <defname>PolicyTemplate</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>ProcessedTraits</declname>
+        <defname>ProcessedTraits</defname>
+      </param>
+      <param>
+        <type>class NonMatchingTrait</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>ToProcessTraits</declname>
+        <defname>ToProcessTraits</defname>
+      </param>
+      <param>
+        <type>class NewTrait</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_01443b2ff9abb00e327fc501e4ee6abdff_1aaa56f25b186f138899cdadee347995f5" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl" kindref="compound">PolicyTraitAdaptorImpl</ref>&lt; TraitSpec, PolicyTemplate, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">type_list</ref>&lt; ProcessedTraits..., NonMatchingTrait &gt;, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">type_list</ref>&lt; ToProcessTraits... &gt;, NewTrait &gt;::type</type>
+        <definition>using Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt; NonMatchingTrait, ToProcessTraits... &gt;, NewTrait, std::enable_if_t&lt;!PolicyTraitMatcher&lt; TraitSpec, NonMatchingTrait &gt;::value &gt; &gt;::type =  typename PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt;ProcessedTraits..., NonMatchingTrait&gt;, type_list&lt;ToProcessTraits...&gt;, NewTrait&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt; NonMatchingTrait, ToProcessTraits... &gt;, NewTrait, std::enable_if_t&lt;!PolicyTraitMatcher&lt; TraitSpec, NonMatchingTrait &gt;::value &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" line="111" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" line="107" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" bodystart="110" bodyend="115"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_01443b2ff9abb00e327fc501e4ee6abdff_1aaa56f25b186f138899cdadee347995f5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt; NonMatchingTrait, ToProcessTraits... &gt;, NewTrait, std::enable_if_t&lt;!PolicyTraitMatcher&lt; TraitSpec, NonMatchingTrait &gt;::value &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_relaxed_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>desul::GCCMemoryOrder&lt; MemoryOrderRelaxed &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_relaxed_01_4_1a044de4862893b10156677a3c4bf7c034" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int desul::GCCMemoryOrder&lt; MemoryOrderRelaxed &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>desul::GCCMemoryOrder&lt; MemoryOrderRelaxed &gt;::value</qualifiedname>
+        <initializer>=  0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="72" column="24" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="71" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="71" bodyend="73"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_relaxed_01_4_1a044de4862893b10156677a3c4bf7c034" prot="public" virt="non-virtual"><scope>desul::GCCMemoryOrder&lt; MemoryOrderRelaxed &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

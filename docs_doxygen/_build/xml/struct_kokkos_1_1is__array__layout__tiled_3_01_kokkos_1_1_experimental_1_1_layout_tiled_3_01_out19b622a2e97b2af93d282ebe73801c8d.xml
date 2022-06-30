@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1is__array__layout__tiled_3_01_kokkos_1_1_experimental_1_1_layout_tiled_3_01_out19b622a2e97b2af93d282ebe73801c8d" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::is_array_layout_tiled&lt; Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerTwo &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>OuterP</declname>
+        <defname>OuterP</defname>
+      </param>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>InnerP</declname>
+        <defname>InnerP</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN0</declname>
+        <defname>ArgN0</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN1</declname>
+        <defname>ArgN1</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN2</declname>
+        <defname>ArgN2</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN3</declname>
+        <defname>ArgN3</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN4</declname>
+        <defname>ArgN4</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN5</declname>
+        <defname>ArgN5</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN6</declname>
+        <defname>ArgN6</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN7</declname>
+        <defname>ArgN7</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>IsPowerTwo</declname>
+        <defname>IsPowerTwo</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::is_array_layout_tiled&lt; Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerTwo &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1is__array__layout__tiled_3_01_kokkos_1_1_experimental_1_1_layout_tiled_3_01_out19b622a2e97b2af93d282ebe73801c8d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::is_array_layout_tiled&lt; Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerTwo &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1is__array__layout__tiled_3_01_kokkos_1_1_experimental_1_1_layout_tiled_3_01_out19b622a2e97b2af93d282ebe73801c8d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="110" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="112" bodyend="113"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

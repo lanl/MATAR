@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01long_01long_01int_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::digits_helper&lt; unsigned long long int &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01long_01long_01int_01_4_1aab02f022becac96ac0b5d571a3013fa6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Experimental::Impl::digits_helper&lt; unsigned long long int &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Experimental::Impl::digits_helper&lt; unsigned long long int &gt;::value</qualifiedname>
+        <initializer>= CHAR_BIT*sizeof(long long int)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="138" column="53" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="138" column="11" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="138" bodyend="138"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01long_01long_01int_01_4_1aab02f022becac96ac0b5d571a3013fa6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::digits_helper&lt; unsigned long long int &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

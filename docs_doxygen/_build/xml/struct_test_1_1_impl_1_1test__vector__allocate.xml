@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1test__vector__allocate" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::test_vector_allocate</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+      <param>
+        <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__vector__allocate_1a8644ceb7e6a08ad18aad6120cfbd954f" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_impl_1_1test__vector__allocate" kindref="compound">test_vector_allocate</ref>&lt; Scalar, <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;</type>
+        <definition>using Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::self_type =  test_vector_allocate&lt;Scalar, Device&gt;</definition>
+        <argsstring></argsstring>
+        <name>self_type</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::self_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="180" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__vector__allocate_1a6113ef1579de33cc76dcae075e5c8384" prot="public" static="no">
+        <type>Scalar</type>
+        <definition>using Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::scalar_type =  Scalar</definition>
+        <argsstring></argsstring>
+        <name>scalar_type</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::scalar_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="182" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1test__vector__allocate_1a62176d4546e86d60136887e667b27c26" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+        <definition>using Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::execution_space =  Device</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="183" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1test__vector__allocate_1a0f5867c355e57b7178f99dc5d7b92ae0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::result</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="185" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1test__vector__allocate_1a20ffde98b5719c9d9c755f9e46d866ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Vector</type>
+          </param>
+        </templateparamlist>
+        <type>Scalar</type>
+        <definition>Scalar Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::run_me</definition>
+        <argsstring>(unsigned int n)</argsstring>
+        <name>run_me</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::run_me</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="188" column="10" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="188" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1test__vector__allocate_1a77e549fe0adae7b8f38298f71f788ada" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::test_vector_allocate&lt; Scalar, Device &gt;::test_vector_allocate</definition>
+        <argsstring>(unsigned int size)</argsstring>
+        <name>test_vector_allocate</name>
+        <qualifiedname>Test::Impl::test_vector_allocate::test_vector_allocate</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="204" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="204" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" line="179" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestVector.hpp" bodystart="179" bodyend="207"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a62176d4546e86d60136887e667b27c26" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a0f5867c355e57b7178f99dc5d7b92ae0" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>result</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a20ffde98b5719c9d9c755f9e46d866ef" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>run_me</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a6113ef1579de33cc76dcae075e5c8384" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>scalar_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a8644ceb7e6a08ad18aad6120cfbd954f" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>self_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1test__vector__allocate_1a77e549fe0adae7b8f38298f71f788ada" prot="public" virt="non-virtual"><scope>Test::Impl::test_vector_allocate</scope><name>test_vector_allocate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

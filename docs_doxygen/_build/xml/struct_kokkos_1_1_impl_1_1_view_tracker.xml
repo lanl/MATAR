@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_tracker" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewTracker</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ParentView</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a0fe2b05d034b0aebdec3d204fb3ae181" prot="public" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Impl::ViewTracker&lt; ParentView &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_tracker_1aeb0852d18057d016c3c46ca74864f4f9" prot="public" static="no">
+        <type>typename ParentView::traits</type>
+        <definition>using Kokkos::Impl::ViewTracker&lt; ParentView &gt;::view_traits =  typename ParentView::traits</definition>
+        <argsstring></argsstring>
+        <name>view_traits</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::view_traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a677133b5581646ae79d5ad1437c6b43b" prot="public" static="no" mutable="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref></type>
+        <definition>track_type Kokkos::Impl::ViewTracker&lt; ParentView &gt;::m_tracker</definition>
+        <argsstring></argsstring>
+        <name>m_tracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::m_tracker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="71" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a6d4653a6a5e9b9ab06b1b3ea00a64104" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewTracker&lt; ParentView &gt;::ViewTracker</definition>
+        <argsstring>()</argsstring>
+        <name>ViewTracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::ViewTracker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a530515942a60a0504ec7a665a4b4b367" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewTracker&lt; ParentView &gt;::ViewTracker</definition>
+        <argsstring>(const ViewTracker &amp;vt) noexcept</argsstring>
+        <name>ViewTracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::ViewTracker</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_tracker" kindref="compound">ViewTracker</ref> &amp;</type>
+          <declname>vt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="77" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a4736d8fbc74a14aca344c5a460712bbb" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewTracker&lt; ParentView &gt;::ViewTracker</definition>
+        <argsstring>(const ParentView &amp;vt) noexcept</argsstring>
+        <name>ViewTracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::ViewTracker</qualifiedname>
+        <param>
+          <type>const ParentView &amp;</type>
+          <declname>vt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="81" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1ac08d427d0c380e277ecfdc108039310d" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewTracker&lt; ParentView &gt;::ViewTracker</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;vt) noexcept</argsstring>
+        <name>ViewTracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::ViewTracker</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>vt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="86" column="35" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="86" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1aa313c00eb4c3e63fc1c3ac03efd3acd9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::ViewTracker&lt; ParentView &gt;::assign</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;vt) noexcept</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::assign</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>vt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="93" column="31" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="93" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1a0def03076fc8508b8b20edcfdf9648df" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_impl_1_1_view_tracker" kindref="compound">ViewTracker</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewTracker &amp; Kokkos::Impl::ViewTracker&lt; ParentView &gt;::operator=</definition>
+        <argsstring>(const ViewTracker &amp;rhs) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_tracker" kindref="compound">ViewTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="107" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="107" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_tracker_1aa5207ac14e697382bff766f97af8153c" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewTracker&lt; ParentView &gt;::ViewTracker</definition>
+        <argsstring>(const track_type &amp;tt) noexcept</argsstring>
+        <name>ViewTracker</name>
+        <qualifiedname>Kokkos::Impl::ViewTracker::ViewTracker</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref> &amp;</type>
+          <declname>tt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="122" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="122" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Impl::SharedAllocationTracker</label>
+        <link refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::ViewTracker&lt; ParentView &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_tracker"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_tracker</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" line="67" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewTracker.hpp" bodystart="67" bodyend="124"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1aa313c00eb4c3e63fc1c3ac03efd3acd9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>assign</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a677133b5581646ae79d5ad1437c6b43b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>m_tracker</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a0def03076fc8508b8b20edcfdf9648df" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a0fe2b05d034b0aebdec3d204fb3ae181" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>track_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1aeb0852d18057d016c3c46ca74864f4f9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>view_traits</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a6d4653a6a5e9b9ab06b1b3ea00a64104" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>ViewTracker</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a530515942a60a0504ec7a665a4b4b367" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>ViewTracker</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1a4736d8fbc74a14aca344c5a460712bbb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>ViewTracker</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1ac08d427d0c380e277ecfdc108039310d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>ViewTracker</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_tracker_1aa5207ac14e697382bff766f97af8153c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewTracker</scope><name>ViewTracker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

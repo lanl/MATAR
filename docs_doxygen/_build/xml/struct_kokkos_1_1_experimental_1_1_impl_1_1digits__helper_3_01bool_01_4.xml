@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01bool_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::digits_helper&lt; bool &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01bool_01_4_1a6dfe704a5de030fb6d6f6bd0607b79a0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Experimental::Impl::digits_helper&lt; bool &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Experimental::Impl::digits_helper&lt; bool &gt;::value</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="127" column="53" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="127" column="11" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="127" bodyend="127"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01bool_01_4_1a6dfe704a5de030fb6d6f6bd0607b79a0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::digits_helper&lt; bool &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

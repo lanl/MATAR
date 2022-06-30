@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_zero_memset_3_01typename_01_host_space_1_1execution__space_00_01_d_t_00_01_d_p_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DT</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>DP</declname>
+        <defname>DP</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_zero_memset_3_01typename_01_host_space_1_1execution__space_00_01_d_t_00_01_d_p_8_8_8_01_4_1a50b53510ccb9adcf2acaec2a146d08fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;::ZeroMemset</definition>
+        <argsstring>(const typename HostSpace::execution_space &amp;, const View&lt; DT, DP... &gt; &amp;dst, typename View&lt; DT, DP... &gt;::const_value_type &amp;value)</argsstring>
+        <name>ZeroMemset</name>
+        <qualifiedname>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;::ZeroMemset</qualifiedname>
+        <param>
+          <type>const typename HostSpace::execution_space &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; DT, DP... &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; DT, DP... &gt;::const_value_type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="304" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="304" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_zero_memset_3_01typename_01_host_space_1_1execution__space_00_01_d_t_00_01_d_p_8_8_8_01_4_1aa3a6ddd1398fc17fe85c761a2a78cd31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;::ZeroMemset</definition>
+        <argsstring>(const View&lt; DT, DP... &gt; &amp;dst, typename View&lt; DT, DP... &gt;::const_value_type &amp;)</argsstring>
+        <name>ZeroMemset</name>
+        <qualifiedname>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;::ZeroMemset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; DT, DP... &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; DT, DP... &gt;::const_value_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="309" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="309" bodyend="313"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="303" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="303" bodyend="314"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_zero_memset_3_01typename_01_host_space_1_1execution__space_00_01_d_t_00_01_d_p_8_8_8_01_4_1a50b53510ccb9adcf2acaec2a146d08fc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;</scope><name>ZeroMemset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_zero_memset_3_01typename_01_host_space_1_1execution__space_00_01_d_t_00_01_d_p_8_8_8_01_4_1aa3a6ddd1398fc17fe85c761a2a78cd31" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ZeroMemset&lt; typename HostSpace::execution_space, DT, DP... &gt;</scope><name>ZeroMemset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1variadic__size__t_3_01_i_00_01_val_00_01_args_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::variadic_size_t&lt; I, Val, Args... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+      <param>
+        <type>size_t</type>
+        <declname>Val</declname>
+        <defname>Val</defname>
+      </param>
+      <param>
+        <type>size_t...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1variadic__size__t_3_01_i_00_01_val_00_01_args_8_8_8_01_4_1aca1965cca39adb2486c578c8538d4a43" prot="public" static="no" strong="no">
+        <type>size_t</type>
+        <name>@113</name>
+        <qualifiedname>Kokkos::Impl::variadic_size_t&lt; I, Val, Args... &gt;::@113</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1variadic__size__t_3_01_i_00_01_val_00_01_args_8_8_8_01_4_1aca1965cca39adb2486c578c8538d4a43aefd20f7bbf1d2cbc1cf623538c6471eb" prot="public">
+          <name>value</name>
+          <initializer>= variadic_size_t&lt;I - 1, Args...&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="81" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="80" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="80" bodyend="82"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1variadic__size__t_3_01_i_00_01_val_00_01_args_8_8_8_01_4_1aca1965cca39adb2486c578c8538d4a43aefd20f7bbf1d2cbc1cf623538c6471eb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::variadic_size_t&lt; I, Val, Args... &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

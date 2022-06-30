@@ -1,0 +1,579 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_test_part_result" kind="class" language="C++" prot="public">
+    <compoundname>testing::TestPartResult</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Type</name>
+        <qualifiedname>testing::TestPartResult::Type</qualifiedname>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a2f9a7e9f6c2df7b0d2212add7ce0a8be" prot="public">
+          <name>kSuccess</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5ade889093a860e9b21e703be6226d7cec" prot="public">
+          <name>kNonFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a7d1d53c4de784e24c5c2efbe14af6786" prot="public">
+          <name>kFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a2f9a7e9f6c2df7b0d2212add7ce0a8be" prot="public">
+          <name>kSuccess</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5ade889093a860e9b21e703be6226d7cec" prot="public">
+          <name>kNonFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a7d1d53c4de784e24c5c2efbe14af6786" prot="public">
+          <name>kFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17098" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17098" bodyend="17102"/>
+      </memberdef>
+      <memberdef kind="enum" id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Type</name>
+        <qualifiedname>testing::TestPartResult::Type</qualifiedname>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a2f9a7e9f6c2df7b0d2212add7ce0a8be" prot="public">
+          <name>kSuccess</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5ade889093a860e9b21e703be6226d7cec" prot="public">
+          <name>kNonFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a7d1d53c4de784e24c5c2efbe14af6786" prot="public">
+          <name>kFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a2f9a7e9f6c2df7b0d2212add7ce0a8be" prot="public">
+          <name>kSuccess</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5ade889093a860e9b21e703be6226d7cec" prot="public">
+          <name>kNonFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a7d1d53c4de784e24c5c2efbe14af6786" prot="public">
+          <name>kFatalFailure</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17098" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17098" bodyend="17102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1_test_part_result_1a4ee7ac490fe4f10e222fa08c3fa25437" prot="private" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type testing::TestPartResult::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <qualifiedname>testing::TestPartResult::type_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17150" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_test_part_result_1abf5ab5fc171dc6248579a44353385df6" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::TestPartResult::file_name_</definition>
+        <argsstring></argsstring>
+        <name>file_name_</name>
+        <qualifiedname>testing::TestPartResult::file_name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17158" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_test_part_result_1a7a988009362bcdc28d3b801fc6059b5e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int testing::TestPartResult::line_number_</definition>
+        <argsstring></argsstring>
+        <name>line_number_</name>
+        <qualifiedname>testing::TestPartResult::line_number_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17161" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_test_part_result_1a6b9bce29122b56a50295710b7f6e345c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::TestPartResult::summary_</definition>
+        <argsstring></argsstring>
+        <name>summary_</name>
+        <qualifiedname>testing::TestPartResult::summary_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17162" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_test_part_result_1a9adea12d4a4fb4ebf1cd00d22eac9aff" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::TestPartResult::message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <qualifiedname>testing::TestPartResult::message_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17163" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17163" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a6409eb519c1cd514aab2426c8f40737f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::TestPartResult::TestPartResult</definition>
+        <argsstring>(Type a_type, const char *a_file_name, int a_line_number, const char *a_message)</argsstring>
+        <name>TestPartResult</name>
+        <qualifiedname>testing::TestPartResult::TestPartResult</qualifiedname>
+        <param>
+          <type>Type</type>
+          <declname>a_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>a_file_name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>a_line_number</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>a_message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17107" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17107" bodyend="17116"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1aab92b225e8a472e78bd3889ca6df0d2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Type</type>
+        <definition>Type testing::TestPartResult::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <qualifiedname>testing::TestPartResult::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17119" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17119" bodyend="17119"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a5b44531e6847fa75882c43cf758345ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::file_name</definition>
+        <argsstring>() const</argsstring>
+        <name>file_name</name>
+        <qualifiedname>testing::TestPartResult::file_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17123" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17123" bodyend="17125"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1ad4c5da5f13245ac18cf256d0d9f3eda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::TestPartResult::line_number</definition>
+        <argsstring>() const</argsstring>
+        <name>line_number</name>
+        <qualifiedname>testing::TestPartResult::line_number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17129" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17129" bodyend="17129"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a42fa8f2568e3317f146e969298f63158" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::summary</definition>
+        <argsstring>() const</argsstring>
+        <name>summary</name>
+        <qualifiedname>testing::TestPartResult::summary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17132" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17132" bodyend="17132"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a1c522b89938fd685797adcafa357b771" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::message</definition>
+        <argsstring>() const</argsstring>
+        <name>message</name>
+        <qualifiedname>testing::TestPartResult::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17135" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17135" bodyend="17135"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1ac90edd5ea9cc4bb986a1eb2b5e1d53de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::passed</definition>
+        <argsstring>() const</argsstring>
+        <name>passed</name>
+        <qualifiedname>testing::TestPartResult::passed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17138" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17138" bodyend="17138"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1aa04b377c3e7ed57d39e882df5561ac90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::failed</definition>
+        <argsstring>() const</argsstring>
+        <name>failed</name>
+        <qualifiedname>testing::TestPartResult::failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17141" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17141" bodyend="17141"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a6197c7f6672acc1cfdf580eb1f2183ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::nonfatally_failed</definition>
+        <argsstring>() const</argsstring>
+        <name>nonfatally_failed</name>
+        <qualifiedname>testing::TestPartResult::nonfatally_failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17144" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17144" bodyend="17144"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a77db157eff9531c3c00c2420502f9a89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::fatally_failed</definition>
+        <argsstring>() const</argsstring>
+        <name>fatally_failed</name>
+        <qualifiedname>testing::TestPartResult::fatally_failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17147" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17147" bodyend="17147"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a6409eb519c1cd514aab2426c8f40737f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::TestPartResult::TestPartResult</definition>
+        <argsstring>(Type a_type, const char *a_file_name, int a_line_number, const char *a_message)</argsstring>
+        <name>TestPartResult</name>
+        <qualifiedname>testing::TestPartResult::TestPartResult</qualifiedname>
+        <param>
+          <type>Type</type>
+          <declname>a_type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>a_file_name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>a_line_number</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>a_message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17107" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17107" bodyend="17116"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1aab92b225e8a472e78bd3889ca6df0d2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Type</type>
+        <definition>Type testing::TestPartResult::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <qualifiedname>testing::TestPartResult::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17119" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17119" bodyend="17119"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a5b44531e6847fa75882c43cf758345ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::file_name</definition>
+        <argsstring>() const</argsstring>
+        <name>file_name</name>
+        <qualifiedname>testing::TestPartResult::file_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17123" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17123" bodyend="17125"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1ad4c5da5f13245ac18cf256d0d9f3eda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::TestPartResult::line_number</definition>
+        <argsstring>() const</argsstring>
+        <name>line_number</name>
+        <qualifiedname>testing::TestPartResult::line_number</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17129" column="7" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17129" bodyend="17129"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a42fa8f2568e3317f146e969298f63158" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::summary</definition>
+        <argsstring>() const</argsstring>
+        <name>summary</name>
+        <qualifiedname>testing::TestPartResult::summary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17132" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17132" bodyend="17132"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a1c522b89938fd685797adcafa357b771" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestPartResult::message</definition>
+        <argsstring>() const</argsstring>
+        <name>message</name>
+        <qualifiedname>testing::TestPartResult::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17135" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17135" bodyend="17135"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1ac90edd5ea9cc4bb986a1eb2b5e1d53de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::passed</definition>
+        <argsstring>() const</argsstring>
+        <name>passed</name>
+        <qualifiedname>testing::TestPartResult::passed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17138" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17138" bodyend="17138"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1aa04b377c3e7ed57d39e882df5561ac90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::failed</definition>
+        <argsstring>() const</argsstring>
+        <name>failed</name>
+        <qualifiedname>testing::TestPartResult::failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17141" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17141" bodyend="17141"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a6197c7f6672acc1cfdf580eb1f2183ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::nonfatally_failed</definition>
+        <argsstring>() const</argsstring>
+        <name>nonfatally_failed</name>
+        <qualifiedname>testing::TestPartResult::nonfatally_failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17144" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17144" bodyend="17144"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a77db157eff9531c3c00c2420502f9a89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::TestPartResult::fatally_failed</definition>
+        <argsstring>() const</argsstring>
+        <name>fatally_failed</name>
+        <qualifiedname>testing::TestPartResult::fatally_failed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17147" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17147" bodyend="17147"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1ac4f4c5383ff6178f441f8bf4ce5ebbff" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::TestPartResult::ExtractSummary</definition>
+        <argsstring>(const char *message)</argsstring>
+        <name>ExtractSummary</name>
+        <qualifiedname>testing::TestPartResult::ExtractSummary</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17154" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="9427" bodyend="9431"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_part_result_1a331e997e8e2c1da660241358ed497540" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string testing::TestPartResult::ExtractSummary</definition>
+        <argsstring>(const char *message)</argsstring>
+        <name>ExtractSummary</name>
+        <qualifiedname>testing::TestPartResult::ExtractSummary</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17154" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17094" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17094" bodyend="17164"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_test_part_result_1ac4f4c5383ff6178f441f8bf4ce5ebbff" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>ExtractSummary</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a331e997e8e2c1da660241358ed497540" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>ExtractSummary</name></member>
+      <member refid="classtesting_1_1_test_part_result_1aa04b377c3e7ed57d39e882df5561ac90" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1aa04b377c3e7ed57d39e882df5561ac90" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a77db157eff9531c3c00c2420502f9a89" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>fatally_failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a77db157eff9531c3c00c2420502f9a89" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>fatally_failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a5b44531e6847fa75882c43cf758345ff" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>file_name</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a5b44531e6847fa75882c43cf758345ff" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>file_name</name></member>
+      <member refid="classtesting_1_1_test_part_result_1abf5ab5fc171dc6248579a44353385df6" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>file_name_</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a7d1d53c4de784e24c5c2efbe14af6786" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>kFatalFailure</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5ade889093a860e9b21e703be6226d7cec" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>kNonFatalFailure</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5a2f9a7e9f6c2df7b0d2212add7ce0a8be" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>kSuccess</name></member>
+      <member refid="classtesting_1_1_test_part_result_1ad4c5da5f13245ac18cf256d0d9f3eda9" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>line_number</name></member>
+      <member refid="classtesting_1_1_test_part_result_1ad4c5da5f13245ac18cf256d0d9f3eda9" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>line_number</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a7a988009362bcdc28d3b801fc6059b5e" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>line_number_</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a1c522b89938fd685797adcafa357b771" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>message</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a1c522b89938fd685797adcafa357b771" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>message</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a9adea12d4a4fb4ebf1cd00d22eac9aff" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>message_</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a6197c7f6672acc1cfdf580eb1f2183ac" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>nonfatally_failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a6197c7f6672acc1cfdf580eb1f2183ac" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>nonfatally_failed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1ac90edd5ea9cc4bb986a1eb2b5e1d53de" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>passed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1ac90edd5ea9cc4bb986a1eb2b5e1d53de" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>passed</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a42fa8f2568e3317f146e969298f63158" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>summary</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a42fa8f2568e3317f146e969298f63158" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>summary</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a6b9bce29122b56a50295710b7f6e345c" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>summary_</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a6409eb519c1cd514aab2426c8f40737f" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>TestPartResult</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a6409eb519c1cd514aab2426c8f40737f" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>TestPartResult</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>Type</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a65ae656b33fdfdfffaf34858778a52d5" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>Type</name></member>
+      <member refid="classtesting_1_1_test_part_result_1aab92b225e8a472e78bd3889ca6df0d2a" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>type</name></member>
+      <member refid="classtesting_1_1_test_part_result_1aab92b225e8a472e78bd3889ca6df0d2a" prot="public" virt="non-virtual"><scope>testing::TestPartResult</scope><name>type</name></member>
+      <member refid="classtesting_1_1_test_part_result_1a4ee7ac490fe4f10e222fa08c3fa25437" prot="private" virt="non-virtual"><scope>testing::TestPartResult</scope><name>type_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

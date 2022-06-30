@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_uniform_layout_3_01_layout_type_00_010_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewUniformLayout&lt; LayoutType, 0 &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class LayoutType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_uniform_layout_3_01_layout_type_00_010_01_4_1aca27ccf5b65bcef5c71949b3130b3282" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref></type>
+        <definition>using Kokkos::Impl::ViewUniformLayout&lt; LayoutType, 0 &gt;::array_layout =  Kokkos::LayoutLeft</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Impl::ViewUniformLayout&lt; LayoutType, 0 &gt;::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewUniformType.hpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewUniformType.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewUniformType.hpp" line="68" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewUniformType.hpp" bodystart="68" bodyend="70"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_uniform_layout_3_01_layout_type_00_010_01_4_1aca27ccf5b65bcef5c71949b3130b3282" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewUniformLayout&lt; LayoutType, 0 &gt;</scope><name>array_layout</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

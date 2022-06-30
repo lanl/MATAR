@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_policy_trait_matcher_3_01_iteration_pattern_trait_00_01_rank_3_01_n_0e9c6ca07f673538c486053e1b0d65156" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::PolicyTraitMatcher&lt; IterationPatternTrait, Rank&lt; N, OuterDir, InnerDir &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>Iterate</type>
+        <declname>OuterDir</declname>
+        <defname>OuterDir</defname>
+      </param>
+      <param>
+        <type>Iterate</type>
+        <declname>InnerDir</declname>
+        <defname>InnerDir</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::PolicyTraitMatcher&lt; IterationPatternTrait, Rank&lt; N, OuterDir, InnerDir &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_trait_matcher_3_01_iteration_pattern_trait_00_01_rank_3_01_n_0e9c6ca07f673538c486053e1b0d65156"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::PolicyTraitMatcher&lt; IterationPatternTrait, Rank&lt; N, OuterDir, InnerDir &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_trait_matcher_3_01_iteration_pattern_trait_00_01_rank_3_01_n_0e9c6ca07f673538c486053e1b0d65156"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_IterationPatternTrait.hpp" line="92" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_IterationPatternTrait.hpp" bodystart="93" bodyend="93"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

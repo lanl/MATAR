@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Index</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a35f779af333e3a8369bf3857e2d3f940" prot="private" static="no">
+        <type>typename std::remove_cv&lt; Scalar &gt;::type</type>
+        <definition>using Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::scalar_type =  typename std::remove_cv&lt;Scalar&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>scalar_type</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::scalar_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="371" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a2cebb76e3e05e22a5db86871921e8ca4" prot="private" static="no">
+        <type>typename std::remove_cv&lt; Index &gt;::type</type>
+        <definition>using Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::index_type =  typename std::remove_cv&lt;Index&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="372" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ac43e75dbcb328073ecb81e394767e165" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">MinMaxLocScalar</ref>&lt; scalar_type, index_type &gt;</type>
+        <definition>using Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::value_type =  MinMaxLocScalar&lt;scalar_type, index_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="376" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ac2ba86a199e8f871646a2b3cefbc370f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::join</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="380" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="380" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ae49baf28f4385f11954f58801b91954c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::join</qualifiedname>
+        <param>
+          <type>volatile <ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile <ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="392" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="392" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a41dd37e3aa73629d6163795a4c2206f4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::init</definition>
+        <argsstring>(value_type &amp;val)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;::init</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_min_max_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="404" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="404" bodyend="409"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="369" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="369" bodyend="410"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a2cebb76e3e05e22a5db86871921e8ca4" prot="private" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a41dd37e3aa73629d6163795a4c2206f4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ac2ba86a199e8f871646a2b3cefbc370f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ae49baf28f4385f11954f58801b91954c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1a35f779af333e3a8369bf3857e2d3f940" prot="private" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>scalar_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_3_01_min_max_loc_3_01_scalar_00_01_index_00_01_space_01_4_01_4_1ac43e75dbcb328073ecb81e394767e165" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper&lt; MinMaxLoc&lt; Scalar, Index, Space &gt; &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

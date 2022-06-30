@@ -1,0 +1,786 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d2/de9/class_d_c_array_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>DCArrayKokkos</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>DefaultLayout</defval>
+      </param>
+      <param>
+        <type>typename ExecSpace</type>
+        <defval>DefaultExecSpace</defval>
+      </param>
+      <param>
+        <type>typename MemoryTraits</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="d2/de9/class_d_c_array_kokkos_1a4ae5532038d6b31454f08c3cd9d43bc6" prot="private" static="no">
+        <type>Kokkos::DualView&lt; T *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::TArray1D =  Kokkos::DualView &lt;T*, Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1D</name>
+        <qualifiedname>DCArrayKokkos::TArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9692" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9692" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d2/de9/class_d_c_array_kokkos_1aaef0dfff7bc0db34567b66df0a04ed3e" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>DCArrayKokkos::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9695" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9695" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/de9/class_d_c_array_kokkos_1a44e478b685b6f1a8c57beb3cb3931cba" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>DCArrayKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9696" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9696" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/de9/class_d_c_array_kokkos_1a96167c581d5649fcbbe5e063e3388e3a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>DCArrayKokkos::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9697" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9697" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/de9/class_d_c_array_kokkos_1ae3058a7aeeab3b968ad8a3d5f8d1835f" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::this_array_</definition>
+        <argsstring></argsstring>
+        <name>this_array_</name>
+        <qualifiedname>DCArrayKokkos::this_array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9698" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9698" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/de9/class_d_c_array_kokkos_1a2a031f428ff7187a7fd811ee2ccc9bea" prot="public" static="no" mutable="no">
+        <type><ref refid="dc/dbd/class_view_c_array" kindref="compound">ViewCArray</ref>&lt; T &gt;</type>
+        <definition>ViewCArray&lt;T&gt; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>DCArrayKokkos::host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9777" column="17" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9777" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a6bd9e4f631f040b79eccdf9f98041832" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9701" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9793" bodyend="9793"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a0399249d02da0195571f2e65f249e6d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9703" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9797" bodyend="9805"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1aa8c54446e983cba64e854d44743cb363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9705" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9809" bodyend="9818"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a1700b3a1a1c35846e5259abe7e1f92a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9707" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9821" bodyend="9832"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a8c0237cbeb9cea4ed11dd9d3ae69804d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9709" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9835" bodyend="9847"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a7c448ad6b63059f0fb899c72e3610a4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9712" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9850" bodyend="9864"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a3031e280889eb4f0278c7e05d5cafcfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9715" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9867" bodyend="9882"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a3a09bf036dd666ead430ac77f157bd7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::DCArrayKokkos</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::DCArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9718" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9885" bodyend="9902"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1aba346ea250e5528a24902674360934b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9723" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9906" bodyend="9910"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a94fd903f9ed6e6637ecc1406df2eae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9726" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9914" bodyend="9919"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a315d5f9782a2253e20317da41c6be10d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9729" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9923" bodyend="9930"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1acd2ed11124ad3faf022099e759e987f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9732" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9934" bodyend="9943"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1ae5ac77e00caa968e45e942107a6570f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9735" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9947" bodyend="9959"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a865a6f7068bc700316f6ab4bff3513e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9738" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9963" bodyend="9977"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1aa1175cad8a2dd142a24e7191495fe43d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>DCArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9742" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9981" bodyend="9997"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a310e5066d87067de53503de0662528ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="d2/de9/class_d_c_array_kokkos" kindref="compound">DCArrayKokkos</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::operator=</definition>
+        <argsstring>(const DCArrayKokkos &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>DCArrayKokkos::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="d2/de9/class_d_c_array_kokkos" kindref="compound">DCArrayKokkos</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9746" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10001" bodyend="10016"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1afa561b7df98d625339f91b06f13433be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>DCArrayKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9751" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10021" bodyend="10023"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a33ebd5567799d4a390f062350ee692e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <qualifiedname>DCArrayKokkos::extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9756" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10027" bodyend="10029"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a4e61abf526574bba687eb1e92ff22d0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>DCArrayKokkos::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9759" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10033" bodyend="10037"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a6c8e34136d44b938c9fc6ee833178fb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>DCArrayKokkos::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9762" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10041" bodyend="10043"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a00cdcb88242998a58f0204fcca4fd938" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::device_pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>device_pointer</name>
+        <qualifiedname>DCArrayKokkos::device_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9766" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10047" bodyend="10049"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a068b1a9240511aede5b839e32c157d65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::host_pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>host_pointer</name>
+        <qualifiedname>DCArrayKokkos::host_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9770" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10053" bodyend="10055"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1adf3c9db9d805348c552ae9351365a9df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION TArray1D</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DualView&lt; T *, Layout, ExecSpace, MemoryTraits &gt; DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::get_kokkos_dual_view</definition>
+        <argsstring>() const</argsstring>
+        <name>get_kokkos_dual_view</name>
+        <qualifiedname>DCArrayKokkos::get_kokkos_dual_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9774" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10059" bodyend="10061"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a2676240b8b2c4bb1e65b11629cf66bfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::update_host</definition>
+        <argsstring>()</argsstring>
+        <name>update_host</name>
+        <qualifiedname>DCArrayKokkos::update_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9780" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10064" bodyend="10068"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1a20eb40f5430b056a81ba14cceead5b61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::update_device</definition>
+        <argsstring>()</argsstring>
+        <name>update_device</name>
+        <qualifiedname>DCArrayKokkos::update_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9783" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10071" bodyend="10075"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/de9/class_d_c_array_kokkos_1aa5174487d71a737a99c67205cd650550" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION DCArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::~DCArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~DCArrayKokkos</name>
+        <qualifiedname>DCArrayKokkos::~DCArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9787" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10079" bodyend="10079"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="9689" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="9689" bodyend="9788"/>
+    <listofallmembers>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a6bd9e4f631f040b79eccdf9f98041832" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a0399249d02da0195571f2e65f249e6d5" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1aa8c54446e983cba64e854d44743cb363" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a1700b3a1a1c35846e5259abe7e1f92a9" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a8c0237cbeb9cea4ed11dd9d3ae69804d" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a7c448ad6b63059f0fb899c72e3610a4b" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a3031e280889eb4f0278c7e05d5cafcfd" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a3a09bf036dd666ead430ac77f157bd7b" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>DCArrayKokkos</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a00cdcb88242998a58f0204fcca4fd938" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>device_pointer</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a4e61abf526574bba687eb1e92ff22d0e" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>dims</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1aaef0dfff7bc0db34567b66df0a04ed3e" prot="private" virt="non-virtual"><scope>DCArrayKokkos</scope><name>dims_</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a33ebd5567799d4a390f062350ee692e4" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>extent</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1adf3c9db9d805348c552ae9351365a9df" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>get_kokkos_dual_view</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a2a031f428ff7187a7fd811ee2ccc9bea" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>host</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a068b1a9240511aede5b839e32c157d65" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>host_pointer</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a44e478b685b6f1a8c57beb3cb3931cba" prot="private" virt="non-virtual"><scope>DCArrayKokkos</scope><name>length_</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1aba346ea250e5528a24902674360934b5" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a94fd903f9ed6e6637ecc1406df2eae61" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a315d5f9782a2253e20317da41c6be10d" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1acd2ed11124ad3faf022099e759e987f3" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1ae5ac77e00caa968e45e942107a6570f6" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a865a6f7068bc700316f6ab4bff3513e5" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1aa1175cad8a2dd142a24e7191495fe43d" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator()</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a310e5066d87067de53503de0662528ec" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>operator=</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a6c8e34136d44b938c9fc6ee833178fb3" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>order</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a96167c581d5649fcbbe5e063e3388e3a" prot="private" virt="non-virtual"><scope>DCArrayKokkos</scope><name>order_</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1afa561b7df98d625339f91b06f13433be" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>size</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a4ae5532038d6b31454f08c3cd9d43bc6" prot="private" virt="non-virtual"><scope>DCArrayKokkos</scope><name>TArray1D</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1ae3058a7aeeab3b968ad8a3d5f8d1835f" prot="private" virt="non-virtual"><scope>DCArrayKokkos</scope><name>this_array_</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a20eb40f5430b056a81ba14cceead5b61" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>update_device</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1a2676240b8b2c4bb1e65b11629cf66bfb" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>update_host</name></member>
+      <member refid="d2/de9/class_d_c_array_kokkos_1aa5174487d71a737a99c67205cd650550" prot="public" virt="non-virtual"><scope>DCArrayKokkos</scope><name>~DCArrayKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

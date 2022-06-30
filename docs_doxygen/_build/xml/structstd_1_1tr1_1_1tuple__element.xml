@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structstd_1_1tr1_1_1tuple__element" kind="struct" language="C++" prot="public">
+    <compoundname>std::tr1::tuple_element</compoundname>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>k</declname>
+        <defname>k</defname>
+      </param>
+      <param>
+        <type>class Tuple</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1433" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1433" bodyend="1436"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

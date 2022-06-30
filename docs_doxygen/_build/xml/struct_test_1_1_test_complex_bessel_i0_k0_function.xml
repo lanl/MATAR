@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_complex_bessel_i0_k0_function" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestComplexBesselI0K0Function</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a2497d317c4dde35a2a234a3abd988f94" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, ExecSpace &gt;</type>
+        <definition>using Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::ViewType =  Kokkos::View&lt;Kokkos::complex&lt;double&gt;*, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>ViewType</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::ViewType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1015" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1015" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a0d12df0f1a5dd80a726eb4a93a766c78" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, <ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref> &gt;</type>
+        <definition>using Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::HostViewType =  Kokkos::View&lt;Kokkos::complex&lt;double&gt;*, Kokkos::HostSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>HostViewType</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::HostViewType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1016" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1017" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1e042e365e9324d989bfac1fd01fceac" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_z</definition>
+        <argsstring></argsstring>
+        <name>d_z</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_z</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1019" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1019" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a3e0499d22e8d938139d1ecb69aea82fc" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_cbi0</definition>
+        <argsstring></argsstring>
+        <name>d_cbi0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_cbi0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1019" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1019" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a544927b5780690aff8070d62ca534bed" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_cbk0</definition>
+        <argsstring></argsstring>
+        <name>d_cbk0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_cbk0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1019" column="23" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1019" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a549f7e7ea9e0f6150cae19c09570a989" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_z</definition>
+        <argsstring></argsstring>
+        <name>h_z</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_z</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1020" column="33" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1020" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1c7f006fc175f4b3adc4f7279a5ee511" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_cbi0</definition>
+        <argsstring></argsstring>
+        <name>h_cbi0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_cbi0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1020" column="37" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1020" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a92ba9a8bf14f23d8d5b8d22df11cf071" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_cbk0</definition>
+        <argsstring></argsstring>
+        <name>h_cbk0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_cbk0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1020" column="44" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1020" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1ab46fbc81fc05ccbe1203de184315dded" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">HostViewType</ref></type>
+        <definition>HostViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_ref_cbi0</definition>
+        <argsstring></argsstring>
+        <name>h_ref_cbi0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_ref_cbi0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1021" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1021" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1aa996f797d80905ff0bf0b7b057316dd8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">HostViewType</ref></type>
+        <definition>HostViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_ref_cbk0</definition>
+        <argsstring></argsstring>
+        <name>h_ref_cbk0</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_ref_cbk0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1021" column="27" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1021" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a5ac11e2592c3b5649173f7635f7b096a" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_z_large</definition>
+        <argsstring></argsstring>
+        <name>d_z_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_z_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1023" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1023" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a7b940691843ad66899e248fafcad4a3c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_cbi0_large</definition>
+        <argsstring></argsstring>
+        <name>d_cbi0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_cbi0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1023" column="22" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1023" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a12928f3c224daa90a3789c54b3eef263" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::d_cbk0_large</definition>
+        <argsstring></argsstring>
+        <name>d_cbk0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::d_cbk0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1023" column="35" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1023" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a398c52ffc3e3eb944cf6152eff9fa676" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_z_large</definition>
+        <argsstring></argsstring>
+        <name>h_z_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_z_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1024" column="33" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1024" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1ad5ca22222a6ebe323fd46249ae05b6e2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_cbi0_large</definition>
+        <argsstring></argsstring>
+        <name>h_cbi0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_cbi0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1024" column="43" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1024" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a32210374514b2d9ce6166c2ad67c634e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">ViewType::HostMirror</ref></type>
+        <definition>ViewType::HostMirror Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_cbk0_large</definition>
+        <argsstring></argsstring>
+        <name>h_cbk0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_cbk0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1024" column="56" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1024" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a91b0402f74c7897cc4398f9a9293e6bd" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">HostViewType</ref></type>
+        <definition>HostViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_ref_cbi0_large</definition>
+        <argsstring></argsstring>
+        <name>h_ref_cbi0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_ref_cbi0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1025" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1025" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1ab1a713b8a1a7947721a95f6dcb51776b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">HostViewType</ref></type>
+        <definition>HostViewType Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::h_ref_cbk0_large</definition>
+        <argsstring></argsstring>
+        <name>h_ref_cbk0_large</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::h_ref_cbk0_large</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1025" column="33" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1025" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1e63345977b004e7290e3d4e4583412c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1027" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1027" bodyend="1215"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1057de85f83b7ff944fc0f30b1453a92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(const int &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1218" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1218" bodyend="1223"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_complex_bessel_i0_k0_function_1a7bf2322beccd9db0403713b3ceddb003" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TestLargeArgTag &amp;, const int &amp;) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestComplexBesselI0K0Function::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_large_arg_tag" kindref="compound">TestLargeArgTag</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1226" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1226" bodyend="1245"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestComplexBesselI0K0Function&lt; ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_test_complex_bessel_i0_k0_function"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>d_cbi0</edgelabel>
+          <edgelabel>d_cbi0_large</edgelabel>
+          <edgelabel>d_cbk0</edgelabel>
+          <edgelabel>d_cbk0_large</edgelabel>
+          <edgelabel>d_z</edgelabel>
+          <edgelabel>d_z_large</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>h_ref_cbi0</edgelabel>
+          <edgelabel>h_ref_cbi0_large</edgelabel>
+          <edgelabel>h_ref_cbk0</edgelabel>
+          <edgelabel>h_ref_cbk0_large</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Kokkos::complex&lt; double &gt; *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; Kokkos::complex&lt; double &gt; *, Kokkos::HostSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Kokkos::complex&lt; double &gt; *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" line="1014" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalSpecialFunctions.hpp" bodystart="1014" bodyend="1246"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a3e0499d22e8d938139d1ecb69aea82fc" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_cbi0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a7b940691843ad66899e248fafcad4a3c" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_cbi0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a544927b5780690aff8070d62ca534bed" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_cbk0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a12928f3c224daa90a3789c54b3eef263" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_cbk0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1e042e365e9324d989bfac1fd01fceac" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_z</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a5ac11e2592c3b5649173f7635f7b096a" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>d_z_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1c7f006fc175f4b3adc4f7279a5ee511" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_cbi0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1ad5ca22222a6ebe323fd46249ae05b6e2" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_cbi0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a92ba9a8bf14f23d8d5b8d22df11cf071" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_cbk0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a32210374514b2d9ce6166c2ad67c634e" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_cbk0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1ab46fbc81fc05ccbe1203de184315dded" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_ref_cbi0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a91b0402f74c7897cc4398f9a9293e6bd" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_ref_cbi0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1aa996f797d80905ff0bf0b7b057316dd8" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_ref_cbk0</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1ab1a713b8a1a7947721a95f6dcb51776b" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_ref_cbk0_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a549f7e7ea9e0f6150cae19c09570a989" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_z</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a398c52ffc3e3eb944cf6152eff9fa676" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>h_z_large</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a0d12df0f1a5dd80a726eb4a93a766c78" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>HostViewType</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1057de85f83b7ff944fc0f30b1453a92" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a7bf2322beccd9db0403713b3ceddb003" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a1e63345977b004e7290e3d4e4583412c" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>testit</name></member>
+      <member refid="struct_test_1_1_test_complex_bessel_i0_k0_function_1a2497d317c4dde35a2a234a3abd988f94" prot="public" virt="non-virtual"><scope>Test::TestComplexBesselI0K0Function</scope><name>ViewType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

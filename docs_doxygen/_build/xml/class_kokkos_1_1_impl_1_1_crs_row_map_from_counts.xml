@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CrsRowMapFromCounts</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class InCounts</type>
+      </param>
+      <param>
+        <type>class OutRowMap</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a9981dee923891789e6528d8352c9fbd9" prot="public" static="no">
+        <type>typename InCounts::execution_space</type>
+        <definition>using Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::execution_space =  typename InCounts::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="191" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a482b0b0536821e5c59940bbfc2a0eb70" prot="public" static="no">
+        <type>typename OutRowMap::value_type</type>
+        <definition>using Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::value_type =  typename OutRowMap::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="192" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a326ac8cebe232ac718bc888cb30a943b" prot="public" static="no">
+        <type>typename InCounts::size_type</type>
+        <definition>using Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::index_type =  typename InCounts::size_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="193" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a7519cc03c12d4ee2a89097a0ae8d2990" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; value_type, execution_space &gt;</type>
+        <definition>using Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::last_value_type =  Kokkos::View&lt;value_type, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>last_value_type</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::last_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="194" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ac0bb23a885971964a249f68ed24267d9" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts" kindref="compound">CrsRowMapFromCounts</ref>&lt; InCounts, OutRowMap &gt;</type>
+        <definition>using Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::self_type =  CrsRowMapFromCounts&lt;InCounts, OutRowMap&gt;</definition>
+        <argsstring></argsstring>
+        <name>self_type</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::self_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="219" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1aa873b4a02dbcce2421f0b7d351599b38" prot="private" static="no" mutable="no">
+        <type>InCounts</type>
+        <definition>InCounts Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::m_in</definition>
+        <argsstring></argsstring>
+        <name>m_in</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::m_in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="197" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ae78919611df81fb905d9c04708c9b68d" prot="private" static="no" mutable="no">
+        <type>OutRowMap</type>
+        <definition>OutRowMap Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::m_out</definition>
+        <argsstring></argsstring>
+        <name>m_out</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::m_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="198" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ab34c920c257e21dd402531398103e9d2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">last_value_type</ref></type>
+        <definition>last_value_type Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::m_last_value</definition>
+        <argsstring></argsstring>
+        <name>m_last_value</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::m_last_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="199" column="19" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ac8499a91bfdc096fd1b7f822279ceddb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::operator()</definition>
+        <argsstring>(index_type i, value_type &amp;update, bool final_pass) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::operator()</qualifiedname>
+        <param>
+          <type>index_type</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>final_pass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="203" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="203" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a798b0ce8a542fc36d7c0a351a224d399" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::init</definition>
+        <argsstring>(value_type &amp;update) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="213" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="213" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1aeba87ba4541ed7542902b65c0fbe0eab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;update, const volatile value_type &amp;input) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="215" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="215" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a87b613111504717ac98299cc23d2b55f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::CrsRowMapFromCounts</definition>
+        <argsstring>(InCounts const &amp;arg_in, OutRowMap const &amp;arg_out)</argsstring>
+        <name>CrsRowMapFromCounts</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::CrsRowMapFromCounts</qualifiedname>
+        <param>
+          <type>InCounts const &amp;</type>
+          <declname>arg_in</declname>
+        </param>
+        <param>
+          <type>OutRowMap const &amp;</type>
+          <declname>arg_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="220" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="220" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1acea4dac3c381608fdc7b686b5c568ea2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>value_type</type>
+        <definition>value_type Kokkos::Impl::CrsRowMapFromCounts&lt; InCounts, OutRowMap &gt;::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::CrsRowMapFromCounts::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="222" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="222" bodyend="230"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="189" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="189" bodyend="231"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a87b613111504717ac98299cc23d2b55f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>CrsRowMapFromCounts</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1acea4dac3c381608fdc7b686b5c568ea2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a9981dee923891789e6528d8352c9fbd9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a326ac8cebe232ac718bc888cb30a943b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>index_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a798b0ce8a542fc36d7c0a351a224d399" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>init</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1aeba87ba4541ed7542902b65c0fbe0eab" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>join</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a7519cc03c12d4ee2a89097a0ae8d2990" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>last_value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1aa873b4a02dbcce2421f0b7d351599b38" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>m_in</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ab34c920c257e21dd402531398103e9d2" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>m_last_value</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ae78919611df81fb905d9c04708c9b68d" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>m_out</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ac8499a91bfdc096fd1b7f822279ceddb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1ac0bb23a885971964a249f68ed24267d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>self_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_crs_row_map_from_counts_1a482b0b0536821e5c59940bbfc2a0eb70" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CrsRowMapFromCounts</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

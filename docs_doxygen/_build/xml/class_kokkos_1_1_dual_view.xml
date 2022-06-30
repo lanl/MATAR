@@ -1,0 +1,1653 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_dual_view" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::DualView</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_view_traits" prot="public" virt="non-virtual">Kokkos::ViewTraits&lt; DataType, void, void, void &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__device" prot="public">Kokkos::DualView::impl_device_matches_tdev_device</innerclass>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__exec" prot="public">Kokkos::DualView::impl_device_matches_tdev_exec</innerclass>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space" prot="public">Kokkos::DualView::impl_device_matches_tdev_memory_space</innerclass>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__thost__device" prot="public">Kokkos::DualView::impl_device_matches_thost_device</innerclass>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__thost__exec" prot="public">Kokkos::DualView::impl_device_matches_thost_exec</innerclass>
+    <innerclass refid="struct_kokkos_1_1_dual_view_1_1impl__dualview__is__single__device" prot="public">Kokkos::DualView::impl_dualview_is_single_device</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class DataType</type>
+      </param>
+      <param>
+        <type>class Arg1Type</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>class Arg2Type</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>class Arg3Type</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>Typedefs for device types and various Kokkos::View specializations.</header>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a7b073fd5d6094440ec2ae1f3a91c6f7c" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::traits =  ViewTraits&lt;DataType, Arg1Type, Arg2Type, Arg3Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::DualView::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="122" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a8954ce8f585911b9d530b4b8c3956b24" prot="public" static="no">
+        <type>typename traits::host_mirror_space</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::host_mirror_space =  typename traits::host_mirror_space</definition>
+        <argsstring></argsstring>
+        <name>host_mirror_space</name>
+        <qualifiedname>Kokkos::DualView::host_mirror_space</qualifiedname>
+        <briefdescription>
+<para>The Kokkos Host <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> type;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="125" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::data_type, Arg1Type, Arg2Type, Arg3Type &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev =  View&lt;typename traits::data_type, Arg1Type, Arg2Type, Arg3Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev</name>
+        <qualifiedname>Kokkos::DualView::t_dev</qualifiedname>
+        <briefdescription>
+<para>The type of a <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref> on the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="128" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">t_dev::HostMirror</ref></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host</definition>
+        <argsstring></argsstring>
+        <name>t_host</name>
+        <qualifiedname>Kokkos::DualView::t_host</qualifiedname>
+        <briefdescription>
+<para>The type of a <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref> host mirror of <computeroutput>t_dev</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="132" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a6347d603c2c534094c749faf25d4eee5" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::const_data_type, Arg1Type, Arg2Type, Arg3Type &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev_const =  View&lt;typename traits::const_data_type, Arg1Type, Arg2Type, Arg3Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev_const</name>
+        <qualifiedname>Kokkos::DualView::t_dev_const</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The type of a const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on the device. The type of a <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref> on the device. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="136" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a2d64ed88c3b9c8d8c74f142fb585026a" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">t_dev_const::HostMirror</ref></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host_const</definition>
+        <argsstring></argsstring>
+        <name>t_host_const</name>
+        <qualifiedname>Kokkos::DualView::t_host_const</qualifiedname>
+        <briefdescription>
+<para>The type of a const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> host mirror of <computeroutput>t_dev_const</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="141" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a9f3b7433c40958c131380a0421fb49aa" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::const_data_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::RandomAccess &gt; &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev_const_randomread =  View&lt;typename traits::const_data_type, typename traits::array_layout, typename traits::device_type, Kokkos::MemoryTraits&lt;Kokkos::RandomAccess&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev_const_randomread</name>
+        <qualifiedname>Kokkos::DualView::t_dev_const_randomread</qualifiedname>
+        <briefdescription>
+<para>The type of a const, random-access <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="144" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1abc890399e5491a26051f18bab6a8d9e9" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">t_dev_const_randomread::HostMirror</ref></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host_const_randomread</definition>
+        <argsstring></argsstring>
+        <name>t_host_const_randomread</name>
+        <qualifiedname>Kokkos::DualView::t_host_const_randomread</qualifiedname>
+        <briefdescription>
+<para>The type of a const, random-access <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> host mirror of <computeroutput>t_dev_const_randomread</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="152" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a7e6c45c9a3e1cb06c9477e85b8b33d45" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::data_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev_um =  View&lt;typename traits::data_type, typename traits::array_layout, typename traits::device_type, MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev_um</name>
+        <qualifiedname>Kokkos::DualView::t_dev_um</qualifiedname>
+        <briefdescription>
+<para>The type of an unmanaged <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="155" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1abd851c1f250e714db4283b587931b33f" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename t_host::data_type, typename t_host::array_layout, typename t_host::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host_um =  View&lt;typename t_host::data_type, typename t_host::array_layout, typename t_host::device_type, MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_host_um</name>
+        <qualifiedname>Kokkos::DualView::t_host_um</qualifiedname>
+        <briefdescription>
+<para>The type of an unmanaged <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> host mirror of <computeroutput>t_dev_um</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="160" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1ac4a93ef5add78bdc6a996093e6da3224" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::const_data_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev_const_um =  View&lt;typename traits::const_data_type, typename traits::array_layout, typename traits::device_type, MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev_const_um</name>
+        <qualifiedname>Kokkos::DualView::t_dev_const_um</qualifiedname>
+        <briefdescription>
+<para>The type of a const unmanaged <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="165" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1ae6e363495df0324d5a8d63f055e08b49" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename t_host::const_data_type, typename t_host::array_layout, typename t_host::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host_const_um =  View&lt;typename t_host::const_data_type, typename t_host::array_layout, typename t_host::device_type, MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_host_const_um</name>
+        <qualifiedname>Kokkos::DualView::t_host_const_um</qualifiedname>
+        <briefdescription>
+<para>The type of a const unmanaged <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> host mirror of <computeroutput>t_dev_const_um</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="170" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1abd85a0839927b458717ab3969cf88812" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename t_host::const_data_type, typename t_host::array_layout, typename t_host::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Unmanaged|Kokkos::RandomAccess &gt; &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_dev_const_randomread_um =  View&lt;typename t_host::const_data_type, typename t_host::array_layout, typename t_host::device_type, Kokkos::MemoryTraits&lt;Kokkos::Unmanaged | Kokkos::RandomAccess&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>t_dev_const_randomread_um</name>
+        <qualifiedname>Kokkos::DualView::t_dev_const_randomread_um</qualifiedname>
+        <briefdescription>
+<para>The type of a const, random-access <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="175" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1a484018b1824a2deee5af4a11989e15b1" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">t_dev_const_randomread_um::HostMirror</ref></type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_host_const_randomread_um =  typename t_dev_const_randomread_um::HostMirror</definition>
+        <argsstring></argsstring>
+        <name>t_host_const_randomread_um</name>
+        <qualifiedname>Kokkos::DualView::t_host_const_randomread_um</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="183" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Counters to keep track of changes (&quot;modified&quot; flags)</header>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dual_view_1adabbbcad80b6888f606a220f6861c691" prot="protected" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; unsigned int[2], <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">LayoutLeft</ref>, <ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref> &gt;</type>
+        <definition>using Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::t_modified_flags =  View&lt;unsigned int[2], LayoutLeft, Kokkos::HostSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_modified_flags</name>
+        <qualifiedname>Kokkos::DualView::t_modified_flags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="193" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_dual_view_1a566055b78119b89c858ab5d64ba9a535" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">t_modified_flags</ref></type>
+        <definition>t_modified_flags Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modified_flags</definition>
+        <argsstring></argsstring>
+        <name>modified_flags</name>
+        <qualifiedname>Kokkos::DualView::modified_flags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="194" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>The two View instances.</header>
+      <memberdef kind="variable" id="class_kokkos_1_1_dual_view_1ad7b035c052519ac2ba4cc4918169b296" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref></type>
+        <definition>t_dev Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::d_view</definition>
+        <argsstring></argsstring>
+        <name>d_view</name>
+        <qualifiedname>Kokkos::DualView::d_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="203" column="9" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_dual_view_1a5757763417fc8a9436666f711a5f9675" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref></type>
+        <definition>t_host Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::h_view</definition>
+        <argsstring></argsstring>
+        <name>h_view</name>
+        <qualifiedname>Kokkos::DualView::h_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="204" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Methods for synchronizing, marking as modified, and getting Views.</header>
+      <memberdef kind="variable" id="class_kokkos_1_1_dual_view_1a59a46a2653539de23abbf9d79403ad9f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const int</type>
+        <definition>constexpr const int Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::view_header_size</definition>
+        <argsstring></argsstring>
+        <name>view_header_size</name>
+        <qualifiedname>Kokkos::DualView::view_header_size</qualifiedname>
+        <initializer>= 128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="518" column="30" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="518" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aebeb1904a5cf300be0ec5a61cd6d7cde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION const std::conditional_t&lt; <ref refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__device" kindref="compound">impl_device_matches_tdev_device</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;::value, <ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref>, typename std::conditional_t&lt; <ref refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__thost__device" kindref="compound">impl_device_matches_thost_device</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;::value, <ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref>, typename std::conditional_t&lt; <ref refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__thost__exec" kindref="compound">impl_device_matches_thost_exec</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;::value, <ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref>, typename std::conditional_t&lt; <ref refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__exec" kindref="compound">impl_device_matches_tdev_exec</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;::value, <ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref>, typename std::conditional_t&lt; <ref refid="struct_kokkos_1_1_dual_view_1_1impl__device__matches__tdev__memory__space" kindref="compound">impl_device_matches_tdev_memory_space</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt;::value, <ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref>, <ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref> &gt; &gt; &gt; &gt; &gt;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const std::conditional_t&lt; impl_device_matches_tdev_device&lt; Device &gt;::value, t_dev, typename std::conditional_t&lt; impl_device_matches_thost_device&lt; Device &gt;::value, t_host, typename std::conditional_t&lt; impl_device_matches_thost_exec&lt; Device &gt;::value, t_host, typename std::conditional_t&lt; impl_device_matches_tdev_exec&lt; Device &gt;::value, t_dev, typename std::conditional_t&lt; impl_device_matches_tdev_memory_space&lt; Device &gt;::value, t_dev, t_host &gt; &gt; &gt; &gt; &gt; Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::DualView::view</qualifiedname>
+        <briefdescription>
+<para>Return a <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> on a specific device <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Please don&apos;t be afraid of the nested if_c expressions in the return value&apos;s type. That just tells the method what the return type should be: t_dev if the <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput> template parameter matches this <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&apos;s device type, else t_host.</para>
+<para>For example, suppose you create a <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref> on Cuda, like this: <programlisting><codeline><highlight class="keyword">using<sp/></highlight><highlight class="normal">dual_view_type<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_kokkos_1_1_dual_view" kindref="compound">Kokkos::DualView&lt;float, Kokkos::LayoutRight, Kokkos::Cuda&gt;</ref>;</highlight></codeline>
+<codeline><highlight class="normal">dual_view_type<sp/>DV<sp/>(</highlight><highlight class="stringliteral">&quot;my<sp/>dual<sp/>view&quot;</highlight><highlight class="normal">,<sp/>100);</highlight></codeline>
+</programlisting> If you want to get the CUDA device <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>, do this: <programlisting><codeline><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>dual_view_type::t_dev<sp/>cudaView<sp/>=<sp/>DV.view&lt;Kokkos::Cuda&gt;<sp/>();</highlight></codeline>
+</programlisting> and if you want to get the host mirror of that <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>, do this: <programlisting><codeline><highlight class="keyword">using<sp/></highlight><highlight class="normal">host_device_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Kokkos::HostSpace::execution_space;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>dual_view_type::t_host<sp/>hostView<sp/>=<sp/>DV.view&lt;host_device_type&gt;<sp/>();</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="403" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="403" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aa0f5bb4eea5b9190e6282128189daada" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION t_host Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::view_host</definition>
+        <argsstring>() const</argsstring>
+        <name>view_host</name>
+        <qualifiedname>Kokkos::DualView::view_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="445" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="445" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a0de9a76e4ed5433c340381af786ececb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION t_dev Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::view_device</definition>
+        <argsstring>() const</argsstring>
+        <name>view_device</name>
+        <qualifiedname>Kokkos::DualView::view_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="448" column="9" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="448" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aecca3fb28ee3e06ed7b2ce658b0d90d7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::DualView::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="450" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="450" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1ab3c4791255e5e3280f60a6827b330f1d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::impl_report_host_sync</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>impl_report_host_sync</name>
+        <qualifiedname>Kokkos::DualView::impl_report_host_sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="519" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="519" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a68693ac63b931dc0acd48b72fac9c070" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::impl_report_device_sync</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>impl_report_device_sync</name>
+        <qualifiedname>Kokkos::DualView::impl_report_device_sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="529" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="529" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1ae0bd04b6c74ae3ea47f3dba503e86be9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_impl</definition>
+        <argsstring>(std::true_type, Args const &amp;... args)</argsstring>
+        <name>sync_impl</name>
+        <qualifiedname>Kokkos::DualView::sync_impl</qualifiedname>
+        <param>
+          <type>std::true_type</type>
+        </param>
+        <param>
+          <type>Args const &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Update data on device or host only if data in the other space has been marked as modified. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput> is the same as this <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&apos;s device type, then copy data from host to device. Otherwise, copy data from device to host. In either case, only copy if the source of the copy has been modified.</para>
+<para>This is a one-way synchronization only. If the target of the copy has been modified, this operation will discard those modifications. It will also reset both device and host modified flags.</para>
+<para><simplesect kind="note"><para>This method doesn&apos;t know on its own whether you modified the data in either <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>. You must manually mark modified data as modified, by calling the <ref refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" kindref="member">modify()</ref> method with the appropriate template parameter. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="559" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="559" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1af819f1764028f0afa048c16677cbc6c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync</definition>
+        <argsstring>(const typename std::enable_if&lt;(std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; Device, int &gt;::value), int &gt;::type &amp;=0)</argsstring>
+        <name>sync</name>
+        <qualifiedname>Kokkos::DualView::sync</qualifiedname>
+        <param>
+          <type>const typename std::enable_if&lt;(std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, int &gt;::value), int &gt;::type &amp;</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="608" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="608" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a82966f7200378027d177a52369f4bbdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class ExecutionSpace</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync</definition>
+        <argsstring>(const ExecutionSpace &amp;exec, const typename std::enable_if&lt;(std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; Device, int &gt;::value), int &gt;::type &amp;=0)</argsstring>
+        <name>sync</name>
+        <qualifiedname>Kokkos::DualView::sync</qualifiedname>
+        <param>
+          <type>const ExecutionSpace &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <param>
+          <type>const typename std::enable_if&lt;(std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, int &gt;::value), int &gt;::type &amp;</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="617" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="617" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aceefa1a8f1ea36b4afcd481d117ec2a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_impl</definition>
+        <argsstring>(std::false_type, Args const &amp;...)</argsstring>
+        <name>sync_impl</name>
+        <qualifiedname>Kokkos::DualView::sync_impl</qualifiedname>
+        <param>
+          <type>std::false_type</type>
+        </param>
+        <param>
+          <type>Args const &amp;</type>
+          <declname>...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="628" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="628" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a5a37af0e368bfc9441102fa78cedc968" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync</definition>
+        <argsstring>(const typename std::enable_if&lt;(!std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; Device, int &gt;::value), int &gt;::type &amp;=0)</argsstring>
+        <name>sync</name>
+        <qualifiedname>Kokkos::DualView::sync</qualifiedname>
+        <param>
+          <type>const typename std::enable_if&lt;(!std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, int &gt;::value), int &gt;::type &amp;</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="650" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="650" bodyend="656"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a2e79984a292b89f999d59fc5e4888a0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class ExecutionSpace</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync</definition>
+        <argsstring>(const ExecutionSpace &amp;exec, const typename std::enable_if&lt;(!std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; Device, int &gt;::value), int &gt;::type &amp;=0)</argsstring>
+        <name>sync</name>
+        <qualifiedname>Kokkos::DualView::sync</qualifiedname>
+        <param>
+          <type>const ExecutionSpace &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <param>
+          <type>const typename std::enable_if&lt;(!std::is_same&lt; typename traits::data_type, typename traits::non_const_data_type &gt;::value)||(std::is_same&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, int &gt;::value), int &gt;::type &amp;</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="658" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="658" bodyend="665"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a93c36794b910e5ffa79bd51e56e6abe8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_host_impl</definition>
+        <argsstring>(Args const &amp;... args)</argsstring>
+        <name>sync_host_impl</name>
+        <qualifiedname>Kokkos::DualView::sync_host_impl</qualifiedname>
+        <param>
+          <type>Args const &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="669" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="669" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1af6e3c518a87ec999751d54468950361e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecSpace</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_host</definition>
+        <argsstring>(const ExecSpace &amp;exec)</argsstring>
+        <name>sync_host</name>
+        <qualifiedname>Kokkos::DualView::sync_host</qualifiedname>
+        <param>
+          <type>const ExecSpace &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="693" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="693" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1acad59540bdb329b770bee1e8473af4a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_host</definition>
+        <argsstring>()</argsstring>
+        <name>sync_host</name>
+        <qualifiedname>Kokkos::DualView::sync_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="696" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="696" bodyend="696"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1acc8c8b25d9982780737b346ba399260c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_device_impl</definition>
+        <argsstring>(Args const &amp;... args)</argsstring>
+        <name>sync_device_impl</name>
+        <qualifiedname>Kokkos::DualView::sync_device_impl</qualifiedname>
+        <param>
+          <type>Args const &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="700" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="700" bodyend="721"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1addd97570bc1746f2cc8eb407aef754a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecSpace</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_device</definition>
+        <argsstring>(const ExecSpace &amp;exec)</argsstring>
+        <name>sync_device</name>
+        <qualifiedname>Kokkos::DualView::sync_device</qualifiedname>
+        <param>
+          <type>const ExecSpace &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="724" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="724" bodyend="726"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a29db499d21b37410174ca5e92882d017" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::sync_device</definition>
+        <argsstring>()</argsstring>
+        <name>sync_device</name>
+        <qualifiedname>Kokkos::DualView::sync_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="727" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="727" bodyend="727"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a721550697a480c0d156ccf7d08983a8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::need_sync</definition>
+        <argsstring>() const</argsstring>
+        <name>need_sync</name>
+        <qualifiedname>Kokkos::DualView::need_sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="730" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="730" bodyend="745"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a2530a9028a39ae43c9e9082e38062708" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::need_sync_host</definition>
+        <argsstring>() const</argsstring>
+        <name>need_sync_host</name>
+        <qualifiedname>Kokkos::DualView::need_sync_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="747" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="747" bodyend="750"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a6232fe6ba8984196e8d1bb781e0bf0b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::need_sync_device</definition>
+        <argsstring>() const</argsstring>
+        <name>need_sync_device</name>
+        <qualifiedname>Kokkos::DualView::need_sync_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="752" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="752" bodyend="755"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a574b4ba6d32f37a80714f0b8bf363d4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::impl_report_device_modification</definition>
+        <argsstring>()</argsstring>
+        <name>impl_report_device_modification</name>
+        <qualifiedname>Kokkos::DualView::impl_report_device_modification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="756" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="756" bodyend="765"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a6698679073feb5d87f7e6267cc649128" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::impl_report_host_modification</definition>
+        <argsstring>()</argsstring>
+        <name>impl_report_host_modification</name>
+        <qualifiedname>Kokkos::DualView::impl_report_host_modification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="766" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="766" bodyend="775"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt;!Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify</definition>
+        <argsstring>()</argsstring>
+        <name>modify</name>
+        <qualifiedname>Kokkos::DualView::modify</qualifiedname>
+        <briefdescription>
+<para>Mark data as modified on the given device <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput> is the same as this <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&apos;s device type, then mark the device&apos;s data as modified. Otherwise, mark the host&apos;s data as modified. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="784" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="784" bodyend="815"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt; Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify</definition>
+        <argsstring>()</argsstring>
+        <name>modify</name>
+        <qualifiedname>Kokkos::DualView::modify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="820" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="820" bodyend="822"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt;!Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify_host</definition>
+        <argsstring>()</argsstring>
+        <name>modify_host</name>
+        <qualifiedname>Kokkos::DualView::modify_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="827" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="827" bodyend="845"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt; Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify_host</definition>
+        <argsstring>()</argsstring>
+        <name>modify_host</name>
+        <qualifiedname>Kokkos::DualView::modify_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="850" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="850" bodyend="852"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt;!Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify_device</definition>
+        <argsstring>()</argsstring>
+        <name>modify_device</name>
+        <qualifiedname>Kokkos::DualView::modify_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="857" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="857" bodyend="875"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Dummy</type>
+            <defval><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></defval>
+          </param>
+          <param>
+            <type>std::enable_if_t&lt; Dummy::impl_dualview_is_single_device::value &gt; *</type>
+            <defval>nullptr</defval>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::modify_device</definition>
+        <argsstring>()</argsstring>
+        <name>modify_device</name>
+        <qualifiedname>Kokkos::DualView::modify_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="880" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="880" bodyend="882"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a475b1efeaca830d9ab4267f75108aea8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::clear_sync_state</definition>
+        <argsstring>()</argsstring>
+        <name>clear_sync_state</name>
+        <qualifiedname>Kokkos::DualView::clear_sync_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="884" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="884" bodyend="887"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1afbaf959e490f9796f16d2fe74435d81c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>static int Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::get_device_side</definition>
+        <argsstring>()</argsstring>
+        <name>get_device_side</name>
+        <qualifiedname>Kokkos::DualView::get_device_side</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="455" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="455" bodyend="517"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1ace8ebfeb3a05bd2231f9e6293016702b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>()=default</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <briefdescription>
+<para>Empty constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Both device and host <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects are constructed using their default constructors. The &quot;modified&quot; flags are both initialized to &quot;unmodified.&quot; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="215" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a4165171274bf0f775b67d4c0b24bfa3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>(const std::string &amp;label, const size_t n0=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n1=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n2=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n3=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n4=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n5=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n6=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n7=KOKKOS_IMPL_CTOR_DEFAULT_ARG)</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n0</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n1</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n2</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n3</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n4</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n5</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n6</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n7</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <briefdescription>
+<para>Constructor that allocates <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects on both host and device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor works like the analogous constructor of <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>. The first argument is a string label, which is entirely for your benefit. (Different <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref> objects may have the same label if you like.) The arguments that follow are the dimensions of the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects. For example, if the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> has three dimensions, the first three integer arguments will be nonzero, and you may omit the integer arguments that follow. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="226" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="226" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aece40c57e16f48bb27016a97abea7b2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>(const Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt;!Impl::ViewCtorProp&lt; P... &gt;::has_pointer, size_t &gt;::type const n0=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n1=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n2=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n3=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n4=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n5=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n6=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n7=KOKKOS_IMPL_CTOR_DEFAULT_ARG)</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt;!<ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, size_t &gt;::type const</type>
+          <declname>n0</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n1</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n2</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n3</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n4</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n5</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n6</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n7</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <briefdescription>
+<para>Constructor that allocates <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects on both host and device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor works like the analogous constructor of <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>. The first arguments are wrapped up in a ViewCtor class, this allows for a label, without initializing, and all of the other things that can be wrapped up in a Ctor class. The arguments that follow are the dimensions of the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects. For example, if the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> has three dimensions, the first three integer arguments will be nonzero, and you may omit the integer arguments that follow. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="251" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="251" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1acd071d0056aa1c72778b1a045cc4b4d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SS</type>
+          </param>
+          <param>
+            <type>class LS</type>
+          </param>
+          <param>
+            <type>class DS</type>
+          </param>
+          <param>
+            <type>class MS</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>(const DualView&lt; SS, LS, DS, MS &gt; &amp;src)</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&lt; SS, LS, DS, MS &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor (shallow copy) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="269" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="269" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a8b3b40c01ba7bb39be5293978f2c28e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class SD</type>
+          </param>
+          <param>
+            <type>class S1</type>
+          </param>
+          <param>
+            <type>class S2</type>
+          </param>
+          <param>
+            <type>class S3</type>
+          </param>
+          <param>
+            <type>class Arg0</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>(const DualView&lt; SD, S1, S2, S3 &gt; &amp;src, const Arg0 &amp;arg0, Args... args)</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&lt; SD, S1, S2, S3 &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const Arg0 &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Subview constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="276" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="276" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a4b4ee867410e802a5a11ace44a4f7ff8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::DualView</definition>
+        <argsstring>(const t_dev &amp;d_view_, const t_host &amp;h_view_)</argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" kindref="member">t_dev</ref> &amp;</type>
+          <declname>d_view_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" kindref="member">t_host</ref> &amp;</type>
+          <declname>h_view_</declname>
+        </param>
+        <briefdescription>
+<para>Create <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref> from existing device and host <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor assumes that the device and host <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects are synchronized. You, the caller, are responsible for making sure this is the case before calling this constructor. After this constructor returns, you may use <ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref>&apos;s sync() and <ref refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" kindref="member">modify()</ref> methods to ensure synchronization of the <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d_view_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>h_view_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Host <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> (must have type t_host = <ref refid="class_kokkos_1_1_view_1aa792f904a0197bb45c90c472d64935b1" kindref="member">t_dev::HostMirror</ref>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="291" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="291" bodyend="316"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Methods for reallocating or resizing the View objects.</header>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1aa59eff9d2022542fc2c34ab9b180516c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::realloc</definition>
+        <argsstring>(const size_t n0=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n1=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n2=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n3=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n4=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n5=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n6=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n7=KOKKOS_IMPL_CTOR_DEFAULT_ARG)</argsstring>
+        <name>realloc</name>
+        <qualifiedname>Kokkos::DualView::realloc</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n0</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n1</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n2</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n3</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n4</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n5</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n6</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n7</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <briefdescription>
+<para>Reallocate both <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This discards any existing contents of the objects, and resets their modified flags. It does <emphasis>not</emphasis> copy the old contents of either <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> into the new <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="898" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="898" bodyend="921"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a32e66d8c44d549a3a096179f77073fd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::resize</definition>
+        <argsstring>(const size_t n0=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n1=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n2=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n3=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n4=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n5=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n6=KOKKOS_IMPL_CTOR_DEFAULT_ARG, const size_t n7=KOKKOS_IMPL_CTOR_DEFAULT_ARG)</argsstring>
+        <name>resize</name>
+        <qualifiedname>Kokkos::DualView::resize</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n0</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n1</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n2</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n3</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n4</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n5</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n6</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>n7</declname>
+          <defval>KOKKOS_IMPL_CTOR_DEFAULT_ARG</defval>
+        </param>
+        <briefdescription>
+<para>Resize both views, copying old contents into new if necessary. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method only copies the old contents into the new <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> objects for the device which was last marked as modified. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="927" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="927" bodyend="961"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Methods for getting capacity, stride, or dimension(s).</header>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a91a30352230c30f8635c0f18757fb7fb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::DualView::span</qualifiedname>
+        <briefdescription>
+<para>The allocation size (same as Kokkos::View::span). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="968" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="968" bodyend="968"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a0420274d1b913b396f3a39ed3e91cb81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::DualView::span_is_contiguous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="970" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="970" bodyend="972"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a0112d07bcb76faa6abd4c5a0061e0a92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::stride</definition>
+        <argsstring>(iType *stride_) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::DualView::stride</qualifiedname>
+        <param>
+          <type>iType *</type>
+          <declname>stride_</declname>
+        </param>
+        <briefdescription>
+<para>Get stride(s) for each dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="976" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="976" bodyend="978"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a92ce3d1f709e070939de94b11a0a009d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::extent</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent</name>
+        <qualifiedname>Kokkos::DualView::extent</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="983" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="983" bodyend="985"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dual_view_1a158dbabd501f79fdb74d9dccf2a91390" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;::extent_int</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent_int</name>
+        <qualifiedname>Kokkos::DualView::extent_int</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="990" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="990" bodyend="992"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_dual_view_1a4bad2a628aaf220b0afc7ab01aa5273b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class DualView</definition>
+        <argsstring></argsstring>
+        <name>DualView</name>
+        <qualifiedname>Kokkos::DualView::DualView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">DualView</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="117" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;</label>
+        <link refid="class_kokkos_1_1_dual_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, void, void, void &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::DualView&lt; DataType, Arg1Type, Arg2Type, Arg3Type &gt;</label>
+        <link refid="class_kokkos_1_1_dual_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>modified_flags</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>d_view</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>h_view</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Kokkos::View&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::View&lt; typename traits::data_type, void, void, void &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::View&lt; unsigned int[2], LayoutLeft, Kokkos::HostSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, void, void, void &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="6">
+        <label>Kokkos::ViewTraits&lt; typename traits::data_type, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="4">
+        <label>Kokkos::ViewTraits&lt; unsigned int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="115" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="115" bodyend="995"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a475b1efeaca830d9ab4267f75108aea8" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>clear_sync_state</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ad7b035c052519ac2ba4cc4918169b296" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>d_view</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>dimension</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4bad2a628aaf220b0afc7ab01aa5273b" prot="private" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ace8ebfeb3a05bd2231f9e6293016702b" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4165171274bf0f775b67d4c0b24bfa3c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aece40c57e16f48bb27016a97abea7b2e" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acd071d0056aa1c72778b1a045cc4b4d1" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a8b3b40c01ba7bb39be5293978f2c28e1" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4b4ee867410e802a5a11ace44a4f7ff8" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>DualView</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a92ce3d1f709e070939de94b11a0a009d" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a158dbabd501f79fdb74d9dccf2a91390" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>extent_int</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1afbaf959e490f9796f16d2fe74435d81c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>get_device_side</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a5757763417fc8a9436666f711a5f9675" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>h_view</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a8954ce8f585911b9d530b4b8c3956b24" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a574b4ba6d32f37a80714f0b8bf363d4c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>impl_report_device_modification</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a68693ac63b931dc0acd48b72fac9c070" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>impl_report_device_sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6698679073feb5d87f7e6267cc649128" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>impl_report_host_modification</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ab3c4791255e5e3280f60a6827b330f1d" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>impl_report_host_sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aecca3fb28ee3e06ed7b2ce658b0d90d7" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>is_allocated</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>is_hostspace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>is_random_access</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>memory_traits</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a566055b78119b89c858ab5d64ba9a535" prot="protected" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modified_flags</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a4f805eb933f3e2204127579af06ea1f9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a03ef8d1fd5ebbbe33d724eede63413f2" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a3e17ce57a719e3eed7706a548429d96b" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>modify_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a721550697a480c0d156ccf7d08983a8e" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>need_sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6232fe6ba8984196e8d1bb781e0bf0b7" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>need_sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2530a9028a39ae43c9e9082e38062708" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>need_sync_host</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>non_const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>rank_dynamic</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aa59eff9d2022542fc2c34ab9b180516c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>realloc</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a32e66d8c44d549a3a096179f77073fd0" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>resize</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>scalar_array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a91a30352230c30f8635c0f18757fb7fb" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0420274d1b913b396f3a39ed3e91cb81" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>specialize</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0112d07bcb76faa6abd4c5a0061e0a92" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1af819f1764028f0afa048c16677cbc6c1" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a82966f7200378027d177a52369f4bbdf" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a5a37af0e368bfc9441102fa78cedc968" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2e79984a292b89f999d59fc5e4888a0d" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1addd97570bc1746f2cc8eb407aef754a9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a29db499d21b37410174ca5e92882d017" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acc8c8b25d9982780737b346ba399260c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_device_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1af6e3c518a87ec999751d54468950361e" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1acad59540bdb329b770bee1e8473af4a7" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a93c36794b910e5ffa79bd51e56e6abe8" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_host_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ae0bd04b6c74ae3ea47f3dba503e86be9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aceefa1a8f1ea36b4afcd481d117ec2a5" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>sync_impl</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a9575b3055fd8a5d8659964a95595386f" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a6347d603c2c534094c749faf25d4eee5" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev_const</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a9f3b7433c40958c131380a0421fb49aa" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev_const_randomread</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abd85a0839927b458717ab3969cf88812" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev_const_randomread_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ac4a93ef5add78bdc6a996093e6da3224" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev_const_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a7e6c45c9a3e1cb06c9477e85b8b33d45" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_dev_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ac3875297bac13a1fe26664b949c45039" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a2d64ed88c3b9c8d8c74f142fb585026a" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host_const</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abc890399e5491a26051f18bab6a8d9e9" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host_const_randomread</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a484018b1824a2deee5af4a11989e15b1" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host_const_randomread_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1ae6e363495df0324d5a8d63f055e08b49" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host_const_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1abd851c1f250e714db4283b587931b33f" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_host_um</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1adabbbcad80b6888f606a220f6861c691" prot="protected" virt="non-virtual"><scope>Kokkos::DualView</scope><name>t_modified_flags</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a7b073fd5d6094440ec2ae1f3a91c6f7c" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>traits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a0631d00217a48c25e30a5273b12869ae" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aebeb1904a5cf300be0ec5a61cd6d7cde" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>view</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a0de9a76e4ed5433c340381af786ececb" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>view_device</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1a59a46a2653539de23abbf9d79403ad9f" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>view_header_size</name></member>
+      <member refid="class_kokkos_1_1_dual_view_1aa0f5bb4eea5b9190e6282128189daada" prot="public" virt="non-virtual"><scope>Kokkos::DualView</scope><name>view_host</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

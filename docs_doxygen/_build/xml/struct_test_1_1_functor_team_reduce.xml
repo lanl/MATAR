@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_functor_team_reduce" kind="struct" language="C++" prot="public">
+    <compoundname>Test::FunctorTeamReduce</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename MemorySpace</type>
+      </param>
+      <param>
+        <type>typename ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_functor_team_reduce_1a6096ba2f3e7693b20b1b9fbcfdac0ebf" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::M</definition>
+        <argsstring></argsstring>
+        <name>M</name>
+        <qualifiedname>Test::FunctorTeamReduce::M</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="110" column="7" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor_team_reduce_1a4e11a5502618814ae95fb00ab7e68096" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <qualifiedname>Test::FunctorTeamReduce::R</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="110" column="9" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor_team_reduce_1a56f690f382fe6c323ce3cdc01feed8f2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double **, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>, TEST_EXECSPACE &gt;</type>
+        <definition>Kokkos::View&lt;double**, Kokkos::LayoutRight, TEST_EXECSPACE&gt; Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Test::FunctorTeamReduce::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="111" column="16" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_functor_team_reduce_1a115a9c97d5bef644093a5c96dfc3d2de" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, MemorySpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Unmanaged &gt; &gt;</type>
+        <definition>Kokkos::View&lt;int*, MemorySpace, Kokkos::MemoryTraits&lt;Kokkos::Unmanaged&gt; &gt; Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Test::FunctorTeamReduce::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" line="128" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_functor_team_reduce_1a102fb32bb833db11e3829ef10b13cdcf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::FunctorTeamReduce</definition>
+        <argsstring>(int M_, int R_, Kokkos::View&lt; double **, Kokkos::LayoutRight, TEST_EXECSPACE &gt; a_)</argsstring>
+        <name>FunctorTeamReduce</name>
+        <qualifiedname>Test::FunctorTeamReduce::FunctorTeamReduce</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>M_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>R_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double **, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>, TEST_EXECSPACE &gt;</type>
+          <declname>a_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="112" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor_team_reduce_1a1e768e90c7c1860a8c582cd0f3da9eaf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(const Kokkos::TeamPolicy&lt; TEST_EXECSPACE &gt;::member_type &amp;team, double &amp;tmp) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::FunctorTeamReduce::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; TEST_EXECSPACE &gt;::member_type &amp;</type>
+          <declname>team</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>tmp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="117" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="117" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor_team_reduce_1afe578047a591d853c7eae4667e5de5b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::FunctorTeamReduce</definition>
+        <argsstring>(Kokkos::View&lt; int *, MemorySpace, Kokkos::MemoryTraits&lt; Kokkos::Unmanaged &gt; &gt; a_)</argsstring>
+        <name>FunctorTeamReduce</name>
+        <qualifiedname>Test::FunctorTeamReduce::FunctorTeamReduce</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, MemorySpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Unmanaged &gt; &gt;</type>
+          <declname>a_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" line="129" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_functor_team_reduce_1a2b99c6e441b499c7f87de91dff7d960f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(typename Kokkos::TeamPolicy&lt; ExecutionSpace &gt;::member_type const &amp;team, int &amp;lsum) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::FunctorTeamReduce::operator()</qualifiedname>
+        <param>
+          <type>typename <ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ExecutionSpace &gt;::member_type const &amp;</type>
+          <declname>team</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>lsum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" line="135" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/Test_InterOp_Streams.hpp" bodystart="135" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::FunctorTeamReduce&lt; MemorySpace, ExecutionSpace &gt;</label>
+        <link refid="struct_test_1_1_functor_team_reduce"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double **, Kokkos::LayoutRight, TEST_EXECSPACE &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int *, MemorySpace, Kokkos::MemoryTraits&lt; Kokkos::Unmanaged &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double **, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" line="109" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTest_ExecSpacePartitioning.cpp" bodystart="109" bodyend="128"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_functor_team_reduce_1a56f690f382fe6c323ce3cdc01feed8f2" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>a</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a115a9c97d5bef644093a5c96dfc3d2de" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>a</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a102fb32bb833db11e3829ef10b13cdcf" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>FunctorTeamReduce</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1afe578047a591d853c7eae4667e5de5b7" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>FunctorTeamReduce</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a6096ba2f3e7693b20b1b9fbcfdac0ebf" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>M</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a1e768e90c7c1860a8c582cd0f3da9eaf" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a2b99c6e441b499c7f87de91dff7d960f" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_functor_team_reduce_1a4e11a5502618814ae95fb00ab7e68096" prot="public" virt="non-virtual"><scope>Test::FunctorTeamReduce</scope><name>R</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_parallel_reduce_fence" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReduceFence</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_fence_1aec9231c9433d6e154abf919ee018b518" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>ArgsDeduced</declname>
+            <defname>ArgsDeduced</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Kokkos::Impl::ParallelReduceFence&lt; ExecutionSpace, Args &gt;::fence</definition>
+        <argsstring>(const ExecutionSpace &amp;ex, const std::string &amp;name, ArgsDeduced &amp;&amp;... args)</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduceFence::fence</qualifiedname>
+        <param>
+          <type>const ExecutionSpace &amp;</type>
+          <declname>ex</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>ArgsDeduced &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="951" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="951" bodyend="956"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="949" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="949" bodyend="957"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_fence_1aec9231c9433d6e154abf919ee018b518" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduceFence</scope><name>fence</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

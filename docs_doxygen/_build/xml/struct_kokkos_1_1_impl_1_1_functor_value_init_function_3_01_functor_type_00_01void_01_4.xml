@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;</compoundname>
+    <includes refid="_kokkos___functor_adapter_8hpp" local="no">Kokkos_FunctorAdapter.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1add71e04e174291e52818d5df737db295" prot="public" static="no">
+        <type>typename FunctorValueTraits&lt; FunctorType, void &gt;::reference_type</type>
+        <definition>using Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::reference_type =  typename FunctorValueTraits&lt;FunctorType, void&gt;::reference_type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1387" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1388" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1ab48683765d670dd41a88db0c3a9d1bd3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(reference_type) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(reference_type) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1390" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1ab0fa1d7826e76ac83806d289920d34e3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::enable_if</definition>
+        <argsstring>(void(*)(reference_type))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(reference_type)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1392" column="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Function signatures for FunctorType::init function without a tag. reference_type is &apos;value_type &amp;&apos; for scalar and &apos;value_type *&apos; for array. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1386" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1386" bodyend="1393"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1ab48683765d670dd41a88db0c3a9d1bd3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1ab0fa1d7826e76ac83806d289920d34e3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_init_function_3_01_functor_type_00_01void_01_4_1add71e04e174291e52818d5df737db295" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueInitFunction&lt; FunctorType, void &gt;</scope><name>reference_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

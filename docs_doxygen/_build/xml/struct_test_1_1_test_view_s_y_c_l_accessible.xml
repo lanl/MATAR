@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_s_y_c_l_accessible" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewSYCLAccessible</compoundname>
+    <innerclass refid="struct_test_1_1_test_view_s_y_c_l_accessible_1_1_tag_init" prot="public">Test::TestViewSYCLAccessible::TagInit</innerclass>
+    <innerclass refid="struct_test_1_1_test_view_s_y_c_l_accessible_1_1_tag_test" prot="public">Test::TestViewSYCLAccessible::TagTest</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class MemSpace</type>
+      </param>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_s_y_c_l_accessible_1a6e9c85a6815c406997c4efa6ce4be15a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@258</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::@258</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_s_y_c_l_accessible_1a6e9c85a6815c406997c4efa6ce4be15aae50409ef2a8135dc978870ac1e89f6e4" prot="public">
+          <name>N</name>
+          <initializer>= 1000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="307" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="307" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_s_y_c_l_accessible_1a3a1c16c5c32b9871d2d1a8a46e084487" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, MemSpace &gt;</type>
+        <definition>using Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::V =  Kokkos::View&lt;double *, MemSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>V</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::V</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="309" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_s_y_c_l_accessible_1adcfccbdcb208cd36912fea3e7dd0f232" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">V</ref></type>
+        <definition>V Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::m_base</definition>
+        <argsstring></argsstring>
+        <name>m_base</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::m_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="311" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_s_y_c_l_accessible_1a8c40cc189923952c59932e9a64c742b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TagInit &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_s_y_c_l_accessible_1_1_tag_init" kindref="compound">TagInit</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="317" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="317" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_s_y_c_l_accessible_1a0e3eee46cf2aa1c64296894f5398158b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TagTest &amp;, const int i, long &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_s_y_c_l_accessible_1_1_tag_test" kindref="compound">TagTest</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="320" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="320" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_s_y_c_l_accessible_1a10d0b441d032b9c1881e96136ffb3c69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::TestViewSYCLAccessible</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewSYCLAccessible</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::TestViewSYCLAccessible</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="324" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="324" bodyend="324"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_s_y_c_l_accessible_1ad4c6f83657338055f6c567215bf1d26e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewSYCLAccessible::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="326" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="326" bodyend="338"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewSYCLAccessible&lt; MemSpace, ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_test_view_s_y_c_l_accessible"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_base</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, MemSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="306" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="306" bodyend="339"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1adcfccbdcb208cd36912fea3e7dd0f232" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>m_base</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1a6e9c85a6815c406997c4efa6ce4be15aae50409ef2a8135dc978870ac1e89f6e4" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1a8c40cc189923952c59932e9a64c742b9" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1a0e3eee46cf2aa1c64296894f5398158b" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1ad4c6f83657338055f6c567215bf1d26e" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1a10d0b441d032b9c1881e96136ffb3c69" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>TestViewSYCLAccessible</name></member>
+      <member refid="struct_test_1_1_test_view_s_y_c_l_accessible_1a3a1c16c5c32b9871d2d1a8a46e084487" prot="public" virt="non-virtual"><scope>Test::TestViewSYCLAccessible</scope><name>V</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

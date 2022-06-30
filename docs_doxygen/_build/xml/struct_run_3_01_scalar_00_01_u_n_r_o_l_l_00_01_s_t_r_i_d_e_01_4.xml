@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_run_3_01_scalar_00_01_u_n_r_o_l_l_00_01_s_t_r_i_d_e_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Run&lt; Scalar, UNROLL, STRIDE &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_run_3_01_scalar_00_01_u_n_r_o_l_l_00_01_s_t_r_i_d_e_01_4_1a7c475a80ed677137a0422d0d4164abac" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Run&lt; Scalar, UNROLL, STRIDE &gt;::run</definition>
+        <argsstring>(int N, int K, int R, int F, int T, int S)</argsstring>
+        <name>run</name>
+        <qualifiedname>Run&lt; Scalar, UNROLL, STRIDE &gt;::run</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>F</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>T</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/bytes_and_flops/bench_unroll_stride.hpp" line="47" column="15" bodyfile="src/Kokkos/kokkos/benchmarks/bytes_and_flops/bench_unroll_stride.hpp" bodystart="47" bodyend="150"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/bytes_and_flops/bench_unroll_stride.hpp" line="46" column="1" bodyfile="src/Kokkos/kokkos/benchmarks/bytes_and_flops/bench_unroll_stride.hpp" bodystart="46" bodyend="151"/>
+    <listofallmembers>
+      <member refid="struct_run_3_01_scalar_00_01_u_n_r_o_l_l_00_01_s_t_r_i_d_e_01_4_1a7c475a80ed677137a0422d0d4164abac" prot="public" virt="non-virtual"><scope>Run&lt; Scalar, UNROLL, STRIDE &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__integral__extent__type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::is_integral_extent_type</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1is__integral__extent__type_1aa0207b0eff9650c0b212a69e6c56ba3d" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@119</name>
+        <qualifiedname>Kokkos::Impl::is_integral_extent_type::@119</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1is__integral__extent__type_1aa0207b0eff9650c0b212a69e6c56ba3daeb967b049721e92a803b4a628d415c15" prot="public">
+          <name>value</name>
+          <initializer>= std::is_same&lt;T, Kokkos::Impl::ALL_t&gt;::value ? 1 : 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="327" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="327" bodyend="327"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="326" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="326" bodyend="328"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1is__integral__extent__type_1aa0207b0eff9650c0b212a69e6c56ba3daeb967b049721e92a803b4a628d415c15" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_integral_extent_type</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

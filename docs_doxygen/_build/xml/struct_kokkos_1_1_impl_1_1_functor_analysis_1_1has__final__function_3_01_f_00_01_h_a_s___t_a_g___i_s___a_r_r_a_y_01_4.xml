@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a5a11eafb479a6f0201a2f4260115ed1a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</definition>
+        <argsstring>(void(F::*)(WTag, ValueType *) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(F::*)(WTag, ValueType *) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="643" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1ac7dce2d67b42319217dbdc5c4b4f1121" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</definition>
+        <argsstring>(void(F::*)(WTag const &amp;, ValueType *) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(F::*)(WTag const &amp;, ValueType *) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="646" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a6140cfd82933921621b8ffd16cced2bf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</definition>
+        <argsstring>(void(*)(WTag, ValueType *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(WTag, ValueType *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="649" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a6ba9b850933615ec3be01afb028f932d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</definition>
+        <argsstring>(void(*)(WTag const &amp;, ValueType *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(WTag const &amp;, ValueType *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="651" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a80a9802c30c538bcf25e0cc2d2c87db2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::final</definition>
+        <argsstring>(F const *const f, ValueType *dst)</argsstring>
+        <name>final</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;::final</qualifiedname>
+        <param>
+          <type>F const *const</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>ValueType *</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="654" column="40" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="654" bodyend="656"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="642" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="642" bodyend="657"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a5a11eafb479a6f0201a2f4260115ed1a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1ac7dce2d67b42319217dbdc5c4b4f1121" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a6140cfd82933921621b8ffd16cced2bf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a6ba9b850933615ec3be01afb028f932d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__final__function_3_01_f_00_01_h_a_s___t_a_g___i_s___a_r_r_a_y_01_4_1a80a9802c30c538bcf25e0cc2d2c87db2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_final_function&lt; F, HAS_TAG_IS_ARRAY &gt;</scope><name>final</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_view_subview_1_1_test_extents_static_tests" kind="struct" language="C++" prot="public">
+    <compoundname>TestViewSubview::TestExtentsStaticTests</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1_test_extents_static_tests_1a8043ff9b418f6d671ca60db7668b43c1" prot="public" static="no">
+        <type>typename <ref refid="structstatic__expect__same" kindref="compound">static_expect_same</ref>&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_extents" kindref="compound">Kokkos::Experimental::Extents</ref>&lt; Kokkos::Experimental::dynamic_extent, Kokkos::Experimental::dynamic_extent, 1, 2, 3 &gt;, typename <ref refid="struct_kokkos_1_1_impl_1_1_parse_view_extents" kindref="compound">Kokkos::Impl::ParseViewExtents</ref>&lt; double **[1][2][3]&gt;::type &gt;::type</type>
+        <definition>using TestViewSubview::TestExtentsStaticTests&lt; Space &gt;::test1 =  typename static_expect_same&lt; Kokkos::Experimental::Extents&lt;Kokkos::Experimental::dynamic_extent, Kokkos::Experimental::dynamic_extent, 1, 2, 3&gt;, typename Kokkos::Impl::ParseViewExtents&lt;double* * [1][2][3]&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>test1</name>
+        <qualifiedname>TestViewSubview::TestExtentsStaticTests::test1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2284" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1_test_extents_static_tests_1a68ed2712914c091096ee112382faffa1" prot="public" static="no">
+        <type>typename <ref refid="structstatic__expect__same" kindref="compound">static_expect_same</ref>&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_extents" kindref="compound">Kokkos::Experimental::Extents</ref>&lt; 1, 2, 3 &gt;, typename <ref refid="struct_kokkos_1_1_impl_1_1_parse_view_extents" kindref="compound">Kokkos::Impl::ParseViewExtents</ref>&lt; double[1][2][3]&gt;::type &gt;::type</type>
+        <definition>using TestViewSubview::TestExtentsStaticTests&lt; Space &gt;::test2 =  typename static_expect_same&lt; Kokkos::Experimental::Extents&lt;1, 2, 3&gt;, typename Kokkos::Impl::ParseViewExtents&lt;double[1][2][3]&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>test2</name>
+        <qualifiedname>TestViewSubview::TestExtentsStaticTests::test2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2292" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1_test_extents_static_tests_1a49fece77fdd48937430dfcd551df1604" prot="public" static="no">
+        <type>typename <ref refid="structstatic__expect__same" kindref="compound">static_expect_same</ref>&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_extents" kindref="compound">Kokkos::Experimental::Extents</ref>&lt; 3 &gt;, typename <ref refid="struct_kokkos_1_1_impl_1_1_parse_view_extents" kindref="compound">Kokkos::Impl::ParseViewExtents</ref>&lt; double[3]&gt;::type &gt;::type</type>
+        <definition>using TestViewSubview::TestExtentsStaticTests&lt; Space &gt;::test3 =  typename static_expect_same&lt; Kokkos::Experimental::Extents&lt;3&gt;, typename Kokkos::Impl::ParseViewExtents&lt;double[3]&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>test3</name>
+        <qualifiedname>TestViewSubview::TestExtentsStaticTests::test3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2298" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1_test_extents_static_tests_1a1b81846bd51555a4af5684cee8c4e6e1" prot="public" static="no">
+        <type>typename <ref refid="structstatic__expect__same" kindref="compound">static_expect_same</ref>&lt; <ref refid="struct_kokkos_1_1_experimental_1_1_extents" kindref="compound">Kokkos::Experimental::Extents</ref>&lt;&gt;, typename <ref refid="struct_kokkos_1_1_impl_1_1_parse_view_extents" kindref="compound">Kokkos::Impl::ParseViewExtents</ref>&lt; double &gt;::type &gt;::type</type>
+        <definition>using TestViewSubview::TestExtentsStaticTests&lt; Space &gt;::test4 =  typename static_expect_same&lt; Kokkos::Experimental::Extents&lt;&gt;, typename Kokkos::Impl::ParseViewExtents&lt;double&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>test4</name>
+        <qualifiedname>TestViewSubview::TestExtentsStaticTests::test4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2304" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2308" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2283" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2283" bodyend="2309"/>
+    <listofallmembers>
+      <member refid="struct_test_view_subview_1_1_test_extents_static_tests_1a8043ff9b418f6d671ca60db7668b43c1" prot="public" virt="non-virtual"><scope>TestViewSubview::TestExtentsStaticTests</scope><name>test1</name></member>
+      <member refid="struct_test_view_subview_1_1_test_extents_static_tests_1a68ed2712914c091096ee112382faffa1" prot="public" virt="non-virtual"><scope>TestViewSubview::TestExtentsStaticTests</scope><name>test2</name></member>
+      <member refid="struct_test_view_subview_1_1_test_extents_static_tests_1a49fece77fdd48937430dfcd551df1604" prot="public" virt="non-virtual"><scope>TestViewSubview::TestExtentsStaticTests</scope><name>test3</name></member>
+      <member refid="struct_test_view_subview_1_1_test_extents_static_tests_1a1b81846bd51555a4af5684cee8c4e6e1" prot="public" virt="non-virtual"><scope>TestViewSubview::TestExtentsStaticTests</scope><name>test4</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

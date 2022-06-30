@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__value__type_3_01_f_00_01typename_01std_1_1is2aa3537c9c316ce382bf21b127f67bd4" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::has_value_type&lt; F, typename std::is_same&lt; typename F::value_type, void &gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename F</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__value__type_3_01_f_00_01typename_01std_1_1is2aa3537c9c316ce382bf21b127f67bd4_1a0b2eef05e733f9b01748e9badec3289e" prot="public" static="no">
+        <type>typename F::value_type</type>
+        <definition>using Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_value_type&lt; F, typename std::is_same&lt; typename F::value_type, void &gt;::type &gt;::type =  typename F::value_type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_value_type&lt; F, typename std::is_same&lt; typename F::value_type, void &gt;::type &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="135" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="133" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="134" bodyend="141"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__value__type_3_01_f_00_01typename_01std_1_1is2aa3537c9c316ce382bf21b127f67bd4_1a0b2eef05e733f9b01748e9badec3289e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_value_type&lt; F, typename std::is_same&lt; typename F::value_type, void &gt;::type &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

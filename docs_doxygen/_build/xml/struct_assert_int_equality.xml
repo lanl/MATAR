@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_assert_int_equality" kind="struct" language="C++" prot="public">
+    <compoundname>AssertIntEquality</compoundname>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>V1</declname>
+        <defname>V1</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>V2</declname>
+        <defname>V2</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_assert_int_equality_1a638a933d1da8bbb4abfaa8054d24d83a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool AssertIntEquality&lt; V1, V2 &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>AssertIntEquality::value</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="394" column="25" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="394" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="393" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="393" bodyend="395"/>
+    <listofallmembers>
+      <member refid="struct_assert_int_equality_1a638a933d1da8bbb4abfaa8054d24d83a" prot="public" virt="non-virtual"><scope>AssertIntEquality</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

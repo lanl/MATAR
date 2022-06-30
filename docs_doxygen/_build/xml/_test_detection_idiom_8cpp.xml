@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_test_detection_idiom_8cpp" kind="file" language="C++">
+    <compoundname>TestDetectionIdiom.cpp</compoundname>
+    <includes refid="_kokkos___detection_idiom_8hpp" local="no">Kokkos_DetectionIdiom.hpp</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Kokkos_DetectionIdiom.hpp</label>
+        <link refid="_kokkos___detection_idiom_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>impl/Kokkos_Utilities.hpp</label>
+        <link refid="_kokkos___utilities_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp</label>
+        <link refid="_test_detection_idiom_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="5">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="9">
+        <label>initializer_list</label>
+      </node>
+      <node id="8">
+        <label>type_traits</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="struct_example_1_1_meow" prot="public">Example::Meow</innerclass>
+    <innerclass refid="struct_example_1_1_purr" prot="public">Example::Purr</innerclass>
+    <innerclass refid="struct_example_1_1_woof" prot="public">Example::Woof</innerclass>
+    <innerclass refid="struct_example_1_1_bark" prot="public">Example::Bark</innerclass>
+    <innernamespace refid="namespace_example">Example</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_test_detection_idiom_8cpp_1a546855aaf69218038a2f19c115eab7db" prot="public" static="no">
+        <name>STATIC_ASSERT</name>
+        <param><defname>cond</defname></param>
+        <initializer>static_assert(cond, &quot;&quot;);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" line="47" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_detection_idiom_8cpp_1a8867c88e72c112e66c5d13945569fca9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_nonesuch</definition>
+        <argsstring>()</argsstring>
+        <name>test_nonesuch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" line="49" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" bodystart="49" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_detection_idiom_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" line="96" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp" bodystart="96" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_DetectionIdiom.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATIC_ASSERT(cond)<sp/>static_assert(cond,<sp/>&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_nonesuch()<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1nonesuch" kindref="compound">Kokkos::nonesuch</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>STATIC_ASSERT(!std::is_constructible&lt;nonesuch&gt;::value);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>STATIC_ASSERT(!std::is_destructible&lt;nonesuch&gt;::value);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>STATIC_ASSERT(!std::is_copy_constructible&lt;nonesuch&gt;::value);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>STATIC_ASSERT(!std::is_move_constructible&lt;nonesuch&gt;::value);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>KOKKOS_ENABLE_CXX17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>STATIC_ASSERT(!std::is_aggregate&lt;nonesuch&gt;::value);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>STATIC_ASSERT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Example<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Example<sp/>from<sp/>https://en.cppreference.com/w/cpp/experimental/is_detected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">copy_assign_t<sp/>=<sp/></highlight><highlight class="keyword">decltype</highlight><highlight class="normal">(std::declval&lt;T&amp;&gt;()<sp/>=<sp/>std::declval&lt;const<sp/>T&amp;&gt;());</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="struct_example_1_1_meow" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_example_1_1_meow" kindref="compound">Meow</ref><sp/>{};</highlight></codeline>
+<codeline lineno="68" refid="struct_example_1_1_purr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_example_1_1_purr" kindref="compound">Purr</ref><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_example_1_1_purr" kindref="compound">Purr</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(Kokkos::is_detected&lt;copy_assign_t,<sp/>Meow&gt;::value,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Meow<sp/>should<sp/>be<sp/>copy<sp/>assignable!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(!Kokkos::is_detected&lt;copy_assign_t,<sp/>Purr&gt;::value,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Purr<sp/>should<sp/>not<sp/>be<sp/>copy<sp/>assignable!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(Kokkos::is_detected_exact&lt;Meow&amp;,<sp/>copy_assign_t,<sp/>Meow&gt;::value,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Copy<sp/>assignment<sp/>of<sp/>Meow<sp/>should<sp/>return<sp/>Meow&amp;!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">diff_t<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T::difference_type;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Ptr&gt;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">difference_type<sp/>=<sp/>Kokkos::detected_or_t&lt;std::ptrdiff_t,<sp/>diff_t,<sp/>Ptr&gt;;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="struct_example_1_1_woof" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_example_1_1_woof" kindref="compound">Woof</ref><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">difference_type<sp/>=<sp/>int;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88" refid="struct_example_1_1_bark" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_example_1_1_bark" kindref="compound">Bark</ref><sp/>{};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;difference_type&lt;Woof&gt;,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;::value,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Woof&apos;s<sp/>difference_type<sp/>should<sp/>be<sp/>int!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;difference_type&lt;Bark&gt;,<sp/>std::ptrdiff_t&gt;::value,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Bark&apos;s<sp/>difference_type<sp/>should<sp/>be<sp/>ptrdiff_t!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Example</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main()<sp/>{}</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestDetectionIdiom.cpp"/>
+  </compounddef>
+</doxygen>

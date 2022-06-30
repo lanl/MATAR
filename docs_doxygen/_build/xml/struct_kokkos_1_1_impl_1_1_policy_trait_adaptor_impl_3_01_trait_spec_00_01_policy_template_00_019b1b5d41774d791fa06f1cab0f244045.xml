@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_019b1b5d41774d791fa06f1cab0f244045" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt;&gt;, NewTrait &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class TraitSpec</type>
+      </param>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>PolicyTemplate</declname>
+        <defname>PolicyTemplate</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>ProcessedTraits</declname>
+        <defname>ProcessedTraits</defname>
+      </param>
+      <param>
+        <type>class NewTrait</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_019b1b5d41774d791fa06f1cab0f244045_1a17ba9eadc8b2b4289da23629dd006a53" prot="public" static="no">
+        <type>PolicyTemplate&lt; ProcessedTraits..., NewTrait &gt;</type>
+        <definition>using Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt;&gt;, NewTrait &gt;::type =  PolicyTemplate&lt;ProcessedTraits..., NewTrait&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt;&gt;, NewTrait &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" line="124" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" line="120" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_PolicyTraitAdaptor.hpp" bodystart="122" bodyend="125"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl_3_01_trait_spec_00_01_policy_template_00_019b1b5d41774d791fa06f1cab0f244045_1a17ba9eadc8b2b4289da23629dd006a53" prot="public" virt="non-virtual"><scope>Kokkos::Impl::PolicyTraitAdaptorImpl&lt; TraitSpec, PolicyTemplate, type_list&lt; ProcessedTraits... &gt;, type_list&lt;&gt;, NewTrait &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1vector_1_1impl__is__input__iterator" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::vector::impl_is_input_iterator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::integral_constant&lt; bool, !std::is_convertible&lt; T, size_type &gt;::value &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::vector&lt; Scalar, Arg1Type &gt;::impl_is_input_iterator&lt; T &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, !std::is_convertible&lt; T, size_type &gt;::value &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::vector&lt; Scalar, Arg1Type &gt;::impl_is_input_iterator&lt; T &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::integral_constant&lt; bool, !std::is_convertible&lt; T, size_type &gt;::value &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" line="181" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Vector.hpp" bodystart="183" bodyend="183"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

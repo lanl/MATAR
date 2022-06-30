@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__integral__extent" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::is_integral_extent</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1is__integral__extent_1a949d188f5760a081f67afe6474a279b5" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@123</name>
+        <qualifiedname>Kokkos::Impl::is_integral_extent::@123</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1is__integral__extent_1a949d188f5760a081f67afe6474a279b5ac899b2af5657ba528ebd3b23b100e894" prot="public">
+          <name>value</name>
+          <initializer>= is_integral_extent_type&lt;type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="352" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="352" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1is__integral__extent_1aab3d6bb04aa1ee47ac5a2e6649ec4b7a" prot="public" static="no">
+        <type>typename std::remove_cv&lt; typename std::remove_reference&lt; typename <ref refid="struct_kokkos_1_1_impl_1_1get__type" kindref="compound">Kokkos::Impl::get_type</ref>&lt; I, Args... &gt;::type &gt;::type &gt;::type</type>
+        <definition>using Kokkos::Impl::is_integral_extent&lt; I, Args &gt;::type =  typename std::remove_cv&lt;typename std::remove_reference&lt; typename Kokkos::Impl::get_type&lt;I, Args...&gt;::type&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::is_integral_extent::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="349" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="347" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="347" bodyend="357"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1is__integral__extent_1aab3d6bb04aa1ee47ac5a2e6649ec4b7a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_integral_extent</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1is__integral__extent_1a949d188f5760a081f67afe6474a279b5ac899b2af5657ba528ebd3b23b100e894" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_integral_extent</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

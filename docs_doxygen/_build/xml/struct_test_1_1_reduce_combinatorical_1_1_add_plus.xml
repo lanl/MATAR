@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_reduce_combinatorical_1_1_add_plus" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ReduceCombinatorical::AddPlus</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Space</type>
+        <defval><ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1ac8e2388aef421bfa9097867fcbbd0847" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus" kindref="compound">AddPlus</ref></type>
+        <definition>using Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::reducer =  AddPlus</definition>
+        <argsstring></argsstring>
+        <name>reducer</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1ae88c5010864d9138dfa487b777eb98d7" prot="public" static="no">
+        <type>Scalar</type>
+        <definition>using Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::value_type =  Scalar</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a736d0e53c5f90e687ce7d2cf2d6a174b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; value_type, Space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Unmanaged &gt; &gt;</type>
+        <definition>using Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::result_view_type =  Kokkos::View&lt;value_type, Space, Kokkos::MemoryTraits&lt;Kokkos::Unmanaged&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>result_view_type</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::result_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a6c9672ed5edb1e0d980d2518a9a3ee63" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>result_view_type Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="67" column="20" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1aa6279df52e7aed6e899b537d54d6dced" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::AddPlus</definition>
+        <argsstring>(value_type &amp;result_)</argsstring>
+        <name>AddPlus</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::AddPlus</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>result_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a91fe8fa1053153d940c322666556370f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::join</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="74" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a178a792be04b34ab34b93ae13c36327b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="77" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a4c90a22821bb4cf4a4a140f290553947" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::init</definition>
+        <argsstring>(value_type &amp;val) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="83" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1af6b54f0ebe7402657de143d255969b27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION value_type &amp; Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::reference</definition>
+        <argsstring>() const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="86" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a78f094acb496abcef6745a6027899a39" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION result_view_type Test::ReduceCombinatorical::AddPlus&lt; Scalar, Space &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Test::ReduceCombinatorical::AddPlus::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="89" column="20" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="89" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="57" bodyend="90"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1aa6279df52e7aed6e899b537d54d6dced" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>AddPlus</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a4c90a22821bb4cf4a4a140f290553947" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>init</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a91fe8fa1053153d940c322666556370f" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>join</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a178a792be04b34ab34b93ae13c36327b" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>join</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1ac8e2388aef421bfa9097867fcbbd0847" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>reducer</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1af6b54f0ebe7402657de143d255969b27" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>reference</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a6c9672ed5edb1e0d980d2518a9a3ee63" prot="private" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>result</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a736d0e53c5f90e687ce7d2cf2d6a174b" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>result_view_type</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1ae88c5010864d9138dfa487b777eb98d7" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>value_type</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_add_plus_1a78f094acb496abcef6745a6027899a39" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::AddPlus</scope><name>view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor" kind="struct" language="C++" prot="public">
+    <compoundname>TestAtomicViews::DivEqualAtomicViewFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class execution_space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aa154218b1155da4906d4c99d70049d61" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::atomic_view_type =  Kokkos::View&lt;T, execution_space, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>atomic_view_type</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::atomic_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="657" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aacc10c66e27080cebab11cc682f5171e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *, execution_space &gt;</type>
+        <definition>using TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::view_type =  Kokkos::View&lt;T*, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="659" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="659" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1af14f44e1694a28478fc428089e9125fe" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space &gt;</type>
+        <definition>using TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::scalar_view_type =  Kokkos::View&lt;T, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>scalar_view_type</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::scalar_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="660" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="660" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aad5c2b6117f739b3ea5f116dd822da49" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="662" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="662" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a6c119c2c6e4d975b7a85f8da2e8051ac" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">atomic_view_type</ref></type>
+        <definition>atomic_view_type TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="663" column="20" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="663" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a4250920a1aca2e9c4b642eb253496bab" prot="public" static="no" mutable="no">
+        <type>const int64_t</type>
+        <definition>const int64_t TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="664" column="17" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="664" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a541ba5894ed1e60b47dd8758ba52fb07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::DivEqualAtomicViewFunctor</definition>
+        <argsstring>(const view_type &amp;input_, scalar_view_type &amp;result_, const int64_t length_)</argsstring>
+        <name>DivEqualAtomicViewFunctor</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::DivEqualAtomicViewFunctor</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+          <declname>input_</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">scalar_view_type</ref> &amp;</type>
+          <declname>result_</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>length_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="667" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="667" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1ac6c0ebac30e6334fad35e36a491fd832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;::operator()</definition>
+        <argsstring>(const int64_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestAtomicViews::DivEqualAtomicViewFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int64_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="672" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="672" bodyend="676"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestAtomicViews::DivEqualAtomicViewFunctor&lt; T, execution_space &gt;</label>
+        <link refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>input</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>result</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; T *, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; T, execution_space, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; T *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; T, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="656" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="656" bodyend="677"/>
+    <listofallmembers>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aa154218b1155da4906d4c99d70049d61" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>atomic_view_type</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a541ba5894ed1e60b47dd8758ba52fb07" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>DivEqualAtomicViewFunctor</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aad5c2b6117f739b3ea5f116dd822da49" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>input</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a4250920a1aca2e9c4b642eb253496bab" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>length</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1ac6c0ebac30e6334fad35e36a491fd832" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1a6c119c2c6e4d975b7a85f8da2e8051ac" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>result</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1af14f44e1694a28478fc428089e9125fe" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>scalar_view_type</name></member>
+      <member refid="struct_test_atomic_views_1_1_div_equal_atomic_view_functor_1aacc10c66e27080cebab11cc682f5171e" prot="public" virt="non-virtual"><scope>TestAtomicViews::DivEqualAtomicViewFunctor</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

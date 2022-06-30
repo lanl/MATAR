@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_layout" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestLayout</compoundname>
+    <innerclass refid="struct_test_1_1_test_layout_1_1_init_tag" prot="public">Test::TestLayout::InitTag</innerclass>
+    <innerclass refid="struct_test_1_1_test_layout_1_1_update_tag" prot="public">Test::TestLayout::UpdateTag</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_test_layout_1ad8fd5138f17d4c427b5fbbca6896806e" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref></type>
+        <definition>using Test::TestLayout&lt; ExecutionSpace &gt;::Layout =  Kokkos::LayoutRight</definition>
+        <argsstring></argsstring>
+        <name>Layout</name>
+        <qualifiedname>Test::TestLayout::Layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="214" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_layout_1a2d76bca3bbb2b099c6c4adb473a8a107" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">Kokkos::LayoutSelective</ref></type>
+        <definition>using Test::TestLayout&lt; ExecutionSpace &gt;::SubLayout =  Kokkos::LayoutSelective</definition>
+        <argsstring></argsstring>
+        <name>SubLayout</name>
+        <qualifiedname>Test::TestLayout::SubLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="215" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_layout_1a9be4aa5cb858e5381a463969ebdae5ce" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_test_1_1_inner_class" kindref="compound">InnerClass</ref> *, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Layout</ref>, typename ExecutionSpace::memory_space &gt;</type>
+        <definition>using Test::TestLayout&lt; ExecutionSpace &gt;::ViewVectorType =  Kokkos::View&lt;InnerClass*, Layout, typename ExecutionSpace::memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>ViewVectorType</name>
+        <qualifiedname>Test::TestLayout::ViewVectorType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="218" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_layout_1adfad076c3396d74df86206c7161c6e60" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_test_1_1_inner_class" kindref="compound">InnerClass</ref> *, <ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">SubLayout</ref>, typename ExecutionSpace::memory_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Test::TestLayout&lt; ExecutionSpace &gt;::SubViewVectorType =  Kokkos::View&lt;InnerClass*, SubLayout, typename ExecutionSpace::memory_space, Kokkos::MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>SubViewVectorType</name>
+        <qualifiedname>Test::TestLayout::SubViewVectorType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="220" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_layout_1ac02efe0696b7e8b4defd56df2a3aef50" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Test::TestLayout&lt; ExecutionSpace &gt;::N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <qualifiedname>Test::TestLayout::N</qualifiedname>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="212" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_layout_1a9478a8857901200533fbe165eb55cb94" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Test::TestLayout&lt; ExecutionSpace &gt;::offsets[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>offsets</name>
+        <qualifiedname>Test::TestLayout::offsets</qualifiedname>
+        <initializer>= {20, 40}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="213" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_layout_1af446321871096f68f562d040a86f1eed" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewVectorType</ref></type>
+        <definition>ViewVectorType Test::TestLayout&lt; ExecutionSpace &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Test::TestLayout::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="226" column="18" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_layout_1af213a21a334e3a5bda7fe1d898fd882d" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">SubLayout</ref></type>
+        <definition>SubLayout Test::TestLayout&lt; ExecutionSpace &gt;::sl</definition>
+        <argsstring></argsstring>
+        <name>sl</name>
+        <qualifiedname>Test::TestLayout::sl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="227" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_layout_1ab6d18345078db0baea8eebdb0950ed41" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">SubViewVectorType</ref></type>
+        <definition>SubViewVectorType Test::TestLayout&lt; ExecutionSpace &gt;::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>Test::TestLayout::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="228" column="21" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_layout_1a6852eba87967ff8f5fddd7599e372e5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestLayout&lt; ExecutionSpace &gt;::TestLayout</definition>
+        <argsstring>()</argsstring>
+        <name>TestLayout</name>
+        <qualifiedname>Test::TestLayout::TestLayout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="229" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_layout_1ae3b565c772f91033ab6362f2cfaac9db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestLayout&lt; ExecutionSpace &gt;::run_test</definition>
+        <argsstring>()</argsstring>
+        <name>run_test</name>
+        <qualifiedname>Test::TestLayout::run_test</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="231" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="231" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_layout_1a4927019a4ef2df197f89602c1fe40b8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestLayout&lt; ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(const InitTag &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestLayout::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_layout_1_1_init_tag" kindref="compound">InitTag</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="243" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="243" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_layout_1ac61711ce5be2a9385e5c86c5b6f5cb72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestLayout&lt; ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(const UpdateTag &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestLayout::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_layout_1_1_update_tag" kindref="compound">UpdateTag</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="247" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="247" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_layout_1ac2ccb8d0ca984af83e7f276d7101eb6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestLayout&lt; ExecutionSpace &gt;::validate_results</definition>
+        <argsstring>()</argsstring>
+        <name>validate_results</name>
+        <qualifiedname>Test::TestLayout::validate_results</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="251" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="251" bodyend="256"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>Kokkos::LayoutSelective</label>
+        <link refid="struct_kokkos_1_1_layout_selective"/>
+      </node>
+      <node id="1">
+        <label>Test::TestLayout&lt; ExecutionSpace &gt;</label>
+        <link refid="struct_test_1_1_test_layout"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sl</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>b</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; InnerClass *, Layout, typename ExecutionSpace::memory_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::View&lt; InnerClass *, SubLayout, typename ExecutionSpace::memory_space, Kokkos::MemoryUnmanaged &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; InnerClass *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="211" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="211" bodyend="257"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_layout_1af446321871096f68f562d040a86f1eed" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>a</name></member>
+      <member refid="struct_test_1_1_test_layout_1ab6d18345078db0baea8eebdb0950ed41" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>b</name></member>
+      <member refid="struct_test_1_1_test_layout_1ad8fd5138f17d4c427b5fbbca6896806e" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>Layout</name></member>
+      <member refid="struct_test_1_1_test_layout_1ac02efe0696b7e8b4defd56df2a3aef50" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_layout_1a9478a8857901200533fbe165eb55cb94" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>offsets</name></member>
+      <member refid="struct_test_1_1_test_layout_1a4927019a4ef2df197f89602c1fe40b8a" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_layout_1ac61711ce5be2a9385e5c86c5b6f5cb72" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_layout_1ae3b565c772f91033ab6362f2cfaac9db" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>run_test</name></member>
+      <member refid="struct_test_1_1_test_layout_1af213a21a334e3a5bda7fe1d898fd882d" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>sl</name></member>
+      <member refid="struct_test_1_1_test_layout_1a2d76bca3bbb2b099c6c4adb473a8a107" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>SubLayout</name></member>
+      <member refid="struct_test_1_1_test_layout_1adfad076c3396d74df86206c7161c6e60" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>SubViewVectorType</name></member>
+      <member refid="struct_test_1_1_test_layout_1a6852eba87967ff8f5fddd7599e372e5e" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>TestLayout</name></member>
+      <member refid="struct_test_1_1_test_layout_1ac2ccb8d0ca984af83e7f276d7101eb6d" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>validate_results</name></member>
+      <member refid="struct_test_1_1_test_layout_1a9be4aa5cb858e5381a463969ebdae5ce" prot="public" virt="non-virtual"><scope>Test::TestLayout</scope><name>ViewVectorType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

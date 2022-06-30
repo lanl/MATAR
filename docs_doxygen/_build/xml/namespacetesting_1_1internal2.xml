@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacetesting_1_1internal2" kind="namespace" language="C++">
+    <compoundname>testing::internal2</compoundname>
+    <innerclass refid="classtesting_1_1internal2_1_1_type_without_formatter" prot="public">testing::internal2::TypeWithoutFormatter</innerclass>
+    <innerclass refid="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_convertible_to_integer_01_4" prot="public">testing::internal2::TypeWithoutFormatter&lt; T, kConvertibleToInteger &gt;</innerclass>
+    <innerclass refid="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4" prot="public">testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TypeKind</name>
+        <qualifiedname>testing::internal2::TypeKind</qualifiedname>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57ab6c394f7612d98d3a4a0514b2d6eb840" prot="public">
+          <name>kProtobuf</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57a17045378f0cb6cac7737d414d39c720e" prot="public">
+          <name>kConvertibleToInteger</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57a36261578e764cf2fabfa058345c95016" prot="public">
+          <name>kOtherType</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57ab6c394f7612d98d3a4a0514b2d6eb840" prot="public">
+          <name>kProtobuf</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57a17045378f0cb6cac7737d414d39c720e" prot="public">
+          <name>kConvertibleToInteger</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest-test-part_8h_1aeb8161b0b3ee503347b0662d7028fd57a36261578e764cf2fabfa058345c95016" prot="public">
+          <name>kOtherType</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9315" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9315" bodyend="9320"/>
+      </memberdef>
+      <memberdef kind="enum" id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TypeKind</name>
+        <qualifiedname>testing::internal2::TypeKind</qualifiedname>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57ab6c394f7612d98d3a4a0514b2d6eb840" prot="public">
+          <name>kProtobuf</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57a17045378f0cb6cac7737d414d39c720e" prot="public">
+          <name>kConvertibleToInteger</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57a36261578e764cf2fabfa058345c95016" prot="public">
+          <name>kOtherType</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57ab6c394f7612d98d3a4a0514b2d6eb840" prot="public">
+          <name>kProtobuf</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57a17045378f0cb6cac7737d414d39c720e" prot="public">
+          <name>kConvertibleToInteger</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="gtest_8h_1aeb8161b0b3ee503347b0662d7028fd57a36261578e764cf2fabfa058345c95016" prot="public">
+          <name>kOtherType</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9315" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9315" bodyend="9320"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="gtest-test-part_8h_1a140c8efd51e63a3def98445bff107518" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t testing::internal2::kProtobufOneLinerMaxLength</definition>
+        <argsstring></argsstring>
+        <name>kProtobufOneLinerMaxLength</name>
+        <qualifiedname>testing::internal2::kProtobufOneLinerMaxLength</qualifiedname>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9339" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9339" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="gtest-all_8cc_1abfb9aa80365f93b952e9a4bea09947a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal2::PrintBytesInObjectTo</definition>
+        <argsstring>(const unsigned char *obj_bytes, size_t count, ostream *os)</argsstring>
+        <name>PrintBytesInObjectTo</name>
+        <qualifiedname>testing::internal2::PrintBytesInObjectTo</qualifiedname>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>obj_bytes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="9125" column="6" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="9125" bodyend="9128"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1aa391894adbe6a0a4e1ddf3de920d6158" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal2::PrintBytesInObjectTo</definition>
+        <argsstring>(const unsigned char *obj_bytes, size_t count, ::std::ostream *os)</argsstring>
+        <name>PrintBytesInObjectTo</name>
+        <qualifiedname>testing::internal2::PrintBytesInObjectTo</qualifiedname>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>obj_bytes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9309" column="9" declfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" declline="9309" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1aabfdaa0c4719ce3bf82964d0fcf8d999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Char</type>
+          </param>
+          <param>
+            <type>typename CharTraits</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>::std::basic_ostream&lt; Char, CharTraits &gt; &amp;</type>
+        <definition>::std::basic_ostream&lt; Char, CharTraits &gt; &amp; testing::internal2::operator&lt;&lt;</definition>
+        <argsstring>(::std::basic_ostream&lt; Char, CharTraits &gt; &amp;os, const T &amp;x)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::internal2::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>::std::basic_ostream&lt; Char, CharTraits &gt; &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9339" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9394" bodyend="9401"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="9118" column="1"/>
+  </compounddef>
+</doxygen>

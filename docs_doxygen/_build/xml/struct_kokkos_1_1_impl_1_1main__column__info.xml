@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1main__column__info" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::main_column_info</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1main__column__info_1acd4f4fbacfbcb4b7086389573e2bc2cc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::main_column_info::found_main</definition>
+        <argsstring></argsstring>
+        <name>found_main</name>
+        <qualifiedname>Kokkos::Impl::main_column_info::found_main</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" line="128" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1main__column__info_1aa99eb72328901951deea92c60281f08d" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Impl::main_column_info::main_col</definition>
+        <argsstring></argsstring>
+        <name>main_col</name>
+        <qualifiedname>Kokkos::Impl::main_column_info::main_col</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" line="129" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1main__column__info_1a21fd70e2a1b4acc3bb3f5df20f27b317" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; size_t &gt;</type>
+        <definition>std::vector&lt;size_t&gt; Kokkos::Impl::main_column_info::main_col_lens</definition>
+        <argsstring></argsstring>
+        <name>main_col_lens</name>
+        <qualifiedname>Kokkos::Impl::main_column_info::main_col_lens</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" line="130" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" line="127" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Stacktrace.cpp" bodystart="127" bodyend="131"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1main__column__info_1acd4f4fbacfbcb4b7086389573e2bc2cc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::main_column_info</scope><name>found_main</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1main__column__info_1aa99eb72328901951deea92c60281f08d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::main_column_info</scope><name>main_col</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1main__column__info_1a21fd70e2a1b4acc3bb3f5df20f27b317" prot="public" virt="non-virtual"><scope>Kokkos::Impl::main_column_info</scope><name>main_col_lens</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

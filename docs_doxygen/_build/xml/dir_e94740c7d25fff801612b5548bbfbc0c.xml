@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_e94740c7d25fff801612b5548bbfbc0c" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/src/desul/atomics/openmp</compoundname>
+    <innerfile refid="_open_m_p__40_8hpp">OpenMP_40.hpp</innerfile>
+    <innerfile refid="_open_m_p__40__op_8inc">OpenMP_40_op.inc</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/openmp/"/>
+  </compounddef>
+</doxygen>

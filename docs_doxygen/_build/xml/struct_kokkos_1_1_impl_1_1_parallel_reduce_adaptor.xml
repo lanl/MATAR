@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_parallel_reduce_adaptor" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReduceAdaptor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class PolicyType</type>
+      </param>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ReturnType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_adaptor_1a87b5138d7b0a4d43dd024a5460b35960" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_return_value" kindref="compound">Impl::ParallelReduceReturnValue</ref>&lt; void, ReturnType, FunctorType &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduceAdaptor&lt; PolicyType, FunctorType, ReturnType &gt;::return_value_adapter =  Impl::ParallelReduceReturnValue&lt;void, ReturnType, FunctorType&gt;</definition>
+        <argsstring></argsstring>
+        <name>return_value_adapter</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduceAdaptor::return_value_adapter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="846" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="847" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_adaptor_1a874915d679c1966b2c48f30b0459fe7b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Kokkos::Impl::ParallelReduceAdaptor&lt; PolicyType, FunctorType, ReturnType &gt;::execute</definition>
+        <argsstring>(const std::string &amp;label, const PolicyType &amp;policy, const FunctorType &amp;functor, ReturnType &amp;return_value)</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduceAdaptor::execute</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>const PolicyType &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>ReturnType &amp;</type>
+          <declname>return_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="854" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="854" bodyend="882"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="845" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="845" bodyend="883"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_adaptor_1a874915d679c1966b2c48f30b0459fe7b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduceAdaptor</scope><name>execute</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_adaptor_1a87b5138d7b0a4d43dd024a5460b35960" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduceAdaptor</scope><name>return_value_adapter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

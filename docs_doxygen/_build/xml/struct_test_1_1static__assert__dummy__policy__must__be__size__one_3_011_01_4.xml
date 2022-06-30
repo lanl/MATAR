@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1static__assert__dummy__policy__must__be__size__one_3_011_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Test::static_assert_dummy_policy_must_be_size_one&lt; 1 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestPolicyConstruction.hpp" line="785" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestPolicyConstruction.hpp" bodystart="785" bodyend="785"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

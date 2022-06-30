@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_32f78f6612b547134737965c69b4c9dc" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/incremental</compoundname>
+    <innerfile refid="_test01__execspace_8hpp">Test01_execspace.hpp</innerfile>
+    <innerfile refid="_test02__atomic__host_8hpp">Test02_atomic_host.hpp</innerfile>
+    <innerfile refid="_test03a___memory_space__malloc_8hpp">Test03a_MemorySpace_malloc.hpp</innerfile>
+    <innerfile refid="_test03b___memory_space__free_8hpp">Test03b_MemorySpace_free.hpp</innerfile>
+    <innerfile refid="_test04___parallel_for___range_policy_8hpp">Test04_ParallelFor_RangePolicy.hpp</innerfile>
+    <innerfile refid="_test05___parallel_reduce___range_policy_8hpp">Test05_ParallelReduce_RangePolicy.hpp</innerfile>
+    <innerfile refid="_test06___parallel_for___m_d_range_policy_8hpp">Test06_ParallelFor_MDRangePolicy.hpp</innerfile>
+    <innerfile refid="_test08__deep__copy_8hpp">Test08_deep_copy.hpp</innerfile>
+    <innerfile refid="_test10___hierarchical_basics_8hpp">Test10_HierarchicalBasics.hpp</innerfile>
+    <innerfile refid="_test11a___parallel_for___team_thread_range_8hpp">Test11a_ParallelFor_TeamThreadRange.hpp</innerfile>
+    <innerfile refid="_test11b___parallel_for___team_vector_range_8hpp">Test11b_ParallelFor_TeamVectorRange.hpp</innerfile>
+    <innerfile refid="_test11c___parallel_for___thread_vector_range_8hpp">Test11c_ParallelFor_ThreadVectorRange.hpp</innerfile>
+    <innerfile refid="_test12a___thread_scratch_8hpp">Test12a_ThreadScratch.hpp</innerfile>
+    <innerfile refid="_test12b___team_scratch_8hpp">Test12b_TeamScratch.hpp</innerfile>
+    <innerfile refid="_test13a___parallel_red___team_thread_range_8hpp">Test13a_ParallelRed_TeamThreadRange.hpp</innerfile>
+    <innerfile refid="_test13b___parallel_red___team_vector_range_8hpp">Test13b_ParallelRed_TeamVectorRange.hpp</innerfile>
+    <innerfile refid="_test13c___parallel_red___thread_vector_range_8hpp">Test13c_ParallelRed_ThreadVectorRange.hpp</innerfile>
+    <innerfile refid="_test14___m_d_range_reduce_8hpp">Test14_MDRangeReduce.hpp</innerfile>
+    <innerfile refid="_test16___parallel_scan_8hpp">Test16_ParallelScan.hpp</innerfile>
+    <innerfile refid="_test17___complete_atomic_8hpp">Test17_CompleteAtomic.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/"/>
+  </compounddef>
+</doxygen>

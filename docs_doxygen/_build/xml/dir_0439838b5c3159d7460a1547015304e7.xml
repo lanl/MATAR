@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_0439838b5c3159d7460a1547015304e7" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/tools</compoundname>
+    <innerfile refid="printing-tool_8cpp">printing-tool.cpp</innerfile>
+    <innerfile refid="_test_all_calls_8cpp">TestAllCalls.cpp</innerfile>
+    <innerfile refid="_test_builtin_tuners_8cpp">TestBuiltinTuners.cpp</innerfile>
+    <innerfile refid="_test_categorical_tuner_8cpp">TestCategoricalTuner.cpp</innerfile>
+    <innerfile refid="_test_c_interface_8c">TestCInterface.c</innerfile>
+    <innerfile refid="_test_event_correctness_8cpp">TestEventCorrectness.cpp</innerfile>
+    <innerfile refid="_test_event_correctness_8hpp">TestEventCorrectness.hpp</innerfile>
+    <innerfile refid="_test_logical_spaces_8cpp">TestLogicalSpaces.cpp</innerfile>
+    <innerfile refid="_test_logical_spaces_8hpp">TestLogicalSpaces.hpp</innerfile>
+    <innerfile refid="_test_tuning_8cpp">TestTuning.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/tools/"/>
+  </compounddef>
+</doxygen>

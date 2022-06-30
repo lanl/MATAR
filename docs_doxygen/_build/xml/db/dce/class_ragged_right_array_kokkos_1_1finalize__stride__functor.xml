@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor" kind="class" language="C++" prot="public">
+    <compoundname>RaggedRightArrayKokkos::finalize_stride_functor</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1a63684b03f2cf2d6fad958804f613a82b" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::finalize_stride_functor::mystart_index_</definition>
+        <argsstring></argsstring>
+        <name>mystart_index_</name>
+        <qualifiedname>RaggedRightArrayKokkos::finalize_stride_functor::mystart_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11472" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11472" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1afe0912b4e0f4b5d049144296c7bc3db6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::finalize_stride_functor::finalize_stride_functor</definition>
+        <argsstring>(SArray1D tempstart_index_)</argsstring>
+        <name>finalize_stride_functor</name>
+        <qualifiedname>RaggedRightArrayKokkos::finalize_stride_functor::finalize_stride_functor</qualifiedname>
+        <param>
+          <type>SArray1D</type>
+          <declname>tempstart_index_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11473" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11473" bodyend="11475"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1a1ebb4ece946f4a105ed22429fe0a514a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::finalize_stride_functor::operator()</definition>
+        <argsstring>(const int index, int &amp;update, bool final) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedRightArrayKokkos::finalize_stride_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>final</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11476" column="37" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11476" bodyend="11483"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11470" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11470" bodyend="11484"/>
+    <listofallmembers>
+      <member refid="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1afe0912b4e0f4b5d049144296c7bc3db6" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::finalize_stride_functor</scope><name>finalize_stride_functor</name></member>
+      <member refid="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1a63684b03f2cf2d6fad958804f613a82b" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::finalize_stride_functor</scope><name>mystart_index_</name></member>
+      <member refid="db/dce/class_ragged_right_array_kokkos_1_1finalize__stride__functor_1a1ebb4ece946f4a105ed22429fe0a514a" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::finalize_stride_functor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

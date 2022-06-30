@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kind="union" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::SharedAllocationTracker</compoundname>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a5dcdb25b6b6aad2d1c07fa530ed2c5c1" prot="private" static="no" strong="no">
+        <type>uintptr_t</type>
+        <name>@78</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::@78</qualifiedname>
+        <enumvalue id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a5dcdb25b6b6aad2d1c07fa530ed2c5c1abcc651accb1199559c16bac1dda8ebe2" prot="private">
+          <name>DO_NOT_DEREF_FLAG</name>
+          <initializer>= 0x01ul</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="382" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="382" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="typedef" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a284789420dddc89f3ab2fe28ea73fc8b" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref>&lt; void, void &gt;</type>
+        <definition>using Kokkos::Impl::SharedAllocationTracker::Record =  SharedAllocationRecord&lt;void, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>Record</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::Record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="380" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="380" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aaf6b613812dc14cbcf9f180fe8b4b3e3" prot="private" static="no" mutable="no">
+        <type>uintptr_t</type>
+        <definition>uintptr_t Kokkos::Impl::SharedAllocationTracker::m_record_bits</definition>
+        <argsstring></argsstring>
+        <name>m_record_bits</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::m_record_bits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="385" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aba09bf41e2f9df6f9d1e73f6c2e96124" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4" kindref="compound">Record</ref> *</type>
+        <definition>Record* Kokkos::Impl::SharedAllocationTracker::m_record</definition>
+        <argsstring></argsstring>
+        <name>m_record</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::m_record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="386" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="386" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ae2ff378cc8452048184619e981dd662a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::SharedAllocationTracker::assign_allocated_record_to_uninitialized</definition>
+        <argsstring>(Record *arg_record)</argsstring>
+        <name>assign_allocated_record_to_uninitialized</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::assign_allocated_record_to_uninitialized</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record_3_01void_00_01void_01_4" kindref="compound">Record</ref> *</type>
+          <declname>arg_record</declname>
+        </param>
+        <briefdescription>
+<para>Assign a specialized record. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="442" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="442" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a8d58471f2ade379004bbef37edb7aafc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class MemorySpace</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">SharedAllocationRecord</ref>&lt; MemorySpace, void &gt; *</type>
+        <definition>constexpr SharedAllocationRecord&lt; MemorySpace, void &gt; * Kokkos::Impl::SharedAllocationTracker::get_record</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_record</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::get_record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="451" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="451" bodyend="457"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a868fc20c4ce89ee692f7eaeb7f361617" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class MemorySpace</type>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string Kokkos::Impl::SharedAllocationTracker::get_label</definition>
+        <argsstring>() const</argsstring>
+        <name>get_label</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::get_label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="460" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="460" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aedda8e453b4dabb0e5d8890332e427da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::SharedAllocationTracker::use_count</definition>
+        <argsstring>() const</argsstring>
+        <name>use_count</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::use_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="469" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="469" bodyend="477"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ae45d857f4407530b8b3354e9a3bbbaa7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::SharedAllocationTracker::has_record</definition>
+        <argsstring>() const</argsstring>
+        <name>has_record</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::has_record</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="480" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="480" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a395eeafdc96da37f3573f8ca42331172" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::SharedAllocationTracker::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="485" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="485" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a6e02af042a80a59f0b1e4887190afca2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::SharedAllocationTracker::~SharedAllocationTracker</definition>
+        <argsstring>()</argsstring>
+        <name>~SharedAllocationTracker</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::~SharedAllocationTracker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="494" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="494" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aa9d15ed3012b2105e8c7739fd871f3d9" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</definition>
+        <argsstring>()</argsstring>
+        <name>SharedAllocationTracker</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="496" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="496" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ab5ef252a9a5ea08029540b259a561661" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</definition>
+        <argsstring>(SharedAllocationTracker &amp;&amp;rhs)</argsstring>
+        <name>SharedAllocationTracker</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</qualifiedname>
+        <param>
+          <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="502" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="502" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a2e135bdeec7adfd6b2c66709cf7b5eac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION SharedAllocationTracker &amp; Kokkos::Impl::SharedAllocationTracker::operator=</definition>
+        <argsstring>(SharedAllocationTracker &amp;&amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::operator=</qualifiedname>
+        <param>
+          <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="508" column="27" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="508" bodyend="513"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a67ca13670340fb473a08457d9c923913" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs)</argsstring>
+        <name>SharedAllocationTracker</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="518" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="518" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a41b84921fdd90276a0e95f5ef0e42736" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs, const bool enable_tracking)</argsstring>
+        <name>SharedAllocationTracker</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::SharedAllocationTracker</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>enable_tracking</declname>
+        </param>
+        <briefdescription>
+<para>Copy construction may disable tracking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="523" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="523" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a37104fdbc8fd6d3fe4092ba3d06068ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION SharedAllocationTracker &amp; Kokkos::Impl::SharedAllocationTracker::operator=</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="531" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="531" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a884cfefa1dde5afb9449ff8198d9d523" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::SharedAllocationTracker::assign_direct</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs)</argsstring>
+        <name>assign_direct</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::assign_direct</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment without the carry bits logic This assumes that externally defined tracking is explicitly enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="551" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="551" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aef6f582720885b39398e44899df1c480" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::SharedAllocationTracker::assign_force_disable</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs)</argsstring>
+        <name>assign_force_disable</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::assign_force_disable</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment without the increment we cannot assume that current record is unmanaged but with externally defined tracking explicitly disabled we can go straight to the do not deref flag <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="562" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="562" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1af80b125a9707d32fedda5f913d365bc2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION bool</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION bool Kokkos::Impl::SharedAllocationTracker::tracking_enabled</definition>
+        <argsstring>()</argsstring>
+        <name>tracking_enabled</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::tracking_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="569" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="569" bodyend="569"/>
+      </memberdef>
+      <memberdef kind="function" id="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a532f9337dd0a151b0f2824b8e82cf248" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::SharedAllocationTracker::assign</definition>
+        <argsstring>(const SharedAllocationTracker &amp;rhs, const bool enable_tracking)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::SharedAllocationTracker::assign</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">SharedAllocationTracker</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>enable_tracking</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment may disable tracking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="573" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="573" bodyend="578"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" line="378" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_SharedAlloc.hpp" bodystart="378" bodyend="583"/>
+    <listofallmembers>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a532f9337dd0a151b0f2824b8e82cf248" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>assign</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ae2ff378cc8452048184619e981dd662a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>assign_allocated_record_to_uninitialized</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a884cfefa1dde5afb9449ff8198d9d523" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>assign_direct</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aef6f582720885b39398e44899df1c480" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>assign_force_disable</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a395eeafdc96da37f3573f8ca42331172" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>clear</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a5dcdb25b6b6aad2d1c07fa530ed2c5c1abcc651accb1199559c16bac1dda8ebe2" prot="private" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>DO_NOT_DEREF_FLAG</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a868fc20c4ce89ee692f7eaeb7f361617" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>get_label</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a8d58471f2ade379004bbef37edb7aafc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>get_record</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ae45d857f4407530b8b3354e9a3bbbaa7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>has_record</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aba09bf41e2f9df6f9d1e73f6c2e96124" prot="private" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>m_record</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aaf6b613812dc14cbcf9f180fe8b4b3e3" prot="private" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>m_record_bits</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a2e135bdeec7adfd6b2c66709cf7b5eac" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>operator=</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a37104fdbc8fd6d3fe4092ba3d06068ee" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>operator=</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a284789420dddc89f3ab2fe28ea73fc8b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>Record</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aa9d15ed3012b2105e8c7739fd871f3d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>SharedAllocationTracker</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1ab5ef252a9a5ea08029540b259a561661" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>SharedAllocationTracker</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a67ca13670340fb473a08457d9c923913" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>SharedAllocationTracker</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a41b84921fdd90276a0e95f5ef0e42736" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>SharedAllocationTracker</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1af80b125a9707d32fedda5f913d365bc2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>tracking_enabled</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1aedda8e453b4dabb0e5d8890332e427da" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>use_count</name></member>
+      <member refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker_1a6e02af042a80a59f0b1e4887190afca2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SharedAllocationTracker</scope><name>~SharedAllocationTracker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

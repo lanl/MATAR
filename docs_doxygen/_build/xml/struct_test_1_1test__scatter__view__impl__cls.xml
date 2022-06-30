@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1test__scatter__view__impl__cls" kind="struct" language="C++" prot="public">
+    <compoundname>Test::test_scatter_view_impl_cls</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+      </param>
+      <param>
+        <type>typename Duplication</type>
+      </param>
+      <param>
+        <type>typename Contribution</type>
+      </param>
+      <param>
+        <type>typename Op</type>
+      </param>
+      <param>
+        <type>typename NumberType</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestScatterView.hpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestScatterView.hpp" bodystart="55" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

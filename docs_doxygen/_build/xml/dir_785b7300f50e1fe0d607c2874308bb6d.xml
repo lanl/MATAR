@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_785b7300f50e1fe0d607c2874308bb6d" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/01_thread_teams</compoundname>
+    <innerfile refid="thread__teams_8cpp">thread_teams.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/01_thread_teams/"/>
+  </compounddef>
+</doxygen>

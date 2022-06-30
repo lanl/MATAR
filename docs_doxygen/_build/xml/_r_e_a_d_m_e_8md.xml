@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">![Kokkos](https://avatars2.githubusercontent.com/u/10199860?s=200&amp;v=4)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Kokkos:<sp/>Core<sp/>Libraries</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>Core<sp/>implements<sp/>a<sp/>programming<sp/>model<sp/>in<sp/>C++<sp/>for<sp/>writing<sp/>performance<sp/>portable</highlight></codeline>
+<codeline><highlight class="normal">applications<sp/>targeting<sp/>all<sp/>major<sp/>HPC<sp/>platforms.<sp/>For<sp/>that<sp/>purpose<sp/>it<sp/>provides</highlight></codeline>
+<codeline><highlight class="normal">abstractions<sp/>for<sp/>both<sp/>parallel<sp/>execution<sp/>of<sp/>code<sp/>and<sp/>data<sp/>management.</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>is<sp/>designed<sp/>to<sp/>target<sp/>complex<sp/>node<sp/>architectures<sp/>with<sp/>N-level<sp/>memory</highlight></codeline>
+<codeline><highlight class="normal">hierarchies<sp/>and<sp/>multiple<sp/>types<sp/>of<sp/>execution<sp/>resources.<sp/>It<sp/>currently<sp/>can<sp/>use</highlight></codeline>
+<codeline><highlight class="normal">CUDA,<sp/>HIP,<sp/>SYCL,<sp/>HPX,<sp/>OpenMP<sp/>and<sp/>C++<sp/>threads<sp/>as<sp/>backend<sp/>programming<sp/>models<sp/>with<sp/>several<sp/>other</highlight></codeline>
+<codeline><highlight class="normal">backends<sp/>in<sp/>development.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>Core<sp/>is<sp/>part<sp/>of<sp/>the<sp/>Kokkos<sp/>C++<sp/>Performance<sp/>Portability<sp/>Programming<sp/>EcoSystem,</highlight></codeline>
+<codeline><highlight class="normal">which<sp/>also<sp/>provides<sp/>math<sp/>kernels<sp/>(https://github.com/kokkos/kokkos-kernels),<sp/>as<sp/>well<sp/>as</highlight></codeline>
+<codeline><highlight class="normal">profiling<sp/>and<sp/>debugging<sp/>tools<sp/>(https://github.com/kokkos/kokkos-tools).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Learning<sp/>about<sp/>Kokkos</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>best<sp/>way<sp/>to<sp/>start<sp/>learning<sp/>about<sp/>Kokkos<sp/>is<sp/>going<sp/>through<sp/>the<sp/>Kokkos<sp/>Lectures.</highlight></codeline>
+<codeline><highlight class="normal">They<sp/>are<sp/>online<sp/>available<sp/>at<sp/>https://kokkos.link/the-lectures<sp/>and<sp/>contain<sp/>a<sp/>mix</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>lecture<sp/>videos<sp/>and<sp/>hands-on<sp/>exercises<sp/>covering<sp/>all<sp/>the<sp/>important<sp/>Kokkos<sp/>Ecosystem</highlight></codeline>
+<codeline><highlight class="normal">capabilities.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>programming<sp/>guide<sp/>and<sp/>API<sp/>reference<sp/>can<sp/>be<sp/>found<sp/>on<sp/>the<sp/>Wiki</highlight></codeline>
+<codeline><highlight class="normal">(https://github.com/kokkos/kokkos/wiki).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>questions<sp/>find<sp/>us<sp/>on<sp/>Slack:<sp/>https://kokkosteam.slack.com<sp/>or<sp/>open<sp/>a<sp/>github<sp/>issue.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>non-public<sp/>questions<sp/>send<sp/>an<sp/>email<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">crtrott(at)sandia.gov</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Contributing<sp/>to<sp/>Kokkos</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We<sp/>are<sp/>open<sp/>and<sp/>try<sp/>to<sp/>encourage<sp/>contributions<sp/>from<sp/>external<sp/>developers.</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>do<sp/>so<sp/>please<sp/>first<sp/>open<sp/>an<sp/>issue<sp/>describing<sp/>the<sp/>contribution<sp/>and<sp/>then<sp/>issue</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>pull<sp/>request<sp/>against<sp/>the<sp/>develop<sp/>branch.<sp/>For<sp/>larger<sp/>features<sp/>it<sp/>may<sp/>be<sp/>good</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>get<sp/>guidance<sp/>from<sp/>the<sp/>core<sp/>development<sp/>team<sp/>first<sp/>through<sp/>the<sp/>github<sp/>issue.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Note<sp/>that<sp/>Kokkos<sp/>Core<sp/>is<sp/>licensed<sp/>under<sp/>standard<sp/>3-clause<sp/>BSD<sp/>terms<sp/>of<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal">Which<sp/>means<sp/>contributing<sp/>to<sp/>Kokkos<sp/>allows<sp/>anyone<sp/>else<sp/>to<sp/>use<sp/>your<sp/>contributions</highlight></codeline>
+<codeline><highlight class="normal">not<sp/>just<sp/>for<sp/>public<sp/>purposes<sp/>but<sp/>also<sp/>for<sp/>closed<sp/>source<sp/>commercial<sp/>projects.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>specifics<sp/>see<sp/>the<sp/>LICENSE<sp/>file<sp/>contained<sp/>in<sp/>the<sp/>repository<sp/>or<sp/>distribution.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Requirements</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Minimum<sp/>Compiler<sp/>Versions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Generally<sp/>Kokkos<sp/>should<sp/>work<sp/>with<sp/>all<sp/>compiler<sp/>versions<sp/>newer<sp/>than<sp/>the<sp/>minimum.</highlight></codeline>
+<codeline><highlight class="normal">However<sp/>as<sp/>in<sp/>all<sp/>sufficiently<sp/>complex<sp/>enough<sp/>code,<sp/>we<sp/>have<sp/>to<sp/>work<sp/>around<sp/>compiler</highlight></codeline>
+<codeline><highlight class="normal">bugs<sp/>with<sp/>almost<sp/>all<sp/>compilers.<sp/>So<sp/>compiler<sp/>versions<sp/>we<sp/>don&apos;t<sp/>test<sp/>may<sp/>have<sp/>issues</highlight></codeline>
+<codeline><highlight class="normal">we<sp/>are<sp/>unaware<sp/>off.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>GCC:<sp/>5.3.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Clang:<sp/>4.0.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Intel:<sp/>17.0.1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>NVCC:<sp/>9.2.88</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>NVC++:<sp/>21.5</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>ROCM:<sp/>4.3</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>MSVC:<sp/>19.29</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>IBM<sp/>XL:<sp/>16.1.1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Fujitsu:<sp/>4.5.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>ARM/Clang<sp/>20.1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Primary<sp/>Tested<sp/>Compilers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>GCC:<sp/>5.3.0,<sp/>6.1.0,<sp/>7.3.0,<sp/>8.3,<sp/>9.2,<sp/>10.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>NVCC:<sp/>9.2.88,<sp/>10.1,<sp/>11.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Clang:<sp/>8.0.0,<sp/>9.0.0,<sp/>10.0.0,<sp/>12.0.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Intel<sp/>17.4,<sp/>18.1,<sp/>19.5</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>MSVC:<sp/>19.29</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>ARM/Clang:<sp/>20.1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>IBM<sp/>XL:<sp/>16.1.1</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>ROCM:<sp/>4.3.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Build<sp/>system:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>CMake<sp/>&gt;=<sp/>3.16:<sp/>required</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>CMake<sp/>&gt;=<sp/>3.18:<sp/>Fortran<sp/>linkage.<sp/>This<sp/>does<sp/>not<sp/>affect<sp/>most<sp/>mixed<sp/>Fortran/Kokkos<sp/>builds.<sp/>See<sp/>[build<sp/>issues](BUILD.md#KnownIssues).</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>CMake<sp/>&gt;=<sp/>3.21.1<sp/>for<sp/>NVC++</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Primary<sp/>tested<sp/>compiler<sp/>are<sp/>passing<sp/>in<sp/>release<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal">with<sp/>warnings<sp/>as<sp/>errors.<sp/>They<sp/>also<sp/>are<sp/>tested<sp/>with<sp/>a<sp/>comprehensive<sp/>set<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">backend<sp/>combinations<sp/>(i.e.<sp/>OpenMP,<sp/>Pthreads,<sp/>Serial,<sp/>OpenMP+Serial,<sp/>...).</highlight></codeline>
+<codeline><highlight class="normal">We<sp/>are<sp/>using<sp/>the<sp/>following<sp/>set<sp/>of<sp/>flags:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>GCC:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wall<sp/>-Wunused-parameter<sp/>-Wshadow<sp/>-pedantic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Werror<sp/>-Wsign-compare<sp/>-Wtype-limits</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wignored-qualifiers<sp/>-Wempty-body</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wclobbered<sp/>-Wuninitialized</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Intel:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wall<sp/>-Wunused-parameter<sp/>-Wshadow<sp/>-pedantic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Werror<sp/>-Wsign-compare<sp/>-Wtype-limits</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wuninitialized</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Clang:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wall<sp/>-Wunused-parameter<sp/>-Wshadow<sp/>-pedantic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Werror<sp/>-Wsign-compare<sp/>-Wtype-limits</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-Wuninitialized</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>NVCC:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>````</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-Wall<sp/>-Wunused-parameter<sp/>-Wshadow<sp/>-pedantic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-Werror<sp/>-Wsign-compare<sp/>-Wtype-limits</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-Wuninitialized</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Other<sp/>compilers<sp/>are<sp/>tested<sp/>occasionally,<sp/>in<sp/>particular<sp/>when<sp/>pushing<sp/>from<sp/>develop<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">master<sp/>branch.<sp/>These<sp/>are<sp/>tested<sp/>less<sp/>rigorously<sp/>without<sp/>`-Werror`<sp/>and<sp/>only<sp/>for<sp/>a<sp/>select<sp/>set<sp/>of<sp/>backends.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Building<sp/>and<sp/>Installing<sp/>Kokkos</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>provide<sp/>a<sp/>CMake<sp/>build<sp/>system<sp/>and<sp/>a<sp/>raw<sp/>Makefile<sp/>build<sp/>system.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>CMake<sp/>build<sp/>system<sp/>is<sp/>strongly<sp/>encouraged<sp/>and<sp/>will<sp/>be<sp/>the<sp/>most<sp/>rigorously<sp/>supported<sp/>in<sp/>future<sp/>releases.</highlight></codeline>
+<codeline><highlight class="normal">Full<sp/>details<sp/>are<sp/>given<sp/>in<sp/>the<sp/>[build<sp/>instructions](BUILD.md).<sp/>Basic<sp/>setups<sp/>are<sp/>shown<sp/>here:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>CMake</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>best<sp/>way<sp/>to<sp/>install<sp/>Kokkos<sp/>is<sp/>using<sp/>the<sp/>CMake<sp/>build<sp/>system.<sp/>Assuming<sp/>Kokkos<sp/>lives<sp/>in<sp/>`$srcdir`:</highlight></codeline>
+<codeline><highlight class="normal">````bash</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>$srcdir<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DCMAKE_CXX_COMPILER=$path_to_compiler<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DCMAKE_INSTALL_PREFIX=$path_to_install<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DKokkos_ENABLE_OPENMP=On<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DKokkos_ARCH_HSW=On<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-DKokkos_HWLOC_DIR=$path_to_hwloc</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">then<sp/>simply<sp/>type<sp/>`make<sp/>install`.<sp/>The<sp/>Kokkos<sp/>CMake<sp/>package<sp/>will<sp/>then<sp/>be<sp/>installed<sp/>in<sp/>`$path_to_install`<sp/>to<sp/>be<sp/>used<sp/>by<sp/>downstream<sp/>packages.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>validate<sp/>the<sp/>Kokkos<sp/>build,<sp/>configure<sp/>with</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-DKokkos_ENABLE_TESTS=On</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>run<sp/>`make<sp/>test`<sp/>after<sp/>completing<sp/>the<sp/>build.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>your<sp/>CMake<sp/>project<sp/>using<sp/>Kokkos,<sp/>code<sp/>such<sp/>as<sp/>the<sp/>following:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">````cmake</highlight></codeline>
+<codeline><highlight class="normal">find_package(Kokkos)</highlight></codeline>
+<codeline><highlight class="normal">...</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(myTarget<sp/>Kokkos::kokkos)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">should<sp/>be<sp/>added<sp/>to<sp/>your<sp/>CMakeLists.txt.<sp/>Your<sp/>configure<sp/>should<sp/>additionally<sp/>include</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">-DKokkos_DIR=$path_to_install/cmake/lib/Kokkos</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">or</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">-DKokkos_ROOT=$path_to_install</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>the<sp/>install<sp/>location<sp/>given<sp/>above.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Spack</highlight></codeline>
+<codeline><highlight class="normal">An<sp/>alternative<sp/>to<sp/>manually<sp/>building<sp/>with<sp/>the<sp/>CMake<sp/>is<sp/>to<sp/>use<sp/>the<sp/>Spack<sp/>package<sp/>manager.</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>get<sp/>started,<sp/>download<sp/>the<sp/>Spack<sp/>[repo](https://github.com/spack/spack).</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>basic<sp/>installation<sp/>would<sp/>be<sp/>done<sp/>as:</highlight></codeline>
+<codeline><highlight class="normal">````bash</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>spack<sp/>install<sp/>kokkos</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">Spack<sp/>allows<sp/>options<sp/>and<sp/>and<sp/>compilers<sp/>to<sp/>be<sp/>tuned<sp/>in<sp/>the<sp/>install<sp/>command.</highlight></codeline>
+<codeline><highlight class="normal">````bash</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>spack<sp/>install<sp/>kokkos@3.0<sp/>%gcc@7.3.0<sp/>+openmp</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>example<sp/>illustrates<sp/>the<sp/>three<sp/>most<sp/>common<sp/>parameters<sp/>to<sp/>Spack:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Variants:<sp/>specified<sp/>with,<sp/>e.g.<sp/>`+openmp`,<sp/>this<sp/>activates<sp/>(or<sp/>deactivates<sp/>with,<sp/>e.g.<sp/>`~openmp`)<sp/>certain<sp/>options.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Version:<sp/><sp/>immediately<sp/>following<sp/>`kokkos`<sp/>the<sp/>`@version`<sp/>can<sp/>specify<sp/>a<sp/>particular<sp/>Kokkos<sp/>to<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Compiler:<sp/>a<sp/>default<sp/>compiler<sp/>will<sp/>be<sp/>chosen<sp/>if<sp/>not<sp/>specified,<sp/>but<sp/>an<sp/>exact<sp/>compiler<sp/>version<sp/>can<sp/>be<sp/>given<sp/>with<sp/>the<sp/>`%`option.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>a<sp/>complete<sp/>list<sp/>of<sp/>Kokkos<sp/>options,<sp/>run:</highlight></codeline>
+<codeline><highlight class="normal">````bash</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>spack<sp/>info<sp/>kokkos</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">Spack<sp/>currently<sp/>installs<sp/>packages<sp/>to<sp/>a<sp/>location<sp/>determined<sp/>by<sp/>a<sp/>unique<sp/>hash.<sp/>This<sp/>hash<sp/>name<sp/>is<sp/>not<sp/>really<sp/>&quot;human<sp/>readable&quot;.</highlight></codeline>
+<codeline><highlight class="normal">Generally,<sp/>Spack<sp/>usage<sp/>should<sp/>never<sp/>really<sp/>require<sp/>you<sp/>to<sp/>reference<sp/>the<sp/>computer-generated<sp/>unique<sp/>install<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal">More<sp/>details<sp/>are<sp/>given<sp/>in<sp/>the<sp/>[build<sp/>instructions](BUILD.md).<sp/>If<sp/>you<sp/>must<sp/>know,<sp/>you<sp/>can<sp/>locate<sp/>Spack<sp/>Kokkos<sp/>installations<sp/>with:</highlight></codeline>
+<codeline><highlight class="normal">````bash</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>spack<sp/>find<sp/>-p<sp/>kokkos<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">where<sp/>`...`<sp/>is<sp/>the<sp/>unique<sp/>spec<sp/>identifying<sp/>the<sp/>particular<sp/>Kokkos<sp/>configuration<sp/>and<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">Some<sp/>more<sp/>details<sp/>can<sp/>found<sp/>in<sp/>the<sp/>Kokkos<sp/>spack<sp/>[documentation](Spack.md)<sp/>or<sp/>the<sp/>Spack<sp/>[website](https://spack.readthedocs.io/en/latest).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Raw<sp/>Makefile</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Raw<sp/>Makefiles<sp/>are<sp/>only<sp/>supported<sp/>via<sp/>inline<sp/>builds.<sp/>See<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Inline<sp/>Builds<sp/>vs.<sp/>Installed<sp/>Package</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>individual<sp/>projects,<sp/>it<sp/>may<sp/>be<sp/>preferable<sp/>to<sp/>build<sp/>Kokkos<sp/>inline<sp/>rather<sp/>than<sp/>link<sp/>to<sp/>an<sp/>installed<sp/>package.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>main<sp/>reason<sp/>is<sp/>that<sp/>you<sp/>may<sp/>otherwise<sp/>need<sp/>many<sp/>different</highlight></codeline>
+<codeline><highlight class="normal">configurations<sp/>of<sp/>Kokkos<sp/>installed<sp/>depending<sp/>on<sp/>the<sp/>required<sp/>compile<sp/>time</highlight></codeline>
+<codeline><highlight class="normal">features<sp/>an<sp/>application<sp/>needs.<sp/>For<sp/>example<sp/>there<sp/>is<sp/>only<sp/>one<sp/>default</highlight></codeline>
+<codeline><highlight class="normal">execution<sp/>space,<sp/>which<sp/>means<sp/>you<sp/>need<sp/>different<sp/>installations<sp/>to<sp/>have<sp/>OpenMP</highlight></codeline>
+<codeline><highlight class="normal">or<sp/>Pthreads<sp/>as<sp/>the<sp/>default<sp/>space.<sp/>Also<sp/>for<sp/>the<sp/>CUDA<sp/>backend<sp/>there<sp/>are<sp/>certain</highlight></codeline>
+<codeline><highlight class="normal">choices,<sp/>such<sp/>as<sp/>allowing<sp/>relocatable<sp/>device<sp/>code,<sp/>which<sp/>must<sp/>be<sp/>made<sp/>at</highlight></codeline>
+<codeline><highlight class="normal">installation<sp/>time.<sp/>Building<sp/>Kokkos<sp/>inline<sp/>uses<sp/>largely<sp/>the<sp/>same<sp/>process</highlight></codeline>
+<codeline><highlight class="normal">as<sp/>compiling<sp/>an<sp/>application<sp/>against<sp/>an<sp/>installed<sp/>Kokkos<sp/>library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>CMake,<sp/>this<sp/>means<sp/>copying<sp/>over<sp/>the<sp/>Kokkos<sp/>source<sp/>code<sp/>into<sp/>your<sp/>project<sp/>and<sp/>adding<sp/>`add_subdirectory(kokkos)`<sp/>to<sp/>your<sp/>CMakeLists.txt.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>raw<sp/>Makefiles,<sp/>see<sp/>the<sp/>example<sp/>benchmarks/bytes_and_flops/Makefile<sp/>which<sp/>can<sp/>be<sp/>used<sp/>with<sp/>an<sp/>installed<sp/>library<sp/>and<sp/>or<sp/>an<sp/>inline<sp/>build.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Kokkos<sp/>and<sp/>CUDA<sp/>UVM</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>does<sp/>support<sp/>UVM<sp/>as<sp/>a<sp/>specific<sp/>memory<sp/>space<sp/>called<sp/>CudaUVMSpace.</highlight></codeline>
+<codeline><highlight class="normal">Allocations<sp/>made<sp/>with<sp/>that<sp/>space<sp/>are<sp/>accessible<sp/>from<sp/>host<sp/>and<sp/>device.</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>can<sp/>tell<sp/>Kokkos<sp/>to<sp/>use<sp/>that<sp/>as<sp/>the<sp/>default<sp/>space<sp/>for<sp/>Cuda<sp/>allocations.</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>either<sp/>case<sp/>UVM<sp/>comes<sp/>with<sp/>a<sp/>number<sp/>of<sp/>restrictions:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>You<sp/>can&apos;t<sp/>access<sp/>allocations<sp/>on<sp/>the<sp/>host<sp/>while<sp/>a<sp/>kernel<sp/>is<sp/>potentially</highlight></codeline>
+<codeline><highlight class="normal">running.<sp/>This<sp/>will<sp/>lead<sp/>to<sp/>segfaults.<sp/>To<sp/>avoid<sp/>that<sp/>you<sp/>either<sp/>need<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">call<sp/>Kokkos::Cuda::fence()<sp/>(or<sp/>just<sp/>Kokkos::fence()),<sp/>after<sp/>kernels,<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">you<sp/>can<sp/>set<sp/>the<sp/>environment<sp/>variable<sp/>CUDA_LAUNCH_BLOCKING=1.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>multi<sp/>socket<sp/>multi<sp/>GPU<sp/>machines<sp/>without<sp/>NVLINK,<sp/>UVM<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>using<sp/>zero<sp/>copy<sp/>allocations<sp/>for<sp/>technical<sp/>reasons<sp/>related<sp/>to<sp/>using<sp/>multiple</highlight></codeline>
+<codeline><highlight class="normal">GPUs<sp/>from<sp/>the<sp/>same<sp/>process.<sp/>If<sp/>an<sp/>executable<sp/>doesn&apos;t<sp/>do<sp/>that<sp/>(e.g.<sp/>each</highlight></codeline>
+<codeline><highlight class="normal">MPI<sp/>rank<sp/>of<sp/>an<sp/>application<sp/>uses<sp/>a<sp/>single<sp/>GPU<sp/>[can<sp/>be<sp/>the<sp/>same<sp/>GPU<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">multiple<sp/>MPI<sp/>ranks])<sp/>you<sp/>can<sp/>set<sp/>CUDA_MANAGED_FORCE_DEVICE_ALLOC=1.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>will<sp/>enforce<sp/>proper<sp/>UVM<sp/>allocations,<sp/>but<sp/>can<sp/>lead<sp/>to<sp/>errors<sp/>if</highlight></codeline>
+<codeline><highlight class="normal">more<sp/>than<sp/>a<sp/>single<sp/>GPU<sp/>is<sp/>used<sp/>by<sp/>a<sp/>single<sp/>process.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Citing<sp/>Kokkos</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>publish<sp/>work<sp/>which<sp/>mentions<sp/>Kokkos,<sp/>please<sp/>cite<sp/>the<sp/>following<sp/>paper:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">````BibTex</highlight></codeline>
+<codeline><highlight class="normal">@ARTICLE{9485033,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>author={Trott,<sp/>Christian<sp/>R.<sp/>and<sp/>Lebrun-Grandié,<sp/>Damien<sp/>and<sp/>Arndt,<sp/>Daniel<sp/>and<sp/>Ciesko,<sp/>Jan<sp/>and<sp/>Dang,<sp/>Vinh<sp/>and<sp/>Ellingwood,<sp/>Nathan<sp/>and<sp/>Gayatri,<sp/>Rahulkumar<sp/>and<sp/>Harvey,<sp/>Evan<sp/>and<sp/>Hollman,<sp/>Daisy<sp/>S.<sp/>and<sp/>Ibanez,<sp/>Dan<sp/>and<sp/>Liber,<sp/>Nevin<sp/>and<sp/>Madsen,<sp/>Jonathan<sp/>and<sp/>Miles,<sp/>Jeff<sp/>and<sp/>Poliakoff,<sp/>David<sp/>and<sp/>Powell,<sp/>Amy<sp/>and<sp/>Rajamanickam,<sp/>Sivasankaran<sp/>and<sp/>Simberg,<sp/>Mikael<sp/>and<sp/>Sunderland,<sp/>Dan<sp/>and<sp/>Turcksin,<sp/>Bruno<sp/>and<sp/>Wilke,<sp/>Jeremiah},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>journal={IEEE<sp/>Transactions<sp/>on<sp/>Parallel<sp/>and<sp/>Distributed<sp/>Systems},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>title={Kokkos<sp/>3:<sp/>Programming<sp/>Model<sp/>Extensions<sp/>for<sp/>the<sp/>Exascale<sp/>Era},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>year={2022},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>volume={33},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>number={4},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pages={805-817},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doi={10.1109/TPDS.2021.3097283}}</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>use<sp/>more<sp/>than<sp/>one<sp/>Kokkos<sp/>EcoSystem<sp/>package,<sp/>please<sp/>also<sp/>cite:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">````BibTex</highlight></codeline>
+<codeline><highlight class="normal">@ARTICLE{9502936,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>author={Trott,<sp/>Christian<sp/>and<sp/>Berger-Vergiat,<sp/>Luc<sp/>and<sp/>Poliakoff,<sp/>David<sp/>and<sp/>Rajamanickam,<sp/>Sivasankaran<sp/>and<sp/>Lebrun-Grandie,<sp/>Damien<sp/>and<sp/>Madsen,<sp/>Jonathan<sp/>and<sp/>Al<sp/>Awar,<sp/>Nader<sp/>and<sp/>Gligoric,<sp/>Milos<sp/>and<sp/>Shipman,<sp/>Galen<sp/>and<sp/>Womeldorff,<sp/>Geoff},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>journal={Computing<sp/>in<sp/>Science<sp/><sp/><sp/>Engineering},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>title={The<sp/>Kokkos<sp/>EcoSystem:<sp/>Comprehensive<sp/>Performance<sp/>Portability<sp/>for<sp/>High<sp/>Performance<sp/>Computing},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>year={2021},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>volume={23},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>number={5},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pages={10-18},</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doi={10.1109/MCSE.2021.3098509}}</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">And<sp/>if<sp/>you<sp/>feel<sp/>generous:<sp/>feel<sp/>free<sp/>to<sp/>cite<sp/>the<sp/>original<sp/>Kokkos<sp/>paper<sp/>which<sp/>describes<sp/>most<sp/>of<sp/>the<sp/>basic<sp/>Kokkos<sp/>concepts:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">````BibTeX</highlight></codeline>
+<codeline><highlight class="normal">@article{CarterEdwards20143202,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>title<sp/>=<sp/>&quot;Kokkos:<sp/>Enabling<sp/>manycore<sp/>performance<sp/>portability<sp/>through<sp/>polymorphic<sp/>memory<sp/>access<sp/>patterns<sp/>&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>journal<sp/>=<sp/>&quot;Journal<sp/>of<sp/>Parallel<sp/>and<sp/>Distributed<sp/>Computing<sp/>&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>volume<sp/>=<sp/>&quot;74&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>number<sp/>=<sp/>&quot;12&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pages<sp/>=<sp/>&quot;3202<sp/>-<sp/>3216&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>year<sp/>=<sp/>&quot;2014&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>note<sp/>=<sp/>&quot;Domain-Specific<sp/>Languages<sp/>and<sp/>High-Level<sp/>Frameworks<sp/>for<sp/>High-Performance<sp/>Computing<sp/>&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>issn<sp/>=<sp/>&quot;0743-7315&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doi<sp/>=<sp/>&quot;https://doi.org/10.1016/j.jpdc.2014.07.003&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>url<sp/>=<sp/>&quot;http://www.sciencedirect.com/science/article/pii/S0743731514001257&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>author<sp/>=<sp/>&quot;H.<sp/>Carter<sp/>Edwards<sp/>and<sp/>Christian<sp/>R.<sp/>Trott<sp/>and<sp/>Daniel<sp/>Sunderland&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>[LICENSE](https://github.com/kokkos/kokkos/blob/master/LICENSE)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/README.md"/>
+  </compounddef>
+</doxygen>

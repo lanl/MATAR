@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_test_meta_factory" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::TestMetaFactory</compoundname>
+    <basecompoundref refid="classtesting_1_1internal_1_1_test_meta_factory_base" prot="public" virt="non-virtual">testing::internal::TestMetaFactoryBase&lt; TestCase::ParamType &gt;</basecompoundref>
+    <basecompoundref refid="classtesting_1_1internal_1_1_test_meta_factory_base" prot="public" virt="non-virtual">testing::internal::TestMetaFactoryBase&lt; TestCase::ParamType &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_test_meta_factory_1a9c12e442b4389381b948ed669fcf0f84" prot="public" static="no">
+        <type>TestCase::ParamType</type>
+        <definition>typedef TestCase::ParamType testing::internal::TestMetaFactory&lt; TestCase &gt;::ParamType</definition>
+        <argsstring></argsstring>
+        <name>ParamType</name>
+        <qualifiedname>testing::internal::TestMetaFactory::ParamType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10396" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10396" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_test_meta_factory_1a9c12e442b4389381b948ed669fcf0f84" prot="public" static="no">
+        <type>TestCase::ParamType</type>
+        <definition>typedef TestCase::ParamType testing::internal::TestMetaFactory&lt; TestCase &gt;::ParamType</definition>
+        <argsstring></argsstring>
+        <name>ParamType</name>
+        <qualifiedname>testing::internal::TestMetaFactory::ParamType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10396" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10396" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a3eadbf9867b702bcba130a3113a77b71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestMetaFactory&lt; TestCase &gt;::TestMetaFactory</definition>
+        <argsstring>()</argsstring>
+        <name>TestMetaFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::TestMetaFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10398" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10398" bodyend="10398"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a0292873f456558d16cd13a0aa4b3fc7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_test_factory_base" kindref="compound">TestFactoryBase</ref> *</type>
+        <definition>virtual TestFactoryBase * testing::internal::TestMetaFactory&lt; TestCase &gt;::CreateTestFactory</definition>
+        <argsstring>(ParamType parameter)</argsstring>
+        <name>CreateTestFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::CreateTestFactory</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_test_meta_factory_base_1afc7c9ec623d7045a4b3e3c45e171ae78">CreateTestFactory</reimplements>
+        <param>
+          <type>ParamType</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10400" column="27" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10400" bodyend="10402"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a3eadbf9867b702bcba130a3113a77b71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestMetaFactory&lt; TestCase &gt;::TestMetaFactory</definition>
+        <argsstring>()</argsstring>
+        <name>TestMetaFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::TestMetaFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10398" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10398" bodyend="10398"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a0292873f456558d16cd13a0aa4b3fc7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_test_factory_base" kindref="compound">TestFactoryBase</ref> *</type>
+        <definition>virtual TestFactoryBase * testing::internal::TestMetaFactory&lt; TestCase &gt;::CreateTestFactory</definition>
+        <argsstring>(ParamType parameter)</argsstring>
+        <name>CreateTestFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::CreateTestFactory</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_test_meta_factory_base_1afc7c9ec623d7045a4b3e3c45e171ae78">CreateTestFactory</reimplements>
+        <param>
+          <type>ParamType</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10400" column="27" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10400" bodyend="10402"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a3b55285bb6d930f1808db23075f8add6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestMetaFactory&lt; TestCase &gt;::TestMetaFactory</definition>
+        <argsstring>(TestMetaFactory const &amp;)</argsstring>
+        <name>TestMetaFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::TestMetaFactory</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_test_meta_factory" kindref="compound">TestMetaFactory</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10405" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a1118f52de68256e6d433a39ec0623053" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestMetaFactory&lt; TestCase &gt;::operator=</definition>
+        <argsstring>(TestMetaFactory const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::TestMetaFactory::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_test_meta_factory" kindref="compound">TestMetaFactory</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10405" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a3b55285bb6d930f1808db23075f8add6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestMetaFactory&lt; TestCase &gt;::TestMetaFactory</definition>
+        <argsstring>(TestMetaFactory const &amp;)</argsstring>
+        <name>TestMetaFactory</name>
+        <qualifiedname>testing::internal::TestMetaFactory::TestMetaFactory</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_test_meta_factory" kindref="compound">TestMetaFactory</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10405" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_meta_factory_1a1118f52de68256e6d433a39ec0623053" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestMetaFactory&lt; TestCase &gt;::operator=</definition>
+        <argsstring>(TestMetaFactory const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::TestMetaFactory::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_test_meta_factory" kindref="compound">TestMetaFactory</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10405" column="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::internal::TestMetaFactoryBase&lt; TestCase::ParamType &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_test_meta_factory_base"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::TestMetaFactory&lt; TestCase &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_test_meta_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::internal::TestMetaFactoryBase&lt; TestCase::ParamType &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_test_meta_factory_base"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::TestMetaFactory&lt; TestCase &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_test_meta_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10393" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10394" bodyend="10406"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a0292873f456558d16cd13a0aa4b3fc7c" prot="public" virt="virtual"><scope>testing::internal::TestMetaFactory</scope><name>CreateTestFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a0292873f456558d16cd13a0aa4b3fc7c" prot="public" virt="virtual"><scope>testing::internal::TestMetaFactory</scope><name>CreateTestFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a1118f52de68256e6d433a39ec0623053" prot="private" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a1118f52de68256e6d433a39ec0623053" prot="private" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a9c12e442b4389381b948ed669fcf0f84" prot="public" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>ParamType</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a9c12e442b4389381b948ed669fcf0f84" prot="public" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>ParamType</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a3eadbf9867b702bcba130a3113a77b71" prot="public" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>TestMetaFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a3b55285bb6d930f1808db23075f8add6" prot="private" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>TestMetaFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a3eadbf9867b702bcba130a3113a77b71" prot="public" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>TestMetaFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_1a3b55285bb6d930f1808db23075f8add6" prot="private" virt="non-virtual"><scope>testing::internal::TestMetaFactory</scope><name>TestMetaFactory</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_base_1aad80adf04686f7dfcf952e44afc02767" prot="public" virt="virtual"><scope>testing::internal::TestMetaFactory</scope><name>~TestMetaFactoryBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_meta_factory_base_1aad80adf04686f7dfcf952e44afc02767" prot="public" virt="virtual"><scope>testing::internal::TestMetaFactory</scope><name>~TestMetaFactoryBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

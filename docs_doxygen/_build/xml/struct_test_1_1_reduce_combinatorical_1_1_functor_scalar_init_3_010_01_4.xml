@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a276a44640738e90c8ada9baeded4e77e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double &gt;</type>
+        <definition>Kokkos::View&lt;double&gt; Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="124" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1ae0c259f11b3255d94ab2783b430a3f34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::FunctorScalarInit</definition>
+        <argsstring>(Kokkos::View&lt; double &gt; r)</argsstring>
+        <name>FunctorScalarInit</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::FunctorScalarInit</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double &gt;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="126" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a68795ca879f156532823b6c900b29371" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::operator()</definition>
+        <argsstring>(const int &amp;i, double &amp;update) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="129" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a15b8dd2d78e53634018f2f7343d03089" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::init</definition>
+        <argsstring>(double &amp;update) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;::init</qualifiedname>
+        <param>
+          <type>double &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="132" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="132" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</label>
+        <link refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>result</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" line="123" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduceCombinatorical.hpp" bodystart="123" bodyend="133"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1ae0c259f11b3255d94ab2783b430a3f34" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</scope><name>FunctorScalarInit</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a15b8dd2d78e53634018f2f7343d03089" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</scope><name>init</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a68795ca879f156532823b6c900b29371" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_reduce_combinatorical_1_1_functor_scalar_init_3_010_01_4_1a276a44640738e90c8ada9baeded4e77e" prot="public" virt="non-virtual"><scope>Test::ReduceCombinatorical::FunctorScalarInit&lt; 0 &gt;</scope><name>result</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

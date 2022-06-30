@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::Experimental::ResetDuplicates</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base" prot="public" virt="non-virtual">Kokkos::Impl::Experimental::ResetDuplicatesBase&lt; ExecSpace, ValueType, Op &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename ExecSpace</type>
+      </param>
+      <param>
+        <type>typename ValueType</type>
+      </param>
+      <param>
+        <type>typename Op</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a015b65cebc276bd637691b39a45c8a01" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base" kindref="compound">ResetDuplicatesBase</ref>&lt; ExecSpace, ValueType, Op &gt;</type>
+        <definition>using Kokkos::Impl::Experimental::ResetDuplicates&lt; ExecSpace, ValueType, Op &gt;::Base =  ResetDuplicatesBase&lt;ExecSpace, ValueType, Op&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ResetDuplicates::Base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="706" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="706" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a1bf76633e8201d7eb0a48bc4ee1d44fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::Experimental::ResetDuplicates&lt; ExecSpace, ValueType, Op &gt;::ResetDuplicates</definition>
+        <argsstring>(ExecSpace const &amp;exec_space, ValueType *data_in, size_t size_in, std::string const &amp;name)</argsstring>
+        <name>ResetDuplicates</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ResetDuplicates::ResetDuplicates</qualifiedname>
+        <param>
+          <type>ExecSpace const &amp;</type>
+          <declname>exec_space</declname>
+        </param>
+        <param>
+          <type>ValueType *</type>
+          <declname>data_in</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size_in</declname>
+        </param>
+        <param>
+          <type>std::string const &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="707" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="707" bodyend="709"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a40b5ad94b3aa4d752669494894c64b3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ResetDuplicates&lt; ExecSpace, ValueType, Op &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ResetDuplicates::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="710" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="710" bodyend="715"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::Experimental::ResetDuplicates&lt; ExecSpace, ValueType, Op &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::Experimental::ResetDuplicatesBase&lt; ExecSpace, ValueType, Op &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::Experimental::ResetDuplicates&lt; ExecSpace, ValueType, Op &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::Experimental::ResetDuplicatesBase&lt; ExecSpace, ValueType, Op &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="705" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="705" bodyend="716"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a015b65cebc276bd637691b39a45c8a01" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>Base</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base_1a89439aa5cf9b16abffcde4d1474a2498" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>data</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base_1a9a86fdb3ce685029c8fd5615aa57e18b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>Derived</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a40b5ad94b3aa4d752669494894c64b3d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_1a1bf76633e8201d7eb0a48bc4ee1d44fb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>ResetDuplicates</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_reset_duplicates_base_1a27e6c9e1a8dbf9181e0f8727e62c639c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ResetDuplicates</scope><name>ResetDuplicatesBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

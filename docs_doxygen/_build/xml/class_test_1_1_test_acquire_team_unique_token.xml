@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_1_1_test_acquire_team_unique_token" kind="class" language="C++" prot="public">
+    <compoundname>Test::TestAcquireTeamUniqueToken</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a807c4e3e4dbc05a61d134044f89be63b" prot="public" static="no">
+        <type>typename Space::execution_space</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::execution_space =  typename Space::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="179" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a3cc57b62f01a8ce3bf0d7ba0b6807733" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, execution_space &gt;</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::view_type =  Kokkos::View&lt;int*, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="180" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a909736fd5aab19bb27d788c29a75f31d" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, typename execution_space::scratch_memory_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryUnmanaged</ref> &gt;</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::scratch_view =  Kokkos::View&lt;int, typename execution_space::scratch_memory_space, Kokkos::MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>scratch_view</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::scratch_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="181" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a961e44b59023c7bf7e3fbba446e0a392" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; execution_space &gt;</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::team_policy_type =  Kokkos::TeamPolicy&lt;execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>team_policy_type</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::team_policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="184" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a0432ccf275d0a5ed54076567830bf032" prot="public" static="no">
+        <type>typename team_policy_type::member_type</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::team_member_type =  typename team_policy_type::member_type</definition>
+        <argsstring></argsstring>
+        <name>team_member_type</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::team_member_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="185" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_test_acquire_team_unique_token_1a4b09ba7c586f439e49a263a5acbd1c1b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_unique_token" kindref="compound">Kokkos::Experimental::UniqueToken</ref>&lt; execution_space &gt;</type>
+        <definition>using Test::TestAcquireTeamUniqueToken&lt; Space &gt;::tokens_type =  Kokkos::Experimental::UniqueToken&lt;execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>tokens_type</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::tokens_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="186" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_test_1_1_test_acquire_team_unique_token_1ace1327bc9d9a889429c329a56bbc54c4" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_unique_token" kindref="compound">tokens_type</ref></type>
+        <definition>tokens_type Test::TestAcquireTeamUniqueToken&lt; Space &gt;::tokens</definition>
+        <argsstring></argsstring>
+        <name>tokens</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::tokens</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="188" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_1_1_test_acquire_team_unique_token_1ade29ebf63fb4692975c9c70bc6fdd323" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::TestAcquireTeamUniqueToken&lt; Space &gt;::verify</definition>
+        <argsstring></argsstring>
+        <name>verify</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::verify</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="190" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_1_1_test_acquire_team_unique_token_1a95a4e0e65b0c57aa3524f80124a6eff4" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::TestAcquireTeamUniqueToken&lt; Space &gt;::counts</definition>
+        <argsstring></argsstring>
+        <name>counts</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::counts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="191" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_1_1_test_acquire_team_unique_token_1a5549f85de74bbb5b04a9b8a24c5bc181" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type Test::TestAcquireTeamUniqueToken&lt; Space &gt;::errors</definition>
+        <argsstring></argsstring>
+        <name>errors</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="192" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_1_1_test_acquire_team_unique_token_1ae8cbaf97485ade63ad6907f0d6cd4b90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestAcquireTeamUniqueToken&lt; Space &gt;::operator()</definition>
+        <argsstring>(team_member_type team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::operator()</qualifiedname>
+        <param>
+          <type>team_member_type</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="195" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="195" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_test_acquire_team_unique_token_1a3a3824f0eed012524ceddf9a83074c63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestAcquireTeamUniqueToken&lt; Space &gt;::TestAcquireTeamUniqueToken</definition>
+        <argsstring>(int team_size)</argsstring>
+        <name>TestAcquireTeamUniqueToken</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::TestAcquireTeamUniqueToken</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>team_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="225" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="225" bodyend="229"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_test_1_1_test_acquire_team_unique_token_1a2c11b82606d869153771207c9a7116f3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestAcquireTeamUniqueToken&lt; Space &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestAcquireTeamUniqueToken::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="231" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="231" bodyend="279"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestAcquireTeamUniqueToken&lt; Space &gt;</label>
+        <link refid="class_test_1_1_test_acquire_team_unique_token"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>tokens</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>counts</edgelabel>
+          <edgelabel>errors</edgelabel>
+          <edgelabel>verify</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::UniqueToken&lt; execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_unique_token"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::View&lt; int *, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::ViewTraits&lt; int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" line="177" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestUniqueToken.hpp" bodystart="177" bodyend="280"/>
+    <listofallmembers>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a95a4e0e65b0c57aa3524f80124a6eff4" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>counts</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a5549f85de74bbb5b04a9b8a24c5bc181" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>errors</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a807c4e3e4dbc05a61d134044f89be63b" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>execution_space</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1ae8cbaf97485ade63ad6907f0d6cd4b90" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>operator()</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a2c11b82606d869153771207c9a7116f3" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>run</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a909736fd5aab19bb27d788c29a75f31d" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>scratch_view</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a0432ccf275d0a5ed54076567830bf032" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>team_member_type</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a961e44b59023c7bf7e3fbba446e0a392" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>team_policy_type</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a3a3824f0eed012524ceddf9a83074c63" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>TestAcquireTeamUniqueToken</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1ace1327bc9d9a889429c329a56bbc54c4" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>tokens</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a4b09ba7c586f439e49a263a5acbd1c1b" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>tokens_type</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1ade29ebf63fb4692975c9c70bc6fdd323" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>verify</name></member>
+      <member refid="class_test_1_1_test_acquire_team_unique_token_1a3cc57b62f01a8ce3bf0d7ba0b6807733" prot="public" virt="non-virtual"><scope>Test::TestAcquireTeamUniqueToken</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

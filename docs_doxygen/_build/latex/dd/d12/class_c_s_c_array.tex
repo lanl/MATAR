@@ -1,0 +1,70 @@
+\hypertarget{class_c_s_c_array}{}\doxysection{CSCArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_c_s_c_array}\index{CSCArray$<$ T $>$@{CSCArray$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ac3ef5c6cdbf2d16c9042636fed618389}\label{class_c_s_c_array_ac3ef5c6cdbf2d16c9042636fed618389}} 
+{\bfseries CSCArray} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ row\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ start\+\_\+index, size\+\_\+t dim1, size\+\_\+t dim2)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a2f8a3d9fec014e37bd2540062e5613b8}\label{class_c_s_c_array_a2f8a3d9fec014e37bd2540062e5613b8}} 
+T \& {\bfseries operator()} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a5fea323157d9f4f36414bc1cc7d5365b}\label{class_c_s_c_array_a5fea323157d9f4f36414bc1cc7d5365b}} 
+\mbox{\hyperlink{class_c_s_c_array}{CSCArray}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_c_s_c_array}{CSCArray}} \&temp)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a3807e5e741c75aa1e25d77bf2a4b8e67}\label{class_c_s_c_array_a3807e5e741c75aa1e25d77bf2a4b8e67}} 
+T $\ast$ {\bfseries pointer} () const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_aff6644b03d7b3e2cfa39a9f2dba21e8f}\label{class_c_s_c_array_aff6644b03d7b3e2cfa39a9f2dba21e8f}} 
+size\+\_\+t {\bfseries stride} (size\+\_\+t i) const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ace55111f5fb12a7eb41e4421642dbe3e}\label{class_c_s_c_array_ace55111f5fb12a7eb41e4421642dbe3e}} 
+T \& {\bfseries value} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ab61410a475de0cfdec3d32eab624a75d}\label{class_c_s_c_array_ab61410a475de0cfdec3d32eab624a75d}} 
+size\+\_\+t $\ast$ {\bfseries get\+\_\+starts} () const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a6c7cc7cebc744e6dcf70c6c6e3f5c164}\label{class_c_s_c_array_a6c7cc7cebc744e6dcf70c6c6e3f5c164}} 
+size\+\_\+t {\bfseries dim1} () const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ad00414e167cd8510074390e8bf592444}\label{class_c_s_c_array_ad00414e167cd8510074390e8bf592444}} 
+size\+\_\+t {\bfseries dim2} () const
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_aded6f85b9692885f618a71034201e2d2}\label{class_c_s_c_array_aded6f85b9692885f618a71034201e2d2}} 
+T $\ast$ {\bfseries begin} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_af51f981679caea93a8bd1efa1ab365f7}\label{class_c_s_c_array_af51f981679caea93a8bd1efa1ab365f7}} 
+T $\ast$ {\bfseries end} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_afcaa186bf71aaf76f346f348b6884a4e}\label{class_c_s_c_array_afcaa186bf71aaf76f346f348b6884a4e}} 
+size\+\_\+t {\bfseries begin\+Flat} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a9104f82369ec0312cfb367042d23e3ac}\label{class_c_s_c_array_a9104f82369ec0312cfb367042d23e3ac}} 
+size\+\_\+t {\bfseries end\+Flat} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a891a72d2aed7aa23f1c5d520a321407c}\label{class_c_s_c_array_a891a72d2aed7aa23f1c5d520a321407c}} 
+size\+\_\+t {\bfseries nnz} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ac31899ccd8cb982ba85978ccf70a0459}\label{class_c_s_c_array_ac31899ccd8cb982ba85978ccf70a0459}} 
+size\+\_\+t {\bfseries nnz} ()
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_ab375069d0580769dc7a6e9db0059adcb}\label{class_c_s_c_array_ab375069d0580769dc7a6e9db0059adcb}} 
+T \& {\bfseries get\+Val\+Flat} (size\+\_\+t k)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a7373de14d4564acd0de674687b6e4cb3}\label{class_c_s_c_array_a7373de14d4564acd0de674687b6e4cb3}} 
+size\+\_\+t {\bfseries get\+Row\+Flat} (size\+\_\+t k)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_af1640fcc3cf9246f25857e84e265e2f4}\label{class_c_s_c_array_af1640fcc3cf9246f25857e84e265e2f4}} 
+int {\bfseries flat\+Index} (size\+\_\+t i, size\+\_\+t j)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_a123af493f6698fc2ebebbbd35551f044}\label{class_c_s_c_array_a123af493f6698fc2ebebbbd35551f044}} 
+int {\bfseries to\+CSR} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&data, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&row\+\_\+ptrs, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&col\+\_\+ptrs)
+\item 
+\mbox{\Hypertarget{class_c_s_c_array_af0a9bb3d7e323ed93f9d4d84f731609f}\label{class_c_s_c_array_af0a9bb3d7e323ed93f9d4d84f731609f}} 
+void {\bfseries todense} (\mbox{\hyperlink{class_f_array}{FArray}}$<$ T $>$ \&A)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/matar.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_incr_exec_space_typedef" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestIncrExecSpaceTypedef</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_incr_exec_space_typedef_1a99df49492c9a939776aa19c3ba19680d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestIncrExecSpaceTypedef&lt; ExecSpace &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::TestIncrExecSpaceTypedef::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test01_execspace.hpp" line="62" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test01_execspace.hpp" bodystart="62" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test01_execspace.hpp" line="61" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test01_execspace.hpp" bodystart="61" bodyend="71"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_incr_exec_space_typedef_1a99df49492c9a939776aa19c3ba19680d" prot="public" virt="non-virtual"><scope>Test::TestIncrExecSpaceTypedef</scope><name>testit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

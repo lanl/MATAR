@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_layout_selective" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::LayoutSelective</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_layout_selective_1a194690671269e49f9051baaf34ba7c74" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@260</name>
+        <qualifiedname>Kokkos::LayoutSelective::@260</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_layout_selective_1a194690671269e49f9051baaf34ba7c74af6ba7a098579f7f5a5ce9bf5768ca457" prot="public">
+          <name>is_extent_constructible</name>
+          <initializer>= false</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_layout_selective_1afccc41d73d39c370c0df6f89b064db03" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref></type>
+        <definition>using Kokkos::LayoutSelective::array_layout =  LayoutSelective</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::LayoutSelective::array_layout</qualifiedname>
+        <briefdescription>
+<para>Tag this class as a kokkos array layout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="56" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_layout_selective_1a4a2818cca699766fac263a6da57c7f04" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::LayoutSelective::offset_list[100]</definition>
+        <argsstring>[100]</argsstring>
+        <name>offset_list</name>
+        <qualifiedname>Kokkos::LayoutSelective::offset_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="58" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_layout_selective_1afc34f15e2d3117fb2f2ed7fff732d28d" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::LayoutSelective::list_size</definition>
+        <argsstring></argsstring>
+        <name>list_size</name>
+        <qualifiedname>Kokkos::LayoutSelective::list_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="59" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1a23d65d7a4306e808ec551509d411d9d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::LayoutSelective::LayoutSelective</definition>
+        <argsstring>()</argsstring>
+        <name>LayoutSelective</name>
+        <qualifiedname>Kokkos::LayoutSelective::LayoutSelective</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="64" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1ac08fc9d2e76c142343f81bfd29bc2194" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::LayoutSelective::assign</definition>
+        <argsstring>(const size_t ol_[], const size_t size_)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::LayoutSelective::assign</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>ol_</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>size_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="71" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="71" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1a82f6fcca6b3dfc2314f08f2a04a4bbb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::LayoutSelective::LayoutSelective</definition>
+        <argsstring>(LayoutSelective const &amp;rhs)</argsstring>
+        <name>LayoutSelective</name>
+        <qualifiedname>Kokkos::LayoutSelective::LayoutSelective</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="79" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1a6e4171a193aaf1af9edc58cabf559687" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::LayoutSelective::LayoutSelective</definition>
+        <argsstring>(LayoutSelective &amp;&amp;rhs)</argsstring>
+        <name>LayoutSelective</name>
+        <qualifiedname>Kokkos::LayoutSelective::LayoutSelective</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="84" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1aabf1cd286b9b0f2ac0e37018a9f3f9ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION LayoutSelective &amp; Kokkos::LayoutSelective::operator=</definition>
+        <argsstring>(LayoutSelective const &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::LayoutSelective::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="88" column="19" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1abd59ca41db000aa524995db8b70cb0b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION LayoutSelective &amp; Kokkos::LayoutSelective::operator=</definition>
+        <argsstring>(LayoutSelective &amp;&amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::LayoutSelective::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_layout_selective" kindref="compound">LayoutSelective</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="93" column="19" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="93" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1ab7b479471b89221620cea658cf3a2d95" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::LayoutSelective::LayoutSelective</definition>
+        <argsstring>(const size_t ol_[], const size_t size_)</argsstring>
+        <name>LayoutSelective</name>
+        <qualifiedname>Kokkos::LayoutSelective::LayoutSelective</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>ol_</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>size_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="99" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="99" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_layout_selective_1ab5ca99171ac6bd0371e1ab158ec004c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::LayoutSelective::offset</definition>
+        <argsstring>(size_t ndx) const</argsstring>
+        <name>offset</name>
+        <qualifiedname>Kokkos::LayoutSelective::offset</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>ndx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="104" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="104" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="54" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="54" bodyend="108"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_layout_selective_1afccc41d73d39c370c0df6f89b064db03" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1ac08fc9d2e76c142343f81bfd29bc2194" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>assign</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1a194690671269e49f9051baaf34ba7c74af6ba7a098579f7f5a5ce9bf5768ca457" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>is_extent_constructible</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1a23d65d7a4306e808ec551509d411d9d8" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>LayoutSelective</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1a82f6fcca6b3dfc2314f08f2a04a4bbb4" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>LayoutSelective</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1a6e4171a193aaf1af9edc58cabf559687" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>LayoutSelective</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1ab7b479471b89221620cea658cf3a2d95" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>LayoutSelective</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1afc34f15e2d3117fb2f2ed7fff732d28d" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>list_size</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1ab5ca99171ac6bd0371e1ab158ec004c4" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>offset</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1a4a2818cca699766fac263a6da57c7f04" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>offset_list</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1aabf1cd286b9b0f2ac0e37018a9f3f9ed" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_layout_selective_1abd59ca41db000aa524995db8b70cb0b2" prot="public" virt="non-virtual"><scope>Kokkos::LayoutSelective</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

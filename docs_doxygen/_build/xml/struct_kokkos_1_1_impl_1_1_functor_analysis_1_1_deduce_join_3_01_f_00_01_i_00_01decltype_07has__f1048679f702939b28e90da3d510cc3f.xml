@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_join_3_01_f_00_01_i_00_01decltype_07has__f1048679f702939b28e90da3d510cc3f" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::DeduceJoin&lt; F, I, decltype(has_join_function&lt; F, I &gt;::enable_if(&amp;F::join))&gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Kokkos::Impl::FunctorAnalysis&lt; F, I &gt;::has_join_function</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+      </param>
+      <param>
+        <type>INTERFACE</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_join_3_01_f_00_01_i_00_01decltype_07has__f1048679f702939b28e90da3d510cc3f_1a64d870a3f27bde7549c6d3113ae5cd37" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@61</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::DeduceJoin&lt; F, I, decltype(has_join_function&lt; F, I &gt;::enable_if(&amp;F::join))&gt;::@61</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_join_3_01_f_00_01_i_00_01decltype_07has__f1048679f702939b28e90da3d510cc3f_1a64d870a3f27bde7549c6d3113ae5cd37a574e6f06b19a1416386afb4d538ee38d" prot="public">
+          <name>value</name>
+          <initializer>= true</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="503" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="503" bodyend="503"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_join_function&lt; F, INTERFACE &gt;</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::DeduceJoin&lt; F, I, decltype(has_join_function&lt; F, I &gt;::enable_if(&amp;F::join))&gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_join_function&lt; F, INTERFACE &gt;</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::DeduceJoin&lt; F, I, decltype(has_join_function&lt; F, I &gt;::enable_if(&amp;F::join))&gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="500" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="502" bodyend="504"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1_deduce_join_3_01_f_00_01_i_00_01decltype_07has__f1048679f702939b28e90da3d510cc3f_1a64d870a3f27bde7549c6d3113ae5cd37a574e6f06b19a1416386afb4d538ee38d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::DeduceJoin&lt; F, I, decltype(has_join_function&lt; F, I &gt;::enable_if(&amp;F::join))&gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

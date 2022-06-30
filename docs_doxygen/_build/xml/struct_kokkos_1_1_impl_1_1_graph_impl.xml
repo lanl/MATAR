@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_graph_impl" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::GraphImpl</compoundname>
+    <basecompoundref refid="class_kokkos_1_1_impl_1_1_execution_space_instance_storage" prot="private" virt="non-virtual">Kokkos::Impl::ExecutionSpaceInstanceStorage&lt; ExecutionSpace &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_graph_impl_1ae07e084e839f9a9805b725f74a0f528f" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" kindref="compound">GraphNodeImpl</ref>&lt; ExecutionSpace, <ref refid="struct_kokkos_1_1_experimental_1_1_type_erased_tag" kindref="compound">Kokkos::Experimental::TypeErasedTag</ref>, <ref refid="struct_kokkos_1_1_experimental_1_1_type_erased_tag" kindref="compound">Kokkos::Experimental::TypeErasedTag</ref> &gt;</type>
+        <definition>using Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::root_node_impl_t =  GraphNodeImpl&lt;ExecutionSpace, Kokkos::Experimental::TypeErasedTag, Kokkos::Experimental::TypeErasedTag&gt;</definition>
+        <argsstring></argsstring>
+        <name>root_node_impl_t</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::root_node_impl_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_graph_impl_1ab3e58db2a358897f9d1d20867d7d97c5" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_execution_space_instance_storage" kindref="compound">ExecutionSpaceInstanceStorage</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::execution_space_instance_storage_base_t =  ExecutionSpaceInstanceStorage&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>execution_space_instance_storage_base_t</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::execution_space_instance_storage_base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a0395cb34df5650c3a05ace7d25221905" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_specific_details" kindref="compound">GraphNodeBackendSpecificDetails</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::node_details_t =  GraphNodeBackendSpecificDetails&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>node_details_t</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::node_details_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="80" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a1619cb85763c4f88721135fcfa5e0857" prot="private" static="no" mutable="no">
+        <type>std::set&lt; std::shared_ptr&lt; <ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_specific_details" kindref="compound">node_details_t</ref> &gt; &gt;</type>
+        <definition>std::set&lt;std::shared_ptr&lt;node_details_t&gt; &gt; Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::m_sinks</definition>
+        <argsstring></argsstring>
+        <name>m_sinks</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::m_sinks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="81" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1afc9387ec59e6c59deb6f6fba4360434c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::GraphImpl</definition>
+        <argsstring>()=default</argsstring>
+        <name>GraphImpl</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::GraphImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="89" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1adf702da11cbe6c1dcc512faff9546a0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::GraphImpl</definition>
+        <argsstring>(GraphImpl const &amp;)=delete</argsstring>
+        <name>GraphImpl</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::GraphImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="90" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1acd4b929dc49b5384b8d2e867aeb1748f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::GraphImpl</definition>
+        <argsstring>(GraphImpl &amp;&amp;)=delete</argsstring>
+        <name>GraphImpl</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::GraphImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="91" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a236191434151bd114fd2a62539036170" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> &amp;</type>
+        <definition>GraphImpl &amp; Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::operator=</definition>
+        <argsstring>(GraphImpl const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="92" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1af8e73d75a2d42bfdef0efbd403e854ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> &amp;</type>
+        <definition>GraphImpl &amp; Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::operator=</definition>
+        <argsstring>(GraphImpl &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_impl" kindref="compound">GraphImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="93" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a00c68a848c3a8eee7df607df73f0967a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::~GraphImpl</definition>
+        <argsstring>()=default</argsstring>
+        <name>~GraphImpl</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::~GraphImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="94" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1ac2ede291e50a9e96bb8be4ff854508c6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::GraphImpl</definition>
+        <argsstring>(ExecutionSpace arg_space)</argsstring>
+        <name>GraphImpl</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::GraphImpl</qualifiedname>
+        <param>
+          <type>ExecutionSpace</type>
+          <declname>arg_space</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="96" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="96" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1aac8813dc267f73eadb697cb69e37a367" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ExecutionSpace const &amp;</type>
+        <definition>ExecutionSpace const  &amp; Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::get_execution_space</definition>
+        <argsstring>() const</argsstring>
+        <name>get_execution_space</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::get_execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="102" column="24" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a87d2d63f31ca9b3a07cfd3d5482519a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class NodeImpl</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::add_node</definition>
+        <argsstring>(std::shared_ptr&lt; NodeImpl &gt; const &amp;arg_node_ptr)</argsstring>
+        <name>add_node</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::add_node</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; NodeImpl &gt; const &amp;</type>
+          <declname>arg_node_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="112" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="112" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a3b4b57dde28182792a234440714cd301" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class NodeImplPtr</type>
+          </param>
+          <param>
+            <type>class PredecessorRef</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::add_predecessor</definition>
+        <argsstring>(NodeImplPtr arg_node_ptr, PredecessorRef arg_pred_ref)</argsstring>
+        <name>add_predecessor</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::add_predecessor</qualifiedname>
+        <param>
+          <type>NodeImplPtr</type>
+          <declname>arg_node_ptr</declname>
+        </param>
+        <param>
+          <type>PredecessorRef</type>
+          <declname>arg_pred_ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="129" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="129" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1a08f2218950736c6a7302056a11718cb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>PredecessorRefs</declname>
+            <defname>PredecessorRefs</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::create_aggregate_ptr</definition>
+        <argsstring>(PredecessorRefs &amp;&amp;...)</argsstring>
+        <name>create_aggregate_ptr</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::create_aggregate_ptr</qualifiedname>
+        <param>
+          <type>PredecessorRefs &amp;&amp;</type>
+          <declname>...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="148" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="148" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1afea896733b956153705732987674f1e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::create_root_node_ptr</definition>
+        <argsstring>()</argsstring>
+        <name>create_root_node_ptr</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::create_root_node_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="163" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="163" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_impl_1ab21a747e27d50008e6d49c42ba623f6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;::submit</definition>
+        <argsstring>()</argsstring>
+        <name>submit</name>
+        <qualifiedname>Kokkos::Impl::GraphImpl::submit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="170" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="170" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>Kokkos::Impl::EBOBaseImpl&lt; ExecutionSpace, std::is_empty&lt; ExecutionSpace &gt;::value, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::ExecutionSpaceInstanceStorage&lt; ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_execution_space_instance_storage"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_graph_impl"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::NoUniqueAddressMemberEmulation&lt; ExecutionSpace, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation"/>
+        <childnode refid="4" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; ExecutionSpace, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>Kokkos::Impl::EBOBaseImpl&lt; ExecutionSpace, std::is_empty&lt; ExecutionSpace &gt;::value, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::ExecutionSpaceInstanceStorage&lt; ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_execution_space_instance_storage"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::GraphImpl&lt; ExecutionSpace &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_graph_impl"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::NoUniqueAddressMemberEmulation&lt; ExecutionSpace, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_no_unique_address_member_emulation"/>
+        <childnode refid="4" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::Impl::StandardLayoutNoUniqueAddressMemberEmulation&lt; ExecutionSpace, DefaultCtorNotOnDevice &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_standard_layout_no_unique_address_member_emulation"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" line="70" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Default_Graph_Impl.hpp" bodystart="70" bodyend="183"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a87d2d63f31ca9b3a07cfd3d5482519a3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>add_node</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a3b4b57dde28182792a234440714cd301" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>add_predecessor</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a08f2218950736c6a7302056a11718cb1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>create_aggregate_ptr</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1afea896733b956153705732987674f1e4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>create_root_node_ptr</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1ab3e58db2a358897f9d1d20867d7d97c5" prot="private" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>execution_space_instance_storage_base_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1aac8813dc267f73eadb697cb69e37a367" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>get_execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1afc9387ec59e6c59deb6f6fba4360434c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>GraphImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1adf702da11cbe6c1dcc512faff9546a0c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>GraphImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1acd4b929dc49b5384b8d2e867aeb1748f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>GraphImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1ac2ede291e50a9e96bb8be4ff854508c6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>GraphImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a1619cb85763c4f88721135fcfa5e0857" prot="private" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>m_sinks</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a0395cb34df5650c3a05ace7d25221905" prot="private" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>node_details_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a236191434151bd114fd2a62539036170" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1af8e73d75a2d42bfdef0efbd403e854ab" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1ae07e084e839f9a9805b725f74a0f528f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>root_node_impl_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1ab21a747e27d50008e6d49c42ba623f6f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>submit</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_impl_1a00c68a848c3a8eee7df607df73f0967a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::GraphImpl</scope><name>~GraphImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

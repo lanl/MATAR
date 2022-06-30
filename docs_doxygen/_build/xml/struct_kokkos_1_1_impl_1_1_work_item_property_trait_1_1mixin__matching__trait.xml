@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">AnalyzeNextTrait</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class WorkItemProp</type>
+      </param>
+      <param>
+        <type>class AnalyzeNextTrait</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait_1a771f51396240b71abdd35af4ff482e0d" prot="public" static="no">
+        <type>AnalyzeNextTrait</type>
+        <definition>using Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait&lt; WorkItemProp, AnalyzeNextTrait &gt;::base_t =  AnalyzeNextTrait</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="65" column="5" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait_1ab0cd542998fcda07694b0d8c222db54d" prot="public" static="no">
+        <type>WorkItemProp</type>
+        <definition>using Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait&lt; WorkItemProp, AnalyzeNextTrait &gt;::work_item_property =  WorkItemProp</definition>
+        <argsstring></argsstring>
+        <name>work_item_property</name>
+        <qualifiedname>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait::work_item_property</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="67" column="5" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AnalyzeNextTrait</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait&lt; WorkItemProp, AnalyzeNextTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AnalyzeNextTrait</label>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait&lt; WorkItemProp, AnalyzeNextTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="64" bodyend="68"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait_1a771f51396240b71abdd35af4ff482e0d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait</scope><name>base_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1mixin__matching__trait_1ab0cd542998fcda07694b0d8c222db54d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait::mixin_matching_trait</scope><name>work_item_property</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

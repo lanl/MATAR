@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1layout__iterate__type__selector_3_01_kokkos_1_1_layout_left_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1layout__iterate__type__selector_3_01_kokkos_1_1_layout_left_01_4_1adca922267f6fea7bc8b7e02d254c0cc8" prot="public" static="yes" mutable="no">
+        <type>const Kokkos::Iterate</type>
+        <definition>const Kokkos::Iterate Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;::outer_iteration_pattern</definition>
+        <argsstring></argsstring>
+        <name>outer_iteration_pattern</name>
+        <qualifiedname>Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;::outer_iteration_pattern</qualifiedname>
+        <initializer>= Kokkos::Iterate::Left</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="323" column="32" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1layout__iterate__type__selector_3_01_kokkos_1_1_layout_left_01_4_1a20e5af145e9393867230f3d58d2ec860" prot="public" static="yes" mutable="no">
+        <type>const Kokkos::Iterate</type>
+        <definition>const Kokkos::Iterate Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;::inner_iteration_pattern</definition>
+        <argsstring></argsstring>
+        <name>inner_iteration_pattern</name>
+        <qualifiedname>Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;::inner_iteration_pattern</qualifiedname>
+        <initializer>= Kokkos::Iterate::Left</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="324" column="32" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="322" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="322" bodyend="325"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1layout__iterate__type__selector_3_01_kokkos_1_1_layout_left_01_4_1a20e5af145e9393867230f3d58d2ec860" prot="public" virt="non-virtual"><scope>Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;</scope><name>inner_iteration_pattern</name></member>
+      <member refid="struct_kokkos_1_1layout__iterate__type__selector_3_01_kokkos_1_1_layout_left_01_4_1adca922267f6fea7bc8b7e02d254c0cc8" prot="public" virt="non-virtual"><scope>Kokkos::layout_iterate_type_selector&lt; Kokkos::LayoutLeft &gt;</scope><name>outer_iteration_pattern</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

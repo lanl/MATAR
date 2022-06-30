@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_three_val_report" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ThreeValReport</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename DataType1</type>
+      </param>
+      <param>
+        <type>typename DataType2</type>
+      </param>
+      <param>
+        <type>typename DataType3</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_three_val_report_1a7b365a53d4df06aded752e2c12199ffe" prot="public" static="no" mutable="no">
+        <type>DataType1</type>
+        <definition>DataType1 Test::ThreeValReport&lt; DataType1, DataType2, DataType3 &gt;::m_data1</definition>
+        <argsstring></argsstring>
+        <name>m_data1</name>
+        <qualifiedname>Test::ThreeValReport::m_data1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="63" column="13" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_three_val_report_1adef88d2cc765e2463fbfe763187a0c3a" prot="public" static="no" mutable="no">
+        <type>DataType2</type>
+        <definition>DataType2 Test::ThreeValReport&lt; DataType1, DataType2, DataType3 &gt;::m_data2</definition>
+        <argsstring></argsstring>
+        <name>m_data2</name>
+        <qualifiedname>Test::ThreeValReport::m_data2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="64" column="13" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_three_val_report_1a8a62ace9c8f6cf64a956d74c992c568a" prot="public" static="no" mutable="no">
+        <type>DataType3</type>
+        <definition>DataType3 Test::ThreeValReport&lt; DataType1, DataType2, DataType3 &gt;::m_data3</definition>
+        <argsstring></argsstring>
+        <name>m_data3</name>
+        <qualifiedname>Test::ThreeValReport::m_data3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="65" column="13" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="62" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="62" bodyend="66"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_three_val_report_1a7b365a53d4df06aded752e2c12199ffe" prot="public" virt="non-virtual"><scope>Test::ThreeValReport</scope><name>m_data1</name></member>
+      <member refid="struct_test_1_1_three_val_report_1adef88d2cc765e2463fbfe763187a0c3a" prot="public" virt="non-virtual"><scope>Test::ThreeValReport</scope><name>m_data2</name></member>
+      <member refid="struct_test_1_1_three_val_report_1a8a62ace9c8f6cf64a956d74c992c568a" prot="public" virt="non-virtual"><scope>Test::ThreeValReport</scope><name>m_data3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

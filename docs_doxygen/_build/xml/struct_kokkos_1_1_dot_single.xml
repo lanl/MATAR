@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_dot_single" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::DotSingle</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Type</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_dot_single_1ad4d813796d0f1aaecf0acb3e4fba4601" prot="public" static="no">
+        <type>typename Type::execution_space</type>
+        <definition>using Kokkos::DotSingle&lt; Type &gt;::execution_space =  typename Type::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::DotSingle::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="86" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_dot_single_1a52be432209db025281637227e0d43bd6" prot="public" static="no">
+        <type>double</type>
+        <definition>using Kokkos::DotSingle&lt; Type &gt;::value_type =  double</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::DotSingle::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="91" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_dot_single_1a67d9ca73228f19ba34244874b5323968" prot="public" static="no" mutable="no">
+        <type>Type::const_type</type>
+        <definition>Type::const_type Kokkos::DotSingle&lt; Type &gt;::X</definition>
+        <argsstring></argsstring>
+        <name>X</name>
+        <qualifiedname>Kokkos::DotSingle::X</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="94" column="29" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_dot_single_1a7a724f83f362c6034ab4a1ad2bb11d22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::DotSingle&lt; Type &gt;::DotSingle</definition>
+        <argsstring>(const Type &amp;arg_x)</argsstring>
+        <name>DotSingle</name>
+        <qualifiedname>Kokkos::DotSingle::DotSingle</qualifiedname>
+        <param>
+          <type>const Type &amp;</type>
+          <declname>arg_x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="99" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="99" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_dot_single_1a94a85d78c738c631e69461b6f118d589" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::DotSingle&lt; Type &gt;::operator()</definition>
+        <argsstring>(int i, value_type &amp;update) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DotSingle::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="102" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_dot_single_1aae8b0807caa1bd40d8edc63a3f8506da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::DotSingle&lt; Type &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;update, const volatile value_type &amp;source)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::DotSingle::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="108" column="15" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_dot_single_1aadeeb82bf5d91607a5f77280d5ab627e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::DotSingle&lt; Type &gt;::init</definition>
+        <argsstring>(value_type &amp;update)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::DotSingle::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="114" column="15" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="114" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" line="85" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestBlasKernels.hpp" bodystart="85" bodyend="115"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_dot_single_1a7a724f83f362c6034ab4a1ad2bb11d22" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>DotSingle</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1ad4d813796d0f1aaecf0acb3e4fba4601" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1aadeeb82bf5d91607a5f77280d5ab627e" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1aae8b0807caa1bd40d8edc63a3f8506da" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1a94a85d78c738c631e69461b6f118d589" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1a52be432209db025281637227e0d43bd6" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1a67d9ca73228f19ba34244874b5323968" prot="public" virt="non-virtual"><scope>Kokkos::DotSingle</scope><name>X</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

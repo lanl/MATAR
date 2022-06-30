@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_3_01_output_view_00_01typename_01std_1_1enable__if2d5581db340547f7ab839b68d7bfbbea" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::DynRankViewFill&lt; OutputView, typename std::enable_if&lt; OutputView::Rank==0 &gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class OutputView</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_3_01_output_view_00_01typename_01std_1_1enable__if2d5581db340547f7ab839b68d7bfbbea_1a4701f6d1e8e5ca50c8a02c5cbc8acbc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::DynRankViewFill&lt; OutputView, typename std::enable_if&lt; OutputView::Rank==0 &gt;::type &gt;::DynRankViewFill</definition>
+        <argsstring>(const OutputView &amp;dst, const typename OutputView::const_value_type &amp;src)</argsstring>
+        <name>DynRankViewFill</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill&lt; OutputView, typename std::enable_if&lt; OutputView::Rank==0 &gt;::type &gt;::DynRankViewFill</qualifiedname>
+        <param>
+          <type>const OutputView &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const typename OutputView::const_value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1623" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1623" bodyend="1628"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1621" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1622" bodyend="1629"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_3_01_output_view_00_01typename_01std_1_1enable__if2d5581db340547f7ab839b68d7bfbbea_1a4701f6d1e8e5ca50c8a02c5cbc8acbc3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill&lt; OutputView, typename std::enable_if&lt; OutputView::Rank==0 &gt;::type &gt;</scope><name>DynRankViewFill</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_fill_device" kind="struct" language="C++" prot="public">
+    <compoundname>FillDevice</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_fill_device_1a08649440e166f8acf0a89ce576c653f5" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double FillDevice::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>FillDevice::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="52" column="10" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_fill_device_1a82e94a552b5f0873e35cc170a6332faf" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt;</type>
+        <definition>Kokkos::View&lt;double*, Kokkos::LayoutLeft, Kokkos::CudaSpace&gt; FillDevice::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>FillDevice::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="53" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_fill_device_1ae93578fc36671c4761905fc06658d0a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FillDevice::FillDevice</definition>
+        <argsstring>(const double &amp;val, const Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaSpace &gt; &amp;d_a)</argsstring>
+        <name>FillDevice</name>
+        <qualifiedname>FillDevice::FillDevice</qualifiedname>
+        <param>
+          <type>const double &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt; &amp;</type>
+          <declname>d_a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="54" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_fill_device_1aec70d6f9fd77b11205367534b4f74e16" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void FillDevice::operator()</definition>
+        <argsstring>(const int &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FillDevice::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="60" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>FillDevice</label>
+        <link refid="struct_fill_device"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="51" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="51" bodyend="61"/>
+    <listofallmembers>
+      <member refid="struct_fill_device_1a82e94a552b5f0873e35cc170a6332faf" prot="public" virt="non-virtual"><scope>FillDevice</scope><name>a</name></member>
+      <member refid="struct_fill_device_1ae93578fc36671c4761905fc06658d0a9" prot="public" virt="non-virtual"><scope>FillDevice</scope><name>FillDevice</name></member>
+      <member refid="struct_fill_device_1aec70d6f9fd77b11205367534b4f74e16" prot="public" virt="non-virtual"><scope>FillDevice</scope><name>operator()</name></member>
+      <member refid="struct_fill_device_1a08649440e166f8acf0a89ce576c653f5" prot="public" virt="non-virtual"><scope>FillDevice</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

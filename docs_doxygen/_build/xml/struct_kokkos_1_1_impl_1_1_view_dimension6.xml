@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_dimension6" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewDimension6</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>V</declname>
+        <defname>V</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1a5fad0a31c87cd50680a54a780dc9ee67" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t Kokkos::Impl::ViewDimension6&lt; V, RD &gt;::ArgN6</definition>
+        <argsstring></argsstring>
+        <name>ArgN6</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::ArgN6</qualifiedname>
+        <initializer>= (V != KOKKOS_INVALID_INDEX ? V : 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="60" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1accc897c839519424c06aa1562d1bebbe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t Kokkos::Impl::ViewDimension6&lt; V, RD &gt;::N6</definition>
+        <argsstring></argsstring>
+        <name>N6</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::N6</qualifiedname>
+        <initializer>= (V != KOKKOS_INVALID_INDEX ? V : 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="94" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1a0616b3795e0b46eff6a1aa91b082a125" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewDimension6&lt; V, unsigned &gt;::ViewDimension6</definition>
+        <argsstring>(size_t)</argsstring>
+        <name>ViewDimension6</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::ViewDimension6</qualifiedname>
+        <param>
+          <type>size_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="133" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1ab651e92b649153711292713c8cf50401" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewDimension6&lt; V, unsigned &gt;::ViewDimension6</definition>
+        <argsstring>()=default</argsstring>
+        <name>ViewDimension6</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::ViewDimension6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="152"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1a9d7a7947da7c77e739bd615a67358122" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewDimension6&lt; V, unsigned &gt;::ViewDimension6</definition>
+        <argsstring>(const ViewDimension6 &amp;)=default</argsstring>
+        <name>ViewDimension6</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::ViewDimension6</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_dimension6" kindref="compound">ViewDimension6</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="180"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_dimension6_1a3769d63f699f76dfc22272b815ce5791" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_dimension6" kindref="compound">ViewDimension6</ref> &amp;</type>
+        <definition>ViewDimension6 &amp; Kokkos::Impl::ViewDimension6&lt; V, unsigned &gt;::operator=</definition>
+        <argsstring>(const ViewDimension6 &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension6::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_dimension6" kindref="compound">ViewDimension6</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="226"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="129" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="129" bodyend="129"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1a5fad0a31c87cd50680a54a780dc9ee67" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>ArgN6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1accc897c839519424c06aa1562d1bebbe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>N6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1a3769d63f699f76dfc22272b815ce5791" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1a0616b3795e0b46eff6a1aa91b082a125" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>ViewDimension6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1ab651e92b649153711292713c8cf50401" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>ViewDimension6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension6_1a9d7a7947da7c77e739bd615a67358122" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension6</scope><name>ViewDimension6</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

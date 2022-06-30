@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_run_gather" kind="struct" language="C++" prot="public">
+    <compoundname>RunGather</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>UNROLL</declname>
+        <defname>UNROLL</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_run_gather_1a2e1857b5d739385bf3d5a562d29b6446" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void RunGather&lt; Scalar, UNROLL &gt;::run</definition>
+        <argsstring>(int N, int K, int D, int R, int F)</argsstring>
+        <name>run</name>
+        <qualifiedname>RunGather::run</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>D</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>F</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/gather/gather.hpp" line="47" column="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/gather/gather.hpp" line="46" column="1" bodyfile="src/Kokkos/kokkos/benchmarks/gather/gather.hpp" bodystart="46" bodyend="48"/>
+    <listofallmembers>
+      <member refid="struct_run_gather_1a2e1857b5d739385bf3d5a562d29b6446" prot="public" virt="non-virtual"><scope>RunGather</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

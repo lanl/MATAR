@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_mapping_atomic" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewMappingAtomic</compoundname>
+    <innerclass refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_init" prot="public">Test::TestViewMappingAtomic::TagInit</innerclass>
+    <innerclass refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_update" prot="public">Test::TestViewMappingAtomic::TagUpdate</innerclass>
+    <innerclass refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_verify" prot="public">Test::TestViewMappingAtomic::TagVerify</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_mapping_atomic_1a45651291f1d15c9e4d96b6117bbe9e53" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@277</name>
+        <qualifiedname>Test::TestViewMappingAtomic::@277</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_mapping_atomic_1a45651291f1d15c9e4d96b6117bbe9e53a1a1062c1a566b22ff98d6dd624d24b5d" prot="public">
+          <name>N</name>
+          <initializer>= 100000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_atomic_1ab88a34fdf49a5944d8cd5da6bb23d0c1" prot="public" static="no">
+        <type>typename Space::execution_space</type>
+        <definition>using Test::TestViewMappingAtomic&lt; Space &gt;::ExecSpace =  typename Space::execution_space</definition>
+        <argsstring></argsstring>
+        <name>ExecSpace</name>
+        <qualifiedname>Test::TestViewMappingAtomic::ExecSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_atomic_1ac534fdc3b21f46596c418d1f4a8dcfc5" prot="public" static="no">
+        <type>typename Space::memory_space</type>
+        <definition>using Test::TestViewMappingAtomic&lt; Space &gt;::MemSpace =  typename Space::memory_space</definition>
+        <argsstring></argsstring>
+        <name>MemSpace</name>
+        <qualifiedname>Test::TestViewMappingAtomic::MemSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_atomic_1ab8f09eb2e9ec9b3849197f0be9a209b4" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt;</type>
+        <definition>using Test::TestViewMappingAtomic&lt; Space &gt;::mem_trait =  Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt;</definition>
+        <argsstring></argsstring>
+        <name>mem_trait</name>
+        <qualifiedname>Test::TestViewMappingAtomic::mem_trait</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_atomic_1a1e9716b6b12d2febf72a0f90bb7440c6" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingAtomic&lt; Space &gt;::T =  Kokkos::View&lt;int *, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>T</name>
+        <qualifiedname>Test::TestViewMappingAtomic::T</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_atomic_1ac5bce790a3522d21a682030d34d1c8af" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, ExecSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">mem_trait</ref> &gt;</type>
+        <definition>using Test::TestViewMappingAtomic&lt; Space &gt;::T_atom =  Kokkos::View&lt;int *, ExecSpace, mem_trait&gt;</definition>
+        <argsstring></argsstring>
+        <name>T_atom</name>
+        <qualifiedname>Test::TestViewMappingAtomic::T_atom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="65" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_atomic_1ae8537791894e2993105612e781d12f1b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">T</ref></type>
+        <definition>T Test::TestViewMappingAtomic&lt; Space &gt;::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>Test::TestViewMappingAtomic::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="67" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_atomic_1a906a7293f141b7d626fed30bf9b54002" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">T_atom</ref></type>
+        <definition>T_atom Test::TestViewMappingAtomic&lt; Space &gt;::x_atom</definition>
+        <argsstring></argsstring>
+        <name>x_atom</name>
+        <qualifiedname>Test::TestViewMappingAtomic::x_atom</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="68" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_atomic_1abbc9bd6d6f0f15b13d167c3f6176d3e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMappingAtomic&lt; Space &gt;::operator()</definition>
+        <argsstring>(const TagInit &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewMappingAtomic::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_init" kindref="compound">TagInit</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="77" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_atomic_1a912b463e62e9245de298024bc63f3588" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMappingAtomic&lt; Space &gt;::operator()</definition>
+        <argsstring>(const TagUpdate &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewMappingAtomic::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_update" kindref="compound">TagUpdate</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="80" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_atomic_1a925a132c72bc877575e9bcc34b64f3bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMappingAtomic&lt; Space &gt;::operator()</definition>
+        <argsstring>(const TagVerify &amp;, const int i, long &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewMappingAtomic::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_mapping_atomic_1_1_tag_verify" kindref="compound">TagVerify</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="83" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="83" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_atomic_1a75085d5be4a0a0eb04433a5821c0e2a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewMappingAtomic&lt; Space &gt;::TestViewMappingAtomic</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewMappingAtomic</name>
+        <qualifiedname>Test::TestViewMappingAtomic::TestViewMappingAtomic</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="91" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_atomic_1a0618d6d270d9b11e781d488891cc0ee0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestViewMappingAtomic&lt; Space &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewMappingAtomic::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="93" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="93" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewMappingAtomic&lt; Space &gt;</label>
+        <link refid="struct_test_1_1_test_view_mapping_atomic"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>x</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>x_atom</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int *, ExecSpace, mem_trait &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_b.hpp" bodystart="58" bodyend="127"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1ab88a34fdf49a5944d8cd5da6bb23d0c1" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>ExecSpace</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1ab8f09eb2e9ec9b3849197f0be9a209b4" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>mem_trait</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1ac534fdc3b21f46596c418d1f4a8dcfc5" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>MemSpace</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a45651291f1d15c9e4d96b6117bbe9e53a1a1062c1a566b22ff98d6dd624d24b5d" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1abbc9bd6d6f0f15b13d167c3f6176d3e7" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a912b463e62e9245de298024bc63f3588" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a925a132c72bc877575e9bcc34b64f3bc" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a0618d6d270d9b11e781d488891cc0ee0" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a1e9716b6b12d2febf72a0f90bb7440c6" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>T</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1ac5bce790a3522d21a682030d34d1c8af" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>T_atom</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a75085d5be4a0a0eb04433a5821c0e2a2" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>TestViewMappingAtomic</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1ae8537791894e2993105612e781d12f1b" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>x</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_atomic_1a906a7293f141b7d626fed30bf9b54002" prot="public" virt="non-virtual"><scope>Test::TestViewMappingAtomic</scope><name>x_atom</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

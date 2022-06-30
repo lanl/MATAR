@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_performance" kind="namespace" language="C++">
+    <compoundname>Performance</compoundname>
+    <innerclass refid="struct_performance_1_1fill__map" prot="public">Performance::fill_map</innerclass>
+    <innerclass refid="struct_performance_1_1find__test" prot="public">Performance::find_test</innerclass>
+    <innerclass refid="struct_performance_1_1generate__ids" prot="public">Performance::generate_ids</innerclass>
+    <innerclass refid="union_performance_1_1helper" prot="public">Performance::helper</innerclass>
+    <innerclass refid="struct_performance_1_1_init_dyn_rank_view_functor" prot="public">Performance::InitDynRankViewFunctor</innerclass>
+    <innerclass refid="struct_performance_1_1_init_stride_view_functor" prot="public">Performance::InitStrideViewFunctor</innerclass>
+    <innerclass refid="struct_performance_1_1_init_view_functor" prot="public">Performance::InitViewFunctor</innerclass>
+    <innerclass refid="struct_performance_1_1_init_view_rank7_functor" prot="public">Performance::InitViewRank7Functor</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_test_global2_local_ids_8hpp_1a0c38102c94d5bd298386f897bb980e43" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned Performance::begin_id_size</definition>
+        <argsstring></argsstring>
+        <name>begin_id_size</name>
+        <qualifiedname>Performance::begin_id_size</qualifiedname>
+        <initializer>= 256u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="57" column="23" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_global2_local_ids_8hpp_1aa48d7b0f1596ae569b1e2ab3379cbe7e" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned Performance::end_id_size</definition>
+        <argsstring></argsstring>
+        <name>end_id_size</name>
+        <qualifiedname>Performance::end_id_size</qualifiedname>
+        <initializer>= 1u &lt;&lt; 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="58" column="23" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_test_global2_local_ids_8hpp_1ac030839caf79e435b165f80a4eb9f92c" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned Performance::id_step</definition>
+        <argsstring></argsstring>
+        <name>id_step</name>
+        <qualifiedname>Performance::id_step</qualifiedname>
+        <initializer>= 2u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="59" column="23" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_cuda_8cpp_1a0792836f775ab724c0a48ea32a24078d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(TEST_CATEGORY, dynrankview_perf)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>TEST_CATEGORY</type>
+        </param>
+        <param>
+          <type>dynrankview_perf</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" line="68" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" bodystart="68" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_cuda_8cpp_1a2ef2c7995b5d0894e7205639bf8d830f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(TEST_CATEGORY, global_2_local)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>TEST_CATEGORY</type>
+        </param>
+        <param>
+          <type>global_2_local</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" line="74" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" bodystart="74" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_cuda_8cpp_1a002d4d96abeec83428522df3c5ad8acc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(TEST_CATEGORY, unordered_map_performance_near)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>TEST_CATEGORY</type>
+        </param>
+        <param>
+          <type>unordered_map_performance_near</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" line="82" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_cuda_8cpp_1adb608e9276af321cdc4456dc5cb197db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(TEST_CATEGORY, unordered_map_performance_far)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>TEST_CATEGORY</type>
+        </param>
+        <param>
+          <type>unordered_map_performance_far</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" line="86" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_dyn_rank_view_8hpp_1a59f309b534543ecbe1a951e3c74d07a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DeviceType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Performance::test_dynrankview_op_perf</definition>
+        <argsstring>(const int par_size)</argsstring>
+        <name>test_dynrankview_op_perf</name>
+        <qualifiedname>Performance::test_dynrankview_op_perf</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>par_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="171" column="6" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="171" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_global2_local_ids_8hpp_1a81a774ef94126107d1365eafc22831d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Device</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Performance::test_global_to_local_ids</definition>
+        <argsstring>(unsigned num_ids)</argsstring>
+        <name>test_global_to_local_ids</name>
+        <qualifiedname>Performance::test_global_to_local_ids</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>num_ids</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="156" column="6" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="156" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_h_p_x_8cpp_1ad0828ee5f722056903e67c1e60118287" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(TEST_CATEGORY, scatter_view)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>TEST_CATEGORY</type>
+        </param>
+        <param>
+          <type>scatter_view</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestHPX.cpp" line="96" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestHPX.cpp" bodystart="96" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_threads_8cpp_1ae5ca991dabb883c094c65dd515ddbf20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(threads, dynrankview_perf)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>threads</type>
+        </param>
+        <param>
+          <type>dynrankview_perf</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" line="67" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_threads_8cpp_1ad5820485714c7d347dd218506def679c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(threads, global_2_local)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>threads</type>
+        </param>
+        <param>
+          <type>global_2_local</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" line="73" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_threads_8cpp_1a1ff9c45cddb146fd484061915feceee0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(threads, unordered_map_performance_near)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>threads</type>
+        </param>
+        <param>
+          <type>unordered_map_performance_near</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" line="81" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" bodystart="81" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_threads_8cpp_1a05d5348fef66e2e83405c63a9995a79c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Performance::TEST</definition>
+        <argsstring>(threads, unordered_map_performance_far)</argsstring>
+        <name>TEST</name>
+        <qualifiedname>Performance::TEST</qualifiedname>
+        <param>
+          <type>threads</type>
+        </param>
+        <param>
+          <type>unordered_map_performance_far</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" line="93" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestThreads.cpp" bodystart="93" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/performance_tests/TestCuda.cpp" line="66" column="1"/>
+  </compounddef>
+</doxygen>

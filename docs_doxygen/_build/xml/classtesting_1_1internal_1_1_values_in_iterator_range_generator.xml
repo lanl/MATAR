@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_values_in_iterator_range_generator" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::ValuesInIteratorRangeGenerator</compoundname>
+    <basecompoundref refid="classtesting_1_1internal_1_1_param_generator_interface" prot="public" virt="non-virtual">testing::internal::ParamGeneratorInterface&lt; T &gt;</basecompoundref>
+    <basecompoundref refid="classtesting_1_1internal_1_1_param_generator_interface" prot="public" virt="non-virtual">testing::internal::ParamGeneratorInterface&lt; T &gt;</basecompoundref>
+    <innerclass refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1_1_iterator" prot="private">testing::internal::ValuesInIteratorRangeGenerator::Iterator</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1afab6b799a125b471a8784ced9cf7335c" prot="private" static="no">
+        <type>::std::vector&lt; T &gt;</type>
+        <definition>typedef ::std::vector&lt;T&gt; testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::ContainerType</definition>
+        <argsstring></argsstring>
+        <name>ContainerType</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::ContainerType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10286" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1afab6b799a125b471a8784ced9cf7335c" prot="private" static="no">
+        <type>::std::vector&lt; T &gt;</type>
+        <definition>typedef ::std::vector&lt;T&gt; testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::ContainerType</definition>
+        <argsstring></argsstring>
+        <name>ContainerType</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::ContainerType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10286" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10286" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ad2701e9149384e64b1b98da5d31eb7a4" prot="private" static="no" mutable="no">
+        <type>const ContainerType</type>
+        <definition>const ContainerType testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::container_</definition>
+        <argsstring></argsstring>
+        <name>container_</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::container_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10348" column="23" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10348" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a8b30f6028bc5739bbd7c24b0f0e409f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ForwardIterator</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::ValuesInIteratorRangeGenerator</definition>
+        <argsstring>(ForwardIterator begin, ForwardIterator end)</argsstring>
+        <name>ValuesInIteratorRangeGenerator</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::ValuesInIteratorRangeGenerator</qualifiedname>
+        <param>
+          <type>ForwardIterator</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>ForwardIterator</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10274" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10274" bodyend="10275"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab921d9574baa83a8d081f05aa2ebeaa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::~ValuesInIteratorRangeGenerator</definition>
+        <argsstring>()</argsstring>
+        <name>~ValuesInIteratorRangeGenerator</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::~ValuesInIteratorRangeGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10276" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10276" bodyend="10276"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a24a931911c98f9171d97fb47366b8d94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; T &gt; * testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::Begin</definition>
+        <argsstring>() const</argsstring>
+        <name>Begin</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::Begin</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_param_generator_interface_1adcb074da01e5fac94fcbbc3aee629978">Begin</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10278" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10278" bodyend="10280"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a839582dbcdaffecbca16fcaef629d392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; T &gt; * testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::End</definition>
+        <argsstring>() const</argsstring>
+        <name>End</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::End</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_param_generator_interface_1a070e0a223d832886685522075d80304f">End</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10281" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10281" bodyend="10283"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a8b30f6028bc5739bbd7c24b0f0e409f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ForwardIterator</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::ValuesInIteratorRangeGenerator</definition>
+        <argsstring>(ForwardIterator begin, ForwardIterator end)</argsstring>
+        <name>ValuesInIteratorRangeGenerator</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::ValuesInIteratorRangeGenerator</qualifiedname>
+        <param>
+          <type>ForwardIterator</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>ForwardIterator</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10274" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10274" bodyend="10275"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab921d9574baa83a8d081f05aa2ebeaa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::~ValuesInIteratorRangeGenerator</definition>
+        <argsstring>()</argsstring>
+        <name>~ValuesInIteratorRangeGenerator</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::~ValuesInIteratorRangeGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10276" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10276" bodyend="10276"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a24a931911c98f9171d97fb47366b8d94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; T &gt; * testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::Begin</definition>
+        <argsstring>() const</argsstring>
+        <name>Begin</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::Begin</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_param_generator_interface_1adcb074da01e5fac94fcbbc3aee629978">Begin</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10278" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10278" bodyend="10280"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a839582dbcdaffecbca16fcaef629d392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; T &gt; * testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::End</definition>
+        <argsstring>() const</argsstring>
+        <name>End</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::End</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_param_generator_interface_1a070e0a223d832886685522075d80304f">End</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10281" column="34" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10281" bodyend="10283"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab43e1feff118f5be232ae1b85d539dd1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::operator=</definition>
+        <argsstring>(const ValuesInIteratorRangeGenerator &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator" kindref="compound">ValuesInIteratorRangeGenerator</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10346" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab43e1feff118f5be232ae1b85d539dd1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;::operator=</definition>
+        <argsstring>(const ValuesInIteratorRangeGenerator &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ValuesInIteratorRangeGenerator::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator" kindref="compound">ValuesInIteratorRangeGenerator</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10346" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::internal::ParamGeneratorInterface&lt; T &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_param_generator_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::internal::ParamGeneratorInterface&lt; T &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_param_generator_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::ValuesInIteratorRangeGenerator&lt; T &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10271" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10271" bodyend="10349"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a24a931911c98f9171d97fb47366b8d94" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>Begin</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a24a931911c98f9171d97fb47366b8d94" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>Begin</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ad2701e9149384e64b1b98da5d31eb7a4" prot="private" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>container_</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1afab6b799a125b471a8784ced9cf7335c" prot="private" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ContainerType</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1afab6b799a125b471a8784ced9cf7335c" prot="private" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ContainerType</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a839582dbcdaffecbca16fcaef629d392" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>End</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a839582dbcdaffecbca16fcaef629d392" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>End</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab43e1feff118f5be232ae1b85d539dd1" prot="private" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab43e1feff118f5be232ae1b85d539dd1" prot="private" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_generator_interface_1ab33d2ea424c50beaf503cb125b3cd003" prot="public" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ParamType</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_generator_interface_1ab33d2ea424c50beaf503cb125b3cd003" prot="public" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ParamType</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a8b30f6028bc5739bbd7c24b0f0e409f7" prot="public" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ValuesInIteratorRangeGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1a8b30f6028bc5739bbd7c24b0f0e409f7" prot="public" virt="non-virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>ValuesInIteratorRangeGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_generator_interface_1ac2767cb9ad2e292e291c4903323c6eff" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>~ParamGeneratorInterface</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_generator_interface_1ac2767cb9ad2e292e291c4903323c6eff" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>~ParamGeneratorInterface</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab921d9574baa83a8d081f05aa2ebeaa4" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>~ValuesInIteratorRangeGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_values_in_iterator_range_generator_1ab921d9574baa83a8d081f05aa2ebeaa4" prot="public" virt="virtual"><scope>testing::internal::ValuesInIteratorRangeGenerator</scope><name>~ValuesInIteratorRangeGenerator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

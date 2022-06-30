@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacesnapshot" kind="namespace" language="Python">
+    <compoundname>snapshot</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacesnapshot_1ae4c339984432f68d934b740e4ffcb07a" prot="public" static="no" mutable="no">
+        <type>def</type>
+        <definition>def snapshot.options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <qualifiedname>snapshot.options</qualifiedname>
+        <initializer>=  parse_cmdline(__doc__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="283" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacesnapshot_1abcd220dc10531c9cff28dc88c19068f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.parse_cmdline</definition>
+        <argsstring>(description)</argsstring>
+        <name>parse_cmdline</name>
+        <qualifiedname>snapshot.parse_cmdline</qualifiedname>
+        <param>
+          <type>description</type>
+          <defname>description</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="27" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="27" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1aa13bcbbc8e7ad25f1e50148fd676bfce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.validate_options</definition>
+        <argsstring>(options)</argsstring>
+        <name>validate_options</name>
+        <qualifiedname>snapshot.validate_options</qualifiedname>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="53" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="53" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1a70a4229d7d54a2f23100f4f9fc7d8ad3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.run_cmd</definition>
+        <argsstring>(cmd, options, working_dir=&quot;.&quot;)</argsstring>
+        <name>run_cmd</name>
+        <qualifiedname>snapshot.run_cmd</qualifiedname>
+        <param>
+          <type>cmd</type>
+          <defname>cmd</defname>
+        </param>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <param>
+          <type>working_dir</type>
+          <defname>working_dir</defname>
+          <defval>&quot;.&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="100" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="100" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1abd8b66dab78ecfa9496ebc64981035ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.determine_repo_type</definition>
+        <argsstring>(location)</argsstring>
+        <name>determine_repo_type</name>
+        <qualifiedname>snapshot.determine_repo_type</qualifiedname>
+        <param>
+          <type>location</type>
+          <defname>location</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="124" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="124" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1a2be13db10a5f72d160b297a3370576a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.rsync</definition>
+        <argsstring>(source, dest, options)</argsstring>
+        <name>rsync</name>
+        <qualifiedname>snapshot.rsync</qualifiedname>
+        <param>
+          <type>source</type>
+          <defname>source</defname>
+        </param>
+        <param>
+          <type>dest</type>
+          <defname>dest</defname>
+        </param>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="140" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="140" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1ab819fc25278164197c67e3ba58c49e1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.create_commit_message</definition>
+        <argsstring>(commit_id, commit_log, project_name, project_location)</argsstring>
+        <name>create_commit_message</name>
+        <qualifiedname>snapshot.create_commit_message</qualifiedname>
+        <param>
+          <type>commit_id</type>
+          <defname>commit_id</defname>
+        </param>
+        <param>
+          <type>commit_log</type>
+          <defname>commit_log</defname>
+        </param>
+        <param>
+          <type>project_name</type>
+          <defname>project_name</defname>
+        </param>
+        <param>
+          <type>project_location</type>
+          <defname>project_location</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="170" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="170" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1ad751193afadbc4e24b79f974e1853252" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.find_git_commit_information</definition>
+        <argsstring>(options)</argsstring>
+        <name>find_git_commit_information</name>
+        <qualifiedname>snapshot.find_git_commit_information</qualifiedname>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>&gt;&gt;&gt; class fake_options:
+...   source=&quot;.&quot;
+...   verbose_mode=False
+...   debug_mode=False
+&gt;&gt;&gt; myoptions = fake_options()
+&gt;&gt;&gt; find_git_commit_information(myoptions)[2:]
+(&apos;sems&apos;, &apos;software.sandia.gov:/git/sems&apos;)
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="181" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="181" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1ac07dbfb2084140296aa61e3a8ca8a5ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.do_git_commit</definition>
+        <argsstring>(message, options)</argsstring>
+        <name>do_git_commit</name>
+        <qualifiedname>snapshot.do_git_commit</qualifiedname>
+        <param>
+          <type>message</type>
+          <defname>message</defname>
+        </param>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="215" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="215" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1a06a114770fa5fd11de388e3f7b186c88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.verify_git_repo_clean</definition>
+        <argsstring>(location, options)</argsstring>
+        <name>verify_git_repo_clean</name>
+        <qualifiedname>snapshot.verify_git_repo_clean</qualifiedname>
+        <param>
+          <type>location</type>
+          <defname>location</defname>
+        </param>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="231" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="231" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacesnapshot_1a2300e4b79edf3c786b0e6c9249a6a368" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def snapshot.main</definition>
+        <argsstring>(options)</argsstring>
+        <name>main</name>
+        <qualifiedname>snapshot.main</qualifiedname>
+        <param>
+          <type>options</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="245" column="1" bodyfile="src/Kokkos/kokkos/scripts/snapshot.py" bodystart="245" bodyend="276"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>Snapshot a project into another project and perform the necessary repo actions
+to provide a commit message that can be used to trace back to the exact point
+in the source repository.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/scripts/snapshot.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

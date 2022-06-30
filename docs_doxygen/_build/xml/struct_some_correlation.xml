@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_some_correlation" kind="struct" language="C++" prot="public">
+    <compoundname>SomeCorrelation</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_some_correlation_1ad641d791823eb12b0054ca127c828851" prot="public" static="no">
+        <type>int</type>
+        <definition>using SomeCorrelation::value_type =  int</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>SomeCorrelation::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_some_correlation_1a0ac3afa9ae1f7cf46b4ebea8b2264394" prot="public" static="no">
+        <type>Kokkos::DefaultExecutionSpace::scratch_memory_space</type>
+        <definition>using SomeCorrelation::shared_space =  Kokkos::DefaultExecutionSpace::scratch_memory_space</definition>
+        <argsstring></argsstring>
+        <name>shared_space</name>
+        <qualifiedname>SomeCorrelation::shared_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="67" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_some_correlation_1a952200e0ed3c8fbb0a77f2d35b65ee33" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, shared_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryUnmanaged</ref> &gt;</type>
+        <definition>using SomeCorrelation::shared_1d_int =  Kokkos::View&lt;int*, shared_space, Kokkos::MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>shared_1d_int</name>
+        <qualifiedname>SomeCorrelation::shared_1d_int</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_some_correlation_1a3d8b94e8a4b69d7443757d40577b3270" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const int ***, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref> &gt;</type>
+        <definition>Kokkos::View&lt;const int***, Kokkos::LayoutRight&gt; SomeCorrelation::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>SomeCorrelation::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="71" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_some_correlation_1aa4d97e5fa2bbde1756e350b496c3f8e3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int &gt;</type>
+        <definition>Kokkos::View&lt;int&gt; SomeCorrelation::gsum</definition>
+        <argsstring></argsstring>
+        <name>gsum</name>
+        <qualifiedname>SomeCorrelation::gsum</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="72" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_some_correlation_1a16c65b00490bf67d273753e0bdb686b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SomeCorrelation::SomeCorrelation</definition>
+        <argsstring>(Kokkos::View&lt; int ***, Kokkos::LayoutRight &gt; data_in, Kokkos::View&lt; int &gt; sum)</argsstring>
+        <name>SomeCorrelation</name>
+        <qualifiedname>SomeCorrelation::SomeCorrelation</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref> &gt;</type>
+          <declname>data_in</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int &gt;</type>
+          <declname>sum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_some_correlation_1af92940802984853c13cf2f0a3b72d439" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void SomeCorrelation::operator()</definition>
+        <argsstring>(const team_member &amp;thread) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>SomeCorrelation::operator()</qualifiedname>
+        <param>
+          <type>const team_member &amp;</type>
+          <declname>thread</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="79" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="79" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_some_correlation_1adb4380efe370600cfa78379c1050916e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t SomeCorrelation::team_shmem_size</definition>
+        <argsstring>(int) const</argsstring>
+        <name>team_shmem_size</name>
+        <qualifiedname>SomeCorrelation::team_shmem_size</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="139" column="10" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="139" bodyend="141"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>SomeCorrelation</label>
+        <link refid="struct_some_correlation"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>gsum</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; const int ***, Kokkos::LayoutRight &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; int &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; const int ***, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" line="65" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Hierarchical_Parallelism/03_vectorization/vectorization.cpp" bodystart="65" bodyend="142"/>
+    <listofallmembers>
+      <member refid="struct_some_correlation_1a3d8b94e8a4b69d7443757d40577b3270" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>data</name></member>
+      <member refid="struct_some_correlation_1aa4d97e5fa2bbde1756e350b496c3f8e3" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>gsum</name></member>
+      <member refid="struct_some_correlation_1af92940802984853c13cf2f0a3b72d439" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>operator()</name></member>
+      <member refid="struct_some_correlation_1a952200e0ed3c8fbb0a77f2d35b65ee33" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>shared_1d_int</name></member>
+      <member refid="struct_some_correlation_1a0ac3afa9ae1f7cf46b4ebea8b2264394" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>shared_space</name></member>
+      <member refid="struct_some_correlation_1a16c65b00490bf67d273753e0bdb686b2" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>SomeCorrelation</name></member>
+      <member refid="struct_some_correlation_1adb4380efe370600cfa78379c1050916e" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>team_shmem_size</name></member>
+      <member refid="struct_some_correlation_1ad641d791823eb12b0054ca127c828851" prot="public" virt="non-virtual"><scope>SomeCorrelation</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

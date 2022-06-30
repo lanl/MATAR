@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_performance_1_1_init_dyn_rank_view_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Performance::InitDynRankViewFunctor</compoundname>
+    <innerclass refid="struct_performance_1_1_init_dyn_rank_view_functor_1_1_sum_computation_test" prot="public">Performance::InitDynRankViewFunctor::SumComputationTest</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_performance_1_1_init_dyn_rank_view_functor_1a60dbacc773aed364802bcfcd8f00be78" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">Kokkos::DynRankView</ref>&lt; double, DeviceType &gt;</type>
+        <definition>using Performance::InitDynRankViewFunctor&lt; DeviceType &gt;::inviewtype =  Kokkos::DynRankView&lt;double, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>inviewtype</name>
+        <qualifiedname>Performance::InitDynRankViewFunctor::inviewtype</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="134" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_performance_1_1_init_dyn_rank_view_functor_1a196130b708abebf3c16ce6d6813b7eb9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">inviewtype</ref></type>
+        <definition>inviewtype Performance::InitDynRankViewFunctor&lt; DeviceType &gt;::_inview</definition>
+        <argsstring></argsstring>
+        <name>_inview</name>
+        <qualifiedname>Performance::InitDynRankViewFunctor::_inview</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="135" column="14" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_performance_1_1_init_dyn_rank_view_functor_1a3acfcedfd9b01d7bbc384cb59d5bac7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Performance::InitDynRankViewFunctor&lt; DeviceType &gt;::InitDynRankViewFunctor</definition>
+        <argsstring>(inviewtype &amp;inview_)</argsstring>
+        <name>InitDynRankViewFunctor</name>
+        <qualifiedname>Performance::InitDynRankViewFunctor::InitDynRankViewFunctor</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">inviewtype</ref> &amp;</type>
+          <declname>inview_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="137" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="137" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_performance_1_1_init_dyn_rank_view_functor_1ada7042a7d08fb7f16cfe9917cd75f601" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Performance::InitDynRankViewFunctor&lt; DeviceType &gt;::operator()</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Performance::InitDynRankViewFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="140" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="140" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::DynRankView&lt; double, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_dyn_rank_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Performance::InitDynRankViewFunctor&lt; DeviceType &gt;</label>
+        <link refid="struct_performance_1_1_init_dyn_rank_view_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_inview</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" line="133" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestDynRankView.hpp" bodystart="133" bodyend="168"/>
+    <listofallmembers>
+      <member refid="struct_performance_1_1_init_dyn_rank_view_functor_1a196130b708abebf3c16ce6d6813b7eb9" prot="public" virt="non-virtual"><scope>Performance::InitDynRankViewFunctor</scope><name>_inview</name></member>
+      <member refid="struct_performance_1_1_init_dyn_rank_view_functor_1a3acfcedfd9b01d7bbc384cb59d5bac7d" prot="public" virt="non-virtual"><scope>Performance::InitDynRankViewFunctor</scope><name>InitDynRankViewFunctor</name></member>
+      <member refid="struct_performance_1_1_init_dyn_rank_view_functor_1a60dbacc773aed364802bcfcd8f00be78" prot="public" virt="non-virtual"><scope>Performance::InitDynRankViewFunctor</scope><name>inviewtype</name></member>
+      <member refid="struct_performance_1_1_init_dyn_rank_view_functor_1ada7042a7d08fb7f16cfe9917cd75f601" prot="public" virt="non-virtual"><scope>Performance::InitDynRankViewFunctor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

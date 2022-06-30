@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_82572cbfd4af573294d5e536b7b28e2a" kind="dir">
+    <compoundname>src/Kokkos/kokkos/containers/src/impl</compoundname>
+    <innerfile refid="_kokkos___bitset__impl_8hpp">Kokkos_Bitset_impl.hpp</innerfile>
+    <innerfile refid="_kokkos___functional__impl_8hpp">Kokkos_Functional_impl.hpp</innerfile>
+    <innerfile refid="_kokkos___static_crs_graph__factory_8hpp">Kokkos_StaticCrsGraph_factory.hpp</innerfile>
+    <innerfile refid="_kokkos___unordered_map__impl_8cpp">Kokkos_UnorderedMap_impl.cpp</innerfile>
+    <innerfile refid="_kokkos___unordered_map__impl_8hpp">Kokkos_UnorderedMap_impl.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/impl/"/>
+  </compounddef>
+</doxygen>

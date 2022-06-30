@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_test_team_vector" kind="namespace" language="C++">
+    <compoundname>TestTeamVector</compoundname>
+    <innerclass refid="struct_test_team_vector_1_1functor__reduce" prot="public">TestTeamVector::functor_reduce</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__for" prot="public">TestTeamVector::functor_team_for</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__reduce" prot="public">TestTeamVector::functor_team_reduce</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__reduce__reducer" prot="public">TestTeamVector::functor_team_reduce_reducer</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__vector__for" prot="public">TestTeamVector::functor_team_vector_for</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__vector__reduce" prot="public">TestTeamVector::functor_team_vector_reduce</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__team__vector__reduce__reducer" prot="public">TestTeamVector::functor_team_vector_reduce_reducer</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__vec__for" prot="public">TestTeamVector::functor_vec_for</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__vec__red" prot="public">TestTeamVector::functor_vec_red</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__vec__red__reducer" prot="public">TestTeamVector::functor_vec_red_reducer</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__vec__scan" prot="public">TestTeamVector::functor_vec_scan</innerclass>
+    <innerclass refid="struct_test_team_vector_1_1functor__vec__single" prot="public">TestTeamVector::functor_vec_single</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_test_team_vector_8hpp_1a8d0eb273bab4950bd1d456c11791893c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Scalar</type>
+          </param>
+          <param>
+            <type>class ExecutionSpace</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool TestTeamVector::test_scalar</definition>
+        <argsstring>(int nteams, int team_size, int test)</argsstring>
+        <name>test_scalar</name>
+        <qualifiedname>TestTeamVector::test_scalar</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>nteams</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="661" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="661" bodyend="720"/>
+      </memberdef>
+      <memberdef kind="function" id="_test_team_vector_8hpp_1adb4ad2fb5c050de7a53bf14828f120b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ExecutionSpace</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool TestTeamVector::Test</definition>
+        <argsstring>(int test)</argsstring>
+        <name>Test</name>
+        <qualifiedname>TestTeamVector::Test</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="723" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="723" bodyend="749"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="54" column="1"/>
+  </compounddef>
+</doxygen>

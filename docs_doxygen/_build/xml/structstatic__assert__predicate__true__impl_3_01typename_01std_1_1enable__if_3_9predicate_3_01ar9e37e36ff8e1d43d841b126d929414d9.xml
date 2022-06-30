@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structstatic__assert__predicate__true__impl_3_01typename_01std_1_1enable__if_3_9predicate_3_01ar9e37e36ff8e1d43d841b126d929414d9" kind="struct" language="C++" prot="public">
+    <compoundname>static_assert_predicate_true_impl&lt; typename std::enable_if&lt;!predicate&lt; args... &gt;::type::value &gt;::type, predicate, static_predicate_message&lt; message... &gt;, args... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>predicate</declname>
+        <defname>predicate</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>message</declname>
+        <defname>message</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>args</declname>
+        <defname>args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structstatic__assert__predicate__true__impl_3_01typename_01std_1_1enable__if_3_9predicate_3_01ar9e37e36ff8e1d43d841b126d929414d9_1ad51b6328d3cc1b2787eb8f314aeba7a3" prot="public" static="no">
+        <type>typename <ref refid="struct__kokkos________________________________________static__test__failure__________" kindref="compound">_kokkos____________________static_test_failure_____</ref>&lt; message... &gt;::type</type>
+        <definition>using static_assert_predicate_true_impl&lt; typename std::enable_if&lt;!predicate&lt; args... &gt;::type::value &gt;::type, predicate, static_predicate_message&lt; message... &gt;, args... &gt;::type =  typename _kokkos____________________static_test_failure_____&lt; message...&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>static_assert_predicate_true_impl&lt; typename std::enable_if&lt;!predicate&lt; args... &gt;::type::value &gt;::type, predicate, static_predicate_message&lt; message... &gt;, args... &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="80" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="77" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="79" bodyend="82"/>
+    <listofallmembers>
+      <member refid="structstatic__assert__predicate__true__impl_3_01typename_01std_1_1enable__if_3_9predicate_3_01ar9e37e36ff8e1d43d841b126d929414d9_1ad51b6328d3cc1b2787eb8f314aeba7a3" prot="public" virt="non-virtual"><scope>static_assert_predicate_true_impl&lt; typename std::enable_if&lt;!predicate&lt; args... &gt;::type::value &gt;::type, predicate, static_predicate_message&lt; message... &gt;, args... &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewCtorProp</compoundname>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1_1_v_o_i_d_d_u_m_m_y" prot="private">Kokkos::Impl::ViewCtorProp::VOIDDUMMY</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>P</declname>
+        <defname>P</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a513ab427058fddaa490f961e855f092c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@105</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@105</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a513ab427058fddaa490f961e855f092ca34777aa830237481775aea9cf67cbc73" prot="public">
+          <name>has_memory_space</name>
+          <initializer>= var_memory_space::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="222" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aa9218ea157e1265ae9820359ac040bc4" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@106</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@106</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aa9218ea157e1265ae9820359ac040bc4a6c8281cea2a29bf29d54c12a50ad1c3d" prot="public">
+          <name>has_execution_space</name>
+          <initializer>= var_execution_space::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="223" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a14d1704556cd0f81ef878983e1254988" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@107</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@107</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a14d1704556cd0f81ef878983e1254988a8c69b30eadaaa2e3f60b6089903df879" prot="public">
+          <name>has_pointer</name>
+          <initializer>= var_pointer::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="224" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ae3da91ea1e3485e7ecefad94237d2e08" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@108</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@108</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ae3da91ea1e3485e7ecefad94237d2e08a5a24aacd01c51741bd694ca089e61d69" prot="public">
+          <name>has_label</name>
+          <initializer>= Kokkos::Impl::has_type&lt;std::string, P...&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="225" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a79a367a434ecee73f9ec5bbc2f9ef04c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@109</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@109</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a79a367a434ecee73f9ec5bbc2f9ef04caa127f4735e43ec789a00d7bc2cc5d6f5" prot="public">
+          <name>allow_padding</name>
+          <initializer>= Kokkos::Impl::has_type&lt;AllowPadding_t, P...&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="226" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1af560ef8206e8ff264f26cb7588078482" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@110</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::@110</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1af560ef8206e8ff264f26cb7588078482ab64400f21f60437c47070063809ba7c4" prot="public">
+          <name>initialize</name>
+          <initializer>= !Kokkos::Impl::has_type&lt;WithoutInitializing_t, P...&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="227" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="227" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a9d459c947a4dfc93007c204b384224c0" prot="public" static="no">
+        <type>typename var_memory_space::type</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::memory_space =  typename var_memory_space::type</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="231" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a683662ca660ffc24fac246d7799c7c82" prot="public" static="no">
+        <type>typename var_execution_space::type</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::execution_space =  typename var_execution_space::type</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="232" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a4a16e2d99a0d2bcca212deef8040b3b2" prot="public" static="no">
+        <type>typename var_pointer::type</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::pointer_type =  typename var_pointer::type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="233" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a35625766d148bfb1a23909e389dd2278" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1has__condition" kindref="compound">Kokkos::Impl::has_condition</ref>&lt; void, <ref refid="struct_kokkos_1_1is__memory__space" kindref="compound">Kokkos::is_memory_space</ref>, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::var_memory_space =  Kokkos::Impl::has_condition&lt;void, Kokkos::is_memory_space, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>var_memory_space</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::var_memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="209" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a0d7b3819c924c284e94b24d0e5e744fb" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1has__condition" kindref="compound">Kokkos::Impl::has_condition</ref>&lt; void, <ref refid="struct_kokkos_1_1is__execution__space" kindref="compound">Kokkos::is_execution_space</ref>, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::var_execution_space =  Kokkos::Impl::has_condition&lt;void, Kokkos::is_execution_space, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>var_execution_space</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::var_execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="212" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a8dcda9fcc65ccdc80f8c2a6c5ed4caa3" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1has__condition" kindref="compound">Kokkos::Impl::has_condition</ref>&lt; VOIDDUMMY, std::is_pointer, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewCtorProp&lt; P &gt;::var_pointer =  Kokkos::Impl::has_condition&lt;VOIDDUMMY, std::is_pointer, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>var_pointer</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::var_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="217" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aedc094edd2a3ff65ca07444c2b46f4ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; P &gt;::ViewCtorProp</definition>
+        <argsstring>(Args const &amp;... args)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::ViewCtorProp</qualifiedname>
+        <param>
+          <type>Args const &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="239" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a901d279e41b43711c7bb394190dd04c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewCtorProp&lt; P &gt;::ViewCtorProp</definition>
+        <argsstring>(pointer_type arg0, Args const &amp;... args)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::ViewCtorProp</qualifiedname>
+        <param>
+          <type>pointer_type</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>Args const &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="242" column="26" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="242" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a118019452fba72c23fcc96cc17f80809" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewCtorProp&lt; P &gt;::ViewCtorProp</definition>
+        <argsstring>(pointer_type arg0)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::ViewCtorProp</qualifiedname>
+        <param>
+          <type>pointer_type</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="247" column="26" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="247" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ab1d333bbf3233f262d4f9ddb3e8379d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; P &gt;::ViewCtorProp</definition>
+        <argsstring>(view_ctor_prop_args&lt; Args... &gt; const &amp;arg)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp::ViewCtorProp</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">view_ctor_prop_args</ref>&lt; Args... &gt; const &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="256" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="256" bodyend="262"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="207" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="207" bodyend="263"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a79a367a434ecee73f9ec5bbc2f9ef04caa127f4735e43ec789a00d7bc2cc5d6f5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>allow_padding</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a683662ca660ffc24fac246d7799c7c82" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aa9218ea157e1265ae9820359ac040bc4a6c8281cea2a29bf29d54c12a50ad1c3d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>has_execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ae3da91ea1e3485e7ecefad94237d2e08a5a24aacd01c51741bd694ca089e61d69" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>has_label</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a513ab427058fddaa490f961e855f092ca34777aa830237481775aea9cf67cbc73" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>has_memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a14d1704556cd0f81ef878983e1254988a8c69b30eadaaa2e3f60b6089903df879" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>has_pointer</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1af560ef8206e8ff264f26cb7588078482ab64400f21f60437c47070063809ba7c4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>initialize</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a9d459c947a4dfc93007c204b384224c0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a4a16e2d99a0d2bcca212deef8040b3b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>pointer_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a0d7b3819c924c284e94b24d0e5e744fb" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>var_execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a35625766d148bfb1a23909e389dd2278" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>var_memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a8dcda9fcc65ccdc80f8c2a6c5ed4caa3" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>var_pointer</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aedc094edd2a3ff65ca07444c2b46f4ff" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a901d279e41b43711c7bb394190dd04c2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a118019452fba72c23fcc96cc17f80809" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ab1d333bbf3233f262d4f9ddb3e8379d1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp</scope><name>ViewCtorProp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

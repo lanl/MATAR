@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___s_y_c_l___parallel___scan_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_SYCL_Parallel_Scan.hpp</compoundname>
+    <includes refid="_kokkos___macros_8hpp" local="no">Kokkos_Macros.hpp</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Scan.hpp</label>
+        <link refid="_kokkos___s_y_c_l___parallel___scan_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="3">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKO_SYCL_PARALLEL_SCAN_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKO_SYCL_PARALLEL_SCAN_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(KOKKOS_ENABLE_SYCL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FunctorType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">...<sp/>Traits&gt;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ParallelScanSYCLBase<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref><sp/>=<sp/><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Kokkos::RangePolicy</ref>&lt;Traits...&gt;;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Member<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Policy::member_type;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">WorkTag<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Policy::work_tag;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">WorkRange<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="struct_kokkos_1_1_range_policy_1_1_work_range" kindref="compound">Policy::WorkRange</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">LaunchBounds<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Policy::launch_bounds;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ValueTraits<sp/>=<sp/>Kokkos::Impl::FunctorValueTraits&lt;FunctorType,<sp/>WorkTag&gt;;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ValueInit<sp/><sp/><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1_functor_value_init" kindref="compound">Kokkos::Impl::FunctorValueInit&lt;FunctorType, WorkTag&gt;</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ValueJoin<sp/><sp/><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1_functor_value_join" kindref="compound">Kokkos::Impl::FunctorValueJoin&lt;FunctorType, WorkTag&gt;</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ValueOps<sp/><sp/><sp/><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1_functor_value_ops" kindref="compound">Kokkos::Impl::FunctorValueOps&lt;FunctorType, WorkTag&gt;</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">pointer_type<sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueTraits::pointer_type;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">value_type<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueTraits::value_type;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">reference_type<sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ValueTraits::reference_type;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">functor_type<sp/><sp/><sp/>=<sp/>FunctorType;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">size_type<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>Kokkos::Experimental::SYCL::size_type;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">index_type<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Policy::index_type;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FunctorType<sp/>m_functor;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref><sp/>m_policy;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>pointer_type<sp/>m_scratch_space<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Functor&gt;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>scan_internal(sycl::queue&amp;<sp/>q,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Functor&amp;<sp/>functor,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pointer_type<sp/>global_mem,<sp/>std::size_t<sp/>size)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FIXME_SYCL<sp/>optimize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wgroup_size<sp/>=<sp/>128;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>n_wgroups<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(size<sp/>+<sp/>wgroup_size<sp/>-<sp/>1)<sp/>/<sp/>wgroup_size;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>pointer_type<sp/>group_results<sp/><sp/><sp/>=<sp/>global_mem<sp/>+<sp/>n_wgroups<sp/>*<sp/>wgroup_size;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>local_scans<sp/>=<sp/>q.submit([&amp;](sycl::handler&amp;<sp/>cgh)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sycl::accessor&lt;value_type,<sp/>1,<sp/>sycl::access::mode::read_write,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sycl::access::target::local&gt;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_mem(sycl::range&lt;1&gt;(wgroup_size),<sp/>cgh);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cgh.parallel_for(</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sycl::nd_range&lt;1&gt;(n_wgroups<sp/>*<sp/>wgroup_size,<sp/>wgroup_size),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[=](sycl::nd_item&lt;1&gt;<sp/>item)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>local_id<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>item.get_local_linear_id();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_id<sp/><sp/><sp/><sp/><sp/>=<sp/>item.get_global_linear_id();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_offset<sp/>=<sp/>global_id<sp/>-<sp/>local_id;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>local<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(global_id<sp/>&lt;<sp/>size)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_mem[local_id]<sp/>=<sp/>global_mem[global_id];</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueInit::init(functor,<sp/>&amp;local_mem[local_id]);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.barrier(sycl::access::fence_space::local_space);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>subgroup<sp/>scans</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sg<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>item.get_sub_group();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sg_group_id<sp/>=<sp/>sg.get_group_id()[0];</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>id_in_sg<sp/><sp/><sp/><sp/><sp/>=<sp/>sg.get_local_id()[0];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride<sp/>=<sp/>wgroup_size<sp/>/<sp/>2;<sp/>stride<sp/>&gt;<sp/>0;<sp/>stride<sp/>&gt;&gt;=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tmp<sp/>=<sp/>sg.shuffle_up(local_mem[local_id],<sp/>stride);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(id_in_sg<sp/>&gt;=<sp/>stride)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueJoin::join(functor,<sp/>&amp;local_mem[local_id],<sp/>&amp;tmp);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>local_range<sp/>=<sp/>sg.get_local_range()[0];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(id_in_sg<sp/>==<sp/>local_range<sp/>-<sp/>1)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global_mem[sg_group_id<sp/>+<sp/>global_offset]<sp/>=<sp/>local_mem[local_id];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_mem[local_id]<sp/>=<sp/>sg.shuffle_up(local_mem[local_id],<sp/>1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(id_in_sg<sp/>==<sp/>0)<sp/>ValueInit::init(functor,<sp/>&amp;local_mem[local_id]);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.barrier(sycl::access::fence_space::local_space);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>scan<sp/>subgroup<sp/>results<sp/>using<sp/>the<sp/>first<sp/>subgroup</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sg_group_id<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_subgroups<sp/>=<sp/>sg.get_group_range()[0];</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(local_range<sp/>&lt;<sp/>n_subgroups)<sp/>Kokkos::abort(</highlight><highlight class="stringliteral">&quot;Not<sp/>implemented!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride<sp/>=<sp/>n_subgroups<sp/>/<sp/>2;<sp/>stride<sp/>&gt;<sp/>0;<sp/>stride<sp/>&gt;&gt;=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tmp<sp/>=</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sg.shuffle_up(global_mem[id_in_sg<sp/>+<sp/>global_offset],<sp/>stride);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(id_in_sg<sp/>&gt;=<sp/>stride)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(id_in_sg<sp/>&lt;<sp/>n_subgroups)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueJoin::join(</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functor,<sp/>&amp;global_mem[id_in_sg<sp/>+<sp/>global_offset],<sp/>&amp;tmp);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global_mem[id_in_sg<sp/>+<sp/>global_offset]<sp/>=<sp/>tmp;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.barrier(sycl::access::fence_space::local_space);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>results<sp/>to<sp/>all<sp/>subgroups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sg_group_id<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueJoin::join(functor,<sp/>&amp;local_mem[local_id],</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;global_mem[sg_group_id<sp/>-<sp/>1<sp/>+<sp/>global_offset]);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.barrier(sycl::access::fence_space::local_space);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_wgroups<sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>local_id<sp/>==<sp/>wgroup_size<sp/>-<sp/>1)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>group_results[item.get_group_linear_id()]<sp/>=</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global_mem[sg_group_id<sp/>+<sp/>global_offset];</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.barrier(sycl::access::fence_space::local_space);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>results<sp/>to<sp/>global<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(global_id<sp/>&lt;<sp/>size)<sp/>global_mem[global_id]<sp/>=<sp/>local_mem[local_id];</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>q.submit_barrier(std::vector&lt;sycl::event&gt;{local_scans});</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_wgroups<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>scan_internal(q,<sp/>functor,<sp/>group_results,<sp/>n_wgroups);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>update_with_group_results<sp/>=<sp/>q.submit([&amp;](sycl::handler&amp;<sp/>cgh)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cgh.parallel_for(</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sycl::nd_range&lt;1&gt;(n_wgroups<sp/>*<sp/>wgroup_size,<sp/>wgroup_size),</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[=](sycl::nd_item&lt;1&gt;<sp/>item)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_id<sp/>=<sp/>item.get_global_linear_id();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(global_id<sp/>&lt;<sp/>size)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueJoin::join(functor,<sp/>&amp;global_mem[global_id],</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;group_results[item.get_group_linear_id()]);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>q.submit_barrier(std::vector&lt;sycl::event&gt;{update_with_group_results});</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Functor&gt;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>sycl::event<sp/>sycl_direct_launch(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Functor&amp;<sp/>functor)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convenience<sp/>references</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Kokkos::Experimental::SYCL&amp;<sp/>space<sp/>=<sp/>m_policy.space();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal" kindref="compound">Kokkos::Experimental::Impl::SYCLInternal</ref>&amp;<sp/>instance<sp/>=</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*space.impl_internal_space_instance();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::queue&amp;<sp/>q<sp/>=<sp/>*instance.m_queue;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>len<sp/>=<sp/>m_policy.end()<sp/>-<sp/>m_policy.begin();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>global<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>initialize_global_memory<sp/>=<sp/>q.submit([&amp;](sycl::handler&amp;<sp/>cgh)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_mem<sp/>=<sp/>m_scratch_space;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>begin<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>m_policy.begin();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cgh.parallel_for(sycl::range&lt;1&gt;(len),<sp/>[=](sycl::item&lt;1&gt;<sp/>item)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Policy::index_type<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">typename<sp/>Policy::index_type</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(item.get_id())<sp/>+<sp/>begin;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_type<sp/><ref refid="structupdate" kindref="compound">update</ref>{};</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ValueInit::init(functor,<sp/>&amp;<ref refid="structupdate" kindref="compound">update</ref>);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same&lt;WorkTag,<sp/>void&gt;::value)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functor(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="structupdate" kindref="compound">update</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functor(WorkTag(),<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="structupdate" kindref="compound">update</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global_mem[id]<sp/>=<sp/><ref refid="structupdate" kindref="compound">update</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>q.submit_barrier(std::vector&lt;sycl::event&gt;{initialize_global_memory});</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Perform<sp/>the<sp/>actual<sp/>exclusive<sp/>scan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>scan_internal(q,<sp/>functor,<sp/>m_scratch_space,<sp/>len);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>results<sp/>to<sp/>global<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>update_global_results<sp/>=<sp/>q.submit([&amp;](sycl::handler&amp;<sp/>cgh)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_mem<sp/>=<sp/>m_scratch_space;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cgh.parallel_for(sycl::range&lt;1&gt;(len),<sp/>[=](sycl::item&lt;1&gt;<sp/>item)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>global_id<sp/>=<sp/>item.get_id(0);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_type<sp/><ref refid="structupdate" kindref="compound">update</ref><sp/>=<sp/>global_mem[global_id];</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same&lt;WorkTag,<sp/>void&gt;::value)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functor(global_id,<sp/><ref refid="structupdate" kindref="compound">update</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functor(WorkTag(),<sp/>global_id,<sp/><ref refid="structupdate" kindref="compound">update</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global_mem[global_id]<sp/>=<sp/><ref refid="structupdate" kindref="compound">update</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>q.submit_barrier(std::vector&lt;sycl::event&gt;{update_global_results});</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>update_global_results;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>PostFunctor&gt;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>impl_execute(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PostFunctor&amp;<sp/>post_functor)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(m_policy.begin()<sp/>==<sp/>m_policy.end())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>instance<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>*m_policy.space().impl_internal_space_instance();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>len<sp/>=<sp/>m_policy.end()<sp/>-<sp/>m_policy.begin();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>total<sp/>amount<sp/>of<sp/>memory<sp/>we<sp/>will<sp/>need.<sp/>We<sp/>emulate<sp/>the<sp/>recursive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>structure<sp/>that<sp/>is<sp/>used<sp/>to<sp/>do<sp/>the<sp/>actual<sp/>scan.<sp/>Essentially,<sp/>we<sp/>need<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocate<sp/>memory<sp/>for<sp/>the<sp/>whole<sp/>range<sp/>and<sp/>then<sp/>recursively<sp/>for<sp/>the<sp/>reduced</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>group<sp/>results<sp/>until<sp/>only<sp/>one<sp/>group<sp/>is<sp/>left.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>total_memory<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wgroup_size<sp/><sp/><sp/>=<sp/>128;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_nested_size<sp/>=<sp/>len;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n_nested_wgroups;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n_nested_wgroups<sp/>=<sp/>(n_nested_size<sp/>+<sp/>wgroup_size<sp/>-<sp/>1)<sp/>/<sp/>wgroup_size;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n_nested_size<sp/><sp/><sp/><sp/>=<sp/>n_nested_wgroups;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>total_memory<sp/>+=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(value_type)<sp/>*<sp/>n_nested_wgroups<sp/>*<sp/>wgroup_size;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(n_nested_wgroups<sp/>&gt;<sp/>1);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>total_memory<sp/>+=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(value_type)<sp/>*<sp/>wgroup_size;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FIXME_SYCL<sp/>consider<sp/>only<sp/>storing<sp/>one<sp/>value<sp/>per<sp/>block<sp/>and<sp/>recreate<sp/>initial</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>results<sp/>in<sp/>the<sp/>end<sp/>before<sp/>doing<sp/>the<sp/>final<sp/>pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>m_scratch_space<sp/>=</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">pointer_type</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(instance.scratch_space(total_memory));</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal_1_1_u_s_m_object_mem" kindref="compound">Kokkos::Experimental::Impl::SYCLInternal::IndirectKernelMem</ref>&amp;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indirectKernelMem<sp/>=<sp/>instance.m_indirectKernelMem;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>functor_wrapper<sp/>=<sp/>Experimental::Impl::make_sycl_function_wrapper(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_functor,<sp/>indirectKernelMem);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::event<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal"><sp/>=<sp/>sycl_direct_launch(functor_wrapper.get_functor());</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>functor_wrapper.register_event(indirectKernelMem,<sp/>event);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>post_functor();</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>ParallelScanSYCLBase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FunctorType&amp;<sp/>arg_functor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref>&amp;<sp/>arg_policy)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>m_functor(arg_functor),<sp/>m_policy(arg_policy)<sp/>{}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FunctorType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">...<sp/>Traits&gt;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ParallelScan&lt;FunctorType,<sp/>Kokkos::RangePolicy&lt;Traits...&gt;,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::Experimental::SYCL&gt;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>ParallelScanSYCLBase&lt;FunctorType,<sp/>Traits...&gt;<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Base<sp/>=<sp/>ParallelScanSYCLBase&lt;FunctorType,<sp/>Traits...&gt;;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>execute()<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>Base::impl_execute([]()<sp/>{});</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>ParallelScan(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FunctorType&amp;<sp/>arg_functor,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base::Policy&amp;<sp/>arg_policy)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Base(arg_functor,<sp/>arg_policy)<sp/>{}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="comment">//----------------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FunctorType,<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ReturnType,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">...<sp/>Traits&gt;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ParallelScanWithTotal&lt;FunctorType,<sp/>Kokkos::RangePolicy&lt;Traits...&gt;,</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReturnType,<sp/>Kokkos::Experimental::SYCL&gt;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>ParallelScanSYCLBase&lt;FunctorType,<sp/>Traits...&gt;<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Base<sp/>=<sp/>ParallelScanSYCLBase&lt;FunctorType,<sp/>Traits...&gt;;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/>ReturnType&amp;<sp/>m_returnvalue;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>execute()<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>Base::impl_execute([&amp;]()<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>nwork<sp/>=<sp/>Base::m_policy.end()<sp/>-<sp/>Base::m_policy.begin();</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nwork<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>Base::ValueTraits::value_size(Base::m_functor);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DeepCopy&lt;HostSpace,<sp/>Kokkos::Experimental::SYCLDeviceUSMSpace&gt;(</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;m_returnvalue,<sp/>Base::m_scratch_space<sp/>+<sp/>nwork<sp/>-<sp/>1,<sp/>size);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>ParallelScanWithTotal(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FunctorType&amp;<sp/>arg_functor,</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Base::Policy&amp;<sp/>arg_policy,</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReturnType&amp;<sp/>arg_returnvalue)</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Base(arg_functor,<sp/>arg_policy),<sp/>m_returnvalue(arg_returnvalue)<sp/>{}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Kokkos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Scan.hpp"/>
+  </compounddef>
+</doxygen>

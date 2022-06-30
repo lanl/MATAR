@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_math_binary_function__pow" kind="struct" language="C++" prot="public">
+    <compoundname>MathBinaryFunction_pow</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_math_binary_function__pow_1ad9476c2ffe77046e10c08f8d04f020de" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION auto</type>
+        <definition>static KOKKOS_FUNCTION auto MathBinaryFunction_pow::eval</definition>
+        <argsstring>(T x, U y)</argsstring>
+        <name>eval</name>
+        <qualifiedname>MathBinaryFunction_pow::eval</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>U</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="389" column="73" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_binary_function__pow_1a76f00b307c23abcbc451f2a7c52ce38b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto MathBinaryFunction_pow::eval_std</definition>
+        <argsstring>(T x, U y)</argsstring>
+        <name>eval_std</name>
+        <qualifiedname>MathBinaryFunction_pow::eval_std</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>U</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="389" column="297" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_binary_function__pow_1a173efa14d32226bf9056853c1ea28252" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>static KOKKOS_FUNCTION double MathBinaryFunction_pow::ulp_factor</definition>
+        <argsstring>()</argsstring>
+        <name>ulp_factor</name>
+        <qualifiedname>MathBinaryFunction_pow::ulp_factor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="389" column="493" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="389" bodyend="389"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="389" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="389" bodyend="389"/>
+    <listofallmembers>
+      <member refid="struct_math_binary_function__pow_1ad9476c2ffe77046e10c08f8d04f020de" prot="public" virt="non-virtual"><scope>MathBinaryFunction_pow</scope><name>eval</name></member>
+      <member refid="struct_math_binary_function__pow_1a76f00b307c23abcbc451f2a7c52ce38b" prot="public" virt="non-virtual"><scope>MathBinaryFunction_pow</scope><name>eval_std</name></member>
+      <member refid="struct_math_binary_function__pow_1a173efa14d32226bf9056853c1ea28252" prot="public" virt="non-virtual"><scope>MathBinaryFunction_pow</scope><name>ulp_factor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

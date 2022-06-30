@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_reduce_functor_final_tag_1_1value__type" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ReduceFunctorFinalTag::value_type</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_reduce_functor_final_tag_1_1value__type_1af6874577fa77adb6ecc3ae2783d7e435" prot="public" static="no" mutable="no">
+        <type>ScalarType</type>
+        <definition>ScalarType Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::value_type::value[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>value</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::value_type::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="123" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="122" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="122" bodyend="124"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type_1af6874577fa77adb6ecc3ae2783d7e435" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag::value_type</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

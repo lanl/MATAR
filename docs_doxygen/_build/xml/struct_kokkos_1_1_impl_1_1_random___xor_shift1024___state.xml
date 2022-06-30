@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::Random_XorShift1024_State</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>UseCArrayState</declname>
+        <defname>UseCArrayState</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1a155e16f39f8cf1c94676d79b8dc1d816" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t Kokkos::Impl::Random_XorShift1024_State&lt; UseCArrayState &gt;::state_[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>state_</name>
+        <qualifiedname>Kokkos::Impl::Random_XorShift1024_State::state_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="566" column="12" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="566" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1aae17ada52ebf39008a05c993e744f727" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::Random_XorShift1024_State&lt; UseCArrayState &gt;::Random_XorShift1024_State</definition>
+        <argsstring>()=default</argsstring>
+        <name>Random_XorShift1024_State</name>
+        <qualifiedname>Kokkos::Impl::Random_XorShift1024_State::Random_XorShift1024_State</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="568" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1ac805265dbe59a863d8191d646cce48bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class StateViewType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION</type>
+        <definition>KOKKOS_FUNCTION Kokkos::Impl::Random_XorShift1024_State&lt; UseCArrayState &gt;::Random_XorShift1024_State</definition>
+        <argsstring>(const StateViewType &amp;v, int state_idx)</argsstring>
+        <name>Random_XorShift1024_State</name>
+        <qualifiedname>Kokkos::Impl::Random_XorShift1024_State::Random_XorShift1024_State</qualifiedname>
+        <param>
+          <type>const StateViewType &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>state_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="571" column="19" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="571" bodyend="574"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1a996402de286323dd67c82196a866d6df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION uint64_t</type>
+        <definition>KOKKOS_FUNCTION uint64_t Kokkos::Impl::Random_XorShift1024_State&lt; UseCArrayState &gt;::operator[]</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Impl::Random_XorShift1024_State::operator[]</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="577" column="12" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="577" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1acf1cdc5e8fb87497c2c183d6bc9adda8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION uint64_t &amp;</type>
+        <definition>KOKKOS_FUNCTION uint64_t &amp; Kokkos::Impl::Random_XorShift1024_State&lt; UseCArrayState &gt;::operator[]</definition>
+        <argsstring>(const int i)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Impl::Random_XorShift1024_State::operator[]</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="580" column="12" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="580" bodyend="580"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="565" column="1" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="565" bodyend="581"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1a996402de286323dd67c82196a866d6df" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Random_XorShift1024_State</scope><name>operator[]</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1acf1cdc5e8fb87497c2c183d6bc9adda8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Random_XorShift1024_State</scope><name>operator[]</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1aae17ada52ebf39008a05c993e744f727" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Random_XorShift1024_State</scope><name>Random_XorShift1024_State</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1ac805265dbe59a863d8191d646cce48bc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Random_XorShift1024_State</scope><name>Random_XorShift1024_State</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_random___xor_shift1024___state_1a155e16f39f8cf1c94676d79b8dc1d816" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Random_XorShift1024_State</scope><name>state_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

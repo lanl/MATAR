@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_view_subview_1_1_test_unmanaged_subview_reset" kind="struct" language="C++" prot="public">
+    <compoundname>TestViewSubview::TestUnmanagedSubviewReset</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1a78192af04229b2fa0846557145febfa9" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ****, Space &gt;</type>
+        <definition>Kokkos::View&lt;int****, Space&gt; TestViewSubview::TestUnmanagedSubviewReset&lt; Space &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>TestViewSubview::TestUnmanagedSubviewReset::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2108" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2108" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1ae3ae03ec72f3a4b9f29cd39903abf60b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestViewSubview::TestUnmanagedSubviewReset&lt; Space &gt;::operator()</definition>
+        <argsstring>(int) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestViewSubview::TestUnmanagedSubviewReset::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2111" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2111" bodyend="2120"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1adb799a03e0de78205a992a47b77ba61e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestViewSubview::TestUnmanagedSubviewReset&lt; Space &gt;::TestUnmanagedSubviewReset</definition>
+        <argsstring>()</argsstring>
+        <name>TestUnmanagedSubviewReset</name>
+        <qualifiedname>TestViewSubview::TestUnmanagedSubviewReset::TestUnmanagedSubviewReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2122" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2122" bodyend="2122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestViewSubview::TestUnmanagedSubviewReset&lt; Space &gt;</label>
+        <link refid="struct_test_view_subview_1_1_test_unmanaged_subview_reset"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int ****, Space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int ****, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2107" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2107" bodyend="2123"/>
+    <listofallmembers>
+      <member refid="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1a78192af04229b2fa0846557145febfa9" prot="public" virt="non-virtual"><scope>TestViewSubview::TestUnmanagedSubviewReset</scope><name>a</name></member>
+      <member refid="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1ae3ae03ec72f3a4b9f29cd39903abf60b" prot="public" virt="non-virtual"><scope>TestViewSubview::TestUnmanagedSubviewReset</scope><name>operator()</name></member>
+      <member refid="struct_test_view_subview_1_1_test_unmanaged_subview_reset_1adb799a03e0de78205a992a47b77ba61e" prot="public" virt="non-virtual"><scope>TestViewSubview::TestUnmanagedSubviewReset</scope><name>TestUnmanagedSubviewReset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

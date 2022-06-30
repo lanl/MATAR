@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="develop__builds_8md" kind="file" language="Markdown">
+    <compoundname>develop_builds.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Places<sp/>to<sp/>build<sp/>options:<sp/>architecture,<sp/>device,<sp/>advanced<sp/>options,<sp/>cuda<sp/>options</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">These<sp/>are<sp/>the<sp/>files<sp/>that<sp/>need<sp/>to<sp/>be<sp/>updated<sp/>when<sp/>a<sp/>new<sp/>architecture<sp/>or<sp/>device<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">added:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>generate_makefile.bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Interface<sp/>for<sp/>makefile<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>cmake/kokkos_options.cmake</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Interface<sp/>for<sp/>cmake<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>Makefile.kokkos</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Main<sp/>logic<sp/>for<sp/>build<sp/>(make<sp/>and<sp/>cmake)<sp/>and<sp/>defines<sp/>(KokkosCore_config.h)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>general,<sp/>an<sp/>architecture<sp/>is<sp/>going<sp/>to<sp/>be<sp/>from<sp/>on<sp/>of<sp/>these<sp/>platforms:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>AMD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>ARM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>IBM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>Intel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>Intel<sp/>Xeon<sp/>Phi</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>NVIDIA</highlight></codeline>
+<codeline><highlight class="normal">Although<sp/>not<sp/>strictly<sp/>necessary,<sp/>it<sp/>is<sp/>helpful<sp/>to<sp/>keep<sp/>things<sp/>organized<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">grouping<sp/>by<sp/>platform.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>generate_makefile.sh</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>bash<sp/>code<sp/>does<sp/>not<sp/>do<sp/>any<sp/>error<sp/>checking<sp/>on<sp/>the<sp/>`--arch=`<sp/><sp/>or<sp/>`--device=`</highlight></codeline>
+<codeline><highlight class="normal">arguments<sp/>thus<sp/>strictly<sp/>speaking<sp/>you<sp/>do<sp/>not<sp/>*need*<sp/>to<sp/>do<sp/>anything<sp/>to<sp/>add<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">device<sp/>or<sp/>architecture;<sp/>however,<sp/>you<sp/>should<sp/>add<sp/>it<sp/>to<sp/>the<sp/>help<sp/>menu.<sp/><sp/>For<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">archictectures,<sp/>please<sp/>group<sp/>by<sp/>one<sp/>of<sp/>the<sp/>platforms<sp/>listed<sp/>above.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>cmake/kokkos_options.cmake<sp/>and<sp/>cmake/kokkos_settings.cmake</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>options<sp/>for<sp/>the<sp/>CMake<sp/>build<sp/>system<sp/>are:<sp/>`-DKOKKOS_HOST_ARCH:STRING=`<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">`-DKOKKOS_ENABLE_&lt;device&gt;:BOOL=`.<sp/><sp/>Although<sp/>any<sp/>string<sp/>can<sp/>be<sp/>passed<sp/>into</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_HOST_ARCH<sp/>option,<sp/>it<sp/>is<sp/>checked<sp/>against<sp/>an<sp/>accepted<sp/>list.<sp/><sp/>Likewise,<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_ENABLE_&lt;device&gt;<sp/>must<sp/>have<sp/>the<sp/>option<sp/>added<sp/>AND<sp/>it<sp/>is<sp/>formed<sp/>using<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">list.<sp/>Thus:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>A<sp/>new<sp/>architecture<sp/>should<sp/>be<sp/>added<sp/>to<sp/>the<sp/>KOKKOS_HOST_ARCH_LIST<sp/>variable.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>A<sp/>new<sp/>device<sp/>should<sp/>be<sp/>added<sp/>to<sp/>the<sp/>KOKKOS_DEVICES_LIST<sp/>variable<sp/>**AND**<sp/>a</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KOKKOS_ENABLE_&lt;newdevice&gt;<sp/>option<sp/>specified<sp/>(see<sp/>KOKKOS_ENABLE_CUDA<sp/>for</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>example).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>A<sp/>new<sp/>device<sp/>should<sp/>be<sp/>added<sp/>to<sp/>the<sp/>KOKKOS_DEVICES_LIST<sp/>variable<sp/>**AND**<sp/>a</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>translation<sp/>from<sp/>option<sp/>to<sp/>the<sp/>`KOKKOS_SETTINGS`<sp/>is<sp/>done<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">`kokkos_settings.cmake`.<sp/><sp/>This<sp/>translation<sp/>is<sp/>automated<sp/>for<sp/>some<sp/>types<sp/>if<sp/>you<sp/>ad</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>the<sp/>list,<sp/>but<sp/>for<sp/>others,<sp/>it<sp/>may<sp/>need<sp/>to<sp/>be<sp/>hand<sp/>coded.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Makefile.kokkos</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>the<sp/>main<sp/>coding<sp/>used<sp/>by<sp/>both<sp/>the<sp/>make<sp/>and<sp/>cmake<sp/>system<sp/>for<sp/>defining</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>sources<sp/>(generated<sp/>makefile<sp/>and<sp/>cmake<sp/>snippets<sp/>by<sp/>`core/src/Makefile`),<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">setting<sp/>the<sp/>defines<sp/>in<sp/>KokkosCore_config.h,<sp/>and<sp/>defining<sp/>various<sp/>internal</highlight></codeline>
+<codeline><highlight class="normal">variables.<sp/><sp/>To<sp/>understand<sp/>how<sp/>to<sp/>add<sp/>to<sp/>this<sp/>file,<sp/>you<sp/>should<sp/>work<sp/>closely<sp/>with</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>Kokkos<sp/>development<sp/>team.</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/doc/develop_builds.md"/>
+  </compounddef>
+</doxygen>

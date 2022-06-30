@@ -1,0 +1,1164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_host_thread_team_data" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::HostThreadTeamData</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a5c09a94f949b3cfd128a38e143d6506e" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>@68</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@68</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a5c09a94f949b3cfd128a38e143d6506ea837279e62d22c0593143cf3725153ac0" prot="public">
+          <name>max_pool_members</name>
+          <initializer>= 1024</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a34d2cd521fd05fcbf2a48a5df64321d8" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>@69</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@69</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a34d2cd521fd05fcbf2a48a5df64321d8a377b4e05a3a1f6dba7091a5a9fc77bbc" prot="public">
+          <name>max_team_members</name>
+          <initializer>= 64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aab70988eafcc28c0773fe4feec9df642" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>@70</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@70</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aab70988eafcc28c0773fe4feec9df642ae3be5c85f105c13884304946329741da" prot="public">
+          <name>max_pool_rendezvous</name>
+          <initializer>= HostBarrier::required_buffer_size</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="79" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a105e9c22f1cd4e8d5108c3c3027e86c5" prot="public" static="no" strong="no">
+        <type>int</type>
+        <name>@71</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@71</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a105e9c22f1cd4e8d5108c3c3027e86c5aef6f206ad5b0c9dd2653a4f6f0194f14" prot="public">
+          <name>max_team_rendezvous</name>
+          <initializer>= HostBarrier::required_buffer_size</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="80" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a06e3b8a0a97323c0cdfb04cd09517b1e" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@72</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@72</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a06e3b8a0a97323c0cdfb04cd09517b1ea99657563494cc67d87c354ba6d3703b7" prot="private">
+          <name>m_pool_members</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="93" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a07b809af11e9338c8e54b6cceaeb5b15" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@73</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@73</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a07b809af11e9338c8e54b6cceaeb5b15af630431401c493f4649aac15d780a7d8" prot="private">
+          <name>m_pool_rendezvous</name>
+          <initializer>=
+        static_cast&lt;int&gt;(m_pool_members) + static_cast&lt;int&gt;(max_pool_members)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="94" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae59f3a453a2eeb4b235a49d62f18b7a9" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@74</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@74</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae59f3a453a2eeb4b235a49d62f18b7a9aa7891ff7b0a368759452e2705e724bdb" prot="private">
+          <name>m_team_rendezvous</name>
+          <initializer>= static_cast&lt;int&gt;(m_pool_rendezvous) +
+                        static_cast&lt;int&gt;(max_pool_rendezvous)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="98" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aad2091921fd036a50aa71f438765572a" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@75</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@75</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aad2091921fd036a50aa71f438765572aa5924a4fa09821654348f1309ce9c3ddb" prot="private">
+          <name>m_pool_reduce</name>
+          <initializer>= static_cast&lt;int&gt;(m_team_rendezvous) +
+                    static_cast&lt;int&gt;(max_team_rendezvous)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="102" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1e58fb0436492ac8bd32ed6c2a65354c" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@76</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@76</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1e58fb0436492ac8bd32ed6c2a65354ca08d987de9433a43ebb735df83013ad5a" prot="private">
+          <name>mask_to_16</name>
+          <initializer>= 0x0f</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="251" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="251" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1afa43a9febd40d62f1a4ef5eb3dd1d390" prot="private" static="no" strong="no">
+        <type>int</type>
+        <name>@77</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::@77</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1afa43a9febd40d62f1a4ef5eb3dd1d390a8ece60bb3521804e1d569dfb9d95d5c9" prot="private">
+          <name>shift_to_8</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="252" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="252" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aed42e501d15e794ae43da32afe31c620" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int64_t, int64_t &gt;</type>
+        <definition>using Kokkos::Impl::HostThreadTeamData::pair_int_t =  Kokkos::pair&lt;int64_t, int64_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>pair_int_t</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pair_int_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="107" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a34ef61cc1ce00c38a59ab834654b005a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class HostThreadTeamMember</definition>
+        <argsstring></argsstring>
+        <name>HostThreadTeamMember</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::HostThreadTeamMember</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_host_thread_team_member" kindref="compound">HostThreadTeamMember</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="71" column="16" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a8f47518cd38271768515b5137d1de0f4" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1pair" kindref="compound">pair_int_t</ref></type>
+        <definition>pair_int_t Kokkos::Impl::HostThreadTeamData::m_work_range</definition>
+        <argsstring></argsstring>
+        <name>m_work_range</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_work_range</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="109" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a671de520e6d4d5a901d97b16ce018042" prot="private" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t Kokkos::Impl::HostThreadTeamData::m_work_end</definition>
+        <argsstring></argsstring>
+        <name>m_work_end</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_work_end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="110" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a8aa25633911bafded9a373ebc9ce0f1e" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* Kokkos::Impl::HostThreadTeamData::m_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_scratch</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="111" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a13529dad58b007769d5d873f52534918" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* Kokkos::Impl::HostThreadTeamData::m_pool_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_pool_scratch</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_pool_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="112" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a135b426c5f1f349f10e29dd4eba7db61" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* Kokkos::Impl::HostThreadTeamData::m_team_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_team_scratch</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="113" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a94183eb2592a6d73135e2b0e1732d5b7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_pool_rank</definition>
+        <argsstring></argsstring>
+        <name>m_pool_rank</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_pool_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="114" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac72f9dccdc9a99dca2b70d5f4f92cec6" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_pool_size</definition>
+        <argsstring></argsstring>
+        <name>m_pool_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_pool_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="115" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa68c727085ebb778755187f563f9fc02" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_reduce</definition>
+        <argsstring></argsstring>
+        <name>m_team_reduce</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_reduce</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="116" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af9946737d3c52be639d4971b8e235d1a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_shared</definition>
+        <argsstring></argsstring>
+        <name>m_team_shared</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="117" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a01ef243b6d5a13db5d5f3f15452ac199" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_thread_local</definition>
+        <argsstring></argsstring>
+        <name>m_thread_local</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_thread_local</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="118" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2e5f3ccdf0117b5bd3b6b5f8c538a364" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_scratch_size</definition>
+        <argsstring></argsstring>
+        <name>m_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_scratch_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="119" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a69a34267a96f854efd967baba2df3b13" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_base</definition>
+        <argsstring></argsstring>
+        <name>m_team_base</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="120" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ad6b6df091cfc2618bccdac02e98c47d7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_rank</definition>
+        <argsstring></argsstring>
+        <name>m_team_rank</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="121" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1ad32bdb91df9d13260f8dc8a96e0e11" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_size</definition>
+        <argsstring></argsstring>
+        <name>m_team_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="122" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a909f9d70ad0d4ec0147f397b02ab6c1f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_alloc</definition>
+        <argsstring></argsstring>
+        <name>m_team_alloc</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_alloc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="123" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac1380ef49a91be4b8fa4cb8d2be92fb1" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_league_rank</definition>
+        <argsstring></argsstring>
+        <name>m_league_rank</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_league_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="124" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1acee8a8b40081e01720878bb649097fff" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_league_size</definition>
+        <argsstring></argsstring>
+        <name>m_league_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="125" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa45f3ec50662ee6a1fc10dc4b60ee9ff" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_work_chunk</definition>
+        <argsstring></argsstring>
+        <name>m_work_chunk</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_work_chunk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="126" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2aeeadb610d90a58dd7a5d4972950423" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_steal_rank</definition>
+        <argsstring></argsstring>
+        <name>m_steal_rank</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_steal_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="127" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a42074095b27d43f851da4834c693480d" prot="private" static="no" mutable="yes">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_pool_rendezvous_step</definition>
+        <argsstring></argsstring>
+        <name>m_pool_rendezvous_step</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_pool_rendezvous_step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="128" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a56c3573323873aefb43c1531900d1b24" prot="private" static="no" mutable="yes">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::m_team_rendezvous_step</definition>
+        <argsstring></argsstring>
+        <name>m_team_rendezvous_step</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::m_team_rendezvous_step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="129" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1df3ca4bd85f1f16ff259d96540eb181" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_host_thread_team_data" kindref="compound">HostThreadTeamData</ref> *</type>
+        <definition>HostThreadTeamData * Kokkos::Impl::HostThreadTeamData::team_member</definition>
+        <argsstring>(int r) const noexcept</argsstring>
+        <name>team_member</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_member</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="131" column="22" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="131" bodyend="134"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aef875301afeb5f3a88536245a4c83c73" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::HostThreadTeamData::team_rendezvous</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>team_rendezvous</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_rendezvous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="137" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="137" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab0f379aa2dd801cd668dde6f6f8657fe" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::HostThreadTeamData::team_rendezvous</definition>
+        <argsstring>(const int source_team_rank) const noexcept</argsstring>
+        <name>team_rendezvous</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_rendezvous</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>source_team_rank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="149" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="149" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2660a06b4c4abf77f646745ccfd914af" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::team_rendezvous_release</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>team_rendezvous_release</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_rendezvous_release</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="161" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="161" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a760630db6dae4de5da2f0d1532453992" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::pool_rendezvous</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>pool_rendezvous</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_rendezvous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="167" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="167" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab19c5a6cb2cbed705b3fbf3ea43d2285" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::pool_rendezvous_release</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>pool_rendezvous_release</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_rendezvous_release</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="179" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="179" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab42cc9498fdf21f4d7632a7fb8e0f8d5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::Impl::HostThreadTeamData::HostThreadTeamData</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>HostThreadTeamData</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::HostThreadTeamData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="187" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="187" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae44675aa2f9af5195abc167f870c4363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::disband_pool</definition>
+        <argsstring>()</argsstring>
+        <name>disband_pool</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::disband_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="220" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.cpp" bodystart="107" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac058d85d3037d23cf42549fa4f5eba91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::organize_team</definition>
+        <argsstring>(const int team_size)</argsstring>
+        <name>organize_team</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::organize_team</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>team_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="231" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.cpp" bodystart="123" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a30432f3d80360ef1f99a28fcbaefffa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::disband_team</definition>
+        <argsstring>()</argsstring>
+        <name>disband_team</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::disband_team</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="236" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.cpp" bodystart="193" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a509573346101be6a00e7cd8c89b9662a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::pool_rank</definition>
+        <argsstring>() const</argsstring>
+        <name>pool_rank</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="240" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="240" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a4002ed961900516fc7226006e5c3cff2" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::pool_size</definition>
+        <argsstring>() const</argsstring>
+        <name>pool_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="241" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="241" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a0653bcc81134caf2cbe8ba860ff61d3c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_host_thread_team_data" kindref="compound">HostThreadTeamData</ref> *</type>
+        <definition>HostThreadTeamData * Kokkos::Impl::HostThreadTeamData::pool_member</definition>
+        <argsstring>(int r) const noexcept</argsstring>
+        <name>pool_member</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_member</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="243" column="22" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="243" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2f2131b133d8ef8df39be03daab6eea7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::pool_reduce_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>pool_reduce_bytes</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_reduce_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="259" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="259" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af68a04c6ac5ffe9acb3f119f8e380111" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::team_reduce_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>team_reduce_bytes</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_reduce_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="264" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="264" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a7a177d111ff221f7cbf1b1cfb58f7110" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::team_shared_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>team_shared_bytes</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_shared_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="268" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="268" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ad4028074ee5e11701d91a053f39e45cf" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::thread_local_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>thread_local_bytes</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::thread_local_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="272" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="272" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a602cd74cdc6179b14ed8635f3bff36d7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::HostThreadTeamData::scratch_bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>scratch_bytes</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::scratch_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="276" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="276" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a14fa5a233c40a2485306ad6fa3e501ed" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::scratch_buffer</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>scratch_buffer</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::scratch_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="282" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="282" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a3f020f244cd8c8c378ef7f7d9dd67dc6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::pool_reduce</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>pool_reduce</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_reduce</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="284" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="284" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a138dbb5505370a726ac3e192255486c0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::pool_reduce_local</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>pool_reduce_local</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::pool_reduce_local</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="288" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="288" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af2aa7213504c1a4033331d5c8f09f1df" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::team_reduce</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>team_reduce</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_reduce</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="292" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="292" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a84e994af24f02890ffd5da9211e9ed97" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::team_reduce_local</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>team_reduce_local</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_reduce_local</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="296" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="296" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a3abcfffae14847c58a3fa48ab8023734" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::team_shared</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>team_shared</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::team_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="300" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="300" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae6cc5e540ef6bdc78655005a5c71bf28" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int64_t *</type>
+        <definition>int64_t * Kokkos::Impl::HostThreadTeamData::local_scratch</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>local_scratch</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::local_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="304" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="304" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a0a92efa08d47b27540db86f166773bb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::scratch_assign</definition>
+        <argsstring>(void *const alloc_ptr, size_t const alloc_size, int pool_reduce_size, int team_reduce_size, int team_shared_size, int)</argsstring>
+        <name>scratch_assign</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::scratch_assign</qualifiedname>
+        <param>
+          <type>void *const</type>
+          <declname>alloc_ptr</declname>
+        </param>
+        <param>
+          <type>size_t const</type>
+          <declname>alloc_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pool_reduce_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_reduce_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_shared_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="337" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="337" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1abe09ce953d91e247de407d6bfb37fa43" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostThreadTeamData::get_work_stealing</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>get_work_stealing</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::get_work_stealing</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="356" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.cpp" bodystart="206" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a864b856098691b4a1e4ee4230ab4d60a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::set_work_partition</definition>
+        <argsstring>(int64_t const length, int const chunk) noexcept</argsstring>
+        <name>set_work_partition</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::set_work_partition</qualifiedname>
+        <param>
+          <type>int64_t const</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>int const</type>
+          <declname>chunk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="362" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="362" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa4c91f9ccb2fc19ea30b4ab91e6b408d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::pair&lt; int64_t, int64_t &gt;</type>
+        <definition>std::pair&lt; int64_t, int64_t &gt; Kokkos::Impl::HostThreadTeamData::get_work_partition</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>get_work_partition</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::get_work_partition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="387" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="387" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a7c8c808a16bfbb55d51034419ac2d685" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::pair&lt; int64_t, int64_t &gt;</type>
+        <definition>std::pair&lt; int64_t, int64_t &gt; Kokkos::Impl::HostThreadTeamData::get_work_stealing_chunk</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>get_work_stealing_chunk</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::get_work_stealing_chunk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="396" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="396" bodyend="408"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1f7d26ac8db75e4c509ba6b458b40561" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostThreadTeamData::organize_pool</definition>
+        <argsstring>(HostThreadTeamData *members[], const int size)</argsstring>
+        <name>organize_pool</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::organize_pool</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_host_thread_team_data" kindref="compound">HostThreadTeamData</ref> *</type>
+          <declname>members</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="217" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.cpp" bodystart="57" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a207a96cd7a82595ee9813e343a09d2c6" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>static constexpr int Kokkos::Impl::HostThreadTeamData::align_to_int64</definition>
+        <argsstring>(int n)</argsstring>
+        <name>align_to_int64</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::align_to_int64</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="255" column="24" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa2f4337c7f98db0784c2d45e137d0ea3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>static size_t Kokkos::Impl::HostThreadTeamData::scratch_size</definition>
+        <argsstring>(int pool_reduce_size, int team_reduce_size, int team_shared_size, int thread_local_size)</argsstring>
+        <name>scratch_size</name>
+        <qualifiedname>Kokkos::Impl::HostThreadTeamData::scratch_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>pool_reduce_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_reduce_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_shared_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>thread_local_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="313" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="313" bodyend="326"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" line="68" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp" bodystart="68" bodyend="409"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a207a96cd7a82595ee9813e343a09d2c6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>align_to_int64</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae44675aa2f9af5195abc167f870c4363" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>disband_pool</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a30432f3d80360ef1f99a28fcbaefffa6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>disband_team</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa4c91f9ccb2fc19ea30b4ab91e6b408d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>get_work_partition</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1abe09ce953d91e247de407d6bfb37fa43" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>get_work_stealing</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a7c8c808a16bfbb55d51034419ac2d685" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>get_work_stealing_chunk</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab42cc9498fdf21f4d7632a7fb8e0f8d5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>HostThreadTeamData</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a34ef61cc1ce00c38a59ab834654b005a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>HostThreadTeamMember</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae6cc5e540ef6bdc78655005a5c71bf28" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>local_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac1380ef49a91be4b8fa4cb8d2be92fb1" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_league_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1acee8a8b40081e01720878bb649097fff" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a06e3b8a0a97323c0cdfb04cd09517b1ea99657563494cc67d87c354ba6d3703b7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_members</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a94183eb2592a6d73135e2b0e1732d5b7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aad2091921fd036a50aa71f438765572aa5924a4fa09821654348f1309ce9c3ddb" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a07b809af11e9338c8e54b6cceaeb5b15af630431401c493f4649aac15d780a7d8" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a42074095b27d43f851da4834c693480d" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_rendezvous_step</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a13529dad58b007769d5d873f52534918" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac72f9dccdc9a99dca2b70d5f4f92cec6" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_pool_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a8aa25633911bafded9a373ebc9ce0f1e" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2e5f3ccdf0117b5bd3b6b5f8c538a364" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2aeeadb610d90a58dd7a5d4972950423" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_steal_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a909f9d70ad0d4ec0147f397b02ab6c1f" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_alloc</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a69a34267a96f854efd967baba2df3b13" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_base</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ad6b6df091cfc2618bccdac02e98c47d7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa68c727085ebb778755187f563f9fc02" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ae59f3a453a2eeb4b235a49d62f18b7a9aa7891ff7b0a368759452e2705e724bdb" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a56c3573323873aefb43c1531900d1b24" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_rendezvous_step</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a135b426c5f1f349f10e29dd4eba7db61" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af9946737d3c52be639d4971b8e235d1a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_shared</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1ad32bdb91df9d13260f8dc8a96e0e11" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a01ef243b6d5a13db5d5f3f15452ac199" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_thread_local</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa45f3ec50662ee6a1fc10dc4b60ee9ff" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_work_chunk</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a671de520e6d4d5a901d97b16ce018042" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_work_end</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a8f47518cd38271768515b5137d1de0f4" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>m_work_range</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1e58fb0436492ac8bd32ed6c2a65354ca08d987de9433a43ebb735df83013ad5a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>mask_to_16</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a5c09a94f949b3cfd128a38e143d6506ea837279e62d22c0593143cf3725153ac0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>max_pool_members</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aab70988eafcc28c0773fe4feec9df642ae3be5c85f105c13884304946329741da" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>max_pool_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a34d2cd521fd05fcbf2a48a5df64321d8a377b4e05a3a1f6dba7091a5a9fc77bbc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>max_team_members</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a105e9c22f1cd4e8d5108c3c3027e86c5aef6f206ad5b0c9dd2653a4f6f0194f14" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>max_team_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1f7d26ac8db75e4c509ba6b458b40561" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>organize_pool</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ac058d85d3037d23cf42549fa4f5eba91" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>organize_team</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aed42e501d15e794ae43da32afe31c620" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pair_int_t</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a0653bcc81134caf2cbe8ba860ff61d3c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a509573346101be6a00e7cd8c89b9662a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a3f020f244cd8c8c378ef7f7d9dd67dc6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2f2131b133d8ef8df39be03daab6eea7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_reduce_bytes</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a138dbb5505370a726ac3e192255486c0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_reduce_local</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a760630db6dae4de5da2f0d1532453992" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab19c5a6cb2cbed705b3fbf3ea43d2285" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_rendezvous_release</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a4002ed961900516fc7226006e5c3cff2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>pool_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a0a92efa08d47b27540db86f166773bb6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>scratch_assign</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a14fa5a233c40a2485306ad6fa3e501ed" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>scratch_buffer</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a602cd74cdc6179b14ed8635f3bff36d7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>scratch_bytes</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aa2f4337c7f98db0784c2d45e137d0ea3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a864b856098691b4a1e4ee4230ab4d60a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>set_work_partition</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1afa43a9febd40d62f1a4ef5eb3dd1d390a8ece60bb3521804e1d569dfb9d95d5c9" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>shift_to_8</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a1df3ca4bd85f1f16ff259d96540eb181" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af2aa7213504c1a4033331d5c8f09f1df" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1af68a04c6ac5ffe9acb3f119f8e380111" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_reduce_bytes</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a84e994af24f02890ffd5da9211e9ed97" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_reduce_local</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1aef875301afeb5f3a88536245a4c83c73" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ab0f379aa2dd801cd668dde6f6f8657fe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a2660a06b4c4abf77f646745ccfd914af" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_rendezvous_release</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a3abcfffae14847c58a3fa48ab8023734" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_shared</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1a7a177d111ff221f7cbf1b1cfb58f7110" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>team_shared_bytes</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_host_thread_team_data_1ad4028074ee5e11701d91a053f39e45cf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostThreadTeamData</scope><name>thread_local_bytes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

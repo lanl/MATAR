@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_deep_copy_3_01_source_space_00_01_kokkos_1_1_experimental_1_1_logicaladfbaab25bc56f42779a46c6b8ce5bc3" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Namer</type>
+      </param>
+      <param>
+        <type>class BaseSpace</type>
+      </param>
+      <param>
+        <type>class DefaultBaseExecutionSpace</type>
+      </param>
+      <param>
+        <type>class SharesAccess</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+      <param>
+        <type>class SourceSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_deep_copy_3_01_source_space_00_01_kokkos_1_1_experimental_1_1_logicaladfbaab25bc56f42779a46c6b8ce5bc3_1a09750018628340500492042dc35e56b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;::DeepCopy</definition>
+        <argsstring>(void *dst, void *src, size_t n)</argsstring>
+        <name>DeepCopy</name>
+        <qualifiedname>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;::DeepCopy</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="405" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="405" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_deep_copy_3_01_source_space_00_01_kokkos_1_1_experimental_1_1_logicaladfbaab25bc56f42779a46c6b8ce5bc3_1aab8d9402ba1fae8d9466069f5061a110" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;::DeepCopy</definition>
+        <argsstring>(const ExecutionSpace &amp;exec, void *dst, void *src, size_t n)</argsstring>
+        <name>DeepCopy</name>
+        <qualifiedname>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;::DeepCopy</qualifiedname>
+        <param>
+          <type>const ExecutionSpace &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="408" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="408" bodyend="410"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="401" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="404" bodyend="411"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_deep_copy_3_01_source_space_00_01_kokkos_1_1_experimental_1_1_logicaladfbaab25bc56f42779a46c6b8ce5bc3_1a09750018628340500492042dc35e56b3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;</scope><name>DeepCopy</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_deep_copy_3_01_source_space_00_01_kokkos_1_1_experimental_1_1_logicaladfbaab25bc56f42779a46c6b8ce5bc3_1aab8d9402ba1fae8d9466069f5061a110" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DeepCopy&lt; SourceSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, SharesAccess &gt;, ExecutionSpace &gt;</scope><name>DeepCopy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

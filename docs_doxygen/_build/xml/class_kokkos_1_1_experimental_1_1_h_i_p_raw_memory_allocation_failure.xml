@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::HIPRawMemoryAllocationFailure</compoundname>
+    <basecompoundref refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure" prot="public" virt="non-virtual">Kokkos::Experimental::RawMemoryAllocationFailure</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a63466306081a3e1c40ebdaf0a5b8e12d" prot="private" static="no" mutable="no">
+        <type>hipError_t</type>
+        <definition>hipError_t Kokkos::Experimental::HIPRawMemoryAllocationFailure::m_error_code</definition>
+        <argsstring></argsstring>
+        <name>m_error_code</name>
+        <qualifiedname>Kokkos::Experimental::HIPRawMemoryAllocationFailure::m_error_code</qualifiedname>
+        <initializer>= hipSuccess</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" line="98" column="14" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a82d12d864c33f6b3bcd20789dc4d28d8" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>FailureMode</type>
+        <definition>static FailureMode Kokkos::Experimental::HIPRawMemoryAllocationFailure::get_failure_mode</definition>
+        <argsstring>(hipError_t error_code)</argsstring>
+        <name>get_failure_mode</name>
+        <qualifiedname>Kokkos::Experimental::HIPRawMemoryAllocationFailure::get_failure_mode</qualifiedname>
+        <param>
+          <type>hipError_t</type>
+          <declname>error_code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" line="100" column="22" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" bodystart="100" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a335027fdf9f2abcb15b0b4053d1b2637" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::HIPRawMemoryAllocationFailure::HIPRawMemoryAllocationFailure</definition>
+        <argsstring>(size_t arg_attempted_size, hipError_t arg_error_code, AllocationMechanism arg_mechanism) noexcept</argsstring>
+        <name>HIPRawMemoryAllocationFailure</name>
+        <qualifiedname>Kokkos::Experimental::HIPRawMemoryAllocationFailure::HIPRawMemoryAllocationFailure</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>arg_attempted_size</declname>
+        </param>
+        <param>
+          <type>hipError_t</type>
+          <declname>arg_error_code</declname>
+        </param>
+        <param>
+          <type>AllocationMechanism</type>
+          <declname>arg_mechanism</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" line="109" column="3" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" bodystart="109" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a6c22f6ba965031f801bdc3fe481c4939" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::HIPRawMemoryAllocationFailure::append_additional_error_information</definition>
+        <argsstring>(std::ostream &amp;o) const override</argsstring>
+        <name>append_additional_error_information</name>
+        <qualifiedname>Kokkos::Experimental::HIPRawMemoryAllocationFailure::append_additional_error_information</qualifiedname>
+        <reimplements refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1ac359eea25c7886726bde8284fa8c398e">append_additional_error_information</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" line="117" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" bodystart="117" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Experimental::HIPRawMemoryAllocationFailure</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::RawMemoryAllocationFailure</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::bad_alloc</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Experimental::HIPRawMemoryAllocationFailure</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::RawMemoryAllocationFailure</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::bad_alloc</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" line="96" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Error.hpp" bodystart="96" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a0dc07e45e08e718fad87c0a34b798ce1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>allocation_mechanism</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1ad8f4567a166bdf48a0e47da79a065c80" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>AllocationMechanism</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a6c22f6ba965031f801bdc3fe481c4939" prot="public" virt="virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>append_additional_error_information</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a74d13324f3e94717356044ead799b1b5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>attempted_alignment</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a14037b197869f734e47fabeb577981bb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>attempted_size</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a59c1ce673ea035e0ab162e44a1b18a70" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>failure_mode</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1aa7353a0c05351de0426a679f4b627436" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>FailureMode</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a08c1ab3938816145b3d764d279dc33d3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>get_error_message</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a82d12d864c33f6b3bcd20789dc4d28d8" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>get_failure_mode</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a335027fdf9f2abcb15b0b4053d1b2637" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>HIPRawMemoryAllocationFailure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_h_i_p_raw_memory_allocation_failure_1a63466306081a3e1c40ebdaf0a5b8e12d" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>m_error_code</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a18d1a4f6f525513081881d60ae6957fa" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a3da77890722350fdf9b0f25b058357ac" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a0330609f3dbb9800b97d634b4b695c0b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>print_error_message</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1ae504e0bae5d2d5706810cdc0747bf9a2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>RawMemoryAllocationFailure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a3ad15ba8d7b67a1cabc12a7a72e62406" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>RawMemoryAllocationFailure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a196925e96504ddfa6901c70a10fdc1ce" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>RawMemoryAllocationFailure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a8c2e4eb946312ce62d88b1d11a82977a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>RawMemoryAllocationFailure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a6ef87941e9bf9d70858aedb0921ad495" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>what</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_raw_memory_allocation_failure_1a1b3a962c92ecde006f0325a23bbf76fc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::HIPRawMemoryAllocationFailure</scope><name>~RawMemoryAllocationFailure</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

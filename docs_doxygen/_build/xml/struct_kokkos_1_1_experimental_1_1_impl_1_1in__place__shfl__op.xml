@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::in_place_shfl_op</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Derived</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1abab96e279f138c53edff5341dbe37f9b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>__device__ KOKKOS_IMPL_FORCEINLINE const Derived &amp;</type>
+        <definition>__device__ KOKKOS_IMPL_FORCEINLINE const Derived &amp; Kokkos::Experimental::Impl::in_place_shfl_op&lt; Derived &gt;::self</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>self</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_op::self</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="64" column="52" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1ab9f38a4fc8e8a8f673759c3af4842b35" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>__device__ std::enable_if&lt; sizeof(Scalar)&lt; sizeof(int)&gt;::type operator()(Scalar &amp;out, Scalar const &amp;in, int lane_or_delta, int width) const noexcept { using shfl_type=int;union conv_type { Scalar orig;shfl_type conv;};conv_type tmp_in;tmp_in.orig=in;conv_type tmp_out;tmp_out.conv=tmp_in.conv;conv_type res;res.conv=self().do_shfl_op(reinterpret_cast&lt; shfl_type const &amp; &gt;(tmp_out.conv), lane_or_delta, width);out=res.orig;} template&lt; class Scalar &gt; __device__ std::enable_if&lt; sizeof(Scalar)==sizeof(int)&gt;::type</type>
+        <definition>__device__ std::enable_if&lt; sizeof(Scalar)&lt; sizeof(int)&gt;::type operator()(Scalar &amp;out, Scalar const  &amp;in, int lane_or_delta, int width) const noexcept { using shfl_type=int; union conv_type { Scalar orig; shfl_type conv; }; conv_type tmp_in; tmp_in.orig=in; conv_type tmp_out; tmp_out.conv=tmp_in.conv; conv_type res; res.conv=self().do_shfl_op( reinterpret_cast&lt; shfl_type const  &amp; &gt;(tmp_out.conv), lane_or_delta, width); out=res.orig; } template&lt; class Scalar &gt; __device__ std::enable_if&lt; sizeof(Scalar)==sizeof(int)&gt;::type Kokkos::Experimental::Impl::in_place_shfl_op&lt; Derived &gt;::operator()</definition>
+        <argsstring>(Scalar &amp;out, Scalar const &amp;in, int lane_or_delta, int width) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_op::operator()</qualifiedname>
+        <param>
+          <type>Scalar &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>Scalar const &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lane_or_delta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="96" column="3" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="96" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1a60f2504e343a61284f6d5870bbdc6272" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>__device__ std::enable_if&lt; sizeof(Scalar)==sizeof(double)&gt;::type</type>
+        <definition>__device__ std::enable_if&lt; sizeof(Scalar)==sizeof(double)&gt;::type Kokkos::Experimental::Impl::in_place_shfl_op&lt; Derived &gt;::operator()</definition>
+        <argsstring>(Scalar &amp;out, Scalar const &amp;in, int lane_or_delta, int width) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_op::operator()</qualifiedname>
+        <param>
+          <type>Scalar &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>Scalar const &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lane_or_delta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="105" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1aec3a18ee69125474d09916fa16b7058a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Scalar</type>
+          </param>
+        </templateparamlist>
+        <type>__device__ std::enable_if&lt;(sizeof(Scalar)&gt;sizeof(double))&gt;::type</type>
+        <definition>__device__ std::enable_if&lt;(sizeof(Scalar)&gt;sizeof(double))&gt;::type Kokkos::Experimental::Impl::in_place_shfl_op&lt; Derived &gt;::operator()</definition>
+        <argsstring>(Scalar &amp;out, const Scalar &amp;val, int lane_or_delta, int width) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_op::operator()</qualifiedname>
+        <param>
+          <type>Scalar &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const Scalar &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lane_or_delta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="115" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="115" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="62" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="62" bodyend="125"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1ab9f38a4fc8e8a8f673759c3af4842b35" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::in_place_shfl_op</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1a60f2504e343a61284f6d5870bbdc6272" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::in_place_shfl_op</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1aec3a18ee69125474d09916fa16b7058a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::in_place_shfl_op</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op_1abab96e279f138c53edff5341dbe37f9b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::in_place_shfl_op</scope><name>self</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

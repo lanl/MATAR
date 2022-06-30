@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename DefaultType</type>
+      </param>
+      <param>
+        <type>template&lt; typename &gt; class</type>
+        <declname>Condition</declname>
+        <defname>Condition</defname>
+      </param>
+      <param>
+        <type>typename S</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Pack</declname>
+        <defname>Pack</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1acd20da7c83a6bd8b553cbbc98d3598a9" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@83</name>
+        <qualifiedname>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::@83</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1acd20da7c83a6bd8b553cbbc98d3598a9aea401b88f66c4b8994f7179e65336bd7" prot="private">
+          <name>self_value</name>
+          <initializer>= Condition&lt;S&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="107" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="107" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1a495da1839fc3e9bfdf967be3fe55a4aa" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1has__condition" kindref="compound">has_condition</ref>&lt; DefaultType, Condition, Pack... &gt;</type>
+        <definition>using Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::next =  has_condition&lt;DefaultType, Condition, Pack...&gt;</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <qualifiedname>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::next</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="109" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1abd7326c7618f6b189ba73b24d506e497" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@84</name>
+        <qualifiedname>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::@84</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1abd7326c7618f6b189ba73b24d506e497a2c9cff6b52f6a19802f8a23860a68c3d" prot="public">
+          <name>value</name>
+          <initializer>= self_value || next::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="116" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1a4fa7f9174eab7958e1b1709de1628e63" prot="public" static="no">
+        <type>typename std::conditional&lt; self_value, S, typename next::type &gt;::type</type>
+        <definition>using Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::type =  typename std::conditional&lt;self_value, S, typename next::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="118" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="105" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="105" bodyend="120"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1a495da1839fc3e9bfdf967be3fe55a4aa" prot="private" virt="non-virtual"><scope>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;</scope><name>next</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1acd20da7c83a6bd8b553cbbc98d3598a9aea401b88f66c4b8994f7179e65336bd7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;</scope><name>self_value</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1a4fa7f9174eab7958e1b1709de1628e63" prot="public" virt="non-virtual"><scope>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1has__condition_3_01_default_type_00_01_condition_00_01_s_00_01_pack_8_8_8_01_4_1abd7326c7618f6b189ba73b24d506e497a2c9cff6b52f6a19802f8a23860a68c3d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::has_condition&lt; DefaultType, Condition, S, Pack... &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

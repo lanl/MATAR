@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1memory__order__release__t" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::memory_order_release_t</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1memory__order__release__t_1abc4d7057741223d1620f60515129ee2c" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1memory__order__release__t" kindref="compound">memory_order_release_t</ref></type>
+        <definition>using Kokkos::Impl::memory_order_release_t::memory_order =  memory_order_release_t</definition>
+        <argsstring></argsstring>
+        <name>memory_order</name>
+        <qualifiedname>Kokkos::Impl::memory_order_release_t::memory_order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" line="95" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1memory__order__release__t_1ab5d70f96c063b31ab8385a7950866f08" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::Impl::memory_order_release_t::std_constant</definition>
+        <argsstring></argsstring>
+        <name>std_constant</name>
+        <qualifiedname>Kokkos::Impl::memory_order_release_t::std_constant</qualifiedname>
+        <initializer>= std::memory_order_release</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" line="101" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" line="94" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Atomic_Memory_Order.hpp" bodystart="94" bodyend="102"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1memory__order__release__t_1abc4d7057741223d1620f60515129ee2c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::memory_order_release_t</scope><name>memory_order</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1memory__order__release__t_1ab5d70f96c063b31ab8385a7950866f08" prot="public" virt="non-virtual"><scope>Kokkos::Impl::memory_order_release_t</scope><name>std_constant</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

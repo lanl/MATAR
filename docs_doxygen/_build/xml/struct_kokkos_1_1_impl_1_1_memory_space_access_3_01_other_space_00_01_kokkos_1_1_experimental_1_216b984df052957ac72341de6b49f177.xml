@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename BaseSpace</type>
+      </param>
+      <param>
+        <type>typename DefaultBaseExecutionSpace</type>
+      </param>
+      <param>
+        <type>class Namer</type>
+      </param>
+      <param>
+        <type>typename OtherSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a14a63061577c271a35eb59c88cbde5c0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@207</name>
+        <qualifiedname>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;::@207</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a14a63061577c271a35eb59c88cbde5c0acfee4c99cf7b89eceedac62fae2f2f76" prot="public">
+          <name>assignable</name>
+          <initializer>= MemorySpaceAccess&lt;OtherSpace, BaseSpace&gt;::assignable</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="185" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="185" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a2d96c94b6fe59ef6bcbba1b55968bd78" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@208</name>
+        <qualifiedname>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;::@208</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a2d96c94b6fe59ef6bcbba1b55968bd78a49ba54ed1c853b98267ddc11c383907f" prot="public">
+          <name>accessible</name>
+          <initializer>= MemorySpaceAccess&lt;OtherSpace, BaseSpace&gt;::accessible</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="186" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a210a84a2514a0a75422b537c65909fc3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@209</name>
+        <qualifiedname>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;::@209</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a210a84a2514a0a75422b537c65909fc3a5e32ebd3d194f36dc1354d75f8daee55" prot="public">
+          <name>deepcopy</name>
+          <initializer>= MemorySpaceAccess&lt;OtherSpace, BaseSpace&gt;::deepcopy</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="187" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="187" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" line="180" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_LogicalSpaces.hpp" bodystart="184" bodyend="188"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a2d96c94b6fe59ef6bcbba1b55968bd78a49ba54ed1c853b98267ddc11c383907f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;</scope><name>accessible</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a14a63061577c271a35eb59c88cbde5c0acfee4c99cf7b89eceedac62fae2f2f76" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;</scope><name>assignable</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_memory_space_access_3_01_other_space_00_01_kokkos_1_1_experimental_1_216b984df052957ac72341de6b49f177_1a210a84a2514a0a75422b537c65909fc3a5e32ebd3d194f36dc1354d75f8daee55" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemorySpaceAccess&lt; OtherSpace, Kokkos::Experimental::LogicalMemorySpace&lt; BaseSpace, DefaultBaseExecutionSpace, Namer, Kokkos::Experimental::LogicalSpaceSharesAccess::shared_access &gt; &gt;</scope><name>deepcopy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

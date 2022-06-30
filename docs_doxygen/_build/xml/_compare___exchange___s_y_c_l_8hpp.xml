@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_compare___exchange___s_y_c_l_8hpp" kind="file" language="C++">
+    <compoundname>Compare_Exchange_SYCL.hpp</compoundname>
+    <includes refid="_common_8hpp" local="yes">desul/atomics/Common.hpp</includes>
+    <includes refid="_s_y_c_l_conversions_8hpp" local="yes">desul/atomics/SYCLConversions.hpp</includes>
+    <includes local="no">CL/sycl.hpp</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>desul/atomics/Common.hpp</label>
+        <link refid="_common_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/desul/atomics/Compare_Exchange_SYCL.hpp</label>
+        <link refid="_compare___exchange___s_y_c_l_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>desul/atomics/Macros.hpp</label>
+        <link refid="_macros_8hpp_source"/>
+      </node>
+      <node id="7">
+        <label>desul/atomics/SYCLConversions.hpp</label>
+        <link refid="_s_y_c_l_conversions_8hpp_source"/>
+      </node>
+      <node id="8">
+        <label>CL/sycl.hpp</label>
+      </node>
+      <node id="5">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment">Copyright<sp/>(c)<sp/>2019,<sp/>Lawrence<sp/>Livermore<sp/>National<sp/>Security,<sp/>LLC</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">and<sp/>DESUL<sp/>project<sp/>contributors.<sp/>See<sp/>the<sp/>COPYRIGHT<sp/>file<sp/>for<sp/>details.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">Source:<sp/>https://github.com/desul/desul</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment">SPDX-License-Identifier:<sp/>(BSD-3-Clause)</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DESUL_ATOMICS_COMPARE_EXCHANGE_SYCL_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DESUL_ATOMICS_COMPARE_EXCHANGE_SYCL_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;desul/atomics/Common.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;desul/atomics/SYCLConversions.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;CL/sycl.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DESUL_HAVE_SYCL_ATOMICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">desul<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>atomic_thread_fence(MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>DESUL_SYCL_NAMESPACE::atomic_fence(DesulToSYCLMemoryOrder&lt;MemoryOrder&gt;::value,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DesulToSYCLMemoryScope&lt;MemoryScope&gt;::value);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>==<sp/>4,<sp/>T&gt;::type<sp/>atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dest,<sp/>T<sp/>compare,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)<sp/>==<sp/>4,<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>function<sp/>assumes<sp/>an<sp/>unsigned<sp/>int<sp/>is<sp/>32-bit&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>DESUL_SYCL_NAMESPACE::atomic_ref&lt;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int,<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryOrder&lt;MemoryOrder&gt;::value,<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryScope&lt;MemoryScope&gt;::value,<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::access::address_space::global_device_space&gt;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>dest_ref(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dest));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>dest_ref.compare_exchange_strong(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;compare),<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;value));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>==<sp/>8,<sp/>T&gt;::type<sp/>atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dest,<sp/>T<sp/>compare,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>int)<sp/>==<sp/>8,<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>function<sp/>assumes<sp/>an<sp/>unsigned<sp/>long<sp/>long<sp/><sp/>is<sp/>64-bit&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>DESUL_SYCL_NAMESPACE::atomic_ref&lt;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>int,<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryOrder&lt;MemoryOrder&gt;::value,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryScope&lt;MemoryScope&gt;::value,<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::access::address_space::global_device_space&gt;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>dest_ref(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dest));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>dest_ref.compare_exchange_strong(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;compare),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;value));</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>==<sp/>4,<sp/>T&gt;::type<sp/>atomic_exchange(</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dest,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)<sp/>==<sp/>4,<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>function<sp/>assumes<sp/>an<sp/>unsigned<sp/>int<sp/>is<sp/>32-bit&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>DESUL_SYCL_NAMESPACE::atomic_ref&lt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int,<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryOrder&lt;MemoryOrder&gt;::value,<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryScope&lt;MemoryScope&gt;::value,<sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::access::address_space::global_device_space&gt;<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>dest_ref(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dest));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>return_val<sp/>=<sp/>dest_ref.exchange(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;value));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">T&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(return_val);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>==<sp/>8,<sp/>T&gt;::type<sp/>atomic_exchange(</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>dest,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>int)<sp/>==<sp/>8,<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>function<sp/>assumes<sp/>an<sp/>unsigned<sp/>long<sp/>long<sp/><sp/>is<sp/>64-bit&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>DESUL_SYCL_NAMESPACE::atomic_ref&lt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>int,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryOrder&lt;MemoryOrder&gt;::value,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>DesulToSYCLMemoryScope&lt;MemoryScope&gt;::value,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>sycl::access::address_space::global_device_space&gt;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>dest_ref(*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(dest));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>return_val<sp/>=</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dest_ref.exchange(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(value));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">T&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(return_val);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>!=<sp/>8)<sp/>&amp;&amp;<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>!=<sp/>4),<sp/>T&gt;::type<sp/>atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*dest*/</highlight><highlight class="normal">,<sp/>T<sp/>compare,<sp/>T<sp/></highlight><highlight class="comment">/*value*/</highlight><highlight class="normal">,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>FIXME_SYCL<sp/>not<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;<sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>!=<sp/>8)<sp/>&amp;&amp;<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)<sp/>!=<sp/>4),<sp/>T&gt;::type<sp/>atomic_exchange(</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*dest*/</highlight><highlight class="normal">,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>FIXME_SYCL<sp/>not<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Compare_Exchange_SYCL.hpp"/>
+  </compounddef>
+</doxygen>

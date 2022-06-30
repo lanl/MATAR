@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_math_unary_function__lgamma" kind="struct" language="C++" prot="public">
+    <compoundname>MathUnaryFunction_lgamma</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_math_unary_function__lgamma_1a1f4e59ab156d1967adb5c7bace049a5b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION auto</type>
+        <definition>static KOKKOS_FUNCTION auto MathUnaryFunction_lgamma::eval</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval</name>
+        <qualifiedname>MathUnaryFunction_lgamma::eval</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="351" column="73" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="351" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__lgamma_1adaaedd7ab1c992ec5cd43b618630548c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto MathUnaryFunction_lgamma::eval_std</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval_std</name>
+        <qualifiedname>MathUnaryFunction_lgamma::eval_std</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="351" column="283" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="351" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__lgamma_1a65b898e554ed72f1bea6669a2f6e7e9c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>static KOKKOS_FUNCTION double MathUnaryFunction_lgamma::ulp_factor</definition>
+        <argsstring>()</argsstring>
+        <name>ulp_factor</name>
+        <qualifiedname>MathUnaryFunction_lgamma::ulp_factor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="351" column="467" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="351" bodyend="351"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="351" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="351" bodyend="351"/>
+    <listofallmembers>
+      <member refid="struct_math_unary_function__lgamma_1a1f4e59ab156d1967adb5c7bace049a5b" prot="public" virt="non-virtual"><scope>MathUnaryFunction_lgamma</scope><name>eval</name></member>
+      <member refid="struct_math_unary_function__lgamma_1adaaedd7ab1c992ec5cd43b618630548c" prot="public" virt="non-virtual"><scope>MathUnaryFunction_lgamma</scope><name>eval_std</name></member>
+      <member refid="struct_math_unary_function__lgamma_1a65b898e554ed72f1bea6669a2f6e7e9c" prot="public" virt="non-virtual"><scope>MathUnaryFunction_lgamma</scope><name>ulp_factor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

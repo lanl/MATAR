@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DataType</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a751b0656adb0c52aa75de3aa78790f9c" prot="public" static="no">
+        <type>typename DeviceType::execution_space</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::execution_space =  typename DeviceType::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a022fd3e08edc9a79f9705ea2d6a7b770" prot="public" static="no">
+        <type>typename DeviceType::memory_space</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::memory_space =  typename DeviceType::memory_space</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9c1adc3763df569fd5b35deccbae19df" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a6eb53fc3003c5dc20e7bf7bf50fcd28e" prot="public" static="no">
+        <type>int</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::value_type =  int</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a72c9862bc00b70edc27a960437e3aafe" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; DataType, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, execution_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_view =  Kokkos::View&lt;DataType, Kokkos::LayoutLeft, execution_space, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>left_view</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="84" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1af088b5ea2d016a556a9f54127666cdb1" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; DataType, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>, execution_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_view =  Kokkos::View&lt;DataType, Kokkos::LayoutRight, execution_space, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>right_view</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="87" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9875fd0877f41ec2e6b71b2b414e626c" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; DataType, <ref refid="struct_kokkos_1_1_layout_stride" kindref="compound">Kokkos::LayoutStride</ref>, execution_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::stride_view =  Kokkos::View&lt;DataType, Kokkos::LayoutStride, execution_space, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>stride_view</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::stride_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="91" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a1a0e5de5b13d6ab726684190164b32dc" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">left_view</ref></type>
+        <definition>left_view TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left</definition>
+        <argsstring></argsstring>
+        <name>left</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="95" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1adc943e6cd63c11c0931219578242cfec" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">right_view</ref></type>
+        <definition>right_view TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="96" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9b1cc11ebc06c22edfbb4d4034b18d1f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">stride_view</ref></type>
+        <definition>stride_view TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_stride</definition>
+        <argsstring></argsstring>
+        <name>left_stride</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_stride</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="97" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1aa72cc653b1d46d16047641c76eb8f8e6" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">stride_view</ref></type>
+        <definition>stride_view TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_stride</definition>
+        <argsstring></argsstring>
+        <name>right_stride</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_stride</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="98" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a0a5dd57e6f53117f28d18f066d22bfb1" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_alloc</definition>
+        <argsstring></argsstring>
+        <name>left_alloc</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::left_alloc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="99" column="11" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1ab113342c38b2a5908b2ebb425b888e1c" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_alloc</definition>
+        <argsstring></argsstring>
+        <name>right_alloc</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::right_alloc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="100" column="11" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9bc7662fda17acbc75b486058cd082be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;update, const volatile value_type &amp;input)</argsstring>
+        <name>join</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="76" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1aadeb9c72104bcfa69c29647a1d6faecd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::init</definition>
+        <argsstring>(value_type &amp;update)</argsstring>
+        <name>init</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="82" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a8b63ef583ab3c62b04c5384464133000" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="110" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="110" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a63fe8966408971968eaf8dd7107e5346" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::TestViewOperator_LeftAndRight</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewOperator_LeftAndRight</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::TestViewOperator_LeftAndRight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="102" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="102" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a547f6578eb5d5c8402c02b8018624b5f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::operator()</definition>
+        <argsstring>(const size_type, value_type &amp;update) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;::operator()</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_type</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="121" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="121" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</label>
+        <link refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>left</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>right</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>left_stride</edgelabel>
+          <edgelabel>right_stride</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; DataType, Kokkos::LayoutLeft, execution_space, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; DataType, Kokkos::LayoutRight, execution_space, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::View&lt; DataType, Kokkos::LayoutStride, execution_space, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="68" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="68" bodyend="145"/>
+    <listofallmembers>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a751b0656adb0c52aa75de3aa78790f9c" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>execution_space</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1aadeb9c72104bcfa69c29647a1d6faecd" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>init</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9bc7662fda17acbc75b486058cd082be" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>join</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a1a0e5de5b13d6ab726684190164b32dc" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>left</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a0a5dd57e6f53117f28d18f066d22bfb1" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>left_alloc</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9b1cc11ebc06c22edfbb4d4034b18d1f" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>left_stride</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a72c9862bc00b70edc27a960437e3aafe" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>left_view</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a022fd3e08edc9a79f9705ea2d6a7b770" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>memory_space</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a547f6578eb5d5c8402c02b8018624b5f" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>operator()</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1adc943e6cd63c11c0931219578242cfec" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>right</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1ab113342c38b2a5908b2ebb425b888e1c" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>right_alloc</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1aa72cc653b1d46d16047641c76eb8f8e6" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>right_stride</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1af088b5ea2d016a556a9f54127666cdb1" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>right_view</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9c1adc3763df569fd5b35deccbae19df" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>size_type</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a9875fd0877f41ec2e6b71b2b414e626c" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>stride_view</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a8b63ef583ab3c62b04c5384464133000" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>testit</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a63fe8966408971968eaf8dd7107e5346" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>TestViewOperator_LeftAndRight</name></member>
+      <member refid="struct_test_atomic_views_1_1_test_view_operator___left_and_right_3_01_data_type_00_01_device_type_00_011_01_4_1a6eb53fc3003c5dc20e7bf7bf50fcd28e" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestViewOperator_LeftAndRight&lt; DataType, DeviceType, 1 &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

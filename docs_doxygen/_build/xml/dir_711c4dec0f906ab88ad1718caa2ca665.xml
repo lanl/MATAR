@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_711c4dec0f906ab88ad1718caa2ca665" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy</compoundname>
+    <innerfile refid="overlapping__deepcopy_8cpp">overlapping_deepcopy.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/"/>
+  </compounddef>
+</doxygen>

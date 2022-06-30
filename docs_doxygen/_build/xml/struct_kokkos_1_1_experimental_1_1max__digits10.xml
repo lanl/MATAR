@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1max__digits10" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::max_digits10</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper" prot="public" virt="non-virtual">Kokkos::Experimental::Impl::max_digits10_helper&lt; T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Experimental::max_digits10&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1max__digits10"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::Impl::max_digits10_helper&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Experimental::max_digits10&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1max__digits10"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Experimental::Impl::max_digits10_helper&lt; T &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="244" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="244" bodyend="244"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

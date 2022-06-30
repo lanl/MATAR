@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_tile_size_properties" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::TileSizeProperties</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a0f460ac62862902f8b07eb405e4f48b8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TileSizeProperties::max_threads</definition>
+        <argsstring></argsstring>
+        <name>max_threads</name>
+        <qualifiedname>Kokkos::Impl::TileSizeProperties::max_threads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="155" column="7" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a734353186fec7880de7b7ffb3a0926a5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TileSizeProperties::default_largest_tile_size</definition>
+        <argsstring></argsstring>
+        <name>default_largest_tile_size</name>
+        <qualifiedname>Kokkos::Impl::TileSizeProperties::default_largest_tile_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="156" column="7" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a088d2dd8e7f5e08c722841c64a20dacf" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TileSizeProperties::default_tile_size</definition>
+        <argsstring></argsstring>
+        <name>default_tile_size</name>
+        <qualifiedname>Kokkos::Impl::TileSizeProperties::default_tile_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="157" column="7" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a429b2f42141b96c73a07d87f4bb030af" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::TileSizeProperties::max_total_tile_size</definition>
+        <argsstring></argsstring>
+        <name>max_total_tile_size</name>
+        <qualifiedname>Kokkos::Impl::TileSizeProperties::max_total_tile_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="158" column="7" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="154" column="1" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="154" bodyend="159"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a734353186fec7880de7b7ffb3a0926a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TileSizeProperties</scope><name>default_largest_tile_size</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a088d2dd8e7f5e08c722841c64a20dacf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TileSizeProperties</scope><name>default_tile_size</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a0f460ac62862902f8b07eb405e4f48b8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TileSizeProperties</scope><name>max_threads</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile_size_properties_1a429b2f42141b96c73a07d87f4bb030af" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TileSizeProperties</scope><name>max_total_tile_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

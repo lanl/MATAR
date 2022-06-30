@@ -1,0 +1,1005 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Dimension</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a56d1e324b9bdcc035334bbaa85dbd831" prot="public" static="no">
+        <type>std::true_type</type>
+        <definition>using Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::is_mapping_plugin =  std::true_type</definition>
+        <argsstring></argsstring>
+        <name>is_mapping_plugin</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::is_mapping_plugin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="878" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="878" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a783ea8b1f79f0547fc1b1631afeae2a5" prot="public" static="no">
+        <type>std::true_type</type>
+        <definition>using Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::is_regular =  std::true_type</definition>
+        <argsstring></argsstring>
+        <name>is_regular</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::is_regular</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="879" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="879" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a2715dbf95b14f0503288f0541a1d7b97" prot="public" static="no">
+        <type>size_t</type>
+        <definition>using Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::size_type =  size_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="881" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="881" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ab8e1c0220e6c280e5d3bdeab797c260a" prot="public" static="no">
+        <type>Dimension</type>
+        <definition>using Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_type =  Dimension</definition>
+        <argsstring></argsstring>
+        <name>dimension_type</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="882" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="882" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a508dcccc2fc17dda9d71fe74c2d9c290" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref></type>
+        <definition>using Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::array_layout =  Kokkos::LayoutLeft</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="883" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="883" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1abc647d7d35ab15adfe12c80228a41240" prot="public" static="no" mutable="no">
+        <type>dimension_type</type>
+        <definition>dimension_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::m_dim</definition>
+        <argsstring></argsstring>
+        <name>m_dim</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::m_dim</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="885" column="18" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="885" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4b5c8fe43b186db1109447c0e7d4e6e8" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="891" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="891" bodyend="893"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa0fdaaa71d75c3f80051978708a344e6" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="897" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="897" bodyend="900"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a700682b2c9fcd232fdba9f235507eaee" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="904" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="904" bodyend="908"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a25ddaef13e696f4f67d3b3686bc54b7b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2, I3 const &amp;i3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>I3 const &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="912" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="912" bodyend="917"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ac708abe7c3907b5b489f7ccfa100b360" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2, I3 const &amp;i3, I4 const &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>I3 const &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>I4 const &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="921" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="921" bodyend="928"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a8061a40673e963608aaacadefa214696" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2, I3 const &amp;i3, I4 const &amp;i4, I5 const &amp;i5) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>I3 const &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>I4 const &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>I5 const &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="933" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="933" bodyend="941"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a82a209f6c2975e11f9f92a8ef9fa8d46" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2, I3 const &amp;i3, I4 const &amp;i4, I5 const &amp;i5, I6 const &amp;i6) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>I3 const &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>I4 const &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>I5 const &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>I6 const &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="946" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="946" bodyend="956"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a9bbfa5e6bf965a79a008f3101fbbbdf4" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+          <param>
+            <type>typename I7</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</definition>
+        <argsstring>(I0 const &amp;i0, I1 const &amp;i1, I2 const &amp;i2, I3 const &amp;i3, I4 const &amp;i4, I5 const &amp;i5, I6 const &amp;i6, I7 const &amp;i7) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>I0 const &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>I1 const &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>I2 const &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>I3 const &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>I4 const &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>I5 const &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>I6 const &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <param>
+          <type>I7 const &amp;</type>
+          <declname>i7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="961" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="961" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a1322e57eb03a067d345b5a878793bf8a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">array_layout</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr array_layout Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::layout</definition>
+        <argsstring>() const</argsstring>
+        <name>layout</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="979" column="26" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="979" bodyend="982"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa492220fc8421b68e0c92c6975564b17" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_0</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_0</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="984" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="984" bodyend="986"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ab7619cf6c435f6243f80c5f6a57e13f3" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_1</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_1</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="987" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="987" bodyend="989"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a610b249bbb2aa2c530263a8387de6c2e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_2</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_2</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="990" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="990" bodyend="992"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ac44d88433ab987f166153f1790d763dc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_3</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_3</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="993" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="993" bodyend="995"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a6739fd4c5c4f4dc756caf7b0b0dff265" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_4</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_4</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="996" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="996" bodyend="998"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a5d1ae61678e6196dccdbfdbad53ae784" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_5</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_5</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="999" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="999" bodyend="1001"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a71978c5f5e2e65da57eaa6721c8f00c0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_6</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_6</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1002" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1002" bodyend="1004"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a9c67fe4b83cb244876bc66bb04589b38" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_7</definition>
+        <argsstring>() const</argsstring>
+        <name>dimension_7</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::dimension_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1005" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1005" bodyend="1007"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a53b8f24118d33e407cade2bb8ff1c121" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1011" column="23" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1011" bodyend="1014"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a3d6c9a47b52a01d7a52f852d4c5b838d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1018" column="23" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1018" bodyend="1021"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4f2dc26112dc80eeed20e1a9500a2641" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::span_is_contiguous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1023" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1023" bodyend="1025"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a001874d4412b229a510739e9ff463cfd" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_0</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_0</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1028" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1028" bodyend="1028"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa030752f19eeac153049b620794fdaae" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_1</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_1</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1029" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1029" bodyend="1031"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a5576387ba6de417ce98c670d075d1c55" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_2</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_2</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1032" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1032" bodyend="1034"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a30e60312a462327e4442fb8f0fbe5b28" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_3</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_3</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1035" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1035" bodyend="1037"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a59f5ca0cf412c4440aac64892e847cc0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_4</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_4</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1038" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1038" bodyend="1040"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4a3ff7394add8d7eab9a7270d2ff1467" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_5</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_5</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1041" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1041" bodyend="1043"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1acd66e4350fd229472c2bb87e02667b0c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_6</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_6</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1044" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1044" bodyend="1046"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a82db2f4e6c51b9b806241871115eb61c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_type Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_7</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_7</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1047" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1047" bodyend="1050"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ad4313a6cfe9ae2e34f946660087bb906" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride</definition>
+        <argsstring>(iType *const s) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::stride</qualifiedname>
+        <param>
+          <type>iType *const</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1054" column="31" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1054" bodyend="1080"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a37afcf25268e9bf15b60377789d19502" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>()=default</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1095" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a7ebb33370e0a2ec848061eb877fe4654" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(const ViewOffset &amp;)=default</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1096" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a73b61c61f37fa102a6b56077d8b18e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref> &amp;</type>
+        <definition>ViewOffset &amp; Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator=</definition>
+        <argsstring>(const ViewOffset &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1097" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a28c62d6a0fdc91f845941ce7d8c1fa62" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>TrivialScalarSize</declname>
+            <defname>TrivialScalarSize</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(std::integral_constant&lt; unsigned, TrivialScalarSize &gt; const &amp;, Kokkos::LayoutLeft const &amp;arg_layout)</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>std::integral_constant&lt; unsigned, TrivialScalarSize &gt; const &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref> const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1101" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1101" bodyend="1104"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4a169415fc6ee3154ffc76e822a55ed0" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DimRHS</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(const ViewOffset&lt; DimRHS, Kokkos::LayoutLeft, void &gt; &amp;rhs)</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref>&lt; DimRHS, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, void &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1107" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1107" bodyend="1114"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ae40f5fc55da43c199bc856c4bbdc21d9" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DimRHS</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(const ViewOffset&lt; DimRHS, Kokkos::LayoutRight, void &gt; &amp;rhs)</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref>&lt; DimRHS, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>, void &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1117" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1117" bodyend="1125"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a40dd79689a71ab4d9666230cd70efddc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DimRHS</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(const ViewOffset&lt; DimRHS, Kokkos::LayoutStride, void &gt; &amp;rhs)</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref>&lt; DimRHS, <ref refid="struct_kokkos_1_1_layout_stride" kindref="compound">Kokkos::LayoutStride</ref>, void &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1128" column="26" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1128" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a73cc4638fa0aea0b55701a0e3e3369be" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DimRHS</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</definition>
+        <argsstring>(const ViewOffset&lt; DimRHS, Kokkos::LayoutLeft, void &gt; &amp;, const SubviewExtents&lt; DimRHS::rank, dimension_type::rank &gt; &amp;sub)</argsstring>
+        <name>ViewOffset</name>
+        <qualifiedname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;::ViewOffset</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_offset" kindref="compound">ViewOffset</ref>&lt; DimRHS, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, void &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_subview_extents" kindref="compound">SubviewExtents</ref>&lt; DimRHS::rank, dimension_type::rank &gt; &amp;</type>
+          <declname>sub</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="1142" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="1142" bodyend="1150"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="874" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="877" bodyend="1151"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a508dcccc2fc17dda9d71fe74c2d9c290" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa492220fc8421b68e0c92c6975564b17" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_0</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ab7619cf6c435f6243f80c5f6a57e13f3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_1</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a610b249bbb2aa2c530263a8387de6c2e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_2</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ac44d88433ab987f166153f1790d763dc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_3</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a6739fd4c5c4f4dc756caf7b0b0dff265" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_4</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a5d1ae61678e6196dccdbfdbad53ae784" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_5</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a71978c5f5e2e65da57eaa6721c8f00c0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a9c67fe4b83cb244876bc66bb04589b38" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_7</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ab8e1c0220e6c280e5d3bdeab797c260a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>dimension_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a56d1e324b9bdcc035334bbaa85dbd831" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>is_mapping_plugin</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a783ea8b1f79f0547fc1b1631afeae2a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>is_regular</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a1322e57eb03a067d345b5a878793bf8a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>layout</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1abc647d7d35ab15adfe12c80228a41240" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>m_dim</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4b5c8fe43b186db1109447c0e7d4e6e8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa0fdaaa71d75c3f80051978708a344e6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a700682b2c9fcd232fdba9f235507eaee" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a25ddaef13e696f4f67d3b3686bc54b7b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ac708abe7c3907b5b489f7ccfa100b360" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a8061a40673e963608aaacadefa214696" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a82a209f6c2975e11f9f92a8ef9fa8d46" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a9bbfa5e6bf965a79a008f3101fbbbdf4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a73b61c61f37fa102a6b56077d8b18e30" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a53b8f24118d33e407cade2bb8ff1c121" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>size</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a2715dbf95b14f0503288f0541a1d7b97" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>size_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a3d6c9a47b52a01d7a52f852d4c5b838d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>span</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4f2dc26112dc80eeed20e1a9500a2641" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ad4313a6cfe9ae2e34f946660087bb906" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a001874d4412b229a510739e9ff463cfd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_0</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1aa030752f19eeac153049b620794fdaae" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_1</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a5576387ba6de417ce98c670d075d1c55" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_2</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a30e60312a462327e4442fb8f0fbe5b28" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_3</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a59f5ca0cf412c4440aac64892e847cc0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_4</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4a3ff7394add8d7eab9a7270d2ff1467" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_5</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1acd66e4350fd229472c2bb87e02667b0c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_6</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a82db2f4e6c51b9b806241871115eb61c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>stride_7</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a37afcf25268e9bf15b60377789d19502" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a7ebb33370e0a2ec848061eb877fe4654" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a28c62d6a0fdc91f845941ce7d8c1fa62" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a4a169415fc6ee3154ffc76e822a55ed0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1ae40f5fc55da43c199bc856c4bbdc21d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a40dd79689a71ab4d9666230cd70efddc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_left_00_01typenamef5a9a83dcd8c8ce23e7874c5bea845af_1a73cc4638fa0aea0b55701a0e3e3369be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutLeft, typename std::enable_if&lt;(1 &gt;=Dimension::rank||0==Dimension::rank_dynamic)&gt;::type &gt;</scope><name>ViewOffset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

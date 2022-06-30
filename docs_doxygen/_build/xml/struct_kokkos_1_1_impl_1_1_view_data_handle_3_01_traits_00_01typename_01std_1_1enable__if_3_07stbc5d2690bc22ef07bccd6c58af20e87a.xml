@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Traits</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a69ee88ccbbecdb1178c173c635099f54" prot="public" static="no">
+        <type>typename Traits::value_type</type>
+        <definition>using Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::value_type =  typename Traits::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2707" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2707" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a76ceb0ac84ef333cb945288a1855b1c4" prot="public" static="no">
+        <type>typename Traits::value_type *KOKKOS_RESTRICT</type>
+        <definition>using Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::handle_type =  typename Traits::value_type* KOKKOS_RESTRICT</definition>
+        <argsstring></argsstring>
+        <name>handle_type</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::handle_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2708" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2708" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1ab476c55b872581c7daccd621d39d9780" prot="public" static="no">
+        <type>typename Traits::value_type &amp;KOKKOS_RESTRICT</type>
+        <definition>using Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::return_type =  typename Traits::value_type&amp; KOKKOS_RESTRICT</definition>
+        <argsstring></argsstring>
+        <name>return_type</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::return_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2709" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2709" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a22f9b7db08f215ab455ea4f9677d9e45" prot="public" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2710" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2710" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a3fd355cc3362d24b9f7d9bbd15f04f60" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type *</type>
+        <definition>static KOKKOS_INLINE_FUNCTION value_type * Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::assign</definition>
+        <argsstring>(value_type *arg_data_ptr, track_type const &amp;)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::assign</qualifiedname>
+        <param>
+          <type>value_type *</type>
+          <declname>arg_data_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2713" column="21" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2713" bodyend="2716"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a3c2cdd93a5ad3b791444743d24a2b6d8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type *</type>
+        <definition>static KOKKOS_INLINE_FUNCTION value_type * Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::assign</definition>
+        <argsstring>(handle_type const arg_data_ptr, size_t offset)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;::assign</qualifiedname>
+        <param>
+          <type>handle_type const</type>
+          <declname>arg_data_ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2719" column="21" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2719" bodyend="2721"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2695" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2706" bodyend="2722"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a3fd355cc3362d24b9f7d9bbd15f04f60" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>assign</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a3c2cdd93a5ad3b791444743d24a2b6d8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>assign</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a76ceb0ac84ef333cb945288a1855b1c4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>handle_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1ab476c55b872581c7daccd621d39d9780" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>return_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a22f9b7db08f215ab455ea4f9677d9e45" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>track_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_data_handle_3_01_traits_00_01typename_01std_1_1enable__if_3_07stbc5d2690bc22ef07bccd6c58af20e87a_1a69ee88ccbbecdb1178c173c635099f54" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDataHandle&lt; Traits, typename std::enable_if&lt;(std::is_same&lt; typename Traits::specialize, void &gt;::value &amp;&amp;(!Traits::memory_traits::is_aligned) &amp;&amp;Traits::memory_traits::is_restrict &amp;&amp;(!Traits::memory_traits::is_atomic))&gt;::type &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

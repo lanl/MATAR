@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_final_function" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorFinalFunction</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ArgTag</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>IsArray</declname>
+        <defname>IsArray</defname>
+        <defval>0 == FunctorValueTraits&lt;FunctorType, ArgTag&gt;::StaticValueSize</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1afbd30fb84ce948157e2fb92b97c7af65" prot="public" static="no">
+        <type>typename FunctorValueTraits&lt; FunctorType, ArgTag &gt;::value_type</type>
+        <definition>using Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::value_type =  typename FunctorValueTraits&lt;FunctorType, ArgTag&gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1892" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1893" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1a4cc072148ee600777d7f332e24531827" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag, value_type &amp;) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag, value_type &amp;) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1895" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1a0e10b7ccf199fcdcf769391415e74337" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag const &amp;, value_type &amp;) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag const &amp;, value_type &amp;) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1897" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1ae11a059bda830023b5dadc7861874894" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag, value_type &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag, value_type &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1899" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1ae54d28c8d81bbe1246e68659e513172c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag const &amp;, value_type &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag const &amp;, value_type &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1901" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1ac5bb8380fbbf399d84d329ed4741b108" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag, value_type &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag, value_type &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1903" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1acb3753600e7c398c0276dc90e712c406" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag const &amp;, value_type &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag const &amp;, value_type &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1904" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1aba7dcff3ca56924f225eb6288ba5a480" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag, value_type const &amp;) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag, value_type const &amp;) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1907" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1a3211e2c6374b3b9e4fc74a1e0142329d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag const &amp;, value_type const &amp;) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag const &amp;, value_type const &amp;) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1909" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1aa140a84ae960ecd077e0695c7feda1f8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag, value_type const &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag, value_type const &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1911" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1a7ac82bc1f190d2a4b333d35d1cbb918d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag const &amp;, value_type const &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag const &amp;, value_type const &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1913" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1abb23fba6fa918b267474eb41f9516da9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag, value_type const &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag, value_type const &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1915" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_1a5c1be29b30ebae382c679ab4d0cc8aa5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, ArgTag, IsArray &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag const &amp;, value_type const &amp;))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag const &amp;, value_type const &amp;)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1917" column="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1891" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1891" bodyend="1919"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1a4cc072148ee600777d7f332e24531827" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1a0e10b7ccf199fcdcf769391415e74337" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1ae11a059bda830023b5dadc7861874894" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1ae54d28c8d81bbe1246e68659e513172c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1ac5bb8380fbbf399d84d329ed4741b108" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1acb3753600e7c398c0276dc90e712c406" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1aba7dcff3ca56924f225eb6288ba5a480" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1a3211e2c6374b3b9e4fc74a1e0142329d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1aa140a84ae960ecd077e0695c7feda1f8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1a7ac82bc1f190d2a4b333d35d1cbb918d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1abb23fba6fa918b267474eb41f9516da9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1a5c1be29b30ebae382c679ab4d0cc8aa5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_1afbd30fb84ce948157e2fb92b97c7af65" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

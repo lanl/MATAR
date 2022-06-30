@@ -1,0 +1,419 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___cuda___m_d_range_policy_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_Cuda_MDRangePolicy.hpp</compoundname>
+    <includes refid="_kokkos_exp___m_d_range_policy_8hpp" local="no">KokkosExp_MDRangePolicy.hpp</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_MDRangePolicy.hpp</label>
+        <link refid="_kokkos___cuda___m_d_range_policy_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KokkosExp_MDRangePolicy.hpp</label>
+        <link refid="_kokkos_exp___m_d_range_policy_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>Kokkos_Array.hpp</label>
+        <link refid="_kokkos___array_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Kokkos_Concepts.hpp</label>
+        <link refid="_kokkos___concepts_8hpp_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>Kokkos_Core_fwd.hpp</label>
+        <link refid="_kokkos___core__fwd_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>Kokkos_ExecPolicy.hpp</label>
+        <link refid="_kokkos___exec_policy_8hpp_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos_Layout.hpp</label>
+        <link refid="_kokkos___layout_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Kokkos_Rank.hpp</label>
+        <link refid="_kokkos___rank_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>impl/KokkosExp_Host_IterateTile.hpp</label>
+        <link refid="_kokkos_exp___host___iterate_tile_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>impl/Kokkos_AnalyzePolicy.hpp</label>
+        <link refid="_kokkos___analyze_policy_8hpp_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>impl/Kokkos_BitOps.hpp</label>
+        <link refid="_kokkos___bit_ops_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>impl/Kokkos_Error.hpp</label>
+        <link refid="_kokkos___error_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>impl/Kokkos_GraphImpl_fwd.hpp</label>
+        <link refid="_kokkos___graph_impl__fwd_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>impl/Kokkos_Traits.hpp</label>
+        <link refid="_kokkos___traits_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>impl/Kokkos_Utilities.hpp</label>
+        <link refid="_kokkos___utilities_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>traits/Kokkos_ExecutionSpaceTrait.hpp</label>
+        <link refid="_kokkos___execution_space_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>traits/Kokkos_GraphKernelTrait.hpp</label>
+        <link refid="_kokkos___graph_kernel_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>traits/Kokkos_IndexTypeTrait.hpp</label>
+        <link refid="_kokkos___index_type_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>traits/Kokkos_IterationPatternTrait.hpp</label>
+        <link refid="_kokkos___iteration_pattern_trait_8hpp_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>traits/Kokkos_LaunchBoundsTrait.hpp</label>
+        <link refid="_kokkos___launch_bounds_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>traits/Kokkos_OccupancyControlTrait.hpp</label>
+        <link refid="_kokkos___occupancy_control_trait_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>traits/Kokkos_PolicyTraitAdaptor.hpp</label>
+        <link refid="_kokkos___policy_trait_adaptor_8hpp_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>traits/Kokkos_ScheduleTrait.hpp</label>
+        <link refid="_kokkos___schedule_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>traits/Kokkos_Traits_fwd.hpp</label>
+        <link refid="_kokkos___traits__fwd_8hpp_source"/>
+      </node>
+      <node id="39">
+        <label>traits/Kokkos_WorkItemPropertyTrait.hpp</label>
+        <link refid="_kokkos___work_item_property_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>traits/Kokkos_WorkTagTrait.hpp</label>
+        <link refid="_kokkos___work_tag_trait_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>KokkosCore_Config_FwdBackend.hpp</label>
+      </node>
+      <node id="10">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="9">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="19">
+        <label>algorithm</label>
+      </node>
+      <node id="12">
+        <label>climits</label>
+      </node>
+      <node id="5">
+        <label>cstddef</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>initializer_list</label>
+      </node>
+      <node id="18">
+        <label>iosfwd</label>
+      </node>
+      <node id="20">
+        <label>limits</label>
+      </node>
+      <node id="13">
+        <label>string</label>
+      </node>
+      <node id="14">
+        <label>type_traits</label>
+      </node>
+      <node id="41">
+        <label>typeinfo</label>
+      </node>
+      <node id="25">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="struct_kokkos_1_1default__outer__direction_3_01_kokkos_1_1_cuda_01_4" prot="public">Kokkos::default_outer_direction&lt; Kokkos::Cuda &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1default__inner__direction_3_01_kokkos_1_1_cuda_01_4" prot="public">Kokkos::default_inner_direction&lt; Kokkos::Cuda &gt;</innerclass>
+    <innernamespace refid="namespace_kokkos">Kokkos</innernamespace>
+    <innernamespace refid="namespace_kokkos_1_1_impl">Kokkos::Impl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>KOKKOS_CUDA_MDRANGEPOLICY_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_CUDA_MDRANGEPOLICY_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;KokkosExp_MDRangePolicy.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="9" refid="struct_kokkos_1_1default__outer__direction_3_01_kokkos_1_1_cuda_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1default__outer__direction" kindref="compound">default_outer_direction</ref>&lt;Kokkos::Cuda&gt;<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>Iterate;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>Iterate<sp/>value<sp/>=<sp/>Iterate::Left;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="15" refid="struct_kokkos_1_1default__inner__direction_3_01_kokkos_1_1_cuda_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1default__inner__direction" kindref="compound">default_inner_direction</ref>&lt;Kokkos::Cuda&gt;<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>Iterate;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>Iterate<sp/>value<sp/>=<sp/>Iterate::Left;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Settings<sp/>for<sp/>MDRangePolicy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>TileSizeProperties<sp/>get_tile_size_properties&lt;Kokkos::Cuda&gt;(</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Kokkos::Cuda&amp;<sp/>space)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>TileSizeProperties<sp/>properties;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>properties.max_threads<sp/>=</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>space.impl_internal_space_instance()-&gt;m_maxThreadsPerSM;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>properties.default_largest_tile_size<sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>properties.default_tile_size<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>properties.max_total_tile_size<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>properties;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>Namespace<sp/>Impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>Namespace<sp/>Kokkos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_MDRangePolicy.hpp"/>
+  </compounddef>
+</doxygen>

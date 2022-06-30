@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_error_reporter_driver_base" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ErrorReporterDriverBase</compoundname>
+    <derivedcompoundref refid="struct_test_1_1_error_reporter_driver" prot="public" virt="non-virtual">Test::ErrorReporterDriver&lt; DeviceType &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_error_reporter_driver_base_1a9eb59cdc381a46520c7bf984cc80bf88" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_three_val_report" kindref="compound">ThreeValReport</ref>&lt; int, int, double &gt;</type>
+        <definition>using Test::ErrorReporterDriverBase&lt; DeviceType &gt;::report_type =  ThreeValReport&lt;int, int, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>report_type</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::report_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="87" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_error_reporter_driver_base_1ab139b8755200f4a9135dccfb9ff90de4" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_error_reporter" kindref="compound">Kokkos::Experimental::ErrorReporter</ref>&lt; <ref refid="struct_test_1_1_three_val_report" kindref="compound">report_type</ref>, DeviceType &gt;</type>
+        <definition>using Test::ErrorReporterDriverBase&lt; DeviceType &gt;::error_reporter_type =  Kokkos::Experimental::ErrorReporter&lt;report_type, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>error_reporter_type</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::error_reporter_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="88" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_error_reporter_driver_base_1a6b55bb7f54fdf72063678a50253ab25c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_error_reporter" kindref="compound">error_reporter_type</ref></type>
+        <definition>error_reporter_type Test::ErrorReporterDriverBase&lt; DeviceType &gt;::m_errorReporter</definition>
+        <argsstring></argsstring>
+        <name>m_errorReporter</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::m_errorReporter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="90" column="23" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_error_reporter_driver_base_1a72f1932e8492d0aa22fca2c40fff5ecb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::ErrorReporterDriverBase&lt; DeviceType &gt;::ErrorReporterDriverBase</definition>
+        <argsstring>(int reporter_capacity, int)</argsstring>
+        <name>ErrorReporterDriverBase</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::ErrorReporterDriverBase</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>reporter_capacity</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="92" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="92" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_error_reporter_driver_base_1a7a1d26aa24b780c319d6561583e909f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Test::ErrorReporterDriverBase&lt; DeviceType &gt;::error_condition</definition>
+        <argsstring>(const int work_idx) const</argsstring>
+        <name>error_condition</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::error_condition</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>work_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="95" column="31" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_error_reporter_driver_base_1a8e6b3982868724d423253a03132df9a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::ErrorReporterDriverBase&lt; DeviceType &gt;::check_expectations</definition>
+        <argsstring>(int reporter_capacity, int test_size)</argsstring>
+        <name>check_expectations</name>
+        <qualifiedname>Test::ErrorReporterDriverBase::check_expectations</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>reporter_capacity</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>test_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="99" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="99" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Test::ErrorReporterDriver&lt; DeviceType &gt;</label>
+        <link refid="struct_test_1_1_error_reporter_driver"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Test::ErrorReporterDriverBase&lt; DeviceType &gt;</label>
+        <link refid="struct_test_1_1_error_reporter_driver_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Experimental::ErrorReporter&lt; report_type, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_error_reporter"/>
+      </node>
+      <node id="1">
+        <label>Test::ErrorReporterDriverBase&lt; DeviceType &gt;</label>
+        <link refid="struct_test_1_1_error_reporter_driver_base"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_errorReporter</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" line="86" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestErrorReporter.hpp" bodystart="86" bodyend="112"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1a8e6b3982868724d423253a03132df9a1" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>check_expectations</name></member>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1a7a1d26aa24b780c319d6561583e909f8" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>error_condition</name></member>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1ab139b8755200f4a9135dccfb9ff90de4" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>error_reporter_type</name></member>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1a72f1932e8492d0aa22fca2c40fff5ecb" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>ErrorReporterDriverBase</name></member>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1a6b55bb7f54fdf72063678a50253ab25c" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>m_errorReporter</name></member>
+      <member refid="struct_test_1_1_error_reporter_driver_base_1a9eb59cdc381a46520c7bf984cc80bf88" prot="public" virt="non-virtual"><scope>Test::ErrorReporterDriverBase</scope><name>report_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

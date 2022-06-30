@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d1/d2d/class_ragged_down_array" kind="class" language="C++" prot="public">
+    <compoundname>RaggedDownArray</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d1/d2d/class_ragged_down_array_1afeae45d6e649a93d825f6a04bd550ab3" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; size_t[]&gt;</type>
+        <definition>std::shared_ptr&lt;size_t[]&gt; RaggedDownArray&lt; T &gt;::start_index_</definition>
+        <argsstring></argsstring>
+        <name>start_index_</name>
+        <qualifiedname>RaggedDownArray::start_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3980" column="22" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3980" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d2d/class_ragged_down_array_1aa9f4aa1cee5ca72514a744852c8898bd" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T[]&gt;</type>
+        <definition>std::shared_ptr&lt;T[]&gt; RaggedDownArray&lt; T &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>RaggedDownArray::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3981" column="22" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3981" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d2d/class_ragged_down_array_1a2291abd63f3adb830e9376497cba3078" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedDownArray&lt; T &gt;::dim2_</definition>
+        <argsstring></argsstring>
+        <name>dim2_</name>
+        <qualifiedname>RaggedDownArray::dim2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3983" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3983" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d2d/class_ragged_down_array_1a740baf92131887db4b43dfd487a26af9" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedDownArray&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>RaggedDownArray::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3984" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3984" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d1/d2d/class_ragged_down_array_1af6bfd391c237aba40cd681bd18178e5d" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedDownArray&lt; T &gt;::num_saved_</definition>
+        <argsstring></argsstring>
+        <name>num_saved_</name>
+        <qualifiedname>RaggedDownArray::num_saved_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3985" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3985" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a65664d620d4a75c4da83840ca456b33a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>()</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3989" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4039" bodyend="4043"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a2d5613a901b8d5f6b56f897a26e7cf00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>(CArray&lt; size_t &gt; &amp;strides_array)</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <param>
+          <type><ref refid="d1/dbe/class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3993" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4047" bodyend="4069"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a46e1634f8540b55ae3577359b706a70a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>(ViewCArray&lt; size_t &gt; &amp;strides_array)</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <param>
+          <type><ref refid="dc/dbd/class_view_c_array" kindref="compound">ViewCArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3996" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4073" bodyend="4090"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1ac6ffc7b9ed9ab759dfe08b6d351ea701" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>(size_t *strides_array, size_t dome_dim1)</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <param>
+          <type>size_t *</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dome_dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3999" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4094" bodyend="4112"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a6cfa47f1da1b7bcf503b7973fab6c249" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>(size_t some_dim2, size_t buffer)</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>some_dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4003" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4117" bodyend="4130"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1ab2a891dec7f00677ff90ed432821ab61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::RaggedDownArray</definition>
+        <argsstring>(const RaggedDownArray &amp;temp)</argsstring>
+        <name>RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::RaggedDownArray</qualifiedname>
+        <param>
+          <type>const <ref refid="d1/d2d/class_ragged_down_array" kindref="compound">RaggedDownArray</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4006" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4134" bodyend="4144"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a1588e9d813937665d1abe76272a927c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedDownArray&lt; T &gt;::stride</definition>
+        <argsstring>(size_t j)</argsstring>
+        <name>stride</name>
+        <qualifiedname>RaggedDownArray::stride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4009" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4148" bodyend="4152"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1af71a2fe4b2e35e6fee823b73d12619ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RaggedDownArray&lt; T &gt;::push_back</definition>
+        <argsstring>(size_t j)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>RaggedDownArray::push_back</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4015" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4158" bodyend="4161"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a0999a44c9d9439f2d8a4158fac8ac80c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; RaggedDownArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedDownArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4018" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4172" bodyend="4184"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1ae7c804b362f07a64a71738168d793594" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedDownArray&lt; T &gt;::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <qualifiedname>RaggedDownArray::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4021" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4165" bodyend="4167"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a246347b6d01043cf54049ca360d484ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * RaggedDownArray&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>RaggedDownArray::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4024" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4204" bodyend="4206"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a2889e03f7b5ddc69531bf884fd9f2b69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t *</type>
+        <definition>size_t * RaggedDownArray&lt; T &gt;::get_starts</definition>
+        <argsstring>() const</argsstring>
+        <name>get_starts</name>
+        <qualifiedname>RaggedDownArray::get_starts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4027" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4210" bodyend="4212"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a9b5efcb7f8872f61d9351414632ac18f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d1/d2d/class_ragged_down_array" kindref="compound">RaggedDownArray</ref> &amp;</type>
+        <definition>RaggedDownArray&lt; T &gt; &amp; RaggedDownArray&lt; T &gt;::operator=</definition>
+        <argsstring>(const RaggedDownArray &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RaggedDownArray::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="d1/d2d/class_ragged_down_array" kindref="compound">RaggedDownArray</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4030" column="21" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4188" bodyend="4201"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d2d/class_ragged_down_array_1a760f190e765d40cc8468b4033063c0f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArray&lt; T &gt;::~RaggedDownArray</definition>
+        <argsstring>()</argsstring>
+        <name>~RaggedDownArray</name>
+        <qualifiedname>RaggedDownArray::~RaggedDownArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="4033" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="4216" bodyend="4216"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="3978" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="3978" bodyend="4035"/>
+    <listofallmembers>
+      <member refid="d1/d2d/class_ragged_down_array_1aa9f4aa1cee5ca72514a744852c8898bd" prot="private" virt="non-virtual"><scope>RaggedDownArray</scope><name>array_</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a2291abd63f3adb830e9376497cba3078" prot="private" virt="non-virtual"><scope>RaggedDownArray</scope><name>dim2_</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a2889e03f7b5ddc69531bf884fd9f2b69" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>get_starts</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a740baf92131887db4b43dfd487a26af9" prot="private" virt="non-virtual"><scope>RaggedDownArray</scope><name>length_</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1af6bfd391c237aba40cd681bd18178e5d" prot="private" virt="non-virtual"><scope>RaggedDownArray</scope><name>num_saved_</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a0999a44c9d9439f2d8a4158fac8ac80c" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>operator()</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a9b5efcb7f8872f61d9351414632ac18f" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>operator=</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a246347b6d01043cf54049ca360d484ed" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>pointer</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1af71a2fe4b2e35e6fee823b73d12619ab" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>push_back</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a65664d620d4a75c4da83840ca456b33a" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a2d5613a901b8d5f6b56f897a26e7cf00" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a46e1634f8540b55ae3577359b706a70a" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1ac6ffc7b9ed9ab759dfe08b6d351ea701" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a6cfa47f1da1b7bcf503b7973fab6c249" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1ab2a891dec7f00677ff90ed432821ab61" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>RaggedDownArray</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1ae7c804b362f07a64a71738168d793594" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>size</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1afeae45d6e649a93d825f6a04bd550ab3" prot="private" virt="non-virtual"><scope>RaggedDownArray</scope><name>start_index_</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a1588e9d813937665d1abe76272a927c2" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>stride</name></member>
+      <member refid="d1/d2d/class_ragged_down_array_1a760f190e765d40cc8468b4033063c0f1" prot="public" virt="non-virtual"><scope>RaggedDownArray</scope><name>~RaggedDownArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="pthread_8cpp" kind="file" language="C++">
+    <compoundname>pthread.cpp</compoundname>
+    <includes local="no">pthread.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp</label>
+        <link refid="pthread_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>pthread.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="pthread_8cpp_1a1eb2e4de4cc281b2875c6ef03a177dad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * kokkos_test</definition>
+        <argsstring>(void *args)</argsstring>
+        <name>kokkos_test</name>
+        <param>
+          <type>void *</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp" line="3" column="6" bodyfile="src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp" bodystart="3" bodyend="3"/>
+      </memberdef>
+      <memberdef kind="function" id="pthread_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp" line="5" column="5" bodyfile="src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp" bodystart="5" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>kokkos_test(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>args;<sp/>}</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main()<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>pthread_t<sp/>thread;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Use<sp/>NULL<sp/>to<sp/>avoid<sp/>C++11.<sp/>Some<sp/>compilers</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>do<sp/>not<sp/>have<sp/>C++11<sp/>by<sp/>default.<sp/><sp/>Forcing<sp/>C++11</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>in<sp/>the<sp/>compile<sp/>tests<sp/>can<sp/>be<sp/>done,<sp/>but<sp/>is<sp/>unnecessary</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>pthread_create(&amp;thread,<sp/>NULL,<sp/>kokkos_test,<sp/>NULL);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>pthread_join(thread,<sp/>NULL);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/cmake/compile_tests/pthread.cpp"/>
+  </compounddef>
+</doxygen>

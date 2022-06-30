@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_math_unary_function__sin" kind="struct" language="C++" prot="public">
+    <compoundname>MathUnaryFunction_sin</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_math_unary_function__sin_1afa64fc8107db7c5d04700e56b0228488" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION auto</type>
+        <definition>static KOKKOS_FUNCTION auto MathUnaryFunction_sin::eval</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval</name>
+        <qualifiedname>MathUnaryFunction_sin::eval</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="331" column="70" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="331" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__sin_1a006b9d8dddf685acc093a1e3b687abfc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto MathUnaryFunction_sin::eval_std</definition>
+        <argsstring>(T x)</argsstring>
+        <name>eval_std</name>
+        <qualifiedname>MathUnaryFunction_sin::eval_std</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="331" column="274" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="331" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_math_unary_function__sin_1ab0ef28a4b66c263753df10e64c700246" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>static KOKKOS_FUNCTION double MathUnaryFunction_sin::ulp_factor</definition>
+        <argsstring>()</argsstring>
+        <name>ulp_factor</name>
+        <qualifiedname>MathUnaryFunction_sin::ulp_factor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="331" column="452" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="331" bodyend="331"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="331" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="331" bodyend="331"/>
+    <listofallmembers>
+      <member refid="struct_math_unary_function__sin_1afa64fc8107db7c5d04700e56b0228488" prot="public" virt="non-virtual"><scope>MathUnaryFunction_sin</scope><name>eval</name></member>
+      <member refid="struct_math_unary_function__sin_1a006b9d8dddf685acc093a1e3b687abfc" prot="public" virt="non-virtual"><scope>MathUnaryFunction_sin</scope><name>eval_std</name></member>
+      <member refid="struct_math_unary_function__sin_1ab0ef28a4b66c263753df10e64c700246" prot="public" virt="non-virtual"><scope>MathUnaryFunction_sin</scope><name>ulp_factor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

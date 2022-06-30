@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_array_analysis" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewArrayAnalysis</compoundname>
+    <includes refid="_kokkos___view_mapping_8hpp" local="no">Kokkos_ViewMapping.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1a9bd9ef35829bd321b72f36d3abdc23b2" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::value_type =  T</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="759" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="759" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1a1890688c1867fec0b699181f49a576d8" prot="public" static="no">
+        <type>typename std::add_const&lt; T &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::const_value_type =  typename std::add_const&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="760" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="760" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1af245c9043919a33bd0bb76d75399f5c1" prot="public" static="no">
+        <type>typename std::remove_const&lt; T &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::non_const_value_type =  typename std::remove_const&lt;T&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>non_const_value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::non_const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="761" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="761" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ae74f6feafb0f8ba8c7e5a6baacf4bc02" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">ViewDimension</ref>&lt;&gt;</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::static_dimension =  ViewDimension&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>static_dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::static_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="762" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="762" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ae4ca58a98b8388de50afdf1e0491ac1a" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">ViewDimension</ref>&lt;&gt;</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::dynamic_dimension =  ViewDimension&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>dynamic_dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::dynamic_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="763" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="763" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ac1a8bf83d40eefb3ea896cda6ede5f13" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">ViewDimension</ref>&lt;&gt;</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T &gt;::dimension =  ViewDimension&lt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis::dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="764" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="764" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Analysis of <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> data type. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Data type conforms to one of the following patterns : {const} value_type [][#][#][#] {const} value_type ***[#][#][#] Where the sum of counts of &apos;*&apos; and &apos;[#]&apos; is at most ten.</para>
+<para>Provide alias for ViewDimension&lt;...&gt; and value_type. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="758" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="758" bodyend="765"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1a1890688c1867fec0b699181f49a576d8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ac1a8bf83d40eefb3ea896cda6ede5f13" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ae4ca58a98b8388de50afdf1e0491ac1a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>dynamic_dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1af245c9043919a33bd0bb76d75399f5c1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>non_const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1ae74f6feafb0f8ba8c7e5a6baacf4bc02" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>static_dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_1a9bd9ef35829bd321b72f36d3abdc23b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

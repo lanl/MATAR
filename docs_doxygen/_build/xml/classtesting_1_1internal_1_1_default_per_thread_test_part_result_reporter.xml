@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::DefaultPerThreadTestPartResultReporter</compoundname>
+    <basecompoundref refid="classtesting_1_1_test_part_result_reporter_interface" prot="public" virt="non-virtual">testing::TestPartResultReporterInterface</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a44f8ce831e79b6b25197ce8e4f2e08d6" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_unit_test_impl" kindref="compound">UnitTestImpl</ref> *const</type>
+        <definition>UnitTestImpl* const testing::internal::DefaultPerThreadTestPartResultReporter::unit_test_</definition>
+        <argsstring></argsstring>
+        <name>unit_test_</name>
+        <qualifiedname>testing::internal::DefaultPerThreadTestPartResultReporter::unit_test_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="900" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="900" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a968a846e5a90d2ffea8b2ce2746099bd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::DefaultPerThreadTestPartResultReporter::DefaultPerThreadTestPartResultReporter</definition>
+        <argsstring>(UnitTestImpl *unit_test)</argsstring>
+        <name>DefaultPerThreadTestPartResultReporter</name>
+        <qualifiedname>testing::internal::DefaultPerThreadTestPartResultReporter::DefaultPerThreadTestPartResultReporter</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_unit_test_impl" kindref="compound">UnitTestImpl</ref> *</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="894" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2157" bodyend="2158"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1ac6dc08eadc4e5a2a64a91d0b6c6b3aad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::DefaultPerThreadTestPartResultReporter::ReportTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;result)</argsstring>
+        <name>ReportTestPartResult</name>
+        <qualifiedname>testing::internal::DefaultPerThreadTestPartResultReporter::ReportTestPartResult</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_part_result_reporter_interface_1aa2f920e7a5a0a6d0faf19e3727928c22">ReportTestPartResult</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="897" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2160" bodyend="2163"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a2fe14f3349de63daee187dff7a431cd8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::DefaultPerThreadTestPartResultReporter::GTEST_DISALLOW_COPY_AND_ASSIGN_</definition>
+        <argsstring>(DefaultPerThreadTestPartResultReporter)</argsstring>
+        <name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name>
+        <qualifiedname>testing::internal::DefaultPerThreadTestPartResultReporter::GTEST_DISALLOW_COPY_AND_ASSIGN_</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter" kindref="compound">DefaultPerThreadTestPartResultReporter</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="902" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::TestPartResultReporterInterface</label>
+        <link refid="classtesting_1_1_test_part_result_reporter_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::DefaultPerThreadTestPartResultReporter</label>
+        <link refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::TestPartResultReporterInterface</label>
+        <link refid="classtesting_1_1_test_part_result_reporter_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::DefaultPerThreadTestPartResultReporter</label>
+        <link refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="891" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="892" bodyend="903"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a968a846e5a90d2ffea8b2ce2746099bd" prot="public" virt="non-virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>DefaultPerThreadTestPartResultReporter</name></member>
+      <member refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a2fe14f3349de63daee187dff7a431cd8" prot="private" virt="non-virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name></member>
+      <member refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1ac6dc08eadc4e5a2a64a91d0b6c6b3aad" prot="public" virt="virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>ReportTestPartResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_default_per_thread_test_part_result_reporter_1a44f8ce831e79b6b25197ce8e4f2e08d6" prot="private" virt="non-virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>unit_test_</name></member>
+      <member refid="classtesting_1_1_test_part_result_reporter_interface_1a338b51591ed654f84dc0feaaf2b66917" prot="public" virt="virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>~TestPartResultReporterInterface</name></member>
+      <member refid="classtesting_1_1_test_part_result_reporter_interface_1a338b51591ed654f84dc0feaaf2b66917" prot="public" virt="virtual"><scope>testing::internal::DefaultPerThreadTestPartResultReporter</scope><name>~TestPartResultReporterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

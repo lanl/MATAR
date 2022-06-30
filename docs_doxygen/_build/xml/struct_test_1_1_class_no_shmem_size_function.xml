@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_class_no_shmem_size_function" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ClassNoShmemSizeFunction</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+      <param>
+        <type>class ScheduleType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_class_no_shmem_size_function_1ad0fa5e9ffb9e6b9fe57592821990c2ad" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ExecSpace, ScheduleType &gt;::member_type</type>
+        <definition>using Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;::member_type =  typename Kokkos::TeamPolicy&lt;ExecSpace, ScheduleType&gt;::member_type</definition>
+        <argsstring></argsstring>
+        <name>member_type</name>
+        <qualifiedname>Test::ClassNoShmemSizeFunction::member_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="937" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="938" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_class_no_shmem_size_function_1a192fa92cabd68d55fc01c0e6e49cb96c" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, ExecSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>Kokkos::View&lt;int, ExecSpace, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt; Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;::errors</definition>
+        <argsstring></argsstring>
+        <name>errors</name>
+        <qualifiedname>Test::ClassNoShmemSizeFunction::errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="940" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="940" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_class_no_shmem_size_function_1abd6d6d08ed0ce972da0756c237148d0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;::operator()</definition>
+        <argsstring>(const TagFor &amp;, const member_type &amp;team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ClassNoShmemSizeFunction::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_tag_for" kindref="compound">TagFor</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const member_type &amp;</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="943" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="943" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_class_no_shmem_size_function_1ab7f0d6cc8e6920967cf3ff0ad2c82634" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;::operator()</definition>
+        <argsstring>(const TagReduce &amp;, const member_type &amp;team, int &amp;error) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ClassNoShmemSizeFunction::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_tag_reduce" kindref="compound">TagReduce</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const member_type &amp;</type>
+          <declname>team</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="949" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="949" bodyend="952"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_class_no_shmem_size_function_1a32aa76c299cf7938391f0ce477723c5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::ClassNoShmemSizeFunction::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="954" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="954" bodyend="1018"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::ClassNoShmemSizeFunction&lt; ExecSpace, ScheduleType &gt;</label>
+        <link refid="struct_test_1_1_class_no_shmem_size_function"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>errors</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int, ExecSpace, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" line="936" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeam.hpp" bodystart="936" bodyend="1019"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_class_no_shmem_size_function_1a192fa92cabd68d55fc01c0e6e49cb96c" prot="public" virt="non-virtual"><scope>Test::ClassNoShmemSizeFunction</scope><name>errors</name></member>
+      <member refid="struct_test_1_1_class_no_shmem_size_function_1ad0fa5e9ffb9e6b9fe57592821990c2ad" prot="public" virt="non-virtual"><scope>Test::ClassNoShmemSizeFunction</scope><name>member_type</name></member>
+      <member refid="struct_test_1_1_class_no_shmem_size_function_1abd6d6d08ed0ce972da0756c237148d0d" prot="public" virt="non-virtual"><scope>Test::ClassNoShmemSizeFunction</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_class_no_shmem_size_function_1ab7f0d6cc8e6920967cf3ff0ad2c82634" prot="public" virt="non-virtual"><scope>Test::ClassNoShmemSizeFunction</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_class_no_shmem_size_function_1a32aa76c299cf7938391f0ce477723c5b" prot="public" virt="non-virtual"><scope>Test::ClassNoShmemSizeFunction</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

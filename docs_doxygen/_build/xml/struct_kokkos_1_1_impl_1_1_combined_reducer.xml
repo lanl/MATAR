@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_combined_reducer" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CombinedReducer</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_combined_reducer_impl" prot="public" virt="non-virtual">Kokkos::Impl::CombinedReducerImpl&lt; std::make_index_sequence&lt; sizeof...(Reducers)&gt;, Space, Reducers... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Reducers</declname>
+        <defname>Reducers</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_combined_reducer_1ad9a53f56251ba758cc65d9a583f4a676" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reducer_impl" kindref="compound">CombinedReducerImpl</ref>&lt; std::make_index_sequence&lt; sizeof...(Reducers)&gt;, Space, Reducers... &gt;</type>
+        <definition>using Kokkos::Impl::CombinedReducer&lt; Space, Reducers &gt;::base_t =  CombinedReducerImpl&lt;std::make_index_sequence&lt;sizeof...(Reducers)&gt;, Space, Reducers...&gt;</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::CombinedReducer::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="314" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_combined_reducer_1a10db76a85f008c394148a2e8acaab187" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reducer" kindref="compound">CombinedReducer</ref>&lt; Space, Reducers... &gt;</type>
+        <definition>using Kokkos::Impl::CombinedReducer&lt; Space, Reducers &gt;::reducer =  CombinedReducer&lt;Space, Reducers...&gt;</definition>
+        <argsstring></argsstring>
+        <name>reducer</name>
+        <qualifiedname>Kokkos::Impl::CombinedReducer::reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="318" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Impl::CombinedReducerImpl&lt; std::make_index_sequence&lt; sizeof...(Reducers)&gt;, Space, Reducers... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_combined_reducer_impl"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::CombinedReducer&lt; Space, Reducers &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_combined_reducer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Impl::CombinedReducerImpl&lt; std::make_index_sequence&lt; sizeof...(Reducers)&gt;, Space, Reducers... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_combined_reducer_impl"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::CombinedReducer&lt; Space, Reducers &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_combined_reducer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="311" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="313" bodyend="319"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reducer_1ad9a53f56251ba758cc65d9a583f4a676" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReducer</scope><name>base_t</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reducer_1a10db76a85f008c394148a2e8acaab187" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReducer</scope><name>reducer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

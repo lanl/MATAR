@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_schedule_trait" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ScheduleTrait</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_trait_specification_base" prot="public" virt="non-virtual">Kokkos::Impl::TraitSpecificationBase&lt; ScheduleTrait &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_schedule_trait_1_1base__traits" prot="public">Kokkos::Impl::ScheduleTrait::base_traits</innerclass>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_schedule_trait_1_1mixin__matching__trait" prot="public">Kokkos::Impl::ScheduleTrait::mixin_matching_trait</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::ScheduleTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_schedule_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; ScheduleTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::ScheduleTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_schedule_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; ScheduleTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_ScheduleTrait.hpp" line="64" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_ScheduleTrait.hpp" bodystart="64" bodyend="85"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1a57561cfb7b2706c4a465343686f28380" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ScheduleTrait</scope><name>policy_with_trait</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1af7b3d83d4c9873c2176a5092d73b2ea4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ScheduleTrait</scope><name>trait_specification</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

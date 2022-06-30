@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Functor</type>
+      </param>
+      <param>
+        <type>typename Storage</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a5c2f6e74bb793fabc0d0eea47d9c2d54" prot="private" static="no" mutable="no">
+        <type>const Functor &amp;</type>
+        <definition>const Functor&amp; Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::m_kernelFunctor</definition>
+        <argsstring></argsstring>
+        <name>m_kernelFunctor</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::m_kernelFunctor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="252" column="17" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1add5edd106f995d975a08b2127dcaa89f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::SYCLFunctionWrapper</definition>
+        <argsstring>(const Functor &amp;functor, Storage &amp;storage)</argsstring>
+        <name>SYCLFunctionWrapper</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::SYCLFunctionWrapper</qualifiedname>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>Storage &amp;</type>
+          <declname>storage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="255" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="255" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a85a5dc58dc060e7494f0907426430256" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::reference_wrapper&lt; const Functor &gt;</type>
+        <definition>std::reference_wrapper&lt; const Functor &gt; Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::get_functor</definition>
+        <argsstring>() const</argsstring>
+        <name>get_functor</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::get_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="258" column="26" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="258" bodyend="260"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a54b51c484a0ab00588a2094c31c5a9c1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::register_event</definition>
+        <argsstring>(Storage &amp;storage, sycl::event event)</argsstring>
+        <name>register_event</name>
+        <qualifiedname>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;::register_event</qualifiedname>
+        <param>
+          <type>Storage &amp;</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>sycl::event</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="262" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="262" bodyend="264"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="251" column="1" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="251" bodyend="265"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a85a5dc58dc060e7494f0907426430256" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</scope><name>get_functor</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a5c2f6e74bb793fabc0d0eea47d9c2d54" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</scope><name>m_kernelFunctor</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1a54b51c484a0ab00588a2094c31c5a9c1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</scope><name>register_event</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4_1add5edd106f995d975a08b2127dcaa89f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</scope><name>SYCLFunctionWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

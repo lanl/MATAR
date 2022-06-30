@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_format_for_comparison_3_01wchar__t_01_5_00_01_other_operand_01_4" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename OtherOperand</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_format_for_comparison_3_01wchar__t_01_5_00_01_other_operand_01_4_1ac9c5db20d78be0b825b54f02a0bda74c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::std::string</type>
+        <definition>::std::string testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;::Format</definition>
+        <argsstring>(wchar_t *value)</argsstring>
+        <name>Format</name>
+        <qualifiedname>testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;::Format</qualifiedname>
+        <param>
+          <type>wchar_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18802" column="72" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18802" bodyend="18802"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_format_for_comparison_3_01wchar__t_01_5_00_01_other_operand_01_4_1ac9c5db20d78be0b825b54f02a0bda74c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::std::string</type>
+        <definition>::std::string testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;::Format</definition>
+        <argsstring>(wchar_t *value)</argsstring>
+        <name>Format</name>
+        <qualifiedname>testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;::Format</qualifiedname>
+        <param>
+          <type>wchar_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18802" column="72" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18802" bodyend="18802"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18802" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18802" bodyend="18802"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_format_for_comparison_3_01wchar__t_01_5_00_01_other_operand_01_4_1ac9c5db20d78be0b825b54f02a0bda74c" prot="public" virt="non-virtual"><scope>testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;</scope><name>Format</name></member>
+      <member refid="classtesting_1_1internal_1_1_format_for_comparison_3_01wchar__t_01_5_00_01_other_operand_01_4_1ac9c5db20d78be0b825b54f02a0bda74c" prot="public" virt="non-virtual"><scope>testing::internal::FormatForComparison&lt; wchar_t *, OtherOperand &gt;</scope><name>Format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

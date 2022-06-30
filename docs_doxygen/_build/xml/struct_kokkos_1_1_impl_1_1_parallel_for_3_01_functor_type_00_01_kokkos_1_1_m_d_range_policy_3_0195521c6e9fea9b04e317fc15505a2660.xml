@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a71798566a1f67ef5017e9583dfbbef6b" prot="public" static="no">
+        <type>typename Policy::index_type</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::index_type =  typename Policy::index_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="137" column="5" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1aebcdb61130d84c983c1b42fe5d6b150f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">Policy::point_type</ref></type>
+        <definition>const Policy::point_type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_lower</definition>
+        <argsstring></argsstring>
+        <name>m_lower</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_lower</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="146" column="39" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a1d9c323a0e7d2a079811e3d216d08a6b" prot="public" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">Policy::point_type</ref></type>
+        <definition>const Policy::point_type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_upper</definition>
+        <argsstring></argsstring>
+        <name>m_upper</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_upper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="147" column="39" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a02ad39df995913b49dddfafef7484448" prot="public" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">Policy::tile_type</ref></type>
+        <definition>const Policy::tile_type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_tile</definition>
+        <argsstring></argsstring>
+        <name>m_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_tile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="148" column="38" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1af2a4316b41a6f0ea68eeac55410b3ef2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">Policy::point_type</ref></type>
+        <definition>const Policy::point_type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_tile_end</definition>
+        <argsstring></argsstring>
+        <name>m_tile_end</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_tile_end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="149" column="39" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a850b0fc5398a6e43d4f242763e711de7" prot="public" static="no" mutable="no">
+        <type>const Policy::index_type</type>
+        <definition>const Policy::index_type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_num_tiles</definition>
+        <argsstring></argsstring>
+        <name>m_num_tiles</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::m_num_tiles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="150" column="39" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1aa70c89beb0b96e5181f701022786353e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::inner_direction</definition>
+        <argsstring></argsstring>
+        <name>inner_direction</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::inner_direction</qualifiedname>
+        <initializer>= Policy::inner_direction</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="151" column="30" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a4f420bf131d8dbaf4858b3f204320a29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::BarePolicy</definition>
+        <argsstring>(const Policy &amp;policy)</argsstring>
+        <name>BarePolicy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy::BarePolicy</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="139" column="5" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="139" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Array&lt; T, N, Proxy &gt;</label>
+        <link refid="struct_kokkos_1_1_array"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_lower</edgelabel>
+          <edgelabel>m_tile</edgelabel>
+          <edgelabel>m_tile_end</edgelabel>
+          <edgelabel>m_upper</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" line="136" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Range.hpp" bodystart="136" bodyend="152"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a4f420bf131d8dbaf4858b3f204320a29" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>BarePolicy</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a71798566a1f67ef5017e9583dfbbef6b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1aa70c89beb0b96e5181f701022786353e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>inner_direction</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1aebcdb61130d84c983c1b42fe5d6b150f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>m_lower</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a850b0fc5398a6e43d4f242763e711de7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>m_num_tiles</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a02ad39df995913b49dddfafef7484448" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>m_tile</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1af2a4316b41a6f0ea68eeac55410b3ef2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>m_tile_end</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0195521c6e9fea9b04e317fc15505a2660_1a1d9c323a0e7d2a079811e3d216d08a6b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, Kokkos::Experimental::SYCL &gt;::BarePolicy</scope><name>m_upper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

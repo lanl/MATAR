@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_random___xor_shift1024___pool" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Random_XorShift1024_Pool</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+        <defval>Kokkos::DefaultExecutionSpace</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1aea1cf657c466a0c92d0fe785a7f4395f" prot="private" static="no">
+        <type>typename DeviceType::execution_space</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::execution_space =  typename DeviceType::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1123" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1a0409dba0c1be46ef9b56217f69679c47" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; int **, execution_space &gt;</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::locks_type =  View&lt;int**, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>locks_type</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::locks_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1124" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1a49e72c775d2ecb0751164c16d2e69b21" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; int **, DeviceType &gt;</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::int_view_type =  View&lt;int**, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>int_view_type</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::int_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1125" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1a50a6df510d589072959a8479d79564de" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; uint64_t *[16], DeviceType &gt;</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::state_data_type =  View&lt;uint64_t * [16], DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>state_data_type</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::state_data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1126" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1a446a8802cf5e0f093c65794434ad4bc6" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_random___xor_shift1024" kindref="compound">Random_XorShift1024</ref>&lt; DeviceType &gt;</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::generator_type =  Random_XorShift1024&lt;DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>generator_type</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::generator_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1136" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_random___xor_shift1024___pool_1a3e1f1c3b9e0093a33d106fcd368510b1" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::device_type =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1138" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1138" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_random___xor_shift1024___pool_1a14328c5126953c943bb9c1a4fcdf699f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">locks_type</ref></type>
+        <definition>locks_type Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::locks_</definition>
+        <argsstring></argsstring>
+        <name>locks_</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::locks_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1128" column="14" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_random___xor_shift1024___pool_1addf63cd3bec9ea1e1208a4b6782480d9" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">state_data_type</ref></type>
+        <definition>state_data_type Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::state_</definition>
+        <argsstring></argsstring>
+        <name>state_</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::state_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1129" column="19" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_random___xor_shift1024___pool_1a8b5cc2bdfe72ca3b1e22b92a035190a1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">int_view_type</ref></type>
+        <definition>int_view_type Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::p_</definition>
+        <argsstring></argsstring>
+        <name>p_</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::p_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1130" column="17" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_random___xor_shift1024___pool_1a9abf111b19354664eb13b2abb8d3008f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::num_states_</definition>
+        <argsstring></argsstring>
+        <name>num_states_</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::num_states_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1131" column="7" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_random___xor_shift1024___pool_1aae624f3127c3d00acb06f2a8f885bc85" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::padding_</definition>
+        <argsstring></argsstring>
+        <name>padding_</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::padding_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1132" column="7" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_random___xor_shift1024___pool_1a4962408a42dc82f908cff283c860dae8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Random_XorShift1024&lt; DeviceType &gt;</definition>
+        <argsstring></argsstring>
+        <name>Random_XorShift1024&lt; DeviceType &gt;</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::Random_XorShift1024&lt; DeviceType &gt;</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_random___xor_shift1024" kindref="compound">Random_XorShift1024</ref>&lt; DeviceType &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1132" column="7" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1a1691f2ad4c5b9584dcdb3fcfd8dbb9c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::Random_XorShift1024_Pool</definition>
+        <argsstring>()</argsstring>
+        <name>Random_XorShift1024_Pool</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::Random_XorShift1024_Pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1141" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1141" bodyend="1141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1a9527012e38618f352e20ac950b8f3c2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::Random_XorShift1024_Pool</definition>
+        <argsstring>(uint64_t seed)</argsstring>
+        <name>Random_XorShift1024_Pool</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::Random_XorShift1024_Pool</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1143" column="10" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1143" bodyend="1147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1aa46bef602d7b4377494f33bd8ad80c84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::Random_XorShift1024_Pool</definition>
+        <argsstring>(const Random_XorShift1024_Pool &amp;src)</argsstring>
+        <name>Random_XorShift1024_Pool</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::Random_XorShift1024_Pool</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_random___xor_shift1024___pool" kindref="compound">Random_XorShift1024_Pool</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1150" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1150" bodyend="1154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1a884290a39a609ea7492355726a65186b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_random___xor_shift1024___pool" kindref="compound">Random_XorShift1024_Pool</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION Random_XorShift1024_Pool Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::operator=</definition>
+        <argsstring>(const Random_XorShift1024_Pool &amp;src)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_random___xor_shift1024___pool" kindref="compound">Random_XorShift1024_Pool</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1157" column="28" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1157" bodyend="1164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1a8f5b6a3fce86973cd41416106757718f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::init</definition>
+        <argsstring>(uint64_t seed, int num_states)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::init</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>num_states</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1166" column="15" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1166" bodyend="1202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1ada88e871199f7ca414b17b1b6af74963" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_random___xor_shift1024" kindref="compound">Random_XorShift1024</ref>&lt; DeviceType &gt;</type>
+        <definition>KOKKOS_INLINE_FUNCTION Random_XorShift1024&lt; DeviceType &gt; Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::get_state</definition>
+        <argsstring>() const</argsstring>
+        <name>get_state</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::get_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1205" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1205" bodyend="1209"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1aced6d4c8f04ddc5a0cb65902bd914149" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_random___xor_shift1024" kindref="compound">Random_XorShift1024</ref>&lt; DeviceType &gt;</type>
+        <definition>KOKKOS_INLINE_FUNCTION Random_XorShift1024&lt; DeviceType &gt; Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::get_state</definition>
+        <argsstring>(const int state_idx) const</argsstring>
+        <name>get_state</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::get_state</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>state_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1213" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1213" bodyend="1215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_random___xor_shift1024___pool_1a3a617740e8a11406080b645318388864" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Random_XorShift1024_Pool&lt; DeviceType &gt;::free_state</definition>
+        <argsstring>(const Random_XorShift1024&lt; DeviceType &gt; &amp;state) const</argsstring>
+        <name>free_state</name>
+        <qualifiedname>Kokkos::Random_XorShift1024_Pool::free_state</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_random___xor_shift1024" kindref="compound">Random_XorShift1024</ref>&lt; DeviceType &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1218" column="8" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1218" bodyend="1222"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1121" column="1" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1121" bodyend="1223"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a3e1f1c3b9e0093a33d106fcd368510b1" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1aea1cf657c466a0c92d0fe785a7f4395f" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a3a617740e8a11406080b645318388864" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>free_state</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a446a8802cf5e0f093c65794434ad4bc6" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>generator_type</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1ada88e871199f7ca414b17b1b6af74963" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>get_state</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1aced6d4c8f04ddc5a0cb65902bd914149" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>get_state</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a8f5b6a3fce86973cd41416106757718f" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>init</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a49e72c775d2ecb0751164c16d2e69b21" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>int_view_type</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a14328c5126953c943bb9c1a4fcdf699f" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>locks_</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a0409dba0c1be46ef9b56217f69679c47" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>locks_type</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a9abf111b19354664eb13b2abb8d3008f" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>num_states_</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a884290a39a609ea7492355726a65186b" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a8b5cc2bdfe72ca3b1e22b92a035190a1" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>p_</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1aae624f3127c3d00acb06f2a8f885bc85" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>padding_</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a4962408a42dc82f908cff283c860dae8" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>Random_XorShift1024&lt; DeviceType &gt;</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a1691f2ad4c5b9584dcdb3fcfd8dbb9c3" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>Random_XorShift1024_Pool</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a9527012e38618f352e20ac950b8f3c2a" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>Random_XorShift1024_Pool</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1aa46bef602d7b4377494f33bd8ad80c84" prot="public" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>Random_XorShift1024_Pool</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1addf63cd3bec9ea1e1208a4b6782480d9" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>state_</name></member>
+      <member refid="class_kokkos_1_1_random___xor_shift1024___pool_1a50a6df510d589072959a8479d79564de" prot="private" virt="non-virtual"><scope>Kokkos::Random_XorShift1024_Pool</scope><name>state_data_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

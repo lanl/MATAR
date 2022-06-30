@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_subview_legal_args_compile_time_3_01_kokkos_1_1_layout_left_00_01_kokd72aceb560928d98b6ef0ee24c012980" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::SubviewLegalArgsCompileTime&lt; Kokkos::LayoutLeft, Kokkos::LayoutLeft, RankDest, RankSrc, CurrentArg, Arg &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>RankDest</declname>
+        <defname>RankDest</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>RankSrc</declname>
+        <defname>RankSrc</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>CurrentArg</declname>
+        <defname>CurrentArg</defname>
+      </param>
+      <param>
+        <type>class Arg</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_subview_legal_args_compile_time_3_01_kokkos_1_1_layout_left_00_01_kokd72aceb560928d98b6ef0ee24c012980_1ad12139e49d58e2bf1c8c15d1566de237" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@125</name>
+        <qualifiedname>Kokkos::Impl::SubviewLegalArgsCompileTime&lt; Kokkos::LayoutLeft, Kokkos::LayoutLeft, RankDest, RankSrc, CurrentArg, Arg &gt;::@125</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_subview_legal_args_compile_time_3_01_kokkos_1_1_layout_left_00_01_kokd72aceb560928d98b6ef0ee24c012980_1ad12139e49d58e2bf1c8c15d1566de237a078e415576ba406744c4dc1246f3be3f" prot="public">
+          <name>value</name>
+          <initializer>= ((CurrentArg == RankDest - 1) || (std::is_integral&lt;Arg&gt;::value)) &amp;&amp;
+            (CurrentArg == RankSrc - 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="389" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="389" bodyend="392"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="387" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="388" bodyend="393"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_subview_legal_args_compile_time_3_01_kokkos_1_1_layout_left_00_01_kokd72aceb560928d98b6ef0ee24c012980_1ad12139e49d58e2bf1c8c15d1566de237a078e415576ba406744c4dc1246f3be3f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::SubviewLegalArgsCompileTime&lt; Kokkos::LayoutLeft, Kokkos::LayoutLeft, RankDest, RankSrc, CurrentArg, Arg &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

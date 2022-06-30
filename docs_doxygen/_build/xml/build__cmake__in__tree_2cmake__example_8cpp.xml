@@ -1,0 +1,1361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="build__cmake__in__tree_2cmake__example_8cpp" kind="file" language="C++">
+    <compoundname>cmake_example.cpp</compoundname>
+    <includes refid="_kokkos___core_8hpp" local="no">Kokkos_Core.hpp</includes>
+    <includes local="no">cstdio</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>Cuda/Kokkos_Cuda_Half.hpp</label>
+        <link refid="_kokkos___cuda___half_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>KokkosExp_MDRangePolicy.hpp</label>
+        <link refid="_kokkos_exp___m_d_range_policy_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>Kokkos_AcquireUniqueTokenImpl.hpp</label>
+        <link refid="_kokkos___acquire_unique_token_impl_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Kokkos_AnonymousSpace.hpp</label>
+        <link refid="_kokkos___anonymous_space_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>Kokkos_Array.hpp</label>
+        <link refid="_kokkos___array_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>Kokkos_Atomic.hpp</label>
+        <link refid="_kokkos___atomic_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>Kokkos_Complex.hpp</label>
+        <link refid="_kokkos___complex_8hpp_source"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Kokkos_Concepts.hpp</label>
+        <link refid="_kokkos___concepts_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="124">
+        <label>Kokkos_CopyViews.hpp</label>
+        <link refid="_kokkos___copy_views_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Core.hpp</label>
+        <link refid="_kokkos___core_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos_Core_fwd.hpp</label>
+        <link refid="_kokkos___core__fwd_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>Kokkos_Crs.hpp</label>
+        <link refid="_kokkos___crs_8hpp_source"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>Kokkos_DetectionIdiom.hpp</label>
+        <link refid="_kokkos___detection_idiom_8hpp_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Kokkos_ExecPolicy.hpp</label>
+        <link refid="_kokkos___exec_policy_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>Kokkos_Extents.hpp</label>
+        <link refid="_kokkos___extents_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>Kokkos_Half.hpp</label>
+        <link refid="_kokkos___half_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>Kokkos_HostSpace.hpp</label>
+        <link refid="_kokkos___host_space_8hpp_source"/>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>Kokkos_Layout.hpp</label>
+        <link refid="_kokkos___layout_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>Kokkos_LogicalSpaces.hpp</label>
+        <link refid="_kokkos___logical_spaces_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>Kokkos_MathematicalFunctions.hpp</label>
+        <link refid="_kokkos___mathematical_functions_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>Kokkos_MathematicalSpecialFunctions.hpp</label>
+        <link refid="_kokkos___mathematical_special_functions_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>Kokkos_MemoryPool.hpp</label>
+        <link refid="_kokkos___memory_pool_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>Kokkos_MemoryTraits.hpp</label>
+        <link refid="_kokkos___memory_traits_8hpp_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>Kokkos_NumericTraits.hpp</label>
+        <link refid="_kokkos___numeric_traits_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>Kokkos_Pair.hpp</label>
+        <link refid="_kokkos___pair_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>Kokkos_Parallel.hpp</label>
+        <link refid="_kokkos___parallel_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>Kokkos_Parallel_Reduce.hpp</label>
+        <link refid="_kokkos___parallel___reduce_8hpp_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>Kokkos_Rank.hpp</label>
+        <link refid="_kokkos___rank_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>Kokkos_ScratchSpace.hpp</label>
+        <link refid="_kokkos___scratch_space_8hpp_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>Kokkos_TaskScheduler.hpp</label>
+        <link refid="_kokkos___task_scheduler_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>Kokkos_Timer.hpp</label>
+        <link refid="_kokkos___timer_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>Kokkos_Tuners.hpp</label>
+        <link refid="_kokkos___tuners_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>Kokkos_UniqueToken.hpp</label>
+        <link refid="_kokkos___unique_token_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>Kokkos_Vectorization.hpp</label>
+        <link refid="_kokkos___vectorization_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>Kokkos_View.hpp</label>
+        <link refid="_kokkos___view_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>Kokkos_WorkGraphPolicy.hpp</label>
+        <link refid="_kokkos___work_graph_policy_8hpp_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="121">
+        <label>Kokkos_hwloc.hpp</label>
+        <link refid="_kokkos__hwloc_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>impl/KokkosExp_Host_IterateTile.hpp</label>
+        <link refid="_kokkos_exp___host___iterate_tile_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>impl/Kokkos_AnalyzePolicy.hpp</label>
+        <link refid="_kokkos___analyze_policy_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>impl/Kokkos_Atomic_Assembly.hpp</label>
+        <link refid="_kokkos___atomic___assembly_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>impl/Kokkos_Atomic_Compare_Exchange_Strong.hpp</label>
+        <link refid="_kokkos___atomic___compare___exchange___strong_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>impl/Kokkos_Atomic_Decrement.hpp</label>
+        <link refid="_kokkos___atomic___decrement_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>impl/Kokkos_Atomic_Exchange.hpp</label>
+        <link refid="_kokkos___atomic___exchange_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>impl/Kokkos_Atomic_Fetch_Add.hpp</label>
+        <link refid="_kokkos___atomic___fetch___add_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>impl/Kokkos_Atomic_Fetch_And.hpp</label>
+        <link refid="_kokkos___atomic___fetch___and_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>impl/Kokkos_Atomic_Fetch_Or.hpp</label>
+        <link refid="_kokkos___atomic___fetch___or_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>impl/Kokkos_Atomic_Fetch_Sub.hpp</label>
+        <link refid="_kokkos___atomic___fetch___sub_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>impl/Kokkos_Atomic_Generic.hpp</label>
+        <link refid="_kokkos___atomic___generic_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>impl/Kokkos_Atomic_Generic_Secondary.hpp</label>
+        <link refid="_kokkos___atomic___generic___secondary_8hpp_source"/>
+      </node>
+      <node id="91">
+        <label>impl/Kokkos_Atomic_Increment.hpp</label>
+        <link refid="_kokkos___atomic___increment_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>impl/Kokkos_Atomic_Load.hpp</label>
+        <link refid="_kokkos___atomic___load_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>impl/Kokkos_Atomic_Memory_Order.hpp</label>
+        <link refid="_kokkos___atomic___memory___order_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>impl/Kokkos_Atomic_MinMax.hpp</label>
+        <link refid="_kokkos___atomic___min_max_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>impl/Kokkos_Atomic_Store.hpp</label>
+        <link refid="_kokkos___atomic___store_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>impl/Kokkos_Atomic_View.hpp</label>
+        <link refid="_kokkos___atomic___view_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>impl/Kokkos_BitOps.hpp</label>
+        <link refid="_kokkos___bit_ops_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>impl/Kokkos_ClockTic.hpp</label>
+        <link refid="_kokkos___clock_tic_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>impl/Kokkos_Combined_Reducer.hpp</label>
+        <link refid="_kokkos___combined___reducer_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>impl/Kokkos_ConcurrentBitset.hpp</label>
+        <link refid="_kokkos___concurrent_bitset_8hpp_source"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>impl/Kokkos_Error.hpp</label>
+        <link refid="_kokkos___error_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="114">
+        <label>impl/Kokkos_FunctorAdapter.hpp</label>
+        <link refid="_kokkos___functor_adapter_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>impl/Kokkos_FunctorAnalysis.hpp</label>
+        <link refid="_kokkos___functor_analysis_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>impl/Kokkos_GraphImpl_fwd.hpp</label>
+        <link refid="_kokkos___graph_impl__fwd_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>impl/Kokkos_HostSpace_deepcopy.hpp</label>
+        <link refid="_kokkos___host_space__deepcopy_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>impl/Kokkos_MemorySpace.hpp</label>
+        <link refid="_kokkos___memory_space_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>impl/Kokkos_Memory_Fence.hpp</label>
+        <link refid="_kokkos___memory___fence_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>impl/Kokkos_Profiling.hpp</label>
+        <link refid="_kokkos___profiling_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>impl/Kokkos_Profiling_C_Interface.h</label>
+        <link refid="_kokkos___profiling___c___interface_8h_source"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>impl/Kokkos_Profiling_DeviceInfo.hpp</label>
+        <link refid="_kokkos___profiling___device_info_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>impl/Kokkos_Profiling_Interface.hpp</label>
+        <link refid="_kokkos___profiling___interface_8hpp_source"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>impl/Kokkos_SharedAlloc.hpp</label>
+        <link refid="_kokkos___shared_alloc_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>impl/Kokkos_Tools.hpp</label>
+        <link refid="_kokkos___tools_8hpp_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>impl/Kokkos_Traits.hpp</label>
+        <link refid="_kokkos___traits_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>impl/Kokkos_Utilities.hpp</label>
+        <link refid="_kokkos___utilities_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>impl/Kokkos_ViewArray.hpp</label>
+        <link refid="_kokkos___view_array_8hpp_source"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>impl/Kokkos_ViewCtor.hpp</label>
+        <link refid="_kokkos___view_ctor_8hpp_source"/>
+      </node>
+      <node id="106">
+        <label>impl/Kokkos_ViewMapping.hpp</label>
+        <link refid="_kokkos___view_mapping_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>impl/Kokkos_ViewTracker.hpp</label>
+        <link refid="_kokkos___view_tracker_8hpp_source"/>
+      </node>
+      <node id="112">
+        <label>impl/Kokkos_ViewUniformType.hpp</label>
+        <link refid="_kokkos___view_uniform_type_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>impl/Kokkos_Volatile_Load.hpp</label>
+        <link refid="_kokkos___volatile___load_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>traits/Kokkos_ExecutionSpaceTrait.hpp</label>
+        <link refid="_kokkos___execution_space_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>traits/Kokkos_GraphKernelTrait.hpp</label>
+        <link refid="_kokkos___graph_kernel_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>traits/Kokkos_IndexTypeTrait.hpp</label>
+        <link refid="_kokkos___index_type_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>traits/Kokkos_IterationPatternTrait.hpp</label>
+        <link refid="_kokkos___iteration_pattern_trait_8hpp_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>traits/Kokkos_LaunchBoundsTrait.hpp</label>
+        <link refid="_kokkos___launch_bounds_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>traits/Kokkos_OccupancyControlTrait.hpp</label>
+        <link refid="_kokkos___occupancy_control_trait_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>traits/Kokkos_PolicyTraitAdaptor.hpp</label>
+        <link refid="_kokkos___policy_trait_adaptor_8hpp_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>traits/Kokkos_ScheduleTrait.hpp</label>
+        <link refid="_kokkos___schedule_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>traits/Kokkos_Traits_fwd.hpp</label>
+        <link refid="_kokkos___traits__fwd_8hpp_source"/>
+      </node>
+      <node id="45">
+        <label>traits/Kokkos_WorkItemPropertyTrait.hpp</label>
+        <link refid="_kokkos___work_item_property_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>traits/Kokkos_WorkTagTrait.hpp</label>
+        <link refid="_kokkos___work_tag_trait_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/example/build_cmake_in_tree/cmake_example.cpp</label>
+        <link refid="build__cmake__in__tree_2cmake__example_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>KokkosCore_Config_DeclareBackend.hpp</label>
+      </node>
+      <node id="15">
+        <label>KokkosCore_Config_FwdBackend.hpp</label>
+      </node>
+      <node id="131">
+        <label>KokkosCore_Config_PostInclude.hpp</label>
+      </node>
+      <node id="6">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="5">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="51">
+        <label>algorithm</label>
+      </node>
+      <node id="62">
+        <label>array</label>
+      </node>
+      <node id="84">
+        <label>atomic</label>
+      </node>
+      <node id="66">
+        <label>cassert</label>
+      </node>
+      <node id="76">
+        <label>cfloat</label>
+      </node>
+      <node id="118">
+        <label>chrono</label>
+      </node>
+      <node id="55">
+        <label>cinttypes</label>
+      </node>
+      <node id="31">
+        <label>climits</label>
+      </node>
+      <node id="73">
+        <label>cmath</label>
+      </node>
+      <node id="101">
+        <label>complex</label>
+      </node>
+      <node id="21">
+        <label>cstddef</label>
+      </node>
+      <node id="11">
+        <label>cstdint</label>
+      </node>
+      <node id="24">
+        <label>cstdio</label>
+      </node>
+      <node id="56">
+        <label>cstdlib</label>
+      </node>
+      <node id="70">
+        <label>cstring</label>
+      </node>
+      <node id="125">
+        <label>functional</label>
+      </node>
+      <node id="13">
+        <label>initializer_list</label>
+      </node>
+      <node id="9">
+        <label>iosfwd</label>
+      </node>
+      <node id="119">
+        <label>iostream</label>
+      </node>
+      <node id="52">
+        <label>limits</label>
+      </node>
+      <node id="65">
+        <label>map</label>
+      </node>
+      <node id="67">
+        <label>memory</label>
+      </node>
+      <node id="69">
+        <label>mutex</label>
+      </node>
+      <node id="61">
+        <label>stdbool.h</label>
+      </node>
+      <node id="59">
+        <label>stddef.h</label>
+      </node>
+      <node id="60">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="63">
+        <label>tuple</label>
+      </node>
+      <node id="12">
+        <label>type_traits</label>
+      </node>
+      <node id="47">
+        <label>typeinfo</label>
+      </node>
+      <node id="68">
+        <label>unordered_map</label>
+      </node>
+      <node id="14">
+        <label>utility</label>
+      </node>
+      <node id="64">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="build__cmake__in__tree_2cmake__example_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/build_cmake_in_tree/cmake_example.cpp" line="48" column="5" bodyfile="src/Kokkos/kokkos/example/build_cmake_in_tree/cmake_example.cpp" bodystart="48" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Core.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[])<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>Kokkos::initialize(argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>Kokkos::DefaultExecutionSpace::print_configuration(std::cout);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(argc<sp/>&lt;<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Usage:<sp/>%s<sp/>[&lt;kokkos_options&gt;]<sp/>&lt;size&gt;\n&quot;</highlight><highlight class="normal">,<sp/>argv[0]);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::finalize();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>strtol(argv[1],<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>10);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>even<sp/>integers<sp/>from<sp/>0<sp/>to<sp/>%ld\n&quot;</highlight><highlight class="normal">,<sp/>n<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_timer" kindref="compound">Kokkos::Timer</ref><sp/>timer;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>timer.reset();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>number<sp/>of<sp/>even<sp/>integers<sp/>from<sp/>0<sp/>to<sp/>n-1,<sp/>in<sp/>parallel.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>Kokkos::parallel_reduce(</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>n,<sp/>KOKKOS_LAMBDA(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">&amp;<sp/>lcount)<sp/>{<sp/>lcount<sp/>+=<sp/>(i<sp/>%<sp/>2)<sp/>==<sp/>0;<sp/>},</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>count);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>count_time<sp/>=<sp/>timer.seconds();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;<sp/><sp/>Parallel:<sp/>%ld<sp/><sp/><sp/><sp/>%10.6f\n&quot;</highlight><highlight class="normal">,<sp/>count,<sp/>count_time);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>timer.reset();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>to<sp/>a<sp/>sequential<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>seq_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>seq_count<sp/>+=<sp/>(i<sp/>%<sp/>2)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>count_time<sp/>=<sp/>timer.seconds();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Sequential:<sp/>%ld<sp/><sp/><sp/><sp/>%10.6f\n&quot;</highlight><highlight class="normal">,<sp/>seq_count,<sp/>count_time);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>Kokkos::finalize();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(count<sp/>==<sp/>seq_count)<sp/>?<sp/>0<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/example/build_cmake_in_tree/cmake_example.cpp"/>
+  </compounddef>
+</doxygen>

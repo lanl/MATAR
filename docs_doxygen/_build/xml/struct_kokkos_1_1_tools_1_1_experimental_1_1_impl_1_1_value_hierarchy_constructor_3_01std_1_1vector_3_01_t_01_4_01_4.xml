@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1vector_3_01_t_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1vector_3_01_t_01_4_01_4_1a7ba80da7283a02fce04b0d1e8a7fc5cc" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_map_type_converter" kindref="compound">MapTypeConverter</ref>&lt; std::vector&lt; T &gt; &gt;::type</type>
+        <definition>using Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;::return_type =  typename MapTypeConverter&lt;std::vector&lt;T&gt; &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>return_type</name>
+        <qualifiedname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;::return_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="152" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1vector_3_01_t_01_4_01_4_1ad1af1e973cb29c9185aa751a242794c6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>return_type</type>
+        <definition>static return_type Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;::build</definition>
+        <argsstring>(const std::vector&lt; T &gt; &amp;in)</argsstring>
+        <name>build</name>
+        <qualifiedname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;::build</qualifiedname>
+        <param>
+          <type>const std::vector&lt; T &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="153" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="153" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="151" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="151" bodyend="154"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1vector_3_01_t_01_4_01_4_1ad1af1e973cb29c9185aa751a242794c6" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;</scope><name>build</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1vector_3_01_t_01_4_01_4_1a7ba80da7283a02fce04b0d1e8a7fc5cc" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::vector&lt; T &gt; &gt;</scope><name>return_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_cuda_traits" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CudaTraits</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1aad6c74805aaa4d5a8609d7f2f01ec472" prot="public" static="no">
+        <type>unsigned long[ConstantMemoryUsage/sizeof(unsigned long)]</type>
+        <definition>using Kokkos::Impl::CudaTraits::ConstantGlobalBufferType =  unsigned long[ConstantMemoryUsage / sizeof(unsigned long)]</definition>
+        <argsstring></argsstring>
+        <name>ConstantGlobalBufferType</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::ConstantGlobalBufferType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="37" column="3" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a4ec8219adaf1e2d3fa377c73ec478721" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::WarpSize</definition>
+        <argsstring></argsstring>
+        <name>WarpSize</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::WarpSize</qualifiedname>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="23" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a14badc94d60bb4fded855359b2c10577" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::WarpIndexMask</definition>
+        <argsstring></argsstring>
+        <name>WarpIndexMask</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::WarpIndexMask</qualifiedname>
+        <initializer>=
+      0x001f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="24" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1aaae58c95558386152ba4bb0ff5639eca" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::WarpIndexShift</definition>
+        <argsstring></argsstring>
+        <name>WarpIndexShift</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::WarpIndexShift</qualifiedname>
+        <initializer>=
+      5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="26" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a56d110c7d7d309a12d150a0157a9ff68" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::ConstantMemoryUsage</definition>
+        <argsstring></argsstring>
+        <name>ConstantMemoryUsage</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::ConstantMemoryUsage</qualifiedname>
+        <initializer>=
+      0x008000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="29" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a7335794e57f6b0ed9b0fc73d9de2833a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::ConstantMemoryCache</definition>
+        <argsstring></argsstring>
+        <name>ConstantMemoryCache</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::ConstantMemoryCache</qualifiedname>
+        <initializer>=
+      0x002000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="31" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1ab1c112f2fbfe5a4c2dd6ab8ce85a66b5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::KernelArgumentLimit</definition>
+        <argsstring></argsstring>
+        <name>KernelArgumentLimit</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::KernelArgumentLimit</qualifiedname>
+        <initializer>=
+      0x001000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="33" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1ad7d0e8a70619621c1247f7d8a0a0360b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr CudaSpace::size_type</type>
+        <definition>constexpr CudaSpace::size_type Kokkos::Impl::CudaTraits::MaxHierarchicalParallelism</definition>
+        <argsstring></argsstring>
+        <name>MaxHierarchicalParallelism</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::MaxHierarchicalParallelism</qualifiedname>
+        <initializer>=
+      1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="35" column="41" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a198352ac4852402dfe78573be379d6a8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Impl::CudaTraits::ConstantMemoryUseThreshold</definition>
+        <argsstring></argsstring>
+        <name>ConstantMemoryUseThreshold</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::ConstantMemoryUseThreshold</qualifiedname>
+        <initializer>= 0x000200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="40" column="24" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a309fd6cd391fe5a9930614299a295cbe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION CudaSpace::size_type</type>
+        <definition>static KOKKOS_INLINE_FUNCTION CudaSpace::size_type Kokkos::Impl::CudaTraits::warp_count</definition>
+        <argsstring>(CudaSpace::size_type i)</argsstring>
+        <name>warp_count</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::warp_count</qualifiedname>
+        <param>
+          <type>CudaSpace::size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="42" column="54" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_cuda_traits_1a8682f6e3ff7063143319688d9f12c9fa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION CudaSpace::size_type</type>
+        <definition>static KOKKOS_INLINE_FUNCTION CudaSpace::size_type Kokkos::Impl::CudaTraits::warp_align</definition>
+        <argsstring>(CudaSpace::size_type i)</argsstring>
+        <name>warp_align</name>
+        <qualifiedname>Kokkos::Impl::CudaTraits::warp_align</qualifiedname>
+        <param>
+          <type>CudaSpace::size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="47" column="54" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="22" column="1" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="22" bodyend="52"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1aad6c74805aaa4d5a8609d7f2f01ec472" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>ConstantGlobalBufferType</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a7335794e57f6b0ed9b0fc73d9de2833a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>ConstantMemoryCache</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a56d110c7d7d309a12d150a0157a9ff68" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>ConstantMemoryUsage</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a198352ac4852402dfe78573be379d6a8" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>ConstantMemoryUseThreshold</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1ab1c112f2fbfe5a4c2dd6ab8ce85a66b5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>KernelArgumentLimit</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1ad7d0e8a70619621c1247f7d8a0a0360b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>MaxHierarchicalParallelism</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a8682f6e3ff7063143319688d9f12c9fa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>warp_align</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a309fd6cd391fe5a9930614299a295cbe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>warp_count</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a14badc94d60bb4fded855359b2c10577" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>WarpIndexMask</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1aaae58c95558386152ba4bb0ff5639eca" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>WarpIndexShift</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_cuda_traits_1a4ec8219adaf1e2d3fa377c73ec478721" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CudaTraits</scope><name>WarpSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

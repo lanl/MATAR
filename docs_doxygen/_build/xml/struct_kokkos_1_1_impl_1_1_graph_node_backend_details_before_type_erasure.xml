@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</compoundname>
+    <derivedcompoundref refid="struct_kokkos_1_1_impl_1_1_graph_node_impl" prot="public" virt="non-virtual">Kokkos::Impl::GraphNodeImpl&lt; ExecutionSpace, Kernel, PredecessorRef &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+      <param>
+        <type>class Kernel</type>
+      </param>
+      <param>
+        <type>class PredecessorRef</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a2fd93c9590143bd20b81a9411bf1716c" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>(ExecutionSpace const &amp;, Kernel &amp;, PredecessorRef const &amp;, GraphNodeBackendSpecificDetails&lt; ExecutionSpace &gt; &amp;) noexcept</argsstring>
+        <name>GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <param>
+          <type>ExecutionSpace const &amp;</type>
+        </param>
+        <param>
+          <type>Kernel &amp;</type>
+        </param>
+        <param>
+          <type>PredecessorRef const &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_specific_details" kindref="compound">GraphNodeBackendSpecificDetails</ref>&lt; ExecutionSpace &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a4aa556365cd8a3750f30996e2f7a5f92" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>(ExecutionSpace const &amp;, _graph_node_is_root_ctor_tag, GraphNodeBackendSpecificDetails&lt; ExecutionSpace &gt; &amp;) noexcept</argsstring>
+        <name>GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <param>
+          <type>ExecutionSpace const &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1__graph__node__is__root__ctor__tag" kindref="compound">_graph_node_is_root_ctor_tag</ref></type>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_specific_details" kindref="compound">GraphNodeBackendSpecificDetails</ref>&lt; ExecutionSpace &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1ae32ce90a1131836d23139f5328de53c9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>()=delete</argsstring>
+        <name>GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="75" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a2a3ec0f6db5e3caa1dcdaf3fc9246df9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>(GraphNodeBackendDetailsBeforeTypeErasure const &amp;)=delete</argsstring>
+        <name>GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="77" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a737187cc1601112ca684a32634910049" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>(GraphNodeBackendDetailsBeforeTypeErasure &amp;&amp;)=delete</argsstring>
+        <name>GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="80" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1af8e448cb0644a836d6c90d2366b30c43" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> &amp;</type>
+        <definition>GraphNodeBackendDetailsBeforeTypeErasure &amp; Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::operator=</definition>
+        <argsstring>(GraphNodeBackendDetailsBeforeTypeErasure const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="83" column="44"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1adf7cdf8fab20b271cbfbd0ea53f14df6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> &amp;</type>
+        <definition>GraphNodeBackendDetailsBeforeTypeErasure &amp; Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::operator=</definition>
+        <argsstring>(GraphNodeBackendDetailsBeforeTypeErasure &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure" kindref="compound">GraphNodeBackendDetailsBeforeTypeErasure</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="86" column="44"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1abb9ae3da0355c1741c270b1367ba521f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;::~GraphNodeBackendDetailsBeforeTypeErasure</definition>
+        <argsstring>()=default</argsstring>
+        <name>~GraphNodeBackendDetailsBeforeTypeErasure</name>
+        <qualifiedname>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure::~GraphNodeBackendDetailsBeforeTypeErasure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="89" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure&lt; ExecutionSpace, Kernel, PredecessorRef &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::GraphNodeImpl&lt; ExecutionSpace, Kernel, PredecessorRef &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_graph_node_impl"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_GraphNodeCustomization.hpp" bodystart="58" bodyend="93"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a2fd93c9590143bd20b81a9411bf1716c" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a4aa556365cd8a3750f30996e2f7a5f92" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1ae32ce90a1131836d23139f5328de53c9" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a2a3ec0f6db5e3caa1dcdaf3fc9246df9" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1a737187cc1601112ca684a32634910049" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1af8e448cb0644a836d6c90d2366b30c43" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1adf7cdf8fab20b271cbfbd0ea53f14df6" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_graph_node_backend_details_before_type_erasure_1abb9ae3da0355c1741c270b1367ba521f" prot="protected" virt="non-virtual"><scope>Kokkos::Impl::GraphNodeBackendDetailsBeforeTypeErasure</scope><name>~GraphNodeBackendDetailsBeforeTypeErasure</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

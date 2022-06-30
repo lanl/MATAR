@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_unordered_map_print" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::UnorderedMapPrint</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename UMap</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a70e60d14157bac77720e8d29eeb0eb8e" prot="public" static="no">
+        <type>UMap</type>
+        <definition>using Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::map_type =  UMap</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="233" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a2c4d0f0153fd363b6ee4641497c729b3" prot="public" static="no">
+        <type>typename map_type::execution_space</type>
+        <definition>using Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::execution_space =  typename map_type::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="234" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a844eab3107fc904aceb6975789506395" prot="public" static="no">
+        <type>typename map_type::size_type</type>
+        <definition>using Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::size_type =  typename map_type::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="235" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1abd88881a02345de4e93d4ecbe0c11692" prot="public" static="no" mutable="no">
+        <type>map_type</type>
+        <definition>map_type Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="237" column="12" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a02f921a322bb076fd6cffcf2eecbde2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::UnorderedMapPrint</definition>
+        <argsstring>(map_type const &amp;map)</argsstring>
+        <name>UnorderedMapPrint</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::UnorderedMapPrint</qualifiedname>
+        <param>
+          <type>map_type const &amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="239" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="239" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a3fe5a9366fb25672fb8d10d044b9a07c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::apply</definition>
+        <argsstring>()</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::apply</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="241" column="8" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="241" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_unordered_map_print_1ad91cdf78eaa4139b2c0145f5122cf846" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::UnorderedMapPrint&lt; UMap &gt;::operator()</definition>
+        <argsstring>(size_type i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::UnorderedMapPrint::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="247" column="8" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="247" bodyend="256"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="232" column="1" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="232" bodyend="257"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a3fe5a9366fb25672fb8d10d044b9a07c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>apply</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a2c4d0f0153fd363b6ee4641497c729b3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1abd88881a02345de4e93d4ecbe0c11692" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>m_map</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a70e60d14157bac77720e8d29eeb0eb8e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>map_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1ad91cdf78eaa4139b2c0145f5122cf846" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a844eab3107fc904aceb6975789506395" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>size_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_unordered_map_print_1a02f921a322bb076fd6cffcf2eecbde2b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::UnorderedMapPrint</scope><name>UnorderedMapPrint</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

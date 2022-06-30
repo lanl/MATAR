@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4" kind="class" language="C++" prot="public">
+    <compoundname>std::tr1::gtest_internal::Get&lt; 3 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1ad1b4304ccf1fe3a4d680906ea799d638" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>typename::std::tr1::gtest_internal::AddRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type</type>
+        <definition>static typename::std::tr1::gtest_internal::AddRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type std::tr1::gtest_internal::Get&lt; 3 &gt;::Field</definition>
+        <argsstring>(Tuple &amp;t)</argsstring>
+        <name>Field</name>
+        <qualifiedname>std::tr1::gtest_internal::Get&lt; 3 &gt;::Field</qualifiedname>
+        <param>
+          <type>Tuple &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1485" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1485" bodyend="1485"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1a03e307458a97c3a8f221d158a2efb29c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>typename::std::tr1::gtest_internal::ByRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type</type>
+        <definition>static typename::std::tr1::gtest_internal::ByRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type std::tr1::gtest_internal::Get&lt; 3 &gt;::ConstField</definition>
+        <argsstring>(const Tuple &amp;t)</argsstring>
+        <name>ConstField</name>
+        <qualifiedname>std::tr1::gtest_internal::Get&lt; 3 &gt;::ConstField</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1489" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1489" bodyend="1489"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1ad1b4304ccf1fe3a4d680906ea799d638" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>typename::std::tr1::gtest_internal::AddRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type</type>
+        <definition>static typename::std::tr1::gtest_internal::AddRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type std::tr1::gtest_internal::Get&lt; 3 &gt;::Field</definition>
+        <argsstring>(Tuple &amp;t)</argsstring>
+        <name>Field</name>
+        <qualifiedname>std::tr1::gtest_internal::Get&lt; 3 &gt;::Field</qualifiedname>
+        <param>
+          <type>Tuple &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="1485" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="1485" bodyend="1485"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1a03e307458a97c3a8f221d158a2efb29c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Tuple</type>
+          </param>
+        </templateparamlist>
+        <type>typename::std::tr1::gtest_internal::ByRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type</type>
+        <definition>static typename::std::tr1::gtest_internal::ByRef&lt; typenametuple_element&lt; 3, Tuple &gt;::type &gt;::type std::tr1::gtest_internal::Get&lt; 3 &gt;::ConstField</definition>
+        <argsstring>(const Tuple &amp;t)</argsstring>
+        <name>ConstField</name>
+        <qualifiedname>std::tr1::gtest_internal::Get&lt; 3 &gt;::ConstField</qualifiedname>
+        <param>
+          <type>const Tuple &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="1489" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="1489" bodyend="1489"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1481" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1481" bodyend="1490"/>
+    <listofallmembers>
+      <member refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1a03e307458a97c3a8f221d158a2efb29c" prot="public" virt="non-virtual"><scope>std::tr1::gtest_internal::Get&lt; 3 &gt;</scope><name>ConstField</name></member>
+      <member refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1a03e307458a97c3a8f221d158a2efb29c" prot="public" virt="non-virtual"><scope>std::tr1::gtest_internal::Get&lt; 3 &gt;</scope><name>ConstField</name></member>
+      <member refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1ad1b4304ccf1fe3a4d680906ea799d638" prot="public" virt="non-virtual"><scope>std::tr1::gtest_internal::Get&lt; 3 &gt;</scope><name>Field</name></member>
+      <member refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4_1ad1b4304ccf1fe3a4d680906ea799d638" prot="public" virt="non-virtual"><scope>std::tr1::gtest_internal::Get&lt; 3 &gt;</scope><name>Field</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_impl_1_1numeric__limits__max_3_01uint64__t_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>desul::Impl::numeric_limits_max&lt; uint64_t &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structdesul_1_1_impl_1_1numeric__limits__max_3_01uint64__t_01_4_1a9c182459b5dccb37cfa761a492ffe5e9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint64_t</type>
+        <definition>constexpr uint64_t desul::Impl::numeric_limits_max&lt; uint64_t &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>desul::Impl::numeric_limits_max&lt; uint64_t &gt;::value</qualifiedname>
+        <initializer>= 0xfffffffflu</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="153" column="29" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="152" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="152" bodyend="154"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_impl_1_1numeric__limits__max_3_01uint64__t_01_4_1a9c182459b5dccb37cfa761a492ffe5e9" prot="public" virt="non-virtual"><scope>desul::Impl::numeric_limits_max&lt; uint64_t &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

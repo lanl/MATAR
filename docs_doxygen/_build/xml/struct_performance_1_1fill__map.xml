@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_performance_1_1fill__map" kind="struct" language="C++" prot="public">
+    <compoundname>Performance::fill_map</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Device</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_performance_1_1fill__map_1afc3ee9ba7d29c3eed7d919612d87f37e" prot="public" static="no">
+        <type>Device</type>
+        <definition>using Performance::fill_map&lt; Device &gt;::execution_space =  Device</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Performance::fill_map::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="99" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_performance_1_1fill__map_1afad7671b30692c13cb59a4dbbc193e79" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Performance::fill_map&lt; Device &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Performance::fill_map::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="100" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_performance_1_1fill__map_1a2c6344ee393bf32921aaa77892405943" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const uint32_t *, execution_space, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryRandomAccess</ref> &gt;</type>
+        <definition>using Performance::fill_map&lt; Device &gt;::local_id_view =  Kokkos::View&lt;const uint32_t*, execution_space, Kokkos::MemoryRandomAccess&gt;</definition>
+        <argsstring></argsstring>
+        <name>local_id_view</name>
+        <qualifiedname>Performance::fill_map::local_id_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="101" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_performance_1_1fill__map_1a0ffa32b58437ee4979f7d6c8caaeab12" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">Kokkos::UnorderedMap</ref>&lt; uint32_t, size_type, execution_space &gt;</type>
+        <definition>using Performance::fill_map&lt; Device &gt;::global_id_view =  Kokkos::UnorderedMap&lt;uint32_t, size_type, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>global_id_view</name>
+        <qualifiedname>Performance::fill_map::global_id_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="103" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_performance_1_1fill__map_1a286911bc18a76fe7c9f84a13fd17e8e3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">global_id_view</ref></type>
+        <definition>global_id_view Performance::fill_map&lt; Device &gt;::global_2_local</definition>
+        <argsstring></argsstring>
+        <name>global_2_local</name>
+        <qualifiedname>Performance::fill_map::global_2_local</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="106" column="18" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_performance_1_1fill__map_1a6ebb66554920ee5c2f63d737062a00ee" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">local_id_view</ref></type>
+        <definition>local_id_view Performance::fill_map&lt; Device &gt;::local_2_global</definition>
+        <argsstring></argsstring>
+        <name>local_2_global</name>
+        <qualifiedname>Performance::fill_map::local_2_global</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="107" column="17" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_performance_1_1fill__map_1a4a643408a1804cc31666d26706794453" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Performance::fill_map&lt; Device &gt;::fill_map</definition>
+        <argsstring>(global_id_view gIds, local_id_view lIds)</argsstring>
+        <name>fill_map</name>
+        <qualifiedname>Performance::fill_map::fill_map</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">global_id_view</ref></type>
+          <declname>gIds</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">local_id_view</ref></type>
+          <declname>lIds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="109" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_performance_1_1fill__map_1adef2dfcd36a65ffbd06b37926709a551" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Performance::fill_map&lt; Device &gt;::operator()</definition>
+        <argsstring>(size_type i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Performance::fill_map::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="115" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Performance::fill_map&lt; Device &gt;</label>
+        <link refid="struct_performance_1_1fill__map"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>global_2_local</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>local_2_global</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::UnorderedMap&lt; uint32_t, size_type, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_unordered_map"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::View&lt; const uint32_t *, execution_space, Kokkos::MemoryRandomAccess &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::ViewTraits&lt; const uint32_t *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" line="98" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestGlobal2LocalIds.hpp" bodystart="98" bodyend="118"/>
+    <listofallmembers>
+      <member refid="struct_performance_1_1fill__map_1afc3ee9ba7d29c3eed7d919612d87f37e" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>execution_space</name></member>
+      <member refid="struct_performance_1_1fill__map_1a4a643408a1804cc31666d26706794453" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>fill_map</name></member>
+      <member refid="struct_performance_1_1fill__map_1a286911bc18a76fe7c9f84a13fd17e8e3" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>global_2_local</name></member>
+      <member refid="struct_performance_1_1fill__map_1a0ffa32b58437ee4979f7d6c8caaeab12" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>global_id_view</name></member>
+      <member refid="struct_performance_1_1fill__map_1a6ebb66554920ee5c2f63d737062a00ee" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>local_2_global</name></member>
+      <member refid="struct_performance_1_1fill__map_1a2c6344ee393bf32921aaa77892405943" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>local_id_view</name></member>
+      <member refid="struct_performance_1_1fill__map_1adef2dfcd36a65ffbd06b37926709a551" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>operator()</name></member>
+      <member refid="struct_performance_1_1fill__map_1afad7671b30692c13cb59a4dbbc193e79" prot="public" virt="non-virtual"><scope>Performance::fill_map</scope><name>size_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

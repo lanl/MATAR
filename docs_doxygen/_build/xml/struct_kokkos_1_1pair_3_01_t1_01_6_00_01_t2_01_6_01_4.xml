@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T1</type>
+      </param>
+      <param>
+        <type>class T2</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a1eacc376b062c9942faf249f8d22187c" prot="public" static="no">
+        <type>T1 &amp;</type>
+        <definition>using Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::first_type =  T1&amp;</definition>
+        <argsstring></argsstring>
+        <name>first_type</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::first_type</qualifiedname>
+        <briefdescription>
+<para>The first template parameter of this class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="159" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ae35b4c392417bdf2a37ffdfa41c7d2b5" prot="public" static="no">
+        <type>T2 &amp;</type>
+        <definition>using Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::second_type =  T2&amp;</definition>
+        <argsstring></argsstring>
+        <name>second_type</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::second_type</qualifiedname>
+        <briefdescription>
+<para>The second template parameter of this class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="161" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a0491a2675d25c2a5f264c71b801d7ad7" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a1eacc376b062c9942faf249f8d22187c" kindref="member">first_type</ref></type>
+        <definition>first_type Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::first</definition>
+        <argsstring></argsstring>
+        <name>first</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::first</qualifiedname>
+        <briefdescription>
+<para>The first element of the pair. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="164" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a18c243a0e48020fceec0da53732e198f" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ae35b4c392417bdf2a37ffdfa41c7d2b5" kindref="member">second_type</ref></type>
+        <definition>second_type Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::second</definition>
+        <argsstring></argsstring>
+        <name>second</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::second</qualifiedname>
+        <briefdescription>
+<para>The second element of the pair. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="166" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1acb563c97b4069ab355cdc48b6e826def" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</definition>
+        <argsstring>(first_type f, second_type s)</argsstring>
+        <name>pair</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a1eacc376b062c9942faf249f8d22187c" kindref="member">first_type</ref></type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ae35b4c392417bdf2a37ffdfa41c7d2b5" kindref="member">second_type</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Constructor that takes both elements of the pair. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This calls the copy constructors of T1 and T2. It won&apos;t compile if those copy constructors are not defined and public. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="172" column="41" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="172" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a3217fe4b39fcbeee0acea906206916cd" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class V</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</definition>
+        <argsstring>(const pair&lt; U, V &gt; &amp;p)</argsstring>
+        <name>pair</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1pair" kindref="compound">pair</ref>&lt; U, V &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This calls the copy constructors of T1 and T2. It won&apos;t compile if those copy constructors are not defined and public. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="180" column="41" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="180" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ad103765d4935e48042ba9af97f3f114d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class V</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</definition>
+        <argsstring>(const std::pair&lt; U, V &gt; &amp;p)</argsstring>
+        <name>pair</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::pair</qualifiedname>
+        <param>
+          <type>const std::pair&lt; U, V &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="185" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="185" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1adc15e6b2a2bd1b22c474c45dbda2a276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class U</type>
+          </param>
+          <param>
+            <type>class V</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION <ref refid="struct_kokkos_1_1pair" kindref="compound">pair</ref>&lt; <ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a1eacc376b062c9942faf249f8d22187c" kindref="member">first_type</ref>, <ref refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ae35b4c392417bdf2a37ffdfa41c7d2b5" kindref="member">second_type</ref> &gt; &amp;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION pair&lt; first_type, second_type &gt; &amp; Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::operator=</definition>
+        <argsstring>(const pair&lt; U, V &gt; &amp;p)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1pair" kindref="compound">pair</ref>&lt; U, V &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This calls the assignment operators of T1 and T2. It won&apos;t compile if the assignment operators are not defined and public. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="192" column="36" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="192" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a0da8c3266be86ee032ee08ed969e237f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; T1, T2 &gt;</type>
+        <definition>std::pair&lt; T1, T2 &gt; Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::to_std_pair</definition>
+        <argsstring>() const</argsstring>
+        <name>to_std_pair</name>
+        <qualifiedname>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;::to_std_pair</qualifiedname>
+        <briefdescription>
+<para>Return the std::pair version of this object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is <emphasis>not</emphasis> a device function; you may not call it on a CUDA device. It is meant to be called on the host, if the user wants an std::pair instead of a <ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>.</para>
+<para><simplesect kind="note"><para>This is not a conversion operator, since defining a conversion operator made the relational operators have ambiguous definitions. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="208" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="208" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="157" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="157" bodyend="211"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a0491a2675d25c2a5f264c71b801d7ad7" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>first</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a1eacc376b062c9942faf249f8d22187c" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>first_type</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1adc15e6b2a2bd1b22c474c45dbda2a276" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1acb563c97b4069ab355cdc48b6e826def" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>pair</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a3217fe4b39fcbeee0acea906206916cd" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>pair</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ad103765d4935e48042ba9af97f3f114d" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>pair</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a18c243a0e48020fceec0da53732e198f" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>second</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1ae35b4c392417bdf2a37ffdfa41c7d2b5" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>second_type</name></member>
+      <member refid="struct_kokkos_1_1pair_3_01_t1_01_6_00_01_t2_01_6_01_4_1a0da8c3266be86ee032ee08ed969e237f" prot="public" virt="non-virtual"><scope>Kokkos::pair&lt; T1 &amp;, T2 &amp; &gt;</scope><name>to_std_pair</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

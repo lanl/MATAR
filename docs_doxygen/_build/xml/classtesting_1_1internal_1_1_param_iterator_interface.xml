@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_param_iterator_interface" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>testing::internal::ParamIteratorInterface</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ParamIteratorInterface&lt; T &gt;::~ParamIteratorInterface</definition>
+        <argsstring>()</argsstring>
+        <name>~ParamIteratorInterface</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::~ParamIteratorInterface</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10074" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10074" bodyend="10074"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a717c299a43b4db6c85b94b827276b8a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual const ParamGeneratorInterface&lt; T &gt; * testing::internal::ParamIteratorInterface&lt; T &gt;::BaseGenerator</definition>
+        <argsstring>() const =0</argsstring>
+        <name>BaseGenerator</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::BaseGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10078" column="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a600dbd35fcb551463e379516a1abea48" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::ParamIteratorInterface&lt; T &gt;::Advance</definition>
+        <argsstring>()=0</argsstring>
+        <name>Advance</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Advance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10083" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a1a320971ce300a235669fa340b7dda3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref> *</type>
+        <definition>virtual ParamIteratorInterface * testing::internal::ParamIteratorInterface&lt; T &gt;::Clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Clone</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10086" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a7a4cac3986c1c59a048f24f5c5e26bf4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const T *</type>
+        <definition>virtual const T * testing::internal::ParamIteratorInterface&lt; T &gt;::Current</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Current</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Current</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10091" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a9d811697a752d46f7bd6a0082f9040a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool testing::internal::ParamIteratorInterface&lt; T &gt;::Equals</definition>
+        <argsstring>(const ParamIteratorInterface &amp;other) const =0</argsstring>
+        <name>Equals</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Equals</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10095" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ParamIteratorInterface&lt; T &gt;::~ParamIteratorInterface</definition>
+        <argsstring>()</argsstring>
+        <name>~ParamIteratorInterface</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::~ParamIteratorInterface</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10074" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10074" bodyend="10074"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a717c299a43b4db6c85b94b827276b8a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; T &gt; *</type>
+        <definition>virtual const ParamGeneratorInterface&lt; T &gt; * testing::internal::ParamIteratorInterface&lt; T &gt;::BaseGenerator</definition>
+        <argsstring>() const =0</argsstring>
+        <name>BaseGenerator</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::BaseGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10078" column="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a600dbd35fcb551463e379516a1abea48" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::ParamIteratorInterface&lt; T &gt;::Advance</definition>
+        <argsstring>()=0</argsstring>
+        <name>Advance</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Advance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10083" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a1a320971ce300a235669fa340b7dda3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref> *</type>
+        <definition>virtual ParamIteratorInterface * testing::internal::ParamIteratorInterface&lt; T &gt;::Clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Clone</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10086" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a7a4cac3986c1c59a048f24f5c5e26bf4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const T *</type>
+        <definition>virtual const T * testing::internal::ParamIteratorInterface&lt; T &gt;::Current</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Current</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Current</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10091" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_param_iterator_interface_1a9d811697a752d46f7bd6a0082f9040a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool testing::internal::ParamIteratorInterface&lt; T &gt;::Equals</definition>
+        <argsstring>(const ParamIteratorInterface &amp;other) const =0</argsstring>
+        <name>Equals</name>
+        <qualifiedname>testing::internal::ParamIteratorInterface::Equals</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10095" column="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10072" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10072" bodyend="10096"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a600dbd35fcb551463e379516a1abea48" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Advance</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a600dbd35fcb551463e379516a1abea48" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Advance</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a717c299a43b4db6c85b94b827276b8a1" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>BaseGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a717c299a43b4db6c85b94b827276b8a1" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>BaseGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a1a320971ce300a235669fa340b7dda3f" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Clone</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a1a320971ce300a235669fa340b7dda3f" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Clone</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a7a4cac3986c1c59a048f24f5c5e26bf4" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Current</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a7a4cac3986c1c59a048f24f5c5e26bf4" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Current</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a9d811697a752d46f7bd6a0082f9040a3" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Equals</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a9d811697a752d46f7bd6a0082f9040a3" prot="public" virt="pure-virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>Equals</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" virt="virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>~ParamIteratorInterface</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" virt="virtual"><scope>testing::internal::ParamIteratorInterface</scope><name>~ParamIteratorInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

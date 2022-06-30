@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="cmake_2_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">![Kokkos](https://avatars2.githubusercontent.com/u/10199860?s=200&amp;v=4)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Developing<sp/>Kokkos</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>contains<sp/>a<sp/>build<sp/>system<sp/>overview<sp/>for<sp/>developers<sp/>with<sp/>information<sp/>on<sp/>adding<sp/>new<sp/>CMake<sp/>options<sp/>that<sp/>could<sp/>influence</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Header<sp/>configuration<sp/>macros</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Optional<sp/>features</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Third-partly<sp/>libraries</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Compiler<sp/>and<sp/>linker<sp/>flags</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>build<sp/>system<sp/>details<sp/>for<sp/>users,<sp/>refer<sp/>to<sp/>the<sp/>[build<sp/>instructions](../BUILD.md).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Build<sp/>System</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>uses<sp/>CMake<sp/>to<sp/>configure,<sp/>build,<sp/>and<sp/>install.</highlight></codeline>
+<codeline><highlight class="normal">Rather<sp/>than<sp/>being<sp/>a<sp/>completely<sp/>straightforward<sp/>use<sp/>of<sp/>modern<sp/>CMake,</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>has<sp/>several<sp/>extra<sp/>complications,<sp/>primarily<sp/>due<sp/>to:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Kokkos<sp/>must<sp/>support<sp/>linking<sp/>to<sp/>an<sp/>installed<sp/>version<sp/>or<sp/>in-tree<sp/>builds<sp/>as<sp/>a<sp/>subdirectory<sp/>of<sp/>a<sp/>larger<sp/>project.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Kokkos<sp/>must<sp/>configure<sp/>a<sp/>special<sp/>compiler<sp/>`nvcc_wrapper`<sp/>that<sp/>allows<sp/>`nvcc`<sp/>to<sp/>accept<sp/>all<sp/>C++<sp/>flags<sp/>(which<sp/>`nvcc`<sp/>currently<sp/>does<sp/>not).</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Kokkos<sp/>must<sp/>work<sp/>as<sp/>a<sp/>part<sp/>of<sp/>TriBITS,<sp/>a<sp/>CMake<sp/>library<sp/>providing<sp/>a<sp/>particular<sp/>build<sp/>idiom<sp/>for<sp/>Trilinos.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Kokkos<sp/>has<sp/>many<sp/>pre-existing<sp/>users.<sp/>We<sp/>need<sp/>to<sp/>be<sp/>careful<sp/>about<sp/>breaking<sp/>previous<sp/>versions<sp/>or<sp/>generating<sp/>meaningful<sp/>error<sp/>messags<sp/>if<sp/>we<sp/>do<sp/>break<sp/>backwards<sp/>compatibility.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>are<sp/>looking<sp/>at<sp/>the<sp/>build<sp/>system<sp/>code<sp/>wondering<sp/>why<sp/>certain<sp/>decisions<sp/>were<sp/>made:<sp/>we<sp/>have<sp/>had<sp/>to<sp/>balance<sp/>many<sp/>competing<sp/>requirements<sp/>and<sp/>certain<sp/>technical<sp/>debt.<sp/>Everything<sp/>in<sp/>the<sp/>build<sp/>system<sp/>was<sp/>done<sp/>for<sp/>a<sp/>reason,<sp/>trying<sp/>to<sp/>adhere<sp/>as<sp/>closely<sp/>as<sp/>possible<sp/>to<sp/>modern<sp/>CMake<sp/>best<sp/>practices<sp/>while<sp/>meeting<sp/>all<sp/>pre-existing.<sp/>customer<sp/>requirements.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Modern<sp/>CMake<sp/>Philosophy</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Modern<sp/>CMake<sp/>relies<sp/>on<sp/>understanding<sp/>the<sp/>principle<sp/>of<sp/>*building*<sp/>and<sp/>*using*<sp/>a<sp/>code<sp/>project.</highlight></codeline>
+<codeline><highlight class="normal">What<sp/>preprocessor,<sp/>compiler,<sp/>and<sp/>linker<sp/>flags<sp/>do<sp/>I<sp/>need<sp/>to<sp/>*build*<sp/>my<sp/>project?</highlight></codeline>
+<codeline><highlight class="normal">What<sp/>flags<sp/>does<sp/>a<sp/>downstream<sp/>project<sp/>that<sp/>links<sp/>to<sp/>me<sp/>need<sp/>to<sp/>*use*<sp/>my<sp/>project?</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>CMake<sp/>terms,<sp/>flags<sp/>that<sp/>are<sp/>only<sp/>needed<sp/>for<sp/>building<sp/>are<sp/>`PRIVATE`.</highlight></codeline>
+<codeline><highlight class="normal">Only<sp/>Kokkos<sp/>needs<sp/>these<sp/>flags,<sp/>not<sp/>a<sp/>package<sp/>that<sp/>depends<sp/>on<sp/>Kokkos.</highlight></codeline>
+<codeline><highlight class="normal">Flags<sp/>that<sp/>must<sp/>be<sp/>used<sp/>in<sp/>a<sp/>downstream<sp/>project<sp/>are<sp/>`PUBLIC`.</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>must<sp/>tell<sp/>other<sp/>projects<sp/>to<sp/>use<sp/>them.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>Kokkos,<sp/>almost<sp/>everything<sp/>is<sp/>a<sp/>public<sp/>flag<sp/>since<sp/>Kokkos<sp/>is<sp/>driven<sp/>by<sp/>headers<sp/>and<sp/>Kokkos<sp/>is<sp/>in<sp/>charge<sp/>of<sp/>optimizing<sp/>your<sp/>code<sp/>to<sp/>achieve<sp/>performance<sp/>portability!</highlight></codeline>
+<codeline><highlight class="normal">Include<sp/>paths,<sp/>C++<sp/>standard<sp/>flags,<sp/>architecture-specific<sp/>optimizations,<sp/>or<sp/>OpenMP<sp/>and<sp/>CUDA<sp/>flags<sp/>are<sp/>all<sp/>examples<sp/>of<sp/>flags<sp/>that<sp/>Kokkos<sp/>configures<sp/>and<sp/>adds<sp/>to<sp/>your<sp/>project.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Modern<sp/>CMake<sp/>now<sp/>automatically<sp/>propagates<sp/>flags<sp/>through<sp/>the<sp/>`target_link_libraries`<sp/>command.</highlight></codeline>
+<codeline><highlight class="normal">Suppose<sp/>you<sp/>have<sp/>a<sp/>library<sp/>`stencil`<sp/>that<sp/>needs<sp/>to<sp/>build<sp/>with<sp/>Kokkos.</highlight></codeline>
+<codeline><highlight class="normal">Consider<sp/>the<sp/>following<sp/>CMake<sp/>code:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">find_package(Kokkos)</highlight></codeline>
+<codeline><highlight class="normal">add_library(stencil<sp/>stencil.cpp)</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(stencil<sp/>Kokkos::kokkos)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>locates<sp/>the<sp/>Kokkos<sp/>package,<sp/>adds<sp/>your<sp/>library,<sp/>and<sp/>tells<sp/>CMake<sp/>to<sp/>link<sp/>Kokkos<sp/>to<sp/>your<sp/>library.</highlight></codeline>
+<codeline><highlight class="normal">All<sp/>public<sp/>build<sp/>flags<sp/>get<sp/>added<sp/>automatically<sp/>through<sp/>the<sp/>`target_link_libraries`<sp/>command.</highlight></codeline>
+<codeline><highlight class="normal">There<sp/>is<sp/>nothing<sp/>to<sp/>do.<sp/>You<sp/>can<sp/>be<sp/>happily<sp/>oblivious<sp/>to<sp/>how<sp/>Kokkos<sp/>was<sp/>configured.</highlight></codeline>
+<codeline><highlight class="normal">Everything<sp/>should<sp/>just<sp/>work.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">As<sp/>a<sp/>Kokkos<sp/>developer<sp/>who<sp/>wants<sp/>to<sp/>add<sp/>new<sp/>public<sp/>compiler<sp/>flags,<sp/>how<sp/>do<sp/>you<sp/>ensure<sp/>that<sp/>CMake<sp/>does<sp/>this<sp/>properly?<sp/>Modern<sp/>CMake<sp/>works<sp/>through<sp/>targets<sp/>and<sp/>properties.</highlight></codeline>
+<codeline><highlight class="normal">Each<sp/>target<sp/>has<sp/>a<sp/>set<sp/>of<sp/>standard<sp/>properties:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`INTERFACE_COMPILE_OPTIONS`<sp/>contains<sp/>all<sp/>the<sp/>compiler<sp/>options<sp/>that<sp/>Kokkos<sp/>should<sp/>add<sp/>to<sp/>downstream<sp/>projects</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`INTERFACE_INCLUDE_DIRECTORIES`<sp/>contains<sp/>all<sp/>the<sp/>directories<sp/>downstream<sp/>projects<sp/>must<sp/>include<sp/>from<sp/>Kokkos</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`INTERFACE_COMPILE_DEFINITIONS`<sp/>contains<sp/>the<sp/>list<sp/>of<sp/>preprocessor<sp/>`-D`<sp/>flags</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`INTERFACE_LINK_LIBRARIES`<sp/>contains<sp/>all<sp/>the<sp/>libraries<sp/>downstream<sp/>projects<sp/>need<sp/>to<sp/>link</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`INTERFACE_COMPILE_FEATURES`<sp/>essentially<sp/>adds<sp/>compiler<sp/>flags,<sp/>but<sp/>with<sp/>extra<sp/>complications.<sp/>Features<sp/>names<sp/>are<sp/>specific<sp/>to<sp/>CMake.<sp/>More<sp/>later.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CMake<sp/>makes<sp/>it<sp/>easy<sp/>to<sp/>append<sp/>to<sp/>these<sp/>properties<sp/>using:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`target_compile_options(kokkos<sp/>PUBLIC<sp/>-fmyflag)`</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`target_include_directories(kokkos<sp/>PUBLIC<sp/>mySpecialFolder)`</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`target_compile_definitions(kokkos<sp/>PUBLIC<sp/>-DmySpecialFlag=0)`</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`target_link_libraries(kokkos<sp/>PUBLIC<sp/>mySpecialLibrary)`</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`target_compile_features(kokkos<sp/>PUBLIC<sp/>mySpecialFeature)`</highlight></codeline>
+<codeline><highlight class="normal">Note<sp/>that<sp/>all<sp/>of<sp/>these<sp/>use<sp/>`PUBLIC`!<sp/>Almost<sp/>every<sp/>Kokkos<sp/>flag<sp/>is<sp/>not<sp/>private<sp/>to<sp/>Kokkos,<sp/>but<sp/>must<sp/>also<sp/>be<sp/>used<sp/>by<sp/>downstream<sp/>projects.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Compiler<sp/>Features<sp/>and<sp/>Compiler<sp/>Options</highlight></codeline>
+<codeline><highlight class="normal">Compiler<sp/>options<sp/>are<sp/>flags<sp/>like<sp/>`-fopenmp`<sp/>that<sp/>do<sp/>not<sp/>need<sp/>to<sp/>be<sp/>&quot;resolved.&quot;</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>flag<sp/>is<sp/>either<sp/>on<sp/>or<sp/>off.</highlight></codeline>
+<codeline><highlight class="normal">Compiler<sp/>features<sp/>are<sp/>more<sp/>fine-grained<sp/>and<sp/>require<sp/>conflicting<sp/>requests<sp/>to<sp/>be<sp/>resolved.</highlight></codeline>
+<codeline><highlight class="normal">Suppose<sp/>I<sp/>have</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">add_library(A<sp/>a.cpp)</highlight></codeline>
+<codeline><highlight class="normal">target_compile_features(A<sp/>PUBLIC<sp/>cxx_std_14)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">then<sp/>another<sp/>target</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">add_library(B<sp/>b.cpp)</highlight></codeline>
+<codeline><highlight class="normal">target_compile_features(B<sp/>PUBLIC<sp/>cxx_std_17)</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(A<sp/>B)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">I<sp/>have<sp/>requested<sp/>two<sp/>different<sp/>features.</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>understands<sp/>the<sp/>requests<sp/>and<sp/>knows<sp/>that<sp/>`cxx_std_14`<sp/>is<sp/>a<sp/>subset<sp/>of<sp/>`cxx_std_17`.</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>then<sp/>picks<sp/>C++17<sp/>for<sp/>library<sp/>`B`.</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>would<sp/>not<sp/>have<sp/>been<sp/>able<sp/>to<sp/>do<sp/>feature<sp/>resolution<sp/>if<sp/>we<sp/>had<sp/>directly<sp/>done:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">target_compile_options(A<sp/>PUBLIC<sp/>-std=c++14)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Adding<sp/>Kokkos<sp/>Options</highlight></codeline>
+<codeline><highlight class="normal">After<sp/>configuring<sp/>for<sp/>the<sp/>first<sp/>time,</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>creates<sp/>a<sp/>cache<sp/>of<sp/>configure<sp/>variables<sp/>in<sp/>`CMakeCache.txt`.</highlight></codeline>
+<codeline><highlight class="normal">Reconfiguring<sp/>in<sp/>the<sp/>folder<sp/>&quot;restarts&quot;<sp/>from<sp/>those<sp/>variables.</highlight></codeline>
+<codeline><highlight class="normal">All<sp/>flags<sp/>passed<sp/>as<sp/>`-DKokkos_SOME_OPTION=X`<sp/>to<sp/>`cmake`<sp/>become<sp/>variables<sp/>in<sp/>the<sp/>cache.</highlight></codeline>
+<codeline><highlight class="normal">All<sp/>Kokkos<sp/>options<sp/>begin<sp/>with<sp/>camel<sp/>case<sp/>`Kokkos_`<sp/>followed<sp/>by<sp/>an<sp/>upper<sp/>case<sp/>option<sp/>name.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CMake<sp/>best<sp/>practice<sp/>is<sp/>to<sp/>avoid<sp/>cache<sp/>variables,<sp/>if<sp/>possible.</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>essence,<sp/>you<sp/>want<sp/>the<sp/>minimal<sp/>amount<sp/>of<sp/>state<sp/>cached<sp/>between<sp/>configurations.</highlight></codeline>
+<codeline><highlight class="normal">And<sp/>never,<sp/>ever<sp/>have<sp/>behavior<sp/>influenced<sp/>by<sp/>multiple<sp/>cache<sp/>variables.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>want<sp/>to<sp/>change<sp/>the<sp/>Kokkos<sp/>configuration,<sp/>have<sp/>a<sp/>single<sp/>unique<sp/>variable<sp/>that<sp/>needs<sp/>to<sp/>be<sp/>changed.</highlight></codeline>
+<codeline><highlight class="normal">Never<sp/>require<sp/>two<sp/>cache<sp/>variables<sp/>to<sp/>be<sp/>changed.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>provides<sp/>a<sp/>function<sp/>`KOKKOS_OPTION`<sp/>for<sp/>defining<sp/>valid<sp/>cache-level<sp/>variables,</highlight></codeline>
+<codeline><highlight class="normal">proofreading<sp/>them,<sp/>and<sp/>defining<sp/>local<sp/>project<sp/>variables.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>most<sp/>common<sp/>variables<sp/>are<sp/>called<sp/>`Kokkos_ENABLE_X`,</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>which<sp/>a<sp/>helper<sp/>function<sp/>`KOKKOS_ENABLE_OPTION`<sp/>is<sp/>provided,<sp/>e.g.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_ENABLE_OPTION(TESTS<sp/>OFF<sp/><sp/>&quot;Whether<sp/>to<sp/>build<sp/>tests&quot;)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>function<sp/>checks<sp/>if<sp/>`-DKokkos_ENABLE_TESTS`<sp/>was<sp/>given,</highlight></codeline>
+<codeline><highlight class="normal">whether<sp/>it<sp/>was<sp/>given<sp/>with<sp/>the<sp/>wrong<sp/>case,<sp/>e.g.<sp/>`-DKokkos_Enable_Tests`,</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>then<sp/>defines<sp/>a<sp/>regular<sp/>(non-cache)<sp/>variable<sp/>`KOKKOS_ENABLE_TESTS`<sp/>to<sp/>`ON`<sp/>or<sp/>`OFF`</highlight></codeline>
+<codeline><highlight class="normal">depending<sp/>on<sp/>the<sp/>given<sp/>default<sp/>and<sp/>whether<sp/>the<sp/>option<sp/>was<sp/>specified.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Defining<sp/>Kokkos<sp/>Config<sp/>Macros</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Sometimes<sp/>you<sp/>may<sp/>want<sp/>to<sp/>add<sp/>`#define<sp/>Kokkos_X`<sp/>macros<sp/>to<sp/>the<sp/>config<sp/>header.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>straightforward<sp/>with<sp/>CMake.</highlight></codeline>
+<codeline><highlight class="normal">Suppose<sp/>you<sp/>want<sp/>to<sp/>define<sp/>an<sp/>optional<sp/>macro<sp/>`KOKKOS_SUPER_SCIENCE`.</highlight></codeline>
+<codeline><highlight class="normal">Simply<sp/>go<sp/>into<sp/>`KokkosCore_config.h.in`<sp/>and<sp/>add</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">#cmakedefine<sp/>KOKKOS_SUPER_SCIENCE</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">I<sp/>can<sp/>either<sp/>add</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_OPTION(SUPER_SCIENCE<sp/>ON<sp/>&quot;Whether<sp/>to<sp/>do<sp/>some<sp/>super<sp/>science&quot;)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>directly<sp/>set<sp/>the<sp/>variable<sp/>as<sp/>a<sp/>command-line<sp/>`-D`<sp/>option.</highlight></codeline>
+<codeline><highlight class="normal">Alternatively,<sp/>based<sp/>on<sp/>other<sp/>logic,<sp/>I<sp/>could<sp/>add<sp/>to<sp/>a<sp/>`CMakeLists.txt`</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">SET(KOKKOS_SUPER_SCIENCE<sp/>ON)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>not<sp/>set<sp/>as<sp/>a<sp/>command-line<sp/>option<sp/>(cache<sp/>variable),<sp/>you<sp/>must<sp/>make<sp/>sure<sp/>the<sp/>variable<sp/>is<sp/>visible<sp/>in<sp/>the<sp/>top-level<sp/>scope.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>set<sp/>in<sp/>a<sp/>function,<sp/>you<sp/>would<sp/>need:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">SET(KOKKOS_SUPER_SCIENCE<sp/>ON<sp/>PARENT_SCOPE)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Third-Party<sp/>Libraries</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>much<sp/>the<sp/>same<sp/>way<sp/>that<sp/>compiler<sp/>flags<sp/>transitively<sp/>propagate<sp/>to<sp/>dependent<sp/>projects,</highlight></codeline>
+<codeline><highlight class="normal">modern<sp/>CMake<sp/>allows<sp/>us<sp/>to<sp/>propagate<sp/>dependent<sp/>libraries.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>Kokkos<sp/>depends<sp/>on,<sp/>e.g.<sp/>`hwloc`<sp/>the<sp/>downstream<sp/>project<sp/>will<sp/>also<sp/>need<sp/>to<sp/>link<sp/>`hwloc`.</highlight></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>three<sp/>stages<sp/>in<sp/>adding<sp/>a<sp/>new<sp/>third-party<sp/>library<sp/>(TPL):</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Finding:<sp/>find<sp/>the<sp/>desired<sp/>library<sp/>on<sp/>the<sp/>system<sp/>and<sp/>verify<sp/>the<sp/>installation<sp/>is<sp/>correct</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Importing:<sp/>create<sp/>a<sp/>CMake<sp/>target,<sp/>if<sp/>necessary,<sp/>that<sp/>is<sp/>compatible<sp/>with<sp/>`target_link_libraries`.<sp/>This<sp/>is<sp/>mostly<sp/>relevant<sp/>for<sp/>TPLs<sp/>not<sp/>installed<sp/>with<sp/>CMake.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Exporting:<sp/>make<sp/>the<sp/>desired<sp/>library<sp/>visible<sp/>to<sp/>downstream<sp/>projects</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TPLs<sp/>are<sp/>somewhat<sp/>complicated<sp/>by<sp/>whether<sp/>the<sp/>library<sp/>was<sp/>installed<sp/>with<sp/>CMake<sp/>or<sp/>some<sp/>other<sp/>build<sp/>system.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>CMake,<sp/>our<sp/>lives<sp/>are<sp/>greatly<sp/>simplified.<sp/>We<sp/>simply<sp/>use<sp/>`find_package`<sp/>to<sp/>locate<sp/>the<sp/>installed<sp/>CMake<sp/>project<sp/>then<sp/>call<sp/>`target_link_libraries(kokkoscore<sp/>PUBLIC/PRIVATE<sp/>TPL)`.<sp/>For<sp/>libaries<sp/>not<sp/>installed<sp/>with<sp/>CMake,<sp/>the<sp/>process<sp/>is<sp/>a<sp/>bit<sp/>more<sp/>complex.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>is<sp/>up<sp/>to<sp/>the<sp/>Kokkos<sp/>developers<sp/>to<sp/>&quot;convert&quot;<sp/>the<sp/>library<sp/>into<sp/>a<sp/>CMake<sp/>target<sp/>as<sp/>if<sp/>it<sp/>had<sp/>been<sp/>installed<sp/>as<sp/>a<sp/>valid<sp/>modern<sp/>CMake<sp/>target<sp/>with<sp/>properties.</highlight></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>helper<sp/>functions<sp/>for<sp/>simplifying<sp/>the<sp/>process<sp/>of<sp/>importing<sp/>TPLs<sp/>in<sp/>Kokkos,<sp/>but<sp/>we<sp/>walk<sp/>through<sp/>the<sp/>process<sp/>in<sp/>detail<sp/>to<sp/>clearly<sp/>illustrate<sp/>the<sp/>steps<sp/>involved.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>TPL<sp/>Search<sp/>Order</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>several<sp/>options<sp/>for<sp/>where<sp/>CMake<sp/>could<sp/>try<sp/>to<sp/>find<sp/>a<sp/>TPL.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>there<sp/>are<sp/>multiple<sp/>installations<sp/>of<sp/>the<sp/>same<sp/>TPL<sp/>on<sp/>the<sp/>system,</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>search<sp/>order<sp/>is<sp/>critical<sp/>for<sp/>making<sp/>sure<sp/>the<sp/>correct<sp/>TPL<sp/>is<sp/>found.</highlight></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>3<sp/>possibilities<sp/>that<sp/>could<sp/>be<sp/>used:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Default<sp/>system<sp/>paths<sp/>like<sp/>/usr</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>User-provided<sp/>paths<sp/>through<sp/>options<sp/>`&lt;NAME&gt;_ROOT`<sp/>and<sp/>`Kokkos_&lt;NAME&gt;_DIR`</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Additional<sp/>paths<sp/>not<sp/>in<sp/>the<sp/>CMake<sp/>default<sp/>list<sp/>or<sp/>provided<sp/>by<sp/>the<sp/>user<sp/>that<sp/>Kokkos<sp/>decides<sp/>to<sp/>add.<sp/>For<sp/>example,<sp/>Kokkos<sp/>may<sp/>query<sp/>`nvcc`<sp/>or<sp/>`LD_LIBRARY_PATH`<sp/>for<sp/>where<sp/>to<sp/>find<sp/>CUDA<sp/>libraries.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>is<sp/>the<sp/>search<sp/>order<sp/>that<sp/>Kokkos<sp/>follows.<sp/>Note:<sp/>This<sp/>differs<sp/>from<sp/>the<sp/>default<sp/>search<sp/>order<sp/>used<sp/>by<sp/>CMake<sp/>`find_library`<sp/>and<sp/>`find_header`.<sp/>CMake<sp/>prefers<sp/>default<sp/>system<sp/>paths<sp/>over<sp/>user-provided<sp/>paths.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>Kokkos<sp/>(and<sp/>package<sp/>managers<sp/>in<sp/>general),<sp/>it<sp/>is<sp/>better<sp/>to<sp/>prefer<sp/>user-provided<sp/>paths<sp/>since<sp/>this<sp/>usually<sp/>indicates<sp/>a<sp/>specific<sp/>version<sp/>we<sp/>want.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>`&lt;NAME&gt;_ROOT`<sp/>command<sp/>line<sp/>option</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>`&lt;NAME&gt;_ROOT`<sp/>environment<sp/>variable</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>`Kokkos_&lt;NAME&gt;_DIR`<sp/>command<sp/>line<sp/>option</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/><sp/>Paths<sp/>added<sp/>by<sp/>Kokkos<sp/>CMake<sp/>logic</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/><sp/>Default<sp/>system<sp/>paths<sp/>(if<sp/>allowed)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Default<sp/>system<sp/>paths<sp/>are<sp/>allowed<sp/>in<sp/>two<sp/>cases.<sp/>First,<sp/>none<sp/>of<sp/>the<sp/>other<sp/>options<sp/>are<sp/>given<sp/>so<sp/>the<sp/>only<sp/>place<sp/>to<sp/>look<sp/>is<sp/>system<sp/>paths.<sp/>Second,<sp/>if<sp/>explicitly<sp/>given<sp/>permission,<sp/>configure<sp/>will<sp/>look<sp/>in<sp/>system<sp/>paths.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>rationale<sp/>for<sp/>this<sp/>logic<sp/>is<sp/>that<sp/>if<sp/>you<sp/>specify<sp/>a<sp/>custom<sp/>location,<sp/>you<sp/>usually<sp/>*only*<sp/>want<sp/>to<sp/>look<sp/>in<sp/>that<sp/>location.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>do<sp/>not<sp/>find<sp/>the<sp/>TPL<sp/>where<sp/>you<sp/>expect<sp/>it,<sp/>you<sp/>should<sp/>error<sp/>out<sp/>rather<sp/>than<sp/>grab<sp/>another<sp/>random<sp/>match.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Finding<sp/>TPLs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>finding<sp/>a<sp/>TPL<sp/>that<sp/>is<sp/>not<sp/>a<sp/>modern<sp/>CMake<sp/>project,<sp/>refer<sp/>to<sp/>the<sp/>`FindHWLOC.cmake`<sp/>file<sp/>in<sp/>`cmake/Modules`<sp/>for<sp/>an<sp/>example.</highlight></codeline>
+<codeline><highlight class="normal">You<sp/>will<sp/>usually<sp/>need<sp/>to<sp/>verify<sp/>expected<sp/>headers<sp/>with<sp/>`find_path`</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">find_path(TPL_INCLUDE_DIR<sp/>mytpl.h<sp/>PATHS<sp/>&quot;${KOKKOS_MYTPL_DIR}/include&quot;)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>insures<sp/>that<sp/>the<sp/>library<sp/>header<sp/>is<sp/>in<sp/>the<sp/>expected<sp/>include<sp/>directory<sp/>and<sp/>defines<sp/>the<sp/>variable<sp/>`TPL_INCLUDE_DIR`<sp/>with<sp/>a<sp/>valid<sp/>path<sp/>if<sp/>successful.</highlight></codeline>
+<codeline><highlight class="normal">Similarly,<sp/>you<sp/>can<sp/>verify<sp/>a<sp/>library</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">find_library(TPL_LIBRARY<sp/>mytpl<sp/>PATHS<sp/>&quot;${KOKKOS_MYTPL_DIR/lib&quot;)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">that<sp/>then<sp/>defines<sp/>the<sp/>variable<sp/>`TPL_LIBRARY`<sp/>with<sp/>a<sp/>valid<sp/>path<sp/>if<sp/>successful.</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>provides<sp/>a<sp/>utility<sp/>for<sp/>checking<sp/>if<sp/>the<sp/>`find_path`<sp/>and<sp/>`find_library`<sp/>calls<sp/>were<sp/>successful<sp/>that<sp/>emulates<sp/>the<sp/>behavior<sp/>of<sp/>`find_package`<sp/>for<sp/>a<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">include(FindPackageHandleStandardArgs)</highlight></codeline>
+<codeline><highlight class="normal">find_package_handle_standard_args(MYTPL<sp/>DEFAULT_MSG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MYTPL_INCLUDE_DIR<sp/>MYTPL_LIBRARY)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>the<sp/>find<sp/>failed,<sp/>CMake<sp/>will<sp/>print<sp/>standard<sp/>error<sp/>messages<sp/>explaining<sp/>the<sp/>failure.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Importing<sp/>TPLs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>installed<sp/>TPL<sp/>must<sp/>be<sp/>adapted<sp/>into<sp/>a<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">CMake<sp/>allows<sp/>libraries<sp/>to<sp/>be<sp/>added<sp/>that<sp/>are<sp/>built<sp/>externally<sp/>as<sp/>follows:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">add_library(Kokkos::mytpl<sp/>UNKNOWN<sp/>IMPORTED)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">Importantly,<sp/>we<sp/>use<sp/>a<sp/>`Kokkos::`<sp/>namespace<sp/>to<sp/>avoid<sp/>name<sp/>conflicts<sp/>and<sp/>identify<sp/>this<sp/>specifically<sp/>as<sp/>the<sp/>version<sp/>imported<sp/>by<sp/>Kokkos.</highlight></codeline>
+<codeline><highlight class="normal">Because<sp/>we<sp/>are<sp/>importing<sp/>a<sp/>non-CMake<sp/>target,<sp/>we<sp/>must<sp/>populate<sp/>all<sp/>the<sp/>target<sp/>properties<sp/>that<sp/>would<sp/>have<sp/>been<sp/>automatically<sp/>populated<sp/>for<sp/>a<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">set_target_properties(Kokkos::mytpl<sp/>PROPERTIES</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>INTERFACE_INCLUDE_DIRECTORIES<sp/>&quot;${MYTPL_INCLUDE_DIR}&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IMPORTED_LOCATION<sp/>&quot;${MYTPL_LIBRARY}&quot;</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Exporting<sp/>TPLs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>may<sp/>now<sp/>depend<sp/>on<sp/>the<sp/>target<sp/>`Kokkos::mytpl`<sp/>as<sp/>a<sp/>`PUBLIC`<sp/>library<sp/>(remember<sp/>building<sp/>and<sp/>using).</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>means<sp/>that<sp/>downstream<sp/>projects<sp/>must<sp/>also<sp/>know<sp/>about<sp/>`Kokkos::myptl`<sp/>-<sp/>so<sp/>Kokkos<sp/>must<sp/>export<sp/>them.</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>`KokkosConfig.cmake.in`<sp/>file,<sp/>we<sp/>need<sp/>to<sp/>add<sp/>code<sp/>like<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">set(MYTPL_LIBRARY<sp/>@MYTPL_LIBRARY@)</highlight></codeline>
+<codeline><highlight class="normal">set(MYTPL_INCLUDE_DIR<sp/>@MYTPL_INCLUDE_DIR@)</highlight></codeline>
+<codeline><highlight class="normal">add_library(Kokkos::mytpl<sp/>UNKNOWN<sp/>IMPORTED)</highlight></codeline>
+<codeline><highlight class="normal">set_target_properties(Kokkos::mytpl<sp/>PROPERTIES</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>INTERFACE_INCLUDE_DIRECTORIES<sp/>&quot;${MYTPL_INCLUDE_DIR}&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>IMPORTED_LOCATION<sp/>&quot;${MYTPL_LIBRARY}&quot;</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>this<sp/>looks<sp/>familiar,<sp/>that&apos;s<sp/>because<sp/>it<sp/>is<sp/>exactly<sp/>the<sp/>same<sp/>code<sp/>as<sp/>above<sp/>for<sp/>importing<sp/>the<sp/>TPL.</highlight></codeline>
+<codeline><highlight class="normal">Exporting<sp/>a<sp/>TPL<sp/>really<sp/>just<sp/>means<sp/>importing<sp/>the<sp/>TPL<sp/>when<sp/>Kokkos<sp/>is<sp/>loaded<sp/>by<sp/>an<sp/>external<sp/>project.</highlight></codeline>
+<codeline><highlight class="normal">We<sp/>will<sp/>describe<sp/>helper<sp/>functions<sp/>that<sp/>simplify<sp/>this<sp/>process.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Interface<sp/>TPLs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>a<sp/>TPL<sp/>is<sp/>just<sp/>a<sp/>library<sp/>and<sp/>set<sp/>of<sp/>headers,<sp/>we<sp/>can<sp/>make<sp/>a<sp/>simple<sp/>`IMPORTED`<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">However,<sp/>a<sp/>TPL<sp/>is<sp/>actually<sp/>completely<sp/>flexible<sp/>and<sp/>need<sp/>not<sp/>be<sp/>limited<sp/>to<sp/>just<sp/>headers<sp/>and<sp/>libraries.</highlight></codeline>
+<codeline><highlight class="normal">TPLs<sp/>can<sp/>configure<sp/>compiler<sp/>flags,<sp/>linker<sp/>flags,<sp/>or<sp/>multiple<sp/>different<sp/>libraries.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>this,<sp/>we<sp/>use<sp/>a<sp/>special<sp/>type<sp/>of<sp/>CMake<sp/>target:<sp/>`INTERFACE`<sp/>libraries.</highlight></codeline>
+<codeline><highlight class="normal">These<sp/>libraries<sp/>don&apos;t<sp/>build<sp/>anything.</highlight></codeline>
+<codeline><highlight class="normal">They<sp/>simply<sp/>populate<sp/>properties<sp/>that<sp/>will<sp/>configure<sp/>flags<sp/>for<sp/>dependent<sp/>targets.</highlight></codeline>
+<codeline><highlight class="normal">We<sp/>consider<sp/>the<sp/>example:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">add_library(PTHREAD<sp/>INTERFACE)</highlight></codeline>
+<codeline><highlight class="normal">target_compile_options(PTHREAD<sp/>PUBLIC<sp/>-pthread)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>uses<sp/>the<sp/>compiler<sp/>flag<sp/>`-pthread`<sp/>to<sp/>define<sp/>compiler<sp/>macros<sp/>for<sp/>re-entrant<sp/>functions<sp/>rather<sp/>than<sp/>treating<sp/>it<sp/>simply<sp/>as<sp/>a<sp/>library<sp/>with<sp/>header<sp/>`pthread.h`<sp/>and<sp/>library<sp/>`-lpthread`.</highlight></codeline>
+<codeline><highlight class="normal">Any<sp/>property<sp/>can<sp/>be<sp/>configured,<sp/>e.g.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(MYTPL<sp/>...)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">In<sp/>contrast<sp/>to<sp/>imported<sp/>TPLs<sp/>which<sp/>require<sp/>direct<sp/>modification<sp/>of<sp/>`KokkosConfig.cmake.in`,</highlight></codeline>
+<codeline><highlight class="normal">we<sp/>can<sp/>use<sp/>CMake&apos;s<sp/>built-in<sp/>export<sp/>functions:</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">INSTALL(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TARGETS<sp/>MYTPL</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>EXPORT<sp/>KokkosTargets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>RUNTIME<sp/>DESTINATION<sp/>${CMAKE_INSTALL_BINDIR}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LIBRARY<sp/>DESTINATION<sp/>${CMAKE_INSTALL_LIBDIR}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ARCHIVE<sp/>DESTINATION<sp/>${CMAKE_INSTALL_LIBDIR}</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">These<sp/>interface<sp/>targets<sp/>will<sp/>be<sp/>automatically<sp/>populated<sp/>in<sp/>the<sp/>config<sp/>file.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Linking<sp/>the<sp/>TPL</highlight></codeline>
+<codeline><highlight class="normal">After<sp/>finishing<sp/>the<sp/>import<sp/>process,<sp/>it<sp/>still<sp/>remains<sp/>to<sp/>link<sp/>the<sp/>imported<sp/>target<sp/>as<sp/>needed.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>example,</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(kokkoscore<sp/>PUBLIC<sp/>Kokkos::HWLOC)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>complexity<sp/>of<sp/>which<sp/>includes,<sp/>options,<sp/>and<sp/>libraries<sp/>the<sp/>TPL<sp/>requires</highlight></codeline>
+<codeline><highlight class="normal">should<sp/>be<sp/>encapsulated<sp/>in<sp/>the<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>TPL<sp/>Helper<sp/>Functions</highlight></codeline>
+<codeline><highlight class="normal">#####<sp/>KOKKOS_IMPORT_TPL</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>can<sp/>be<sp/>invoked<sp/>as,<sp/>e.g.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_IMPORT_TPL(HWLOC)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>checks<sp/>if<sp/>the<sp/>TPL<sp/>was<sp/>enabled<sp/>by<sp/>a<sp/>`-DKokkos_ENABLE_HWLOC=On`<sp/>flag.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>so,<sp/>it<sp/>calls<sp/>`find_package(TPLHWLOC)`.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>invokes<sp/>the<sp/>file<sp/>`FindTPLHWLOC.cmake`<sp/>which<sp/>should<sp/>be<sp/>contained<sp/>in<sp/>the<sp/>`cmake/Modules`<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>successful,<sp/>another<sp/>function<sp/>`KOKKOS_EXPORT_CMAKE_TPL`<sp/>gets<sp/>invoked.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>automatically<sp/>adds<sp/>all<sp/>the<sp/>necessary<sp/>import<sp/>commands<sp/>to<sp/>`KokkosConfig.cmake`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>KOKKOS_FIND_IMPORTED</highlight></codeline>
+<codeline><highlight class="normal">Inside<sp/>a<sp/>`FindTPLX.cmake`<sp/>file,<sp/>the<sp/>simplest<sp/>way<sp/>to<sp/>import<sp/>a<sp/>library<sp/>is<sp/>to<sp/>call,<sp/>e.g.</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">KOKKOS_FIND_IMPORTED(HWLOC<sp/>LIBRARY<sp/>hwloc<sp/>HEADER<sp/>hwloc.h)</highlight></codeline>
+<codeline><highlight class="normal">````</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>finds<sp/>the<sp/>location<sp/>of<sp/>the<sp/>library<sp/>and<sp/>header<sp/>and<sp/>creates<sp/>an<sp/>imported<sp/>target<sp/>`Kokkos::HWLOC`</highlight></codeline>
+<codeline><highlight class="normal">that<sp/>can<sp/>be<sp/>linked<sp/>against.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>library/header<sp/>find<sp/>can<sp/>be<sp/>guided<sp/>with<sp/>`-DHWLOC_ROOT=`<sp/>or<sp/>`-DKokkos_HWLOC_DIR=`<sp/>during<sp/>CMake<sp/>configure.</highlight></codeline>
+<codeline><highlight class="normal">These<sp/>both<sp/>specify<sp/>the<sp/>install<sp/>prefix.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>KOKKOS_LINK_TPL</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>checks<sp/>if<sp/>the<sp/>TPL<sp/>has<sp/>been<sp/>enabled.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>so,<sp/>it<sp/>links<sp/>a<sp/>given<sp/>library<sp/>against<sp/>the<sp/>imported<sp/>(or<sp/>interface)<sp/>TPL<sp/>target.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>KOKKOS_CREATE_IMPORTED_TPL</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>helper<sp/>function<sp/>is<sp/>best<sp/>understood<sp/>by<sp/>reading<sp/>the<sp/>actual<sp/>code.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>takes<sp/>arguments<sp/>specifying<sp/>the<sp/>properties<sp/>and<sp/>creates<sp/>the<sp/>actual<sp/>TPL<sp/>target.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>most<sp/>important<sp/>thing<sp/>to<sp/>understand<sp/>for<sp/>this<sp/>function<sp/>is<sp/>whether<sp/>you<sp/>call<sp/>this<sp/>function<sp/>with<sp/>the<sp/>optional<sp/>`INTERFACE`<sp/>keyword.</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>tells<sp/>the<sp/>project<sp/>to<sp/>either<sp/>create<sp/>the<sp/>target<sp/>as<sp/>an<sp/>imported<sp/>target<sp/>or<sp/>interface<sp/>target,<sp/>as<sp/>discussed<sp/>above.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>KOKKOS_EXPORT_CMAKE_TPL</highlight></codeline>
+<codeline><highlight class="normal">Even<sp/>if<sp/>the<sp/>TPL<sp/>just<sp/>loads<sp/>a<sp/>valid<sp/>CMake<sp/>target,<sp/>we<sp/>still<sp/>must<sp/>&quot;export&quot;<sp/>it<sp/>into<sp/>the<sp/>config<sp/>file.</highlight></codeline>
+<codeline><highlight class="normal">When<sp/>Kokkos<sp/>is<sp/>loaded<sp/>by<sp/>a<sp/>downstream<sp/>project,<sp/>this<sp/>TPL<sp/>must<sp/>be<sp/>loaded.</highlight></codeline>
+<codeline><highlight class="normal">Calling<sp/>this<sp/>function<sp/>simply<sp/>appends<sp/>text<sp/>recording<sp/>the<sp/>location<sp/>where<sp/>the<sp/>TPL<sp/>was<sp/>found</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>adding<sp/>a<sp/>`find_dependency(...)`<sp/>call<sp/>that<sp/>will<sp/>reload<sp/>the<sp/>CMake<sp/>target.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>The<sp/>Great<sp/>TriBITS<sp/>Compromise</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TriBITS<sp/>was<sp/>a<sp/>masterpiece<sp/>of<sp/>CMake<sp/>version<sp/>2<sp/>before<sp/>the<sp/>modern<sp/>CMake<sp/>idioms<sp/>of<sp/>building<sp/>and<sp/>using.</highlight></codeline>
+<codeline><highlight class="normal">TriBITS<sp/>greatly<sp/>limited<sp/>verbosity<sp/>of<sp/>CMake<sp/>files,<sp/>handled<sp/>complicated<sp/>dependency<sp/>trees<sp/>between<sp/>packages,<sp/>and<sp/>handled<sp/>automatically<sp/>setting<sp/>up<sp/>include<sp/>and<sp/>linker<sp/>paths<sp/>for<sp/>dependent<sp/>libraries.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>is<sp/>now<sp/>used<sp/>by<sp/>numerous<sp/>projects<sp/>that<sp/>don&apos;t<sp/>(and<sp/>won&apos;t)<sp/>depend<sp/>on<sp/>TriBITS<sp/>for<sp/>their<sp/>build<sp/>systems.</highlight></codeline>
+<codeline><highlight class="normal">Kokkos<sp/>has<sp/>to<sp/>work<sp/>outside<sp/>of<sp/>TriBITS<sp/>and<sp/>provide<sp/>a<sp/>standard<sp/>CMake<sp/>3+<sp/>build<sp/>system.</highlight></codeline>
+<codeline><highlight class="normal">At<sp/>the<sp/>same<sp/>time,<sp/>Kokkos<sp/>is<sp/>used<sp/>by<sp/>numerous<sp/>projects<sp/>that<sp/>depend<sp/>on<sp/>TriBITS<sp/>and<sp/>don&apos;t<sp/>(and<sp/>won&apos;t)<sp/>switch<sp/>to<sp/>a<sp/>standard<sp/>CMake<sp/>3+<sp/>build<sp/>system.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Instead<sp/>of<sp/>calling<sp/>functions<sp/>`TRIBITS_X(...)`,<sp/>the<sp/>CMake<sp/>calls<sp/>wrapper<sp/>functions<sp/>`KOKKOS_X(...)`.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>TriBITS<sp/>is<sp/>available<sp/>(as<sp/>in<sp/>Trilinos),<sp/>`KOKKOS_X`<sp/>will<sp/>just<sp/>be<sp/>a<sp/>thin<sp/>wrapper<sp/>around<sp/>`TRIBITS_X`.</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>TriBITS<sp/>is<sp/>not<sp/>available,<sp/>Kokkos<sp/>maps<sp/>`KOKKOS_X`<sp/>calls<sp/>to<sp/>native<sp/>CMake<sp/>that<sp/>complies<sp/>with<sp/>CMake<sp/>3<sp/>idioms.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>time<sp/>being,<sp/>this<sp/>seems<sp/>the<sp/>most<sp/>sensible<sp/>way<sp/>to<sp/>handle<sp/>the<sp/>competing<sp/>requirements<sp/>of<sp/>a<sp/>standalone<sp/>modern<sp/>CMake<sp/>and<sp/>TriBITS<sp/>build<sp/>system.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>[LICENSE](https://github.com/kokkos/kokkos/blob/devel/LICENSE)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/cmake/README.md"/>
+  </compounddef>
+</doxygen>

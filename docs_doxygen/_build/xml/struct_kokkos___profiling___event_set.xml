@@ -1,0 +1,657 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___profiling___event_set" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Profiling_EventSet</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a5577e27cf6a5b4b03cda3968e2f22c4f" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_initFunction</type>
+        <definition>Kokkos_Profiling_initFunction Kokkos_Profiling_EventSet::init</definition>
+        <argsstring></argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="252" column="33" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ac2249bec7d7b6b895cae02d65b96cf63" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_finalizeFunction</type>
+        <definition>Kokkos_Profiling_finalizeFunction Kokkos_Profiling_EventSet::finalize</definition>
+        <argsstring></argsstring>
+        <name>finalize</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::finalize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="253" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a1832f114fdeac375cdca514ad55d101d" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_parseArgsFunction</type>
+        <definition>Kokkos_Profiling_parseArgsFunction Kokkos_Profiling_EventSet::parse_args</definition>
+        <argsstring></argsstring>
+        <name>parse_args</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::parse_args</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="254" column="38" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1afa8eecabcb967e14cc64f42cd42b6eaa" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_printHelpFunction</type>
+        <definition>Kokkos_Profiling_printHelpFunction Kokkos_Profiling_EventSet::print_help</definition>
+        <argsstring></argsstring>
+        <name>print_help</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::print_help</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="255" column="38" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ae2a342f0c6c01ddf13f7ceeaad49d077" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_beginFunction</type>
+        <definition>Kokkos_Profiling_beginFunction Kokkos_Profiling_EventSet::begin_parallel_for</definition>
+        <argsstring></argsstring>
+        <name>begin_parallel_for</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_parallel_for</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="256" column="34" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a6821525570134a36ac73f3050d3eb151" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_endFunction</type>
+        <definition>Kokkos_Profiling_endFunction Kokkos_Profiling_EventSet::end_parallel_for</definition>
+        <argsstring></argsstring>
+        <name>end_parallel_for</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_parallel_for</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="257" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1af6aa2d11482d31b824ef2874561c8f68" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_beginFunction</type>
+        <definition>Kokkos_Profiling_beginFunction Kokkos_Profiling_EventSet::begin_parallel_reduce</definition>
+        <argsstring></argsstring>
+        <name>begin_parallel_reduce</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_parallel_reduce</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="258" column="34" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1aa0fc01fb18c39b494137d411e359a2ce" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_endFunction</type>
+        <definition>Kokkos_Profiling_endFunction Kokkos_Profiling_EventSet::end_parallel_reduce</definition>
+        <argsstring></argsstring>
+        <name>end_parallel_reduce</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_parallel_reduce</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="259" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1aa8ec25f4ca6dc5bb9ea28eddebfb6bb6" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_beginFunction</type>
+        <definition>Kokkos_Profiling_beginFunction Kokkos_Profiling_EventSet::begin_parallel_scan</definition>
+        <argsstring></argsstring>
+        <name>begin_parallel_scan</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_parallel_scan</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="260" column="34" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a1aabbf7a217e7b7018d2a85f595e1a28" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_endFunction</type>
+        <definition>Kokkos_Profiling_endFunction Kokkos_Profiling_EventSet::end_parallel_scan</definition>
+        <argsstring></argsstring>
+        <name>end_parallel_scan</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_parallel_scan</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="261" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a4710158c4df41cfd86573b0ee20a2bb6" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_pushFunction</type>
+        <definition>Kokkos_Profiling_pushFunction Kokkos_Profiling_EventSet::push_region</definition>
+        <argsstring></argsstring>
+        <name>push_region</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::push_region</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="262" column="33" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a2c3a882c86dde4f5e7c1079c5e9acae5" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_popFunction</type>
+        <definition>Kokkos_Profiling_popFunction Kokkos_Profiling_EventSet::pop_region</definition>
+        <argsstring></argsstring>
+        <name>pop_region</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::pop_region</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="263" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a425b72156b7c473b54b5a5f7f78eae38" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_allocateDataFunction</type>
+        <definition>Kokkos_Profiling_allocateDataFunction Kokkos_Profiling_EventSet::allocate_data</definition>
+        <argsstring></argsstring>
+        <name>allocate_data</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::allocate_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="264" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a2c13b371f1e3bdcd7cff14f525b85421" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_deallocateDataFunction</type>
+        <definition>Kokkos_Profiling_deallocateDataFunction Kokkos_Profiling_EventSet::deallocate_data</definition>
+        <argsstring></argsstring>
+        <name>deallocate_data</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::deallocate_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="265" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ab966fb8b9bb7c4399021b46a2c8554b1" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_createProfileSectionFunction</type>
+        <definition>Kokkos_Profiling_createProfileSectionFunction Kokkos_Profiling_EventSet::create_profile_section</definition>
+        <argsstring></argsstring>
+        <name>create_profile_section</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::create_profile_section</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="266" column="49" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a94c3506ab6e1812ec44174a23f733466" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_startProfileSectionFunction</type>
+        <definition>Kokkos_Profiling_startProfileSectionFunction Kokkos_Profiling_EventSet::start_profile_section</definition>
+        <argsstring></argsstring>
+        <name>start_profile_section</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::start_profile_section</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="267" column="48" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a7dc901c8fb56f9459b38dde4d150a593" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_stopProfileSectionFunction</type>
+        <definition>Kokkos_Profiling_stopProfileSectionFunction Kokkos_Profiling_EventSet::stop_profile_section</definition>
+        <argsstring></argsstring>
+        <name>stop_profile_section</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::stop_profile_section</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="268" column="47" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a846194a935bd2798849fcf6eea9a16fc" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_destroyProfileSectionFunction</type>
+        <definition>Kokkos_Profiling_destroyProfileSectionFunction Kokkos_Profiling_EventSet::destroy_profile_section</definition>
+        <argsstring></argsstring>
+        <name>destroy_profile_section</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::destroy_profile_section</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="269" column="50" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a21223289ee302f32039da3d36458b0b7" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_profileEventFunction</type>
+        <definition>Kokkos_Profiling_profileEventFunction Kokkos_Profiling_EventSet::profile_event</definition>
+        <argsstring></argsstring>
+        <name>profile_event</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::profile_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="270" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ad3dceb2b4452b2bee9a69ce6964bd0b1" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_beginDeepCopyFunction</type>
+        <definition>Kokkos_Profiling_beginDeepCopyFunction Kokkos_Profiling_EventSet::begin_deep_copy</definition>
+        <argsstring></argsstring>
+        <name>begin_deep_copy</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_deep_copy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="271" column="42" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a8499b4f69c3696b20faef610c70e5832" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_endDeepCopyFunction</type>
+        <definition>Kokkos_Profiling_endDeepCopyFunction Kokkos_Profiling_EventSet::end_deep_copy</definition>
+        <argsstring></argsstring>
+        <name>end_deep_copy</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_deep_copy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="272" column="40" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a0391c631ae9752aac156d25c13fc58ed" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_beginFenceFunction</type>
+        <definition>Kokkos_Profiling_beginFenceFunction Kokkos_Profiling_EventSet::begin_fence</definition>
+        <argsstring></argsstring>
+        <name>begin_fence</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="273" column="39" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ae8b6141c99b81fc007e83bdb2bb4db85" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_endFenceFunction</type>
+        <definition>Kokkos_Profiling_endFenceFunction Kokkos_Profiling_EventSet::end_fence</definition>
+        <argsstring></argsstring>
+        <name>end_fence</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="274" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a4cf70e91a1519532d734fb1f09410507" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_dualViewSyncFunction</type>
+        <definition>Kokkos_Profiling_dualViewSyncFunction Kokkos_Profiling_EventSet::sync_dual_view</definition>
+        <argsstring></argsstring>
+        <name>sync_dual_view</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::sync_dual_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="275" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ade283b5a5a5e5b27ebe36f90e0bcfccd" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_dualViewModifyFunction</type>
+        <definition>Kokkos_Profiling_dualViewModifyFunction Kokkos_Profiling_EventSet::modify_dual_view</definition>
+        <argsstring></argsstring>
+        <name>modify_dual_view</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::modify_dual_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="276" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a76ea4a618f535eab8a62c92c049e0f62" prot="public" static="no" mutable="no">
+        <type>Kokkos_Profiling_declareMetadataFunction</type>
+        <definition>Kokkos_Profiling_declareMetadataFunction Kokkos_Profiling_EventSet::declare_metadata</definition>
+        <argsstring></argsstring>
+        <name>declare_metadata</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::declare_metadata</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="277" column="44" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a6f814440e2cde9c82ab8bb39b5bd79f5" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_provideToolProgrammingInterfaceFunction</type>
+        <definition>Kokkos_Tools_provideToolProgrammingInterfaceFunction Kokkos_Profiling_EventSet::provide_tool_programming_interface</definition>
+        <argsstring></argsstring>
+        <name>provide_tool_programming_interface</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::provide_tool_programming_interface</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="279" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a1f423831d608a6c9655c94378fbd7b6a" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_requestToolSettingsFunction</type>
+        <definition>Kokkos_Tools_requestToolSettingsFunction Kokkos_Profiling_EventSet::request_tool_settings</definition>
+        <argsstring></argsstring>
+        <name>request_tool_settings</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::request_tool_settings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="280" column="44" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a8f665428e55164252c32cab1a0edd4d9" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char Kokkos_Profiling_EventSet::profiling_padding[9 *sizeof(Kokkos_Tools_functionPointer)]</definition>
+        <argsstring>[9 *sizeof(Kokkos_Tools_functionPointer)]</argsstring>
+        <name>profiling_padding</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::profiling_padding</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="281" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a43b5199aa92f633c8b8e0280ceb99844" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_outputTypeDeclarationFunction</type>
+        <definition>Kokkos_Tools_outputTypeDeclarationFunction Kokkos_Profiling_EventSet::declare_output_type</definition>
+        <argsstring></argsstring>
+        <name>declare_output_type</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::declare_output_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="282" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1aef0dd07c46e581c57b64fd301d6e8f45" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_inputTypeDeclarationFunction</type>
+        <definition>Kokkos_Tools_inputTypeDeclarationFunction Kokkos_Profiling_EventSet::declare_input_type</definition>
+        <argsstring></argsstring>
+        <name>declare_input_type</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::declare_input_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="283" column="45" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ac2da17e560cdeb9e9277b6240972d5c4" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_requestValueFunction</type>
+        <definition>Kokkos_Tools_requestValueFunction Kokkos_Profiling_EventSet::request_output_values</definition>
+        <argsstring></argsstring>
+        <name>request_output_values</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::request_output_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="284" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1a2fe07103b883e8c0af3a0e95cab6dbf8" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_contextBeginFunction</type>
+        <definition>Kokkos_Tools_contextBeginFunction Kokkos_Profiling_EventSet::begin_tuning_context</definition>
+        <argsstring></argsstring>
+        <name>begin_tuning_context</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::begin_tuning_context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="285" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1aad93278b1b2d63207804ae71a66dcc96" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_contextEndFunction</type>
+        <definition>Kokkos_Tools_contextEndFunction Kokkos_Profiling_EventSet::end_tuning_context</definition>
+        <argsstring></argsstring>
+        <name>end_tuning_context</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::end_tuning_context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="286" column="35" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ae0304addbb1c34367834a4965ecf1bce" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_optimizationGoalDeclarationFunction</type>
+        <definition>Kokkos_Tools_optimizationGoalDeclarationFunction Kokkos_Profiling_EventSet::declare_optimization_goal</definition>
+        <argsstring></argsstring>
+        <name>declare_optimization_goal</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::declare_optimization_goal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="287" column="52" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___profiling___event_set_1ace79e01e622b5238aa802210a2b46370" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char Kokkos_Profiling_EventSet::padding[232 * sizeof( Kokkos_Tools_functionPointer)]</definition>
+        <argsstring>[232 *sizeof(Kokkos_Tools_functionPointer)]</argsstring>
+        <name>padding</name>
+        <qualifiedname>Kokkos_Profiling_EventSet::padding</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="288" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos_Profiling_EventSet</label>
+        <link refid="struct_kokkos___profiling___event_set"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>init</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>allocate_data</edgelabel>
+          <edgelabel>begin_deep_copy</edgelabel>
+          <edgelabel>deallocate_data</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>provide_tool_programming_interface</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>request_tool_settings</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>declare_input_type</edgelabel>
+          <edgelabel>declare_output_type</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>end_tuning_context</edgelabel>
+          <edgelabel>request_output_values</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>declare_optimization_goal</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Profiling_KokkosPDeviceInfo</label>
+        <link refid="struct_kokkos___profiling___kokkos_p_device_info"/>
+      </node>
+      <node id="3">
+        <label>Kokkos_Profiling_SpaceHandle</label>
+        <link refid="struct_kokkos___profiling___space_handle"/>
+      </node>
+      <node id="13">
+        <label>Kokkos_Tools_OptimzationGoal</label>
+        <link refid="struct_kokkos___tools___optimzation_goal"/>
+      </node>
+      <node id="4">
+        <label>Kokkos_Tools_ToolProgrammingInterface</label>
+        <link refid="struct_kokkos___tools___tool_programming_interface"/>
+      </node>
+      <node id="5">
+        <label>Kokkos_Tools_ToolSettings</label>
+        <link refid="struct_kokkos___tools___tool_settings"/>
+      </node>
+      <node id="10">
+        <label>Kokkos_Tools_ValueRange</label>
+        <link refid="struct_kokkos___tools___value_range"/>
+        <childnode refid="11" relation="usage">
+          <edgelabel>lower</edgelabel>
+          <edgelabel>step</edgelabel>
+          <edgelabel>upper</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Kokkos_Tools_ValueSet</label>
+        <link refid="struct_kokkos___tools___value_set"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos_Tools_VariableInfo</label>
+        <link refid="struct_kokkos___tools___variable_info"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>candidates</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Kokkos_Tools_VariableInfo_SetOrRange</label>
+        <link refid="union_kokkos___tools___variable_info___set_or_range"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>set</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>range</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Kokkos_Tools_VariableValue</label>
+        <link refid="struct_kokkos___tools___variable_value"/>
+        <childnode refid="11" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Kokkos_Tools_VariableValue_ValueUnion</label>
+        <link refid="union_kokkos___tools___variable_value___value_union"/>
+      </node>
+      <node id="9">
+        <label>Kokkos_Tools_VariableValue_ValueUnionSet</label>
+        <link refid="union_kokkos___tools___variable_value___value_union_set"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="251" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="251" bodyend="294"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___profiling___event_set_1a425b72156b7c473b54b5a5f7f78eae38" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>allocate_data</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ad3dceb2b4452b2bee9a69ce6964bd0b1" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_deep_copy</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a0391c631ae9752aac156d25c13fc58ed" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_fence</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ae2a342f0c6c01ddf13f7ceeaad49d077" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_parallel_for</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1af6aa2d11482d31b824ef2874561c8f68" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_parallel_reduce</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1aa8ec25f4ca6dc5bb9ea28eddebfb6bb6" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_parallel_scan</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a2fe07103b883e8c0af3a0e95cab6dbf8" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>begin_tuning_context</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ab966fb8b9bb7c4399021b46a2c8554b1" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>create_profile_section</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a2c13b371f1e3bdcd7cff14f525b85421" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>deallocate_data</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1aef0dd07c46e581c57b64fd301d6e8f45" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>declare_input_type</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a76ea4a618f535eab8a62c92c049e0f62" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>declare_metadata</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ae0304addbb1c34367834a4965ecf1bce" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>declare_optimization_goal</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a43b5199aa92f633c8b8e0280ceb99844" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>declare_output_type</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a846194a935bd2798849fcf6eea9a16fc" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>destroy_profile_section</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a8499b4f69c3696b20faef610c70e5832" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_deep_copy</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ae8b6141c99b81fc007e83bdb2bb4db85" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_fence</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a6821525570134a36ac73f3050d3eb151" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_parallel_for</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1aa0fc01fb18c39b494137d411e359a2ce" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_parallel_reduce</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a1aabbf7a217e7b7018d2a85f595e1a28" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_parallel_scan</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1aad93278b1b2d63207804ae71a66dcc96" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>end_tuning_context</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ac2249bec7d7b6b895cae02d65b96cf63" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>finalize</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a5577e27cf6a5b4b03cda3968e2f22c4f" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>init</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ade283b5a5a5e5b27ebe36f90e0bcfccd" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>modify_dual_view</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ace79e01e622b5238aa802210a2b46370" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>padding</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a1832f114fdeac375cdca514ad55d101d" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>parse_args</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a2c3a882c86dde4f5e7c1079c5e9acae5" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>pop_region</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1afa8eecabcb967e14cc64f42cd42b6eaa" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>print_help</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a21223289ee302f32039da3d36458b0b7" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>profile_event</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a8f665428e55164252c32cab1a0edd4d9" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>profiling_padding</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a6f814440e2cde9c82ab8bb39b5bd79f5" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>provide_tool_programming_interface</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a4710158c4df41cfd86573b0ee20a2bb6" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>push_region</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1ac2da17e560cdeb9e9277b6240972d5c4" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>request_output_values</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a1f423831d608a6c9655c94378fbd7b6a" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>request_tool_settings</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a94c3506ab6e1812ec44174a23f733466" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>start_profile_section</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a7dc901c8fb56f9459b38dde4d150a593" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>stop_profile_section</name></member>
+      <member refid="struct_kokkos___profiling___event_set_1a4cf70e91a1519532d734fb1f09410507" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_EventSet</scope><name>sync_dual_view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

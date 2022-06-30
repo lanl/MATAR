@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_max" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Max</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_max_1aa708697326ed337974f81e1b5072b246" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_max" kindref="compound">Max</ref>&lt; Scalar, Space &gt;</type>
+        <definition>using Kokkos::Max&lt; Scalar, Space &gt;::reducer =  Max&lt;Scalar, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>reducer</name>
+        <qualifiedname>Kokkos::Max::reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="210" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_max_1ae775989fc25a4186b0dec02b6f1f7472" prot="public" static="no">
+        <type>typename std::remove_cv&lt; Scalar &gt;::type</type>
+        <definition>using Kokkos::Max&lt; Scalar, Space &gt;::value_type =  typename std::remove_cv&lt;Scalar&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Max::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="211" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_max_1a04d182e5efa542dfa478a6e93c8cccdc" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; value_type, Space &gt;</type>
+        <definition>using Kokkos::Max&lt; Scalar, Space &gt;::result_view_type =  Kokkos::View&lt;value_type, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>result_view_type</name>
+        <qualifiedname>Kokkos::Max::result_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="213" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_max_1ac2930536cd1345914461feec21173fa3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>result_view_type Kokkos::Max&lt; Scalar, Space &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Max::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="216" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_max_1a0bc4d225f802a9204ffce233d5f816c7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Max&lt; Scalar, Space &gt;::references_scalar_v</definition>
+        <argsstring></argsstring>
+        <name>references_scalar_v</name>
+        <qualifiedname>Kokkos::Max::references_scalar_v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="217" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a4e70dab2971cee0124eba0f50512a949" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Max&lt; Scalar, Space &gt;::Max</definition>
+        <argsstring>(value_type &amp;value_)</argsstring>
+        <name>Max</name>
+        <qualifiedname>Kokkos::Max::Max</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="221" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a13e74c8b4d8004a755666b136056b823" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Max&lt; Scalar, Space &gt;::Max</definition>
+        <argsstring>(const result_view_type &amp;value_)</argsstring>
+        <name>Max</name>
+        <qualifiedname>Kokkos::Max::Max</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref> &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="224" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="224" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a206ae91952c23dac9a61f61e0a2f8fae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Max&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Max::join</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="229" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="229" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a1e2aca4266b9e73965a5db045bedd211" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Max&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Max::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="234" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="234" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a803581e70ddecd62935f9372841a8920" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Max&lt; Scalar, Space &gt;::init</definition>
+        <argsstring>(value_type &amp;val) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Max::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="240" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a39ecc5845d0d75531abb487128440902" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::Max&lt; Scalar, Space &gt;::reference</definition>
+        <argsstring>() const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Max::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="245" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="245" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1a307968fe216fdc0f63d2b66a0839c3f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION result_view_type Kokkos::Max&lt; Scalar, Space &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::Max::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="248" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="248" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_max_1afebb1d1d749829fadf8f3dc64db3c610" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Max&lt; Scalar, Space &gt;::references_scalar</definition>
+        <argsstring>() const</argsstring>
+        <name>references_scalar</name>
+        <qualifiedname>Kokkos::Max::references_scalar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="251" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="251" bodyend="251"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="207" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="207" bodyend="252"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_max_1a803581e70ddecd62935f9372841a8920" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_max_1a206ae91952c23dac9a61f61e0a2f8fae" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_max_1a1e2aca4266b9e73965a5db045bedd211" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_max_1a4e70dab2971cee0124eba0f50512a949" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>Max</name></member>
+      <member refid="struct_kokkos_1_1_max_1a13e74c8b4d8004a755666b136056b823" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>Max</name></member>
+      <member refid="struct_kokkos_1_1_max_1aa708697326ed337974f81e1b5072b246" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>reducer</name></member>
+      <member refid="struct_kokkos_1_1_max_1a39ecc5845d0d75531abb487128440902" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>reference</name></member>
+      <member refid="struct_kokkos_1_1_max_1afebb1d1d749829fadf8f3dc64db3c610" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>references_scalar</name></member>
+      <member refid="struct_kokkos_1_1_max_1a0bc4d225f802a9204ffce233d5f816c7" prot="private" virt="non-virtual"><scope>Kokkos::Max</scope><name>references_scalar_v</name></member>
+      <member refid="struct_kokkos_1_1_max_1a04d182e5efa542dfa478a6e93c8cccdc" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>result_view_type</name></member>
+      <member refid="struct_kokkos_1_1_max_1ac2930536cd1345914461feec21173fa3" prot="private" virt="non-virtual"><scope>Kokkos::Max</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_max_1ae775989fc25a4186b0dec02b6f1f7472" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_max_1a307968fe216fdc0f63d2b66a0839c3f2" prot="public" virt="non-virtual"><scope>Kokkos::Max</scope><name>view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

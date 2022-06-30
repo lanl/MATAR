@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1_test_bitset" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::TestBitset</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref></type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>Set</declname>
+        <defname>Set</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_bitset_1ae958c20f19fa5c698c072c7344f2f574" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref></type>
+        <definition>using Test::Impl::TestBitset&lt; Bitset, Set &gt;::bitset_type =  Bitset</definition>
+        <argsstring></argsstring>
+        <name>bitset_type</name>
+        <qualifiedname>Test::Impl::TestBitset::bitset_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="58" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_bitset_1a43d277165981e75a9c64bef350697384" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">bitset_type::execution_space</ref></type>
+        <definition>using Test::Impl::TestBitset&lt; Bitset, Set &gt;::execution_space =  typename bitset_type::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::Impl::TestBitset::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_bitset_1aac67f83601c293ec3e44c3b370ef0434" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using Test::Impl::TestBitset&lt; Bitset, Set &gt;::value_type =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::Impl::TestBitset::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_test_bitset_1ad1b4979521fff7211aa226e3d730e349" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">bitset_type</ref></type>
+        <definition>bitset_type Test::Impl::TestBitset&lt; Bitset, Set &gt;::m_bitset</definition>
+        <argsstring></argsstring>
+        <name>m_bitset</name>
+        <qualifiedname>Test::Impl::TestBitset::m_bitset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="62" column="15" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_bitset_1a635f7a989ee1574f8fb54ca6c3ad9c18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::TestBitset&lt; Bitset, Set &gt;::TestBitset</definition>
+        <argsstring>(bitset_type const &amp;bitset)</argsstring>
+        <name>TestBitset</name>
+        <qualifiedname>Test::Impl::TestBitset::TestBitset</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">bitset_type</ref> const &amp;</type>
+          <declname>bitset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_bitset_1a2a5609db77f931a9ce0bb70f21a80d2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Test::Impl::TestBitset&lt; Bitset, Set &gt;::testit</definition>
+        <argsstring>(unsigned collisions)</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::Impl::TestBitset::testit</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>collisions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="66" column="12" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_bitset_1a0e9d70af20e23ffdfd52b3d4637e3972" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::TestBitset&lt; Bitset, Set &gt;::init</definition>
+        <argsstring>(value_type &amp;v) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Test::Impl::TestBitset::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="75" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_bitset_1afbd0fea586993a5937de91c7576ac3bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::TestBitset&lt; Bitset, Set &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dst, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Test::Impl::TestBitset::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="78" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_bitset_1a7d3595edd403b553e7c1c46f63edc0c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::TestBitset&lt; Bitset, Set &gt;::operator()</definition>
+        <argsstring>(uint32_t i, value_type &amp;v) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::TestBitset::operator()</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="83" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="83" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Bitset&lt; Device &gt;</label>
+        <link refid="class_kokkos_1_1_bitset"/>
+      </node>
+      <node id="1">
+        <label>Test::Impl::TestBitset&lt; Bitset, Set &gt;</label>
+        <link refid="struct_test_1_1_impl_1_1_test_bitset"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_bitset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestBitset.hpp" bodystart="57" bodyend="95"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1ae958c20f19fa5c698c072c7344f2f574" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>bitset_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1a43d277165981e75a9c64bef350697384" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1a0e9d70af20e23ffdfd52b3d4637e3972" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>init</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1afbd0fea586993a5937de91c7576ac3bf" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>join</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1ad1b4979521fff7211aa226e3d730e349" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>m_bitset</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1a7d3595edd403b553e7c1c46f63edc0c2" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1a635f7a989ee1574f8fb54ca6c3ad9c18" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>TestBitset</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1a2a5609db77f931a9ce0bb70f21a80d2b" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>testit</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_bitset_1aac67f83601c293ec3e44c3b370ef0434" prot="public" virt="non-virtual"><scope>Test::Impl::TestBitset</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

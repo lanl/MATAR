@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_floating_point_comparison" kind="struct" language="C++" prot="public">
+    <compoundname>FloatingPointComparison</compoundname>
+    <derivedcompoundref refid="struct_test_math_binary_function" prot="public" virt="non-virtual">TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;</derivedcompoundref>
+    <derivedcompoundref refid="struct_test_math_unary_function" prot="public" virt="non-virtual">TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;</derivedcompoundref>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_floating_point_comparison_1a7da6085e5790be99eebde6951d880f77" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>KOKKOS_FUNCTION double FloatingPointComparison::eps</definition>
+        <argsstring>(T) const</argsstring>
+        <name>eps</name>
+        <qualifiedname>FloatingPointComparison::eps</qualifiedname>
+        <param>
+          <type>T</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="226" column="26" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="226" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_floating_point_comparison_1a1abbec128d385aaca68d38c0a847640a" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>KOKKOS_FUNCTION double FloatingPointComparison::eps</definition>
+        <argsstring>(float) const</argsstring>
+        <name>eps</name>
+        <qualifiedname>FloatingPointComparison::eps</qualifiedname>
+        <param>
+          <type>float</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="230" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="230" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_floating_point_comparison_1a99b3b3c9dbe9ef6992b62b2d1d081002" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION double</type>
+        <definition>KOKKOS_FUNCTION double FloatingPointComparison::eps</definition>
+        <argsstring>(long double) const</argsstring>
+        <name>eps</name>
+        <qualifiedname>FloatingPointComparison::eps</qualifiedname>
+        <param>
+          <type>long double</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="232" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_floating_point_comparison_1a85517b65d66ac9b0f6e77e055844c88f" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION std::enable_if&lt; std::is_signed&lt; T &gt;::value, T &gt;::type</type>
+        <definition>KOKKOS_FUNCTION std::enable_if&lt; std::is_signed&lt; T &gt;::value, T &gt;::type FloatingPointComparison::absolute</definition>
+        <argsstring>(T val) const</argsstring>
+        <name>absolute</name>
+        <qualifiedname>FloatingPointComparison::absolute</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="237" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="237" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_floating_point_comparison_1a1aca2fb12125fa540f0b9ec6711935a5" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION std::enable_if&lt;!std::is_signed&lt; T &gt;::value, T &gt;::type</type>
+        <definition>KOKKOS_FUNCTION std::enable_if&lt;!std::is_signed&lt; T &gt;::value, T &gt;::type FloatingPointComparison::absolute</definition>
+        <argsstring>(T val) const</argsstring>
+        <name>absolute</name>
+        <qualifiedname>FloatingPointComparison::absolute</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="243" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="243" bodyend="245"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_floating_point_comparison_1a489631d849e31d394872a17e583b0055" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class FPT</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION bool</type>
+        <definition>KOKKOS_FUNCTION bool FloatingPointComparison::compare_near_zero</definition>
+        <argsstring>(FPT const &amp;fpv, double ulp) const</argsstring>
+        <name>compare_near_zero</name>
+        <qualifiedname>FloatingPointComparison::compare_near_zero</qualifiedname>
+        <param>
+          <type>FPT const &amp;</type>
+          <declname>fpv</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ulp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="249" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="249" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_floating_point_comparison_1af8eb17f968014cc75e694af558c916c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Lhs</type>
+          </param>
+          <param>
+            <type>class Rhs</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION bool</type>
+        <definition>KOKKOS_FUNCTION bool FloatingPointComparison::compare</definition>
+        <argsstring>(Lhs const &amp;lhs, Rhs const &amp;rhs, double ulp) const</argsstring>
+        <name>compare</name>
+        <qualifiedname>FloatingPointComparison::compare</qualifiedname>
+        <param>
+          <type>Lhs const &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>Rhs const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ulp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="264" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="264" bodyend="286"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>FloatingPointComparison</label>
+        <link refid="struct_floating_point_comparison"/>
+      </node>
+      <node id="2">
+        <label>TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;</label>
+        <link refid="struct_test_math_binary_function"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TestMathUnaryFunction&lt; Space, Func, Arg, N, Ret &gt;</label>
+        <link refid="struct_test_math_unary_function"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="223" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="223" bodyend="287"/>
+    <listofallmembers>
+      <member refid="struct_floating_point_comparison_1a85517b65d66ac9b0f6e77e055844c88f" prot="private" virt="non-virtual"><scope>FloatingPointComparison</scope><name>absolute</name></member>
+      <member refid="struct_floating_point_comparison_1a1aca2fb12125fa540f0b9ec6711935a5" prot="private" virt="non-virtual"><scope>FloatingPointComparison</scope><name>absolute</name></member>
+      <member refid="struct_floating_point_comparison_1af8eb17f968014cc75e694af558c916c7" prot="public" virt="non-virtual"><scope>FloatingPointComparison</scope><name>compare</name></member>
+      <member refid="struct_floating_point_comparison_1a489631d849e31d394872a17e583b0055" prot="public" virt="non-virtual"><scope>FloatingPointComparison</scope><name>compare_near_zero</name></member>
+      <member refid="struct_floating_point_comparison_1a7da6085e5790be99eebde6951d880f77" prot="private" virt="non-virtual"><scope>FloatingPointComparison</scope><name>eps</name></member>
+      <member refid="struct_floating_point_comparison_1a1abbec128d385aaca68d38c0a847640a" prot="private" virt="non-virtual"><scope>FloatingPointComparison</scope><name>eps</name></member>
+      <member refid="struct_floating_point_comparison_1a99b3b3c9dbe9ef6992b62b2d1d081002" prot="private" virt="non-virtual"><scope>FloatingPointComparison</scope><name>eps</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

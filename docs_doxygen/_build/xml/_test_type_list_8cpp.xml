@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_test_type_list_8cpp" kind="file" language="C++">
+    <compoundname>TestTypeList.cpp</compoundname>
+    <includes refid="_kokkos___utilities_8hpp" local="no">impl/Kokkos_Utilities.hpp</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>impl/Kokkos_Utilities.hpp</label>
+        <link refid="_kokkos___utilities_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp</label>
+        <link refid="_test_type_list_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="4">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="8">
+        <label>initializer_list</label>
+      </node>
+      <node id="7">
+        <label>type_traits</label>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a92cbbaa6067c7c7d83005482082b7786" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list</ref>&lt; void, bool &gt;</type>
+        <definition>using TypeList2 =  Kokkos::Impl::type_list&lt;void, bool&gt;</definition>
+        <argsstring></argsstring>
+        <name>TypeList2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="47" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a1bdb23d2dd0fe3606db9809271c9a568" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list</ref>&lt; char, short, int &gt;</type>
+        <definition>using TypeList3 =  Kokkos::Impl::type_list&lt;char, short, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>TypeList3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="48" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1add27df42a31a00a9ef75cebc097a3e40" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list</ref>&lt; void, bool, void, bool, char, short, int &gt;</type>
+        <definition>using TypeList223 =  Kokkos::Impl::type_list&lt;void, bool, void, bool, char, short, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>TypeList223</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="49" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a7dafd778267c1582a56ccbd735c987ec" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list</ref>&lt; void, void &gt;</type>
+        <definition>using TypeList223Void =  Kokkos::Impl::type_list&lt;void, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>TypeList223Void</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="51" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a111accc5f7447a1078d9c6da143ea0ce" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list</ref>&lt; bool, bool, char, short, int &gt;</type>
+        <definition>using TypeList223NoVoid =  Kokkos::Impl::type_list&lt;bool, bool, char, short, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>TypeList223NoVoid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="52" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a8ed6af4c3083006144e4869833c96096" prot="public" static="no">
+        <type>Kokkos::Impl::concat_type_list_t&lt; <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList2</ref> &gt;</type>
+        <definition>using ConcatTypeList2 =  Kokkos::Impl::concat_type_list_t&lt;TypeList2&gt;</definition>
+        <argsstring></argsstring>
+        <name>ConcatTypeList2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a74c91c350a53bda79256e22a969cfa4f" prot="public" static="no">
+        <type>Kokkos::Impl::concat_type_list_t&lt; <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList2</ref>, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList2</ref>, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList3</ref> &gt;</type>
+        <definition>using ConcatTypeList223 =  Kokkos::Impl::concat_type_list_t&lt;TypeList2, TypeList2, TypeList3&gt;</definition>
+        <argsstring></argsstring>
+        <name>ConcatTypeList223</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1ae3d9620704bee6b491b42f2af6a46bf5" prot="public" static="no">
+        <type>Kokkos::Impl::filter_type_list_t&lt; std::is_void, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList223</ref> &gt;</type>
+        <definition>using FilterTypeList223Void =  Kokkos::Impl::filter_type_list_t&lt;std::is_void, TypeList223&gt;</definition>
+        <argsstring></argsstring>
+        <name>FilterTypeList223Void</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="65" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_test_type_list_8cpp_1a7a2bd1bdf76126a7698e02e308680309" prot="public" static="no">
+        <type>Kokkos::Impl::filter_type_list_t&lt; std::is_void, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList223</ref>, false &gt;</type>
+        <definition>using FilterTypeList223NoVoid =  Kokkos::Impl::filter_type_list_t&lt;std::is_void, TypeList223, false&gt;</definition>
+        <argsstring></argsstring>
+        <name>FilterTypeList223NoVoid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" line="70" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_Utilities.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList2</ref><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list&lt;void, bool&gt;</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList3</ref><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list&lt;char, short, int&gt;</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList223</ref><sp/>=</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list&lt;void, bool, void, bool, char, short, int&gt;</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList223Void</ref><sp/><sp/><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list&lt;void, void&gt;</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">TypeList223NoVoid</ref><sp/>=<sp/><ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">Kokkos::Impl::type_list&lt;bool, bool, char, short, int&gt;</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>concat_type_list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ConcatTypeList2<sp/>=<sp/>Kokkos::Impl::concat_type_list_t&lt;TypeList2&gt;;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;TypeList2,<sp/>ConcatTypeList2&gt;::value,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;concat_type_list<sp/>of<sp/>a<sp/>single<sp/>type_list<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ConcatTypeList223<sp/>=</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::Impl::concat_type_list_t&lt;TypeList2,<sp/>TypeList2,<sp/>TypeList3&gt;;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;TypeList223,<sp/>ConcatTypeList223&gt;::value,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;concat_type_list<sp/>of<sp/>three<sp/>type_lists<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>filter_type_list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">FilterTypeList223Void<sp/>=</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::Impl::filter_type_list_t&lt;std::is_void,<sp/>TypeList223&gt;;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;TypeList223Void,<sp/>FilterTypeList223Void&gt;::value,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;filter_type_list<sp/>with<sp/>predicate<sp/>value==true<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">FilterTypeList223NoVoid<sp/>=</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::Impl::filter_type_list_t&lt;std::is_void,<sp/>TypeList223,<sp/>false&gt;;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same&lt;TypeList223NoVoid,<sp/>FilterTypeList223NoVoid&gt;::value,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;filter_type_list<sp/>with<sp/>predicate<sp/>value==false<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTypeList.cpp"/>
+  </compounddef>
+</doxygen>

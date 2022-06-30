@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::MemoryPoolAllocator</compoundname>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_memory_pool_allocator_1_1rebind" prot="public">Kokkos::Impl::MemoryPoolAllocator::rebind</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_kokkos_1_1_memory_pool" kindref="compound">MemoryPool</ref></type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a083885619412f772e16e0bfa50c538c0" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">MemoryPool</ref></type>
+        <definition>using Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::memory_pool =  MemoryPool</definition>
+        <argsstring></argsstring>
+        <name>memory_pool</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::memory_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a8a19a16c2764d6481d69242b69c5895d" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::value_type =  T</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="89" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a1edf83869a9f7c4d79d6f61f1ba23596" prot="public" static="no">
+        <type>T *</type>
+        <definition>using Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::pointer =  T*</definition>
+        <argsstring></argsstring>
+        <name>pointer</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="90" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a53ddf53af2f5858312bcf5481cafcf5f" prot="public" static="no">
+        <type>typename MemoryPool::memory_space::size_type</type>
+        <definition>using Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::size_type =  typename MemoryPool::memory_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="91" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1ae1f990a54ba6896c545c16123c539a91" prot="public" static="no">
+        <type>typename std::make_signed&lt; size_type &gt;::type</type>
+        <definition>using Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::difference_type =  typename std::make_signed&lt;size_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>difference_type</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::difference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="92" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a305231a257db6a9df866dead11b3b6c6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">memory_pool</ref></type>
+        <definition>memory_pool Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::m_pool</definition>
+        <argsstring></argsstring>
+        <name>m_pool</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::m_pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="65" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a576b12a15bec33e0d3f61eab8c21c20d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::MemoryPoolAllocator</definition>
+        <argsstring>()=default</argsstring>
+        <name>MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::MemoryPoolAllocator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="69" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a20bb6402d7710c0830efcd892b6810fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::MemoryPoolAllocator</definition>
+        <argsstring>(MemoryPoolAllocator const &amp;)=default</argsstring>
+        <name>MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::MemoryPoolAllocator</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="71" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1aed06387c10dba865b0b3b1fb4261ded6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::MemoryPoolAllocator</definition>
+        <argsstring>(MemoryPoolAllocator &amp;&amp;)=default</argsstring>
+        <name>MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::MemoryPoolAllocator</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="73" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a05401f86c3231f89f72c62460e6f0323" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION <ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION MemoryPoolAllocator &amp; Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::operator=</definition>
+        <argsstring>(MemoryPoolAllocator const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="75" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a4e810cbb83394e63f987cf320bd53537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION <ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION MemoryPoolAllocator &amp; Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::operator=</definition>
+        <argsstring>(MemoryPoolAllocator &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="77" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1aee43ff03e0779567c384a00dc34886eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::~MemoryPoolAllocator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::~MemoryPoolAllocator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="79" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a833beb4574677b2e1c25a4c57314e0fa" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::MemoryPoolAllocator</definition>
+        <argsstring>(memory_pool const &amp;arg_pool)</argsstring>
+        <name>MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::MemoryPoolAllocator</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">memory_pool</ref> const &amp;</type>
+          <declname>arg_pool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="82" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="82" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a3198e937ec454c57431ded1ea7208507" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::MemoryPoolAllocator</definition>
+        <argsstring>(memory_pool &amp;&amp;arg_pool)</argsstring>
+        <name>MemoryPoolAllocator</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::MemoryPoolAllocator</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">memory_pool</ref> &amp;&amp;</type>
+          <declname>arg_pool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="85" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="85" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a1deb8f12f1e5af1efe298bd3f89949e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION pointer</type>
+        <definition>KOKKOS_INLINE_FUNCTION pointer Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::allocate</definition>
+        <argsstring>(size_t n)</argsstring>
+        <name>allocate</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::allocate</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="100" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="100" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1ade86381497560ca79db059c747168448" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::deallocate</definition>
+        <argsstring>(T *ptr, size_t n)</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::deallocate</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="109" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a2c1292b27ee04abd556bca0ba7d49ccd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_type Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::max_size</definition>
+        <argsstring>() const</argsstring>
+        <name>max_size</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::max_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="112" column="13" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a93c1640401343e254dc8433ef8789d0e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::operator==</definition>
+        <argsstring>(MemoryPoolAllocator const &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::operator==</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="115" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a6307438a348b31c2728ce1e12d63a3ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Impl::MemoryPoolAllocator&lt; MemoryPool, T &gt;::operator!=</definition>
+        <argsstring>(MemoryPoolAllocator const &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>Kokkos::Impl::MemoryPoolAllocator::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator" kindref="compound">MemoryPoolAllocator</ref> const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="120" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="120" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" line="60" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_MemoryPoolAllocator.hpp" bodystart="60" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a1deb8f12f1e5af1efe298bd3f89949e1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>allocate</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1ade86381497560ca79db059c747168448" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>deallocate</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1ae1f990a54ba6896c545c16123c539a91" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>difference_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a305231a257db6a9df866dead11b3b6c6" prot="private" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>m_pool</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a2c1292b27ee04abd556bca0ba7d49ccd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>max_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a083885619412f772e16e0bfa50c538c0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>memory_pool</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a576b12a15bec33e0d3f61eab8c21c20d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>MemoryPoolAllocator</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a20bb6402d7710c0830efcd892b6810fe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>MemoryPoolAllocator</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1aed06387c10dba865b0b3b1fb4261ded6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>MemoryPoolAllocator</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a833beb4574677b2e1c25a4c57314e0fa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>MemoryPoolAllocator</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a3198e937ec454c57431ded1ea7208507" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>MemoryPoolAllocator</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a6307438a348b31c2728ce1e12d63a3ed" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>operator!=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a05401f86c3231f89f72c62460e6f0323" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a4e810cbb83394e63f987cf320bd53537" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a93c1640401343e254dc8433ef8789d0e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>operator==</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a1edf83869a9f7c4d79d6f61f1ba23596" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>pointer</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a53ddf53af2f5858312bcf5481cafcf5f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1a8a19a16c2764d6481d69242b69c5895d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_memory_pool_allocator_1aee43ff03e0779567c384a00dc34886eb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MemoryPoolAllocator</scope><name>~MemoryPoolAllocator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

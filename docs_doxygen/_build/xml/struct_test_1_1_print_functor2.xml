@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_print_functor2" kind="struct" language="C++" prot="public">
+    <compoundname>Test::PrintFunctor2</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename TeamHandleType</type>
+      </param>
+      <param>
+        <type>typename ReducerValueType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_print_functor2_1ace856be59ebdf912d07ea3f1de60fe5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::PrintFunctor2&lt; TeamHandleType, ReducerValueType &gt;::operator()</definition>
+        <argsstring>(const TeamHandleType &amp;team, ReducerValueType &amp;teamVal) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::PrintFunctor2::operator()</qualifiedname>
+        <param>
+          <type>const TeamHandleType &amp;</type>
+          <declname>team</declname>
+        </param>
+        <param>
+          <type>ReducerValueType &amp;</type>
+          <declname>teamVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamTeamSize.hpp" line="195" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamTeamSize.hpp" bodystart="195" bodyend="200"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamTeamSize.hpp" line="194" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamTeamSize.hpp" bodystart="194" bodyend="201"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_print_functor2_1ace856be59ebdf912d07ea3f1de60fe5d" prot="public" virt="non-virtual"><scope>Test::PrintFunctor2</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

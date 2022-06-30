@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_dimension_1_1append" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewDimension::append</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_dimension_1_1append_1a21534ec6babd5a3dfb559db775d1f935" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">ViewDimension</ref>&lt; Vals..., N &gt;</type>
+        <definition>using Kokkos::Impl::ViewDimension&lt; Vals &gt;::append&lt; N &gt;::type =  ViewDimension&lt;Vals..., N&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::ViewDimension::append::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="248" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="247" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="247" bodyend="249"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_dimension_1_1append_1a21534ec6babd5a3dfb559db775d1f935" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewDimension::append</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

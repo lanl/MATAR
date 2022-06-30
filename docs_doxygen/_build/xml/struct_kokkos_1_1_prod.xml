@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_prod" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Prod</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_prod_1ab81c881c665e873e683402c5275fd958" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_prod" kindref="compound">Prod</ref>&lt; Scalar, Space &gt;</type>
+        <definition>using Kokkos::Prod&lt; Scalar, Space &gt;::reducer =  Prod&lt;Scalar, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>reducer</name>
+        <qualifiedname>Kokkos::Prod::reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="118" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_prod_1a7441666aeae783fad8157f08e9698e00" prot="public" static="no">
+        <type>typename std::remove_cv&lt; Scalar &gt;::type</type>
+        <definition>using Kokkos::Prod&lt; Scalar, Space &gt;::value_type =  typename std::remove_cv&lt;Scalar&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Prod::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_prod_1a0241876532fc4541ddc49fdbbbc1b8c7" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; value_type, Space &gt;</type>
+        <definition>using Kokkos::Prod&lt; Scalar, Space &gt;::result_view_type =  Kokkos::View&lt;value_type, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>result_view_type</name>
+        <qualifiedname>Kokkos::Prod::result_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="121" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_prod_1af5722ba8480be1fd2bfe1002b6e06577" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>result_view_type Kokkos::Prod&lt; Scalar, Space &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Prod::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="124" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_prod_1af2cc6a0cee2e6f6065d96eb4c7e04c96" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Prod&lt; Scalar, Space &gt;::references_scalar_v</definition>
+        <argsstring></argsstring>
+        <name>references_scalar_v</name>
+        <qualifiedname>Kokkos::Prod::references_scalar_v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="125" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1add0df7ffdb04efb18250cdefc65f3e4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Prod&lt; Scalar, Space &gt;::Prod</definition>
+        <argsstring>(value_type &amp;value_)</argsstring>
+        <name>Prod</name>
+        <qualifiedname>Kokkos::Prod::Prod</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="129" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1a788c983d11cbb0c9a19cf0ed2fb40f51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Prod&lt; Scalar, Space &gt;::Prod</definition>
+        <argsstring>(const result_view_type &amp;value_)</argsstring>
+        <name>Prod</name>
+        <qualifiedname>Kokkos::Prod::Prod</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref> &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="132" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="132" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1afaf89c7f58795c835bd1c73c7da53b20" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Prod&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Prod::join</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="137" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="137" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1a9ad833903a92358359aa2ea36bc7d88d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Prod&lt; Scalar, Space &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Prod::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="140" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="140" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1af1d53582529735fc6d35ddd874e0ae65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Prod&lt; Scalar, Space &gt;::init</definition>
+        <argsstring>(value_type &amp;val) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Prod::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="145" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="145" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1aa58d7704560d5695c5884bfdbed9a7d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION value_type &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::Prod&lt; Scalar, Space &gt;::reference</definition>
+        <argsstring>() const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Prod::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="150" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1aa9b73f99b77da78b5f41040d3f87287e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION result_view_type Kokkos::Prod&lt; Scalar, Space &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::Prod::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="153" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_prod_1af667a673dc1b14ed61e1da713b6c80b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Prod&lt; Scalar, Space &gt;::references_scalar</definition>
+        <argsstring>() const</argsstring>
+        <name>references_scalar</name>
+        <qualifiedname>Kokkos::Prod::references_scalar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="156" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="156" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="115" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="115" bodyend="157"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_prod_1af1d53582529735fc6d35ddd874e0ae65" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_prod_1afaf89c7f58795c835bd1c73c7da53b20" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_prod_1a9ad833903a92358359aa2ea36bc7d88d" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_prod_1add0df7ffdb04efb18250cdefc65f3e4c" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>Prod</name></member>
+      <member refid="struct_kokkos_1_1_prod_1a788c983d11cbb0c9a19cf0ed2fb40f51" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>Prod</name></member>
+      <member refid="struct_kokkos_1_1_prod_1ab81c881c665e873e683402c5275fd958" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>reducer</name></member>
+      <member refid="struct_kokkos_1_1_prod_1aa58d7704560d5695c5884bfdbed9a7d4" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>reference</name></member>
+      <member refid="struct_kokkos_1_1_prod_1af667a673dc1b14ed61e1da713b6c80b4" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>references_scalar</name></member>
+      <member refid="struct_kokkos_1_1_prod_1af2cc6a0cee2e6f6065d96eb4c7e04c96" prot="private" virt="non-virtual"><scope>Kokkos::Prod</scope><name>references_scalar_v</name></member>
+      <member refid="struct_kokkos_1_1_prod_1a0241876532fc4541ddc49fdbbbc1b8c7" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>result_view_type</name></member>
+      <member refid="struct_kokkos_1_1_prod_1af5722ba8480be1fd2bfe1002b6e06577" prot="private" virt="non-virtual"><scope>Kokkos::Prod</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_prod_1a7441666aeae783fad8157f08e9698e00" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_prod_1aa9b73f99b77da78b5f41040d3f87287e" prot="public" virt="non-virtual"><scope>Kokkos::Prod</scope><name>view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_c_u_d_a__asm__exchange_8hpp" kind="file" language="C++">
+    <compoundname>CUDA_asm_exchange.hpp</compoundname>
+    <includes local="no">limits</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/desul/atomics/cuda/CUDA_asm_exchange.hpp</label>
+        <link refid="_c_u_d_a__asm__exchange_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacedesul">desul</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">desul<sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__CUDA_ARCH__)<sp/><sp/>||<sp/>(defined(__clang__)<sp/>&amp;&amp;<sp/>!defined(__NVCC__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include&lt;desul/atomics/cuda/cuda_cc7_asm_exchange.inc&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/cuda/CUDA_asm_exchange.hpp"/>
+  </compounddef>
+</doxygen>

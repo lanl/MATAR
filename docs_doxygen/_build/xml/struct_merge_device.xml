@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_merge_device" kind="struct" language="C++" prot="public">
+    <compoundname>MergeDevice</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_merge_device_1a515b9df0ba79e627027dcf524b72cc6a" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt;</type>
+        <definition>Kokkos::View&lt;double*, Kokkos::LayoutLeft, Kokkos::CudaSpace&gt; MergeDevice::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>MergeDevice::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="95" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_merge_device_1a8a9d9152fde5384762dcd1ea7989c9e3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt;</type>
+        <definition>Kokkos::View&lt;double*, Kokkos::LayoutLeft, Kokkos::CudaSpace&gt; MergeDevice::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>MergeDevice::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="96" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_merge_device_1a1eaaf5190ded8ab31a4f2365bcb87ac7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MergeDevice::MergeDevice</definition>
+        <argsstring>(const Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaSpace &gt; &amp;d_a, const Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaSpace &gt; &amp;d_b)</argsstring>
+        <name>MergeDevice</name>
+        <qualifiedname>MergeDevice::MergeDevice</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt; &amp;</type>
+          <declname>d_a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaSpace &gt; &amp;</type>
+          <declname>d_b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="97" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_merge_device_1a8878a533972f6084676d840c5574c51a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void MergeDevice::operator()</definition>
+        <argsstring>(const int &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>MergeDevice::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="103" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="103" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>MergeDevice</label>
+        <link refid="struct_merge_device"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+          <edgelabel>b</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="94" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="94" bodyend="104"/>
+    <listofallmembers>
+      <member refid="struct_merge_device_1a515b9df0ba79e627027dcf524b72cc6a" prot="public" virt="non-virtual"><scope>MergeDevice</scope><name>a</name></member>
+      <member refid="struct_merge_device_1a8a9d9152fde5384762dcd1ea7989c9e3" prot="public" virt="non-virtual"><scope>MergeDevice</scope><name>b</name></member>
+      <member refid="struct_merge_device_1a1eaaf5190ded8ab31a4f2365bcb87ac7" prot="public" virt="non-virtual"><scope>MergeDevice</scope><name>MergeDevice</name></member>
+      <member refid="struct_merge_device_1a8878a533972f6084676d840c5574c51a" prot="public" virt="non-virtual"><scope>MergeDevice</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

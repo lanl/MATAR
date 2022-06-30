@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_cuda_accessible" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewCudaAccessible</compoundname>
+    <innerclass refid="struct_test_1_1_test_view_cuda_accessible_1_1_tag_init" prot="public">Test::TestViewCudaAccessible::TagInit</innerclass>
+    <innerclass refid="struct_test_1_1_test_view_cuda_accessible_1_1_tag_test" prot="public">Test::TestViewCudaAccessible::TagTest</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class MemSpace</type>
+      </param>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_cuda_accessible_1a544d8f4126065b849f07be6a4e9d36fd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@255</name>
+        <qualifiedname>Test::TestViewCudaAccessible::@255</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_cuda_accessible_1a544d8f4126065b849f07be6a4e9d36fdaa4dbfc0c5a3c3d2b0d5e1b081a3b8c93" prot="public">
+          <name>N</name>
+          <initializer>= 1000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="281" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="281" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_cuda_accessible_1a334555c3acfcdc69ee9a058db366e9c6" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, MemSpace &gt;</type>
+        <definition>using Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::V =  Kokkos::View&lt;double *, MemSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>V</name>
+        <qualifiedname>Test::TestViewCudaAccessible::V</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="283" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_cuda_accessible_1a12e6fdef7a711df5335d93090f91371e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">V</ref></type>
+        <definition>V Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::m_base</definition>
+        <argsstring></argsstring>
+        <name>m_base</name>
+        <qualifiedname>Test::TestViewCudaAccessible::m_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="285" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_accessible_1aad27aa06b04188e5e2d5da54c13e9993" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TagInit &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewCudaAccessible::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_cuda_accessible_1_1_tag_init" kindref="compound">TagInit</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="291" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="291" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_accessible_1ac8c46f80e74bf25add19754c3badfad5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TagTest &amp;, const int i, long &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewCudaAccessible::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_cuda_accessible_1_1_tag_test" kindref="compound">TagTest</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="294" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="294" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_accessible_1a9c9e4913f84d7f4b7a9c8d899e0e574f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::TestViewCudaAccessible</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewCudaAccessible</name>
+        <qualifiedname>Test::TestViewCudaAccessible::TestViewCudaAccessible</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="298" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="298" bodyend="298"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_accessible_1a7c961a83193299d7fd8eca06872dcc9d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewCudaAccessible::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="300" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="300" bodyend="312"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewCudaAccessible&lt; MemSpace, ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_test_view_cuda_accessible"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_base</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, MemSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="280" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="280" bodyend="313"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1a12e6fdef7a711df5335d93090f91371e" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>m_base</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1a544d8f4126065b849f07be6a4e9d36fdaa4dbfc0c5a3c3d2b0d5e1b081a3b8c93" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1aad27aa06b04188e5e2d5da54c13e9993" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1ac8c46f80e74bf25add19754c3badfad5" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1a7c961a83193299d7fd8eca06872dcc9d" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1a9c9e4913f84d7f4b7a9c8d899e0e574f" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>TestViewCudaAccessible</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_accessible_1a334555c3acfcdc69ee9a058db366e9c6" prot="public" virt="non-virtual"><scope>Test::TestViewCudaAccessible</scope><name>V</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

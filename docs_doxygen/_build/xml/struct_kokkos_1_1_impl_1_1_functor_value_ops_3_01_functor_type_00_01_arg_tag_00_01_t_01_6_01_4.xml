@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ArgTag</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1aae8c19b2c8441ecb444b801cc5737202" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION T *</type>
+        <definition>static KOKKOS_FORCEINLINE_FUNCTION T * Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::pointer</definition>
+        <argsstring>(T &amp;r)</argsstring>
+        <name>pointer</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::pointer</qualifiedname>
+        <param>
+          <type>T &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1850" column="40" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1850" bodyend="1850"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1adcf77830edb9aa240b8d2529e408696c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION T &amp;</type>
+        <definition>static KOKKOS_FORCEINLINE_FUNCTION T &amp; Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::reference</definition>
+        <argsstring>(void *p)</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::reference</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1852" column="40" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1852" bodyend="1852"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1a378c7fac0a067c01db3d386cab879492" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>static KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::copy</definition>
+        <argsstring>(const FunctorType &amp;, void *const lhs, const void *const rhs)</argsstring>
+        <name>copy</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;::copy</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const void *const</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1854" column="43" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1854" bodyend="1858"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1849" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1849" bodyend="1859"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1a378c7fac0a067c01db3d386cab879492" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;</scope><name>copy</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1aae8c19b2c8441ecb444b801cc5737202" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;</scope><name>pointer</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_ops_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_01_4_1adcf77830edb9aa240b8d2529e408696c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueOps&lt; FunctorType, ArgTag, T &amp; &gt;</scope><name>reference</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

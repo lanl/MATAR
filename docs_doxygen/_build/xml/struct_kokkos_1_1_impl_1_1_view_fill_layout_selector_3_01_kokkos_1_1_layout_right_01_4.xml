@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_fill_layout_selector_3_01_kokkos_1_1_layout_right_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewFillLayoutSelector&lt; Kokkos::LayoutRight &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_view_fill_layout_selector_3_01_kokkos_1_1_layout_right_01_4_1ac02ddd52b73208c9d7fe5f9d33c61d6a" prot="public" static="yes" mutable="no">
+        <type>const Kokkos::Iterate</type>
+        <definition>const Kokkos::Iterate Kokkos::Impl::ViewFillLayoutSelector&lt; Kokkos::LayoutRight &gt;::iterate</definition>
+        <argsstring></argsstring>
+        <name>iterate</name>
+        <qualifiedname>Kokkos::Impl::ViewFillLayoutSelector&lt; Kokkos::LayoutRight &gt;::iterate</qualifiedname>
+        <initializer>= Kokkos::Iterate::Right</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="69" column="32" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="68" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="68" bodyend="70"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_fill_layout_selector_3_01_kokkos_1_1_layout_right_01_4_1ac02ddd52b73208c9d7fe5f9d33c61d6a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewFillLayoutSelector&lt; Kokkos::LayoutRight &gt;</scope><name>iterate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

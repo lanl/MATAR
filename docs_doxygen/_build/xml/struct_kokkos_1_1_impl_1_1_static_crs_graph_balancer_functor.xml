@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::StaticCrsGraphBalancerFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class RowOffsetsType</type>
+      </param>
+      <param>
+        <type>class RowBlockOffsetsType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a1d5b27ae487834adb62e1a7a23092c7e" prot="public" static="no">
+        <type>typename RowOffsetsType::non_const_value_type</type>
+        <definition>using Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::int_type =  typename RowOffsetsType::non_const_value_type</definition>
+        <argsstring></argsstring>
+        <name>int_type</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::int_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a791052a59810010e656fde451758dbf7" prot="public" static="no" mutable="no">
+        <type>RowOffsetsType</type>
+        <definition>RowOffsetsType Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::row_offsets</definition>
+        <argsstring></argsstring>
+        <name>row_offsets</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::row_offsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="61" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a5b3f25f9e0ecffeabdfff802d577a763" prot="public" static="no" mutable="no">
+        <type>RowBlockOffsetsType</type>
+        <definition>RowBlockOffsetsType Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::row_block_offsets</definition>
+        <argsstring></argsstring>
+        <name>row_block_offsets</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::row_block_offsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="62" column="23" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a0801755a4501a884c5c2c7ecc2a047bb" prot="public" static="no" mutable="no">
+        <type>int_type</type>
+        <definition>int_type Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::cost_per_row</definition>
+        <argsstring></argsstring>
+        <name>cost_per_row</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::cost_per_row</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="64" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1acc1b2ddbe3a5d914fc0a518f326c6da7" prot="public" static="no" mutable="no">
+        <type>int_type</type>
+        <definition>int_type Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::num_blocks</definition>
+        <argsstring></argsstring>
+        <name>num_blocks</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::num_blocks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="64" column="25" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a6d15cfa77d6b29dceaf65155e886e0a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::StaticCrsGraphBalancerFunctor</definition>
+        <argsstring>(RowOffsetsType row_offsets_, RowBlockOffsetsType row_block_offsets_, int_type cost_per_row_, int_type num_blocks_)</argsstring>
+        <name>StaticCrsGraphBalancerFunctor</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::StaticCrsGraphBalancerFunctor</qualifiedname>
+        <param>
+          <type>RowOffsetsType</type>
+          <declname>row_offsets_</declname>
+        </param>
+        <param>
+          <type>RowBlockOffsetsType</type>
+          <declname>row_block_offsets_</declname>
+        </param>
+        <param>
+          <type>int_type</type>
+          <declname>cost_per_row_</declname>
+        </param>
+        <param>
+          <type>int_type</type>
+          <declname>num_blocks_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1ae6c6e56c241cd31382dfc35a4b14993a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::StaticCrsGraphBalancerFunctor&lt; RowOffsetsType, RowBlockOffsetsType &gt;::operator()</definition>
+        <argsstring>(const int_type &amp;iRow) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::StaticCrsGraphBalancerFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int_type &amp;</type>
+          <declname>iRow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="75" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="75" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="59" bodyend="132"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a0801755a4501a884c5c2c7ecc2a047bb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>cost_per_row</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a1d5b27ae487834adb62e1a7a23092c7e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>int_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1acc1b2ddbe3a5d914fc0a518f326c6da7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>num_blocks</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1ae6c6e56c241cd31382dfc35a4b14993a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a5b3f25f9e0ecffeabdfff802d577a763" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>row_block_offsets</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a791052a59810010e656fde451758dbf7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>row_offsets</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_static_crs_graph_balancer_functor_1a6d15cfa77d6b29dceaf65155e886e0a0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::StaticCrsGraphBalancerFunctor</scope><name>StaticCrsGraphBalancerFunctor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

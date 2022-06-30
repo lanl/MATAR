@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___profiling___space_handle" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Profiling_SpaceHandle</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___profiling___space_handle_1a056f8167320b370b7b3aa521fdaadc24" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char Kokkos_Profiling_SpaceHandle::name[64]</definition>
+        <argsstring>[64]</argsstring>
+        <name>name</name>
+        <qualifiedname>Kokkos_Profiling_SpaceHandle::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="66" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="65" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="65" bodyend="67"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___profiling___space_handle_1a056f8167320b370b7b3aa521fdaadc24" prot="public" virt="non-virtual"><scope>Kokkos_Profiling_SpaceHandle</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

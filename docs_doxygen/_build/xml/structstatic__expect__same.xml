@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structstatic__expect__same" kind="struct" language="C++" prot="public">
+    <compoundname>static_expect_same</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Expected</type>
+      </param>
+      <param>
+        <type>class Actual</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structstatic__expect__same_1a8d73f03b1e633508398d45ede6235db5" prot="public" static="no">
+        <type>typename <ref refid="structstatic__assert__predicate__true" kindref="compound">static_assert_predicate_true</ref>&lt; std::is_same, <ref refid="structstatic__predicate__message" kindref="compound">static_predicate_message</ref>&lt; <ref refid="struct__kokkos____________________types__should__be__the__same__________expected__type____" kindref="compound">_kokkos__________types_should_be_the_same_____expected_type__</ref>, Expected, <ref refid="struct__kokkos____________________actual__type__was____" kindref="compound">_kokkos__________actual_type_was__</ref>, Actual &gt;, Expected, Actual &gt;::type</type>
+        <definition>using static_expect_same&lt; Expected, Actual &gt;::type =  typename static_assert_predicate_true&lt; std::is_same, static_predicate_message&lt; _kokkos__________types_should_be_the_same_____expected_type__, Expected, _kokkos__________actual_type_was__, Actual&gt;, Expected, Actual&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>static_expect_same::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="102" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="101" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="101" bodyend="108"/>
+    <listofallmembers>
+      <member refid="structstatic__expect__same_1a8d73f03b1e633508398d45ede6235db5" prot="public" virt="non-virtual"><scope>static_expect_same</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

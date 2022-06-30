@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_host_mirror" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::HostMirror</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename S</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_host_mirror_1a09e4ccbcff075184dda2274dc61a31d0" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@189</name>
+        <qualifiedname>Kokkos::Impl::HostMirror::@189</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_host_mirror_1a09e4ccbcff075184dda2274dc61a31d0aecbe115ebb9deb9d6df7bc6235dd73ef" prot="private">
+          <name>keep_exe</name>
+          <initializer>= Kokkos::Impl::MemorySpaceAccess&lt;
+        typename S::execution_space::memory_space,
+        Kokkos::HostSpace&gt;::accessible</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="209" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="209" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_host_mirror_1a292d80ab88d2462f3da190905eba52e6" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@190</name>
+        <qualifiedname>Kokkos::Impl::HostMirror::@190</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_host_mirror_1a292d80ab88d2462f3da190905eba52e6ae26d7d981ecb6894ec485df58f8f7805" prot="private">
+          <name>keep_mem</name>
+          <initializer>=
+        Kokkos::Impl::MemorySpaceAccess&lt;Kokkos::HostSpace,
+                                        typename S::memory_space&gt;::accessible</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="217" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="217" bodyend="221"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_host_mirror_1ae206649bddfa4d5c348161121fa59efc" prot="public" static="no">
+        <type>typename std::conditional&lt; keep_exe &amp;&amp;keep_mem, S, typename std::conditional&lt; keep_mem, <ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; Kokkos::HostSpace::execution_space, typename S::memory_space &gt;, <ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref> &gt;::type &gt;::type</type>
+        <definition>using Kokkos::Impl::HostMirror&lt; S &gt;::Space =  typename std::conditional&lt; keep_exe &amp;&amp; keep_mem, S, typename std::conditional&lt; keep_mem, Kokkos::Device&lt;Kokkos::HostSpace::execution_space, typename S::memory_space&gt;, Kokkos::HostSpace&gt;::type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>Space</name>
+        <qualifiedname>Kokkos::Impl::HostMirror::Space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="224" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="205" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="205" bodyend="231"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_mirror_1a09e4ccbcff075184dda2274dc61a31d0aecbe115ebb9deb9d6df7bc6235dd73ef" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostMirror</scope><name>keep_exe</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_mirror_1a292d80ab88d2462f3da190905eba52e6ae26d7d981ecb6894ec485df58f8f7805" prot="private" virt="non-virtual"><scope>Kokkos::Impl::HostMirror</scope><name>keep_mem</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_mirror_1ae206649bddfa4d5c348161121fa59efc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostMirror</scope><name>Space</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

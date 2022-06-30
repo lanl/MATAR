@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename PolicyType</type>
+      </param>
+      <param>
+        <type>typename Functor</type>
+      </param>
+      <param>
+        <type>typename Tag</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1ae5cfb88e5e4d595846811880e8d62113" prot="public" static="no">
+        <type>typename PolicyType::index_type</type>
+        <definition>using Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::index_type =  typename PolicyType::index_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="187" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1aea92c239a40f55dec9db8595cc3c25bb" prot="private" static="no" mutable="no">
+        <type>const PolicyType &amp;</type>
+        <definition>const PolicyType&amp; Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="276" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1ae30ed615164fbd91af073b9d9fb2f5ee" prot="private" static="no" mutable="no">
+        <type>const Functor &amp;</type>
+        <definition>const Functor&amp; Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::m_func</definition>
+        <argsstring></argsstring>
+        <name>m_func</name>
+        <qualifiedname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::m_func</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="277" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1a3fbca8c883ff1de02b743a5c9bb40b65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_IMPL_DEVICE_FUNCTION</type>
+        <definition>KOKKOS_IMPL_DEVICE_FUNCTION Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::DeviceIterateTile</definition>
+        <argsstring>(const PolicyType &amp;policy_, const Functor &amp;f_)</argsstring>
+        <name>DeviceIterateTile</name>
+        <qualifiedname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::DeviceIterateTile</qualifiedname>
+        <param>
+          <type>const PolicyType &amp;</type>
+          <declname>policy_</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>f_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="201" column="31" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1a902b2462449c2f71bff8415c27867f9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_IMPL_DEVICE_FUNCTION void</type>
+        <definition>KOKKOS_IMPL_DEVICE_FUNCTION void Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::exec_range</definition>
+        <argsstring>() const</argsstring>
+        <name>exec_range</name>
+        <qualifiedname>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;::exec_range</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="207" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="207" bodyend="273"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" line="186" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_IterateTileGPU.hpp" bodystart="186" bodyend="283"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1a3fbca8c883ff1de02b743a5c9bb40b65" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</scope><name>DeviceIterateTile</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1a902b2462449c2f71bff8415c27867f9e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</scope><name>exec_range</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1ae5cfb88e5e4d595846811880e8d62113" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1ae30ed615164fbd91af073b9d9fb2f5ee" prot="private" virt="non-virtual"><scope>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</scope><name>m_func</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_device_iterate_tile_3_013_00_01_policy_type_00_01_functor_00_01_tag_01_4_1aea92c239a40f55dec9db8595cc3c25bb" prot="private" virt="non-virtual"><scope>Kokkos::Impl::DeviceIterateTile&lt; 3, PolicyType, Functor, Tag &gt;</scope><name>m_policy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

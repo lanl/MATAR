@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structtype__helper_3_01long_01double_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>type_helper&lt; long double &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structtype__helper_3_01long_01double_01_4_1a603cd6ac77abeb9aa40d61de7a140b14" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char const *</type>
+        <definition>static char const  * type_helper&lt; long double &gt;::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <qualifiedname>type_helper&lt; long double &gt;::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="408" column="49" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="408" bodyend="408"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="408" column="11" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="408" bodyend="408"/>
+    <listofallmembers>
+      <member refid="structtype__helper_3_01long_01double_01_4_1a603cd6ac77abeb9aa40d61de7a140b14" prot="public" virt="non-virtual"><scope>type_helper&lt; long double &gt;</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_impl_1_1_add_oper" kind="struct" language="C++" prot="public">
+    <compoundname>desul::Impl::AddOper</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar1</type>
+      </param>
+      <param>
+        <type>class Scalar2</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structdesul_1_1_impl_1_1_add_oper_1a8c395930a570a73d3017ea004017c316" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>DESUL_FORCEINLINE_FUNCTION Scalar1</type>
+        <definition>static DESUL_FORCEINLINE_FUNCTION Scalar1 desul::Impl::AddOper&lt; Scalar1, Scalar2 &gt;::apply</definition>
+        <argsstring>(const Scalar1 &amp;val1, const Scalar2 &amp;val2)</argsstring>
+        <name>apply</name>
+        <qualifiedname>desul::Impl::AddOper::apply</qualifiedname>
+        <param>
+          <type>const Scalar1 &amp;</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>const Scalar2 &amp;</type>
+          <declname>val2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="77" column="18" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="75" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="75" bodyend="78"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_impl_1_1_add_oper_1a8c395930a570a73d3017ea004017c316" prot="public" virt="non-virtual"><scope>desul::Impl::AddOper</scope><name>apply</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

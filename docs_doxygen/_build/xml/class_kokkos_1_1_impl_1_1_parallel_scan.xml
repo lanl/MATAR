@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_scan" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelScan</compoundname>
+    <includes refid="_kokkos___core__fwd_8hpp" local="no">Kokkos_Core_fwd.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ExecPolicy</type>
+      </param>
+      <param>
+        <type>class ExecutionSapce</type>
+        <defval>typename <ref refid="struct_kokkos_1_1_impl_1_1_functor_policy_execution_space" kindref="compound">Impl::FunctorPolicyExecutionSpace</ref>&lt;              FunctorType, ExecPolicy&gt;::execution_space</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Implementation detail of parallel_scan. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is an implementation detail of parallel_scan. Users should skip this and go directly to the documentation of the nonmember template function Kokkos::parallel_scan. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" line="297" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Core_fwd.hpp" bodystart="306" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

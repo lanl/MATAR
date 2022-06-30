@@ -1,0 +1,606 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_team_policy" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::TeamPolicy</compoundname>
+    <basecompoundref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" prot="public" virt="non-virtual">Kokkos::Impl::TeamPolicyInternal&lt; Impl::PolicyTraits&lt; Properties... &gt;::execution_space, Properties... &gt;</basecompoundref>
+    <includes refid="_kokkos___exec_policy_8hpp" local="no">Kokkos_ExecPolicy.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_team_policy_1a222a09e5c3376d4be8aaca7e4a37579d" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">Impl::TeamPolicyInternal</ref>&lt; typename <ref refid="struct_kokkos_1_1_impl_1_1_policy_traits" kindref="compound">Impl::PolicyTraits</ref>&lt; Properties... &gt;::execution_space, Properties... &gt;</type>
+        <definition>using Kokkos::TeamPolicy&lt; Properties &gt;::internal_policy =  Impl::TeamPolicyInternal&lt; typename Impl::PolicyTraits&lt;Properties...&gt;::execution_space, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>internal_policy</name>
+        <qualifiedname>Kokkos::TeamPolicy::internal_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="546" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="548" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_team_policy_1a47e358ae8d637f9566d822acf64676a9" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_policy_traits" kindref="compound">Impl::PolicyTraits</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::TeamPolicy&lt; Properties &gt;::traits =  Impl::PolicyTraits&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::TeamPolicy::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="554" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="554" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_team_policy_1a3a92efb1039d32a923dae30ae49ec92f" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::TeamPolicy&lt; Properties &gt;::execution_policy =  TeamPolicy&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>execution_policy</name>
+        <qualifiedname>Kokkos::TeamPolicy::execution_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="556" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="556" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_team_policy_1aaf33c823485a520585ea75ff8ab959c1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class TeamPolicy</definition>
+        <argsstring></argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="551" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="551" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1adf7ca54fec3e70d10c965a0058ddfabd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>()</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="558" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="558" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1adf1dc0503c59520030750ecb0d819ec3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;space_, int league_size_request, int team_size_request, int vector_length_request=1)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Construct policy with the given instance of the execution space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="561" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="561" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a0439863b27a8d27ac7ffeb9b9eccfa6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;space_, int league_size_request, const Kokkos::AUTO_t &amp;, int vector_length_request=1)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="567" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="567" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a82f00d478e360b5c2486846f76ef5d17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;space_, int league_size_request, const Kokkos::AUTO_t &amp;, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="573" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="573" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a22168b16f4314060e12a8625c9244806" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;space_, int league_size_request, const int team_size_request, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>space_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="578" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="578" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a2e467402d08d09357793a324ee3da2ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(int league_size_request, int team_size_request, int vector_length_request=1)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Construct policy with the default instance of the execution space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="585" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="585" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a10c8bf4caba01dc1e39824fa20919adb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(int league_size_request, const Kokkos::AUTO_t &amp;, int vector_length_request=1)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>vector_length_request</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="590" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="590" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1af12bf60ebcd78149da4dfe96622d5ac1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(int league_size_request, const Kokkos::AUTO_t &amp;, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="595" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="595" bodyend="597"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a31cb096d3217828a64875a67efb07991" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(int league_size_request, const int team_size_request, const Kokkos::AUTO_t &amp;)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>league_size_request</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>team_size_request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_a_u_t_o__t" kindref="compound">Kokkos::AUTO_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="598" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="598" bodyend="601"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a34c7d2dd19829dc6fffa25353154de5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const TeamPolicy&lt; OtherProperties... &gt; p)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref>&lt; OtherProperties... &gt;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="604" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="604" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a51b4ec88a6c1e49c792446973429b099" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref> &amp;</type>
+        <definition>TeamPolicy &amp; Kokkos::TeamPolicy&lt; Properties &gt;::set_chunk_size</definition>
+        <argsstring>(int chunk)</argsstring>
+        <name>set_chunk_size</name>
+        <qualifiedname>Kokkos::TeamPolicy::set_chunk_size</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>chunk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="614" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="614" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1afb4e94a0ed41837a89ce00995f113375" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref> &amp;</type>
+        <definition>TeamPolicy &amp; Kokkos::TeamPolicy&lt; Properties &gt;::set_scratch_size</definition>
+        <argsstring>(const int &amp;level, const Impl::PerTeamValue &amp;per_team)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::TeamPolicy::set_scratch_size</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_team_value" kindref="compound">Impl::PerTeamValue</ref> &amp;</type>
+          <declname>per_team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="621" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="621" bodyend="631"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a8f3c07c4872db61b9065b466b9bfdc47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref> &amp;</type>
+        <definition>TeamPolicy &amp; Kokkos::TeamPolicy&lt; Properties &gt;::set_scratch_size</definition>
+        <argsstring>(const int &amp;level, const Impl::PerThreadValue &amp;per_thread)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::TeamPolicy::set_scratch_size</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_thread_value" kindref="compound">Impl::PerThreadValue</ref> &amp;</type>
+          <declname>per_thread</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="632" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="632" bodyend="637"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1aa37c69cf6a7adfefc67f2f8df27ec460" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref> &amp;</type>
+        <definition>TeamPolicy &amp; Kokkos::TeamPolicy&lt; Properties &gt;::set_scratch_size</definition>
+        <argsstring>(const int &amp;level, const Impl::PerTeamValue &amp;per_team, const Impl::PerThreadValue &amp;per_thread)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::TeamPolicy::set_scratch_size</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_team_value" kindref="compound">Impl::PerTeamValue</ref> &amp;</type>
+          <declname>per_team</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_thread_value" kindref="compound">Impl::PerThreadValue</ref> &amp;</type>
+          <declname>per_thread</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="638" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="638" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1adb8a7906211f9fee6e6accc255a76486" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">TeamPolicy</ref> &amp;</type>
+        <definition>TeamPolicy &amp; Kokkos::TeamPolicy&lt; Properties &gt;::set_scratch_size</definition>
+        <argsstring>(const int &amp;level, const Impl::PerThreadValue &amp;per_thread, const Impl::PerTeamValue &amp;per_team)</argsstring>
+        <name>set_scratch_size</name>
+        <qualifiedname>Kokkos::TeamPolicy::set_scratch_size</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_thread_value" kindref="compound">Impl::PerThreadValue</ref> &amp;</type>
+          <declname>per_thread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_per_team_value" kindref="compound">Impl::PerTeamValue</ref> &amp;</type>
+          <declname>per_team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="645" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="645" bodyend="651"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_team_policy_1a2dc284fe1ec947b67106fd595c3a64af" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::TeamPolicy&lt; Properties &gt;::TeamPolicy</definition>
+        <argsstring>(const internal_policy &amp;p)</argsstring>
+        <name>TeamPolicy</name>
+        <qualifiedname>Kokkos::TeamPolicy::TeamPolicy</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">internal_policy</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="611" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="611" bodyend="611"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Execution policy for parallel work over a league of teams of threads. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The work functor is called for each thread of each team such that the team&apos;s member threads are guaranteed to be concurrent.</para>
+<para>The team&apos;s threads have access to team shared scratch memory and team collective operations.</para>
+<para>If the WorkTag is non-void then the first calling argument of the work functor&apos;s parentheses operator is &apos;const WorkTag &amp;&apos;. This allows a functor to have multiple work member functions.</para>
+<para>Order of template arguments does not matter, since the implementation uses variadic templates. Each and any of the template arguments can be omitted.</para>
+<para>Possible Template arguments and their default values: ExecutionSpace (DefaultExecutionSpace): where to execute code. Must be enabled. WorkTag (none): Tag which is used as the first argument for the functor operator. Schedule&lt;Type&gt; (Schedule&lt;Static&gt;): Scheduling Policy (<ref refid="struct_kokkos_1_1_dynamic" kindref="compound">Dynamic</ref>, or <ref refid="struct_kokkos_1_1_static" kindref="compound">Static</ref>). IndexType&lt;Type&gt; (IndexType&lt;ExecutionSpace::size_type&gt;: Integer Index type used to iterate over the Index space. LaunchBounds&lt;unsigned,unsigned&gt; Launch Bounds for CUDA compilation, default of LaunchBounds&lt;0,0&gt; indicates no launch bounds specified. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="4">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::TeamPolicy&lt; Properties &gt;</label>
+        <link refid="class_kokkos_1_1_team_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TeamPolicyInternal&lt; Impl::PolicyTraits&lt; Properties... &gt;::execution_space, Properties... &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_team_policy_internal"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="4">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::TeamPolicy&lt; Properties &gt;</label>
+        <link refid="class_kokkos_1_1_team_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TeamPolicyInternal&lt; Impl::PolicyTraits&lt; Properties... &gt;::execution_space, Properties... &gt;</label>
+        <link refid="class_kokkos_1_1_impl_1_1_team_policy_internal"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="542" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="545" bodyend="652"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_policy_traits_1a24bd124fcc0bfd0f826263510bd9a239" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>base_t</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a9222e53ca2c4359fb097f9e802ea6ba1" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>chunk_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a3a92efb1039d32a923dae30ae49ec92f" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>execution_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a356fbb5a36b36fb10ed22f077d16f2f2" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>impl_auto_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1af62f71a640153f05f01ad17c8f069063" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>impl_auto_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a08ffb2624c751c258e29a9f3cb9b126c" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>impl_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a33c4299b781278218013e4635fc5ef4f" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>index_type</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a222a09e5c3376d4be8aaca7e4a37579d" prot="private" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>internal_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a9e7535fbeec2a4db8e0737baa3cac6b8" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>league_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a51b4ec88a6c1e49c792446973429b099" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>set_chunk_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1afb4e94a0ed41837a89ce00995f113375" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a8f3c07c4872db61b9065b466b9bfdc47" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1aa37c69cf6a7adfefc67f2f8df27ec460" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1adb8a7906211f9fee6e6accc255a76486" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>set_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a97be076d05c169dc6ca2f1253795b898" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a1913874dcb27053b157bcde223125dd8" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>team_size_max</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1ad79a2ea7fea2f9116a5ff3602cf1428f" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a2841a68b39f206e6173b71113f4e2c0b" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a0a7732c89c87ef5cffd06fa8a1a7b93b" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>team_size_recommended</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1aaf33c823485a520585ea75ff8ab959c1" prot="private" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1adf7ca54fec3e70d10c965a0058ddfabd" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1adf1dc0503c59520030750ecb0d819ec3" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a0439863b27a8d27ac7ffeb9b9eccfa6b" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a82f00d478e360b5c2486846f76ef5d17" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a22168b16f4314060e12a8625c9244806" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a2e467402d08d09357793a324ee3da2ff" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a10c8bf4caba01dc1e39824fa20919adb" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1af12bf60ebcd78149da4dfe96622d5ac1" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a31cb096d3217828a64875a67efb07991" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a34c7d2dd19829dc6fffa25353154de5d" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a2dc284fe1ec947b67106fd595c3a64af" prot="private" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a67a6214ab908937c4701ccb3012e035f" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a9114f440ae81dacd7eeff7d54ba2a7df" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a0ea9e601e9cffc3f99aa721dbe6e3733" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a126b31c304b21266a01b0849a1569614" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>TeamPolicyInternal</name></member>
+      <member refid="class_kokkos_1_1_team_policy_1a47e358ae8d637f9566d822acf64676a9" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_team_policy_internal_1a071299e22173279f966f9282ac4b160e" prot="public" virt="non-virtual"><scope>Kokkos::TeamPolicy</scope><name>vector_length_max</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

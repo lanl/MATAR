@@ -1,0 +1,415 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacetesting_1_1internal_1_1posix" kind="namespace" language="C++">
+    <compoundname>testing::internal::posix</compoundname>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="gtest-test-part_8h_1a8eb9f08d3af29941c2d2a964cfff3ecb" prot="public" static="no">
+        <type>struct stat</type>
+        <definition>typedef struct stat testing::internal::posix::StatStruct</definition>
+        <argsstring></argsstring>
+        <name>StatStruct</name>
+        <qualifiedname>testing::internal::posix::StatStruct</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2850" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2850" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="gtest-test-part_8h_1a3117b067e1f942a2031e666953120ccc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::FileNo</definition>
+        <argsstring>(FILE *file)</argsstring>
+        <name>FileNo</name>
+        <qualifiedname>testing::internal::posix::FileNo</qualifiedname>
+        <param>
+          <type>FILE *</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2852" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2852" bodyend="2852"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a16ebe936b3a8ea462a94191635aedc27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::IsATTY</definition>
+        <argsstring>(int fd)</argsstring>
+        <name>IsATTY</name>
+        <qualifiedname>testing::internal::posix::IsATTY</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2853" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2853" bodyend="2853"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a2b87b7ff647a128614daf50667eb9304" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::Stat</definition>
+        <argsstring>(const char *path, StatStruct *buf)</argsstring>
+        <name>Stat</name>
+        <qualifiedname>testing::internal::posix::Stat</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>StatStruct *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2854" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2854" bodyend="2854"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a1ef2385a7f8e4c706054da35967e76bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::StrCaseCmp</definition>
+        <argsstring>(const char *s1, const char *s2)</argsstring>
+        <name>StrCaseCmp</name>
+        <qualifiedname>testing::internal::posix::StrCaseCmp</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2855" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2855" bodyend="2857"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a5c0864ea9d81d27332b9133e35cbc43c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * testing::internal::posix::StrDup</definition>
+        <argsstring>(const char *src)</argsstring>
+        <name>StrDup</name>
+        <qualifiedname>testing::internal::posix::StrDup</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2858" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2858" bodyend="2858"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1acbad5d4ea5b73fd1765f5f760642932a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::RmDir</definition>
+        <argsstring>(const char *dir)</argsstring>
+        <name>RmDir</name>
+        <qualifiedname>testing::internal::posix::RmDir</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2859" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2859" bodyend="2859"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1af0d04ed5baeed28353fa38742748a421" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::posix::IsDir</definition>
+        <argsstring>(const StatStruct &amp;st)</argsstring>
+        <name>IsDir</name>
+        <qualifiedname>testing::internal::posix::IsDir</qualifiedname>
+        <param>
+          <type>const StatStruct &amp;</type>
+          <declname>st</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2860" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2860" bodyend="2860"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a3defc980438fce16cf5320a458ccea17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::internal::posix::StrNCpy</definition>
+        <argsstring>(char *dest, const char *src, size_t n)</argsstring>
+        <name>StrNCpy</name>
+        <qualifiedname>testing::internal::posix::StrNCpy</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2872" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2872" bodyend="2874"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a1ddc8a4fc6bb21da372307485591a212" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::ChDir</definition>
+        <argsstring>(const char *dir)</argsstring>
+        <name>ChDir</name>
+        <qualifiedname>testing::internal::posix::ChDir</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2881" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2881" bodyend="2881"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1affa05d06d3e3b1ce975935cb0eac4fa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>FILE *</type>
+        <definition>FILE * testing::internal::posix::FOpen</definition>
+        <argsstring>(const char *path, const char *mode)</argsstring>
+        <name>FOpen</name>
+        <qualifiedname>testing::internal::posix::FOpen</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2883" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2883" bodyend="2885"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a7428e40e37fc1798e36804eafc11680b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>FILE *</type>
+        <definition>FILE * testing::internal::posix::FReopen</definition>
+        <argsstring>(const char *path, const char *mode, FILE *stream)</argsstring>
+        <name>FReopen</name>
+        <qualifiedname>testing::internal::posix::FReopen</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2887" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2887" bodyend="2889"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a78eb38374e5a5c87ab0cbb30583627f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>FILE *</type>
+        <definition>FILE * testing::internal::posix::FDOpen</definition>
+        <argsstring>(int fd, const char *mode)</argsstring>
+        <name>FDOpen</name>
+        <qualifiedname>testing::internal::posix::FDOpen</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2890" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2890" bodyend="2890"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1af4beeaaa8d62916d5e3b644a1ddfbd6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::FClose</definition>
+        <argsstring>(FILE *fp)</argsstring>
+        <name>FClose</name>
+        <qualifiedname>testing::internal::posix::FClose</qualifiedname>
+        <param>
+          <type>FILE *</type>
+          <declname>fp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2892" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2892" bodyend="2892"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a3c6ab13e581a56f1b02f3eb7536c97fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::Read</definition>
+        <argsstring>(int fd, void *buf, unsigned int count)</argsstring>
+        <name>Read</name>
+        <qualifiedname>testing::internal::posix::Read</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2894" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2894" bodyend="2896"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1af4acf9f78d55f815a18b43786511abef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::Write</definition>
+        <argsstring>(int fd, const void *buf, unsigned int count)</argsstring>
+        <name>Write</name>
+        <qualifiedname>testing::internal::posix::Write</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2897" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2897" bodyend="2899"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a15e5b8f2a535ef1b2529b85b861e4846" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int testing::internal::posix::Close</definition>
+        <argsstring>(int fd)</argsstring>
+        <name>Close</name>
+        <qualifiedname>testing::internal::posix::Close</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2900" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2900" bodyend="2900"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a6e7e77c37cacb64c32234b988b10933c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::internal::posix::StrError</definition>
+        <argsstring>(int errnum)</argsstring>
+        <name>StrError</name>
+        <qualifiedname>testing::internal::posix::StrError</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>errnum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2901" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2901" bodyend="2901"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1aa78973d3f7aa4efd24742b0537c8cd50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::internal::posix::GetEnv</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>GetEnv</name>
+        <qualifiedname>testing::internal::posix::GetEnv</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2903" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2903" bodyend="2915"/>
+      </memberdef>
+      <memberdef kind="function" id="gtest-test-part_8h_1a69b8278c59359dd6a6f941b4643db9fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::posix::Abort</definition>
+        <argsstring>()</argsstring>
+        <name>Abort</name>
+        <qualifiedname>testing::internal::posix::Abort</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2927" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2927" bodyend="2927"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2809" column="1"/>
+  </compounddef>
+</doxygen>

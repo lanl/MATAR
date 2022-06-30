@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1power__of__two" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::power_of_two</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>OK</declname>
+        <defname>OK</defname>
+        <defval><ref refid="struct_kokkos_1_1_impl_1_1is__power__of__two" kindref="compound">is_power_of_two</ref>&lt;N&gt;::value</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="272" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="272" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

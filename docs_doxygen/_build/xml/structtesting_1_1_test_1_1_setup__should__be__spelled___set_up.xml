@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structtesting_1_1_test_1_1_setup__should__be__spelled___set_up" kind="struct" language="C++" prot="private">
+    <compoundname>testing::Test::Setup_should_be_spelled_SetUp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17867" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17867" bodyend="17867"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

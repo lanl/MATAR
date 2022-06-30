@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::rand&lt; Generator, unsigned int &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Generator</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a98014d18967c4dba98d28824ff7e2383" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION unsigned int</type>
+        <definition>static KOKKOS_INLINE_FUNCTION unsigned int Kokkos::rand&lt; Generator, unsigned int &gt;::max</definition>
+        <argsstring>()</argsstring>
+        <name>max</name>
+        <qualifiedname>Kokkos::rand&lt; Generator, unsigned int &gt;::max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="292" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="292" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1ad0f2d3e6c2f11ca7eac16f3afb5f4ade" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION unsigned int</type>
+        <definition>static KOKKOS_INLINE_FUNCTION unsigned int Kokkos::rand&lt; Generator, unsigned int &gt;::draw</definition>
+        <argsstring>(Generator &amp;gen)</argsstring>
+        <name>draw</name>
+        <qualifiedname>Kokkos::rand&lt; Generator, unsigned int &gt;::draw</qualifiedname>
+        <param>
+          <type>Generator &amp;</type>
+          <declname>gen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="294" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="294" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a6d4aedc42eba3218fe802540ec59b068" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION unsigned int</type>
+        <definition>static KOKKOS_INLINE_FUNCTION unsigned int Kokkos::rand&lt; Generator, unsigned int &gt;::draw</definition>
+        <argsstring>(Generator &amp;gen, const unsigned int &amp;range)</argsstring>
+        <name>draw</name>
+        <qualifiedname>Kokkos::rand&lt; Generator, unsigned int &gt;::draw</qualifiedname>
+        <param>
+          <type>Generator &amp;</type>
+          <declname>gen</declname>
+        </param>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="296" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="296" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a71cc1b88fb1107177fee8586b0b00f2d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION unsigned int</type>
+        <definition>static KOKKOS_INLINE_FUNCTION unsigned int Kokkos::rand&lt; Generator, unsigned int &gt;::draw</definition>
+        <argsstring>(Generator &amp;gen, const unsigned int &amp;start, const unsigned int &amp;end)</argsstring>
+        <name>draw</name>
+        <qualifiedname>Kokkos::rand&lt; Generator, unsigned int &gt;::draw</qualifiedname>
+        <param>
+          <type>Generator &amp;</type>
+          <declname>gen</declname>
+        </param>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="300" column="23" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="300" bodyend="303"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="290" column="1" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="290" bodyend="304"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1ad0f2d3e6c2f11ca7eac16f3afb5f4ade" prot="public" virt="non-virtual"><scope>Kokkos::rand&lt; Generator, unsigned int &gt;</scope><name>draw</name></member>
+      <member refid="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a6d4aedc42eba3218fe802540ec59b068" prot="public" virt="non-virtual"><scope>Kokkos::rand&lt; Generator, unsigned int &gt;</scope><name>draw</name></member>
+      <member refid="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a71cc1b88fb1107177fee8586b0b00f2d" prot="public" virt="non-virtual"><scope>Kokkos::rand&lt; Generator, unsigned int &gt;</scope><name>draw</name></member>
+      <member refid="struct_kokkos_1_1rand_3_01_generator_00_01unsigned_01int_01_4_1a98014d18967c4dba98d28824ff7e2383" prot="public" virt="non-virtual"><scope>Kokkos::rand&lt; Generator, unsigned int &gt;</scope><name>max</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

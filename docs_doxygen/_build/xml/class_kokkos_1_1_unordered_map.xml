@@ -1,0 +1,1543 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_unordered_map" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::UnorderedMap</compoundname>
+    <includes refid="_kokkos___unordered_map_8hpp" local="no">Kokkos_UnorderedMap.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Key</type>
+      </param>
+      <param>
+        <type>typename Value</type>
+      </param>
+      <param>
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+        <defval>Kokkos::DefaultExecutionSpace</defval>
+      </param>
+      <param>
+        <type>typename Hasher</type>
+        <defval><ref refid="struct_kokkos_1_1pod__hash" kindref="compound">pod_hash</ref>&lt;typename std::remove_const&lt;Key&gt;::type&gt;</defval>
+      </param>
+      <param>
+        <type>typename EqualTo</type>
+        <defval><ref refid="struct_kokkos_1_1pod__equal__to" kindref="compound">pod_equal_to</ref>&lt;typename std::remove_const&lt;Key&gt;::type&gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>Public types and constants</header>
+      <memberdef kind="enum" id="class_kokkos_1_1_unordered_map_1aa09d45891ad9636ead2d790f10e11127" prot="private" static="no" strong="no">
+        <type>size_type</type>
+        <name>@29</name>
+        <qualifiedname>Kokkos::UnorderedMap::@29</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_unordered_map_1aa09d45891ad9636ead2d790f10e11127a01760eadaab6074485ea4cb85dafe10f" prot="private">
+          <name>invalid_index</name>
+          <initializer>= ~static_cast&lt;size_type&gt;(0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="265" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="265" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@30</name>
+        <qualifiedname>Kokkos::UnorderedMap::@30</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4aa798d5843dd85df133f7f037cafda494" prot="private">
+          <name>modified_idx</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4a2e97ed1ddf6c3c621896a95673945fd7" prot="private">
+          <name>erasable_idx</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4a3b06175ed73e2f93bd8ad3cea37583ff" prot="private">
+          <name>failed_insert_idx</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="286" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="286" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_unordered_map_1ac1023412b7b82f4e7321e85dc3470eb3" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@31</name>
+        <qualifiedname>Kokkos::UnorderedMap::@31</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_unordered_map_1ac1023412b7b82f4e7321e85dc3470eb3a0a2d7964077261f00adfebbb3e56595e" prot="private">
+          <name>num_scalars</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="287" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a5dce955ada3e42ca2e841657e4cbc13e" prot="private" static="no">
+        <type>std::conditional_t&lt; is_set, int, declared_value_type &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::impl_value_type =  std::conditional_t&lt;is_set, int, declared_value_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>impl_value_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::impl_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="267" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a5cc2ecbe38c64e9e2c77b5c44e594fe9" prot="private" static="no">
+        <type>std::conditional_t&lt; is_insertable_map, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; key_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref> &gt;, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const key_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref>&lt; RandomAccess &gt; &gt; &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::key_type_view =  std::conditional_t&lt; is_insertable_map, View&lt;key_type *, device_type&gt;, View&lt;const key_type *, device_type, MemoryTraits&lt;RandomAccess&gt; &gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>key_type_view</name>
+        <qualifiedname>Kokkos::UnorderedMap::key_type_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="269" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1aba3866cbd96f1e247a876822196589c4" prot="private" static="no">
+        <type>std::conditional_t&lt; is_insertable_map||is_modifiable_map, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; impl_value_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref> &gt;, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const impl_value_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref>&lt; RandomAccess &gt; &gt; &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::value_type_view =  std::conditional_t&lt; is_insertable_map || is_modifiable_map, View&lt;impl_value_type *, device_type&gt;, View&lt;const impl_value_type *, device_type, MemoryTraits&lt;RandomAccess&gt; &gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>value_type_view</name>
+        <qualifiedname>Kokkos::UnorderedMap::value_type_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="273" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a8a3b3cf90a7956a7cfc569e685301a1e" prot="private" static="no">
+        <type>std::conditional_t&lt; is_insertable_map, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; size_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref> &gt;, <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const size_type *, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref>&lt; RandomAccess &gt; &gt; &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::size_type_view =  std::conditional_t&lt; is_insertable_map, View&lt;size_type *, device_type&gt;, View&lt;const size_type *, device_type, MemoryTraits&lt;RandomAccess&gt; &gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>size_type_view</name>
+        <qualifiedname>Kokkos::UnorderedMap::size_type_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="278" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a14eae73c326c0d5b2273e2b774563125" prot="private" static="no">
+        <type>std::conditional_t&lt; is_insertable_map, <ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref>&lt; execution_space &gt;, <ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; execution_space &gt; &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::bitset_type =  std::conditional_t&lt;is_insertable_map, Bitset&lt;execution_space&gt;, ConstBitset&lt;execution_space&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>bitset_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::bitset_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="282" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a86d893607ba07017424acc4d6b32c4ee" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; int[num_scalars], <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">LayoutLeft</ref>, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref> &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::scalars_view =  View&lt;int[num_scalars], LayoutLeft, device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>scalars_view</name>
+        <qualifiedname>Kokkos::UnorderedMap::scalars_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="288" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1ac798f727d315eed18f69427b0296cde6" prot="public" static="no">
+        <type>Key</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::declared_key_type =  Key</definition>
+        <argsstring></argsstring>
+        <name>declared_key_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::declared_key_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="217" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a1ec700d20fb00b2a3d0a784f0f3102ec" prot="public" static="no">
+        <type>typename std::remove_const&lt; declared_key_type &gt;::type</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::key_type =  typename std::remove_const&lt;declared_key_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>key_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::key_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="218" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a5c52f2809a6df8746cc997f36af2ee75" prot="public" static="no">
+        <type>typename std::add_const&lt; key_type &gt;::type</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::const_key_type =  typename std::add_const&lt;key_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>const_key_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::const_key_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="219" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a10ae94ec87fe4eb2c9068cfd6dcb229b" prot="public" static="no">
+        <type>Value</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::declared_value_type =  Value</definition>
+        <argsstring></argsstring>
+        <name>declared_value_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::declared_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="222" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a87634b42b50c618ced9c47fdeb293350" prot="public" static="no">
+        <type>typename std::remove_const&lt; declared_value_type &gt;::type</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::value_type =  typename std::remove_const&lt;declared_value_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="223" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a1c60e2ed0c18335c83587a6750948992" prot="public" static="no">
+        <type>typename std::add_const&lt; value_type &gt;::type</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::const_value_type =  typename std::add_const&lt;value_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="224" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1ac3d9e6399c64eeb6cafc63ff3ce59f6d" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::device_type =  Device</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="226" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a48b64d5c067e7162719ef27ce1988a03" prot="public" static="no">
+        <type>typename Device::execution_space</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::execution_space =  typename Device::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::UnorderedMap::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="227" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1ac62fe614df71a2fa0b133aa00a8a03b0" prot="public" static="no">
+        <type>Hasher</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::hasher_type =  Hasher</definition>
+        <argsstring></argsstring>
+        <name>hasher_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::hasher_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="228" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1ac27f62af8874dcb0afdb48454bc5dbd8" prot="public" static="no">
+        <type>EqualTo</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::equal_to_type =  EqualTo</definition>
+        <argsstring></argsstring>
+        <name>equal_to_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::equal_to_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="229" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a37ec8268ad843f8564e56019753de7fd" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::size_type =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="230" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1afda340673e8ee57c1606011b09218ff9" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; declared_key_type, declared_value_type, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, hasher_type, equal_to_type &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::declared_map_type =  UnorderedMap&lt;declared_key_type, declared_value_type, device_type, hasher_type, equal_to_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>declared_map_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::declared_map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="233" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1accb769581a7a8b5c110ff156823853d4" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; key_type, value_type, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, hasher_type, equal_to_type &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::insertable_map_type =  UnorderedMap&lt;key_type, value_type, device_type, hasher_type, equal_to_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>insertable_map_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::insertable_map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="236" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a46424ec836c4a57fedb949adb23e31cb" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; const_key_type, value_type, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, hasher_type, equal_to_type &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::modifiable_map_type =  UnorderedMap&lt;const_key_type, value_type, device_type, hasher_type, equal_to_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>modifiable_map_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::modifiable_map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="238" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a52704a7ddf42b23bd514902c2a7807e1" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; const_key_type, const_value_type, <ref refid="struct_kokkos_1_1_device" kindref="compound">device_type</ref>, hasher_type, equal_to_type &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::const_map_type =  UnorderedMap&lt;const_key_type, const_value_type, device_type, hasher_type, equal_to_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>const_map_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::const_map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="241" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a20e735d30dab54510a1133f436208436" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map_insert_result" kindref="compound">UnorderedMapInsertResult</ref></type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::insert_result =  UnorderedMapInsertResult</definition>
+        <argsstring></argsstring>
+        <name>insert_result</name>
+        <qualifiedname>Kokkos::UnorderedMap::insert_result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="255" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1a985587d5ddd0d4dfcb04c4ce10c35177" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; Key, Value, host_mirror_space, Hasher, EqualTo &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::HostMirror =  UnorderedMap&lt;Key, Value, host_mirror_space, Hasher, EqualTo&gt;</definition>
+        <argsstring></argsstring>
+        <name>HostMirror</name>
+        <qualifiedname>Kokkos::UnorderedMap::HostMirror</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="257" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1aa30880b704805eb4d9071d8583381c83" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_histogram" kindref="compound">Impl::UnorderedMapHistogram</ref>&lt; <ref refid="class_kokkos_1_1_unordered_map" kindref="compound">const_map_type</ref> &gt;</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::histogram_type =  Impl::UnorderedMapHistogram&lt;const_map_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>histogram_type</name>
+        <qualifiedname>Kokkos::UnorderedMap::histogram_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="260" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1aa0f55a338f6530f0a76d20756e1e0905" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::is_set</definition>
+        <argsstring></argsstring>
+        <name>is_set</name>
+        <qualifiedname>Kokkos::UnorderedMap::is_set</qualifiedname>
+        <initializer>= std::is_same&lt;void, value_type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="244" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a152b5ddcbd3a72f9820785d3d3625d0f" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::has_const_key</definition>
+        <argsstring></argsstring>
+        <name>has_const_key</name>
+        <qualifiedname>Kokkos::UnorderedMap::has_const_key</qualifiedname>
+        <initializer>=
+      std::is_same&lt;const_key_type, declared_key_type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="245" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a455757c4aeb2712c2fcc4670518b8ccf" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::has_const_value</definition>
+        <argsstring></argsstring>
+        <name>has_const_value</name>
+        <qualifiedname>Kokkos::UnorderedMap::has_const_value</qualifiedname>
+        <initializer>=
+      is_set || std::is_same&lt;const_value_type, declared_value_type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="247" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a86b4023deed953dd089dc9dfa9284105" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::is_insertable_map</definition>
+        <argsstring></argsstring>
+        <name>is_insertable_map</name>
+        <qualifiedname>Kokkos::UnorderedMap::is_insertable_map</qualifiedname>
+        <initializer>=
+      !has_const_key &amp;&amp; (is_set || !has_const_value)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="250" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a5dc7beab52118f7a0362f69721c91c05" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::is_modifiable_map</definition>
+        <argsstring></argsstring>
+        <name>is_modifiable_map</name>
+        <qualifiedname>Kokkos::UnorderedMap::is_modifiable_map</qualifiedname>
+        <initializer>= has_const_key &amp;&amp; !has_const_value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="252" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a2d78d481cf61cb167dbe475a8181f13e" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::is_const_map</definition>
+        <argsstring></argsstring>
+        <name>is_const_map</name>
+        <qualifiedname>Kokkos::UnorderedMap::is_const_map</qualifiedname>
+        <initializer>= has_const_key &amp;&amp; has_const_value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="253" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Public member functions</header>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a5c22e9e96d82725ea49deaaa89ddc225" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_bounded_insert</definition>
+        <argsstring></argsstring>
+        <name>m_bounded_insert</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_bounded_insert</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="812" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="812" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1ad3e185b47a7dac8939a11b643ecd4bf0" prot="private" static="no" mutable="no">
+        <type>hasher_type</type>
+        <definition>hasher_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_hasher</definition>
+        <argsstring></argsstring>
+        <name>m_hasher</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_hasher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="813" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="813" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a9eb803fd6adad249b6ed24fb43f2effd" prot="private" static="no" mutable="no">
+        <type>equal_to_type</type>
+        <definition>equal_to_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_equal_to</definition>
+        <argsstring></argsstring>
+        <name>m_equal_to</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_equal_to</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="814" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="814" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1aa3745578355d6ca9a66e4de4bc443b77" prot="private" static="no" mutable="yes">
+        <type>size_type</type>
+        <definition>size_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_size</definition>
+        <argsstring></argsstring>
+        <name>m_size</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="815" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="815" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1ac34312ba28cacfbb6fe2f4d3ce5c81b3" prot="private" static="no" mutable="no">
+        <type>bitset_type</type>
+        <definition>bitset_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_available_indexes</definition>
+        <argsstring></argsstring>
+        <name>m_available_indexes</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_available_indexes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="816" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="816" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1ab93d95ed3ccf69b8b62dc4229a3f45f4" prot="private" static="no" mutable="no">
+        <type>size_type_view</type>
+        <definition>size_type_view Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_hash_lists</definition>
+        <argsstring></argsstring>
+        <name>m_hash_lists</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_hash_lists</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="817" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="817" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a676213c73c24b0fb25f6af5e3fcb4c31" prot="private" static="no" mutable="no">
+        <type>size_type_view</type>
+        <definition>size_type_view Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_next_index</definition>
+        <argsstring></argsstring>
+        <name>m_next_index</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_next_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="818" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="818" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a87ac212574a0132afa03d3d9367c6ab9" prot="private" static="no" mutable="no">
+        <type>key_type_view</type>
+        <definition>key_type_view Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_keys</definition>
+        <argsstring></argsstring>
+        <name>m_keys</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_keys</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="819" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="819" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1ae13eb7521b572ce5e6aac049dc056972" prot="private" static="no" mutable="no">
+        <type>value_type_view</type>
+        <definition>value_type_view Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_values</definition>
+        <argsstring></argsstring>
+        <name>m_values</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="820" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="820" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_unordered_map_1a6f582af51e39799ab27f9fbbd7d0306c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">scalars_view</ref></type>
+        <definition>scalars_view Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::m_scalars</definition>
+        <argsstring></argsstring>
+        <name>m_scalars</name>
+        <qualifiedname>Kokkos::UnorderedMap::m_scalars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="821" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="821" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_unordered_map_1aac3165b487d7007f8fb8d95ef9d2c6d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename KKey</type>
+          </param>
+          <param>
+            <type>typename VValue</type>
+          </param>
+          <param>
+            <type>typename DDevice</type>
+          </param>
+          <param>
+            <type>typename HHash</type>
+          </param>
+          <param>
+            <type>typename EEqualTo</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class UnorderedMap</definition>
+        <argsstring></argsstring>
+        <name>UnorderedMap</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMap</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="825" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="825" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_unordered_map_1a09bdbc19a577117a65536719456d3fde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename UMap</type>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct Impl::UnorderedMapErase</definition>
+        <argsstring></argsstring>
+        <name>Impl::UnorderedMapErase</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMapErase</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_erase" kindref="compound">Impl::UnorderedMapErase</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="828" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="828" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_unordered_map_1a687fed143eb7d5c2c128d53e5c7233fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename UMap</type>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct Impl::UnorderedMapHistogram</definition>
+        <argsstring></argsstring>
+        <name>Impl::UnorderedMapHistogram</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMapHistogram</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_histogram" kindref="compound">Impl::UnorderedMapHistogram</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="831" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="831" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_unordered_map_1ab1a64f89628be1346a74cea48c291998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename UMap</type>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct Impl::UnorderedMapPrint</definition>
+        <argsstring></argsstring>
+        <name>Impl::UnorderedMapPrint</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMapPrint</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_print" kindref="compound">Impl::UnorderedMapPrint</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="834" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="834" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a5cf0d34e28af751db11ff5c27f5c1b21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::UnorderedMap</definition>
+        <argsstring>(size_type capacity_hint=0, hasher_type hasher=hasher_type(), equal_to_type equal_to=equal_to_type())</argsstring>
+        <name>UnorderedMap</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMap</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>capacity_hint</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>hasher_type</type>
+          <declname>hasher</declname>
+          <defval>hasher_type()</defval>
+        </param>
+        <param>
+          <type>equal_to_type</type>
+          <declname>equal_to</declname>
+          <defval>equal_to_type()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>capacity_hint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Initial guess of how many unique keys will be inserted into the map</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hash</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Hasher function for <computeroutput>Key</computeroutput> instances. The default value usually suffices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="300" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="300" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a227887a6c3f70c8a193532d1b75879aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::reset_failed_insert_flag</definition>
+        <argsstring>()</argsstring>
+        <name>reset_failed_insert_flag</name>
+        <qualifiedname>Kokkos::UnorderedMap::reset_failed_insert_flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="326" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="326" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a8e7d1dc972408e7e4a6dbd210782e580" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_histogram" kindref="compound">histogram_type</ref></type>
+        <definition>histogram_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::get_histogram</definition>
+        <argsstring>()</argsstring>
+        <name>get_histogram</name>
+        <qualifiedname>Kokkos::UnorderedMap::get_histogram</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="328" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="328" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1aa24ab59f3ae8d3b0b2d0827e7d3f4284" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>Kokkos::UnorderedMap::clear</qualifiedname>
+        <briefdescription>
+<para>Clear all entries in the table. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="331" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="331" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a5a3e45a9c69fed458155128d443cc99f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::UnorderedMap::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="352" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="352" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ae2f1ae4ff31849f2ff4609d441cf8eec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::rehash</definition>
+        <argsstring>(size_type requested_capacity=0)</argsstring>
+        <name>rehash</name>
+        <qualifiedname>Kokkos::UnorderedMap::rehash</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>requested_capacity</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Change the capacity of the the map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If there are no failed inserts the current size of the map will be used as a lower bound for the input capacity. If the map is not empty and does not have failed inserts and the capacity changes then the current data is copied into the resized / rehashed map.</para>
+<para>This is <emphasis>not</emphasis> a device function; it may <emphasis>not</emphasis> be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="367" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="367" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ac485a27ccfe1bb2133afae9483af1ba4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::rehash</definition>
+        <argsstring>(size_type requested_capacity, bool bounded_insert)</argsstring>
+        <name>rehash</name>
+        <qualifiedname>Kokkos::UnorderedMap::rehash</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>requested_capacity</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>bounded_insert</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="372" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="372" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ac4192eefe17c5bffb3d858c21eba84f1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::UnorderedMap::size</qualifiedname>
+        <briefdescription>
+<para>The number of entries in the table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method has undefined behavior when erasable() is true.</para>
+<para>Note that this is <emphasis>not</emphasis> a device function; it cannot be called in a parallel kernel. The value is not stored as a variable; it must be computed. m_size is a mutable cache of that value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="400" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="400" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a0575654e01fbdc975e2214b6c5c3b1bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::failed_insert</definition>
+        <argsstring>() const</argsstring>
+        <name>failed_insert</name>
+        <qualifiedname>Kokkos::UnorderedMap::failed_insert</qualifiedname>
+        <briefdescription>
+<para>The current number of failed <ref refid="class_kokkos_1_1_unordered_map_1af6e3b65c35488bcc00d714e93e61ef3b" kindref="member">insert()</ref> calls. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is <emphasis>not</emphasis> a device function; it may <emphasis>not</emphasis> be called in a parallel kernel. The value is not stored as a variable; it must be computed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="414" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="414" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a91a22fa7b0587e4ed5d437972325b4b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::erasable</definition>
+        <argsstring>() const</argsstring>
+        <name>erasable</name>
+        <qualifiedname>Kokkos::UnorderedMap::erasable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="416" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="416" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a929e332f5596667fe611c999bd6f05dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::begin_erase</definition>
+        <argsstring>()</argsstring>
+        <name>begin_erase</name>
+        <qualifiedname>Kokkos::UnorderedMap::begin_erase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="420" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="420" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ac4ef609f71ff3ce6d1bb66267fab53b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::end_erase</definition>
+        <argsstring>()</argsstring>
+        <name>end_erase</name>
+        <qualifiedname>Kokkos::UnorderedMap::end_erase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="434" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="434" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ac22b948cdc46d377eb06501532b96dda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION size_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION size_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::capacity</definition>
+        <argsstring>() const</argsstring>
+        <name>capacity</name>
+        <qualifiedname>Kokkos::UnorderedMap::capacity</qualifiedname>
+        <briefdescription>
+<para>The maximum number of entries that the table can hold. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="453" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="453" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a418264114120472b3cfc6e0eb2530001" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::hash_capacity</definition>
+        <argsstring>() const</argsstring>
+        <name>hash_capacity</name>
+        <qualifiedname>Kokkos::UnorderedMap::hash_capacity</qualifiedname>
+        <briefdescription>
+<para>The number of hash table &quot;buckets.&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is different than the number of entries that the table can hold. Each key hashes to an index in [0, <ref refid="class_kokkos_1_1_unordered_map_1a418264114120472b3cfc6e0eb2530001" kindref="member">hash_capacity()</ref> - 1]. That index can hold zero or more entries. This class decides what <ref refid="class_kokkos_1_1_unordered_map_1a418264114120472b3cfc6e0eb2530001" kindref="member">hash_capacity()</ref> should be, given the user&apos;s upper bound on the number of entries the table must be able to hold.</para>
+<para>This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="466" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="466" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1af6e3b65c35488bcc00d714e93e61ef3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_unordered_map_insert_result" kindref="compound">insert_result</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION insert_result Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::insert</definition>
+        <argsstring>(key_type const &amp;k, impl_value_type const &amp;v=impl_value_type()) const</argsstring>
+        <name>insert</name>
+        <qualifiedname>Kokkos::UnorderedMap::insert</qualifiedname>
+        <param>
+          <type>key_type const &amp;</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>impl_value_type const &amp;</type>
+          <declname>v</declname>
+          <defval>impl_value_type()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. As discussed in the class documentation, it need not succeed. The return value tells you if it did.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] The key to attempt to insert. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] The corresponding value to attempt to insert. If using this class as a set (with Value = void), then you need not provide this value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="480" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="480" bodyend="604"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a99c4f89c92fec057065ef81e901c876a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::erase</definition>
+        <argsstring>(key_type const &amp;k) const</argsstring>
+        <name>erase</name>
+        <qualifiedname>Kokkos::UnorderedMap::erase</qualifiedname>
+        <param>
+          <type>key_type const &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="607" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="607" bodyend="623"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a533a0d23ffc14247d95368eeb848817a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::find</definition>
+        <argsstring>(const key_type &amp;k) const</argsstring>
+        <name>find</name>
+        <qualifiedname>Kokkos::UnorderedMap::find</qualifiedname>
+        <param>
+          <type>const key_type &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>Find the given key <computeroutput>k</computeroutput>, if it exists in the table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>If the key exists in the table, the index of the value corresponding to that key; otherwise, an invalid index.</para>
+</simplesect>
+This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="633" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="633" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a4e0b61f1a5d0b43cf54cf2eef451a911" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::exists</definition>
+        <argsstring>(const key_type &amp;k) const</argsstring>
+        <name>exists</name>
+        <qualifiedname>Kokkos::UnorderedMap::exists</qualifiedname>
+        <param>
+          <type>const key_type &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+<para>Does the key exist in the map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="653" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="653" bodyend="653"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1aa3b574b40df788f46dc2f0f4c3948505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::conditional_t&lt;(is_set||has_const_value), impl_value_type, impl_value_type &amp; &gt;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::conditional_t&lt;(is_set||has_const_value), impl_value_type, impl_value_type &amp; &gt; Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::value_at</definition>
+        <argsstring>(size_type i) const</argsstring>
+        <name>value_at</name>
+        <qualifiedname>Kokkos::UnorderedMap::value_at</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Get the value with <computeroutput>i</computeroutput> as its direct index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Index directly into the array of entries.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel.</para>
+<para>&apos;const value_type&apos; via Cuda texture fetch must return by value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="666" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="666" bodyend="668"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a2223a973488f4b7189c9d681b9186d7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION key_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION key_type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::key_at</definition>
+        <argsstring>(size_type i) const</argsstring>
+        <name>key_at</name>
+        <qualifiedname>Kokkos::UnorderedMap::key_at</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Get the key with <computeroutput>i</computeroutput> as its direct index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Index directly into the array of entries.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+This <emphasis>is</emphasis> a device function; it may be called in a parallel kernel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="677" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="677" bodyend="679"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a925fb21fbb6d1c8aafb4329139dbe9c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION bool</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::valid_at</definition>
+        <argsstring>(size_type i) const</argsstring>
+        <name>valid_at</name>
+        <qualifiedname>Kokkos::UnorderedMap::valid_at</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="682" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="682" bodyend="682"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1af84c6bdc315d2bea6035b3f658acc8bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename SKey</type>
+          </param>
+          <param>
+            <type>typename SValue</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::UnorderedMap</definition>
+        <argsstring>(UnorderedMap&lt; SKey, SValue, Device, Hasher, EqualTo &gt; const &amp;src, typename std::enable_if&lt; Impl::UnorderedMapCanAssign&lt; declared_key_type, declared_value_type, SKey, SValue &gt;::value, int &gt;::type=0)</argsstring>
+        <name>UnorderedMap</name>
+        <qualifiedname>Kokkos::UnorderedMap::UnorderedMap</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; SKey, SValue, <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, Hasher, EqualTo &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_can_assign" kindref="compound">Impl::UnorderedMapCanAssign</ref>&lt; declared_key_type, declared_value_type, SKey, SValue &gt;::value, int &gt;::type</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="685" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="685" bodyend="700"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a68152c4f66800e7a93fe88ac2f0aca91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename SKey</type>
+          </param>
+          <param>
+            <type>typename SValue</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_can_assign" kindref="compound">Impl::UnorderedMapCanAssign</ref>&lt; declared_key_type, declared_value_type, SKey, SValue &gt;::value, <ref refid="class_kokkos_1_1_unordered_map" kindref="compound">declared_map_type</ref> &amp; &gt;::type</type>
+        <definition>std::enable_if&lt; Impl::UnorderedMapCanAssign&lt; declared_key_type, declared_value_type, SKey, SValue &gt;::value, declared_map_type &amp; &gt;::type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::operator=</definition>
+        <argsstring>(UnorderedMap&lt; SKey, SValue, Device, Hasher, EqualTo &gt; const &amp;src)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::UnorderedMap::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; SKey, SValue, <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, Hasher, EqualTo &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="707" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="707" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a810bac91bb51b403ba0950aecacd41f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename SKey</type>
+          </param>
+          <param>
+            <type>typename SValue</type>
+          </param>
+          <param>
+            <type>typename SDevice</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_same&lt; typenamestd::remove_const&lt; SKey &gt;::type, key_type &gt;::value &amp;&amp;std::is_same&lt; typenamestd::remove_const&lt; SValue &gt;::type, value_type &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt; std::is_same&lt; typenamestd::remove_const&lt; SKey &gt;::type, key_type &gt;::value &amp;&amp;std::is_same&lt; typenamestd::remove_const&lt; SValue &gt;::type, value_type &gt;::value &gt;::type Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::create_copy_view</definition>
+        <argsstring>(UnorderedMap&lt; SKey, SValue, SDevice, Hasher, EqualTo &gt; const &amp;src)</argsstring>
+        <name>create_copy_view</name>
+        <qualifiedname>Kokkos::UnorderedMap::create_copy_view</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&lt; SKey, SValue, SDevice, Hasher, EqualTo &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="726" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="726" bodyend="771"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a47e061956ed40a096297faf79b58b61b" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::modified</definition>
+        <argsstring>() const</argsstring>
+        <name>modified</name>
+        <qualifiedname>Kokkos::UnorderedMap::modified</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="775" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="775" bodyend="775"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1ad5d80c38cfc1a4aea8aa413793c547a2" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::set_flag</definition>
+        <argsstring>(int flag) const</argsstring>
+        <name>set_flag</name>
+        <qualifiedname>Kokkos::UnorderedMap::set_flag</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>flag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="777" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="777" bodyend="783"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a292312f81aae9df2f353b41e64c08ed4" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::reset_flag</definition>
+        <argsstring>(int flag) const</argsstring>
+        <name>reset_flag</name>
+        <qualifiedname>Kokkos::UnorderedMap::reset_flag</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>flag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="785" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="785" bodyend="791"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1aa6d6896b3af97a6bd928d163c4e21d4d" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::get_flag</definition>
+        <argsstring>(int flag) const</argsstring>
+        <name>get_flag</name>
+        <qualifiedname>Kokkos::UnorderedMap::get_flag</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>flag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="793" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="793" bodyend="800"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_unordered_map_1a76f2a8405036a5a904a377dbb14984c3" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::calculate_capacity</definition>
+        <argsstring>(uint32_t capacity_hint)</argsstring>
+        <name>calculate_capacity</name>
+        <qualifiedname>Kokkos::UnorderedMap::calculate_capacity</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>capacity_hint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="802" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="802" bodyend="809"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_unordered_map_1af759f266f010759a0f53c1df6c98509b" prot="private" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; Key, <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref>, void, void &gt;::host_mirror_space</type>
+        <definition>using Kokkos::UnorderedMap&lt; Key, Value, Device, Hasher, EqualTo &gt;::host_mirror_space =  typename ViewTraits&lt;Key, Device, void, void&gt;::host_mirror_space</definition>
+        <argsstring></argsstring>
+        <name>host_mirror_space</name>
+        <qualifiedname>Kokkos::UnorderedMap::host_mirror_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="209" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Thread-safe, performance-portable lookup table. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a lookup table. In terms of functionality, this class compares to std::unordered_map (new in C++11). &quot;Unordered&quot; means that keys are not stored in any particular order, unlike (for example) std::map. &quot;Thread-safe&quot; means that lookups, insertion, and deletion are safe to call by multiple threads in parallel. &quot;Performance-portable&quot; means that parallel performance of these operations is reasonable, on multiple hardware platforms. Platforms on which performance has been tested include conventional Intel x86 multicore processors, Intel Xeon Phi (&quot;MIC&quot;), and NVIDIA GPUs.</para>
+<para>Parallel performance portability entails design decisions that might differ from one&apos;s expectation for a sequential interface. This particularly affects insertion of single elements. In an interface intended for sequential use, insertion might reallocate memory if the original allocation did not suffice to hold the new element. In this class, insertion does <emphasis>not</emphasis> reallocate memory. This means that it might fail. <ref refid="class_kokkos_1_1_unordered_map_1af6e3b65c35488bcc00d714e93e61ef3b" kindref="member">insert()</ref> returns an enum which indicates whether the insert failed. There are three possible conditions: <orderedlist>
+<listitem>
+<para><computeroutput>INSERT_FAILED</computeroutput>: The insert failed. This usually means that the <ref refid="class_kokkos_1_1_unordered_map" kindref="compound">UnorderedMap</ref> ran out of space.  </para>
+</listitem>
+<listitem>
+<para><computeroutput>INSERT_SUCCESS</computeroutput>: The insert succeeded, and the key did <emphasis>not</emphasis> exist in the table before.  </para>
+</listitem>
+<listitem>
+<para><computeroutput>INSERT_EXISTING</computeroutput>: The insert succeeded, and the key <emphasis>did</emphasis> exist in the table before. The new value was ignored and the old value was left in place.  </para>
+</listitem>
+</orderedlist>
+</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of keys of the lookup table. If <computeroutput>const</computeroutput>, users are not allowed to add or remove keys, though they are allowed to change values. In that case, the implementation may make optimizations specific to the <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput>. For example, if <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput> is <computeroutput>Cuda</computeroutput>, it may use texture fetches to access keys.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of values stored in the lookup table. You may use <computeroutput>void</computeroutput> here, in which case the table will be a set of keys. If <computeroutput>const</computeroutput>, users are not allowed to change entries. In that case, the implementation may make optimizations specific to the <computeroutput><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></computeroutput>, such as using texture fetches to access values.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Kokkos <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> type.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Hasher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Definition of the hash function for instances of <computeroutput>Key</computeroutput>. The default will calculate a bitwise hash.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>EqualTo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Definition of the equality function for instances of <computeroutput>Key</computeroutput>. The default will do a bitwise equality comparison. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" line="207" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_UnorderedMap.hpp" bodystart="207" bodyend="835"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_unordered_map_1a929e332f5596667fe611c999bd6f05dc" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>begin_erase</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a14eae73c326c0d5b2273e2b774563125" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>bitset_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a76f2a8405036a5a904a377dbb14984c3" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>calculate_capacity</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac22b948cdc46d377eb06501532b96dda" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>capacity</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa24ab59f3ae8d3b0b2d0827e7d3f4284" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>clear</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5c52f2809a6df8746cc997f36af2ee75" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>const_key_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a52704a7ddf42b23bd514902c2a7807e1" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>const_map_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a1c60e2ed0c18335c83587a6750948992" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a810bac91bb51b403ba0950aecacd41f3" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>create_copy_view</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac798f727d315eed18f69427b0296cde6" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>declared_key_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1afda340673e8ee57c1606011b09218ff9" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>declared_map_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a10ae94ec87fe4eb2c9068cfd6dcb229b" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>declared_value_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac3d9e6399c64eeb6cafc63ff3ce59f6d" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac4ef609f71ff3ce6d1bb66267fab53b8" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>end_erase</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac27f62af8874dcb0afdb48454bc5dbd8" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>equal_to_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a91a22fa7b0587e4ed5d437972325b4b0" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>erasable</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4a2e97ed1ddf6c3c621896a95673945fd7" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>erasable_idx</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a99c4f89c92fec057065ef81e901c876a" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>erase</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a48b64d5c067e7162719ef27ce1988a03" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a4e0b61f1a5d0b43cf54cf2eef451a911" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>exists</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a0575654e01fbdc975e2214b6c5c3b1bd" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>failed_insert</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4a3b06175ed73e2f93bd8ad3cea37583ff" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>failed_insert_idx</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a533a0d23ffc14247d95368eeb848817a" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>find</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa6d6896b3af97a6bd928d163c4e21d4d" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>get_flag</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a8e7d1dc972408e7e4a6dbd210782e580" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>get_histogram</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a152b5ddcbd3a72f9820785d3d3625d0f" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>has_const_key</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a455757c4aeb2712c2fcc4670518b8ccf" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>has_const_value</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a418264114120472b3cfc6e0eb2530001" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>hash_capacity</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac62fe614df71a2fa0b133aa00a8a03b0" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>hasher_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa30880b704805eb4d9071d8583381c83" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>histogram_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1af759f266f010759a0f53c1df6c98509b" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a985587d5ddd0d4dfcb04c4ce10c35177" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>HostMirror</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a09bdbc19a577117a65536719456d3fde" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>Impl::UnorderedMapErase</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a687fed143eb7d5c2c128d53e5c7233fe" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>Impl::UnorderedMapHistogram</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ab1a64f89628be1346a74cea48c291998" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>Impl::UnorderedMapPrint</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5dce955ada3e42ca2e841657e4cbc13e" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>impl_value_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1af6e3b65c35488bcc00d714e93e61ef3b" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>insert</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a20e735d30dab54510a1133f436208436" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>insert_result</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1accb769581a7a8b5c110ff156823853d4" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>insertable_map_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa09d45891ad9636ead2d790f10e11127a01760eadaab6074485ea4cb85dafe10f" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>invalid_index</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5a3e45a9c69fed458155128d443cc99f" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>is_allocated</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a2d78d481cf61cb167dbe475a8181f13e" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>is_const_map</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a86b4023deed953dd089dc9dfa9284105" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>is_insertable_map</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5dc7beab52118f7a0362f69721c91c05" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>is_modifiable_map</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa0f55a338f6530f0a76d20756e1e0905" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>is_set</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a2223a973488f4b7189c9d681b9186d7a" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>key_at</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a1ec700d20fb00b2a3d0a784f0f3102ec" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>key_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5cc2ecbe38c64e9e2c77b5c44e594fe9" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>key_type_view</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac34312ba28cacfbb6fe2f4d3ce5c81b3" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_available_indexes</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5c22e9e96d82725ea49deaaa89ddc225" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_bounded_insert</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a9eb803fd6adad249b6ed24fb43f2effd" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_equal_to</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ab93d95ed3ccf69b8b62dc4229a3f45f4" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_hash_lists</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ad3e185b47a7dac8939a11b643ecd4bf0" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_hasher</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a87ac212574a0132afa03d3d9367c6ab9" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_keys</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a676213c73c24b0fb25f6af5e3fcb4c31" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_next_index</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a6f582af51e39799ab27f9fbbd7d0306c" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_scalars</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa3745578355d6ca9a66e4de4bc443b77" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_size</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ae13eb7521b572ce5e6aac049dc056972" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>m_values</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a46424ec836c4a57fedb949adb23e31cb" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>modifiable_map_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a47e061956ed40a096297faf79b58b61b" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>modified</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a97465ef55557c4eb2c2a1421fe9094f4aa798d5843dd85df133f7f037cafda494" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>modified_idx</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac1023412b7b82f4e7321e85dc3470eb3a0a2d7964077261f00adfebbb3e56595e" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>num_scalars</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a68152c4f66800e7a93fe88ac2f0aca91" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ae2f1ae4ff31849f2ff4609d441cf8eec" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>rehash</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac485a27ccfe1bb2133afae9483af1ba4" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>rehash</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a227887a6c3f70c8a193532d1b75879aa" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>reset_failed_insert_flag</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a292312f81aae9df2f353b41e64c08ed4" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>reset_flag</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a86d893607ba07017424acc4d6b32c4ee" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>scalars_view</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ad5d80c38cfc1a4aea8aa413793c547a2" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>set_flag</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1ac4192eefe17c5bffb3d858c21eba84f1" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>size</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a37ec8268ad843f8564e56019753de7fd" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a8a3b3cf90a7956a7cfc569e685301a1e" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>size_type_view</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aac3165b487d7007f8fb8d95ef9d2c6d3" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>UnorderedMap</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a5cf0d34e28af751db11ff5c27f5c1b21" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>UnorderedMap</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1af84c6bdc315d2bea6035b3f658acc8bd" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>UnorderedMap</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a925fb21fbb6d1c8aafb4329139dbe9c0" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>valid_at</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aa3b574b40df788f46dc2f0f4c3948505" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>value_at</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1a87634b42b50c618ced9c47fdeb293350" prot="public" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_unordered_map_1aba3866cbd96f1e247a876822196589c4" prot="private" virt="non-virtual"><scope>Kokkos::UnorderedMap</scope><name>value_type_view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

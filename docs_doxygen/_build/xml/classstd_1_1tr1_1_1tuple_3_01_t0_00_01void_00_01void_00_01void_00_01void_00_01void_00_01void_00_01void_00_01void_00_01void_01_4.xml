@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4" kind="class" language="C++" prot="public">
+    <compoundname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T0</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1aeeed38755abdaa78587dd1eac9ccc950" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>k</declname>
+            <defname>k</defname>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class gtest_internal::Get</definition>
+        <argsstring></argsstring>
+        <name>gtest_internal::Get</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::Get</qualifiedname>
+        <param>
+          <type><ref refid="classstd_1_1tr1_1_1gtest__internal_1_1_get" kindref="compound">gtest_internal::Get</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="852" column="28" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="852" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a73673232251b459e24cf176c5fc359f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+          <param>
+            <type>typename U1</type>
+          </param>
+          <param>
+            <type>typename U2</type>
+          </param>
+          <param>
+            <type>typename U3</type>
+          </param>
+          <param>
+            <type>typename U4</type>
+          </param>
+          <param>
+            <type>typename U5</type>
+          </param>
+          <param>
+            <type>typename U6</type>
+          </param>
+          <param>
+            <type>typename U7</type>
+          </param>
+          <param>
+            <type>typename U8</type>
+          </param>
+          <param>
+            <type>typename U9</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class tuple</definition>
+        <argsstring></argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="870" column="61" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="870" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a266bb701b0bf866007d5865d36f87bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>k</declname>
+            <defname>k</defname>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>class gtest_internal::Get</definition>
+        <argsstring></argsstring>
+        <name>gtest_internal::Get</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::Get</qualifiedname>
+        <param>
+          <type><ref refid="classstd_1_1tr1_1_1gtest__internal_1_1_get" kindref="compound">gtest_internal::Get</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="852" column="28" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="852" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a3c69f6d572fe00fdd1e62fefecaac4bc" prot="private" static="no" mutable="no">
+        <type>T0</type>
+        <definition>T0 std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::f0_</definition>
+        <argsstring></argsstring>
+        <name>f0_</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::f0_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="878" column="6" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="878" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a530b48c0bc4312965b1aebb57f400e21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tuple</definition>
+        <argsstring>()</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="854" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="854" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a5bea9bf4286a79fb02372a84d7f9c284" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(typename ::std::tr1::gtest_internal::ByRef&lt; T0 &gt;::type f0)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>typename <ref refid="structstd_1_1tr1_1_1gtest__internal_1_1_by_ref" kindref="compound">::std::tr1::gtest_internal::ByRef</ref>&lt; T0 &gt;::type</type>
+          <declname>f0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="856" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="856" bodyend="856"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a209921d0e973c39767869a35d224d4c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(const tuple &amp;t)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="858" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="858" bodyend="858"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1acafaf3f8eeb50674ea2038be02d6f2fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="861" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="861" bodyend="861"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a971d8291d55289e904650b4d9571c848" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</definition>
+        <argsstring>(const tuple &amp;t)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="863" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="863" bodyend="863"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a2673db3cad9db01a9b63ccf495794ae6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="866" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="866" bodyend="868"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a20813b51402be8b2bd0564ff69ed3947" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>()</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="854" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="854" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a5bea9bf4286a79fb02372a84d7f9c284" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(typename ::std::tr1::gtest_internal::ByRef&lt; T0 &gt;::type f0)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>typename <ref refid="structstd_1_1tr1_1_1gtest__internal_1_1_by_ref" kindref="compound">::std::tr1::gtest_internal::ByRef</ref>&lt; T0 &gt;::type</type>
+          <declname>f0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="856" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="856" bodyend="856"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a209921d0e973c39767869a35d224d4c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(const tuple &amp;t)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="858" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="858" bodyend="858"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1acafaf3f8eeb50674ea2038be02d6f2fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>tuple</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::tuple</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="861" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="861" bodyend="861"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a971d8291d55289e904650b4d9571c848" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</definition>
+        <argsstring>(const tuple &amp;t)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="863" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="863" bodyend="863"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a2673db3cad9db01a9b63ccf495794ae6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="866" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="866" bodyend="868"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a019216cdba578e330f776e17c0b231a0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::CopyFrom</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>CopyFrom</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::CopyFrom</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="873" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="873" bodyend="876"/>
+      </memberdef>
+      <memberdef kind="function" id="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a019216cdba578e330f776e17c0b231a0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U0</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref> &amp;</type>
+        <definition>tuple &amp; std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::CopyFrom</definition>
+        <argsstring>(const tuple&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;t)</argsstring>
+        <name>CopyFrom</name>
+        <qualifiedname>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;::CopyFrom</qualifiedname>
+        <param>
+          <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">tuple</ref>&lt; U0, void, void, void, void, void, void, void, void, void &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="873" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="873" bodyend="876"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="850" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="850" bodyend="879"/>
+    <listofallmembers>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a019216cdba578e330f776e17c0b231a0" prot="private" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>CopyFrom</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a019216cdba578e330f776e17c0b231a0" prot="private" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>CopyFrom</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a3c69f6d572fe00fdd1e62fefecaac4bc" prot="private" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>f0_</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1aeeed38755abdaa78587dd1eac9ccc950" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>gtest_internal::Get</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a266bb701b0bf866007d5865d36f87bd1" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>gtest_internal::Get</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a971d8291d55289e904650b4d9571c848" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>operator=</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a2673db3cad9db01a9b63ccf495794ae6" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>operator=</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a971d8291d55289e904650b4d9571c848" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>operator=</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a2673db3cad9db01a9b63ccf495794ae6" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>operator=</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a73673232251b459e24cf176c5fc359f8" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a530b48c0bc4312965b1aebb57f400e21" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a5bea9bf4286a79fb02372a84d7f9c284" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a209921d0e973c39767869a35d224d4c3" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1acafaf3f8eeb50674ea2038be02d6f2fd" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a20813b51402be8b2bd0564ff69ed3947" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a5bea9bf4286a79fb02372a84d7f9c284" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1a209921d0e973c39767869a35d224d4c3" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+      <member refid="classstd_1_1tr1_1_1tuple_3_01_t0_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_00_01void_01_4_1acafaf3f8eeb50674ea2038be02d6f2fd" prot="public" virt="non-virtual"><scope>std::tr1::tuple&lt; T0, void, void, void, void, void, void, void, void, void &gt;</scope><name>tuple</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

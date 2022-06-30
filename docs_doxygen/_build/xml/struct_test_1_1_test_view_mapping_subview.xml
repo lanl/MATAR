@@ -1,0 +1,670 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_mapping_subview" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewMappingSubview</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_mapping_subview_1aa7998df93a064e03e731504f2e84a860" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@278</name>
+        <qualifiedname>Test::TestViewMappingSubview::@278</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1aa7998df93a064e03e731504f2e84a860a4095d61d122d571ebf40ba54e67f44df" prot="public">
+          <name>AN</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@279</name>
+        <qualifiedname>Test::TestViewMappingSubview::@279</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651aa13c12eaf78f2b7ec5afa2c5dea3696d" prot="public">
+          <name>BN0</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651a79bb8fe7e61a6e064213e55120d13804" prot="public">
+          <name>BN1</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651aa8113d76abfc328e8f3a4742b2943992" prot="public">
+          <name>BN2</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="67" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@280</name>
+        <qualifiedname>Test::TestViewMappingSubview::@280</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98af794ccbd9847643a79274ec5360c1421" prot="public">
+          <name>CN0</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98aa5c13cc42cc20d9edd9c9ce977e758be" prot="public">
+          <name>CN1</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98adb44f35ea2adff225c7e669c22832be4" prot="public">
+          <name>CN2</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@281</name>
+        <qualifiedname>Test::TestViewMappingSubview::@281</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a11a175a1a6dbc228c43790925b522a7b" prot="public">
+          <name>DN0</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a9597dc812c965204748997f7f0a58abe" prot="public">
+          <name>DN1</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a9ae7c27ad5941c8f6ab72fb512373405" prot="public">
+          <name>DN2</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a4a6fd775e04412e286437d73ecad9472" prot="public">
+          <name>DN3</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a247f21ea468515832df8acf28b083139" prot="public">
+          <name>DN4</name>
+          <initializer>= 14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1af3f334cc9118f5eb1d371e921cd473da" prot="public" static="no">
+        <type>typename Space::execution_space</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::ExecSpace =  typename Space::execution_space</definition>
+        <argsstring></argsstring>
+        <name>ExecSpace</name>
+        <qualifiedname>Test::TestViewMappingSubview::ExecSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="57" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a03681e41c5a1299557e464f4a2837250" prot="public" static="no">
+        <type>typename Space::memory_space</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::MemSpace =  typename Space::memory_space</definition>
+        <argsstring></argsstring>
+        <name>MemSpace</name>
+        <qualifiedname>Test::TestViewMappingSubview::MemSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="58" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1af24b4a040c733e5fe6f4b95f301b5aab" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; int, int &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::range =  Kokkos::pair&lt;int, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <qualifiedname>Test::TestViewMappingSubview::range</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1ad727f95f9a0fdced27a3e279824203b3" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::AT =  Kokkos::View&lt;int*, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>AT</name>
+        <qualifiedname>Test::TestViewMappingSubview::AT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a61fc1944c886829244fabb957cdd193b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const int *, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::ACT =  Kokkos::View&lt;const int*, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>ACT</name>
+        <qualifiedname>Test::TestViewMappingSubview::ACT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="64" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1ae3ce1f82afe3afbe828b8095dd282ca1" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">AT</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref> &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::AS =  Kokkos::Subview&lt;AT, range&gt;</definition>
+        <argsstring></argsstring>
+        <name>AS</name>
+        <qualifiedname>Test::TestViewMappingSubview::AS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="65" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a5ee463cf7c5f51e38437d3baeafb5d76" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::BT =  Kokkos::View&lt;int***, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>BT</name>
+        <qualifiedname>Test::TestViewMappingSubview::BT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a6c7adc9b0a5d19244a333c1950d92fba" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">BT</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref> &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::BS =  Kokkos::Subview&lt;BT, range, range, range&gt;</definition>
+        <argsstring></argsstring>
+        <name>BS</name>
+        <qualifiedname>Test::TestViewMappingSubview::BS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a1ca7d40957f564620e2f347a1de071b5" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***[13][14], ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::CT =  Kokkos::View&lt;int** * [13][14], ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>CT</name>
+        <qualifiedname>Test::TestViewMappingSubview::CT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a01dcf679aac6fc66668185378fba27a9" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">CT</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, int, int &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::CTS =  Kokkos::Subview&lt;CT, range, range, range, int, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>CTS</name>
+        <qualifiedname>Test::TestViewMappingSubview::CTS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="75" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a674f80d9e6b1efdfd473aa9a169a60d0" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***[DN3][DN4], ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DT =  Kokkos::View&lt;int** * [DN3][DN4], ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>DT</name>
+        <qualifiedname>Test::TestViewMappingSubview::DT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a0bac895023d9fc932dffe18f8111d02a" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">DT</ref>, int, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, int &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DS =  Kokkos::Subview&lt;DT, int, range, range, range, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>DS</name>
+        <qualifiedname>Test::TestViewMappingSubview::DS</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="79" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a4684bb2758d18529cf3b7152be63c931" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***[13][14], <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DLT =  Kokkos::View&lt;int** * [13][14], Kokkos::LayoutLeft, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>DLT</name>
+        <qualifiedname>Test::TestViewMappingSubview::DLT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="81" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a83365ed46bf55860e797b44acde7bbfe" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">DLT</ref>, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref>, int, int, int, int &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DLS1 =  Kokkos::Subview&lt;DLT, range, int, int, int, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>DLS1</name>
+        <qualifiedname>Test::TestViewMappingSubview::DLS1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="82" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a0d6853e28142677c5bbeafd2b3fed842" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int ***[13][14], <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>, ExecSpace &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DRT =  Kokkos::View&lt;int** * [13][14], Kokkos::LayoutRight, ExecSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>DRT</name>
+        <qualifiedname>Test::TestViewMappingSubview::DRT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="92" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_mapping_subview_1a9a9748a334754db09315a00f741934f3" prot="public" static="no">
+        <type>Kokkos::Subview&lt; <ref refid="class_kokkos_1_1_view" kindref="compound">DRT</ref>, int, int, int, int, <ref refid="struct_kokkos_1_1pair" kindref="compound">range</ref> &gt;</type>
+        <definition>using Test::TestViewMappingSubview&lt; Space &gt;::DRS1 =  Kokkos::Subview&lt;DRT, int, int, int, int, range&gt;</definition>
+        <argsstring></argsstring>
+        <name>DRS1</name>
+        <qualifiedname>Test::TestViewMappingSubview::DRS1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="93" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1afe7c57d3dcf172991cff2b434ef6a609" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">AT</ref></type>
+        <definition>AT Test::TestViewMappingSubview&lt; Space &gt;::Aa</definition>
+        <argsstring></argsstring>
+        <name>Aa</name>
+        <qualifiedname>Test::TestViewMappingSubview::Aa</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="103" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1a2fd00799b0be50009c578e111dd95037" prot="public" static="no" mutable="no">
+        <type>AS</type>
+        <definition>AS Test::TestViewMappingSubview&lt; Space &gt;::Ab</definition>
+        <argsstring></argsstring>
+        <name>Ab</name>
+        <qualifiedname>Test::TestViewMappingSubview::Ab</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="104" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1a6eb0d1d8ca602039f0853163e2a7f79a" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ACT</ref></type>
+        <definition>ACT Test::TestViewMappingSubview&lt; Space &gt;::Ac</definition>
+        <argsstring></argsstring>
+        <name>Ac</name>
+        <qualifiedname>Test::TestViewMappingSubview::Ac</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="105" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1a1e0613d2fe0961d302a379eef524a062" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">BT</ref></type>
+        <definition>BT Test::TestViewMappingSubview&lt; Space &gt;::Ba</definition>
+        <argsstring></argsstring>
+        <name>Ba</name>
+        <qualifiedname>Test::TestViewMappingSubview::Ba</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="106" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1a61854028fa63c3d9c1180ff3de70ba5c" prot="public" static="no" mutable="no">
+        <type>BS</type>
+        <definition>BS Test::TestViewMappingSubview&lt; Space &gt;::Bb</definition>
+        <argsstring></argsstring>
+        <name>Bb</name>
+        <qualifiedname>Test::TestViewMappingSubview::Bb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="107" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1aee778c3205ca026167ae373fca3a9e18" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">CT</ref></type>
+        <definition>CT Test::TestViewMappingSubview&lt; Space &gt;::Ca</definition>
+        <argsstring></argsstring>
+        <name>Ca</name>
+        <qualifiedname>Test::TestViewMappingSubview::Ca</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="108" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1ada53baf274937f22b245096bc53bc602" prot="public" static="no" mutable="no">
+        <type>CTS</type>
+        <definition>CTS Test::TestViewMappingSubview&lt; Space &gt;::Cb</definition>
+        <argsstring></argsstring>
+        <name>Cb</name>
+        <qualifiedname>Test::TestViewMappingSubview::Cb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="109" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1af4a881758ad470620edd661f93a25d66" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">DT</ref></type>
+        <definition>DT Test::TestViewMappingSubview&lt; Space &gt;::Da</definition>
+        <argsstring></argsstring>
+        <name>Da</name>
+        <qualifiedname>Test::TestViewMappingSubview::Da</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="110" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_mapping_subview_1a99f35957988a70797931c78b7946e5b0" prot="public" static="no" mutable="no">
+        <type>DS</type>
+        <definition>DS Test::TestViewMappingSubview&lt; Space &gt;::Db</definition>
+        <argsstring></argsstring>
+        <name>Db</name>
+        <qualifiedname>Test::TestViewMappingSubview::Db</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="111" column="6" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_subview_1ad9bae9166457facacf324218fa1f6b5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewMappingSubview&lt; Space &gt;::TestViewMappingSubview</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewMappingSubview</name>
+        <qualifiedname>Test::TestViewMappingSubview::TestViewMappingSubview</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="113" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="113" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_subview_1a5bc42bab4b9047a93354690480a8b4a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMappingSubview&lt; Space &gt;::operator()</definition>
+        <argsstring>(const int, long &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewMappingSubview::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="131" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="131" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mapping_subview_1a3b64ee06608dd16be11e3d8402e67f12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestViewMappingSubview&lt; Space &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewMappingSubview::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="163" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="163" bodyend="204"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewMappingSubview&lt; Space &gt;</label>
+        <link refid="struct_test_1_1_test_view_mapping_subview"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Aa</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>Ac</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>Ba</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>Ca</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>Da</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; const int *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos::View&lt; int ***, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Kokkos::View&lt; int ***[13][14], ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Kokkos::View&lt; int ***[DN3][DN4], ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; const int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="7">
+        <label>Kokkos::ViewTraits&lt; int ***, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" line="56" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_subview.hpp" bodystart="56" bodyend="205"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1afe7c57d3dcf172991cff2b434ef6a609" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Aa</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a2fd00799b0be50009c578e111dd95037" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Ab</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a6eb0d1d8ca602039f0853163e2a7f79a" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Ac</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a61fc1944c886829244fabb957cdd193b" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>ACT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1aa7998df93a064e03e731504f2e84a860a4095d61d122d571ebf40ba54e67f44df" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>AN</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1ae3ce1f82afe3afbe828b8095dd282ca1" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>AS</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1ad727f95f9a0fdced27a3e279824203b3" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>AT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a1e0613d2fe0961d302a379eef524a062" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Ba</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a61854028fa63c3d9c1180ff3de70ba5c" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Bb</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651aa13c12eaf78f2b7ec5afa2c5dea3696d" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>BN0</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651a79bb8fe7e61a6e064213e55120d13804" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>BN1</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a0a02f2c36ccbbf573b365c1caab24651aa8113d76abfc328e8f3a4742b2943992" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>BN2</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a6c7adc9b0a5d19244a333c1950d92fba" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>BS</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a5ee463cf7c5f51e38437d3baeafb5d76" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>BT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1aee778c3205ca026167ae373fca3a9e18" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Ca</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1ada53baf274937f22b245096bc53bc602" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Cb</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98af794ccbd9847643a79274ec5360c1421" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>CN0</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98aa5c13cc42cc20d9edd9c9ce977e758be" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>CN1</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a10a913ac4dee4cbd9fda7ea2858d3d98adb44f35ea2adff225c7e669c22832be4" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>CN2</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a1ca7d40957f564620e2f347a1de071b5" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>CT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a01dcf679aac6fc66668185378fba27a9" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>CTS</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1af4a881758ad470620edd661f93a25d66" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Da</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a99f35957988a70797931c78b7946e5b0" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>Db</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a83365ed46bf55860e797b44acde7bbfe" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DLS1</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a4684bb2758d18529cf3b7152be63c931" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DLT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a11a175a1a6dbc228c43790925b522a7b" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DN0</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a9597dc812c965204748997f7f0a58abe" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DN1</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a9ae7c27ad5941c8f6ab72fb512373405" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DN2</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a4a6fd775e04412e286437d73ecad9472" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DN3</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a28dd3e06400e4a778be236ebb99402a2a247f21ea468515832df8acf28b083139" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DN4</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a9a9748a334754db09315a00f741934f3" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DRS1</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a0d6853e28142677c5bbeafd2b3fed842" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DRT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a0bac895023d9fc932dffe18f8111d02a" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DS</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a674f80d9e6b1efdfd473aa9a169a60d0" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>DT</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1af3f334cc9118f5eb1d371e921cd473da" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>ExecSpace</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a03681e41c5a1299557e464f4a2837250" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>MemSpace</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a5bc42bab4b9047a93354690480a8b4a6" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1af24b4a040c733e5fe6f4b95f301b5aab" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>range</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1a3b64ee06608dd16be11e3d8402e67f12" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_mapping_subview_1ad9bae9166457facacf324218fa1f6b5d" prot="public" virt="non-virtual"><scope>Test::TestViewMappingSubview</scope><name>TestViewMappingSubview</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_work_tag_trait" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::WorkTagTrait</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_trait_specification_base" prot="public" virt="non-virtual">Kokkos::Impl::TraitSpecificationBase&lt; WorkTagTrait &gt;</basecompoundref>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_work_tag_trait_1_1base__traits" prot="public">Kokkos::Impl::WorkTagTrait::base_traits</innerclass>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_work_tag_trait_1_1mixin__matching__trait" prot="public">Kokkos::Impl::WorkTagTrait::mixin_matching_trait</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_tag_trait_1aaea07c478cb1fdcd67437b88b959f461" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>std::integral_constant&lt; bool, !std::is_void&lt; T &gt;::value &amp;&amp;!<ref refid="struct_kokkos_1_1_impl_1_1type__list__any" kindref="compound">type_list_any</ref>&lt; <ref refid="struct_kokkos_1_1_impl_1_1__trait__matches__spec__predicate" kindref="compound">_trait_matches_spec_predicate</ref>&lt; T &gt;::template apply, _exec_policy_traits_without_work_tag &gt;::value &gt;</type>
+        <definition>using Kokkos::Impl::WorkTagTrait::trait_matches_specification =  std::integral_constant&lt; bool, !std::is_void&lt;T&gt;::value &amp;&amp; !type_list_any&lt;_trait_matches_spec_predicate&lt;T&gt;::template apply, _exec_policy_traits_without_work_tag&gt;::value&gt;</definition>
+        <argsstring></argsstring>
+        <name>trait_matches_specification</name>
+        <qualifiedname>Kokkos::Impl::WorkTagTrait::trait_matches_specification</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" line="110" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::WorkTagTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_tag_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; WorkTagTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::WorkTagTrait</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_work_tag_trait"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::TraitSpecificationBase&lt; WorkTagTrait &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_trait_specification_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" line="77" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkTagTrait.hpp" bodystart="77" bodyend="114"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1a57561cfb7b2706c4a465343686f28380" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkTagTrait</scope><name>policy_with_trait</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_tag_trait_1aaea07c478cb1fdcd67437b88b959f461" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkTagTrait</scope><name>trait_matches_specification</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_trait_specification_base_1af7b3d83d4c9873c2176a5092d73b2ea4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkTagTrait</scope><name>trait_specification</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

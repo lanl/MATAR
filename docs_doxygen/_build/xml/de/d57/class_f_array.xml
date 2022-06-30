@@ -1,0 +1,649 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="de/d57/class_f_array" kind="class" language="C++" prot="public">
+    <compoundname>FArray</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/d57/class_f_array_1a86829ae24d4cfc819edfb19d5a58584a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>FArray::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="165" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d57/class_f_array_1a4fefb96db49942fd9dc30a8a581c4ed4" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>FArray::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="166" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d57/class_f_array_1ac6e8beff1436b701297d9e172d24a25b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>FArray::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="167" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d57/class_f_array_1ab5d6949df58fa84793b44c115f06edcb" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T[]&gt;</type>
+        <definition>std::shared_ptr&lt;T []&gt; FArray&lt; T &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>FArray::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="168" column="22" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d57/class_f_array_1a4d4310ed2038ab3cc810891760a325dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>()</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="173" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="273" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1abc8502d3235f2f90b99d1cc96e7dee5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="177" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="280" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a8373ac109bb610ae7613de75fe328e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="179" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="289" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a65a0c280cfb94196fd0ed11cf2a3ca20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="182" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="301" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a9e86476931f5418bfd356d2242bd845d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="186" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="315" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a9507de978c67c3637009b09b8bc7094b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="191" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="331" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1aebf5302f3bc891c9eefa20370f3123ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="197" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="349" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a324e60932e194e7bed62c22bd5e239f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="204" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="370" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1af44ece7853e1c153696add3f81828550" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::FArray</definition>
+        <argsstring>(const FArray &amp;temp)</argsstring>
+        <name>FArray</name>
+        <qualifiedname>FArray::FArray</qualifiedname>
+        <param>
+          <type>const <ref refid="de/d57/class_f_array" kindref="compound">FArray</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="212" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="394" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a8651e8fee5eefe3bd9cef1cffc7637fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="215" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="415" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1aa487a691ceb950865b323b4c969a2e03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="217" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="424" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a9125978d2f7e93ee7cea2a3884ac9679" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="220" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="435" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a0c017866059696c15de52519204db4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="224" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="449" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a7520a74189f872ebd636e78ac105041a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="229" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="466" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a4f9e249f0c05ff2629b02008c9730161" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="235" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="486" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1abfe709e5fd5b1cb9eb9cdfa898dead5d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; FArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>FArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="241" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="509" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a005f1f5450ee07f76b65733b27c36299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d57/class_f_array" kindref="compound">FArray</ref> &amp;</type>
+        <definition>FArray&lt; T &gt; &amp; FArray&lt; T &gt;::operator=</definition>
+        <argsstring>(const FArray &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>FArray::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="de/d57/class_f_array" kindref="compound">FArray</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="250" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="536" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a715de816914c0959a5075bc86c443e47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>FArray::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="253" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="551" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1ac0f92c3c012ba9eb8582ffce10fa54ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>FArray::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="256" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="556" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a7fcee0e8bd59d96474c7bade24d9972e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t FArray&lt; T &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>FArray::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="259" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="563" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1a70b623c57dc6e92117d92d7a234c4fcd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * FArray&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>FArray::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="262" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="569" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d57/class_f_array_1ac9571d3ddf9244486f447f3b8b2c13bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FArray&lt; T &gt;::~FArray</definition>
+        <argsstring>()</argsstring>
+        <name>~FArray</name>
+        <qualifiedname>FArray::~FArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="265" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="575" bodyend="575"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="162" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="162" bodyend="267"/>
+    <listofallmembers>
+      <member refid="de/d57/class_f_array_1ab5d6949df58fa84793b44c115f06edcb" prot="private" virt="non-virtual"><scope>FArray</scope><name>array_</name></member>
+      <member refid="de/d57/class_f_array_1ac0f92c3c012ba9eb8582ffce10fa54ed" prot="public" virt="non-virtual"><scope>FArray</scope><name>dims</name></member>
+      <member refid="de/d57/class_f_array_1a86829ae24d4cfc819edfb19d5a58584a" prot="private" virt="non-virtual"><scope>FArray</scope><name>dims_</name></member>
+      <member refid="de/d57/class_f_array_1a4d4310ed2038ab3cc810891760a325dc" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1abc8502d3235f2f90b99d1cc96e7dee5d" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a8373ac109bb610ae7613de75fe328e7a" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a65a0c280cfb94196fd0ed11cf2a3ca20" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a9e86476931f5418bfd356d2242bd845d" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a9507de978c67c3637009b09b8bc7094b" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1aebf5302f3bc891c9eefa20370f3123ce" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a324e60932e194e7bed62c22bd5e239f3" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1af44ece7853e1c153696add3f81828550" prot="public" virt="non-virtual"><scope>FArray</scope><name>FArray</name></member>
+      <member refid="de/d57/class_f_array_1a4fefb96db49942fd9dc30a8a581c4ed4" prot="private" virt="non-virtual"><scope>FArray</scope><name>length_</name></member>
+      <member refid="de/d57/class_f_array_1a8651e8fee5eefe3bd9cef1cffc7637fe" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1aa487a691ceb950865b323b4c969a2e03" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1a9125978d2f7e93ee7cea2a3884ac9679" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1a0c017866059696c15de52519204db4eb" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1a7520a74189f872ebd636e78ac105041a" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1a4f9e249f0c05ff2629b02008c9730161" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1abfe709e5fd5b1cb9eb9cdfa898dead5d" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator()</name></member>
+      <member refid="de/d57/class_f_array_1a005f1f5450ee07f76b65733b27c36299" prot="public" virt="non-virtual"><scope>FArray</scope><name>operator=</name></member>
+      <member refid="de/d57/class_f_array_1a7fcee0e8bd59d96474c7bade24d9972e" prot="public" virt="non-virtual"><scope>FArray</scope><name>order</name></member>
+      <member refid="de/d57/class_f_array_1ac6e8beff1436b701297d9e172d24a25b" prot="private" virt="non-virtual"><scope>FArray</scope><name>order_</name></member>
+      <member refid="de/d57/class_f_array_1a70b623c57dc6e92117d92d7a234c4fcd" prot="public" virt="non-virtual"><scope>FArray</scope><name>pointer</name></member>
+      <member refid="de/d57/class_f_array_1a715de816914c0959a5075bc86c443e47" prot="public" virt="non-virtual"><scope>FArray</scope><name>size</name></member>
+      <member refid="de/d57/class_f_array_1ac9571d3ddf9244486f447f3b8b2c13bc" prot="public" virt="non-virtual"><scope>FArray</scope><name>~FArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

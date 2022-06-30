@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_space_namer_two" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestSpaceNamerTwo</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_space_namer_two_1a512eb3c429eb79befe72fe4dd336d70c" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>static constexpr const char * Test::TestSpaceNamerTwo::get_name</definition>
+        <argsstring>()</argsstring>
+        <name>get_name</name>
+        <qualifiedname>Test::TestSpaceNamerTwo::get_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestLogicalSpaces.hpp" line="111" column="31" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestLogicalSpaces.hpp" bodystart="111" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/tools/TestLogicalSpaces.hpp" line="110" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestLogicalSpaces.hpp" bodystart="110" bodyend="112"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_space_namer_two_1a512eb3c429eb79befe72fe4dd336d70c" prot="public" virt="non-virtual"><scope>Test::TestSpaceNamerTwo</scope><name>get_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>OuterP</declname>
+        <defname>OuterP</defname>
+      </param>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>InnerP</declname>
+        <defname>InnerP</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N0</declname>
+        <defname>N0</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N1</declname>
+        <defname>N1</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N2</declname>
+        <defname>N2</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N3</declname>
+        <defname>N3</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N4</declname>
+        <defname>N4</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N5</declname>
+        <defname>N5</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N6</declname>
+        <defname>N6</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N7</declname>
+        <defname>N7</defname>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>P</declname>
+        <defname>P</defname>
+      </param>
+      <param>
+        <type>typename iType0</type>
+      </param>
+      <param>
+        <type>typename iType1</type>
+      </param>
+      <param>
+        <type>typename iType2</type>
+      </param>
+      <param>
+        <type>typename iType3</type>
+      </param>
+      <param>
+        <type>typename iType4</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a2eac11ae8798ffbf4816b07837541a01" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">Kokkos::Experimental::LayoutTiled</ref>&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::src_layout =  Kokkos::Experimental::LayoutTiled&lt;OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true&gt;</definition>
+        <argsstring></argsstring>
+        <name>src_layout</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::src_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="943" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="945" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a96146df2c98cc91edc401ceee5f2671c" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">Kokkos::ViewTraits</ref>&lt; T *****, <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">src_layout</ref>, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::src_traits =  Kokkos::ViewTraits&lt;T*****, src_layout, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>src_traits</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::src_traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="946" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="946" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a0206a64e770cdf097556f2a81e64472a" prot="public" static="no">
+        <type>typename std::conditional&lt; is_inner_left, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref> &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::array_layout =  typename std::conditional&lt;is_inner_left, Kokkos::LayoutLeft, Kokkos::LayoutRight&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="950" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="952" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1aadfb9c5f849490e0aba532f7c07d0496" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">Kokkos::ViewTraits</ref>&lt; T[N0][N1][N2][N3][N4], array_layout, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::traits =  Kokkos::ViewTraits&lt;T[N0][N1][N2][N3][N4], array_layout, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="953" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="953" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a2abe9307979bec1421f2d61035b9c694" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T[N0][N1][N2][N3][N4], array_layout, P... &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::type =  Kokkos::View&lt;T[N0][N1][N2][N3][N4], array_layout, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="954" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="954" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a28084ae76a1e0ea131ab9327f9f1103d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::is_outer_left</definition>
+        <argsstring></argsstring>
+        <name>is_outer_left</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::is_outer_left</qualifiedname>
+        <initializer>= (OuterP == Kokkos::Iterate::Left)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="948" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="948" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a1a9a0d3b10eb8677fb8800bc3ef67f07" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::is_inner_left</definition>
+        <argsstring></argsstring>
+        <name>is_inner_left</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::is_inner_left</qualifiedname>
+        <initializer>= (InnerP == Kokkos::Iterate::Left)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="949" column="25" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="949" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a78a48fd093c7f261c9d9adda391a9bc4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::assign</definition>
+        <argsstring>(ViewMapping&lt; traits, void &gt; &amp;dst, const ViewMapping&lt; src_traits, void &gt; &amp;src, const src_layout &amp;, const iType0 i_tile0, const iType1 i_tile1, const iType2 i_tile2, const iType3 i_tile3, const iType4 i_tile4)</argsstring>
+        <name>assign</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;::assign</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">traits</ref>, void &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">src_traits</ref>, void &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">src_layout</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const iType0</type>
+          <declname>i_tile0</declname>
+        </param>
+        <param>
+          <type>const iType1</type>
+          <declname>i_tile1</declname>
+        </param>
+        <param>
+          <type>const iType2</type>
+          <declname>i_tile2</declname>
+        </param>
+        <param>
+          <type>const iType3</type>
+          <declname>i_tile3</declname>
+        </param>
+        <param>
+          <type>const iType4</type>
+          <declname>i_tile4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="956" column="38" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="956" bodyend="991"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" line="931" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewLayoutTiled.hpp" bodystart="941" bodyend="992"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a0206a64e770cdf097556f2a81e64472a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a78a48fd093c7f261c9d9adda391a9bc4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>assign</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a1a9a0d3b10eb8677fb8800bc3ef67f07" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>is_inner_left</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a28084ae76a1e0ea131ab9327f9f1103d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>is_outer_left</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a2eac11ae8798ffbf4816b07837541a01" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>src_layout</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a96146df2c98cc91edc401ceee5f2671c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>src_traits</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1aadfb9c5f849490e0aba532f7c07d0496" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07_n5_0a_0a0_01_6_6_n64c9774583dc51ce4f07c9cc884de0ae4_1a2abe9307979bec1421f2d61035b9c694" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(N5==0 &amp;&amp;N6==0 &amp;&amp;N7==0)&gt;::type, Kokkos::ViewTraits&lt; T *****, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, P... &gt;, Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, N0, N1, N2, N3, N4, N5, N6, N7, true &gt;, iType0, iType1, iType2, iType3, iType4 &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

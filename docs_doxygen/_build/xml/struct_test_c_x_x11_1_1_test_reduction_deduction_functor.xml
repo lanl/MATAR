@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_c_x_x11_1_1_test_reduction_deduction_functor" kind="struct" language="C++" prot="public">
+    <compoundname>TestCXX11::TestReductionDeductionFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_c_x_x11_1_1_test_reduction_deduction_functor_1ad3a508c2b40ac12023f38ce89f3b97b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestCXX11::TestReductionDeductionFunctor&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(TestReductionDeductionTagA, long i, long &amp;value) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestCXX11::TestReductionDeductionFunctor::operator()</qualifiedname>
+        <param>
+          <type><ref refid="struct_test_c_x_x11_1_1_test_reduction_deduction_tag_a" kindref="compound">TestReductionDeductionTagA</ref></type>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" line="62" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" bodystart="62" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_c_x_x11_1_1_test_reduction_deduction_functor_1a68780610fe72ed9e42180954171316a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestCXX11::TestReductionDeductionFunctor&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(const TestReductionDeductionTagB &amp;, const long i, long &amp;value) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestCXX11::TestReductionDeductionFunctor::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_c_x_x11_1_1_test_reduction_deduction_tag_b" kindref="compound">TestReductionDeductionTagB</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const long</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" line="67" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" line="56" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestCXX11Deduction.hpp" bodystart="56" bodyend="71"/>
+    <listofallmembers>
+      <member refid="struct_test_c_x_x11_1_1_test_reduction_deduction_functor_1ad3a508c2b40ac12023f38ce89f3b97b1" prot="public" virt="non-virtual"><scope>TestCXX11::TestReductionDeductionFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_c_x_x11_1_1_test_reduction_deduction_functor_1a68780610fe72ed9e42180954171316a9" prot="public" virt="non-virtual"><scope>TestCXX11::TestReductionDeductionFunctor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

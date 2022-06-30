@@ -1,0 +1,381 @@
+\hypertarget{class_sparse_row_array}{}\doxysection{Sparse\+Row\+Array\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_sparse_row_array}\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sparse_row_array_aeef6c226f54c6d3142fbb24008d0a8d6}{Sparse\+Row\+Array}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Sparse Row Array object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sparse_row_array_acba780b01289e7857079fb661cd8dbe3}{Sparse\+Row\+Array}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ column\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ start\+\_\+index, size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a610c599755c67134ccf7d2daa1b6ae22}{dim1}}, size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a78e9ea3e2b81c712f78f84a5de4b54a1}{dim2}})
+\begin{DoxyCompactList}\small\item\em Construct a new Sparse Row Array object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sparse_row_array_ab848b5cb2842d69c941bc1d91c8dd565}{Sparse\+Row\+Array}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ dense)
+\begin{DoxyCompactList}\small\item\em Constructor for a new Sparse Row Array object using the data from a dense matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sparse_row_array_a056e6060625faedc5b02cb0875113b1d}{Sparse\+Row\+Array}} (const \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}} \&temp)
+\begin{DoxyCompactList}\small\item\em Copy a new Sparse Row Array object. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_sparse_row_array_aa5a96f6ad236ed3529293e1173487de8}{operator()}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not alocated. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_sparse_row_array_ad665a707985f9bf3da81bd9debf0db4c}{value}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Same functionality as operator(). Used for compatibility with other matar types. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}} \& \mbox{\hyperlink{class_sparse_row_array_a074d8511444ec4f08b18e1245b0133c9}{operator=}} (const \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}} \&temp)
+\begin{DoxyCompactList}\small\item\em Assignment operator. Uses shared pointers to the data of temp instead of making a fresh copy. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array_a0671d15a67ef9ae15d20f3a59b9cb844}{pointer}} () const
+\begin{DoxyCompactList}\small\item\em get start of array\+\_\+ data \end{DoxyCompactList}\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_sparse_row_array_accc62463afd870b564e8dca7167269b5}{get\+\_\+starts}} () const
+\begin{DoxyCompactList}\small\item\em Get the start\+\_\+index\+\_\+ object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sparse_row_array_a1d12a4a076d32d238fc603116a5adb9a}{printer}} ()
+\item 
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array_a1d957c9066d3f2b63272c5007eb92e7d}{begin}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Iterator notation to go through the non zero values of row i. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array_a8cb2ddfd77b5bfc74241abef7cf1f0e1}{end}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Iterator notation to go through the non zeros values of row i. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a5d7cb479efe7f775e644c9a989446978}{stride}} (size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return number of non zero elements in row i. Included for compatibility with other matar types. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a610c599755c67134ccf7d2daa1b6ae22}{dim1}} () const
+\begin{DoxyCompactList}\small\item\em Number of rows. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a78e9ea3e2b81c712f78f84a5de4b54a1}{dim2}} () const
+\begin{DoxyCompactList}\small\item\em Number of Columns. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a6b59ade360363edadd91e1683711fab1}{begin\+Flat}} (size\+\_\+t i)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a89595ec2aac5840268be921f8e57e8f3}{end\+Flat}} (size\+\_\+t i)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a85bd1fbda30105938389cf2088e8913c}{nnz}} (size\+\_\+t i)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_aadf0d93a674a6168ed045ca608325ae5}{nnz}} ()
+\item 
+T \& \mbox{\hyperlink{class_sparse_row_array_ab83762c18971aef6e8261e8a9362df4d}{get\+Val\+Flat}} (size\+\_\+t k)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_a252bf3d6645fc0eee0d426c1feba7ded}{get\+Col\+Flat}} (size\+\_\+t k)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array_abe0f421441c0822ccfc31ec55a55ac02}{flat\+Index}} (size\+\_\+t i, size\+\_\+t j)
+\item 
+int \mbox{\hyperlink{class_sparse_row_array_a422fccceac003d08e2205348d821f0eb}{to\+CSC}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&start\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&row\+\_\+index)
+\item 
+void \mbox{\hyperlink{class_sparse_row_array_aab7d272d89ed3a7bacbc1048df377f4d}{todense}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&A)
+\item 
+\mbox{\hyperlink{class_sparse_row_array_a5375a3f89a3c4071d92f2ee0be4a932e}{$\sim$\+Sparse\+Row\+Array}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sparse_row_array_aeef6c226f54c6d3142fbb24008d0a8d6}\label{class_sparse_row_array_aeef6c226f54c6d3142fbb24008d0a8d6}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!SparseRowArray@{SparseRowArray}}
+\index{SparseRowArray@{SparseRowArray}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SparseRowArray()}{SparseRowArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\mbox{\hyperlink{class_sparse_row_array}{\+::\+Sparse\+Row\+Array}}}
+
+
+
+Construct a new Sparse Row Array object. 
+
+\mbox{\Hypertarget{class_sparse_row_array_acba780b01289e7857079fb661cd8dbe3}\label{class_sparse_row_array_acba780b01289e7857079fb661cd8dbe3}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!SparseRowArray@{SparseRowArray}}
+\index{SparseRowArray@{SparseRowArray}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SparseRowArray()}{SparseRowArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\mbox{\hyperlink{class_sparse_row_array}{\+::\+Sparse\+Row\+Array}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{array,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{column\+\_\+index,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{start\+\_\+index,  }\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2 }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sparse Row Array object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & 1d array of data values in order read left to right top to bottom \\
+\hline
+{\em column\+\_\+index\+\_\+} & 1d array specifying for each data value what column it is found \\
+\hline
+{\em start\+\_\+index\+\_\+} & 1d array that marks the index for array and column where each row starts \\
+\hline
+{\em dim1} & number of rows \\
+\hline
+{\em dim2} & number of columns \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sparse_row_array_ab848b5cb2842d69c941bc1d91c8dd565}\label{class_sparse_row_array_ab848b5cb2842d69c941bc1d91c8dd565}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!SparseRowArray@{SparseRowArray}}
+\index{SparseRowArray@{SparseRowArray}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SparseRowArray()}{SparseRowArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\mbox{\hyperlink{class_sparse_row_array}{\+::\+Sparse\+Row\+Array}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{dense }\end{DoxyParamCaption})}
+
+
+
+Constructor for a new Sparse Row Array object using the data from a dense matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dense} & matrix to get the value from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sparse_row_array_a056e6060625faedc5b02cb0875113b1d}\label{class_sparse_row_array_a056e6060625faedc5b02cb0875113b1d}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!SparseRowArray@{SparseRowArray}}
+\index{SparseRowArray@{SparseRowArray}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SparseRowArray()}{SparseRowArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\mbox{\hyperlink{class_sparse_row_array}{\+::\+Sparse\+Row\+Array}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+
+
+Copy a new Sparse Row Array object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & array to copy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sparse_row_array_a5375a3f89a3c4071d92f2ee0be4a932e}\label{class_sparse_row_array_a5375a3f89a3c4071d92f2ee0be4a932e}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!````~SparseRowArray@{$\sim$SparseRowArray}}
+\index{````~SparseRowArray@{$\sim$SparseRowArray}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$SparseRowArray()}{~SparseRowArray()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sparse_row_array_a1d957c9066d3f2b63272c5007eb92e7d}\label{class_sparse_row_array_a1d957c9066d3f2b63272c5007eb92e7d}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!begin@{begin}}
+\index{begin@{begin}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::begin (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Iterator notation to go through the non zero values of row i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ pointer to first non zero element of row i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a6b59ade360363edadd91e1683711fab1}\label{class_sparse_row_array_a6b59ade360363edadd91e1683711fab1}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!beginFlat@{beginFlat}}
+\index{beginFlat@{beginFlat}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{beginFlat()}{beginFlat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::begin\+Flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_a610c599755c67134ccf7d2daa1b6ae22}\label{class_sparse_row_array_a610c599755c67134ccf7d2daa1b6ae22}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!dim1@{dim1}}
+\index{dim1@{dim1}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dim1()}{dim1()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::dim1}
+
+
+
+Number of rows. 
+
+\mbox{\Hypertarget{class_sparse_row_array_a78e9ea3e2b81c712f78f84a5de4b54a1}\label{class_sparse_row_array_a78e9ea3e2b81c712f78f84a5de4b54a1}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!dim2@{dim2}}
+\index{dim2@{dim2}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dim2()}{dim2()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::dim2}
+
+
+
+Number of Columns. 
+
+\mbox{\Hypertarget{class_sparse_row_array_a8cb2ddfd77b5bfc74241abef7cf1f0e1}\label{class_sparse_row_array_a8cb2ddfd77b5bfc74241abef7cf1f0e1}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!end@{end}}
+\index{end@{end}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::end (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Iterator notation to go through the non zeros values of row i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ pointer to first non zero element of row i+1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a89595ec2aac5840268be921f8e57e8f3}\label{class_sparse_row_array_a89595ec2aac5840268be921f8e57e8f3}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!endFlat@{endFlat}}
+\index{endFlat@{endFlat}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{endFlat()}{endFlat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::end\+Flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_abe0f421441c0822ccfc31ec55a55ac02}\label{class_sparse_row_array_abe0f421441c0822ccfc31ec55a55ac02}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!flatIndex@{flatIndex}}
+\index{flatIndex@{flatIndex}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{flatIndex()}{flatIndex()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::flat\+Index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_accc62463afd870b564e8dca7167269b5}\label{class_sparse_row_array_accc62463afd870b564e8dca7167269b5}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!get\_starts@{get\_starts}}
+\index{get\_starts@{get\_starts}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_starts()}{get\_starts()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::get\+\_\+starts}
+
+
+
+Get the start\+\_\+index\+\_\+ object. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a252bf3d6645fc0eee0d426c1feba7ded}\label{class_sparse_row_array_a252bf3d6645fc0eee0d426c1feba7ded}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!getColFlat@{getColFlat}}
+\index{getColFlat@{getColFlat}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getColFlat()}{getColFlat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::get\+Col\+Flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_ab83762c18971aef6e8261e8a9362df4d}\label{class_sparse_row_array_ab83762c18971aef6e8261e8a9362df4d}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!getValFlat@{getValFlat}}
+\index{getValFlat@{getValFlat}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getValFlat()}{getValFlat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::get\+Val\+Flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_aadf0d93a674a6168ed045ca608325ae5}\label{class_sparse_row_array_aadf0d93a674a6168ed045ca608325ae5}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::nnz}
+
+\mbox{\Hypertarget{class_sparse_row_array_a85bd1fbda30105938389cf2088e8913c}\label{class_sparse_row_array_a85bd1fbda30105938389cf2088e8913c}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::nnz (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_aa5a96f6ad236ed3529293e1173487de8}\label{class_sparse_row_array_aa5a96f6ad236ed3529293e1173487de8}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not alocated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row ~\newline
+ \\
+\hline
+{\em j} & column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a074d8511444ec4f08b18e1245b0133c9}\label{class_sparse_row_array_a074d8511444ec4f08b18e1245b0133c9}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$ \& \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. Uses shared pointers to the data of temp instead of making a fresh copy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}} to copy values of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a0671d15a67ef9ae15d20f3a59b9cb844}\label{class_sparse_row_array_a0671d15a67ef9ae15d20f3a59b9cb844}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer()}{pointer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::pointer}
+
+
+
+get start of array\+\_\+ data 
+
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sparse_row_array_a1d12a4a076d32d238fc603116a5adb9a}\label{class_sparse_row_array_a1d12a4a076d32d238fc603116a5adb9a}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!printer@{printer}}
+\index{printer@{printer}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{printer()}{printer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::printer}
+
+\mbox{\Hypertarget{class_sparse_row_array_a5d7cb479efe7f775e644c9a989446978}\label{class_sparse_row_array_a5d7cb479efe7f775e644c9a989446978}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!stride@{stride}}
+\index{stride@{stride}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Return number of non zero elements in row i. Included for compatibility with other matar types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sparse_row_array_a422fccceac003d08e2205348d821f0eb}\label{class_sparse_row_array_a422fccceac003d08e2205348d821f0eb}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!toCSC@{toCSC}}
+\index{toCSC@{toCSC}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toCSC()}{toCSC()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::to\+CSC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&}]{array,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&}]{start\+\_\+index,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&}]{row\+\_\+index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_aab7d272d89ed3a7bacbc1048df377f4d}\label{class_sparse_row_array_aab7d272d89ed3a7bacbc1048df377f4d}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!todense@{todense}}
+\index{todense@{todense}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{todense()}{todense()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::todense (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&}]{A }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sparse_row_array_ad665a707985f9bf3da81bd9debf0db4c}\label{class_sparse_row_array_ad665a707985f9bf3da81bd9debf0db4c}} 
+\index{SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}!value@{value}}
+\index{value@{value}!SparseRowArray$<$ T $>$@{SparseRowArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_sparse_row_array}{Sparse\+Row\+Array}}$<$ T $>$\+::value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Same functionality as operator(). Used for compatibility with other matar types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Row \\
+\hline
+{\em j} & Column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

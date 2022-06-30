@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::MDRangeTuner</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin" prot="public" virt="non-virtual">Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; MDRangeTuner&lt; MDRangeRank &gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>MDRangeRank</declname>
+        <defname>MDRangeRank</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a94e6c74d9e736a2e4a05a1a052d10795" prot="private" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1n__dimensional__sparse__structure" kindref="compound">Impl::n_dimensional_sparse_structure</ref>&lt; int, rank &gt;::type</type>
+        <definition>using Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::SpaceDescription =  typename Impl::n_dimensional_sparse_structure&lt;int, rank&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>SpaceDescription</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::SpaceDescription</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="571" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="572" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a15987d9e2eb19c841e54528e87166715" prot="private" static="no">
+        <type>decltype(make_multidimensional_sparse_tuning_problem&lt; max_slices &gt;(std::declval&lt; SpaceDescription &gt;(), std::declval&lt; std::vector&lt; std::string &gt; &gt;()))</type>
+        <definition>using Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::TunerType =  decltype(make_multidimensional_sparse_tuning_problem&lt;max_slices&gt;( std::declval&lt;SpaceDescription&gt;(), std::declval&lt;std::vector&lt;std::string&gt; &gt;()))</definition>
+        <argsstring></argsstring>
+        <name>TunerType</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::TunerType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="573" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="576" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1ad2a14e4a5b1fa8aacd1733a5104d886c" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::rank</definition>
+        <argsstring></argsstring>
+        <name>rank</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::rank</qualifiedname>
+        <initializer>= MDRangeRank</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="569" column="24" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="569" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a51251f7210bc204147f4a8d3f4fef201" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::max_slices</definition>
+        <argsstring></argsstring>
+        <name>max_slices</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::max_slices</qualifiedname>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="570" column="24" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="570" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a7214a3333f8e730e551bffb1e1ab54db" prot="private" static="no" mutable="no">
+        <type>TunerType</type>
+        <definition>TunerType Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::tuner</definition>
+        <argsstring></argsstring>
+        <name>tuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::tuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="577" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="577" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a9b68d3c12b178e87e1b7ed9ca43bc787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::MDRangeTuner</definition>
+        <argsstring>()=default</argsstring>
+        <name>MDRangeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::MDRangeTuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="580" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a1a917795aff60de05df97a1527a78b87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename TagType</type>
+          </param>
+          <param>
+            <type>typename Calculator</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::MDRangeTuner</definition>
+        <argsstring>(const std::string &amp;name, const Kokkos::MDRangePolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag, Calculator calc)</argsstring>
+        <name>MDRangeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::MDRangeTuner</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>Calculator</type>
+          <declname>calc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="583" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="583" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a62e03d548f34883d1a12b0635c05e505" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Tuple</type>
+          </param>
+          <param>
+            <type>size_t...</type>
+            <declname>Indices</declname>
+            <defname>Indices</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::set_policy_tile</definition>
+        <argsstring>(Policy &amp;policy, const Tuple &amp;tuple, const std::index_sequence&lt; Indices... &gt; &amp;)</argsstring>
+        <name>set_policy_tile</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::set_policy_tile</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Tuple &amp;</type>
+          <declname>tuple</declname>
+        </param>
+        <param>
+          <type>const std::index_sequence&lt; Indices... &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="598" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="598" bodyend="601"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a8f86ec4150cd05abc1fe549d9f298037" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::tune</definition>
+        <argsstring>(Kokkos::MDRangePolicy&lt; Properties... &gt; &amp;policy)</argsstring>
+        <name>tune</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::tune</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="603" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="603" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a623f88aa66386df3c894eb764b7a91c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="609" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="609" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a5cdbdb6d889c7f990618513b9cb609da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TunerType</type>
+        <definition>TunerType Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;::get_tuner</definition>
+        <argsstring>() const</argsstring>
+        <name>get_tuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::MDRangeTuner::get_tuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="615" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="615" bodyend="615"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; MDRangeTuner&lt; MDRangeRank &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; MDRangeTuner&lt; MDRangeRank &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Tools::Experimental::MDRangeTuner&lt; MDRangeRank &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="567" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="567" bodyend="616"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin_1ad2cb333fae34284a1675ff7e52a50085" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>combine</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a623f88aa66386df3c894eb764b7a91c4" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>end</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin_1ac278f49d23f276524c94baa919eb4f9d" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>get_point</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a5cdbdb6d889c7f990618513b9cb609da" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>get_tuner</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a51251f7210bc204147f4a8d3f4fef201" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>max_slices</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a9b68d3c12b178e87e1b7ed9ca43bc787" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>MDRangeTuner</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a1a917795aff60de05df97a1527a78b87" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>MDRangeTuner</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1ad2a14e4a5b1fa8aacd1733a5104d886c" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a62e03d548f34883d1a12b0635c05e505" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>set_policy_tile</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a94e6c74d9e736a2e4a05a1a052d10795" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>SpaceDescription</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a8f86ec4150cd05abc1fe549d9f298037" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>tune</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a7214a3333f8e730e551bffb1e1ab54db" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>tuner</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_m_d_range_tuner_1a15987d9e2eb19c841e54528e87166715" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::MDRangeTuner</scope><name>TunerType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

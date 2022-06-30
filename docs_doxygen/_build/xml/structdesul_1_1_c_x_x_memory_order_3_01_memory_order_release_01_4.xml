@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_release_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>desul::CXXMemoryOrder&lt; MemoryOrderRelease &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_release_01_4_1a0793e9a8a562e495c1ecf208b540d7e1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr std::memory_order</type>
+        <definition>constexpr std::memory_order desul::CXXMemoryOrder&lt; MemoryOrderRelease &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>desul::CXXMemoryOrder&lt; MemoryOrderRelease &gt;::value</qualifiedname>
+        <initializer>= std::memory_order_release</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="110" column="38" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" line="109" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Common.hpp" bodystart="109" bodyend="111"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_release_01_4_1a0793e9a8a562e495c1ecf208b540d7e1" prot="public" virt="non-virtual"><scope>desul::CXXMemoryOrder&lt; MemoryOrderRelease &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

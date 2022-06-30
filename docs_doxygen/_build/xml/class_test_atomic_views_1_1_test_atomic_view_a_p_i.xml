@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_atomic_views_1_1_test_atomic_view_a_p_i" kind="class" language="C++" prot="public">
+    <compoundname>TestAtomicViews::TestAtomicViewAPI</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@259</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::@259</qualifiedname>
+        <enumvalue id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62a7c3e14f11de97829e9472a2caa07cde4" prot="public">
+          <name>N0</name>
+          <initializer>= 1000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62ad1b1359c5524dd1cb636efacaabb6c19" prot="public">
+          <name>N1</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62ae379243832c7573cb2afcf11799675e4" prot="public">
+          <name>N2</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62a3b6615dca892212effe0b715d95b8ee4" prot="public">
+          <name>N3</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="152" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ac32bb9b409b9f531d74d63d7a8f21470" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::device =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>device</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="150" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1afedcab896310711a850b628efa3497cc" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView0 =  Kokkos::View&lt;T, device&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView0</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="154" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a81cb99d1aa75ba84b3aa1f3c55027c9c" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *, device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView1 =  Kokkos::View&lt;T*, device&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView1</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="155" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a0f2e8feb861d862f64e991d0c9714da5" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1], device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView2 =  Kokkos::View&lt;T * [N1], device&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView2</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="156" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a25efd3461e28cf214cca5e737b3212f7" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1][N2], device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView3 =  Kokkos::View&lt;T * [N1][N2], device&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView3</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="157" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a5c7879b80c17a108d2c6ed8194b73085" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1][N2][N3], device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView4 =  Kokkos::View&lt;T * [N1][N2][N3], device&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView4</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="158" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a81f208c70355cd99f24f7b51113fea13" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const T *[N1][N2][N3], device &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::const_dView4 =  Kokkos::View&lt;const T * [N1][N2][N3], device&gt;</definition>
+        <argsstring></argsstring>
+        <name>const_dView4</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::const_dView4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="159" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1af0c0b0df4b1ca0cbb682a9f009631c7c" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T ****, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryUnmanaged</ref> &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::dView4_unmanaged =  Kokkos::View&lt;T****, device, Kokkos::MemoryUnmanaged&gt;</definition>
+        <argsstring></argsstring>
+        <name>dView4_unmanaged</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::dView4_unmanaged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="160" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ad6fdca6ac09bd3242e0aed737c4ac54e" prot="public" static="no">
+        <type>typename dView0::host_mirror_space</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::host =  typename dView0::host_mirror_space</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="161" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a4c5d902596265864de0e67a3108421e3" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView0 =  Kokkos::View&lt;T, device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView0</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="163" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a53ba7afd301abb3d2503fbdd1e10aa91" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView1 =  Kokkos::View&lt;T*, device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView1</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="164" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ac289ef3b575c4e70c18ba70647fac9ae" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1], device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView2 =  Kokkos::View&lt;T * [N1], device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView2</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="166" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6f593292d00e28c04e7cf79125aaef22" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1][N2], device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView3 =  Kokkos::View&lt;T * [N1][N2], device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView3</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="168" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1acc5f204e862374d7a74e4322ef4eada8" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[N1][N2][N3], device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView4 =  Kokkos::View&lt;T * [N1][N2][N3], device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView4</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="170" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a4c2bdaeaf2bbb18c61e8441d03b08e8f" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const T *[N1][N2][N3], device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::const_aView4 =  Kokkos::View&lt;const T * [N1][N2][N3], device, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>const_aView4</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::const_aView4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="172" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a85bd7635d4f5448bd4f4ee5496da0118" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T ****, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Unmanaged|Kokkos::Atomic &gt; &gt;</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::aView4_unmanaged =  Kokkos::View&lt;T****, device, Kokkos::MemoryTraits&lt;Kokkos::Unmanaged | Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>aView4_unmanaged</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::aView4_unmanaged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="175" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a7c12d22da810a99d5d5fe7141433c07a" prot="public" static="no">
+        <type>typename aView0::host_mirror_space</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::host_atomic =  typename aView0::host_mirror_space</definition>
+        <argsstring></argsstring>
+        <name>host_atomic</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::host_atomic</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="179" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1afad2f36bb3fdfe078ba82e280ae78af3" prot="public" static="no">
+        <type>T[2]</type>
+        <definition>using TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::DataType =  T[2]</definition>
+        <argsstring></argsstring>
+        <name>DataType</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::DataType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="274" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a91665e8ea95a9f5080512f1d6c2f23fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::TestAtomicViewAPI</definition>
+        <argsstring>()</argsstring>
+        <name>TestAtomicViewAPI</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::TestAtomicViewAPI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="181" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="181" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a565c66ce1bff2407b56339985bdb0bb7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::run_test_rank0</definition>
+        <argsstring>()</argsstring>
+        <name>run_test_rank0</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::run_test_rank0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="191" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="191" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6ce55489f693fdc4f2991e166645f470" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::run_test_rank4</definition>
+        <argsstring>()</argsstring>
+        <name>run_test_rank4</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::run_test_rank4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="213" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="213" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a443feffdfb056acb2f6493fb3410e31d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::check_auto_conversion_to_const</definition>
+        <argsstring>(const Kokkos::View&lt; const DataType, device, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt; &amp;arg_const, const Kokkos::View&lt; const DataType, device, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt; &amp;arg)</argsstring>
+        <name>check_auto_conversion_to_const</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::check_auto_conversion_to_const</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const DataType, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt; &amp;</type>
+          <declname>arg_const</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const DataType, device, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt; &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="276" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="276" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a897381db145544c7160ae9b100ba6202" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void TestAtomicViews::TestAtomicViewAPI&lt; T, DeviceType &gt;::run_test_const</definition>
+        <argsstring>()</argsstring>
+        <name>run_test_const</name>
+        <qualifiedname>TestAtomicViews::TestAtomicViewAPI::run_test_const</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="284" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="284" bodyend="297"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" line="148" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicViews.hpp" bodystart="148" bodyend="298"/>
+    <listofallmembers>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a4c5d902596265864de0e67a3108421e3" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView0</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a53ba7afd301abb3d2503fbdd1e10aa91" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView1</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ac289ef3b575c4e70c18ba70647fac9ae" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView2</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6f593292d00e28c04e7cf79125aaef22" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView3</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1acc5f204e862374d7a74e4322ef4eada8" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView4</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a85bd7635d4f5448bd4f4ee5496da0118" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>aView4_unmanaged</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a443feffdfb056acb2f6493fb3410e31d" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>check_auto_conversion_to_const</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a4c2bdaeaf2bbb18c61e8441d03b08e8f" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>const_aView4</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a81f208c70355cd99f24f7b51113fea13" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>const_dView4</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1afad2f36bb3fdfe078ba82e280ae78af3" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>DataType</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ac32bb9b409b9f531d74d63d7a8f21470" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>device</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1afedcab896310711a850b628efa3497cc" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView0</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a81cb99d1aa75ba84b3aa1f3c55027c9c" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView1</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a0f2e8feb861d862f64e991d0c9714da5" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView2</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a25efd3461e28cf214cca5e737b3212f7" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView3</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a5c7879b80c17a108d2c6ed8194b73085" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView4</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1af0c0b0df4b1ca0cbb682a9f009631c7c" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>dView4_unmanaged</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1ad6fdca6ac09bd3242e0aed737c4ac54e" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>host</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a7c12d22da810a99d5d5fe7141433c07a" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>host_atomic</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62a7c3e14f11de97829e9472a2caa07cde4" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>N0</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62ad1b1359c5524dd1cb636efacaabb6c19" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>N1</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62ae379243832c7573cb2afcf11799675e4" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>N2</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6e119ef03fdec81aa678b85f14055d62a3b6615dca892212effe0b715d95b8ee4" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>N3</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a897381db145544c7160ae9b100ba6202" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>run_test_const</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a565c66ce1bff2407b56339985bdb0bb7" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>run_test_rank0</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a6ce55489f693fdc4f2991e166645f470" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>run_test_rank4</name></member>
+      <member refid="class_test_atomic_views_1_1_test_atomic_view_a_p_i_1a91665e8ea95a9f5080512f1d6c2f23fd" prot="public" virt="non-virtual"><scope>TestAtomicViews::TestAtomicViewAPI</scope><name>TestAtomicViewAPI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_d73ab2862a6666711eeb73c675ba21dd" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/category_files</compoundname>
+    <innerfile refid="_test_cuda___category_8hpp">TestCuda_Category.hpp</innerfile>
+    <innerfile refid="_test_cuda_host_pinned___category_8hpp">TestCudaHostPinned_Category.hpp</innerfile>
+    <innerfile refid="_test_cuda_u_v_m___category_8hpp">TestCudaUVM_Category.hpp</innerfile>
+    <innerfile refid="_test_default_device_type___category_8hpp">TestDefaultDeviceType_Category.hpp</innerfile>
+    <innerfile refid="_test_h_i_p___category_8hpp">TestHIP_Category.hpp</innerfile>
+    <innerfile refid="_test_h_i_p_host_pinned___category_8hpp">TestHIPHostPinned_Category.hpp</innerfile>
+    <innerfile refid="_test_h_p_x___category_8hpp">TestHPX_Category.hpp</innerfile>
+    <innerfile refid="_test_open_m_p___category_8hpp">TestOpenMP_Category.hpp</innerfile>
+    <innerfile refid="_test_open_m_p_target___category_8hpp">TestOpenMPTarget_Category.hpp</innerfile>
+    <innerfile refid="_test_serial___category_8hpp">TestSerial_Category.hpp</innerfile>
+    <innerfile refid="_test_s_y_c_l___category_8hpp">TestSYCL_Category.hpp</innerfile>
+    <innerfile refid="_test_s_y_c_l_host_u_s_m___category_8hpp">TestSYCLHostUSM_Category.hpp</innerfile>
+    <innerfile refid="_test_s_y_c_l_shared_u_s_m___category_8hpp">TestSYCLSharedUSM_Category.hpp</innerfile>
+    <innerfile refid="_test_threads___category_8hpp">TestThreads_Category.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/category_files/"/>
+  </compounddef>
+</doxygen>

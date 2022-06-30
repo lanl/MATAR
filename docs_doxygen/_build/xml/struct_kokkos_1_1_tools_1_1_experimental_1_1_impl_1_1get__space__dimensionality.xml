@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1get__space__dimensionality" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::get_space_dimensionality</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class InspectForDepth</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>We&apos;re going to be declaring a sparse multidimensional tuning space as a set of nested maps. The innermost level will be a vector. The dimensionality of such a space is the number of maps + 1.</para>
+<para>The following templates implement such logic recursively </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="181" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="181" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

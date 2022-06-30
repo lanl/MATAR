@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_reducers_1_1_sum_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestReducers::SumFunctor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_reducers_1_1_sum_functor_1a842812e269a5fb6f283a697c0b4c092e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const Scalar *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;const Scalar*, ExecSpace&gt; Test::TestReducers&lt; Scalar, ExecSpace &gt;::SumFunctor::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>Test::TestReducers::SumFunctor::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="61" column="18" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_reducers_1_1_sum_functor_1a6eb79f8841d094195d83c5f4d100f9b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestReducers&lt; Scalar, ExecSpace &gt;::SumFunctor::operator()</definition>
+        <argsstring>(const int &amp;i, Scalar &amp;value) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestReducers::SumFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>Scalar &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="64" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestReducers&lt; Scalar, ExecSpace &gt;::SumFunctor</label>
+        <link refid="struct_test_1_1_test_reducers_1_1_sum_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; const Scalar *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; const Scalar *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReducers.hpp" bodystart="60" bodyend="65"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_reducers_1_1_sum_functor_1a6eb79f8841d094195d83c5f4d100f9b0" prot="public" virt="non-virtual"><scope>Test::TestReducers::SumFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_reducers_1_1_sum_functor_1a842812e269a5fb6f283a697c0b4c092e" prot="public" virt="non-virtual"><scope>Test::TestReducers::SumFunctor</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___tools___tool_programming_interface" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_ToolProgrammingInterface</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___tools___tool_programming_interface_1a388c0175bd198611dc04db683c51d694" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_toolInvokedFenceFunction</type>
+        <definition>Kokkos_Tools_toolInvokedFenceFunction Kokkos_Tools_ToolProgrammingInterface::fence</definition>
+        <argsstring></argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos_Tools_ToolProgrammingInterface::fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="140" column="41" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___tool_programming_interface_1a467fc51b63cb5a4fb2ace851d6667ceb" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_functionPointer</type>
+        <definition>Kokkos_Tools_functionPointer Kokkos_Tools_ToolProgrammingInterface::padding[31]</definition>
+        <argsstring>[31]</argsstring>
+        <name>padding</name>
+        <qualifiedname>Kokkos_Tools_ToolProgrammingInterface::padding</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="142" column="32" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="139" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="139" bodyend="143"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___tools___tool_programming_interface_1a388c0175bd198611dc04db683c51d694" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ToolProgrammingInterface</scope><name>fence</name></member>
+      <member refid="struct_kokkos___tools___tool_programming_interface_1a467fc51b63cb5a4fb2ace851d6667ceb" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ToolProgrammingInterface</scope><name>padding</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

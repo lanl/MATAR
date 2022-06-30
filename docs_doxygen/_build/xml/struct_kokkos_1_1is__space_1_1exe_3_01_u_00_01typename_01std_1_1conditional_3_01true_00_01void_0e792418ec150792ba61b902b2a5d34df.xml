@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1is__space_1_1exe_3_01_u_00_01typename_01std_1_1conditional_3_01true_00_01void_0e792418ec150792ba61b902b2a5d34df" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::is_space::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::is_same::type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename U</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1is__space_1_1exe_3_01_u_00_01typename_01std_1_1conditional_3_01true_00_01void_0e792418ec150792ba61b902b2a5d34df_1ab8b9e07b270c400790b89f98668cdf58" prot="public" static="no">
+        <type>typename U::execution_space</type>
+        <definition>using Kokkos::is_space&lt; T &gt;::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;::space =  typename U::execution_space</definition>
+        <argsstring></argsstring>
+        <name>space</name>
+        <qualifiedname>Kokkos::is_space::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;::space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="301" column="5" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::is_space&lt; T &gt;::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::is_same&lt; U, U::execution_space &gt;::type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::is_space&lt; T &gt;::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::is_same&lt; U, U::execution_space &gt;::type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="298" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="300" bodyend="302"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1is__space_1_1exe_3_01_u_00_01typename_01std_1_1conditional_3_01true_00_01void_0e792418ec150792ba61b902b2a5d34df_1ab8b9e07b270c400790b89f98668cdf58" prot="public" virt="non-virtual"><scope>Kokkos::is_space::exe&lt; U, typename std::conditional&lt; true, void, typename U::execution_space &gt;::type &gt;</scope><name>space</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

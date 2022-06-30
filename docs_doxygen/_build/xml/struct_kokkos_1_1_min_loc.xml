@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_min_loc" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::MinLoc</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Scalar</type>
+      </param>
+      <param>
+        <type>class Index</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_min_loc_1a8cb7292a6e367e82a842d451c6cd0ad3" prot="private" static="no">
+        <type>typename std::remove_cv&lt; Scalar &gt;::type</type>
+        <definition>using Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::scalar_type =  typename std::remove_cv&lt;Scalar&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>scalar_type</name>
+        <qualifiedname>Kokkos::MinLoc::scalar_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="462" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="462" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_min_loc_1a263a1102dfc4f3ad31b6ec264f7e4305" prot="private" static="no">
+        <type>typename std::remove_cv&lt; Index &gt;::type</type>
+        <definition>using Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::index_type =  typename std::remove_cv&lt;Index&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::MinLoc::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="463" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="463" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_min_loc_1acf50d1db5eacea8a4b27db332f9b0b0c" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_min_loc" kindref="compound">MinLoc</ref>&lt; Scalar, Index, Space &gt;</type>
+        <definition>using Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::reducer =  MinLoc&lt;Scalar, Index, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>reducer</name>
+        <qualifiedname>Kokkos::MinLoc::reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="467" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_min_loc_1a79f8f30e839032b1222a6c5b37dbbda0" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">ValLocScalar</ref>&lt; scalar_type, index_type &gt;</type>
+        <definition>using Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::value_type =  ValLocScalar&lt;scalar_type, index_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::MinLoc::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="468" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="468" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_min_loc_1a31d4d701579282cb627378ea40b1bc1c" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref>, Space &gt;</type>
+        <definition>using Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::result_view_type =  Kokkos::View&lt;value_type, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>result_view_type</name>
+        <qualifiedname>Kokkos::MinLoc::result_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="470" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_min_loc_1a4de2b94257be9f60348594e45164f54d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>result_view_type Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::MinLoc::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="473" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="473" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_min_loc_1ada7cc6b09018072ec81fac3a29b40376" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::references_scalar_v</definition>
+        <argsstring></argsstring>
+        <name>references_scalar_v</name>
+        <qualifiedname>Kokkos::MinLoc::references_scalar_v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="474" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="474" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1aac73a2c628bb9e06acb9dedfd133fe50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::MinLoc</definition>
+        <argsstring>(value_type &amp;value_)</argsstring>
+        <name>MinLoc</name>
+        <qualifiedname>Kokkos::MinLoc::MinLoc</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="478" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="478" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1ada00a4f39d4e9d9d2834442a6fb5973a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::MinLoc</definition>
+        <argsstring>(const result_view_type &amp;value_)</argsstring>
+        <name>MinLoc</name>
+        <qualifiedname>Kokkos::MinLoc::MinLoc</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref> &amp;</type>
+          <declname>value_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="481" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="481" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1a1ca6d5cb6fef8f3c809b279d7b02cec9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::join</definition>
+        <argsstring>(value_type &amp;dest, const value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::MinLoc::join</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="486" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="486" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1abf63d0810d6cbf24be3382331844d442" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dest, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::MinLoc::join</qualifiedname>
+        <param>
+          <type>volatile <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const volatile <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="491" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="491" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1a973d3359cebf7c3292b908e8c96e79ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::init</definition>
+        <argsstring>(value_type &amp;val) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::MinLoc::init</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="496" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="496" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1aa27e326c223def6280751227d5e558ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_val_loc_scalar" kindref="compound">value_type</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION value_type &amp; Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::reference</definition>
+        <argsstring>() const</argsstring>
+        <name>reference</name>
+        <qualifiedname>Kokkos::MinLoc::reference</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="502" column="14" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="502" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1a99082c3362c535e3a67b4b1d1d510945" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">result_view_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION result_view_type Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::MinLoc::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="505" column="20" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="505" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_min_loc_1a51e4e4f70f5c0a5a3fcbdf77146cac23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::MinLoc&lt; Scalar, Index, Space &gt;::references_scalar</definition>
+        <argsstring>() const</argsstring>
+        <name>references_scalar</name>
+        <qualifiedname>Kokkos::MinLoc::references_scalar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="508" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="508" bodyend="508"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="460" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="460" bodyend="509"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_min_loc_1a263a1102dfc4f3ad31b6ec264f7e4305" prot="private" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a973d3359cebf7c3292b908e8c96e79ce" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a1ca6d5cb6fef8f3c809b279d7b02cec9" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1abf63d0810d6cbf24be3382331844d442" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1aac73a2c628bb9e06acb9dedfd133fe50" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>MinLoc</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1ada00a4f39d4e9d9d2834442a6fb5973a" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>MinLoc</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1acf50d1db5eacea8a4b27db332f9b0b0c" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>reducer</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1aa27e326c223def6280751227d5e558ed" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>reference</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a51e4e4f70f5c0a5a3fcbdf77146cac23" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>references_scalar</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1ada7cc6b09018072ec81fac3a29b40376" prot="private" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>references_scalar_v</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a31d4d701579282cb627378ea40b1bc1c" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>result_view_type</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a8cb7292a6e367e82a842d451c6cd0ad3" prot="private" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>scalar_type</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a4de2b94257be9f60348594e45164f54d" prot="private" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>value</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a79f8f30e839032b1222a6c5b37dbbda0" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_min_loc_1a99082c3362c535e3a67b4b1d1d510945" prot="public" virt="non-virtual"><scope>Kokkos::MinLoc</scope><name>view</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

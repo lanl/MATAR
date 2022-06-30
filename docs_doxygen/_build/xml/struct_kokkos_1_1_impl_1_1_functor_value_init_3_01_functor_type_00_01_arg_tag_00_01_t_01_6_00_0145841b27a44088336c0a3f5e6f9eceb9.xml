@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_value_init_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_00_0145841b27a44088336c0a3f5e6f9eceb9" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorValueInit&lt; FunctorType, ArgTag, T &amp;, typename std::enable_if&lt; !std::is_same&lt; ArgTag, void &gt;::value, decltype(FunctorValueInitFunction&lt; FunctorType, ArgTag &gt;::enable_if(&amp;FunctorType::init))&gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ArgTag</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_init_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_00_0145841b27a44088336c0a3f5e6f9eceb9_1a8156f0eeb32ca9bc383b840e05ffec7b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION T &amp;</type>
+        <definition>static KOKKOS_FORCEINLINE_FUNCTION T &amp; Kokkos::Impl::FunctorValueInit&lt; FunctorType, ArgTag, T &amp;, typename std::enable_if&lt; !std::is_same&lt; ArgTag, void &gt;::value, decltype(FunctorValueInitFunction&lt; FunctorType, ArgTag &gt;::enable_if(&amp;FunctorType::init))&gt;::type &gt;::init</definition>
+        <argsstring>(const FunctorType &amp;f, void *p)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueInit&lt; FunctorType, ArgTag, T &amp;, typename std::enable_if&lt; !std::is_same&lt; ArgTag, void &gt;::value, decltype(FunctorValueInitFunction&lt; FunctorType, ArgTag &gt;::enable_if(&amp;FunctorType::init))&gt;::type &gt;::init</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1470" column="40" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1470" bodyend="1473"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1460" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1469" bodyend="1474"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_init_3_01_functor_type_00_01_arg_tag_00_01_t_01_6_00_0145841b27a44088336c0a3f5e6f9eceb9_1a8156f0eeb32ca9bc383b840e05ffec7b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueInit&lt; FunctorType, ArgTag, T &amp;, typename std::enable_if&lt; !std::is_same&lt; ArgTag, void &gt;::value, decltype(FunctorValueInitFunction&lt; FunctorType, ArgTag &gt;::enable_if(&amp;FunctorType::init))&gt;::type &gt;</scope><name>init</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

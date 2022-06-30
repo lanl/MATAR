@@ -1,0 +1,856 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::HIPInternal</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2ac21abc78085a59e77db925c0cc7428" prot="public" static="no">
+        <type>::Kokkos::Experimental::HIP::size_type</type>
+        <definition>using Kokkos::Experimental::Impl::HIPInternal::size_type =  ::Kokkos::Experimental::HIP::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="89" column="3" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a87bb341db9ec40cc43618ee837890abc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_hipDev</definition>
+        <argsstring></argsstring>
+        <name>m_hipDev</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_hipDev</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="91" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8758d990a8f03a3077a918cc675c6305" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_hipArch</definition>
+        <argsstring></argsstring>
+        <name>m_hipArch</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_hipArch</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="92" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a67e78c0e2c587683f952f5d78ba616d7" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::HIPInternal::m_multiProcCount</definition>
+        <argsstring></argsstring>
+        <name>m_multiProcCount</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_multiProcCount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="93" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8feac1a11eef4b36d86e5d856fe810aa" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::HIPInternal::m_maxWarpCount</definition>
+        <argsstring></argsstring>
+        <name>m_maxWarpCount</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxWarpCount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="94" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5e4b4a8057eb3c6090452848cc82c9f7" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::HIPInternal::m_maxBlock</definition>
+        <argsstring></argsstring>
+        <name>m_maxBlock</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxBlock</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="95" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5e6f6eb1f303973697f7a3b94c03f9a5" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::HIPInternal::m_maxWavesPerCU</definition>
+        <argsstring></argsstring>
+        <name>m_maxWavesPerCU</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxWavesPerCU</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="96" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad1d79be062ad9797627da1f5f6eccb2f" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::HIPInternal::m_maxSharedWords</definition>
+        <argsstring></argsstring>
+        <name>m_maxSharedWords</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxSharedWords</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="97" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab25b45eb3e46d7740a39bd8093671898" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_regsPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_regsPerSM</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_regsPerSM</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="98" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a9ece92ffa113d937da0e6299647f3a84" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_shmemPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_shmemPerSM</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_shmemPerSM</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="99" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7dbb80e278e1ec3691d3f69394f7cc04" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_maxShmemPerBlock</definition>
+        <argsstring></argsstring>
+        <name>m_maxShmemPerBlock</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxShmemPerBlock</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="100" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad78f50eb56e059d69bbf1508c8fe6222" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_maxThreadsPerSM</definition>
+        <argsstring></argsstring>
+        <name>m_maxThreadsPerSM</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxThreadsPerSM</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="101" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8062dbad2407f2a6023d6ebc41ca49b1" prot="public" static="no" mutable="yes">
+        <type>char *</type>
+        <definition>char* Kokkos::Experimental::Impl::HIPInternal::d_driverWorkArray</definition>
+        <argsstring></argsstring>
+        <name>d_driverWorkArray</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::d_driverWorkArray</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="105" column="16" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ace288d8905f0c5963053fb75598e4fc7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Kokkos::Experimental::Impl::HIPInternal::m_maxDriverCycles</definition>
+        <argsstring></argsstring>
+        <name>m_maxDriverCycles</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxDriverCycles</qualifiedname>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="107" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7d4a4a83bb3ac35906e6bf2515513d30" prot="public" static="no" mutable="yes">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Experimental::Impl::HIPInternal::m_maxDriverTypeSize</definition>
+        <argsstring></argsstring>
+        <name>m_maxDriverTypeSize</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_maxDriverTypeSize</qualifiedname>
+        <initializer>= 1024 * 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="109" column="18" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab1b4ef9cb10f33cd076aa84772ba6101" prot="public" static="no" mutable="yes">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::m_cycleId</definition>
+        <argsstring></argsstring>
+        <name>m_cycleId</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_cycleId</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="111" column="15" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a3e0d0a55c1b0af2b7ea4f24116b3b2b3" prot="public" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex Kokkos::Experimental::Impl::HIPInternal::m_mutexWorkArray</definition>
+        <argsstring></argsstring>
+        <name>m_mutexWorkArray</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_mutexWorkArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="113" column="22" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2cac823bcfdf74b8d233a6d6000fe1ce" prot="public" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex Kokkos::Experimental::Impl::HIPInternal::m_mutexSharedMemory</definition>
+        <argsstring></argsstring>
+        <name>m_mutexSharedMemory</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_mutexSharedMemory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="115" column="22" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a0523f7f4f39592e6403f49cec9086dcf" prot="public" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Experimental::Impl::HIPInternal::m_scratchSpaceCount</definition>
+        <argsstring></argsstring>
+        <name>m_scratchSpaceCount</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_scratchSpaceCount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="118" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acd09b79a8e7d34cfbec2b28b5ae81664" prot="public" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Experimental::Impl::HIPInternal::m_scratchFlagsCount</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFlagsCount</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_scratchFlagsCount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="119" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1abeac1c17a4ea9f72b891039e700a3849" prot="public" static="no" mutable="no">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Experimental::Impl::HIPInternal::m_scratchSpace</definition>
+        <argsstring></argsstring>
+        <name>m_scratchSpace</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_scratchSpace</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="121" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a64e10b88890b1a76959d0b4e2c5a8d2c" prot="public" static="no" mutable="no">
+        <type>size_type *</type>
+        <definition>size_type* Kokkos::Experimental::Impl::HIPInternal::m_scratchFlags</definition>
+        <argsstring></argsstring>
+        <name>m_scratchFlags</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_scratchFlags</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="122" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a30cb0a22a11665bceba582e2516f0ab0" prot="public" static="no" mutable="no">
+        <type>uint32_t *</type>
+        <definition>uint32_t* Kokkos::Experimental::Impl::HIPInternal::m_scratchConcurrentBitset</definition>
+        <argsstring></argsstring>
+        <name>m_scratchConcurrentBitset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_scratchConcurrentBitset</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="123" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aafabf3a784134c0b3262caa4bf8d7bff" prot="public" static="no" mutable="no">
+        <type>hipDeviceProp_t</type>
+        <definition>hipDeviceProp_t Kokkos::Experimental::Impl::HIPInternal::m_deviceProp</definition>
+        <argsstring></argsstring>
+        <name>m_deviceProp</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_deviceProp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="125" column="19" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af8bbeb71435e7cc1c1e68e2d9b055a4d" prot="public" static="no" mutable="no">
+        <type>hipStream_t</type>
+        <definition>hipStream_t Kokkos::Experimental::Impl::HIPInternal::m_stream</definition>
+        <argsstring></argsstring>
+        <name>m_stream</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_stream</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="127" column="15" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a6fc005ace3fb30f5bc549f9ad03fbb6e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Experimental::Impl::HIPInternal::m_instance_id</definition>
+        <argsstring></argsstring>
+        <name>m_instance_id</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_instance_id</qualifiedname>
+        <initializer>= Kokkos::Tools::Experimental::Impl::idForInstance&lt;
+      Kokkos::Experimental::HIP&gt;(reinterpret_cast&lt;uintptr_t&gt;(this))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="128" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa5afc9db676f5d4e5fd2426aafd90a3e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Experimental::Impl::HIPInternal::m_manage_stream</definition>
+        <argsstring></argsstring>
+        <name>m_manage_stream</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_manage_stream</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="130" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab0de95156189f6e0571a931aad49639d" prot="public" static="no" mutable="yes">
+        <type>int64_t</type>
+        <definition>int64_t Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_current_size</definition>
+        <argsstring></argsstring>
+        <name>m_team_scratch_current_size</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_current_size</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="133" column="19" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af8760cde4e508b49a34c861a8d42ed37" prot="public" static="no" mutable="yes">
+        <type>void *</type>
+        <definition>void* Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_team_scratch_ptr</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_ptr</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="134" column="16" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acde0d0f81e99b5e62cbb3eaa0c615da3" prot="public" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_mutex</definition>
+        <argsstring></argsstring>
+        <name>m_team_scratch_mutex</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::m_team_scratch_mutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="135" column="22" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af4bdc2c15845b70d8f2483c1d6286c3f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Experimental::Impl::HIPInternal::was_finalized</definition>
+        <argsstring></argsstring>
+        <name>was_finalized</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::was_finalized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="137" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a143b72d341ea04fb93e9ed5a222e6c1c" prot="public" static="yes" mutable="no">
+        <type>unsigned long *</type>
+        <definition>unsigned long * Kokkos::Experimental::Impl::HIPInternal::constantMemHostStaging</definition>
+        <argsstring></argsstring>
+        <name>constantMemHostStaging</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::constantMemHostStaging</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="141" column="24" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8e8465a626fa0edfb7d95388dbc552ea" prot="public" static="yes" mutable="no">
+        <type>hipEvent_t</type>
+        <definition>hipEvent_t Kokkos::Experimental::Impl::HIPInternal::constantMemReusable</definition>
+        <argsstring></argsstring>
+        <name>constantMemReusable</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::constantMemReusable</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="142" column="21" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a1469f99bc4ad2ec881625038c18f75b4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::HIPInternal::HIPInternal</definition>
+        <argsstring>(const HIPInternal &amp;)</argsstring>
+        <name>HIPInternal</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::HIPInternal</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" kindref="compound">HIPInternal</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="85" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a43c933f46d7cbfae8a29c640d0d93909" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" kindref="compound">HIPInternal</ref> &amp;</type>
+        <definition>HIPInternal &amp; Kokkos::Experimental::Impl::HIPInternal::operator=</definition>
+        <argsstring>(const HIPInternal &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" kindref="compound">HIPInternal</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="86" column="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a462c570c4158afc4f4037ea3db2c24ab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" kindref="compound">HIPInternal</ref> &amp;</type>
+        <definition>HIPInternal &amp; Kokkos::Experimental::Impl::HIPInternal::singleton</definition>
+        <argsstring>()</argsstring>
+        <name>singleton</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::singleton</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="144" column="22" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="163" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa8490be619eebf5706997215379f7d82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::verify_is_initialized</definition>
+        <argsstring>(const char *const label) const</argsstring>
+        <name>verify_is_initialized</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::verify_is_initialized</qualifiedname>
+        <param>
+          <type>const char *const</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="146" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="152" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a81b72f16c56d271dee943642b1b5488e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::HIPInternal::is_initialized</definition>
+        <argsstring>() const</argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::is_initialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="148" column="7" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acde960076fa6a5d3fd31252e4c0cfd35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::HIPInternal::initialize</definition>
+        <argsstring>(int hip_device_id, hipStream_t stream=nullptr, bool manage_stream=false)</argsstring>
+        <name>initialize</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::initialize</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>hip_device_id</declname>
+        </param>
+        <param>
+          <type>hipStream_t</type>
+          <declname>stream</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>manage_stream</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="150" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="187" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5bcd79dc19b1d21c20ed59f2cda0f6be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::HIPInternal::finalize</definition>
+        <argsstring>()</argsstring>
+        <name>finalize</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::finalize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="152" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="394" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab316fe0c139c5c5de9a75aca2f52b98f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::HIPInternal::print_configuration</definition>
+        <argsstring>(std::ostream &amp;) const</argsstring>
+        <name>print_configuration</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::print_configuration</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <defname>s</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="154" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="105" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a116ba732d1a1f7862dac107784dde00e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::HIPInternal::fence</definition>
+        <argsstring>() const</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::fence</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="156" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="171" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa580da057cbff36f742a00c20c2ddd67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::HIPInternal::fence</definition>
+        <argsstring>(const std::string &amp;) const</argsstring>
+        <name>fence</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::fence</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <defname>name</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="157" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="174" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a04364355e393df6158230f1eb34652c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * Kokkos::Experimental::Impl::HIPInternal::get_next_driver</definition>
+        <argsstring>(size_t driverTypeSize) const</argsstring>
+        <name>get_next_driver</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::get_next_driver</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>driverTypeSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="160" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="439" bodyend="471"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a4537815c79ebbb2c3dc2dccfb395d902" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::HIPInternal::~HIPInternal</definition>
+        <argsstring>()</argsstring>
+        <name>~HIPInternal</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::~HIPInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="162" column="3" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="130" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7c4f16566afc1793868a50d97d543a03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::HIPInternal::HIPInternal</definition>
+        <argsstring>()=default</argsstring>
+        <name>HIPInternal</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::HIPInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="164" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5475f4faf292373944a9cc9ce6af8e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>Kokkos::Experimental::HIP::size_type * Kokkos::Experimental::Impl::HIPInternal::scratch_space</definition>
+        <argsstring>(const size_type size)</argsstring>
+        <name>scratch_space</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::scratch_space</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="167" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="325" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2bcab5c14340dde26a60cee00c8ff94a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type *</type>
+        <definition>Kokkos::Experimental::HIP::size_type * Kokkos::Experimental::Impl::HIPInternal::scratch_flags</definition>
+        <argsstring>(const size_type size)</argsstring>
+        <name>scratch_flags</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::scratch_flags</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="168" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="349" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad5736fb8d65c74b2c2b72241cb107d39" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Experimental::Impl::HIPInternal::impl_get_instance_id</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>impl_get_instance_id</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::impl_get_instance_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="169" column="12" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aaffe151479cc6a28cfdccd20045e72e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::Experimental::Impl::HIPInternal::resize_team_scratch_space</definition>
+        <argsstring>(std::int64_t bytes, bool force_shrink=false)</argsstring>
+        <name>resize_team_scratch_space</name>
+        <qualifiedname>Kokkos::Experimental::Impl::HIPInternal::resize_team_scratch_space</qualifiedname>
+        <param>
+          <type>std::int64_t</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>force_shrink</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="171" column="8" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="376" bodyend="390"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="83" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="83" bodyend="173"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a143b72d341ea04fb93e9ed5a222e6c1c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>constantMemHostStaging</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8e8465a626fa0edfb7d95388dbc552ea" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>constantMemReusable</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8062dbad2407f2a6023d6ebc41ca49b1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>d_driverWorkArray</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a116ba732d1a1f7862dac107784dde00e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>fence</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa580da057cbff36f742a00c20c2ddd67" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>fence</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5bcd79dc19b1d21c20ed59f2cda0f6be" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>finalize</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a04364355e393df6158230f1eb34652c6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>get_next_driver</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a1469f99bc4ad2ec881625038c18f75b4" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>HIPInternal</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7c4f16566afc1793868a50d97d543a03" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>HIPInternal</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad5736fb8d65c74b2c2b72241cb107d39" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>impl_get_instance_id</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acde960076fa6a5d3fd31252e4c0cfd35" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>initialize</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a81b72f16c56d271dee943642b1b5488e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>is_initialized</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab1b4ef9cb10f33cd076aa84772ba6101" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_cycleId</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aafabf3a784134c0b3262caa4bf8d7bff" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_deviceProp</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8758d990a8f03a3077a918cc675c6305" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_hipArch</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a87bb341db9ec40cc43618ee837890abc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_hipDev</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a6fc005ace3fb30f5bc549f9ad03fbb6e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_instance_id</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa5afc9db676f5d4e5fd2426aafd90a3e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_manage_stream</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5e4b4a8057eb3c6090452848cc82c9f7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxBlock</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ace288d8905f0c5963053fb75598e4fc7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxDriverCycles</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7d4a4a83bb3ac35906e6bf2515513d30" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxDriverTypeSize</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad1d79be062ad9797627da1f5f6eccb2f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxSharedWords</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a7dbb80e278e1ec3691d3f69394f7cc04" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxShmemPerBlock</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ad78f50eb56e059d69bbf1508c8fe6222" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxThreadsPerSM</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a8feac1a11eef4b36d86e5d856fe810aa" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxWarpCount</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5e6f6eb1f303973697f7a3b94c03f9a5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_maxWavesPerCU</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a67e78c0e2c587683f952f5d78ba616d7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_multiProcCount</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2cac823bcfdf74b8d233a6d6000fe1ce" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_mutexSharedMemory</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a3e0d0a55c1b0af2b7ea4f24116b3b2b3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_mutexWorkArray</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab25b45eb3e46d7740a39bd8093671898" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_regsPerSM</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a30cb0a22a11665bceba582e2516f0ab0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_scratchConcurrentBitset</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a64e10b88890b1a76959d0b4e2c5a8d2c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_scratchFlags</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acd09b79a8e7d34cfbec2b28b5ae81664" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_scratchFlagsCount</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1abeac1c17a4ea9f72b891039e700a3849" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_scratchSpace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a0523f7f4f39592e6403f49cec9086dcf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_scratchSpaceCount</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a9ece92ffa113d937da0e6299647f3a84" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_shmemPerSM</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af8bbeb71435e7cc1c1e68e2d9b055a4d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_stream</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab0de95156189f6e0571a931aad49639d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_team_scratch_current_size</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1acde0d0f81e99b5e62cbb3eaa0c615da3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_team_scratch_mutex</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af8760cde4e508b49a34c861a8d42ed37" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>m_team_scratch_ptr</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a43c933f46d7cbfae8a29c640d0d93909" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1ab316fe0c139c5c5de9a75aca2f52b98f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>print_configuration</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aaffe151479cc6a28cfdccd20045e72e0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>resize_team_scratch_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2bcab5c14340dde26a60cee00c8ff94a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>scratch_flags</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a5475f4faf292373944a9cc9ce6af8e88" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>scratch_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a462c570c4158afc4f4037ea3db2c24ab" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>singleton</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a2ac21abc78085a59e77db925c0cc7428" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1aa8490be619eebf5706997215379f7d82" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>verify_is_initialized</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1af4bdc2c15845b70d8f2483c1d6286c3f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>was_finalized</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal_1a4537815c79ebbb2c3dc2dccfb395d902" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::HIPInternal</scope><name>~HIPInternal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

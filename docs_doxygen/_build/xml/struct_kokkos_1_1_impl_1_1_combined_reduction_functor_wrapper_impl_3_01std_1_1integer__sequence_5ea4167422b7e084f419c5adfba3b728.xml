@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t...</type>
+        <declname>Idxs</declname>
+        <defname>Idxs</defname>
+      </param>
+      <param>
+        <type>class Functor</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Reducers</declname>
+        <defname>Reducers</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a53d7c174c4a4ce50d45775f66fd7d1b2" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reducer" kindref="compound">CombinedReducer</ref>&lt; Space, Reducers... &gt;</type>
+        <definition>using Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::reducer_type =  CombinedReducer&lt;Space, Reducers...&gt;</definition>
+        <argsstring></argsstring>
+        <name>reducer_type</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::reducer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="340" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a5e6ce315cdc86470a76e6866e3b7ea6e" prot="public" static="no">
+        <type>typename reducer_type::value_type</type>
+        <definition>using Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::value_type =  typename reducer_type::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="343" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a243caa27b1d1e783ef44e8e5ff6db2b6" prot="private" static="no" mutable="no">
+        <type>Functor</type>
+        <definition>Functor Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="334" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1aea2d08eb9a720dd226e1c3aa29a07106" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>CombinedReductionFunctorWrapperImpl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="352" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1ab517d1e3827abeb6583dd000172ed202" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</definition>
+        <argsstring>(CombinedReductionFunctorWrapperImpl const &amp;)=default</argsstring>
+        <name>CombinedReductionFunctorWrapperImpl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="354" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a1a5321a612efe18bdebaeb68171544e0" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</definition>
+        <argsstring>(CombinedReductionFunctorWrapperImpl &amp;&amp;)=default</argsstring>
+        <name>CombinedReductionFunctorWrapperImpl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="357" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1ae64418e01d9d7d2d91deed0ec720a863" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr <ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr CombinedReductionFunctorWrapperImpl &amp; Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator=</definition>
+        <argsstring>(CombinedReductionFunctorWrapperImpl const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="360" column="49"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a5d47f8349f1467c09b4faa163c27d2da" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr <ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr CombinedReductionFunctorWrapperImpl &amp; Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator=</definition>
+        <argsstring>(CombinedReductionFunctorWrapperImpl &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl" kindref="compound">CombinedReductionFunctorWrapperImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="363" column="49"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a2f91a409c23f45fbb22479f9a8acbb5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::~CombinedReductionFunctorWrapperImpl</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CombinedReductionFunctorWrapperImpl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::~CombinedReductionFunctorWrapperImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="366" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a79d22cb1f3d3948cd4e79d46a8f5f642" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</definition>
+        <argsstring>(Functor arg_functor)</argsstring>
+        <name>CombinedReductionFunctorWrapperImpl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::CombinedReductionFunctorWrapperImpl</qualifiedname>
+        <param>
+          <type>Functor</type>
+          <declname>arg_functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="369" column="22" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="369" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1adbc66673a1f61fbd1809ec08d2e31100" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class IndexOrMemberOrTagType1</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>IndexOrMemberTypesThenValueType</declname>
+            <defname>IndexOrMemberTypesThenValueType</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator()</definition>
+        <argsstring>(IndexOrMemberOrTagType1 &amp;&amp;arg_first, IndexOrMemberTypesThenValueType &amp;&amp;... args) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::operator()</qualifiedname>
+        <param>
+          <type>IndexOrMemberOrTagType1 &amp;&amp;</type>
+          <declname>arg_first</declname>
+        </param>
+        <param>
+          <type>IndexOrMemberTypesThenValueType &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="384" column="24" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="384" bodyend="390"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1aeb1672dc6d8b580449aa605d45d9a514" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>IdxOrMemberTypes</declname>
+            <defname>IdxOrMemberTypes</defname>
+          </param>
+          <param>
+            <type>class IdxOrMemberType1</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>IdxOrMemberTypesThenValueType</declname>
+            <defname>IdxOrMemberTypesThenValueType</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if_t&lt; !std::is_same&lt; remove_cvref_t&lt; IdxOrMemberType1 &gt;, value_type &gt;::value &gt;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if_t&lt; !std::is_same&lt; remove_cvref_t&lt; IdxOrMemberType1 &gt;, value_type &gt;::value &gt; Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::_call_op_impl</definition>
+        <argsstring>(IdxOrMemberTypes &amp;&amp;... idxs, IdxOrMemberType1 &amp;&amp;idx, IdxOrMemberTypesThenValueType &amp;&amp;... args) const</argsstring>
+        <name>_call_op_impl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::_call_op_impl</qualifiedname>
+        <param>
+          <type>IdxOrMemberTypes &amp;&amp;...</type>
+          <declname>idxs</declname>
+        </param>
+        <param>
+          <type>IdxOrMemberType1 &amp;&amp;</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>IdxOrMemberTypesThenValueType &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="410" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="410" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a33842f411ba0467a4214aa1e23861559" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>IdxOrMemberTypes</declname>
+            <defname>IdxOrMemberTypes</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::_call_op_impl</definition>
+        <argsstring>(IdxOrMemberTypes &amp;&amp;... idxs, value_type &amp;out) const</argsstring>
+        <name>_call_op_impl</name>
+        <qualifiedname>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;::_call_op_impl</qualifiedname>
+        <param>
+          <type>IdxOrMemberTypes &amp;&amp;...</type>
+          <declname>idxs</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="419" column="36" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="419" bodyend="423"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" line="331" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Combined_Reducer.hpp" bodystart="332" bodyend="424"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1aeb1672dc6d8b580449aa605d45d9a514" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>_call_op_impl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a33842f411ba0467a4214aa1e23861559" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>_call_op_impl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1aea2d08eb9a720dd226e1c3aa29a07106" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>CombinedReductionFunctorWrapperImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1ab517d1e3827abeb6583dd000172ed202" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>CombinedReductionFunctorWrapperImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a1a5321a612efe18bdebaeb68171544e0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>CombinedReductionFunctorWrapperImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a79d22cb1f3d3948cd4e79d46a8f5f642" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>CombinedReductionFunctorWrapperImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a243caa27b1d1e783ef44e8e5ff6db2b6" prot="private" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>m_functor</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1adbc66673a1f61fbd1809ec08d2e31100" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1ae64418e01d9d7d2d91deed0ec720a863" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a5d47f8349f1467c09b4faa163c27d2da" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a53d7c174c4a4ce50d45775f66fd7d1b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>reducer_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a5e6ce315cdc86470a76e6866e3b7ea6e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_combined_reduction_functor_wrapper_impl_3_01std_1_1integer__sequence_5ea4167422b7e084f419c5adfba3b728_1a2f91a409c23f45fbb22479f9a8acbb5a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::CombinedReductionFunctorWrapperImpl&lt; std::integer_sequence&lt; size_t, Idxs... &gt;, Functor, Space, Reducers... &gt;</scope><name>~CombinedReductionFunctorWrapperImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

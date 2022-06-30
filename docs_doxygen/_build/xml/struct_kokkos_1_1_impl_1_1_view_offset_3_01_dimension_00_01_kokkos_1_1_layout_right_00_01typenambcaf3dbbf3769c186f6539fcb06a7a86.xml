@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>TrivialScalarSize</declname>
+        <defname>TrivialScalarSize</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1ada45801b12618dac96ac4e3c7d5e47ea" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@136</name>
+        <qualifiedname>Kokkos::Impl::Padding::@136</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1ada45801b12618dac96ac4e3c7d5e47eaab0f4516ad86068e607cf3d8953148cc0" prot="public">
+          <name>div</name>
+          <initializer>= TrivialScalarSize == 0
+                ? 0
+                : Kokkos::Impl::MEMORY_ALIGNMENT /
+                      (TrivialScalarSize ? TrivialScalarSize : 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2004" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2004" bodyend="2009"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a2ec7ac36179f8e8ae94dcf2aef7f9572" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@137</name>
+        <qualifiedname>Kokkos::Impl::Padding::@137</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a2ec7ac36179f8e8ae94dcf2aef7f9572acaf089c594f900fe72c94238d9f0c12f" prot="public">
+          <name>mod</name>
+          <initializer>= TrivialScalarSize == 0
+                ? 0
+                : Kokkos::Impl::MEMORY_ALIGNMENT %
+                      (TrivialScalarSize ? TrivialScalarSize : 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2010" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2010" bodyend="2015"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a830dc0419735eb90b1b22ee4f9f60083" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@138</name>
+        <qualifiedname>Kokkos::Impl::Padding::@138</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a830dc0419735eb90b1b22ee4f9f60083a39ad54e773178dc0a9afe64763377132" prot="public">
+          <name>align</name>
+          <initializer>= 0 != TrivialScalarSize &amp;&amp; 0 == mod ? div : 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2019" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2019" bodyend="2019"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a3671df47876379bd5d586543f1e51c86" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@139</name>
+        <qualifiedname>Kokkos::Impl::Padding::@139</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a3671df47876379bd5d586543f1e51c86ad537ccd3550cddbf916c9929ac2b96bd" prot="public">
+          <name>div_ok</name>
+          <initializer>= (div != 0) ? div : 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2020" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2020" bodyend="2022"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1ac6ee2c18bee90727da1cbb10f737e13c" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>static KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Impl::Padding&lt; TrivialScalarSize &gt;::stride</definition>
+        <argsstring>(size_t const N)</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::Impl::Padding::stride</qualifiedname>
+        <param>
+          <type>size_t const</type>
+          <declname>N</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2025" column="29" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2025" bodyend="2032"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2003" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2003" bodyend="2033"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a830dc0419735eb90b1b22ee4f9f60083a39ad54e773178dc0a9afe64763377132" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</scope><name>align</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1ada45801b12618dac96ac4e3c7d5e47eaab0f4516ad86068e607cf3d8953148cc0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</scope><name>div</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a3671df47876379bd5d586543f1e51c86ad537ccd3550cddbf916c9929ac2b96bd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</scope><name>div_ok</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1a2ec7ac36179f8e8ae94dcf2aef7f9572acaf089c594f900fe72c94238d9f0c12f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</scope><name>mod</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_offset_3_01_dimension_00_01_kokkos_1_1_layout_right_00_01typenambcaf3dbbf3769c186f6539fcb06a7a86_1ac6ee2c18bee90727da1cbb10f737e13c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewOffset&lt; Dimension, Kokkos::LayoutRight, typename std::enable_if&lt;(1&lt; Dimension::rank &amp;&amp;0&lt; Dimension::rank_dynamic)&gt;::type &gt;::Padding</scope><name>stride</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

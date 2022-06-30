@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_math_binary_function" kind="struct" language="C++" prot="public">
+    <compoundname>TestMathBinaryFunction</compoundname>
+    <basecompoundref refid="struct_floating_point_comparison" prot="public" virt="non-virtual">FloatingPointComparison</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class Func</type>
+      </param>
+      <param>
+        <type>class Arg1</type>
+      </param>
+      <param>
+        <type>class Arg2</type>
+      </param>
+      <param>
+        <type>class Ret</type>
+        <defval>math_binary_function_return_type_t&lt;Arg1, Arg2&gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_math_binary_function_1af3de1c102e39e29e3b7175a8768b1e7e" prot="public" static="no" mutable="no">
+        <type>Arg1</type>
+        <definition>Arg1 TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::val1_</definition>
+        <argsstring></argsstring>
+        <name>val1_</name>
+        <qualifiedname>TestMathBinaryFunction::val1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="454" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="454" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_math_binary_function_1ad5e471cdd4e8baf59b3515af0d6d3f8f" prot="public" static="no" mutable="no">
+        <type>Arg2</type>
+        <definition>Arg2 TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::val2_</definition>
+        <argsstring></argsstring>
+        <name>val2_</name>
+        <qualifiedname>TestMathBinaryFunction::val2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="455" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="455" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_math_binary_function_1ac2ca0e154cd648ae03966c95cb5d0d01" prot="public" static="no" mutable="no">
+        <type>Ret</type>
+        <definition>Ret TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::res_</definition>
+        <argsstring></argsstring>
+        <name>res_</name>
+        <qualifiedname>TestMathBinaryFunction::res_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="456" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_math_binary_function_1a7258ef0af18b4f70458deb81499cd738" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::TestMathBinaryFunction</definition>
+        <argsstring>(Arg1 val1, Arg2 val2)</argsstring>
+        <name>TestMathBinaryFunction</name>
+        <qualifiedname>TestMathBinaryFunction::TestMathBinaryFunction</qualifiedname>
+        <param>
+          <type>Arg1</type>
+          <declname>val1</declname>
+        </param>
+        <param>
+          <type>Arg2</type>
+          <declname>val2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="457" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="457" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_math_binary_function_1a87e394ddabcd83e8a3ce1933102b9b48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>TestMathBinaryFunction::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="464" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="464" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_math_binary_function_1ae7d89e8fe7899be5d79449149b19c2fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;::operator()</definition>
+        <argsstring>(int, int &amp;e) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestMathBinaryFunction::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="469" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="469" bodyend="479"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>FloatingPointComparison</label>
+        <link refid="struct_floating_point_comparison"/>
+      </node>
+      <node id="1">
+        <label>TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;</label>
+        <link refid="struct_test_math_binary_function"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>FloatingPointComparison</label>
+        <link refid="struct_floating_point_comparison"/>
+      </node>
+      <node id="1">
+        <label>TestMathBinaryFunction&lt; Space, Func, Arg1, Arg2, Ret &gt;</label>
+        <link refid="struct_test_math_binary_function"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="453" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="453" bodyend="480"/>
+    <listofallmembers>
+      <member refid="struct_floating_point_comparison_1af8eb17f968014cc75e694af558c916c7" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>compare</name></member>
+      <member refid="struct_floating_point_comparison_1a489631d849e31d394872a17e583b0055" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>compare_near_zero</name></member>
+      <member refid="struct_test_math_binary_function_1ae7d89e8fe7899be5d79449149b19c2fc" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>operator()</name></member>
+      <member refid="struct_test_math_binary_function_1ac2ca0e154cd648ae03966c95cb5d0d01" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>res_</name></member>
+      <member refid="struct_test_math_binary_function_1a87e394ddabcd83e8a3ce1933102b9b48" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>run</name></member>
+      <member refid="struct_test_math_binary_function_1a7258ef0af18b4f70458deb81499cd738" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>TestMathBinaryFunction</name></member>
+      <member refid="struct_test_math_binary_function_1af3de1c102e39e29e3b7175a8768b1e7e" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>val1_</name></member>
+      <member refid="struct_test_math_binary_function_1ad5e471cdd4e8baf59b3515af0d6d3f8f" prot="public" virt="non-virtual"><scope>TestMathBinaryFunction</scope><name>val2_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

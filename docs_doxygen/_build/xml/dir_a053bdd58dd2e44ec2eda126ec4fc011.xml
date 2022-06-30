@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_a053bdd58dd2e44ec2eda126ec4fc011" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/cuda</compoundname>
+    <innerfile refid="_test_cuda___debug_pin_u_v_m_space_8cpp">TestCuda_DebugPinUVMSpace.cpp</innerfile>
+    <innerfile refid="_test_cuda___debug_serial_execution_8cpp">TestCuda_DebugSerialExecution.cpp</innerfile>
+    <innerfile refid="_test_cuda___graph_8cpp">TestCuda_Graph.cpp</innerfile>
+    <innerfile refid="_test_cuda___inter_op___init_8cpp">TestCuda_InterOp_Init.cpp</innerfile>
+    <innerfile refid="_test_cuda___inter_op___streams_8cpp">TestCuda_InterOp_Streams.cpp</innerfile>
+    <innerfile refid="_test_cuda___spaces_8cpp">TestCuda_Spaces.cpp</innerfile>
+    <innerfile refid="_test_cuda___task_8cpp">TestCuda_Task.cpp</innerfile>
+    <innerfile refid="_test_cuda___team_scratch_streams_8cpp">TestCuda_TeamScratchStreams.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/"/>
+  </compounddef>
+</doxygen>

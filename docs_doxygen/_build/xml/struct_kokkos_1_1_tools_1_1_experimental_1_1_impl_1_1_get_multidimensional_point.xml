@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_get_multidimensional_point" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::GetMultidimensionalPoint</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class HierarchyNode</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>InterpolationIndices</declname>
+        <defname>InterpolationIndices</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Now we&apos;re going to do the full &quot;get a point in the space&quot;. At a root level, we&apos;ll take in a <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_node" kindref="compound">ValueHierarchyNode</ref> and a set of doubles representing the value in [0.0,1.0) we want to pick </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="238" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="238" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

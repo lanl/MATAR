@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_cuda_texture_1_1_tag_test" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewCudaTexture::TagTest</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="338" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="338" bodyend="338"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

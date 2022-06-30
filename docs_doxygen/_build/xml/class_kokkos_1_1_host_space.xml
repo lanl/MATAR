@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_host_space" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::HostSpace</compoundname>
+    <includes refid="_kokkos___host_space_8hpp" local="no">Kokkos_HostSpace.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589" prot="public" static="no" strong="no">
+        <type></type>
+        <name>AllocationMechanism</name>
+        <qualifiedname>Kokkos::HostSpace::AllocationMechanism</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589aacfd357c7280575afdf87120d1af2c0e" prot="public">
+          <name>STD_MALLOC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589a17d861cdc2cd8aeee2ef6de762376ded" prot="public">
+          <name>POSIX_MEMALIGN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589aabaf52bfa3988fb6016727aa6a1a57fa" prot="public">
+          <name>POSIX_MMAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589a4dbddb57a262fc2d4885a5663330cdee" prot="public">
+          <name>INTEL_MM_ALLOC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Non-default memory space instance to choose allocation mechansim, if available. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="148" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="148" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_host_space_1a1f0290bd65a79685c6d3c9982c05645a" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref></type>
+        <definition>using Kokkos::HostSpace::memory_space =  HostSpace</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::HostSpace::memory_space</qualifiedname>
+        <briefdescription>
+<para>Tag this class as a kokkos memory space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="106" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_host_space_1ac373a291a1d0a6024cd6596241e16025" prot="public" static="no">
+        <type>size_t</type>
+        <definition>using Kokkos::HostSpace::size_type =  size_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::HostSpace::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="107" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_host_space_1aba3971d5d38af29e1b7e076ac9e593d2" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; execution_space, <ref refid="class_kokkos_1_1_host_space_1a1f0290bd65a79685c6d3c9982c05645a" kindref="member">memory_space</ref> &gt;</type>
+        <definition>using Kokkos::HostSpace::device_type =  Kokkos::Device&lt;execution_space, memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::HostSpace::device_type</qualifiedname>
+        <briefdescription>
+<para>This memory space preferred device_type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="135" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_host_space_1acaf9ee8b3dbbad99d5d020abff0e26a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class Kokkos::Experimental::LogicalMemorySpace</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Experimental::LogicalMemorySpace</name>
+        <qualifiedname>Kokkos::HostSpace::LogicalMemorySpace</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_logical_memory_space" kindref="compound">Kokkos::Experimental::LogicalMemorySpace</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="170" column="16" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_host_space_1ad9bfece795b79824ab9761f86a738d68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::HostSpace, void &gt;</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::HostSpace, void &gt;</name>
+        <qualifiedname>Kokkos::HostSpace::SharedAllocationRecord&lt; Kokkos::HostSpace, void &gt;</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_shared_allocation_record" kindref="compound">Kokkos::Impl::SharedAllocationRecord</ref>&lt; <ref refid="class_kokkos_1_1_host_space" kindref="compound">Kokkos::HostSpace</ref>, void &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="188" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_host_space_1a300d6e6d8033780d8baf1886cd026ad6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589" kindref="member">AllocationMechanism</ref></type>
+        <definition>AllocationMechanism Kokkos::HostSpace::m_alloc_mech</definition>
+        <argsstring></argsstring>
+        <name>m_alloc_mech</name>
+        <qualifiedname>Kokkos::HostSpace::m_alloc_mech</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="187" column="23" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_host_space_1a13d4a4368295bd42c3410b9d84d8aaad" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char* Kokkos::HostSpace::m_name</definition>
+        <argsstring></argsstring>
+        <name>m_name</name>
+        <qualifiedname>Kokkos::HostSpace::m_name</qualifiedname>
+        <initializer>= &quot;Host&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="188" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a1d55ec5a1056fad2e89b3b4fa1227914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::HostSpace::HostSpace</definition>
+        <argsstring>()</argsstring>
+        <name>HostSpace</name>
+        <qualifiedname>Kokkos::HostSpace::HostSpace</qualifiedname>
+        <briefdescription>
+<para>Default memory space instance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="138" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="115" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a0a38366482e4854123da079ba9e3282f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::HostSpace::HostSpace</definition>
+        <argsstring>(HostSpace &amp;&amp;rhs)=default</argsstring>
+        <name>HostSpace</name>
+        <qualifiedname>Kokkos::HostSpace::HostSpace</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="139" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1ab0799f2ee6757b690e45212bb03eef51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::HostSpace::HostSpace</definition>
+        <argsstring>(const HostSpace &amp;rhs)=default</argsstring>
+        <name>HostSpace</name>
+        <qualifiedname>Kokkos::HostSpace::HostSpace</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="140" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1addb3a7083e62b17015bbd224727e3c8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;</type>
+        <definition>HostSpace &amp; Kokkos::HostSpace::operator=</definition>
+        <argsstring>(HostSpace &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::HostSpace::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="141" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1acbcfdd6d72256aa5c01b324f9156aa53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;</type>
+        <definition>HostSpace &amp; Kokkos::HostSpace::operator=</definition>
+        <argsstring>(const HostSpace &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::HostSpace::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="142" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a85c3a44d24814c8ed5c63a421c707cbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::HostSpace::~HostSpace</definition>
+        <argsstring>()=default</argsstring>
+        <name>~HostSpace</name>
+        <qualifiedname>Kokkos::HostSpace::~HostSpace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="143" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1adb14345e66f80784a902ed82e0acaf05" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::HostSpace::HostSpace</definition>
+        <argsstring>(const AllocationMechanism &amp;)</argsstring>
+        <name>HostSpace</name>
+        <qualifiedname>Kokkos::HostSpace::HostSpace</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589" kindref="member">AllocationMechanism</ref> &amp;</type>
+          <defname>arg_alloc_mech</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="155" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="130" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1aa28f6d1671574f639f19b4f10e2fdfd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::HostSpace::allocate</definition>
+        <argsstring>(const size_t arg_alloc_size) const</argsstring>
+        <name>allocate</name>
+        <qualifiedname>Kokkos::HostSpace::allocate</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <briefdescription>
+<para>Allocate untracked memory in the space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="158" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a9f7420ce1d530d152c05f09db186269e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::HostSpace::allocate</definition>
+        <argsstring>(const char *arg_label, const size_t arg_alloc_size, const size_t arg_logical_size=0) const</argsstring>
+        <name>allocate</name>
+        <qualifiedname>Kokkos::HostSpace::allocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="159" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="168" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a5107897b13fbafe2c23b62172eda4393" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::HostSpace::deallocate</definition>
+        <argsstring>(void *const arg_alloc_ptr, const size_t arg_alloc_size) const</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>Kokkos::HostSpace::deallocate</qualifiedname>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <briefdescription>
+<para>Deallocate untracked memory in the space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="163" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="294" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a4d70e1b40d27664c8c98c95a87d8a00e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::HostSpace::deallocate</definition>
+        <argsstring>(const char *arg_label, void *const arg_alloc_ptr, const size_t arg_alloc_size, const size_t arg_logical_size=0) const</argsstring>
+        <name>deallocate</name>
+        <qualifiedname>Kokkos::HostSpace::deallocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="164" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="299" bodyend="305"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a518cf79e6e1c82b7c673e7b7d673f5f5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * Kokkos::HostSpace::impl_allocate</definition>
+        <argsstring>(const char *arg_label, const size_t arg_alloc_size, const size_t arg_logical_size=0, const Kokkos::Tools::SpaceHandle=Kokkos::Tools::make_space_handle(name())) const</argsstring>
+        <name>impl_allocate</name>
+        <qualifiedname>Kokkos::HostSpace::impl_allocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos::Tools::SpaceHandle</ref></type>
+          <defname>arg_handle</defname>
+          <defval>Kokkos::Tools::make_space_handle(<ref refid="class_kokkos_1_1_host_space_1a4d6fd16157ab06b1db1914b6b9ab0a2e" kindref="member">name</ref>())</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="172" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="174" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a099798e72a91a38703d98e9f8213dbdd" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::HostSpace::impl_deallocate</definition>
+        <argsstring>(const char *arg_label, void *const arg_alloc_ptr, const size_t arg_alloc_size, const size_t arg_logical_size=0, const Kokkos::Tools::SpaceHandle=Kokkos::Tools::make_space_handle(name())) const</argsstring>
+        <name>impl_deallocate</name>
+        <qualifiedname>Kokkos::HostSpace::impl_deallocate</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>arg_alloc_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_alloc_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_logical_size</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos___profiling___space_handle" kindref="compound">Kokkos::Tools::SpaceHandle</ref></type>
+          <defname>arg_handle</defname>
+          <defval>Kokkos::Tools::make_space_handle(<ref refid="class_kokkos_1_1_host_space_1a4d6fd16157ab06b1db1914b6b9ab0a2e" kindref="member">name</ref>())</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="176" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSpace.cpp" bodystart="306" bodyend="339"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_host_space_1a4d6fd16157ab06b1db1914b6b9ab0a2e" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>static constexpr const char * Kokkos::HostSpace::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <qualifiedname>Kokkos::HostSpace::name</qualifiedname>
+        <briefdescription>
+<para>Return Name of the MemorySpace. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="184" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="184" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Memory management for host memory. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="class_kokkos_1_1_host_space" kindref="compound">HostSpace</ref> is a memory space that governs host memory. &quot;Host&quot; memory means the usual CPU-accessible memory. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" line="103" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_HostSpace.hpp" bodystart="103" bodyend="190"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_host_space_1aa28f6d1671574f639f19b4f10e2fdfd8" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>allocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a9f7420ce1d530d152c05f09db186269e" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>allocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>AllocationMechanism</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a5107897b13fbafe2c23b62172eda4393" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>deallocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a4d70e1b40d27664c8c98c95a87d8a00e" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>deallocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1aba3971d5d38af29e1b7e076ac9e593d2" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a1d55ec5a1056fad2e89b3b4fa1227914" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>HostSpace</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a0a38366482e4854123da079ba9e3282f" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>HostSpace</name></member>
+      <member refid="class_kokkos_1_1_host_space_1ab0799f2ee6757b690e45212bb03eef51" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>HostSpace</name></member>
+      <member refid="class_kokkos_1_1_host_space_1adb14345e66f80784a902ed82e0acaf05" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>HostSpace</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a518cf79e6e1c82b7c673e7b7d673f5f5" prot="private" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>impl_allocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a099798e72a91a38703d98e9f8213dbdd" prot="private" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>impl_deallocate</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589a4dbddb57a262fc2d4885a5663330cdee" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>INTEL_MM_ALLOC</name></member>
+      <member refid="class_kokkos_1_1_host_space_1acaf9ee8b3dbbad99d5d020abff0e26a1" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>Kokkos::Experimental::LogicalMemorySpace</name></member>
+      <member refid="class_kokkos_1_1_host_space_1ad9bfece795b79824ab9761f86a738d68" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>Kokkos::Impl::SharedAllocationRecord&lt; Kokkos::HostSpace, void &gt;</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a300d6e6d8033780d8baf1886cd026ad6" prot="private" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>m_alloc_mech</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a13d4a4368295bd42c3410b9d84d8aaad" prot="private" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>m_name</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a1f0290bd65a79685c6d3c9982c05645a" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>memory_space</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a4d6fd16157ab06b1db1914b6b9ab0a2e" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>name</name></member>
+      <member refid="class_kokkos_1_1_host_space_1addb3a7083e62b17015bbd224727e3c8a" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_host_space_1acbcfdd6d72256aa5c01b324f9156aa53" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589a17d861cdc2cd8aeee2ef6de762376ded" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>POSIX_MEMALIGN</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589aabaf52bfa3988fb6016727aa6a1a57fa" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>POSIX_MMAP</name></member>
+      <member refid="class_kokkos_1_1_host_space_1ac373a291a1d0a6024cd6596241e16025" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a8682474635c2b622c99d9f9828597589aacfd357c7280575afdf87120d1af2c0e" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>STD_MALLOC</name></member>
+      <member refid="class_kokkos_1_1_host_space_1a85c3a44d24814c8ed5c63a421c707cbc" prot="public" virt="non-virtual"><scope>Kokkos::HostSpace</scope><name>~HostSpace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

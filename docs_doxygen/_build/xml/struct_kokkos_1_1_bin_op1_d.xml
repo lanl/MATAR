@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_bin_op1_d" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::BinOp1D</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class KeyViewType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_op1_d_1af51065d241c2d8049685cd3f51dfec0f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::BinOp1D&lt; KeyViewType &gt;::max_bins_</definition>
+        <argsstring></argsstring>
+        <name>max_bins_</name>
+        <qualifiedname>Kokkos::BinOp1D::max_bins_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="425" column="7" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_op1_d_1a71a13b8c31ec5773f6c01126cd5cb973" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Kokkos::BinOp1D&lt; KeyViewType &gt;::mul_</definition>
+        <argsstring></argsstring>
+        <name>mul_</name>
+        <qualifiedname>Kokkos::BinOp1D::mul_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="426" column="10" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_op1_d_1a292a6215b38e58aa7c52c7b8f199f064" prot="public" static="no" mutable="no">
+        <type>KeyViewType::const_value_type</type>
+        <definition>KeyViewType::const_value_type Kokkos::BinOp1D&lt; KeyViewType &gt;::range_</definition>
+        <argsstring></argsstring>
+        <name>range_</name>
+        <qualifiedname>Kokkos::BinOp1D::range_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="427" column="42" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_op1_d_1a7c62f25a964147cb3b1d7407f406015f" prot="public" static="no" mutable="no">
+        <type>KeyViewType::const_value_type</type>
+        <definition>KeyViewType::const_value_type Kokkos::BinOp1D&lt; KeyViewType &gt;::min_</definition>
+        <argsstring></argsstring>
+        <name>min_</name>
+        <qualifiedname>Kokkos::BinOp1D::min_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="428" column="42" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="428" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_op1_d_1a790796459e433829277212428ea506c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::BinOp1D&lt; KeyViewType &gt;::BinOp1D</definition>
+        <argsstring>()</argsstring>
+        <name>BinOp1D</name>
+        <qualifiedname>Kokkos::BinOp1D::BinOp1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="430" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="430" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_op1_d_1a7b10872609b88ea54351aab7828247b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::BinOp1D&lt; KeyViewType &gt;::BinOp1D</definition>
+        <argsstring>(int max_bins__, typename KeyViewType::const_value_type min, typename KeyViewType::const_value_type max)</argsstring>
+        <name>BinOp1D</name>
+        <qualifiedname>Kokkos::BinOp1D::BinOp1D</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>max_bins__</declname>
+        </param>
+        <param>
+          <type>typename KeyViewType::const_value_type</type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type>typename KeyViewType::const_value_type</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="437" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="437" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_op1_d_1a84a41e34d030d750a5ae19e9550572bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ViewType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::BinOp1D&lt; KeyViewType &gt;::bin</definition>
+        <argsstring>(ViewType &amp;keys, const int &amp;i) const</argsstring>
+        <name>bin</name>
+        <qualifiedname>Kokkos::BinOp1D::bin</qualifiedname>
+        <param>
+          <type>ViewType &amp;</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="446" column="30" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="446" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_op1_d_1a4b2585b79f8a80faaed2d275f5ca9ba7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::BinOp1D&lt; KeyViewType &gt;::max_bins</definition>
+        <argsstring>() const</argsstring>
+        <name>max_bins</name>
+        <qualifiedname>Kokkos::BinOp1D::max_bins</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="452" column="7" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="452" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_op1_d_1a874b3aede8262b4cb60ae8392ac68d0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ViewType</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::BinOp1D&lt; KeyViewType &gt;::operator()</definition>
+        <argsstring>(ViewType &amp;keys, iType1 &amp;i1, iType2 &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::BinOp1D::operator()</qualifiedname>
+        <param>
+          <type>ViewType &amp;</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="456" column="31" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="456" bodyend="459"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="424" column="1" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="424" bodyend="460"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a84a41e34d030d750a5ae19e9550572bf" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>bin</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a790796459e433829277212428ea506c9" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>BinOp1D</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a7b10872609b88ea54351aab7828247b9" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>BinOp1D</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a4b2585b79f8a80faaed2d275f5ca9ba7" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>max_bins</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1af51065d241c2d8049685cd3f51dfec0f" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>max_bins_</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a7c62f25a964147cb3b1d7407f406015f" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>min_</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a71a13b8c31ec5773f6c01126cd5cb973" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>mul_</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a874b3aede8262b4cb60ae8392ac68d0f" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_bin_op1_d_1a292a6215b38e58aa7c52c7b8f199f064" prot="public" virt="non-virtual"><scope>Kokkos::BinOp1D</scope><name>range_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

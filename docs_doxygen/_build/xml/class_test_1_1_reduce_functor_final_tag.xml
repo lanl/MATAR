@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_1_1_reduce_functor_final_tag" kind="class" language="C++" prot="public">
+    <compoundname>Test::ReduceFunctorFinalTag</compoundname>
+    <innerclass refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type" prot="public">Test::ReduceFunctorFinalTag::value_type</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_test_1_1_reduce_functor_final_tag_1a16196191376507ea0a99fac7c22dc273" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="118" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_reduce_functor_final_tag_1ae2e44c0ccdcf49f6296621257be50673" prot="public" static="no">
+        <type>typename execution_space::size_type</type>
+        <definition>using Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::size_type =  typename execution_space::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_test_1_1_reduce_functor_final_tag_1a0603930ee0c5bf933f7d271be402d9b3" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>using Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::ScalarType =  int64_t</definition>
+        <argsstring></argsstring>
+        <name>ScalarType</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::ScalarType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="120" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_test_1_1_reduce_functor_final_tag_1a01de6b4febc460366da58ce82b0235c0" prot="public" static="no" mutable="no">
+        <type>const size_type</type>
+        <definition>const size_type Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::nwork</definition>
+        <argsstring></argsstring>
+        <name>nwork</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::nwork</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="126" column="19" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_1_1_reduce_functor_final_tag_1a50088cf377850dc1a0289c1e85146fc6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::ReduceFunctorFinalTag</definition>
+        <argsstring>(const size_type arg_nwork)</argsstring>
+        <name>ReduceFunctorFinalTag</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::ReduceFunctorFinalTag</qualifiedname>
+        <param>
+          <type>const size_type</type>
+          <declname>arg_nwork</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="129" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_reduce_functor_final_tag_1af5309ce5be1d0ea75adaac927e43241f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::join</definition>
+        <argsstring>(const ReducerTag, volatile value_type &amp;dst, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::join</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>ReducerTag</declname>
+        </param>
+        <param>
+          <type>volatile <ref refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile <ref refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="132" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="132" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_reduce_functor_final_tag_1aa374c1b8f467848715b24b8b8ba4db81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::operator()</definition>
+        <argsstring>(const ReducerTag, size_type iwork, value_type &amp;dst) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::operator()</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>ReducerTag</declname>
+        </param>
+        <param>
+          <type>size_type</type>
+          <declname>iwork</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="140" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="140" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1_reduce_functor_final_tag_1a8f79c03ccad858dcbb2e11cb583294e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ReduceFunctorFinalTag&lt; DeviceType &gt;::final</definition>
+        <argsstring>(const ReducerTag, value_type &amp;dst) const</argsstring>
+        <name>final</name>
+        <qualifiedname>Test::ReduceFunctorFinalTag::final</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>ReducerTag</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_test_1_1_reduce_functor_final_tag_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="147" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="147" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" line="116" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestReduce.hpp" bodystart="116" bodyend="152"/>
+    <listofallmembers>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1a16196191376507ea0a99fac7c22dc273" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>execution_space</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1a8f79c03ccad858dcbb2e11cb583294e3" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>final</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1af5309ce5be1d0ea75adaac927e43241f" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>join</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1a01de6b4febc460366da58ce82b0235c0" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>nwork</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1aa374c1b8f467848715b24b8b8ba4db81" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>operator()</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1a50088cf377850dc1a0289c1e85146fc6" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>ReduceFunctorFinalTag</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1a0603930ee0c5bf933f7d271be402d9b3" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>ScalarType</name></member>
+      <member refid="class_test_1_1_reduce_functor_final_tag_1ae2e44c0ccdcf49f6296621257be50673" prot="public" virt="non-virtual"><scope>Test::ReduceFunctorFinalTag</scope><name>size_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

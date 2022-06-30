@@ -1,0 +1,237 @@
+\hypertarget{class_c_matrix_kokkos}{}\doxysection{CMatrix\+Kokkos\texorpdfstring{$<$}{<} T, Layout, Exec\+Space, Memory\+Traits \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_c_matrix_kokkos}\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+
+
+Kokkos version of the serial \mbox{\hyperlink{class_c_matrix}{CMatrix}} class.  
+
+
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_afc19b49b54bd54375b6746146120b721}{CMatrix\+Kokkos}} ()
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_ab62a4edd26a9f0325bc055ed1b8fb9e3}{CMatrix\+Kokkos}} (size\+\_\+t dim1, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_abc68ed552427af5330d27e4d5ccc5583}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_a61ecb19cc77cea56822d20074876e4c2}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, size\+\_\+t dim3, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_a7ad9f727ce72157738f8207a5d5c2afc}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, size\+\_\+t dim3, size\+\_\+t dim4, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_a498a6343e74e4d3238c355cc6da68165}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, size\+\_\+t dim3, size\+\_\+t dim4, size\+\_\+t dim5, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_a238dc5d739872c4f309b4ea7beb27829}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, size\+\_\+t dim3, size\+\_\+t dim4, size\+\_\+t dim5, size\+\_\+t dim6, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+\mbox{\hyperlink{class_c_matrix_kokkos_adc44f1d5777af3ccd285d2120e010872}{CMatrix\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, size\+\_\+t dim3, size\+\_\+t dim4, size\+\_\+t dim5, size\+\_\+t dim6, size\+\_\+t dim7, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGMATRIX)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_a375bfbcf2001c0cc107b695f10cc1962}{operator()}} (size\+\_\+t i) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_affcfe57e249dd531eecf86f5e6b2431d}{operator()}} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_a3ddc9ac491e034005dc1d5762a63babd}{operator()}} (size\+\_\+t i, size\+\_\+t j, size\+\_\+t k) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_ab831b1027ae6d400580a9c8d69e74ba1}{operator()}} (size\+\_\+t i, size\+\_\+t j, size\+\_\+t k, size\+\_\+t l) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_a0c76b6e5d0d55a13fd189b341630ba7e}{operator()}} (size\+\_\+t i, size\+\_\+t j, size\+\_\+t k, size\+\_\+t l, size\+\_\+t m) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_a9091f241e53fcc36327df7ff4c8d775c}{operator()}} (size\+\_\+t i, size\+\_\+t j, size\+\_\+t k, size\+\_\+t l, size\+\_\+t m, size\+\_\+t n) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos_a8f262d76bfa20028ffbc3bd0ee678774}{operator()}} (size\+\_\+t i, size\+\_\+t j, size\+\_\+t k, size\+\_\+t l, size\+\_\+t m, size\+\_\+t n, size\+\_\+t o) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}} \& \mbox{\hyperlink{class_c_matrix_kokkos_a066cf798cced2907279780cbe488e2d0}{operator=}} (const \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}} \&temp)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos_a555c405ae6e6b2b8ba6f19a55933d8c7}{size}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos_a31ea3c0d423409944deba2f00f5fef13}{extent}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos_a3af344d95ecb395a0f01395546ea3d3d}{dims}} (size\+\_\+t i) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos_a2e87bdeee3d1f7340b4ddfd54522a6c7}{order}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_matrix_kokkos_ad03fe0387096066606eddbe4ad4413dc}{pointer}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION TArray1D \mbox{\hyperlink{class_c_matrix_kokkos_a54a9a1024e022df4a0d4ac2175262388}{get\+\_\+kokkos\+\_\+view}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_matrix_kokkos_a7a8f53f2f09b492b4e76249e66ac2d3c}{$\sim$\+CMatrix\+Kokkos}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename Layout = Default\+Layout, typename Exec\+Space = Default\+Exec\+Space, typename Memory\+Traits = void$>$\newline
+class CMatrix\+Kokkos$<$ T, Layout, Exec\+Space, Memory\+Traits $>$}
+Kokkos version of the serial \mbox{\hyperlink{class_c_matrix}{CMatrix}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_matrix_kokkos_afc19b49b54bd54375b6746146120b721}\label{class_c_matrix_kokkos_afc19b49b54bd54375b6746146120b721}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}}}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_ab62a4edd26a9f0325bc055ed1b8fb9e3}\label{class_c_matrix_kokkos_ab62a4edd26a9f0325bc055ed1b8fb9e3}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_abc68ed552427af5330d27e4d5ccc5583}\label{class_c_matrix_kokkos_abc68ed552427af5330d27e4d5ccc5583}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a61ecb19cc77cea56822d20074876e4c2}\label{class_c_matrix_kokkos_a61ecb19cc77cea56822d20074876e4c2}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{size\+\_\+t}]{dim3,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a7ad9f727ce72157738f8207a5d5c2afc}\label{class_c_matrix_kokkos_a7ad9f727ce72157738f8207a5d5c2afc}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{size\+\_\+t}]{dim3,  }\item[{size\+\_\+t}]{dim4,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a498a6343e74e4d3238c355cc6da68165}\label{class_c_matrix_kokkos_a498a6343e74e4d3238c355cc6da68165}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{size\+\_\+t}]{dim3,  }\item[{size\+\_\+t}]{dim4,  }\item[{size\+\_\+t}]{dim5,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a238dc5d739872c4f309b4ea7beb27829}\label{class_c_matrix_kokkos_a238dc5d739872c4f309b4ea7beb27829}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{size\+\_\+t}]{dim3,  }\item[{size\+\_\+t}]{dim4,  }\item[{size\+\_\+t}]{dim5,  }\item[{size\+\_\+t}]{dim6,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_adc44f1d5777af3ccd285d2120e010872}\label{class_c_matrix_kokkos_adc44f1d5777af3ccd285d2120e010872}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CMatrixKokkos@{CMatrixKokkos}}
+\index{CMatrixKokkos@{CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CMatrixKokkos()}{CMatrixKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_matrix_kokkos}{\+::\+CMatrix\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{size\+\_\+t}]{dim3,  }\item[{size\+\_\+t}]{dim4,  }\item[{size\+\_\+t}]{dim5,  }\item[{size\+\_\+t}]{dim6,  }\item[{size\+\_\+t}]{dim7,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGMATRIX} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a7a8f53f2f09b492b4e76249e66ac2d3c}\label{class_c_matrix_kokkos_a7a8f53f2f09b492b4e76249e66ac2d3c}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!````~CMatrixKokkos@{$\sim$CMatrixKokkos}}
+\index{````~CMatrixKokkos@{$\sim$CMatrixKokkos}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$CMatrixKokkos()}{~CMatrixKokkos()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::$\sim$\mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_matrix_kokkos_a3af344d95ecb395a0f01395546ea3d3d}\label{class_c_matrix_kokkos_a3af344d95ecb395a0f01395546ea3d3d}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!dims@{dims}}
+\index{dims@{dims}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{dims()}{dims()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::dims (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a31ea3c0d423409944deba2f00f5fef13}\label{class_c_matrix_kokkos_a31ea3c0d423409944deba2f00f5fef13}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!extent@{extent}}
+\index{extent@{extent}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{extent()}{extent()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::extent}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a54a9a1024e022df4a0d4ac2175262388}\label{class_c_matrix_kokkos_a54a9a1024e022df4a0d4ac2175262388}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!get\_kokkos\_view@{get\_kokkos\_view}}
+\index{get\_kokkos\_view@{get\_kokkos\_view}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{get\_kokkos\_view()}{get\_kokkos\_view()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION Kokkos\+::\+View$<$ T $\ast$, Layout, Exec\+Space, Memory\+Traits $>$ \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::get\+\_\+kokkos\+\_\+view}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a375bfbcf2001c0cc107b695f10cc1962}\label{class_c_matrix_kokkos_a375bfbcf2001c0cc107b695f10cc1962}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_affcfe57e249dd531eecf86f5e6b2431d}\label{class_c_matrix_kokkos_affcfe57e249dd531eecf86f5e6b2431d}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a3ddc9ac491e034005dc1d5762a63babd}\label{class_c_matrix_kokkos_a3ddc9ac491e034005dc1d5762a63babd}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{size\+\_\+t}]{k }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_ab831b1027ae6d400580a9c8d69e74ba1}\label{class_c_matrix_kokkos_ab831b1027ae6d400580a9c8d69e74ba1}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{l }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a0c76b6e5d0d55a13fd189b341630ba7e}\label{class_c_matrix_kokkos_a0c76b6e5d0d55a13fd189b341630ba7e}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{l,  }\item[{size\+\_\+t}]{m }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a9091f241e53fcc36327df7ff4c8d775c}\label{class_c_matrix_kokkos_a9091f241e53fcc36327df7ff4c8d775c}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{l,  }\item[{size\+\_\+t}]{m,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a8f262d76bfa20028ffbc3bd0ee678774}\label{class_c_matrix_kokkos_a8f262d76bfa20028ffbc3bd0ee678774}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{l,  }\item[{size\+\_\+t}]{m,  }\item[{size\+\_\+t}]{n,  }\item[{size\+\_\+t}]{o }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a066cf798cced2907279780cbe488e2d0}\label{class_c_matrix_kokkos_a066cf798cced2907279780cbe488e2d0}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \& \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a2e87bdeee3d1f7340b4ddfd54522a6c7}\label{class_c_matrix_kokkos_a2e87bdeee3d1f7340b4ddfd54522a6c7}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!order@{order}}
+\index{order@{order}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{order()}{order()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::order}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_ad03fe0387096066606eddbe4ad4413dc}\label{class_c_matrix_kokkos_ad03fe0387096066606eddbe4ad4413dc}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{pointer()}{pointer()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::pointer}
+
+\mbox{\Hypertarget{class_c_matrix_kokkos_a555c405ae6e6b2b8ba6f19a55933d8c7}\label{class_c_matrix_kokkos_a555c405ae6e6b2b8ba6f19a55933d8c7}} 
+\index{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!size@{size}}
+\index{size@{size}!CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CMatrixKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_matrix_kokkos}{CMatrix\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::size}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

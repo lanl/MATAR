@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__graph__kernel" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::is_graph_kernel</compoundname>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1is__graph__kernel_1_1have" prot="private">Kokkos::Impl::is_graph_kernel::have</innerclass>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1is__graph__kernel_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3024a2292cd1b6155552f9693e2eb8a7a" prot="private">Kokkos::Impl::is_graph_kernel::have&lt; U, typename std::is_base_of&lt; typename U::graph_kernel, U &gt;::type &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1is__graph__kernel_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3566d34ed52b0e856980a1291f030565c" prot="private">Kokkos::Impl::is_graph_kernel::have&lt; U, typename std::is_base_of&lt; typename U::graph_kernel_type, U &gt;::type &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1is__graph__kernel_1a7a7d70d8b6b1353a3c8877a656961ca1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Impl::is_graph_kernel&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Impl::is_graph_kernel::value</qualifiedname>
+        <initializer>=   <ref refid="struct_kokkos_1_1_impl_1_1is__graph__kernel" kindref="compound">is_graph_kernel</ref> ::template have&lt;typename std::remove_cv&lt;T&gt;::type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="202" column="226" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1is__graph__kernel_1a229ccd5c77dd03f05d60fae2360a308e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::Impl::is_graph_kernel&lt; T &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Kokkos::Impl::is_graph_kernel::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="202" column="245" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="202" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="202" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="202" bodyend="202"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1is__graph__kernel_1a229ccd5c77dd03f05d60fae2360a308e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_graph_kernel</scope><name>operator bool</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1is__graph__kernel_1a7a7d70d8b6b1353a3c8877a656961ca1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::is_graph_kernel</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

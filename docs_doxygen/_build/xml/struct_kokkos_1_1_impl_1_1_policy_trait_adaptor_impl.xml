@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_policy_trait_adaptor_impl" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::PolicyTraitAdaptorImpl</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class TraitSpec</type>
+      </param>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>PolicyTemplate</declname>
+        <defname>PolicyTemplate</defname>
+      </param>
+      <param>
+        <type>class AlreadyProcessedList</type>
+      </param>
+      <param>
+        <type>class ToProcessList</type>
+      </param>
+      <param>
+        <type>class NewTrait</type>
+      </param>
+      <param>
+        <type>class Enable</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_Traits_fwd.hpp" line="66" column="1" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_Traits_fwd.hpp" bodystart="66" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

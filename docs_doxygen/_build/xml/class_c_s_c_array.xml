@@ -1,0 +1,538 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_c_s_c_array" kind="class" language="C++" prot="public">
+    <compoundname>CSCArray</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_s_c_array_1a1be7b0ce6b6431b55b9a12f17cb975a0" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::nrows_</definition>
+        <argsstring></argsstring>
+        <name>nrows_</name>
+        <qualifiedname>CSCArray::nrows_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5261" column="12" bodyfile="src/matar.h" bodystart="5261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_c_array_1a184aa1e5b1b08420f1b6af210963e177" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::ncols_</definition>
+        <argsstring></argsstring>
+        <name>ncols_</name>
+        <qualifiedname>CSCArray::ncols_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5261" column="19" bodyfile="src/matar.h" bodystart="5261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_c_array_1a11f870dc41977d0e612c9e6bce3089c6" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::nnz_</definition>
+        <argsstring></argsstring>
+        <name>nnz_</name>
+        <qualifiedname>CSCArray::nnz_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5262" column="12" bodyfile="src/matar.h" bodystart="5262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_c_array_1ac250327d2e3ac0671b83ac69682a4fce" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T[]&gt;</type>
+        <definition>std::shared_ptr&lt;T []&gt; CSCArray&lt; T &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>CSCArray::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5263" column="22" bodyfile="src/matar.h" bodystart="5263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_c_array_1a32b20c6b6ff17ee47c305af830152d2c" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; size_t[]&gt;</type>
+        <definition>std::shared_ptr&lt;size_t[]&gt; CSCArray&lt; T &gt;::start_index_</definition>
+        <argsstring></argsstring>
+        <name>start_index_</name>
+        <qualifiedname>CSCArray::start_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5264" column="22" bodyfile="src/matar.h" bodystart="5264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_c_array_1a87670460a50fb4c42be108664f310c3f" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; size_t[]&gt;</type>
+        <definition>std::shared_ptr&lt;size_t[]&gt; CSCArray&lt; T &gt;::row_index_</definition>
+        <argsstring></argsstring>
+        <name>row_index_</name>
+        <qualifiedname>CSCArray::row_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5265" column="22" bodyfile="src/matar.h" bodystart="5265" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_s_c_array_1a5c61436dd20eb9e8861b42c10eb68788" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSCArray&lt; T &gt;::CSCArray</definition>
+        <argsstring>(CArray&lt; T &gt; data, CArray&lt; T &gt; row_ptrs, CArray&lt; T &gt; row_pts, size_t rows, size_t cols)</argsstring>
+        <name>CSCArray</name>
+        <qualifiedname>CSCArray::CSCArray</qualifiedname>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
+          <declname>row_ptrs</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
+          <declname>row_pts</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>rows</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>cols</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5268" column="5" bodyfile="src/matar.h" bodystart="5317" bodyend="5333"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a2f8a3d9fec014e37bd2540062e5613b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; CSCArray&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>CSCArray::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5270" column="7" bodyfile="src/matar.h" bodystart="5337" bodyend="5348"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a5fea323157d9f4f36414bc1cc7d5365b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_s_c_array" kindref="compound">CSCArray</ref> &amp;</type>
+        <definition>CSCArray&lt; T &gt; &amp; CSCArray&lt; T &gt;::operator=</definition>
+        <argsstring>(const CSCArray &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>CSCArray::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_c_s_c_array" kindref="compound">CSCArray</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5272" column="14" bodyfile="src/matar.h" bodystart="5375" bodyend="5386"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a3807e5e741c75aa1e25d77bf2a4b8e67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * CSCArray&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>CSCArray::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5274" column="7" bodyfile="src/matar.h" bodystart="5351" bodyend="5353"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1aff6644b03d7b3e2cfa39a9f2dba21e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::stride</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>CSCArray::stride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5276" column="12" bodyfile="src/matar.h" bodystart="5389" bodyend="5392"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ace55111f5fb12a7eb41e4421642dbe3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; CSCArray&lt; T &gt;::value</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>value</name>
+        <qualifiedname>CSCArray::value</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5277" column="7" bodyfile="src/matar.h" bodystart="5356" bodyend="5367"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ab61410a475de0cfdec3d32eab624a75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t *</type>
+        <definition>size_t * CSCArray&lt; T &gt;::get_starts</definition>
+        <argsstring>() const</argsstring>
+        <name>get_starts</name>
+        <qualifiedname>CSCArray::get_starts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5279" column="12" bodyfile="src/matar.h" bodystart="5370" bodyend="5372"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a35f40a6c360624f11b893c9b6b25b039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSCArray&lt; T &gt;::printer</definition>
+        <argsstring>()</argsstring>
+        <name>printer</name>
+        <qualifiedname>CSCArray::printer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5281" column="10" bodyfile="src/matar.h" bodystart="5396" bodyend="5404"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ae11a382e449464030df181fe386ecb73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::getNcols</definition>
+        <argsstring>()</argsstring>
+        <name>getNcols</name>
+        <qualifiedname>CSCArray::getNcols</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5283" column="12" bodyfile="src/matar.h" bodystart="5418" bodyend="5420"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a2c07e7527a4251a87cd0fbaf4edd013f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::getNrows</definition>
+        <argsstring>()</argsstring>
+        <name>getNrows</name>
+        <qualifiedname>CSCArray::getNrows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5284" column="12" bodyfile="src/matar.h" bodystart="5423" bodyend="5425"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1aded6f85b9692885f618a71034201e2d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * CSCArray&lt; T &gt;::begin</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>begin</name>
+        <qualifiedname>CSCArray::begin</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5287" column="7" bodyfile="src/matar.h" bodystart="5428" bodyend="5432"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1af51f981679caea93a8bd1efa1ab365f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * CSCArray&lt; T &gt;::end</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>end</name>
+        <qualifiedname>CSCArray::end</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5288" column="7" bodyfile="src/matar.h" bodystart="5435" bodyend="5439"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1afcaa186bf71aaf76f346f348b6884a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::beginFlat</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>beginFlat</name>
+        <qualifiedname>CSCArray::beginFlat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5294" column="12" bodyfile="src/matar.h" bodystart="5442" bodyend="5445"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a9104f82369ec0312cfb367042d23e3ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::endFlat</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>endFlat</name>
+        <qualifiedname>CSCArray::endFlat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5295" column="12" bodyfile="src/matar.h" bodystart="5448" bodyend="5451"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a891a72d2aed7aa23f1c5d520a321407c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::nnz</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>nnz</name>
+        <qualifiedname>CSCArray::nnz</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5298" column="12" bodyfile="src/matar.h" bodystart="5459" bodyend="5461"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ac31899ccd8cb982ba85978ccf70a0459" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::nnz</definition>
+        <argsstring>()</argsstring>
+        <name>nnz</name>
+        <qualifiedname>CSCArray::nnz</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5300" column="12" bodyfile="src/matar.h" bodystart="5454" bodyend="5456"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ab375069d0580769dc7a6e9db0059adcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; CSCArray&lt; T &gt;::getValFlat</definition>
+        <argsstring>(size_t k)</argsstring>
+        <name>getValFlat</name>
+        <qualifiedname>CSCArray::getValFlat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5303" column="7" bodyfile="src/matar.h" bodystart="5465" bodyend="5467"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a7373de14d4564acd0de674687b6e4cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSCArray&lt; T &gt;::getRowFlat</definition>
+        <argsstring>(size_t k)</argsstring>
+        <name>getRowFlat</name>
+        <qualifiedname>CSCArray::getRowFlat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5304" column="12" bodyfile="src/matar.h" bodystart="5470" bodyend="5472"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1af1640fcc3cf9246f25857e84e265e2f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CSCArray&lt; T &gt;::flatIndex</definition>
+        <argsstring>(size_t i, size_t j)</argsstring>
+        <name>flatIndex</name>
+        <qualifiedname>CSCArray::flatIndex</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5306" column="9" bodyfile="src/matar.h" bodystart="5476" bodyend="5486"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1a123af493f6698fc2ebebbbd35551f044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CSCArray&lt; T &gt;::toCSR</definition>
+        <argsstring>(CArray&lt; T &gt; &amp;data, CArray&lt; size_t &gt; &amp;row_ptrs, CArray&lt; size_t &gt; &amp;col_ptrs)</argsstring>
+        <name>toCSR</name>
+        <qualifiedname>CSCArray::toCSR</qualifiedname>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>row_ptrs</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>col_ptrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5308" column="9" bodyfile="src/matar.h" bodystart="5493" bodyend="5532"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1af0a9bb3d7e323ed93f9d4d84f731609f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSCArray&lt; T &gt;::todense</definition>
+        <argsstring>(FArray&lt; T &gt; &amp;A)</argsstring>
+        <name>todense</name>
+        <qualifiedname>CSCArray::todense</qualifiedname>
+        <param>
+          <type><ref refid="class_f_array" kindref="compound">FArray</ref>&lt; T &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5309" column="10" bodyfile="src/matar.h" bodystart="5407" bodyend="5415"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1abab99403cb89d9f5c703a6f297130933" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSCArray&lt; T &gt;::~CSCArray</definition>
+        <argsstring>()</argsstring>
+        <name>~CSCArray</name>
+        <qualifiedname>CSCArray::~CSCArray</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5311" column="4" bodyfile="src/matar.h" bodystart="5535" bodyend="5535"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="5259" column="1" bodyfile="src/matar.h" bodystart="5259" bodyend="5314"/>
+    <listofallmembers>
+      <member refid="class_c_s_c_array_1ac250327d2e3ac0671b83ac69682a4fce" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>array_</name></member>
+      <member refid="class_c_s_c_array_1aded6f85b9692885f618a71034201e2d2" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>begin</name></member>
+      <member refid="class_c_s_c_array_1afcaa186bf71aaf76f346f348b6884a4e" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>beginFlat</name></member>
+      <member refid="class_c_s_c_array_1a5c61436dd20eb9e8861b42c10eb68788" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>CSCArray</name></member>
+      <member refid="class_c_s_c_array_1af51f981679caea93a8bd1efa1ab365f7" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>end</name></member>
+      <member refid="class_c_s_c_array_1a9104f82369ec0312cfb367042d23e3ac" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>endFlat</name></member>
+      <member refid="class_c_s_c_array_1af1640fcc3cf9246f25857e84e265e2f4" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>flatIndex</name></member>
+      <member refid="class_c_s_c_array_1ab61410a475de0cfdec3d32eab624a75d" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>get_starts</name></member>
+      <member refid="class_c_s_c_array_1ae11a382e449464030df181fe386ecb73" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getNcols</name></member>
+      <member refid="class_c_s_c_array_1a2c07e7527a4251a87cd0fbaf4edd013f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getNrows</name></member>
+      <member refid="class_c_s_c_array_1a7373de14d4564acd0de674687b6e4cb3" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getRowFlat</name></member>
+      <member refid="class_c_s_c_array_1ab375069d0580769dc7a6e9db0059adcb" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getValFlat</name></member>
+      <member refid="class_c_s_c_array_1a184aa1e5b1b08420f1b6af210963e177" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>ncols_</name></member>
+      <member refid="class_c_s_c_array_1a891a72d2aed7aa23f1c5d520a321407c" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>nnz</name></member>
+      <member refid="class_c_s_c_array_1ac31899ccd8cb982ba85978ccf70a0459" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>nnz</name></member>
+      <member refid="class_c_s_c_array_1a11f870dc41977d0e612c9e6bce3089c6" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>nnz_</name></member>
+      <member refid="class_c_s_c_array_1a1be7b0ce6b6431b55b9a12f17cb975a0" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>nrows_</name></member>
+      <member refid="class_c_s_c_array_1a2f8a3d9fec014e37bd2540062e5613b8" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>operator()</name></member>
+      <member refid="class_c_s_c_array_1a5fea323157d9f4f36414bc1cc7d5365b" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>operator=</name></member>
+      <member refid="class_c_s_c_array_1a3807e5e741c75aa1e25d77bf2a4b8e67" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>pointer</name></member>
+      <member refid="class_c_s_c_array_1a35f40a6c360624f11b893c9b6b25b039" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>printer</name></member>
+      <member refid="class_c_s_c_array_1a87670460a50fb4c42be108664f310c3f" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>row_index_</name></member>
+      <member refid="class_c_s_c_array_1a32b20c6b6ff17ee47c305af830152d2c" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>start_index_</name></member>
+      <member refid="class_c_s_c_array_1aff6644b03d7b3e2cfa39a9f2dba21e8f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>stride</name></member>
+      <member refid="class_c_s_c_array_1a123af493f6698fc2ebebbbd35551f044" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>toCSR</name></member>
+      <member refid="class_c_s_c_array_1af0a9bb3d7e323ed93f9d4d84f731609f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>todense</name></member>
+      <member refid="class_c_s_c_array_1ace55111f5fb12a7eb41e4421642dbe3e" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>value</name></member>
+      <member refid="class_c_s_c_array_1abab99403cb89d9f5c703a6f297130933" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>~CSCArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

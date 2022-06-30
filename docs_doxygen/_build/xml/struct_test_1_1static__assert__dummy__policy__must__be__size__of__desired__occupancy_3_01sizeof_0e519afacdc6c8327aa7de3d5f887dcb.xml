@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1static__assert__dummy__policy__must__be__size__of__desired__occupancy_3_01sizeof_0e519afacdc6c8327aa7de3d5f887dcb" kind="struct" language="C++" prot="public">
+    <compoundname>Test::static_assert_dummy_policy_must_be_size_of_desired_occupancy&lt; sizeof(Kokkos::Experimental::DesiredOccupancy), sizeof(Kokkos::Experimental::DesiredOccupancy)&gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestPolicyConstruction.hpp" line="789" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestPolicyConstruction.hpp" bodystart="791" bodyend="791"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

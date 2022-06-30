@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4_1ac96fb775dc776f02da9a671ea0e04599" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;::PrintValue</definition>
+        <argsstring>(const T &amp;value, ::std::ostream *os)</argsstring>
+        <name>PrintValue</name>
+        <qualifiedname>testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;::PrintValue</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9344" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9344" bodyend="9350"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4_1ac96fb775dc776f02da9a671ea0e04599" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;::PrintValue</definition>
+        <argsstring>(const T &amp;value, ::std::ostream *os)</argsstring>
+        <name>PrintValue</name>
+        <qualifiedname>testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;::PrintValue</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9344" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9344" bodyend="9350"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9342" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9342" bodyend="9351"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4_1ac96fb775dc776f02da9a671ea0e04599" prot="public" virt="non-virtual"><scope>testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;</scope><name>PrintValue</name></member>
+      <member refid="classtesting_1_1internal2_1_1_type_without_formatter_3_01_t_00_01k_protobuf_01_4_1ac96fb775dc776f02da9a671ea0e04599" prot="public" virt="non-virtual"><scope>testing::internal2::TypeWithoutFormatter&lt; T, kProtobuf &gt;</scope><name>PrintValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_a98ce29b8bd993c7a67223e8619a1ae0" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/openmptarget</compoundname>
+    <innerfile refid="_test_open_m_p_target_8hpp">TestOpenMPTarget.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/openmptarget/"/>
+  </compounddef>
+</doxygen>

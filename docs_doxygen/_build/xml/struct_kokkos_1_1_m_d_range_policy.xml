@@ -1,0 +1,911 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_m_d_range_policy" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::MDRangePolicy</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_policy_traits" prot="public" virt="non-virtual">Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a0535278732ff1cd02c01b2ac33d4d9db" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_policy_traits" kindref="compound">Kokkos::Impl::PolicyTraits</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::traits =  Kokkos::Impl::PolicyTraits&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::MDRangePolicy::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="177" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a5953d70a4b0d4efff12c3c99b843c48a" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">RangePolicy</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::range_policy =  RangePolicy&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>range_policy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::range_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="178" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1ae905ab98590d55bef1ca54289a2a6d36" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">RangePolicy</ref>&lt; typename traits::execution_space, typename traits::schedule_type, typename traits::index_type &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::impl_range_policy =  RangePolicy&lt;typename traits::execution_space, typename traits::schedule_type, typename traits::index_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>impl_range_policy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::impl_range_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="182" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a18b781fa65238674acd907f843679b35" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">MDRangePolicy</ref>&lt; Properties... &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::execution_policy =  MDRangePolicy&lt;Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>execution_policy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::execution_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="186" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a83c29fe19a2903ee2834749bbc744bfb" prot="public" static="no">
+        <type>typename traits::iteration_pattern</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::iteration_pattern =  typename traits::iteration_pattern</definition>
+        <argsstring></argsstring>
+        <name>iteration_pattern</name>
+        <qualifiedname>Kokkos::MDRangePolicy::iteration_pattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="196" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1ae5eb422516ca0506d6115fd08dcb73a5" prot="public" static="no">
+        <type>typename traits::work_tag</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::work_tag =  typename traits::work_tag</definition>
+        <argsstring></argsstring>
+        <name>work_tag</name>
+        <qualifiedname>Kokkos::MDRangePolicy::work_tag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="197" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1aee64f779c74204d4eb7a77425d2cafcc" prot="public" static="no">
+        <type>typename traits::launch_bounds</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::launch_bounds =  typename traits::launch_bounds</definition>
+        <argsstring></argsstring>
+        <name>launch_bounds</name>
+        <qualifiedname>Kokkos::MDRangePolicy::launch_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="198" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1aa1f8df094787c51f2b7a13955e947738" prot="public" static="no">
+        <type>typename range_policy::member_type</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::member_type =  typename range_policy::member_type</definition>
+        <argsstring></argsstring>
+        <name>member_type</name>
+        <qualifiedname>Kokkos::MDRangePolicy::member_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="199" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a226d11fbe963c930a5f7ff0d2a15fecc" prot="public" static="no">
+        <type>typename traits::index_type</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::index_type =  typename traits::index_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::MDRangePolicy::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="203" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a7b6a5249295ee3598b914295112d32c7" prot="public" static="no">
+        <type>std::int64_t</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::array_index_type =  std::int64_t</definition>
+        <argsstring></argsstring>
+        <name>array_index_type</name>
+        <qualifiedname>Kokkos::MDRangePolicy::array_index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="204" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1a3dc9eb49dad15e244b079ff978bb6739" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; array_index_type, rank &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::point_type =  Kokkos::Array&lt;array_index_type, rank&gt;</definition>
+        <argsstring></argsstring>
+        <name>point_type</name>
+        <qualifiedname>Kokkos::MDRangePolicy::point_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="205" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_m_d_range_policy_1aa1934ca0a034c9686e7cb0dbf2fe74ee" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; array_index_type, rank &gt;</type>
+        <definition>using Kokkos::MDRangePolicy&lt; Properties &gt;::tile_type =  Kokkos::Array&lt;array_index_type, rank&gt;</definition>
+        <argsstring></argsstring>
+        <name>tile_type</name>
+        <qualifiedname>Kokkos::MDRangePolicy::tile_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="206" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a6f64baae1a495d3df33d52f71d5abe8f" prot="public" static="no" mutable="no">
+        <type>traits::execution_space</type>
+        <definition>traits::execution_space Kokkos::MDRangePolicy&lt; Properties &gt;::m_space</definition>
+        <argsstring></argsstring>
+        <name>m_space</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="180" column="36" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1adc378b31c7520c58c13afe95367839ee" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref></type>
+        <definition>point_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_lower</definition>
+        <argsstring></argsstring>
+        <name>m_lower</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_lower</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="218" column="14" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a8daa82b4d4a05e35a6d1e95f9bacb64f" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref></type>
+        <definition>point_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_upper</definition>
+        <argsstring></argsstring>
+        <name>m_upper</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_upper</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="219" column="14" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1ae3a670e36654a01fdb6ab34522dd6ffd" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">tile_type</ref></type>
+        <definition>tile_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_tile</definition>
+        <argsstring></argsstring>
+        <name>m_tile</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_tile</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="220" column="13" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a03349dc6b5bd10c852f87652c9bfedba" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref></type>
+        <definition>point_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_tile_end</definition>
+        <argsstring></argsstring>
+        <name>m_tile_end</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_tile_end</qualifiedname>
+        <initializer>= {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="221" column="14" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a536788bbbc2b266771bbf54f4f6e557f" prot="public" static="no" mutable="no">
+        <type>index_type</type>
+        <definition>index_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_num_tiles</definition>
+        <argsstring></argsstring>
+        <name>m_num_tiles</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_num_tiles</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="222" column="14" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1abfd6c8bfece643c3a033644d2d362bb5" prot="public" static="no" mutable="no">
+        <type>index_type</type>
+        <definition>index_type Kokkos::MDRangePolicy&lt; Properties &gt;::m_prod_tile_dims</definition>
+        <argsstring></argsstring>
+        <name>m_prod_tile_dims</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_prod_tile_dims</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="223" column="14" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1aa1fca458b649dc6e6506e041ee96a9ef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::MDRangePolicy&lt; Properties &gt;::m_tune_tile_size</definition>
+        <argsstring></argsstring>
+        <name>m_tune_tile_size</name>
+        <qualifiedname>Kokkos::MDRangePolicy::m_tune_tile_size</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="224" column="8" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="struct_kokkos_1_1_m_d_range_policy_1acac65852fb94bad6829cb6721b26ba7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct MDRangePolicy</definition>
+        <argsstring></argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">MDRangePolicy</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="191" column="17" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a9d78d6cbc41cb4c239019b2f1706bb85" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::MDRangePolicy&lt; Properties &gt;::rank</definition>
+        <argsstring></argsstring>
+        <name>rank</name>
+        <qualifiedname>Kokkos::MDRangePolicy::rank</qualifiedname>
+        <initializer>= iteration_pattern::rank</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="201" column="24" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a34168c2abbb396798fbca4f28825f3ed" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::MDRangePolicy&lt; Properties &gt;::outer_direction</definition>
+        <argsstring></argsstring>
+        <name>outer_direction</name>
+        <qualifiedname>Kokkos::MDRangePolicy::outer_direction</qualifiedname>
+        <initializer>=
+      (iteration_pattern::outer_direction != Iterate::Default)
+          ? iteration_pattern::outer_direction
+          : <ref refid="struct_kokkos_1_1default__outer__direction" kindref="compound">default_outer_direction</ref>&lt;typename traits::execution_space&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="226" column="25" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a10e072a876704837fdaf5b1753d016e4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::MDRangePolicy&lt; Properties &gt;::inner_direction</definition>
+        <argsstring></argsstring>
+        <name>inner_direction</name>
+        <qualifiedname>Kokkos::MDRangePolicy::inner_direction</qualifiedname>
+        <initializer>=
+      iteration_pattern::inner_direction != Iterate::Default
+          ? iteration_pattern::inner_direction
+          : <ref refid="struct_kokkos_1_1default__inner__direction" kindref="compound">default_inner_direction</ref>&lt;typename traits::execution_space&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="231" column="25" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a2c928ce50d00b59516ef509fc5449363" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::MDRangePolicy&lt; Properties &gt;::Right</definition>
+        <argsstring></argsstring>
+        <name>Right</name>
+        <qualifiedname>Kokkos::MDRangePolicy::Right</qualifiedname>
+        <initializer>= Iterate::Right</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="236" column="25" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_m_d_range_policy_1a4ff0b3d96260b27032f3b997412b9b91" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto Kokkos::MDRangePolicy&lt; Properties &gt;::Left</definition>
+        <argsstring></argsstring>
+        <name>Left</name>
+        <qualifiedname>Kokkos::MDRangePolicy::Left</qualifiedname>
+        <initializer>= Iterate::Left</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="237" column="25" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a85da38f7498d63915067176073be38dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const traits::execution_space &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const traits::execution_space &amp; Kokkos::MDRangePolicy&lt; Properties &gt;::space</definition>
+        <argsstring>() const</argsstring>
+        <name>space</name>
+        <qualifiedname>Kokkos::MDRangePolicy::space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="239" column="65" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a26f3122c17dacbe9625b293748fdb59a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>()=default</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="243" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a86fc05480db5a5d68c98a20665204d59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename LT</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>LN</declname>
+            <defname>LN</defname>
+          </param>
+          <param>
+            <type>typename UT</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>UN</declname>
+            <defname>UN</defname>
+          </param>
+          <param>
+            <type>typename TT</type>
+            <defval>array_index_type</defval>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>TN</declname>
+            <defname>TN</defname>
+            <defval>rank</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;LT&gt;::value &amp;&amp;                                        std::is_integral&lt;UT&gt;::value &amp;&amp;                                        std::is_integral&lt;TT&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(const LT(&amp;lower)[LN], const UT(&amp;upper)[UN], const TT(&amp;tile)[TN]={})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type>const LT(&amp;)</type>
+          <declname>lower</declname>
+          <array>[LN]</array>
+        </param>
+        <param>
+          <type>const UT(&amp;)</type>
+          <declname>upper</declname>
+          <array>[UN]</array>
+        </param>
+        <param>
+          <type>const TT(&amp;)</type>
+          <declname>tile</declname>
+          <array>[TN]</array>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="250" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="250" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a0f0c08d9b42f55ab0fad1e168b25538f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename LT</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>LN</declname>
+            <defname>LN</defname>
+          </param>
+          <param>
+            <type>typename UT</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>UN</declname>
+            <defname>UN</defname>
+          </param>
+          <param>
+            <type>typename TT</type>
+            <defval>array_index_type</defval>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>TN</declname>
+            <defname>TN</defname>
+            <defval>rank</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;LT&gt;::value &amp;&amp;                                        std::is_integral&lt;UT&gt;::value &amp;&amp;                                        std::is_integral&lt;TT&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;work_space, const LT(&amp;lower)[LN], const UT(&amp;upper)[UN], const TT(&amp;tile)[TN]={})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>work_space</declname>
+        </param>
+        <param>
+          <type>const LT(&amp;)</type>
+          <declname>lower</declname>
+          <array>[LN]</array>
+        </param>
+        <param>
+          <type>const UT(&amp;)</type>
+          <declname>upper</declname>
+          <array>[UN]</array>
+        </param>
+        <param>
+          <type>const TT(&amp;)</type>
+          <declname>tile</declname>
+          <array>[TN]</array>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="269" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="269" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a5083ce45915b4eb5c2be7b6e4843561a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(point_type const &amp;lower, point_type const &amp;upper, tile_type const &amp;tile=tile_type{})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref> const &amp;</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref> const &amp;</type>
+          <declname>upper</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">tile_type</ref> const &amp;</type>
+          <declname>tile</declname>
+          <defval><ref refid="struct_kokkos_1_1_array" kindref="compound">tile_type</ref>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="288" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="288" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1ae9f3d068246d542bccc2ab966df98dc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;work_space, point_type const &amp;lower, point_type const &amp;upper, tile_type const &amp;tile=tile_type{})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>work_space</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref> const &amp;</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref> const &amp;</type>
+          <declname>upper</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">tile_type</ref> const &amp;</type>
+          <declname>tile</declname>
+          <defval><ref refid="struct_kokkos_1_1_array" kindref="compound">tile_type</ref>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="292" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="292" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1abb7093ca98c84b9f455022e0439a50ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>NT</declname>
+            <defname>NT</defname>
+            <defval>rank</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;T&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(Kokkos::Array&lt; T, rank &gt; const &amp;lower, Kokkos::Array&lt; T, rank &gt; const &amp;upper, Kokkos::Array&lt; T, NT &gt; const &amp;tile=Kokkos::Array&lt; T, NT &gt;{})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, rank &gt; const &amp;</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, rank &gt; const &amp;</type>
+          <declname>upper</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, NT &gt; const &amp;</type>
+          <declname>tile</declname>
+          <defval><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, NT &gt;{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="301" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="301" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a6d14156e8132704e0b1d775e2fc8acf8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>std::size_t</type>
+            <declname>NT</declname>
+            <defname>NT</defname>
+            <defval>rank</defval>
+          </param>
+          <param>
+            <type>typename</type>
+            <defval>std::enable_if_t&lt;std::is_integral&lt;T&gt;::value&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(const typename traits::execution_space &amp;work_space, Kokkos::Array&lt; T, rank &gt; const &amp;lower, Kokkos::Array&lt; T, rank &gt; const &amp;upper, Kokkos::Array&lt; T, NT &gt; const &amp;tile=Kokkos::Array&lt; T, NT &gt;{})</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space &amp;</type>
+          <declname>work_space</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, rank &gt; const &amp;</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, rank &gt; const &amp;</type>
+          <declname>upper</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, NT &gt; const &amp;</type>
+          <declname>tile</declname>
+          <defval><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; T, NT &gt;{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="308" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="308" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1ae0906ea3312017500e293234650e7306" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>OtherProperties</declname>
+            <defname>OtherProperties</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::MDRangePolicy&lt; Properties &gt;::MDRangePolicy</definition>
+        <argsstring>(const MDRangePolicy&lt; OtherProperties... &gt; p)</argsstring>
+        <name>MDRangePolicy</name>
+        <qualifiedname>Kokkos::MDRangePolicy::MDRangePolicy</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">MDRangePolicy</ref>&lt; OtherProperties... &gt;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="322" column="3" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="322" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a8cbd8d0afaa244a06f9ac73162f116ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::MDRangePolicy&lt; Properties &gt;::impl_change_tile_size</definition>
+        <argsstring>(const point_type &amp;tile)</argsstring>
+        <name>impl_change_tile_size</name>
+        <qualifiedname>Kokkos::MDRangePolicy::impl_change_tile_size</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">point_type</ref> &amp;</type>
+          <declname>tile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="333" column="8" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="333" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1a6821d7200e055158e4f0b7849ac4e73a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::MDRangePolicy&lt; Properties &gt;::impl_tune_tile_size</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_tune_tile_size</name>
+        <qualifiedname>Kokkos::MDRangePolicy::impl_tune_tile_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="337" column="8" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="337" bodyend="337"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_m_d_range_policy_1aa6727343504993d551755398c337ecc0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::MDRangePolicy&lt; Properties &gt;::init_helper</definition>
+        <argsstring>(Impl::TileSizeProperties properties)</argsstring>
+        <name>init_helper</name>
+        <qualifiedname>Kokkos::MDRangePolicy::init_helper</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_tile_size_properties" kindref="compound">Impl::TileSizeProperties</ref></type>
+          <declname>properties</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="340" column="8" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="340" bodyend="380"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::MDRangePolicy&lt; Properties &gt;</label>
+        <link refid="struct_kokkos_1_1_m_d_range_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; void, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="6">
+        <label>Kokkos::Array&lt; array_index_type, rank &gt;</label>
+        <link refid="struct_kokkos_1_1_array"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ExecPolicyTraitsWithDefaults&lt; AnalyzeExecPolicy&lt; void, Traits... &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_exec_policy_traits_with_defaults"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Kokkos::MDRangePolicy&lt; Properties &gt;</label>
+        <link refid="struct_kokkos_1_1_m_d_range_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_lower</edgelabel>
+          <edgelabel>m_tile</edgelabel>
+          <edgelabel>m_tile_end</edgelabel>
+          <edgelabel>m_upper</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::PolicyTraits&lt; Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_policy_traits"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" line="176" column="1" bodyfile="src/Kokkos/kokkos/core/src/KokkosExp_MDRangePolicy.hpp" bodystart="176" bodyend="381"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a7b6a5249295ee3598b914295112d32c7" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>array_index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_policy_traits_1a24bd124fcc0bfd0f826263510bd9a239" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>base_t</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a18b781fa65238674acd907f843679b35" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>execution_policy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a8cbd8d0afaa244a06f9ac73162f116ed" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>impl_change_tile_size</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1ae905ab98590d55bef1ca54289a2a6d36" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>impl_range_policy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a6821d7200e055158e4f0b7849ac4e73a" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>impl_tune_tile_size</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a226d11fbe963c930a5f7ff0d2a15fecc" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1aa6727343504993d551755398c337ecc0" prot="private" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>init_helper</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a10e072a876704837fdaf5b1753d016e4" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>inner_direction</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a83c29fe19a2903ee2834749bbc744bfb" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>iteration_pattern</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1aee64f779c74204d4eb7a77425d2cafcc" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>launch_bounds</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a4ff0b3d96260b27032f3b997412b9b91" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>Left</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1adc378b31c7520c58c13afe95367839ee" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_lower</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a536788bbbc2b266771bbf54f4f6e557f" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_num_tiles</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1abfd6c8bfece643c3a033644d2d362bb5" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_prod_tile_dims</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a6f64baae1a495d3df33d52f71d5abe8f" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_space</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1ae3a670e36654a01fdb6ab34522dd6ffd" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_tile</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a03349dc6b5bd10c852f87652c9bfedba" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_tile_end</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1aa1fca458b649dc6e6506e041ee96a9ef" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_tune_tile_size</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a8daa82b4d4a05e35a6d1e95f9bacb64f" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>m_upper</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1acac65852fb94bad6829cb6721b26ba7c" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a26f3122c17dacbe9625b293748fdb59a" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a86fc05480db5a5d68c98a20665204d59" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a0f0c08d9b42f55ab0fad1e168b25538f" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a5083ce45915b4eb5c2be7b6e4843561a" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1ae9f3d068246d542bccc2ab966df98dc4" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1abb7093ca98c84b9f455022e0439a50ec" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a6d14156e8132704e0b1d775e2fc8acf8" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1ae0906ea3312017500e293234650e7306" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>MDRangePolicy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1aa1f8df094787c51f2b7a13955e947738" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>member_type</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a34168c2abbb396798fbca4f28825f3ed" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>outer_direction</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a3dc9eb49dad15e244b079ff978bb6739" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>point_type</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a5953d70a4b0d4efff12c3c99b843c48a" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>range_policy</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a9d78d6cbc41cb4c239019b2f1706bb85" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a2c928ce50d00b59516ef509fc5449363" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>Right</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a85da38f7498d63915067176073be38dc" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>space</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1aa1934ca0a034c9686e7cb0dbf2fe74ee" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>tile_type</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1a0535278732ff1cd02c01b2ac33d4d9db" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>traits</name></member>
+      <member refid="struct_kokkos_1_1_m_d_range_policy_1ae5eb422516ca0506d6115fd08dcb73a5" prot="public" virt="non-virtual"><scope>Kokkos::MDRangePolicy</scope><name>work_tag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

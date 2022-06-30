@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_parallel_scan_functor" kind="struct" language="C++" prot="public">
+    <compoundname>ParallelScanFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ViewType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_parallel_scan_functor_1a49896445d68fecb35d93de201695db5c" prot="public" static="no">
+        <type>double</type>
+        <definition>using ParallelScanFunctor&lt; ViewType &gt;::value_type =  double</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>ParallelScanFunctor::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" line="49" column="3" bodyfile="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_parallel_scan_functor_1aa555e3f9002c1cb66ecca40d51f8a8f9" prot="public" static="no" mutable="no">
+        <type>ViewType</type>
+        <definition>ViewType ParallelScanFunctor&lt; ViewType &gt;::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <qualifiedname>ParallelScanFunctor::v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" line="50" column="12" bodyfile="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_parallel_scan_functor_1a20893811a2f187a83c0201cacea1c420" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ParallelScanFunctor&lt; ViewType &gt;::ParallelScanFunctor</definition>
+        <argsstring>(const ViewType &amp;v_)</argsstring>
+        <name>ParallelScanFunctor</name>
+        <qualifiedname>ParallelScanFunctor::ParallelScanFunctor</qualifiedname>
+        <param>
+          <type>const ViewType &amp;</type>
+          <declname>v_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" line="52" column="3" bodyfile="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_parallel_scan_functor_1a62e7aad22848b1772adbe4ada027cac3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void ParallelScanFunctor&lt; ViewType &gt;::operator()</definition>
+        <argsstring>(const int idx, value_type &amp;val, const bool &amp;final) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ParallelScanFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>final</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" line="55" column="8" bodyfile="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" bodystart="55" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" line="48" column="1" bodyfile="src/Kokkos/kokkos/benchmarks/policy_performance/policy_perf_test.hpp" bodystart="48" bodyend="62"/>
+    <listofallmembers>
+      <member refid="struct_parallel_scan_functor_1a62e7aad22848b1772adbe4ada027cac3" prot="public" virt="non-virtual"><scope>ParallelScanFunctor</scope><name>operator()</name></member>
+      <member refid="struct_parallel_scan_functor_1a20893811a2f187a83c0201cacea1c420" prot="public" virt="non-virtual"><scope>ParallelScanFunctor</scope><name>ParallelScanFunctor</name></member>
+      <member refid="struct_parallel_scan_functor_1aa555e3f9002c1cb66ecca40d51f8a8f9" prot="public" virt="non-virtual"><scope>ParallelScanFunctor</scope><name>v</name></member>
+      <member refid="struct_parallel_scan_functor_1a49896445d68fecb35d93de201695db5c" prot="public" virt="non-virtual"><scope>ParallelScanFunctor</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

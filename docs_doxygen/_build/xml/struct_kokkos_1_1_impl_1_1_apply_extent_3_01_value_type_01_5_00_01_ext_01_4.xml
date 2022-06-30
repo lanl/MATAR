@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_apply_extent_3_01_value_type_01_5_00_01_ext_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ApplyExtent&lt; ValueType *, Ext &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ValueType</type>
+      </param>
+      <param>
+        <type>ptrdiff_t</type>
+        <declname>Ext</declname>
+        <defname>Ext</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_apply_extent_3_01_value_type_01_5_00_01_ext_01_4_1a8ec5da2bd58ffe2f78e815c8377d9237" prot="public" static="no">
+        <type>ValueType *[Ext]</type>
+        <definition>using Kokkos::Impl::ApplyExtent&lt; ValueType *, Ext &gt;::type =  ValueType * [Ext]</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::ApplyExtent&lt; ValueType *, Ext &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" line="154" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" line="153" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" bodystart="153" bodyend="155"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_apply_extent_3_01_value_type_01_5_00_01_ext_01_4_1a8ec5da2bd58ffe2f78e815c8377d9237" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ApplyExtent&lt; ValueType *, Ext &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

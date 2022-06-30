@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos-_programming-_guide_8md" kind="file" language="Markdown">
+    <compoundname>Kokkos-Programming-Guide.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">[Programming<sp/>Guide](https://github.com/kokkos/kokkos/wiki)</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/doc/Kokkos-Programming-Guide.md"/>
+  </compounddef>
+</doxygen>

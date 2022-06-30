@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_dual_view_1_1impl__dualview__is__single__device" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::DualView::impl_dualview_is_single_device</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_dual_view_1_1impl__dualview__is__single__device_1a8a75cd7ecbe7119baf8bc22607dbd3e5" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@6</name>
+        <qualifiedname>Kokkos::DualView::impl_dualview_is_single_device::@6</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_dual_view_1_1impl__dualview__is__single__device_1a8a75cd7ecbe7119baf8bc22607dbd3e5a9e3eddcd550315298b6d627854d2a30d" prot="public">
+          <name>value</name>
+          <initializer>= std::is_same&lt;typename t_dev::device_type,
+                           typename t_host::device_type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="319" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="319" bodyend="322"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" line="318" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DualView.hpp" bodystart="318" bodyend="323"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_dual_view_1_1impl__dualview__is__single__device_1a8a75cd7ecbe7119baf8bc22607dbd3e5a9e3eddcd550315298b6d627854d2a30d" prot="public" virt="non-virtual"><scope>Kokkos::DualView::impl_dualview_is_single_device</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

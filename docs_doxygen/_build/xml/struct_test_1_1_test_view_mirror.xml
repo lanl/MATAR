@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_mirror" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewMirror</compoundname>
+    <innerclass refid="struct_test_1_1_test_view_mirror_1_1_copy_un_init" prot="public">Test::TestViewMirror::CopyUnInit</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class Layout</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1a3c7abe03cff31447edd0765beeb1f2d6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_mirror</definition>
+        <argsstring>()</argsstring>
+        <name>test_mirror</name>
+        <qualifiedname>Test::TestViewMirror::test_mirror</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="745" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="745" bodyend="761"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1a1b61066afb26f17965f737f0d9eacaaf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_mirror_view</definition>
+        <argsstring>()</argsstring>
+        <name>test_mirror_view</name>
+        <qualifiedname>Test::TestViewMirror::test_mirror_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="764" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="764" bodyend="785"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1a62db2661d752240b2cf18a61e189cc03" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_mirror_copy</definition>
+        <argsstring>()</argsstring>
+        <name>test_mirror_copy</name>
+        <qualifiedname>Test::TestViewMirror::test_mirror_copy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="788" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="788" bodyend="815"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1a441f640b77b2984cfe4aa1f183b9de24" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_kokkos_1_1_view_1ab5709a279a8bb8807306953bd60790c0" kindref="member">View::const_type</ref></type>
+        <definition>static View::const_type Test::TestViewMirror&lt; Layout, DeviceType &gt;::view_const_cast</definition>
+        <argsstring>(View const &amp;v)</argsstring>
+        <name>view_const_cast</name>
+        <qualifiedname>Test::TestViewMirror::view_const_cast</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref> const &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="818" column="36" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="818" bodyend="820"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1ada226c29212b6022c68860b1ddd352ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_allocated</definition>
+        <argsstring>()</argsstring>
+        <name>test_allocated</name>
+        <qualifiedname>Test::TestViewMirror::test_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="822" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="822" bodyend="858"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1acd8be773317f37034ae7539bb3a4b4f3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_mirror_copy_const_data_type</definition>
+        <argsstring>()</argsstring>
+        <name>test_mirror_copy_const_data_type</name>
+        <qualifiedname>Test::TestViewMirror::test_mirror_copy_const_data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="860" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="860" bodyend="869"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1a02e883dca41cbb70a1790370dbf42edb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref></type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::test_mirror_no_initialize</definition>
+        <argsstring>()</argsstring>
+        <name>test_mirror_no_initialize</name>
+        <qualifiedname>Test::TestViewMirror::test_mirror_no_initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="888" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="888" bodyend="916"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_mirror_1aafc1739eee562b6c7b560817c3086ad5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewMirror&lt; Layout, DeviceType &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::TestViewMirror::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="918" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="918" bodyend="929"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="743" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="743" bodyend="930"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_mirror_1ada226c29212b6022c68860b1ddd352ed" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_allocated</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1a3c7abe03cff31447edd0765beeb1f2d6" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_mirror</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1a62db2661d752240b2cf18a61e189cc03" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_mirror_copy</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1acd8be773317f37034ae7539bb3a4b4f3" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_mirror_copy_const_data_type</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1a02e883dca41cbb70a1790370dbf42edb" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_mirror_no_initialize</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1a1b61066afb26f17965f737f0d9eacaaf" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>test_mirror_view</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1aafc1739eee562b6c7b560817c3086ad5" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>testit</name></member>
+      <member refid="struct_test_1_1_test_view_mirror_1a441f640b77b2984cfe4aa1f183b9de24" prot="public" virt="non-virtual"><scope>Test::TestViewMirror</scope><name>view_const_cast</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

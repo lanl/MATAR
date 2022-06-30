@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___tools___optimzation_goal" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_OptimzationGoal</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___tools___optimzation_goal_1aa962d1fc7e7dc02b22a09636ca75aac0" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos_Tools_OptimzationGoal::type_id</definition>
+        <argsstring></argsstring>
+        <name>type_id</name>
+        <qualifiedname>Kokkos_Tools_OptimzationGoal::type_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="184" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___optimzation_goal_1a35c7ba3d3c11e0a2eb05bccabe13a555" prot="public" static="no" mutable="no">
+        <type>enum Kokkos_Tools_OptimizationType</type>
+        <definition>enum Kokkos_Tools_OptimizationType Kokkos_Tools_OptimzationGoal::goal</definition>
+        <argsstring></argsstring>
+        <name>goal</name>
+        <qualifiedname>Kokkos_Tools_OptimzationGoal::goal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="185" column="37" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="183" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="183" bodyend="186"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___tools___optimzation_goal_1a35c7ba3d3c11e0a2eb05bccabe13a555" prot="public" virt="non-virtual"><scope>Kokkos_Tools_OptimzationGoal</scope><name>goal</name></member>
+      <member refid="struct_kokkos___tools___optimzation_goal_1aa962d1fc7e7dc02b22a09636ca75aac0" prot="public" virt="non-virtual"><scope>Kokkos_Tools_OptimzationGoal</scope><name>type_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

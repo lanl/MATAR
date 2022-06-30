@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_s_y_c_l_accessible_1_1_tag_init" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewSYCLAccessible::TagInit</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" line="313" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/sycl/TestSYCL_Spaces.cpp" bodystart="313" bodyend="313"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

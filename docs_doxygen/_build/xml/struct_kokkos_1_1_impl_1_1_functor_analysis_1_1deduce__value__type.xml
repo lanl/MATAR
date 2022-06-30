@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::deduce_value_type</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename F</type>
+      </param>
+      <param>
+        <type>typename P</type>
+        <defval>PatternInterface</defval>
+      </param>
+      <param>
+        <type>typename V</type>
+        <defval>typename has_value_type&lt;F&gt;::type</defval>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>T</declname>
+        <defname>T</defname>
+        <defval>std::is_same&lt;Tag, void&gt;::value</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_1a480e3da1858eab866945e5e231bed3bf" prot="public" static="no">
+        <type>V</type>
+        <definition>using Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::deduce_value_type&lt; F, P, V, T &gt;::type =  V</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::deduce_value_type::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="152" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="151" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="151" bodyend="153"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_1a480e3da1858eab866945e5e231bed3bf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::deduce_value_type</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

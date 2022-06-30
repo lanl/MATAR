@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_epsilon" kind="struct" language="C++" prot="public">
+    <compoundname>Epsilon</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_epsilon_1a6bc8c44d3185ee9291462be42a1c81ae" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1epsilon" kindref="compound">Kokkos::Experimental::epsilon</ref>&lt; T &gt;</type>
+        <definition>using Epsilon::trait =  Kokkos::Experimental::epsilon&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>trait</name>
+        <qualifiedname>Epsilon::trait</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="79" column="26" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="79" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="79" bodyend="79"/>
+    <listofallmembers>
+      <member refid="struct_epsilon_1a6bc8c44d3185ee9291462be42a1c81ae" prot="public" virt="non-virtual"><scope>Epsilon</scope><name>trait</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

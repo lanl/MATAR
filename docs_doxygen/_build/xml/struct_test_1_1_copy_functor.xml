@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_copy_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::CopyFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_copy_functor_1a04efe77f244a2442ee2045b4e60e572b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref></type>
+        <definition>View Test::CopyFunctor&lt; View &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>Test::CopyFunctor::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="52" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_copy_functor_1a68fead2b51addc40d3008cabb01a9276" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref></type>
+        <definition>View Test::CopyFunctor&lt; View &gt;::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>Test::CopyFunctor::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="53" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_copy_functor_1a6374b2cf724df2413cec81fc92eb52c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::CopyFunctor&lt; View &gt;::CopyFunctor</definition>
+        <argsstring>(int N)</argsstring>
+        <name>CopyFunctor</name>
+        <qualifiedname>Test::CopyFunctor::CopyFunctor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>N</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="55" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_copy_functor_1aec74100591af263e87302462926bd3d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::CopyFunctor&lt; View &gt;::operator()</definition>
+        <argsstring>(int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::CopyFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="58" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_copy_functor_1ab3448a3788443efc9c6a9776f1e45deb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double Test::CopyFunctor&lt; View &gt;::time_copy</definition>
+        <argsstring>(int R)</argsstring>
+        <name>time_copy</name>
+        <qualifiedname>Test::CopyFunctor::time_copy</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>R</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="60" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="60" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::View&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Test::CopyFunctor&lt; View &gt;</label>
+        <link refid="struct_test_1_1_copy_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+          <edgelabel>b</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" line="51" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_DebugPinUVMSpace.cpp" bodystart="51" bodyend="70"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_copy_functor_1a04efe77f244a2442ee2045b4e60e572b" prot="public" virt="non-virtual"><scope>Test::CopyFunctor</scope><name>a</name></member>
+      <member refid="struct_test_1_1_copy_functor_1a68fead2b51addc40d3008cabb01a9276" prot="public" virt="non-virtual"><scope>Test::CopyFunctor</scope><name>b</name></member>
+      <member refid="struct_test_1_1_copy_functor_1a6374b2cf724df2413cec81fc92eb52c7" prot="public" virt="non-virtual"><scope>Test::CopyFunctor</scope><name>CopyFunctor</name></member>
+      <member refid="struct_test_1_1_copy_functor_1aec74100591af263e87302462926bd3d6" prot="public" virt="non-virtual"><scope>Test::CopyFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_copy_functor_1ab3448a3788443efc9c6a9776f1e45deb" prot="public" virt="non-virtual"><scope>Test::CopyFunctor</scope><name>time_copy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

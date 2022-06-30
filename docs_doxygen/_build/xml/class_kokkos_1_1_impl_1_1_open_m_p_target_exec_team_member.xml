@@ -1,0 +1,638 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OpenMPTargetExecTeamMember</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1af7c8a7f97e4386f623ca6203dd5918" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@251</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::@251</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1af7c8a7f97e4386f623ca6203dd5918a0bc75c04b7bc6e5f8c426d078d53e785" prot="public">
+          <name>TEAM_REDUCE_SIZE</name>
+          <initializer>= 512</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="481" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="481" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ace2ec8c30f7446ebc5b5ee9a56e103fc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@252</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::@252</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ace2ec8c30f7446ebc5b5ee9a56e103fca17bbf943a32284b61e8369d64879ab18" prot="public">
+          <name>Active</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ace2ec8c30f7446ebc5b5ee9a56e103fca5117a68d820e6b8e984b448ddab4b4c7" prot="public">
+          <name>Rendezvous</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Thread states for team synchronization. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="484" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="484" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a05a4a567aee2a6373822096a1ea83fbe" prot="public" static="no">
+        <type>Kokkos::Experimental::OpenMPTarget</type>
+        <definition>using Kokkos::Impl::OpenMPTargetExecTeamMember::execution_space =  Kokkos::Experimental::OpenMPTarget</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="486" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="486" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a2b22fefec856f7e7ffa4e8e5e380511d" prot="public" static="no">
+        <type>execution_space::scratch_memory_space</type>
+        <definition>using Kokkos::Impl::OpenMPTargetExecTeamMember::scratch_memory_space =  execution_space::scratch_memory_space</definition>
+        <argsstring></argsstring>
+        <name>scratch_memory_space</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::scratch_memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="487" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="487" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a67324f6cc07c8a2d44af9a3c9f05ec7f" prot="private" static="no">
+        <type>execution_space::scratch_memory_space</type>
+        <definition>using Kokkos::Impl::OpenMPTargetExecTeamMember::space =  execution_space::scratch_memory_space</definition>
+        <argsstring></argsstring>
+        <name>space</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="664" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="664" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a2cee0e291a4f924c6953b8d08ba3ad78" prot="public" static="no" mutable="no">
+        <type>scratch_memory_space</type>
+        <definition>scratch_memory_space Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_shared</definition>
+        <argsstring></argsstring>
+        <name>m_team_shared</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="489" column="24" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="489" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1c073ca3c99f7ffe4e0a9d9c011557e2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_scratch_size[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_team_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_scratch_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="490" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="490" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a9e5695224c90132b1f1bbe2a727070df" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_rank</definition>
+        <argsstring></argsstring>
+        <name>m_team_rank</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="491" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="491" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a76de9500a25fcdba4b33ffce37a856f3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_size</definition>
+        <argsstring></argsstring>
+        <name>m_team_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="492" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="492" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a6f33ea68a78624ab04dd5e7692a7d3e5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_league_rank</definition>
+        <argsstring></argsstring>
+        <name>m_league_rank</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_league_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="493" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="493" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1aad1910195dbf5e48f70e9a3f9bed3936" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_league_size</definition>
+        <argsstring></argsstring>
+        <name>m_league_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="494" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="494" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1af61f7ee708e450e5b00ea765dc9b49e0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_vector_length</definition>
+        <argsstring></argsstring>
+        <name>m_vector_length</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_vector_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="495" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="495" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1aff87e3c5e674b9d5cae498040a300b41" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_vector_lane</definition>
+        <argsstring></argsstring>
+        <name>m_vector_lane</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_vector_lane</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="496" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="496" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1c6a4cf08a02d7575e4ea5bf74112f61" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::OpenMPTargetExecTeamMember::m_shmem_block_index</definition>
+        <argsstring></argsstring>
+        <name>m_shmem_block_index</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_shmem_block_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="497" column="7" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a72821f5bbb41db0d6e16c47a8ac3aa85" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* Kokkos::Impl::OpenMPTargetExecTeamMember::m_glb_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_glb_scratch</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_glb_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="498" column="8" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a19ef17a1d786622acc114f965cd75dfb" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* Kokkos::Impl::OpenMPTargetExecTeamMember::m_reduce_scratch</definition>
+        <argsstring></argsstring>
+        <name>m_reduce_scratch</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::m_reduce_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="499" column="8" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="499" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1abf0d188629214a6699b0e8db7299bb97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp; Kokkos::Impl::OpenMPTargetExecTeamMember::team_shmem</definition>
+        <argsstring>() const</argsstring>
+        <name>team_shmem</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_shmem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="503" column="47" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="503" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a39e8d7fd745eaaeb1f051b314bd660d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp; Kokkos::Impl::OpenMPTargetExecTeamMember::team_scratch</definition>
+        <argsstring>(int level) const</argsstring>
+        <name>team_scratch</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_scratch</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="513" column="47" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="513" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a56b0667f34bba047f448e5e08150cb9a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const execution_space::scratch_memory_space &amp; Kokkos::Impl::OpenMPTargetExecTeamMember::thread_scratch</definition>
+        <argsstring>(int level) const</argsstring>
+        <name>thread_scratch</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::thread_scratch</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="518" column="47" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="518" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1af018b0838f736e2da15771627ecbeee4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::OpenMPTargetExecTeamMember::league_rank</definition>
+        <argsstring>() const</argsstring>
+        <name>league_rank</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::league_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="522" column="30" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="522" bodyend="522"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a6d26e5e7af2e12d8b262f8eb3888a57d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::OpenMPTargetExecTeamMember::league_size</definition>
+        <argsstring>() const</argsstring>
+        <name>league_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="523" column="30" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="523" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1acfa2c321fc2f495e0312cadd3681ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::OpenMPTargetExecTeamMember::team_rank</definition>
+        <argsstring>() const</argsstring>
+        <name>team_rank</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="524" column="30" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="524" bodyend="524"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ac7e9f95fcaf9bcb99b3f5e9706a0ea2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::OpenMPTargetExecTeamMember::team_size</definition>
+        <argsstring>() const</argsstring>
+        <name>team_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="525" column="30" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="525" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a5d630680e60d4a7c1a4ec3288f95cd9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void *</type>
+        <definition>KOKKOS_INLINE_FUNCTION void * Kokkos::Impl::OpenMPTargetExecTeamMember::impl_reduce_scratch</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_reduce_scratch</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::impl_reduce_scratch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="526" column="31" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="526" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a8aeefb1ff73f0b2af2f5059a81c5e788" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetExecTeamMember::team_barrier</definition>
+        <argsstring>() const</argsstring>
+        <name>team_barrier</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_barrier</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="530" column="31" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="530" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a168b87741ad227e03fada47eb59b1d47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetExecTeamMember::team_broadcast</definition>
+        <argsstring>(ValueType &amp;value, int thread_id) const</argsstring>
+        <name>team_broadcast</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_broadcast</qualifiedname>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="535" column="31" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="535" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a3dbe9ec800a03c72c5c885ee9a7f8683" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Closure</type>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetExecTeamMember::team_broadcast</definition>
+        <argsstring>(const Closure &amp;f, ValueType &amp;value, const int &amp;thread_id) const</argsstring>
+        <name>team_broadcast</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_broadcast</qualifiedname>
+        <param>
+          <type>const Closure &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="551" column="31" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="551" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a3b1df697c670756ae95075ef84cfdec7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ValueType</type>
+          </param>
+          <param>
+            <type>class JoinOp</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION ValueType</type>
+        <definition>KOKKOS_INLINE_FUNCTION ValueType Kokkos::Impl::OpenMPTargetExecTeamMember::team_reduce</definition>
+        <argsstring>(const ValueType &amp;value, const JoinOp &amp;op_in) const</argsstring>
+        <name>team_reduce</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_reduce</qualifiedname>
+        <param>
+          <type>const ValueType &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const JoinOp &amp;</type>
+          <declname>op_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="558" column="36" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="558" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a9b8cc4ea322da4642b1b78921a0faa93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ArgType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION ArgType</type>
+        <definition>KOKKOS_INLINE_FUNCTION ArgType Kokkos::Impl::OpenMPTargetExecTeamMember::team_scan</definition>
+        <argsstring>(const ArgType &amp;, ArgType *const) const</argsstring>
+        <name>team_scan</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_scan</qualifiedname>
+        <param>
+          <type>const ArgType &amp;</type>
+        </param>
+        <param>
+          <type>ArgType * const</type>
+        </param>
+        <briefdescription>
+<para>Intra-team exclusive prefix sum with team_rank() ordering with intra-team non-deterministic ordering accumulation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The global inter-team accumulation value will, at the end of the league&apos;s parallel execution, be the scan&apos;s total. Parallel execution ordering of the league&apos;s teams is non-deterministic. As such the base value for each team&apos;s scan operation is similarly non-deterministic. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="604" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="604" bodyend="648"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a42ee6d76907079a1c2e47b4c4b2e550a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION Type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Type Kokkos::Impl::OpenMPTargetExecTeamMember::team_scan</definition>
+        <argsstring>(const Type &amp;value) const</argsstring>
+        <name>team_scan</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_scan</qualifiedname>
+        <param>
+          <type>const Type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Intra-team exclusive prefix sum with team_rank() ordering. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The highest rank thread can compute the reduction total as reduction_total = dev.team_scan( value ) + value ; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="656" column="31" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="656" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a30e6cd5d4e599e702e724b69bb38d1b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::OpenMPTargetExecTeamMember::OpenMPTargetExecTeamMember</definition>
+        <argsstring>(const int league_rank, const int league_size, const int team_size, const int vector_length, void *const glb_scratch, const int shmem_block_index, const int shmem_size_L0, const int shmem_size_L1)</argsstring>
+        <name>OpenMPTargetExecTeamMember</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::OpenMPTargetExecTeamMember</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>league_rank</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>league_size</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>team_size</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>vector_length</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>glb_scratch</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>shmem_block_index</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>shmem_size_L0</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>shmem_size_L1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="670" column="10" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="670" bodyend="704"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a77c68bd9a325924ba1d984cc390c3e0a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Kokkos::Impl::OpenMPTargetExecTeamMember::team_reduce_size</definition>
+        <argsstring>()</argsstring>
+        <name>team_reduce_size</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetExecTeamMember::team_reduce_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="706" column="21" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="706" bodyend="706"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="479" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="479" bodyend="707"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ace2ec8c30f7446ebc5b5ee9a56e103fca17bbf943a32284b61e8369d64879ab18" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>Active</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a05a4a567aee2a6373822096a1ea83fbe" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a5d630680e60d4a7c1a4ec3288f95cd9e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>impl_reduce_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1af018b0838f736e2da15771627ecbeee4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>league_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a6d26e5e7af2e12d8b262f8eb3888a57d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a72821f5bbb41db0d6e16c47a8ac3aa85" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_glb_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a6f33ea68a78624ab04dd5e7692a7d3e5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_league_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1aad1910195dbf5e48f70e9a3f9bed3936" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a19ef17a1d786622acc114f965cd75dfb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_reduce_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1c6a4cf08a02d7575e4ea5bf74112f61" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_shmem_block_index</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a9e5695224c90132b1f1bbe2a727070df" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_team_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1c073ca3c99f7ffe4e0a9d9c011557e2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_team_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a2cee0e291a4f924c6953b8d08ba3ad78" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_team_shared</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a76de9500a25fcdba4b33ffce37a856f3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1aff87e3c5e674b9d5cae498040a300b41" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_vector_lane</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1af61f7ee708e450e5b00ea765dc9b49e0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>m_vector_length</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a30e6cd5d4e599e702e724b69bb38d1b0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>OpenMPTargetExecTeamMember</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ace2ec8c30f7446ebc5b5ee9a56e103fca5117a68d820e6b8e984b448ddab4b4c7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>Rendezvous</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a2b22fefec856f7e7ffa4e8e5e380511d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>scratch_memory_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a67324f6cc07c8a2d44af9a3c9f05ec7f" prot="private" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a8aeefb1ff73f0b2af2f5059a81c5e788" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_barrier</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a168b87741ad227e03fada47eb59b1d47" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_broadcast</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a3dbe9ec800a03c72c5c885ee9a7f8683" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_broadcast</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1acfa2c321fc2f495e0312cadd3681ef" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_rank</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a3b1df697c670756ae95075ef84cfdec7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_reduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a1af7c8a7f97e4386f623ca6203dd5918a0bc75c04b7bc6e5f8c426d078d53e785" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>TEAM_REDUCE_SIZE</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a77c68bd9a325924ba1d984cc390c3e0a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_reduce_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a9b8cc4ea322da4642b1b78921a0faa93" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_scan</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a42ee6d76907079a1c2e47b4c4b2e550a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_scan</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a39e8d7fd745eaaeb1f051b314bd660d4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_scratch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1abf0d188629214a6699b0e8db7299bb97" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_shmem</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1ac7e9f95fcaf9bcb99b3f5e9706a0ea2d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_open_m_p_target_exec_team_member_1a56b0667f34bba047f448e5e08150cb9a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetExecTeamMember</scope><name>thread_scratch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestFunctor</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_functor_1a289651dd33445aa7778f1485ba890927" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::TestFunctor::operator()</definition>
+        <argsstring>(const int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="122" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="122" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" line="121" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/tools/TestEventCorrectness.hpp" bodystart="121" bodyend="123"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_functor_1a289651dd33445aa7778f1485ba890927" prot="public" virt="non-virtual"><scope>Test::TestFunctor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

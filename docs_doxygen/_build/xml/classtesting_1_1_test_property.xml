@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_test_property" kind="class" language="C++" prot="public">
+    <compoundname>testing::TestProperty</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1_test_property_1a948544067d61e790bd37e234186fa708" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::TestProperty::key_</definition>
+        <argsstring></argsstring>
+        <name>key_</name>
+        <qualifiedname>testing::TestProperty::key_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17906" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17906" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_test_property_1a204e3793205a1e61412fc34be1913c01" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::TestProperty::value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <qualifiedname>testing::TestProperty::value_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17908" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17908" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a25a0ccf1c75a92af46a48d3c2a873e6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::TestProperty::TestProperty</definition>
+        <argsstring>(const std::string &amp;a_key, const std::string &amp;a_value)</argsstring>
+        <name>TestProperty</name>
+        <qualifiedname>testing::TestProperty::TestProperty</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a_key</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17885" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17885" bodyend="17887"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a76de43828e3ac38d01f8e7bd9e4f99bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestProperty::key</definition>
+        <argsstring>() const</argsstring>
+        <name>key</name>
+        <qualifiedname>testing::TestProperty::key</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17890" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17890" bodyend="17892"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a05c05de28707cf2dcbb6e2a330342a5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestProperty::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>testing::TestProperty::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17895" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17895" bodyend="17897"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a377245335d9f614cd06d1650e3358e1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::TestProperty::SetValue</definition>
+        <argsstring>(const std::string &amp;new_value)</argsstring>
+        <name>SetValue</name>
+        <qualifiedname>testing::TestProperty::SetValue</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>new_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17900" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17900" bodyend="17902"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a25a0ccf1c75a92af46a48d3c2a873e6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::TestProperty::TestProperty</definition>
+        <argsstring>(const std::string &amp;a_key, const std::string &amp;a_value)</argsstring>
+        <name>TestProperty</name>
+        <qualifiedname>testing::TestProperty::TestProperty</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a_key</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>a_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17885" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17885" bodyend="17887"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a76de43828e3ac38d01f8e7bd9e4f99bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestProperty::key</definition>
+        <argsstring>() const</argsstring>
+        <name>key</name>
+        <qualifiedname>testing::TestProperty::key</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17890" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17890" bodyend="17892"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a05c05de28707cf2dcbb6e2a330342a5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::TestProperty::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>testing::TestProperty::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17895" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17895" bodyend="17897"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_property_1a377245335d9f614cd06d1650e3358e1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::TestProperty::SetValue</definition>
+        <argsstring>(const std::string &amp;new_value)</argsstring>
+        <name>SetValue</name>
+        <qualifiedname>testing::TestProperty::SetValue</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>new_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17900" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17900" bodyend="17902"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17880" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17880" bodyend="17909"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_test_property_1a76de43828e3ac38d01f8e7bd9e4f99bc" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>key</name></member>
+      <member refid="classtesting_1_1_test_property_1a76de43828e3ac38d01f8e7bd9e4f99bc" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>key</name></member>
+      <member refid="classtesting_1_1_test_property_1a948544067d61e790bd37e234186fa708" prot="private" virt="non-virtual"><scope>testing::TestProperty</scope><name>key_</name></member>
+      <member refid="classtesting_1_1_test_property_1a377245335d9f614cd06d1650e3358e1d" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>SetValue</name></member>
+      <member refid="classtesting_1_1_test_property_1a377245335d9f614cd06d1650e3358e1d" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>SetValue</name></member>
+      <member refid="classtesting_1_1_test_property_1a25a0ccf1c75a92af46a48d3c2a873e6d" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>TestProperty</name></member>
+      <member refid="classtesting_1_1_test_property_1a25a0ccf1c75a92af46a48d3c2a873e6d" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>TestProperty</name></member>
+      <member refid="classtesting_1_1_test_property_1a05c05de28707cf2dcbb6e2a330342a5b" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>value</name></member>
+      <member refid="classtesting_1_1_test_property_1a05c05de28707cf2dcbb6e2a330342a5b" prot="public" virt="non-virtual"><scope>testing::TestProperty</scope><name>value</name></member>
+      <member refid="classtesting_1_1_test_property_1a204e3793205a1e61412fc34be1913c01" prot="private" virt="non-virtual"><scope>testing::TestProperty</scope><name>value_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

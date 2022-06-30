@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_9f2ab4ee7903910bfb396f39a5611b71" kind="dir">
+    <compoundname>src/Kokkos/kokkos/benchmarks</compoundname>
+    <innerdir refid="dir_bd99e41b0dd915054432deac048dd7e0">src/Kokkos/kokkos/benchmarks/atomic</innerdir>
+    <innerdir refid="dir_9f0ffdd6f3a0779e221d6a44745e2912">src/Kokkos/kokkos/benchmarks/bytes_and_flops</innerdir>
+    <innerdir refid="dir_ee95f2f011e2cff8cb8d8eb59add6d9a">src/Kokkos/kokkos/benchmarks/gather</innerdir>
+    <innerdir refid="dir_207756b96b031c69a8990778fae91789">src/Kokkos/kokkos/benchmarks/gups</innerdir>
+    <innerdir refid="dir_8e0b81ce872e782ae6362bedb98018be">src/Kokkos/kokkos/benchmarks/policy_performance</innerdir>
+    <innerdir refid="dir_7f25b45a3b017f8c9f4d8bc03e70040d">src/Kokkos/kokkos/benchmarks/stream</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/"/>
+  </compounddef>
+</doxygen>

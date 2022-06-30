@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_error_reporter" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::ErrorReporter</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename ReportType</type>
+      </param>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a85482bbf002d08a8d693ac829a162184" prot="public" static="no">
+        <type>ReportType</type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::report_type =  ReportType</definition>
+        <argsstring></argsstring>
+        <name>report_type</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::report_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a6209c749d337b41d70484a5f00b1a4b0" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::device_type =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a1f017c4babe6575cdda80c8f7ced8f0e" prot="public" static="no">
+        <type>typename device_type::execution_space</type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::execution_space =  typename device_type::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1af3e8274a92a4d15f9fe4cb06fca92718" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; report_type *, execution_space &gt;</type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::reports_view_t =  Kokkos::View&lt;report_type *, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>reports_view_t</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::reports_view_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="106" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1af2ca277686e0918d625eae6bee82524d" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">Kokkos::DualView</ref>&lt; report_type *, execution_space &gt;</type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::reports_dualview_t =  Kokkos::DualView&lt;report_type *, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>reports_dualview_t</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::reports_dualview_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="107" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a2b9285b412112a7909945d25b4fb9687" prot="private" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_dual_view_1a8954ce8f585911b9d530b4b8c3956b24" kindref="member">reports_dualview_t::host_mirror_space</ref></type>
+        <definition>using Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::host_mirror_space =  typename reports_dualview_t::host_mirror_space</definition>
+        <argsstring></argsstring>
+        <name>host_mirror_space</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::host_mirror_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="109" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_error_reporter_1adda3cea3198ad1fd3fea33b494a0cf0a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, execution_space &gt;</type>
+        <definition>Kokkos::View&lt;int, execution_space&gt; Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::m_numReportsAttempted</definition>
+        <argsstring></argsstring>
+        <name>m_numReportsAttempted</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::m_numReportsAttempted</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="110" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a60c9143e5d555dca673ad3d6bcfaf4e7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">reports_dualview_t</ref></type>
+        <definition>reports_dualview_t Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::m_reports</definition>
+        <argsstring></argsstring>
+        <name>m_reports</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::m_reports</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="111" column="22" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a11a5ae24f7c1a055bcde677dd090e69e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_dual_view" kindref="compound">Kokkos::DualView</ref>&lt; int *, execution_space &gt;</type>
+        <definition>Kokkos::DualView&lt;int *, execution_space&gt; Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::m_reporters</definition>
+        <argsstring></argsstring>
+        <name>m_reporters</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::m_reporters</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="112" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1aa18fc71b96ac33d18a29c222c4f9fb50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::ErrorReporter</definition>
+        <argsstring>(int max_results)</argsstring>
+        <name>ErrorReporter</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::ErrorReporter</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>max_results</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="63" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a87053657cb97daa4da7d10ee284bdafe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::getCapacity</definition>
+        <argsstring>() const</argsstring>
+        <name>getCapacity</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::getCapacity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="70" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a715a4bf5ea4e2d55c6290163811b27eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::getNumReports</definition>
+        <argsstring>()</argsstring>
+        <name>getNumReports</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::getNumReports</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="72" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="116" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a9afc099a789e3659a9d9d614ed87c470" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::getNumReportAttempts</definition>
+        <argsstring>()</argsstring>
+        <name>getNumReportAttempts</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::getNumReportAttempts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="74" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1acbbdf2cc568a78e4918fff4cea0b881c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::getReports</definition>
+        <argsstring>(std::vector&lt; int &gt; &amp;reporters_out, std::vector&lt; report_type &gt; &amp;reports_out)</argsstring>
+        <name>getReports</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::getReports</qualifiedname>
+        <param>
+          <type>std::vector&lt; int &gt; &amp;</type>
+          <declname>reporters_out</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; report_type &gt; &amp;</type>
+          <declname>reports_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="76" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="133" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a2427d47f4e8e36801fed191d6f607914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::getReports</definition>
+        <argsstring>(typename Kokkos::View&lt; int *, typename DeviceType::execution_space &gt;::HostMirror &amp;reporters_out, typename Kokkos::View&lt; report_type *, typename DeviceType::execution_space &gt;::HostMirror &amp;reports_out)</argsstring>
+        <name>getReports</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::getReports</qualifiedname>
+        <param>
+          <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int *, typename DeviceType::execution_space &gt;::HostMirror &amp;</type>
+          <declname>reporters_out</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; report_type *, typename DeviceType::execution_space &gt;::HostMirror &amp;</type>
+          <declname>reports_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="78" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="153" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a2901f82e8d0d550eaa12bac6897dc44d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="86" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="179" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a7912751812aaced26be08b98bbcda9fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::resize</definition>
+        <argsstring>(const size_t new_size)</argsstring>
+        <name>resize</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::resize</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="88" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="187" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1a9ab7f56fdffc315fedcb5044bebc7ac6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::full</definition>
+        <argsstring>()</argsstring>
+        <name>full</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::full</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="90" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_error_reporter_1aa21e9ff0cf8eab3ce662b1b440c59366" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::ErrorReporter&lt; ReportType, DeviceType &gt;::add_report</definition>
+        <argsstring>(int reporter_id, report_type report) const</argsstring>
+        <name>add_report</name>
+        <qualifiedname>Kokkos::Experimental::ErrorReporter::add_report</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>reporter_id</declname>
+        </param>
+        <param>
+          <type>report_type</type>
+          <declname>report</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="93" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="93" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ErrorReporter.hpp" bodystart="57" bodyend="113"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1aa21e9ff0cf8eab3ce662b1b440c59366" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>add_report</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a2901f82e8d0d550eaa12bac6897dc44d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>clear</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a6209c749d337b41d70484a5f00b1a4b0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1aa18fc71b96ac33d18a29c222c4f9fb50" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>ErrorReporter</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a1f017c4babe6575cdda80c8f7ced8f0e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a9ab7f56fdffc315fedcb5044bebc7ac6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>full</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a87053657cb97daa4da7d10ee284bdafe" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>getCapacity</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a9afc099a789e3659a9d9d614ed87c470" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>getNumReportAttempts</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a715a4bf5ea4e2d55c6290163811b27eb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>getNumReports</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1acbbdf2cc568a78e4918fff4cea0b881c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>getReports</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a2427d47f4e8e36801fed191d6f607914" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>getReports</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a2b9285b412112a7909945d25b4fb9687" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1adda3cea3198ad1fd3fea33b494a0cf0a" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>m_numReportsAttempted</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a11a5ae24f7c1a055bcde677dd090e69e" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>m_reporters</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a60c9143e5d555dca673ad3d6bcfaf4e7" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>m_reports</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a85482bbf002d08a8d693ac829a162184" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>report_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1af2ca277686e0918d625eae6bee82524d" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>reports_dualview_t</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1af3e8274a92a4d15f9fe4cb06fca92718" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>reports_view_t</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_error_reporter_1a7912751812aaced26be08b98bbcda9fc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::ErrorReporter</scope><name>resize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

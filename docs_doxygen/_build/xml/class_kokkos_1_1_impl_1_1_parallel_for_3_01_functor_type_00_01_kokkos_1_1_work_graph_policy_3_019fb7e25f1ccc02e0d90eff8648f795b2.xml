@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1aaed7cb361babcd0a080aaee472126460" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Kokkos::WorkGraphPolicy</ref>&lt; Traits... &gt;</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::Policy =  Kokkos::WorkGraphPolicy&lt;Traits...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::Policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="58" column="3" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a5cb559e11aef1395232aa1e170d60277" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_parallel_for" kindref="compound">ParallelFor</ref>&lt; FunctorType, <ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Kokkos::WorkGraphPolicy</ref>&lt; Traits... &gt;, Kokkos::Threads &gt;</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::Self =  ParallelFor&lt;FunctorType, Kokkos::WorkGraphPolicy&lt;Traits...&gt;, Kokkos::Threads&gt;</definition>
+        <argsstring></argsstring>
+        <name>Self</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::Self</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a6ab57cbc85b6c2176069a7fe8c0abc6b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref></type>
+        <definition>Policy Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="63" column="10" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a0df705c21be081c8381d255b1e349a95" prot="private" static="no" mutable="no">
+        <type>FunctorType</type>
+        <definition>FunctorType Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="64" column="15" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a91071d0ff02e33b65c6111668085a343" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class TagType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_same&lt; TagType, void &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt; std::is_same&lt; TagType, void &gt;::value &gt;::type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one</definition>
+        <argsstring>(const std::int32_t w) const noexcept</argsstring>
+        <name>exec_one</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one</qualifiedname>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="67" column="35" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1af7b960de79867a7963052c7fb3e33b0d" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class TagType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;!std::is_same&lt; TagType, void &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt;!std::is_same&lt; TagType, void &gt;::value &gt;::type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one</definition>
+        <argsstring>(const std::int32_t w) const noexcept</argsstring>
+        <name>exec_one</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one</qualifiedname>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="73" column="35" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a92aa9c80d81db1a0fe4430cd09f3ccff" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one_thread</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>exec_one_thread</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::exec_one_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="79" column="15" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="79" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1ac7efbd94534e1961e0d2a38900363a36" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::thread_main</definition>
+        <argsstring>(ThreadsExec &amp;exec, const void *arg) noexcept</argsstring>
+        <name>thread_main</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::thread_main</qualifiedname>
+        <param>
+          <type>ThreadsExec &amp;</type>
+          <declname>exec</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="92" column="22" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="92" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a2bb51822f849adbef75e077f3d6766d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="99" column="15" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a4acd1cd84cfb4b6140dcf56adceb1f2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::ParallelFor</definition>
+        <argsstring>(const FunctorType &amp;arg_functor, const Policy &amp;arg_policy)</argsstring>
+        <name>ParallelFor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;::ParallelFor</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="104" column="10" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="104" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/core/src/Threads/Kokkos_Threads_WorkGraphPolicy.hpp" bodystart="56" bodyend="106"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a91071d0ff02e33b65c6111668085a343" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>exec_one</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1af7b960de79867a7963052c7fb3e33b0d" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>exec_one</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a92aa9c80d81db1a0fe4430cd09f3ccff" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>exec_one_thread</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a2bb51822f849adbef75e077f3d6766d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a0df705c21be081c8381d255b1e349a95" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>m_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a6ab57cbc85b6c2176069a7fe8c0abc6b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>m_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a4acd1cd84cfb4b6140dcf56adceb1f2d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>ParallelFor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1aaed7cb361babcd0a080aaee472126460" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>Policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1a5cb559e11aef1395232aa1e170d60277" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>Self</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_019fb7e25f1ccc02e0d90eff8648f795b2_1ac7efbd94534e1961e0d2a38900363a36" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Threads &gt;</scope><name>thread_main</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

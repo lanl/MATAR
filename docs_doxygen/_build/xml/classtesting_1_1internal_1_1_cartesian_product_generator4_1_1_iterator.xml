@@ -1,0 +1,686 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator" kind="class" language="C++" prot="private">
+    <compoundname>testing::internal::CartesianProductGenerator4::Iterator</compoundname>
+    <basecompoundref refid="classtesting_1_1internal_1_1_param_iterator_interface" prot="public" virt="non-virtual">testing::internal::ParamIteratorInterface&lt; ParamType &gt;</basecompoundref>
+    <basecompoundref refid="classtesting_1_1internal_1_1_param_iterator_interface" prot="public" virt="non-virtual">testing::internal::ParamIteratorInterface&lt; ParamType &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a69064e048798b6de2ee9191dc6fe03a2" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *const</type>
+        <definition>const ParamGeneratorInterface&lt; ParamType &gt; *const testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::base_</definition>
+        <argsstring></argsstring>
+        <name>base_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::base_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14148" column="41" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a0702b0b5bd48194310bd951cd8ebaf6a" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T1 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::begin1_</definition>
+        <argsstring></argsstring>
+        <name>begin1_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::begin1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14151" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a74748a7b8281cd0bb1aabb9faf1eb7bd" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T1 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::end1_</definition>
+        <argsstring></argsstring>
+        <name>end1_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::end1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14152" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a8214fe8b6a9b6329e9dc5e29d284223a" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt;::iterator</type>
+        <definition>ParamGenerator&lt; T1 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::current1_</definition>
+        <argsstring></argsstring>
+        <name>current1_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::current1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14153" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aa9a788407fce63bc40a42a3d5179ad7b" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T2 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::begin2_</definition>
+        <argsstring></argsstring>
+        <name>begin2_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::begin2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14154" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a82d53bceae2cf0b35fefd049f6075ad5" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T2 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::end2_</definition>
+        <argsstring></argsstring>
+        <name>end2_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::end2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14155" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a0dd4507c6e252c40c9134a2571bab186" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt;::iterator</type>
+        <definition>ParamGenerator&lt; T2 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::current2_</definition>
+        <argsstring></argsstring>
+        <name>current2_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::current2_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14156" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac3f2c98032d54a5ee2a1fe1502cb6485" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T3 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::begin3_</definition>
+        <argsstring></argsstring>
+        <name>begin3_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::begin3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14157" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae262829a61a3aa42ca4dd72814f9e03f" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T3 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::end3_</definition>
+        <argsstring></argsstring>
+        <name>end3_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::end3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14158" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a66dadcfa65014379d9692f0abdcd3057" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt;::iterator</type>
+        <definition>ParamGenerator&lt; T3 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::current3_</definition>
+        <argsstring></argsstring>
+        <name>current3_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::current3_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14159" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a99ad976c910c0d0a3f91adfda68517af" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T4 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::begin4_</definition>
+        <argsstring></argsstring>
+        <name>begin4_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::begin4_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14160" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a1275c8f3767705f3a088d94cb73fdd93" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt;::iterator</type>
+        <definition>const ParamGenerator&lt; T4 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::end4_</definition>
+        <argsstring></argsstring>
+        <name>end4_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::end4_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14161" column="46" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2986671699351cc4638b3597ff8f1baa" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt;::iterator</type>
+        <definition>ParamGenerator&lt; T4 &gt;::iterator testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::current4_</definition>
+        <argsstring></argsstring>
+        <name>current4_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::current4_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14162" column="40" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a4f1b25ab279cd975372d1e9eef0bb153" prot="private" static="no" mutable="no">
+        <type><ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref></type>
+        <definition>ParamType testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::current_value_</definition>
+        <argsstring></argsstring>
+        <name>current_value_</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::current_value_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14163" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14163" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae8081fd9ae3e5192ce4857dd13c4caf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Iterator</definition>
+        <argsstring>(const ParamGeneratorInterface&lt; ParamType &gt; *base, const ParamGenerator&lt; T1 &gt; &amp;g1, const typename ParamGenerator&lt; T1 &gt;::iterator &amp;current1, const ParamGenerator&lt; T2 &gt; &amp;g2, const typename ParamGenerator&lt; T2 &gt;::iterator &amp;current2, const ParamGenerator&lt; T3 &gt; &amp;g3, const typename ParamGenerator&lt; T3 &gt;::iterator &amp;current3, const ParamGenerator&lt; T4 &gt; &amp;g4, const typename ParamGenerator&lt; T4 &gt;::iterator &amp;current4)</argsstring>
+        <name>Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Iterator</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt; &amp;</type>
+          <declname>g1</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt;::iterator &amp;</type>
+          <declname>current1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt; &amp;</type>
+          <declname>g2</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt;::iterator &amp;</type>
+          <declname>current2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt; &amp;</type>
+          <declname>g3</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt;::iterator &amp;</type>
+          <declname>current3</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt; &amp;</type>
+          <declname>g4</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt;::iterator &amp;</type>
+          <declname>current4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14049" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14049" bodyend="14064"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86ba0d5dbad01817a25b8c2d5816ec8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::~Iterator</definition>
+        <argsstring>()</argsstring>
+        <name>~Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::~Iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14065" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14065" bodyend="14065"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aea09189b551e15e430898ebcdd190862" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+        <definition>virtual const ParamGeneratorInterface&lt; ParamType &gt; * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::BaseGenerator</definition>
+        <argsstring>() const</argsstring>
+        <name>BaseGenerator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::BaseGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14067" column="43" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14067" bodyend="14069"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a36f5b90a66a2e63f126daabb7723fe36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Advance</definition>
+        <argsstring>()</argsstring>
+        <name>Advance</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Advance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14072" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14072" bodyend="14088"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2905df4cb75b2dd676397c350d4a3c17" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; ParamType &gt; * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Clone</definition>
+        <argsstring>() const</argsstring>
+        <name>Clone</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14089" column="36" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14089" bodyend="14091"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1af701a36b719728a1f813ecf962c75f43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> *</type>
+        <definition>virtual const ParamType * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Current</definition>
+        <argsstring>() const</argsstring>
+        <name>Current</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Current</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14092" column="29" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14092" bodyend="14092"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86162f2a3c3cdd73dc1e93ce3b03ccb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Equals</definition>
+        <argsstring>(const ParamIteratorInterface&lt; ParamType &gt; &amp;other) const</argsstring>
+        <name>Equals</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Equals</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14093" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14093" bodyend="14110"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae8081fd9ae3e5192ce4857dd13c4caf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Iterator</definition>
+        <argsstring>(const ParamGeneratorInterface&lt; ParamType &gt; *base, const ParamGenerator&lt; T1 &gt; &amp;g1, const typename ParamGenerator&lt; T1 &gt;::iterator &amp;current1, const ParamGenerator&lt; T2 &gt; &amp;g2, const typename ParamGenerator&lt; T2 &gt;::iterator &amp;current2, const ParamGenerator&lt; T3 &gt; &amp;g3, const typename ParamGenerator&lt; T3 &gt;::iterator &amp;current3, const ParamGenerator&lt; T4 &gt; &amp;g4, const typename ParamGenerator&lt; T4 &gt;::iterator &amp;current4)</argsstring>
+        <name>Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Iterator</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt; &amp;</type>
+          <declname>g1</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T1 &gt;::iterator &amp;</type>
+          <declname>current1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt; &amp;</type>
+          <declname>g2</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T2 &gt;::iterator &amp;</type>
+          <declname>current2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt; &amp;</type>
+          <declname>g3</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T3 &gt;::iterator &amp;</type>
+          <declname>current3</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt; &amp;</type>
+          <declname>g4</declname>
+        </param>
+        <param>
+          <type>const typename <ref refid="classtesting_1_1internal_1_1_param_generator" kindref="compound">ParamGenerator</ref>&lt; T4 &gt;::iterator &amp;</type>
+          <declname>current4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14049" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14049" bodyend="14064"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86ba0d5dbad01817a25b8c2d5816ec8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::~Iterator</definition>
+        <argsstring>()</argsstring>
+        <name>~Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::~Iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14065" column="13" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14065" bodyend="14065"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aea09189b551e15e430898ebcdd190862" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="classtesting_1_1internal_1_1_param_generator_interface" kindref="compound">ParamGeneratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+        <definition>virtual const ParamGeneratorInterface&lt; ParamType &gt; * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::BaseGenerator</definition>
+        <argsstring>() const</argsstring>
+        <name>BaseGenerator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::BaseGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14067" column="43" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14067" bodyend="14069"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a36f5b90a66a2e63f126daabb7723fe36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Advance</definition>
+        <argsstring>()</argsstring>
+        <name>Advance</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Advance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14072" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14072" bodyend="14088"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2905df4cb75b2dd676397c350d4a3c17" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; *</type>
+        <definition>virtual ParamIteratorInterface&lt; ParamType &gt; * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Clone</definition>
+        <argsstring>() const</argsstring>
+        <name>Clone</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Clone</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14089" column="36" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14089" bodyend="14091"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1af701a36b719728a1f813ecf962c75f43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> *</type>
+        <definition>virtual const ParamType * testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Current</definition>
+        <argsstring>() const</argsstring>
+        <name>Current</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Current</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14092" column="29" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14092" bodyend="14092"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86162f2a3c3cdd73dc1e93ce3b03ccb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Equals</definition>
+        <argsstring>(const ParamIteratorInterface&lt; ParamType &gt; &amp;other) const</argsstring>
+        <name>Equals</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Equals</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1internal_1_1_param_iterator_interface" kindref="compound">ParamIteratorInterface</ref>&lt; <ref refid="classstd_1_1tr1_1_1tuple" kindref="compound">ParamType</ref> &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14093" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14093" bodyend="14110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a976b11852d1d45d1fd9d38082b63c5b8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Iterator</definition>
+        <argsstring>(const Iterator &amp;other)</argsstring>
+        <name>Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Iterator</qualifiedname>
+        <param>
+          <type>const Iterator &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14113" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14113" bodyend="14128"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1abd6a27591374ad7ffa45637912f0ef39" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::ComputeCurrentValue</definition>
+        <argsstring>()</argsstring>
+        <name>ComputeCurrentValue</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::ComputeCurrentValue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14130" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14130" bodyend="14134"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a95bf575ec1e467b6d6205d32e7d5f037" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::AtEnd</definition>
+        <argsstring>() const</argsstring>
+        <name>AtEnd</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::AtEnd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14135" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14135" bodyend="14143"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac1942688ecc0b80ef2f43741254c8f8a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::operator=</definition>
+        <argsstring>(const Iterator &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::operator=</qualifiedname>
+        <param>
+          <type>const Iterator &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14146" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a976b11852d1d45d1fd9d38082b63c5b8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::Iterator</definition>
+        <argsstring>(const Iterator &amp;other)</argsstring>
+        <name>Iterator</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::Iterator</qualifiedname>
+        <param>
+          <type>const Iterator &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14113" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14113" bodyend="14128"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1abd6a27591374ad7ffa45637912f0ef39" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::ComputeCurrentValue</definition>
+        <argsstring>()</argsstring>
+        <name>ComputeCurrentValue</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::ComputeCurrentValue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14130" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14130" bodyend="14134"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a95bf575ec1e467b6d6205d32e7d5f037" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::AtEnd</definition>
+        <argsstring>() const</argsstring>
+        <name>AtEnd</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::AtEnd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14135" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="14135" bodyend="14143"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac1942688ecc0b80ef2f43741254c8f8a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator::operator=</definition>
+        <argsstring>(const Iterator &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::CartesianProductGenerator4::Iterator::operator=</qualifiedname>
+        <param>
+          <type>const Iterator &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="14146" column="10"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::internal::ParamIteratorInterface&lt; ParamType &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_param_iterator_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::internal::ParamIteratorInterface&lt; ParamType &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_param_iterator_interface"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::CartesianProductGenerator4&lt; T1, T2, T3, T4 &gt;::Iterator</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="14047" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="14047" bodyend="14164"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a36f5b90a66a2e63f126daabb7723fe36" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Advance</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a36f5b90a66a2e63f126daabb7723fe36" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Advance</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a95bf575ec1e467b6d6205d32e7d5f037" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>AtEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a95bf575ec1e467b6d6205d32e7d5f037" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>AtEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a69064e048798b6de2ee9191dc6fe03a2" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>base_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aea09189b551e15e430898ebcdd190862" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>BaseGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aea09189b551e15e430898ebcdd190862" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>BaseGenerator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a0702b0b5bd48194310bd951cd8ebaf6a" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>begin1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1aa9a788407fce63bc40a42a3d5179ad7b" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>begin2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac3f2c98032d54a5ee2a1fe1502cb6485" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>begin3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a99ad976c910c0d0a3f91adfda68517af" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>begin4_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2905df4cb75b2dd676397c350d4a3c17" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Clone</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2905df4cb75b2dd676397c350d4a3c17" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Clone</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1abd6a27591374ad7ffa45637912f0ef39" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>ComputeCurrentValue</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1abd6a27591374ad7ffa45637912f0ef39" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>ComputeCurrentValue</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1af701a36b719728a1f813ecf962c75f43" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Current</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1af701a36b719728a1f813ecf962c75f43" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Current</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a8214fe8b6a9b6329e9dc5e29d284223a" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>current1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a0dd4507c6e252c40c9134a2571bab186" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>current2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a66dadcfa65014379d9692f0abdcd3057" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>current3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a2986671699351cc4638b3597ff8f1baa" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>current4_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a4f1b25ab279cd975372d1e9eef0bb153" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>current_value_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a74748a7b8281cd0bb1aabb9faf1eb7bd" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>end1_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a82d53bceae2cf0b35fefd049f6075ad5" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>end2_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae262829a61a3aa42ca4dd72814f9e03f" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>end3_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a1275c8f3767705f3a088d94cb73fdd93" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>end4_</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86162f2a3c3cdd73dc1e93ce3b03ccb6" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Equals</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86162f2a3c3cdd73dc1e93ce3b03ccb6" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Equals</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1a9d811697a752d46f7bd6a0082f9040a3" prot="public" virt="pure-virtual" ambiguityscope="ParamIteratorInterface&lt; ParamType &gt;::"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Equals</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae8081fd9ae3e5192ce4857dd13c4caf7" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a976b11852d1d45d1fd9d38082b63c5b8" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ae8081fd9ae3e5192ce4857dd13c4caf7" prot="public" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a976b11852d1d45d1fd9d38082b63c5b8" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac1942688ecc0b80ef2f43741254c8f8a" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1ac1942688ecc0b80ef2f43741254c8f8a" prot="private" virt="non-virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86ba0d5dbad01817a25b8c2d5816ec8f" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>~Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_cartesian_product_generator4_1_1_iterator_1a86ba0d5dbad01817a25b8c2d5816ec8f" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>~Iterator</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>~ParamIteratorInterface</name></member>
+      <member refid="classtesting_1_1internal_1_1_param_iterator_interface_1adf6ba49e6b54a6e3b15dbd5733988bef" prot="public" virt="virtual"><scope>testing::internal::CartesianProductGenerator4::Iterator</scope><name>~ParamIteratorInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a21fbd2cedd0e52c3ec4aac63364f4148" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::m_label</definition>
+        <argsstring></argsstring>
+        <name>m_label</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::m_label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="191" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a3bd0447a4da92ef44279e8e319182c5a" prot="public" static="no" mutable="no">
+        <type>value_type **</type>
+        <definition>value_type** Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::m_chunks</definition>
+        <argsstring></argsstring>
+        <name>m_chunks</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::m_chunks</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="192" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a6ff7c73c7ebc09ef3b1a2be570dfe694" prot="public" static="no" mutable="no">
+        <type>value_type **</type>
+        <definition>value_type** Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::m_linked</definition>
+        <argsstring></argsstring>
+        <name>m_linked</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::m_linked</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="193" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1ac25f23580775d2cf5aa27d29beb5fe1d" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::m_chunk_max</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_max</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::m_chunk_max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="194" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a07835a1d104a8738b97626577ab8f584" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::m_chunk_size</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_size</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::m_chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="195" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a92b62931e4c3d672512b114b149c3942" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::Destroy</definition>
+        <argsstring>()=default</argsstring>
+        <name>Destroy</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::Destroy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="158" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a22ca5ba9fdb0bac5ea530e5b294a176a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::Destroy</definition>
+        <argsstring>(Destroy &amp;&amp;)=default</argsstring>
+        <name>Destroy</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::Destroy</qualifiedname>
+        <param>
+          <type>Destroy &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="159" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a555c132f4cc38c2334cbb897cb285619" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::Destroy</definition>
+        <argsstring>(const Destroy &amp;)=default</argsstring>
+        <name>Destroy</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::Destroy</qualifiedname>
+        <param>
+          <type>const Destroy &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="160" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1aa080488f296d50ade6e7c0e670932c34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Destroy &amp;</type>
+        <definition>Destroy &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::operator=</definition>
+        <argsstring>(Destroy &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::operator=</qualifiedname>
+        <param>
+          <type>Destroy &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="161" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1acf22df299b38ba5263ebb1a8c3b475f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Destroy &amp;</type>
+        <definition>Destroy &amp; Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::operator=</definition>
+        <argsstring>(const Destroy &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::operator=</qualifiedname>
+        <param>
+          <type>const Destroy &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="162" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a0e801dd2cfe1e7951da0410bbd6b1f42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::Destroy</definition>
+        <argsstring>(std::string label, value_type **arg_chunk, const unsigned arg_chunk_max, const unsigned arg_chunk_size, value_type **arg_linked)</argsstring>
+        <name>Destroy</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::Destroy</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>value_type **</type>
+          <declname>arg_chunk</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_max</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>arg_chunk_size</declname>
+        </param>
+        <param>
+          <type>value_type **</type>
+          <declname>arg_linked</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="164" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="164" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a1041ae96d5685bb33d8c7affdcb4f4e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="173" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="173" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a1fff65cdad049c78405e256f3aafbfaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::ChunkedArrayManager&lt; MemorySpace, ValueType &gt;::Destroy&lt; Space &gt;::destroy_shared_allocation</definition>
+        <argsstring>()</argsstring>
+        <name>destroy_shared_allocation</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy::destroy_shared_allocation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="189" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="189" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Custom destroy functor for deallocating array chunks along with a linked allocation </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="157" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="157" bodyend="196"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a92b62931e4c3d672512b114b149c3942" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>Destroy</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a22ca5ba9fdb0bac5ea530e5b294a176a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>Destroy</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a555c132f4cc38c2334cbb897cb285619" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>Destroy</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a0e801dd2cfe1e7951da0410bbd6b1f42" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>Destroy</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a1fff65cdad049c78405e256f3aafbfaf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>destroy_shared_allocation</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a1041ae96d5685bb33d8c7affdcb4f4e0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>execute</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1ac25f23580775d2cf5aa27d29beb5fe1d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>m_chunk_max</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a07835a1d104a8738b97626577ab8f584" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>m_chunk_size</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a3bd0447a4da92ef44279e8e319182c5a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>m_chunks</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a21fbd2cedd0e52c3ec4aac63364f4148" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>m_label</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1a6ff7c73c7ebc09ef3b1a2be570dfe694" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>m_linked</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1aa080488f296d50ade6e7c0e670932c34" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager_1_1_destroy_1acf22df299b38ba5263ebb1a8c3b475f9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::Impl::ChunkedArrayManager::Destroy</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

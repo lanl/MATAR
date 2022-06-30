@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_bin_sort_1_1bin__sort__bins__tag" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::BinSort::bin_sort_bins_tag</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="160" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="160" bodyend="160"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01_without_initializing__t_00_01std_1_1string_00_01_ae4ba98e5c1d4a9b7be235dca6c27383" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" prot="public" virt="non-virtual">Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;</basecompoundref>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01void_00_01_view_allocate_without_initializing_backward_compat_01_4" prot="public" virt="non-virtual">Kokkos::Impl::ViewCtorProp&lt; void, ViewAllocateWithoutInitializingBackwardCompat &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01_without_initializing__t_00_01std_1_1string_00_01_ae4ba98e5c1d4a9b7be235dca6c27383_1a6cd84652ab7b9bf1077fae01f4df06e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;::ViewCtorProp</definition>
+        <argsstring>(std::string label)</argsstring>
+        <name>ViewCtorProp</name>
+        <qualifiedname>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;::ViewCtorProp</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="287" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="287" bodyend="289"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01_without_initializing__t_00_01std_1_1string_00_01_ae4ba98e5c1d4a9b7be235dca6c27383"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ViewCtorProp&lt; void, ViewAllocateWithoutInitializingBackwardCompat &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01void_00_01_view_allocate_without_initializing_backward_compat_01_4"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01_without_initializing__t_00_01std_1_1string_00_01_ae4ba98e5c1d4a9b7be235dca6c27383"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::Impl::ViewCtorProp&lt; void, ViewAllocateWithoutInitializingBackwardCompat &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01void_00_01_view_allocate_without_initializing_backward_compat_01_4"/>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" line="283" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewCtor.hpp" bodystart="286" bodyend="290"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a79a367a434ecee73f9ec5bbc2f9ef04caa127f4735e43ec789a00d7bc2cc5d6f5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>allow_padding</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a683662ca660ffc24fac246d7799c7c82" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aa9218ea157e1265ae9820359ac040bc4a6c8281cea2a29bf29d54c12a50ad1c3d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>has_execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ae3da91ea1e3485e7ecefad94237d2e08a5a24aacd01c51741bd694ca089e61d69" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>has_label</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a513ab427058fddaa490f961e855f092ca34777aa830237481775aea9cf67cbc73" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>has_memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a14d1704556cd0f81ef878983e1254988a8c69b30eadaaa2e3f60b6089903df879" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>has_pointer</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1af560ef8206e8ff264f26cb7588078482ab64400f21f60437c47070063809ba7c4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>initialize</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a9d459c947a4dfc93007c204b384224c0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a4a16e2d99a0d2bcca212deef8040b3b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>pointer_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_3_01_without_initializing__t_00_01std_1_1string_00_01_ae4ba98e5c1d4a9b7be235dca6c27383_1a6cd84652ab7b9bf1077fae01f4df06e6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1aedc094edd2a3ff65ca07444c2b46f4ff" prot="public" virt="non-virtual" ambiguityscope="ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;::"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a901d279e41b43711c7bb394190dd04c2" prot="public" virt="non-virtual" ambiguityscope="ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;::"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1a118019452fba72c23fcc96cc17f80809" prot="public" virt="non-virtual" ambiguityscope="ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;::"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>ViewCtorProp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop_1ab1d333bbf3233f262d4f9ddb3e8379d1" prot="public" virt="non-virtual" ambiguityscope="ViewCtorProp&lt; WithoutInitializing_t, std::string &gt;::"><scope>Kokkos::Impl::ViewCtorProp&lt; WithoutInitializing_t, std::string, ViewAllocateWithoutInitializingBackwardCompat &gt;</scope><name>ViewCtorProp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

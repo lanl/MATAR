@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_unit_test_options" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::UnitTestOptions</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_options_1ae7413a21296d885c6924650b51ac4f6d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::internal::UnitTestOptions::GetOutputFormat</definition>
+        <argsstring>()</argsstring>
+        <name>GetOutputFormat</name>
+        <qualifiedname>testing::internal::UnitTestOptions::GetOutputFormat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="778" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1876" bodyend="1884"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_options_1a993fb30ad66104158c8c0ac508daca3f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::internal::UnitTestOptions::GetAbsolutePathToOutputFile</definition>
+        <argsstring>()</argsstring>
+        <name>GetAbsolutePathToOutputFile</name>
+        <qualifiedname>testing::internal::UnitTestOptions::GetAbsolutePathToOutputFile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="783" column="22" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1888" bodyend="1917"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_options_1af0235a2ee26dd6db21305e11d2358e4f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestOptions::PatternMatchesString</definition>
+        <argsstring>(const char *pattern, const char *str)</argsstring>
+        <name>PatternMatchesString</name>
+        <qualifiedname>testing::internal::UnitTestOptions::PatternMatchesString</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>pattern</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="792" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1924" bodyend="1939"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_options_1a9975b59cece94874b303421697e3bca6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestOptions::FilterMatchesTest</definition>
+        <argsstring>(const std::string &amp;test_case_name, const std::string &amp;test_name)</argsstring>
+        <name>FilterMatchesTest</name>
+        <qualifiedname>testing::internal::UnitTestOptions::FilterMatchesTest</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>test_case_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>test_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="796" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1964" bodyend="1990"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_unit_test_options_1a67fc0adaffbb8d320b92e42e05017e4e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::UnitTestOptions::MatchesFilter</definition>
+        <argsstring>(const std::string &amp;name, const char *filter)</argsstring>
+        <name>MatchesFilter</name>
+        <qualifiedname>testing::internal::UnitTestOptions::MatchesFilter</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="810" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="1941" bodyend="1960"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="773" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="773" bodyend="811"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_unit_test_options_1a9975b59cece94874b303421697e3bca6" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestOptions</scope><name>FilterMatchesTest</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_options_1a993fb30ad66104158c8c0ac508daca3f" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestOptions</scope><name>GetAbsolutePathToOutputFile</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_options_1ae7413a21296d885c6924650b51ac4f6d" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestOptions</scope><name>GetOutputFormat</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_options_1a67fc0adaffbb8d320b92e42e05017e4e" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestOptions</scope><name>MatchesFilter</name></member>
+      <member refid="classtesting_1_1internal_1_1_unit_test_options_1af0235a2ee26dd6db21305e11d2358e4f" prot="public" virt="non-virtual"><scope>testing::internal::UnitTestOptions</scope><name>PatternMatchesString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

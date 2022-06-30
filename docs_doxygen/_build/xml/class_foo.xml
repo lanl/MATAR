@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_foo" kind="class" language="C++" prot="public">
+    <compoundname>Foo</compoundname>
+    <derivedcompoundref refid="class_foo__1" prot="public" virt="non-virtual">Foo_1</derivedcompoundref>
+    <derivedcompoundref refid="class_foo__2" prot="public" virt="non-virtual">Foo_2</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_foo_1a0637ac87a32cc5ff9b2d97bb991185e7" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Foo::val</definition>
+        <argsstring></argsstring>
+        <name>val</name>
+        <qualifiedname>Foo::val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" line="8" column="7" bodyfile="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_foo_1a2baa1c0e523867cbac4b2d44a66a6f7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_FUNCTION</type>
+        <definition>KOKKOS_FUNCTION Foo::Foo</definition>
+        <argsstring>()</argsstring>
+        <name>Foo</name>
+        <qualifiedname>Foo::Foo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" line="12" column="3" bodyfile="src/Kokkos/kokkos/example/virtual_functions/classes.cpp" bodystart="4" bodyend="4"/>
+      </memberdef>
+      <memberdef kind="function" id="class_foo_1a35c8e5c0689ef1d2eb973c3d1932665c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>KOKKOS_FUNCTION int</type>
+        <definition>virtual KOKKOS_FUNCTION int Foo::value</definition>
+        <argsstring>()</argsstring>
+        <name>value</name>
+        <qualifiedname>Foo::value</qualifiedname>
+        <reimplementedby refid="class_foo__1_1a7eb235eee81394b99bbb97dc9c477857">value</reimplementedby>
+        <reimplementedby refid="class_foo__2_1a885c9acbbf4da641b135bdac754fe167">value</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" line="15" column="15" bodyfile="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_foo_1a7db8a184f45e90309e365a9ccffc2c0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>KOKKOS_FUNCTION</type>
+        <definition>virtual KOKKOS_FUNCTION Foo::~Foo</definition>
+        <argsstring>()</argsstring>
+        <name>~Foo</name>
+        <qualifiedname>Foo::~Foo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" line="18" column="11" bodyfile="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" bodystart="18" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Foo</label>
+        <link refid="class_foo"/>
+      </node>
+      <node id="2">
+        <label>Foo_1</label>
+        <link refid="class_foo__1"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Foo_2</label>
+        <link refid="class_foo__2"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" line="6" column="1" bodyfile="src/Kokkos/kokkos/example/virtual_functions/classes.hpp" bodystart="6" bodyend="19"/>
+    <listofallmembers>
+      <member refid="class_foo_1a2baa1c0e523867cbac4b2d44a66a6f7d" prot="public" virt="non-virtual"><scope>Foo</scope><name>Foo</name></member>
+      <member refid="class_foo_1a0637ac87a32cc5ff9b2d97bb991185e7" prot="protected" virt="non-virtual"><scope>Foo</scope><name>val</name></member>
+      <member refid="class_foo_1a35c8e5c0689ef1d2eb973c3d1932665c" prot="public" virt="virtual"><scope>Foo</scope><name>value</name></member>
+      <member refid="class_foo_1a7db8a184f45e90309e365a9ccffc2c0d" prot="public" virt="virtual"><scope>Foo</scope><name>~Foo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

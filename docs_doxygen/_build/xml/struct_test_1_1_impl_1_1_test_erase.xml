@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1_test_erase" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::TestErase</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename MapType</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>Near</declname>
+        <defname>Near</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_erase_1ac9ffa4122660da7289998464c0b57c48" prot="public" static="no">
+        <type><ref refid="struct_test_1_1_impl_1_1_test_erase" kindref="compound">TestErase</ref>&lt; MapType, Near &gt;</type>
+        <definition>using Test::Impl::TestErase&lt; MapType, Near &gt;::self_type =  TestErase&lt;MapType, Near&gt;</definition>
+        <argsstring></argsstring>
+        <name>self_type</name>
+        <qualifiedname>Test::Impl::TestErase::self_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="104" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_erase_1a4928d017685ffef3ad37a53fae1fbc6c" prot="public" static="no">
+        <type>MapType</type>
+        <definition>using Test::Impl::TestErase&lt; MapType, Near &gt;::map_type =  MapType</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>Test::Impl::TestErase::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="106" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_test_erase_1a797d020183836131e545d4d5cb821829" prot="public" static="no">
+        <type>typename MapType::execution_space</type>
+        <definition>using Test::Impl::TestErase&lt; MapType, Near &gt;::execution_space =  typename MapType::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::Impl::TestErase::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="107" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_test_erase_1a2aeab6fcbe78c6d18747f8bc49a1c459" prot="public" static="no" mutable="no">
+        <type>map_type</type>
+        <definition>map_type Test::Impl::TestErase&lt; MapType, Near &gt;::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>Test::Impl::TestErase::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="109" column="12" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_test_erase_1a783f8b9325cd5a675e7c35bae6fdd057" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Test::Impl::TestErase&lt; MapType, Near &gt;::m_num_erase</definition>
+        <argsstring></argsstring>
+        <name>m_num_erase</name>
+        <qualifiedname>Test::Impl::TestErase::m_num_erase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="110" column="12" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_test_erase_1a50e65139467d8b21418e1b6001a5f3f6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Test::Impl::TestErase&lt; MapType, Near &gt;::m_num_duplicates</definition>
+        <argsstring></argsstring>
+        <name>m_num_duplicates</name>
+        <qualifiedname>Test::Impl::TestErase::m_num_duplicates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="111" column="12" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_erase_1a18064a6e07d7d0c4370bdc6ba88d0df3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::TestErase&lt; MapType, Near &gt;::TestErase</definition>
+        <argsstring>(map_type map, uint32_t num_erases, uint32_t num_duplicates)</argsstring>
+        <name>TestErase</name>
+        <qualifiedname>Test::Impl::TestErase::TestErase</qualifiedname>
+        <param>
+          <type>map_type</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_erases</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_duplicates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="113" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="113" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_erase_1ae53cfc0a8aee4e291733a5849761c885" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::Impl::TestErase&lt; MapType, Near &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::Impl::TestErase::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="116" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="116" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_test_erase_1a29f6d7a7999ed423752609f1ddab149e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::Impl::TestErase&lt; MapType, Near &gt;::operator()</definition>
+        <argsstring>(typename execution_space::size_type i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::TestErase::operator()</qualifiedname>
+        <param>
+          <type>typename execution_space::size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="123" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="123" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" line="103" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestUnorderedMap.hpp" bodystart="103" bodyend="130"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a797d020183836131e545d4d5cb821829" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a2aeab6fcbe78c6d18747f8bc49a1c459" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>m_map</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a50e65139467d8b21418e1b6001a5f3f6" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>m_num_duplicates</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a783f8b9325cd5a675e7c35bae6fdd057" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>m_num_erase</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a4928d017685ffef3ad37a53fae1fbc6c" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>map_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a29f6d7a7999ed423752609f1ddab149e" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1ac9ffa4122660da7289998464c0b57c48" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>self_type</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1a18064a6e07d7d0c4370bdc6ba88d0df3" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>TestErase</name></member>
+      <member refid="struct_test_1_1_impl_1_1_test_erase_1ae53cfc0a8aee4e291733a5849761c885" prot="public" virt="non-virtual"><scope>Test::Impl::TestErase</scope><name>testit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

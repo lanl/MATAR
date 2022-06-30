@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_kokkos_1_1_tools_1_1_impl_1_1_impl" kind="namespace" language="C++">
+    <compoundname>Kokkos::Tools::Impl::Impl</compoundname>
+    <innerclass refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_complex_reducer_size_calculator" prot="public">Kokkos::Tools::Impl::Impl::ComplexReducerSizeCalculator</innerclass>
+    <innerclass refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator" prot="public">Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Tuning for parallel_fors and parallel_scans is a fairly simple process.</para>
+<para>Tuning for a parallel_reduce turns out to be a little more complicated.</para>
+<para>If you&apos;re tuning a reducer, it might be a complex or a simple reducer (an example of simple would be one where the join is just &quot;+&quot;.</para>
+<para>Unfortunately these two paths are very different in terms of which classes get instantiated. Thankfully, all of this complexity is encoded in the ReducerType. If it&apos;s a &quot;simple&quot; reducer, this will be <ref refid="struct_kokkos_1_1_invalid_type" kindref="compound">Kokkos::InvalidType</ref>, otherwise it&apos;ll be something else.</para>
+<para>If the type is complex, for the code to be generally right you <emphasis>must</emphasis> pass an instance of that ReducerType to functions that determine eligible team sizes. If the type is simple, you can&apos;t construct one, you use the simpler 2-arg formulation of team_size_recommended/max. </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="296" column="1"/>
+  </compounddef>
+</doxygen>

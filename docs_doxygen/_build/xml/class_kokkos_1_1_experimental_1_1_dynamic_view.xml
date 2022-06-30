@@ -1,0 +1,1123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_dynamic_view" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::DynamicView</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_view_traits" prot="public" virt="non-virtual">Kokkos::ViewTraits&lt; DataType, P... &gt;</basecompoundref>
+    <includes refid="_kokkos___dynamic_view_8hpp" local="no">Kokkos_DynamicView.hpp</includes>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_dynamic_view_1_1verify__space" prot="private">Kokkos::Experimental::DynamicView::verify_space</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_dynamic_view_1_1verify__space_3_01_space_00_01false_01_4" prot="private">Kokkos::Experimental::DynamicView::verify_space&lt; Space, false &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename DataType</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>P</declname>
+        <defname>P</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7d6c92aefce71cd54a94d621e2e74f2e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@12</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::@12</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7d6c92aefce71cd54a94d621e2e74f2ea0108ea5d50d9045fcf9e2683483a5289" prot="public">
+          <name>Rank</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="345" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="345" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7a1de07d90baca7b147630b8354f2175" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@13</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::@13</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7a1de07d90baca7b147630b8354f2175a61dadeb550eaec121d66361ad8232550" prot="public">
+          <name>reference_type_is_lvalue_reference</name>
+          <initializer>=
+        std::is_lvalue_reference&lt;reference_type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="404" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="404" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a46f815232852ed9d5fcf3d7d53e55be4" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">Kokkos::ViewTraits</ref>&lt; DataType, P... &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::traits =  Kokkos::ViewTraits&lt;DataType, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="261" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ad92a1b07b6371bbf1a94bad16c0358c1" prot="public" static="no">
+        <type>typename traits::value_type</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::value_type =  typename traits::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="263" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a0129637cc42010b9ce523c0bcc68b8e2" prot="public" static="no">
+        <type>typename traits::memory_space</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::device_space =  typename traits::memory_space</definition>
+        <argsstring></argsstring>
+        <name>device_space</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::device_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="264" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9930587528dd58acb36c16de4bbc8fd3" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_host_mirror" kindref="compound">Kokkos::Impl::HostMirror</ref>&lt; device_space &gt;::Space::memory_space</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::host_space =  typename Kokkos::Impl::HostMirror&lt;device_space&gt;::Space::memory_space</definition>
+        <argsstring></argsstring>
+        <name>host_space</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::host_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="265" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a50043b932e0e71031d6e2d951b09688e" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">Impl::ChunkedArrayManager</ref>&lt; device_space, value_type &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::device_accessor =  Impl::ChunkedArrayManager&lt;device_space, value_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>device_accessor</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::device_accessor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="267" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a74ab1af0ffc02ef9ccd7ffe43be8a94b" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">Impl::ChunkedArrayManager</ref>&lt; host_space, value_type &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::host_accessor =  Impl::ChunkedArrayManager&lt;host_space, value_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>host_accessor</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::host_accessor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="268" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5fd3b911ca9354a266be04dc5205d70a" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::data_type, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::array_type =  DynamicView&lt;typename traits::data_type, typename traits::device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>array_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::array_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of array of scalar types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="312" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1adc733970d59381fbb51daf164f423b40" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::const_data_type, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::const_type =  DynamicView&lt;typename traits::const_data_type, typename traits::device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>const_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="316" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1adfd52e88a106628dffc735c30965134f" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::non_const_data_type, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::non_const_type =  DynamicView&lt;typename traits::non_const_data_type, typename traits::device_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>non_const_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::non_const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of non-const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="320" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a07d579aedc6324148b742b77254e4ba0" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::HostMirror =  DynamicView</definition>
+        <argsstring></argsstring>
+        <name>HostMirror</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::HostMirror</qualifiedname>
+        <briefdescription>
+<para>Must be accessible everywhere. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="324" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Kokkos::Device</ref>&lt; typename traits::device_type::execution_space, <ref refid="class_kokkos_1_1_anonymous_space" kindref="compound">Kokkos::AnonymousSpace</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_device =  Kokkos::Device&lt;typename traits::device_type::execution_space, Kokkos::AnonymousSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>uniform_device</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_device</qualifiedname>
+        <briefdescription>
+<para>Unified types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="327" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="329" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a2f6d43c591ba4044db619aa29ded7478" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5fd3b911ca9354a266be04dc5205d70a" kindref="member">array_type</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_type =  array_type</definition>
+        <argsstring></argsstring>
+        <name>uniform_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="330" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ab834c899032a5ba990febf309bc73587" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1adc733970d59381fbb51daf164f423b40" kindref="member">const_type</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_const_type =  const_type</definition>
+        <argsstring></argsstring>
+        <name>uniform_const_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_const_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="331" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1afbd9e3cc3dc4df6310ba6f294642f46b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5fd3b911ca9354a266be04dc5205d70a" kindref="member">array_type</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_runtime_type =  array_type</definition>
+        <argsstring></argsstring>
+        <name>uniform_runtime_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_runtime_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="332" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1aca78f01ad9ff13748a66decedde3d525" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1adc733970d59381fbb51daf164f423b40" kindref="member">const_type</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_runtime_const_type =  const_type</definition>
+        <argsstring></argsstring>
+        <name>uniform_runtime_const_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_runtime_const_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="333" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5a0d36f46c03cbde152fbe5d83b357c1" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::data_type, <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" kindref="member">uniform_device</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_nomemspace_type =  DynamicView&lt;typename traits::data_type, uniform_device&gt;</definition>
+        <argsstring></argsstring>
+        <name>uniform_nomemspace_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_nomemspace_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="334" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="335" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac9806962e3c102fdb8f35655506171b9" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::const_data_type, <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" kindref="member">uniform_device</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_const_nomemspace_type =  DynamicView&lt;typename traits::const_data_type, uniform_device&gt;</definition>
+        <argsstring></argsstring>
+        <name>uniform_const_nomemspace_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_const_nomemspace_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="336" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a26c0839cc3096a9e034b53fb72965f4e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::data_type, <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" kindref="member">uniform_device</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_runtime_nomemspace_type =  DynamicView&lt;typename traits::data_type, uniform_device&gt;</definition>
+        <argsstring></argsstring>
+        <name>uniform_runtime_nomemspace_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_runtime_nomemspace_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="338" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a1966e4e57233e76d842f3a4c3f1e7ee2" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; typename traits::const_data_type, <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" kindref="member">uniform_device</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::uniform_runtime_const_nomemspace_type =  DynamicView&lt;typename traits::const_data_type, uniform_device&gt;</definition>
+        <argsstring></argsstring>
+        <name>uniform_runtime_const_nomemspace_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::uniform_runtime_const_nomemspace_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="340" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="341" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9f750bded37da848c9d798d149661cc6" prot="public" static="no">
+        <type>typename traits::value_type &amp;</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::reference_type =  typename traits::value_type&amp;</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="401" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="401" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a36e675162fc58cb4c823e05105114433" prot="public" static="no">
+        <type>typename traits::value_type *</type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::pointer_type =  typename traits::value_type*</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="402" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9cbdd3f2876d0d1b5311cf8c3e680401" prot="private" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="274" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1af557ef176aab9b7bf8672210e7129672" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class DynamicView</definition>
+        <argsstring></argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="272" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac1751e46e52d15b3853b18772680b546" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">device_accessor</ref></type>
+        <definition>device_accessor Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunks</definition>
+        <argsstring></argsstring>
+        <name>m_chunks</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="300" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a34ea5d40d24b8aab016aa2631ce0f5c9" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" kindref="compound">host_accessor</ref></type>
+        <definition>host_accessor Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunks_host</definition>
+        <argsstring></argsstring>
+        <name>m_chunks_host</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunks_host</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="301" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a2b4d9dd1caab21c5ecee95a26b56a181" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunk_shift</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_shift</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunk_shift</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="302" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1abbafd398ad923d21e99865a0e5011a17" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunk_mask</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_mask</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunk_mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="303" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a56488fd332d3156c561d38e216b01994" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunk_max</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_max</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunk_max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="304" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1afc0e184cbd2c43d6a5090bb44a5ecd85" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::m_chunk_size</definition>
+        <argsstring></argsstring>
+        <name>m_chunk_size</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::m_chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="306" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a1fc2a1c8bab95f28700c01ab492e48c2" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::allocation_extent</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>allocation_extent</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::allocation_extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="348" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="348" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a0fd3a41869ca409902830018a16ee8e5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::chunk_size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>chunk_size</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::chunk_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="355" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="355" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a629ccfeb77f3b3ac7318c076a796e258" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="358" column="10" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="358" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1aa1f6f392f972299e9c93e30bba2c7867" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::extent</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::extent</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="365" column="33" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="365" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1af0672f66b1cd534006e98cc8c131ee19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::extent_int</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent_int</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::extent_int</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="370" column="33" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="370" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ad7baf041314685f819faf401aa736696" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_0</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_0</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="374" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="374" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1af720921a8b8f527ea704eb4a82c2af7f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_1</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_1</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="375" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="375" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a66a3adbc25a29e70ea5baaa8f044e736" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_2</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_2</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="376" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="376" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a372d6538c003e11804ab500a813ce2f6" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_3</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_3</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="377" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="377" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1abf76f39f1cb9a5fcded622b0e2e7c536" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_4</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_4</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="378" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="378" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a53c237c42e43c6bb0847a461e1225d15" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_5</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_5</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="379" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="379" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a23a2b5baccd849e067cff8f906923f8d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_6</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_6</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="380" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="380" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a503630c82f280be6fe02081a7f5dacd9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride_7</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_7</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="381" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="381" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9a3be983e47664e73ad84c0e16ab7c7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::stride</definition>
+        <argsstring>(iType *const s) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::stride</qualifiedname>
+        <param>
+          <type>iType *const</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="384" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="384" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a402d5d3eef47263425d2118ca3ce897e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::use_count</definition>
+        <argsstring>() const</argsstring>
+        <name>use_count</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::use_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="392" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="392" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a3039eb3171fb607e1cb83b3378f52d2b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::label</definition>
+        <argsstring>() const</argsstring>
+        <name>label</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="394" column="28" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="394" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a4c9a172fb4bce17c5bd64858dbc66b8f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::span_is_contiguous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="409" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="409" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a730699f4ad68d023b2a0246384e0bca7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="412" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="412" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a6695b1080c6069b249d3d2b5dd4b6a5d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr pointer_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr pointer_type Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="413" column="49" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="413" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ab7a8ec4d1aeea02263b33bc6398ddd1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION reference_type Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const Args &amp;...) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const Args &amp;</type>
+          <declname>...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="419" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="419" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a8765ba79b4c1d501ee1271d26bd49616" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename IntType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::resize_serial</definition>
+        <argsstring>(IntType const &amp;n)</argsstring>
+        <name>resize_serial</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::resize_serial</qualifiedname>
+        <param>
+          <type>IntType const &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Resizing in serial can grow or shrink the array size up to the maximum number of chunks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="462" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="462" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac2b4858107f6147170dfbe96a85e09d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="500" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="500" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a728e56dd587ec700ee037d8b670db4dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::~DynamicView</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::~DynamicView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="514" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a25058c231912fa8618885bf03895dd6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::DynamicView</definition>
+        <argsstring>()=default</argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="515" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a74e1d260d2766c71b7f2bb56032ceafb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::DynamicView</definition>
+        <argsstring>(DynamicView &amp;&amp;)=default</argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="516" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a67b6b4193af7bad8c89b2fa36c0fc894" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::DynamicView</definition>
+        <argsstring>(const DynamicView &amp;)=default</argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="517" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a55ffd7ca4c91fdd1cad6af4ed9e6136f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;</type>
+        <definition>DynamicView &amp; Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::operator=</definition>
+        <argsstring>(DynamicView &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="518" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a76d9f18aea429f8d4244b3aa230d9834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;</type>
+        <definition>DynamicView &amp; Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::operator=</definition>
+        <argsstring>(const DynamicView &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="519" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1a8541188acf84b011fa1d9910869814e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::DynamicView</definition>
+        <argsstring>(const DynamicView&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_dynamic_view" kindref="compound">DynamicView</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="522" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="522" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac90d68d7351b198dbdd9f9351eaaf38e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;::DynamicView</definition>
+        <argsstring>(const std::string &amp;arg_label, const unsigned min_chunk_size, const unsigned max_extent)</argsstring>
+        <name>DynamicView</name>
+        <qualifiedname>Kokkos::Experimental::DynamicView::DynamicView</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>min_chunk_size</declname>
+        </param>
+        <param>
+          <type>const unsigned</type>
+          <declname>max_extent</declname>
+        </param>
+        <briefdescription>
+<para>Allocation constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Memory is allocated in chunks A maximum size is required in order to allocate a chunk-pointer array. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="541" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="541" bodyend="570"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="struct_kokkos_1_1_dynamic" kindref="compound">Dynamic</ref> views are restricted to rank-one and no layout. Resize only occurs on host outside of parallel_regions. Subviews are not allowed. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_dynamic_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, P... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Experimental::DynamicView&lt; DataType, P &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_dynamic_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, P... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="259" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" bodystart="259" bodyend="571"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a1fc2a1c8bab95f28700c01ab492e48c2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>allocation_extent</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5fd3b911ca9354a266be04dc5205d70a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a0fd3a41869ca409902830018a16ee8e5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>chunk_size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1adc733970d59381fbb51daf164f423b40" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a6695b1080c6069b249d3d2b5dd4b6a5d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>data</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>data_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a50043b932e0e71031d6e2d951b09688e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>device_accessor</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a0129637cc42010b9ce523c0bcc68b8e2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>device_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>dimension</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1af557ef176aab9b7bf8672210e7129672" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a25058c231912fa8618885bf03895dd6e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a74e1d260d2766c71b7f2bb56032ceafb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a67b6b4193af7bad8c89b2fa36c0fc894" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a8541188acf84b011fa1d9910869814e6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac90d68d7351b198dbdd9f9351eaaf38e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>DynamicView</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1aa1f6f392f972299e9c93e30bba2c7867" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1af0672f66b1cd534006e98cc8c131ee19" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>extent_int</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a74ab1af0ffc02ef9ccd7ffe43be8a94b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>host_accessor</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1adb25197c9f561855af9dce11ae625f1c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9930587528dd58acb36c16de4bbc8fd3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>host_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a07d579aedc6324148b742b77254e4ba0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>HostMirror</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac2b4858107f6147170dfbe96a85e09d0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>is_allocated</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>is_hostspace</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>is_random_access</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a3039eb3171fb607e1cb83b3378f52d2b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>label</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1abbafd398ad923d21e99865a0e5011a17" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunk_mask</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a56488fd332d3156c561d38e216b01994" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunk_max</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a2b4d9dd1caab21c5ecee95a26b56a181" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunk_shift</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1afc0e184cbd2c43d6a5090bb44a5ecd85" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunk_size</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac1751e46e52d15b3853b18772680b546" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunks</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a34ea5d40d24b8aab016aa2631ce0f5c9" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>m_chunks_host</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>memory_traits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1adfd52e88a106628dffc735c30965134f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>non_const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ab7a8ec4d1aeea02263b33bc6398ddd1b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a55ffd7ca4c91fdd1cad6af4ed9e6136f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a76d9f18aea429f8d4244b3aa230d9834" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a36e675162fc58cb4c823e05105114433" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>pointer_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>rank</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7d6c92aefce71cd54a94d621e2e74f2ea0108ea5d50d9045fcf9e2683483a5289" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>Rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>rank_dynamic</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9f750bded37da848c9d798d149661cc6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a7a1de07d90baca7b147630b8354f2175a61dadeb550eaec121d66361ad8232550" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>reference_type_is_lvalue_reference</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a8765ba79b4c1d501ee1271d26bd49616" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>resize_serial</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a629ccfeb77f3b3ac7318c076a796e258" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a730699f4ad68d023b2a0246384e0bca7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a4c9a172fb4bce17c5bd64858dbc66b8f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>specialize</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9a3be983e47664e73ad84c0e16ab7c7d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ad7baf041314685f819faf401aa736696" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_0</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1af720921a8b8f527ea704eb4a82c2af7f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_1</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a66a3adbc25a29e70ea5baaa8f044e736" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_2</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a372d6538c003e11804ab500a813ce2f6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_3</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1abf76f39f1cb9a5fcded622b0e2e7c536" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_4</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a53c237c42e43c6bb0847a461e1225d15" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_5</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a23a2b5baccd849e067cff8f906923f8d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_6</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a503630c82f280be6fe02081a7f5dacd9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>stride_7</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a9cbdd3f2876d0d1b5311cf8c3e680401" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>track_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a46f815232852ed9d5fcf3d7d53e55be4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ac9806962e3c102fdb8f35655506171b9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_const_nomemspace_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ab834c899032a5ba990febf309bc73587" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_const_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a59dd0f90463f12330fdca990fe157bb9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_device</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a5a0d36f46c03cbde152fbe5d83b357c1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_nomemspace_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a1966e4e57233e76d842f3a4c3f1e7ee2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_runtime_const_nomemspace_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1aca78f01ad9ff13748a66decedde3d525" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_runtime_const_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a26c0839cc3096a9e034b53fb72965f4e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_runtime_nomemspace_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1afbd9e3cc3dc4df6310ba6f294642f46b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_runtime_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a2f6d43c591ba4044db619aa29ded7478" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>uniform_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a402d5d3eef47263425d2118ca3ce897e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>use_count</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1ad92a1b07b6371bbf1a94bad16c0358c1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_dynamic_view_1a728e56dd587ec700ee037d8b670db4dc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::DynamicView</scope><name>~DynamicView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

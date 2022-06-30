@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structtesting_1_1internal_1_1_iterator_traits" kind="struct" language="C++" prot="public">
+    <compoundname>testing::internal::IteratorTraits</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Iterator</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structtesting_1_1internal_1_1_iterator_traits_1a29de4320a9c53ce438d3561b94e515bb" prot="public" static="no">
+        <type>Iterator::value_type</type>
+        <definition>typedef Iterator::value_type testing::internal::IteratorTraits&lt; Iterator &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>testing::internal::IteratorTraits::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2739" column="41" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2739" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="structtesting_1_1internal_1_1_iterator_traits_1a29de4320a9c53ce438d3561b94e515bb" prot="public" static="no">
+        <type>Iterator::value_type</type>
+        <definition>typedef Iterator::value_type testing::internal::IteratorTraits&lt; Iterator &gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>testing::internal::IteratorTraits::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2739" column="41" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2739" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2738" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2738" bodyend="2740"/>
+    <listofallmembers>
+      <member refid="structtesting_1_1internal_1_1_iterator_traits_1a29de4320a9c53ce438d3561b94e515bb" prot="public" virt="non-virtual"><scope>testing::internal::IteratorTraits</scope><name>value_type</name></member>
+      <member refid="structtesting_1_1internal_1_1_iterator_traits_1a29de4320a9c53ce438d3561b94e515bb" prot="public" virt="non-virtual"><scope>testing::internal::IteratorTraits</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

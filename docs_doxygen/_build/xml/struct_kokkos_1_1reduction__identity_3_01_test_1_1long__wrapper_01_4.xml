@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1reduction__identity_3_01_test_1_1long__wrapper_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1reduction__identity_3_01long_01_4" prot="public" virt="non-virtual">Kokkos::reduction_identity&lt; long &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</label>
+        <link refid="struct_kokkos_1_1reduction__identity_3_01_test_1_1long__wrapper_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::reduction_identity&lt; long &gt;</label>
+        <link refid="struct_kokkos_1_1reduction__identity_3_01long_01_4"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</label>
+        <link refid="struct_kokkos_1_1reduction__identity_3_01_test_1_1long__wrapper_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::reduction_identity&lt; long &gt;</label>
+        <link refid="struct_kokkos_1_1reduction__identity_3_01long_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamBasic.hpp" line="146" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamBasic.hpp" bodystart="147" bodyend="147"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1abce934417a5de0205041ec246fe6cf0e" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>band</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a7bcd01d163d650dff80681f3d9f5443f" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>bor</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a31401dcadb9b934aa7f23c4d41083fb3" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>land</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a61f148632c4c575e250e6a266b9c4067" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>lor</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a99fe74d0e549401b774ec3e75cd3d1e8" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>max</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a961d88264347344cd6065809ce40cec1" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>min</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1a121ff7cb56d757c6ae6d0816299cc32b" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>prod</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01long_01_4_1abc1b68ce541e6bf1b3586a9cd0de37c0" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Test::long_wrapper &gt;</scope><name>sum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

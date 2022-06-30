@@ -1,0 +1,524 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_message" kind="class" language="C++" prot="public">
+    <compoundname>testing::Message</compoundname>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classtesting_1_1_message_1a391c6b2afc501b8a94ac363e38d5c4ca" prot="private" static="no">
+        <type>std::ostream &amp;(*</type>
+        <definition>typedef std::ostream &amp;(* testing::Message::BasicNarrowIoManip) (std::ostream &amp;)</definition>
+        <argsstring>)(std::ostream &amp;)</argsstring>
+        <name>BasicNarrowIoManip</name>
+        <qualifiedname>testing::Message::BasicNarrowIoManip</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3165" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1_message_1a391c6b2afc501b8a94ac363e38d5c4ca" prot="private" static="no">
+        <type>std::ostream &amp;(*</type>
+        <definition>typedef std::ostream &amp;(* testing::Message::BasicNarrowIoManip) (std::ostream &amp;)</definition>
+        <argsstring>)(std::ostream &amp;)</argsstring>
+        <name>BasicNarrowIoManip</name>
+        <qualifiedname>testing::Message::BasicNarrowIoManip</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3165" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3165" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1_message_1a8f3bf8b4e0843f63d7452a3ea80c4e94" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classtesting_1_1internal_1_1scoped__ptr" kindref="compound">internal::scoped_ptr</ref>&lt; ::std::stringstream &gt;</type>
+        <definition>const internal::scoped_ptr&lt;::std::stringstream &gt; testing::Message::ss_</definition>
+        <argsstring></argsstring>
+        <name>ss_</name>
+        <qualifiedname>testing::Message::ss_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3300" column="30" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3300" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_message_1af5ba7216630df9845f18feb64b1a5383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>()</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3169" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2395" bodyend="2399"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac126e24804817a053bebba0920d94a11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>(const Message &amp;msg)</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3172" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3172" bodyend="3174"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a9de694ca239486809fc99fbbea8ac21d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3177" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3177" bodyend="3179"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac3bb8aed013ca36093eb36525a8ffc5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const T &amp;val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3191" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3191" bodyend="3209"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a11abae9dc33149b17ec3fd3899086568" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(T *const &amp;pointer)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>T *const &amp;</type>
+          <declname>pointer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3225" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3225" bodyend="3232"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1af674418e31abc5320bd16420ec02b81d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(BasicNarrowIoManip val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>BasicNarrowIoManip</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3241" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3241" bodyend="3244"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1afd60257232a5ea7994e58cb96b05ced8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(bool b)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3247" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3247" bodyend="3249"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac0db9c22535b28bc863bfd0a1fdf7e14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const wchar_t *wide_c_str)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const wchar_t *</type>
+          <declname>wide_c_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3253" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2403" bodyend="2405"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac1d3a041ac4bb9c929ee746b31a13d6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(wchar_t *wide_c_str)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>wchar_t *</type>
+          <declname>wide_c_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3254" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2406" bodyend="2408"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a224f36f59cb82bf0ab41169cbcbffa56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const ::std::wstring &amp;wstr)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const ::std::wstring &amp;</type>
+          <declname>wstr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3259" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a2cdc4df62bdcc9df37651a1cf527704e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::Message::GetString</definition>
+        <argsstring>() const</argsstring>
+        <name>GetString</name>
+        <qualifiedname>testing::Message::GetString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3272" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2430" bodyend="2432"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1af5ba7216630df9845f18feb64b1a5383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>()</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3169" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac126e24804817a053bebba0920d94a11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>(const Message &amp;msg)</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3172" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3172" bodyend="3174"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a9de694ca239486809fc99fbbea8ac21d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::Message::Message</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>Message</name>
+        <qualifiedname>testing::Message::Message</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3177" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3177" bodyend="3179"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac3bb8aed013ca36093eb36525a8ffc5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const T &amp;val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3191" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3191" bodyend="3209"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a11abae9dc33149b17ec3fd3899086568" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(T *const &amp;pointer)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>T *const &amp;</type>
+          <declname>pointer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3225" column="10" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3225" bodyend="3232"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1af674418e31abc5320bd16420ec02b81d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(BasicNarrowIoManip val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>BasicNarrowIoManip</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3241" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3241" bodyend="3244"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1afd60257232a5ea7994e58cb96b05ced8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(bool b)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3247" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="3247" bodyend="3249"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac0db9c22535b28bc863bfd0a1fdf7e14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const wchar_t *wide_c_str)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const wchar_t *</type>
+          <declname>wide_c_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3253" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1ac1d3a041ac4bb9c929ee746b31a13d6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(wchar_t *wide_c_str)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>wchar_t *</type>
+          <declname>wide_c_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3254" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a224f36f59cb82bf0ab41169cbcbffa56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        <definition>Message &amp; testing::Message::operator&lt;&lt;</definition>
+        <argsstring>(const ::std::wstring &amp;wstr)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::Message::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const ::std::wstring &amp;</type>
+          <declname>wstr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3259" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a2cdc4df62bdcc9df37651a1cf527704e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string testing::Message::GetString</definition>
+        <argsstring>() const</argsstring>
+        <name>GetString</name>
+        <qualifiedname>testing::Message::GetString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3272" column="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1_message_1a5a0462b539ffb88f15ea0c67977774af" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::Message::operator=</definition>
+        <argsstring>(const Message &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::Message::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3304" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_message_1a5a0462b539ffb88f15ea0c67977774af" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::Message::operator=</definition>
+        <argsstring>(const Message &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::Message::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="3304" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="3161" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="3161" bodyend="3305"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_message_1a391c6b2afc501b8a94ac363e38d5c4ca" prot="private" virt="non-virtual"><scope>testing::Message</scope><name>BasicNarrowIoManip</name></member>
+      <member refid="classtesting_1_1_message_1a391c6b2afc501b8a94ac363e38d5c4ca" prot="private" virt="non-virtual"><scope>testing::Message</scope><name>BasicNarrowIoManip</name></member>
+      <member refid="classtesting_1_1_message_1a2cdc4df62bdcc9df37651a1cf527704e" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>GetString</name></member>
+      <member refid="classtesting_1_1_message_1a2cdc4df62bdcc9df37651a1cf527704e" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>GetString</name></member>
+      <member refid="classtesting_1_1_message_1af5ba7216630df9845f18feb64b1a5383" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1ac126e24804817a053bebba0920d94a11" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1a9de694ca239486809fc99fbbea8ac21d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1af5ba7216630df9845f18feb64b1a5383" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1ac126e24804817a053bebba0920d94a11" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1a9de694ca239486809fc99fbbea8ac21d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>Message</name></member>
+      <member refid="classtesting_1_1_message_1ac3bb8aed013ca36093eb36525a8ffc5d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1a11abae9dc33149b17ec3fd3899086568" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1af674418e31abc5320bd16420ec02b81d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1afd60257232a5ea7994e58cb96b05ced8" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1ac0db9c22535b28bc863bfd0a1fdf7e14" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1ac1d3a041ac4bb9c929ee746b31a13d6a" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1a224f36f59cb82bf0ab41169cbcbffa56" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1ac3bb8aed013ca36093eb36525a8ffc5d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1a11abae9dc33149b17ec3fd3899086568" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1af674418e31abc5320bd16420ec02b81d" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1afd60257232a5ea7994e58cb96b05ced8" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1ac0db9c22535b28bc863bfd0a1fdf7e14" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1ac1d3a041ac4bb9c929ee746b31a13d6a" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1a224f36f59cb82bf0ab41169cbcbffa56" prot="public" virt="non-virtual"><scope>testing::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_message_1a5a0462b539ffb88f15ea0c67977774af" prot="private" virt="non-virtual"><scope>testing::Message</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1_message_1a5a0462b539ffb88f15ea0c67977774af" prot="private" virt="non-virtual"><scope>testing::Message</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1_message_1a8f3bf8b4e0843f63d7452a3ea80c4e94" prot="private" virt="non-virtual"><scope>testing::Message</scope><name>ss_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

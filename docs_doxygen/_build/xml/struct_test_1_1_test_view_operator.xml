@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_operator" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewOperator</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_operator_1a123e85e9fee4033a28c07f9482342166" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@266</name>
+        <qualifiedname>Test::TestViewOperator::@266</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_operator_1a123e85e9fee4033a28c07f9482342166ae5dfe08f994ee31cd0883dc74799b943" prot="public">
+          <name>N</name>
+          <initializer>= 1000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_operator_1af0c7d6018e89141688860a715cc849eb" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@267</name>
+        <qualifiedname>Test::TestViewOperator::@267</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_operator_1af0c7d6018e89141688860a715cc849eba9cc8be15c94f1a2a4a8b564dd45dc45c" prot="public">
+          <name>D</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_operator_1a6b24caed3cb1eecbd47ed99fcf6158ba" prot="public" static="no">
+        <type>DeviceType</type>
+        <definition>using Test::TestViewOperator&lt; T, DeviceType &gt;::execution_space =  DeviceType</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::TestViewOperator::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_operator_1a37b5263179a3fe361448011eaf0207b7" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">Kokkos::DynRankView</ref>&lt; T, execution_space &gt;</type>
+        <definition>using Test::TestViewOperator&lt; T, DeviceType &gt;::view_type =  Kokkos::DynRankView&lt;T, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Test::TestViewOperator::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_operator_1a8fbca84a37afec5349d526296bd77021" prot="public" static="no">
+        <type>typename DeviceType::execution_space</type>
+        <definition>using Test::TestViewOperator&lt; T, DeviceType &gt;::execution_space =  typename DeviceType::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Test::TestViewOperator::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_operator_1a60610614f73a81f4e0a370c18fcb7583" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T *[D], execution_space &gt;</type>
+        <definition>using Test::TestViewOperator&lt; T, DeviceType &gt;::view_type =  Kokkos::View&lt;T * [D], execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Test::TestViewOperator::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="73" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_operator_1afa21905425ca5ee8827ed83a39f26339" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned Test::TestViewOperator&lt; T, DeviceType &gt;::N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <qualifiedname>Test::TestViewOperator::N</qualifiedname>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="73" column="25" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_operator_1a7b6705523fc1a38618847ec9932c6603" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned Test::TestViewOperator&lt; T, DeviceType &gt;::D</definition>
+        <argsstring></argsstring>
+        <name>D</name>
+        <qualifiedname>Test::TestViewOperator::D</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="74" column="25" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_operator_1ac32f56549ef21f653d59169110809c06" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">view_type</ref></type>
+        <definition>const view_type Test::TestViewOperator&lt; T, DeviceType &gt;::v1</definition>
+        <argsstring></argsstring>
+        <name>v1</name>
+        <qualifiedname>Test::TestViewOperator::v1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="78" column="19" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_operator_1a9b61ec774cbbd245501bd36917c4c476" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">view_type</ref></type>
+        <definition>const view_type Test::TestViewOperator&lt; T, DeviceType &gt;::v2</definition>
+        <argsstring></argsstring>
+        <name>v2</name>
+        <qualifiedname>Test::TestViewOperator::v2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="79" column="19" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_operator_1ab1497bc836142e5709da2b4d62215d95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewOperator&lt; T, DeviceType &gt;::TestViewOperator</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewOperator</name>
+        <qualifiedname>Test::TestViewOperator::TestViewOperator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="81" column="3" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_operator_1a01dd06b81df40b7349cc1bb5add532d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewOperator&lt; T, DeviceType &gt;::operator()</definition>
+        <argsstring>(const unsigned i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewOperator::operator()</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="86" column="8" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="86" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_operator_1ab1497bc836142e5709da2b4d62215d95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewOperator&lt; T, DeviceType &gt;::TestViewOperator</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewOperator</name>
+        <qualifiedname>Test::TestViewOperator::TestViewOperator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_operator_1a01dd06b81df40b7349cc1bb5add532d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewOperator&lt; T, DeviceType &gt;::operator()</definition>
+        <argsstring>(const unsigned i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewOperator::operator()</qualifiedname>
+        <param>
+          <type>const unsigned</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" line="81" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewAPI.hpp" bodystart="81" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_operator_1a0483ccd108f057074661aff57841aa1a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewOperator&lt; T, DeviceType &gt;::testit</definition>
+        <argsstring>()</argsstring>
+        <name>testit</name>
+        <qualifiedname>Test::TestViewOperator::testit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="83" column="15" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="83" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::DynRankView&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_dyn_rank_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Test::TestViewOperator&lt; T, DeviceType &gt;</label>
+        <link refid="struct_test_1_1_test_view_operator"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>v1</edgelabel>
+          <edgelabel>v2</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" line="70" column="1" bodyfile="src/Kokkos/kokkos/containers/unit_tests/TestDynViewAPI.hpp" bodystart="70" bodyend="95"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_operator_1a7b6705523fc1a38618847ec9932c6603" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>D</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1af0c7d6018e89141688860a715cc849eba9cc8be15c94f1a2a4a8b564dd45dc45c" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>D</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a6b24caed3cb1eecbd47ed99fcf6158ba" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a8fbca84a37afec5349d526296bd77021" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1afa21905425ca5ee8827ed83a39f26339" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a123e85e9fee4033a28c07f9482342166ae5dfe08f994ee31cd0883dc74799b943" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a01dd06b81df40b7349cc1bb5add532d3" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a01dd06b81df40b7349cc1bb5add532d3" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a0483ccd108f057074661aff57841aa1a" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>testit</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1ab1497bc836142e5709da2b4d62215d95" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>TestViewOperator</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1ab1497bc836142e5709da2b4d62215d95" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>TestViewOperator</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1ac32f56549ef21f653d59169110809c06" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>v1</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a9b61ec774cbbd245501bd36917c4c476" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>v2</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a37b5263179a3fe361448011eaf0207b7" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>view_type</name></member>
+      <member refid="struct_test_1_1_test_view_operator_1a60610614f73a81f4e0a370c18fcb7583" prot="public" virt="non-virtual"><scope>Test::TestViewOperator</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

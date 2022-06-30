@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_compute_a_host" kind="struct" language="C++" prot="public">
+    <compoundname>ComputeAHost</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_compute_a_host_1a116b60da7c2218b6cebd0aed9984015d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaHostPinnedSpace &gt;</type>
+        <definition>Kokkos::View&lt;double*, Kokkos::LayoutLeft, Kokkos::CudaHostPinnedSpace&gt; ComputeAHost::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>ComputeAHost::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="82" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_compute_a_host_1a48dd2a551aa4a2f798938f1da4bcde31" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaHostPinnedSpace &gt;</type>
+        <definition>Kokkos::View&lt;double*, Kokkos::LayoutLeft, Kokkos::CudaHostPinnedSpace&gt; ComputeAHost::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>ComputeAHost::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="83" column="16" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_compute_a_host_1af0f86ef12e88f4ba23e3bb0353fde477" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ComputeAHost::ComputeAHost</definition>
+        <argsstring>(const Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaHostPinnedSpace &gt; &amp;d_a, const Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaHostPinnedSpace &gt; &amp;d_b)</argsstring>
+        <name>ComputeAHost</name>
+        <qualifiedname>ComputeAHost::ComputeAHost</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaHostPinnedSpace &gt; &amp;</type>
+          <declname>d_a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, Kokkos::CudaHostPinnedSpace &gt; &amp;</type>
+          <declname>d_b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="84" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_compute_a_host_1ab1c23c82e512a268c5a2911870bdc35e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void ComputeAHost::operator()</definition>
+        <argsstring>(const int &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ComputeAHost::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="91" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="91" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>ComputeAHost</label>
+        <link refid="struct_compute_a_host"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+          <edgelabel>b</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, Kokkos::LayoutLeft, Kokkos::CudaHostPinnedSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" line="81" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/07_Overlapping_DeepCopy/overlapping_deepcopy.cpp" bodystart="81" bodyend="92"/>
+    <listofallmembers>
+      <member refid="struct_compute_a_host_1a116b60da7c2218b6cebd0aed9984015d" prot="public" virt="non-virtual"><scope>ComputeAHost</scope><name>a</name></member>
+      <member refid="struct_compute_a_host_1a48dd2a551aa4a2f798938f1da4bcde31" prot="public" virt="non-virtual"><scope>ComputeAHost</scope><name>b</name></member>
+      <member refid="struct_compute_a_host_1af0f86ef12e88f4ba23e3bb0353fde477" prot="public" virt="non-virtual"><scope>ComputeAHost</scope><name>ComputeAHost</name></member>
+      <member refid="struct_compute_a_host_1ab1c23c82e512a268c5a2911870bdc35e" prot="public" virt="non-virtual"><scope>ComputeAHost</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

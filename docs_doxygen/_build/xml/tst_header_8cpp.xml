@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="tst_header_8cpp" kind="file" language="C++">
+    <compoundname>tstHeader.cpp</compoundname>
+    <includes local="yes">KOKKOS_HEADER_TEST_NAME</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp</label>
+        <link refid="tst_header_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KOKKOS_HEADER_TEST_NAME</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tst_header_8cpp_1a82d250888f71a8e79cb2b93a5c329579" prot="public" static="no">
+        <name>KOKKOS_HEADER_TEST_STRINGIZE_IMPL</name>
+        <param><defname>x</defname></param>
+        <initializer>#x</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" line="1" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" bodystart="1" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tst_header_8cpp_1a0958501e8775e7c6c948ebf3164a45c4" prot="public" static="no">
+        <name>KOKKOS_HEADER_TEST_STRINGIZE</name>
+        <param><defname>x</defname></param>
+        <initializer>KOKKOS_HEADER_TEST_STRINGIZE_IMPL(x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" line="2" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" bodystart="2" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tst_header_8cpp_1a62b62e348b4a0cc702aa5b79e1a5055f" prot="public" static="no">
+        <name>KOKKOS_HEADER_TO_TEST</name>
+        <initializer>  KOKKOS_HEADER_TEST_STRINGIZE(KOKKOS_HEADER_TEST_NAME)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" line="4" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tst_header_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" line="15" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#define<sp/>KOKKOS_HEADER_TEST_STRINGIZE_IMPL(x)<sp/>#x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_HEADER_TEST_STRINGIZE(x)<sp/>KOKKOS_HEADER_TEST_STRINGIZE_IMPL(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_HEADER_TO_TEST<sp/>\</highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"><sp/><sp/>KOKKOS_HEADER_TEST_STRINGIZE(KOKKOS_HEADER_TEST_NAME)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>include<sp/>header<sp/>twice<sp/>to<sp/>see<sp/>if<sp/>the<sp/>include<sp/>guards<sp/>are<sp/>set<sp/>correctly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>KOKKOS_HEADER_TO_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>KOKKOS_HEADER_TO_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(KOKKOS_MACROS_HPP)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;This<sp/>header<sp/>does<sp/>not<sp/>include<sp/>Kokkos_Macros.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/>}</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/unit_test/headers_self_contained/tstHeader.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_finite_max" kind="struct" language="C++" prot="public">
+    <compoundname>FiniteMax</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_finite_max_1aafacd905eccff6f18450278f0f39669a" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1finite__max" kindref="compound">Kokkos::Experimental::finite_max</ref>&lt; T &gt;</type>
+        <definition>using FiniteMax::trait =  Kokkos::Experimental::finite_max&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>trait</name>
+        <qualifiedname>FiniteMax::trait</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="81" column="28" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" line="81" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestNumericTraits.hpp" bodystart="81" bodyend="81"/>
+    <listofallmembers>
+      <member refid="struct_finite_max_1aafacd905eccff6f18450278f0f39669a" prot="public" virt="non-virtual"><scope>FiniteMax</scope><name>trait</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

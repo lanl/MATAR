@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7" kind="struct" language="C++" prot="public">
+    <compoundname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbf" prot="public" static="no" strong="no">
+        <type>size_t</type>
+        <name>@262</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::@262</qualifiedname>
+        <enumvalue id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa95278e1e3ab832379e414ce6b212b4db" prot="public">
+          <name>min_block_size</name>
+          <initializer>= 512</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfac912771de13272836759c9f0f0944e2f" prot="public">
+          <name>max_block_size</name>
+          <initializer>= 1lu &lt;&lt; 31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa31d253f0f6400c116080b488985759b3" prot="public">
+          <name>min_superblock_size</name>
+          <initializer>= max_block_size</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa730bb97f63e77d4b2702600089d81ee8" prot="public">
+          <name>num_superblock</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa4964501bf1592fc4111f310a634f21ce" prot="public">
+          <name>total_alloc_size</name>
+          <initializer>= num_superblock * max_block_size</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="501" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="501" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a5874a3ad27e5bba7296a665bf79dd2e0" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; uintptr_t *, DeviceType &gt;</type>
+        <definition>using TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::ptrs_type =  Kokkos::View&lt;uintptr_t*, DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>ptrs_type</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::ptrs_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="494" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="494" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a1180a5d6ead8e679a733e28815f2c656" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">Kokkos::MemoryPool</ref>&lt; DeviceType &gt;</type>
+        <definition>using TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::pool_type =  Kokkos::MemoryPool&lt;DeviceType&gt;</definition>
+        <argsstring></argsstring>
+        <name>pool_type</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::pool_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="495" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="495" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1afb9dbe195b9332a8fc876f7b900c3b38" prot="public" static="no">
+        <type>typename DeviceType::memory_space</type>
+        <definition>using TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::memory_space =  typename DeviceType::memory_space</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="496" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="496" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a28476d567d84e81bd965cdbd2d32654b" prot="public" static="no">
+        <type>long</type>
+        <definition>using TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::value_type =  long</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="517" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="517" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a32976608c5d241bd8cd5d70564749c70" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_memory_pool" kindref="compound">pool_type</ref></type>
+        <definition>pool_type TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::pool</definition>
+        <argsstring></argsstring>
+        <name>pool</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::pool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="498" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1ad3a20115af6cbf7d4f79d9db6a9fb8e8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ptrs_type</ref></type>
+        <definition>ptrs_type TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::ptrs</definition>
+        <argsstring></argsstring>
+        <name>ptrs</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::ptrs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="499" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="499" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a4006347e3637ae82752f266698187537" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::TestMemoryPoolHuge</definition>
+        <argsstring>()</argsstring>
+        <name>TestMemoryPoolHuge</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::TestMemoryPoolHuge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="509" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="509" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a92e22d0fcc1207dd2cce6c9ade53c9b0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::operator()</definition>
+        <argsstring>(int i, long &amp;err) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="519" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="519" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a825cb5aabfc98eb1fb23c1bf52da7566" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::operator()</definition>
+        <argsstring>(int i) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="534" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="534" bodyend="539"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</label>
+        <link refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ptrs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; uintptr_t *, DeviceType &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; uintptr_t *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" line="490" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMemoryPool.hpp" bodystart="493" bodyend="540"/>
+    <listofallmembers>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfac912771de13272836759c9f0f0944e2f" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>max_block_size</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1afb9dbe195b9332a8fc876f7b900c3b38" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>memory_space</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa95278e1e3ab832379e414ce6b212b4db" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>min_block_size</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa31d253f0f6400c116080b488985759b3" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>min_superblock_size</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa730bb97f63e77d4b2702600089d81ee8" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>num_superblock</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a92e22d0fcc1207dd2cce6c9ade53c9b0" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a825cb5aabfc98eb1fb23c1bf52da7566" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>operator()</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a32976608c5d241bd8cd5d70564749c70" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>pool</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a1180a5d6ead8e679a733e28815f2c656" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>pool_type</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1ad3a20115af6cbf7d4f79d9db6a9fb8e8" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>ptrs</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a5874a3ad27e5bba7296a665bf79dd2e0" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>ptrs_type</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a4006347e3637ae82752f266698187537" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>TestMemoryPoolHuge</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a12656f89f0736953d3d7ff714cd94bbfa4964501bf1592fc4111f310a634f21ce" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>total_alloc_size</name></member>
+      <member refid="struct_test_memory_pool_1_1_test_memory_pool_huge_3_01_device_type_00_01typename_01std_1_1enable4821d29a8d71d8b4c1f4de5b460235c7_1a28476d567d84e81bd965cdbd2d32654b" prot="public" virt="non-virtual"><scope>TestMemoryPool::TestMemoryPoolHuge&lt; DeviceType, typename std::enable_if&lt; std::is_same&lt; Kokkos::HostSpace, typename DeviceType::memory_space &gt;::value &gt;::type &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

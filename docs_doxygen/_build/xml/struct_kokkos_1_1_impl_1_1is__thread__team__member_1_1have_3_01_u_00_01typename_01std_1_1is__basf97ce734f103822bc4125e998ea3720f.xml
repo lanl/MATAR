@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__thread__team__member_1_1have_3_01_u_00_01typename_01std_1_1is__basf97ce734f103822bc4125e998ea3720f" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::is_thread_team_member::have&lt; U, typename std::is_base_of&lt; typename U::thread_team_member, U &gt;::type &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename U</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::is_thread_team_member&lt; T &gt;::have&lt; U, typename std::is_base_of&lt; typename U::thread_team_member, U &gt;::type &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::is_thread_team_member&lt; T &gt;::have&lt; U, typename std::is_base_of&lt; typename U::thread_team_member, U &gt;::type &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="200" column="109" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="200" bodyend="200"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

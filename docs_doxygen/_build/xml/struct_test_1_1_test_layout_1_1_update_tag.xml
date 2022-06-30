@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_layout_1_1_update_tag" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestLayout::UpdateTag</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" line="224" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestIrregularLayout.hpp" bodystart="224" bodyend="224"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

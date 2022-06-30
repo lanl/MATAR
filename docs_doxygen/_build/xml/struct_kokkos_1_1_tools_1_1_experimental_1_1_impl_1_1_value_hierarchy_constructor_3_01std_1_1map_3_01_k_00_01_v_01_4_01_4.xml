@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1map_3_01_k_00_01_v_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class K</type>
+      </param>
+      <param>
+        <type>class V</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1map_3_01_k_00_01_v_01_4_01_4_1acd0377a32731fb2cf9013d298ce9f0fe" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_map_type_converter" kindref="compound">MapTypeConverter</ref>&lt; std::map&lt; K, V &gt; &gt;::type</type>
+        <definition>using Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;::return_type =  typename MapTypeConverter&lt;std::map&lt;K, V&gt; &gt;::type</definition>
+        <argsstring></argsstring>
+        <name>return_type</name>
+        <qualifiedname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;::return_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="160" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1map_3_01_k_00_01_v_01_4_01_4_1a8dc0008b180f422dc60bb301c56c42c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>return_type</type>
+        <definition>static return_type Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;::build</definition>
+        <argsstring>(const std::map&lt; K, V &gt; &amp;in)</argsstring>
+        <name>build</name>
+        <qualifiedname>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;::build</qualifiedname>
+        <param>
+          <type>const std::map&lt; K, V &gt; &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="161" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="161" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="159" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="159" bodyend="170"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1map_3_01_k_00_01_v_01_4_01_4_1a8dc0008b180f422dc60bb301c56c42c2" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;</scope><name>build</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_impl_1_1_value_hierarchy_constructor_3_01std_1_1map_3_01_k_00_01_v_01_4_01_4_1acd0377a32731fb2cf9013d298ce9f0fe" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::Impl::ValueHierarchyConstructor&lt; std::map&lt; K, V &gt; &gt;</scope><name>return_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

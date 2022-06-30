@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_static_crs_graph" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::StaticCrsGraph</compoundname>
+    <includes refid="_kokkos___static_crs_graph_8hpp" local="no">Kokkos_StaticCrsGraph.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class DataType</type>
+      </param>
+      <param>
+        <type>class Arg1Type</type>
+      </param>
+      <param>
+        <type>class Arg2Type</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>class Arg3Type</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>typename SizeType</type>
+        <defval>typename <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt;DataType*, Arg1Type, Arg2Type,                                                  Arg3Type&gt;::size_type</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a94a6f2e0b1a7429fc5417d315a2a613f" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; DataType *, Arg1Type, Arg2Type, Arg3Type &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::traits =  ViewTraits&lt;DataType*, Arg1Type, Arg2Type, Arg3Type&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="287" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1ada42a8d0d93412c0b40fc416021afb85" prot="public" static="no">
+        <type>DataType</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::data_type =  DataType</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="290" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a10cfa9eeec02a63692468b791c81554b" prot="public" static="no">
+        <type>typename traits::array_layout</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::array_layout =  typename traits::array_layout</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="291" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a4c8f581ee85041169b420ffd3d509bbb" prot="public" static="no">
+        <type>typename traits::execution_space</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::execution_space =  typename traits::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="292" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1ab5f8b896e3decd4e9f50a851c48521aa" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref></type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::device_type =  typename traits::device_type</definition>
+        <argsstring></argsstring>
+        <name>device_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::device_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="293" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1adbf69ae746db78aeab8c7f3365100b1d" prot="public" static="no">
+        <type>typename traits::memory_traits</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::memory_traits =  typename traits::memory_traits</definition>
+        <argsstring></argsstring>
+        <name>memory_traits</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::memory_traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="294" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a280b429c744093c4a550a1be0116ba95" prot="public" static="no">
+        <type>SizeType</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::size_type =  SizeType</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="295" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a2cbac0c056257c53069a1d4696cdcf26" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref>&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::staticcrsgraph_type =  StaticCrsGraph&lt;DataType, Arg1Type, Arg2Type, Arg3Type, SizeType&gt;</definition>
+        <argsstring></argsstring>
+        <name>staticcrsgraph_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::staticcrsgraph_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="297" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1af38e885d42c9cb4d7febed580eef30bd" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref>&lt; data_type, array_layout, typename traits::host_mirror_space, memory_traits, size_type &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::HostMirror =  StaticCrsGraph&lt;data_type, array_layout, typename traits::host_mirror_space, memory_traits, size_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>HostMirror</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::HostMirror</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="299" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1ab7b6283522eb8b2d999122e8d1fdf607" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const size_type *, array_layout, device_type, memory_traits &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::row_map_type =  View&lt;const size_type*, array_layout, device_type, memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>row_map_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::row_map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="303" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1aac63e22b3d88085d8b2d55d5e5a13670" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; data_type *, array_layout, device_type, memory_traits &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::entries_type =  View&lt;data_type*, array_layout, device_type, memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>entries_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::entries_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="305" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_static_crs_graph_1a9ecd7f841cf255dbe025b797bed112ca" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const size_type *, array_layout, device_type, memory_traits &gt;</type>
+        <definition>using Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::row_block_type =  View&lt;const size_type*, array_layout, device_type, memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>row_block_type</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::row_block_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="307" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_static_crs_graph_1a8b3b383f6404a78f89c1b19d0a668e20" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">entries_type</ref></type>
+        <definition>entries_type Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::entries</definition>
+        <argsstring></argsstring>
+        <name>entries</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::entries</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="310" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_static_crs_graph_1a04f7a2e6009c2c3bd817f952508c06f5" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">row_map_type</ref></type>
+        <definition>row_map_type Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::row_map</definition>
+        <argsstring></argsstring>
+        <name>row_map</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::row_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="311" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_static_crs_graph_1ac20e6062a6fb6cdb30ae65a569db8328" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">row_block_type</ref></type>
+        <definition>row_block_type Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::row_block_offsets</definition>
+        <argsstring></argsstring>
+        <name>row_block_offsets</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::row_block_offsets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="312" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1a4526c7d983e458980f9fe5f61903201c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::StaticCrsGraph</definition>
+        <argsstring>()</argsstring>
+        <name>StaticCrsGraph</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::StaticCrsGraph</qualifiedname>
+        <briefdescription>
+<para>Construct an empty view. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="316" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="316" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1aa6b75e7930f6c94be0e65e43e0093bb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::StaticCrsGraph</definition>
+        <argsstring>(const StaticCrsGraph &amp;rhs)</argsstring>
+        <name>StaticCrsGraph</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::StaticCrsGraph</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor (shallow copy). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="320" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="320" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1af80c48e7ef02c19b31fdd4c35980ce3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class EntriesType</type>
+          </param>
+          <param>
+            <type>class RowMapType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::StaticCrsGraph</definition>
+        <argsstring>(const EntriesType &amp;entries_, const RowMapType &amp;row_map_)</argsstring>
+        <name>StaticCrsGraph</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::StaticCrsGraph</qualifiedname>
+        <param>
+          <type>const EntriesType &amp;</type>
+          <declname>entries_</declname>
+        </param>
+        <param>
+          <type>const RowMapType &amp;</type>
+          <declname>row_map_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="326" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="326" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1a9cedaf8373f3d04fac5e6681b69c702d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION StaticCrsGraph &amp; Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::operator=</definition>
+        <argsstring>(const StaticCrsGraph &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Assign to a view of the rhs array. If the old view is the last view then allocated memory is deallocated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="335" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="335" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1a085d580cbaba18d64b2771ad3859cc5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::~StaticCrsGraph</definition>
+        <argsstring>()=default</argsstring>
+        <name>~StaticCrsGraph</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::~StaticCrsGraph</qualifiedname>
+        <briefdescription>
+<para>Destroy this view of the array. If the last view then allocated memory is deallocated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="346" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1af7863c0b30ab2da84aa3216551a816f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_type Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::numRows</definition>
+        <argsstring>() const</argsstring>
+        <name>numRows</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::numRows</qualifiedname>
+        <briefdescription>
+<para>Return number of rows in the graph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="351" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="351" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1ae0cb850a3066c31afcfc43fa48136b5c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="357" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="357" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1a1797ea45cd3a2f0c2c2b14d1cc012a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_graph_row_view_const" kindref="compound">GraphRowViewConst</ref>&lt; <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref> &gt;</type>
+        <definition>KOKKOS_INLINE_FUNCTION GraphRowViewConst&lt; StaticCrsGraph &gt; Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::rowConst</definition>
+        <argsstring>(const data_type i) const</argsstring>
+        <name>rowConst</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::rowConst</qualifiedname>
+        <param>
+          <type>const data_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Return a const view of row i of the graph. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If row i does not belong to the graph, return an empty view.</para>
+<para>The returned object <computeroutput>view</computeroutput> implements the following interface: <itemizedlist>
+<listitem>
+<para><computeroutput>view.length</computeroutput> is the number of entries in the row  </para>
+</listitem>
+<listitem>
+<para><computeroutput>view.colidx(k)</computeroutput> returns a const reference to the column index of the k-th entry in the row  </para>
+</listitem>
+</itemizedlist>
+k is not a column index; it just counts from 0 to <computeroutput>view.length - 1</computeroutput>.</para>
+<para>Users should not rely on the return type of this method. They should instead assign to &apos;auto&apos;. That allows compile-time polymorphism for different kinds of sparse matrix formats (e.g., ELLPACK or Jagged Diagonal) that we may wish to support in the future. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="380" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="380" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_static_crs_graph_1a9016d396b0b38021886ebd648e5edfa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;::create_block_partitioning</definition>
+        <argsstring>(size_type num_blocks, size_type fix_cost_per_row=4)</argsstring>
+        <name>create_block_partitioning</name>
+        <qualifiedname>Kokkos::StaticCrsGraph::create_block_partitioning</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>num_blocks</declname>
+        </param>
+        <param>
+          <type>size_type</type>
+          <declname>fix_cost_per_row</declname>
+          <defval>4</defval>
+        </param>
+        <briefdescription>
+<para>Create a row partitioning into a given number of blocks balancing non-zeros + a fixed cost per row. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="396" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="396" bodyend="413"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Compressed row storage array. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DataType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of stored entries. If a <ref refid="class_kokkos_1_1_static_crs_graph" kindref="compound">StaticCrsGraph</ref> is used as the graph of a sparse matrix, then this is usually an integer type, the type of the column indices in the sparse matrix.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Arg1Type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second template parameter, corresponding either to the <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> type (if there are no more template parameters) or to the Layout type (if there is at least one more template parameter).</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Arg2Type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The third template parameter, which if provided corresponds to the <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> type.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Arg3Type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The third template parameter, which if provided corresponds to the <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref>.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>SizeType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of row offsets. Usually the default parameter suffices. However, setting a nondefault value is necessary in some cases, for example, if you want to have a sparse matrices with dimensions (and therefore column indices) that fit in <computeroutput>int</computeroutput>, but want to store more than <computeroutput>INT_MAX</computeroutput> entries in the sparse matrix.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+A row has a range of entries: <itemizedlist>
+<listitem>
+<para><computeroutput> row_map[i0] &lt;= entry &lt; row_map[i0+1] </computeroutput>  </para>
+</listitem>
+<listitem>
+<para><computeroutput> 0 &lt;= i1 &lt; row_map[i0+1] - row_map[i0] </computeroutput>  </para>
+</listitem>
+<listitem>
+<para><computeroutput> entries( entry ,            i2 , i3 , ... ); </computeroutput>  </para>
+</listitem>
+<listitem>
+<para><computeroutput> entries( row_map[i0] + i1 , i2 , i3 , ... ); </computeroutput>  </para>
+</listitem>
+</itemizedlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::StaticCrsGraph&lt; DataType, Arg1Type, Arg2Type, Arg3Type, SizeType &gt;</label>
+        <link refid="class_kokkos_1_1_static_crs_graph"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>entries</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>row_block_offsets</edgelabel>
+          <edgelabel>row_map</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; const size_type *, array_layout, device_type, memory_traits &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; data_type *, array_layout, device_type, memory_traits &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; const size_type *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; data_type *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" line="285" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_StaticCrsGraph.hpp" bodystart="285" bodyend="414"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a10cfa9eeec02a63692468b791c81554b" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a9016d396b0b38021886ebd648e5edfa4" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>create_block_partitioning</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1ada42a8d0d93412c0b40fc416021afb85" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>data_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1ab5f8b896e3decd4e9f50a851c48521aa" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>device_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a8b3b383f6404a78f89c1b19d0a668e20" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>entries</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1aac63e22b3d88085d8b2d55d5e5a13670" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>entries_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a4c8f581ee85041169b420ffd3d509bbb" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1af38e885d42c9cb4d7febed580eef30bd" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>HostMirror</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1ae0cb850a3066c31afcfc43fa48136b5c" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>is_allocated</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1adbf69ae746db78aeab8c7f3365100b1d" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>memory_traits</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1af7863c0b30ab2da84aa3216551a816f7" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>numRows</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a9cedaf8373f3d04fac5e6681b69c702d" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1ac20e6062a6fb6cdb30ae65a569db8328" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>row_block_offsets</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a9ecd7f841cf255dbe025b797bed112ca" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>row_block_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a04f7a2e6009c2c3bd817f952508c06f5" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>row_map</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1ab7b6283522eb8b2d999122e8d1fdf607" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>row_map_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a1797ea45cd3a2f0c2c2b14d1cc012a14" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>rowConst</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a280b429c744093c4a550a1be0116ba95" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a4526c7d983e458980f9fe5f61903201c" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>StaticCrsGraph</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1aa6b75e7930f6c94be0e65e43e0093bb4" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>StaticCrsGraph</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1af80c48e7ef02c19b31fdd4c35980ce3c" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>StaticCrsGraph</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a2cbac0c056257c53069a1d4696cdcf26" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>staticcrsgraph_type</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a94a6f2e0b1a7429fc5417d315a2a613f" prot="private" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_static_crs_graph_1a085d580cbaba18d64b2771ad3859cc5d" prot="public" virt="non-virtual"><scope>Kokkos::StaticCrsGraph</scope><name>~StaticCrsGraph</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

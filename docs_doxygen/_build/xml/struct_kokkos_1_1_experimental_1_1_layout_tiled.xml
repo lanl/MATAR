@@ -1,0 +1,513 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_layout_tiled" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::LayoutTiled</compoundname>
+    <includes refid="_kokkos___layout_8hpp" local="no">Kokkos_Layout.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>OuterP</declname>
+        <defname>OuterP</defname>
+      </param>
+      <param>
+        <type>Kokkos::Iterate</type>
+        <declname>InnerP</declname>
+        <defname>InnerP</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN0</declname>
+        <defname>ArgN0</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN1</declname>
+        <defname>ArgN1</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN2</declname>
+        <defname>ArgN2</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN3</declname>
+        <defname>ArgN3</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN4</declname>
+        <defname>ArgN4</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN5</declname>
+        <defname>ArgN5</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN6</declname>
+        <defname>ArgN6</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>ArgN7</declname>
+        <defname>ArgN7</defname>
+        <defval>0</defval>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>IsPowerOfTwo</declname>
+        <defname>IsPowerOfTwo</defname>
+        <defval>(Kokkos::Impl::is_integral_power_of_two(ArgN0) &amp;&amp;         Kokkos::Impl::is_integral_power_of_two(ArgN1) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN2) || (ArgN2 == 0)) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN3) || (ArgN3 == 0)) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN4) || (ArgN4 == 0)) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN5) || (ArgN5 == 0)) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN6) || (ArgN6 == 0)) &amp;&amp;         (Kokkos::Impl::is_integral_power_of_two(ArgN7) || (ArgN7 == 0)))</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a39d43701fd098d489fe9bee4dbe87f4f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@195</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@195</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a39d43701fd098d489fe9bee4dbe87f4fa7bb7f4494addf9db9209b2d2e2689736" prot="public">
+          <name>N0</name>
+          <initializer>= ArgN0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="268" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="268" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a609301efd982e9564334bdc7d86b8c07" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@196</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@196</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a609301efd982e9564334bdc7d86b8c07a5691cc6fd4259efb2449d5d1064efc4f" prot="public">
+          <name>N1</name>
+          <initializer>= ArgN1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="269" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="269" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a4472175ee1b116647709b1f3de219e44" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@197</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@197</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a4472175ee1b116647709b1f3de219e44a17a00d4d5627264a9f72b11bc8bfd6a4" prot="public">
+          <name>N2</name>
+          <initializer>= ArgN2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="270" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="270" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a58391857aab27c3bb1404ee25c89d54c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@198</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@198</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a58391857aab27c3bb1404ee25c89d54ca6b64466f7d6f3aa7945086dd9dd10896" prot="public">
+          <name>N3</name>
+          <initializer>= ArgN3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="271" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="271" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ab5d6fee4307e2252159e61750adf7471" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@199</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@199</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ab5d6fee4307e2252159e61750adf7471ac953d073e695f1d8f313e1a338e9ff69" prot="public">
+          <name>N4</name>
+          <initializer>= ArgN4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="272" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a0ff54be7e06eaad17ce10158d96a33c8" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@200</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@200</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a0ff54be7e06eaad17ce10158d96a33c8aab5a7f757c7419952ed7140a47361112" prot="public">
+          <name>N5</name>
+          <initializer>= ArgN5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="273" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="273" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a3b5cab8b71379e4d28a2e139c7b1821d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@201</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@201</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a3b5cab8b71379e4d28a2e139c7b1821dac62c4e95fd23e3e82a9427ad233c2596" prot="public">
+          <name>N6</name>
+          <initializer>= ArgN6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="274" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="274" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a2add4074b4c866a977d0179e9443cf41" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@202</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@202</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a2add4074b4c866a977d0179e9443cf41a864009eebef334c6584e79701bb85a28" prot="public">
+          <name>N7</name>
+          <initializer>= ArgN7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="275" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="275" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a5443b2dc0f9deaa1180eb28a57082b9c" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@203</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::@203</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a5443b2dc0f9deaa1180eb28a57082b9ca2b328b12c564211f89775e8305698872" prot="public">
+          <name>is_extent_constructible</name>
+          <initializer>= true</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="279" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="279" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ad68565ade571d45ce1e37df537e1c551" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref>&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;</type>
+        <definition>using Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::array_layout =  LayoutTiled&lt;OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo&gt;</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="263" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a1bcd72c475c87b2de4b0004a8b15ffeb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::outer_pattern</definition>
+        <argsstring></argsstring>
+        <name>outer_pattern</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::outer_pattern</qualifiedname>
+        <initializer>= OuterP</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="265" column="28" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ac53ed954b23a8df368f7691bbfd05ab2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::inner_pattern</definition>
+        <argsstring></argsstring>
+        <name>inner_pattern</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::inner_pattern</qualifiedname>
+        <initializer>= InnerP</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="266" column="28" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ac356109a5bf5c8a1fe1be4b6c36d1ff0" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::dimension[ARRAY_LAYOUT_MAX_RANK]</definition>
+        <argsstring>[ARRAY_LAYOUT_MAX_RANK]</argsstring>
+        <name>dimension</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="277" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a0863e6b293586eb6b6e4a815abb32853" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::LayoutTiled</definition>
+        <argsstring>(LayoutTiled const &amp;)=default</argsstring>
+        <name>LayoutTiled</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::LayoutTiled</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="281" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1af19000a702b058d88d29b938bc56dd2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::LayoutTiled</definition>
+        <argsstring>(LayoutTiled &amp;&amp;)=default</argsstring>
+        <name>LayoutTiled</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::LayoutTiled</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="282" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a35c3fb3cac573ae0cb3ed65bb4ed7e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+        <definition>LayoutTiled &amp; Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::operator=</definition>
+        <argsstring>(LayoutTiled const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="283" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a316d60606e641932d45652533a6d4a9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+        <definition>LayoutTiled &amp; Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::operator=</definition>
+        <argsstring>(LayoutTiled &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="284" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ad583bd9934f1791fc0258059808ceca6" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr Kokkos::Experimental::LayoutTiled&lt; OuterP, InnerP, ArgN0, ArgN1, ArgN2, ArgN3, ArgN4, ArgN5, ArgN6, ArgN7, IsPowerOfTwo &gt;::LayoutTiled</definition>
+        <argsstring>(size_t argN0=0, size_t argN1=0, size_t argN2=0, size_t argN3=0, size_t argN4=0, size_t argN5=0, size_t argN6=0, size_t argN7=0)</argsstring>
+        <name>LayoutTiled</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::LayoutTiled</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>argN0</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN1</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN2</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN3</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN4</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN5</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN6</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>argN7</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="287" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="287" bodyend="291"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1afa6776c59975464ba47cf25f8b2e481f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const LayoutTiled &amp;left, const LayoutTiled &amp;right)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="293" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="293" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="friend" id="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a06195ca7d7793ba6293262d38a31384b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const LayoutTiled &amp;left, const LayoutTiled &amp;right)</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>Kokkos::Experimental::LayoutTiled::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref> &amp;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="299" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="299" bodyend="301"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="struct_kokkos_1_1_experimental_1_1_layout_tiled" kindref="compound">LayoutTiled</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" line="259" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Layout.hpp" bodystart="259" bodyend="302"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ad68565ade571d45ce1e37df537e1c551" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ac356109a5bf5c8a1fe1be4b6c36d1ff0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>dimension</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ac53ed954b23a8df368f7691bbfd05ab2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>inner_pattern</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a5443b2dc0f9deaa1180eb28a57082b9ca2b328b12c564211f89775e8305698872" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>is_extent_constructible</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a0863e6b293586eb6b6e4a815abb32853" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>LayoutTiled</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1af19000a702b058d88d29b938bc56dd2d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>LayoutTiled</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ad583bd9934f1791fc0258059808ceca6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>LayoutTiled</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a39d43701fd098d489fe9bee4dbe87f4fa7bb7f4494addf9db9209b2d2e2689736" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N0</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a609301efd982e9564334bdc7d86b8c07a5691cc6fd4259efb2449d5d1064efc4f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N1</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a4472175ee1b116647709b1f3de219e44a17a00d4d5627264a9f72b11bc8bfd6a4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N2</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a58391857aab27c3bb1404ee25c89d54ca6b64466f7d6f3aa7945086dd9dd10896" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N3</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1ab5d6fee4307e2252159e61750adf7471ac953d073e695f1d8f313e1a338e9ff69" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N4</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a0ff54be7e06eaad17ce10158d96a33c8aab5a7f757c7419952ed7140a47361112" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N5</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a3b5cab8b71379e4d28a2e139c7b1821dac62c4e95fd23e3e82a9427ad233c2596" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N6</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a2add4074b4c866a977d0179e9443cf41a864009eebef334c6584e79701bb85a28" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>N7</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a06195ca7d7793ba6293262d38a31384b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>operator!=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a35c3fb3cac573ae0cb3ed65bb4ed7e0c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a316d60606e641932d45652533a6d4a9c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1afa6776c59975464ba47cf25f8b2e481f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>operator==</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_layout_tiled_1a1bcd72c475c87b2de4b0004a8b15ffeb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::LayoutTiled</scope><name>outer_pattern</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

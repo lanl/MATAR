@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d" kind="struct" language="C++" prot="public">
+    <compoundname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class View</type>
+      </param>
+      <param>
+        <type>class SubView</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1aad214f56c219a4b638b8803d1104152b" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Kokkos::RangePolicy</ref>&lt; typename View::execution_space &gt;</type>
+        <definition>using TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::policy_t =  Kokkos::RangePolicy&lt;typename View::execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_t</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::policy_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="993" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="993" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a57eb4149d428924bae03e11c5200204b" prot="public" static="no" mutable="no">
+        <type>View</type>
+        <definition>View TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="994" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="994" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1ae0f32bae64bbc9506c2582a4b484b8c7" prot="public" static="no" mutable="no">
+        <type>SubView</type>
+        <definition>SubView TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::b</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="995" column="11" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="995" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1ad09aeb46bccbb32b012abb79371911df" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::i0</definition>
+        <argsstring></argsstring>
+        <name>i0</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::i0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="996" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="996" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a11a40d368a1aec1d65fb47494807b809" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="997" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="997" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1adf9443a41a29c112aea055225ea0b489" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::CheckSubviewCorrectness_1D_2D</definition>
+        <argsstring>(View a_, SubView b_, int i0_, int o)</argsstring>
+        <name>CheckSubviewCorrectness_1D_2D</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::CheckSubviewCorrectness_1D_2D</qualifiedname>
+        <param>
+          <type>View</type>
+          <declname>a_</declname>
+        </param>
+        <param>
+          <type>SubView</type>
+          <declname>b_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i0_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="999" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="999" bodyend="1000"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a25870141989d71ab94284f358236f02b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1002" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1002" bodyend="1007"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a4f2bdbe7febeab5709490f8715f662ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D&lt; View, SubView &gt;::operator()</definition>
+        <argsstring>(const int &amp;i1, int &amp;e) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="1010" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="1010" bodyend="1014"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="992" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="992" bodyend="1015"/>
+    <listofallmembers>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a57eb4149d428924bae03e11c5200204b" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>a</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1ae0f32bae64bbc9506c2582a4b484b8c7" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>b</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1adf9443a41a29c112aea055225ea0b489" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>CheckSubviewCorrectness_1D_2D</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1ad09aeb46bccbb32b012abb79371911df" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>i0</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a11a40d368a1aec1d65fb47494807b809" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>offset</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a4f2bdbe7febeab5709490f8715f662ad" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>operator()</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1aad214f56c219a4b638b8803d1104152b" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>policy_t</name></member>
+      <member refid="struct_test_view_subview_1_1_impl_1_1_check_subview_correctness__1_d__2_d_1a25870141989d71ab94284f358236f02b" prot="public" virt="non-virtual"><scope>TestViewSubview::Impl::CheckSubviewCorrectness_1D_2D</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

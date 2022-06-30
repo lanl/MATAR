@@ -1,0 +1,146 @@
+\hypertarget{class_ragged_down_array}{}\doxysection{Ragged\+Down\+Array\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_ragged_down_array}\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ragged_down_array_a65664d620d4a75c4da83840ca456b33a}{Ragged\+Down\+Array}} ()
+\item 
+\mbox{\hyperlink{class_ragged_down_array_a2d5613a901b8d5f6b56f897a26e7cf00}{Ragged\+Down\+Array}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&strides\+\_\+array)
+\item 
+\mbox{\hyperlink{class_ragged_down_array_a46e1634f8540b55ae3577359b706a70a}{Ragged\+Down\+Array}} (\mbox{\hyperlink{class_view_c_array}{View\+CArray}}$<$ size\+\_\+t $>$ \&strides\+\_\+array)
+\item 
+\mbox{\hyperlink{class_ragged_down_array_ac6ffc7b9ed9ab759dfe08b6d351ea701}{Ragged\+Down\+Array}} (size\+\_\+t $\ast$strides\+\_\+array, size\+\_\+t dome\+\_\+dim1)
+\item 
+\mbox{\hyperlink{class_ragged_down_array_a6cfa47f1da1b7bcf503b7973fab6c249}{Ragged\+Down\+Array}} (size\+\_\+t some\+\_\+dim2, size\+\_\+t buffer)
+\item 
+\mbox{\hyperlink{class_ragged_down_array_ab2a891dec7f00677ff90ed432821ab61}{Ragged\+Down\+Array}} (const \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}} \&temp)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_ragged_down_array_a1588e9d813937665d1abe76272a927c2}{stride}} (size\+\_\+t j)
+\item 
+void \mbox{\hyperlink{class_ragged_down_array_af71a2fe4b2e35e6fee823b73d12619ab}{push\+\_\+back}} (size\+\_\+t j)
+\item 
+T \& \mbox{\hyperlink{class_ragged_down_array_a0999a44c9d9439f2d8a4158fac8ac80c}{operator()}} (size\+\_\+t i, size\+\_\+t j)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_ragged_down_array_ae7c804b362f07a64a71738168d793594}{size}} ()
+\item 
+T $\ast$ \mbox{\hyperlink{class_ragged_down_array_a246347b6d01043cf54049ca360d484ed}{pointer}} () const
+\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_ragged_down_array_a2889e03f7b5ddc69531bf884fd9f2b69}{get\+\_\+starts}} () const
+\item 
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}} \& \mbox{\hyperlink{class_ragged_down_array_a9b5efcb7f8872f61d9351414632ac18f}{operator=}} (const \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}} \&temp)
+\item 
+\mbox{\hyperlink{class_ragged_down_array_a760f190e765d40cc8468b4033063c0f1}{$\sim$\+Ragged\+Down\+Array}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ragged_down_array_a65664d620d4a75c4da83840ca456b33a}\label{class_ragged_down_array_a65664d620d4a75c4da83840ca456b33a}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}}}
+
+\mbox{\Hypertarget{class_ragged_down_array_a2d5613a901b8d5f6b56f897a26e7cf00}\label{class_ragged_down_array_a2d5613a901b8d5f6b56f897a26e7cf00}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&}]{strides\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_a46e1634f8540b55ae3577359b706a70a}\label{class_ragged_down_array_a46e1634f8540b55ae3577359b706a70a}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_view_c_array}{View\+CArray}}$<$ size\+\_\+t $>$ \&}]{strides\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_ac6ffc7b9ed9ab759dfe08b6d351ea701}\label{class_ragged_down_array_ac6ffc7b9ed9ab759dfe08b6d351ea701}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}} (\begin{DoxyParamCaption}\item[{size\+\_\+t $\ast$}]{strides\+\_\+array,  }\item[{size\+\_\+t}]{dome\+\_\+dim1 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_a6cfa47f1da1b7bcf503b7973fab6c249}\label{class_ragged_down_array_a6cfa47f1da1b7bcf503b7973fab6c249}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{some\+\_\+dim2,  }\item[{size\+\_\+t}]{buffer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_ab2a891dec7f00677ff90ed432821ab61}\label{class_ragged_down_array_ab2a891dec7f00677ff90ed432821ab61}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!RaggedDownArray@{RaggedDownArray}}
+\index{RaggedDownArray@{RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RaggedDownArray()}{RaggedDownArray()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\mbox{\hyperlink{class_ragged_down_array}{\+::\+Ragged\+Down\+Array}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_a760f190e765d40cc8468b4033063c0f1}\label{class_ragged_down_array_a760f190e765d40cc8468b4033063c0f1}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!````~RaggedDownArray@{$\sim$RaggedDownArray}}
+\index{````~RaggedDownArray@{$\sim$RaggedDownArray}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$RaggedDownArray()}{~RaggedDownArray()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ragged_down_array_a2889e03f7b5ddc69531bf884fd9f2b69}\label{class_ragged_down_array_a2889e03f7b5ddc69531bf884fd9f2b69}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!get\_starts@{get\_starts}}
+\index{get\_starts@{get\_starts}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_starts()}{get\_starts()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::get\+\_\+starts\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_ragged_down_array_a0999a44c9d9439f2d8a4158fac8ac80c}\label{class_ragged_down_array_a0999a44c9d9439f2d8a4158fac8ac80c}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_a9b5efcb7f8872f61d9351414632ac18f}\label{class_ragged_down_array_a9b5efcb7f8872f61d9351414632ac18f}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$ \& \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_a246347b6d01043cf54049ca360d484ed}\label{class_ragged_down_array_a246347b6d01043cf54049ca360d484ed}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer()}{pointer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::pointer\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_ragged_down_array_af71a2fe4b2e35e6fee823b73d12619ab}\label{class_ragged_down_array_af71a2fe4b2e35e6fee823b73d12619ab}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_ragged_down_array_ae7c804b362f07a64a71738168d793594}\label{class_ragged_down_array_ae7c804b362f07a64a71738168d793594}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!size@{size}}
+\index{size@{size}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::size}
+
+\mbox{\Hypertarget{class_ragged_down_array_a1588e9d813937665d1abe76272a927c2}\label{class_ragged_down_array_a1588e9d813937665d1abe76272a927c2}} 
+\index{RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}!stride@{stride}}
+\index{stride@{stride}!RaggedDownArray$<$ T $>$@{RaggedDownArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_ragged_down_array}{Ragged\+Down\+Array}}$<$ T $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,97 @@
+\hypertarget{class_dynamic_ragged_down_array_kokkos}{}\doxysection{Dynamic\+Ragged\+Down\+Array\+Kokkos\texorpdfstring{$<$}{<} T, Layout, Exec\+Space, Memory\+Traits \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_dynamic_ragged_down_array_kokkos}\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor}{set\+\_\+strides\+\_\+functor}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a7231affd6d09f2536bc98ac0bd085b43}{Dynamic\+Ragged\+Down\+Array\+Kokkos}} ()
+\item 
+\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a240170fe3543b19128bdaee06bc4bd72}{Dynamic\+Ragged\+Down\+Array\+Kokkos}} (size\+\_\+t dim1, size\+\_\+t dim2, const std\+::string \&tag\+\_\+string=DEFAULTSTRINGARRAY)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a22b4509eb9078988f178c5efd7582cc9}{stride}} (size\+\_\+t j) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a9e236c3fcb771bd4eaf0b8346525e393}{size}} () const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION TArray1D \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a35b53953264527d39faf3a45be9dddce}{get\+\_\+kokkos\+\_\+view}} ()
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a705e8ba3094eda352163a88ba2836de5}{operator()}} (size\+\_\+t i, size\+\_\+t j) const
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}} \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_ae430eb147160cc1e7c390770a24bc2f4}{operator=}} (const \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}} \&temp)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos_a41a72c9c12461180b3699a73416ba450}{$\sim$\+Dynamic\+Ragged\+Down\+Array\+Kokkos}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a7231affd6d09f2536bc98ac0bd085b43}\label{class_dynamic_ragged_down_array_kokkos_a7231affd6d09f2536bc98ac0bd085b43}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!DynamicRaggedDownArrayKokkos@{DynamicRaggedDownArrayKokkos}}
+\index{DynamicRaggedDownArrayKokkos@{DynamicRaggedDownArrayKokkos}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{DynamicRaggedDownArrayKokkos()}{DynamicRaggedDownArrayKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{\+::\+Dynamic\+Ragged\+Down\+Array\+Kokkos}}}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a240170fe3543b19128bdaee06bc4bd72}\label{class_dynamic_ragged_down_array_kokkos_a240170fe3543b19128bdaee06bc4bd72}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!DynamicRaggedDownArrayKokkos@{DynamicRaggedDownArrayKokkos}}
+\index{DynamicRaggedDownArrayKokkos@{DynamicRaggedDownArrayKokkos}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{DynamicRaggedDownArrayKokkos()}{DynamicRaggedDownArrayKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{\+::\+Dynamic\+Ragged\+Down\+Array\+Kokkos}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{const std\+::string \&}]{tag\+\_\+string = {\ttfamily DEFAULTSTRINGARRAY} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a41a72c9c12461180b3699a73416ba450}\label{class_dynamic_ragged_down_array_kokkos_a41a72c9c12461180b3699a73416ba450}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!````~DynamicRaggedDownArrayKokkos@{$\sim$DynamicRaggedDownArrayKokkos}}
+\index{````~DynamicRaggedDownArrayKokkos@{$\sim$DynamicRaggedDownArrayKokkos}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$DynamicRaggedDownArrayKokkos()}{~DynamicRaggedDownArrayKokkos()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::$\sim$\mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a35b53953264527d39faf3a45be9dddce}\label{class_dynamic_ragged_down_array_kokkos_a35b53953264527d39faf3a45be9dddce}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!get\_kokkos\_view@{get\_kokkos\_view}}
+\index{get\_kokkos\_view@{get\_kokkos\_view}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{get\_kokkos\_view()}{get\_kokkos\_view()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION Kokkos\+::\+View$<$ T $\ast$, Layout, Exec\+Space, Memory\+Traits $>$ \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::get\+\_\+kokkos\+\_\+view}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a705e8ba3094eda352163a88ba2836de5}\label{class_dynamic_ragged_down_array_kokkos_a705e8ba3094eda352163a88ba2836de5}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_ae430eb147160cc1e7c390770a24bc2f4}\label{class_dynamic_ragged_down_array_kokkos_ae430eb147160cc1e7c390770a24bc2f4}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a9e236c3fcb771bd4eaf0b8346525e393}\label{class_dynamic_ragged_down_array_kokkos_a9e236c3fcb771bd4eaf0b8346525e393}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!size@{size}}
+\index{size@{size}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::size}
+
+\mbox{\Hypertarget{class_dynamic_ragged_down_array_kokkos_a22b4509eb9078988f178c5efd7582cc9}\label{class_dynamic_ragged_down_array_kokkos_a22b4509eb9078988f178c5efd7582cc9}} 
+\index{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!stride@{stride}}
+\index{stride@{stride}!DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{DynamicRaggedDownArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \& \mbox{\hyperlink{class_dynamic_ragged_down_array_kokkos}{Dynamic\+Ragged\+Down\+Array\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1is__execution__space" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::is_execution_space</compoundname>
+    <innerclass refid="struct_kokkos_1_1is__execution__space_1_1have" prot="private">Kokkos::is_execution_space::have</innerclass>
+    <innerclass refid="struct_kokkos_1_1is__execution__space_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3_01typ978fa2ba8578d5ef01adfacc1552e661" prot="private">Kokkos::is_execution_space::have&lt; U, typename std::is_base_of&lt; typename U::execution_space, U &gt;::type &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1is__execution__space_1_1have_3_01_u_00_01typename_01std_1_1is__base__of_3_01typd48e2ac8df37ccbc750828fd40825d6b" prot="private">Kokkos::is_execution_space::have&lt; U, typename std::is_base_of&lt; typename U::execution_space_type, U &gt;::type &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1is__execution__space_1a59c4693ba0c9a295fe862654a7bad0bf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::is_execution_space&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::is_execution_space::value</qualifiedname>
+        <initializer>=   <ref refid="struct_kokkos_1_1is__execution__space" kindref="compound">is_execution_space</ref> ::template have&lt;typename std::remove_cv&lt;T&gt;::type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="173" column="229" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1is__execution__space_1a5ff9778731b5252f579968518299a01d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::is_execution_space&lt; T &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Kokkos::is_execution_space::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="173" column="248" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="173" bodyend="173"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="173" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="173" bodyend="173"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1is__execution__space_1a5ff9778731b5252f579968518299a01d" prot="public" virt="non-virtual"><scope>Kokkos::is_execution_space</scope><name>operator bool</name></member>
+      <member refid="struct_kokkos_1_1is__execution__space_1a59c4693ba0c9a295fe862654a7bad0bf" prot="public" virt="non-virtual"><scope>Kokkos::is_execution_space</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

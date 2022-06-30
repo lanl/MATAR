@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1make__all__extents__into__pointers" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::make_all_extents_into_pointers</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1make__all__extents__into__pointers_1add17a8d5d2958d984066c6fe42126f84" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::Impl::make_all_extents_into_pointers&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::make_all_extents_into_pointers::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="325" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="324" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="324" bodyend="326"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1make__all__extents__into__pointers_1add17a8d5d2958d984066c6fe42126f84" prot="public" virt="non-virtual"><scope>Kokkos::Impl::make_all_extents_into_pointers</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

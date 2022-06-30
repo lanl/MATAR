@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_analyze_exec_policy" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::AnalyzeExecPolicy</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher" prot="public" virt="non-virtual">Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Enable</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_1a5661c76f4b7da501ec39e82818c187cf" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher" kindref="compound">AnalyzeExecPolicyUseMatcher</ref>&lt; void, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">execution_policy_trait_specifications</ref>, Traits... &gt;</type>
+        <definition>using Kokkos::Impl::AnalyzeExecPolicy&lt; Enable, Traits &gt;::base_t =  AnalyzeExecPolicyUseMatcher&lt;void, execution_policy_trait_specifications, Traits...&gt;</definition>
+        <argsstring></argsstring>
+        <name>base_t</name>
+        <qualifiedname>Kokkos::Impl::AnalyzeExecPolicy::base_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="94" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; Enable, Traits &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Impl::AnalyzeExecPolicyUseMatcher&lt; void, execution_policy_trait_specifications, Traits... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_use_matcher"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::AnalyzeExecPolicy&lt; Enable, Traits &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" line="91" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_AnalyzePolicy.hpp" bodystart="93" bodyend="98"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_analyze_exec_policy_1a5661c76f4b7da501ec39e82818c187cf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::AnalyzeExecPolicy</scope><name>base_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::Impl::radix_helper</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="186" column="11" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="186" bodyend="186"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

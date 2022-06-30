@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::BinSort::copy_permute_functor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DstViewType</type>
+      </param>
+      <param>
+        <type>class PermuteViewType</type>
+      </param>
+      <param>
+        <type>class SrcViewType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a9dad865cbbbfe47abbc7272ea1e15c94" prot="public" static="no">
+        <type>typename std::conditional&lt; <ref refid="struct_kokkos_1_1is__view" kindref="compound">Kokkos::is_view</ref>&lt; SrcViewType &gt;::value, <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; typename SrcViewType::const_data_type, typename SrcViewType::array_layout, typename SrcViewType::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::RandomAccess &gt; &gt;, typename SrcViewType::const_type &gt;::type</type>
+        <definition>using Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::src_view_type =  typename std::conditional&lt; Kokkos::is_view&lt;SrcViewType&gt;::value, Kokkos::View&lt;typename SrcViewType::const_data_type, typename SrcViewType::array_layout, typename SrcViewType::device_type, Kokkos::MemoryTraits&lt;Kokkos::RandomAccess&gt; &gt;, typename SrcViewType::const_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>src_view_type</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::src_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="123" column="5" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1ad9276b618147b1c086c6f66d47b90b05" prot="public" static="no">
+        <type>typename PermuteViewType::const_type</type>
+        <definition>using Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::perm_view_type =  typename PermuteViewType::const_type</definition>
+        <argsstring></argsstring>
+        <name>perm_view_type</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::perm_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="131" column="5" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a67d417798af76345408da8818c54b218" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_copy_op" kindref="compound">Impl::CopyOp</ref>&lt; DstViewType, src_view_type &gt;</type>
+        <definition>using Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::copy_op =  Impl::CopyOp&lt;DstViewType, src_view_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>copy_op</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::copy_op</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="133" column="5" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a1d9a2ef2e750fca9cd1de0a331a07d95" prot="public" static="no" mutable="no">
+        <type>DstViewType</type>
+        <definition>DstViewType Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::dst_values</definition>
+        <argsstring></argsstring>
+        <name>dst_values</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::dst_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="135" column="17" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a8d5f52088a0b7a5b5c4d70d632e4177a" prot="public" static="no" mutable="no">
+        <type>perm_view_type</type>
+        <definition>perm_view_type Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::sort_order</definition>
+        <argsstring></argsstring>
+        <name>sort_order</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::sort_order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="136" column="20" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1ad1f7e4a68c7043c29cb3c14bce230843" prot="public" static="no" mutable="no">
+        <type>src_view_type</type>
+        <definition>src_view_type Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::src_values</definition>
+        <argsstring></argsstring>
+        <name>src_values</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::src_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="137" column="19" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1abed32a8ea1c07a69e7634c0009952174" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::src_offset</definition>
+        <argsstring></argsstring>
+        <name>src_offset</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::src_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="138" column="9" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1aa6f49670db1b401d694546ba9842b306" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::copy_permute_functor</definition>
+        <argsstring>(DstViewType const &amp;dst_values_, PermuteViewType const &amp;sort_order_, SrcViewType const &amp;src_values_, int const &amp;src_offset_)</argsstring>
+        <name>copy_permute_functor</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::copy_permute_functor</qualifiedname>
+        <param>
+          <type>DstViewType const &amp;</type>
+          <declname>dst_values_</declname>
+        </param>
+        <param>
+          <type>PermuteViewType const &amp;</type>
+          <declname>sort_order_</declname>
+        </param>
+        <param>
+          <type>SrcViewType const &amp;</type>
+          <declname>src_values_</declname>
+        </param>
+        <param>
+          <type>int const &amp;</type>
+          <declname>src_offset_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="140" column="5" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="140" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a8c3e8be62165a13168f9c74ed20ef8e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::BinSort&lt; KeyViewType, BinSortOp, Space, SizeType &gt;::copy_permute_functor&lt; DstViewType, PermuteViewType, SrcViewType &gt;::operator()</definition>
+        <argsstring>(const int &amp;i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::BinSort::copy_permute_functor::operator()</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="149" column="10" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="149" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" line="119" column="3" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Sort.hpp" bodystart="119" bodyend="152"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a67d417798af76345408da8818c54b218" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>copy_op</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1aa6f49670db1b401d694546ba9842b306" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>copy_permute_functor</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a1d9a2ef2e750fca9cd1de0a331a07d95" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>dst_values</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a8c3e8be62165a13168f9c74ed20ef8e9" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1ad9276b618147b1c086c6f66d47b90b05" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>perm_view_type</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a8d5f52088a0b7a5b5c4d70d632e4177a" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>sort_order</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1abed32a8ea1c07a69e7634c0009952174" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>src_offset</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1ad1f7e4a68c7043c29cb3c14bce230843" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>src_values</name></member>
+      <member refid="struct_kokkos_1_1_bin_sort_1_1copy__permute__functor_1a9dad865cbbbfe47abbc7272ea1e15c94" prot="public" virt="non-virtual"><scope>Kokkos::BinSort::copy_permute_functor</scope><name>src_view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

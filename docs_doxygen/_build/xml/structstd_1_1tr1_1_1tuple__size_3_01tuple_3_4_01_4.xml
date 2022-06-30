@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structstd_1_1tr1_1_1tuple__size_3_01tuple_3_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::tr1::tuple_size&lt; tuple&lt;&gt; &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structstd_1_1tr1_1_1tuple__size_3_01tuple_3_4_01_4_1a533b68a7efa337e73184d2e5e771cb03" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>static const int std::tr1::tuple_size&lt; tuple&lt;&gt; &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>std::tr1::tuple_size&lt; tuple&lt;&gt; &gt;::value</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1379" column="20" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1379" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="1378" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="1378" bodyend="1380"/>
+    <listofallmembers>
+      <member refid="structstd_1_1tr1_1_1tuple__size_3_01tuple_3_4_01_4_1a533b68a7efa337e73184d2e5e771cb03" prot="public" virt="non-virtual"><scope>std::tr1::tuple_size&lt; tuple&lt;&gt; &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

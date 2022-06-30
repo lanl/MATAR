@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_team_vector_range_1_1my__complex" kind="struct" language="C++" prot="public">
+    <compoundname>TestTeamVectorRange::my_complex</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_team_vector_range_1_1my__complex_1ab99b9a52ce117ae9258d9a3f355ebdfa" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TestTeamVectorRange::my_complex::re</definition>
+        <argsstring></argsstring>
+        <name>re</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::re</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="56" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_team_vector_range_1_1my__complex_1ac6fb4f9cd6c151f1de0c48afbf40a318" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TestTeamVectorRange::my_complex::im</definition>
+        <argsstring></argsstring>
+        <name>im</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::im</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="56" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_team_vector_range_1_1my__complex_1a52575fbad70a138ab9df9f12e8313ee3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TestTeamVectorRange::my_complex::dummy</definition>
+        <argsstring></argsstring>
+        <name>dummy</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::dummy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="57" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a79b15e0dd957367990e0053e1f1d3043" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION TestTeamVectorRange::my_complex::my_complex</definition>
+        <argsstring>()</argsstring>
+        <name>my_complex</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::my_complex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a3e9395db765b79cf07aa0c6905c54970" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION TestTeamVectorRange::my_complex::my_complex</definition>
+        <argsstring>(const my_complex &amp;src)</argsstring>
+        <name>my_complex</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::my_complex</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="67" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a149860f9ff649b7baa23f973de718ff8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const my_complex &amp;src)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="74" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="74" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1afb5e990b7d38e565773ff8afcc26a1b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const volatile my_complex &amp;src)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="82" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="82" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ab68f570d0f898d867c753de27b213a04" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION volatile my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const my_complex &amp;src) volatile</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="90" column="23" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="90" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ac8c93846b0981fc403d96736dd0ffbfc" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION volatile my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const volatile my_complex &amp;src) volatile</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="98" column="23" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="98" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ad2bb65f2fa1e0965937fe54ccda7368d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION TestTeamVectorRange::my_complex::my_complex</definition>
+        <argsstring>(const volatile my_complex &amp;src)</argsstring>
+        <name>my_complex</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::my_complex</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="106" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="106" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a70cd4e288073b283b9a734dc06d0f548" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION TestTeamVectorRange::my_complex::my_complex</definition>
+        <argsstring>(const double &amp;val)</argsstring>
+        <name>my_complex</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::my_complex</qualifiedname>
+        <param>
+          <type>const double &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="113" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="113" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ad1e70a881e332d2a2fb5a57ea333afe0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator+=</definition>
+        <argsstring>(const my_complex &amp;src)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator+=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="120" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="120" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a3ba0fc47dd88f97a1786e924b2990f8e" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestTeamVectorRange::my_complex::operator+=</definition>
+        <argsstring>(const volatile my_complex &amp;src) volatile</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator+=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="128" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="128" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ae344b53a7672de7eb685183dfa2efae0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex TestTeamVectorRange::my_complex::operator+</definition>
+        <argsstring>(const my_complex &amp;src)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator+</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="135" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="135" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a215efd3895c7c855df387a1ed57685a4" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex TestTeamVectorRange::my_complex::operator+</definition>
+        <argsstring>(const volatile my_complex &amp;src) volatile</argsstring>
+        <name>operator+</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator+</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="144" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="144" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a058b24537feb1a69ae2f2bde95454b12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator*=</definition>
+        <argsstring>(const my_complex &amp;src)</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator*=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="153" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="153" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a642218375cf4b4dfa1a225f26c59824a" prot="public" static="no" const="no" explicit="no" inline="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestTeamVectorRange::my_complex::operator*=</definition>
+        <argsstring>(const volatile my_complex &amp;src) volatile</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator*=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="163" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="163" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ade538797469004e3ee714d4f7af5c252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool TestTeamVectorRange::my_complex::operator==</definition>
+        <argsstring>(const my_complex &amp;src) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="172" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a479b5689d8263f3890633a4aeb24eaa6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool TestTeamVectorRange::my_complex::operator!=</definition>
+        <argsstring>(const my_complex &amp;src) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="177" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="177" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1ace0ac388a65f49c63740d9a7048d7417" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool TestTeamVectorRange::my_complex::operator!=</definition>
+        <argsstring>(const double &amp;val) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator!=</qualifiedname>
+        <param>
+          <type>const double &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="182" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="182" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1af4eb666b27b3e2aec27062034583ff85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const int &amp;val)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const int &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="187" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="187" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a35a76f472ea4d408b20259cd7f875935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_test_team_vector_range_1_1my__complex" kindref="compound">my_complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION my_complex &amp; TestTeamVectorRange::my_complex::operator=</definition>
+        <argsstring>(const double &amp;val)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator=</qualifiedname>
+        <param>
+          <type>const double &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="195" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="195" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_range_1_1my__complex_1a9090e5b437249dd6bdf4f415e1086569" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION TestTeamVectorRange::my_complex::operator double</definition>
+        <argsstring>()</argsstring>
+        <name>operator double</name>
+        <qualifiedname>TestTeamVectorRange::my_complex::operator double</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="203" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="203" bodyend="203"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVectorRange.hpp" bodystart="55" bodyend="204"/>
+    <listofallmembers>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a52575fbad70a138ab9df9f12e8313ee3" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>dummy</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ac6fb4f9cd6c151f1de0c48afbf40a318" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>im</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a79b15e0dd957367990e0053e1f1d3043" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>my_complex</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a3e9395db765b79cf07aa0c6905c54970" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>my_complex</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ad2bb65f2fa1e0965937fe54ccda7368d" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>my_complex</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a70cd4e288073b283b9a734dc06d0f548" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>my_complex</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a9090e5b437249dd6bdf4f415e1086569" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator double</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a479b5689d8263f3890633a4aeb24eaa6" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator!=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ace0ac388a65f49c63740d9a7048d7417" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator!=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a058b24537feb1a69ae2f2bde95454b12" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator*=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a642218375cf4b4dfa1a225f26c59824a" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator*=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ae344b53a7672de7eb685183dfa2efae0" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator+</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a215efd3895c7c855df387a1ed57685a4" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator+</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ad1e70a881e332d2a2fb5a57ea333afe0" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator+=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a3ba0fc47dd88f97a1786e924b2990f8e" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator+=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a149860f9ff649b7baa23f973de718ff8" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1afb5e990b7d38e565773ff8afcc26a1b2" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ab68f570d0f898d867c753de27b213a04" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ac8c93846b0981fc403d96736dd0ffbfc" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1af4eb666b27b3e2aec27062034583ff85" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1a35a76f472ea4d408b20259cd7f875935" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator=</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ade538797469004e3ee714d4f7af5c252" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>operator==</name></member>
+      <member refid="struct_test_team_vector_range_1_1my__complex_1ab99b9a52ce117ae9258d9a3f355ebdfa" prot="public" virt="non-virtual"><scope>TestTeamVectorRange::my_complex</scope><name>re</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

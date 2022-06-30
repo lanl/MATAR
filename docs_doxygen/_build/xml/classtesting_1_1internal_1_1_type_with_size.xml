@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_type_with_size" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::TypeWithSize</compoundname>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>size</declname>
+        <defname>size</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_type_with_size_1a3898640d9f6c1e18110eef90f47a5d7b" prot="public" static="no">
+        <type>void</type>
+        <definition>typedef void testing::internal::TypeWithSize&lt; size &gt;::UInt</definition>
+        <argsstring></argsstring>
+        <name>UInt</name>
+        <qualifiedname>testing::internal::TypeWithSize::UInt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2982" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2982" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtesting_1_1internal_1_1_type_with_size_1a3898640d9f6c1e18110eef90f47a5d7b" prot="public" static="no">
+        <type>void</type>
+        <definition>typedef void testing::internal::TypeWithSize&lt; size &gt;::UInt</definition>
+        <argsstring></argsstring>
+        <name>UInt</name>
+        <qualifiedname>testing::internal::TypeWithSize::UInt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2982" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2982" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2978" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2978" bodyend="2983"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_type_with_size_1a3898640d9f6c1e18110eef90f47a5d7b" prot="public" virt="non-virtual"><scope>testing::internal::TypeWithSize</scope><name>UInt</name></member>
+      <member refid="classtesting_1_1internal_1_1_type_with_size_1a3898640d9f6c1e18110eef90f47a5d7b" prot="public" virt="non-virtual"><scope>testing::internal::TypeWithSize</scope><name>UInt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

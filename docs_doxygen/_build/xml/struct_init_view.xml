@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_init_view" kind="struct" language="C++" prot="public">
+    <compoundname>InitView</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_init_view_1a525f43a1a0e3b7a8d0c575216a446d28" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>view_type InitView::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>InitView::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" line="75" column="13" bodyfile="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_init_view_1a1710cb288912fda59ddbff6aa8c258ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InitView::InitView</definition>
+        <argsstring>(view_type a_)</argsstring>
+        <name>InitView</name>
+        <qualifiedname>InitView::InitView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+          <declname>a_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" line="82" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_init_view_1ae1945ee05eb21002cbabc2a25c0260c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void InitView::operator()</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>InitView::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" line="87" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" bodystart="87" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>InitView</label>
+        <link refid="struct_init_view"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *[3]&gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" line="74" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/03_simple_view/simple_view.cpp" bodystart="74" bodyend="95"/>
+    <listofallmembers>
+      <member refid="struct_init_view_1a525f43a1a0e3b7a8d0c575216a446d28" prot="public" virt="non-virtual"><scope>InitView</scope><name>a</name></member>
+      <member refid="struct_init_view_1a1710cb288912fda59ddbff6aa8c258ce" prot="public" virt="non-virtual"><scope>InitView</scope><name>InitView</name></member>
+      <member refid="struct_init_view_1ae1945ee05eb21002cbabc2a25c0260c1" prot="public" virt="non-virtual"><scope>InitView</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

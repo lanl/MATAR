@@ -1,0 +1,593 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ReducerType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a4260b2a2c3d115e3b08b19adf22dbdab" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@253</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::@253</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a4260b2a2c3d115e3b08b19adf22dbdaba9f1cac8cebf636e8e74f5dd0d1945c71" prot="private">
+          <name>HasJoin</name>
+          <initializer>= ReduceFunctorHasJoin&lt;FunctorType&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="464" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="464" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a600785829dbccf4964e03492bbfde8ae" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@254</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::@254</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a600785829dbccf4964e03492bbfde8aea8b18dead863c4d9f86894dd7186b23e6" prot="private">
+          <name>UseReducer</name>
+          <initializer>= is_reducer_type&lt;ReducerType&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="465" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="465" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a1ba04fe2a612340e708ac533f8189df7" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Kokkos::MDRangePolicy</ref>&lt; Traits... &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::Policy =  Kokkos::MDRangePolicy&lt;Traits...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::Policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="445" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a7b7f556cde0f1ad83a5a88b49233e752" prot="private" static="no">
+        <type>typename Policy::work_tag</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::WorkTag =  typename Policy::work_tag</definition>
+        <argsstring></argsstring>
+        <name>WorkTag</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::WorkTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="447" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a842789729e7b3376d47bc28c82952bd1" prot="private" static="no">
+        <type>typename Policy::member_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::Member =  typename Policy::member_type</definition>
+        <argsstring></argsstring>
+        <name>Member</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::Member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="448" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="448" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a532b423d75a49ee6b54548d5cd2f616a" prot="private" static="no">
+        <type>std::conditional&lt; std::is_same&lt; <ref refid="struct_kokkos_1_1_invalid_type" kindref="compound">InvalidType</ref>, ReducerType &gt;::value, FunctorType, ReducerType &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ReducerConditional =  std::conditional&lt;std::is_same&lt;InvalidType, ReducerType&gt;::value, FunctorType, ReducerType&gt;</definition>
+        <argsstring></argsstring>
+        <name>ReducerConditional</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ReducerConditional</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="450" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="452" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1acac5ad64ca42dab2d4dcf0186728bfa7" prot="private" static="no">
+        <type>typename ReducerConditional::type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ReducerTypeFwd =  typename ReducerConditional::type</definition>
+        <argsstring></argsstring>
+        <name>ReducerTypeFwd</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ReducerTypeFwd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="453" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="453" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1ad26cd64a6651afd6f4d44da72bf936e5" prot="private" static="no">
+        <type>std::conditional_t&lt; std::is_same&lt; <ref refid="struct_kokkos_1_1_invalid_type" kindref="compound">InvalidType</ref>, ReducerType &gt;::value, WorkTag, void &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::WorkTagFwd =  std::conditional_t&lt;std::is_same&lt;InvalidType, ReducerType&gt;::value, WorkTag, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>WorkTagFwd</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::WorkTagFwd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="454" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adf273cc946bcb5378e7e1b0bc8b794f4" prot="private" static="no">
+        <type>Kokkos::Impl::FunctorValueTraits&lt; ReducerTypeFwd, WorkTagFwd &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ValueTraits =  Kokkos::Impl::FunctorValueTraits&lt;ReducerTypeFwd, WorkTagFwd&gt;</definition>
+        <argsstring></argsstring>
+        <name>ValueTraits</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ValueTraits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="458" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1abf0c31fa9a8478f31a63a82933590764" prot="private" static="no">
+        <type>typename ValueTraits::pointer_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::pointer_type =  typename ValueTraits::pointer_type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="461" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="461" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aea612c01818ee0fbb792258640fac17c" prot="private" static="no">
+        <type>typename ValueTraits::reference_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::reference_type =  typename ValueTraits::reference_type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="462" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="462" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aed77cccfd753210b8a104a072ff65c20" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_common" kindref="compound">ParallelReduceCommon</ref>&lt; pointer_type &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParReduceCommon =  ParallelReduceCommon&lt;pointer_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>ParReduceCommon</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParReduceCommon</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="472" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="472" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a854a5407961412073bd6540f7bd43620" prot="private" static="no" mutable="no">
+        <type>const pointer_type</type>
+        <definition>const pointer_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_result_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_result_ptr</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_result_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="467" column="22" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a2dc75ca9f3874a89a0b010f486bae491" prot="private" static="no" mutable="no">
+        <type>const FunctorType</type>
+        <definition>const FunctorType Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="468" column="21" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="468" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a98e38f82ad69617cb8ff318a2402fd34" prot="private" static="no" mutable="no">
+        <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref></type>
+        <definition>const Policy Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="469" column="16" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="469" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a88734138d8dd7a258dbdfecbb373972e" prot="private" static="no" mutable="no">
+        <type>const ReducerType</type>
+        <definition>const ReducerType Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_reducer</definition>
+        <argsstring></argsstring>
+        <name>m_reducer</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="470" column="21" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adc2ac7ad23a57620c99fbca6d2b3a63e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_result_ptr_on_device</definition>
+        <argsstring></argsstring>
+        <name>m_result_ptr_on_device</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::m_result_ptr_on_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="474" column="8" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="474" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1ac51d49874ddd95fb4de8eb9230f4b62c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute</definition>
+        <argsstring>() const</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="477" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="477" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a8f0c6ce70652446be3e729d5a13da55d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ViewType</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParallelReduce</definition>
+        <argsstring>(const FunctorType &amp;arg_functor, Policy arg_policy, const ViewType &amp;arg_result_view, typename std::enable_if&lt; Kokkos::is_view&lt; ViewType &gt;::value &amp;&amp;!Kokkos::is_reducer_type&lt; ReducerType &gt;::value, void * &gt;::type=NULL)</argsstring>
+        <name>ParallelReduce</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParallelReduce</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref></type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>const ViewType &amp;</type>
+          <declname>arg_result_view</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__view" kindref="compound">Kokkos::is_view</ref>&lt; ViewType &gt;::value &amp;&amp;!<ref refid="struct_kokkos_1_1is__reducer__type" kindref="compound">Kokkos::is_reducer_type</ref>&lt; ReducerType &gt;::value, void * &gt;::type</type>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="483" column="10" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="483" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1afddaf79655077f55bb03922adf1110c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParallelReduce</definition>
+        <argsstring>(const FunctorType &amp;arg_functor, Policy arg_policy, const ReducerType &amp;reducer)</argsstring>
+        <name>ParallelReduce</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::ParallelReduce</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref></type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>const ReducerType &amp;</type>
+          <declname>reducer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="497" column="10" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="497" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a4442af459b8e856e72aa01f9247b2928" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>==2 &gt;::type</type>
+        <definition>std::enable_if&lt; Rank==2 &gt;::type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</definition>
+        <argsstring>(const FunctorType &amp;functor, const Policy &amp;policy, pointer_type ptr) const</argsstring>
+        <name>execute_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="509" column="41" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="509" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a2d677eefc15460f2c522bf840d6290a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>==3 &gt;::type</type>
+        <definition>std::enable_if&lt; Rank==3 &gt;::type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</definition>
+        <argsstring>(const FunctorType &amp;functor, const Policy &amp;policy, pointer_type ptr) const</argsstring>
+        <name>execute_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="558" column="41" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="558" bodyend="610"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aa2bdda204f744e4c57b2a00f8ec87836" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>==4 &gt;::type</type>
+        <definition>std::enable_if&lt; Rank==4 &gt;::type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</definition>
+        <argsstring>(const FunctorType &amp;functor, const Policy &amp;policy, pointer_type ptr) const</argsstring>
+        <name>execute_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="613" column="41" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="613" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a7560709a6514b26adad80d17aa9a5c91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>==5 &gt;::type</type>
+        <definition>std::enable_if&lt; Rank==5 &gt;::type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</definition>
+        <argsstring>(const FunctorType &amp;functor, const Policy &amp;policy, pointer_type ptr) const</argsstring>
+        <name>execute_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="676" column="41" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="676" bodyend="744"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adc7ff5e874abaed3d770360083096f58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>Rank</declname>
+            <defname>Rank</defname>
+          </param>
+          <param>
+            <type>class ValueType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>==6 &gt;::type</type>
+        <definition>std::enable_if&lt; Rank==6 &gt;::type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</definition>
+        <argsstring>(const FunctorType &amp;functor, const Policy &amp;policy, pointer_type ptr) const</argsstring>
+        <name>execute_tile</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::execute_tile</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>pointer_type</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="747" column="41" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="747" bodyend="821"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aea2f9985e5615b2ca927f2a4b9c6dddb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>static int Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::max_tile_size_product</definition>
+        <argsstring>(const Policy &amp;, const Functor &amp;)</argsstring>
+        <name>max_tile_size_product</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;::max_tile_size_product</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_m_d_range_policy" kindref="compound">Policy</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="824" column="14" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="824" bodyend="826"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" line="442" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Parallel_MDRange.hpp" bodystart="443" bodyend="827"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1ac51d49874ddd95fb4de8eb9230f4b62c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a4442af459b8e856e72aa01f9247b2928" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_tile</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a2d677eefc15460f2c522bf840d6290a2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_tile</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aa2bdda204f744e4c57b2a00f8ec87836" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_tile</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a7560709a6514b26adad80d17aa9a5c91" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_tile</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adc7ff5e874abaed3d770360083096f58" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>execute_tile</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a4260b2a2c3d115e3b08b19adf22dbdaba9f1cac8cebf636e8e74f5dd0d1945c71" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>HasJoin</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a2dc75ca9f3874a89a0b010f486bae491" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a98e38f82ad69617cb8ff318a2402fd34" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a88734138d8dd7a258dbdfecbb373972e" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_reducer</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a854a5407961412073bd6540f7bd43620" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_result_ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adc2ac7ad23a57620c99fbca6d2b3a63e" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>m_result_ptr_on_device</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aea2f9985e5615b2ca927f2a4b9c6dddb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>max_tile_size_product</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a842789729e7b3376d47bc28c82952bd1" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>Member</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a8f0c6ce70652446be3e729d5a13da55d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ParallelReduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1afddaf79655077f55bb03922adf1110c9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ParallelReduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aed77cccfd753210b8a104a072ff65c20" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ParReduceCommon</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1abf0c31fa9a8478f31a63a82933590764" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>pointer_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a1ba04fe2a612340e708ac533f8189df7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>Policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a532b423d75a49ee6b54548d5cd2f616a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ReducerConditional</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1acac5ad64ca42dab2d4dcf0186728bfa7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ReducerTypeFwd</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1aea612c01818ee0fbb792258640fac17c" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a600785829dbccf4964e03492bbfde8aea8b18dead863c4d9f86894dd7186b23e6" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>UseReducer</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1adf273cc946bcb5378e7e1b0bc8b794f4" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>ValueTraits</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1a7b7f556cde0f1ad83a5a88b49233e752" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>WorkTag</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_m_d_range_policy_3_0bc5b2b6e3aeb6e90ba938c5eaab03f3_1ad26cd64a6651afd6f4d44da72bf936e5" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::MDRangePolicy&lt; Traits... &gt;, ReducerType, Kokkos::Experimental::OpenMPTarget &gt;</scope><name>WorkTagFwd</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

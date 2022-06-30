@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_team_vector_1_1functor__vec__red" kind="struct" language="C++" prot="public">
+    <compoundname>TestTeamVector::functor_vec_red</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__vec__red_1afecfccb123d27c8cbd96943f7224eb98" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;::policy_type =  Kokkos::TeamPolicy&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>TestTeamVector::functor_vec_red::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="540" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="540" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__vec__red_1a81d793b876d0d0e8fec016869d86a126" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestTeamVector::functor_vec_red::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="541" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="541" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_team_vector_1_1functor__vec__red_1ae5ac4d43b27afee7d11c87e12b80d186" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+        <definition>Kokkos::View&lt;int, Kokkos::LayoutLeft, ExecutionSpace&gt; TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;::flag</definition>
+        <argsstring></argsstring>
+        <name>flag</name>
+        <qualifiedname>TestTeamVector::functor_vec_red::flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="543" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__vec__red_1afcc0000937f8455b31c3ace20a6979d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;::functor_vec_red</definition>
+        <argsstring>(Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt; flag_)</argsstring>
+        <name>functor_vec_red</name>
+        <qualifiedname>TestTeamVector::functor_vec_red::functor_vec_red</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+          <declname>flag_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="545" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="545" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__vec__red_1a50c137ec3660caf185f7f7d4d6740f7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(typename policy_type::member_type team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestTeamVector::functor_vec_red::operator()</qualifiedname>
+        <param>
+          <type>typename policy_type::member_type</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="549" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="549" bodyend="569"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestTeamVector::functor_vec_red&lt; Scalar, ExecutionSpace &gt;</label>
+        <link refid="struct_test_team_vector_1_1functor__vec__red"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>flag</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="539" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="539" bodyend="570"/>
+    <listofallmembers>
+      <member refid="struct_test_team_vector_1_1functor__vec__red_1a81d793b876d0d0e8fec016869d86a126" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red</scope><name>execution_space</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red_1ae5ac4d43b27afee7d11c87e12b80d186" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red</scope><name>flag</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red_1afcc0000937f8455b31c3ace20a6979d7" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red</scope><name>functor_vec_red</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red_1a50c137ec3660caf185f7f7d4d6740f7b" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red</scope><name>operator()</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red_1afecfccb123d27c8cbd96943f7224eb98" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red</scope><name>policy_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

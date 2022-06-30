@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_map_operator" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewMapOperator</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1a81e901a54414d7922e676c3dc345e397" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@269</name>
+        <qualifiedname>Test::TestViewMapOperator::@269</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1a81e901a54414d7922e676c3dc345e397a8c7218cac86b3452fcaa0f6b41c8da90" prot="public">
+          <name>N0</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1179" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1179" bodyend="1179"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1ab26b578a07a78ccd3e39ba534e1b8856" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@270</name>
+        <qualifiedname>Test::TestViewMapOperator::@270</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1ab26b578a07a78ccd3e39ba534e1b8856a6b6e9cb73f9adfdbb4b123f350354171" prot="public">
+          <name>N1</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1180" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1180" bodyend="1180"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1afc1116d92d554aa54b61d9472091cc3e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@271</name>
+        <qualifiedname>Test::TestViewMapOperator::@271</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1afc1116d92d554aa54b61d9472091cc3ea8c5e37bd5247f66a501dbda80b301c70" prot="public">
+          <name>N2</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1181" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1181" bodyend="1181"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1a09d15dfaab3639fa2f19d83412db6675" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@272</name>
+        <qualifiedname>Test::TestViewMapOperator::@272</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1a09d15dfaab3639fa2f19d83412db6675a6cdb7d1acc9b00bcf8af32fcec878711" prot="public">
+          <name>N3</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1182" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1182" bodyend="1182"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1a1cfd1a84c0db61ab5b544c21827d1f54" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@273</name>
+        <qualifiedname>Test::TestViewMapOperator::@273</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1a1cfd1a84c0db61ab5b544c21827d1f54ae1e3cc7dce7d3369ae2ce5ff5246644e" prot="public">
+          <name>N4</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1183" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1183" bodyend="1183"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1af9ffd6f7c79b20d56d5c84d395055fd6" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@274</name>
+        <qualifiedname>Test::TestViewMapOperator::@274</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1af9ffd6f7c79b20d56d5c84d395055fd6a557410336a97cad7113ea29b42cab231" prot="public">
+          <name>N5</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1184" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1184" bodyend="1184"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1a627d5f9df9854748f668e51a8a5ea7b0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@275</name>
+        <qualifiedname>Test::TestViewMapOperator::@275</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1a627d5f9df9854748f668e51a8a5ea7b0a4319db0b30baf35c110e3b4fcd9a9210" prot="public">
+          <name>N6</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1185" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1185" bodyend="1185"/>
+      </memberdef>
+      <memberdef kind="enum" id="struct_test_1_1_test_view_map_operator_1af2b5dc9008fc4fd137b716a60bd3374e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@276</name>
+        <qualifiedname>Test::TestViewMapOperator::@276</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_map_operator_1af2b5dc9008fc4fd137b716a60bd3374ea9f749fa97344534076787984f3d6483a" prot="public">
+          <name>N7</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1186" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1186" bodyend="1186"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_map_operator_1a5af30f8a12db4c353bf3b5c2323a9103" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">ViewType</ref></type>
+        <definition>ViewType Test::TestViewMapOperator&lt; ViewType &gt;::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <qualifiedname>Test::TestViewMapOperator::v</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1106" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_map_operator_1adecb3769ae0e449fdceca4b4150393f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMapOperator&lt; ViewType &gt;::test_left</definition>
+        <argsstring>(size_t i0, int64_t &amp;error_count) const</argsstring>
+        <name>test_left</name>
+        <qualifiedname>Test::TestViewMapOperator::test_left</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>int64_t &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1109" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1109" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_map_operator_1a3118a155d7ebbe766a5fd9e2f174361e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMapOperator&lt; ViewType &gt;::test_right</definition>
+        <argsstring>(size_t i0, int64_t &amp;error_count) const</argsstring>
+        <name>test_right</name>
+        <qualifiedname>Test::TestViewMapOperator::test_right</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>int64_t &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1139" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1139" bodyend="1166"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_map_operator_1a8834504bfafcbeb004c952276020d5c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewMapOperator&lt; ViewType &gt;::operator()</definition>
+        <argsstring>(size_t i, int64_t &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewMapOperator::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int64_t &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1169" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1169" bodyend="1177"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_map_operator_1a642448cfde14514b8792525d0a055681" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewMapOperator&lt; ViewType &gt;::TestViewMapOperator</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewMapOperator</name>
+        <qualifiedname>Test::TestViewMapOperator::TestViewMapOperator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1188" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1188" bodyend="1203"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_map_operator_1aa851bc7bbfbf46961181c3007a79ed23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestViewMapOperator&lt; ViewType &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewMapOperator::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1205" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1205" bodyend="1232"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewMapOperator&lt; ViewType &gt;</label>
+        <link refid="struct_test_1_1_test_view_map_operator"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>v</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double * &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" line="1102" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewMapping_a.hpp" bodystart="1102" bodyend="1233"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_map_operator_1a81e901a54414d7922e676c3dc345e397a8c7218cac86b3452fcaa0f6b41c8da90" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N0</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1ab26b578a07a78ccd3e39ba534e1b8856a6b6e9cb73f9adfdbb4b123f350354171" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N1</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1afc1116d92d554aa54b61d9472091cc3ea8c5e37bd5247f66a501dbda80b301c70" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N2</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a09d15dfaab3639fa2f19d83412db6675a6cdb7d1acc9b00bcf8af32fcec878711" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N3</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a1cfd1a84c0db61ab5b544c21827d1f54ae1e3cc7dce7d3369ae2ce5ff5246644e" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N4</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1af9ffd6f7c79b20d56d5c84d395055fd6a557410336a97cad7113ea29b42cab231" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N5</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a627d5f9df9854748f668e51a8a5ea7b0a4319db0b30baf35c110e3b4fcd9a9210" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N6</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1af2b5dc9008fc4fd137b716a60bd3374ea9f749fa97344534076787984f3d6483a" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>N7</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a8834504bfafcbeb004c952276020d5c8" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1aa851bc7bbfbf46961181c3007a79ed23" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1adecb3769ae0e449fdceca4b4150393f9" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>test_left</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a3118a155d7ebbe766a5fd9e2f174361e" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>test_right</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a642448cfde14514b8792525d0a055681" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>TestViewMapOperator</name></member>
+      <member refid="struct_test_1_1_test_view_map_operator_1a5af30f8a12db4c353bf3b5c2323a9103" prot="public" virt="non-virtual"><scope>Test::TestViewMapOperator</scope><name>v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

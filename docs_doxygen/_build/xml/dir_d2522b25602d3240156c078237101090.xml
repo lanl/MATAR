@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_d2522b25602d3240156c078237101090" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/perf_test</compoundname>
+    <innerfile refid="_perf_test___category_8hpp">PerfTest_Category.hpp</innerfile>
+    <innerfile refid="_perf_test___custom_reduction_8cpp">PerfTest_CustomReduction.cpp</innerfile>
+    <innerfile refid="_perf_test___exec_space_partitioning_8cpp">PerfTest_ExecSpacePartitioning.cpp</innerfile>
+    <innerfile refid="_perf_test___view_allocate_8cpp">PerfTest_ViewAllocate.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy_8hpp">PerfTest_ViewCopy.hpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__a123_8cpp">PerfTest_ViewCopy_a123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__a45_8cpp">PerfTest_ViewCopy_a45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__a6_8cpp">PerfTest_ViewCopy_a6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__a7_8cpp">PerfTest_ViewCopy_a7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__a8_8cpp">PerfTest_ViewCopy_a8.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__b123_8cpp">PerfTest_ViewCopy_b123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__b45_8cpp">PerfTest_ViewCopy_b45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__b6_8cpp">PerfTest_ViewCopy_b6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__b7_8cpp">PerfTest_ViewCopy_b7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__b8_8cpp">PerfTest_ViewCopy_b8.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__c123_8cpp">PerfTest_ViewCopy_c123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__c45_8cpp">PerfTest_ViewCopy_c45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__c6_8cpp">PerfTest_ViewCopy_c6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__c7_8cpp">PerfTest_ViewCopy_c7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__c8_8cpp">PerfTest_ViewCopy_c8.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__d123_8cpp">PerfTest_ViewCopy_d123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__d45_8cpp">PerfTest_ViewCopy_d45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__d6_8cpp">PerfTest_ViewCopy_d6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__d7_8cpp">PerfTest_ViewCopy_d7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_copy__d8_8cpp">PerfTest_ViewCopy_d8.cpp</innerfile>
+    <innerfile refid="_perf_test___view_fill_8hpp">PerfTest_ViewFill.hpp</innerfile>
+    <innerfile refid="_perf_test___view_fill__123_8cpp">PerfTest_ViewFill_123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_fill__45_8cpp">PerfTest_ViewFill_45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_fill__6_8cpp">PerfTest_ViewFill_6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_fill__7_8cpp">PerfTest_ViewFill_7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_fill__8_8cpp">PerfTest_ViewFill_8.cpp</innerfile>
+    <innerfile refid="_perf_test___view_resize_8hpp">PerfTest_ViewResize.hpp</innerfile>
+    <innerfile refid="_perf_test___view_resize__123_8cpp">PerfTest_ViewResize_123.cpp</innerfile>
+    <innerfile refid="_perf_test___view_resize__45_8cpp">PerfTest_ViewResize_45.cpp</innerfile>
+    <innerfile refid="_perf_test___view_resize__6_8cpp">PerfTest_ViewResize_6.cpp</innerfile>
+    <innerfile refid="_perf_test___view_resize__7_8cpp">PerfTest_ViewResize_7.cpp</innerfile>
+    <innerfile refid="_perf_test___view_resize__8_8cpp">PerfTest_ViewResize_8.cpp</innerfile>
+    <innerfile refid="_perf_test_blas_kernels_8hpp">PerfTestBlasKernels.hpp</innerfile>
+    <innerfile refid="_perf_test_driver_8hpp">PerfTestDriver.hpp</innerfile>
+    <innerfile refid="_perf_test_gram_schmidt_8cpp">PerfTestGramSchmidt.cpp</innerfile>
+    <innerfile refid="_perf_test_hex_grad_8cpp">PerfTestHexGrad.cpp</innerfile>
+    <innerfile refid="_perf_test_main_8cpp">PerfTestMain.cpp</innerfile>
+    <innerfile refid="_perf_test_m_d_range_8hpp">PerfTestMDRange.hpp</innerfile>
+    <innerfile refid="test__atomic_8cpp">test_atomic.cpp</innerfile>
+    <innerfile refid="test__atomic__minmax__simple_8cpp">test_atomic_minmax_simple.cpp</innerfile>
+    <innerfile refid="test__mempool_8cpp">test_mempool.cpp</innerfile>
+    <innerfile refid="test__taskdag_8cpp">test_taskdag.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/perf_test/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structcollision" kind="struct" language="C++" prot="public">
+    <compoundname>collision</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structcollision_1aa6663c6f8adf5db2bc1c5ec568b85caf" prot="public" static="no">
+        <type>int</type>
+        <definition>using collision::value_type =  int</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>collision::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structcollision_1a135af79780a4ad598d709d966dc0f5cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int collision::hash</definition>
+        <argsstring>(int q) const</argsstring>
+        <name>hash</name>
+        <qualifiedname>collision::hash</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" line="66" column="7" bodyfile="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" bodystart="66" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structcollision_1a5b19841dbba15a55f7fe96398c6d7e75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void collision::operator()</definition>
+        <argsstring>(const int i, int &amp;lsum) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>collision::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>lsum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" line="78" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" bodystart="78" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" line="55" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/launch_bounds/launch_bounds_reduce.cpp" bodystart="55" bodyend="138"/>
+    <listofallmembers>
+      <member refid="structcollision_1a135af79780a4ad598d709d966dc0f5cf" prot="public" virt="non-virtual"><scope>collision</scope><name>hash</name></member>
+      <member refid="structcollision_1a5b19841dbba15a55f7fe96398c6d7e75" prot="public" virt="non-virtual"><scope>collision</scope><name>operator()</name></member>
+      <member refid="structcollision_1aa6663c6f8adf5db2bc1c5ec568b85caf" prot="public" virt="non-virtual"><scope>collision</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

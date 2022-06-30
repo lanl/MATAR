@@ -1,0 +1,2781 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_dyn_rank_view" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::DynRankView</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_view_traits" prot="public" virt="non-virtual">Kokkos::ViewTraits&lt; DataType, Properties... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename DataType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_dyn_rank_view_1a6b5c53850f386fe797bd8e764af54cde" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@18</name>
+        <qualifiedname>Kokkos::DynRankView::@18</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_dyn_rank_view_1a6b5c53850f386fe797bd8e764af54cdea397cf314ef4c5e594c152beb9353abe6" prot="public">
+          <name>reference_type_is_lvalue_reference</name>
+          <initializer>=
+        std::is_lvalue_reference&lt;reference_type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="534" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="534" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a1822a252f75ad51725f43b277a68e5fd" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; DataType, Properties... &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::drvtraits =  ViewTraits&lt;DataType, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>drvtraits</name>
+        <qualifiedname>Kokkos::DynRankView::drvtraits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="418" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="418" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a465148147b2ca37a5689fc9c392ec5b8" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; DataType *******, Properties... &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::view_type =  View&lt;DataType*******, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Kokkos::DynRankView::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="420" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1acea324b77bde0462d892308396167d80" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; DataType *******, Properties... &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::traits =  ViewTraits&lt;DataType*******, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::DynRankView::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="422" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="422" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a3edcc52b6578b1480a741375c3427205" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; typename drvtraits::scalar_array_type, typename drvtraits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">drvtraits::device_type</ref>, typename drvtraits::memory_traits &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::array_type =  DynRankView&lt; typename drvtraits::scalar_array_type, typename drvtraits::array_layout, typename drvtraits::device_type, typename drvtraits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>array_type</name>
+        <qualifiedname>Kokkos::DynRankView::array_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of array of scalar types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="443" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a186ab0069dbf5cbdbaca9abe672b98ac" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; typename drvtraits::const_data_type, typename drvtraits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">drvtraits::device_type</ref>, typename drvtraits::memory_traits &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::const_type =  DynRankView&lt; typename drvtraits::const_data_type, typename drvtraits::array_layout, typename drvtraits::device_type, typename drvtraits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>const_type</name>
+        <qualifiedname>Kokkos::DynRankView::const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="448" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="450" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1ab959df0397f29f6cbebf5ecff93ab307" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; typename drvtraits::non_const_data_type, typename drvtraits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">drvtraits::device_type</ref>, typename drvtraits::memory_traits &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::non_const_type =  DynRankView&lt; typename drvtraits::non_const_data_type, typename drvtraits::array_layout, typename drvtraits::device_type, typename drvtraits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>non_const_type</name>
+        <qualifiedname>Kokkos::DynRankView::non_const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of non-const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="453" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="455" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1ad104711489c616676778d8f18f7ea9f0" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; typename drvtraits::non_const_data_type, typename drvtraits::array_layout, typename drvtraits::host_mirror_space &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::HostMirror =  DynRankView&lt;typename drvtraits::non_const_data_type, typename drvtraits::array_layout, typename drvtraits::host_mirror_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>HostMirror</name>
+        <qualifiedname>Kokkos::DynRankView::HostMirror</qualifiedname>
+        <briefdescription>
+<para>Compatible HostMirror view. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="458" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="460" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a1fcdcd845d9cefae5e45e48c48c7cc21" prot="public" static="no">
+        <type>typename map_type::reference_type</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::reference_type =  typename map_type::reference_type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::DynRankView::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="531" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a775eb20f301081d8c8df4326705fc4f0" prot="public" static="no">
+        <type>typename map_type::pointer_type</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::pointer_type =  typename map_type::pointer_type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::DynRankView::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="532" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cf" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@19</name>
+        <qualifiedname>Kokkos::DynRankView::@19</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa052c170056d3c877732d4f9d3afb7a3e" prot="private">
+          <name>is_layout_left</name>
+          <initializer>=
+        std::is_same&lt;typename traits::array_layout, Kokkos::LayoutLeft&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa2615a3d9e74de89c017c9ce22605f210" prot="private">
+          <name>is_layout_right</name>
+          <initializer>=
+        std::is_same&lt;typename traits::array_layout, Kokkos::LayoutRight&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfada376d30935d4916b902e251adb642aa" prot="private">
+          <name>is_layout_stride</name>
+          <initializer>= std::is_same&lt;typename traits::array_layout,
+                                    Kokkos::LayoutStride&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa2276b09deb781fc66bcd6e260fb349fc" prot="private">
+          <name>is_default_map</name>
+          <initializer>= std::is_same&lt;typename traits::specialize, void&gt;::value &amp;&amp;
+                     (is_layout_left || is_layout_right || is_layout_stride)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="561" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="561" bodyend="573"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a53ae777713e02b61b878e858237e74c7" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">traits</ref>, typename traits::specialize &gt;</type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::map_type =  Kokkos::Impl::ViewMapping&lt;traits, typename traits::specialize&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>Kokkos::DynRankView::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="425" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_dyn_rank_view_1a1923a877cd6fdddd716dc2fa01a27a68" prot="private" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::DynRankView&lt; DataType, Properties &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::DynRankView::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="427" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_dyn_rank_view_1a47420bf415e4f34c14f7382f64153f1c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class DynRankView</definition>
+        <argsstring></argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="413" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_dyn_rank_view_1ab9e6ee44c568ed59747cda3c47f017e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class Kokkos::Impl::ViewMapping</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::ViewMapping</name>
+        <qualifiedname>Kokkos::DynRankView::ViewMapping</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="415" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="415" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_dyn_rank_view_1af4d94dfa7e2f3d7064ae6042366a5554" prot="private" static="no" mutable="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref></type>
+        <definition>track_type Kokkos::DynRankView&lt; DataType, Properties &gt;::m_track</definition>
+        <argsstring></argsstring>
+        <name>m_track</name>
+        <qualifiedname>Kokkos::DynRankView::m_track</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="429" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_dyn_rank_view_1a870d0473f63fe0c9a11e0b82a335e399" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">map_type</ref></type>
+        <definition>map_type Kokkos::DynRankView&lt; DataType, Properties &gt;::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>Kokkos::DynRankView::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="430" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_dyn_rank_view_1a898acbae784aaac4f43f51ff8c41798d" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::DynRankView&lt; DataType, Properties &gt;::m_rank</definition>
+        <argsstring></argsstring>
+        <name>m_rank</name>
+        <qualifiedname>Kokkos::DynRankView::m_rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="431" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aaa2556eb384f7f536b9f44689bc74c7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION view_type &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::DownCast</definition>
+        <argsstring>() const</argsstring>
+        <name>DownCast</name>
+        <qualifiedname>Kokkos::DynRankView::DownCast</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="435" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="435" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad7a00f6b7ecee172c455ffa3fea48682" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const view_type &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::ConstDownCast</definition>
+        <argsstring>() const</argsstring>
+        <name>ConstDownCast</name>
+        <qualifiedname>Kokkos::DynRankView::ConstDownCast</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="437" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="437" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1abb63e2b219f23c6c030e7fcae22f40a7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::extent</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent</name>
+        <qualifiedname>Kokkos::DynRankView::extent</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="471" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="471" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1af38760c08726ed4ecd240611d6fbf1cd" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::extent_int</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent_int</name>
+        <qualifiedname>Kokkos::DynRankView::extent_int</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="478" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="478" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a35a7d59b025db1f3e1320d1f4bc5608a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr traits::array_layout</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr traits::array_layout Kokkos::DynRankView&lt; DataType, Properties &gt;::layout</definition>
+        <argsstring>() const</argsstring>
+        <name>layout</name>
+        <qualifiedname>Kokkos::DynRankView::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="482" column="66" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="482" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a0829af4239b591cb234201b6f81b9adb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::DynRankView::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="492" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="492" bodyend="496"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a7a1ebc12927bf31481d7a0836442f350" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_0</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_0</name>
+        <qualifiedname>Kokkos::DynRankView::stride_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="498" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="498" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a66c086bcb8f7480c3b8644ea25e36011" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_1</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_1</name>
+        <qualifiedname>Kokkos::DynRankView::stride_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="501" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="501" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1af90496c8ae9638bf2abe9accf2135d48" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_2</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_2</name>
+        <qualifiedname>Kokkos::DynRankView::stride_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="504" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="504" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aa0668f254481bd835909d3c3e5ad0879" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_3</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_3</name>
+        <qualifiedname>Kokkos::DynRankView::stride_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="507" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="507" bodyend="509"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1abedee5af8d3eb1d765f6b58807020dcb" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_4</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_4</name>
+        <qualifiedname>Kokkos::DynRankView::stride_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="510" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="510" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aed3a814d66c4e99c4b7f133e82288994" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_5</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_5</name>
+        <qualifiedname>Kokkos::DynRankView::stride_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="513" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="513" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a8a01a80310f7f10be5a3398ad2fc3cab" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_6</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_6</name>
+        <qualifiedname>Kokkos::DynRankView::stride_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="516" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="516" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a96fa6b5ee4ce23733961cca0bf5660bd" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::stride_7</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_7</name>
+        <qualifiedname>Kokkos::DynRankView::stride_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="519" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="519" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1abed06b7b4ca671c77a2921c87a3572fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::DynRankView&lt; DataType, Properties &gt;::stride</definition>
+        <argsstring>(iType *const s) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::DynRankView::stride</qualifiedname>
+        <param>
+          <type>iType *const</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="524" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="524" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad0d84ff7c821e5a55ec1869f8def8698" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::DynRankView::span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="539" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="539" bodyend="539"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a2b34350f063b88ca874fd76ef21b8ccd" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::DynRankView&lt; DataType, Properties &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::DynRankView::span_is_contiguous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="540" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="540" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a42adac4bfaaa553cfaeb2128aa44244f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr pointer_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr pointer_type Kokkos::DynRankView&lt; DataType, Properties &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::DynRankView::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="543" column="49" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="543" bodyend="545"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1afaf24846b0500ecb59661c10563789df" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::DynRankView&lt; DataType, Properties &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::DynRankView::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="546" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="546" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ac1e7d7bcffb329d0ca020b62e55b63e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const <ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">traits</ref>, typename traits::specialize &gt; &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const Kokkos::Impl::ViewMapping&lt; traits, typename traits::specialize &gt; &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::impl_map</definition>
+        <argsstring>() const</argsstring>
+        <name>impl_map</name>
+        <qualifiedname>Kokkos::DynRankView::impl_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="554" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="554" bodyend="556"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad2d6454bdeb0b8013dc701821890a2f0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr unsigned</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr unsigned Kokkos::DynRankView&lt; DataType, Properties &gt;::rank</definition>
+        <argsstring>() const</argsstring>
+        <name>rank</name>
+        <qualifiedname>Kokkos::DynRankView::rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="596" column="22" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="596" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a6c5368a7fa5a5bdc2be55cbd6c3583c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION reference_type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>() const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="601" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="601" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a0fe99127e31391af63f162755ec76715" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_same&lt; typenamedrvtraits::value_type, typenamedrvtraits::scalar_array_type &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value, reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_same&lt; typenamedrvtraits::value_type, typenamedrvtraits::scalar_array_type &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value, reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator[]</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::DynRankView::operator[]</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="616" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="616" bodyend="621"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a331ef1894b962e7b3840f7acd88d0aeb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!std::is_same&lt; typenamedrvtraits::value_type, typenamedrvtraits::scalar_array_type &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value, reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!std::is_same&lt; typenamedrvtraits::value_type, typenamedrvtraits::scalar_array_type &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value, reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator[]</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::DynRankView::operator[]</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="631" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="631" bodyend="643"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a8e2a6e186182c2f32465e36e2ace3c4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="651" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="651" bodyend="654"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a3da2441fb7408f0dc9583feeec4c14b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="661" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="661" bodyend="664"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a253385a22ffae1b3f44e7f2aaba90930" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="672" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="672" bodyend="675"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad1946ba1c01c4a3251cfe47670e1e112" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="682" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="682" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a11c378b5769abaf0ca87a12dd7ab9c77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="694" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="694" bodyend="698"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a21c03f8a59e92a13fa21c35603dd5928" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="705" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="705" bodyend="709"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ab305d60e86acfc25d4c27cd3a5474fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="718" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="718" bodyend="723"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a7314ef5254b13eb81f76a603833b5659" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="730" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="730" bodyend="735"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad6ecebfa0a2d72f3aa131f80ba235c18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="746" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="746" bodyend="751"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a6be412c1ac093576718b69e0b84f41fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="759" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="759" bodyend="764"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a4343075f7f226c5514b706398ba0ad1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="775" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="775" bodyend="780"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ae5499dfb97d6ec8bd289422ea06cb75c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="788" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="788" bodyend="793"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a78a2be745921b82caea9f6d299196f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+          <param>
+            <type>typename iType6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value &amp;&amp;std::is_integral&lt; iType6 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value &amp;&amp;std::is_integral&lt; iType6 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5, const iType6 &amp;i6) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::DynRankView::operator()</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const iType6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="804" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="804" bodyend="810"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1abf9ccfe66e3a695ac1a1bec671583b32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION reference_type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>() const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="814" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="814" bodyend="818"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a6fd0a0f157bc26ba2f0aec47f7dfd6e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="827" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="827" bodyend="830"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a68e4235f816441fdabe5dd00622abd57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType &amp;i0) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="837" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="837" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a98d1eaf9949dfee53ea6e6df6e52c68b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="848" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="848" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a819da713e92aeed1abf138d62a413a10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="858" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="858" bodyend="861"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aa3417b7fabef2ce9ca6bd74940dded7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="870" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="870" bodyend="874"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a37ddd955c555ce871eb34e5acc14f17b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="881" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="881" bodyend="885"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a27ec05449e38edcd32edfc4c88dc30b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="894" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="894" bodyend="899"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1af3c411e17d881d3ba4e79e5f9957b3b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="906" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="906" bodyend="911"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a5e7224033843f6f5f7704559e9eab429" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="922" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="922" bodyend="927"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a901822d12fb1cc0284ba4c757471a77f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="935" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="935" bodyend="940"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1af8477113969ee31f32f4dc00ce16abff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_same&lt; typenametraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="951" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="951" bodyend="956"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aa842170eeb4d4d0876dc96111e2aa94e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;!(std::is_same&lt; typenamedrvtraits::specialize, void &gt;::value &amp;&amp;std::is_integral&lt; iType0 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="964" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="964" bodyend="969"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ac786e25a938fff9ea46870eba54fd024" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType0</type>
+          </param>
+          <param>
+            <type>typename iType1</type>
+          </param>
+          <param>
+            <type>typename iType2</type>
+          </param>
+          <param>
+            <type>typename iType3</type>
+          </param>
+          <param>
+            <type>typename iType4</type>
+          </param>
+          <param>
+            <type>typename iType5</type>
+          </param>
+          <param>
+            <type>typename iType6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value &amp;&amp;std::is_integral&lt; iType6 &gt;::value), reference_type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt;(std::is_integral&lt; iType0 &gt;::value &amp;&amp;std::is_integral&lt; iType1 &gt;::value &amp;&amp;std::is_integral&lt; iType2 &gt;::value &amp;&amp;std::is_integral&lt; iType3 &gt;::value &amp;&amp;std::is_integral&lt; iType4 &gt;::value &amp;&amp;std::is_integral&lt; iType5 &gt;::value &amp;&amp;std::is_integral&lt; iType6 &gt;::value), reference_type &gt;::type Kokkos::DynRankView&lt; DataType, Properties &gt;::access</definition>
+        <argsstring>(const iType0 &amp;i0, const iType1 &amp;i1, const iType2 &amp;i2, const iType3 &amp;i3, const iType4 &amp;i4, const iType5 &amp;i5, const iType6 &amp;i6) const</argsstring>
+        <name>access</name>
+        <qualifiedname>Kokkos::DynRankView::access</qualifiedname>
+        <param>
+          <type>const iType0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const iType1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const iType2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const iType3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const iType4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const iType5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const iType6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="980" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="980" bodyend="985"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad5fae50973d9ca8ef5a8cfae9cb5a446" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::~DynRankView</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::~DynRankView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="993" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aaec0ace83d09e0b865750480781c1438" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>()</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="996" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="996" bodyend="996"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aa9e3d4db9dc99284b682630a046a1b2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const DynRankView &amp;rhs)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="999" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="999" bodyend="1000"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a4c9a35e628cb9acc0e7d73596cf0862d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(DynRankView &amp;&amp;rhs)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1003" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1003" bodyend="1004"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a7808d862219a71d76f60131deb342241" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynRankView &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(const DynRankView &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::DynRankView::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1007" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1007" bodyend="1012"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1acf3354385d8c6f7ca01cdca1adbecbbc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynRankView &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(DynRankView &amp;&amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::DynRankView::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1015" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1015" bodyend="1020"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a3f06d5f2545a8b70ee89f7c5b65b2abe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const DynRankView&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1026" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1026" bodyend="1034"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad3c66c207e054efbd561e7bda93735a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynRankView &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(const DynRankView&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::DynRankView::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1037" column="38" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1037" bodyend="1048"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad3c5e844019be3e8fa042ad69dccd94e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1052" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1052" bodyend="1061"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a2ec521d21eea80f902e673d81b8b0395" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_dyn_rank_view" kindref="compound">DynRankView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION DynRankView &amp; Kokkos::DynRankView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::DynRankView::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1064" column="38" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1064" bodyend="1073"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ae7c7d9c6c420e06995b1786df8bc8b70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::DynRankView&lt; DataType, Properties &gt;::use_count</definition>
+        <argsstring>() const</argsstring>
+        <name>use_count</name>
+        <qualifiedname>Kokkos::DynRankView::use_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1079" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1079" bodyend="1079"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ab0c375e320feccf64f0ecea55adef34b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string Kokkos::DynRankView&lt; DataType, Properties &gt;::label</definition>
+        <argsstring>() const</argsstring>
+        <name>label</name>
+        <qualifiedname>Kokkos::DynRankView::label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1081" column="28" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1081" bodyend="1083"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aa7362cc564484c682b0ebf17a4ab7b4c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt;!Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;arg_layout)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt;!<ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1090" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1090" bodyend="1166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a3d9221058cefda205cce1d239a903fc2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt; Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;arg_layout)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1170" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1170" bodyend="1188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a0a3b667590f3f36a12d37594d1a4c923" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt;!Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, size_t &gt;::type const arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt;!<ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, size_t &gt;::type const</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1195" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1195" bodyend="1208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ac4e2d5176e646d90add839ff4000ab59" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt; Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, size_t &gt;::type const arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, size_t &gt;::type const</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1211" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1211" bodyend="1224"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a9e5d4eef9686a4829f6a899273a33520" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Label</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Label &amp;arg_label, typename std::enable_if&lt; Kokkos::Impl::is_view_label&lt; Label &gt;::value, typename traits::array_layout &gt;::type const &amp;arg_layout)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const Label &amp;</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1is__view__label" kindref="compound">Kokkos::Impl::is_view_label</ref>&lt; Label &gt;::value, typename traits::array_layout &gt;::type const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1228" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1228" bodyend="1234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a7bcebd40ddbd729515e89e27c94e06d8" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Label</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const Label &amp;arg_label, typename std::enable_if&lt; Kokkos::Impl::is_view_label&lt; Label &gt;::value, const size_t &gt;::type arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const Label &amp;</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1is__view__label" kindref="compound">Kokkos::Impl::is_view_label</ref>&lt; Label &gt;::value, const size_t &gt;::type</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1238" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1238" bodyend="1252"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a11aad47a83005ea2c7348376f00d958e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(pointer_type arg_ptr, const size_t arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>pointer_type</type>
+          <declname>arg_ptr</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1264" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1264" bodyend="1274"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1ad73405673f7fd940d6a3fd5383c45744" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(pointer_type arg_ptr, typename traits::array_layout &amp;arg_layout)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>pointer_type</type>
+          <declname>arg_ptr</declname>
+        </param>
+        <param>
+          <type>typename traits::array_layout &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1276" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1276" bodyend="1279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a204af4d24717c2815ed7cac319be1a11" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const typename traits::execution_space::scratch_memory_space &amp;arg_space, const typename traits::array_layout &amp;arg_layout)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space::scratch_memory_space &amp;</type>
+          <declname>arg_space</declname>
+        </param>
+        <param>
+          <type>const typename traits::array_layout &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1309" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1309" bodyend="1319"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1aaa5e7d4d2455b02d537f9e650ed4f62f" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::DynRankView&lt; DataType, Properties &gt;::DynRankView</definition>
+        <argsstring>(const typename traits::execution_space::scratch_memory_space &amp;arg_space, const size_t arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>DynRankView</name>
+        <qualifiedname>Kokkos::DynRankView::DynRankView</qualifiedname>
+        <param>
+          <type>const typename traits::execution_space::scratch_memory_space &amp;</type>
+          <declname>arg_space</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1321" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1321" bodyend="1341"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a4ec99145771f833832a67aaa37a82478" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>static constexpr size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::required_allocation_size</definition>
+        <argsstring>(const size_t arg_N0=0, const size_t arg_N1=0, const size_t arg_N2=0, const size_t arg_N3=0, const size_t arg_N4=0, const size_t arg_N5=0, const size_t arg_N6=0, const size_t arg_N7=0)</argsstring>
+        <name>required_allocation_size</name>
+        <qualifiedname>Kokkos::DynRankView::required_allocation_size</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N0</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1256" column="27" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1256" bodyend="1262"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_dyn_rank_view_1a7b5eb247a7e22d114d3d5800770187cb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>static size_t Kokkos::DynRankView&lt; DataType, Properties &gt;::shmem_size</definition>
+        <argsstring>(const size_t arg_N0=KOKKOS_INVALID_INDEX, const size_t arg_N1=KOKKOS_INVALID_INDEX, const size_t arg_N2=KOKKOS_INVALID_INDEX, const size_t arg_N3=KOKKOS_INVALID_INDEX, const size_t arg_N4=KOKKOS_INVALID_INDEX, const size_t arg_N5=KOKKOS_INVALID_INDEX, const size_t arg_N6=KOKKOS_INVALID_INDEX, const size_t arg_N7=KOKKOS_INVALID_INDEX)</argsstring>
+        <name>shmem_size</name>
+        <qualifiedname>Kokkos::DynRankView::shmem_size</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N0</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N1</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N2</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N3</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N4</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N5</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N6</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>arg_N7</declname>
+          <defval>KOKKOS_INVALID_INDEX</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1284" column="24" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1284" bodyend="1307"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::DynRankView&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_dyn_rank_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::DynRankView&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_dyn_rank_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="405" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="405" bodyend="1342"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1abf9ccfe66e3a695ac1a1bec671583b32" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a6fd0a0f157bc26ba2f0aec47f7dfd6e9" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a68e4235f816441fdabe5dd00622abd57" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a98d1eaf9949dfee53ea6e6df6e52c68b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a819da713e92aeed1abf138d62a413a10" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aa3417b7fabef2ce9ca6bd74940dded7a" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a37ddd955c555ce871eb34e5acc14f17b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a27ec05449e38edcd32edfc4c88dc30b4" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1af3c411e17d881d3ba4e79e5f9957b3b0" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a5e7224033843f6f5f7704559e9eab429" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a901822d12fb1cc0284ba4c757471a77f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1af8477113969ee31f32f4dc00ce16abff" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aa842170eeb4d4d0876dc96111e2aa94e" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ac786e25a938fff9ea46870eba54fd024" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>access</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a3edcc52b6578b1480a741375c3427205" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>array_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a186ab0069dbf5cbdbaca9abe672b98ac" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad7a00f6b7ecee172c455ffa3fea48682" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>ConstDownCast</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a42adac4bfaaa553cfaeb2128aa44244f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>data</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>dimension</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aaa2556eb384f7f536b9f44689bc74c7c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DownCast</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a1822a252f75ad51725f43b277a68e5fd" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>drvtraits</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a47420bf415e4f34c14f7382f64153f1c" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aaec0ace83d09e0b865750480781c1438" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aa9e3d4db9dc99284b682630a046a1b2c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a4c9a35e628cb9acc0e7d73596cf0862d" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a3f06d5f2545a8b70ee89f7c5b65b2abe" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad3c5e844019be3e8fa042ad69dccd94e" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aa7362cc564484c682b0ebf17a4ab7b4c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a3d9221058cefda205cce1d239a903fc2" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a0a3b667590f3f36a12d37594d1a4c923" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ac4e2d5176e646d90add839ff4000ab59" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a9e5d4eef9686a4829f6a899273a33520" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a7bcebd40ddbd729515e89e27c94e06d8" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a11aad47a83005ea2c7348376f00d958e" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad73405673f7fd940d6a3fd5383c45744" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a204af4d24717c2815ed7cac319be1a11" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aaa5e7d4d2455b02d537f9e650ed4f62f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>DynRankView</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1abb63e2b219f23c6c030e7fcae22f40a7" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1af38760c08726ed4ecd240611d6fbf1cd" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>extent_int</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1adb25197c9f561855af9dce11ae625f1c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad104711489c616676778d8f18f7ea9f0" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>HostMirror</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ac1e7d7bcffb329d0ca020b62e55b63e0" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>impl_map</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1afaf24846b0500ecb59661c10563789df" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_allocated</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa2276b09deb781fc66bcd6e260fb349fc" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_default_map</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_hostspace</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa052c170056d3c877732d4f9d3afb7a3e" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_layout_left</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfa2615a3d9e74de89c017c9ce22605f210" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_layout_right</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a702f519999819cbbcb314167aa11c8cfada376d30935d4916b902e251adb642aa" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_layout_stride</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>is_random_access</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ab9e6ee44c568ed59747cda3c47f017e9" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>Kokkos::Impl::ViewMapping</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ab0c375e320feccf64f0ecea55adef34b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>label</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a35a7d59b025db1f3e1320d1f4bc5608a" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>layout</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a870d0473f63fe0c9a11e0b82a335e399" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>m_map</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a898acbae784aaac4f43f51ff8c41798d" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>m_rank</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1af4d94dfa7e2f3d7064ae6042366a5554" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>m_track</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a53ae777713e02b61b878e858237e74c7" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>map_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>memory_traits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ab959df0397f29f6cbebf5ecff93ab307" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>non_const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a6c5368a7fa5a5bdc2be55cbd6c3583c4" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a8e2a6e186182c2f32465e36e2ace3c4b" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a3da2441fb7408f0dc9583feeec4c14b8" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a253385a22ffae1b3f44e7f2aaba90930" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad1946ba1c01c4a3251cfe47670e1e112" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a11c378b5769abaf0ca87a12dd7ab9c77" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a21c03f8a59e92a13fa21c35603dd5928" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ab305d60e86acfc25d4c27cd3a5474fde" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a7314ef5254b13eb81f76a603833b5659" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad6ecebfa0a2d72f3aa131f80ba235c18" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a6be412c1ac093576718b69e0b84f41fe" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a4343075f7f226c5514b706398ba0ad1f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ae5499dfb97d6ec8bd289422ea06cb75c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a78a2be745921b82caea9f6d299196f1c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a7808d862219a71d76f60131deb342241" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1acf3354385d8c6f7ca01cdca1adbecbbc" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad3c66c207e054efbd561e7bda93735a6" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a2ec521d21eea80f902e673d81b8b0395" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a0fe99127e31391af63f162755ec76715" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a331ef1894b962e7b3840f7acd88d0aeb" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a775eb20f301081d8c8df4326705fc4f0" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>pointer_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad2d6454bdeb0b8013dc701821890a2f0" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual" ambiguityscope="ViewTraits&lt; DataType, Properties... &gt;::"><scope>Kokkos::DynRankView</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>rank_dynamic</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a1fcdcd845d9cefae5e45e48c48c7cc21" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a6b5c53850f386fe797bd8e764af54cdea397cf314ef4c5e594c152beb9353abe6" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>reference_type_is_lvalue_reference</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a4ec99145771f833832a67aaa37a82478" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>required_allocation_size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a7b5eb247a7e22d114d3d5800770187cb" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>shmem_size</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a0829af4239b591cb234201b6f81b9adb" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad0d84ff7c821e5a55ec1869f8def8698" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a2b34350f063b88ca874fd76ef21b8ccd" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>specialize</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1abed06b7b4ca671c77a2921c87a3572fa" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a7a1ebc12927bf31481d7a0836442f350" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_0</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a66c086bcb8f7480c3b8644ea25e36011" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_1</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1af90496c8ae9638bf2abe9accf2135d48" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_2</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aa0668f254481bd835909d3c3e5ad0879" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_3</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1abedee5af8d3eb1d765f6b58807020dcb" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_4</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1aed3a814d66c4e99c4b7f133e82288994" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_5</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a8a01a80310f7f10be5a3398ad2fc3cab" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_6</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a96fa6b5ee4ce23733961cca0bf5660bd" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>stride_7</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a1923a877cd6fdddd716dc2fa01a27a68" prot="private" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>track_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1acea324b77bde0462d892308396167d80" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ae7c7d9c6c420e06995b1786df8bc8b70" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>use_count</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a0631d00217a48c25e30a5273b12869ae" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1a465148147b2ca37a5689fc9c392ec5b8" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>view_type</name></member>
+      <member refid="class_kokkos_1_1_dyn_rank_view_1ad5fae50973d9ca8ef5a8cfae9cb5a446" prot="public" virt="non-virtual"><scope>Kokkos::DynRankView</scope><name>~DynRankView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

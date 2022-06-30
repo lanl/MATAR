@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_multi_dim_range_perf3_d_1_1_init_zero_tag" kind="struct" language="C++" prot="public">
+    <compoundname>Test::MultiDimRangePerf3D::InitZeroTag</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestMDRange.hpp" bodystart="76" bodyend="76"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

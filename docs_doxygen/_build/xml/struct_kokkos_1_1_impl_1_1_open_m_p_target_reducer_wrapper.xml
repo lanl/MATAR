@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OpenMPTargetReducerWrapper</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Reducer</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a2957dd0af9c6e7d749e95b317876870a" prot="public" static="no">
+        <type>typename Reducer::value_type</type>
+        <definition>using Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Reducer &gt;::value_type =  typename Reducer::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="70" column="3" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a399b0f053dd2df77b51e75943babb330" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Reducer &gt;::join</definition>
+        <argsstring>(value_type &amp;, const value_type &amp;)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper::join</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+        </param>
+        <param>
+          <type>const value_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="73" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1aeff544a89a6ea398278fc090adf5bc21" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Reducer &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;, const volatile value_type &amp;)</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+        </param>
+        <param>
+          <type>const volatile value_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="80" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a73fa2cc29a1511f715838c4fcb88c4e7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OpenMPTargetReducerWrapper&lt; Reducer &gt;::init</definition>
+        <argsstring>(value_type &amp;)</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::OpenMPTargetReducerWrapper::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="87" column="15" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="87" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" line="69" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Exec.hpp" bodystart="69" bodyend="92"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a73fa2cc29a1511f715838c4fcb88c4e7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a399b0f053dd2df77b51e75943babb330" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1aeff544a89a6ea398278fc090adf5bc21" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_open_m_p_target_reducer_wrapper_1a2957dd0af9c6e7d749e95b317876870a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OpenMPTargetReducerWrapper</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,45 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}MATAR}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Examples}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Descriptions}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Usage}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Cloning the code}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Basic build}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Debug basic build}{3}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Building MATAR with Kokkos}{3}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Environment configuration script}{4}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Install Kokkos script}{4}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.3}CUDA compilation script}{4}{subsection.1.7.3}%
+\contentsline {subsection}{\numberline {1.7.4}HIP compilation script}{4}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.7.5}open\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MP compilation script}{4}{subsection.1.7.5}%
+\contentsline {subsection}{\numberline {1.7.6}pthreads compilation script}{4}{subsection.1.7.6}%
+\contentsline {subsection}{\numberline {1.7.7}Automate build process}{5}{subsection.1.7.7}%
+\contentsline {section}{\numberline {1.8}Contributing}{5}{section.1.8}%
+\contentsline {section}{\numberline {1.9}License}{5}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Citation}{5}{section.1.10}%
+\contentsline {chapter}{\numberline {2}Class Index}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{7}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{9}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}CArray$<$ T $>$ Class Template Reference}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}CMatrix$<$ T $>$ Class Template Reference}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}CSCArray$<$ T $>$ Class Template Reference}{12}{section.4.3}%
+\contentsline {section}{\numberline {4.4}CSRArray$<$ T $>$ Class Template Reference}{13}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ragged\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Down\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{13}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ragged\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Right\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{13}{section.4.6}%
+\contentsline {section}{\numberline {4.7}FArray$<$ T $>$ Class Template Reference}{14}{section.4.7}%
+\contentsline {section}{\numberline {4.8}FMatrix$<$ T $>$ Class Template Reference}{14}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Ragged\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Down\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{15}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Ragged\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Right\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{15}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Ragged\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Right\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Arrayof\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vectors$<$ T $>$ Class Template Reference}{16}{section.4.11}%
+\contentsline {section}{\numberline {4.12}Sparse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Col\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{16}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Sparse\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Row\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Array$<$ T $>$ Class Template Reference}{17}{section.4.13}%
+\contentsline {section}{\numberline {4.14}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CArray$<$ T $>$ Class Template Reference}{17}{section.4.14}%
+\contentsline {section}{\numberline {4.15}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMatrix$<$ T $>$ Class Template Reference}{18}{section.4.15}%
+\contentsline {section}{\numberline {4.16}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}FArray$<$ T $>$ Class Template Reference}{18}{section.4.16}%
+\contentsline {section}{\numberline {4.17}View\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}FMatrix$<$ T $>$ Class Template Reference}{19}{section.4.17}%
+\contentsline {chapter}{\numberline {5}File Documentation}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}macros.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}matar.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{30}{section.5.2}%
+\contentsline {chapter}{Index}{185}{section*.18}%

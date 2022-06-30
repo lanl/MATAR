@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1concat__type__list_3_01type__list_3_01_t_8_8_8_01_4_00_01type__list_3_af97cf8c87a58c2413f9003d8e7c2e33" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::concat_type_list&lt; type_list&lt; T... &gt;, type_list&lt; U... &gt;, Tail... &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1concat__type__list" prot="public" virt="non-virtual">Kokkos::Impl::concat_type_list&lt; type_list&lt; T..., U... &gt;, Tail... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Tail</declname>
+        <defname>Tail</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::concat_type_list&lt; type_list&lt; T... &gt;, type_list&lt; U... &gt;, Tail... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1concat__type__list_3_01type__list_3_01_t_8_8_8_01_4_00_01type__list_3_af97cf8c87a58c2413f9003d8e7c2e33"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::concat_type_list&lt; type_list&lt; T..., U... &gt;, Tail... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1concat__type__list"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::concat_type_list&lt; type_list&lt; T... &gt;, type_list&lt; U... &gt;, Tail... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1concat__type__list_3_01type__list_3_01_t_8_8_8_01_4_00_01type__list_3_af97cf8c87a58c2413f9003d8e7c2e33"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::concat_type_list&lt; type_list&lt; T..., U... &gt;, Tail... &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1concat__type__list"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="232" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="233" bodyend="233"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

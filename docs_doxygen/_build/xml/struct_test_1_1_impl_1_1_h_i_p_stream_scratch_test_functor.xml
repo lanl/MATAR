@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::Impl::HIPStreamScratchTestFunctor</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1ae98c299b616a62012b325fba75942246" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Kokkos::Experimental::HIP &gt;::member_type</type>
+        <definition>using Test::Impl::HIPStreamScratchTestFunctor::team_t =  Kokkos::TeamPolicy&lt;Kokkos::Experimental::HIP&gt;::member_type</definition>
+        <argsstring></argsstring>
+        <name>team_t</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::team_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="53" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a351e1a36fcfe56bae8bb6e24442aea84" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t *, Kokkos::Experimental::HIP::scratch_memory_space &gt;</type>
+        <definition>using Test::Impl::HIPStreamScratchTestFunctor::scratch_t =  Kokkos::View&lt;int64_t*, Kokkos::Experimental::HIP::scratch_memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>scratch_t</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::scratch_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="54" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a133f470a28929331a7c8f9021af828c1" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t, Kokkos::Experimental::HIPSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>Kokkos::View&lt;int64_t, Kokkos::Experimental::HIPSpace, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt; Test::Impl::HIPStreamScratchTestFunctor::counter</definition>
+        <argsstring></argsstring>
+        <name>counter</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::counter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="59" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a5d4a3d37d94502ce2efecc82ab67d22a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::Impl::HIPStreamScratchTestFunctor::N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::N</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="60" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a14ef45e38153a29a67dfe69a651df107" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::Impl::HIPStreamScratchTestFunctor::M</definition>
+        <argsstring></argsstring>
+        <name>M</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::M</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="60" column="9" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1af321024ae9d1849b334eb37f5b94c64b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::Impl::HIPStreamScratchTestFunctor::HIPStreamScratchTestFunctor</definition>
+        <argsstring>(Kokkos::View&lt; int64_t, Kokkos::Experimental::HIPSpace &gt; counter_, int N_, int M_)</argsstring>
+        <name>HIPStreamScratchTestFunctor</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::HIPStreamScratchTestFunctor</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int64_t, Kokkos::Experimental::HIPSpace &gt;</type>
+          <declname>counter_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>N_</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>M_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1acfc1128312be65408ad187326fc4e628" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::Impl::HIPStreamScratchTestFunctor::operator()</definition>
+        <argsstring>(const team_t &amp;team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::Impl::HIPStreamScratchTestFunctor::operator()</qualifiedname>
+        <param>
+          <type>const team_t &amp;</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="67" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="67" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::Impl::HIPStreamScratchTestFunctor</label>
+        <link refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>counter</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int64_t, Kokkos::Experimental::HIPSpace, Kokkos::MemoryTraits&lt; Kokkos::Atomic &gt; &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int64_t, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" line="52" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/hip/TestHIP_TeamScratchStreams.cpp" bodystart="52" bodyend="81"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a133f470a28929331a7c8f9021af828c1" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>counter</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1af321024ae9d1849b334eb37f5b94c64b" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>HIPStreamScratchTestFunctor</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a14ef45e38153a29a67dfe69a651df107" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>M</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a5d4a3d37d94502ce2efecc82ab67d22a" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>N</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1acfc1128312be65408ad187326fc4e628" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1a351e1a36fcfe56bae8bb6e24442aea84" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>scratch_t</name></member>
+      <member refid="struct_test_1_1_impl_1_1_h_i_p_stream_scratch_test_functor_1ae98c299b616a62012b325fba75942246" prot="public" virt="non-virtual"><scope>Test::Impl::HIPStreamScratchTestFunctor</scope><name>team_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

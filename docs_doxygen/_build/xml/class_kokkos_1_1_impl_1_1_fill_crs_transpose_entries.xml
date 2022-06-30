@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FillCrsTransposeEntries</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class InCrs</type>
+      </param>
+      <param>
+        <type>class OutCrs</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a55069e6e29b73767a5ded5cf1efe4dd5" prot="public" static="no">
+        <type>typename InCrs::execution_space</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::execution_space =  typename InCrs::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="236" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a289cb90b38ccdb9fc0b6dd79ede90be4" prot="public" static="no">
+        <type>typename InCrs::memory_space</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::memory_space =  typename InCrs::memory_space</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="237" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a7d78c64aa254f5cef2e02f432e1925a5" prot="public" static="no">
+        <type>typename OutCrs::entries_type::value_type</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::value_type =  typename OutCrs::entries_type::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="238" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1ab7d856839d83e44b794a460a8f4273cb" prot="public" static="no">
+        <type>typename InCrs::size_type</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::index_type =  typename InCrs::size_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="239" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a5687835f804b2f96ff1795f9ffc99184" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries" kindref="compound">FillCrsTransposeEntries</ref>&lt; InCrs, OutCrs &gt;</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::self_type =  FillCrsTransposeEntries&lt;InCrs, OutCrs&gt;</definition>
+        <argsstring></argsstring>
+        <name>self_type</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::self_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="259" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a21912a187bdbb6b451d934adb4d41103" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; index_type *, memory_space &gt;</type>
+        <definition>using Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::counters_type =  View&lt;index_type*, memory_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>counters_type</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::counters_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="242" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a82177f073fa6d63bbfe3acb140709223" prot="private" static="no" mutable="no">
+        <type>InCrs</type>
+        <definition>InCrs Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::in</definition>
+        <argsstring></argsstring>
+        <name>in</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::in</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="243" column="9" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1aca2923c6c06e94a9c8b78cf01d9e6042" prot="private" static="no" mutable="no">
+        <type>OutCrs</type>
+        <definition>OutCrs Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="244" column="10" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a8385470040b3c47f1a889d821b383959" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">counters_type</ref></type>
+        <definition>counters_type Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::counters</definition>
+        <argsstring></argsstring>
+        <name>counters</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::counters</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="245" column="17" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a8bf06d38f883d26017d065c2108d39a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::operator()</definition>
+        <argsstring>(index_type i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::operator()</qualifiedname>
+        <param>
+          <type>index_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="249" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="249" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1af159d1fbbc6255124db6182c35c03c0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::FillCrsTransposeEntries&lt; InCrs, OutCrs &gt;::FillCrsTransposeEntries</definition>
+        <argsstring>(InCrs const &amp;arg_in, OutCrs const &amp;arg_out)</argsstring>
+        <name>FillCrsTransposeEntries</name>
+        <qualifiedname>Kokkos::Impl::FillCrsTransposeEntries::FillCrsTransposeEntries</qualifiedname>
+        <param>
+          <type>InCrs const &amp;</type>
+          <declname>arg_in</declname>
+        </param>
+        <param>
+          <type>OutCrs const &amp;</type>
+          <declname>arg_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="260" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="260" bodyend="269"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" line="234" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Crs.hpp" bodystart="234" bodyend="270"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a8385470040b3c47f1a889d821b383959" prot="private" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>counters</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a21912a187bdbb6b451d934adb4d41103" prot="private" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>counters_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a55069e6e29b73767a5ded5cf1efe4dd5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1af159d1fbbc6255124db6182c35c03c0f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>FillCrsTransposeEntries</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a82177f073fa6d63bbfe3acb140709223" prot="private" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>in</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1ab7d856839d83e44b794a460a8f4273cb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>index_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a289cb90b38ccdb9fc0b6dd79ede90be4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>memory_space</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a8bf06d38f883d26017d065c2108d39a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1aca2923c6c06e94a9c8b78cf01d9e6042" prot="private" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>out</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a5687835f804b2f96ff1795f9ffc99184" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>self_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_fill_crs_transpose_entries_1a7d78c64aa254f5cef2e02f432e1925a5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FillCrsTransposeEntries</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

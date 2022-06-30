@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1base__traits" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::WorkItemPropertyTrait::base_traits</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1base__traits_1af29700d57e699abcae0758cd22ffe867" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">Kokkos::Experimental::WorkItemProperty::None_t</ref></type>
+        <definition>using Kokkos::Impl::WorkItemPropertyTrait::base_traits::work_item_property =  Kokkos::Experimental::WorkItemProperty::None_t</definition>
+        <argsstring></argsstring>
+        <name>work_item_property</name>
+        <qualifiedname>Kokkos::Impl::WorkItemPropertyTrait::base_traits::work_item_property</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="61" column="5" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/traits/Kokkos_WorkItemPropertyTrait.hpp" bodystart="60" bodyend="62"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_work_item_property_trait_1_1base__traits_1af29700d57e699abcae0758cd22ffe867" prot="public" virt="non-virtual"><scope>Kokkos::Impl::WorkItemPropertyTrait::base_traits</scope><name>work_item_property</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

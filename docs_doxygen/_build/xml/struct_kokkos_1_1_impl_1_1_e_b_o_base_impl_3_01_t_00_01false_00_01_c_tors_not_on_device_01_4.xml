@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>template&lt; class... &gt; class</type>
+        <declname>CTorsNotOnDevice</declname>
+        <defname>CTorsNotOnDevice</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a1ebded6d8ffc741fc3cddc6e464d95a7" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::m_ebo_object</definition>
+        <argsstring></argsstring>
+        <name>m_ebo_object</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::m_ebo_object</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="140" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a76abda410703cb3aedf72d3165d6a8c6" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>class _ignored</type>
+            <defval>void</defval>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_void&lt; _ignored &gt;::value &amp;&amp;!CTorsNotOnDevice&lt; Args... &gt;::value &amp;&amp;std::is_constructible&lt; T, Args... &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION constexpr</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION constexpr Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept(noexcept(T(std::forward&lt; Args &gt;(args)...)))</argsstring>
+        <name>EBOBaseImpl</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="148" column="50" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="148" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ae1ea9f49964772230729c2c981286adb" prot="public" static="no" constexpr="yes" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+          <param>
+            <type>class _ignored</type>
+            <defval>void</defval>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_void&lt; _ignored &gt;::value &amp;&amp;CTorsNotOnDevice&lt; Args... &gt;::value &amp;&amp;std::is_constructible&lt; T, Args... &gt;::value, long &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept(noexcept(T(std::forward&lt; Args &gt;(args)...)))</argsstring>
+        <name>EBOBaseImpl</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="158" column="29" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a43369925501dc2d5b4a48da4d6d97a4e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</definition>
+        <argsstring>(EBOBaseImpl const &amp;)=default</argsstring>
+        <name>EBOBaseImpl</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="165" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a53551acc953833845789ed9d6db05c04" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</definition>
+        <argsstring>(EBOBaseImpl &amp;&amp;) noexcept=default</argsstring>
+        <name>EBOBaseImpl</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::EBOBaseImpl</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="168" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ab88b0fd958f9b4d6dd0949fe29597faa" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr <ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr EBOBaseImpl &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::operator=</definition>
+        <argsstring>(EBOBaseImpl const &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="171" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ac272179d3764b27a7450cefd9fa0d772" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION constexpr <ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION constexpr EBOBaseImpl &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::operator=</definition>
+        <argsstring>(EBOBaseImpl &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::operator=</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl" kindref="compound">EBOBaseImpl</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="174" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ad814eb6c6b331cbbca1979442abb24a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::~EBOBaseImpl</definition>
+        <argsstring>()=default</argsstring>
+        <name>~EBOBaseImpl</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::~EBOBaseImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="177" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a0de0617876c3b1010593ee442a6d8272" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</definition>
+        <argsstring>() &amp;</argsstring>
+        <name>_ebo_data_member</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="180" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a4706a7d2b4ac18e427bc5bc6ed8d312b" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T const &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T const  &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</definition>
+        <argsstring>() const &amp;</argsstring>
+        <name>_ebo_data_member</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="183" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="183" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ac3e79556f0046f025fb9f5b503a04d44" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T volatile &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T volatile &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</definition>
+        <argsstring>() volatile &amp;</argsstring>
+        <name>_ebo_data_member</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="186" column="14" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1acf6a577561370b8d615840975ab6ca6c" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T const volatile &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T const volatile &amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</definition>
+        <argsstring>() const volatile &amp;</argsstring>
+        <name>_ebo_data_member</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="189" column="20" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="189" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a89898dbfcff38d03c3b79c778b7b0a00" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;&amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp;&amp; Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>_ebo_data_member</name>
+        <qualifiedname>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;::_ebo_data_member</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="192" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="192" bodyend="192"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" line="139" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_EBO.hpp" bodystart="139" bodyend="193"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a0de0617876c3b1010593ee442a6d8272" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>_ebo_data_member</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a4706a7d2b4ac18e427bc5bc6ed8d312b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>_ebo_data_member</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ac3e79556f0046f025fb9f5b503a04d44" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>_ebo_data_member</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1acf6a577561370b8d615840975ab6ca6c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>_ebo_data_member</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a89898dbfcff38d03c3b79c778b7b0a00" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>_ebo_data_member</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a76abda410703cb3aedf72d3165d6a8c6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>EBOBaseImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ae1ea9f49964772230729c2c981286adb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>EBOBaseImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a43369925501dc2d5b4a48da4d6d97a4e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>EBOBaseImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a53551acc953833845789ed9d6db05c04" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>EBOBaseImpl</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1a1ebded6d8ffc741fc3cddc6e464d95a7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>m_ebo_object</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ab88b0fd958f9b4d6dd0949fe29597faa" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ac272179d3764b27a7450cefd9fa0d772" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>operator=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_e_b_o_base_impl_3_01_t_00_01false_00_01_c_tors_not_on_device_01_4_1ad814eb6c6b331cbbca1979442abb24a7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::EBOBaseImpl&lt; T, false, CTorsNotOnDevice &gt;</scope><name>~EBOBaseImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

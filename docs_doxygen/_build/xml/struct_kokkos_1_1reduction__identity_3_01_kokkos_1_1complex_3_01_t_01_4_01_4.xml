@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1a22bd2444294b7e444e9af6e96306f94c" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1reduction__identity" kindref="compound">reduction_identity</ref>&lt; T &gt;</type>
+        <definition>using Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::t_red_ident =  reduction_identity&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>t_red_ident</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::t_red_ident</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="1040" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="1040" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1ab49a4177d351adf3494673d6f81cf172" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; T &gt;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr Kokkos::complex&lt; T &gt; Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::sum</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>sum</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::sum</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="1042" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="1042" bodyend="1044"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1a3143ad7b3aae9a2302fbae1f6f0d7048" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; T &gt;</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr Kokkos::complex&lt; T &gt; Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::prod</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>prod</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;::prod</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="1046" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="1046" bodyend="1048"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="1039" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="1039" bodyend="1049"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1a3143ad7b3aae9a2302fbae1f6f0d7048" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;</scope><name>prod</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1ab49a4177d351adf3494673d6f81cf172" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;</scope><name>sum</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01_kokkos_1_1complex_3_01_t_01_4_01_4_1a22bd2444294b7e444e9af6e96306f94c" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; Kokkos::complex&lt; T &gt; &gt;</scope><name>t_red_ident</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

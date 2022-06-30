@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_bitset_count" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::BitsetCount</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a658bb6883b5c51ea72c183a47b7d809d" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref></type>
+        <definition>using Kokkos::Impl::BitsetCount&lt; Bitset &gt;::bitset_type =  Bitset</definition>
+        <argsstring></argsstring>
+        <name>bitset_type</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::bitset_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a1232c76a242a981f7c31f2d441b01e41" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">bitset_type::execution_space::execution_space</ref></type>
+        <definition>using Kokkos::Impl::BitsetCount&lt; Bitset &gt;::execution_space =  typename bitset_type::execution_space::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a2432383f66aca1054af6c51bb3575701" prot="public" static="no">
+        <type>typename bitset_type::size_type</type>
+        <definition>using Kokkos::Impl::BitsetCount&lt; Bitset &gt;::size_type =  typename bitset_type::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a79795e643a64baa522b34d9f7af21294" prot="public" static="no">
+        <type>size_type</type>
+        <definition>using Kokkos::Impl::BitsetCount&lt; Bitset &gt;::value_type =  size_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="72" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_bitset_count_1aaff0720f4368dadf0f2230dca3cf2d2f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">bitset_type</ref></type>
+        <definition>bitset_type Kokkos::Impl::BitsetCount&lt; Bitset &gt;::m_bitset</definition>
+        <argsstring></argsstring>
+        <name>m_bitset</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::m_bitset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="74" column="15" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a9b5c8fdabe6733a195c19840fc4399b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::BitsetCount&lt; Bitset &gt;::BitsetCount</definition>
+        <argsstring>(bitset_type const &amp;bitset)</argsstring>
+        <name>BitsetCount</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::BitsetCount</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">bitset_type</ref> const &amp;</type>
+          <declname>bitset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_bitset_count_1aa7e2022370abbafc77faa01773f00e8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::BitsetCount&lt; Bitset &gt;::apply</definition>
+        <argsstring>() const</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::apply</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="78" column="13" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="78" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a267cded99c6c7c6e1a4d4ba1507d8abd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::BitsetCount&lt; Bitset &gt;::init</definition>
+        <argsstring>(value_type &amp;count) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::init</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="86" column="8" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a02a9d8acb459eb1c3cf862557f6481e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::BitsetCount&lt; Bitset &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;count, const volatile size_type &amp;incr) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::join</qualifiedname>
+        <param>
+          <type>volatile value_type &amp;</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const volatile size_type &amp;</type>
+          <declname>incr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="89" column="8" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_bitset_count_1a5215b107f8b9dec100aa72e502705a52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::BitsetCount&lt; Bitset &gt;::operator()</definition>
+        <argsstring>(size_type i, value_type &amp;count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::BitsetCount::operator()</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="94" column="8" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Bitset&lt; Device &gt;</label>
+        <link refid="class_kokkos_1_1_bitset"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Impl::BitsetCount&lt; Bitset &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_bitset_count"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_bitset</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" line="67" column="1" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_Bitset_impl.hpp" bodystart="67" bodyend="97"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1aa7e2022370abbafc77faa01773f00e8c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>apply</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a658bb6883b5c51ea72c183a47b7d809d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>bitset_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a9b5c8fdabe6733a195c19840fc4399b6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>BitsetCount</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a1232c76a242a981f7c31f2d441b01e41" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>execution_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a267cded99c6c7c6e1a4d4ba1507d8abd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>init</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a02a9d8acb459eb1c3cf862557f6481e9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1aaff0720f4368dadf0f2230dca3cf2d2f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>m_bitset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a5215b107f8b9dec100aa72e502705a52" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a2432383f66aca1054af6c51bb3575701" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>size_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_bitset_count_1a79795e643a64baa522b34d9f7af21294" prot="public" virt="non-virtual"><scope>Kokkos::Impl::BitsetCount</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

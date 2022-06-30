@@ -1,0 +1,1452 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespace_kokkos_1_1_experimental_1_1_impl" kind="namespace" language="C++">
+    <compoundname>Kokkos::Experimental::Impl</compoundname>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_chunked_array_manager" prot="public">Kokkos::Experimental::Impl::ChunkedArrayManager</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper" prot="public">Kokkos::Experimental::Impl::digits10_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01bool_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; bool &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01short_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01signed_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; signed char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01unsigned_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; unsigned char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01unsigned_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; unsigned int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01unsigned_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; unsigned long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01unsigned_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; unsigned long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits10__helper_3_01unsigned_01short_01_4" prot="public">Kokkos::Experimental::Impl::digits10_helper&lt; unsigned short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper" prot="public">Kokkos::Experimental::Impl::digits_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01bool_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; bool &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01short_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01signed_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; signed char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01char_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; unsigned char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; unsigned int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; unsigned long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; unsigned long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1digits__helper_3_01unsigned_01short_01_4" prot="public">Kokkos::Experimental::Impl::digits_helper&lt; unsigned short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper" prot="public">Kokkos::Experimental::Impl::epsilon_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::epsilon_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::epsilon_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1epsilon__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::epsilon_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper" prot="public">Kokkos::Experimental::Impl::finite_max_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01bool_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; bool &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01short_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01signed_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; signed char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01unsigned_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; unsigned char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01unsigned_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; unsigned int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01unsigned_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; unsigned long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01unsigned_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; unsigned long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__max__helper_3_01unsigned_01short_01_4" prot="public">Kokkos::Experimental::Impl::finite_max_helper&lt; unsigned short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper" prot="public">Kokkos::Experimental::Impl::finite_min_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01bool_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; bool &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01short_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01signed_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; signed char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01unsigned_01char_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; unsigned char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01unsigned_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; unsigned int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01unsigned_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; unsigned long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01unsigned_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; unsigned long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1finite__min__helper_3_01unsigned_01short_01_4" prot="public">Kokkos::Experimental::Impl::finite_min_helper&lt; unsigned short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" prot="public">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_internal" prot="public">Kokkos::Experimental::Impl::HIPInternal</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_h_i_p_traits" prot="public">Kokkos::Experimental::Impl::HIPTraits</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__down__fn" prot="public">Kokkos::Experimental::Impl::in_place_shfl_down_fn</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__fn" prot="public">Kokkos::Experimental::Impl::in_place_shfl_fn</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__op" prot="public">Kokkos::Experimental::Impl::in_place_shfl_op</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1in__place__shfl__up__fn" prot="public">Kokkos::Experimental::Impl::in_place_shfl_up_fn</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1infinity__helper" prot="public">Kokkos::Experimental::Impl::infinity_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1infinity__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::infinity_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1infinity__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::infinity_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1infinity__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::infinity_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper" prot="public">Kokkos::Experimental::Impl::max_digits10_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_digits10_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::max_digits10_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__digits10__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_digits10_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent10__helper" prot="public">Kokkos::Experimental::Impl::max_exponent10_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent10__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent10_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent10__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent10_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent10__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent10_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent__helper" prot="public">Kokkos::Experimental::Impl::max_exponent_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1max__exponent__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::max_exponent_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent10__helper" prot="public">Kokkos::Experimental::Impl::min_exponent10_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent10__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent10_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent10__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent10_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent10__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent10_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent__helper" prot="public">Kokkos::Experimental::Impl::min_exponent_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1min__exponent__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::min_exponent_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1norm__min__helper" prot="public">Kokkos::Experimental::Impl::norm_min_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1norm__min__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::norm_min_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1norm__min__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::norm_min_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1norm__min__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::norm_min_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_open_m_p_target_internal" prot="public">Kokkos::Experimental::Impl::OpenMPTargetInternal</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper" prot="public">Kokkos::Experimental::Impl::radix_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01bool_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; bool &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01char_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01short_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01signed_01char_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; signed char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01unsigned_01char_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; unsigned char &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01unsigned_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; unsigned int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01unsigned_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; unsigned long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01unsigned_01long_01long_01int_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; unsigned long long int &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1radix__helper_3_01unsigned_01short_01_4" prot="public">Kokkos::Experimental::Impl::radix_helper&lt; unsigned short &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1round__error__helper" prot="public">Kokkos::Experimental::Impl::round_error_helper</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1round__error__helper_3_01double_01_4" prot="public">Kokkos::Experimental::Impl::round_error_helper&lt; double &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1round__error__helper_3_01float_01_4" prot="public">Kokkos::Experimental::Impl::round_error_helper&lt; float &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_impl_1_1round__error__helper_3_01long_01double_01_4" prot="public">Kokkos::Experimental::Impl::round_error_helper&lt; long double &gt;</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper" prot="public">Kokkos::Experimental::Impl::SYCLFunctionWrapper</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01false_01_4" prot="public">Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, false &gt;</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_function_wrapper_3_01_functor_00_01_storage_00_01true_01_4" prot="public">Kokkos::Experimental::Impl::SYCLFunctionWrapper&lt; Functor, Storage, true &gt;</innerclass>
+    <innerclass refid="class_kokkos_1_1_experimental_1_1_impl_1_1_s_y_c_l_internal" prot="public">Kokkos::Experimental::Impl::SYCLInternal</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_kokkos___h_i_p___instance_8cpp_1a867c7506fb1b8a17e9467cdb79506ba3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@40</name>
+        <qualifiedname>Kokkos::Experimental::Impl::@40</qualifiedname>
+        <enumvalue id="_kokkos___h_i_p___instance_8cpp_1a867c7506fb1b8a17e9467cdb79506ba3a0533b1e5a5a11c62dcf670117003355c" prot="public">
+          <name>sizeScratchGrain</name>
+          <initializer>= sizeof(ScratchGrain)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="323" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="323" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="enum" id="_kokkos___open_m_p_target___instance_8hpp_1a1293efac3c6a223c1902f44a6998b3b0" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>openmp_fence_is_static</name>
+        <qualifiedname>Kokkos::Experimental::Impl::openmp_fence_is_static</qualifiedname>
+        <enumvalue id="_kokkos___open_m_p_target___instance_8hpp_1a1293efac3c6a223c1902f44a6998b3b0aa6105c0a611b41b08f1209506350279e" prot="public">
+          <name>yes</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_kokkos___open_m_p_target___instance_8hpp_1a1293efac3c6a223c1902f44a6998b3b0a7fa3b767c460b54a2be4d49030b349c7" prot="public">
+          <name>no</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Instance.hpp" line="54" column="1" bodyfile="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_Instance.hpp" bodystart="54" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_kokkos___h_i_p___instance_8cpp_1a1016bd1844a507759eb1daa233a18c67" prot="public" static="no">
+        <type>Kokkos::Experimental::HIP::size_type[Impl::HIPTraits::WarpSize]</type>
+        <definition>using Kokkos::Experimental::Impl::ScratchGrain = typedef Kokkos::Experimental::HIP::size_type[Impl::HIPTraits::WarpSize]</definition>
+        <argsstring></argsstring>
+        <name>ScratchGrain</name>
+        <qualifiedname>Kokkos::Experimental::Impl::ScratchGrain</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="321" column="1" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_kokkos___s_y_c_l_8cpp_1a4c3cb535fa6aecd3d0a01db929d0ae1b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Experimental::Impl::g_sycl_space_factory_initialized</definition>
+        <argsstring></argsstring>
+        <name>g_sycl_space_factory_initialized</name>
+        <qualifiedname>Kokkos::Experimental::Impl::g_sycl_space_factory_initialized</qualifiedname>
+        <initializer>=
+    Kokkos::Impl::initialize_space_factory&lt;SYCLSpaceInitializer&gt;(&quot;170_SYCL&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL.cpp" line="286" column="5" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL.cpp" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a6c6c2b0b8dd7ef3c316d67585e938059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+          </param>
+          <param>
+            <type>class MapType</type>
+          </param>
+          <param>
+            <type>class BeginsType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</definition>
+        <argsstring>(const MapType &amp;, const BeginsType &amp;)</argsstring>
+        <name>offsetview_verify_operator_bounds</name>
+        <qualifiedname>Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</qualifiedname>
+        <param>
+          <type>const MapType &amp;</type>
+        </param>
+        <param>
+          <type>const BeginsType &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="61" column="29" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a3c598b2465bf69b15e1814f881ff6a0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>R</declname>
+            <defname>R</defname>
+          </param>
+          <param>
+            <type>class MapType</type>
+          </param>
+          <param>
+            <type>class BeginsType</type>
+          </param>
+          <param>
+            <type>class iType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</definition>
+        <argsstring>(const MapType &amp;map, const BeginsType &amp;begins, const iType &amp;i, Args... args)</argsstring>
+        <name>offsetview_verify_operator_bounds</name>
+        <qualifiedname>Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</qualifiedname>
+        <param>
+          <type>const MapType &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>const BeginsType &amp;</type>
+          <declname>begins</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="68" column="29" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="68" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1af0b47ed8a757007347baf6c657d1c5de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+          </param>
+          <param>
+            <type>class MapType</type>
+          </param>
+          <param>
+            <type>class BeginsType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::offsetview_error_operator_bounds</definition>
+        <argsstring>(char *, int, const MapType &amp;, const BeginsType &amp;)</argsstring>
+        <name>offsetview_error_operator_bounds</name>
+        <qualifiedname>Kokkos::Experimental::Impl::offsetview_error_operator_bounds</qualifiedname>
+        <param>
+          <type>char *</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const MapType &amp;</type>
+        </param>
+        <param>
+          <type>const BeginsType &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="78" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="78" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1ab7fe0925d05404600a593f4c12d83ca3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>R</declname>
+            <defname>R</defname>
+          </param>
+          <param>
+            <type>class MapType</type>
+          </param>
+          <param>
+            <type>class BeginsType</type>
+          </param>
+          <param>
+            <type>class iType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::offsetview_error_operator_bounds</definition>
+        <argsstring>(char *buf, int len, const MapType &amp;map, const BeginsType begins, const iType &amp;i, Args... args)</argsstring>
+        <name>offsetview_error_operator_bounds</name>
+        <qualifiedname>Kokkos::Experimental::Impl::offsetview_error_operator_bounds</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>const MapType &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>const BeginsType</type>
+          <declname>begins</declname>
+        </param>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="83" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="83" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a735f9caf7dc8170e9626e3b107b13637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class MemorySpace</type>
+          </param>
+          <param>
+            <type>class MapType</type>
+          </param>
+          <param>
+            <type>class BeginsType</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</definition>
+        <argsstring>(Kokkos::Impl::SharedAllocationTracker const &amp;tracker, const MapType &amp;map, const BeginsType &amp;begins, Args... args)</argsstring>
+        <name>offsetview_verify_operator_bounds</name>
+        <qualifiedname>Kokkos::Experimental::Impl::offsetview_verify_operator_bounds</qualifiedname>
+        <param>
+          <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref> const &amp;</type>
+          <declname>tracker</declname>
+        </param>
+        <param>
+          <type>const MapType &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>const BeginsType &amp;</type>
+          <declname>begins</declname>
+        </param>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="98" column="29" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="98" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1ab266ba370b0dc74919dcc5f6a3bd3082" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::Impl::runtime_check_rank_device</definition>
+        <argsstring>(const size_t rank_dynamic, const size_t rank, const index_list_type minIndices)</argsstring>
+        <name>runtime_check_rank_device</name>
+        <qualifiedname>Kokkos::Experimental::Impl::runtime_check_rank_device</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>rank_dynamic</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>rank</declname>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>minIndices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="161" column="6" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="161" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1af8500840f2dbe16a552e87e544e8541e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_integral&lt; T &gt;::value, T &gt;::type Kokkos::Experimental::Impl::shift_input</definition>
+        <argsstring>(const T arg, const int64_t offset)</argsstring>
+        <name>shift_input</name>
+        <qualifiedname>Kokkos::Experimental::Impl::shift_input</qualifiedname>
+        <param>
+          <type>const T</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1295" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1295" bodyend="1297"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a5e86d5bc598f9a4a232841f3099f660f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_impl_1_1_a_l_l__t" kindref="compound">Kokkos::Impl::ALL_t</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Impl::ALL_t Kokkos::Experimental::Impl::shift_input</definition>
+        <argsstring>(const Kokkos::Impl::ALL_t arg, const int64_t)</argsstring>
+        <name>shift_input</name>
+        <qualifiedname>Kokkos::Experimental::Impl::shift_input</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_a_l_l__t" kindref="compound">Kokkos::Impl::ALL_t</ref></type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1300" column="21" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1300" bodyend="1303"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1adf491af3cfe3d219ae7b013310775ef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_integral&lt; T &gt;::value, <ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; T, T &gt; &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION std::enable_if&lt; std::is_integral&lt; T &gt;::value, Kokkos::pair&lt; T, T &gt; &gt;::type Kokkos::Experimental::Impl::shift_input</definition>
+        <argsstring>(const Kokkos::pair&lt; T, T &gt; arg, const int64_t offset)</argsstring>
+        <name>shift_input</name>
+        <qualifiedname>Kokkos::Experimental::Impl::shift_input</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair</ref>&lt; T, T &gt;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1308" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1308" bodyend="1310"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a5d6d1138cbcd6ae2b88f72904195ad7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_integral&lt; T &gt;::value, std::pair&lt; T, T &gt; &gt;::type</type>
+        <definition>std::enable_if&lt; std::is_integral&lt; T &gt;::value, std::pair&lt; T, T &gt; &gt;::type Kokkos::Experimental::Impl::shift_input</definition>
+        <argsstring>(const std::pair&lt; T, T &gt; arg, const int64_t offset)</argsstring>
+        <name>shift_input</name>
+        <qualifiedname>Kokkos::Experimental::Impl::shift_input</qualifiedname>
+        <param>
+          <type>const std::pair&lt; T, T &gt;</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1314" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1314" bodyend="1316"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a4bf930abacc173419e30f3aaca1c3301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>class Arg</type>
+          </param>
+          <param>
+            <type>class A</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::Impl::map_arg_to_new_begin</definition>
+        <argsstring>(const size_t i, Kokkos::Array&lt; int64_t, N &gt; &amp;subviewBegins, typename std::enable_if&lt; N !=0, const Arg &gt;::type shiftedArg, const Arg arg, const A viewBegins, size_t &amp;counter)</argsstring>
+        <name>map_arg_to_new_begin</name>
+        <qualifiedname>Kokkos::Experimental::Impl::map_arg_to_new_begin</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; int64_t, N &gt; &amp;</type>
+          <declname>subviewBegins</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; N !=0, const Arg &gt;::type</type>
+          <declname>shiftedArg</declname>
+        </param>
+        <param>
+          <type>const Arg</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const A</type>
+          <declname>viewBegins</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>counter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1319" column="29" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1319" bodyend="1327"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1ae6a5d3cbdb008821d6c3b0086c0c4641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>class Arg</type>
+          </param>
+          <param>
+            <type>class A</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::Impl::map_arg_to_new_begin</definition>
+        <argsstring>(const size_t, Kokkos::Array&lt; int64_t, N &gt; &amp;, typename std::enable_if&lt; N==0, const Arg &gt;::type, const Arg, const A, size_t &amp;)</argsstring>
+        <name>map_arg_to_new_begin</name>
+        <qualifiedname>Kokkos::Experimental::Impl::map_arg_to_new_begin</qualifiedname>
+        <param>
+          <type>const</type>
+          <declname>size_t</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; int64_t, N &gt; &amp;</type>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; N==0, const Arg &gt;::type</type>
+        </param>
+        <param>
+          <type>const</type>
+          <declname>Arg</declname>
+        </param>
+        <param>
+          <type>const</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1330" column="29" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1330" bodyend="1333"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a7922afcba4138b63e118f8cd6a7c51b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T arg)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1342" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1342" bodyend="1369"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1af690cd9486de6a41b664b3d34efc1343" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const Kokkos::Experimental::OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">Kokkos::Experimental::OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1378" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1378" bodyend="1408"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a6f19abb6aced4f368855175caab671c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1417" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1417" bodyend="1452"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a2403886dd053f9cc8fee5644876444e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2, T3 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2, T3 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2, T3 arg3)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>arg3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1461" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1461" bodyend="1498"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a802daba4b523b1fc3d54b8c67a60bb13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2, T3, T4 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2, T3, T4 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>arg4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1507" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1507" bodyend="1547"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a39bb681488e1f7e52602a08d2f311728" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>T5</type>
+          <declname>arg5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1557" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1557" bodyend="1602"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a62acf6ae4937ad67d6cca05ee69c0cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5, T6 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5, T6 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>T5</type>
+          <declname>arg5</declname>
+        </param>
+        <param>
+          <type>T6</type>
+          <declname>arg6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1611" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1611" bodyend="1659"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___offset_view_8hpp_1a6042522f45cf94c56a28e0190de0bfd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class D</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+          <param>
+            <type>class T0</type>
+          </param>
+          <param>
+            <type>class T1</type>
+          </param>
+          <param>
+            <type>class T2</type>
+          </param>
+          <param>
+            <type>class T3</type>
+          </param>
+          <param>
+            <type>class T4</type>
+          </param>
+          <param>
+            <type>class T5</type>
+          </param>
+          <param>
+            <type>class T6</type>
+          </param>
+          <param>
+            <type>class T7</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_experimental_1_1_impl_1_1_get_offset_view_type_from_view_type" kindref="compound">Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType</ref>&lt; typenameKokkos::Impl::ViewMapping&lt; void, <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5, T6, T7 &gt;::type &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::Impl::GetOffsetViewTypeFromViewType&lt; typenameKokkos::Impl::ViewMapping&lt; void, ViewTraits&lt; D, P... &gt;, T0, T1, T2, T3, T4, T5, T6, T7 &gt;::type &gt;::type Kokkos::Experimental::Impl::subview_offset</definition>
+        <argsstring>(const OffsetView&lt; D, P... &gt; &amp;src, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)</argsstring>
+        <name>subview_offset</name>
+        <qualifiedname>Kokkos::Experimental::Impl::subview_offset</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; D, P... &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>T0</type>
+          <declname>arg0</declname>
+        </param>
+        <param>
+          <type>T1</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>T2</type>
+          <declname>arg2</declname>
+        </param>
+        <param>
+          <type>T3</type>
+          <declname>arg3</declname>
+        </param>
+        <param>
+          <type>T4</type>
+          <declname>arg4</declname>
+        </param>
+        <param>
+          <type>T5</type>
+          <declname>arg5</declname>
+        </param>
+        <param>
+          <type>T6</type>
+          <declname>arg6</declname>
+        </param>
+        <param>
+          <type>T7</type>
+          <declname>arg7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1669" column="5" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1669" bodyend="1720"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___cuda___instance_8hpp_1a6f9ff1250ffc27718740380c3c7e9075" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::create_Cuda_instances</definition>
+        <argsstring>(std::vector&lt; Cuda &gt; &amp;instances)</argsstring>
+        <name>create_Cuda_instances</name>
+        <qualifiedname>Kokkos::Experimental::Impl::create_Cuda_instances</qualifiedname>
+        <param>
+          <type>std::vector&lt; Cuda &gt; &amp;</type>
+          <declname>instances</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" line="217" column="13" bodyfile="src/Kokkos/kokkos/core/src/Cuda/Kokkos_Cuda_Instance.hpp" bodystart="217" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8cpp_1a100ba5939ec6632dfd3737016498ed09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Kokkos::Experimental::HIP::size_type</type>
+        <definition>HIP::size_type Kokkos::Experimental::Impl::hip_internal_multiprocessor_count</definition>
+        <argsstring>()</argsstring>
+        <name>hip_internal_multiprocessor_count</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_multiprocessor_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="475" column="38" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="475" bodyend="477" declfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" declline="76" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8cpp_1ab07c9f26ac1c75cf5be340507c4cec31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Kokkos::Experimental::HIP::size_type</type>
+        <definition>HIP::size_type Kokkos::Experimental::Impl::hip_internal_maximum_warp_count</definition>
+        <argsstring>()</argsstring>
+        <name>hip_internal_maximum_warp_count</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_maximum_warp_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="479" column="38" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="479" bodyend="481" declfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" declline="74" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8cpp_1a65d4b984782d54c186586eb0e12ac084" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Kokkos::Experimental::HIP::size_type</type>
+        <definition>HIP::size_type Kokkos::Experimental::Impl::hip_internal_maximum_grid_count</definition>
+        <argsstring>()</argsstring>
+        <name>hip_internal_maximum_grid_count</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_maximum_grid_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="483" column="38" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="483" bodyend="485" declfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" declline="75" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8cpp_1ace401485c4477d20f23cbaadcfe22637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Kokkos::Experimental::HIP::size_type *</type>
+        <definition>Kokkos::Experimental::HIP::size_type * Kokkos::Experimental::Impl::hip_internal_scratch_space</definition>
+        <argsstring>(const Kokkos::Experimental::HIP::size_type size)</argsstring>
+        <name>hip_internal_scratch_space</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_scratch_space</qualifiedname>
+        <param>
+          <type>const Kokkos::Experimental::HIP::size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="487" column="38" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="487" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8cpp_1a85c108a96606065f9a19f75244972a58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Kokkos::Experimental::HIP::size_type *</type>
+        <definition>Kokkos::Experimental::HIP::size_type * Kokkos::Experimental::Impl::hip_internal_scratch_flags</definition>
+        <argsstring>(const Kokkos::Experimental::HIP::size_type size)</argsstring>
+        <name>hip_internal_scratch_flags</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_scratch_flags</qualifiedname>
+        <param>
+          <type>const Kokkos::Experimental::HIP::size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" line="492" column="38" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.cpp" bodystart="492" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8hpp_1a548b416369151aebcbc2f0e0e45f4f34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HIP::size_type *</type>
+        <definition>HIP::size_type * Kokkos::Experimental::Impl::hip_internal_scratch_space</definition>
+        <argsstring>(const HIP::size_type size)</argsstring>
+        <name>hip_internal_scratch_space</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_scratch_space</qualifiedname>
+        <param>
+          <type>const HIP::size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="78" column="16" declfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" declline="78" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8hpp_1a0551877ce3857357a44992840592c886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HIP::size_type *</type>
+        <definition>HIP::size_type * Kokkos::Experimental::Impl::hip_internal_scratch_flags</definition>
+        <argsstring>(const HIP::size_type size)</argsstring>
+        <name>hip_internal_scratch_flags</name>
+        <qualifiedname>Kokkos::Experimental::Impl::hip_internal_scratch_flags</qualifiedname>
+        <param>
+          <type>const HIP::size_type</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="79" column="16" declfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" declline="79" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___instance_8hpp_1ad4a21c426e8dcf2b3a0465aff9e8352c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Experimental::Impl::create_HIP_instances</definition>
+        <argsstring>(std::vector&lt; HIP &gt; &amp;instances)</argsstring>
+        <name>create_HIP_instances</name>
+        <qualifiedname>Kokkos::Experimental::Impl::create_HIP_instances</qualifiedname>
+        <param>
+          <type>std::vector&lt; HIP &gt; &amp;</type>
+          <declname>instances</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" line="183" column="13" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Instance.hpp" bodystart="183" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___vectorization_8hpp_1ae58bf447bf9347c7568acbecb117a87f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>__device__ KOKKOS_IMPL_FORCEINLINE void</type>
+        <definition>__device__ KOKKOS_IMPL_FORCEINLINE void Kokkos::Experimental::Impl::in_place_shfl</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept</argsstring>
+        <name>in_place_shfl</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="142" column="41" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___vectorization_8hpp_1a904f3c4527bc43e5b4ef301283090765" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>__device__ KOKKOS_IMPL_FORCEINLINE void</type>
+        <definition>__device__ KOKKOS_IMPL_FORCEINLINE void Kokkos::Experimental::Impl::in_place_shfl_up</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept</argsstring>
+        <name>in_place_shfl_up</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_up</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="161" column="41" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="161" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___h_i_p___vectorization_8hpp_1a16aaa1cbf248a26b855222c6006808ea" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>__device__ KOKKOS_IMPL_FORCEINLINE void</type>
+        <definition>__device__ KOKKOS_IMPL_FORCEINLINE void Kokkos::Experimental::Impl::in_place_shfl_down</definition>
+        <argsstring>(Args &amp;&amp;... args) noexcept</argsstring>
+        <name>in_place_shfl_down</name>
+        <qualifiedname>Kokkos::Experimental::Impl::in_place_shfl_down</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" line="181" column="41" bodyfile="src/Kokkos/kokkos/core/src/HIP/Kokkos_HIP_Vectorization.hpp" bodystart="181" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___s_y_c_l___instance_8cpp_1a3be30b31126d4e31c6a106870f98a8f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>template void</type>
+        <definition>template void Kokkos::Experimental::Impl::SYCLInternal::fence_helper&lt; sycl::queue &gt;</definition>
+        <argsstring>(sycl::queue &amp;, const std::string &amp;, uint32_t)</argsstring>
+        <name>SYCLInternal::fence_helper&lt; sycl::queue &gt;</name>
+        <qualifiedname>Kokkos::Experimental::Impl::fence_helper&lt; sycl::queue &gt;</qualifiedname>
+        <param>
+          <type>sycl::queue &amp;</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" line="300" column="10" declfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" declline="300" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___s_y_c_l___instance_8cpp_1af3b89af4fcd80ef254efa6e20670b271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>template void</type>
+        <definition>template void Kokkos::Experimental::Impl::SYCLInternal::fence_helper&lt; sycl::event &gt;</definition>
+        <argsstring>(sycl::event &amp;, const std::string &amp;, uint32_t)</argsstring>
+        <name>SYCLInternal::fence_helper&lt; sycl::event &gt;</name>
+        <qualifiedname>Kokkos::Experimental::Impl::fence_helper&lt; sycl::event &gt;</qualifiedname>
+        <param>
+          <type>sycl::event &amp;</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" line="303" column="10" declfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.cpp" declline="303" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="_kokkos___s_y_c_l___instance_8hpp_1a5e001e03fb488389ca8c275cb9b8b221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename Storage</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto Kokkos::Experimental::Impl::make_sycl_function_wrapper</definition>
+        <argsstring>(const Functor &amp;functor, Storage &amp;storage)</argsstring>
+        <name>make_sycl_function_wrapper</name>
+        <qualifiedname>Kokkos::Experimental::Impl::make_sycl_function_wrapper</qualifiedname>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>Storage &amp;</type>
+          <declname>storage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" line="268" column="6" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Instance.hpp" bodystart="268" bodyend="270"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynamicView.hpp" line="56" column="1"/>
+  </compounddef>
+</doxygen>

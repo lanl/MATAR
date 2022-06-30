@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structdesul_1_1_impl_1_1is__openmp__atomic__type__t" kind="struct" language="C++" prot="public">
+    <compoundname>desul::Impl::is_openmp_atomic_type_t</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structdesul_1_1_impl_1_1is__openmp__atomic__type__t_1ad9dbc053b56e9f53c0f1f020706770e0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool desul::Impl::is_openmp_atomic_type_t&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>desul::Impl::is_openmp_atomic_type_t::value</qualifiedname>
+        <initializer>= std::is_arithmetic&lt;T&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/openmp/OpenMP_40.hpp" line="47" column="27" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/openmp/OpenMP_40.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/openmp/OpenMP_40.hpp" line="46" column="3" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/openmp/OpenMP_40.hpp" bodystart="46" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structdesul_1_1_impl_1_1is__openmp__atomic__type__t_1ad9dbc053b56e9f53c0f1f020706770e0" prot="public" virt="non-virtual"><scope>desul::Impl::is_openmp_atomic_type_t</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

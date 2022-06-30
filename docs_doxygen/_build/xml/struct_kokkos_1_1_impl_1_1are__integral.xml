@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1are__integral" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::are_integral</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1are__integral_1a1df8a34fb1f93b7039a613ed89ad41cf" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@85</name>
+        <qualifiedname>Kokkos::Impl::are_integral::@85</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1are__integral_1a1df8a34fb1f93b7039a613ed89ad41cfa379e562ea8cf477b0d290fcae9c95659" prot="public">
+          <name>value</name>
+          <initializer>= true</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="124" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="124" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="123" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="123" bodyend="125"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1are__integral_1a1df8a34fb1f93b7039a613ed89ad41cfa379e562ea8cf477b0d290fcae9c95659" prot="public" virt="non-virtual"><scope>Kokkos::Impl::are_integral</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

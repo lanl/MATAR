@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::DynRankViewFill</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class OutputView</type>
+      </param>
+      <param>
+        <type>class Enable</type>
+        <defval>void</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a4869710efd9a76b5ce67c8919e2aaddc" prot="public" static="no">
+        <type>typename OutputView::traits::const_value_type</type>
+        <definition>using Kokkos::Impl::DynRankViewFill&lt; OutputView, Enable &gt;::const_value_type =  typename OutputView::traits::const_value_type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1581" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1581" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a998f734cadfd50262342944f7262f886" prot="public" static="no" mutable="no">
+        <type>const OutputView</type>
+        <definition>const OutputView Kokkos::Impl::DynRankViewFill&lt; OutputView, Enable &gt;::output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill::output</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1583" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1583" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a330a385062e110990b14ce7f8f808fb4" prot="public" static="no" mutable="no">
+        <type>const_value_type</type>
+        <definition>const_value_type Kokkos::Impl::DynRankViewFill&lt; OutputView, Enable &gt;::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill::input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1584" column="20" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1584" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1ad2d01d1774dff846469ec197aa1a9309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::DynRankViewFill&lt; OutputView, Enable &gt;::operator()</definition>
+        <argsstring>(const size_t i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill::operator()</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1587" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1587" bodyend="1608"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a0599dd0f6d33342888d54ea359224c3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::DynRankViewFill&lt; OutputView, Enable &gt;::DynRankViewFill</definition>
+        <argsstring>(const OutputView &amp;arg_out, const_value_type &amp;arg_in)</argsstring>
+        <name>DynRankViewFill</name>
+        <qualifiedname>Kokkos::Impl::DynRankViewFill::DynRankViewFill</qualifiedname>
+        <param>
+          <type>const OutputView &amp;</type>
+          <declname>arg_out</declname>
+        </param>
+        <param>
+          <type>const_value_type &amp;</type>
+          <declname>arg_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1610" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1610" bodyend="1617"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" line="1580" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_DynRankView.hpp" bodystart="1580" bodyend="1618"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a4869710efd9a76b5ce67c8919e2aaddc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill</scope><name>const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a0599dd0f6d33342888d54ea359224c3e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill</scope><name>DynRankViewFill</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a330a385062e110990b14ce7f8f808fb4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill</scope><name>input</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1ad2d01d1774dff846469ec197aa1a9309" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_dyn_rank_view_fill_1a998f734cadfd50262342944f7262f886" prot="public" virt="non-virtual"><scope>Kokkos::Impl::DynRankViewFill</scope><name>output</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

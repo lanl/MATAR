@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structinit__view" kind="struct" language="C++" prot="public">
+    <compoundname>init_view</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ViewType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structinit__view_1a36ec1a84ce540cff014b1c842c5f3eaf" prot="public" static="no">
+        <type>typename ViewType::size_type</type>
+        <definition>using init_view&lt; ViewType &gt;::size_type =  typename ViewType::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>init_view::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" line="71" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structinit__view_1ac3938b033d22801a917189fd5963dad9" prot="public" static="no" mutable="no">
+        <type>ViewType</type>
+        <definition>ViewType init_view&lt; ViewType &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>init_view::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" line="68" column="12" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structinit__view_1aa0558a35aa0076dd1ebf998ba58e0d87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>init_view&lt; ViewType &gt;::init_view</definition>
+        <argsstring>(ViewType a_)</argsstring>
+        <name>init_view</name>
+        <qualifiedname>init_view::init_view</qualifiedname>
+        <param>
+          <type>ViewType</type>
+          <declname>a_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" line="69" column="3" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="structinit__view_1aef43338d0ed3b077208f0e538feeee2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void init_view&lt; ViewType &gt;::operator()</definition>
+        <argsstring>(const typename ViewType::size_type i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>init_view::operator()</qualifiedname>
+        <param>
+          <type>const typename ViewType::size_type</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" line="74" column="8" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" bodystart="74" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" line="67" column="1" bodyfile="src/Kokkos/kokkos/example/tutorial/Advanced_Views/01_data_layouts/data_layouts.cpp" bodystart="67" bodyend="83"/>
+    <listofallmembers>
+      <member refid="structinit__view_1ac3938b033d22801a917189fd5963dad9" prot="public" virt="non-virtual"><scope>init_view</scope><name>a</name></member>
+      <member refid="structinit__view_1aa0558a35aa0076dd1ebf998ba58e0d87" prot="public" virt="non-virtual"><scope>init_view</scope><name>init_view</name></member>
+      <member refid="structinit__view_1aef43338d0ed3b077208f0e538feeee2c" prot="public" virt="non-virtual"><scope>init_view</scope><name>operator()</name></member>
+      <member refid="structinit__view_1a36ec1a84ce540cff014b1c842c5f3eaf" prot="public" virt="non-virtual"><scope>init_view</scope><name>size_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

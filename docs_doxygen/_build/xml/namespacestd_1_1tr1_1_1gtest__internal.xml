@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacestd_1_1tr1_1_1gtest__internal" kind="namespace" language="C++">
+    <compoundname>std::tr1::gtest_internal</compoundname>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_add_ref" prot="public">std::tr1::gtest_internal::AddRef</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_add_ref_3_01_t_01_6_01_4" prot="public">std::tr1::gtest_internal::AddRef&lt; T &amp; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_by_ref" prot="public">std::tr1::gtest_internal::ByRef</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_by_ref_3_01_t_01_6_01_4" prot="public">std::tr1::gtest_internal::ByRef&lt; T &amp; &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get" prot="public">std::tr1::gtest_internal::Get</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_010_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 0 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_011_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 1 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_012_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 2 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_013_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 3 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_014_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 4 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_015_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 5 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_016_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 6 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_017_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 7 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_018_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 8 &gt;</innerclass>
+    <innerclass refid="classstd_1_1tr1_1_1gtest__internal_1_1_get_3_019_01_4" prot="public">std::tr1::gtest_internal::Get&lt; 9 &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_same_size_tuple_prefix_comparator" prot="public">std::tr1::gtest_internal::SameSizeTuplePrefixComparator</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_same_size_tuple_prefix_comparator_3_010_00_010_01_4" prot="public">std::tr1::gtest_internal::SameSizeTuplePrefixComparator&lt; 0, 0 &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_same_size_tuple_prefix_comparator_3_01k_00_01k_01_4" prot="public">std::tr1::gtest_internal::SameSizeTuplePrefixComparator&lt; k, k &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element" prot="public">std::tr1::gtest_internal::TupleElement</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_010_00_01tuple_3_01_t0_00_01_t66c5130f687a44d8434612d7621dc495" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 0, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_011_00_01tuple_3_01_t0_00_01_t8181d631bbdd33c2d64c44e29f9c47e8" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 1, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_012_00_01tuple_3_01_t0_00_01_t00f7ef974a1c8ba63d9443a6d296ee00" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 2, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_013_00_01tuple_3_01_t0_00_01_t4434e956ae89e1f29cc88ddf864b3891" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 3, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_014_00_01tuple_3_01_t0_00_01_t0430ab5fdc92b199cb0a382ad5d20ccb" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 4, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_015_00_01tuple_3_01_t0_00_01_tfe2438389fe8c141f9f6d5373d0e6435" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 5, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_016_00_01tuple_3_01_t0_00_01_t4579bc76a3178dc750deb2b47a8e75e7" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 6, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_017_00_01tuple_3_01_t0_00_01_t9c4d155381d797accb5fc03a97476704" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 7, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_018_00_01tuple_3_01_t0_00_01_tf31826a76a0642f85caf5caabb29d6e9" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 8, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1tr1_1_1gtest__internal_1_1_tuple_element_3_01true_00_019_00_01tuple_3_01_t0_00_01_tf16eb08ccaeaf0702e789416a96762ab" prot="public">std::tr1::gtest_internal::TupleElement&lt; true, 9, tuple&lt; T0, T1, T2, T3, T4, T5, T6, T7, T8, T9 &gt; &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="760" column="1"/>
+  </compounddef>
+</doxygen>

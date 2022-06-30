@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_parameterized_test_case_info_base" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>testing::internal::ParameterizedTestCaseInfoBase</compoundname>
+    <derivedcompoundref refid="classtesting_1_1internal_1_1_parameterized_test_case_info" prot="public" virt="non-virtual">testing::internal::ParameterizedTestCaseInfo&lt; TestCase &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classtesting_1_1internal_1_1_parameterized_test_case_info" prot="public" virt="non-virtual">testing::internal::ParameterizedTestCaseInfo&lt; TestCase &gt;</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1affae85e908f0901a8f0f1f9576843e35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ParameterizedTestCaseInfoBase::~ParameterizedTestCaseInfoBase</definition>
+        <argsstring>()</argsstring>
+        <name>~ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::~ParameterizedTestCaseInfoBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10420" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10420" bodyend="10420"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a4d542cf4f31e91ccfd1b50641e42e02c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const string &amp;</type>
+        <definition>virtual const string &amp; testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetTestCaseName</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseName</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a090d9cbc5abcfa73b19231ca4e990078">GetTestCaseName</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a090d9cbc5abcfa73b19231ca4e990078">GetTestCaseName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10423" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a932b4a9185a72d5bdfa5fd84fc06cbca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>TypeId</type>
+        <definition>virtual TypeId testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseTypeId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetTestCaseTypeId</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseTypeId</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a16ed77e95a6042c722d0029744acfc33">GetTestCaseTypeId</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a16ed77e95a6042c722d0029744acfc33">GetTestCaseTypeId</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10425" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a92baca6c64c822c2e7043217f7903ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::ParameterizedTestCaseInfoBase::RegisterTests</definition>
+        <argsstring>()=0</argsstring>
+        <name>RegisterTests</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::RegisterTests</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a7e118820b3074ce70c0440e2e49a50a1">RegisterTests</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a7e118820b3074ce70c0440e2e49a50a1">RegisterTests</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10430" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1affae85e908f0901a8f0f1f9576843e35" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::internal::ParameterizedTestCaseInfoBase::~ParameterizedTestCaseInfoBase</definition>
+        <argsstring>()</argsstring>
+        <name>~ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::~ParameterizedTestCaseInfoBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10420" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10420" bodyend="10420"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a4d542cf4f31e91ccfd1b50641e42e02c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const string &amp;</type>
+        <definition>virtual const string &amp; testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetTestCaseName</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseName</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a090d9cbc5abcfa73b19231ca4e990078">GetTestCaseName</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a090d9cbc5abcfa73b19231ca4e990078">GetTestCaseName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10423" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a932b4a9185a72d5bdfa5fd84fc06cbca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>TypeId</type>
+        <definition>virtual TypeId testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseTypeId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetTestCaseTypeId</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::GetTestCaseTypeId</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a16ed77e95a6042c722d0029744acfc33">GetTestCaseTypeId</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a16ed77e95a6042c722d0029744acfc33">GetTestCaseTypeId</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10425" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a92baca6c64c822c2e7043217f7903ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::internal::ParameterizedTestCaseInfoBase::RegisterTests</definition>
+        <argsstring>()=0</argsstring>
+        <name>RegisterTests</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::RegisterTests</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a7e118820b3074ce70c0440e2e49a50a1">RegisterTests</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_parameterized_test_case_info_1a7e118820b3074ce70c0440e2e49a50a1">RegisterTests</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10430" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a48d0d6c661d0d5b6b404f1add3704aaf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</definition>
+        <argsstring>()</argsstring>
+        <name>ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10433" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10433" bodyend="10433"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a48d0d6c661d0d5b6b404f1add3704aaf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</definition>
+        <argsstring>()</argsstring>
+        <name>ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10433" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="10433" bodyend="10433"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a57bae3a8faa854bd1aafaa3ddf6bb649" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</definition>
+        <argsstring>(ParameterizedTestCaseInfoBase const &amp;)</argsstring>
+        <name>ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base" kindref="compound">ParameterizedTestCaseInfoBase</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10436" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a76f6c295dd9ae7d2864b79f4a594ecac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ParameterizedTestCaseInfoBase::operator=</definition>
+        <argsstring>(ParameterizedTestCaseInfoBase const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base" kindref="compound">ParameterizedTestCaseInfoBase</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10436" column="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a57bae3a8faa854bd1aafaa3ddf6bb649" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</definition>
+        <argsstring>(ParameterizedTestCaseInfoBase const &amp;)</argsstring>
+        <name>ParameterizedTestCaseInfoBase</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::ParameterizedTestCaseInfoBase</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base" kindref="compound">ParameterizedTestCaseInfoBase</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10436" column="4"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a76f6c295dd9ae7d2864b79f4a594ecac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ParameterizedTestCaseInfoBase::operator=</definition>
+        <argsstring>(ParameterizedTestCaseInfoBase const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::internal::ParameterizedTestCaseInfoBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base" kindref="compound">ParameterizedTestCaseInfoBase</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="10436" column="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::internal::ParameterizedTestCaseInfo&lt; TestCase &gt;</label>
+        <link refid="classtesting_1_1internal_1_1_parameterized_test_case_info"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>testing::internal::ParameterizedTestCaseInfoBase</label>
+        <link refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="10418" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="10418" bodyend="10437"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a4d542cf4f31e91ccfd1b50641e42e02c" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>GetTestCaseName</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a4d542cf4f31e91ccfd1b50641e42e02c" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>GetTestCaseName</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a932b4a9185a72d5bdfa5fd84fc06cbca" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>GetTestCaseTypeId</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a932b4a9185a72d5bdfa5fd84fc06cbca" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>GetTestCaseTypeId</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a76f6c295dd9ae7d2864b79f4a594ecac" prot="private" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a76f6c295dd9ae7d2864b79f4a594ecac" prot="private" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a48d0d6c661d0d5b6b404f1add3704aaf" prot="protected" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>ParameterizedTestCaseInfoBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a57bae3a8faa854bd1aafaa3ddf6bb649" prot="private" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>ParameterizedTestCaseInfoBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a48d0d6c661d0d5b6b404f1add3704aaf" prot="protected" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>ParameterizedTestCaseInfoBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a57bae3a8faa854bd1aafaa3ddf6bb649" prot="private" virt="non-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>ParameterizedTestCaseInfoBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a92baca6c64c822c2e7043217f7903ef2" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>RegisterTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1a92baca6c64c822c2e7043217f7903ef2" prot="public" virt="pure-virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>RegisterTests</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1affae85e908f0901a8f0f1f9576843e35" prot="public" virt="virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>~ParameterizedTestCaseInfoBase</name></member>
+      <member refid="classtesting_1_1internal_1_1_parameterized_test_case_info_base_1affae85e908f0901a8f0f1f9576843e35" prot="public" virt="virtual"><scope>testing::internal::ParameterizedTestCaseInfoBase</scope><name>~ParameterizedTestCaseInfoBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

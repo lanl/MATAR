@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1has__type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::has_type</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Pack</declname>
+        <defname>Pack</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1has__type_1a0f4e57e098aca25fe0a6f85304977abd" prot="public" static="no" strong="no">
+        <type>bool</type>
+        <name>@79</name>
+        <qualifiedname>Kokkos::Impl::has_type::@79</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1has__type_1a0f4e57e098aca25fe0a6f85304977abda2220ad464ffe54487ca067c8b06e175e" prot="public">
+          <name>value</name>
+          <initializer>= false</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="78" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="77" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="77" bodyend="79"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1has__type_1a0f4e57e098aca25fe0a6f85304977abda2220ad464ffe54487ca067c8b06e175e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::has_type</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

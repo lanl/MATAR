@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_parallel_for_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::ParallelForFunctor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_parallel_for_functor_1a2de1b0ce587b08d44ae537b401bd6cac" prot="public" static="no" mutable="no">
+        <type>value_type *</type>
+        <definition>value_type* Test::ParallelForFunctor::_data</definition>
+        <argsstring></argsstring>
+        <name>_data</name>
+        <qualifiedname>Test::ParallelForFunctor::_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" line="59" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_parallel_for_functor_1a9fe2d8e937b9716e278f79d05555e8f4" prot="public" static="no" mutable="no">
+        <type>const value_type</type>
+        <definition>const value_type Test::ParallelForFunctor::_value</definition>
+        <argsstring></argsstring>
+        <name>_value</name>
+        <qualifiedname>Test::ParallelForFunctor::_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" line="60" column="20" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_parallel_for_functor_1aeacf4fde89fe422a848c9675c8f647a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::ParallelForFunctor::ParallelForFunctor</definition>
+        <argsstring>(value_type *data, const value_type value)</argsstring>
+        <name>ParallelForFunctor</name>
+        <qualifiedname>Test::ParallelForFunctor::ParallelForFunctor</qualifiedname>
+        <param>
+          <type>value_type *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const value_type</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" bodystart="62" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_parallel_for_functor_1a011654de6a57e91f197cd7a780bbba4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::ParallelForFunctor::operator()</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::ParallelForFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" line="66" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" line="58" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test04_ParallelFor_RangePolicy.hpp" bodystart="58" bodyend="67"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_parallel_for_functor_1a2de1b0ce587b08d44ae537b401bd6cac" prot="public" virt="non-virtual"><scope>Test::ParallelForFunctor</scope><name>_data</name></member>
+      <member refid="struct_test_1_1_parallel_for_functor_1a9fe2d8e937b9716e278f79d05555e8f4" prot="public" virt="non-virtual"><scope>Test::ParallelForFunctor</scope><name>_value</name></member>
+      <member refid="struct_test_1_1_parallel_for_functor_1a011654de6a57e91f197cd7a780bbba4b" prot="public" virt="non-virtual"><scope>Test::ParallelForFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_parallel_for_functor_1aeacf4fde89fe422a848c9675c8f647a6" prot="public" virt="non-virtual"><scope>Test::ParallelForFunctor</scope><name>ParallelForFunctor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

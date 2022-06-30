@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___tools___value_range" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_ValueRange</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___tools___value_range_1a0a0dc65c0deb1c3a2b4de67f7d05635f" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref></type>
+        <definition>union Kokkos_Tools_VariableValue_ValueUnion Kokkos_Tools_ValueRange::lower</definition>
+        <argsstring></argsstring>
+        <name>lower</name>
+        <qualifiedname>Kokkos_Tools_ValueRange::lower</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="189" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___value_range_1ad1b2fae765d6d1c8da92a42d0a1a8033" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref></type>
+        <definition>union Kokkos_Tools_VariableValue_ValueUnion Kokkos_Tools_ValueRange::upper</definition>
+        <argsstring></argsstring>
+        <name>upper</name>
+        <qualifiedname>Kokkos_Tools_ValueRange::upper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="190" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___value_range_1ac24a0a27acdd83ce1a5e43d5c48abad3" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_kokkos___tools___variable_value___value_union" kindref="compound">Kokkos_Tools_VariableValue_ValueUnion</ref></type>
+        <definition>union Kokkos_Tools_VariableValue_ValueUnion Kokkos_Tools_ValueRange::step</definition>
+        <argsstring></argsstring>
+        <name>step</name>
+        <qualifiedname>Kokkos_Tools_ValueRange::step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="191" column="46" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___value_range_1a35dbedf12afbaba279b0b2b066c8af1d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos_Tools_ValueRange::openLower</definition>
+        <argsstring></argsstring>
+        <name>openLower</name>
+        <qualifiedname>Kokkos_Tools_ValueRange::openLower</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="192" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___value_range_1aaeeef553eab5e10ae3b15672a44264a2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Kokkos_Tools_ValueRange::openUpper</definition>
+        <argsstring></argsstring>
+        <name>openUpper</name>
+        <qualifiedname>Kokkos_Tools_ValueRange::openUpper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="193" column="8" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos_Tools_ValueRange</label>
+        <link refid="struct_kokkos___tools___value_range"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>lower</edgelabel>
+          <edgelabel>step</edgelabel>
+          <edgelabel>upper</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Tools_VariableValue_ValueUnion</label>
+        <link refid="union_kokkos___tools___variable_value___value_union"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="188" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="188" bodyend="194"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___tools___value_range_1a0a0dc65c0deb1c3a2b4de67f7d05635f" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueRange</scope><name>lower</name></member>
+      <member refid="struct_kokkos___tools___value_range_1a35dbedf12afbaba279b0b2b066c8af1d" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueRange</scope><name>openLower</name></member>
+      <member refid="struct_kokkos___tools___value_range_1aaeeef553eab5e10ae3b15672a44264a2" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueRange</scope><name>openUpper</name></member>
+      <member refid="struct_kokkos___tools___value_range_1ac24a0a27acdd83ce1a5e43d5c48abad3" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueRange</scope><name>step</name></member>
+      <member refid="struct_kokkos___tools___value_range_1ad1b2fae765d6d1c8da92a42d0a1a8033" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueRange</scope><name>upper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

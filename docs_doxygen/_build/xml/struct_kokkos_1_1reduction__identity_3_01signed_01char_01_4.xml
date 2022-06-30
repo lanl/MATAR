@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::reduction_identity&lt; signed char &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a05c9eaeec9fa905c4c14d8730d9d0bb7" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::sum</definition>
+        <argsstring>()</argsstring>
+        <name>sum</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::sum</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="283" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="283" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a547d406b0d7db32072eb57d30832db34" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::prod</definition>
+        <argsstring>()</argsstring>
+        <name>prod</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::prod</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="286" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="286" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ad94ab8b0ef379cda6a822fc461701b45" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::max</definition>
+        <argsstring>()</argsstring>
+        <name>max</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="289" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="289" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a20a62b3cfcde159c32fc7cf06b8d87b6" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::min</definition>
+        <argsstring>()</argsstring>
+        <name>min</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="292" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="292" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ab39f54082c054504ba2c848363980d87" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::bor</definition>
+        <argsstring>()</argsstring>
+        <name>bor</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::bor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="295" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="295" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ab6c9ce4582d963e07cf8e65c880494fd" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::band</definition>
+        <argsstring>()</argsstring>
+        <name>band</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::band</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="298" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="298" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a66a0e7050880d331ed2465f07d9777c1" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::lor</definition>
+        <argsstring>()</argsstring>
+        <name>lor</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::lor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="301" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="301" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ade291b5092a9e639201215115983b334" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION static constexpr signed char Kokkos::reduction_identity&lt; signed char &gt;::land</definition>
+        <argsstring>()</argsstring>
+        <name>land</name>
+        <qualifiedname>Kokkos::reduction_identity&lt; signed char &gt;::land</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="304" column="60" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="304" bodyend="306"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" line="282" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_NumericTraits.hpp" bodystart="282" bodyend="307"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ab6c9ce4582d963e07cf8e65c880494fd" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>band</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ab39f54082c054504ba2c848363980d87" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>bor</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ade291b5092a9e639201215115983b334" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>land</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a66a0e7050880d331ed2465f07d9777c1" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>lor</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1ad94ab8b0ef379cda6a822fc461701b45" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>max</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a20a62b3cfcde159c32fc7cf06b8d87b6" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>min</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a547d406b0d7db32072eb57d30832db34" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>prod</name></member>
+      <member refid="struct_kokkos_1_1reduction__identity_3_01signed_01char_01_4_1a05c9eaeec9fa905c4c14d8730d9d0bb7" prot="public" virt="non-virtual"><scope>Kokkos::reduction_identity&lt; signed char &gt;</scope><name>sum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

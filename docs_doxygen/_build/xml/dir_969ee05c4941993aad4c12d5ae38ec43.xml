@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_969ee05c4941993aad4c12d5ae38ec43" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core</compoundname>
+    <innerdir refid="dir_d2522b25602d3240156c078237101090">src/Kokkos/kokkos/core/perf_test</innerdir>
+    <innerdir refid="dir_91f173194c23152b2a8b35c141eebda0">src/Kokkos/kokkos/core/src</innerdir>
+    <innerdir refid="dir_f6f79e30fec0f6cfdc6f827cb62816d5">src/Kokkos/kokkos/core/unit_test</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/"/>
+  </compounddef>
+</doxygen>

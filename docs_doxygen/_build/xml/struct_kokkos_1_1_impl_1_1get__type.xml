@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1get__type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::get_type</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>I</declname>
+        <defname>I</defname>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>Pack</declname>
+        <defname>Pack</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1get__type_1a41c8aecd65b07694b0a6d8378003aa9b" prot="public" static="no">
+        <type>void</type>
+        <definition>using Kokkos::Impl::get_type&lt; I, Pack &gt;::type =  void</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::get_type::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="63" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" line="62" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Traits.hpp" bodystart="62" bodyend="64"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1get__type_1a41c8aecd65b07694b0a6d8378003aa9b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::get_type</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

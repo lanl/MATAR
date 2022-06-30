@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_universal_terse_printer_3_01const_01char_01_5_01_4" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::UniversalTersePrinter&lt; const char * &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_universal_terse_printer_3_01const_01char_01_5_01_4_1a37a3be2d26dc07b24d16c2b5eb88ecda" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal::UniversalTersePrinter&lt; const char * &gt;::Print</definition>
+        <argsstring>(const char *str, ::std::ostream *os)</argsstring>
+        <name>Print</name>
+        <qualifiedname>testing::internal::UniversalTersePrinter&lt; const char * &gt;::Print</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9899" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9899" bodyend="9905"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_universal_terse_printer_3_01const_01char_01_5_01_4_1a37a3be2d26dc07b24d16c2b5eb88ecda" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void testing::internal::UniversalTersePrinter&lt; const char * &gt;::Print</definition>
+        <argsstring>(const char *str, ::std::ostream *os)</argsstring>
+        <name>Print</name>
+        <qualifiedname>testing::internal::UniversalTersePrinter&lt; const char * &gt;::Print</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>::std::ostream *</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="9899" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="9899" bodyend="9905"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="9897" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="9897" bodyend="9906"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_universal_terse_printer_3_01const_01char_01_5_01_4_1a37a3be2d26dc07b24d16c2b5eb88ecda" prot="public" virt="non-virtual"><scope>testing::internal::UniversalTersePrinter&lt; const char * &gt;</scope><name>Print</name></member>
+      <member refid="classtesting_1_1internal_1_1_universal_terse_printer_3_01const_01char_01_5_01_4_1a37a3be2d26dc07b24d16c2b5eb88ecda" prot="public" virt="non-virtual"><scope>testing::internal::UniversalTersePrinter&lt; const char * &gt;</scope><name>Print</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

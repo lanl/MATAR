@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_operator_bounds_error_on_device_3_01_map_type_00_01false_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::OperatorBoundsErrorOnDevice&lt; MapType, false &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class MapType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_operator_bounds_error_on_device_3_01_map_type_00_01false_01_4_1a0f89093513b99a795734fdf6a02c0672" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::OperatorBoundsErrorOnDevice&lt; MapType, false &gt;::run</definition>
+        <argsstring>(MapType const &amp;)</argsstring>
+        <name>run</name>
+        <qualifiedname>Kokkos::Impl::OperatorBoundsErrorOnDevice&lt; MapType, false &gt;::run</qualifiedname>
+        <param>
+          <type>MapType const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3913" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3913" bodyend="3913"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3911" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3911" bodyend="3914"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_operator_bounds_error_on_device_3_01_map_type_00_01false_01_4_1a0f89093513b99a795734fdf6a02c0672" prot="public" virt="non-virtual"><scope>Kokkos::Impl::OperatorBoundsErrorOnDevice&lt; MapType, false &gt;</scope><name>run</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

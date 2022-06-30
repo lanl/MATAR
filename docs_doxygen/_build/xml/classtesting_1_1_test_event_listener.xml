@@ -1,0 +1,697 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_test_event_listener" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>testing::TestEventListener</compoundname>
+    <derivedcompoundref refid="classtesting_1_1_empty_test_event_listener" prot="public" virt="non-virtual">testing::EmptyTestEventListener</derivedcompoundref>
+    <derivedcompoundref refid="classtesting_1_1_empty_test_event_listener" prot="public" virt="non-virtual">testing::EmptyTestEventListener</derivedcompoundref>
+    <derivedcompoundref refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer" prot="public" virt="non-virtual">testing::internal::PrettyUnitTestResultPrinter</derivedcompoundref>
+    <derivedcompoundref refid="classtesting_1_1internal_1_1_test_event_repeater" prot="public" virt="non-virtual">testing::internal::TestEventRepeater</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::TestEventListener::~TestEventListener</definition>
+        <argsstring>()</argsstring>
+        <name>~TestEventListener</name>
+        <qualifiedname>testing::TestEventListener::~TestEventListener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18378" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18378" bodyend="18378"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a5f6c84f39851e8a603a2d2e10063816b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestProgramStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnTestProgramStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestProgramStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7a6b6de195b4ef3c9f2edd2e6c270f3e">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aa3847c8a3c22d8d69a6006dfdd6589fc">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aa3847c8a3c22d8d69a6006dfdd6589fc">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a4ecd5b2b26b45d349045477d4d2383c9">OnTestProgramStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18381" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a60cc09b7907cb329d152eb5e7133bdeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestIterationStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)=0</argsstring>
+        <name>OnTestIterationStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestIterationStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a836f05829855dc60d13ba99ad712c0dd">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a836f05829855dc60d13ba99ad712c0dd">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1abdba10a8c97e272ab4cee97cb652c957">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a4062b3f070bb6531ab8494c13d3635d3">OnTestIterationStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18386" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1aa6502e534919605be45f26a6daf9a40c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsSetUpStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsSetUpStart</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsSetUpStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a156d1965248fbdced6aabacadfa2d63f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a156d1965248fbdced6aabacadfa2d63f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a846a5e82b421e04fcdd2b1b2b64b162f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a6f6b4db5278e7e56cf67f695d1f0f87a">OnEnvironmentsSetUpStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18390" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1aaa1021d75f5dbf3f05c829c1cc520341" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsSetUpEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsSetUpEnd</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsSetUpEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1aadba892f02606a8b0c5f5982b3553aac">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1abc481c6648d15d4242245195a06f5aa0">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1abc481c6648d15d4242245195a06f5aa0">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a88eeb21ba68d97167e2cfae0b9f3afeb">OnEnvironmentsSetUpEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18393" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ab4ed885d63f5bbff8076c1329b3dfe36" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestCaseStart</definition>
+        <argsstring>(const TestCase &amp;test_case)=0</argsstring>
+        <name>OnTestCaseStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestCaseStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1ae4707ed9cc7ace5241bc8ccc4051209b">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1ae4707ed9cc7ace5241bc8ccc4051209b">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1adcb68c729565d4bcdf8418a52902c3de">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a42ccab9ae444a6262cf71953f250d950">OnTestCaseStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18396" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ab4f6a0ca16ae75daf385b3b5914e1048" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestStart</definition>
+        <argsstring>(const TestInfo &amp;test_info)=0</argsstring>
+        <name>OnTestStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a84fa74cc9ba742f9f847ea405ca84e5e">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a84fa74cc9ba742f9f847ea405ca84e5e">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a5078ee71cfa97e37ae7a9366149195c5">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a0d72b8964be337c2f887896cdacf732d">OnTestStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18399" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a054f8705c883fa120b91473aff38f2ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;test_part_result)=0</argsstring>
+        <name>OnTestPartResult</name>
+        <qualifiedname>testing::TestEventListener::OnTestPartResult</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a59e7f7d9f2e2d089a6e8c1e2577f4718">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a59e7f7d9f2e2d089a6e8c1e2577f4718">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7589e8df7485349498a3a81bf16e2f68">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a0aaf9416443764acb01a5188bca74058">OnTestPartResult</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>test_part_result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18402" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1abb1c44525ef038500608b5dc2f17099b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestEnd</definition>
+        <argsstring>(const TestInfo &amp;test_info)=0</argsstring>
+        <name>OnTestEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1afd58d21005f0d0d0399fb114627545d3">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1afd58d21005f0d0d0399fb114627545d3">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a06749ff2b32a16c127374ecd015f13e0">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a21e0b1b2a495b8e65d4a7a81a6a8e379">OnTestEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18405" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ae61985e2ef76ac78379b077be57a9c36" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestCaseEnd</definition>
+        <argsstring>(const TestCase &amp;test_case)=0</argsstring>
+        <name>OnTestCaseEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestCaseEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a6bec703158283104c4298f7d8a528515">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a6bec703158283104c4298f7d8a528515">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7a62fe58fa6f6aace813eb62b31e5a51">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a57fda998589ac2b86066d07b883c0546">OnTestCaseEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18408" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a468b5e6701bcb86cb2c956caadbba5e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsTearDownStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsTearDownStart</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsTearDownStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a00fa1a4ea5831e20746188414268e7c6">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a00fa1a4ea5831e20746188414268e7c6">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1afea9dc849c92fdbc1d8505f4c74ffc1a">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a8934ae9831ff6013a605d61b9772169d">OnEnvironmentsTearDownStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18411" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a9ea04fa7f447865ba76df35e12ba2092" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsTearDownEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsTearDownEnd</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsTearDownEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1ab23094ef3b714778b2f742d39818c280">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aea64c83c415b33a4c0b0239bafd1438d">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aea64c83c415b33a4c0b0239bafd1438d">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a81f1e41cd2da0af39cc71087c002a099">OnEnvironmentsTearDownEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18414" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a550fdb3e55726e4cefa09f5697941425" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestIterationEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)=0</argsstring>
+        <name>OnTestIterationEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestIterationEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a2253e5a18b3cf7bccd349567a252209d">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a2253e5a18b3cf7bccd349567a252209d">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1ac29b30216023baddda04ef5889f484ff">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a94253e3c11753328e8a031f39352708f">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_xml_unit_test_result_printer_1a2ae986dd2f4f2aed31cc6f3bc8c56898">OnTestIterationEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18417" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ad15b6246d94c268e233487a86463ef3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestProgramEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnTestProgramEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestProgramEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a8c92c062889abdb940b04ffe113f5980">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a0abcc02bd2331a2e29ad6f4d9daf2a32">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a0abcc02bd2331a2e29ad6f4d9daf2a32">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a17549f95cc2baf9834eb3fe57a11dfdf">OnTestProgramEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18421" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual testing::TestEventListener::~TestEventListener</definition>
+        <argsstring>()</argsstring>
+        <name>~TestEventListener</name>
+        <qualifiedname>testing::TestEventListener::~TestEventListener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18378" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18378" bodyend="18378"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a5f6c84f39851e8a603a2d2e10063816b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestProgramStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnTestProgramStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestProgramStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7a6b6de195b4ef3c9f2edd2e6c270f3e">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aa3847c8a3c22d8d69a6006dfdd6589fc">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aa3847c8a3c22d8d69a6006dfdd6589fc">OnTestProgramStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a4ecd5b2b26b45d349045477d4d2383c9">OnTestProgramStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18381" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a60cc09b7907cb329d152eb5e7133bdeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestIterationStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)=0</argsstring>
+        <name>OnTestIterationStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestIterationStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a836f05829855dc60d13ba99ad712c0dd">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a836f05829855dc60d13ba99ad712c0dd">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1abdba10a8c97e272ab4cee97cb652c957">OnTestIterationStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a4062b3f070bb6531ab8494c13d3635d3">OnTestIterationStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18386" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1aa6502e534919605be45f26a6daf9a40c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsSetUpStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsSetUpStart</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsSetUpStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a156d1965248fbdced6aabacadfa2d63f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a156d1965248fbdced6aabacadfa2d63f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a846a5e82b421e04fcdd2b1b2b64b162f">OnEnvironmentsSetUpStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a6f6b4db5278e7e56cf67f695d1f0f87a">OnEnvironmentsSetUpStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18390" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1aaa1021d75f5dbf3f05c829c1cc520341" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsSetUpEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsSetUpEnd</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsSetUpEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1aadba892f02606a8b0c5f5982b3553aac">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1abc481c6648d15d4242245195a06f5aa0">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1abc481c6648d15d4242245195a06f5aa0">OnEnvironmentsSetUpEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a88eeb21ba68d97167e2cfae0b9f3afeb">OnEnvironmentsSetUpEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18393" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ab4ed885d63f5bbff8076c1329b3dfe36" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestCaseStart</definition>
+        <argsstring>(const TestCase &amp;test_case)=0</argsstring>
+        <name>OnTestCaseStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestCaseStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1ae4707ed9cc7ace5241bc8ccc4051209b">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1ae4707ed9cc7ace5241bc8ccc4051209b">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1adcb68c729565d4bcdf8418a52902c3de">OnTestCaseStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a42ccab9ae444a6262cf71953f250d950">OnTestCaseStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18396" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ab4f6a0ca16ae75daf385b3b5914e1048" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestStart</definition>
+        <argsstring>(const TestInfo &amp;test_info)=0</argsstring>
+        <name>OnTestStart</name>
+        <qualifiedname>testing::TestEventListener::OnTestStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a84fa74cc9ba742f9f847ea405ca84e5e">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a84fa74cc9ba742f9f847ea405ca84e5e">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a5078ee71cfa97e37ae7a9366149195c5">OnTestStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a0d72b8964be337c2f887896cdacf732d">OnTestStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18399" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a054f8705c883fa120b91473aff38f2ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;test_part_result)=0</argsstring>
+        <name>OnTestPartResult</name>
+        <qualifiedname>testing::TestEventListener::OnTestPartResult</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a59e7f7d9f2e2d089a6e8c1e2577f4718">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a59e7f7d9f2e2d089a6e8c1e2577f4718">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7589e8df7485349498a3a81bf16e2f68">OnTestPartResult</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a0aaf9416443764acb01a5188bca74058">OnTestPartResult</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>test_part_result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18402" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1abb1c44525ef038500608b5dc2f17099b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestEnd</definition>
+        <argsstring>(const TestInfo &amp;test_info)=0</argsstring>
+        <name>OnTestEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1afd58d21005f0d0d0399fb114627545d3">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1afd58d21005f0d0d0399fb114627545d3">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a06749ff2b32a16c127374ecd015f13e0">OnTestEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a21e0b1b2a495b8e65d4a7a81a6a8e379">OnTestEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18405" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ae61985e2ef76ac78379b077be57a9c36" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestCaseEnd</definition>
+        <argsstring>(const TestCase &amp;test_case)=0</argsstring>
+        <name>OnTestCaseEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestCaseEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a6bec703158283104c4298f7d8a528515">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a6bec703158283104c4298f7d8a528515">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a7a62fe58fa6f6aace813eb62b31e5a51">OnTestCaseEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a57fda998589ac2b86066d07b883c0546">OnTestCaseEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18408" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a468b5e6701bcb86cb2c956caadbba5e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsTearDownStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsTearDownStart</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsTearDownStart</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a00fa1a4ea5831e20746188414268e7c6">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a00fa1a4ea5831e20746188414268e7c6">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1afea9dc849c92fdbc1d8505f4c74ffc1a">OnEnvironmentsTearDownStart</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a8934ae9831ff6013a605d61b9772169d">OnEnvironmentsTearDownStart</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18411" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a9ea04fa7f447865ba76df35e12ba2092" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnEnvironmentsTearDownEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnEnvironmentsTearDownEnd</name>
+        <qualifiedname>testing::TestEventListener::OnEnvironmentsTearDownEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1ab23094ef3b714778b2f742d39818c280">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aea64c83c415b33a4c0b0239bafd1438d">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1aea64c83c415b33a4c0b0239bafd1438d">OnEnvironmentsTearDownEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a81f1e41cd2da0af39cc71087c002a099">OnEnvironmentsTearDownEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18414" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1a550fdb3e55726e4cefa09f5697941425" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestIterationEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)=0</argsstring>
+        <name>OnTestIterationEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestIterationEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a2253e5a18b3cf7bccd349567a252209d">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a2253e5a18b3cf7bccd349567a252209d">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1ac29b30216023baddda04ef5889f484ff">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a94253e3c11753328e8a031f39352708f">OnTestIterationEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_xml_unit_test_result_printer_1a2ae986dd2f4f2aed31cc6f3bc8c56898">OnTestIterationEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18417" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_test_event_listener_1ad15b6246d94c268e233487a86463ef3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void testing::TestEventListener::OnTestProgramEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)=0</argsstring>
+        <name>OnTestProgramEnd</name>
+        <qualifiedname>testing::TestEventListener::OnTestProgramEnd</qualifiedname>
+        <reimplementedby refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer_1a8c92c062889abdb940b04ffe113f5980">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a0abcc02bd2331a2e29ad6f4d9daf2a32">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1_empty_test_event_listener_1a0abcc02bd2331a2e29ad6f4d9daf2a32">OnTestProgramEnd</reimplementedby>
+        <reimplementedby refid="classtesting_1_1internal_1_1_test_event_repeater_1a17549f95cc2baf9834eb3fe57a11dfdf">OnTestProgramEnd</reimplementedby>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18421" column="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::EmptyTestEventListener</label>
+        <link refid="classtesting_1_1_empty_test_event_listener"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>testing::TestEventListener</label>
+        <link refid="classtesting_1_1_test_event_listener"/>
+      </node>
+      <node id="4">
+        <label>testing::internal::PrettyUnitTestResultPrinter</label>
+        <link refid="classtesting_1_1internal_1_1_pretty_unit_test_result_printer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>testing::internal::TestEventRepeater</label>
+        <link refid="classtesting_1_1internal_1_1_test_event_repeater"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>testing::internal::XmlUnitTestResultPrinter</label>
+        <link refid="classtesting_1_1internal_1_1_xml_unit_test_result_printer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18376" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18376" bodyend="18422"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_test_event_listener_1aaa1021d75f5dbf3f05c829c1cc520341" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsSetUpEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1aaa1021d75f5dbf3f05c829c1cc520341" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsSetUpEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1aa6502e534919605be45f26a6daf9a40c" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsSetUpStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1aa6502e534919605be45f26a6daf9a40c" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsSetUpStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a9ea04fa7f447865ba76df35e12ba2092" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsTearDownEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a9ea04fa7f447865ba76df35e12ba2092" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsTearDownEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a468b5e6701bcb86cb2c956caadbba5e4" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsTearDownStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a468b5e6701bcb86cb2c956caadbba5e4" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnEnvironmentsTearDownStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ae61985e2ef76ac78379b077be57a9c36" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestCaseEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ae61985e2ef76ac78379b077be57a9c36" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestCaseEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ab4ed885d63f5bbff8076c1329b3dfe36" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestCaseStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ab4ed885d63f5bbff8076c1329b3dfe36" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestCaseStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1abb1c44525ef038500608b5dc2f17099b" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1abb1c44525ef038500608b5dc2f17099b" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a550fdb3e55726e4cefa09f5697941425" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestIterationEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a550fdb3e55726e4cefa09f5697941425" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestIterationEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a60cc09b7907cb329d152eb5e7133bdeb" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestIterationStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a60cc09b7907cb329d152eb5e7133bdeb" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestIterationStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a054f8705c883fa120b91473aff38f2ee" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestPartResult</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a054f8705c883fa120b91473aff38f2ee" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestPartResult</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ad15b6246d94c268e233487a86463ef3d" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestProgramEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ad15b6246d94c268e233487a86463ef3d" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestProgramEnd</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a5f6c84f39851e8a603a2d2e10063816b" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestProgramStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a5f6c84f39851e8a603a2d2e10063816b" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestProgramStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ab4f6a0ca16ae75daf385b3b5914e1048" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1ab4f6a0ca16ae75daf385b3b5914e1048" prot="public" virt="pure-virtual"><scope>testing::TestEventListener</scope><name>OnTestStart</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" virt="virtual"><scope>testing::TestEventListener</scope><name>~TestEventListener</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" virt="virtual"><scope>testing::TestEventListener</scope><name>~TestEventListener</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

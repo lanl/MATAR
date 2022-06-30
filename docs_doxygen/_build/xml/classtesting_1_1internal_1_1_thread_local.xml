@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_thread_local" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::ThreadLocal</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_thread_local_1ae0db6b57bdb752feb343ee4d935708e2" prot="private" static="no" mutable="no">
+        <type>T</type>
+        <definition>T testing::internal::ThreadLocal&lt; T &gt;::value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <qualifiedname>testing::internal::ThreadLocal::value_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2686" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2686" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a106f3a3ad15d08f95f9887105d2a1af5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ThreadLocal&lt; T &gt;::ThreadLocal</definition>
+        <argsstring>()</argsstring>
+        <name>ThreadLocal</name>
+        <qualifiedname>testing::internal::ThreadLocal::ThreadLocal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2679" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2679" bodyend="2679"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a85610bdfdbc93a4c56215e0aad7da870" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ThreadLocal&lt; T &gt;::ThreadLocal</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>ThreadLocal</name>
+        <qualifiedname>testing::internal::ThreadLocal::ThreadLocal</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2680" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2680" bodyend="2680"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a7026718c55e57a041cf1018e7d991a57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * testing::internal::ThreadLocal&lt; T &gt;::pointer</definition>
+        <argsstring>()</argsstring>
+        <name>pointer</name>
+        <qualifiedname>testing::internal::ThreadLocal::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2681" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2681" bodyend="2681"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1ad0314c7dd912bcb10d6b205f0c05e3ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T * testing::internal::ThreadLocal&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>testing::internal::ThreadLocal::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2682" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2682" bodyend="2682"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1af9c33a1dbf98e8a73ee6665ac27f991b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; testing::internal::ThreadLocal&lt; T &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <qualifiedname>testing::internal::ThreadLocal::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2683" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2683" bodyend="2683"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1ab5ebc7ba07426cef7167afa2a7707eb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ThreadLocal&lt; T &gt;::set</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>set</name>
+        <qualifiedname>testing::internal::ThreadLocal::set</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2684" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2684" bodyend="2684"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a106f3a3ad15d08f95f9887105d2a1af5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ThreadLocal&lt; T &gt;::ThreadLocal</definition>
+        <argsstring>()</argsstring>
+        <name>ThreadLocal</name>
+        <qualifiedname>testing::internal::ThreadLocal::ThreadLocal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2679" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2679" bodyend="2679"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a85610bdfdbc93a4c56215e0aad7da870" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::ThreadLocal&lt; T &gt;::ThreadLocal</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>ThreadLocal</name>
+        <qualifiedname>testing::internal::ThreadLocal::ThreadLocal</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2680" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2680" bodyend="2680"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1a7026718c55e57a041cf1018e7d991a57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * testing::internal::ThreadLocal&lt; T &gt;::pointer</definition>
+        <argsstring>()</argsstring>
+        <name>pointer</name>
+        <qualifiedname>testing::internal::ThreadLocal::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2681" column="5" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2681" bodyend="2681"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1ad0314c7dd912bcb10d6b205f0c05e3ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T * testing::internal::ThreadLocal&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>testing::internal::ThreadLocal::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2682" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2682" bodyend="2682"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1af9c33a1dbf98e8a73ee6665ac27f991b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; testing::internal::ThreadLocal&lt; T &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <qualifiedname>testing::internal::ThreadLocal::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2683" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2683" bodyend="2683"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_thread_local_1ab5ebc7ba07426cef7167afa2a7707eb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::ThreadLocal&lt; T &gt;::set</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>set</name>
+        <qualifiedname>testing::internal::ThreadLocal::set</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="2684" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="2684" bodyend="2684"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="2677" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="2677" bodyend="2687"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1af9c33a1dbf98e8a73ee6665ac27f991b" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>get</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1af9c33a1dbf98e8a73ee6665ac27f991b" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>get</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a7026718c55e57a041cf1018e7d991a57" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>pointer</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1ad0314c7dd912bcb10d6b205f0c05e3ff" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>pointer</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a7026718c55e57a041cf1018e7d991a57" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>pointer</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1ad0314c7dd912bcb10d6b205f0c05e3ff" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>pointer</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1ab5ebc7ba07426cef7167afa2a7707eb4" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>set</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1ab5ebc7ba07426cef7167afa2a7707eb4" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>set</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a106f3a3ad15d08f95f9887105d2a1af5" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>ThreadLocal</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a85610bdfdbc93a4c56215e0aad7da870" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>ThreadLocal</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a106f3a3ad15d08f95f9887105d2a1af5" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>ThreadLocal</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1a85610bdfdbc93a4c56215e0aad7da870" prot="public" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>ThreadLocal</name></member>
+      <member refid="classtesting_1_1internal_1_1_thread_local_1ae0db6b57bdb752feb343ee4d935708e2" prot="private" virt="non-virtual"><scope>testing::internal::ThreadLocal</scope><name>value_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

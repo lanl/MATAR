@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ragged_right_arrayof_vectors" kind="class" language="C++" prot="public">
+    <compoundname>RaggedRightArrayofVectors</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1aa5035926225f9e91cd71cc1ff0e3a6a3" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T[]&gt;</type>
+        <definition>std::shared_ptr&lt;T[]&gt; RaggedRightArrayofVectors&lt; T &gt;::start_index_</definition>
+        <argsstring></argsstring>
+        <name>start_index_</name>
+        <qualifiedname>RaggedRightArrayofVectors::start_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3722" column="22" bodyfile="src/matar.h" bodystart="3722" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1a2b743fce594eb12f8add2636045dde26" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; T[]&gt;</type>
+        <definition>std::shared_ptr&lt;T[]&gt; RaggedRightArrayofVectors&lt; T &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>RaggedRightArrayofVectors::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3723" column="22" bodyfile="src/matar.h" bodystart="3723" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1a8f8ce0672be63dae693ed6f4232685c6" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::dim1_</definition>
+        <argsstring></argsstring>
+        <name>dim1_</name>
+        <qualifiedname>RaggedRightArrayofVectors::dim1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3725" column="12" bodyfile="src/matar.h" bodystart="3725" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1ac93760f74c1fa2eb2252f53d3de89542" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>RaggedRightArrayofVectors::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3725" column="18" bodyfile="src/matar.h" bodystart="3725" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1a2c556b264e9d9338f91e9538029985fe" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::vector_dim_</definition>
+        <argsstring></argsstring>
+        <name>vector_dim_</name>
+        <qualifiedname>RaggedRightArrayofVectors::vector_dim_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3725" column="26" bodyfile="src/matar.h" bodystart="3725" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_arrayof_vectors_1a605fbce9a9b45f8af81dd7deb181549c" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::num_saved_</definition>
+        <argsstring></argsstring>
+        <name>num_saved_</name>
+        <qualifiedname>RaggedRightArrayofVectors::num_saved_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3726" column="12" bodyfile="src/matar.h" bodystart="3726" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a07fc5deac8aff832b2e3345182420a4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>()</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3730" column="5" bodyfile="src/matar.h" bodystart="3785" bodyend="3789"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1ab3349138824718e61a319d4d69aa4adf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>(CArray&lt; size_t &gt; &amp;strides_array, size_t vector_dim)</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>vector_dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3735" column="5" bodyfile="src/matar.h" bodystart="3794" bodyend="3813"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1ad73a172f23413014c6528c5e6f954305" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>(ViewCArray&lt; size_t &gt; &amp;strides_array, size_t vector_dim)</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <param>
+          <type><ref refid="class_view_c_array" kindref="compound">ViewCArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>vector_dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3738" column="5" bodyfile="src/matar.h" bodystart="3817" bodyend="3836"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a747d2fa98d5713c72b4248a8d3d0a9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>(size_t *strides_array, size_t some_dim1, size_t vector_dim)</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <param>
+          <type>size_t *</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>some_dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>vector_dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3741" column="5" bodyfile="src/matar.h" bodystart="3840" bodyend="3859"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1abfc1573c3679e4e8866e6807f4142647" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>(size_t some_dim1, size_t buffer, size_t vector_dim)</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>some_dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>vector_dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3745" column="5" bodyfile="src/matar.h" bodystart="3864" bodyend="3878"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a1724a75aa9a301e8e141e0c79ce36cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::RaggedRightArrayofVectors</definition>
+        <argsstring>(const RaggedRightArrayofVectors &amp;temp)</argsstring>
+        <name>RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::RaggedRightArrayofVectors</qualifiedname>
+        <param>
+          <type>const <ref refid="class_ragged_right_arrayof_vectors" kindref="compound">RaggedRightArrayofVectors</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3748" column="5" bodyfile="src/matar.h" bodystart="3882" bodyend="3894"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1aa081c0f11ebbbe39d32eedf9f5a4f3d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::stride</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>RaggedRightArrayofVectors::stride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3751" column="12" bodyfile="src/matar.h" bodystart="3898" bodyend="3903"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a5b4dd74d974f0abd1d77e446043f0fef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::vector_dim</definition>
+        <argsstring>() const</argsstring>
+        <name>vector_dim</name>
+        <qualifiedname>RaggedRightArrayofVectors::vector_dim</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3754" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1ad8cc2415cdad88184031e843056fc44c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RaggedRightArrayofVectors&lt; T &gt;::push_back</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>push_back</name>
+        <qualifiedname>RaggedRightArrayofVectors::push_back</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3760" column="10" bodyfile="src/matar.h" bodystart="3909" bodyend="3912"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a78f30c6d4d56c7cf80e666b467219475" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; RaggedRightArrayofVectors&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedRightArrayofVectors::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3764" column="7" bodyfile="src/matar.h" bodystart="3917" bodyend="3927"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a9138103900a0bf61bd8214b104c3dc55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayofVectors&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>RaggedRightArrayofVectors::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3767" column="12" bodyfile="src/matar.h" bodystart="3931" bodyend="3933"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a9dff6c2e570ff80e48a2132a04b3836e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T * RaggedRightArrayofVectors&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>RaggedRightArrayofVectors::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3770" column="7" bodyfile="src/matar.h" bodystart="3961" bodyend="3963"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a162e900029fb6f8db5d179fd4e58254b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t *</type>
+        <definition>size_t * RaggedRightArrayofVectors&lt; T &gt;::get_starts</definition>
+        <argsstring>() const</argsstring>
+        <name>get_starts</name>
+        <qualifiedname>RaggedRightArrayofVectors::get_starts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3773" column="12" bodyfile="src/matar.h" bodystart="3966" bodyend="3968"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a3c2dc9eb072e6cb8dee6497271ce20c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_ragged_right_arrayof_vectors" kindref="compound">RaggedRightArrayofVectors</ref> &amp;</type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt; &amp; RaggedRightArrayofVectors&lt; T &gt;::operator+=</definition>
+        <argsstring>(const size_t i)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>RaggedRightArrayofVectors::operator+=</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3775" column="31" bodyfile="src/matar.h" bodystart="3936" bodyend="3940"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1a09745a8c6d13fb2d31ddf1112232b8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_ragged_right_arrayof_vectors" kindref="compound">RaggedRightArrayofVectors</ref> &amp;</type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt; &amp; RaggedRightArrayofVectors&lt; T &gt;::operator=</definition>
+        <argsstring>(const RaggedRightArrayofVectors &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RaggedRightArrayofVectors::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_ragged_right_arrayof_vectors" kindref="compound">RaggedRightArrayofVectors</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3777" column="31" bodyfile="src/matar.h" bodystart="3944" bodyend="3958"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_arrayof_vectors_1ada23881511b971eac356497445ba92e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectors&lt; T &gt;::~RaggedRightArrayofVectors</definition>
+        <argsstring>()</argsstring>
+        <name>~RaggedRightArrayofVectors</name>
+        <qualifiedname>RaggedRightArrayofVectors::~RaggedRightArrayofVectors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="3780" column="5" bodyfile="src/matar.h" bodystart="3972" bodyend="3972"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="3720" column="1" bodyfile="src/matar.h" bodystart="3720" bodyend="3781"/>
+    <listofallmembers>
+      <member refid="class_ragged_right_arrayof_vectors_1a2b743fce594eb12f8add2636045dde26" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>array_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a8f8ce0672be63dae693ed6f4232685c6" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>dim1_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a162e900029fb6f8db5d179fd4e58254b" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>get_starts</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1ac93760f74c1fa2eb2252f53d3de89542" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>length_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a605fbce9a9b45f8af81dd7deb181549c" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>num_saved_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a78f30c6d4d56c7cf80e666b467219475" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>operator()</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a3c2dc9eb072e6cb8dee6497271ce20c7" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>operator+=</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a09745a8c6d13fb2d31ddf1112232b8d1" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>operator=</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a9dff6c2e570ff80e48a2132a04b3836e" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>pointer</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1ad8cc2415cdad88184031e843056fc44c" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>push_back</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a07fc5deac8aff832b2e3345182420a4c" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1ab3349138824718e61a319d4d69aa4adf" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1ad73a172f23413014c6528c5e6f954305" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a747d2fa98d5713c72b4248a8d3d0a9d1" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1abfc1573c3679e4e8866e6807f4142647" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a1724a75aa9a301e8e141e0c79ce36cab" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>RaggedRightArrayofVectors</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a9138103900a0bf61bd8214b104c3dc55" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>size</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1aa5035926225f9e91cd71cc1ff0e3a6a3" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>start_index_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1aa081c0f11ebbbe39d32eedf9f5a4f3d7" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>stride</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a5b4dd74d974f0abd1d77e446043f0fef" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>vector_dim</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1a2c556b264e9d9338f91e9538029985fe" prot="private" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>vector_dim_</name></member>
+      <member refid="class_ragged_right_arrayof_vectors_1ada23881511b971eac356497445ba92e7" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectors</scope><name>~RaggedRightArrayofVectors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

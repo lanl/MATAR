@@ -1,0 +1,890 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1complex" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::complex</compoundname>
+    <includes refid="_kokkos___complex_8hpp" local="no">Kokkos_Complex.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class RealType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1complex_1a12356d99d38135bc6816e0ac017b9be3" prot="public" static="no">
+        <type>RealType</type>
+        <definition>using Kokkos::complex&lt; RealType &gt;::value_type =  RealType</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::complex::value_type</qualifiedname>
+        <briefdescription>
+<para>The type of the real or imaginary parts of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="76" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1complex_1ac65cbc8d46f4c3d5c55ae32035574ba9" prot="private" static="no" mutable="no">
+        <type>RealType</type>
+        <definition>RealType Kokkos::complex&lt; RealType &gt;::re_</definition>
+        <argsstring></argsstring>
+        <name>re_</name>
+        <qualifiedname>Kokkos::complex::re_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="71" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1complex_1adef00ea6fec5d3fc583b3937b0a8a094" prot="private" static="no" mutable="no">
+        <type>RealType</type>
+        <definition>RealType Kokkos::complex&lt; RealType &gt;::im_</definition>
+        <argsstring></argsstring>
+        <name>im_</name>
+        <qualifiedname>Kokkos::complex::im_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="72" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1complex_1abba3aa5e64f342358bfd442d2bbcda42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>()=default</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <briefdescription>
+<para>Default constructor (initializes both real and imaginary parts to zero). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="80" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a4cc8e46bb6c9c0d06f69fa768c0e30a9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const complex &amp;) noexcept=default</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="84" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a262c8373e8bf6afab32ede66b4fe4628" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const complex &amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="87" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1af46492e85dd77c4687b15ac93b1ab8c3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_convertible&lt; RType, RealType &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const complex&lt; RType &gt; &amp;other) noexcept</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RType &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Conversion constructor from compatible RType. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="93" column="26" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aecc809e6c81ce49f45642f00fd516a23" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const std::complex&lt; RealType &gt; &amp;src) noexcept</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const std::complex&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Conversion constructor from std::complex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor cannot be called in a CUDA device function, because std::complex&apos;s methods and nonmember functions are not marked as CUDA device functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="105" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="105" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aca03286464cb79bae36a32f0b69abab2" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::complex&lt; RealType &gt;::operator std::complex&lt; RealType &gt;</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator std::complex&lt; RealType &gt;</name>
+        <qualifiedname>Kokkos::complex::complex&lt; RealType &gt;</qualifiedname>
+        <briefdescription>
+<para>Conversion operator to std::complex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This operator cannot be called in a CUDA device function, because std::complex&apos;s methods and nonmember functions are not marked as CUDA device functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="121" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1ae197e9326670430ae7ddd0a8530ed7fe" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const RealType &amp;val) noexcept</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Constructor that takes just the real part, and sets the imaginary part to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="127" column="26" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="127" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a72efcb7e1fad8e8df8a4d1fac9624b9c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const RealType &amp;re, const RealType &amp;im) noexcept</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>re</declname>
+        </param>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>im</declname>
+        </param>
+        <briefdescription>
+<para>Constructor that takes the real and imaginary parts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="132" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="132" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aab4e742a7b05cdfc2778b99909b6f7e3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const RealType &amp;val) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator (from a real number). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="135" column="34" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="135" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a2dd71a924c7e8183c7bf53ff7a93fb72" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const std::complex&lt; RealType &gt; &amp;src) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const std::complex&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator from std::complex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor cannot be called in a CUDA device function, because std::complex&apos;s methods and nonmember functions are not marked as CUDA device functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="146" column="11" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="146" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a7e616354d963b01999b666b538458ce8" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr RealType &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr RealType &amp; Kokkos::complex&lt; RealType &gt;::imag</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>imag</name>
+        <qualifiedname>Kokkos::complex::imag</qualifiedname>
+        <briefdescription>
+<para>The imaginary part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="153" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a127d7cc89009277b1a811acfa704eaa6" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr RealType &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr RealType &amp; Kokkos::complex&lt; RealType &gt;::real</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>real</name>
+        <qualifiedname>Kokkos::complex::real</qualifiedname>
+        <briefdescription>
+<para>The real part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="157" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="157" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a0e0b19dd6548c84cb4bc91802544bebc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr RealType</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr RealType Kokkos::complex&lt; RealType &gt;::imag</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>imag</name>
+        <qualifiedname>Kokkos::complex::imag</qualifiedname>
+        <briefdescription>
+<para>The imaginary part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="161" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a94767cdf2ef1d37eb161647e529cef2d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr RealType</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr RealType Kokkos::complex&lt; RealType &gt;::real</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>real</name>
+        <qualifiedname>Kokkos::complex::real</qualifiedname>
+        <briefdescription>
+<para>The real part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="165" column="22" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1ab75a82947d955c1a1a61af18293b9905" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr void</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr void Kokkos::complex&lt; RealType &gt;::imag</definition>
+        <argsstring>(RealType v) noexcept</argsstring>
+        <name>imag</name>
+        <qualifiedname>Kokkos::complex::imag</qualifiedname>
+        <param>
+          <type>RealType</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Set the imaginary part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="169" column="18" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="169" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a64dc0c42969bf4bb7ee17674c96bc840" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr void</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr void Kokkos::complex&lt; RealType &gt;::real</definition>
+        <argsstring>(RealType v) noexcept</argsstring>
+        <name>real</name>
+        <qualifiedname>Kokkos::complex::real</qualifiedname>
+        <param>
+          <type>RealType</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+<para>Set the real part of this complex number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="173" column="18" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a8319fadbec8400bea2d3309caee4ea8d" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator+=</definition>
+        <argsstring>(const complex&lt; RealType &gt; &amp;src) noexcept</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::complex::operator+=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="175" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="175" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a25b8c693d02b76dd005ccf4b509baf28" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator+=</definition>
+        <argsstring>(const RealType &amp;src) noexcept</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::complex::operator+=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="182" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="182" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a6de45335974dfa41e14e9a16f1a12d13" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator-=</definition>
+        <argsstring>(const complex&lt; RealType &gt; &amp;src) noexcept</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Kokkos::complex::operator-=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="188" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="188" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a00ea5896255bd389a3f9010a11ab8330" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator-=</definition>
+        <argsstring>(const RealType &amp;src) noexcept</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Kokkos::complex::operator-=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="195" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="195" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a5fbfa2f0ec6263a1a0695f8e5a8e3db4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator*=</definition>
+        <argsstring>(const complex&lt; RealType &gt; &amp;src) noexcept</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::complex::operator*=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="201" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="201" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1acfaf373b36c029589c7774fae802b6a9" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator*=</definition>
+        <argsstring>(const RealType &amp;src) noexcept</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::complex::operator*=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="210" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="210" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1ae4fe875dbb0f25a5b6d915cd3eff858c" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator/=</definition>
+        <argsstring>(const complex&lt; RealType &gt; &amp;y) noexcept(noexcept(RealType{}/RealType{}))</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>Kokkos::complex::operator/=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="218" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="218" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a083ca8e1a2f7ecd1a5d68ee72a3de6c8" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator/=</definition>
+        <argsstring>(const std::complex&lt; RealType &gt; &amp;y) noexcept(noexcept(RealType{}/RealType{}))</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>Kokkos::complex::operator/=</qualifiedname>
+        <param>
+          <type>const std::complex&lt; RealType &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="245" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="245" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1abef5c270917cdd1719a664b972ddedda" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>constexpr KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator/=</definition>
+        <argsstring>(const RealType &amp;src) noexcept(noexcept(RealType{}/RealType{}))</argsstring>
+        <name>operator/=</name>
+        <qualifiedname>Kokkos::complex::operator/=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="272" column="44" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="272" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aebc36a38230e375471120cdda5f18e87" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_convertible&lt; RType, RealType &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::complex&lt; RealType &gt;::complex</definition>
+        <argsstring>(const volatile complex&lt; RType &gt; &amp;src) noexcept</argsstring>
+        <name>complex</name>
+        <qualifiedname>Kokkos::complex::complex</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor from volatile. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="288" column="26" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="288" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a22cd1b63ba01747b7c080599c6526a21" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Complex</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_same&lt; Complex, <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const Complex &amp;src) volatile noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const Complex &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator, for volatile <computeroutput>*this</computeroutput> and nonvolatile input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>src</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] Input; right-hand side of the assignment.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+This operator returns <computeroutput>void</computeroutput> instead of <computeroutput>volatile complex&amp; </computeroutput>. See Kokkos Issue #177 for the explanation. In practice, this means that you should not chain assignments with volatile lvalues. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="317" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="317" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a081fa3c59422921fe67814883d1ca4a9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Complex</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_same&lt; Complex, <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION volatile <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION volatile complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const volatile Complex &amp;src) volatile noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile Complex &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator, volatile LHS and volatile RHS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="340" column="43" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="340" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1afc8ab5e650da4acde792e6a53768bb8f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Complex</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_same&lt; Complex, <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &gt;::value, int &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const volatile Complex &amp;src) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile Complex &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator, volatile RHS and non-volatile LHS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="363" column="34" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="363" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a69b052516b32fa639ba65dbf0284863e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const volatile RealType &amp;val) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile RealType &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator (from a volatile real number). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="374" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="374" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aefa54c2033256415d0f06643cf2e7a81" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const RealType &amp;val) volatile noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const RealType &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator volatile LHS and non-volatile RHS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="382" column="34" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="382" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1afb2b662d69fe4ee9892b0387f107b4a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION complex &amp; Kokkos::complex&lt; RealType &gt;::operator=</definition>
+        <argsstring>(const volatile RealType &amp;val) volatile noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::complex::operator=</qualifiedname>
+        <param>
+          <type>const volatile RealType &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator volatile LHS and volatile RHS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="391" column="34" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="391" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a62e1867695aae54fb217cfdca27df92a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION volatile RealType &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION volatile RealType &amp; Kokkos::complex&lt; RealType &gt;::imag</definition>
+        <argsstring>() volatile noexcept</argsstring>
+        <name>imag</name>
+        <qualifiedname>Kokkos::complex::imag</qualifiedname>
+        <briefdescription>
+<para>The imaginary part of this complex number (volatile overload). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="400" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="400" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a6541470c26232e7bc8b6a4ae90c35ae4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION volatile RealType &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION volatile RealType &amp; Kokkos::complex&lt; RealType &gt;::real</definition>
+        <argsstring>() volatile noexcept</argsstring>
+        <name>real</name>
+        <qualifiedname>Kokkos::complex::real</qualifiedname>
+        <briefdescription>
+<para>The real part of this complex number (volatile overload). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="404" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="404" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a166333fd5baefd3bb98611087faca336" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION RealType</type>
+        <definition>KOKKOS_INLINE_FUNCTION RealType Kokkos::complex&lt; RealType &gt;::imag</definition>
+        <argsstring>() const volatile noexcept</argsstring>
+        <name>imag</name>
+        <qualifiedname>Kokkos::complex::imag</qualifiedname>
+        <briefdescription>
+<para>The imaginary part of this complex number (volatile overload). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="408" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="408" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1a96db9e98c03a3d25a445223f1d1d361d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION RealType</type>
+        <definition>KOKKOS_INLINE_FUNCTION RealType Kokkos::complex&lt; RealType &gt;::real</definition>
+        <argsstring>() const volatile noexcept</argsstring>
+        <name>real</name>
+        <qualifiedname>Kokkos::complex::real</qualifiedname>
+        <briefdescription>
+<para>The real part of this complex number (volatile overload). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="412" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="412" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1ad43b5874d3f675ab8177c1b81889195a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator+=</definition>
+        <argsstring>(const volatile complex&lt; RealType &gt; &amp;src) volatile noexcept</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::complex::operator+=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="414" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="414" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aa5f9fac3ff3f9dc3001ff2e8a426b417" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator+=</definition>
+        <argsstring>(const volatile RealType &amp;src) volatile noexcept</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::complex::operator+=</qualifiedname>
+        <param>
+          <type>const volatile RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="420" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="420" bodyend="423"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aaad3b4b22bd0baf26cf5894d3666335b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator*=</definition>
+        <argsstring>(const volatile complex&lt; RealType &gt; &amp;src) volatile noexcept</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::complex::operator*=</qualifiedname>
+        <param>
+          <type>const volatile <ref refid="class_kokkos_1_1complex" kindref="compound">complex</ref>&lt; RealType &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="425" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="425" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1complex_1aef530b396357441828dc62a47fe06cfa" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" volatile="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::complex&lt; RealType &gt;::operator*=</definition>
+        <argsstring>(const volatile RealType &amp;src) volatile noexcept</argsstring>
+        <name>operator*=</name>
+        <qualifiedname>Kokkos::complex::operator*=</qualifiedname>
+        <param>
+          <type>const volatile RealType &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="434" column="31" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="434" bodyend="438"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Partial reimplementation of std::complex that works as the result of a Kokkos::parallel_reduce. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>RealType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the real and imaginary parts of the complex number. As with std::complex, this is only defined for <computeroutput>float</computeroutput>, <computeroutput>double</computeroutput>, and <computeroutput>long double</computeroutput>. The latter is currently forbidden in CUDA device kernels. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" line="65" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Complex.hpp" bodystart="69" bodyend="441"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1complex_1abba3aa5e64f342358bfd442d2bbcda42" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1a4cc8e46bb6c9c0d06f69fa768c0e30a9" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1af46492e85dd77c4687b15ac93b1ab8c3" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1aecc809e6c81ce49f45642f00fd516a23" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1ae197e9326670430ae7ddd0a8530ed7fe" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1a72efcb7e1fad8e8df8a4d1fac9624b9c" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1aebc36a38230e375471120cdda5f18e87" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>complex</name></member>
+      <member refid="class_kokkos_1_1complex_1adef00ea6fec5d3fc583b3937b0a8a094" prot="private" virt="non-virtual"><scope>Kokkos::complex</scope><name>im_</name></member>
+      <member refid="class_kokkos_1_1complex_1a7e616354d963b01999b666b538458ce8" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>imag</name></member>
+      <member refid="class_kokkos_1_1complex_1a0e0b19dd6548c84cb4bc91802544bebc" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>imag</name></member>
+      <member refid="class_kokkos_1_1complex_1ab75a82947d955c1a1a61af18293b9905" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>imag</name></member>
+      <member refid="class_kokkos_1_1complex_1a62e1867695aae54fb217cfdca27df92a" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>imag</name></member>
+      <member refid="class_kokkos_1_1complex_1a166333fd5baefd3bb98611087faca336" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>imag</name></member>
+      <member refid="class_kokkos_1_1complex_1aca03286464cb79bae36a32f0b69abab2" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator std::complex&lt; RealType &gt;</name></member>
+      <member refid="class_kokkos_1_1complex_1a5fbfa2f0ec6263a1a0695f8e5a8e3db4" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1complex_1acfaf373b36c029589c7774fae802b6a9" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1complex_1aaad3b4b22bd0baf26cf5894d3666335b" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1complex_1aef530b396357441828dc62a47fe06cfa" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator*=</name></member>
+      <member refid="class_kokkos_1_1complex_1a8319fadbec8400bea2d3309caee4ea8d" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1complex_1a25b8c693d02b76dd005ccf4b509baf28" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1complex_1ad43b5874d3f675ab8177c1b81889195a" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1complex_1aa5f9fac3ff3f9dc3001ff2e8a426b417" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator+=</name></member>
+      <member refid="class_kokkos_1_1complex_1a6de45335974dfa41e14e9a16f1a12d13" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator-=</name></member>
+      <member refid="class_kokkos_1_1complex_1a00ea5896255bd389a3f9010a11ab8330" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator-=</name></member>
+      <member refid="class_kokkos_1_1complex_1ae4fe875dbb0f25a5b6d915cd3eff858c" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator/=</name></member>
+      <member refid="class_kokkos_1_1complex_1a083ca8e1a2f7ecd1a5d68ee72a3de6c8" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator/=</name></member>
+      <member refid="class_kokkos_1_1complex_1abef5c270917cdd1719a664b972ddedda" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator/=</name></member>
+      <member refid="class_kokkos_1_1complex_1a262c8373e8bf6afab32ede66b4fe4628" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1aab4e742a7b05cdfc2778b99909b6f7e3" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1a2dd71a924c7e8183c7bf53ff7a93fb72" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1a22cd1b63ba01747b7c080599c6526a21" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1a081fa3c59422921fe67814883d1ca4a9" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1afc8ab5e650da4acde792e6a53768bb8f" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1a69b052516b32fa639ba65dbf0284863e" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1aefa54c2033256415d0f06643cf2e7a81" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1afb2b662d69fe4ee9892b0387f107b4a8" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1complex_1ac65cbc8d46f4c3d5c55ae32035574ba9" prot="private" virt="non-virtual"><scope>Kokkos::complex</scope><name>re_</name></member>
+      <member refid="class_kokkos_1_1complex_1a127d7cc89009277b1a811acfa704eaa6" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>real</name></member>
+      <member refid="class_kokkos_1_1complex_1a94767cdf2ef1d37eb161647e529cef2d" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>real</name></member>
+      <member refid="class_kokkos_1_1complex_1a64dc0c42969bf4bb7ee17674c96bc840" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>real</name></member>
+      <member refid="class_kokkos_1_1complex_1a6541470c26232e7bc8b6a4ae90c35ae4" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>real</name></member>
+      <member refid="class_kokkos_1_1complex_1a96db9e98c03a3d25a445223f1d1d361d" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>real</name></member>
+      <member refid="class_kokkos_1_1complex_1a12356d99d38135bc6816e0ac017b9be3" prot="public" virt="non-virtual"><scope>Kokkos::complex</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

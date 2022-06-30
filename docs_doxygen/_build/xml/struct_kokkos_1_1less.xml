@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1less" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::less</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1less_1aea542c0ef2e3e23aad8aaf905bdd3a8c" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::less&lt; T &gt;::first_argument_type =  T</definition>
+        <argsstring></argsstring>
+        <name>first_argument_type</name>
+        <qualifiedname>Kokkos::less::first_argument_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="127" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1less_1a6ecc55571763ac5057929de6a7665610" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::less&lt; T &gt;::second_argument_type =  T</definition>
+        <argsstring></argsstring>
+        <name>second_argument_type</name>
+        <qualifiedname>Kokkos::less::second_argument_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="128" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1less_1a48de055628b77bc685ba486795c92b02" prot="public" static="no">
+        <type>bool</type>
+        <definition>using Kokkos::less&lt; T &gt;::result_type =  bool</definition>
+        <argsstring></argsstring>
+        <name>result_type</name>
+        <qualifiedname>Kokkos::less::result_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="129" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1less_1afdeea7ecd17f731b83bb42523503f04f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION bool</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION bool Kokkos::less&lt; T &gt;::operator()</definition>
+        <argsstring>(T const &amp;a, T const &amp;b) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::less::operator()</qualifiedname>
+        <param>
+          <type>T const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>T const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="132" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="132" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" line="126" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Functional.hpp" bodystart="126" bodyend="133"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1less_1aea542c0ef2e3e23aad8aaf905bdd3a8c" prot="public" virt="non-virtual"><scope>Kokkos::less</scope><name>first_argument_type</name></member>
+      <member refid="struct_kokkos_1_1less_1afdeea7ecd17f731b83bb42523503f04f" prot="public" virt="non-virtual"><scope>Kokkos::less</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1less_1a48de055628b77bc685ba486795c92b02" prot="public" virt="non-virtual"><scope>Kokkos::less</scope><name>result_type</name></member>
+      <member refid="struct_kokkos_1_1less_1a6ecc55571763ac5057929de6a7665610" prot="public" virt="non-virtual"><scope>Kokkos::less</scope><name>second_argument_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

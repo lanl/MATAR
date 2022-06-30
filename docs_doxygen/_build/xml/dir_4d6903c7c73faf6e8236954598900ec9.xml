@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_4d6903c7c73faf6e8236954598900ec9" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/build_cmake_installed</compoundname>
+    <innerfile refid="build__cmake__installed_2cmake__example_8cpp">cmake_example.cpp</innerfile>
+    <innerfile refid="foo_8f">foo.f</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/build_cmake_installed/"/>
+  </compounddef>
+</doxygen>

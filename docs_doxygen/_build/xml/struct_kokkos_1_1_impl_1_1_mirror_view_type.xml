@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_mirror_view_type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::MirrorViewType</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Space</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>P</declname>
+        <defname>P</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a87bfe6e8871c7e39a169a2c33dae6beb" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@184</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::@184</qualifiedname>
+        <enumvalue id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a87bfe6e8871c7e39a169a2c33dae6beba6c3f60f8518af49e7983c2c084e4f7ed" prot="public">
+          <name>is_same_memspace</name>
+          <initializer>=
+        std::is_same&lt;memory_space, typename src_view_type::memory_space&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3102" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3102" bodyend="3105"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a35757d3002487f50aef9b41e0651d0e7" prot="public" static="no">
+        <type>typename <ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, P... &gt;</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::src_view_type =  typename Kokkos::View&lt;T, P...&gt;</definition>
+        <argsstring></argsstring>
+        <name>src_view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::src_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3098" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3098" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a156f0331cb0da8442c712b122e4abb86" prot="public" static="no">
+        <type>typename Space::memory_space</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::memory_space =  typename Space::memory_space</definition>
+        <argsstring></argsstring>
+        <name>memory_space</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::memory_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3100" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a40296dc41c3a05a2f1fa378eb24a3af3" prot="public" static="no">
+        <type>typename src_view_type::array_layout</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::array_layout =  typename src_view_type::array_layout</definition>
+        <argsstring></argsstring>
+        <name>array_layout</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::array_layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3107" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1aab24d14e2087388ee91e5f638b8b8db5" prot="public" static="no">
+        <type>typename src_view_type::non_const_data_type</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::data_type =  typename src_view_type::non_const_data_type</definition>
+        <argsstring></argsstring>
+        <name>data_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::data_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3110" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a74768c91e5cbd70f704ce9d8d9752e6d" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; data_type, array_layout, Space &gt;</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::dest_view_type =  Kokkos::View&lt;data_type, array_layout, Space&gt;</definition>
+        <argsstring></argsstring>
+        <name>dest_view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::dest_view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3112" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a815e2950d1882f31bd441c821959ce21" prot="public" static="no">
+        <type>typename std::conditional&lt; is_same_memspace, src_view_type, <ref refid="class_kokkos_1_1_view" kindref="compound">dest_view_type</ref> &gt;::type</type>
+        <definition>using Kokkos::Impl::MirrorViewType&lt; Space, T, P &gt;::view_type =  typename std::conditional&lt;is_same_memspace, src_view_type, dest_view_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Kokkos::Impl::MirrorViewType::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3115" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" line="3096" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_CopyViews.hpp" bodystart="3096" bodyend="3117"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a40296dc41c3a05a2f1fa378eb24a3af3" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>array_layout</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1aab24d14e2087388ee91e5f638b8b8db5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a74768c91e5cbd70f704ce9d8d9752e6d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>dest_view_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a87bfe6e8871c7e39a169a2c33dae6beba6c3f60f8518af49e7983c2c084e4f7ed" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>is_same_memspace</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a156f0331cb0da8442c712b122e4abb86" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a35757d3002487f50aef9b41e0651d0e7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>src_view_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_mirror_view_type_1a815e2950d1882f31bd441c821959ce21" prot="public" virt="non-virtual"><scope>Kokkos::Impl::MirrorViewType</scope><name>view_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

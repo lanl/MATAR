@@ -1,0 +1,1752 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="namespacedesul" kind="namespace" language="C++">
+    <compoundname>desul</compoundname>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order" prot="public">desul::CXXMemoryOrder</innerclass>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_acq_rel_01_4" prot="public">desul::CXXMemoryOrder&lt; MemoryOrderAcqRel &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_acquire_01_4" prot="public">desul::CXXMemoryOrder&lt; MemoryOrderAcquire &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_relaxed_01_4" prot="public">desul::CXXMemoryOrder&lt; MemoryOrderRelaxed &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_release_01_4" prot="public">desul::CXXMemoryOrder&lt; MemoryOrderRelease &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_c_x_x_memory_order_3_01_memory_order_seq_cst_01_4" prot="public">desul::CXXMemoryOrder&lt; MemoryOrderSeqCst &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_dummy16_byte_value" prot="public">desul::Dummy16ByteValue</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order" prot="public">desul::GCCMemoryOrder</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_acq_rel_01_4" prot="public">desul::GCCMemoryOrder&lt; MemoryOrderAcqRel &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_acquire_01_4" prot="public">desul::GCCMemoryOrder&lt; MemoryOrderAcquire &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_relaxed_01_4" prot="public">desul::GCCMemoryOrder&lt; MemoryOrderRelaxed &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_release_01_4" prot="public">desul::GCCMemoryOrder&lt; MemoryOrderRelease &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_g_c_c_memory_order_3_01_memory_order_seq_cst_01_4" prot="public">desul::GCCMemoryOrder&lt; MemoryOrderSeqCst &gt;</innerclass>
+    <innerclass refid="structdesul_1_1_memory_order_acq_rel" prot="public">desul::MemoryOrderAcqRel</innerclass>
+    <innerclass refid="structdesul_1_1_memory_order_acquire" prot="public">desul::MemoryOrderAcquire</innerclass>
+    <innerclass refid="structdesul_1_1_memory_order_relaxed" prot="public">desul::MemoryOrderRelaxed</innerclass>
+    <innerclass refid="structdesul_1_1_memory_order_release" prot="public">desul::MemoryOrderRelease</innerclass>
+    <innerclass refid="structdesul_1_1_memory_order_seq_cst" prot="public">desul::MemoryOrderSeqCst</innerclass>
+    <innerclass refid="structdesul_1_1_memory_scope_core" prot="public">desul::MemoryScopeCore</innerclass>
+    <innerclass refid="structdesul_1_1_memory_scope_device" prot="public">desul::MemoryScopeDevice</innerclass>
+    <innerclass refid="structdesul_1_1_memory_scope_node" prot="public">desul::MemoryScopeNode</innerclass>
+    <innerclass refid="structdesul_1_1_memory_scope_system" prot="public">desul::MemoryScopeSystem</innerclass>
+    <innerclass refid="structdesul_1_1scoped__atomic__ref" prot="public">desul::scoped_atomic_ref</innerclass>
+    <innernamespace refid="namespacedesul_1_1_impl">desul::Impl</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_generic_8hpp_1a88808fcb1acf16126588673fbb77cbcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_add</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_add</name>
+        <qualifiedname>desul::atomic_fetch_add</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="376" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="376" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a0415965a2326378cee43aa24e82f6979" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_sub</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_sub</name>
+        <qualifiedname>desul::atomic_fetch_sub</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="382" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="382" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a7d2dc8204db08f286f0193456979ab30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_max</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_max</name>
+        <qualifiedname>desul::atomic_fetch_max</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="388" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="388" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a49aaa4afab7cf777f4eddf77b7ba8a64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_min</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_min</name>
+        <qualifiedname>desul::atomic_fetch_min</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="394" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="394" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1aec9a190dcb44ba0cc3ad0a80d86244aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_mul</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_mul</name>
+        <qualifiedname>desul::atomic_fetch_mul</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="400" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="400" bodyend="402"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1acb5effff25eb380e8516e783b85fe0aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_div</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_div</name>
+        <qualifiedname>desul::atomic_fetch_div</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="406" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="406" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1aedbf6099a15235c8ac78433710d86c3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_mod</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_mod</name>
+        <qualifiedname>desul::atomic_fetch_mod</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="412" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="412" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a7f089a47f679afd03e7b5a24eca69307" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_and</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_and</name>
+        <qualifiedname>desul::atomic_fetch_and</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="418" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="418" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ab9fb21a22abc0009ae87b88a6cd3d5d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_or</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_or</name>
+        <qualifiedname>desul::atomic_fetch_or</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="424" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="424" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a6ec4c0df4f0bbec63449d06d78307d36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_xor</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_xor</name>
+        <qualifiedname>desul::atomic_fetch_xor</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="430" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="430" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a6cf52eaaa9304a08fa0220275cb7db61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_nand</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_nand</name>
+        <qualifiedname>desul::atomic_fetch_nand</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="436" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="436" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ae6cc6edb3a395dd00c0bad608f88af7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_lshift</definition>
+        <argsstring>(T *const dest, const unsigned int val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_lshift</name>
+        <qualifiedname>desul::atomic_fetch_lshift</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="441" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="441" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a2a5e1c39d1bb4b6cee76b8fbbbf6b8df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_rshift</definition>
+        <argsstring>(T *const dest, const unsigned int val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_rshift</name>
+        <qualifiedname>desul::atomic_fetch_rshift</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="450" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="450" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a75c807f06af79629c99eb525675c2d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_add_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_add_fetch</name>
+        <qualifiedname>desul::atomic_add_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="461" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="461" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1aa783b63cd90203c9f894e01867a2e58b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_sub_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_sub_fetch</name>
+        <qualifiedname>desul::atomic_sub_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="467" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="467" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a76455aa2a6423ac7e4518b2cf34eb341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_max_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_max_fetch</name>
+        <qualifiedname>desul::atomic_max_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="473" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="473" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a6e0b982b69df01439b543cfc3357c41a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_min_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_min_fetch</name>
+        <qualifiedname>desul::atomic_min_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="479" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="479" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1afdd44cb39617b1b7243c4e9725530b38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_mul_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_mul_fetch</name>
+        <qualifiedname>desul::atomic_mul_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="485" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="485" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a158896c8d92d4a9e6c9938b0790b404e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_div_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_div_fetch</name>
+        <qualifiedname>desul::atomic_div_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="491" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="491" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a3b026d0a7cd476046259fc51043c3ad1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_mod_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_mod_fetch</name>
+        <qualifiedname>desul::atomic_mod_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="497" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="497" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a21c2ce054e61db46526bb42ab4ee552f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_and_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_and_fetch</name>
+        <qualifiedname>desul::atomic_and_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="503" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="503" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ae8ce1e7eb322c40214f822a3a9a777a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_or_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_or_fetch</name>
+        <qualifiedname>desul::atomic_or_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="509" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="509" bodyend="511"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a71a3f7105c0d1edddd0c936c7828bc20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_xor_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_xor_fetch</name>
+        <qualifiedname>desul::atomic_xor_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="515" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="515" bodyend="517"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a3aeaec6134bcb5a5e3560a562a58dc51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_nand_fetch</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_nand_fetch</name>
+        <qualifiedname>desul::atomic_nand_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="521" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="521" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a1c51792663db5f0f3aa91677b389eb7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_lshift_fetch</definition>
+        <argsstring>(T *const dest, const unsigned int val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_lshift_fetch</name>
+        <qualifiedname>desul::atomic_lshift_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="526" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="526" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ad804035251ebdd568cd2361b20dd2102" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_rshift_fetch</definition>
+        <argsstring>(T *const dest, const unsigned int val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_rshift_fetch</name>
+        <qualifiedname>desul::atomic_rshift_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="535" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="535" bodyend="541"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1aa49e71fbc42d902f77c4501ebba104f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_load</definition>
+        <argsstring>(const T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_load</name>
+        <qualifiedname>desul::atomic_load</qualifiedname>
+        <param>
+          <type>const T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="546" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="546" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a64fda8c61b1321f25c3ee4eacb142124" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_store</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_store</name>
+        <qualifiedname>desul::atomic_store</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="553" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="553" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ad1ee508183d50bd02cafcd598ffe0073" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_add</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_add</name>
+        <qualifiedname>desul::atomic_add</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="561" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="561" bodyend="566"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a34330560779c91d59e5131cbf01a492c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_sub</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_sub</name>
+        <qualifiedname>desul::atomic_sub</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="569" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="569" bodyend="574"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a011b7d27d3666efbc7a0e5edb311f1ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_mul</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_mul</name>
+        <qualifiedname>desul::atomic_mul</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="577" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="577" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ab0f29bac6ea35651957bf5239805f335" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_div</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_div</name>
+        <qualifiedname>desul::atomic_div</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="585" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="585" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a195d087498e024d62274b44c8d79406d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_min</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_min</name>
+        <qualifiedname>desul::atomic_min</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="593" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="593" bodyend="598"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a1d948ebe2c95d5baaca1af03abcb9915" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_max</definition>
+        <argsstring>(T *const dest, const T val, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_max</name>
+        <qualifiedname>desul::atomic_max</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="601" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="601" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a5aedfc6d4f02005387091d90551d377c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_inc_fetch</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_inc_fetch</name>
+        <qualifiedname>desul::atomic_inc_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="610" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="610" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a0bb59dd15b03426a6f038515ab962b3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_dec_fetch</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_dec_fetch</name>
+        <qualifiedname>desul::atomic_dec_fetch</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="616" column="1" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="616" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ab6b096f0dbb3c495cd3f19d8f28daa88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_inc</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_inc</name>
+        <qualifiedname>desul::atomic_fetch_inc</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="621" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="621" bodyend="625"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a897cde36ff7c953a29d64a25ccd02566" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION T</type>
+        <definition>DESUL_INLINE_FUNCTION T desul::atomic_fetch_dec</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_fetch_dec</name>
+        <qualifiedname>desul::atomic_fetch_dec</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="628" column="25" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="628" bodyend="632"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a7af7fd1299221267a298b88abcd5918f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_inc</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_inc</name>
+        <qualifiedname>desul::atomic_inc</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="634" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="634" bodyend="638"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1ae7e1532cb66fe7edcf6dfd6a884f19d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class MemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION void</type>
+        <definition>DESUL_INLINE_FUNCTION void desul::atomic_dec</definition>
+        <argsstring>(T *const dest, MemoryOrder order, MemoryScope scope)</argsstring>
+        <name>atomic_dec</name>
+        <qualifiedname>desul::atomic_dec</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>MemoryOrder</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="641" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="641" bodyend="645"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1a6b617128d9d94bd56d0ae7d6b4a0ce5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class SuccessMemoryOrder</type>
+          </param>
+          <param>
+            <type>class FailureMemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION bool</type>
+        <definition>DESUL_INLINE_FUNCTION bool desul::atomic_compare_exchange_strong</definition>
+        <argsstring>(T *const dest, T &amp;expected, T desired, SuccessMemoryOrder success, FailureMemoryOrder, MemoryScope scope)</argsstring>
+        <name>atomic_compare_exchange_strong</name>
+        <qualifiedname>desul::atomic_compare_exchange_strong</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>desired</declname>
+        </param>
+        <param>
+          <type>SuccessMemoryOrder</type>
+          <declname>success</declname>
+        </param>
+        <param>
+          <type>FailureMemoryOrder</type>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="652" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="652" bodyend="666"/>
+      </memberdef>
+      <memberdef kind="function" id="_generic_8hpp_1aa090f0d80880196115f429761cc1cac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>class SuccessMemoryOrder</type>
+          </param>
+          <param>
+            <type>class FailureMemoryOrder</type>
+          </param>
+          <param>
+            <type>class MemoryScope</type>
+          </param>
+        </templateparamlist>
+        <type>DESUL_INLINE_FUNCTION bool</type>
+        <definition>DESUL_INLINE_FUNCTION bool desul::atomic_compare_exchange_weak</definition>
+        <argsstring>(T *const dest, T &amp;expected, T desired, SuccessMemoryOrder success, FailureMemoryOrder failure, MemoryScope scope)</argsstring>
+        <name>atomic_compare_exchange_weak</name>
+        <qualifiedname>desul::atomic_compare_exchange_weak</qualifiedname>
+        <param>
+          <type>T *const</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>desired</declname>
+        </param>
+        <param>
+          <type>SuccessMemoryOrder</type>
+          <declname>success</declname>
+        </param>
+        <param>
+          <type>FailureMemoryOrder</type>
+          <declname>failure</declname>
+        </param>
+        <param>
+          <type>MemoryScope</type>
+          <declname>scope</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" line="672" column="28" bodyfile="src/Kokkos/kokkos/core/src/desul/atomics/Generic.hpp" bodystart="672" bodyend="680"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Atomic_Ref.hpp" line="20" column="1"/>
+  </compounddef>
+</doxygen>

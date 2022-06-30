@@ -1,0 +1,991 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___host_barrier_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_HostBarrier.hpp</compoundname>
+    <includes refid="_kokkos___macros_8hpp" local="no">Kokkos_Macros.hpp</includes>
+    <includes refid="_kokkos___atomic_8hpp" local="no">Kokkos_Atomic.hpp</includes>
+    <includedby refid="_kokkos___host_barrier_8cpp" local="no">src/Kokkos/kokkos/core/src/impl/Kokkos_HostBarrier.cpp</includedby>
+    <includedby refid="_kokkos___host_thread_team_8hpp" local="no">src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp</includedby>
+    <incdepgraph>
+      <node id="45">
+        <label>KokkosExp_MDRangePolicy.hpp</label>
+        <link refid="_kokkos_exp___m_d_range_policy_8hpp_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>Kokkos_Array.hpp</label>
+        <link refid="_kokkos___array_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos_Atomic.hpp</label>
+        <link refid="_kokkos___atomic_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Kokkos_Concepts.hpp</label>
+        <link refid="_kokkos___concepts_8hpp_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Kokkos_Core_fwd.hpp</label>
+        <link refid="_kokkos___core__fwd_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Kokkos_ExecPolicy.hpp</label>
+        <link refid="_kokkos___exec_policy_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Kokkos_HostSpace.hpp</label>
+        <link refid="_kokkos___host_space_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>Kokkos_Layout.hpp</label>
+        <link refid="_kokkos___layout_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Kokkos_MemoryTraits.hpp</label>
+        <link refid="_kokkos___memory_traits_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>Kokkos_Rank.hpp</label>
+        <link refid="_kokkos___rank_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>Kokkos_Tuners.hpp</label>
+        <link refid="_kokkos___tuners_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>impl/KokkosExp_Host_IterateTile.hpp</label>
+        <link refid="_kokkos_exp___host___iterate_tile_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>impl/Kokkos_AnalyzePolicy.hpp</label>
+        <link refid="_kokkos___analyze_policy_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>impl/Kokkos_Atomic_Assembly.hpp</label>
+        <link refid="_kokkos___atomic___assembly_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>impl/Kokkos_Atomic_Compare_Exchange_Strong.hpp</label>
+        <link refid="_kokkos___atomic___compare___exchange___strong_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>impl/Kokkos_Atomic_Decrement.hpp</label>
+        <link refid="_kokkos___atomic___decrement_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>impl/Kokkos_Atomic_Exchange.hpp</label>
+        <link refid="_kokkos___atomic___exchange_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>impl/Kokkos_Atomic_Fetch_Add.hpp</label>
+        <link refid="_kokkos___atomic___fetch___add_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>impl/Kokkos_Atomic_Fetch_And.hpp</label>
+        <link refid="_kokkos___atomic___fetch___and_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>impl/Kokkos_Atomic_Fetch_Or.hpp</label>
+        <link refid="_kokkos___atomic___fetch___or_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>impl/Kokkos_Atomic_Fetch_Sub.hpp</label>
+        <link refid="_kokkos___atomic___fetch___sub_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>impl/Kokkos_Atomic_Generic.hpp</label>
+        <link refid="_kokkos___atomic___generic_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>impl/Kokkos_Atomic_Generic_Secondary.hpp</label>
+        <link refid="_kokkos___atomic___generic___secondary_8hpp_source"/>
+      </node>
+      <node id="75">
+        <label>impl/Kokkos_Atomic_Increment.hpp</label>
+        <link refid="_kokkos___atomic___increment_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>impl/Kokkos_Atomic_Load.hpp</label>
+        <link refid="_kokkos___atomic___load_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>impl/Kokkos_Atomic_Memory_Order.hpp</label>
+        <link refid="_kokkos___atomic___memory___order_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>impl/Kokkos_Atomic_MinMax.hpp</label>
+        <link refid="_kokkos___atomic___min_max_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>impl/Kokkos_Atomic_Store.hpp</label>
+        <link refid="_kokkos___atomic___store_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>impl/Kokkos_BitOps.hpp</label>
+        <link refid="_kokkos___bit_ops_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>impl/Kokkos_Error.hpp</label>
+        <link refid="_kokkos___error_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>impl/Kokkos_GraphImpl_fwd.hpp</label>
+        <link refid="_kokkos___graph_impl__fwd_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostBarrier.hpp</label>
+        <link refid="_kokkos___host_barrier_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>impl/Kokkos_HostSpace_deepcopy.hpp</label>
+        <link refid="_kokkos___host_space__deepcopy_8hpp_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>impl/Kokkos_Memory_Fence.hpp</label>
+        <link refid="_kokkos___memory___fence_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>impl/Kokkos_Profiling.hpp</label>
+        <link refid="_kokkos___profiling_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>impl/Kokkos_Profiling_C_Interface.h</label>
+        <link refid="_kokkos___profiling___c___interface_8h_source"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>impl/Kokkos_Profiling_DeviceInfo.hpp</label>
+        <link refid="_kokkos___profiling___device_info_8hpp_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>impl/Kokkos_Profiling_Interface.hpp</label>
+        <link refid="_kokkos___profiling___interface_8hpp_source"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>impl/Kokkos_SharedAlloc.hpp</label>
+        <link refid="_kokkos___shared_alloc_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>impl/Kokkos_Tools.hpp</label>
+        <link refid="_kokkos___tools_8hpp_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>impl/Kokkos_Traits.hpp</label>
+        <link refid="_kokkos___traits_8hpp_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>impl/Kokkos_Utilities.hpp</label>
+        <link refid="_kokkos___utilities_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>impl/Kokkos_Volatile_Load.hpp</label>
+        <link refid="_kokkos___volatile___load_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>traits/Kokkos_ExecutionSpaceTrait.hpp</label>
+        <link refid="_kokkos___execution_space_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>traits/Kokkos_GraphKernelTrait.hpp</label>
+        <link refid="_kokkos___graph_kernel_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>traits/Kokkos_IndexTypeTrait.hpp</label>
+        <link refid="_kokkos___index_type_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>traits/Kokkos_IterationPatternTrait.hpp</label>
+        <link refid="_kokkos___iteration_pattern_trait_8hpp_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>traits/Kokkos_LaunchBoundsTrait.hpp</label>
+        <link refid="_kokkos___launch_bounds_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>traits/Kokkos_OccupancyControlTrait.hpp</label>
+        <link refid="_kokkos___occupancy_control_trait_8hpp_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>traits/Kokkos_PolicyTraitAdaptor.hpp</label>
+        <link refid="_kokkos___policy_trait_adaptor_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>traits/Kokkos_ScheduleTrait.hpp</label>
+        <link refid="_kokkos___schedule_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>traits/Kokkos_Traits_fwd.hpp</label>
+        <link refid="_kokkos___traits__fwd_8hpp_source"/>
+      </node>
+      <node id="42">
+        <label>traits/Kokkos_WorkItemPropertyTrait.hpp</label>
+        <link refid="_kokkos___work_item_property_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>traits/Kokkos_WorkTagTrait.hpp</label>
+        <link refid="_kokkos___work_tag_trait_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>KokkosCore_Config_FwdBackend.hpp</label>
+      </node>
+      <node id="4">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="3">
+        <label>KokkosCore_config.h</label>
+      </node>
+      <node id="47">
+        <label>algorithm</label>
+      </node>
+      <node id="58">
+        <label>array</label>
+      </node>
+      <node id="68">
+        <label>atomic</label>
+      </node>
+      <node id="62">
+        <label>cassert</label>
+      </node>
+      <node id="51">
+        <label>cinttypes</label>
+      </node>
+      <node id="24">
+        <label>climits</label>
+      </node>
+      <node id="22">
+        <label>cstddef</label>
+      </node>
+      <node id="14">
+        <label>cstdint</label>
+      </node>
+      <node id="52">
+        <label>cstdlib</label>
+      </node>
+      <node id="7">
+        <label>cstring</label>
+      </node>
+      <node id="16">
+        <label>initializer_list</label>
+      </node>
+      <node id="9">
+        <label>iosfwd</label>
+      </node>
+      <node id="48">
+        <label>limits</label>
+      </node>
+      <node id="61">
+        <label>map</label>
+      </node>
+      <node id="63">
+        <label>memory</label>
+      </node>
+      <node id="65">
+        <label>mutex</label>
+      </node>
+      <node id="57">
+        <label>stdbool.h</label>
+      </node>
+      <node id="55">
+        <label>stddef.h</label>
+      </node>
+      <node id="56">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="59">
+        <label>tuple</label>
+      </node>
+      <node id="15">
+        <label>type_traits</label>
+      </node>
+      <node id="10">
+        <label>typeinfo</label>
+      </node>
+      <node id="64">
+        <label>unordered_map</label>
+      </node>
+      <node id="17">
+        <label>utility</label>
+      </node>
+      <node id="60">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostBarrier.hpp</label>
+        <link refid="_kokkos___host_barrier_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/Kokkos/kokkos/core/src/impl/Kokkos_HostThreadTeam.hpp</label>
+        <link refid="_kokkos___host_thread_team_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_kokkos_1_1_impl_1_1_host_barrier" prot="public">Kokkos::Impl::HostBarrier</innerclass>
+    <innernamespace refid="namespace_kokkos">Kokkos</innernamespace>
+    <innernamespace refid="namespace_kokkos_1_1_impl">Kokkos::Impl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKOS_HOST_BARRIER_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_HOST_BARRIER_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_kokkos___atomic_8hpp" kindref="compound">Kokkos_Atomic.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>HostBarrier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>provides<sp/>a<sp/>static<sp/>and<sp/>member<sp/>interface<sp/>for<sp/>a<sp/>barrier<sp/>shared<sp/>between<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>execution.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*buffer*<sp/>is<sp/>a<sp/>shared<sp/>resource<sp/>between<sp/>the<sp/>threads<sp/>of<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*step*<sp/>should<sp/>be<sp/>a<sp/>stack<sp/>variable<sp/>associated<sp/>with<sp/>the<sp/>current<sp/>thread<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>execution<sp/>*size*<sp/>is<sp/>the<sp/>number<sp/>of<sp/>threads<sp/>which<sp/>share<sp/>the<sp/>barrier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>before<sp/>calling<sp/>any<sp/>arrive<sp/>type<sp/>function<sp/>the<sp/>buffer<sp/>and<sp/>step<sp/>must<sp/>have<sp/>been</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>initialized<sp/>to<sp/>0<sp/>and<sp/>one<sp/>of<sp/>the<sp/>following<sp/>conditions<sp/>must<sp/>be<sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>1)<sp/>step<sp/>==<sp/>0<sp/>(i.e.<sp/>first<sp/>arrive<sp/>call<sp/>to<sp/>HostBarrier),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>2)<sp/>try_wait<sp/>has<sp/>returned<sp/>true<sp/>for<sp/>the<sp/>current<sp/>thread<sp/>of<sp/>execution,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>3)<sp/>a<sp/>wait<sp/>type<sp/>function<sp/>has<sp/>returned<sp/>for<sp/>the<sp/>current<sp/>thread<sp/>of<sp/>execution,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>4)<sp/>split_arrive<sp/>returned<sp/>true<sp/>on<sp/>the<sp/>current<sp/>thread<sp/>of<sp/>execution<sp/>and<sp/>it<sp/>has</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>called<sp/>split_release</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>purporse<sp/>of<sp/>the<sp/>split<sp/>functions<sp/>is<sp/>to<sp/>allow<sp/>the<sp/>last<sp/>thread<sp/>to<sp/>arrive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>an<sp/>opportunity<sp/>to<sp/>perform<sp/>some<sp/>actions<sp/>before<sp/>releasing<sp/>the<sp/>waiting<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>all<sp/>threads<sp/>have<sp/>arrived<sp/>(and<sp/>split_release<sp/>has<sp/>been<sp/>call<sp/>if<sp/>using</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>split_arrive)<sp/>before<sp/>a<sp/>wait<sp/>type<sp/>call,<sp/>the<sp/>wait<sp/>may<sp/>return<sp/>quickly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="class_kokkos_1_1_impl_1_1_host_barrier" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">buffer_type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>int;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_buffer_size<sp/>=<sp/>128;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_buffer_length<sp/>=</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>required_buffer_size<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(int);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fit<sp/>the<sp/>following<sp/>3<sp/>atomics<sp/>within<sp/>a<sp/>128<sp/>bytes<sp/>while</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>keeping<sp/>the<sp/>arrive<sp/>atomic<sp/>at<sp/>least<sp/>64<sp/>bytes<sp/>away<sp/>from</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>wait<sp/>atomic<sp/>to<sp/>reduce<sp/>contention<sp/>on<sp/>the<sp/>caches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>arrive_idx<sp/>=<sp/>32<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(int);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>master_idx<sp/>=<sp/>64<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(int);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wait_idx<sp/><sp/><sp/>=<sp/>96<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(int);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_nops<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations_till_backoff<sp/><sp/><sp/><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>log2_iterations_till_yield<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>log2_iterations_till_sleep<sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>return<sp/>true<sp/>if<sp/>call<sp/>is<sp/>the<sp/>last<sp/>thread<sp/>to<sp/>arrive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>split_arrive(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>step,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>master_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>++step;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::memory_fence();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::atomic_fetch_add(buffer<sp/>+<sp/>arrive_idx,<sp/>1)<sp/>==<sp/>size<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(master_wait<sp/>&amp;&amp;<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::atomic_fetch_add(buffer<sp/>+<sp/>master_idx,<sp/>1);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>release<sp/>waiting<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>the<sp/>thread<sp/>which<sp/>received<sp/>a<sp/>return<sp/>value<sp/>of<sp/>true<sp/>from<sp/>split_arrive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>the<sp/>thread<sp/>which<sp/>calls<sp/>split_master_wait<sp/>may<sp/>call<sp/>split_release</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>split_release(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*step*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::memory_fence();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::atomic_fetch_sub(buffer<sp/>+<sp/>arrive_idx,<sp/>size);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>Kokkos::atomic_fetch_add(buffer<sp/>+<sp/>wait_idx,<sp/>1);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>only<sp/>be<sp/>called<sp/>by<sp/>the<sp/>master<sp/>thread,<sp/>will<sp/>allow<sp/>the<sp/>master<sp/>thread<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>resume<sp/>after<sp/>all<sp/>threads<sp/>have<sp/>arrived</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>split_master_wait(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>active_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>wait_until_equal(buffer<sp/>+<sp/>master_idx,<sp/>step,<sp/>active_wait);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>arrive,<sp/>last<sp/>thread<sp/>automatically<sp/>release<sp/>waiting<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arrive(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>step)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(split_arrive(buffer,<sp/>size,<sp/>step))<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>split_release(buffer,<sp/>size,<sp/>step);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>if<sp/>all<sp/>threads<sp/>have<sp/>arrived</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>try_wait(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>test_equal(buffer<sp/>+<sp/>wait_idx,<sp/>step);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>wait<sp/>for<sp/>all<sp/>threads<sp/>to<sp/>arrive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>wait(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>active_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>wait_until_equal(buffer<sp/>+<sp/>wait_idx,<sp/>step,<sp/>active_wait);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>split_arrive(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>master_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>split_arrive(m_buffer,<sp/>m_size,<sp/>m_step,<sp/>master_wait);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>split_release()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>split_release(m_buffer,<sp/>m_size,<sp/>m_step);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>split_master_wait(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>active_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>split_master_wait(m_buffer,<sp/>m_size,<sp/>m_step,<sp/>active_wait);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arrive()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>arrive(m_buffer,<sp/>m_size,<sp/>m_step);<sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>try_wait()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>try_wait(m_buffer,<sp/>m_size,<sp/>m_step);<sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>wait()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/>wait(m_buffer,<sp/>m_size,<sp/>m_step);<sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>(<ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;<sp/>operator=(<ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>buffer)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>m_size{size},<sp/>m_step{0u},<sp/>m_buffer{buffer}<sp/>{}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_impl_1_1_host_barrier" kindref="compound">HostBarrier</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>test_equal(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>ptr,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>Kokkos::atomic_fetch_add(ptr,<sp/>0)<sp/>==<sp/>v;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::memory_fence();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>wait_until_equal(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>active_wait<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(KOKKOS_ACTIVE_EXECUTION_MEMORY_SPACE_HOST)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>test_equal(ptr,<sp/>v);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>!result<sp/>&amp;&amp;<sp/>i<sp/>&lt;<sp/>iterations_till_backoff;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(KOKKOS_ENABLE_ASM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>num_nops;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight><highlight class="stringliteral">&quot;nop\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight><highlight class="stringliteral">&quot;pause\n&quot;</highlight><highlight class="normal"><sp/>:::<sp/></highlight><highlight class="stringliteral">&quot;memory&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__PPC64__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>num_nops;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;nop\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;or<sp/>27,<sp/>27,<sp/>27&quot;</highlight><highlight class="normal"><sp/>:::<sp/></highlight><highlight class="stringliteral">&quot;memory&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__amd64)<sp/>||<sp/>defined(__amd64__)<sp/>||<sp/>defined(__x86_64)<sp/>||<sp/>\</highlight></codeline>
+<codeline lineno="225"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>defined(__x86_64__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>num_nops;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;nop\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">asm</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;pause\n&quot;</highlight><highlight class="normal"><sp/>:::<sp/></highlight><highlight class="stringliteral">&quot;memory&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>test_equal(ptr,<sp/>v);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!result)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>impl_backoff_wait_until_equal(ptr,<sp/>v,<sp/>active_wait);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)active_wait;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!test_equal(ptr,<sp/>v))<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>impl_backoff_wait_until_equal(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>active_wait)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m_size{0};</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m_step{0};</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>m_buffer{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Kokkos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>KOKKOS_HOST_BARRIER_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostBarrier.hpp"/>
+  </compounddef>
+</doxygen>

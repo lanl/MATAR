@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07std_1_1is__same_3_08b1c6ef2380458c1b1a9604a1caef735" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07std_1_1is__same_3_08b1c6ef2380458c1b1a9604a1caef735_1a4b74d870291e78bd03f463c66e4232dc" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">Kokkos::ViewTraits</ref>&lt; data_type, array_layout, typename SrcTraits::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref> &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply&lt; MemoryTraits &gt;::traits_type =  Kokkos::ViewTraits&lt;data_type, array_layout, typename SrcTraits::device_type, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits_type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply::traits_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3832" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3834" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07std_1_1is__same_3_08b1c6ef2380458c1b1a9604a1caef735_1a7593567010d29c2dd160679c5370527e" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; data_type, array_layout, typename SrcTraits::device_type, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref> &gt;</type>
+        <definition>using Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply&lt; MemoryTraits &gt;::type =  Kokkos::View&lt;data_type, array_layout, typename SrcTraits::device_type, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3836" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3837" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="3829" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="3829" bodyend="3838"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07std_1_1is__same_3_08b1c6ef2380458c1b1a9604a1caef735_1a4b74d870291e78bd03f463c66e4232dc" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply</scope><name>traits_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_mapping_3_01typename_01std_1_1enable__if_3_07std_1_1is__same_3_08b1c6ef2380458c1b1a9604a1caef735_1a7593567010d29c2dd160679c5370527e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewMapping&lt; typename std::enable_if&lt;(std::is_same&lt; typename SrcTraits::specialize, void &gt;::value &amp;&amp;(std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutLeft &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutRight &gt;::value||std::is_same&lt; typename SrcTraits::array_layout, Kokkos::LayoutStride &gt;::value))&gt;::type, SrcTraits, Args... &gt;::apply</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

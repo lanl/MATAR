@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_test_event_repeater" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::TestEventRepeater</compoundname>
+    <basecompoundref refid="classtesting_1_1_test_event_listener" prot="public" virt="non-virtual">testing::TestEventListener</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_test_event_repeater_1a1f7e494642d653eaad800504510d18a3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::internal::TestEventRepeater::forwarding_enabled_</definition>
+        <argsstring></argsstring>
+        <name>forwarding_enabled_</name>
+        <qualifiedname>testing::internal::TestEventRepeater::forwarding_enabled_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4414" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4414" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_test_event_repeater_1a1c08e9302639108588d764b671c54825" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classtesting_1_1_test_event_listener" kindref="compound">TestEventListener</ref> * &gt;</type>
+        <definition>std::vector&lt;TestEventListener*&gt; testing::internal::TestEventRepeater::listeners_</definition>
+        <argsstring></argsstring>
+        <name>listeners_</name>
+        <qualifiedname>testing::internal::TestEventRepeater::listeners_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4416" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4416" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a97dc3b08bd62c615f16e4c73ed0b3894" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestEventRepeater::TestEventRepeater</definition>
+        <argsstring>()</argsstring>
+        <name>TestEventRepeater</name>
+        <qualifiedname>testing::internal::TestEventRepeater::TestEventRepeater</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4387" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4387" bodyend="4387"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a0f7129002fc4a33e29ce76a3b6df8d1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>testing::internal::TestEventRepeater::~TestEventRepeater</definition>
+        <argsstring>()</argsstring>
+        <name>~TestEventRepeater</name>
+        <qualifiedname>testing::internal::TestEventRepeater::~TestEventRepeater</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4388" column="11" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4421" bodyend="4423"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1ad154ce021881721a5c46994316b14cb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::Append</definition>
+        <argsstring>(TestEventListener *listener)</argsstring>
+        <name>Append</name>
+        <qualifiedname>testing::internal::TestEventRepeater::Append</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_event_listener" kindref="compound">TestEventListener</ref> *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4389" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4425" bodyend="4427"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1ac77a3d127e4726e11694e4ee9cf3b793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_test_event_listener" kindref="compound">TestEventListener</ref> *</type>
+        <definition>TestEventListener * testing::internal::TestEventRepeater::Release</definition>
+        <argsstring>(TestEventListener *listener)</argsstring>
+        <name>Release</name>
+        <qualifiedname>testing::internal::TestEventRepeater::Release</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_test_event_listener" kindref="compound">TestEventListener</ref> *</type>
+          <declname>listener</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4390" column="21" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4430" bodyend="4439"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1abaf2bfc453fc0e1005fcfb0f95deac4c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::TestEventRepeater::forwarding_enabled</definition>
+        <argsstring>() const</argsstring>
+        <name>forwarding_enabled</name>
+        <qualifiedname>testing::internal::TestEventRepeater::forwarding_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4394" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4394" bodyend="4394"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a86c52e311b70598a385a0589277e92e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::set_forwarding_enabled</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>set_forwarding_enabled</name>
+        <qualifiedname>testing::internal::TestEventRepeater::set_forwarding_enabled</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4395" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4395" bodyend="4395"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a4ecd5b2b26b45d349045477d4d2383c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestProgramStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnTestProgramStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestProgramStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a5f6c84f39851e8a603a2d2e10063816b">OnTestProgramStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4397" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4462" bodyend="4462"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a4062b3f070bb6531ab8494c13d3635d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestIterationStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)</argsstring>
+        <name>OnTestIterationStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestIterationStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a60cc09b7907cb329d152eb5e7133bdeb">OnTestIterationStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4398" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4477" bodyend="4484"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a6f6b4db5278e7e56cf67f695d1f0f87a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnEnvironmentsSetUpStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnEnvironmentsSetUpStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnEnvironmentsSetUpStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1aa6502e534919605be45f26a6daf9a40c">OnEnvironmentsSetUpStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4399" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4463" bodyend="4463"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a88eeb21ba68d97167e2cfae0b9f3afeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnEnvironmentsSetUpEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnEnvironmentsSetUpEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnEnvironmentsSetUpEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1aaa1021d75f5dbf3f05c829c1cc520341">OnEnvironmentsSetUpEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4400" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4468" bodyend="4468"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a42ccab9ae444a6262cf71953f250d950" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestCaseStart</definition>
+        <argsstring>(const TestCase &amp;test_case)</argsstring>
+        <name>OnTestCaseStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestCaseStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1ab4ed885d63f5bbff8076c1329b3dfe36">OnTestCaseStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4401" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4464" bodyend="4464"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a0d72b8964be337c2f887896cdacf732d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestStart</definition>
+        <argsstring>(const TestInfo &amp;test_info)</argsstring>
+        <name>OnTestStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1ab4f6a0ca16ae75daf385b3b5914e1048">OnTestStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4402" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4465" bodyend="4465"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a0aaf9416443764acb01a5188bca74058" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestPartResult</definition>
+        <argsstring>(const TestPartResult &amp;result)</argsstring>
+        <name>OnTestPartResult</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestPartResult</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a054f8705c883fa120b91473aff38f2ee">OnTestPartResult</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_part_result" kindref="compound">TestPartResult</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4403" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4466" bodyend="4466"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a21e0b1b2a495b8e65d4a7a81a6a8e379" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestEnd</definition>
+        <argsstring>(const TestInfo &amp;test_info)</argsstring>
+        <name>OnTestEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1abb1c44525ef038500608b5dc2f17099b">OnTestEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_info" kindref="compound">TestInfo</ref> &amp;</type>
+          <declname>test_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4404" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4470" bodyend="4470"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a57fda998589ac2b86066d07b883c0546" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestCaseEnd</definition>
+        <argsstring>(const TestCase &amp;test_case)</argsstring>
+        <name>OnTestCaseEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestCaseEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1ae61985e2ef76ac78379b077be57a9c36">OnTestCaseEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> &amp;</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4405" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4471" bodyend="4471"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a8934ae9831ff6013a605d61b9772169d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnEnvironmentsTearDownStart</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnEnvironmentsTearDownStart</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnEnvironmentsTearDownStart</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a468b5e6701bcb86cb2c956caadbba5e4">OnEnvironmentsTearDownStart</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4406" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4467" bodyend="4467"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a81f1e41cd2da0af39cc71087c002a099" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnEnvironmentsTearDownEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnEnvironmentsTearDownEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnEnvironmentsTearDownEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a9ea04fa7f447865ba76df35e12ba2092">OnEnvironmentsTearDownEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4407" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4469" bodyend="4469"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a94253e3c11753328e8a031f39352708f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestIterationEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test, int iteration)</argsstring>
+        <name>OnTestIterationEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestIterationEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1a550fdb3e55726e4cefa09f5697941425">OnTestIterationEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iteration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4408" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4486" bodyend="4493"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a17549f95cc2baf9834eb3fe57a11dfdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::TestEventRepeater::OnTestProgramEnd</definition>
+        <argsstring>(const UnitTest &amp;unit_test)</argsstring>
+        <name>OnTestProgramEnd</name>
+        <qualifiedname>testing::internal::TestEventRepeater::OnTestProgramEnd</qualifiedname>
+        <reimplements refid="classtesting_1_1_test_event_listener_1ad15b6246d94c268e233487a86463ef3d">OnTestProgramEnd</reimplements>
+        <param>
+          <type>const <ref refid="classtesting_1_1_unit_test" kindref="compound">UnitTest</ref> &amp;</type>
+          <declname>unit_test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4409" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4472" bodyend="4472"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_event_repeater_1a882648737e85eff0986ff66b794e310a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestEventRepeater::GTEST_DISALLOW_COPY_AND_ASSIGN_</definition>
+        <argsstring>(TestEventRepeater)</argsstring>
+        <name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name>
+        <qualifiedname>testing::internal::TestEventRepeater::GTEST_DISALLOW_COPY_AND_ASSIGN_</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_test_event_repeater" kindref="compound">TestEventRepeater</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4418" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>testing::TestEventListener</label>
+        <link refid="classtesting_1_1_test_event_listener"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::TestEventRepeater</label>
+        <link refid="classtesting_1_1internal_1_1_test_event_repeater"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>testing::TestEventListener</label>
+        <link refid="classtesting_1_1_test_event_listener"/>
+      </node>
+      <node id="1">
+        <label>testing::internal::TestEventRepeater</label>
+        <link refid="classtesting_1_1internal_1_1_test_event_repeater"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="4385" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4385" bodyend="4419"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1ad154ce021881721a5c46994316b14cb1" prot="public" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>Append</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1abaf2bfc453fc0e1005fcfb0f95deac4c" prot="public" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>forwarding_enabled</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a1f7e494642d653eaad800504510d18a3" prot="private" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>forwarding_enabled_</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a882648737e85eff0986ff66b794e310a" prot="private" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a1c08e9302639108588d764b671c54825" prot="private" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>listeners_</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a88eeb21ba68d97167e2cfae0b9f3afeb" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnEnvironmentsSetUpEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a6f6b4db5278e7e56cf67f695d1f0f87a" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnEnvironmentsSetUpStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a81f1e41cd2da0af39cc71087c002a099" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnEnvironmentsTearDownEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a8934ae9831ff6013a605d61b9772169d" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnEnvironmentsTearDownStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a57fda998589ac2b86066d07b883c0546" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestCaseEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a42ccab9ae444a6262cf71953f250d950" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestCaseStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a21e0b1b2a495b8e65d4a7a81a6a8e379" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a94253e3c11753328e8a031f39352708f" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestIterationEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a4062b3f070bb6531ab8494c13d3635d3" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestIterationStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a0aaf9416443764acb01a5188bca74058" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestPartResult</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a17549f95cc2baf9834eb3fe57a11dfdf" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestProgramEnd</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a4ecd5b2b26b45d349045477d4d2383c9" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestProgramStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a0d72b8964be337c2f887896cdacf732d" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>OnTestStart</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1ac77a3d127e4726e11694e4ee9cf3b793" prot="public" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>Release</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a86c52e311b70598a385a0589277e92e0" prot="public" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>set_forwarding_enabled</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a97dc3b08bd62c615f16e4c73ed0b3894" prot="public" virt="non-virtual"><scope>testing::internal::TestEventRepeater</scope><name>TestEventRepeater</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>~TestEventListener</name></member>
+      <member refid="classtesting_1_1_test_event_listener_1a4512d19e7a108ec4926239ec1ea85d63" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>~TestEventListener</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_event_repeater_1a0f7129002fc4a33e29ce76a3b6df8d1b" prot="public" virt="virtual"><scope>testing::internal::TestEventRepeater</scope><name>~TestEventRepeater</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

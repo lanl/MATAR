@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_test_case_name_is" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::TestCaseNameIs</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_test_case_name_is_1a4e780c6613a81c4f14fc57e00c61474b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::internal::TestCaseNameIs::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <qualifiedname>testing::internal::TestCaseNameIs::name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="5644" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5644" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_case_name_is_1a7c983707f4cfe7f36dbabc95da5113c4" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestCaseNameIs::TestCaseNameIs</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>TestCaseNameIs</name>
+        <qualifiedname>testing::internal::TestCaseNameIs::TestCaseNameIs</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="5635" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5635" bodyend="5636"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_case_name_is_1aa96c4e9facbaa7043c8f0b34465d1eae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::TestCaseNameIs::operator()</definition>
+        <argsstring>(const TestCase *test_case) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>testing::internal::TestCaseNameIs::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_case" kindref="compound">TestCase</ref> *</type>
+          <declname>test_case</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="5639" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5639" bodyend="5641"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="5632" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5632" bodyend="5645"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_test_case_name_is_1a4e780c6613a81c4f14fc57e00c61474b" prot="private" virt="non-virtual"><scope>testing::internal::TestCaseNameIs</scope><name>name_</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_case_name_is_1aa96c4e9facbaa7043c8f0b34465d1eae" prot="public" virt="non-virtual"><scope>testing::internal::TestCaseNameIs</scope><name>operator()</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_case_name_is_1a7c983707f4cfe7f36dbabc95da5113c4" prot="public" virt="non-virtual"><scope>testing::internal::TestCaseNameIs</scope><name>TestCaseNameIs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

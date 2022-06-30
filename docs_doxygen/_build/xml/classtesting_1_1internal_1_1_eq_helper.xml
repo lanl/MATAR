@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_eq_helper" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::EqHelper</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>lhs_is_null_literal</declname>
+        <defname>lhs_is_null_literal</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_1ac2977ed90cd3c88607f804e43b86b92c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; lhs_is_null_literal &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, const T1 &amp;expected, const T2 &amp;actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>const T1 &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const T2 &amp;</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18897" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18897" bodyend="18903"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_1a3de996954b41d484c065ed824fe7eac9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; lhs_is_null_literal &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, BiggestInt expected, BiggestInt actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>BiggestInt</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>BiggestInt</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18911" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18911" bodyend="18917"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_1ac2977ed90cd3c88607f804e43b86b92c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; lhs_is_null_literal &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, const T1 &amp;expected, const T2 &amp;actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>const T1 &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const T2 &amp;</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18897" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18897" bodyend="18903"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_1a3de996954b41d484c065ed824fe7eac9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; lhs_is_null_literal &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, BiggestInt expected, BiggestInt actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>BiggestInt</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>BiggestInt</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18911" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18911" bodyend="18917"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18893" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18893" bodyend="18918"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_1ac2977ed90cd3c88607f804e43b86b92c" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_1a3de996954b41d484c065ed824fe7eac9" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_1ac2977ed90cd3c88607f804e43b86b92c" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_1a3de996954b41d484c065ed824fe7eac9" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper</scope><name>Compare</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl_3_01_t_0f_n_0e_00_01_kok9487a208c5f04cd2e1cd091c5ce6e3d4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T[N], Kokkos::Experimental::Extents&lt; ExtentSpec... &gt;, void &gt;</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl" prot="public" virt="non-virtual">Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T, Kokkos::Experimental::Extents&lt; ExtentSpec..., ptrdiff_t(N)&gt; &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>ptrdiff_t...</type>
+        <declname>ExtentSpec</declname>
+        <defname>ExtentSpec</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T[N], Kokkos::Experimental::Extents&lt; ExtentSpec... &gt;, void &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl_3_01_t_0f_n_0e_00_01_kok9487a208c5f04cd2e1cd091c5ce6e3d4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T, Kokkos::Experimental::Extents&lt; ExtentSpec..., ptrdiff_t(N)&gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T[N], Kokkos::Experimental::Extents&lt; ExtentSpec... &gt;, void &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl_3_01_t_0f_n_0e_00_01_kok9487a208c5f04cd2e1cd091c5ce6e3d4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T, Kokkos::Experimental::Extents&lt; ExtentSpec..., ptrdiff_t(N)&gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" line="121" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Extents.hpp" bodystart="127" bodyend="127"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1__parse__view__extents__impl_1_1__parse__impl_1a30e540ee26fffd2e9e0d15be5b982f25" prot="public" virt="non-virtual"><scope>Kokkos::Impl::_parse_view_extents_impl::_parse_impl&lt; T[N], Kokkos::Experimental::Extents&lt; ExtentSpec... &gt;, void &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

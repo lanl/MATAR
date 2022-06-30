@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_inv_norm2" kind="struct" language="C++" prot="public">
+    <compoundname>Test::InvNorm2</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_dot_single" prot="public" virt="non-virtual">Kokkos::DotSingle&lt; VectorView &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class VectorView</type>
+      </param>
+      <param>
+        <type>class ValueView</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_inv_norm2_1a29a5243d841d50fad3adce62d4b7f8a0" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_dot_single" kindref="compound">Kokkos::DotSingle</ref>&lt; VectorView &gt;::value_type</type>
+        <definition>using Test::InvNorm2&lt; VectorView, ValueView &gt;::value_type =  typename Kokkos::DotSingle&lt;VectorView&gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::InvNorm2::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_inv_norm2_1ab97c3d51f9a44fc3efe9799ddba061da" prot="public" static="no" mutable="no">
+        <type>ValueView</type>
+        <definition>ValueView Test::InvNorm2&lt; VectorView, ValueView &gt;::Rjj</definition>
+        <argsstring></argsstring>
+        <name>Rjj</name>
+        <qualifiedname>Test::InvNorm2::Rjj</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="63" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_inv_norm2_1a4506fcc09c2ed7c5a8ccb1617683ef09" prot="public" static="no" mutable="no">
+        <type>ValueView</type>
+        <definition>ValueView Test::InvNorm2&lt; VectorView, ValueView &gt;::inv</definition>
+        <argsstring></argsstring>
+        <name>inv</name>
+        <qualifiedname>Test::InvNorm2::inv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="64" column="13" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_inv_norm2_1a5e19326f75d49abe14b502191d1ea6b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::InvNorm2&lt; VectorView, ValueView &gt;::InvNorm2</definition>
+        <argsstring>(const VectorView &amp;argX, const ValueView &amp;argR, const ValueView &amp;argInv)</argsstring>
+        <name>InvNorm2</name>
+        <qualifiedname>Test::InvNorm2::InvNorm2</qualifiedname>
+        <param>
+          <type>const VectorView &amp;</type>
+          <declname>argX</declname>
+        </param>
+        <param>
+          <type>const ValueView &amp;</type>
+          <declname>argR</declname>
+        </param>
+        <param>
+          <type>const ValueView &amp;</type>
+          <declname>argInv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="66" column="3" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_inv_norm2_1ad6f7ebf1a512f3fe9a947d85a95afa50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::InvNorm2&lt; VectorView, ValueView &gt;::final</definition>
+        <argsstring>(value_type &amp;result) const</argsstring>
+        <name>final</name>
+        <qualifiedname>Test::InvNorm2::final</qualifiedname>
+        <param>
+          <type>value_type &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="71" column="8" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="71" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::DotSingle&lt; VectorView &gt;</label>
+        <link refid="struct_kokkos_1_1_dot_single"/>
+      </node>
+      <node id="1">
+        <label>Test::InvNorm2&lt; VectorView, ValueView &gt;</label>
+        <link refid="struct_test_1_1_inv_norm2"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::DotSingle&lt; VectorView &gt;</label>
+        <link refid="struct_kokkos_1_1_dot_single"/>
+      </node>
+      <node id="1">
+        <label>Test::InvNorm2&lt; VectorView, ValueView &gt;</label>
+        <link refid="struct_test_1_1_inv_norm2"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" line="60" column="1" bodyfile="src/Kokkos/kokkos/core/perf_test/PerfTestGramSchmidt.cpp" bodystart="60" bodyend="76"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_dot_single_1a7a724f83f362c6034ab4a1ad2bb11d22" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>DotSingle</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1ad4d813796d0f1aaecf0acb3e4fba4601" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>execution_space</name></member>
+      <member refid="struct_test_1_1_inv_norm2_1ad6f7ebf1a512f3fe9a947d85a95afa50" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>final</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1aadeeb82bf5d91607a5f77280d5ab627e" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>init</name></member>
+      <member refid="struct_test_1_1_inv_norm2_1a4506fcc09c2ed7c5a8ccb1617683ef09" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>inv</name></member>
+      <member refid="struct_test_1_1_inv_norm2_1a5e19326f75d49abe14b502191d1ea6b7" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>InvNorm2</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1aae8b0807caa1bd40d8edc63a3f8506da" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>join</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1a94a85d78c738c631e69461b6f118d589" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_inv_norm2_1ab97c3d51f9a44fc3efe9799ddba061da" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>Rjj</name></member>
+      <member refid="struct_test_1_1_inv_norm2_1a29a5243d841d50fad3adce62d4b7f8a0" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_dot_single_1a67d9ca73228f19ba34244874b5323968" prot="public" virt="non-virtual"><scope>Test::InvNorm2</scope><name>X</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

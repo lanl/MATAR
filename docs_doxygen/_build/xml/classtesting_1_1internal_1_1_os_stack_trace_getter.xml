@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_os_stack_trace_getter" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::OsStackTraceGetter</compoundname>
+    <basecompoundref refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface" prot="public" virt="non-virtual">testing::internal::OsStackTraceGetterInterface</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1aa736c26a4ba2b59a7572e7f44bfe269e" prot="public" static="yes" mutable="no">
+        <type>const char *const</type>
+        <definition>const char *const testing::internal::OsStackTraceGetter::kElidedFramesMarker</definition>
+        <argsstring></argsstring>
+        <name>kElidedFramesMarker</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::kElidedFramesMarker</qualifiedname>
+        <initializer>=
+    &quot;... &quot; GTEST_NAME_ &quot; internal frames ...&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="852" column="27" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="852" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1ac784c2bae46e1fe2bf929cb8091c017f" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1_mutex" kindref="compound">Mutex</ref></type>
+        <definition>Mutex testing::internal::OsStackTraceGetter::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="855" column="9" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="855" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1a78bca2707de7c840ed79e2e896e284c5" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* testing::internal::OsStackTraceGetter::caller_frame_</definition>
+        <argsstring></argsstring>
+        <name>caller_frame_</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::caller_frame_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="861" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="861" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1aa40b3120c0ae4ec640de8b577ab7da17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::OsStackTraceGetter::OsStackTraceGetter</definition>
+        <argsstring>()</argsstring>
+        <name>OsStackTraceGetter</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::OsStackTraceGetter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="843" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="843" bodyend="843"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1afe0f7539f1a325eec1adf0625bbdfbd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>string</type>
+        <definition>string testing::internal::OsStackTraceGetter::CurrentStackTrace</definition>
+        <argsstring>(int max_depth, int skip_count) GTEST_LOCK_EXCLUDED_(mutex_)</argsstring>
+        <name>CurrentStackTrace</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::CurrentStackTrace</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface_1a6965eadb9b340808718fab9f1475c49a">CurrentStackTrace</reimplements>
+        <param>
+          <type>int</type>
+          <declname>max_depth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>skip_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="845" column="18" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="4998" bodyend="5002"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1abdfefeba8ffb0f1031491e4bd1a7fad9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void testing::internal::OsStackTraceGetter::UponLeavingGTest</definition>
+        <argsstring>() GTEST_LOCK_EXCLUDED_(mutex_)</argsstring>
+        <name>UponLeavingGTest</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::UponLeavingGTest</qualifiedname>
+        <reimplements refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface_1a791bd120428b5a53d5eeba1b27296a39">UponLeavingGTest</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="848" column="16" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="5004" bodyend="5006"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_os_stack_trace_getter_1a51caf2b97d8ef86e5e279387bbab1278" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::OsStackTraceGetter::GTEST_DISALLOW_COPY_AND_ASSIGN_</definition>
+        <argsstring>(OsStackTraceGetter)</argsstring>
+        <name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name>
+        <qualifiedname>testing::internal::OsStackTraceGetter::GTEST_DISALLOW_COPY_AND_ASSIGN_</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1internal_1_1_os_stack_trace_getter" kindref="compound">OsStackTraceGetter</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="863" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>testing::internal::OsStackTraceGetter</label>
+        <link refid="classtesting_1_1internal_1_1_os_stack_trace_getter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>testing::internal::OsStackTraceGetterInterface</label>
+        <link refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>testing::internal::OsStackTraceGetter</label>
+        <link refid="classtesting_1_1internal_1_1_os_stack_trace_getter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>testing::internal::OsStackTraceGetterInterface</label>
+        <link refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="841" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="841" bodyend="864"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1a78bca2707de7c840ed79e2e896e284c5" prot="private" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>caller_frame_</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1afe0f7539f1a325eec1adf0625bbdfbd7" prot="public" virt="virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>CurrentStackTrace</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1a51caf2b97d8ef86e5e279387bbab1278" prot="private" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>GTEST_DISALLOW_COPY_AND_ASSIGN_</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1aa736c26a4ba2b59a7572e7f44bfe269e" prot="public" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>kElidedFramesMarker</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1ac784c2bae46e1fe2bf929cb8091c017f" prot="private" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>mutex_</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1aa40b3120c0ae4ec640de8b577ab7da17" prot="public" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>OsStackTraceGetter</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface_1afbe9eb0ca8775fbb98ff0720011b6708" prot="public" virt="non-virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>OsStackTraceGetterInterface</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_1abdfefeba8ffb0f1031491e4bd1a7fad9" prot="public" virt="virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>UponLeavingGTest</name></member>
+      <member refid="classtesting_1_1internal_1_1_os_stack_trace_getter_interface_1a193f4a1de4af9b78010c659912df5a15" prot="public" virt="virtual"><scope>testing::internal::OsStackTraceGetter</scope><name>~OsStackTraceGetterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

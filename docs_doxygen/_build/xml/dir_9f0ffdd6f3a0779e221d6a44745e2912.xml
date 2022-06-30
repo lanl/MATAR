@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_9f0ffdd6f3a0779e221d6a44745e2912" kind="dir">
+    <compoundname>src/Kokkos/kokkos/benchmarks/bytes_and_flops</compoundname>
+    <innerfile refid="bench_8hpp">bench.hpp</innerfile>
+    <innerfile refid="bench__stride_8hpp">bench_stride.hpp</innerfile>
+    <innerfile refid="bench__unroll__stride_8hpp">bench_unroll_stride.hpp</innerfile>
+    <innerfile refid="benchmarks_2bytes__and__flops_2main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/bytes_and_flops/"/>
+  </compounddef>
+</doxygen>

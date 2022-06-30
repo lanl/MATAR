@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_4e5c162203405a17e268b0a6782e7ed3" kind="dir">
+    <compoundname>src/Kokkos/kokkos/example/tutorial/Advanced_Views/05_NVIDIA_UVM</compoundname>
+    <innerfile refid="uvm__example_8cpp">uvm_example.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/example/tutorial/Advanced_Views/05_NVIDIA_UVM/"/>
+  </compounddef>
+</doxygen>

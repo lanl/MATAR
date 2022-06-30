@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1_work_item_property" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::WorkItemProperty</compoundname>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" prot="public">Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1a955c00ce0f8b745246ed3ec86039d6ed" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 0 &gt;</type>
+        <definition>using Kokkos::Experimental::WorkItemProperty::None_t =  ImplWorkItemProperty&lt;0&gt;</definition>
+        <argsstring></argsstring>
+        <name>None_t</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::None_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="98" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1ad40723d6e41915761674094700cea7b1" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 1 &gt;</type>
+        <definition>using Kokkos::Experimental::WorkItemProperty::HintLightWeight_t =  ImplWorkItemProperty&lt;1&gt;</definition>
+        <argsstring></argsstring>
+        <name>HintLightWeight_t</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintLightWeight_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="99" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1a42d31383bf500a295680ef06c1102472" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 2 &gt;</type>
+        <definition>using Kokkos::Experimental::WorkItemProperty::HintHeavyWeight_t =  ImplWorkItemProperty&lt;2&gt;</definition>
+        <argsstring></argsstring>
+        <name>HintHeavyWeight_t</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintHeavyWeight_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="100" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1afc6449312896b9d05db3174635dc40b5" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 4 &gt;</type>
+        <definition>using Kokkos::Experimental::WorkItemProperty::HintRegular_t =  ImplWorkItemProperty&lt;4&gt;</definition>
+        <argsstring></argsstring>
+        <name>HintRegular_t</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintRegular_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="101" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1a05422d4d875ad0706b3464ac4db19839" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 8 &gt;</type>
+        <definition>using Kokkos::Experimental::WorkItemProperty::HintIrregular_t =  ImplWorkItemProperty&lt;8&gt;</definition>
+        <argsstring></argsstring>
+        <name>HintIrregular_t</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintIrregular_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="102" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1af4936d5b573f1e74d91d6fb8c897815e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 0 &gt;</type>
+        <definition>constexpr const ImplWorkItemProperty&lt;0&gt; Kokkos::Experimental::WorkItemProperty::None</definition>
+        <argsstring></argsstring>
+        <name>None</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::None</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt;0&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="88" column="47" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1ab2a5e92b101fa2febaf2e3ae6c4e8646" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 1 &gt;</type>
+        <definition>constexpr const ImplWorkItemProperty&lt;1&gt; Kokkos::Experimental::WorkItemProperty::HintLightWeight</definition>
+        <argsstring></argsstring>
+        <name>HintLightWeight</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintLightWeight</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt;1&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="90" column="47" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1a97560417501ca02e5cbf169266481505" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 2 &gt;</type>
+        <definition>constexpr const ImplWorkItemProperty&lt;2&gt; Kokkos::Experimental::WorkItemProperty::HintHeavyWeight</definition>
+        <argsstring></argsstring>
+        <name>HintHeavyWeight</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintHeavyWeight</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt;2&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="92" column="47" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1a025b8ba8d0fbdc90490a02b5f54b3a48" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 4 &gt;</type>
+        <definition>constexpr const ImplWorkItemProperty&lt;4&gt; Kokkos::Experimental::WorkItemProperty::HintRegular</definition>
+        <argsstring></argsstring>
+        <name>HintRegular</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintRegular</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt;4&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="94" column="47" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1_work_item_property_1ad56c3e05d4f8f50272d0a8489a6a0420" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt; 8 &gt;</type>
+        <definition>constexpr const ImplWorkItemProperty&lt;8&gt; Kokkos::Experimental::WorkItemProperty::HintIrregular</definition>
+        <argsstring></argsstring>
+        <name>HintIrregular</name>
+        <qualifiedname>Kokkos::Experimental::WorkItemProperty::HintIrregular</qualifiedname>
+        <initializer>=
+      <ref refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property" kindref="compound">ImplWorkItemProperty</ref>&lt;8&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="96" column="47" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty&lt; 0 &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty&lt; 1 &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property"/>
+      </node>
+      <node id="4">
+        <label>Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty&lt; 2 &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property"/>
+      </node>
+      <node id="5">
+        <label>Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty&lt; 4 &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property"/>
+      </node>
+      <node id="6">
+        <label>Kokkos::Experimental::WorkItemProperty::ImplWorkItemProperty&lt; 8 &gt;</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1_1_impl_work_item_property"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Experimental::WorkItemProperty</label>
+        <link refid="struct_kokkos_1_1_experimental_1_1_work_item_property"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>None</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>HintLightWeight</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>HintHeavyWeight</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>HintRegular</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>HintIrregular</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="81" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="81" bodyend="103"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1a97560417501ca02e5cbf169266481505" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintHeavyWeight</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1a42d31383bf500a295680ef06c1102472" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintHeavyWeight_t</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1ad56c3e05d4f8f50272d0a8489a6a0420" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintIrregular</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1a05422d4d875ad0706b3464ac4db19839" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintIrregular_t</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1ab2a5e92b101fa2febaf2e3ae6c4e8646" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintLightWeight</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1ad40723d6e41915761674094700cea7b1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintLightWeight_t</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1a025b8ba8d0fbdc90490a02b5f54b3a48" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintRegular</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1afc6449312896b9d05db3174635dc40b5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>HintRegular_t</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1af4936d5b573f1e74d91d6fb8c897815e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>None</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1_work_item_property_1a955c00ce0f8b745246ed3ec86039d6ed" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::WorkItemProperty</scope><name>None_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

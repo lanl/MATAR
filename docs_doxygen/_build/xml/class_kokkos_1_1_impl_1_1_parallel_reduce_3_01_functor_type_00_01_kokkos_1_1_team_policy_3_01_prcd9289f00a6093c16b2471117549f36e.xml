@@ -1,0 +1,497 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ReducerType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae894a7dca48ee798cb8fba33cf0cde60" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal" kindref="compound">TeamPolicyInternal</ref>&lt; Kokkos::Experimental::SYCL, Properties... &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::Policy =  TeamPolicyInternal&lt;Kokkos::Experimental::SYCL, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::Policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="520" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="520" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a7eae75f3d9cb9a2db77f91b155740937" prot="public" static="no">
+        <type>FunctorType</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::functor_type =  FunctorType</definition>
+        <argsstring></argsstring>
+        <name>functor_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::functor_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="534" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="534" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ac18a3475a9e72d5b1c641eb4b1ff2258" prot="public" static="no">
+        <type>Kokkos::Experimental::SYCL::size_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::size_type =  Kokkos::Experimental::SYCL::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="535" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="535" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a89fdbcfccd9e089b239b2876cb869ab8" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_functor_analysis" kindref="compound">FunctorAnalysis</ref>&lt; <ref refid="struct_kokkos_1_1_impl_1_1_functor_pattern_interface_1_1_r_e_d_u_c_e" kindref="compound">FunctorPatternInterface::REDUCE</ref>, <ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4" kindref="compound">Policy</ref>, FunctorType &gt;</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::Analysis =  FunctorAnalysis&lt;FunctorPatternInterface::REDUCE, Policy, FunctorType&gt;</definition>
+        <argsstring></argsstring>
+        <name>Analysis</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::Analysis</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="523" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="524" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a76482121a03c042fc122597336349dd4" prot="private" static="no">
+        <type>typename Policy::member_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::member_type =  typename Policy::member_type</definition>
+        <argsstring></argsstring>
+        <name>member_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::member_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="525" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="525" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae5120d0c78bb9f9c12f9b18f80820fd0" prot="private" static="no">
+        <type>typename Policy::work_tag</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::WorkTag =  typename Policy::work_tag</definition>
+        <argsstring></argsstring>
+        <name>WorkTag</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::WorkTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="526" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="526" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ab9e93bb010e139bb0100f5a329497612" prot="private" static="no">
+        <type>typename Policy::launch_bounds</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::launch_bounds =  typename Policy::launch_bounds</definition>
+        <argsstring></argsstring>
+        <name>launch_bounds</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::launch_bounds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="527" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="527" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a5c347791f7f2848474a89418d3a49a13" prot="private" static="no">
+        <type>typename Analysis::pointer_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::pointer_type =  typename Analysis::pointer_type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="529" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a16e49d33cb348e661368a5e68a129c96" prot="private" static="no">
+        <type>typename Analysis::reference_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::reference_type =  typename Analysis::reference_type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="530" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="530" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae4066540ee45413d3bf2c31c0cae5315" prot="private" static="no">
+        <type>typename Analysis::value_type</type>
+        <definition>using Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::value_type =  typename Analysis::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="531" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a2dd6f3eedccb30cf42daf23fc90b0e4c" prot="private" static="no" mutable="no">
+        <type>const FunctorType</type>
+        <definition>const FunctorType Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="538" column="21" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="538" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a47ba7620e20afe529dbfb5b20fe327ed" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4" kindref="compound">Policy</ref></type>
+        <definition>const Policy Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="539" column="16" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="539" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a1f4f044057087c2bb3a7ed48f0d82369" prot="private" static="no" mutable="no">
+        <type>const ReducerType</type>
+        <definition>const ReducerType Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_reducer</definition>
+        <argsstring></argsstring>
+        <name>m_reducer</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_reducer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="540" column="21" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="540" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1acd2f1a468bd40fb76ed611de31fda138" prot="private" static="no" mutable="no">
+        <type>const pointer_type</type>
+        <definition>const pointer_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_result_ptr</definition>
+        <argsstring></argsstring>
+        <name>m_result_ptr</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_result_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="541" column="22" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="541" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a27dfde6b8e545b3e594f74e9f11a4100" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_result_ptr_device_accessible</definition>
+        <argsstring></argsstring>
+        <name>m_result_ptr_device_accessible</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_result_ptr_device_accessible</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="542" column="14" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="542" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ac3d16d60dd16d203651822e51540dcc1" prot="private" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_shmem_begin</definition>
+        <argsstring></argsstring>
+        <name>m_shmem_begin</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_shmem_begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="547" column="13" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="547" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1abec0548ced46bb6f9c489c5f5fd4be4b" prot="private" static="no" mutable="no">
+        <type>size_type</type>
+        <definition>size_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_shmem_size</definition>
+        <argsstring></argsstring>
+        <name>m_shmem_size</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_shmem_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="548" column="13" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="548" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a57194abd54c9d0a1d62e0a531d12ae53" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_scratch_ptr[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_scratch_ptr</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_scratch_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="549" column="8" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="549" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ad11c794fdf808311a79d320c5c9fbff9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_scratch_size[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>m_scratch_size</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_scratch_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="550" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="550" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a87d88079bfbbfdc75bd34a4c6602b7e8" prot="private" static="no" mutable="no">
+        <type>const size_type</type>
+        <definition>const size_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_league_size</definition>
+        <argsstring></argsstring>
+        <name>m_league_size</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_league_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="551" column="19" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="551" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a03952d396a2141ad24aac0c2ab812320" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_team_size</definition>
+        <argsstring></argsstring>
+        <name>m_team_size</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_team_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="552" column="7" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="552" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a002b61504e19b12d6c4a1872329bad21" prot="private" static="no" mutable="no">
+        <type>const size_type</type>
+        <definition>const size_type Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_vector_size</definition>
+        <argsstring></argsstring>
+        <name>m_vector_size</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::m_vector_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="553" column="19" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="553" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a1e31a71fdf5c22186b352becc7c315f2" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename PolicyType</type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename Reducer</type>
+          </param>
+        </templateparamlist>
+        <type>sycl::event</type>
+        <definition>sycl::event Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::sycl_direct_launch</definition>
+        <argsstring>(const PolicyType &amp;policy, const Functor &amp;functor, const Reducer &amp;reducer) const</argsstring>
+        <name>sycl_direct_launch</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::sycl_direct_launch</qualifiedname>
+        <param>
+          <type>const PolicyType &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const Reducer &amp;</type>
+          <declname>reducer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="556" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="556" bodyend="747"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a12babb46885fb8cd8cf2a26def34517a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::initialize</definition>
+        <argsstring>()</argsstring>
+        <name>initialize</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="770" column="8" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="770" bodyend="809"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a6d7ed32cddd69f23ebe26e0fa7597b72" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="750" column="15" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="750" bodyend="767"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a8d0d0baa0a8aed927999cdecd941189e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class ViewType</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::ParallelReduce</definition>
+        <argsstring>(FunctorType const &amp;arg_functor, Policy const &amp;arg_policy, ViewType const &amp;arg_result, typename std::enable_if&lt; Kokkos::is_view&lt; ViewType &gt;::value, void * &gt;::type=nullptr)</argsstring>
+        <name>ParallelReduce</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::ParallelReduce</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4" kindref="compound">Policy</ref> const &amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>ViewType const &amp;</type>
+          <declname>arg_result</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1is__view" kindref="compound">Kokkos::is_view</ref>&lt; ViewType &gt;::value, void * &gt;::type</type>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="813" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="813" bodyend="828"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a864d60d4af19cd89a44164b6acaa8b1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::ParallelReduce</definition>
+        <argsstring>(FunctorType const &amp;arg_functor, Policy const &amp;arg_policy, ReducerType const &amp;reducer)</argsstring>
+        <name>ParallelReduce</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;::ParallelReduce</qualifiedname>
+        <param>
+          <type>FunctorType const &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_team_policy_internal_3_01_kokkos_1_1_experimental_1_1_s_y_c_l_00_01_properties_8_8_8_01_4" kindref="compound">Policy</ref> const &amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <param>
+          <type>ReducerType const &amp;</type>
+          <declname>reducer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="830" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="830" bodyend="844"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" line="517" column="1" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_Parallel_Team.hpp" bodystart="518" bodyend="845"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a89fdbcfccd9e089b239b2876cb869ab8" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>Analysis</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a6d7ed32cddd69f23ebe26e0fa7597b72" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a7eae75f3d9cb9a2db77f91b155740937" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>functor_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a12babb46885fb8cd8cf2a26def34517a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>initialize</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ab9e93bb010e139bb0100f5a329497612" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>launch_bounds</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a2dd6f3eedccb30cf42daf23fc90b0e4c" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a87d88079bfbbfdc75bd34a4c6602b7e8" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_league_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a47ba7620e20afe529dbfb5b20fe327ed" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a1f4f044057087c2bb3a7ed48f0d82369" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_reducer</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1acd2f1a468bd40fb76ed611de31fda138" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_result_ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a27dfde6b8e545b3e594f74e9f11a4100" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_result_ptr_device_accessible</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a57194abd54c9d0a1d62e0a531d12ae53" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_scratch_ptr</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ad11c794fdf808311a79d320c5c9fbff9" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_scratch_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ac3d16d60dd16d203651822e51540dcc1" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_shmem_begin</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1abec0548ced46bb6f9c489c5f5fd4be4b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_shmem_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a03952d396a2141ad24aac0c2ab812320" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_team_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a002b61504e19b12d6c4a1872329bad21" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>m_vector_size</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a76482121a03c042fc122597336349dd4" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>member_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a8d0d0baa0a8aed927999cdecd941189e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>ParallelReduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a864d60d4af19cd89a44164b6acaa8b1f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>ParallelReduce</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a5c347791f7f2848474a89418d3a49a13" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>pointer_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae894a7dca48ee798cb8fba33cf0cde60" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>Policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a16e49d33cb348e661368a5e68a129c96" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ac18a3475a9e72d5b1c641eb4b1ff2258" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1a1e31a71fdf5c22186b352becc7c315f2" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>sycl_direct_launch</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae4066540ee45413d3bf2c31c0cae5315" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_reduce_3_01_functor_type_00_01_kokkos_1_1_team_policy_3_01_prcd9289f00a6093c16b2471117549f36e_1ae5120d0c78bb9f9c12f9b18f80820fd0" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduce&lt; FunctorType, Kokkos::TeamPolicy&lt; Properties... &gt;, ReducerType, Kokkos::Experimental::SYCL &gt;</scope><name>WorkTag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

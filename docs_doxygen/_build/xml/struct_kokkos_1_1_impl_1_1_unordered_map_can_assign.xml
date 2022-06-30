@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_unordered_map_can_assign" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::UnorderedMapCanAssign</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename DKey</type>
+      </param>
+      <param>
+        <type>typename DValue</type>
+      </param>
+      <param>
+        <type>typename SKey</type>
+      </param>
+      <param>
+        <type>typename SValue</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::UnorderedMapCanAssign&lt; DKey, DValue, SKey, SValue &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_unordered_map_can_assign"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::UnorderedMapCanAssign&lt; DKey, DValue, SKey, SValue &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1_unordered_map_can_assign"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" line="260" column="1" bodyfile="src/Kokkos/kokkos/containers/src/impl/Kokkos_UnorderedMap_impl.hpp" bodystart="260" bodyend="260"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

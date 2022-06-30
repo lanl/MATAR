@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_compare___exchange___g_c_c_8hpp" kind="file" language="C++">
+    <compoundname>Compare_Exchange_GCC.hpp</compoundname>
+    <includes refid="_common_8hpp" local="yes">desul/atomics/Common.hpp</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>desul/atomics/Common.hpp</label>
+        <link refid="_common_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/desul/atomics/Compare_Exchange_GCC.hpp</label>
+        <link refid="_compare___exchange___g_c_c_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>desul/atomics/Macros.hpp</label>
+        <link refid="_macros_8hpp_source"/>
+      </node>
+      <node id="5">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment">Copyright<sp/>(c)<sp/>2019,<sp/>Lawrence<sp/>Livermore<sp/>National<sp/>Security,<sp/>LLC</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">and<sp/>DESUL<sp/>project<sp/>contributors.<sp/>See<sp/>the<sp/>COPYRIGHT<sp/>file<sp/>for<sp/>details.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">Source:<sp/>https://github.com/desul/desul</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment">SPDX-License-Identifier:<sp/>(BSD-3-Clause)</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DESUL_ATOMICS_COMPARE_EXCHANGE_GCC_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DESUL_ATOMICS_COMPARE_EXCHANGE_GCC_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;desul/atomics/Common.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DESUL_HAVE_GCC_ATOMICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(DESUL_HAVE_16BYTE_COMPARE_AND_SWAP)<sp/>&amp;&amp;<sp/>!defined(__CUDACC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>doesn&apos;t<sp/>work<sp/>in<sp/>WSL??</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>DESUL_HAVE_16BYTE_COMPARE_AND_SWAP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">desul<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">atomic_exchange_available_gcc<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value<sp/>=</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DESUL_HAVE_LIBATOMIC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>((</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)==4<sp/>&amp;&amp;<sp/></highlight><highlight class="keyword">alignof</highlight><highlight class="normal">(T)==4)<sp/>||</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">#ifdef<sp/>DESUL_HAVE_16BYTE_COMPARE_AND_SWAP</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)==16<sp/>&amp;&amp;<sp/></highlight><highlight class="keyword">alignof</highlight><highlight class="normal">(T)==16)<sp/>||</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(T)==8<sp/>&amp;&amp;<sp/></highlight><highlight class="keyword">alignof</highlight><highlight class="normal">(T)==8))<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::is_trivially_copyable&lt;T&gt;::value;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}<sp/></highlight><highlight class="comment">//namespace<sp/>Impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)<sp/>&amp;&amp;<sp/>(__clang_major__&gt;=7)<sp/>&amp;&amp;<sp/>!defined(__APPLE__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Disable<sp/>warning<sp/>for<sp/>large<sp/>atomics<sp/>on<sp/>clang<sp/>7<sp/>and<sp/>up<sp/>(checked<sp/>with<sp/>godbolt)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>error:<sp/>large<sp/>atomic<sp/>operation<sp/>may<sp/>incur<sp/>significant<sp/>performance<sp/>penalty<sp/>[-Werror,-Watomic-alignment]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>https://godbolt.org/z/G7YhqhbG6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>ignored<sp/>&quot;-Watomic-alignment&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>atomic_thread_fence(MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>__atomic_thread_fence(GCCMemoryOrder&lt;MemoryOrder&gt;::value);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">std::enable_if_t&lt;Impl::atomic_exchange_available_gcc&lt;T&gt;::value,<sp/>T&gt;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">atomic_exchange(</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/>dest,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>T<sp/>return_val;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>__atomic_exchange(</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>dest,<sp/>&amp;value,<sp/>&amp;return_val,<sp/>GCCMemoryOrder&lt;MemoryOrder&gt;::value);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>return_val;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Failure<sp/>mode<sp/>for<sp/>atomic_compare_exchange_n<sp/>cannot<sp/>be<sp/>RELEASE<sp/>nor<sp/>ACQREL<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Those<sp/>two<sp/>get<sp/>handled<sp/>separatly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryOrder,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">std::enable_if_t&lt;Impl::atomic_exchange_available_gcc&lt;T&gt;::value,<sp/>T&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/>dest,<sp/>T<sp/>compare,<sp/>T<sp/>value,<sp/>MemoryOrder,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>(void)__atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dest,<sp/>&amp;compare,<sp/>&amp;value,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>GCCMemoryOrder&lt;MemoryOrder&gt;::value,<sp/>GCCMemoryOrder&lt;MemoryOrder&gt;::value);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">std::enable_if_t&lt;Impl::atomic_exchange_available_gcc&lt;T&gt;::value,<sp/>T&gt;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/>dest,<sp/>T<sp/>compare,<sp/>T<sp/>value,<sp/>MemoryOrderRelease,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>(void)__atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dest,<sp/>&amp;compare,<sp/>&amp;value,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>__ATOMIC_RELEASE,<sp/>__ATOMIC_RELAXED);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>MemoryScope&gt;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">std::enable_if_t&lt;Impl::atomic_exchange_available_gcc&lt;T&gt;::value,<sp/>T&gt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>T*<sp/>dest,<sp/>T<sp/>compare,<sp/>T<sp/>value,<sp/>MemoryOrderAcqRel,<sp/>MemoryScope)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>(void)__atomic_compare_exchange(</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dest,<sp/>&amp;compare,<sp/>&amp;value,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>__ATOMIC_ACQ_REL,<sp/>__ATOMIC_ACQUIRE);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__clang__)<sp/>&amp;&amp;<sp/>(__clang_major__&gt;=7)<sp/>&amp;&amp;<sp/>!defined(__APPLE__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>desul</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/desul/atomics/Compare_Exchange_GCC.hpp"/>
+  </compounddef>
+</doxygen>

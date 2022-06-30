@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1filter__type__list_3_01_predicate_t_00_01type__list_3_01_t_8_8_8_01_4_00_01_value_t_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::filter_type_list&lt; PredicateT, type_list&lt; T... &gt;, ValueT &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>template&lt; typename &gt; class</type>
+        <declname>PredicateT</declname>
+        <defname>PredicateT</defname>
+      </param>
+      <param>
+        <type>typename...</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>ValueT</declname>
+        <defname>ValueT</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1filter__type__list_3_01_predicate_t_00_01type__list_3_01_t_8_8_8_01_4_00_01_value_t_01_4_1a132ea54707265c3c601b0cfca59dce2d" prot="public" static="no">
+        <type>concat_type_list_t&lt; std::conditional_t&lt; PredicateT&lt; T &gt;::value==ValueT, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">type_list</ref>&lt; T &gt;, <ref refid="struct_kokkos_1_1_impl_1_1type__list" kindref="compound">type_list</ref>&lt;&gt; &gt;... &gt;</type>
+        <definition>using Kokkos::Impl::filter_type_list&lt; PredicateT, type_list&lt; T... &gt;, ValueT &gt;::type =  concat_type_list_t&lt;std::conditional_t&lt;PredicateT&lt;T&gt;::value == ValueT, type_list&lt;T&gt;, type_list&lt;&gt; &gt;...&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::filter_type_list&lt; PredicateT, type_list&lt; T... &gt;, ValueT &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="248" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="247" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="247" bodyend="251"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1filter__type__list_3_01_predicate_t_00_01type__list_3_01_t_8_8_8_01_4_00_01_value_t_01_4_1a132ea54707265c3c601b0cfca59dce2d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::filter_type_list&lt; PredicateT, type_list&lt; T... &gt;, ValueT &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

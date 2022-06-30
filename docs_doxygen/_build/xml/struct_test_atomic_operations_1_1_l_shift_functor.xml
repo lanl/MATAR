@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_atomic_operations_1_1_l_shift_functor" kind="struct" language="C++" prot="public">
+    <compoundname>TestAtomicOperations::LShiftFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class DEVICE_TYPE</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_atomic_operations_1_1_l_shift_functor_1aa924356f13d12d42b927a10531b932fd" prot="public" static="no">
+        <type>DEVICE_TYPE</type>
+        <definition>using TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::execution_space =  DEVICE_TYPE</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="858" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="858" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_atomic_operations_1_1_l_shift_functor_1a1b6e9359ce916c3703bc9e64d70bebfd" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, execution_space &gt;</type>
+        <definition>using TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::type =  Kokkos::View&lt;T, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="859" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="859" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_atomic_operations_1_1_l_shift_functor_1a45b283586db2aa8b98ef1461a87836ae" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">type</ref></type>
+        <definition>type TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="861" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="861" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_operations_1_1_l_shift_functor_1a610f4659416756efedf40a175dac0369" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::i0</definition>
+        <argsstring></argsstring>
+        <name>i0</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::i0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="862" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="862" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_atomic_operations_1_1_l_shift_functor_1a04feddcc9c038e347fd98386b3cb4eb9" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::i1</definition>
+        <argsstring></argsstring>
+        <name>i1</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::i1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="863" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="863" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_atomic_operations_1_1_l_shift_functor_1a265e45b60de0221db64f73eba415301f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::operator()</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="866" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="866" bodyend="866"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_atomic_operations_1_1_l_shift_functor_1a79e5fc7b0201b29b0d6e4820eccb8fc6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;::LShiftFunctor</definition>
+        <argsstring>(T _i0, T _i1)</argsstring>
+        <name>LShiftFunctor</name>
+        <qualifiedname>TestAtomicOperations::LShiftFunctor::LShiftFunctor</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>_i0</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>_i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="868" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="868" bodyend="868"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestAtomicOperations::LShiftFunctor&lt; T, DEVICE_TYPE &gt;</label>
+        <link refid="struct_test_atomic_operations_1_1_l_shift_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; T, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; T, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" line="857" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestAtomicOperations.hpp" bodystart="857" bodyend="869"/>
+    <listofallmembers>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a45b283586db2aa8b98ef1461a87836ae" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>data</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1aa924356f13d12d42b927a10531b932fd" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>execution_space</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a610f4659416756efedf40a175dac0369" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>i0</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a04feddcc9c038e347fd98386b3cb4eb9" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>i1</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a79e5fc7b0201b29b0d6e4820eccb8fc6" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>LShiftFunctor</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a265e45b60de0221db64f73eba415301f" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_atomic_operations_1_1_l_shift_functor_1a1b6e9359ce916c3703bc9e64d70bebfd" prot="public" virt="non-virtual"><scope>TestAtomicOperations::LShiftFunctor</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1ae1eab9c81e94bc53182ca04f6c390d86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename Tag</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_max_team_size</definition>
+        <argsstring>(const Policy &amp;policy, const Functor &amp;functor, const Tag tag)</argsstring>
+        <name>get_max_team_size</name>
+        <qualifiedname>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_max_team_size</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const Tag</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="300" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="300" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1a2137d831c0d2854aa1388c7256e53bfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename Tag</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_recommended_team_size</definition>
+        <argsstring>(const Policy &amp;policy, const Functor &amp;functor, const Tag tag)</argsstring>
+        <name>get_recommended_team_size</name>
+        <qualifiedname>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_recommended_team_size</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const Tag</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="306" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="306" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1ad405c1cb3a4e2817fa33c7e2811a374e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_mdrange_max_tile_size_product</definition>
+        <argsstring>(const Policy &amp;policy, const Functor &amp;functor, const Kokkos::ParallelForTag &amp;)</argsstring>
+        <name>get_mdrange_max_tile_size_product</name>
+        <qualifiedname>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_mdrange_max_tile_size_product</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_parallel_for_tag" kindref="compound">Kokkos::ParallelForTag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="312" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="312" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1a43f04159bb0d1aa0cec46daab5a17238" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+        </templateparamlist>
+        <type>int</type>
+        <definition>int Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_mdrange_max_tile_size_product</definition>
+        <argsstring>(const Policy &amp;policy, const Functor &amp;functor, const Kokkos::ParallelReduceTag &amp;)</argsstring>
+        <name>get_mdrange_max_tile_size_product</name>
+        <qualifiedname>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator::get_mdrange_max_tile_size_product</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_parallel_reduce_tag" kindref="compound">Kokkos::ParallelReduceTag</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="320" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="320" bodyend="328"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" line="298" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling.hpp" bodystart="298" bodyend="329"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1ae1eab9c81e94bc53182ca04f6c390d86" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</scope><name>get_max_team_size</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1ad405c1cb3a4e2817fa33c7e2811a374e" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</scope><name>get_mdrange_max_tile_size_product</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1a43f04159bb0d1aa0cec46daab5a17238" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</scope><name>get_mdrange_max_tile_size_product</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_impl_1_1_impl_1_1_simple_team_size_calculator_1a2137d831c0d2854aa1388c7256e53bfa" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Impl::Impl::SimpleTeamSizeCalculator</scope><name>get_recommended_team_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

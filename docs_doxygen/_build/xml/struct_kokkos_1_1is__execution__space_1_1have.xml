@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1is__execution__space_1_1have" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::is_execution_space::have</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::false_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+      </param>
+      <param>
+        <type>typename</type>
+        <defval>std::true_type</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::is_execution_space&lt; T &gt;::have&lt; typename, typename &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::is_execution_space&lt; T &gt;::have&lt; typename, typename &gt;</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::false_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="173" column="63" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="173" bodyend="173"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

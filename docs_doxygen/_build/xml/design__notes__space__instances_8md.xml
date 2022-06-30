@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="design__notes__space__instances_8md" kind="file" language="Markdown">
+    <compoundname>design_notes_space_instances.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Design<sp/>Notes<sp/>for<sp/>Execution<sp/>and<sp/>Memory<sp/>Space<sp/>Instances</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Objective</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Enable<sp/>Kokkos<sp/>interoperability<sp/>with<sp/>coarse-grain<sp/>tasking<sp/>models</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Requirements</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Backwards<sp/>compatible<sp/>with<sp/>existing<sp/>Kokkos<sp/>API</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Support<sp/>existing<sp/>Host<sp/>execution<sp/>spaces<sp/>(Serial,<sp/>Threads,<sp/>OpenMP)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Support<sp/>DARMA<sp/>threading<sp/>model<sp/>(may<sp/>require<sp/>a<sp/>new<sp/>Host<sp/>execution<sp/>space)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Support<sp/>Uintah<sp/>threading<sp/>model,<sp/>i.e.<sp/>indepentant<sp/>worker<sp/>threadpools<sp/>working<sp/>of<sp/>of<sp/>shared<sp/>task<sp/>queues</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Execution<sp/>Space</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>Parallel<sp/>work<sp/>is<sp/>*dispatched*<sp/>on<sp/>an<sp/>execution<sp/>space<sp/>instance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>Execution<sp/>space<sp/>instances<sp/>are<sp/>conceptually<sp/>disjoint/independent<sp/>from<sp/>each<sp/>other</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Host<sp/>Execution<sp/>Space<sp/>Instances</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>A<sp/>host-side<sp/>*control*<sp/>thread<sp/>dispatches<sp/>work<sp/>to<sp/>an<sp/>instance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/>`main`<sp/>is<sp/>the<sp/>initial<sp/>control<sp/>thread</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>A<sp/>host<sp/>execution<sp/>space<sp/>instance<sp/>is<sp/>an<sp/>organized<sp/>thread<sp/>pool</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>All<sp/>instances<sp/>are<sp/>disjoint,<sp/>i.e.<sp/>hardware<sp/>resources<sp/>are<sp/>not<sp/>shared<sp/>between<sp/>instances</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>Exactly<sp/>one<sp/>control<sp/>thread<sp/>is<sp/>associated<sp/>with</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>an<sp/>instance<sp/>and<sp/>only<sp/>that<sp/>control<sp/>thread<sp/>may</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>dispatch<sp/>work<sp/>to<sp/>to<sp/>that<sp/>instance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>The<sp/>control<sp/>thread<sp/>is<sp/>a<sp/>member<sp/>of<sp/>the<sp/>instance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>The<sp/>pool<sp/>of<sp/>threads<sp/>associated<sp/>with<sp/>an<sp/>instances<sp/>is<sp/>not<sp/>mutatable<sp/>during<sp/>that<sp/>instance<sp/>existence</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>The<sp/>pool<sp/>of<sp/>threads<sp/>associated<sp/>with<sp/>an<sp/>instance<sp/>may<sp/>be<sp/>masked</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/>Allows<sp/>work<sp/>to<sp/>be<sp/>dispatched<sp/>to<sp/>a<sp/>subset<sp/>of<sp/>the<sp/>pool</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/>Example:<sp/>only<sp/>one<sp/>hyperthread<sp/>per<sp/>core<sp/>of<sp/>the<sp/>instance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/>A<sp/>mask<sp/>can<sp/>be<sp/>applied<sp/>during<sp/>the<sp/>policy<sp/>creation<sp/>of<sp/>a<sp/>parallel<sp/>algorithm</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/>Masking<sp/>is<sp/>portable<sp/>by<sp/>defining<sp/>it<sp/>as<sp/>ceiling<sp/>of<sp/>fraction<sp/>between<sp/>[0.0,<sp/>1.0]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>the<sp/>available<sp/>resources</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>ExecutionSpace<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>execution_space<sp/>=<sp/>ExecutionSpace;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>memory_space<sp/>=<sp/>...;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>device_type<sp/>=<sp/>Kokkos::Device&lt;execution_space,<sp/>memory_space&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>array_layout<sp/>=<sp/>...;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>size_type<sp/>=<sp/>...;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>using<sp/>scratch_memory_space<sp/>=<sp/>...;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>class<sp/>Instance</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>thread_pool_size(<sp/>int<sp/>depth<sp/>=<sp/>0<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>class<sp/>InstanceRequest</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>using<sp/>Control<sp/>=<sp/>std::function&lt;<sp/>void(<sp/>Instance<sp/>*<sp/>)&gt;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>InstanceRequest(<sp/>Control<sp/>control</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>unsigned<sp/>thread_count</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>unsigned<sp/>use_numa_count<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>unsigned<sp/>use_cores_per_numa<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>bool<sp/>in_parallel();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>bool<sp/>sleep();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>bool<sp/>wake();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>void<sp/>fence();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>void<sp/>print_configuration(<sp/>std::ostream<sp/>&amp;,<sp/>const<sp/>bool<sp/>detailed<sp/>=<sp/>false<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>void<sp/>initialize(<sp/>unsigned<sp/>thread_count<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>unsigned<sp/>use_numa_count<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>unsigned<sp/>use_cores_per_numa<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Partition<sp/>the<sp/>current<sp/>instance<sp/>into<sp/>the<sp/>requested<sp/>instances</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>and<sp/>run<sp/>the<sp/>given<sp/>functions<sp/>on<sp/>the<sp/>cooresponding<sp/>instances</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>will<sp/>block<sp/>until<sp/>all<sp/>the<sp/>partitioned<sp/>instances<sp/>complete<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>the<sp/>original<sp/>instance<sp/>will<sp/>be<sp/>restored</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Requires<sp/>that<sp/>the<sp/>space<sp/>has<sp/>already<sp/>been<sp/>initialized</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Requires<sp/>that<sp/>the<sp/>request<sp/>can<sp/>be<sp/>statisfied<sp/>by<sp/>the<sp/>current<sp/>instance</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/>i.e.<sp/>the<sp/>sum<sp/>of<sp/>number<sp/>of<sp/>requested<sp/>threads<sp/>must<sp/>be<sp/>less<sp/>than<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/>max_hardware_threads</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Each<sp/>control<sp/>functor<sp/>will<sp/>accept<sp/>a<sp/>handle<sp/>to<sp/>its<sp/>new<sp/>default<sp/>instance</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Each<sp/>instance<sp/>must<sp/>be<sp/>independent<sp/>of<sp/>all<sp/>other<sp/>instances</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/><sp/><sp/>i.e.<sp/>no<sp/>assumption<sp/>on<sp/>scheduling<sp/>between<sp/>instances</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>The<sp/>user<sp/>is<sp/>responible<sp/>for<sp/>checking<sp/>the<sp/>return<sp/>code<sp/>for<sp/>errors</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>run_instances(<sp/>std::vector&lt;<sp/>InstanceRequest&gt;<sp/>const&amp;<sp/>requests<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>void<sp/>finalize();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>is_initialized();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>concurrency();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>thread_pool_size(<sp/>int<sp/>depth<sp/>=<sp/>0<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>thread_pool_rank();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>max_hardware_threads();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>static<sp/>int<sp/>hardware_thread_id();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/doc/design_notes_space_instances.md"/>
+  </compounddef>
+</doxygen>

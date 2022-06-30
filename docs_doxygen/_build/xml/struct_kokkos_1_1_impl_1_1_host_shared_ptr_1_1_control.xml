@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_host_shared_ptr_1_1_control" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::HostSharedPtr::Control</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_host_shared_ptr_1_1_control_1ab17dbcd5812f91d6f440f3342110e2fb" prot="public" static="no" mutable="no">
+        <type>std::function&lt; void(T *)&gt;</type>
+        <definition>std::function&lt;void(T*)&gt; Kokkos::Impl::HostSharedPtr&lt; T &gt;::Control::m_deleter</definition>
+        <argsstring></argsstring>
+        <name>m_deleter</name>
+        <qualifiedname>Kokkos::Impl::HostSharedPtr::Control::m_deleter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" line="176" column="19" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_host_shared_ptr_1_1_control_1ae6307d9ea84646e7d03b939982b223c1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Kokkos::Impl::HostSharedPtr&lt; T &gt;::Control::m_counter</definition>
+        <argsstring></argsstring>
+        <name>m_counter</name>
+        <qualifiedname>Kokkos::Impl::HostSharedPtr::Control::m_counter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" line="177" column="9" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" line="175" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_HostSharedPtr.hpp" bodystart="175" bodyend="178"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_shared_ptr_1_1_control_1ae6307d9ea84646e7d03b939982b223c1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostSharedPtr::Control</scope><name>m_counter</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_shared_ptr_1_1_control_1ab17dbcd5812f91d6f440f3342110e2fb" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostSharedPtr::Control</scope><name>m_deleter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

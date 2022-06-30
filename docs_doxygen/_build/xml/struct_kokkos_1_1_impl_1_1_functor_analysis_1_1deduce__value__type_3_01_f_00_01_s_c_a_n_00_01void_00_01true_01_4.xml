@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_3_01_f_00_01_s_c_a_n_00_01void_00_01true_01_4" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::deduce_value_type&lt; F, SCAN, void, true &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename F</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_3_01_f_00_01_s_c_a_n_00_01void_00_01true_01_4_1a19fd283d86d37045517391c1cbea0bfd" prot="public" static="no">
+        <type>decltype(deduce(&amp;F::operator()))</type>
+        <definition>using Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::deduce_value_type&lt; F, SCAN, void, true &gt;::type =  decltype(deduce(&amp;F::operator()))</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::deduce_value_type&lt; F, SCAN, void, true &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="270" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_3_01_f_00_01_s_c_a_n_00_01void_00_01true_01_4_1a3f94bd5a30c080e498774f8c996c5744" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename M</type>
+          </param>
+          <param>
+            <type>typename A</type>
+          </param>
+          <param>
+            <type>typename I</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION A</type>
+        <definition>static KOKKOS_INLINE_FUNCTION A Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::deduce_value_type&lt; F, SCAN, void, true &gt;::deduce</definition>
+        <argsstring>(void(Functor::*)(M, A &amp;, I) const)</argsstring>
+        <name>deduce</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::deduce_value_type&lt; F, SCAN, void, true &gt;::deduce</qualifiedname>
+        <param>
+          <type>void(Functor::*)(M, A &amp;, I) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="268" column="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="266" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="266" bodyend="271"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_3_01_f_00_01_s_c_a_n_00_01void_00_01true_01_4_1a3f94bd5a30c080e498774f8c996c5744" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::deduce_value_type&lt; F, SCAN, void, true &gt;</scope><name>deduce</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1deduce__value__type_3_01_f_00_01_s_c_a_n_00_01void_00_01true_01_4_1a19fd283d86d37045517391c1cbea0bfd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::deduce_value_type&lt; F, SCAN, void, true &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

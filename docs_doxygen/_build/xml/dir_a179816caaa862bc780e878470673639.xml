@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_a179816caaa862bc780e878470673639" kind="dir">
+    <compoundname>src/Kokkos/kokkos/scripts</compoundname>
+    <innerdir refid="dir_b802e7e2546a50f7fbe9bd4e17986473">src/Kokkos/kokkos/scripts/testing_scripts</innerdir>
+    <innerdir refid="dir_007c85e6174a3a469e716ac02c4b2086">src/Kokkos/kokkos/scripts/trilinos-integration</innerdir>
+    <innerfile refid="snapshot_8py">snapshot.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/scripts/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Traits</declname>
+        <defname>Traits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1ad761dd7f3e056275ea5eb873ac8dabcf" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Kokkos::WorkGraphPolicy</ref>&lt; Traits... &gt;</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::Policy =  Kokkos::WorkGraphPolicy&lt;Traits...&gt;</definition>
+        <argsstring></argsstring>
+        <name>Policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::Policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aff4f78f368996293cd9b4a27586f25bd" prot="private" static="no">
+        <type>typename Policy::work_tag</type>
+        <definition>using Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::WorkTag =  typename Policy::work_tag</definition>
+        <argsstring></argsstring>
+        <name>WorkTag</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::WorkTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="61" column="3" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aab0c4913a651cf4f4b493accd402c6f7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref></type>
+        <definition>Policy Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::m_policy</definition>
+        <argsstring></argsstring>
+        <name>m_policy</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::m_policy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="63" column="10" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a04d44b5162dd99c75d643e70ec75958a" prot="private" static="no" mutable="no">
+        <type>FunctorType</type>
+        <definition>FunctorType Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::m_functor</definition>
+        <argsstring></argsstring>
+        <name>m_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::m_functor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="64" column="15" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1af87bf20dec45aa2f70d7f2b32240b327" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class TagType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_same&lt; TagType, void &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt; std::is_same&lt; TagType, void &gt;::value &gt;::type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_functor</definition>
+        <argsstring>(const std::int32_t w) const noexcept</argsstring>
+        <name>execute_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_functor</qualifiedname>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="68" column="3" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a1a2063c5788abef3b01f74c50834ce2b" prot="private" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class TagType</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;!std::is_same&lt; TagType, void &gt;::value &gt;::type</type>
+        <definition>std::enable_if&lt;!std::is_same&lt; TagType, void &gt;::value &gt;::type Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_functor</definition>
+        <argsstring>(const std::int32_t w) const noexcept</argsstring>
+        <name>execute_functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_functor</qualifiedname>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a41ea73799e21867ce4cd323aa7172d99" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute</definition>
+        <argsstring>() const</argsstring>
+        <name>execute</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="80" column="8" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="80" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a46f4ca19279778334324c6743f3dc0a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_task</definition>
+        <argsstring>() const</argsstring>
+        <name>execute_task</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::execute_task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="87" column="8" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="87" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aa50574b5a7eaf70c42076a6084539420" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::ParallelFor</definition>
+        <argsstring>(const FunctorType &amp;arg_functor, const Policy &amp;arg_policy)</argsstring>
+        <name>ParallelFor</name>
+        <qualifiedname>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;::ParallelFor</qualifiedname>
+        <param>
+          <type>const FunctorType &amp;</type>
+          <declname>arg_functor</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_work_graph_policy" kindref="compound">Policy</ref> &amp;</type>
+          <declname>arg_policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="115" column="10" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="115" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/core/src/HPX/Kokkos_HPX_WorkGraphPolicy.hpp" bodystart="58" bodyend="117"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a41ea73799e21867ce4cd323aa7172d99" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>execute</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1af87bf20dec45aa2f70d7f2b32240b327" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>execute_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a1a2063c5788abef3b01f74c50834ce2b" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>execute_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a46f4ca19279778334324c6743f3dc0a1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>execute_task</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1a04d44b5162dd99c75d643e70ec75958a" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>m_functor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aab0c4913a651cf4f4b493accd402c6f7" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>m_policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aa50574b5a7eaf70c42076a6084539420" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>ParallelFor</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1ad761dd7f3e056275ea5eb873ac8dabcf" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>Policy</name></member>
+      <member refid="class_kokkos_1_1_impl_1_1_parallel_for_3_01_functor_type_00_01_kokkos_1_1_work_graph_policy_3_015e34f20694e9374a39a71e9fcf706a9e_1aff4f78f368996293cd9b4a27586f25bd" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ParallelFor&lt; FunctorType, Kokkos::WorkGraphPolicy&lt; Traits... &gt;, Kokkos::Experimental::HPX &gt;</scope><name>WorkTag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

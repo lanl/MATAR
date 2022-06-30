@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Tools::Experimental::TeamSizeTuner</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin" prot="public" virt="non-virtual">Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; TeamSizeTuner &gt;</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a85fa323fad409972989e68253badd19f" prot="private" static="no">
+        <type>std::map&lt; int64_t, std::vector&lt; int64_t &gt; &gt;</type>
+        <definition>using Kokkos::Tools::Experimental::TeamSizeTuner::SpaceDescription =  std::map&lt;int64_t, std::vector&lt;int64_t&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>SpaceDescription</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::SpaceDescription</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="430" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a0f42680f2f94383c6b2d8186a422582e" prot="private" static="no">
+        <type>decltype(make_multidimensional_sparse_tuning_problem&lt; 20 &gt;(std::declval&lt; SpaceDescription &gt;(), std::declval&lt; std::vector&lt; std::string &gt; &gt;()))</type>
+        <definition>using Kokkos::Tools::Experimental::TeamSizeTuner::TunerType =  decltype(make_multidimensional_sparse_tuning_problem&lt;20&gt;( std::declval&lt;SpaceDescription&gt;(), std::declval&lt;std::vector&lt;std::string&gt; &gt;()))</definition>
+        <argsstring></argsstring>
+        <name>TunerType</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::TunerType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="431" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1adf440000a8f30bda229de81a46511801" prot="private" static="no" mutable="no">
+        <type>TunerType</type>
+        <definition>TunerType Kokkos::Tools::Experimental::TeamSizeTuner::tuner</definition>
+        <argsstring></argsstring>
+        <name>tuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::tuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="434" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a8cbf910695a7409d8723d6a212de382a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</definition>
+        <argsstring>()=default</argsstring>
+        <name>TeamSizeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="437" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aff91f8a01d34d114187dbac47e4dd3ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;</type>
+        <definition>TeamSizeTuner &amp; Kokkos::Tools::Experimental::TeamSizeTuner::operator=</definition>
+        <argsstring>(const TeamSizeTuner &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="438" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aeaa8ffd3b588d104db4c3d7c7ee923b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</definition>
+        <argsstring>(const TeamSizeTuner &amp;other)=default</argsstring>
+        <name>TeamSizeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="439" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa13e3fd72bc040a6098fe9f59261c7ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;</type>
+        <definition>TeamSizeTuner &amp; Kokkos::Tools::Experimental::TeamSizeTuner::operator=</definition>
+        <argsstring>(TeamSizeTuner &amp;&amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="440" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa6cb70cb91b42ed910c1411f6cd27069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</definition>
+        <argsstring>(TeamSizeTuner &amp;&amp;other)=default</argsstring>
+        <name>TeamSizeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner" kindref="compound">TeamSizeTuner</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="441" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa60fcf1215a8f8a741ee27fbc989def1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ViableConfigurationCalculator</type>
+          </param>
+          <param>
+            <type>typename Functor</type>
+          </param>
+          <param>
+            <type>typename TagType</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</definition>
+        <argsstring>(const std::string &amp;name, Kokkos::TeamPolicy&lt; Properties... &gt; &amp;policy, const Functor &amp;functor, const TagType &amp;tag, ViableConfigurationCalculator calc)</argsstring>
+        <name>TeamSizeTuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::TeamSizeTuner</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <param>
+          <type>const Functor &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <param>
+          <type>const TagType &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>ViableConfigurationCalculator</type>
+          <declname>calc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Here we attempt to enumerate all of the possible configurations to expose to an autotuner. There are three possibilities</para>
+<para>1) We&apos;re tuning both vector length and team size 2) We&apos;re tuning vector length but not team size 3) We&apos;re tuning team size but not vector length</para>
+<para>(In the fourth case where nothing is tuned this function won&apos;t be called)</para>
+<para>The set of valid team sizes is dependent on a vector length, so this leads to three algorithms</para>
+<para>1) Loop over vector lengths to get the set of team sizes for each vector length, add it all to the set 2) Loop over vector lengths to see if the provided team size is valid for that vector length. If so, add it 3) A special case of (1) in which we only have one vector length</para>
+<para>Figuring out whether a vector length is valid depends on whether we&apos;re in case 1 (tune everything) or 2 (just tune vector length)</para>
+<para>If we&apos;re tuning everything, all legal vector lengths are valid. If we&apos;re just tuning vector length, we need to check that if we set this vector length, the team size provided will be valid.</para>
+<para>These are the left and right hand sides of the &quot;or&quot; in this conditional, respectively.</para>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="444" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="444" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aaf4dfc517cb99c673b63c6ce65b98aba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Properties</declname>
+            <defname>Properties</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::TeamSizeTuner::tune</definition>
+        <argsstring>(Kokkos::TeamPolicy&lt; Properties... &gt; &amp;policy)</argsstring>
+        <name>tune</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::tune</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; Properties... &gt; &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="530" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="530" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa1f972139d4b279b6189d620805cc347" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Tools::Experimental::TeamSizeTuner::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="541" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="541" bodyend="545"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a68d4979afdc9f1a0148298cfebe29b6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TunerType</type>
+        <definition>TunerType Kokkos::Tools::Experimental::TeamSizeTuner::get_tuner</definition>
+        <argsstring>() const</argsstring>
+        <name>get_tuner</name>
+        <qualifiedname>Kokkos::Tools::Experimental::TeamSizeTuner::get_tuner</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="547" column="13" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="547" bodyend="547"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; TeamSizeTuner &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Tools::Experimental::TeamSizeTuner</label>
+        <link refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Tools::Experimental::ExtendableTunerMixin&lt; TeamSizeTuner &gt;</label>
+        <link refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Tools::Experimental::TeamSizeTuner</label>
+        <link refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" line="428" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Tuners.hpp" bodystart="428" bodyend="548"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin_1ad2cb333fae34284a1675ff7e52a50085" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>combine</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa1f972139d4b279b6189d620805cc347" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>end</name></member>
+      <member refid="struct_kokkos_1_1_tools_1_1_experimental_1_1_extendable_tuner_mixin_1ac278f49d23f276524c94baa919eb4f9d" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>get_point</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a68d4979afdc9f1a0148298cfebe29b6a" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>get_tuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aff91f8a01d34d114187dbac47e4dd3ca" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa13e3fd72bc040a6098fe9f59261c7ba" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a85fa323fad409972989e68253badd19f" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>SpaceDescription</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a8cbf910695a7409d8723d6a212de382a" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>TeamSizeTuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aeaa8ffd3b588d104db4c3d7c7ee923b4" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>TeamSizeTuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa6cb70cb91b42ed910c1411f6cd27069" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>TeamSizeTuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aa60fcf1215a8f8a741ee27fbc989def1" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>TeamSizeTuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1aaf4dfc517cb99c673b63c6ce65b98aba" prot="public" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>tune</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1adf440000a8f30bda229de81a46511801" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>tuner</name></member>
+      <member refid="class_kokkos_1_1_tools_1_1_experimental_1_1_team_size_tuner_1a0f42680f2f94383c6b2d8186a422582e" prot="private" virt="non-virtual"><scope>Kokkos::Tools::Experimental::TeamSizeTuner</scope><name>TunerType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

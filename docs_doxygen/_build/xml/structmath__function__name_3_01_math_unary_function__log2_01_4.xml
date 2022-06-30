@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structmath__function__name_3_01_math_unary_function__log2_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>math_function_name&lt; MathUnaryFunction_log2 &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structmath__function__name_3_01_math_unary_function__log2_01_4_1a2335d2c435d8dd281b0e4058047111ea" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr char</type>
+        <definition>constexpr char math_function_name&lt; MathUnaryFunction_log2 &gt;::name</definition>
+        <argsstring>[]</argsstring>
+        <name>name</name>
+        <qualifiedname>math_function_name&lt; MathUnaryFunction_log2 &gt;::name</qualifiedname>
+        <initializer>= &quot;log2&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="325" column="108" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" line="325" column="58" bodyfile="src/Kokkos/kokkos/core/unit_test/TestMathematicalFunctions.hpp" bodystart="325" bodyend="325"/>
+    <listofallmembers>
+      <member refid="structmath__function__name_3_01_math_unary_function__log2_01_4_1a2335d2c435d8dd281b0e4058047111ea" prot="public" virt="non-virtual"><scope>math_function_name&lt; MathUnaryFunction_log2 &gt;</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

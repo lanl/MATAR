@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_format_for_comparison" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::FormatForComparison</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename ToPrint</type>
+      </param>
+      <param>
+        <type>typename OtherOperand</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_format_for_comparison_1a2aeb688fc55b57abd3021d82eccad896" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::std::string</type>
+        <definition>::std::string testing::internal::FormatForComparison&lt; ToPrint, OtherOperand &gt;::Format</definition>
+        <argsstring>(const ToPrint &amp;value)</argsstring>
+        <name>Format</name>
+        <qualifiedname>testing::internal::FormatForComparison::Format</qualifiedname>
+        <param>
+          <type>const ToPrint &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18774" column="24" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18774" bodyend="18776"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_format_for_comparison_1a2aeb688fc55b57abd3021d82eccad896" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>::std::string</type>
+        <definition>::std::string testing::internal::FormatForComparison&lt; ToPrint, OtherOperand &gt;::Format</definition>
+        <argsstring>(const ToPrint &amp;value)</argsstring>
+        <name>Format</name>
+        <qualifiedname>testing::internal::FormatForComparison::Format</qualifiedname>
+        <param>
+          <type>const ToPrint &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18774" column="24" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18774" bodyend="18776"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18772" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18772" bodyend="18777"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_format_for_comparison_1a2aeb688fc55b57abd3021d82eccad896" prot="public" virt="non-virtual"><scope>testing::internal::FormatForComparison</scope><name>Format</name></member>
+      <member refid="classtesting_1_1internal_1_1_format_for_comparison_1a2aeb688fc55b57abd3021d82eccad896" prot="public" virt="non-virtual"><scope>testing::internal::FormatForComparison</scope><name>Format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

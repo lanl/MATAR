@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test06_1_1_m_d_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test06::MDFunctor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test06_1_1_m_d_functor_1ae94905268b04756be3b783da0fba20e5" prot="public" static="no" mutable="no">
+        <type>value_type *</type>
+        <definition>value_type* Test06::MDFunctor::_data</definition>
+        <argsstring></argsstring>
+        <name>_data</name>
+        <qualifiedname>Test06::MDFunctor::_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="60" column="14" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test06_1_1_m_d_functor_1ac6aac3e560970c6ef4d517bd4fe80144" prot="public" static="no" mutable="no">
+        <type>const value_type</type>
+        <definition>const value_type Test06::MDFunctor::_delta</definition>
+        <argsstring></argsstring>
+        <name>_delta</name>
+        <qualifiedname>Test06::MDFunctor::_delta</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="61" column="20" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test06_1_1_m_d_functor_1a8574326115e21a4f9475864439f98349" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Test06::MDFunctor::N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <qualifiedname>Test06::MDFunctor::N</qualifiedname>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="62" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test06_1_1_m_d_functor_1aa71d9b3acfa7a6fcb9e191ca6a4f17bb" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Test06::MDFunctor::M</definition>
+        <argsstring></argsstring>
+        <name>M</name>
+        <qualifiedname>Test06::MDFunctor::M</qualifiedname>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="63" column="13" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test06_1_1_m_d_functor_1a8878521e4a824af2aba8845f2568caf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test06::MDFunctor::MDFunctor</definition>
+        <argsstring>(value_type *data, const value_type delta)</argsstring>
+        <name>MDFunctor</name>
+        <qualifiedname>Test06::MDFunctor::MDFunctor</qualifiedname>
+        <param>
+          <type>value_type *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const value_type</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="65" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="65" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test06_1_1_m_d_functor_1a699c24809f64e5687d449104dbcb7867" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test06::MDFunctor::operator()</definition>
+        <argsstring>(const int i, const int j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test06::MDFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="70" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test06_1_1_m_d_functor_1aaac1aa98e6cb32ce5d746deda8a051a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test06::MDFunctor::operator()</definition>
+        <argsstring>(const int i, const int j, const int k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test06::MDFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="76" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test06_1_1_m_d_functor_1a58d612c8cc6589a5ec685aed305caa4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test06::MDFunctor::operator()</definition>
+        <argsstring>(const int i, const int j, const int k, const int l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test06::MDFunctor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="82" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" line="59" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/incremental/Test06_ParallelFor_MDRangePolicy.hpp" bodystart="59" bodyend="85"/>
+    <listofallmembers>
+      <member refid="struct_test06_1_1_m_d_functor_1ae94905268b04756be3b783da0fba20e5" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>_data</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1ac6aac3e560970c6ef4d517bd4fe80144" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>_delta</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1aa71d9b3acfa7a6fcb9e191ca6a4f17bb" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>M</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1a8878521e4a824af2aba8845f2568caf7" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>MDFunctor</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1a8574326115e21a4f9475864439f98349" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>N</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1a699c24809f64e5687d449104dbcb7867" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1aaac1aa98e6cb32ce5d746deda8a051a2" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test06_1_1_m_d_functor_1a58d612c8cc6589a5ec685aed305caa4a" prot="public" virt="non-virtual"><scope>Test06::MDFunctor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

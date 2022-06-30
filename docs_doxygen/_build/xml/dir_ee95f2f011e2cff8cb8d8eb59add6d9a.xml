@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_ee95f2f011e2cff8cb8d8eb59add6d9a" kind="dir">
+    <compoundname>src/Kokkos/kokkos/benchmarks/gather</compoundname>
+    <innerfile refid="gather_8hpp">gather.hpp</innerfile>
+    <innerfile refid="gather__unroll_8hpp">gather_unroll.hpp</innerfile>
+    <innerfile refid="benchmarks_2gather_2main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/benchmarks/gather/"/>
+  </compounddef>
+</doxygen>

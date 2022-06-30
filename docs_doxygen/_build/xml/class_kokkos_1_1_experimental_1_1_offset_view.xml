@@ -1,0 +1,2581 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_offset_view" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::OffsetView</compoundname>
+    <basecompoundref refid="struct_kokkos_1_1_view_traits" prot="public" virt="non-virtual">Kokkos::ViewTraits&lt; DataType, Properties... &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class DataType</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Properties</declname>
+        <defname>Properties</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_experimental_1_1_offset_view_1a2b1a5d1484b0b332ceb5c0cab1f3eb41" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@24</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::@24</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_offset_view_1a2b1a5d1484b0b332ceb5c0cab1f3eb41a4d66e0fdc6ece880dedfcdd667715348" prot="public">
+          <name>Rank</name>
+          <initializer>= map_type::Rank</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="196" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac502f02edfeb3f0d1c1e02d157ce62c8" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@25</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::@25</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_offset_view_1ac502f02edfeb3f0d1c1e02d157ce62c8a36a28a7e8240f8e03f615f683b8fb420" prot="public">
+          <name>reference_type_is_lvalue_reference</name>
+          <initializer>=
+        std::is_lvalue_reference&lt;reference_type&gt;::value</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="339" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="339" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a784a56c5d067aa11ed7642f8b75a3f60" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_view_traits" kindref="compound">ViewTraits</ref>&lt; DataType, Properties... &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::traits =  ViewTraits&lt;DataType, Properties...&gt;</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::traits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="182" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a9abd842426d45805297b7f8d16f76194" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">Kokkos::Array</ref>&lt; int64_t, <ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref> &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::begins_type =  Kokkos::Array&lt;int64_t, Rank&gt;</definition>
+        <argsstring></argsstring>
+        <name>begins_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::begins_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="197" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1aeef139c853b674e0d1c228eecdc8f6cd" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; typename traits::scalar_array_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, typename traits::memory_traits &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::array_type =  OffsetView&lt;typename traits::scalar_array_type, typename traits::array_layout, typename traits::device_type, typename traits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>array_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::array_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of array of scalar types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="225" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae7518a69c8c0216cbb578d58a2109197" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; typename traits::const_data_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, typename traits::memory_traits &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::const_type =  OffsetView&lt;typename traits::const_data_type, typename traits::array_layout, typename traits::device_type, typename traits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>const_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="231" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a73924c785472e2833ae8a3350df2bfb7" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; typename traits::non_const_data_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, typename traits::memory_traits &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::non_const_type =  OffsetView&lt;typename traits::non_const_data_type, typename traits::array_layout, typename traits::device_type, typename traits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>non_const_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::non_const_type</qualifiedname>
+        <briefdescription>
+<para>Compatible view of non-const data type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="237" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a419ed4104fdd515a7c9314984d8f13bb" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; typename traits::non_const_data_type, typename traits::array_layout, typename traits::host_mirror_space &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::HostMirror =  OffsetView&lt;typename traits::non_const_data_type, typename traits::array_layout, typename traits::host_mirror_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>HostMirror</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::HostMirror</qualifiedname>
+        <briefdescription>
+<para>Compatible HostMirror view. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="243" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1aba50a3b76089e919fc60752f25a1ba50" prot="public" static="no">
+        <type>typename map_type::reference_type</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::reference_type =  typename map_type::reference_type</definition>
+        <argsstring></argsstring>
+        <name>reference_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::reference_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="336" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a00653c12caa31eeda7ccd1b09b77bc21" prot="public" static="no">
+        <type>typename map_type::pointer_type</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::pointer_type =  typename map_type::pointer_type</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="337" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0698bb94ff8aba3a2dce6c0f1b0be593" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>subtraction_failure</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::subtraction_failure</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_offset_view_1a0698bb94ff8aba3a2dce6c0f1b0be593a334c4a4c42fdb79d7ebc3e73b517e6f8" prot="private">
+          <name>none</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_offset_view_1a0698bb94ff8aba3a2dce6c0f1b0be593a228d6a97a9838dc800e58b3c74ba7b11" prot="private">
+          <name>negative</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kokkos_1_1_experimental_1_1_offset_view_1a0698bb94ff8aba3a2dce6c0f1b0be593a0bd9f6dd716003f3818d15d2e211ee73" prot="private">
+          <name>overflow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="914" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="914" bodyend="918"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0b4b7b5b47d4409285bb14144fb11a9c" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">traits</ref>, void &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::map_type =  Kokkos::Impl::ViewMapping&lt;traits, void&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="192" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1afd1fd2b22f573d3378bd1951aca637b8" prot="private" static="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">Kokkos::Impl::SharedAllocationTracker</ref></type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::track_type =  Kokkos::Impl::SharedAllocationTracker</definition>
+        <argsstring></argsstring>
+        <name>track_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::track_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="193" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_experimental_1_1_offset_view_1a04062429d18e5767ac327046b65f3241" prot="private" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; typename traits::scalar_array_type, typename traits::array_layout, typename <ref refid="struct_kokkos_1_1_device" kindref="compound">traits::device_type</ref>, typename traits::memory_traits &gt;</type>
+        <definition>using Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::view_type =  View&lt;typename traits::scalar_array_type, typename traits::array_layout, typename traits::device_type, typename traits::memory_traits&gt;</definition>
+        <argsstring></argsstring>
+        <name>view_type</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::view_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="831" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="833" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_offset_view_1a4ee06f5042a58d3f5ada26d7fc221f13" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class OffsetView</definition>
+        <argsstring></argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="186" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_offset_view_1a540f8f88e74b1570a064113d19135b6e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class View</definition>
+        <argsstring></argsstring>
+        <name>View</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::View</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="188" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_experimental_1_1_offset_view_1ab9e6ee44c568ed59747cda3c47f017e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class</type>
+          </param>
+          <param>
+            <type>class...</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class Kokkos::Impl::ViewMapping</definition>
+        <argsstring></argsstring>
+        <name>Kokkos::Impl::ViewMapping</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::ViewMapping</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="190" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1a4ba12822abaf020f9b66efb6f19ea25f" prot="private" static="no" mutable="no">
+        <type><ref refid="union_kokkos_1_1_impl_1_1_shared_allocation_tracker" kindref="compound">track_type</ref></type>
+        <definition>track_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::m_track</definition>
+        <argsstring></argsstring>
+        <name>m_track</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::m_track</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="218" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1ad5d042f96f0ac1ccc8fb346a814b4429" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">map_type</ref></type>
+        <definition>map_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::m_map</definition>
+        <argsstring></argsstring>
+        <name>m_map</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::m_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="219" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1a2e40406ae8a6bb7b73c2c6e7a67ece1a" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref></type>
+        <definition>begins_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::m_begins</definition>
+        <argsstring></argsstring>
+        <name>m_begins</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::m_begins</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="220" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1a636094f1b227d5c8b674bc39cac3c30b" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::is_layout_left</definition>
+        <argsstring></argsstring>
+        <name>is_layout_left</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::is_layout_left</qualifiedname>
+        <initializer>=
+      std::is_same&lt;typename traits::array_layout, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="366" column="25" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="366" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1aea708d4e48c72dc398e1eb658568ec06" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::is_layout_right</definition>
+        <argsstring></argsstring>
+        <name>is_layout_right</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::is_layout_right</qualifiedname>
+        <initializer>=
+      std::is_same&lt;typename traits::array_layout, <ref refid="struct_kokkos_1_1_layout_right" kindref="compound">Kokkos::LayoutRight</ref>&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="369" column="25" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa152cd0dbd5bdbe8fc67a507a32887be" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::is_layout_stride</definition>
+        <argsstring></argsstring>
+        <name>is_layout_stride</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::is_layout_stride</qualifiedname>
+        <initializer>=
+      std::is_same&lt;typename traits::array_layout, <ref refid="struct_kokkos_1_1_layout_stride" kindref="compound">Kokkos::LayoutStride</ref>&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="372" column="25" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac6b94338f2e82a5f666cec5fbe2336b1" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::is_default_map</definition>
+        <argsstring></argsstring>
+        <name>is_default_map</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::is_default_map</qualifiedname>
+        <initializer>=
+      std::is_same&lt;typename traits::specialize, void&gt;::value &amp;&amp;
+      (is_layout_left || is_layout_right || is_layout_stride)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="375" column="25" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a653b5ca64ae585931fd37ce57f3cd1e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_integral&lt; iType &gt;::value, iType &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION int64_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION int64_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::begin</definition>
+        <argsstring>(const iType local_dimension) const</argsstring>
+        <name>begin</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::begin</qualifiedname>
+        <param>
+          <type>const iType</type>
+          <declname>local_dimension</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="202" column="34" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="202" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac9981abceb608a8571e21ddd866d16a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION begins_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::begins</definition>
+        <argsstring>() const</argsstring>
+        <name>begins</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::begins</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="208" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="208" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a6e7b30ecf77c2bc522b635774fa86c4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+          <param>
+            <type>typename std::enable_if&lt; std::is_integral&lt; iType &gt;::value, iType &gt;::type</type>
+            <defval>0</defval>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION int64_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION int64_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::end</definition>
+        <argsstring>(const iType local_dimension) const</argsstring>
+        <name>end</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::end</qualifiedname>
+        <param>
+          <type>const iType</type>
+          <declname>local_dimension</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="213" column="34" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="213" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa1b458852c29a3817417366ff20124c9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::extent</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::extent</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>rank() to be implemented </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="259" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="259" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa5c65d1819268194ad622d9e21a1480d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, int &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::extent_int</definition>
+        <argsstring>(const iType &amp;r) const</argsstring>
+        <name>extent_int</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::extent_int</qualifiedname>
+        <param>
+          <type>const iType &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="266" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="266" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aaca6f6b0410dc97f4ecd60ec3bf1c835" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr traits::array_layout</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr traits::array_layout Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::layout</definition>
+        <argsstring>() const</argsstring>
+        <name>layout</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::layout</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="270" column="66" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="270" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a631df9e4f3262a35d93e7b1191ccb1f7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="275" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="275" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a933baae6a7d7c435ababd02b6f32db84" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_0</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_0</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="281" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="281" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aaa5de64fbc6fc85721925beb1d674fe5" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_1</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_1</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="284" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="284" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a7b62b4d6b2a858dbf925456f7b1106e0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_2</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_2</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="287" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="287" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0ce98e5d2c406dfe99a4a025443e26ee" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_3</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_3</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="290" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="290" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a4451295727bc3c24a9168fbe4f764c5d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_4</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_4</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="293" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="293" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1abc2fd6e10ee50e6c57d6069d0ddba857" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_5</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_5</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="296" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="296" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a7cc17093041dc28ebdc5270cd0b9aa4c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_6</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_6</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="299" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="299" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae7c0cca86dd3120d46d59e20fa60c42c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride_7</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_7</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride_7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="302" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="302" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae239e4a26bcf27dd34a2ddb0e4f09ed0" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr std::enable_if&lt; std::is_integral&lt; iType &gt;::value, size_t &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride</definition>
+        <argsstring>(iType r) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride</qualifiedname>
+        <param>
+          <type>iType</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="309" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="309" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a1eace10b9e29bd09213ec43c0aeeae30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename iType</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::stride</definition>
+        <argsstring>(iType *const s) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::stride</qualifiedname>
+        <param>
+          <type>iType *const</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="329" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="329" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1adc97cfdf46a0d8cb7bc166ca3c1d6b8e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr size_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::span</definition>
+        <argsstring>() const</argsstring>
+        <name>span</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::span</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="344" column="43" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="344" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a78e4569515e37f56dc85e04aa96e4ff8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::span_is_contiguous</definition>
+        <argsstring>() const</argsstring>
+        <name>span_is_contiguous</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::span_is_contiguous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="345" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="345" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a6acc28b5a6960d4c0fcb13a201a2900a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr bool</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr bool Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::is_allocated</definition>
+        <argsstring>() const</argsstring>
+        <name>is_allocated</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::is_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="348" column="41" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="348" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ad373075421e8ef02ea0ad738a97b57c2" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION constexpr pointer_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION constexpr pointer_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::data</definition>
+        <argsstring>() const</argsstring>
+        <name>data</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="351" column="49" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="351" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a1340254d7b3d2a0c32c76c761e1bee5f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION const <ref refid="class_kokkos_1_1_impl_1_1_view_mapping" kindref="compound">Kokkos::Impl::ViewMapping</ref>&lt; <ref refid="struct_kokkos_1_1_view_traits" kindref="compound">traits</ref>, void &gt; &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION const Kokkos::Impl::ViewMapping&lt; traits, void &gt; &amp; Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::implementation_map</definition>
+        <argsstring>() const</argsstring>
+        <name>implementation_map</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::implementation_map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="359" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="359" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ab9eb09edaa0a1d1a1cc5bcc2fbf846a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION reference_type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION reference_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>() const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="400" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="400" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a16bfe576e8df96e9b2b7c28f407b4111" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="409" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="409" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa3800ae6d5f08186f8df5f929d01b0c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;!is_layout_stride), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;is_default_map &amp;&amp;!is_layout_stride), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="421" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="421" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac9a0e8a213dfda343d8b609677dade0c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="433" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="433" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a3516d15b54c447f20fffa51efd139887" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator[]</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator[]</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="446" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="446" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ace28f74ea3f1044d04f079eb72fc0713" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;!is_layout_stride), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;is_default_map &amp;&amp;!is_layout_stride), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator[]</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator[]</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="458" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="458" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a86ba54c317e62bf3364ce2f7542f1e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0 &gt;::value &amp;&amp;(1==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0 &gt;::value &amp;&amp;(1==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator[]</definition>
+        <argsstring>(const I0 &amp;i0) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator[]</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="470" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="470" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aceeaa7acca599dfa59ee709012eab2e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="484" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="484" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a10f2df60bf01d1e679368d75f55f5cd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_left &amp;&amp;(traits::rank_dynamic==0)), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_left &amp;&amp;(traits::rank_dynamic==0)), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="497" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="497" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a4e3c8418a7f6e1a44eb309d5713ffe41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_left &amp;&amp;(traits::rank_dynamic!=0)), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_left &amp;&amp;(traits::rank_dynamic!=0)), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="510" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="510" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0cea1c74ed3a95fb69649546ab545449" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_right &amp;&amp;(traits::rank_dynamic==0)), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_right &amp;&amp;(traits::rank_dynamic==0)), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="523" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="523" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a3cae4d04711309925513b05d72a49eff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_right &amp;&amp;(traits::rank_dynamic!=0)), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_right &amp;&amp;(traits::rank_dynamic!=0)), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="536" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="536" bodyend="541"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a62fce1d199d39514c2dae637d0e918d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1 &gt;::value &amp;&amp;(2==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1 &gt;::value &amp;&amp;(2==Rank)&amp;&amp;is_default_map &amp;&amp;is_layout_stride), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="549" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="549" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a995054898a7cf3295397ec1fd4d2a37f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2 &gt;::value &amp;&amp;(3==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2 &gt;::value &amp;&amp;(3==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="565" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="565" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0423a8d7249a115930587a2a2575f5b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2 &gt;::value &amp;&amp;(3==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2 &gt;::value &amp;&amp;(3==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="579" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="579" bodyend="586"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a1989652f6da864804f59f7671575748c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3 &gt;::value &amp;&amp;(4==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3 &gt;::value &amp;&amp;(4==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="596" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="596" bodyend="604"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a1f61a4129547f30378925883b4e328c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3 &gt;::value &amp;&amp;(4==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3 &gt;::value &amp;&amp;(4==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="611" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="611" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1acaedb5406e149891ea89137563bcedab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4 &gt;::value &amp;&amp;(5==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4 &gt;::value &amp;&amp;(5==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="629" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="629" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a53720bc3d3836ce5225de5a48d328186" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4 &gt;::value &amp;&amp;(5==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4 &gt;::value &amp;&amp;(5==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="646" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="646" bodyend="656"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1af2aae95456c472618fa07af2dc9f3094" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5 &gt;::value &amp;&amp;(6==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5 &gt;::value &amp;&amp;(6==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="667" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="667" bodyend="678"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a6b52acbd44d463a179a60c5a1141cc3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5 &gt;::value &amp;&amp;(6==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5 &gt;::value &amp;&amp;(6==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="686" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="686" bodyend="697"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ab4954024ea6b794a1747e2fae3d5208f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5, I6 &gt;::value &amp;&amp;(7==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5, I6 &gt;::value &amp;&amp;(7==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="708" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="708" bodyend="720"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a29ac3a5cb5237a2735efcf835cd62a6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5, I6 &gt;::value &amp;&amp;(7==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5, I6 &gt;::value &amp;&amp;(7==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="728" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="728" bodyend="740"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a026ac3e57eb061da91e0afef57b2e229" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+          <param>
+            <type>typename I7</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5, I6, I7 &gt;::value &amp;&amp;(8==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5, I6, I7 &gt;::value &amp;&amp;(8==Rank)&amp;&amp;is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6, const I7 &amp;i7) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <param>
+          <type>const I7 &amp;</type>
+          <declname>i7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="751" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="751" bodyend="765"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa33099272fae1c061963e437bd324fbc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I0</type>
+          </param>
+          <param>
+            <type>typename I1</type>
+          </param>
+          <param>
+            <type>typename I2</type>
+          </param>
+          <param>
+            <type>typename I3</type>
+          </param>
+          <param>
+            <type>typename I4</type>
+          </param>
+          <param>
+            <type>typename I5</type>
+          </param>
+          <param>
+            <type>typename I6</type>
+          </param>
+          <param>
+            <type>typename I7</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(<ref refid="struct_kokkos_1_1_impl_1_1are__integral" kindref="compound">Kokkos::Impl::are_integral</ref>&lt; I0, I1, I2, I3, I4, I5, I6, I7 &gt;::value &amp;&amp;(8==<ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>)&amp;&amp;!is_default_map), reference_type &gt;::type</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION std::enable_if&lt;(Kokkos::Impl::are_integral&lt; I0, I1, I2, I3, I4, I5, I6, I7 &gt;::value &amp;&amp;(8==Rank)&amp;&amp;!is_default_map), reference_type &gt;::type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator()</definition>
+        <argsstring>(const I0 &amp;i0, const I1 &amp;i1, const I2 &amp;i2, const I3 &amp;i3, const I4 &amp;i4, const I5 &amp;i5, const I6 &amp;i6, const I7 &amp;i7) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator()</qualifiedname>
+        <param>
+          <type>const I0 &amp;</type>
+          <declname>i0</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>i1</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>i2</declname>
+        </param>
+        <param>
+          <type>const I3 &amp;</type>
+          <declname>i3</declname>
+        </param>
+        <param>
+          <type>const I4 &amp;</type>
+          <declname>i4</declname>
+        </param>
+        <param>
+          <type>const I5 &amp;</type>
+          <declname>i5</declname>
+        </param>
+        <param>
+          <type>const I6 &amp;</type>
+          <declname>i6</declname>
+        </param>
+        <param>
+          <type>const I7 &amp;</type>
+          <declname>i7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="773" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="773" bodyend="786"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae8fc7778a02c8f18362dab34a05c31ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_DEFAULTED_FUNCTION</type>
+        <definition>KOKKOS_DEFAULTED_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::~OffsetView</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::~OffsetView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="794" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a71bb560f33dab1cf63d7d35d8a80458d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>()</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="797" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="797" bodyend="799"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa6c303a42fbef0615bf30e21c3e5da79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const OffsetView &amp;rhs)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="802" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="802" bodyend="805"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a6768fcbb1fe47c5e5d88478d6c618db3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(OffsetView &amp;&amp;rhs)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="808" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="808" bodyend="811"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac57fbc0c057dc94c564ae9ce1de99fba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION OffsetView &amp; Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(const OffsetView &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="814" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="814" bodyend="819"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a193f8d9280f0f4e0e5f4baf9f3fbab49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION OffsetView &amp; Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::operator=</definition>
+        <argsstring>(OffsetView &amp;&amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref> &amp;&amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="822" column="14" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="822" bodyend="827"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a9e8a39a721c3dded3a3748a8ef175ad1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_kokkos_1_1_view" kindref="compound">view_type</ref></type>
+        <definition>KOKKOS_INLINE_FUNCTION view_type Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::view</definition>
+        <argsstring>() const</argsstring>
+        <name>view</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="837" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="837" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1af5911a71ec9475f4366edd3c036be3c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;aview)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>aview</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="843" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="843" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a420fca7ca4d0e39a7d2ac43e9d701ff4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;aview, const index_list_type &amp;minIndices)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>aview</declname>
+        </param>
+        <param>
+          <type>const index_list_type &amp;</type>
+          <declname>minIndices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="857" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="857" bodyend="878"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ab92babd35e6ebe1a42e8716f12d5f77a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const View&lt; RT, RP... &gt; &amp;aview, const begins_type &amp;beg)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>aview</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>beg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="880" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="880" bodyend="897"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aea00dbf9adac45c5abcab52025ff1276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RT</type>
+          </param>
+          <param>
+            <type>class...</type>
+            <declname>RP</declname>
+            <defname>RP</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const OffsetView&lt; RT, RP... &gt; &amp;rhs)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kokkos_1_1_experimental_1_1_offset_view" kindref="compound">OffsetView</ref>&lt; RT, RP... &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="902" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="902" bodyend="911"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ad6fadf54842a916fcf14951ff51e8453" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const pointer_type &amp;p, const begins_type &amp;begins_, const begins_type &amp;ends_)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const pointer_type &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>begins_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>ends_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1082" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1082" bodyend="1092"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aa18a67909b269853743ddd57085b360f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const pointer_type &amp;p, const begins_type &amp;begins_, index_list_type ends_)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const pointer_type &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>begins_</declname>
+        </param>
+        <param>
+          <type>index_list_type</type>
+          <declname>ends_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1095" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1095" bodyend="1105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ac3bf09575bf9c791bd90ee2adad57488" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const pointer_type &amp;p, index_list_type begins_, const begins_type &amp;ends_)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const pointer_type &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>index_list_type</type>
+          <declname>begins_</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>ends_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1108" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1108" bodyend="1118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae61a6b9a8b8f2a2d58d6701dae9e0845" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const pointer_type &amp;p, index_list_type begins_, index_list_type ends_)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const pointer_type &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>index_list_type</type>
+          <declname>begins_</declname>
+        </param>
+        <param>
+          <type>index_list_type</type>
+          <declname>ends_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1121" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1121" bodyend="1131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a34cb8c67dc03017c3be53f9f92600d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::use_count</definition>
+        <argsstring>() const</argsstring>
+        <name>use_count</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::use_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1136" column="7" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1136" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a8677e38feb017a307dd2ca5191b9b2d8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::label</definition>
+        <argsstring>() const</argsstring>
+        <name>label</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1138" column="28" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1138" bodyend="1140"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a6b25e2ef94e861f775d3784f01783ad6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Label</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const Label &amp;arg_label, typename std::enable_if&lt; Kokkos::Impl::is_view_label&lt; Label &gt;::value, const index_list_type &gt;::type range0, const index_list_type range1={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range2={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range3={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range4={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range5={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range6={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }, const index_list_type range7={ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) })</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const Label &amp;</type>
+          <declname>arg_label</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1is__view__label" kindref="compound">Kokkos::Impl::is_view_label</ref>&lt; Label &gt;::value, const index_list_type &gt;::type</type>
+          <declname>range0</declname>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range1</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range2</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range3</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range4</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range5</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range6</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>range7</declname>
+          <defval>{ int64_t(0x7FFFFFFFFFFFFFFFLL), int64_t(0x7FFFFFFFFFFFFFFFLL) }</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1143" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1143" bodyend="1168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae773b1c847e49ca0d893293b779203d5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt; Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;arg_layout, const index_list_type minIndices)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt; <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>minIndices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1171" column="35" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1171" bodyend="1188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1ae34b0ebd15a7fcdc45b9ea65bd3e7564" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>P</declname>
+            <defname>P</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const Kokkos::Impl::ViewCtorProp&lt; P... &gt; &amp;arg_prop, typename std::enable_if&lt;!Kokkos::Impl::ViewCtorProp&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;arg_layout, const index_list_type minIndices)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt; &amp;</type>
+          <declname>arg_prop</declname>
+        </param>
+        <param>
+          <type>typename std::enable_if&lt;!<ref refid="struct_kokkos_1_1_impl_1_1_view_ctor_prop" kindref="compound">Kokkos::Impl::ViewCtorProp</ref>&lt; P... &gt;::has_pointer, typename traits::array_layout &gt;::type const &amp;</type>
+          <declname>arg_layout</declname>
+        </param>
+        <param>
+          <type>const index_list_type</type>
+          <declname>minIndices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1191" column="19" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1191" bodyend="1276"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1aec975f4b24519321aa837b0c507f23df" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION subtraction_failure</type>
+        <definition>static KOKKOS_INLINE_FUNCTION subtraction_failure Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::check_subtraction</definition>
+        <argsstring>(int64_t lhs, int64_t rhs)</argsstring>
+        <name>check_subtraction</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::check_subtraction</qualifiedname>
+        <param>
+          <type>int64_t</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>int64_t</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="921" column="53" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="921" bodyend="930"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a5870c83b4dfb4237580eee7b0c164dea" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int64_t</type>
+        <definition>static KOKKOS_INLINE_FUNCTION int64_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::at</definition>
+        <argsstring>(const begins_type &amp;a, size_t pos)</argsstring>
+        <name>at</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::at</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kokkos_1_1_array" kindref="compound">begins_type</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="937" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="937" bodyend="937"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a4ca9a7e599920020ddc32bdd22b5425a" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int64_t</type>
+        <definition>static KOKKOS_INLINE_FUNCTION int64_t Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::at</definition>
+        <argsstring>(index_list_type a, size_t pos)</argsstring>
+        <name>at</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::at</qualifiedname>
+        <param>
+          <type>index_list_type</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="940" column="18" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="940" bodyend="942"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a0e18a5fd6b49ea78e76c84eac898003e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename B</type>
+          </param>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION subtraction_failure</type>
+        <definition>static KOKKOS_INLINE_FUNCTION subtraction_failure Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::runtime_check_begins_ends_device</definition>
+        <argsstring>(const B &amp;begins, const E &amp;ends)</argsstring>
+        <name>runtime_check_begins_ends_device</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::runtime_check_begins_ends_device</qualifiedname>
+        <param>
+          <type>const B &amp;</type>
+          <declname>begins</declname>
+        </param>
+        <param>
+          <type>const E &amp;</type>
+          <declname>ends</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1023" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1023" bodyend="1050"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_offset_view_1a29798e5d5cbbce8199cbbd04b6f4e00d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename B</type>
+          </param>
+          <param>
+            <type>typename E</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;::OffsetView</definition>
+        <argsstring>(const pointer_type &amp;p, const B &amp;begins_, const E &amp;ends_, subtraction_failure)</argsstring>
+        <name>OffsetView</name>
+        <qualifiedname>Kokkos::Experimental::OffsetView::OffsetView</qualifiedname>
+        <param>
+          <type>const pointer_type &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const B &amp;</type>
+          <declname>begins_</declname>
+        </param>
+        <param>
+          <type>const E &amp;</type>
+          <declname>ends_</declname>
+        </param>
+        <param>
+          <type>subtraction_failure</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="1057" column="26" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="1057" bodyend="1075"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_offset_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Experimental::OffsetView&lt; DataType, Properties &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_offset_view"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::ViewTraits&lt; DataType, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" line="180" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_OffsetView.hpp" bodystart="180" bodyend="1277"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_view_traits_1aa2b9105948172160bce3cdac82fd9d02" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>array_layout</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aeef139c853b674e0d1c228eecdc8f6cd" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a5870c83b4dfb4237580eee7b0c164dea" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>at</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a4ca9a7e599920020ddc32bdd22b5425a" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>at</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a653b5ca64ae585931fd37ce57f3cd1e5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>begin</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac9981abceb608a8571e21ddd866d16a6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>begins</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a9abd842426d45805297b7f8d16f76194" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>begins_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aec975f4b24519321aa837b0c507f23df" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>check_subtraction</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3df481233b596f5a9f61a08c3c5eef31" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a1a00718f0a753b9e244123397702095b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae7518a69c8c0216cbb578d58a2109197" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a04a05bc2e4660a4d8b0f16b643b29f88" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>const_value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ad373075421e8ef02ea0ad738a97b57c2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>data</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af743120eed109468b5f3f4b88987beb9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a883d1f64b4e16b7239348e136c27ef0a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>device_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac7e8775b33b04fb1117553b0e821d12a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>dimension</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a6e7b30ecf77c2bc522b635774fa86c4a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>end</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1af18df5fa7d9fa5873ff44eeb163b7995" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa1b458852c29a3817417366ff20124c9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>extent</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa5c65d1819268194ad622d9e21a1480d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>extent_int</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1adb25197c9f561855af9dce11ae625f1c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>host_mirror_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a419ed4104fdd515a7c9314984d8f13bb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>HostMirror</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a1340254d7b3d2a0c32c76c761e1bee5f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>implementation_map</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a6acc28b5a6960d4c0fcb13a201a2900a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_allocated</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac6b94338f2e82a5f666cec5fbe2336b1" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_default_map</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6d9b6c3b4b26b5e7dc13265052a7d076aee808757661c7b88090906d9e3b9547e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_hostspace</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a636094f1b227d5c8b674bc39cac3c30b" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_layout_left</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aea708d4e48c72dc398e1eb658568ec06" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_layout_right</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa152cd0dbd5bdbe8fc67a507a32887be" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_layout_stride</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1aa002c456d8d503f34e9c350f1511cccaaa61e66efc1a3fa7cafb65bf782930f97" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_managed</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a6115bef928c272f44a9bb0cee8495902ae702b0a5cc5621d1b5a3cedb1fb7871f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>is_random_access</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ab9e6ee44c568ed59747cda3c47f017e9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>Kokkos::Impl::ViewMapping</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a8677e38feb017a307dd2ca5191b9b2d8" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>label</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aaca6f6b0410dc97f4ecd60ec3bf1c835" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>layout</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a2e40406ae8a6bb7b73c2c6e7a67ece1a" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>m_begins</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ad5d042f96f0ac1ccc8fb346a814b4429" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>m_map</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a4ba12822abaf020f9b66efb6f19ea25f" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>m_track</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0b4b7b5b47d4409285bb14144fb11a9c" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>map_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a3437c49810aaebb44590b93ba19c204a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>memory_space</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a5d874a209c8c63257d3e8d7957dccb95" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>memory_traits</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a96bb590d7055466912d56f8f837c0b28" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>non_const_data_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a8d77d1fe6986e03f9795c5d2f28419eb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>non_const_scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a73924c785472e2833ae8a3350df2bfb7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>non_const_type</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1afbf817ad633ee9bf6ea1786ce2a3942b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>non_const_value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a4ee06f5042a58d3f5ada26d7fc221f13" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a71bb560f33dab1cf63d7d35d8a80458d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa6c303a42fbef0615bf30e21c3e5da79" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a6768fcbb1fe47c5e5d88478d6c618db3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1af5911a71ec9475f4366edd3c036be3c6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a420fca7ca4d0e39a7d2ac43e9d701ff4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ab92babd35e6ebe1a42e8716f12d5f77a" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aea00dbf9adac45c5abcab52025ff1276" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a29798e5d5cbbce8199cbbd04b6f4e00d" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ad6fadf54842a916fcf14951ff51e8453" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa18a67909b269853743ddd57085b360f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac3bf09575bf9c791bd90ee2adad57488" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae61a6b9a8b8f2a2d58d6701dae9e0845" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a6b25e2ef94e861f775d3784f01783ad6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae773b1c847e49ca0d893293b779203d5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae34b0ebd15a7fcdc45b9ea65bd3e7564" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>OffsetView</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ab9eb09edaa0a1d1a1cc5bcc2fbf846a4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a16bfe576e8df96e9b2b7c28f407b4111" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa3800ae6d5f08186f8df5f929d01b0c2" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac9a0e8a213dfda343d8b609677dade0c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aceeaa7acca599dfa59ee709012eab2e4" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a10f2df60bf01d1e679368d75f55f5cd7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a4e3c8418a7f6e1a44eb309d5713ffe41" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0cea1c74ed3a95fb69649546ab545449" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a3cae4d04711309925513b05d72a49eff" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a62fce1d199d39514c2dae637d0e918d3" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a995054898a7cf3295397ec1fd4d2a37f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0423a8d7249a115930587a2a2575f5b9" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a1989652f6da864804f59f7671575748c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a1f61a4129547f30378925883b4e328c8" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1acaedb5406e149891ea89137563bcedab" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a53720bc3d3836ce5225de5a48d328186" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1af2aae95456c472618fa07af2dc9f3094" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a6b52acbd44d463a179a60c5a1141cc3f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ab4954024ea6b794a1747e2fae3d5208f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a29ac3a5cb5237a2735efcf835cd62a6b" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a026ac3e57eb061da91e0afef57b2e229" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aa33099272fae1c061963e437bd324fbc" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator()</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac57fbc0c057dc94c564ae9ce1de99fba" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a193f8d9280f0f4e0e5f4baf9f3fbab49" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a3516d15b54c447f20fffa51efd139887" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ace28f74ea3f1044d04f079eb72fc0713" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a86ba54c317e62bf3364ce2f7542f1e7d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>operator[]</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a00653c12caa31eeda7ccd1b09b77bc21" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>pointer_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a2b1a5d1484b0b332ceb5c0cab1f3eb41a4d66e0fdc6ece880dedfcdd667715348" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>Rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a248d4107977c9492401bb56f05fb24fca8d76e8a67383c6065fceef3d6ca72df6" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>rank</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a11a689273d803804cb45ae43ffedace2abfd80da79a22c8bec6ecd84c23a7208c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>rank_dynamic</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aba50a3b76089e919fc60752f25a1ba50" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>reference_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ac502f02edfeb3f0d1c1e02d157ce62c8a36a28a7e8240f8e03f615f683b8fb420" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>reference_type_is_lvalue_reference</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0e18a5fd6b49ea78e76c84eac898003e" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>runtime_check_begins_ends_device</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a45f74c21df87c388451f81ffd1523a3f" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>scalar_array_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a631df9e4f3262a35d93e7b1191ccb1f7" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>size</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a718247fbabea557430710ffa949ab293" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1adc97cfdf46a0d8cb7bc166ca3c1d6b8e" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>span</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a78e4569515e37f56dc85e04aa96e4ff8" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>span_is_contiguous</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1ac219a397f4d0e274ddd7eb38062a9d2d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>specialize</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae239e4a26bcf27dd34a2ddb0e4f09ed0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a1eace10b9e29bd09213ec43c0aeeae30" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a933baae6a7d7c435ababd02b6f32db84" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_0</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1aaa5de64fbc6fc85721925beb1d674fe5" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_1</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a7b62b4d6b2a858dbf925456f7b1106e0" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_2</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0ce98e5d2c406dfe99a4a025443e26ee" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_3</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a4451295727bc3c24a9168fbe4f764c5d" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_4</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1abc2fd6e10ee50e6c57d6069d0ddba857" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_5</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a7cc17093041dc28ebdc5270cd0b9aa4c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_6</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae7c0cca86dd3120d46d59e20fa60c42c" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>stride_7</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a0698bb94ff8aba3a2dce6c0f1b0be593" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>subtraction_failure</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1afd1fd2b22f573d3378bd1951aca637b8" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>track_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a784a56c5d067aa11ed7642f8b75a3f60" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>traits</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a34cb8c67dc03017c3be53f9f92600d59" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>use_count</name></member>
+      <member refid="struct_kokkos_1_1_view_traits_1a0631d00217a48c25e30a5273b12869ae" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>value_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a540f8f88e74b1570a064113d19135b6e" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>View</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a9e8a39a721c3dded3a3748a8ef175ad1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>view</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1a04062429d18e5767ac327046b65f3241" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>view_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_offset_view_1ae8fc7778a02c8f18362dab34a05c31ae" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::OffsetView</scope><name>~OffsetView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_view_subview_1_1get__view__type_3_01_kokkos_1_1_view_3_01_t_00_01_args_8_8_8_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>TestViewSubview::get_view_type&lt; Kokkos::View&lt; T, Args... &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1get__view__type_3_01_kokkos_1_1_view_3_01_t_00_01_args_8_8_8_01_4_01_4_1ae867448d11cfc2d7a8a7f25263220b45" prot="public" static="no">
+        <type>T</type>
+        <definition>using TestViewSubview::get_view_type&lt; Kokkos::View&lt; T, Args... &gt; &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>TestViewSubview::get_view_type&lt; Kokkos::View&lt; T, Args... &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2184" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="2183" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="2183" bodyend="2185"/>
+    <listofallmembers>
+      <member refid="struct_test_view_subview_1_1get__view__type_3_01_kokkos_1_1_view_3_01_t_00_01_args_8_8_8_01_4_01_4_1ae867448d11cfc2d7a8a7f25263220b45" prot="public" virt="non-virtual"><scope>TestViewSubview::get_view_type&lt; Kokkos::View&lt; T, Args... &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

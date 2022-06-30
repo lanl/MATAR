@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1_assertion_result" kind="class" language="C++" prot="public">
+    <compoundname>testing::AssertionResult</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1_assertion_result_1ae7348f9fffe7a20980dfc94fc261d7ca" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool testing::AssertionResult::success_</definition>
+        <argsstring></argsstring>
+        <name>success_</name>
+        <qualifiedname>testing::AssertionResult::success_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17721" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17721" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtesting_1_1_assertion_result_1a6bdcf1bc47be10f980f669e02d4c5eb1" prot="private" static="no" mutable="no">
+        <type><ref refid="classtesting_1_1internal_1_1scoped__ptr" kindref="compound">internal::scoped_ptr</ref>&lt; ::std::string &gt;</type>
+        <definition>internal::scoped_ptr&lt;::std::string &gt; testing::AssertionResult::message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <qualifiedname>testing::AssertionResult::message_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17726" column="24" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17726" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a27788116f03f90aec4daf592fd809ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::AssertionResult</definition>
+        <argsstring>(const AssertionResult &amp;other)</argsstring>
+        <name>AssertionResult</name>
+        <qualifiedname>testing::AssertionResult::AssertionResult</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17677" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2436" bodyend="2441"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ade695178c05c4b2f82e92930c912fc25" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::AssertionResult</definition>
+        <argsstring>(bool success)</argsstring>
+        <name>AssertionResult</name>
+        <qualifiedname>testing::AssertionResult::AssertionResult</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17679" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17679" bodyend="17679"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ab3f34b1623c82762ef4a8f52b535159c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>testing::AssertionResult::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17682" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17682" bodyend="17682"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a5b0784686a756660ac8dfe528d89386b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>AssertionResult testing::AssertionResult::operator!</definition>
+        <argsstring>() const</argsstring>
+        <name>operator!</name>
+        <qualifiedname>testing::AssertionResult::operator!</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17685" column="19" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="2444" bodyend="2449"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a642e9b448f000eced1ae8bdabd667cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::AssertionResult::message</definition>
+        <argsstring>() const</argsstring>
+        <name>message</name>
+        <qualifiedname>testing::AssertionResult::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17691" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17691" bodyend="17693"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ae80e8e4452f6fb4d90def8f376447ae9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::AssertionResult::failure_message</definition>
+        <argsstring>() const</argsstring>
+        <name>failure_message</name>
+        <qualifiedname>testing::AssertionResult::failure_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17696" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17696" bodyend="17696"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ab54da17bbe6a4713ff3d75df8658dbc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+        <definition>AssertionResult &amp; testing::AssertionResult::operator&lt;&lt;</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::AssertionResult::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17699" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17699" bodyend="17702"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1afa408467f4ff6ac1209f843d5c4a741e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+        <definition>AssertionResult &amp; testing::AssertionResult::operator&lt;&lt;</definition>
+        <argsstring>(::std::ostream &amp;(*basic_manipulator)(::std::ostream &amp;stream))</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::AssertionResult::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>::std::ostream &amp;(*)(::std::ostream &amp;stream)</type>
+          <declname>basic_manipulator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17706" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17706" bodyend="17710"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a27788116f03f90aec4daf592fd809ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::AssertionResult</definition>
+        <argsstring>(const AssertionResult &amp;other)</argsstring>
+        <name>AssertionResult</name>
+        <qualifiedname>testing::AssertionResult::AssertionResult</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17677" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ade695178c05c4b2f82e92930c912fc25" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::AssertionResult</definition>
+        <argsstring>(bool success)</argsstring>
+        <name>AssertionResult</name>
+        <qualifiedname>testing::AssertionResult::AssertionResult</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17679" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17679" bodyend="17679"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ab3f34b1623c82762ef4a8f52b535159c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::AssertionResult::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>testing::AssertionResult::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17682" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17682" bodyend="17682"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a5b0784686a756660ac8dfe528d89386b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>AssertionResult testing::AssertionResult::operator!</definition>
+        <argsstring>() const</argsstring>
+        <name>operator!</name>
+        <qualifiedname>testing::AssertionResult::operator!</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17685" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a642e9b448f000eced1ae8bdabd667cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::AssertionResult::message</definition>
+        <argsstring>() const</argsstring>
+        <name>message</name>
+        <qualifiedname>testing::AssertionResult::message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17691" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17691" bodyend="17693"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ae80e8e4452f6fb4d90def8f376447ae9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * testing::AssertionResult::failure_message</definition>
+        <argsstring>() const</argsstring>
+        <name>failure_message</name>
+        <qualifiedname>testing::AssertionResult::failure_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17696" column="14" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17696" bodyend="17696"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ab54da17bbe6a4713ff3d75df8658dbc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+        <definition>AssertionResult &amp; testing::AssertionResult::operator&lt;&lt;</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::AssertionResult::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17699" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17699" bodyend="17702"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1afa408467f4ff6ac1209f843d5c4a741e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> &amp;</type>
+        <definition>AssertionResult &amp; testing::AssertionResult::operator&lt;&lt;</definition>
+        <argsstring>(::std::ostream &amp;(*basic_manipulator)(::std::ostream &amp;stream))</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>testing::AssertionResult::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>::std::ostream &amp;(*)(::std::ostream &amp;stream)</type>
+          <declname>basic_manipulator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17706" column="3" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17706" bodyend="17710"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a5b55e01f1321d744a594dbe51d46a139" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::AssertionResult::AppendMessage</definition>
+        <argsstring>(const Message &amp;a_message)</argsstring>
+        <name>AppendMessage</name>
+        <qualifiedname>testing::AssertionResult::AppendMessage</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+          <declname>a_message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17714" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17714" bodyend="17718"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ae25b98af6564fca1453d8b9977e51ab2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::AssertionResult::operator=</definition>
+        <argsstring>(AssertionResult const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::AssertionResult::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17728" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1a5b55e01f1321d744a594dbe51d46a139" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::AssertionResult::AppendMessage</definition>
+        <argsstring>(const Message &amp;a_message)</argsstring>
+        <name>AppendMessage</name>
+        <qualifiedname>testing::AssertionResult::AppendMessage</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_message" kindref="compound">Message</ref> &amp;</type>
+          <declname>a_message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17714" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="17714" bodyend="17718"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1_assertion_result_1ae25b98af6564fca1453d8b9977e51ab2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void testing::AssertionResult::operator=</definition>
+        <argsstring>(AssertionResult const &amp;)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>testing::AssertionResult::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="17728" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="17673" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="17673" bodyend="17729"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_assertion_result_1a5b55e01f1321d744a594dbe51d46a139" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AppendMessage</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a5b55e01f1321d744a594dbe51d46a139" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AppendMessage</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a27788116f03f90aec4daf592fd809ead" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AssertionResult</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ade695178c05c4b2f82e92930c912fc25" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AssertionResult</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a27788116f03f90aec4daf592fd809ead" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AssertionResult</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ade695178c05c4b2f82e92930c912fc25" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>AssertionResult</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ae80e8e4452f6fb4d90def8f376447ae9" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>failure_message</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ae80e8e4452f6fb4d90def8f376447ae9" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>failure_message</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a642e9b448f000eced1ae8bdabd667cdb" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>message</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a642e9b448f000eced1ae8bdabd667cdb" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>message</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a6bdcf1bc47be10f980f669e02d4c5eb1" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>message_</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ab3f34b1623c82762ef4a8f52b535159c" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator bool</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ab3f34b1623c82762ef4a8f52b535159c" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator bool</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a5b0784686a756660ac8dfe528d89386b" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator!</name></member>
+      <member refid="classtesting_1_1_assertion_result_1a5b0784686a756660ac8dfe528d89386b" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator!</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ab54da17bbe6a4713ff3d75df8658dbc5" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_assertion_result_1afa408467f4ff6ac1209f843d5c4a741e" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ab54da17bbe6a4713ff3d75df8658dbc5" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_assertion_result_1afa408467f4ff6ac1209f843d5c4a741e" prot="public" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ae25b98af6564fca1453d8b9977e51ab2" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ae25b98af6564fca1453d8b9977e51ab2" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>operator=</name></member>
+      <member refid="classtesting_1_1_assertion_result_1ae7348f9fffe7a20980dfc94fc261d7ca" prot="private" virt="non-virtual"><scope>testing::AssertionResult</scope><name>success_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_rank" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Rank</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>Iterate</type>
+        <declname>OuterDir</declname>
+        <defname>OuterDir</defname>
+        <defval>Iterate::Default</defval>
+      </param>
+      <param>
+        <type>Iterate</type>
+        <declname>InnerDir</declname>
+        <defname>InnerDir</defname>
+        <defval>Iterate::Default</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_rank_1a4ff72082053c855a25a23474c9b23d34" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref>&lt; N, OuterDir, InnerDir &gt;</type>
+        <definition>using Kokkos::Rank&lt; N, OuterDir, InnerDir &gt;::iteration_pattern =  Rank&lt;N, OuterDir, InnerDir&gt;</definition>
+        <argsstring></argsstring>
+        <name>iteration_pattern</name>
+        <qualifiedname>Kokkos::Rank::iteration_pattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_rank_1af20af855a5d95a196c8f3fda80752004" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int Kokkos::Rank&lt; N, OuterDir, InnerDir &gt;::rank</definition>
+        <argsstring></argsstring>
+        <name>rank</name>
+        <qualifiedname>Kokkos::Rank::rank</qualifiedname>
+        <initializer>= N</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" line="64" column="24" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_rank_1a4797ec0074ffd3052b42069e13ce8210" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::Rank&lt; N, OuterDir, InnerDir &gt;::outer_direction</definition>
+        <argsstring></argsstring>
+        <name>outer_direction</name>
+        <qualifiedname>Kokkos::Rank::outer_direction</qualifiedname>
+        <initializer>= OuterDir</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" line="65" column="28" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_rank_1aca1a783370c91688dcaecaa63bd6b13e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr Iterate</type>
+        <definition>constexpr Iterate Kokkos::Rank&lt; N, OuterDir, InnerDir &gt;::inner_direction</definition>
+        <argsstring></argsstring>
+        <name>inner_direction</name>
+        <qualifiedname>Kokkos::Rank::inner_direction</qualifiedname>
+        <initializer>= InnerDir</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" line="66" column="28" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" line="56" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Rank.hpp" bodystart="56" bodyend="67"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_rank_1aca1a783370c91688dcaecaa63bd6b13e" prot="public" virt="non-virtual"><scope>Kokkos::Rank</scope><name>inner_direction</name></member>
+      <member refid="struct_kokkos_1_1_rank_1a4ff72082053c855a25a23474c9b23d34" prot="public" virt="non-virtual"><scope>Kokkos::Rank</scope><name>iteration_pattern</name></member>
+      <member refid="struct_kokkos_1_1_rank_1a4797ec0074ffd3052b42069e13ce8210" prot="public" virt="non-virtual"><scope>Kokkos::Rank</scope><name>outer_direction</name></member>
+      <member refid="struct_kokkos_1_1_rank_1af20af855a5d95a196c8f3fda80752004" prot="public" virt="non-virtual"><scope>Kokkos::Rank</scope><name>rank</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

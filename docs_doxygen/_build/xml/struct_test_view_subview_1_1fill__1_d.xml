@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_view_subview_1_1fill__1_d" kind="struct" language="C++" prot="public">
+    <compoundname>TestViewSubview::fill_1D</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ViewType</type>
+      </param>
+      <param>
+        <type>class Space</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1fill__1_d_1acb7076f616fc4e92e606d82f761e08f4" prot="public" static="no">
+        <type>typename Space::execution_space</type>
+        <definition>using TestViewSubview::fill_1D&lt; ViewType, Space &gt;::execution_space =  typename Space::execution_space</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestViewSubview::fill_1D::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="136" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_view_subview_1_1fill__1_d_1ab7a5e4c80f37fd03e82621b84702de2c" prot="public" static="no">
+        <type>typename ViewType::size_type</type>
+        <definition>using TestViewSubview::fill_1D&lt; ViewType, Space &gt;::size_type =  typename ViewType::size_type</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>TestViewSubview::fill_1D::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="137" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_view_subview_1_1fill__1_d_1a47b50488afb845351fc14e80530a4030" prot="public" static="no" mutable="no">
+        <type>ViewType</type>
+        <definition>ViewType TestViewSubview::fill_1D&lt; ViewType, Space &gt;::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <qualifiedname>TestViewSubview::fill_1D::a</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="139" column="12" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_view_subview_1_1fill__1_d_1a6ccaa9a67515b2137cb1ed034e9c387c" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double TestViewSubview::fill_1D&lt; ViewType, Space &gt;::val</definition>
+        <argsstring></argsstring>
+        <name>val</name>
+        <qualifiedname>TestViewSubview::fill_1D::val</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="140" column="10" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_view_subview_1_1fill__1_d_1a8f49605c7e84ccbc427c241d68637387" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestViewSubview::fill_1D&lt; ViewType, Space &gt;::fill_1D</definition>
+        <argsstring>(ViewType a_, double val_)</argsstring>
+        <name>fill_1D</name>
+        <qualifiedname>TestViewSubview::fill_1D::fill_1D</qualifiedname>
+        <param>
+          <type>ViewType</type>
+          <declname>a_</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>val_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="142" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="142" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_view_subview_1_1fill__1_d_1a59586f8d8bb4e4fa6d155be5d1cd1002" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestViewSubview::fill_1D&lt; ViewType, Space &gt;::operator()</definition>
+        <argsstring>(const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestViewSubview::fill_1D::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="145" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="145" bodyend="145"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" line="135" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestViewSubview.hpp" bodystart="135" bodyend="146"/>
+    <listofallmembers>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1a47b50488afb845351fc14e80530a4030" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>a</name></member>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1acb7076f616fc4e92e606d82f761e08f4" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>execution_space</name></member>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1a8f49605c7e84ccbc427c241d68637387" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>fill_1D</name></member>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1a59586f8d8bb4e4fa6d155be5d1cd1002" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>operator()</name></member>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1ab7a5e4c80f37fd03e82621b84702de2c" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>size_type</name></member>
+      <member refid="struct_test_view_subview_1_1fill__1_d_1a6ccaa9a67515b2137cb1ed034e9c387c" prot="public" virt="non-virtual"><scope>TestViewSubview::fill_1D</scope><name>val</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</compoundname>
+    <basecompoundref refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4" prot="public" virt="non-virtual">Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Global &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1a65079e67696c966253d8e22323a8cd7e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; uint32_t *, SYCLDeviceUSMSpace &gt;</type>
+        <definition>View&lt;uint32_t*, SYCLDeviceUSMSpace&gt; Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::m_buffer_view</definition>
+        <argsstring></argsstring>
+        <name>m_buffer_view</name>
+        <qualifiedname>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::m_buffer_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" line="116" column="8" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1a33e23f9daadc928599d653219c4fe796" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::UniqueToken</definition>
+        <argsstring>(execution_space const &amp;arg=execution_space())</argsstring>
+        <name>UniqueToken</name>
+        <qualifiedname>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::UniqueToken</qualifiedname>
+        <param>
+          <type>execution_space const &amp;</type>
+          <declname>arg</declname>
+          <defval>execution_space()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" line="119" column="12" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" bodystart="119" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1ac77cc073985b6001f1dabb185488c375" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::UniqueToken</definition>
+        <argsstring>(size_type max_size, execution_space const &amp;=execution_space())</argsstring>
+        <name>UniqueToken</name>
+        <qualifiedname>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;::UniqueToken</qualifiedname>
+        <param>
+          <type>size_type</type>
+          <declname>max_size</declname>
+        </param>
+        <param>
+          <type>execution_space const &amp;</type>
+          <defval>execution_space()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" line="122" column="3" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" bodystart="122" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Global &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Global &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4"/>
+      </node>
+      <node id="1">
+        <label>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</label>
+        <link refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" line="114" column="1" bodyfile="src/Kokkos/kokkos/core/src/SYCL/Kokkos_SYCL_UniqueToken.hpp" bodystart="115" bodyend="129"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a1d2403f27f801c20e32aba64412aeee1" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>acquire</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a2b2df77e8c18e459c434763dd8f8c218" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1aa07bb10fd2102a64cb905eb4708d1d63" prot="protected" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>m_buffer</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1a65079e67696c966253d8e22323a8cd7e" prot="private" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>m_buffer_view</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a7ef760c2c920f0707f44de89f3df864e" prot="protected" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>m_count</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a1571253f9efb6715445fa5978d5178cb" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a9a3579ab0431a38f4a95b88094966817" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1afc740ebe5b5e54e3c4e15574985348cf" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>release</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a1f56a931ebf9bdab2006dae2fad0ab67" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>size</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a65a1034462665f95df0643394a524d96" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1a33e23f9daadc928599d653219c4fe796" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>UniqueToken</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_instance_01_4_1ac77cc073985b6001f1dabb185488c375" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>UniqueToken</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1a23bccc0a971fb66394862709f6214175" prot="public" virt="non-virtual" ambiguityscope="Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Global &gt;::"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>UniqueToken</name></member>
+      <member refid="class_kokkos_1_1_experimental_1_1_unique_token_3_01_s_y_c_l_00_01_unique_token_scope_1_1_global_01_4_1adbc9150b238b162b609259f45c93da93" prot="public" virt="non-virtual" ambiguityscope="Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Global &gt;::"><scope>Kokkos::Experimental::UniqueToken&lt; SYCL, UniqueTokenScope::Instance &gt;</scope><name>UniqueToken</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

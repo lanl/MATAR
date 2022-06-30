@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_perf_1_1_unordered_map_test" kind="struct" language="C++" prot="public">
+    <compoundname>Perf::UnorderedMapTest</compoundname>
+    <innerclass refid="struct_perf_1_1_unordered_map_test_1_1value__type" prot="public">Perf::UnorderedMapTest::value_type</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename Device</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>Near</declname>
+        <defname>Near</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_perf_1_1_unordered_map_test_1a71144420280edbcf90bd8e9f6986b8ae" prot="public" static="no">
+        <type>Device</type>
+        <definition>using Perf::UnorderedMapTest&lt; Device, Near &gt;::execution_space =  Device</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Perf::UnorderedMapTest::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="58" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_perf_1_1_unordered_map_test_1a109ab844db8b1703bbcc82268bd6d408" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">Kokkos::UnorderedMap</ref>&lt; uint32_t, uint32_t, execution_space &gt;</type>
+        <definition>using Perf::UnorderedMapTest&lt; Device, Near &gt;::map_type =  Kokkos::UnorderedMap&lt;uint32_t, uint32_t, execution_space&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>Perf::UnorderedMapTest::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_perf_1_1_unordered_map_test_1a622fa9e2a1571de861d71d20623b7717" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_unordered_map_histogram" kindref="compound">map_type::histogram_type</ref></type>
+        <definition>using Perf::UnorderedMapTest&lt; Device, Near &gt;::histogram_type =  typename map_type::histogram_type</definition>
+        <argsstring></argsstring>
+        <name>histogram_type</name>
+        <qualifiedname>Perf::UnorderedMapTest::histogram_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="60" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1ad7f93bf8848afb537291693bfe3aa231" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Perf::UnorderedMapTest&lt; Device, Near &gt;::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <qualifiedname>Perf::UnorderedMapTest::capacity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="67" column="12" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1aff7aec67d97594bce9d92468100c50a1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Perf::UnorderedMapTest&lt; Device, Near &gt;::inserts</definition>
+        <argsstring></argsstring>
+        <name>inserts</name>
+        <qualifiedname>Perf::UnorderedMapTest::inserts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="68" column="12" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1a3a1e71a9cabee5215e5cdeaabe429b34" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Perf::UnorderedMapTest&lt; Device, Near &gt;::collisions</definition>
+        <argsstring></argsstring>
+        <name>collisions</name>
+        <qualifiedname>Perf::UnorderedMapTest::collisions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="69" column="12" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1a24861b22dbdc585d712417dbd86bc096" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Perf::UnorderedMapTest&lt; Device, Near &gt;::seconds</definition>
+        <argsstring></argsstring>
+        <name>seconds</name>
+        <qualifiedname>Perf::UnorderedMapTest::seconds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="70" column="10" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1a49a7ef190b34a7403c7b4dafc202b9fb" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_unordered_map" kindref="compound">map_type</ref></type>
+        <definition>map_type Perf::UnorderedMapTest&lt; Device, Near &gt;::map</definition>
+        <argsstring></argsstring>
+        <name>map</name>
+        <qualifiedname>Perf::UnorderedMapTest::map</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="71" column="12" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_perf_1_1_unordered_map_test_1aaa6311a90eefadfffcdf9a7dae86fc00" prot="public" static="no" mutable="no">
+        <type>histogram_type</type>
+        <definition>histogram_type Perf::UnorderedMapTest&lt; Device, Near &gt;::histogram</definition>
+        <argsstring></argsstring>
+        <name>histogram</name>
+        <qualifiedname>Perf::UnorderedMapTest::histogram</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="72" column="18" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_perf_1_1_unordered_map_test_1a12f611f241881da4e409b052684088c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Perf::UnorderedMapTest&lt; Device, Near &gt;::UnorderedMapTest</definition>
+        <argsstring>(uint32_t arg_capacity, uint32_t arg_inserts, uint32_t arg_collisions)</argsstring>
+        <name>UnorderedMapTest</name>
+        <qualifiedname>Perf::UnorderedMapTest::UnorderedMapTest</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>arg_capacity</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>arg_inserts</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>arg_collisions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="74" column="3" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="74" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_perf_1_1_unordered_map_test_1ae53bb127ce703e2c2fd95469cd9865cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Perf::UnorderedMapTest&lt; Device, Near &gt;::print</definition>
+        <argsstring>(std::ostream &amp;metrics_out, std::ostream &amp;length_out, std::ostream &amp;distance_out, std::ostream &amp;block_distance_out)</argsstring>
+        <name>print</name>
+        <qualifiedname>Perf::UnorderedMapTest::print</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>metrics_out</declname>
+        </param>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>length_out</declname>
+        </param>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>distance_out</declname>
+        </param>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>block_distance_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="115" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="115" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_perf_1_1_unordered_map_test_1af023ce0969d01d68c89adcac3736957d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Perf::UnorderedMapTest&lt; Device, Near &gt;::init</definition>
+        <argsstring>(value_type &amp;v) const</argsstring>
+        <name>init</name>
+        <qualifiedname>Perf::UnorderedMapTest::init</qualifiedname>
+        <param>
+          <type><ref refid="struct_perf_1_1_unordered_map_test_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="144" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_perf_1_1_unordered_map_test_1a477c271f361898f12d9124af53b5e7d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Perf::UnorderedMapTest&lt; Device, Near &gt;::join</definition>
+        <argsstring>(volatile value_type &amp;dst, const volatile value_type &amp;src) const</argsstring>
+        <name>join</name>
+        <qualifiedname>Perf::UnorderedMapTest::join</qualifiedname>
+        <param>
+          <type>volatile <ref refid="struct_perf_1_1_unordered_map_test_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const volatile <ref refid="struct_perf_1_1_unordered_map_test_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="150" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_perf_1_1_unordered_map_test_1a9d64596b23abe1ffdc01f180d7e0ea8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Perf::UnorderedMapTest&lt; Device, Near &gt;::operator()</definition>
+        <argsstring>(uint32_t i, value_type &amp;v) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Perf::UnorderedMapTest::operator()</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_perf_1_1_unordered_map_test_1_1value__type" kindref="compound">value_type</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="156" column="8" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="156" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Perf::UnorderedMapTest&lt; Device, Near &gt;</label>
+        <link refid="struct_perf_1_1_unordered_map_test"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>map</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::UnorderedMap&lt; uint32_t, uint32_t, execution_space &gt;</label>
+        <link refid="class_kokkos_1_1_unordered_map"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/containers/performance_tests/TestUnorderedMapPerformance.hpp" bodystart="57" bodyend="163"/>
+    <listofallmembers>
+      <member refid="struct_perf_1_1_unordered_map_test_1ad7f93bf8848afb537291693bfe3aa231" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>capacity</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a3a1e71a9cabee5215e5cdeaabe429b34" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>collisions</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a71144420280edbcf90bd8e9f6986b8ae" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>execution_space</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1aaa6311a90eefadfffcdf9a7dae86fc00" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>histogram</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a622fa9e2a1571de861d71d20623b7717" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>histogram_type</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1af023ce0969d01d68c89adcac3736957d" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>init</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1aff7aec67d97594bce9d92468100c50a1" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>inserts</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a477c271f361898f12d9124af53b5e7d3" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>join</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a49a7ef190b34a7403c7b4dafc202b9fb" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>map</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a109ab844db8b1703bbcc82268bd6d408" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>map_type</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a9d64596b23abe1ffdc01f180d7e0ea8c" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>operator()</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1ae53bb127ce703e2c2fd95469cd9865cd" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>print</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a24861b22dbdc585d712417dbd86bc096" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>seconds</name></member>
+      <member refid="struct_perf_1_1_unordered_map_test_1a12f611f241881da4e409b052684088c5" prot="public" virt="non-virtual"><scope>Perf::UnorderedMapTest</scope><name>UnorderedMapTest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

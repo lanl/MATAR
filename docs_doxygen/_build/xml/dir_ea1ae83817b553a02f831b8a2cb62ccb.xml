@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_ea1ae83817b553a02f831b8a2cb62ccb" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/openmp</compoundname>
+    <innerfile refid="_test_open_m_p_8hpp">TestOpenMP.hpp</innerfile>
+    <innerfile refid="_test_open_m_p___graph_8cpp">TestOpenMP_Graph.cpp</innerfile>
+    <innerfile refid="_test_open_m_p___inter_op_8cpp">TestOpenMP_InterOp.cpp</innerfile>
+    <innerfile refid="_test_open_m_p___partition_master_8cpp">TestOpenMP_PartitionMaster.cpp</innerfile>
+    <innerfile refid="_test_open_m_p___task_8cpp">TestOpenMP_Task.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/openmp/"/>
+  </compounddef>
+</doxygen>

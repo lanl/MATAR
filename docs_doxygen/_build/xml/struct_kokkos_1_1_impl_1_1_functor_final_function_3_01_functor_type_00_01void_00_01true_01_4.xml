@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a08c6b5301dcacc831f1537fe7e949328" prot="public" static="no">
+        <type>typename FunctorValueTraits&lt; FunctorType, void &gt;::value_type</type>
+        <definition>using Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::value_type =  typename FunctorValueTraits&lt;FunctorType, void&gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1972" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1972" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ac611da0a484114eac160d2de1bb19e73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(value_type *) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(value_type *) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1974" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a9e7476bea265d61afc6161e5be69da27" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(value_type *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(value_type *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1976" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ab6cf6bc94b6b871413150cb1bb4508e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(*)(value_type *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(value_type *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1978" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a5faec1eb485fd50375c150f5a361e42a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(const value_type *) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(const value_type *) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1980" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ad76edb1acb2d84382116b66ec639b5f1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(const value_type *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(const value_type *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1982" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a6f013de2436aad58c0f077055413931c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</definition>
+        <argsstring>(void(*)(const value_type *))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(const value_type *)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1984" column="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1971" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1971" bodyend="1985"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ac611da0a484114eac160d2de1bb19e73" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a9e7476bea265d61afc6161e5be69da27" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ab6cf6bc94b6b871413150cb1bb4508e6" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a5faec1eb485fd50375c150f5a361e42a" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1ad76edb1acb2d84382116b66ec639b5f1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a6f013de2436aad58c0f077055413931c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_final_function_3_01_functor_type_00_01void_00_01true_01_4_1a08c6b5301dcacc831f1537fe7e949328" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorFinalFunction&lt; FunctorType, void, true &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

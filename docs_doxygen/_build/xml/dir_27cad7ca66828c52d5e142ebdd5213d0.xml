@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_27cad7ca66828c52d5e142ebdd5213d0" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/src/setup</compoundname>
+    <innerfile refid="_kokkos___setup___cuda_8hpp">Kokkos_Setup_Cuda.hpp</innerfile>
+    <innerfile refid="_kokkos___setup___h_i_p_8hpp">Kokkos_Setup_HIP.hpp</innerfile>
+    <innerfile refid="_kokkos___setup___s_y_c_l_8hpp">Kokkos_Setup_SYCL.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/setup/"/>
+  </compounddef>
+</doxygen>

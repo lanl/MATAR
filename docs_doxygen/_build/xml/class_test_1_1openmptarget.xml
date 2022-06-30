@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_test_1_1openmptarget" kind="class" language="C++" prot="public">
+    <compoundname>Test::openmptarget</compoundname>
+    <basecompoundref refid="classtesting_1_1_test" prot="public" virt="non-virtual">testing::Test</basecompoundref>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="class_test_1_1openmptarget_1affc90f83ca3d2723bdc25561359b1ae1" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::openmptarget::SetUpTestCase</definition>
+        <argsstring>()</argsstring>
+        <name>SetUpTestCase</name>
+        <qualifiedname>Test::openmptarget::SetUpTestCase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" line="87" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" bodystart="87" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_1_1openmptarget_1a7dedaee0fc1614ddb39b4ed156156362" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::openmptarget::TearDownTestCase</definition>
+        <argsstring>()</argsstring>
+        <name>TearDownTestCase</name>
+        <qualifiedname>Test::openmptarget::TearDownTestCase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" line="103" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" bodystart="103" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Test::openmptarget</label>
+        <link refid="class_test_1_1openmptarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>testing::Test</label>
+        <link refid="classtesting_1_1_test"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::openmptarget</label>
+        <link refid="class_test_1_1openmptarget"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>testing::Test</label>
+        <link refid="classtesting_1_1_test"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" line="85" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/openmptarget/TestOpenMPTarget.hpp" bodystart="85" bodyend="104"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1_test_1a7a00be7dd0a6bfdc8d47a1b784623613" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasFailure</name></member>
+      <member refid="classtesting_1_1_test_1a7a00be7dd0a6bfdc8d47a1b784623613" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasFailure</name></member>
+      <member refid="classtesting_1_1_test_1aa8d0725cfb519f82eaf4fd2d2f46d97d" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasFatalFailure</name></member>
+      <member refid="classtesting_1_1_test_1a0a89846458f0e8ed1c9457c957e8182a" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasFatalFailure</name></member>
+      <member refid="classtesting_1_1_test_1a3b933cea62eff67a05e23aa07f38bf29" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasNonfatalFailure</name></member>
+      <member refid="classtesting_1_1_test_1a07e896f1b1836f8ac075c26d7b7c9fb8" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>HasNonfatalFailure</name></member>
+      <member refid="classtesting_1_1_test_1a7b20a48c0bbc9dd1fe96715e4a5c0164" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>RecordProperty</name></member>
+      <member refid="classtesting_1_1_test_1afb8d29af28e48dc65b2b743f1874ccfe" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>RecordProperty</name></member>
+      <member refid="classtesting_1_1_test_1ae0448aec9e389fab70f6a75a59ff6aa2" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>RecordProperty</name></member>
+      <member refid="classtesting_1_1_test_1af602903efb17730b977304fc56500881" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>RecordProperty</name></member>
+      <member refid="classtesting_1_1_test_1a57a4116f39f6636a80710ded7d42e889" prot="protected" virt="virtual"><scope>Test::openmptarget</scope><name>SetUp</name></member>
+      <member refid="classtesting_1_1_test_1a8b38992669fb844864807cf32e416853" prot="protected" virt="virtual"><scope>Test::openmptarget</scope><name>SetUp</name></member>
+      <member refid="class_test_1_1openmptarget_1affc90f83ca3d2723bdc25561359b1ae1" prot="protected" virt="non-virtual"><scope>Test::openmptarget</scope><name>SetUpTestCase</name></member>
+      <member refid="classtesting_1_1_test_1a5f2a051d1d99c9b784c666c586186cf9" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>SetUpTestCaseFunc</name></member>
+      <member refid="classtesting_1_1_test_1a5f2a051d1d99c9b784c666c586186cf9" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>SetUpTestCaseFunc</name></member>
+      <member refid="classtesting_1_1_test_1a2889fd829b6c712d98fb3896d28f64a3" prot="protected" virt="virtual"><scope>Test::openmptarget</scope><name>TearDown</name></member>
+      <member refid="classtesting_1_1_test_1aab3c02c9f81afe1357adfc45afccd474" prot="protected" virt="virtual"><scope>Test::openmptarget</scope><name>TearDown</name></member>
+      <member refid="class_test_1_1openmptarget_1a7dedaee0fc1614ddb39b4ed156156362" prot="protected" virt="non-virtual"><scope>Test::openmptarget</scope><name>TearDownTestCase</name></member>
+      <member refid="classtesting_1_1_test_1aa0f532e93b9f3500144c53f31466976c" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>TearDownTestCaseFunc</name></member>
+      <member refid="classtesting_1_1_test_1aa0f532e93b9f3500144c53f31466976c" prot="public" virt="non-virtual"><scope>Test::openmptarget</scope><name>TearDownTestCaseFunc</name></member>
+      <member refid="classtesting_1_1_test_1a68b7618abd1fc6d13382738b0d3b5c7c" prot="protected" virt="non-virtual"><scope>Test::openmptarget</scope><name>Test</name></member>
+      <member refid="classtesting_1_1_test_1a68b7618abd1fc6d13382738b0d3b5c7c" prot="protected" virt="non-virtual"><scope>Test::openmptarget</scope><name>Test</name></member>
+      <member refid="classtesting_1_1_test_1afc75dfea37533866035b0d97cd11483e" prot="public" virt="virtual"><scope>Test::openmptarget</scope><name>~Test</name></member>
+      <member refid="classtesting_1_1_test_1ad99dc9b12208fd4bffc367f0a1e3df1b" prot="public" virt="virtual"><scope>Test::openmptarget</scope><name>~Test</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

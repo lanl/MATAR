@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_parallel_reduce_functor_type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ParallelReduceFunctorType</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ExecPolicy</type>
+      </param>
+      <param>
+        <type>class ValueType</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_functor_type_1ad475d5bf1c96cdd5f0d3ea955c75bbf4" prot="public" static="no">
+        <type>FunctorType</type>
+        <definition>using Kokkos::Impl::ParallelReduceFunctorType&lt; FunctorType, ExecPolicy, ValueType, ExecutionSpace &gt;::functor_type =  FunctorType</definition>
+        <argsstring></argsstring>
+        <name>functor_type</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduceFunctorType::functor_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="838" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_parallel_reduce_functor_type_1a38084a5a28a56cb06af511ded7e913c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const functor_type &amp;</type>
+        <definition>static const functor_type &amp; Kokkos::Impl::ParallelReduceFunctorType&lt; FunctorType, ExecPolicy, ValueType, ExecutionSpace &gt;::functor</definition>
+        <argsstring>(const functor_type &amp;functor)</argsstring>
+        <name>functor</name>
+        <qualifiedname>Kokkos::Impl::ParallelReduceFunctorType::functor</qualifiedname>
+        <param>
+          <type>const functor_type &amp;</type>
+          <declname>functor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="839" column="29" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="839" bodyend="841"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" line="837" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Parallel_Reduce.hpp" bodystart="837" bodyend="842"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_functor_type_1a38084a5a28a56cb06af511ded7e913c2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduceFunctorType</scope><name>functor</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_parallel_reduce_functor_type_1ad475d5bf1c96cdd5f0d3ea955c75bbf4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ParallelReduceFunctorType</scope><name>functor_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

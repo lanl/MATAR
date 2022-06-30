@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_experimental_1_1is__work__item__property" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Experimental::is_work_item_property</compoundname>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1is__work__item__property_1_1have" prot="private">Kokkos::Experimental::is_work_item_property::have</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1is__work__item__property_1_1have_3_01_u_00_01typename_01std_1_355b70783c1dc1e7b64873fa71bda1d8" prot="private">Kokkos::Experimental::is_work_item_property::have&lt; U, typename std::is_base_of&lt; typename U::work_item_property, U &gt;::type &gt;</innerclass>
+    <innerclass refid="struct_kokkos_1_1_experimental_1_1is__work__item__property_1_1have_3_01_u_00_01typename_01std_1_e1a85ba8a8d2fbe3b61c2ff5e84b1f58" prot="private">Kokkos::Experimental::is_work_item_property::have&lt; U, typename std::is_base_of&lt; typename U::work_item_property_type, U &gt;::type &gt;</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_experimental_1_1is__work__item__property_1ac5463b255a6ee3ccdb6f8cee6e389354" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr bool</type>
+        <definition>constexpr bool Kokkos::Experimental::is_work_item_property&lt; T &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Experimental::is_work_item_property::value</qualifiedname>
+        <initializer>=   <ref refid="struct_kokkos_1_1_experimental_1_1is__work__item__property" kindref="compound">is_work_item_property</ref> ::template have&lt;typename std::remove_cv&lt;T&gt;::type&gt;::value</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="178" column="232" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_experimental_1_1is__work__item__property_1a9be89492bc3d621c3e1771ddb5e1c835" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr Kokkos::Experimental::is_work_item_property&lt; T &gt;::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Kokkos::Experimental::is_work_item_property::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="178" column="251" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="178" bodyend="178"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" line="178" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Concepts.hpp" bodystart="178" bodyend="178"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_experimental_1_1is__work__item__property_1a9be89492bc3d621c3e1771ddb5e1c835" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::is_work_item_property</scope><name>operator bool</name></member>
+      <member refid="struct_kokkos_1_1_experimental_1_1is__work__item__property_1ac5463b255a6ee3ccdb6f8cee6e389354" prot="public" virt="non-virtual"><scope>Kokkos::Experimental::is_work_item_property</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

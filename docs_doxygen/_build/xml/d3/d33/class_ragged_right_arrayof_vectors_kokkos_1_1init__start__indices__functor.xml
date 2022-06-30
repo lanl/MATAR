@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor" kind="class" language="C++" prot="public">
+    <compoundname>RaggedRightArrayofVectorsKokkos::init_start_indices_functor</compoundname>
+    <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1a70f35774c9adcf6a2d3c73b573790977" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::mystart_index_</definition>
+        <argsstring></argsstring>
+        <name>mystart_index_</name>
+        <qualifiedname>RaggedRightArrayofVectorsKokkos::init_start_indices_functor::mystart_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11817" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11817" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1a340cf6b17e9217d8c2ff0427db5a18b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::init_start_indices_functor</definition>
+        <argsstring>(SArray1D tempstart_index_)</argsstring>
+        <name>init_start_indices_functor</name>
+        <qualifiedname>RaggedRightArrayofVectorsKokkos::init_start_indices_functor::init_start_indices_functor</qualifiedname>
+        <param>
+          <type>SArray1D</type>
+          <declname>tempstart_index_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11818" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11818" bodyend="11820"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1ad537cdbeaf6ae265a308ca8414b31c4f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::operator()</definition>
+        <argsstring>(const int index) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedRightArrayofVectorsKokkos::init_start_indices_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11821" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11821" bodyend="11823"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11815" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11815" bodyend="11824"/>
+    <listofallmembers>
+      <member refid="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1a340cf6b17e9217d8c2ff0427db5a18b7" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectorsKokkos::init_start_indices_functor</scope><name>init_start_indices_functor</name></member>
+      <member refid="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1a70f35774c9adcf6a2d3c73b573790977" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectorsKokkos::init_start_indices_functor</scope><name>mystart_index_</name></member>
+      <member refid="d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor_1ad537cdbeaf6ae265a308ca8414b31c4f" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectorsKokkos::init_start_indices_functor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

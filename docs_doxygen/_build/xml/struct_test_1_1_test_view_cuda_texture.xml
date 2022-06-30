@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_view_cuda_texture" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestViewCudaTexture</compoundname>
+    <innerclass refid="struct_test_1_1_test_view_cuda_texture_1_1_tag_init" prot="public">Test::TestViewCudaTexture::TagInit</innerclass>
+    <innerclass refid="struct_test_1_1_test_view_cuda_texture_1_1_tag_test" prot="public">Test::TestViewCudaTexture::TagTest</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class MemSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_test_1_1_test_view_cuda_texture_1ad761aa89349d7a3ad9ba300ec6d244dd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>@256</name>
+        <qualifiedname>Test::TestViewCudaTexture::@256</qualifiedname>
+        <enumvalue id="struct_test_1_1_test_view_cuda_texture_1ad761aa89349d7a3ad9ba300ec6d244ddaa7d4822613ee89d6815ec2f02b177842" prot="public">
+          <name>N</name>
+          <initializer>= 1000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="329" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="329" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_cuda_texture_1af6b60cb6132f92e4d540af05fcfa68a4" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; double *, MemSpace &gt;</type>
+        <definition>using Test::TestViewCudaTexture&lt; MemSpace &gt;::V =  Kokkos::View&lt;double *, MemSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>V</name>
+        <qualifiedname>Test::TestViewCudaTexture::V</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="331" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_test_view_cuda_texture_1a48cd77585025ce901855080138b450b8" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; const double *, MemSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryRandomAccess</ref> &gt;</type>
+        <definition>using Test::TestViewCudaTexture&lt; MemSpace &gt;::T =  Kokkos::View&lt;const double *, MemSpace, Kokkos::MemoryRandomAccess&gt;</definition>
+        <argsstring></argsstring>
+        <name>T</name>
+        <qualifiedname>Test::TestViewCudaTexture::T</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="332" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_view_cuda_texture_1ae93d2da4174930fb802da9ccb0877044" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">V</ref></type>
+        <definition>V Test::TestViewCudaTexture&lt; MemSpace &gt;::m_base</definition>
+        <argsstring></argsstring>
+        <name>m_base</name>
+        <qualifiedname>Test::TestViewCudaTexture::m_base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="334" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_view_cuda_texture_1abd3b26c04e8657b103455828e14ba607" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">T</ref></type>
+        <definition>T Test::TestViewCudaTexture&lt; MemSpace &gt;::m_tex</definition>
+        <argsstring></argsstring>
+        <name>m_tex</name>
+        <qualifiedname>Test::TestViewCudaTexture::m_tex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="335" column="5" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="335" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_texture_1aad82f5a2f2f4dc1bf99f6b68b1c2162b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewCudaTexture&lt; MemSpace &gt;::operator()</definition>
+        <argsstring>(const TagInit &amp;, const int i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewCudaTexture::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_cuda_texture_1_1_tag_init" kindref="compound">TagInit</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="341" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="341" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_texture_1a2dee49f8c2b4b4eddd16b82dd52c2df5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Test::TestViewCudaTexture&lt; MemSpace &gt;::operator()</definition>
+        <argsstring>(const TagTest &amp;, const int i, long &amp;error_count) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestViewCudaTexture::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_test_1_1_test_view_cuda_texture_1_1_tag_test" kindref="compound">TagTest</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>long &amp;</type>
+          <declname>error_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="344" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="344" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_texture_1a70877c625160ef1d12be9a72b3c64df5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestViewCudaTexture&lt; MemSpace &gt;::TestViewCudaTexture</definition>
+        <argsstring>()</argsstring>
+        <name>TestViewCudaTexture</name>
+        <qualifiedname>Test::TestViewCudaTexture::TestViewCudaTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="348" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="348" bodyend="348"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_test_1_1_test_view_cuda_texture_1afcbb5c068991f47b12a9a031dcb7b5be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Test::TestViewCudaTexture&lt; MemSpace &gt;::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Test::TestViewCudaTexture::run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="350" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="350" bodyend="367"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestViewCudaTexture&lt; MemSpace &gt;</label>
+        <link refid="struct_test_1_1_test_view_cuda_texture"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_base</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_tex</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Kokkos::View&lt; const double *, MemSpace, Kokkos::MemoryRandomAccess &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; double *, MemSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Kokkos::ViewTraits&lt; const double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; double *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" line="328" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/cuda/TestCuda_Spaces.cpp" bodystart="328" bodyend="368"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1ae93d2da4174930fb802da9ccb0877044" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>m_base</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1abd3b26c04e8657b103455828e14ba607" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>m_tex</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1ad761aa89349d7a3ad9ba300ec6d244ddaa7d4822613ee89d6815ec2f02b177842" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>N</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1aad82f5a2f2f4dc1bf99f6b68b1c2162b" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1a2dee49f8c2b4b4eddd16b82dd52c2df5" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1afcbb5c068991f47b12a9a031dcb7b5be" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>run</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1a48cd77585025ce901855080138b450b8" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>T</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1a70877c625160ef1d12be9a72b3c64df5" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>TestViewCudaTexture</name></member>
+      <member refid="struct_test_1_1_test_view_cuda_texture_1af6b60cb6132f92e4d540af05fcfa68a4" prot="public" virt="non-virtual"><scope>Test::TestViewCudaTexture</scope><name>V</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

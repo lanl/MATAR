@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_profiling_1_1_profiling_section" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::Profiling::ProfilingSection</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_profiling_1_1_profiling_section_1aa2871ca1371c198d92d7bbe350f46f3a" prot="protected" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Kokkos::Profiling::ProfilingSection::secName</definition>
+        <argsstring></argsstring>
+        <name>secName</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::secName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="88" column="21" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_profiling_1_1_profiling_section_1a2f0e046d7f2b4582981ecfd405a869c6" prot="protected" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Profiling::ProfilingSection::secID</definition>
+        <argsstring></argsstring>
+        <name>secID</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::secID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="89" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1a20e2c78522ca42ec80f3c073e36f0655" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Profiling::ProfilingSection::ProfilingSection</definition>
+        <argsstring>(const std::string &amp;sectionName)</argsstring>
+        <name>ProfilingSection</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::ProfilingSection</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sectionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="59" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1aae257cb7a245404f52788b94c24b2418" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Profiling::ProfilingSection::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="65" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="65" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1a240b5aac84140f78756c058054aa5a03" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Kokkos::Profiling::ProfilingSection::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="71" column="8" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="71" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1af0778815108ea9aa97607f90c3f6b7c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Profiling::ProfilingSection::~ProfilingSection</definition>
+        <argsstring>()</argsstring>
+        <name>~ProfilingSection</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::~ProfilingSection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="77" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1ab8e1b6c48852a0cb69f806180bc5f876" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Kokkos::Profiling::ProfilingSection::getName</definition>
+        <argsstring>()</argsstring>
+        <name>getName</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="83" column="15" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_profiling_1_1_profiling_section_1aa01c4b708bd19f7d176d7a489bb9e571" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t Kokkos::Profiling::ProfilingSection::getSectionID</definition>
+        <argsstring>()</argsstring>
+        <name>getSectionID</name>
+        <qualifiedname>Kokkos::Profiling::ProfilingSection::getSectionID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="85" column="12" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="85" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" line="57" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Profiling_ProfileSection.hpp" bodystart="57" bodyend="90"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1ab8e1b6c48852a0cb69f806180bc5f876" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>getName</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1aa01c4b708bd19f7d176d7a489bb9e571" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>getSectionID</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1a20e2c78522ca42ec80f3c073e36f0655" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>ProfilingSection</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1a2f0e046d7f2b4582981ecfd405a869c6" prot="protected" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>secID</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1aa2871ca1371c198d92d7bbe350f46f3a" prot="protected" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>secName</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1aae257cb7a245404f52788b94c24b2418" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>start</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1a240b5aac84140f78756c058054aa5a03" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>stop</name></member>
+      <member refid="class_kokkos_1_1_profiling_1_1_profiling_section_1af0778815108ea9aa97607f90c3f6b7c9" prot="public" virt="non-virtual"><scope>Kokkos::Profiling::ProfilingSection</scope><name>~ProfilingSection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

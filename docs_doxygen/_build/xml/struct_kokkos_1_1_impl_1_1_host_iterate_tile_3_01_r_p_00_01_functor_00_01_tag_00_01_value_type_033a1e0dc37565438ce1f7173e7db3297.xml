@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</compoundname>
+    <innerclass refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_08a809c1869b8e632e12982b5ce997f03" prot="public">Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::RankTag</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename RP</type>
+      </param>
+      <param>
+        <type>typename Functor</type>
+      </param>
+      <param>
+        <type>typename Tag</type>
+      </param>
+      <param>
+        <type>typename ValueType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a4f30f4931ebedf9bc8baed3df0f6c660" prot="public" static="no">
+        <type>typename RP::index_type</type>
+        <definition>using Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::index_type =  typename RP::index_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::index_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1529" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a7ad3d59841ae3df7dc8cd47ab90093b2" prot="public" static="no">
+        <type>typename RP::point_type</type>
+        <definition>using Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::point_type =  typename RP::point_type</definition>
+        <argsstring></argsstring>
+        <name>point_type</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::point_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1530" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1530" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a3fd98f39a9115347f292407d149d4257" prot="public" static="no">
+        <type>ValueType</type>
+        <definition>using Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::value_type =  ValueType</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1532" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1532" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a46e5a308cfdca6844479e76ec6d06199" prot="public" static="no" mutable="no">
+        <type>RP const  &amp;</type>
+        <definition>RP const&amp; Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_rp</definition>
+        <argsstring></argsstring>
+        <name>m_rp</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_rp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1927" column="12" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1927" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a4974dff14828fa95707b26ccba772ae0" prot="public" static="no" mutable="no">
+        <type>Functor const  &amp;</type>
+        <definition>Functor const&amp; Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_func</definition>
+        <argsstring></argsstring>
+        <name>m_func</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_func</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1928" column="17" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1928" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1ad74c661c0183e1cc24cf53b0ebe3d0d4" prot="public" static="no" mutable="no">
+        <type>std::conditional&lt; std::is_same&lt; Tag, void &gt;::value, int, Tag &gt;::type</type>
+        <definition>std::conditional&lt;std::is_same&lt;Tag,void&gt;::value,int,Tag&gt;::type Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_tag</definition>
+        <argsstring></argsstring>
+        <name>m_tag</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::m_tag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1930" column="7" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1930" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1aaa6cde2260ec3322253caa0373b36948" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::HostIterateTile</definition>
+        <argsstring>(RP const &amp;rp, Functor const &amp;func)</argsstring>
+        <name>HostIterateTile</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::HostIterateTile</qualifiedname>
+        <param>
+          <type>RP const &amp;</type>
+          <declname>rp</declname>
+        </param>
+        <param>
+          <type>Functor const &amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1534" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1534" bodyend="1535"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1afc5e60d8bafee87fe3ec4884b96f557d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::check_iteration_bounds</definition>
+        <argsstring>(point_type &amp;partial_tile, point_type &amp;offset) const</argsstring>
+        <name>check_iteration_bounds</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::check_iteration_bounds</qualifiedname>
+        <param>
+          <type>point_type &amp;</type>
+          <declname>partial_tile</declname>
+        </param>
+        <param>
+          <type>point_type &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1537" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1537" bodyend="1557"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a10200f73ffbd514f5a96bc3b8072c121" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename IType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::operator()</definition>
+        <argsstring>(IType tile_idx) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::operator()</qualifiedname>
+        <param>
+          <type>IType</type>
+          <declname>tile_idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1567" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1567" bodyend="1592"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1afe97b0138bd2e80b8387ab37fe4c8fd1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;(sizeof...(Args)==RP::rank &amp;&amp;std::is_same&lt; Tag, void &gt;::value), void &gt;::type</type>
+        <definition>std::enable_if&lt;(sizeof...(Args)==RP::rank &amp;&amp;std::is_same&lt; Tag, void &gt;::value), void &gt;::type Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::apply</definition>
+        <argsstring>(Args &amp;&amp;... args) const</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::apply</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1915" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1915" bodyend="1917"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1ad17c99e45b04d6e0974f6c21099a5acf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt;(sizeof...(Args)==RP::rank &amp;&amp;!std::is_same&lt; Tag, void &gt;::value), void &gt;::type</type>
+        <definition>std::enable_if&lt;(sizeof...(Args)==RP::rank &amp;&amp;!std::is_same&lt; Tag, void &gt;::value), void &gt;::type Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::apply</definition>
+        <argsstring>(Args &amp;&amp;... args) const</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;::apply</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1923" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1923" bodyend="1925"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1527" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1528" bodyend="1931"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1afe97b0138bd2e80b8387ab37fe4c8fd1" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>apply</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1ad17c99e45b04d6e0974f6c21099a5acf" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>apply</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1afc5e60d8bafee87fe3ec4884b96f557d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>check_iteration_bounds</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1aaa6cde2260ec3322253caa0373b36948" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>HostIterateTile</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a4f30f4931ebedf9bc8baed3df0f6c660" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>index_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a4974dff14828fa95707b26ccba772ae0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>m_func</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a46e5a308cfdca6844479e76ec6d06199" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>m_rp</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1ad74c661c0183e1cc24cf53b0ebe3d0d4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>m_tag</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a10200f73ffbd514f5a96bc3b8072c121" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>operator()</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a7ad3d59841ae3df7dc8cd47ab90093b2" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>point_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_host_iterate_tile_3_01_r_p_00_01_functor_00_01_tag_00_01_value_type_033a1e0dc37565438ce1f7173e7db3297_1a3fd98f39a9115347f292407d149d4257" prot="public" virt="non-virtual"><scope>Kokkos::Impl::HostIterateTile&lt; RP, Functor, Tag, ValueType, std::enable_if_t&lt; std::is_void&lt; ValueType &gt;::value &gt; &gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

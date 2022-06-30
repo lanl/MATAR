@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_array_3_01void_00_01_k_o_k_k_o_s___i_n_v_a_l_i_d___i_n_d_e_x_00_01void_01_4_1_1strided" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Array&lt; void, KOKKOS_INVALID_INDEX, void &gt;::strided</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Array.hpp" line="213" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Array.hpp" bodystart="213" bodyend="213"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

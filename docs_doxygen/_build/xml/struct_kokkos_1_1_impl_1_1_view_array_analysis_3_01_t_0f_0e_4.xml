@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1aa44e57f7369770e995f57f304ea78e06" prot="private" static="no">
+        <type><ref refid="struct_kokkos_1_1_impl_1_1_view_array_analysis" kindref="compound">ViewArrayAnalysis</ref>&lt; T &gt;</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::nested =  ViewArrayAnalysis&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>nested</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::nested</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="789" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="789" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a2bb7188d419bfec554984b38a2aa8891" prot="private" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">nested::dimension</ref></type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::nested_dimension =  typename nested::dimension</definition>
+        <argsstring></argsstring>
+        <name>nested_dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::nested_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="790" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="790" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a1ee8bf64d4d0ec3710ac8a331c333234" prot="public" static="no">
+        <type>typename nested::value_type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::value_type =  typename nested::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="793" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="793" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a245142fa3d79c05d75fb42d7f832629b" prot="public" static="no">
+        <type>typename nested::const_value_type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::const_value_type =  typename nested::const_value_type</definition>
+        <argsstring></argsstring>
+        <name>const_value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="794" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="794" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1ad75759ef4e6acd88a208750b49d5ba5f" prot="public" static="no">
+        <type>typename nested::non_const_value_type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::non_const_value_type =  typename nested::non_const_value_type</definition>
+        <argsstring></argsstring>
+        <name>non_const_value_type</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::non_const_value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="795" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="795" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a49068106abd2cb41054627971371ca59" prot="public" static="no">
+        <type>typename nested::dynamic_dimension::template prepend&lt; 0 &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::dynamic_dimension =  typename nested::dynamic_dimension::template prepend&lt;0&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>dynamic_dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::dynamic_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="797" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="798" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a0c2e2886368476b14fcd713c586405dd" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_view_dimension" kindref="compound">nested::static_dimension</ref></type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::static_dimension =  typename nested::static_dimension</definition>
+        <argsstring></argsstring>
+        <name>static_dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::static_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="800" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="800" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1ab624eace2a49e78d05f9986c628eb83c" prot="public" static="no">
+        <type>typename <ref refid="struct_kokkos_1_1_impl_1_1_view_dimension_join" kindref="compound">ViewDimensionJoin</ref>&lt; dynamic_dimension, static_dimension &gt;::type</type>
+        <definition>using Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::dimension =  typename ViewDimensionJoin&lt;dynamic_dimension, static_dimension&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>dimension</name>
+        <qualifiedname>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;::dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="802" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="803" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="787" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="787" bodyend="804"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a245142fa3d79c05d75fb42d7f832629b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1ab624eace2a49e78d05f9986c628eb83c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a49068106abd2cb41054627971371ca59" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>dynamic_dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1aa44e57f7369770e995f57f304ea78e06" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>nested</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a2bb7188d419bfec554984b38a2aa8891" prot="private" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>nested_dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1ad75759ef4e6acd88a208750b49d5ba5f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>non_const_value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a0c2e2886368476b14fcd713c586405dd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>static_dimension</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_view_array_analysis_3_01_t_0f_0e_4_1a1ee8bf64d4d0ec3710ac8a331c333234" prot="public" virt="non-virtual"><scope>Kokkos::Impl::ViewArrayAnalysis&lt; T[]&gt;</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

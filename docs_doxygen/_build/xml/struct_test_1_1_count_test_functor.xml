@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_count_test_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Test::CountTestFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_1_1_count_test_functor_1ae8f72efbc17d722904fb2e76bafb9569" prot="public" static="no">
+        <type>int</type>
+        <definition>using Test::CountTestFunctor&lt; ExecSpace &gt;::value_type =  int</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Test::CountTestFunctor::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="54" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_1_1_count_test_functor_1a3e2a0b8a3bb8be18a7fc1627a8e8f7ff" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; T, ExecSpace, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">Kokkos::MemoryTraits</ref>&lt; Kokkos::Atomic &gt; &gt;</type>
+        <definition>using Test::CountTestFunctor&lt; ExecSpace &gt;::atomic_view =  Kokkos::View&lt;T, ExecSpace, Kokkos::MemoryTraits&lt;Kokkos::Atomic&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>atomic_view</name>
+        <qualifiedname>Test::CountTestFunctor::atomic_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="56" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_count_test_functor_1a0c83ed36899f33146121a6b16c185cc2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">atomic_view</ref>&lt; int &gt;</type>
+        <definition>atomic_view&lt;int&gt; Test::CountTestFunctor&lt; ExecSpace &gt;::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <qualifiedname>Test::CountTestFunctor::count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="58" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_count_test_functor_1a708ce8958d991bf0b72cd6ea6efdbf97" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">atomic_view</ref>&lt; int &gt;</type>
+        <definition>atomic_view&lt;int&gt; Test::CountTestFunctor&lt; ExecSpace &gt;::bugs</definition>
+        <argsstring></argsstring>
+        <name>bugs</name>
+        <qualifiedname>Test::CountTestFunctor::bugs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="59" column="15" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_count_test_functor_1a226f779f8ccd09735514ac8f47adee98" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::CountTestFunctor&lt; ExecSpace &gt;::expected_count_min</definition>
+        <argsstring></argsstring>
+        <name>expected_count_min</name>
+        <qualifiedname>Test::CountTestFunctor::expected_count_min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="60" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_count_test_functor_1a61b3ba7e21eb5832974aa99d79cb68f6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Test::CountTestFunctor&lt; ExecSpace &gt;::expected_count_max</definition>
+        <argsstring></argsstring>
+        <name>expected_count_max</name>
+        <qualifiedname>Test::CountTestFunctor::expected_count_max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="61" column="7" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_count_test_functor_1a81428ef2260ecae3bc9c7f45d0b5ad5c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::CountTestFunctor&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(Ts &amp;&amp;...) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::CountTestFunctor::operator()</qualifiedname>
+        <param>
+          <type>Ts &amp;&amp;</type>
+          <declname>...</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="64" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::CountTestFunctor&lt; ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_count_test_functor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>bugs</edgelabel>
+          <edgelabel>count</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" line="53" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestGraph.hpp" bodystart="53" bodyend="68"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_count_test_functor_1a3e2a0b8a3bb8be18a7fc1627a8e8f7ff" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>atomic_view</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1a708ce8958d991bf0b72cd6ea6efdbf97" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>bugs</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1a0c83ed36899f33146121a6b16c185cc2" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>count</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1a61b3ba7e21eb5832974aa99d79cb68f6" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>expected_count_max</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1a226f779f8ccd09735514ac8f47adee98" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>expected_count_min</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1a81428ef2260ecae3bc9c7f45d0b5ad5c" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_count_test_functor_1ae8f72efbc17d722904fb2e76bafb9569" prot="public" virt="non-virtual"><scope>Test::CountTestFunctor</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

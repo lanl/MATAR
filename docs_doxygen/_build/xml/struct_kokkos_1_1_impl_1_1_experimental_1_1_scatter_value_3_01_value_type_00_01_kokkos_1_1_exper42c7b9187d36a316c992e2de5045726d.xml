@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename ValueType</type>
+      </param>
+      <param>
+        <type>typename DeviceType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1af879b0ccb7ef9a4a7191d235e813a3d9" prot="public" static="no" mutable="no">
+        <type>ValueType &amp;</type>
+        <definition>ValueType&amp; Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="244" column="13" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a55359e29ffafeee8cce0e0f021f685a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::ScatterValue</definition>
+        <argsstring>(ValueType &amp;value_in)</argsstring>
+        <name>ScatterValue</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::ScatterValue</qualifiedname>
+        <param>
+          <type>ValueType &amp;</type>
+          <declname>value_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="247" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="247" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a5925350c890347454b78bb863a8b263e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::ScatterValue</definition>
+        <argsstring>(ScatterValue &amp;&amp;other)</argsstring>
+        <name>ScatterValue</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::ScatterValue</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value" kindref="compound">ScatterValue</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="249" column="31" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="249" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1ae5cdc32d0aa6eccab5ec5d46a38a05b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator+=</definition>
+        <argsstring>(ValueType const &amp;rhs)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator+=</qualifiedname>
+        <param>
+          <type>ValueType const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="251" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="251" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1ab38a813ecf0b42eb9b88d0152797c4e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator++</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="254" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="254" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1afc56f05e8bc67eeecf28f4cfbe8f8363" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator++</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator++</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator++</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="255" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="255" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1af95a8b227600c2fc8fbfe82457056059" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator-=</definition>
+        <argsstring>(ValueType const &amp;rhs)</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator-=</qualifiedname>
+        <param>
+          <type>ValueType const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="256" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="256" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a4f86f8f60092ac46f4e441bc2cbe4763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator--</definition>
+        <argsstring>()</argsstring>
+        <name>operator--</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator--</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="259" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="259" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a1690e72bd4af5029c1e7be85b842dd1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator--</definition>
+        <argsstring>(int)</argsstring>
+        <name>operator--</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::operator--</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="260" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1aff45f8df020b94b47d81760bf0898145" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::update</definition>
+        <argsstring>(ValueType const &amp;rhs)</argsstring>
+        <name>update</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::update</qualifiedname>
+        <param>
+          <type>ValueType const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="261" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a2d14947c989220e1996233b741d9cc78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION void</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION void Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="264" column="36" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="264" bodyend="266"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" line="242" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_ScatterView.hpp" bodystart="243" bodyend="267"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1ab38a813ecf0b42eb9b88d0152797c4e5" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator++</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1afc56f05e8bc67eeecf28f4cfbe8f8363" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator++</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1ae5cdc32d0aa6eccab5ec5d46a38a05b4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator+=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a4f86f8f60092ac46f4e441bc2cbe4763" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator--</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a1690e72bd4af5029c1e7be85b842dd1d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator--</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1af95a8b227600c2fc8fbfe82457056059" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>operator-=</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a2d14947c989220e1996233b741d9cc78" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>reset</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a55359e29ffafeee8cce0e0f021f685a7" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>ScatterValue</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1a5925350c890347454b78bb863a8b263e" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>ScatterValue</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1aff45f8df020b94b47d81760bf0898145" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>update</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_experimental_1_1_scatter_value_3_01_value_type_00_01_kokkos_1_1_exper42c7b9187d36a316c992e2de5045726d_1af879b0ccb7ef9a4a7191d235e813a3d9" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Experimental::ScatterValue&lt; ValueType, Kokkos::Experimental::ScatterSum, DeviceType, Kokkos::Experimental::ScatterNonAtomic &gt;</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

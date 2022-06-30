@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_290089cbeac487c41716017fd6a096cd" kind="dir">
+    <compoundname>src/Kokkos/kokkos/core/unit_test/default</compoundname>
+    <innerfile refid="_test_default_device_develop_8cpp">TestDefaultDeviceDevelop.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_8cpp">TestDefaultDeviceType.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__a1_8cpp">TestDefaultDeviceType_a1.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__a2_8cpp">TestDefaultDeviceType_a2.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__a3_8cpp">TestDefaultDeviceType_a3.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__b1_8cpp">TestDefaultDeviceType_b1.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__b2_8cpp">TestDefaultDeviceType_b2.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__b3_8cpp">TestDefaultDeviceType_b3.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__c1_8cpp">TestDefaultDeviceType_c1.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__c2_8cpp">TestDefaultDeviceType_c2.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__c3_8cpp">TestDefaultDeviceType_c3.cpp</innerfile>
+    <innerfile refid="_test_default_device_type__d_8cpp">TestDefaultDeviceType_d.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__1_8cpp">TestDefaultDeviceTypeInit_1.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__10_8cpp">TestDefaultDeviceTypeInit_10.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__11_8cpp">TestDefaultDeviceTypeInit_11.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__12_8cpp">TestDefaultDeviceTypeInit_12.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__13_8cpp">TestDefaultDeviceTypeInit_13.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__14_8cpp">TestDefaultDeviceTypeInit_14.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__15_8cpp">TestDefaultDeviceTypeInit_15.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__16_8cpp">TestDefaultDeviceTypeInit_16.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__17_8cpp">TestDefaultDeviceTypeInit_17.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__18_8cpp">TestDefaultDeviceTypeInit_18.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__2_8cpp">TestDefaultDeviceTypeInit_2.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__3_8cpp">TestDefaultDeviceTypeInit_3.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__4_8cpp">TestDefaultDeviceTypeInit_4.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__5_8cpp">TestDefaultDeviceTypeInit_5.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__6_8cpp">TestDefaultDeviceTypeInit_6.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__7_8cpp">TestDefaultDeviceTypeInit_7.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__8_8cpp">TestDefaultDeviceTypeInit_8.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_init__9_8cpp">TestDefaultDeviceTypeInit_9.cpp</innerfile>
+    <innerfile refid="_test_default_device_type_resize_8cpp">TestDefaultDeviceTypeResize.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/unit_test/default/"/>
+  </compounddef>
+</doxygen>

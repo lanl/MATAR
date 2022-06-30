@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_kokkos_1_1_const_bitset" kind="class" language="C++" prot="public">
+    <compoundname>Kokkos::ConstBitset</compoundname>
+    <includes refid="_kokkos___bitset_8hpp" local="no">Kokkos_Bitset.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_kokkos_1_1_const_bitset_1a2641ccdf88cd0095f1343b0b495890e3" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@3</name>
+        <qualifiedname>Kokkos::ConstBitset::@3</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_const_bitset_1a2641ccdf88cd0095f1343b0b495890e3a174cc7de20116346e642441207f1f0c3" prot="private">
+          <name>block_size</name>
+          <initializer>= static_cast&lt;unsigned&gt;(sizeof(unsigned) * CHAR_BIT)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="320" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="320" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_const_bitset_1ae1d9dcaf401e16a54fc2adcac049e8de" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@4</name>
+        <qualifiedname>Kokkos::ConstBitset::@4</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_const_bitset_1ae1d9dcaf401e16a54fc2adcac049e8dea0c135531b0038c65d9bc8b95d51def60" prot="private">
+          <name>block_mask</name>
+          <initializer>= block_size - 1u</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="321" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="321" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_kokkos_1_1_const_bitset_1a3fba87e8b86d2d499c2875d0f8ceccbe" prot="private" static="no" strong="no">
+        <type></type>
+        <name>@5</name>
+        <qualifiedname>Kokkos::ConstBitset::@5</qualifiedname>
+        <enumvalue id="class_kokkos_1_1_const_bitset_1a3fba87e8b86d2d499c2875d0f8ceccbea2035e0d72138f72d9f3c570159979d18" prot="private">
+          <name>block_shift</name>
+          <initializer>= Kokkos::Impl::integral_power_of_two(block_size)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="322" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="322" bodyend="322"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_kokkos_1_1_const_bitset_1a1328a74eb55b5fdc9f78cb65318f0487" prot="public" static="no">
+        <type><ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref></type>
+        <definition>using Kokkos::ConstBitset&lt; Device &gt;::execution_space =  Device</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>Kokkos::ConstBitset::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="316" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_kokkos_1_1_const_bitset_1a5f47723cef99e22782012ba708e6c307" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>using Kokkos::ConstBitset&lt; Device &gt;::size_type =  unsigned int</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>Kokkos::ConstBitset::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="317" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kokkos_1_1_const_bitset_1ad87c0e5fb4337d7edb5d6bdd065dc470" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::ConstBitset&lt; Device &gt;::m_size</definition>
+        <argsstring></argsstring>
+        <name>m_size</name>
+        <qualifiedname>Kokkos::ConstBitset::m_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="371" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kokkos_1_1_const_bitset_1a81c7246b28e04fed94d9fc960eea8e70" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">View</ref>&lt; const unsigned *, <ref refid="struct_kokkos_1_1_device" kindref="compound">execution_space</ref>, <ref refid="struct_kokkos_1_1_memory_traits" kindref="compound">MemoryTraits</ref>&lt; RandomAccess &gt; &gt;</type>
+        <definition>View&lt;const unsigned*, execution_space, MemoryTraits&lt;RandomAccess&gt; &gt; Kokkos::ConstBitset&lt; Device &gt;::m_blocks</definition>
+        <argsstring></argsstring>
+        <name>m_blocks</name>
+        <qualifiedname>Kokkos::ConstBitset::m_blocks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="372" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_kokkos_1_1_const_bitset_1a2bb8dacd1d5148ebfba49c1fa3a94b11" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DDevice</type>
+          </param>
+        </templateparamlist>
+        <type>class</type>
+        <definition>friend class ConstBitset</definition>
+        <argsstring></argsstring>
+        <name>ConstBitset</name>
+        <qualifiedname>Kokkos::ConstBitset::ConstBitset</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="376" column="16" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_const_bitset_1a6ec3646c1da646b4577f80acfd9f9026" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref></type>
+          </param>
+        </templateparamlist>
+        <type>struct</type>
+        <definition>friend struct Impl::BitsetCount</definition>
+        <argsstring></argsstring>
+        <name>Impl::BitsetCount</name>
+        <qualifiedname>Kokkos::ConstBitset::BitsetCount</qualifiedname>
+        <param>
+          <type><ref refid="struct_kokkos_1_1_impl_1_1_bitset_count" kindref="compound">Impl::BitsetCount</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="379" column="17" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="379" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_const_bitset_1ab5f0feda5c630a6c283e2e1af559211a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DstDevice</type>
+          </param>
+          <param>
+            <type>typename SrcDevice</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void deep_copy</definition>
+        <argsstring>(Bitset&lt; DstDevice &gt; &amp;dst, ConstBitset&lt; SrcDevice &gt; const &amp;src)</argsstring>
+        <name>deep_copy</name>
+        <qualifiedname>Kokkos::ConstBitset::deep_copy</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref>&lt; DstDevice &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; SrcDevice &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="382" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="405" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_kokkos_1_1_const_bitset_1a958b780c493252e4bcb1c95382469639" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DstDevice</type>
+          </param>
+          <param>
+            <type>typename SrcDevice</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void deep_copy</definition>
+        <argsstring>(ConstBitset&lt; DstDevice &gt; &amp;dst, ConstBitset&lt; SrcDevice &gt; const &amp;src)</argsstring>
+        <name>deep_copy</name>
+        <qualifiedname>Kokkos::ConstBitset::deep_copy</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; DstDevice &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; SrcDevice &gt; const &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="386" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="419" bodyend="430"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1a6a6522acbd3dc49b46bdc808b7e4fd9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION</type>
+        <definition>KOKKOS_FUNCTION Kokkos::ConstBitset&lt; Device &gt;::ConstBitset</definition>
+        <argsstring>()</argsstring>
+        <name>ConstBitset</name>
+        <qualifiedname>Kokkos::ConstBitset::ConstBitset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="326" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="326" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1ab2a0e6938e0143f9be85119021743050" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION</type>
+        <definition>KOKKOS_FUNCTION Kokkos::ConstBitset&lt; Device &gt;::ConstBitset</definition>
+        <argsstring>(Bitset&lt; Device &gt; const &amp;rhs)</argsstring>
+        <name>ConstBitset</name>
+        <qualifiedname>Kokkos::ConstBitset::ConstBitset</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="329" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="329" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1a4d58f60eb574358e999b92c95cbb28e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION</type>
+        <definition>KOKKOS_FUNCTION Kokkos::ConstBitset&lt; Device &gt;::ConstBitset</definition>
+        <argsstring>(ConstBitset&lt; Device &gt; const &amp;rhs)</argsstring>
+        <name>ConstBitset</name>
+        <qualifiedname>Kokkos::ConstBitset::ConstBitset</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="333" column="3" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="333" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1aedc0d5524971f8586507a1299ed4fa9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION <ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; &amp;</type>
+        <definition>KOKKOS_FUNCTION ConstBitset&lt; Device &gt; &amp; Kokkos::ConstBitset&lt; Device &gt;::operator=</definition>
+        <argsstring>(Bitset&lt; Device &gt; const &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::ConstBitset::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_bitset" kindref="compound">Bitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="337" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="337" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1acbda687921f9596071f54fcd45d16234" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION <ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; &amp;</type>
+        <definition>KOKKOS_FUNCTION ConstBitset&lt; Device &gt; &amp; Kokkos::ConstBitset&lt; Device &gt;::operator=</definition>
+        <argsstring>(ConstBitset&lt; Device &gt; const &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Kokkos::ConstBitset::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_const_bitset" kindref="compound">ConstBitset</ref>&lt; <ref refid="struct_kokkos_1_1_device" kindref="compound">Device</ref> &gt; const &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="345" column="15" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="345" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1ad32d4d1b78ac0741e0965142a3c162b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION unsigned</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION unsigned Kokkos::ConstBitset&lt; Device &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos::ConstBitset::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="353" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="353" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1a250c485f052a45ef4ae64f88b5d886ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned Kokkos::ConstBitset&lt; Device &gt;::count</definition>
+        <argsstring>() const</argsstring>
+        <name>count</name>
+        <qualifiedname>Kokkos::ConstBitset::count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="355" column="12" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="355" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kokkos_1_1_const_bitset_1af45ee55faed0a4ad158e10d49510c177" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FORCEINLINE_FUNCTION bool</type>
+        <definition>KOKKOS_FORCEINLINE_FUNCTION bool Kokkos::ConstBitset&lt; Device &gt;::test</definition>
+        <argsstring>(unsigned i) const</argsstring>
+        <name>test</name>
+        <qualifiedname>Kokkos::ConstBitset::test</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="361" column="8" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="361" bodyend="368"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>a thread-safe view to a const bitset i.e. can only test bits </para>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" line="314" column="1" bodyfile="src/Kokkos/kokkos/containers/src/Kokkos_Bitset.hpp" bodystart="314" bodyend="388"/>
+    <listofallmembers>
+      <member refid="class_kokkos_1_1_const_bitset_1ae1d9dcaf401e16a54fc2adcac049e8dea0c135531b0038c65d9bc8b95d51def60" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>block_mask</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a3fba87e8b86d2d499c2875d0f8ceccbea2035e0d72138f72d9f3c570159979d18" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>block_shift</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a2641ccdf88cd0095f1343b0b495890e3a174cc7de20116346e642441207f1f0c3" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>block_size</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a2bb8dacd1d5148ebfba49c1fa3a94b11" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>ConstBitset</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a6a6522acbd3dc49b46bdc808b7e4fd9c" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>ConstBitset</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1ab2a0e6938e0143f9be85119021743050" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>ConstBitset</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a4d58f60eb574358e999b92c95cbb28e3" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>ConstBitset</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a250c485f052a45ef4ae64f88b5d886ae" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>count</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1ab5f0feda5c630a6c283e2e1af559211a" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>deep_copy</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a958b780c493252e4bcb1c95382469639" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>deep_copy</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a1328a74eb55b5fdc9f78cb65318f0487" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>execution_space</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a6ec3646c1da646b4577f80acfd9f9026" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>Impl::BitsetCount</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a81c7246b28e04fed94d9fc960eea8e70" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>m_blocks</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1ad87c0e5fb4337d7edb5d6bdd065dc470" prot="private" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>m_size</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1aedc0d5524971f8586507a1299ed4fa9f" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1acbda687921f9596071f54fcd45d16234" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>operator=</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1ad32d4d1b78ac0741e0965142a3c162b7" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>size</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1a5f47723cef99e22782012ba708e6c307" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>size_type</name></member>
+      <member refid="class_kokkos_1_1_const_bitset_1af45ee55faed0a4ad158e10d49510c177" prot="public" virt="non-virtual"><scope>Kokkos::ConstBitset</scope><name>test</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

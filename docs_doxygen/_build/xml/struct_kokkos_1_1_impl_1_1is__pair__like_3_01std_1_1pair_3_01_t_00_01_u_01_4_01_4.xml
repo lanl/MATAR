@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1is__pair__like_3_01std_1_1pair_3_01_t_00_01_u_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::is_pair_like&lt; std::pair&lt; T, U &gt; &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::true_type</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+      <param>
+        <type>class U</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Kokkos::Impl::is_pair_like&lt; std::pair&lt; T, U &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1is__pair__like_3_01std_1_1pair_3_01_t_00_01_u_01_4_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos::Impl::is_pair_like&lt; std::pair&lt; T, U &gt; &gt;</label>
+        <link refid="struct_kokkos_1_1_impl_1_1is__pair__like_3_01std_1_1pair_3_01_t_00_01_u_01_4_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::true_type</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" line="501" column="1" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_Pair.hpp" bodystart="501" bodyend="501"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

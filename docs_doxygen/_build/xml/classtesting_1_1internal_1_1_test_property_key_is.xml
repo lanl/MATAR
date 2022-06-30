@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_test_property_key_is" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::TestPropertyKeyIs</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtesting_1_1internal_1_1_test_property_key_is_1a857f42b8753df8efccc8f38196b150b9" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string testing::internal::TestPropertyKeyIs::key_</definition>
+        <argsstring></argsstring>
+        <name>key_</name>
+        <qualifiedname>testing::internal::TestPropertyKeyIs::key_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="760" column="15" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="760" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_property_key_is_1a509ed1271caa1032e40c5d811b3da385" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>testing::internal::TestPropertyKeyIs::TestPropertyKeyIs</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>TestPropertyKeyIs</name>
+        <qualifiedname>testing::internal::TestPropertyKeyIs::TestPropertyKeyIs</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="752" column="12" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="752" bodyend="752"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_test_property_key_is_1abf5eb5bf22065e0614ffe36d093e885e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool testing::internal::TestPropertyKeyIs::operator()</definition>
+        <argsstring>(const TestProperty &amp;test_property) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>testing::internal::TestPropertyKeyIs::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="classtesting_1_1_test_property" kindref="compound">TestProperty</ref> &amp;</type>
+          <declname>test_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="755" column="8" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="755" bodyend="757"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" line="747" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-all.cc" bodystart="747" bodyend="761"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_test_property_key_is_1a857f42b8753df8efccc8f38196b150b9" prot="private" virt="non-virtual"><scope>testing::internal::TestPropertyKeyIs</scope><name>key_</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_property_key_is_1abf5eb5bf22065e0614ffe36d093e885e" prot="public" virt="non-virtual"><scope>testing::internal::TestPropertyKeyIs</scope><name>operator()</name></member>
+      <member refid="classtesting_1_1internal_1_1_test_property_key_is_1a509ed1271caa1032e40c5d811b3da385" prot="public" virt="non-virtual"><scope>testing::internal::TestPropertyKeyIs</scope><name>TestPropertyKeyIs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

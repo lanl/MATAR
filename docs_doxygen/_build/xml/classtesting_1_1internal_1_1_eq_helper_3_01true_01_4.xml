@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4" kind="class" language="C++" prot="public">
+    <compoundname>testing::internal::EqHelper&lt; true &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1a70d6d7e3cb1df06ad6114f25e843fd6d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; true &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, const T1 &amp;expected, const T2 &amp;actual, typename EnableIf&lt;!is_pointer&lt; T2 &gt;::value &gt;::type *=0)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper&lt; true &gt;::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>const T1 &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const T2 &amp;</type>
+          <declname>actual</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="structtesting_1_1internal_1_1_enable_if" kindref="compound">EnableIf</ref>&lt;!<ref refid="structtesting_1_1internal_1_1is__pointer" kindref="compound">is_pointer</ref>&lt; T2 &gt;::value &gt;::type *</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18930" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18930" bodyend="18943"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1ab38e840297adb48f18767a1a99187fb3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; true &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, Secret *, T *actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper&lt; true &gt;::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>Secret *</type>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18948" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18948" bodyend="18962"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1a70d6d7e3cb1df06ad6114f25e843fd6d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T1</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; true &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, const T1 &amp;expected, const T2 &amp;actual, typename EnableIf&lt;!is_pointer&lt; T2 &gt;::value &gt;::type *=0)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper&lt; true &gt;::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>const T1 &amp;</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const T2 &amp;</type>
+          <declname>actual</declname>
+        </param>
+        <param>
+          <type>typename <ref refid="structtesting_1_1internal_1_1_enable_if" kindref="compound">EnableIf</ref>&lt;!<ref refid="structtesting_1_1internal_1_1is__pointer" kindref="compound">is_pointer</ref>&lt; T2 &gt;::value &gt;::type *</type>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18930" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18930" bodyend="18943"/>
+      </memberdef>
+      <memberdef kind="function" id="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1ab38e840297adb48f18767a1a99187fb3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classtesting_1_1_assertion_result" kindref="compound">AssertionResult</ref></type>
+        <definition>static AssertionResult testing::internal::EqHelper&lt; true &gt;::Compare</definition>
+        <argsstring>(const char *expected_expression, const char *actual_expression, Secret *, T *actual)</argsstring>
+        <name>Compare</name>
+        <qualifiedname>testing::internal::EqHelper&lt; true &gt;::Compare</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>expected_expression</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>actual_expression</declname>
+        </param>
+        <param>
+          <type>Secret *</type>
+        </param>
+        <param>
+          <type>T *</type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" line="18948" column="26" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest.h" bodystart="18948" bodyend="18962"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" line="18923" column="1" bodyfile="src/Kokkos/kokkos/tpls/gtest/gtest/gtest-test-part.h" bodystart="18923" bodyend="18963"/>
+    <listofallmembers>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1a70d6d7e3cb1df06ad6114f25e843fd6d" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper&lt; true &gt;</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1ab38e840297adb48f18767a1a99187fb3" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper&lt; true &gt;</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1a70d6d7e3cb1df06ad6114f25e843fd6d" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper&lt; true &gt;</scope><name>Compare</name></member>
+      <member refid="classtesting_1_1internal_1_1_eq_helper_3_01true_01_4_1ab38e840297adb48f18767a1a99187fb3" prot="public" virt="non-virtual"><scope>testing::internal::EqHelper&lt; true &gt;</scope><name>Compare</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

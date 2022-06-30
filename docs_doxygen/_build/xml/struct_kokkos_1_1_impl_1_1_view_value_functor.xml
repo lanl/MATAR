@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_view_value_functor" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::ViewValueFunctor</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class DeviceType</type>
+      </param>
+      <param>
+        <type>class ValueType</type>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>IsScalar</declname>
+        <defname>IsScalar</defname>
+        <defval>std::is_scalar&lt;ValueType&gt;::value</defval>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" line="2850" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_ViewMapping.hpp" bodystart="2850" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

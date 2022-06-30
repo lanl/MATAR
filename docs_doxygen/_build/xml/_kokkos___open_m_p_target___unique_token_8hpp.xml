@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="_kokkos___open_m_p_target___unique_token_8hpp" kind="file" language="C++">
+    <compoundname>Kokkos_OpenMPTarget_UniqueToken.hpp</compoundname>
+    <includes refid="_kokkos___macros_8hpp" local="no">Kokkos_Macros.hpp</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Kokkos_Macros.hpp</label>
+        <link refid="_kokkos___macros_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_UniqueToken.hpp</label>
+        <link refid="_kokkos___open_m_p_target___unique_token_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KokkosCore_Config_SetupBackend.hpp</label>
+      </node>
+      <node id="3">
+        <label>KokkosCore_config.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos<sp/>v.<sp/>3.0</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>(2020)<sp/>National<sp/>Technology<sp/>&amp;<sp/>Engineering</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solutions<sp/>of<sp/>Sandia,<sp/>LLC<sp/>(NTESS).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">//<sp/>Under<sp/>the<sp/>terms<sp/>of<sp/>Contract<sp/>DE-NA0003525<sp/>with<sp/>NTESS,</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/>the<sp/>U.S.<sp/>Government<sp/>retains<sp/>certain<sp/>rights<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/>modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/>met:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">//<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">//<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">//<sp/>3.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Corporation<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">//<sp/>contributors<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">//<sp/>this<sp/>software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">//<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>NTESS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">//<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">//<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">//<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>NTESS<sp/>OR<sp/>THE</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">//<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">//<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">//<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">//<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT<sp/>(INCLUDING</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">//<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">//<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">//<sp/>Questions?<sp/>Contact<sp/>Christian<sp/>R.<sp/>Trott<sp/>(crtrott@sandia.gov)</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">//</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>************************************************************************</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//@HEADER</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>KOKKOS_OPENMPTARGET_UNIQUE_TOKEN_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOKKOS_OPENMPTARGET_UNIQUE_TOKEN_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_Macros.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>KOKKOS_ENABLE_OPENMPTARGET</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_OpenMPTargetSpace.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Kokkos_UniqueToken.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_SharedAlloc.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;impl/Kokkos_ConcurrentBitset.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Kokkos<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Experimental<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>both<sp/>global<sp/>and<sp/>instance<sp/>Unique<sp/>Tokens<sp/>are<sp/>implemented<sp/>in<sp/>the<sp/>same<sp/>way</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UniqueToken&lt;OpenMPTarget,<sp/>UniqueTokenScope::Global&gt;<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>uint32_t<sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">*<sp/>m_buffer;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>uint32_t<sp/>m_count;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">execution_space<sp/>=<sp/>OpenMPTarget;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">size_type<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>int32_t;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>(execution_space<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>=<sp/>execution_space());</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>KOKKOS_DEFAULTED_FUNCTION</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>KOKKOS_DEFAULTED_FUNCTION</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>(<ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>KOKKOS_DEFAULTED_FUNCTION</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>KOKKOS_DEFAULTED_FUNCTION</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;<sp/>operator=(<ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>size_type<sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a527b6fcc113311a61b35c8b3e4b8cc8e" kindref="member">size</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_count;<sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>size_type<sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a2146ce7f9462ace76688b8ed2a2b81ff" kindref="member">acquire</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kokkos_1_1pair" kindref="compound">Kokkos::pair&lt;int, int&gt;</ref><sp/>result<sp/>=</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_kokkos_1_1_impl_1_1concurrent__bitset_1a32013a25dfa5d8db6c09fe3ce6c5d053" kindref="member">Kokkos::Impl::concurrent_bitset::acquire_bounded</ref>(</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_buffer,<sp/>m_count,<sp/>Kokkos::Impl::clock_tic()<sp/>%<sp/>m_count);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result.<ref refid="struct_kokkos_1_1pair_1a0e373ffe96458360bf3703301efeb140" kindref="member">first</ref><sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Kokkos::abort(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UniqueToken&lt;OpenMPTarget&gt;<sp/>failure<sp/>to<sp/>acquire<sp/>tokens,<sp/>no<sp/>tokens<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;available&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result.<ref refid="struct_kokkos_1_1pair_1a0e373ffe96458360bf3703301efeb140" kindref="member">first</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>KOKKOS_INLINE_FUNCTION</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1ae54118551fa46b23efbd14e73fd454c5" kindref="member">release</ref>(size_type<sp/>i)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_kokkos_1_1_impl_1_1concurrent__bitset_1adc82a753ca9f1533e643cc9b35dd83d4" kindref="member">Kokkos::Impl::concurrent_bitset::release</ref>(m_buffer,<sp/>i);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UniqueToken&lt;OpenMPTarget,<sp/>UniqueTokenScope::Instance&gt;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>UniqueToken&lt;OpenMPTarget,<sp/>UniqueTokenScope::Global&gt;<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View&lt;uint32_t*, ::Kokkos::Experimental::OpenMPTargetSpace&gt;</ref></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>m_buffer_view;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>(execution_space<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>arg<sp/>=<sp/>execution_space())</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>&lt;OpenMPTarget,<sp/>UniqueTokenScope::Global&gt;(arg)<sp/>{}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="class_kokkos_1_1_experimental_1_1_unique_token_1a79c493da2a25ae200c65491c7867470b" kindref="member">UniqueToken</ref>(size_type<sp/>max_size,<sp/>execution_space<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>=<sp/>execution_space())</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>m_buffer_view(</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Kokkos::UniqueToken::m_buffer_view&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::Kokkos::Impl::concurrent_bitset::buffer_bound(max_size))<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>m_buffer<sp/>=<sp/>m_buffer_view.data();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>m_count<sp/><sp/>=<sp/>max_size;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Experimental</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Kokkos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>KOKKOS_ENABLE_OPENMPTARGET</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>KOKKOS_OPENMPTARGET_UNIQUE_TOKEN_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/Kokkos/kokkos/core/src/OpenMPTarget/Kokkos_OpenMPTarget_UniqueToken.hpp"/>
+  </compounddef>
+</doxygen>

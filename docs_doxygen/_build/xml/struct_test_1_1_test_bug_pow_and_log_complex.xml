@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_1_1_test_bug_pow_and_log_complex" kind="struct" language="C++" prot="public">
+    <compoundname>Test::TestBugPowAndLogComplex</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ExecSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_1_1_test_bug_pow_and_log_complex_1a1228ab3d637635b81d041663d931480d" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;Kokkos::complex&lt;double&gt; *, ExecSpace&gt; Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;::d_pow</definition>
+        <argsstring></argsstring>
+        <name>d_pow</name>
+        <qualifiedname>Test::TestBugPowAndLogComplex::d_pow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="432" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_test_1_1_test_bug_pow_and_log_complex_1ac70efceec5791bbd62a33038912f677a" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; <ref refid="class_kokkos_1_1complex" kindref="compound">Kokkos::complex</ref>&lt; double &gt; *, ExecSpace &gt;</type>
+        <definition>Kokkos::View&lt;Kokkos::complex&lt;double&gt; *, ExecSpace&gt; Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;::d_log</definition>
+        <argsstring></argsstring>
+        <name>d_log</name>
+        <qualifiedname>Test::TestBugPowAndLogComplex::d_log</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="433" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_1_1_test_bug_pow_and_log_complex_1a4aa64b690ec54dbea8ae29cf70536a60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;::TestBugPowAndLogComplex</definition>
+        <argsstring>()</argsstring>
+        <name>TestBugPowAndLogComplex</name>
+        <qualifiedname>Test::TestBugPowAndLogComplex::TestBugPowAndLogComplex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="434" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="434" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_bug_pow_and_log_complex_1a7d25233e477ceb8245a600025f881eb6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;::test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <qualifiedname>Test::TestBugPowAndLogComplex::test</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="435" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="435" bodyend="449"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_1_1_test_bug_pow_and_log_complex_1af0b743ebd8de54464f2aa7f0f2791e8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_FUNCTION void</type>
+        <definition>KOKKOS_FUNCTION void Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;::operator()</definition>
+        <argsstring>(int) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>Test::TestBugPowAndLogComplex::operator()</qualifiedname>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="450" column="24" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="450" bodyend="455"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Test::TestBugPowAndLogComplex&lt; ExecSpace &gt;</label>
+        <link refid="struct_test_1_1_test_bug_pow_and_log_complex"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>d_log</edgelabel>
+          <edgelabel>d_pow</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; Kokkos::complex&lt; double &gt; *, ExecSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; Kokkos::complex&lt; double &gt; *, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" line="431" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestComplex.hpp" bodystart="431" bodyend="456"/>
+    <listofallmembers>
+      <member refid="struct_test_1_1_test_bug_pow_and_log_complex_1ac70efceec5791bbd62a33038912f677a" prot="public" virt="non-virtual"><scope>Test::TestBugPowAndLogComplex</scope><name>d_log</name></member>
+      <member refid="struct_test_1_1_test_bug_pow_and_log_complex_1a1228ab3d637635b81d041663d931480d" prot="public" virt="non-virtual"><scope>Test::TestBugPowAndLogComplex</scope><name>d_pow</name></member>
+      <member refid="struct_test_1_1_test_bug_pow_and_log_complex_1af0b743ebd8de54464f2aa7f0f2791e8a" prot="public" virt="non-virtual"><scope>Test::TestBugPowAndLogComplex</scope><name>operator()</name></member>
+      <member refid="struct_test_1_1_test_bug_pow_and_log_complex_1a7d25233e477ceb8245a600025f881eb6" prot="public" virt="non-virtual"><scope>Test::TestBugPowAndLogComplex</scope><name>test</name></member>
+      <member refid="struct_test_1_1_test_bug_pow_and_log_complex_1a4aa64b690ec54dbea8ae29cf70536a60" prot="public" virt="non-virtual"><scope>Test::TestBugPowAndLogComplex</scope><name>TestBugPowAndLogComplex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

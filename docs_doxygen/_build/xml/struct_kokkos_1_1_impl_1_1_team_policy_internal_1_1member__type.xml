@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::TeamPolicyInternal::member_type</compoundname>
+    <includes refid="_kokkos___exec_policy_8hpp" local="no">Kokkos_ExecPolicy.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a36632253a9755a41189731e166cb6c70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION traits::execution_space::scratch_memory_space</type>
+        <definition>KOKKOS_INLINE_FUNCTION traits::execution_space::scratch_memory_space Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_shmem</definition>
+        <argsstring>() const</argsstring>
+        <name>team_shmem</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_shmem</qualifiedname>
+        <briefdescription>
+<para>Handle to the currently executing team shared scratch memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="387" column="60"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1abc9a58d49eba47355b4ebc13f51a13d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::league_rank</definition>
+        <argsstring>() const</argsstring>
+        <name>league_rank</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::league_rank</qualifiedname>
+        <briefdescription>
+<para><ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref> of this team within the league of teams. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="390" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a9888f72891a19844b0e65f1774385422" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::league_size</definition>
+        <argsstring>() const</argsstring>
+        <name>league_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::league_size</qualifiedname>
+        <briefdescription>
+<para>Number of teams in the league. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="393" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a417e44b1759295b7fc4bed1baba26ce4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_rank</definition>
+        <argsstring>() const</argsstring>
+        <name>team_rank</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_rank</qualifiedname>
+        <briefdescription>
+<para><ref refid="struct_kokkos_1_1_rank" kindref="compound">Rank</ref> of this thread within this team. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="396" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a2486f30d9563c6caad741e471b6d1f32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION int</type>
+        <definition>KOKKOS_INLINE_FUNCTION int Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_size</definition>
+        <argsstring>() const</argsstring>
+        <name>team_size</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_size</qualifiedname>
+        <briefdescription>
+<para>Number of threads in this team. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="399" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1ae0f164368b3b0ee1d454d21d5095857b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_barrier</definition>
+        <argsstring>() const</argsstring>
+        <name>team_barrier</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_barrier</qualifiedname>
+        <briefdescription>
+<para>Barrier among the threads of this team. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="402" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a0ee8fd735e4a30acb55f64e7fa87c4d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class JoinOp</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION JoinOp::value_type</type>
+        <definition>KOKKOS_INLINE_FUNCTION JoinOp::value_type Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_reduce</definition>
+        <argsstring>(const typename JoinOp::value_type, const JoinOp &amp;) const</argsstring>
+        <name>team_reduce</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_reduce</qualifiedname>
+        <param>
+          <type>const typename JoinOp::value_type</type>
+        </param>
+        <param>
+          <type>const JoinOp &amp;</type>
+        </param>
+        <briefdescription>
+<para>Intra-team reduction. Returns join of all values of the team members. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="407" column="56"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1aee14fdb435b531053e7a38b898f38fae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION Type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Type Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_scan</definition>
+        <argsstring>(const Type &amp;value) const</argsstring>
+        <name>team_scan</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_scan</qualifiedname>
+        <param>
+          <type>const Type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Intra-team exclusive prefix sum with <ref refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a417e44b1759295b7fc4bed1baba26ce4" kindref="member">team_rank()</ref> ordering. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The highest rank thread can compute the reduction total as reduction_total = dev.team_scan( value ) + value ; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="416" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a1b8d5babbf0af7be95a2fde04ac6c39c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>KOKKOS_INLINE_FUNCTION Type</type>
+        <definition>KOKKOS_INLINE_FUNCTION Type Kokkos::Impl::TeamPolicyInternal&lt; ExecSpace, Properties &gt;::member_type::team_scan</definition>
+        <argsstring>(const Type &amp;value, Type *const global_accum) const</argsstring>
+        <name>team_scan</name>
+        <qualifiedname>Kokkos::Impl::TeamPolicyInternal::member_type::team_scan</qualifiedname>
+        <param>
+          <type>const Type &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Type *const</type>
+          <declname>global_accum</declname>
+        </param>
+        <briefdescription>
+<para>Intra-team exclusive prefix sum with <ref refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a417e44b1759295b7fc4bed1baba26ce4" kindref="member">team_rank()</ref> ordering with intra-team non-deterministic ordering accumulation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The global inter-team accumulation value will, at the end of the league&apos;s parallel execution, be the scan&apos;s total. Parallel execution ordering of the league&apos;s teams is non-deterministic. As such the base value for each team&apos;s scan operation is similarly non-deterministic. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="428" column="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Parallel execution of a functor calls the functor once with each member of the execution policy. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" line="384" column="3" bodyfile="src/Kokkos/kokkos/core/src/Kokkos_ExecPolicy.hpp" bodystart="384" bodyend="430"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1abc9a58d49eba47355b4ebc13f51a13d0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>league_rank</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a9888f72891a19844b0e65f1774385422" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>league_size</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1ae0f164368b3b0ee1d454d21d5095857b" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_barrier</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a417e44b1759295b7fc4bed1baba26ce4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_rank</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a0ee8fd735e4a30acb55f64e7fa87c4d4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_reduce</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1aee14fdb435b531053e7a38b898f38fae" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_scan</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a1b8d5babbf0af7be95a2fde04ac6c39c" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_scan</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a36632253a9755a41189731e166cb6c70" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_shmem</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_team_policy_internal_1_1member__type_1a2486f30d9563c6caad741e471b6d1f32" prot="public" virt="non-virtual"><scope>Kokkos::Impl::TeamPolicyInternal::member_type</scope><name>team_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

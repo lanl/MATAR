@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_tile___loop___type_3_017_00_01_is_left_00_01_i_type_00_01_tagged_00_075d4a9d45d6b5bb7748b7c52977508b0" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>bool</type>
+        <declname>IsLeft</declname>
+        <defname>IsLeft</defname>
+      </param>
+      <param>
+        <type>typename IType</type>
+      </param>
+      <param>
+        <type>typename Tagged</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_tile___loop___type_3_017_00_01_is_left_00_01_i_type_00_01_tagged_00_075d4a9d45d6b5bb7748b7c52977508b0_1a4f6e7731224a949dca654176cd5c2129" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+          <param>
+            <type>typename Offset</type>
+          </param>
+          <param>
+            <type>typename ExtentA</type>
+          </param>
+          <param>
+            <type>typename ExtentB</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;::apply</definition>
+        <argsstring>(Func const &amp;func, bool cond, Offset const &amp;offset, ExtentA const &amp;a, ExtentB const &amp;b)</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;::apply</qualifiedname>
+        <param>
+          <type>Func const &amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>cond</declname>
+        </param>
+        <param>
+          <type>Offset const &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ExtentA const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>ExtentB const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1487" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1487" bodyend="1490"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_tile___loop___type_3_017_00_01_is_left_00_01_i_type_00_01_tagged_00_075d4a9d45d6b5bb7748b7c52977508b0_1aa392ce03201a2f34e598d4ee8d3498fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ValType</type>
+          </param>
+          <param>
+            <type>typename Func</type>
+          </param>
+          <param>
+            <type>typename Offset</type>
+          </param>
+          <param>
+            <type>typename ExtentA</type>
+          </param>
+          <param>
+            <type>typename ExtentB</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;::apply</definition>
+        <argsstring>(ValType &amp;value, Func const &amp;func, bool cond, Offset const &amp;offset, ExtentA const &amp;a, ExtentB const &amp;b)</argsstring>
+        <name>apply</name>
+        <qualifiedname>Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;::apply</qualifiedname>
+        <param>
+          <type>ValType &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>Func const &amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>cond</declname>
+        </param>
+        <param>
+          <type>Offset const &amp;</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>ExtentA const &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>ExtentB const &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1494" column="15" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1494" bodyend="1498"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" line="1483" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/KokkosExp_Host_IterateTile.hpp" bodystart="1485" bodyend="1499"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile___loop___type_3_017_00_01_is_left_00_01_i_type_00_01_tagged_00_075d4a9d45d6b5bb7748b7c52977508b0_1a4f6e7731224a949dca654176cd5c2129" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;</scope><name>apply</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_tile___loop___type_3_017_00_01_is_left_00_01_i_type_00_01_tagged_00_075d4a9d45d6b5bb7748b7c52977508b0_1aa392ce03201a2f34e598d4ee8d3498fd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::Tile_Loop_Type&lt; 7, IsLeft, IType, Tagged, typename std::enable_if&lt;!std::is_same&lt; Tagged, void &gt;::value &gt;::type &gt;</scope><name>apply</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

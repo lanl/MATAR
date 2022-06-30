@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos___tools___value_set" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_ValueSet</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_kokkos___tools___value_set_1a124ba3238744cdb87c51d57942a3cda9" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Kokkos_Tools_ValueSet::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>Kokkos_Tools_ValueSet::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="174" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_kokkos___tools___value_set_1aa49ceb041abe3956c6872f3572f5c546" prot="public" static="no" mutable="no">
+        <type>union <ref refid="union_kokkos___tools___variable_value___value_union_set" kindref="compound">Kokkos_Tools_VariableValue_ValueUnionSet</ref></type>
+        <definition>union Kokkos_Tools_VariableValue_ValueUnionSet Kokkos_Tools_ValueSet::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <qualifiedname>Kokkos_Tools_ValueSet::values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="175" column="49" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Kokkos_Tools_ValueSet</label>
+        <link refid="struct_kokkos___tools___value_set"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>values</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos_Tools_VariableValue_ValueUnionSet</label>
+        <link refid="union_kokkos___tools___variable_value___value_union_set"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="173" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="173" bodyend="176"/>
+    <listofallmembers>
+      <member refid="struct_kokkos___tools___value_set_1a124ba3238744cdb87c51d57942a3cda9" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueSet</scope><name>size</name></member>
+      <member refid="struct_kokkos___tools___value_set_1aa49ceb041abe3956c6872f3572f5c546" prot="public" virt="non-virtual"><scope>Kokkos_Tools_ValueSet</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

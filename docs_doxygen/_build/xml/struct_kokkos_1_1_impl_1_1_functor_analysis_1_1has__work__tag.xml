@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__work__tag" kind="struct" language="C++" prot="private">
+    <compoundname>Kokkos::Impl::FunctorAnalysis::has_work_tag</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename P</type>
+        <defval><ref refid="class_kokkos_1_1_range_policy" kindref="compound">Policy</ref></defval>
+      </param>
+      <param>
+        <type>typename</type>
+        <defval>std::false_type</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__work__tag_1ae75855e71fa03ad49e9fa9fe700dd341" prot="public" static="no">
+        <type>void</type>
+        <definition>using Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_work_tag&lt; P, typename &gt;::type =  void</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_work_tag::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="86" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__work__tag_1a8e6b4eb9285e500882e0e28c927ce5bd" prot="public" static="no">
+        <type>VOID</type>
+        <definition>using Kokkos::Impl::FunctorAnalysis&lt; PatternInterface, Policy, Functor &gt;::has_work_tag&lt; P, typename &gt;::wtag =  VOID</definition>
+        <argsstring></argsstring>
+        <name>wtag</name>
+        <qualifiedname>Kokkos::Impl::FunctorAnalysis::has_work_tag::wtag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="87" column="5" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" line="85" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAnalysis.hpp" bodystart="85" bodyend="88"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__work__tag_1ae75855e71fa03ad49e9fa9fe700dd341" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_work_tag</scope><name>type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_analysis_1_1has__work__tag_1a8e6b4eb9285e500882e0e28c927ce5bd" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorAnalysis::has_work_tag</scope><name>wtag</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

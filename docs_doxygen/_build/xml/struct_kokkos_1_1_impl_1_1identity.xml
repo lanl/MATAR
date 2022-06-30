@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1identity" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::identity</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1identity_1aa2ba62044697466c0aedd16fb061eee4" prot="public" static="no">
+        <type>T</type>
+        <definition>using Kokkos::Impl::identity&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>Kokkos::Impl::identity::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="62" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" line="61" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Utilities.hpp" bodystart="61" bodyend="63"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1identity_1aa2ba62044697466c0aedd16fb061eee4" prot="public" virt="non-virtual"><scope>Kokkos::Impl::identity</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

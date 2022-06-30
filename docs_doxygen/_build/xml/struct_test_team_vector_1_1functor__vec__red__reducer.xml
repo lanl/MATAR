@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_test_team_vector_1_1functor__vec__red__reducer" kind="struct" language="C++" prot="public">
+    <compoundname>TestTeamVector::functor_vec_red_reducer</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename Scalar</type>
+      </param>
+      <param>
+        <type>class ExecutionSpace</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__vec__red__reducer_1a02903e6182a1602bc4490d06d3fa40fa" prot="public" static="no">
+        <type><ref refid="class_kokkos_1_1_team_policy" kindref="compound">Kokkos::TeamPolicy</ref>&lt; ExecutionSpace &gt;</type>
+        <definition>using TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;::policy_type =  Kokkos::TeamPolicy&lt;ExecutionSpace&gt;</definition>
+        <argsstring></argsstring>
+        <name>policy_type</name>
+        <qualifiedname>TestTeamVector::functor_vec_red_reducer::policy_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="574" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="574" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_test_team_vector_1_1functor__vec__red__reducer_1ac913e4eb89060d5087d98a0221d4c2d2" prot="public" static="no">
+        <type>ExecutionSpace</type>
+        <definition>using TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;::execution_space =  ExecutionSpace</definition>
+        <argsstring></argsstring>
+        <name>execution_space</name>
+        <qualifiedname>TestTeamVector::functor_vec_red_reducer::execution_space</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="575" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="575" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_test_team_vector_1_1functor__vec__red__reducer_1aa7f891892b288938c9e1c1c996a557df" prot="public" static="no" mutable="no">
+        <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+        <definition>Kokkos::View&lt;int, Kokkos::LayoutLeft, ExecutionSpace&gt; TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;::flag</definition>
+        <argsstring></argsstring>
+        <name>flag</name>
+        <qualifiedname>TestTeamVector::functor_vec_red_reducer::flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="577" column="16" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="577" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__vec__red__reducer_1a9ae4335ed6d45bd5247c1866dd5f0eb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;::functor_vec_red_reducer</definition>
+        <argsstring>(Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt; flag_)</argsstring>
+        <name>functor_vec_red_reducer</name>
+        <qualifiedname>TestTeamVector::functor_vec_red_reducer::functor_vec_red_reducer</qualifiedname>
+        <param>
+          <type><ref refid="class_kokkos_1_1_view" kindref="compound">Kokkos::View</ref>&lt; int, <ref refid="struct_kokkos_1_1_layout_left" kindref="compound">Kokkos::LayoutLeft</ref>, ExecutionSpace &gt;</type>
+          <declname>flag_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="579" column="3" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="579" bodyend="581"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_test_team_vector_1_1functor__vec__red__reducer_1aa6af2bb8ba7fca48d0c45fe58018a24f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;::operator()</definition>
+        <argsstring>(typename policy_type::member_type team) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>TestTeamVector::functor_vec_red_reducer::operator()</qualifiedname>
+        <param>
+          <type>typename policy_type::member_type</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="584" column="8" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="584" bodyend="608"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>TestTeamVector::functor_vec_red_reducer&lt; Scalar, ExecutionSpace &gt;</label>
+        <link refid="struct_test_team_vector_1_1functor__vec__red__reducer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>flag</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Kokkos::View&lt; int, Kokkos::LayoutLeft, ExecutionSpace &gt;</label>
+        <link refid="class_kokkos_1_1_view"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Kokkos::ViewTraits&lt; int, Properties... &gt;</label>
+        <link refid="struct_kokkos_1_1_view_traits"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" line="573" column="1" bodyfile="src/Kokkos/kokkos/core/unit_test/TestTeamVector.hpp" bodystart="573" bodyend="609"/>
+    <listofallmembers>
+      <member refid="struct_test_team_vector_1_1functor__vec__red__reducer_1ac913e4eb89060d5087d98a0221d4c2d2" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red_reducer</scope><name>execution_space</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red__reducer_1aa7f891892b288938c9e1c1c996a557df" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red_reducer</scope><name>flag</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red__reducer_1a9ae4335ed6d45bd5247c1866dd5f0eb2" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red_reducer</scope><name>functor_vec_red_reducer</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red__reducer_1aa6af2bb8ba7fca48d0c45fe58018a24f" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red_reducer</scope><name>operator()</name></member>
+      <member refid="struct_test_team_vector_1_1functor__vec__red__reducer_1a02903e6182a1602bc4490d06d3fa40fa" prot="public" virt="non-virtual"><scope>TestTeamVector::functor_vec_red_reducer</scope><name>policy_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

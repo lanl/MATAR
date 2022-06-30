@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class FunctorType</type>
+      </param>
+      <param>
+        <type>class ArgTag</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1abeb686db82e20bcc87ddad341b0a6130" prot="public" static="no">
+        <type>typename FunctorValueTraits&lt; FunctorType, ArgTag &gt;::value_type</type>
+        <definition>using Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::value_type =  typename FunctorValueTraits&lt;FunctorType, ArgTag&gt;::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1527" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1528" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a245801bb479a8eb7306100d7d29a8e2f" prot="public" static="no">
+        <type>volatile value_type *</type>
+        <definition>using Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::vptr_type =  volatile value_type*</definition>
+        <argsstring></argsstring>
+        <name>vptr_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::vptr_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1530" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1530" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a98a5b221327ac7d8af6d490e066838a0" prot="public" static="no">
+        <type>const volatile value_type *</type>
+        <definition>using Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::cvptr_type =  const volatile value_type*</definition>
+        <argsstring></argsstring>
+        <name>cvptr_type</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::cvptr_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1531" column="3" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1531" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a92ddffb0a9c8e088604ee4bc27a5863d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag, vptr_type, cvptr_type) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag, vptr_type, cvptr_type) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1533" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a6f7a78fefccf052392cb50ef259a44e0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</definition>
+        <argsstring>(void(FunctorType::*)(ArgTag const &amp;, vptr_type, cvptr_type) const)</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(FunctorType::*)(ArgTag const &amp;, vptr_type, cvptr_type) const</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1535" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1acbf8f9b7cdc6cd70b3251ca44b488ed0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag, vptr_type, cvptr_type))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag, vptr_type, cvptr_type)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1537" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a4a2b3993f3f064ecde5dba8e036233be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>static KOKKOS_INLINE_FUNCTION void Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</definition>
+        <argsstring>(void(*)(ArgTag const &amp;, vptr_type, cvptr_type))</argsstring>
+        <name>enable_if</name>
+        <qualifiedname>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;::enable_if</qualifiedname>
+        <param>
+          <type>void(*)(ArgTag const &amp;, vptr_type, cvptr_type)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1539" column="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" line="1526" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_FunctorAdapter.hpp" bodystart="1526" bodyend="1541"/>
+    <listofallmembers>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a98a5b221327ac7d8af6d490e066838a0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>cvptr_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a92ddffb0a9c8e088604ee4bc27a5863d" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a6f7a78fefccf052392cb50ef259a44e0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1acbf8f9b7cdc6cd70b3251ca44b488ed0" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a4a2b3993f3f064ecde5dba8e036233be" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>enable_if</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1abeb686db82e20bcc87ddad341b0a6130" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>value_type</name></member>
+      <member refid="struct_kokkos_1_1_impl_1_1_functor_value_join_function_3_01_functor_type_00_01_arg_tag_00_01true_01_4_1a245801bb479a8eb7306100d7d29a8e2f" prot="public" virt="non-virtual"><scope>Kokkos::Impl::FunctorValueJoinFunction&lt; FunctorType, ArgTag, true &gt;</scope><name>vptr_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

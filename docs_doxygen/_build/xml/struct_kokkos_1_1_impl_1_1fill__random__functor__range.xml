@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="struct_kokkos_1_1_impl_1_1fill__random__functor__range" kind="struct" language="C++" prot="public">
+    <compoundname>Kokkos::Impl::fill_random_functor_range</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class ViewType</type>
+      </param>
+      <param>
+        <type>class RandomPool</type>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>loops</declname>
+        <defname>loops</defname>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>rank</declname>
+        <defname>rank</defname>
+      </param>
+      <param>
+        <type>class <ref refid="struct_kokkos_1_1_index_type" kindref="compound">IndexType</ref></type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" line="1229" column="1" bodyfile="src/Kokkos/kokkos/algorithms/src/Kokkos_Random.hpp" bodystart="1229" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

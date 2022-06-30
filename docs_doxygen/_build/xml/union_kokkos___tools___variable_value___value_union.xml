@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="union_kokkos___tools___variable_value___value_union" kind="union" language="C++" prot="public">
+    <compoundname>Kokkos_Tools_VariableValue_ValueUnion</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_1abe3350570040485696698d85e987394c" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t Kokkos_Tools_VariableValue_ValueUnion::int_value</definition>
+        <argsstring></argsstring>
+        <name>int_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnion::int_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="162" column="11" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_1aee2cde3bf53f643ed5a6aeadb9d368f2" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Kokkos_Tools_VariableValue_ValueUnion::double_value</definition>
+        <argsstring></argsstring>
+        <name>double_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnion::double_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="163" column="10" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_kokkos___tools___variable_value___value_union_1a6173995f5426f70771d8a4cca642ff12" prot="public" static="no" mutable="no">
+        <type>Kokkos_Tools_Tuning_String</type>
+        <definition>Kokkos_Tools_Tuning_String Kokkos_Tools_VariableValue_ValueUnion::string_value</definition>
+        <argsstring></argsstring>
+        <name>string_value</name>
+        <qualifiedname>Kokkos_Tools_VariableValue_ValueUnion::string_value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="164" column="30" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" line="161" column="1" bodyfile="src/Kokkos/kokkos/core/src/impl/Kokkos_Profiling_C_Interface.h" bodystart="161" bodyend="165"/>
+    <listofallmembers>
+      <member refid="union_kokkos___tools___variable_value___value_union_1aee2cde3bf53f643ed5a6aeadb9d368f2" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnion</scope><name>double_value</name></member>
+      <member refid="union_kokkos___tools___variable_value___value_union_1abe3350570040485696698d85e987394c" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnion</scope><name>int_value</name></member>
+      <member refid="union_kokkos___tools___variable_value___value_union_1a6173995f5426f70771d8a4cca642ff12" prot="public" virt="non-virtual"><scope>Kokkos_Tools_VariableValue_ValueUnion</scope><name>string_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
