@@ -31,7 +31,7 @@ void buildTestArray(CArray<int> &data, CArray<int>& cols, CArray<int>& rows){
 //  | 1 4 7 | 
 //  | 2 5 8 |
 //  | 3 6 0 | 
-TEST(SparseColArray, AccessingData){
+TEST(CSCArray, AccessingData){
     CArray<int> data(8);
     CArray<int> cols(4);
     CArray<int> rows(8);
@@ -52,7 +52,7 @@ TEST(SparseColArray, AccessingData){
     rows(6) = 0;
     rows(7) = 1;
 
-    SparseColArray<int> A = SparseColArray<int> (data, rows, cols, 3,3);
+    CSCArray<int> A = CSCArray<int> (data, rows, cols, 3,3);
     
     
     for(i = 0; i < 3; i++){
@@ -73,12 +73,12 @@ TEST(SparseColArray, AccessingData){
 // | 0 0 5 6 7 0 |
 // | 0 0 0 0 0 8 |
 // Initially but we then modify it during the test
-TEST(SparseColArray,  ModifyValue){
+TEST(CSCArray,  ModifyValue){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     //B.setVal(3,5,99);
     B(3,5) = 99;
     EXPECT_EQ(B(3,5), 99) << "Element was expected to be 99 at " << 3 << " " << 5 ;
@@ -88,12 +88,12 @@ TEST(SparseColArray,  ModifyValue){
     EXPECT_EQ(B(0,5), 0) << "This operation should not change anything but we got value " << B(0,5);    
 }
 
-TEST(SparseColArray, NonZeroRow){
+TEST(CSCArray, NonZeroRow){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
   
     EXPECT_EQ(B.nnz(0), 1) << "expected there to be " << 1 << " nonzero elements in col " << 0; 
     EXPECT_EQ(B.nnz(1), 2) << "expected there to be " << 2 << " nonzero elements in col " << 1; 
@@ -102,24 +102,24 @@ TEST(SparseColArray, NonZeroRow){
 
 }
 
-TEST(SparseColArray, NonZeroTotal){
+TEST(CSCArray, NonZeroTotal){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     EXPECT_EQ(B.nnz(), 8) << "expected there to be " << 8 << " nonzero elements in total "; 
 }
 
 // Flat index take i j and returns the position it is in the underlying 1d array 
 // if A(i,j) is unfilled then it isn't represented in the 1d array so we opt to 
 // return -1
-TEST(SparseColArray, FlatIndex){
+TEST(CSCArray, FlatIndex){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     EXPECT_EQ(B.flatIndex(3,5), 7) << "Expected the location of 3,5 to be at " << 7 ;
     EXPECT_EQ(B.flatIndex(3,0), -1) << "There shouldn't be a proper value here, we are supposed to return -1 in this case";
 
@@ -127,12 +127,12 @@ TEST(SparseColArray, FlatIndex){
 
 // .begin(i) and .end(i) work as expected if you have seen how the iterators from std datastructures like vector 
 // work. Specifically both return a pointer to the data array
-TEST(SparseColArray, ColAccess){
+TEST(CSCArray, ColAccess){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );  
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );  
     
     size_t elements_row = B.nnz(1);    
     int i = 0; 
@@ -152,12 +152,12 @@ TEST(SparseColArray, ColAccess){
 // The important difference here is we return the index to the start and end position instead of a pointer
 // One on hand this is useful because we can access both the column information and the actual data if we 
 // return the integer
-TEST(SparseColArray, RowAccessFlat){
+TEST(CSCArray, RowAccessFlat){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
      
     size_t elements_row = B.nnz(1);    
     int i = 0; 
@@ -173,12 +173,12 @@ TEST(SparseColArray, RowAccessFlat){
     }
 }
 
-TEST(SparseColArray, toSparseColArray){
+TEST(CSCArray, toSparseColArray){
     CArray<int> data(8);
     CArray<int> cols(7);
     CArray<int> rows(8);
     buildTestArray(data, cols, rows);
-    SparseColArray<int> B  = SparseColArray<int>(data, rows, cols, 4, 6 );
+    CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     size_t elements_row = B.nnz(1);
     size_t nnz = B.nnz();
     CArray<int> out_data(nnz);

@@ -52,10 +52,10 @@
 //   10. RaggedDownArray
 //   11. DynamicRaggedRightArray
 //   12. DynamicRaggedDownArray
-//   13. SparseRowArray
-//   14. SparseColArray
-//   15. SparseRowArray
-//   16. SparseColArray //todo
+//   13. CSRArray
+//   14. CSCArray
+//   15. CSRArray
+//   16. CSCArray //todo
 //
 //   Kokkos Data structures
 //   17. FArrayKokkos
@@ -4511,7 +4511,7 @@ DynamicRaggedDownArray<T>::~DynamicRaggedDownArray() {}
 
 // 15SparseRowArrayy
 template <typename T>
-class SparseRowArray {
+class CSRArray {
   private: // What ought to be private ? 
     size_t dim1_, dim2_; // dim1_ is number of rows dim2_ is number of columns
     size_t nnz_; 
@@ -4525,7 +4525,7 @@ class SparseRowArray {
      * @brief Construct a new Sparse Row Array object
      * 
      */
-    SparseRowArray(); 
+    CSRArray(); 
 
 
     /**
@@ -4537,21 +4537,21 @@ class SparseRowArray {
      * @param dim1 number of rows 
      * @param dim2 number of columns
      */
-    SparseRowArray(CArray<T> array, CArray<T> column_index, CArray<T> start_index, size_t dim1, size_t dim2);
+    CSRArray(CArray<T> array, CArray<size_t> column_index, CArray<size_t> start_index, size_t dim1, size_t dim2);
 
     /**
      * @brief Constructor for a new Sparse Row Array object using the data from a dense matrix
      * 
      * @param dense  matrix to get the value from
      */
-    SparseRowArray(CArray<T> dense); 
+    CSRArray(CArray<T> dense); 
 
     /**
      * @brief Copy a new Sparse Row Array object 
      * 
      * @param temp array to copy 
      */
-    SparseRowArray(const SparseRowArray &temp); 
+    CSRArray(const CSRArray &temp); 
 
     /**
      * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not alocated 
@@ -4574,10 +4574,10 @@ class SparseRowArray {
     /**
      * @brief Assignment operator. Uses shared pointers to the data of temp instead of making a fresh copy
      * 
-     * @param temp SparseRowArray to copy values of 
-     * @return SparseRowArray& 
+     * @param temp CSRArray to copy values of 
+     * @return CSRArray& 
      */
-    SparseRowArray& operator=(const SparseRowArray &temp); 
+    CSRArray& operator=(const CSRArray &temp); 
     
     /**
      * @brief get start of array_ data
@@ -4634,33 +4634,35 @@ class SparseRowArray {
     // i.e. return the index each element is the index in the 1 array 
     // This as the use of providing a reasonable way to get the column
     // index and data value in the case you need both 
-    size_t beginFlat(size_t i);
-    size_t endFlat(size_t i); 
+    size_t begin_index(size_t i);
+    size_t end_index(size_t i); 
 
     // Get number of non zero elements in row i
     size_t nnz(size_t i);
     // Get total number of non zero elements 
     size_t nnz();    
-    
+
+    // underscore stuff 
     // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-    T& getValFlat(size_t k); 
-    size_t getColFlat(size_t k);
+    T& get_val_flat(size_t k); 
+    size_t get_col_flat(size_t k);
     // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-    size_t flatIndex(size_t i, size_t j);    
+    size_t flat_index(size_t i, size_t j);    
     // Convertor
     int toCSC(CArray<T> &array, CArray<size_t> &start_index, CArray<size_t> &row_index); 
-    void todense(CArray<T>& A);
+    
+    void to_dense(CArray<T>& A);
     //destructor 
-   ~SparseRowArray(); 
+   ~CSRArray(); 
 
    
 };
 
 template<typename T>
-SparseRowArray<T>::SparseRowArray(){} 
+CSRArray<T>::CSRArray(){} 
 
 template <typename T>
-SparseRowArray<T>::SparseRowArray(CArray<T> array, CArray<T> column_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+CSRArray<T>::CSRArray(CArray<T> array, CArray<size_t> column_index, CArray<size_t> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
     dim2_ = dim2; 
     size_t nnz = array.size();
@@ -4679,7 +4681,7 @@ SparseRowArray<T>::SparseRowArray(CArray<T> array, CArray<T> column_index, CArra
 }
 
 template<typename T>
-SparseRowArray<T>::SparseRowArray(const SparseRowArray<T> &temp){
+CSRArray<T>::CSRArray(const CSRArray<T> &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim1_ = temp.dim1_;
@@ -4692,7 +4694,7 @@ SparseRowArray<T>::SparseRowArray(const SparseRowArray<T> &temp){
 }
 
 template<typename T>
-SparseRowArray<T>::SparseRowArray(CArray<T> dense){
+CSRArray<T>::CSRArray(CArray<T> dense){
     dim1_ = dense.dims(0);
     dim2_ = dense.dims(1);
     nnz_ = dense.size();
@@ -4720,7 +4722,7 @@ SparseRowArray<T>::SparseRowArray(CArray<T> dense){
 }
 
 template<typename T>
-T& SparseRowArray<T>::operator()(size_t i, size_t j) const {
+T& CSRArray<T>::operator()(size_t i, size_t j) const {
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
     size_t k;
@@ -4735,7 +4737,7 @@ T& SparseRowArray<T>::operator()(size_t i, size_t j) const {
 
 
 template<typename T>
-T& SparseRowArray<T>::value(size_t i, size_t j) const {
+T& CSRArray<T>::value(size_t i, size_t j) const {
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
     size_t k;
@@ -4749,17 +4751,17 @@ T& SparseRowArray<T>::value(size_t i, size_t j) const {
 }
 
 template<typename T>
-T* SparseRowArray<T>::pointer() const{
+T* CSRArray<T>::pointer() const{
     return array_.get();
 }
 
 template<typename T>
-size_t* SparseRowArray<T>::get_starts() const {
+size_t* CSRArray<T>::get_starts() const {
     return start_index_.get();
 }
 
 template<typename T>
-SparseRowArray<T>& SparseRowArray<T>::operator=(const SparseRowArray &temp){
+CSRArray<T>& CSRArray<T>::operator=(const CSRArray &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim1_ = temp.dim1_;
@@ -4774,7 +4776,7 @@ SparseRowArray<T>& SparseRowArray<T>::operator=(const SparseRowArray &temp){
 
 //debugging tool primarily 
 template <typename T>
-void SparseRowArray<T>::printer(){
+void CSRArray<T>::printer(){
     size_t i,j;
     for(i = 0; i < dim1_; i++){
         for(j = 0; j < dim2_; j++){
@@ -4785,7 +4787,7 @@ void SparseRowArray<T>::printer(){
 }
 
 template<typename T>
-void SparseRowArray<T>::todense(CArray<T>& A){
+void CSRArray<T>::to_dense(CArray<T>& A){
     size_t i,j;
     for(i = 0; i < dim1_; i++){
         for(j = 0; j < dim2_; j++){
@@ -4796,77 +4798,77 @@ void SparseRowArray<T>::todense(CArray<T>& A){
 }
 
 template<typename T>
-size_t SparseRowArray<T>::stride(size_t i) const {
-   assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
+size_t CSRArray<T>::stride(size_t i) const {
+   assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 
 }
 
 
 template<typename T>
-size_t SparseRowArray<T>::dim1() const {
+size_t CSRArray<T>::dim1() const {
         return dim1_;
 }
 
 template<typename T>
-size_t SparseRowArray<T>::dim2() const {
+size_t CSRArray<T>::dim2() const {
         return dim2_;
 }
 
 
 template<typename T>
-T* SparseRowArray<T>::begin(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.begin()"); 
+T* CSRArray<T>::begin(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 
 template<typename T>
-T* SparseRowArray<T>::end(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.end()");
+T* CSRArray<T>::end(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
 
 template<typename T>
-size_t SparseRowArray<T>::beginFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.beginFlat()");
+size_t CSRArray<T>::begin_index(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i];
 }
 
 template<typename T>
-size_t SparseRowArray<T>::endFlat(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in SparseRowArray.beginFlat()");
+size_t CSRArray<T>::end_inde(size_t i){
+    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i+1];
 }
 
 template<typename T>
-size_t SparseRowArray<T>::nnz(){
+size_t CSRArray<T>::nnz(){
     return nnz_; 
 }
 
 template<typename T>
-size_t SparseRowArray<T>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
+size_t CSRArray<T>::nnz(size_t i){
+    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
-T& SparseRowArray<T>::getValFlat(size_t k){
-   assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getValFlat()"); 
+T& CSRArray<T>::get_val_flat(size_t k){
+   assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_val_flat()"); 
    return array_[k];
 }
 
 template<typename T>
-size_t SparseRowArray<T>::getColFlat(size_t k){
-    assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getColFlat()"); 
+size_t CSRArray<T>:f:get_col_lat(size_t k){
+    assert(k < nnz_f && "Index k is out of bounds in CSRArray.get_col_lat()"); 
     return column_index_[k];
 }
 
 
 template<typename T>
-size_t SparseRowArray<T>::flatIndex(size_t i, size_t j){
+size_t CSRArray<T>::flat_index(size_t i, size_t j){
     size_t k;
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
@@ -4883,7 +4885,7 @@ size_t SparseRowArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int SparseRowArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_cols[dim2_ + 1];
     int col_counts[dim2_];
     int i = 0;
@@ -4925,13 +4927,13 @@ int SparseRowArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<s
 }
 
 template <typename T>
-SparseRowArray<T>::~SparseRowArray() {}
+CSRArray<T>::~CSRArray() {}
 
 // EndSparseRowArrayy
 
-// 16 SparseColArray
+// 16 CSCArray
 template <typename T>
-class SparseColArray
+class CSCArray
 {
 private: // What ought to be private ? 
     size_t dim1_, dim2_;
@@ -4946,7 +4948,7 @@ private: // What ought to be private ?
        * @brief Construct a new empty Sparse Col Array object
        * 
        */
-      SparseColArray();
+      CSCArray();
 
       /**
       * @brief Construct a new Sparse Col Array object
@@ -4957,7 +4959,7 @@ private: // What ought to be private ?
       * @param dim1: number of rows the matrix should have
       * @param dim2: number of columns the matrix should have
       */
-      SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
+      CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
 
       /**
        * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated 
@@ -4972,9 +4974,9 @@ private: // What ought to be private ?
        * @brief Overloaded copy operator 
        * 
        * @param temp : Array to copy 
-       * @return SparseColArray& 
+       * @return CSCArray& 
        */
-      SparseColArray &operator=(const SparseColArray &temp);
+      CSCArray &operator=(const CSCArray &temp);
 
       T *pointer() const;
 
@@ -5036,8 +5038,8 @@ private: // What ought to be private ?
       // i.e. return the index each element is the index in the 1 array
       // This as the use of providing a reasonable way to get the column
       // index and data value in the case you need both
-      size_t beginFlat(size_t i);
-      size_t endFlat(size_t i);
+      size_t begin_index(size_t i);
+      size_t end_index (size_t i);
 
       /**
        * @brief Get the number of non zero elements in row i
@@ -5054,19 +5056,19 @@ private: // What ought to be private ?
       size_t nnz();
 
       // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-      T &getValFlat(size_t k);
-      size_t getRowFlat(size_t k);
+      T &get_val_flat(size_t k);
+      size_t get_row_flat(size_t k);
       // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-      int flatIndex(size_t i, size_t j);
+      int flat_index(size_t i, size_t j);
       // Convertor
       int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
-      void todense(FArray<T> &A);
+      void to_dense(FArray<T> &A);
       // destructor
-      ~SparseColArray();
+      ~CSCArray();
 };
 
 template <typename T>
-SparseColArray<T>::SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+CSCArray<T>::CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
     dim2_ = dim2;
     size_t nnz = array.size();
@@ -5086,7 +5088,7 @@ SparseColArray<T>::SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T
 
 
 template<typename T>
-T& SparseColArray<T>::operator()(size_t i, size_t j) const {
+T& CSCArray<T>::operator()(size_t i, size_t j) const {
     size_t col_start = start_index_[j];
     size_t col_end = start_index_[j + 1];
     size_t k;
@@ -5100,12 +5102,12 @@ T& SparseColArray<T>::operator()(size_t i, size_t j) const {
 }
 
 template<typename T>
-T* SparseColArray<T>::pointer() const {
+T* CSCArray<T>::pointer() const {
     return array_.get();
 }
 
 template<typename T>
-T& SparseColArray<T>::value(size_t i, size_t j) const {
+T& CSCArray<T>::value(size_t i, size_t j) const {
     size_t col_start = start_index_[j];
     size_t col_end = start_index_[j + 1];
     size_t k;
@@ -5119,12 +5121,12 @@ T& SparseColArray<T>::value(size_t i, size_t j) const {
 }
 
 template<typename T>
-size_t* SparseColArray<T>::get_starts() const{
+size_t* CSCArray<T>::get_starts() const{
     return &start_index_[0];
 }
 
 template<typename T>
-SparseColArray<T>& SparseColArray<T>::operator=(const SparseColArray &temp){
+CSCArray<T>& CSCArray<T>::operator=(const CSCArray &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim2_ = temp.dim2_;
@@ -5138,14 +5140,14 @@ SparseColArray<T>& SparseColArray<T>::operator=(const SparseColArray &temp){
 }
 
 template<typename T>
-size_t SparseColArray<T>::stride(size_t i) const{
-    assert(i < dim2_ && "i is out of bounds in SparseColArray.stride()");
+size_t CSCArray<T>::stride(size_t i) const{
+    assert(i < dim2_ && "i is out of bounds in CSCArray.stride()");
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T>
-void SparseColArray<T>::todense(FArray<T>& A){
+void CSCArray<T>::to_dense(FArray<T>& A){
     size_t i,j;
     for (j = 0; j < dim2_; j++)
     {
@@ -5156,63 +5158,63 @@ void SparseColArray<T>::todense(FArray<T>& A){
 }
 
 template<typename T>
-size_t SparseColArray<T>::dim1() const {
+size_t CSCArray<T>::dim1() const {
     return dim1_;
 }
 
 template<typename T>
-size_t SparseColArray<T>::dim2() const{
+size_t CSCArray<T>::dim2() const{
     return dim2_;
 }
 
 template<typename T>
-T* SparseColArray<T>::begin(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at SparseColArray.begin()");
+T* CSCArray<T>::begin(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin()");
     size_t col_start = start_index_[i];
     return &array_[col_start];
 }
 
 template<typename T>
-T* SparseColArray<T>::end(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.endt()");
+T* CSCArray<T>::end(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at CSCArray.endt()");
     size_t col_start = start_index_[i+1];
     return &array_[col_start];
 }
 
 template<typename T>
-size_t SparseColArray<T>::beginFlat(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.beginFlat()");
+size_t CSCArray<T>::begin_index(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at CSCArray.begin_index()");
     return start_index_[i];
 }
 
 template<typename T>
-size_t SparseColArray<T>::endFlat(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at SparseColArray.endFlat()");
+size_t CSCArray<T>::end_inde(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.end_index()");
     return start_index_[i + 1];
 }
 
 template<typename T>
-size_t SparseColArray<T>::nnz(){
+size_t CSCArray<T>::nnz(){
     return nnz_; 
 }
 
 template<typename T>
-size_t SparseColArray<T>::nnz(size_t i){
+size_t CSCArray<T>::nnz(size_t i){
     return start_index_[i+1] - start_index_[i];
 }
 
 template<typename T>
-T& SparseColArray<T>::getValFlat(size_t k){
+T& CSCArray<T>::get_val_flat(size_t k){
     return array_[k];
 }
 
 template<typename T>
-size_t SparseColArray<T>::getRowFlat(size_t k){
+size_t CSCArray<T>::get_row_flat(size_t k){
     return row_index_[k];
 }
 
 template<typename T>
-int SparseColArray<T>::flatIndex(size_t i, size_t j){
+int CSCArray<T>::flat_index(size_t i, size_t j){
     size_t col_start = start_index_[j];
     size_t col_end = start_index_[j+1];
     size_t k;
@@ -5230,7 +5232,7 @@ int SparseColArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_rows[dim1_ + 1];
     int row_counts[dim1_];
     int i = 0;
@@ -5272,9 +5274,9 @@ int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<s
 }
 
 template <typename T>
-SparseColArray<T>::~SparseColArray() {}
+CSCArray<T>::~CSCArray() {}
 
-// End of SparseColArray
+// End of CSCArray
 //=======================================================================
 //	end of standard MATAR data-types
 //========================================================================
@@ -12858,7 +12860,7 @@ class SparseRowArrayKokkos {
      * 
      */
     SparseRowArrayKokkos(); 
-    //SparseRowArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
+    //CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
 
     /**
@@ -12957,9 +12959,9 @@ class SparseRowArrayKokkos {
      * index and data value in the case you need both 
     */
     KOKKOS_INLINE_FUNCTION
-    size_t beginFlat(size_t i);
+    size_t begin_index(size_t i);
     KOKKOS_INLINE_FUNCTION
-    size_t endFlat(size_t i); 
+    size_t end_index(size_t i); 
 
     /**
      * @brief get the number of non zero elements in row i 
@@ -12975,13 +12977,13 @@ class SparseRowArrayKokkos {
    
     /* 
     // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-    T& getValFlat(size_t k); 
-    size_t getColFlat(size_t k);
+    T& get_val_flat(size_t k); 
+    size_t get_col_flat(size_t k);
     // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-    int flatIndex(size_t i, size_t j);    
+    int flat_index(size_t i, size_t j);    
     // Convertor
     int toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs); 
-    void todense(CArray<T>& A); */
+    void to_dense(CArray<T>& A); */
 
     //destructor 
     KOKKOS_INLINE_FUNCTION
@@ -12994,7 +12996,7 @@ template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 SparseRowArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::SparseRowArrayKokkos() {} 
 
 /* template <typename T>
-SparseRowArray<T>::SparseRowArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols ){
+CSRArray<T>::CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols ){
     nrows_ = rows;
     ncols_ = cols; 
     size_t nnz = data.size();
@@ -13074,7 +13076,7 @@ SparseRowArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& SparseRowArrayKokkos<T,
 /*
 //debugging tool primarily 
 template <typename T>
-void SparseRowArray<T>::printer(){
+void CSRArray<T>::printer(){
     size_t i,j;
     for(i = 0; i < nrows_; i++){
         for(j = 0; j < ncols_; j++){
@@ -13085,7 +13087,7 @@ void SparseRowArray<T>::printer(){
 }
 
 template<typename T>
-void SparseRowArray<T>::todense(CArray<T>& A){
+void CSRArray<T>::to_dense(CArray<T>& A){
     size_t i,j;
     for(i = 0; i < nrows_; i++){
         for(j = 0; j < ncols_; j++){
@@ -13097,7 +13099,7 @@ void SparseRowArray<T>::todense(CArray<T>& A){
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 size_t SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::stride(size_t i) const {
-   assert(i <= dim1_ && "Index i out of bounds in SparseRowArray.stride()"); 
+   assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 }
 
@@ -13114,29 +13116,29 @@ size_t SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim1() const{
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.begin()"); 
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.end()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t SparseRowArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::beginFlat(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.beginFlat()");
+size_t SparseRowArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::begin_index(size_t i){
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t SparseRowArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::endFlat(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in SparseRowArray.beginFlat()");
+size_t SparseRowArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::end_inde(size_t i){
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i+1];
 }
 
@@ -13149,26 +13151,26 @@ size_t SparseRowArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::nnz(){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t SparseRowArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in SparseRowArray.stride()"); 
+    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
 /*
 template<typename T>
-T& SparseRowArray<T>::getValFlat(size_t k){
-   assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getValFlat()"); 
+T& CSRArray<T>::get_val_flat(size_t k){
+   assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_val_flat()"); 
    return array_[k];
 }
 
 template<typename T>
-size_t SparseRowArray<T>::getColFlat(size_t k){
-    assert(k < nnz_ && "Index k is out of bounds in SparseRowArray.getColFlat()"); 
+size_t CSRArray<T>:f:get_col_lat(size_t k){
+    assert(k < nnz_f && "Index k is out of bounds in CSRArray.get_col_lat()"); 
     return column_index_[k];
 }
 
 
 template<typename T>
-int SparseRowArray<T>::flatIndex(size_t i, size_t j){
+int CSRArray<T>::flat_index(size_t i, size_t j){
     size_t k;
     size_t row_start = start_index_[i];
     size_t row_end = start_index_[i+1];
@@ -13185,7 +13187,7 @@ int SparseRowArray<T>::flatIndex(size_t i, size_t j){
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 template<typename T>
-int SparseRowArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_cols[ncols_ + 1];
     int col_counts[ncols_];
     int i = 0;
@@ -13262,7 +13264,7 @@ private: // What ought to be private ?
       * @param dim1: number of rows the matrix should have
       * @param dim2: number of columns the matrix should have
       */
-      //SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
+      //CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2);
 
       /**
        * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated 
@@ -13278,7 +13280,7 @@ private: // What ought to be private ?
        * @brief Overloaded copy operator 
        * 
        * @param temp : Array to copy 
-       * @return SparseColArray& 
+       * @return CSCArray& 
        */
       KOKKOS_INLINE_FUNCTION
       SparseColArrayKokkos &operator=(const SparseColArrayKokkos &temp);
@@ -13356,10 +13358,11 @@ private: // What ought to be private ?
       // This as the use of providing a reasonable way to get the column
       // index and data value in the case you need both
       KOKKOS_INLINE_FUNCTION
-      size_t beginFlat(size_t i);
+      size_t begin_index(size_t i);
 
       KOKKOS_INLINE_FUNCTION
-      size_t endFlat(size_t i);
+      size_t end_index
+(size_t i);
 
       /**
        * @brief Get the number of non zero elements in row i
@@ -13380,27 +13383,27 @@ private: // What ought to be private ?
 
       // Use the index into the 1d array to get what value is stored there and what is the corresponding row
       KOKKOS_INLINE_FUNCTION
-      T &getValFlat(size_t k);
+      T &get_val_flat(size_t k);
 
       KOKKOS_INLINE_FUNCTION
-      size_t getRowFlat(size_t k);
+      size_t get_row_flat(size_t k);
       
       // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
       KOKKOS_INLINE_FUNCTION
-      int flatIndex(size_t i, size_t j);
+      int flat_index(size_t i, size_t j);
       
       // Convertor
       //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
-      //void todense(FArray<T> &A);
+      //void to_dense(FArray<T> &A);
       // destructor
       ~SparseColArrayKokkos();
 };
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-SparseColArray<T, Layout, ExecSpace, MemoryTraits>() {}
+CSCArray<T, Layout, ExecSpace, MemoryTraits>() {}
 
 /*template <typename T>
-SparseColArray<T>::SparseColArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
+CSCArray<T>::CSCArray(CArray<T> array, CArray<T> row_index, CArray<T> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
     dim2_ = dim2;
     size_t nnz = array.size();
@@ -13459,7 +13462,7 @@ size_t* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_starts() co
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& SparseColArray<T>::operator=(const SparseColArray<T,Layout,ExecSpace,MemoryTraits> &temp){
+SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArray<T>::operator=(const CSCArray<T,Layout,ExecSpace,MemoryTraits> &temp){
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim2_ = temp.dim2_;
@@ -13474,13 +13477,13 @@ SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& SparseColArray<T>::oper
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::stride(size_t i) const{
-    assert(i < dim2_ && "i is out of bounds in SparseColArray.stride()");
+    assert(i < dim2_ && "i is out of bounds in CSCArray.stride()");
     return start_index_[i+1] - start_index_[i];
 }
 
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::todense(FArray<T>& A){
+void SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::to_dense(FArray<T>& A){
     size_t i,j;
     for (j = 0; j < dim2_; j++)
     {
@@ -13502,27 +13505,27 @@ size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::dim2() const{
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at SparseColArray.begin()");
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin()");
     size_t col_start = start_index_[i];
     return &array_[col_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.endt()");
+    assert(i <= dim2s_ && "index i out of bounds at CSCArray.endt()");
     size_t col_start = start_index_[i+1];
     return &array_[col_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>:beginFlat(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at SparseColArray.beginFlat()");
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>:begin_index(size_t i){
+    assert(i <= dim2s_ && "index i out of bounds at CSCArray.begin_index()");
     return start_index_[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::endFlat(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at SparseColArray.endFlat()");
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end_inde(size_t i){
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.end_index()");
     return start_index_[i + 1];
 }
 
@@ -13537,17 +13540,17 @@ size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(size_t i){
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T& SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::getValFlat(size_t k){
+T& SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_val_flat(size_t k){
     return array_[k];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::getRowFlat(size_t k){
+size_t SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_row_flat(size_t k){
     return row_index_[k];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flatIndex(size_t i, size_t j){
+int SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size_t j){
     size_t col_start = start_index_[j];
     size_t col_end = start_index_[j+1];
     size_t k;
@@ -13565,7 +13568,7 @@ int SparseColArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flatIndex(size_t i,
 // Returns the data in this csr format but as represented as the appropriatte vectors 
 // for a csc format
 /*template<typename T>
-int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
+int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_rows[dim1_ + 1];
     int row_counts[dim1_];
     int i = 0;
@@ -13607,7 +13610,7 @@ int SparseColArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<s
 } */
 
 template <typename T>
-SparseColArray<T>::~SparseColArray() {}
+CSCArray<T>::~CSCArray() {}
 
 //////////////////////////
 // Inherited Class Array
