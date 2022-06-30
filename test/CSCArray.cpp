@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <gtest/gtest.h> 
 
-void buildTestArray(CArray<int> &data, CArray<int>& cols, CArray<int>& rows){
+void buildTestArray(CArray<int> &data, CArray<size_t>& cols, CArray<size_t>& rows){
     int i = 0;
     for(i = 0; i < 8; i++){
         data(i) = i+1;
@@ -33,8 +33,8 @@ void buildTestArray(CArray<int> &data, CArray<int>& cols, CArray<int>& rows){
 //  | 3 6 0 | 
 TEST(CSCArray, AccessingData){
     CArray<int> data(8);
-    CArray<int> cols(4);
-    CArray<int> rows(8);
+    CArray<size_t> cols(4);
+    CArray<size_t> rows(8);
     int i, j;
     for(i = 0; i < 8; i++){
         data(i) = i+1;
@@ -75,8 +75,8 @@ TEST(CSCArray, AccessingData){
 // Initially but we then modify it during the test
 TEST(CSCArray,  ModifyValue){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     //B.setVal(3,5,99);
@@ -90,8 +90,8 @@ TEST(CSCArray,  ModifyValue){
 
 TEST(CSCArray, NonZeroRow){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
   
@@ -104,8 +104,8 @@ TEST(CSCArray, NonZeroRow){
 
 TEST(CSCArray, NonZeroTotal){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     EXPECT_EQ(B.nnz(), 8) << "expected there to be " << 8 << " nonzero elements in total "; 
@@ -116,12 +116,12 @@ TEST(CSCArray, NonZeroTotal){
 // return -1
 TEST(CSCArray, FlatIndex){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
-    EXPECT_EQ(B.flatIndex(3,5), 7) << "Expected the location of 3,5 to be at " << 7 ;
-    EXPECT_EQ(B.flatIndex(3,0), -1) << "There shouldn't be a proper value here, we are supposed to return -1 in this case";
+    EXPECT_EQ(B.flat_index(3,5), 7) << "Expected the location of 3,5 to be at " << 7 ;
+    EXPECT_EQ(B.flat_index(3,0), -1) << "There shouldn't be a proper value here, we are supposed to return -1 in this case";
 
 }
 
@@ -129,8 +129,8 @@ TEST(CSCArray, FlatIndex){
 // work. Specifically both return a pointer to the data array
 TEST(CSCArray, ColAccess){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );  
     
@@ -154,19 +154,19 @@ TEST(CSCArray, ColAccess){
 // return the integer
 TEST(CSCArray, RowAccessFlat){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
      
     size_t elements_row = B.nnz(1);    
     int i = 0; 
-    for(auto start = B.beginFlat(1); start != B.endFlat(1); ++start){    
+    for(auto start = B.begin_index(1); start != B.end_index(1); ++start){    
         if(i == 0){
-            EXPECT_EQ(2, B.getValFlat(start)) << "Wrong value of " << start << " in iteration 0";
+            EXPECT_EQ(2, B.get_val_flat(start)) << "Wrong value of " << start << " in iteration 0";
             i++; 
         } else if(i == 1) {
-            EXPECT_EQ(3, B.getValFlat(start)) << "Wrong value of " << start << " in iterion 1";
+            EXPECT_EQ(3, B.get_val_flat(start)) << "Wrong value of " << start << " in iterion 1";
         } else {
             EXPECT_EQ(0,1) << "We've looped too far :( ";
          }   
@@ -175,8 +175,8 @@ TEST(CSCArray, RowAccessFlat){
 
 TEST(CSCArray, toSparseColArray){
     CArray<int> data(8);
-    CArray<int> cols(7);
-    CArray<int> rows(8);
+    CArray<size_t> cols(7);
+    CArray<size_t> rows(8);
     buildTestArray(data, cols, rows);
     CSCArray<int> B  = CSCArray<int>(data, rows, cols, 4, 6 );
     size_t elements_row = B.nnz(1);
