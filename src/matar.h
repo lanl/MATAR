@@ -11877,7 +11877,7 @@ public:
     RaggedRightArrayofVectorsKokkos& operator= (const RaggedRightArrayofVectorsKokkos &temp);
 
     //functors for kokkos execution policies
-    //initialize start indices view
+    // initialize start indices view
     class init_start_indices_functor{
       public:
       SArray1D mystart_index_;
@@ -12284,6 +12284,7 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedDownArrayK
     dim2_ = some_dim2;
     data_setup(tag_string);
 } // End constructor
+
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -12838,7 +12839,6 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicRaggedDow
 
 ////// END DynamicRaggedDownArrayKokkos 
 
-
 // KokkosCSRArray
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class CSRArrayKokkos {
@@ -12851,8 +12851,8 @@ class CSRArrayKokkos {
     size_t nnz_; 
     TArray1D array_;
     SArray1D column_index_;
-    SArray1D start_index_;
-    
+    SArray1D start_index_; 
+    TArray1D miss; 
   public:
 
     /**
@@ -12862,7 +12862,14 @@ class CSRArrayKokkos {
     CSRArrayKokkos(); 
     //CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
+   CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
+               CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
+               size_t dim1, size_t dim2, const std::string & tag_string);
 
+
+    void data_setup(const std::string& tag_string);
     /**
      * @brief Access method to A(i,j) returns a dummy value of 0 if value is not allocated 
      * 
@@ -12984,7 +12991,17 @@ class CSRArrayKokkos {
     // Convertor
     int toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs); 
     void to_dense(CArray<T>& A); */
-
+    
+    class init_start_indices_functor{
+       public:
+              SArray1D mystart_index_;
+              init_start_indices_functor(SArray1D tempstart_index_){
+                     mystart_index_ = tempstart_index_;
+              }
+              KOKKOS_INLINE_FUNCTION void operator()(const int index) const {
+                      mystart_index_(index) = 0;
+             }
+    }; 
     //destructor 
     KOKKOS_INLINE_FUNCTION
     ~CSRArrayKokkos(); 
@@ -12995,25 +13012,42 @@ class CSRArrayKokkos {
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::CSRArrayKokkos() {} 
 
-/* template <typename T>
-CSRArray<T>::CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols ){
-    nrows_ = rows;
-    ncols_ = cols; 
-    size_t nnz = data.size();
-    start_index_ = std::shared_ptr<size_t []> (new size_t[nrows_ + 1]);
-    array_ = std::shared_ptr<T []> (new T[nnz+1]);
-    column_index_ = std::shared_ptr<size_t []> (new size_t[nnz]);
-    size_t i ;
-    for(i = 0; i < nnz; i++){
-        array_[i] = data(i);
-        column_index_[i] = col_ptrs(i);
-    }
-    for(i = 0; i < nrows_ + 1; i++){
-        start_index_[i] = row_ptrs(i);
-    } 
-    nnz_ = nnz; 
-} */
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
+               CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,  
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
+               size_t dim1, size_t dim2, const std::string & tag_string){
+    dim1_ = dim1;
+    dim2_ = dim2;
+    start_index_ = start_index.get_kokkos_view();    
+    array_ = array.get_kokkos_view();   
+    column_index_ = colum_index.get_kokkos_view();
+    nnz_ = colum_index.extent();
+    miss = TArray1D("miss", 1);
+}
 
+
+//setup start indices
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::data_setup(const std::string& tag_string) {
+    //allocate start indices
+    std::string append_indices_string("start_indices");
+    std::string temp_copy_string = tag_string;
+    std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
+    temp_copy_string = tag_string;
+
+    start_index_ = SArray1D(start_index_tag_string, dim1_ + 1);
+    #ifdef HAVE_CLASS_LAMBDA
+    Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
+      start_index_(i) = 0;
+    });
+    #else
+    init_start_indices_functor execution_functor(start_index_);
+    Kokkos::parallel_for("StartValuesInit", dim1_+1,execution_functor);
+    #endif
+
+}
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -13023,11 +13057,11 @@ T& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size
     size_t k;
     for(k = 0; k < row_end - row_start; k++){
         if(column_index_[row_start + k] == j){
-            return array_[row_start + k];
+            return array_.data()[row_start + k];
         }
     }
-    array_[nnz_] = (T) NULL;
-    return array_[nnz_];
+    array_.data()[nnz_-1] = (T) NULL;
+    return array_.data()[nnz_-1];
 }
 
 
@@ -13039,23 +13073,23 @@ T& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j)
     size_t k;
     for(k = 0; k < row_end - row_start; k++){
         if(column_index_[row_start + k] == j){
-            return array_[row_start + k];
+            return array_.data()[row_start + k];
         }
     }
-    array_[nnz_] = (T) NULL;
-    return array_[nnz_];
+    array_.data()[nnz_-1] = (T) NULL;
+    return array_.data()[nnz_-1];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::pointer() const{
-    return array_.get();
+    return array_.data();
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_starts() const {
-    return start_index_.get();
+    return start_index_.data();
 } 
 
 template<typename T,typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -13100,7 +13134,7 @@ void CSRArray<T>::to_dense(CArray<T>& A){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::stride(size_t i) const {
    assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
-   return start_index_[i+i] - start_index_[i];
+   return start_index_.data()[i+i] - start_index_.data()[i];
 }
 
 
@@ -13117,29 +13151,29 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim1() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::begin(size_t i){
     assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()"); 
-    size_t row_start = start_index_[i];
-    return &array_[row_start];
+    size_t row_start = start_index_.data()[i];
+    return &array_.data()[row_start];
 }
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
     assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
-    size_t row_start = start_index_[i+1];
-    return &array_[row_start];
+    size_t row_start = start_index_.data()[i+1];
+    return &array_.data()[row_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::begin_index(size_t i){
     assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
-    return start_index_[i];
+    return start_index_.data()[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::end_index(size_t i){
     assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
-    return start_index_[i+1];
+    return start_index_.data()[i+1];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -13152,7 +13186,7 @@ template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
     assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
-    return start_index_[i+1] - start_index_[i];
+    return start_index_.data()[i+1] - start_index_.data()[i];
 }
 
 /*
