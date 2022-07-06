@@ -12871,8 +12871,9 @@ class CSRArrayKokkos {
 
     /**
      * @brief Constructor takes in dense matrix 
-     */ 
-    // CSRArrayKokkos(CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &dense, size_t dim1, size_t dim2);
+     */
+    //KOKKOS_INLINE_FUNCTION 
+    CSRArrayKokkos(const CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &dense, const size_t dim1, const  size_t dim2);
     
     void data_setup(const std::string& tag_string);
     /**
@@ -12962,6 +12963,14 @@ class CSRArrayKokkos {
     KOKKOS_INLINE_FUNCTION 
     size_t stride(size_t i) const;
 
+
+    /*
+     * @brief get values from dense array 
+     */ 
+    void from_dense(CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &starts,
+                    CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &columns,
+                    CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array);
+
     /*
      * iterator for the raw data at row i
      * i.e. return the index each element is the index in the 1 array 
@@ -13033,12 +13042,15 @@ CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
 
 /*
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::CSRArrayKokkos(CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &dense, size_t dim1, size_t dim2){
+KOKKOS_INLINE_FUNCTION
+CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::CSRArrayKokkos(const CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &dense, const size_t dim1, const size_t dim2){
     dim1_ = dim1;
     dim2_ = dim2;
     miss_ = TArray1D("miss",1);
-    //start_index_ = CArrayKokkos<size_t>(dim1 + 1);
+    start_index_ = Kokkos::View<size_t*>("start indices", dim1 + 1);
     nnz_ = 0;
+    
+
     start_index_(0) = 0;
     // TODO MAKE parallel
     for(size_t i = 0; i < dim1_; i++){
@@ -13050,22 +13062,26 @@ CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::CSRArrayKokkos(CArrayKokkos<T,
                 }
         }
    }
+
+    
     for(size_t i = 1; i < dim1_ + 1; i++){
             start_index_(i) = start_index_[i] + start_index_[i-1];
     }
-    // column_index_ = CArrayKokkos<size_t>(nnz_);
-    // array_ = CArrayKokkos<T>(nnz_);
+    
+    column_index_ = Kokkos::View<size_t*>("column Indices", nnz_);
+    array_ = Kokkos::View<T*>("array elements", nnz_);
     size_t next = 0 ;
     for(size_t i = 0; i < dim1_; i++){
             for(size_t j =0 ; j < dim2_; j++){
                     if(dense(i,j) != 0){
-                        column_index_(next) = j; 
-                        array_(next) = dense(i,j);
+         //               column_index_(next) = j; 
+         //               array_(next) = dense(i,j);
                         next++;
                     }
             }
     }
-} */ 
+}  
+*/
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -13240,7 +13256,12 @@ int CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
     return  -1;
 }
 
-/*
+//template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+//void CSRArrrayKokkos<T,Layout,ExecSpace, MemoryTraits>::from_dense(CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &starts,
+//                    CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &columns,
+//                    CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array);
+
+                    /*
 int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs ){
     int nnz_cols[ncols_ + 1];
     int col_counts[ncols_];

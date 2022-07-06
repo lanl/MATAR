@@ -29,29 +29,18 @@ int main(int argc, char* argv[]){
     |0 0 3 4 0 0 0 0 0 0|
     |0 0 0 0 5 6 0 0 0 0|
     */
-   
-    //auto B = CArrayKokkos<int>(3, 10); 
-    //B(0,0) = 1;
-    //B(0,1) = 2;
-    //B(1,2) = 3;
-    //B(1,3) = 4;
-    //B(2,4) = 5;
-    //B(2,5) = 6;
-
-
-
-    
     const std::string s = "hello";   
     auto pre_A = CSRArrayKokkos<int>(starts, array, columns, dim1, dim2, s);
     auto A = pre_A;
-    //auto A = CSRArrayKokkos(B, 3, 10);
+  
+    
     int* res = A.pointer();
     auto a_start = A.get_starts();
     int total = 0;
     int loc_total = 0;  
    
     RUN ({
-         printf("nnz : %d\n", A.nnz());
+        printf("nnz : %d\n", A.nnz());
     });
 
     REDUCE_SUM(i, 0, nnz,
