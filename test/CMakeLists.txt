@@ -20,6 +20,12 @@ if (KOKKOS)
   add_executable(test_dual_types test_dual_types.cpp)
   add_definitions(-DHAVE_KOKKOS=1)
 
+  add_executable(kokkos_csr CSRKokkos.cpp)
+  target_link_libraries(kokkos_csr matar gtest_main Kokkos::kokkos)
+  add_executable(kokkos_csc CSCKokkos.cpp)
+  target_link_libraries(kokkos_csc matar gtest_main Kokkos::kokkos)
+
+
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
   elseif (HIP)
@@ -75,5 +81,4 @@ if (TEST)
   target_link_libraries(test_csr matar gtest_main)
   add_executable(test_csc CSCArray.cpp)
   target_link_libraries(test_csc matar gtest_main)
-
 endif(TEST)

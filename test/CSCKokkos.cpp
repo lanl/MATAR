@@ -11,52 +11,62 @@ int main(int argc, char* argv[]){
     size_t nnz = 6 ;
     size_t dim1 = 3;
     size_t dim2 = 10;
-    CArrayKokkos<size_t> starts(dim1 + 1);
-    CArrayKokkos<size_t> columns(nnz);
-    CArrayKokkos<int> array(nnz); 
+    CArrayKokkos<size_t> starts(dim2 + 1);
+    CArrayKokkos<size_t> rows(nnz);
+    CArrayKokkos<int> array(nnz + 1); 
     RUN ({
-        for(int i =0; i < 4; i++){
-            starts(i) = 2*i;
-            for(int j = 0; j < 2; j++){
-                columns(2*i + j) = i + j;
-                array(2*i + j) = 2*i + j ;
-            }
-         }
+        starts(1) = 1;
+        starts(2) = 2;
+        starts(3) = 3;
+        starts(4) = 4;
+        starts(5) = 5; 
+        starts(6) = 6; 
+        starts(7) = 6;
+        starts(8) = 6;
+        starts(9) = 6;
+
+        rows(0) = 0;
+        rows(1) = 0;
+        rows(2) = 1;
+        rows(3) = 1;
+        rows(4) = 2;
+        rows(5) = 2;
+
+        array(0) = 1;
+        array(1) = 2;
+        array(2) = 3;
+        array(3) = 4;
+        array(4) = 5;
+        array(5) = 6;
+        array(6) = 0;
+                    
     });
 
     /*
-    |1 2 0 0 0 0 0 0 0 0|
+    |1 2 2 0 0 0 0 0 0 0|
     |0 0 3 4 0 0 0 0 0 0|
     |0 0 0 0 5 6 0 0 0 0|
     */
-   
-    //auto B = CArrayKokkos<int>(3, 10); 
-    //B(0,0) = 1;
-    //B(0,1) = 2;
-    //B(1,2) = 3;
-    //B(1,3) = 4;
-    //B(2,4) = 5;
-    //B(2,5) = 6;
-
-
-
     
     const std::string s = "hello";   
-    auto pre_A = CSRArrayKokkos<int>(starts, array, columns, dim1, dim2, s);
+    // Testing = op 
+    auto pre_A = CSCArrayKokkos<int>(starts, array, rows, dim1, dim2, s);
     auto A = pre_A;
-    //auto A = CSRArrayKokkos(B, 3, 10);
-    int* res = A.pointer();
+    int* values = A.pointer();
     auto a_start = A.get_starts();
     int total = 0;
     int loc_total = 0;  
-   
+  
+    RUN ({
+         printf("This matix is %d x %d\n" , A.dim1(), A.dim2(), A.dim2());
+    }); 
     RUN ({
          printf("nnz : %d\n", A.nnz());
     });
 
     REDUCE_SUM(i, 0, nnz,
                 loc_total, {
-                    loc_total += res[i];
+                    loc_total += values[i];
                     }, total);    
     printf("Sum of nnz from pointer method %d\n", total);
     total = 0;
@@ -65,14 +75,14 @@ int main(int argc, char* argv[]){
                     loc_total += a_start[i];
                     }, total);    
     printf("Sum of start indices form .get_starts() %d\n", total); 
-   total = 0;
+    total = 0;
+    
     REDUCE_SUM(i, 0, dim1,
-               j, 0, dim2,
+               j, 0, dim2-1,
                 loc_total, {
                     loc_total += A(i,j);
                     }, total);    
     printf("Sum of nnz in array notation %d\n", total);
-    auto ss = A.begin(0);
     
     } Kokkos::finalize();
     return 0; 
