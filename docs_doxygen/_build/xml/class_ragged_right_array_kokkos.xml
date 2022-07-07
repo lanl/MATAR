@@ -1,0 +1,476 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ragged_right_array_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>RaggedRightArrayKokkos</compoundname>
+    <includes refid="matar_8h" local="no">matar.h</includes>
+    <innerclass refid="class_ragged_right_array_kokkos_1_1finalize__stride__functor" prot="public">RaggedRightArrayKokkos::finalize_stride_functor</innerclass>
+    <innerclass refid="class_ragged_right_array_kokkos_1_1init__start__indices__functor" prot="public">RaggedRightArrayKokkos::init_start_indices_functor</innerclass>
+    <innerclass refid="class_ragged_right_array_kokkos_1_1setup__length__functor" prot="public">RaggedRightArrayKokkos::setup_length_functor</innerclass>
+    <innerclass refid="class_ragged_right_array_kokkos_1_1setup__start__indices__functor" prot="public">RaggedRightArrayKokkos::setup_start_indices_functor</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename Layout</type>
+        <defval>DefaultLayout</defval>
+      </param>
+      <param>
+        <type>typename ExecSpace</type>
+        <defval>DefaultExecSpace</defval>
+      </param>
+      <param>
+        <type>typename MemoryTraits</type>
+        <defval>void</defval>
+      </param>
+      <param>
+        <type>typename ILayout</type>
+        <defval>Layout</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_ragged_right_array_kokkos_1a6f88a798fe740edae63193bce86fac81" prot="private" static="no">
+        <type>Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::TArray1D =  Kokkos::View&lt;T*, Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>TArray1D</name>
+        <qualifiedname>RaggedRightArrayKokkos::TArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11413" column="5" bodyfile="src/matar.h" bodystart="11413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_ragged_right_array_kokkos_1a353f7df2e360fd80481edf9790528dd5" prot="private" static="no">
+        <type>Kokkos::View&lt; size_t *, Layout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::SArray1D =  Kokkos::View&lt;size_t *,Layout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>SArray1D</name>
+        <qualifiedname>RaggedRightArrayKokkos::SArray1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11414" column="5" bodyfile="src/matar.h" bodystart="11414" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_ragged_right_array_kokkos_1a561104c9b0f7e4a61ae791d14a1ca0f9" prot="private" static="no">
+        <type>Kokkos::View&lt; size_t *, ILayout, ExecSpace, MemoryTraits &gt;</type>
+        <definition>using RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::Strides1D =  Kokkos::View&lt;size_t *,ILayout, ExecSpace, MemoryTraits&gt;</definition>
+        <argsstring></argsstring>
+        <name>Strides1D</name>
+        <qualifiedname>RaggedRightArrayKokkos::Strides1D</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11415" column="5" bodyfile="src/matar.h" bodystart="11415" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_ragged_right_array_kokkos_1a628477ca068ecf6c48fd91a9246c2c6c" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::array_</definition>
+        <argsstring></argsstring>
+        <name>array_</name>
+        <qualifiedname>RaggedRightArrayKokkos::array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11418" column="14" bodyfile="src/matar.h" bodystart="11418" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_array_kokkos_1a5e232f3966ef54dd7a015f4c1bd6b53a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::dim1_</definition>
+        <argsstring></argsstring>
+        <name>dim1_</name>
+        <qualifiedname>RaggedRightArrayKokkos::dim1_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11420" column="12" bodyfile="src/matar.h" bodystart="11420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_array_kokkos_1ac44c36309612fb9b90250705b0a7f2e1" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>RaggedRightArrayKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11421" column="12" bodyfile="src/matar.h" bodystart="11421" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_ragged_right_array_kokkos_1a58cbd4520de013000279f5155932fc0c" prot="public" static="no" mutable="no">
+        <type>Strides1D</type>
+        <definition>Strides1D RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::mystrides_</definition>
+        <argsstring></argsstring>
+        <name>mystrides_</name>
+        <qualifiedname>RaggedRightArrayKokkos::mystrides_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11480" column="15" bodyfile="src/matar.h" bodystart="11480" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_right_array_kokkos_1a839fe8ecf6c60923894a90391e1a6ca2" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::start_index_</definition>
+        <argsstring></argsstring>
+        <name>start_index_</name>
+        <qualifiedname>RaggedRightArrayKokkos::start_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11481" column="14" bodyfile="src/matar.h" bodystart="11481" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1aece7713cbd52e8f0d7c473a19ad4c2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::RaggedRightArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::RaggedRightArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11425" column="5" bodyfile="src/matar.h" bodystart="11558" bodyend="11558"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a08b97484ea41f5bb1d3889ee570e122d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::RaggedRightArrayKokkos</definition>
+        <argsstring>(CArrayKokkos&lt; size_t, ILayout, ExecSpace, MemoryTraits &gt; &amp;strides_array, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::RaggedRightArrayKokkos</qualifiedname>
+        <param>
+          <type><ref refid="class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; size_t, ILayout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11430" column="5" bodyfile="src/matar.h" bodystart="11562" bodyend="11567"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1ab29ca69919274f01511783416ec34759" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::RaggedRightArrayKokkos</definition>
+        <argsstring>(DCArrayKokkos&lt; size_t, ILayout, ExecSpace, MemoryTraits &gt; &amp;strides_array, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::RaggedRightArrayKokkos</qualifiedname>
+        <param>
+          <type><ref refid="class_d_c_array_kokkos" kindref="compound">DCArrayKokkos</ref>&lt; size_t, ILayout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11433" column="5" bodyfile="src/matar.h" bodystart="11571" bodyend="11576"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a6a4d284d96e4c50a37ef975b6f1c7901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::RaggedRightArrayKokkos</definition>
+        <argsstring>(ViewCArray&lt; size_t &gt; &amp;strides_array, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::RaggedRightArrayKokkos</qualifiedname>
+        <param>
+          <type><ref refid="class_view_c_array" kindref="compound">ViewCArray</ref>&lt; size_t &gt; &amp;</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11436" column="5" bodyfile="src/matar.h" bodystart="11580" bodyend="11582"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1ab90dd6b74affc4136765d86294045d05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::RaggedRightArrayKokkos</definition>
+        <argsstring>(size_t *strides_array, size_t some_dim1, const std::string &amp;tag_string=DEFAULTSTRINGARRAY)</argsstring>
+        <name>RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::RaggedRightArrayKokkos</qualifiedname>
+        <param>
+          <type>size_t *</type>
+          <declname>strides_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>some_dim1</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+          <defval>DEFAULTSTRINGARRAY</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11439" column="5" bodyfile="src/matar.h" bodystart="11586" bodyend="11591"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a2fb8e22d6dffd55949790bbdafe42bdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::stride</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>stride</name>
+        <qualifiedname>RaggedRightArrayKokkos::stride</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11443" column="12" bodyfile="src/matar.h" bodystart="11647" bodyend="11651"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1aeca3aaa8d532d9a80f5dca8e00155f60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::stride_host</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>stride_host</name>
+        <qualifiedname>RaggedRightArrayKokkos::stride_host</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11446" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a7a50896abd4ca59d2e7d546009176570" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t &amp; RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::build_stride</definition>
+        <argsstring>(const size_t i) const</argsstring>
+        <name>build_stride</name>
+        <qualifiedname>RaggedRightArrayKokkos::build_stride</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11453" column="12" bodyfile="src/matar.h" bodystart="11656" bodyend="11658"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1abb7be8c9ad72365063fd10cd3fda61bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::stride_finalize</definition>
+        <argsstring>() const</argsstring>
+        <name>stride_finalize</name>
+        <qualifiedname>RaggedRightArrayKokkos::stride_finalize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11456" column="10" bodyfile="src/matar.h" bodystart="11663" bodyend="11680"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a6affa84eab8de9f9e4d7d4f7357f59cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedRightArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11461" column="7" bodyfile="src/matar.h" bodystart="11687" bodyend="11696"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1aeb4558680a1644565be4759913840269" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <qualifiedname>RaggedRightArrayKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11465" column="12" bodyfile="src/matar.h" bodystart="11465" bodyend="11467"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a39051f49f7712e9ad72f656cb9472eba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::data_setup</definition>
+        <argsstring>(const std::string &amp;tag_string)</argsstring>
+        <name>data_setup</name>
+        <qualifiedname>RaggedRightArrayKokkos::data_setup</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11470" column="10" bodyfile="src/matar.h" bodystart="11595" bodyend="11642"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1ab3c4abae764544c3219fab1860466779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::pointer</definition>
+        <argsstring>()</argsstring>
+        <name>pointer</name>
+        <qualifiedname>RaggedRightArrayKokkos::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11473" column="7" bodyfile="src/matar.h" bodystart="11700" bodyend="11702"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1a84f7717929c9901f832f53acc1d5f89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION TArray1D</type>
+        <definition>KOKKOS_INLINE_FUNCTION Kokkos::View&lt; T *, Layout, ExecSpace, MemoryTraits &gt; RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::get_kokkos_view</definition>
+        <argsstring>()</argsstring>
+        <name>get_kokkos_view</name>
+        <qualifiedname>RaggedRightArrayKokkos::get_kokkos_view</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11477" column="14" bodyfile="src/matar.h" bodystart="11792" bodyend="11794"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1abc1e1c818b56b8b4e2b0baa72422d2bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION <ref refid="class_ragged_right_array_kokkos" kindref="compound">RaggedRightArrayKokkos</ref> &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt; &amp; RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::operator=</definition>
+        <argsstring>(const RaggedRightArrayKokkos &amp;temp)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RaggedRightArrayKokkos::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_ragged_right_array_kokkos" kindref="compound">RaggedRightArrayKokkos</ref> &amp;</type>
+          <declname>temp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11484" column="28" bodyfile="src/matar.h" bodystart="11708" bodyend="11787"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_right_array_kokkos_1ae263d18678e7b010ece7b55a96b7f444" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::~RaggedRightArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~RaggedRightArrayKokkos</name>
+        <qualifiedname>RaggedRightArrayKokkos::~RaggedRightArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="11554" column="5" bodyfile="src/matar.h" bodystart="11799" bodyend="11799"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Kokkos version of the serial <ref refid="class_ragged_right_array" kindref="compound">RaggedRightArray</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="11411" column="1" bodyfile="src/matar.h" bodystart="11411" bodyend="11555"/>
+    <listofallmembers>
+      <member refid="class_ragged_right_array_kokkos_1a628477ca068ecf6c48fd91a9246c2c6c" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>array_</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a7a50896abd4ca59d2e7d546009176570" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>build_stride</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a39051f49f7712e9ad72f656cb9472eba" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>data_setup</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a5e232f3966ef54dd7a015f4c1bd6b53a" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>dim1_</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a84f7717929c9901f832f53acc1d5f89b" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>get_kokkos_view</name></member>
+      <member refid="class_ragged_right_array_kokkos_1ac44c36309612fb9b90250705b0a7f2e1" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>length_</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a58cbd4520de013000279f5155932fc0c" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>mystrides_</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a6affa84eab8de9f9e4d7d4f7357f59cb" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_ragged_right_array_kokkos_1abc1e1c818b56b8b4e2b0baa72422d2bd" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>operator=</name></member>
+      <member refid="class_ragged_right_array_kokkos_1ab3c4abae764544c3219fab1860466779" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>pointer</name></member>
+      <member refid="class_ragged_right_array_kokkos_1aece7713cbd52e8f0d7c473a19ad4c2ef" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>RaggedRightArrayKokkos</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a08b97484ea41f5bb1d3889ee570e122d" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>RaggedRightArrayKokkos</name></member>
+      <member refid="class_ragged_right_array_kokkos_1ab29ca69919274f01511783416ec34759" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>RaggedRightArrayKokkos</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a6a4d284d96e4c50a37ef975b6f1c7901" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>RaggedRightArrayKokkos</name></member>
+      <member refid="class_ragged_right_array_kokkos_1ab90dd6b74affc4136765d86294045d05" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>RaggedRightArrayKokkos</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a353f7df2e360fd80481edf9790528dd5" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>SArray1D</name></member>
+      <member refid="class_ragged_right_array_kokkos_1aeb4558680a1644565be4759913840269" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>size</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a839fe8ecf6c60923894a90391e1a6ca2" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>start_index_</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a2fb8e22d6dffd55949790bbdafe42bdb" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>stride</name></member>
+      <member refid="class_ragged_right_array_kokkos_1abb7be8c9ad72365063fd10cd3fda61bf" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>stride_finalize</name></member>
+      <member refid="class_ragged_right_array_kokkos_1aeca3aaa8d532d9a80f5dca8e00155f60" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>stride_host</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a561104c9b0f7e4a61ae791d14a1ca0f9" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>Strides1D</name></member>
+      <member refid="class_ragged_right_array_kokkos_1a6f88a798fe740edae63193bce86fac81" prot="private" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>TArray1D</name></member>
+      <member refid="class_ragged_right_array_kokkos_1ae263d18678e7b010ece7b55a96b7f444" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos</scope><name>~RaggedRightArrayKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

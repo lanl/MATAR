@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11423" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11423" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11489" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11489" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11424" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11424" bodyend="11426"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11490" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11490" bodyend="11492"/>
       </memberdef>
       <memberdef kind="function" id="dd/d69/class_ragged_right_array_kokkos_1_1init__start__indices__functor_1ac0291a421e9eafdf1b651ea47472b347" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION void</type>
@@ -54,14 +54,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11427" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11427" bodyend="11429"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11493" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11493" bodyend="11495"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11421" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11421" bodyend="11430"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11487" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11487" bodyend="11496"/>
     <listofallmembers>
       <member refid="dd/d69/class_ragged_right_array_kokkos_1_1init__start__indices__functor_1a1125e5c4eaaf6f8ce7801a376f899f93" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::init_start_indices_functor</scope><name>init_start_indices_functor</name></member>
       <member refid="dd/d69/class_ragged_right_array_kokkos_1_1init__start__indices__functor_1a6bc082d3fdecf2332165a8a320b444d1" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::init_start_indices_functor</scope><name>mystart_index_</name></member>

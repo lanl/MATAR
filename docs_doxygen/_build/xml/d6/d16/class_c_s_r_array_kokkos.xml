@@ -3,17 +3,18 @@
   <compounddef id="d6/d16/class_c_s_r_array_kokkos" kind="class" language="C++" prot="public">
     <compoundname>CSRArrayKokkos</compoundname>
     <includes refid="dd/d82/matar_8h" local="no">matar.h</includes>
+    <innerclass refid="de/d28/class_c_s_r_array_kokkos_1_1init__start__indices__functor" prot="public">CSRArrayKokkos::init_start_indices_functor</innerclass>
     <templateparamlist>
       <param>
         <type>typename T</type>
       </param>
       <param>
         <type>typename Layout</type>
-        <defval>DefaultLayout</defval>
+        <defval><ref refid="dd/d82/matar_8h_1a3f4fe0af60496f32fc0c1bc0e7ed8db9" kindref="member">DefaultLayout</ref></defval>
       </param>
       <param>
         <type>typename ExecSpace</type>
-        <defval>DefaultExecSpace</defval>
+        <defval><ref refid="dd/d82/matar_8h_1a38fdc34cf7dd31d127c51d689be44fe2" kindref="member">DefaultExecSpace</ref></defval>
       </param>
       <param>
         <type>typename MemoryTraits</type>
@@ -33,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12777" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12777" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12846" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12846" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="d6/d16/class_c_s_r_array_kokkos_1a2472f5bf540a23f3d6ac7782f03843b8" prot="private" static="no">
         <type>Kokkos::View&lt; size_t *, Layout, ExecSpace, MemoryTraits &gt;</type>
@@ -47,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12778" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12778" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12847" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12847" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12781" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12781" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12850" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12850" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1aaa65edd66ac116857d20c7bf4976c70c" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -77,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12781" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12781" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12850" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12850" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1aa707b5f90c72029af4366d6ca09e5bb9" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -91,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12782" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12782" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12851" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12851" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1a2121c3ff6dc8008ffa2f8d4fede2fdb0" prot="private" static="no" mutable="no">
         <type>TArray1D</type>
@@ -105,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12783" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12783" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12852" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12852" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1a2d7b6d6726d5abc0faa826de802d9a7c" prot="private" static="no" mutable="no">
         <type>SArray1D</type>
@@ -119,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12784" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12784" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12853" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12853" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1ad728735f7065aae985cb649aac2418fe" prot="private" static="no" mutable="no">
         <type>SArray1D</type>
@@ -133,7 +134,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12785" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12785" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12854" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12854" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d6/d16/class_c_s_r_array_kokkos_1abab6899aec759e7af2f4374385bc6365" prot="private" static="no" mutable="no">
+        <type>TArray1D</type>
+        <definition>TArray1D CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::miss_</definition>
+        <argsstring></argsstring>
+        <name>miss_</name>
+        <qualifiedname>CSRArrayKokkos::miss_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12855" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12855" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -144,12 +159,96 @@
         <name>CSRArrayKokkos</name>
         <qualifiedname>CSRArrayKokkos::CSRArrayKokkos</qualifiedname>
         <briefdescription>
+<para>Construct a new Sparse Row Array Kokkos object. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12789" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12885" bodyend="12885"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12862" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13026" bodyend="13026"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a251b95eb92eaecee4432877a294e2f0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CSRArrayKokkos</definition>
+        <argsstring>(CArrayKokkos&lt; size_t, Layout, ExecSpace, MemoryTraits &gt; &amp;start_index, CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;array, CArrayKokkos&lt; size_t, Layout, ExecSpace, MemoryTraits &gt; &amp;colum_index, size_t dim1, size_t dim2, const std::string &amp;tag_string)</argsstring>
+        <name>CSRArrayKokkos</name>
+        <qualifiedname>CSRArrayKokkos::CSRArrayKokkos</qualifiedname>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; size_t, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>start_index</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; size_t, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>colum_index</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12865" column="4" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13029" bodyend="13041"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a3f4898e7159b8759503b5f0cf0d5c096" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::CSRArrayKokkos</definition>
+        <argsstring>(const CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;dense, const size_t dim1, const size_t dim2)</argsstring>
+        <name>CSRArrayKokkos</name>
+        <qualifiedname>CSRArrayKokkos::CSRArrayKokkos</qualifiedname>
+        <param>
+          <type>const <ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>dense</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+<para>Constructor takes in dense matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12876" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a23fa3f32bb8cd93930261059ee37bf86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::data_setup</definition>
+        <argsstring>(const std::string &amp;tag_string)</argsstring>
+        <name>data_setup</name>
+        <qualifiedname>CSRArrayKokkos::data_setup</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12878" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13088" bodyend="13105"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a9b3421cc8af65cedef8c68f3c02e2748" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -166,13 +265,34 @@
           <declname>j</declname>
         </param>
         <briefdescription>
+<para>Access method to A(i,j) returns a dummy value of 0 if value is not allocated. </para>
         </briefdescription>
         <detaileddescription>
-<para>Access method to A(i,j) returns a dummy value of 0 if value is not allocated </para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>row <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>column </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION&amp; </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12797" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12909" bodyend="12920"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12887" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13109" bodyend="13120"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1ae029d69bb99d621aad1201f3b40b8a02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -189,13 +309,34 @@
           <declname>j</declname>
         </param>
         <briefdescription>
+<para>Same functionality as operator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Same functionality as () operator </para>
+<para>Included for compatibility with other matar types</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION&amp; </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12803" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12925" bodyend="12936"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12897" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13125" bodyend="13136"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a29169be419c8c8d5fe90d00cddfd490e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION <ref refid="d6/d16/class_c_s_r_array_kokkos" kindref="compound">CSRArrayKokkos</ref> &amp;</type>
@@ -208,13 +349,23 @@
           <declname>temp</declname>
         </param>
         <briefdescription>
+<para>Copy operator. </para>
         </briefdescription>
         <detaileddescription>
-<para>Overloaded copy assignment operator </para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>temp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12809" column="20" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12952" bodyend="12963"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12905" column="20" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13152" bodyend="13163"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a0edaa5bcfa5fb974b37f05330fbab177" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T *</type>
@@ -223,13 +374,13 @@
         <name>pointer</name>
         <qualifiedname>CSRArrayKokkos::pointer</qualifiedname>
         <briefdescription>
+<para>Pointer to start of array_ data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets points to start of array_ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12816" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12940" bodyend="12942"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12913" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13140" bodyend="13142"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1af3f54db31a53c203285ce5675b10b04a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t *</type>
@@ -238,13 +389,13 @@
         <name>get_starts</name>
         <qualifiedname>CSRArrayKokkos::get_starts</qualifiedname>
         <briefdescription>
+<para>Get the beginning of the start_index_ array. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets pointer to start of start_array_ </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12822" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12946" bodyend="12948"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12920" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13146" bodyend="13148"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1aeddf0bf277cd5290b3d1d152241957b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -253,13 +404,16 @@
         <name>dim2</name>
         <qualifiedname>CSRArrayKokkos::dim2</qualifiedname>
         <briefdescription>
+<para>Number of columns. </para>
         </briefdescription>
         <detaileddescription>
-<para>get number of columns </para>
+<para><simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12830" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12997" bodyend="12999"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12929" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13183" bodyend="13185"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a2adc74c8dd4ec5b13902b7a85a794531" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -268,13 +422,16 @@
         <name>dim1</name>
         <qualifiedname>CSRArrayKokkos::dim1</qualifiedname>
         <briefdescription>
+<para>Number of rows. </para>
         </briefdescription>
         <detaileddescription>
-<para>get number of rows </para>
+<para><simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12836" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13002" bodyend="13004"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12937" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13188" bodyend="13190"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a88f6a54d630c2d6b55dc9f6771778917" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T *</type>
@@ -287,12 +444,26 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>iterator notation to access the non zero elements of row i. </para>
         </briefdescription>
         <detaileddescription>
+<para>Returns pointer to first element in row i</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>row </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION* </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12841" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13007" bodyend="13011"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12946" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13193" bodyend="13197"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a2fa818d143dcca4d0c402b5a353df272" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T *</type>
@@ -305,12 +476,26 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Iteator notation to access the non zero elements of row i. </para>
         </briefdescription>
         <detaileddescription>
+<para>Returns pointer first element of the next row</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION* </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12843" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13014" bodyend="13018"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12955" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13200" bodyend="13204"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a9f78a072aefeca0e56d16a48109b25e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -323,20 +508,59 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Get the size of row i. </para>
         </briefdescription>
         <detaileddescription>
-<para>This returnst the stride, the number of elements to the next row </para>
+<para>Same functionality as nnz(i) but included for compatiblity.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KOKKOS_INLINE_FUNCTION </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12849" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12990" bodyend="12993"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12964" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13176" bodyend="13179"/>
       </memberdef>
-      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a97098cf05dda919cac0d547da8d83311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a41ec5cd9059441b387fad6ab044773e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::from_dense</definition>
+        <argsstring>(CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;starts, CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;columns, CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;array)</argsstring>
+        <name>from_dense</name>
+        <qualifiedname>CSRArrayKokkos::from_dense</qualifiedname>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>starts</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>columns</declname>
+        </param>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12970" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a3e250d57adf695514c33e799958bd8e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
-        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::beginFlat</definition>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::begin_index</definition>
         <argsstring>(size_t i)</argsstring>
-        <name>beginFlat</name>
-        <qualifiedname>CSRArrayKokkos::beginFlat</qualifiedname>
+        <name>begin_index</name>
+        <qualifiedname>CSRArrayKokkos::begin_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -347,14 +571,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12858" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13022" bodyend="13025"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12981" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13208" bodyend="13211"/>
       </memberdef>
-      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a2207a3566f6f6d84ff778757761ee069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1afc37a59486be883b4956fb93b62e953c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
-        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::endFlat</definition>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::end_index</definition>
         <argsstring>(size_t i)</argsstring>
-        <name>endFlat</name>
-        <qualifiedname>CSRArrayKokkos::endFlat</qualifiedname>
+        <name>end_index</name>
+        <qualifiedname>CSRArrayKokkos::end_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -365,7 +589,117 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12860" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13029" bodyend="13032"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12983" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13215" bodyend="13218"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a38307814c63289bc544cba7545bbbbc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::nnz</definition>
+        <argsstring>(size_t i)</argsstring>
+        <name>nnz</name>
+        <qualifiedname>CSRArrayKokkos::nnz</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>get the number of non zero elements in row i </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12989" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13228" bodyend="13231"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1abe5e2a185311695f243f8058dc4f7f90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::nnz</definition>
+        <argsstring>() const</argsstring>
+        <name>nnz</name>
+        <qualifiedname>CSRArrayKokkos::nnz</qualifiedname>
+        <briefdescription>
+<para>get the total number of non zero elements </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12995" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13222" bodyend="13224"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a7abc8e831cfe11324ff74590dff74730" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::get_val_flat</definition>
+        <argsstring>(size_t k)</argsstring>
+        <name>get_val_flat</name>
+        <qualifiedname>CSRArrayKokkos::get_val_flat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12998" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13234" bodyend="13237"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a31bf9321553343617b1947f289966f35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::get_col_flat</definition>
+        <argsstring>(size_t k)</argsstring>
+        <name>get_col_flat</name>
+        <qualifiedname>CSRArrayKokkos::get_col_flat</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12999" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13240" bodyend="13243"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1aec1803ff3eef5990030a552eec2e7357" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::flat_index</definition>
+        <argsstring>(size_t i, size_t j)</argsstring>
+        <name>flat_index</name>
+        <qualifiedname>CSRArrayKokkos::flat_index</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="13001" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13247" bodyend="13257"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a133d37fbbe85ffc73419bd6bed64dc91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::to_dense</definition>
+        <argsstring>(CArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;A)</argsstring>
+        <name>to_dense</name>
+        <qualifiedname>CSRArrayKokkos::to_dense</qualifiedname>
+        <param>
+          <type><ref refid="d9/d91/class_c_array_kokkos" kindref="compound">CArrayKokkos</ref>&lt; T, Layout, ExecSpace, MemoryTraits &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="13006" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13166" bodyend="13173"/>
       </memberdef>
       <memberdef kind="function" id="d6/d16/class_c_s_r_array_kokkos_1a51544410c5cb96557c94e93152019a49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION</type>
@@ -379,27 +713,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12879" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13121" bodyend="13121"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="13020" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="13308" bodyend="13308"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12775" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12775" bodyend="12882"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12844" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12844" bodyend="13023"/>
     <listofallmembers>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a2121c3ff6dc8008ffa2f8d4fede2fdb0" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>array_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a88f6a54d630c2d6b55dc9f6771778917" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>begin</name></member>
-      <member refid="d6/d16/class_c_s_r_array_kokkos_1a97098cf05dda919cac0d547da8d83311" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>beginFlat</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a3e250d57adf695514c33e799958bd8e9" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>begin_index</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a2d7b6d6726d5abc0faa826de802d9a7c" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>column_index_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a1ffcb0d2037b4b880e74335de2e54817" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>CSRArrayKokkos</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a251b95eb92eaecee4432877a294e2f0a" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>CSRArrayKokkos</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a3f4898e7159b8759503b5f0cf0d5c096" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>CSRArrayKokkos</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a23fa3f32bb8cd93930261059ee37bf86" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>data_setup</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a2adc74c8dd4ec5b13902b7a85a794531" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>dim1</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1af13530f32f1d1616177d5f94412e836d" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>dim1_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1aeddf0bf277cd5290b3d1d152241957b0" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>dim2</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1aaa65edd66ac116857d20c7bf4976c70c" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>dim2_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a2fa818d143dcca4d0c402b5a353df272" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>end</name></member>
-      <member refid="d6/d16/class_c_s_r_array_kokkos_1a2207a3566f6f6d84ff778757761ee069" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>endFlat</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1afc37a59486be883b4956fb93b62e953c" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>end_index</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1aec1803ff3eef5990030a552eec2e7357" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>flat_index</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a41ec5cd9059441b387fad6ab044773e7" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>from_dense</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a31bf9321553343617b1947f289966f35" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>get_col_flat</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1af3f54db31a53c203285ce5675b10b04a" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>get_starts</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a7abc8e831cfe11324ff74590dff74730" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>get_val_flat</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1abab6899aec759e7af2f4374385bc6365" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>miss_</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a38307814c63289bc544cba7545bbbbc2" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>nnz</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1abe5e2a185311695f243f8058dc4f7f90" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>nnz</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1aa707b5f90c72029af4366d6ca09e5bb9" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>nnz_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a9b3421cc8af65cedef8c68f3c02e2748" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>operator()</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a29169be419c8c8d5fe90d00cddfd490e" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>operator=</name></member>
@@ -408,6 +752,7 @@
       <member refid="d6/d16/class_c_s_r_array_kokkos_1ad728735f7065aae985cb649aac2418fe" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>start_index_</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a9f78a072aefeca0e56d16a48109b25e9" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>stride</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1ab8369ed4da2d92ab65d514931532e957" prot="private" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>TArray1D</name></member>
+      <member refid="d6/d16/class_c_s_r_array_kokkos_1a133d37fbbe85ffc73419bd6bed64dc91" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>to_dense</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1ae029d69bb99d621aad1201f3b40b8a02" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>value</name></member>
       <member refid="d6/d16/class_c_s_r_array_kokkos_1a51544410c5cb96557c94e93152019a49" prot="public" virt="non-virtual"><scope>CSRArrayKokkos</scope><name>~CSRArrayKokkos</name></member>
     </listofallmembers>

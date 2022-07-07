@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ragged_down_array_kokkos_1_1setup__length__functor" kind="class" language="C++" prot="public">
+    <compoundname>RaggedDownArrayKokkos::setup_length_functor</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_ragged_down_array_kokkos_1_1setup__length__functor_1a9d3486e31c8d8cb2a43d5cdd8ee5ebf3" prot="public" static="no">
+        <type>size_t</type>
+        <definition>typedef size_t RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor::value_type</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_length_functor::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12243" column="24" bodyfile="src/matar.h" bodystart="12243" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_ragged_down_array_kokkos_1_1setup__length__functor_1ae9c622464edd9b22413836474ee4e781" prot="public" static="no" mutable="no">
+        <type>Strides1D</type>
+        <definition>Strides1D RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor::mytemp_strides_</definition>
+        <argsstring></argsstring>
+        <name>mytemp_strides_</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_length_functor::mytemp_strides_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12247" column="19" bodyfile="src/matar.h" bodystart="12247" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1setup__length__functor_1a70990c3496a0a1e59e0226135274967a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor::setup_length_functor</definition>
+        <argsstring>(Strides1D temp_strides_)</argsstring>
+        <name>setup_length_functor</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_length_functor::setup_length_functor</qualifiedname>
+        <param>
+          <type>Strides1D</type>
+          <declname>temp_strides_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12248" column="9" bodyfile="src/matar.h" bodystart="12248" bodyend="12250"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1setup__length__functor_1acdd04fe77de3a17b1b614753d3939f06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor::operator()</definition>
+        <argsstring>(const int index, size_t &amp;update) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_length_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12251" column="37" bodyfile="src/matar.h" bodystart="12251" bodyend="12254"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="12240" column="5" bodyfile="src/matar.h" bodystart="12240" bodyend="12255"/>
+    <listofallmembers>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__length__functor_1ae9c622464edd9b22413836474ee4e781" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_length_functor</scope><name>mytemp_strides_</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__length__functor_1acdd04fe77de3a17b1b614753d3939f06" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_length_functor</scope><name>operator()</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__length__functor_1a70990c3496a0a1e59e0226135274967a" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_length_functor</scope><name>setup_length_functor</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__length__functor_1a9d3486e31c8d8cb2a43d5cdd8ee5ebf3" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_length_functor</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

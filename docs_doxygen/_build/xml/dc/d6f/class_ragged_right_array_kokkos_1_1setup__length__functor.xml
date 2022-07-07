@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11455" column="24" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11455" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11521" column="24" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11521" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11459" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11459" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11525" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11525" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11460" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11460" bodyend="11462"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11526" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11526" bodyend="11528"/>
       </memberdef>
       <memberdef kind="function" id="dc/d6f/class_ragged_right_array_kokkos_1_1setup__length__functor_1acda50b54daae670baae41ab1bfc96fe7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION void</type>
@@ -74,14 +74,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11463" column="37" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11463" bodyend="11466"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11529" column="37" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11529" bodyend="11532"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11452" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11452" bodyend="11467"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11518" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11518" bodyend="11533"/>
     <listofallmembers>
       <member refid="dc/d6f/class_ragged_right_array_kokkos_1_1setup__length__functor_1ac528692b9aba1125dca2a4818721064e" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::setup_length_functor</scope><name>mytemp_strides_</name></member>
       <member refid="dc/d6f/class_ragged_right_array_kokkos_1_1setup__length__functor_1acda50b54daae670baae41ab1bfc96fe7" prot="public" virt="non-virtual"><scope>RaggedRightArrayKokkos::setup_length_functor</scope><name>operator()</name></member>

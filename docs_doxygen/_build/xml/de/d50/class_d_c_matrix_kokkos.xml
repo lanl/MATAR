@@ -9,11 +9,11 @@
       </param>
       <param>
         <type>typename Layout</type>
-        <defval>DefaultLayout</defval>
+        <defval><ref refid="dd/d82/matar_8h_1a3f4fe0af60496f32fc0c1bc0e7ed8db9" kindref="member">DefaultLayout</ref></defval>
       </param>
       <param>
         <type>typename ExecSpace</type>
-        <defval>DefaultExecSpace</defval>
+        <defval><ref refid="dd/d82/matar_8h_1a38fdc34cf7dd31d127c51d689be44fe2" kindref="member">DefaultExecSpace</ref></defval>
       </param>
       <param>
         <type>typename MemoryTraits</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10530" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10530" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10596" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10596" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10533" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10533" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10599" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10599" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="de/d50/class_d_c_matrix_kokkos_1a46f3b3df847feb7061972be51b127ced" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10534" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10534" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10600" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10600" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="de/d50/class_d_c_matrix_kokkos_1a5326d90d1511b602405d0807d3ce10ba" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10535" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10535" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10601" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10601" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="de/d50/class_d_c_matrix_kokkos_1ae23618439c04bd8f984cf0fb15057726" prot="private" static="no" mutable="no">
         <type>TArray1D</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10536" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10536" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10602" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10602" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10611" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10611" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10677" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10677" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10539" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10627" bodyend="10627"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10605" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10693" bodyend="10693"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1aa2bc0213f9ffb6f00b5fe5d82edb42ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -138,7 +138,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10541" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10631" bodyend="10639"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10607" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10697" bodyend="10705"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a1ffb0989f6a6e4b612425c0800bfbeb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -165,7 +165,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10543" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10643" bodyend="10652"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10609" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10709" bodyend="10718"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1ab8b9b73e2e2ec261a59862f113dded58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -196,7 +196,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -204,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10545" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10655" bodyend="10666"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10611" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10721" bodyend="10732"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a2bcfef1b5aaf0ea61d81663780cb1040" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -231,7 +231,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10547" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10669" bodyend="10681"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10613" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10735" bodyend="10747"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a0e1eaf185d272fd14cdf3d0b337e4d58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -270,7 +270,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -278,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10550" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10684" bodyend="10698"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10616" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10750" bodyend="10764"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1afb8fd495a2d4dbd43d5d0595d9090759" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -313,7 +313,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10553" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10701" bodyend="10716"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10619" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10767" bodyend="10782"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a602923c311fb91bfef85516753cd5f10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -360,7 +360,7 @@
         <param>
           <type>const std::string &amp;</type>
           <declname>tag_string</declname>
-          <defval>DEFAULTSTRINGMATRIX</defval>
+          <defval><ref refid="dd/d82/matar_8h_1a8fecae5dc1711c3fe27bd07afc7f6586" kindref="member">DEFAULTSTRINGMATRIX</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10556" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10719" bodyend="10736"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10622" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10785" bodyend="10802"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1afc6dee316a8e22c26b9cddb48e666f61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -386,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10561" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10740" bodyend="10744"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10627" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10806" bodyend="10810"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1ac27b9d0db2b2662e63d1955fbf549fd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10564" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10748" bodyend="10753"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10630" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10814" bodyend="10819"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a6d1089bda2c32dac90665b0d0864bc1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -434,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10567" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10757" bodyend="10764"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10633" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10823" bodyend="10830"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a1b80029dcf136618abe4123fc800bdcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -464,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10570" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10768" bodyend="10777"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10636" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10834" bodyend="10843"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a1a2e5796b56a91fd1fa391203cdb42fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -498,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10573" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10781" bodyend="10793"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10639" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10847" bodyend="10859"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1aeb398bcea371627397252a17eb134f59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -536,7 +536,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10576" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10797" bodyend="10811"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10642" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10863" bodyend="10877"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a10dfc00f14c634fef2289f560df52ac4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
@@ -578,7 +578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10580" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10815" bodyend="10831"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10646" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10881" bodyend="10897"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a0d3e3ca9f32bab987c72ed5cc1be813b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION <ref refid="de/d50/class_d_c_matrix_kokkos" kindref="compound">DCMatrixKokkos</ref> &amp;</type>
@@ -596,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10584" column="20" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10835" bodyend="10850"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10650" column="20" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10901" bodyend="10916"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1ab7da2aa10f9b172cd9659aee270d8011" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -610,7 +610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10589" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10855" bodyend="10857"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10655" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10921" bodyend="10923"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a4318c09822be40a1730b14e54b489186" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -624,7 +624,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10594" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10861" bodyend="10863"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10660" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10927" bodyend="10929"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a9e370f2a7f18c84b71ce9ddaeb402803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -642,7 +642,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10597" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10867" bodyend="10872"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10663" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10933" bodyend="10938"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1ae812638e10adda0b2e0abcf4c2a6c9e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION size_t</type>
@@ -656,7 +656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10600" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10876" bodyend="10878"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10666" column="12" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10942" bodyend="10944"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a69c982290e6ee667725520335021b45d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T *</type>
@@ -670,7 +670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10604" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10882" bodyend="10884"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10670" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10948" bodyend="10950"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a6b3a5dac6273da6d48d4d08384c85aab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION T *</type>
@@ -684,7 +684,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10608" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10888" bodyend="10890"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10674" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10954" bodyend="10956"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a544ade756b74f3925224eabeea51847a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -698,7 +698,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10614" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10893" bodyend="10897"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10680" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10959" bodyend="10963"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a5cd7a8984295819d1371c32984e9582a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -712,7 +712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10617" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10900" bodyend="10904"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10683" column="10" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10966" bodyend="10970"/>
       </memberdef>
       <memberdef kind="function" id="de/d50/class_d_c_matrix_kokkos_1a6f6430e13e3c6ba08a41b4b6ada407c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION</type>
@@ -726,14 +726,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10621" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10908" bodyend="10908"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10687" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10974" bodyend="10974"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10527" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10527" bodyend="10623"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="10593" column="1" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="10593" bodyend="10689"/>
     <listofallmembers>
       <member refid="de/d50/class_d_c_matrix_kokkos_1a1dadc603b716b22946965831ecabcad5" prot="public" virt="non-virtual"><scope>DCMatrixKokkos</scope><name>DCMatrixKokkos</name></member>
       <member refid="de/d50/class_d_c_matrix_kokkos_1aa2bc0213f9ffb6f00b5fe5d82edb42ef" prot="public" virt="non-virtual"><scope>DCMatrixKokkos</scope><name>DCMatrixKokkos</name></member>

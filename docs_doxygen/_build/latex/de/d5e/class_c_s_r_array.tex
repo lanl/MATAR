@@ -1,79 +1,332 @@
 \hypertarget{class_c_s_r_array}{}\doxysection{CSRArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
 \label{class_c_s_r_array}\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a3aade48632c48bed08c8b5e373c7f380}\label{class_c_s_r_array_a3aade48632c48bed08c8b5e373c7f380}} 
-{\bfseries CSRArray} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ column\+\_\+index\+\_\+, \mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ start\+\_\+index\+\_\+, size\+\_\+t dim1, size\+\_\+t dim2)
+\mbox{\hyperlink{class_c_s_r_array_ac098714b379fbefe35dd051966687e66}{CSRArray}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Sparse Row Array object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_s_r_array_a2df7e6422b047f845c642fcbbb952bea}{CSRArray}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ column\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ start\+\_\+index, size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}{dim1}}, size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}{dim2}})
+\begin{DoxyCompactList}\small\item\em Construct a new Sparse Row Array object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}{CSRArray}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ dense)
+\begin{DoxyCompactList}\small\item\em Constructor for a new Sparse Row Array object using the data from a dense matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}{CSRArray}} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
+\begin{DoxyCompactList}\small\item\em Copy a new Sparse Row Array object. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}{operator()}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Access A(i,j). \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}{value}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Same functionality as operator(). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \& \mbox{\hyperlink{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}{operator=}} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}{pointer}} () const
+\begin{DoxyCompactList}\small\item\em get start of array\+\_\+ data \end{DoxyCompactList}\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}{get\+\_\+starts}} () const
+\begin{DoxyCompactList}\small\item\em Get the start\+\_\+index\+\_\+ object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}{printer}} ()
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}\label{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}} 
-{\bfseries CSRArray} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ dense)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}\label{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}} 
-{\bfseries CSRArray} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}\label{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}} 
-T \& {\bfseries operator()} (size\+\_\+t i, size\+\_\+t j) const
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}\label{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}} 
-T \& {\bfseries value} (size\+\_\+t i, size\+\_\+t j) const
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}\label{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}} 
-\mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} \&temp)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}\label{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}} 
-T $\ast$ {\bfseries pointer} () const
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}\label{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}} 
-size\+\_\+t $\ast$ {\bfseries get\+\_\+starts} () const
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}\label{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}} 
-void {\bfseries printer} ()
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}\label{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}} 
-T $\ast$ {\bfseries begin} (size\+\_\+t i)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}\label{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}} 
-T $\ast$ {\bfseries end} (size\+\_\+t i)
-\item 
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}{begin}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Iterator notation to go through the non zero values of row i. \end{DoxyCompactList}\item 
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}{end}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Iterator notation to go through the non zeros values of row i. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}{stride}} (size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return number of non zero elements in row i. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}{dim1}} () const
+\begin{DoxyCompactList}\small\item\em Number of rows. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}{dim2}} () const
+\begin{DoxyCompactList}\small\item\em Number of Columns. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a7c351d4c7d3cb1f0a3ec766453f12594}{begin\+\_\+index}} (size\+\_\+t i)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}\label{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}} 
-size\+\_\+t {\bfseries dim1} () const
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a7a74660956e7f445a06bb96715db9c46}{end\+\_\+index}} (size\+\_\+t i)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}\label{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}} 
-size\+\_\+t {\bfseries dim2} () const
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}{nnz}} (size\+\_\+t i)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_ae03829b4b7f4bd6c66d726110830dc92}\label{class_c_s_r_array_ae03829b4b7f4bd6c66d726110830dc92}} 
-size\+\_\+t {\bfseries begin\+Flat} (size\+\_\+t i)
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}{nnz}} ()
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a740ef012fe62d345e65e444cd476ea42}\label{class_c_s_r_array_a740ef012fe62d345e65e444cd476ea42}} 
-size\+\_\+t {\bfseries end\+Flat} (size\+\_\+t i)
+T \& \mbox{\hyperlink{class_c_s_r_array_a2588e550952cf843b80a070a847e201c}{get\+\_\+val\+\_\+flat}} (size\+\_\+t k)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}\label{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}} 
-size\+\_\+t {\bfseries nnz} (size\+\_\+t i)
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_a803e14c82fadba9d42a1e78defdeeda4}{get\+\_\+col\+\_\+flat}} (size\+\_\+t k)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}\label{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}} 
-size\+\_\+t {\bfseries nnz} ()
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array_aaa198b85af3e691d0f7796e4efaf82c6}{flat\+\_\+index}} (size\+\_\+t i, size\+\_\+t j)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_add83fb15e6c1381bc3f0a9c0e2121f33}\label{class_c_s_r_array_add83fb15e6c1381bc3f0a9c0e2121f33}} 
-T \& {\bfseries get\+Val\+Flat} (size\+\_\+t k)
+int \mbox{\hyperlink{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}{to\+CSC}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&start\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&row\+\_\+index)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a85f795595580117dc541e9b1e3027c8c}\label{class_c_s_r_array_a85f795595580117dc541e9b1e3027c8c}} 
-size\+\_\+t {\bfseries get\+Col\+Flat} (size\+\_\+t k)
+void \mbox{\hyperlink{class_c_s_r_array_a89ee984e950aeee5bac5e51b3ed50d0a}{to\+\_\+dense}} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&A)
 \item 
-\mbox{\Hypertarget{class_c_s_r_array_a01b06b2ca3062ea4082dad7f48b75bd6}\label{class_c_s_r_array_a01b06b2ca3062ea4082dad7f48b75bd6}} 
-size\+\_\+t {\bfseries flat\+Index} (size\+\_\+t i, size\+\_\+t j)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}\label{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}} 
-int {\bfseries to\+CSC} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&array, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&start\+\_\+index, \mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&row\+\_\+index)
-\item 
-\mbox{\Hypertarget{class_c_s_r_array_a7479c224e8f8f00d184d7c1f78ee14f3}\label{class_c_s_r_array_a7479c224e8f8f00d184d7c1f78ee14f3}} 
-void {\bfseries todense} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&A)
+\mbox{\hyperlink{class_c_s_r_array_a3c131d569336717ec159761234663dc4}{$\sim$\+CSRArray}} ()
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_s_r_array_ac098714b379fbefe35dd051966687e66}\label{class_c_s_r_array_ac098714b379fbefe35dd051966687e66}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!CSRArray@{CSRArray}}
+\index{CSRArray@{CSRArray}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CSRArray()}{CSRArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\mbox{\hyperlink{class_c_s_r_array}{\+::\+CSRArray}}}
+
+
+
+Construct a new Sparse Row Array object. 
+
+\mbox{\Hypertarget{class_c_s_r_array_a2df7e6422b047f845c642fcbbb952bea}\label{class_c_s_r_array_a2df7e6422b047f845c642fcbbb952bea}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!CSRArray@{CSRArray}}
+\index{CSRArray@{CSRArray}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CSRArray()}{CSRArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\mbox{\hyperlink{class_c_s_r_array}{\+::\+CSRArray}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{array,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$}]{column\+\_\+index,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$}]{start\+\_\+index,  }\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2 }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sparse Row Array object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & 1d array of data values in order read left to right top to bottom \\
+\hline
+{\em column\+\_\+index\+\_\+} & 1d array specifying for each data value what column it is found \\
+\hline
+{\em start\+\_\+index\+\_\+} & 1d array that marks the index for array and column where each row starts \\
+\hline
+{\em dim1} & number of rows \\
+\hline
+{\em dim2} & number of columns \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}\label{class_c_s_r_array_a938738e1bbf4ff897e7536197f15bf53}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!CSRArray@{CSRArray}}
+\index{CSRArray@{CSRArray}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CSRArray()}{CSRArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\mbox{\hyperlink{class_c_s_r_array}{\+::\+CSRArray}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$}]{dense }\end{DoxyParamCaption})}
+
+
+
+Constructor for a new Sparse Row Array object using the data from a dense matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dense} & matrix to get the value from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}\label{class_c_s_r_array_a11fd46eabe5554149e1b26a8f8ebee87}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!CSRArray@{CSRArray}}
+\index{CSRArray@{CSRArray}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CSRArray()}{CSRArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\mbox{\hyperlink{class_c_s_r_array}{\+::\+CSRArray}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+
+
+Copy a new Sparse Row Array object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & array to copy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_s_r_array_a3c131d569336717ec159761234663dc4}\label{class_c_s_r_array_a3c131d569336717ec159761234663dc4}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!````~CSRArray@{$\sim$CSRArray}}
+\index{````~CSRArray@{$\sim$CSRArray}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$CSRArray()}{~CSRArray()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}}
+
+
+
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}\label{class_c_s_r_array_a6e4d54111727a42169f6d5f8df2feb73}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!begin@{begin}}
+\index{begin@{begin}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::begin (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Iterator notation to go through the non zero values of row i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ pointer to first non zero element of row i 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a7c351d4c7d3cb1f0a3ec766453f12594}\label{class_c_s_r_array_a7c351d4c7d3cb1f0a3ec766453f12594}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!begin\_index@{begin\_index}}
+\index{begin\_index@{begin\_index}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{begin\_index()}{begin\_index()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::begin\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}\label{class_c_s_r_array_a6e63afe5896bbc9980ccd11cdb169ec8}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!dim1@{dim1}}
+\index{dim1@{dim1}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dim1()}{dim1()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::dim1}
+
+
+
+Number of rows. 
+
+\mbox{\Hypertarget{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}\label{class_c_s_r_array_a09ac845ff2ff0f66c0bd0c166317fc69}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!dim2@{dim2}}
+\index{dim2@{dim2}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dim2()}{dim2()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::dim2}
+
+
+
+Number of Columns. 
+
+\mbox{\Hypertarget{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}\label{class_c_s_r_array_ac79f91ce53d4cac97a771f3dea026e79}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!end@{end}}
+\index{end@{end}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::end (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Iterator notation to go through the non zeros values of row i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ pointer to first non zero element of row i+1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a7a74660956e7f445a06bb96715db9c46}\label{class_c_s_r_array_a7a74660956e7f445a06bb96715db9c46}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!end\_index@{end\_index}}
+\index{end\_index@{end\_index}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{end\_index()}{end\_index()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::end\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_aaa198b85af3e691d0f7796e4efaf82c6}\label{class_c_s_r_array_aaa198b85af3e691d0f7796e4efaf82c6}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!flat\_index@{flat\_index}}
+\index{flat\_index@{flat\_index}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{flat\_index()}{flat\_index()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::flat\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_a803e14c82fadba9d42a1e78defdeeda4}\label{class_c_s_r_array_a803e14c82fadba9d42a1e78defdeeda4}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!get\_col\_flat@{get\_col\_flat}}
+\index{get\_col\_flat@{get\_col\_flat}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_col\_flat()}{get\_col\_flat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::get\+\_\+col\+\_\+flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}\label{class_c_s_r_array_adc6ad27decea868d12bc1129e0fb9eed}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!get\_starts@{get\_starts}}
+\index{get\_starts@{get\_starts}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_starts()}{get\_starts()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t $\ast$ \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::get\+\_\+starts}
+
+
+
+Get the start\+\_\+index\+\_\+ object. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a2588e550952cf843b80a070a847e201c}\label{class_c_s_r_array_a2588e550952cf843b80a070a847e201c}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!get\_val\_flat@{get\_val\_flat}}
+\index{get\_val\_flat@{get\_val\_flat}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_val\_flat()}{get\_val\_flat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::get\+\_\+val\+\_\+flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}\label{class_c_s_r_array_ac8c3f50d2379ab5f2cb0a363601e9307}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::nnz}
+
+\mbox{\Hypertarget{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}\label{class_c_s_r_array_af0b3d35f396ab248a5d75b26d233a3b6}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::nnz (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}\label{class_c_s_r_array_aa155e00e40a77aa5f04814848cf14f03}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Access A(i,j). 
+
+Returns a dummy address with value 0 if A(i,j) is not alocated
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row ~\newline
+ \\
+\hline
+{\em j} & column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}\label{class_c_s_r_array_a49e3f2c3e34f1ad8c7d216eba9d05399}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$ \& \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+Uses shared pointers to the data of temp instead of making a fresh copy
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & \mbox{\hyperlink{class_c_s_r_array}{CSRArray}} to copy values of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_c_s_r_array}{CSRArray}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}\label{class_c_s_r_array_a0ba97686f57fee5442513aa12b53c8d2}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer()}{pointer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::pointer}
+
+
+
+get start of array\+\_\+ data 
+
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}\label{class_c_s_r_array_a4bf751013eb912b1bd1324aab4fa4b55}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!printer@{printer}}
+\index{printer@{printer}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{printer()}{printer()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::printer}
+
 \mbox{\Hypertarget{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}\label{class_c_s_r_array_a7073455d62b3827cccbf41e542359760}} 
 \index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!stride@{stride}}
 \index{stride@{stride}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
@@ -81,8 +334,56 @@ void {\bfseries todense} (\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&A)
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 size\+\_\+t \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
 
-This returnst the stride, the number of elements to the next row 
+
+
+Return number of non zero elements in row i. 
+
+Included for compatibility with other matar types
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_s_r_array_a89ee984e950aeee5bac5e51b3ed50d0a}\label{class_c_s_r_array_a89ee984e950aeee5bac5e51b3ed50d0a}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!to\_dense@{to\_dense}}
+\index{to\_dense@{to\_dense}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{to\_dense()}{to\_dense()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::to\+\_\+dense (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&}]{A }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}\label{class_c_s_r_array_a407bcc01142e5a3b36df072351c7c56a}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!toCSC@{toCSC}}
+\index{toCSC@{toCSC}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toCSC()}{toCSC()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::to\+CSC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ T $>$ \&}]{array,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&}]{start\+\_\+index,  }\item[{\mbox{\hyperlink{class_c_array}{CArray}}$<$ size\+\_\+t $>$ \&}]{row\+\_\+index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}\label{class_c_s_r_array_acf3924dbae1df2e2516e13fa68c25cbb}} 
+\index{CSRArray$<$ T $>$@{CSRArray$<$ T $>$}!value@{value}}
+\index{value@{value}!CSRArray$<$ T $>$@{CSRArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_c_s_r_array}{CSRArray}}$<$ T $>$\+::value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Same functionality as operator(). 
+
+Used for compatibility with other matar types
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Row \\
+\hline
+{\em j} & Column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/calvinroth/para\+Notes/\+MATAR/src/matar.\+h\end{DoxyCompactItemize}
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

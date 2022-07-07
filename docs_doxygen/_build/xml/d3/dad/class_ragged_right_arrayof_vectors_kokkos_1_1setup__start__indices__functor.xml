@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11829" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11829" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11895" column="18" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11895" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor_1aacfdf2b4a827784d852d0dd28924c46b" prot="public" static="no" mutable="no">
         <type>Strides1D</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11830" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11830" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11896" column="19" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11896" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor_1a1cc2c7f46b0bca5e701d8bad3284b987" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11831" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11831" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11897" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11897" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11832" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11832" bodyend="11836"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11898" column="9" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11898" bodyend="11902"/>
       </memberdef>
       <memberdef kind="function" id="d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor_1afb178ac3830615f03470c1828cf63387" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION void</type>
@@ -98,14 +98,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11837" column="37" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11837" bodyend="11844"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11903" column="37" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11903" bodyend="11910"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11827" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11827" bodyend="11845"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="11893" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="11893" bodyend="11911"/>
     <listofallmembers>
       <member refid="d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor_1ad217a57346961e19dd0280758dba4910" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectorsKokkos::setup_start_indices_functor</scope><name>mystart_index_</name></member>
       <member refid="d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor_1aacfdf2b4a827784d852d0dd28924c46b" prot="public" virt="non-virtual"><scope>RaggedRightArrayofVectorsKokkos::setup_start_indices_functor</scope><name>mytemp_strides_</name></member>

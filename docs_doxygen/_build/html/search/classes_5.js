@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['viewcarray_0',['ViewCArray',['../dc/dbd/class_view_c_array.html',1,'']]],
-  ['viewcmatrix_1',['ViewCMatrix',['../d8/dad/class_view_c_matrix.html',1,'']]],
-  ['viewfarray_2',['ViewFArray',['../de/d36/class_view_f_array.html',1,'']]],
-  ['viewfmatrix_3',['ViewFMatrix',['../d7/d41/class_view_f_matrix.html',1,'']]]
+  ['set_5fstrides_5ffunctor_0',['set_strides_functor',['../d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor.html',1,'DynamicRaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor'],['../d2/dde/class_dynamic_ragged_right_array_kokkos_1_1set__strides__functor.html',1,'DynamicRaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::set_strides_functor']]],
+  ['setup_5flength_5ffunctor_1',['setup_length_functor',['../d4/d98/class_ragged_down_array_kokkos_1_1setup__length__functor.html',1,'RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor'],['../dc/d6f/class_ragged_right_array_kokkos_1_1setup__length__functor.html',1,'RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor'],['../db/d9d/class_ragged_right_arrayof_vectors_kokkos_1_1setup__length__functor.html',1,'RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_length_functor']]],
+  ['setup_5fstart_5findices_5ffunctor_2',['setup_start_indices_functor',['../d0/d70/class_ragged_down_array_kokkos_1_1setup__start__indices__functor.html',1,'RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor'],['../d0/d71/class_ragged_right_array_kokkos_1_1setup__start__indices__functor.html',1,'RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor'],['../d3/dad/class_ragged_right_arrayof_vectors_kokkos_1_1setup__start__indices__functor.html',1,'RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor']]]
 ];

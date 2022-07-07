@@ -63,75 +63,663 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="../../dc/d07/class_c_s_c_array-members.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle"><div class="title">CSCArray&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../dd/d82/matar_8h_source.html">matar.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac3ef5c6cdbf2d16c9042636fed618389"><td class="memItemLeft" align="right" valign="top"><a id="ac3ef5c6cdbf2d16c9042636fed618389" name="ac3ef5c6cdbf2d16c9042636fed618389"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CSCArray</b> (<a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; array, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; row_index, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; start_index, size_t dim1, size_t dim2)</td></tr>
-<tr class="separator:ac3ef5c6cdbf2d16c9042636fed618389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f8a3d9fec014e37bd2540062e5613b8"><td class="memItemLeft" align="right" valign="top"><a id="a2f8a3d9fec014e37bd2540062e5613b8" name="a2f8a3d9fec014e37bd2540062e5613b8"></a>
-T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (size_t i, size_t j) const</td></tr>
+<tr class="memitem:a8b745305955df2d87a28c248af402241"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a8b745305955df2d87a28c248af402241">CSCArray</a> ()</td></tr>
+<tr class="memdesc:a8b745305955df2d87a28c248af402241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new empty Sparse Col Array object.  <a href="../../dd/d12/class_c_s_c_array.html#a8b745305955df2d87a28c248af402241">More...</a><br /></td></tr>
+<tr class="separator:a8b745305955df2d87a28c248af402241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1205ca0f276fef7169950b31016f886"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ae1205ca0f276fef7169950b31016f886">CSCArray</a> (<a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; array, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; row_index, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; start_index, size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html#a6c7cc7cebc744e6dcf70c6c6e3f5c164">dim1</a>, size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html#ad00414e167cd8510074390e8bf592444">dim2</a>)</td></tr>
+<tr class="memdesc:ae1205ca0f276fef7169950b31016f886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sparse Col Array object.  <a href="../../dd/d12/class_c_s_c_array.html#ae1205ca0f276fef7169950b31016f886">More...</a><br /></td></tr>
+<tr class="separator:ae1205ca0f276fef7169950b31016f886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f8a3d9fec014e37bd2540062e5613b8"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a2f8a3d9fec014e37bd2540062e5613b8">operator()</a> (size_t i, size_t j) const</td></tr>
+<tr class="memdesc:a2f8a3d9fec014e37bd2540062e5613b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access A(i,j).  <a href="../../dd/d12/class_c_s_c_array.html#a2f8a3d9fec014e37bd2540062e5613b8">More...</a><br /></td></tr>
 <tr class="separator:a2f8a3d9fec014e37bd2540062e5613b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fea323157d9f4f36414bc1cc7d5365b"><td class="memItemLeft" align="right" valign="top"><a id="a5fea323157d9f4f36414bc1cc7d5365b" name="a5fea323157d9f4f36414bc1cc7d5365b"></a>
-<a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a> &amp;temp)</td></tr>
+<tr class="memitem:a5fea323157d9f4f36414bc1cc7d5365b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a5fea323157d9f4f36414bc1cc7d5365b">operator=</a> (const <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a> &amp;temp)</td></tr>
+<tr class="memdesc:a5fea323157d9f4f36414bc1cc7d5365b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded copy operator.  <a href="../../dd/d12/class_c_s_c_array.html#a5fea323157d9f4f36414bc1cc7d5365b">More...</a><br /></td></tr>
 <tr class="separator:a5fea323157d9f4f36414bc1cc7d5365b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3807e5e741c75aa1e25d77bf2a4b8e67"><td class="memItemLeft" align="right" valign="top"><a id="a3807e5e741c75aa1e25d77bf2a4b8e67" name="a3807e5e741c75aa1e25d77bf2a4b8e67"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> () const</td></tr>
+<tr class="memitem:a3807e5e741c75aa1e25d77bf2a4b8e67"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a3807e5e741c75aa1e25d77bf2a4b8e67">pointer</a> () const</td></tr>
 <tr class="separator:a3807e5e741c75aa1e25d77bf2a4b8e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff6644b03d7b3e2cfa39a9f2dba21e8f"><td class="memItemLeft" align="right" valign="top"><a id="aff6644b03d7b3e2cfa39a9f2dba21e8f" name="aff6644b03d7b3e2cfa39a9f2dba21e8f"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>stride</b> (size_t i) const</td></tr>
+<tr class="memitem:aff6644b03d7b3e2cfa39a9f2dba21e8f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#aff6644b03d7b3e2cfa39a9f2dba21e8f">stride</a> (size_t i) const</td></tr>
+<tr class="memdesc:aff6644b03d7b3e2cfa39a9f2dba21e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same functionality as nnz(i) included for compatibility with the rest of matar.  <a href="../../dd/d12/class_c_s_c_array.html#aff6644b03d7b3e2cfa39a9f2dba21e8f">More...</a><br /></td></tr>
 <tr class="separator:aff6644b03d7b3e2cfa39a9f2dba21e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace55111f5fb12a7eb41e4421642dbe3e"><td class="memItemLeft" align="right" valign="top"><a id="ace55111f5fb12a7eb41e4421642dbe3e" name="ace55111f5fb12a7eb41e4421642dbe3e"></a>
-T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> (size_t i, size_t j) const</td></tr>
+<tr class="memitem:ace55111f5fb12a7eb41e4421642dbe3e"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ace55111f5fb12a7eb41e4421642dbe3e">value</a> (size_t i, size_t j) const</td></tr>
+<tr class="memdesc:ace55111f5fb12a7eb41e4421642dbe3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same functionality as operator() included for compatibility with the rest of matar.  <a href="../../dd/d12/class_c_s_c_array.html#ace55111f5fb12a7eb41e4421642dbe3e">More...</a><br /></td></tr>
 <tr class="separator:ace55111f5fb12a7eb41e4421642dbe3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab61410a475de0cfdec3d32eab624a75d"><td class="memItemLeft" align="right" valign="top"><a id="ab61410a475de0cfdec3d32eab624a75d" name="ab61410a475de0cfdec3d32eab624a75d"></a>
-size_t *&#160;</td><td class="memItemRight" valign="bottom"><b>get_starts</b> () const</td></tr>
+<tr class="memitem:ab61410a475de0cfdec3d32eab624a75d"><td class="memItemLeft" align="right" valign="top">size_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ab61410a475de0cfdec3d32eab624a75d">get_starts</a> () const</td></tr>
+<tr class="memdesc:ab61410a475de0cfdec3d32eab624a75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the start_index array.  <a href="../../dd/d12/class_c_s_c_array.html#ab61410a475de0cfdec3d32eab624a75d">More...</a><br /></td></tr>
 <tr class="separator:ab61410a475de0cfdec3d32eab624a75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c7cc7cebc744e6dcf70c6c6e3f5c164"><td class="memItemLeft" align="right" valign="top"><a id="a6c7cc7cebc744e6dcf70c6c6e3f5c164" name="a6c7cc7cebc744e6dcf70c6c6e3f5c164"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>dim1</b> () const</td></tr>
+<tr class="memitem:a6c7cc7cebc744e6dcf70c6c6e3f5c164"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a6c7cc7cebc744e6dcf70c6c6e3f5c164">dim1</a> () const</td></tr>
+<tr class="memdesc:a6c7cc7cebc744e6dcf70c6c6e3f5c164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of rows.  <a href="../../dd/d12/class_c_s_c_array.html#a6c7cc7cebc744e6dcf70c6c6e3f5c164">More...</a><br /></td></tr>
 <tr class="separator:a6c7cc7cebc744e6dcf70c6c6e3f5c164"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad00414e167cd8510074390e8bf592444"><td class="memItemLeft" align="right" valign="top"><a id="ad00414e167cd8510074390e8bf592444" name="ad00414e167cd8510074390e8bf592444"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>dim2</b> () const</td></tr>
+<tr class="memitem:ad00414e167cd8510074390e8bf592444"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ad00414e167cd8510074390e8bf592444">dim2</a> () const</td></tr>
+<tr class="memdesc:ad00414e167cd8510074390e8bf592444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of columns.  <a href="../../dd/d12/class_c_s_c_array.html#ad00414e167cd8510074390e8bf592444">More...</a><br /></td></tr>
 <tr class="separator:ad00414e167cd8510074390e8bf592444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aded6f85b9692885f618a71034201e2d2"><td class="memItemLeft" align="right" valign="top"><a id="aded6f85b9692885f618a71034201e2d2" name="aded6f85b9692885f618a71034201e2d2"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> (size_t i)</td></tr>
+<tr class="memitem:aded6f85b9692885f618a71034201e2d2"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#aded6f85b9692885f618a71034201e2d2">begin</a> (size_t i)</td></tr>
+<tr class="memdesc:aded6f85b9692885f618a71034201e2d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator notation for iterating through the non zeros values of row i.  <a href="../../dd/d12/class_c_s_c_array.html#aded6f85b9692885f618a71034201e2d2">More...</a><br /></td></tr>
 <tr class="separator:aded6f85b9692885f618a71034201e2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af51f981679caea93a8bd1efa1ab365f7"><td class="memItemLeft" align="right" valign="top"><a id="af51f981679caea93a8bd1efa1ab365f7" name="af51f981679caea93a8bd1efa1ab365f7"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> (size_t i)</td></tr>
+<tr class="memitem:af51f981679caea93a8bd1efa1ab365f7"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#af51f981679caea93a8bd1efa1ab365f7">end</a> (size_t i)</td></tr>
+<tr class="memdesc:af51f981679caea93a8bd1efa1ab365f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator notation for iterating through the non zeros values of row i.  <a href="../../dd/d12/class_c_s_c_array.html#af51f981679caea93a8bd1efa1ab365f7">More...</a><br /></td></tr>
 <tr class="separator:af51f981679caea93a8bd1efa1ab365f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcaa186bf71aaf76f346f348b6884a4e"><td class="memItemLeft" align="right" valign="top"><a id="afcaa186bf71aaf76f346f348b6884a4e" name="afcaa186bf71aaf76f346f348b6884a4e"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>beginFlat</b> (size_t i)</td></tr>
-<tr class="separator:afcaa186bf71aaf76f346f348b6884a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9104f82369ec0312cfb367042d23e3ac"><td class="memItemLeft" align="right" valign="top"><a id="a9104f82369ec0312cfb367042d23e3ac" name="a9104f82369ec0312cfb367042d23e3ac"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>endFlat</b> (size_t i)</td></tr>
-<tr class="separator:a9104f82369ec0312cfb367042d23e3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a891a72d2aed7aa23f1c5d520a321407c"><td class="memItemLeft" align="right" valign="top"><a id="a891a72d2aed7aa23f1c5d520a321407c" name="a891a72d2aed7aa23f1c5d520a321407c"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>nnz</b> (size_t i)</td></tr>
+<tr class="memitem:ad93e968f4b101d57aa1ad9e478f2e980"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ad93e968f4b101d57aa1ad9e478f2e980">begin_index</a> (size_t i)</td></tr>
+<tr class="separator:ad93e968f4b101d57aa1ad9e478f2e980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75095ea93ede2bda0d9c7c567870195"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#aa75095ea93ede2bda0d9c7c567870195">end_index</a> (size_t i)</td></tr>
+<tr class="separator:aa75095ea93ede2bda0d9c7c567870195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a891a72d2aed7aa23f1c5d520a321407c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a891a72d2aed7aa23f1c5d520a321407c">nnz</a> (size_t i)</td></tr>
+<tr class="memdesc:a891a72d2aed7aa23f1c5d520a321407c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of non zero elements in row i.  <a href="../../dd/d12/class_c_s_c_array.html#a891a72d2aed7aa23f1c5d520a321407c">More...</a><br /></td></tr>
 <tr class="separator:a891a72d2aed7aa23f1c5d520a321407c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac31899ccd8cb982ba85978ccf70a0459"><td class="memItemLeft" align="right" valign="top"><a id="ac31899ccd8cb982ba85978ccf70a0459" name="ac31899ccd8cb982ba85978ccf70a0459"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>nnz</b> ()</td></tr>
+<tr class="memitem:ac31899ccd8cb982ba85978ccf70a0459"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#ac31899ccd8cb982ba85978ccf70a0459">nnz</a> ()</td></tr>
+<tr class="memdesc:ac31899ccd8cb982ba85978ccf70a0459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of non zero elements total in array.  <a href="../../dd/d12/class_c_s_c_array.html#ac31899ccd8cb982ba85978ccf70a0459">More...</a><br /></td></tr>
 <tr class="separator:ac31899ccd8cb982ba85978ccf70a0459"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab375069d0580769dc7a6e9db0059adcb"><td class="memItemLeft" align="right" valign="top"><a id="ab375069d0580769dc7a6e9db0059adcb" name="ab375069d0580769dc7a6e9db0059adcb"></a>
-T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getValFlat</b> (size_t k)</td></tr>
-<tr class="separator:ab375069d0580769dc7a6e9db0059adcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7373de14d4564acd0de674687b6e4cb3"><td class="memItemLeft" align="right" valign="top"><a id="a7373de14d4564acd0de674687b6e4cb3" name="a7373de14d4564acd0de674687b6e4cb3"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getRowFlat</b> (size_t k)</td></tr>
-<tr class="separator:a7373de14d4564acd0de674687b6e4cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1640fcc3cf9246f25857e84e265e2f4"><td class="memItemLeft" align="right" valign="top"><a id="af1640fcc3cf9246f25857e84e265e2f4" name="af1640fcc3cf9246f25857e84e265e2f4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>flatIndex</b> (size_t i, size_t j)</td></tr>
-<tr class="separator:af1640fcc3cf9246f25857e84e265e2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a123af493f6698fc2ebebbbd35551f044"><td class="memItemLeft" align="right" valign="top"><a id="a123af493f6698fc2ebebbbd35551f044" name="a123af493f6698fc2ebebbbd35551f044"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>toCSR</b> (<a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; &amp;data, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;row_ptrs, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;col_ptrs)</td></tr>
+<tr class="memitem:a226f07a4bca866539754a4909a4cf69f"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a226f07a4bca866539754a4909a4cf69f">get_val_flat</a> (size_t k)</td></tr>
+<tr class="separator:a226f07a4bca866539754a4909a4cf69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379abe5a7b2fc52c06c969aa77c1d7dc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a379abe5a7b2fc52c06c969aa77c1d7dc">get_row_flat</a> (size_t k)</td></tr>
+<tr class="separator:a379abe5a7b2fc52c06c969aa77c1d7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e76986346faf7bc73e91ec8801a5b76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a2e76986346faf7bc73e91ec8801a5b76">flat_index</a> (size_t i, size_t j)</td></tr>
+<tr class="separator:a2e76986346faf7bc73e91ec8801a5b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123af493f6698fc2ebebbbd35551f044"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a123af493f6698fc2ebebbbd35551f044">toCSR</a> (<a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; &amp;data, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;row_ptrs, <a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;col_ptrs)</td></tr>
 <tr class="separator:a123af493f6698fc2ebebbbd35551f044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a9bb3d7e323ed93f9d4d84f731609f"><td class="memItemLeft" align="right" valign="top"><a id="af0a9bb3d7e323ed93f9d4d84f731609f" name="af0a9bb3d7e323ed93f9d4d84f731609f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>todense</b> (<a class="el" href="../../de/d57/class_f_array.html">FArray</a>&lt; T &gt; &amp;A)</td></tr>
-<tr class="separator:af0a9bb3d7e323ed93f9d4d84f731609f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a053f52c4708b507a5a58e56c8adebdf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#a053f52c4708b507a5a58e56c8adebdf3">to_dense</a> (<a class="el" href="../../de/d57/class_f_array.html">FArray</a>&lt; T &gt; &amp;A)</td></tr>
+<tr class="separator:a053f52c4708b507a5a58e56c8adebdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab99403cb89d9f5c703a6f297130933"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d12/class_c_s_c_array.html#abab99403cb89d9f5c703a6f297130933">~CSCArray</a> ()</td></tr>
+<tr class="separator:abab99403cb89d9f5c703a6f297130933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8b745305955df2d87a28c248af402241" name="a8b745305955df2d87a28c248af402241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b745305955df2d87a28c248af402241">&#9670;&nbsp;</a></span>CSCArray() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;<a class="el" href="../../dd/d12/class_c_s_c_array.html">::CSCArray</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new empty Sparse Col Array object. </p>
+
+</div>
+</div>
+<a id="ae1205ca0f276fef7169950b31016f886" name="ae1205ca0f276fef7169950b31016f886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1205ca0f276fef7169950b31016f886">&#9670;&nbsp;</a></span>CSCArray() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;<a class="el" href="../../dd/d12/class_c_s_c_array.html">::CSCArray</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt;&#160;</td>
+          <td class="paramname"><em>row_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt;&#160;</td>
+          <td class="paramname"><em>start_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dim2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Sparse Col Array object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>1d array of data values in order as read top to bottom, left to right </td></tr>
+    <tr><td class="paramname">row_index</td><td>1d array that marks what row each element is in </td></tr>
+    <tr><td class="paramname">start_index</td><td>1d array that marks where the first element of each column starts </td></tr>
+    <tr><td class="paramname">dim1</td><td>number of rows the matrix should have </td></tr>
+    <tr><td class="paramname">dim2</td><td>number of columns the matrix should have </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abab99403cb89d9f5c703a6f297130933" name="abab99403cb89d9f5c703a6f297130933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab99403cb89d9f5c703a6f297130933">&#9670;&nbsp;</a></span>~CSCArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::~<a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aded6f85b9692885f618a71034201e2d2" name="aded6f85b9692885f618a71034201e2d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded6f85b9692885f618a71034201e2d2">&#9670;&nbsp;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iterator notation for iterating through the non zeros values of row i. </p>
+<p ><br  />
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: row <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T* </dd></dl>
+
+</div>
+</div>
+<a id="ad93e968f4b101d57aa1ad9e478f2e980" name="ad93e968f4b101d57aa1ad9e478f2e980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93e968f4b101d57aa1ad9e478f2e980">&#9670;&nbsp;</a></span>begin_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::begin_index </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c7cc7cebc744e6dcf70c6c6e3f5c164" name="a6c7cc7cebc744e6dcf70c6c6e3f5c164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7cc7cebc744e6dcf70c6c6e3f5c164">&#9670;&nbsp;</a></span>dim1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::dim1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get number of rows. </p>
+<dl class="section return"><dt>Returns</dt><dd>size_t number of rows </dd></dl>
+
+</div>
+</div>
+<a id="ad00414e167cd8510074390e8bf592444" name="ad00414e167cd8510074390e8bf592444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad00414e167cd8510074390e8bf592444">&#9670;&nbsp;</a></span>dim2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::dim2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get number of columns. </p>
+<dl class="section return"><dt>Returns</dt><dd>size_t number of columns </dd></dl>
+
+</div>
+</div>
+<a id="af51f981679caea93a8bd1efa1ab365f7" name="af51f981679caea93a8bd1efa1ab365f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51f981679caea93a8bd1efa1ab365f7">&#9670;&nbsp;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::end </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>iterator notation for iterating through the non zeros values of row i. </p>
+<p ><br  />
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: row <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T* </dd></dl>
+
+</div>
+</div>
+<a id="aa75095ea93ede2bda0d9c7c567870195" name="aa75095ea93ede2bda0d9c7c567870195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75095ea93ede2bda0d9c7c567870195">&#9670;&nbsp;</a></span>end_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::end_index </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e76986346faf7bc73e91ec8801a5b76" name="a2e76986346faf7bc73e91ec8801a5b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e76986346faf7bc73e91ec8801a5b76">&#9670;&nbsp;</a></span>flat_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::flat_index </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a379abe5a7b2fc52c06c969aa77c1d7dc" name="a379abe5a7b2fc52c06c969aa77c1d7dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a379abe5a7b2fc52c06c969aa77c1d7dc">&#9670;&nbsp;</a></span>get_row_flat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::get_row_flat </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab61410a475de0cfdec3d32eab624a75d" name="ab61410a475de0cfdec3d32eab624a75d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61410a475de0cfdec3d32eab624a75d">&#9670;&nbsp;</a></span>get_starts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t * <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::get_starts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the start_index array. </p>
+<dl class="section return"><dt>Returns</dt><dd>size_t* : returns start_index_ </dd></dl>
+
+</div>
+</div>
+<a id="a226f07a4bca866539754a4909a4cf69f" name="a226f07a4bca866539754a4909a4cf69f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a226f07a4bca866539754a4909a4cf69f">&#9670;&nbsp;</a></span>get_val_flat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::get_val_flat </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac31899ccd8cb982ba85978ccf70a0459" name="ac31899ccd8cb982ba85978ccf70a0459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac31899ccd8cb982ba85978ccf70a0459">&#9670;&nbsp;</a></span>nnz() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::nnz</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get number of non zero elements total in array. </p>
+<dl class="section return"><dt>Returns</dt><dd>size_t </dd></dl>
+
+</div>
+</div>
+<a id="a891a72d2aed7aa23f1c5d520a321407c" name="a891a72d2aed7aa23f1c5d520a321407c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a891a72d2aed7aa23f1c5d520a321407c">&#9670;&nbsp;</a></span>nnz() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::nnz </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of non zero elements in row i. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: row to get </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size_t : size of row </dd></dl>
+
+</div>
+</div>
+<a id="a2f8a3d9fec014e37bd2540062e5613b8" name="a2f8a3d9fec014e37bd2540062e5613b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f8a3d9fec014e37bd2540062e5613b8">&#9670;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access A(i,j). </p>
+<p >Returns a dummy address with value 0 if A(i,j) is not allocated</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: row <br  />
+ </td></tr>
+    <tr><td class="paramname">j</td><td>: column </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T&amp; : address of array_ that corresponds to A(i,j) </dd></dl>
+
+</div>
+</div>
+<a id="a5fea323157d9f4f36414bc1cc7d5365b" name="a5fea323157d9f4f36414bc1cc7d5365b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fea323157d9f4f36414bc1cc7d5365b">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt; &amp; <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>temp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overloaded copy operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temp</td><td>: Array to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a3807e5e741c75aa1e25d77bf2a4b8e67" name="a3807e5e741c75aa1e25d77bf2a4b8e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3807e5e741c75aa1e25d77bf2a4b8e67">&#9670;&nbsp;</a></span>pointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::pointer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff6644b03d7b3e2cfa39a9f2dba21e8f" name="aff6644b03d7b3e2cfa39a9f2dba21e8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff6644b03d7b3e2cfa39a9f2dba21e8f">&#9670;&nbsp;</a></span>stride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::stride </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Same functionality as nnz(i) included for compatibility with the rest of matar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: row </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size_t </dd></dl>
+
+</div>
+</div>
+<a id="a053f52c4708b507a5a58e56c8adebdf3" name="a053f52c4708b507a5a58e56c8adebdf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a053f52c4708b507a5a58e56c8adebdf3">&#9670;&nbsp;</a></span>to_dense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::to_dense </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d57/class_f_array.html">FArray</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a123af493f6698fc2ebebbbd35551f044" name="a123af493f6698fc2ebebbbd35551f044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a123af493f6698fc2ebebbbd35551f044">&#9670;&nbsp;</a></span>toCSR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::toCSR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>row_ptrs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/dbe/class_c_array.html">CArray</a>&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>col_ptrs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace55111f5fb12a7eb41e4421642dbe3e" name="ace55111f5fb12a7eb41e4421642dbe3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace55111f5fb12a7eb41e4421642dbe3e">&#9670;&nbsp;</a></span>value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="../../dd/d12/class_c_s_c_array.html">CSCArray</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Same functionality as operator() included for compatibility with the rest of matar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>row </td></tr>
+    <tr><td class="paramname">j</td><td>column </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T&amp; </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/calvinroth/paraNotes/MATAR/src/<a class="el" href="../../dd/d82/matar_8h_source.html">matar.h</a></li>
 </ul>

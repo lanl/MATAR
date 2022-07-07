@@ -8,33 +8,33 @@
       </param>
     </templateparamlist>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_c_s_c_array_1a1be7b0ce6b6431b55b9a12f17cb975a0" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="class_c_s_c_array_1a93e76752595269bb0bfdb377f934e69a" prot="private" static="no" mutable="no">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::nrows_</definition>
+        <definition>size_t CSCArray&lt; T &gt;::dim1_</definition>
         <argsstring></argsstring>
-        <name>nrows_</name>
-        <qualifiedname>CSCArray::nrows_</qualifiedname>
+        <name>dim1_</name>
+        <qualifiedname>CSCArray::dim1_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5261" column="12" bodyfile="src/matar.h" bodystart="5261" bodyend="-1"/>
+        <location file="src/matar.h" line="4939" column="12" bodyfile="src/matar.h" bodystart="4939" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_c_s_c_array_1a184aa1e5b1b08420f1b6af210963e177" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="class_c_s_c_array_1aed57839de50c6327857821d80ada4ee6" prot="private" static="no" mutable="no">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::ncols_</definition>
+        <definition>size_t CSCArray&lt; T &gt;::dim2_</definition>
         <argsstring></argsstring>
-        <name>ncols_</name>
-        <qualifiedname>CSCArray::ncols_</qualifiedname>
+        <name>dim2_</name>
+        <qualifiedname>CSCArray::dim2_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5261" column="19" bodyfile="src/matar.h" bodystart="5261" bodyend="-1"/>
+        <location file="src/matar.h" line="4939" column="18" bodyfile="src/matar.h" bodystart="4939" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_c_s_c_array_1a11f870dc41977d0e612c9e6bce3089c6" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5262" column="12" bodyfile="src/matar.h" bodystart="5262" bodyend="-1"/>
+        <location file="src/matar.h" line="4940" column="12" bodyfile="src/matar.h" bodystart="4940" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_c_s_c_array_1ac250327d2e3ac0671b83ac69682a4fce" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; T[]&gt;</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5263" column="22" bodyfile="src/matar.h" bodystart="5263" bodyend="-1"/>
+        <location file="src/matar.h" line="4941" column="22" bodyfile="src/matar.h" bodystart="4941" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_c_s_c_array_1a32b20c6b6ff17ee47c305af830152d2c" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; size_t[]&gt;</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5264" column="22" bodyfile="src/matar.h" bodystart="5264" bodyend="-1"/>
+        <location file="src/matar.h" line="4942" column="22" bodyfile="src/matar.h" bodystart="4942" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_c_s_c_array_1a87670460a50fb4c42be108664f310c3f" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; size_t[]&gt;</type>
@@ -90,43 +90,101 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5265" column="22" bodyfile="src/matar.h" bodystart="5265" bodyend="-1"/>
+        <location file="src/matar.h" line="4943" column="22" bodyfile="src/matar.h" bodystart="4943" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_c_s_c_array_1a5c61436dd20eb9e8861b42c10eb68788" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a8b745305955df2d87a28c248af402241" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CSCArray&lt; T &gt;::CSCArray</definition>
-        <argsstring>(CArray&lt; T &gt; data, CArray&lt; T &gt; row_ptrs, CArray&lt; T &gt; row_pts, size_t rows, size_t cols)</argsstring>
+        <argsstring>()</argsstring>
         <name>CSCArray</name>
         <qualifiedname>CSCArray::CSCArray</qualifiedname>
-        <param>
-          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
-          <declname>data</declname>
-        </param>
-        <param>
-          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
-          <declname>row_ptrs</declname>
-        </param>
-        <param>
-          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
-          <declname>row_pts</declname>
-        </param>
-        <param>
-          <type>size_t</type>
-          <declname>rows</declname>
-        </param>
-        <param>
-          <type>size_t</type>
-          <declname>cols</declname>
-        </param>
         <briefdescription>
+<para>Construct a new empty Sparse Col Array object. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5268" column="5" bodyfile="src/matar.h" bodystart="5317" bodyend="5333"/>
+        <location file="src/matar.h" line="4951" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_c_array_1ae1205ca0f276fef7169950b31016f886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSCArray&lt; T &gt;::CSCArray</definition>
+        <argsstring>(CArray&lt; T &gt; array, CArray&lt; size_t &gt; row_index, CArray&lt; size_t &gt; start_index, size_t dim1, size_t dim2)</argsstring>
+        <name>CSCArray</name>
+        <qualifiedname>CSCArray::CSCArray</qualifiedname>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; T &gt;</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt;</type>
+          <declname>row_index</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_array" kindref="compound">CArray</ref>&lt; size_t &gt;</type>
+          <declname>start_index</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new Sparse Col Array object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1d array of data values in order as read top to bottom, left to right </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1d array that marks what row each element is in </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>1d array that marks where the first element of each column starts </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dim1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of rows the matrix should have </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dim2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of columns the matrix should have </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="4962" column="7" bodyfile="src/matar.h" bodystart="5071" bodyend="5087"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1a2f8a3d9fec014e37bd2540062e5613b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>T &amp;</type>
@@ -143,12 +201,34 @@
           <declname>j</declname>
         </param>
         <briefdescription>
+<para>Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: row <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: column </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T&amp; : address of array_ that corresponds to A(i,j) </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5270" column="7" bodyfile="src/matar.h" bodystart="5337" bodyend="5348"/>
+        <location file="src/matar.h" line="4971" column="9" bodyfile="src/matar.h" bodystart="5091" bodyend="5102"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1a5fea323157d9f4f36414bc1cc7d5365b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_c_s_c_array" kindref="compound">CSCArray</ref> &amp;</type>
@@ -161,12 +241,25 @@
           <declname>temp</declname>
         </param>
         <briefdescription>
+<para>Overloaded copy operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>temp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Array to copy </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="class_c_s_c_array" kindref="compound">CSCArray</ref>&amp; </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5272" column="14" bodyfile="src/matar.h" bodystart="5375" bodyend="5386"/>
+        <location file="src/matar.h" line="4979" column="16" bodyfile="src/matar.h" bodystart="5129" bodyend="5140"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1a3807e5e741c75aa1e25d77bf2a4b8e67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>T *</type>
@@ -180,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5274" column="7" bodyfile="src/matar.h" bodystart="5351" bodyend="5353"/>
+        <location file="src/matar.h" line="4981" column="9" bodyfile="src/matar.h" bodystart="5105" bodyend="5107"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1aff6644b03d7b3e2cfa39a9f2dba21e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -193,12 +286,25 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Same functionality as nnz(i) included for compatibility with the rest of matar. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: row </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>size_t </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5276" column="12" bodyfile="src/matar.h" bodystart="5389" bodyend="5392"/>
+        <location file="src/matar.h" line="4989" column="14" bodyfile="src/matar.h" bodystart="5143" bodyend="5146"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1ace55111f5fb12a7eb41e4421642dbe3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>T &amp;</type>
@@ -215,12 +321,33 @@
           <declname>j</declname>
         </param>
         <briefdescription>
+<para>Same functionality as operator() included for compatibility with the rest of matar. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>row </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>column </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T&amp; </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5277" column="7" bodyfile="src/matar.h" bodystart="5356" bodyend="5367"/>
+        <location file="src/matar.h" line="4998" column="9" bodyfile="src/matar.h" bodystart="5110" bodyend="5121"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1ab61410a475de0cfdec3d32eab624a75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t *</type>
@@ -229,54 +356,52 @@
         <name>get_starts</name>
         <qualifiedname>CSCArray::get_starts</qualifiedname>
         <briefdescription>
+<para>Get the start_index array. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>size_t* : returns start_index_ </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5279" column="12" bodyfile="src/matar.h" bodystart="5370" bodyend="5372"/>
+        <location file="src/matar.h" line="5005" column="14" bodyfile="src/matar.h" bodystart="5124" bodyend="5126"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1a35f40a6c360624f11b893c9b6b25b039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void CSCArray&lt; T &gt;::printer</definition>
-        <argsstring>()</argsstring>
-        <name>printer</name>
-        <qualifiedname>CSCArray::printer</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/matar.h" line="5281" column="10" bodyfile="src/matar.h" bodystart="5396" bodyend="5404"/>
-      </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1ae11a382e449464030df181fe386ecb73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a6c7cc7cebc744e6dcf70c6c6e3f5c164" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::getNcols</definition>
-        <argsstring>()</argsstring>
-        <name>getNcols</name>
-        <qualifiedname>CSCArray::getNcols</qualifiedname>
+        <definition>size_t CSCArray&lt; T &gt;::dim1</definition>
+        <argsstring>() const</argsstring>
+        <name>dim1</name>
+        <qualifiedname>CSCArray::dim1</qualifiedname>
         <briefdescription>
+<para>Get number of rows. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>size_t number of rows </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5283" column="12" bodyfile="src/matar.h" bodystart="5418" bodyend="5420"/>
+        <location file="src/matar.h" line="5012" column="14" bodyfile="src/matar.h" bodystart="5161" bodyend="5163"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1a2c07e7527a4251a87cd0fbaf4edd013f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1ad00414e167cd8510074390e8bf592444" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::getNrows</definition>
-        <argsstring>()</argsstring>
-        <name>getNrows</name>
-        <qualifiedname>CSCArray::getNrows</qualifiedname>
+        <definition>size_t CSCArray&lt; T &gt;::dim2</definition>
+        <argsstring>() const</argsstring>
+        <name>dim2</name>
+        <qualifiedname>CSCArray::dim2</qualifiedname>
         <briefdescription>
+<para>Get number of columns. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>size_t number of columns </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5284" column="12" bodyfile="src/matar.h" bodystart="5423" bodyend="5425"/>
+        <location file="src/matar.h" line="5019" column="14" bodyfile="src/matar.h" bodystart="5166" bodyend="5168"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1aded6f85b9692885f618a71034201e2d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>T *</type>
@@ -289,12 +414,27 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>iterator notation for iterating through the non zeros values of row i. <linebreak/>
+ </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: row <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5287" column="7" bodyfile="src/matar.h" bodystart="5428" bodyend="5432"/>
+        <location file="src/matar.h" line="5027" column="9" bodyfile="src/matar.h" bodystart="5171" bodyend="5175"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1af51f981679caea93a8bd1efa1ab365f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>T *</type>
@@ -307,19 +447,34 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>iterator notation for iterating through the non zeros values of row i. <linebreak/>
+ </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: row <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5288" column="7" bodyfile="src/matar.h" bodystart="5435" bodyend="5439"/>
+        <location file="src/matar.h" line="5035" column="9" bodyfile="src/matar.h" bodystart="5178" bodyend="5182"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1afcaa186bf71aaf76f346f348b6884a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1ad93e968f4b101d57aa1ad9e478f2e980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::beginFlat</definition>
+        <definition>size_t CSCArray&lt; T &gt;::begin_index</definition>
         <argsstring>(size_t i)</argsstring>
-        <name>beginFlat</name>
-        <qualifiedname>CSCArray::beginFlat</qualifiedname>
+        <name>begin_index</name>
+        <qualifiedname>CSCArray::begin_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -330,14 +485,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5294" column="12" bodyfile="src/matar.h" bodystart="5442" bodyend="5445"/>
+        <location file="src/matar.h" line="5041" column="14" bodyfile="src/matar.h" bodystart="5185" bodyend="5188"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1a9104f82369ec0312cfb367042d23e3ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1aa75095ea93ede2bda0d9c7c567870195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::endFlat</definition>
+        <definition>size_t CSCArray&lt; T &gt;::end_index</definition>
         <argsstring>(size_t i)</argsstring>
-        <name>endFlat</name>
-        <qualifiedname>CSCArray::endFlat</qualifiedname>
+        <name>end_index</name>
+        <qualifiedname>CSCArray::end_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -348,7 +503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5295" column="12" bodyfile="src/matar.h" bodystart="5448" bodyend="5451"/>
+        <location file="src/matar.h" line="5042" column="14" bodyfile="src/matar.h" bodystart="5191" bodyend="5194"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1a891a72d2aed7aa23f1c5d520a321407c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -361,12 +516,25 @@
           <declname>i</declname>
         </param>
         <briefdescription>
+<para>Get the number of non zero elements in row i. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: row to get </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>size_t : size of row </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5298" column="12" bodyfile="src/matar.h" bodystart="5459" bodyend="5461"/>
+        <location file="src/matar.h" line="5050" column="14" bodyfile="src/matar.h" bodystart="5202" bodyend="5204"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1ac31899ccd8cb982ba85978ccf70a0459" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -375,19 +543,23 @@
         <name>nnz</name>
         <qualifiedname>CSCArray::nnz</qualifiedname>
         <briefdescription>
+<para>Get number of non zero elements total in array. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>size_t </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5300" column="12" bodyfile="src/matar.h" bodystart="5454" bodyend="5456"/>
+        <location file="src/matar.h" line="5056" column="14" bodyfile="src/matar.h" bodystart="5197" bodyend="5199"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1ab375069d0580769dc7a6e9db0059adcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a226f07a4bca866539754a4909a4cf69f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>T &amp;</type>
-        <definition>T &amp; CSCArray&lt; T &gt;::getValFlat</definition>
+        <definition>T &amp; CSCArray&lt; T &gt;::get_val_flat</definition>
         <argsstring>(size_t k)</argsstring>
-        <name>getValFlat</name>
-        <qualifiedname>CSCArray::getValFlat</qualifiedname>
+        <name>get_val_flat</name>
+        <qualifiedname>CSCArray::get_val_flat</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>k</declname>
@@ -398,14 +570,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5303" column="7" bodyfile="src/matar.h" bodystart="5465" bodyend="5467"/>
+        <location file="src/matar.h" line="5059" column="9" bodyfile="src/matar.h" bodystart="5207" bodyend="5209"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1a7373de14d4564acd0de674687b6e4cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a379abe5a7b2fc52c06c969aa77c1d7dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
-        <definition>size_t CSCArray&lt; T &gt;::getRowFlat</definition>
+        <definition>size_t CSCArray&lt; T &gt;::get_row_flat</definition>
         <argsstring>(size_t k)</argsstring>
-        <name>getRowFlat</name>
-        <qualifiedname>CSCArray::getRowFlat</qualifiedname>
+        <name>get_row_flat</name>
+        <qualifiedname>CSCArray::get_row_flat</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>k</declname>
@@ -416,14 +588,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5304" column="12" bodyfile="src/matar.h" bodystart="5470" bodyend="5472"/>
+        <location file="src/matar.h" line="5060" column="14" bodyfile="src/matar.h" bodystart="5212" bodyend="5214"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1af1640fcc3cf9246f25857e84e265e2f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a2e76986346faf7bc73e91ec8801a5b76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int CSCArray&lt; T &gt;::flatIndex</definition>
+        <definition>int CSCArray&lt; T &gt;::flat_index</definition>
         <argsstring>(size_t i, size_t j)</argsstring>
-        <name>flatIndex</name>
-        <qualifiedname>CSCArray::flatIndex</qualifiedname>
+        <name>flat_index</name>
+        <qualifiedname>CSCArray::flat_index</qualifiedname>
         <param>
           <type>size_t</type>
           <declname>i</declname>
@@ -438,7 +610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5306" column="9" bodyfile="src/matar.h" bodystart="5476" bodyend="5486"/>
+        <location file="src/matar.h" line="5062" column="11" bodyfile="src/matar.h" bodystart="5217" bodyend="5228"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1a123af493f6698fc2ebebbbd35551f044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -464,14 +636,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5308" column="9" bodyfile="src/matar.h" bodystart="5493" bodyend="5532"/>
+        <location file="src/matar.h" line="5064" column="11" bodyfile="src/matar.h" bodystart="5235" bodyend="5274"/>
       </memberdef>
-      <memberdef kind="function" id="class_c_s_c_array_1af0a9bb3d7e323ed93f9d4d84f731609f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_c_s_c_array_1a053f52c4708b507a5a58e56c8adebdf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void CSCArray&lt; T &gt;::todense</definition>
+        <definition>void CSCArray&lt; T &gt;::to_dense</definition>
         <argsstring>(FArray&lt; T &gt; &amp;A)</argsstring>
-        <name>todense</name>
-        <qualifiedname>CSCArray::todense</qualifiedname>
+        <name>to_dense</name>
+        <qualifiedname>CSCArray::to_dense</qualifiedname>
         <param>
           <type><ref refid="class_f_array" kindref="compound">FArray</ref>&lt; T &gt; &amp;</type>
           <declname>A</declname>
@@ -482,7 +654,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5309" column="10" bodyfile="src/matar.h" bodystart="5407" bodyend="5415"/>
+        <location file="src/matar.h" line="5065" column="12" bodyfile="src/matar.h" bodystart="5150" bodyend="5158"/>
       </memberdef>
       <memberdef kind="function" id="class_c_s_c_array_1abab99403cb89d9f5c703a6f297130933" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -496,41 +668,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/matar.h" line="5311" column="4" bodyfile="src/matar.h" bodystart="5535" bodyend="5535"/>
+        <location file="src/matar.h" line="5067" column="7" bodyfile="src/matar.h" bodystart="5277" bodyend="5277"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/matar.h" line="5259" column="1" bodyfile="src/matar.h" bodystart="5259" bodyend="5314"/>
+    <location file="src/matar.h" line="4936" column="1" bodyfile="src/matar.h" bodystart="4937" bodyend="5068"/>
     <listofallmembers>
       <member refid="class_c_s_c_array_1ac250327d2e3ac0671b83ac69682a4fce" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>array_</name></member>
       <member refid="class_c_s_c_array_1aded6f85b9692885f618a71034201e2d2" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>begin</name></member>
-      <member refid="class_c_s_c_array_1afcaa186bf71aaf76f346f348b6884a4e" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>beginFlat</name></member>
-      <member refid="class_c_s_c_array_1a5c61436dd20eb9e8861b42c10eb68788" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>CSCArray</name></member>
+      <member refid="class_c_s_c_array_1ad93e968f4b101d57aa1ad9e478f2e980" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>begin_index</name></member>
+      <member refid="class_c_s_c_array_1a8b745305955df2d87a28c248af402241" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>CSCArray</name></member>
+      <member refid="class_c_s_c_array_1ae1205ca0f276fef7169950b31016f886" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>CSCArray</name></member>
+      <member refid="class_c_s_c_array_1a6c7cc7cebc744e6dcf70c6c6e3f5c164" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>dim1</name></member>
+      <member refid="class_c_s_c_array_1a93e76752595269bb0bfdb377f934e69a" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>dim1_</name></member>
+      <member refid="class_c_s_c_array_1ad00414e167cd8510074390e8bf592444" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>dim2</name></member>
+      <member refid="class_c_s_c_array_1aed57839de50c6327857821d80ada4ee6" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>dim2_</name></member>
       <member refid="class_c_s_c_array_1af51f981679caea93a8bd1efa1ab365f7" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>end</name></member>
-      <member refid="class_c_s_c_array_1a9104f82369ec0312cfb367042d23e3ac" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>endFlat</name></member>
-      <member refid="class_c_s_c_array_1af1640fcc3cf9246f25857e84e265e2f4" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>flatIndex</name></member>
+      <member refid="class_c_s_c_array_1aa75095ea93ede2bda0d9c7c567870195" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>end_index</name></member>
+      <member refid="class_c_s_c_array_1a2e76986346faf7bc73e91ec8801a5b76" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>flat_index</name></member>
+      <member refid="class_c_s_c_array_1a379abe5a7b2fc52c06c969aa77c1d7dc" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>get_row_flat</name></member>
       <member refid="class_c_s_c_array_1ab61410a475de0cfdec3d32eab624a75d" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>get_starts</name></member>
-      <member refid="class_c_s_c_array_1ae11a382e449464030df181fe386ecb73" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getNcols</name></member>
-      <member refid="class_c_s_c_array_1a2c07e7527a4251a87cd0fbaf4edd013f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getNrows</name></member>
-      <member refid="class_c_s_c_array_1a7373de14d4564acd0de674687b6e4cb3" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getRowFlat</name></member>
-      <member refid="class_c_s_c_array_1ab375069d0580769dc7a6e9db0059adcb" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>getValFlat</name></member>
-      <member refid="class_c_s_c_array_1a184aa1e5b1b08420f1b6af210963e177" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>ncols_</name></member>
+      <member refid="class_c_s_c_array_1a226f07a4bca866539754a4909a4cf69f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>get_val_flat</name></member>
       <member refid="class_c_s_c_array_1a891a72d2aed7aa23f1c5d520a321407c" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>nnz</name></member>
       <member refid="class_c_s_c_array_1ac31899ccd8cb982ba85978ccf70a0459" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>nnz</name></member>
       <member refid="class_c_s_c_array_1a11f870dc41977d0e612c9e6bce3089c6" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>nnz_</name></member>
-      <member refid="class_c_s_c_array_1a1be7b0ce6b6431b55b9a12f17cb975a0" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>nrows_</name></member>
       <member refid="class_c_s_c_array_1a2f8a3d9fec014e37bd2540062e5613b8" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>operator()</name></member>
       <member refid="class_c_s_c_array_1a5fea323157d9f4f36414bc1cc7d5365b" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>operator=</name></member>
       <member refid="class_c_s_c_array_1a3807e5e741c75aa1e25d77bf2a4b8e67" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>pointer</name></member>
-      <member refid="class_c_s_c_array_1a35f40a6c360624f11b893c9b6b25b039" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>printer</name></member>
       <member refid="class_c_s_c_array_1a87670460a50fb4c42be108664f310c3f" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>row_index_</name></member>
       <member refid="class_c_s_c_array_1a32b20c6b6ff17ee47c305af830152d2c" prot="private" virt="non-virtual"><scope>CSCArray</scope><name>start_index_</name></member>
       <member refid="class_c_s_c_array_1aff6644b03d7b3e2cfa39a9f2dba21e8f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>stride</name></member>
+      <member refid="class_c_s_c_array_1a053f52c4708b507a5a58e56c8adebdf3" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>to_dense</name></member>
       <member refid="class_c_s_c_array_1a123af493f6698fc2ebebbbd35551f044" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>toCSR</name></member>
-      <member refid="class_c_s_c_array_1af0a9bb3d7e323ed93f9d4d84f731609f" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>todense</name></member>
       <member refid="class_c_s_c_array_1ace55111f5fb12a7eb41e4421642dbe3e" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>value</name></member>
       <member refid="class_c_s_c_array_1abab99403cb89d9f5c703a6f297130933" prot="public" virt="non-virtual"><scope>CSCArray</scope><name>~CSCArray</name></member>
     </listofallmembers>

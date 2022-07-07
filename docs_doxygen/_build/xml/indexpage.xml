@@ -47,7 +47,7 @@
 </programlisting></para>
 <para><itemizedlist>
 <listitem><para>The ragged data types (e.g., <ref refid="d1/da3/class_ragged_right_array" kindref="compound">RaggedRightArray</ref>, <ref refid="d1/d2d/class_ragged_down_array" kindref="compound">RaggedDownArray</ref>, etc) in MATAR are special sparse storage types. The Right access types are for R(i,j) where the number of column entries varies in width across the array. The Down access types are for D(i,j) where the number of row entries vary in length across the array.</para>
-</listitem><listitem><para>The <ref refid="d6/d52/class_sparse_row_array" kindref="compound">SparseRowArray</ref> MATAR type is the idetical to the Compressed Sparse Row (CSR) or Compressed Row Storage (CSR) respresentation.</para>
+</listitem><listitem><para>The SparseRowArray MATAR type is the idetical to the Compressed Sparse Row (CSR) or Compressed Row Storage (CSR) respresentation.</para>
 </listitem><listitem><para>The SparseColumnArray MATAR type is identical to the Compressed Sparse Column (CSC) or Compressed Column Storage (CCS) respresentation.</para>
 </listitem></itemizedlist>
 </para>

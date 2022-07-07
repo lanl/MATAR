@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ragged_down_array_kokkos_1_1init__start__indices__functor" kind="class" language="C++" prot="public">
+    <compoundname>RaggedDownArrayKokkos::init_start_indices_functor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1af86e50af6a2cae6e316c33d1c6c34bbf" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::mystart_index_</definition>
+        <argsstring></argsstring>
+        <name>mystart_index_</name>
+        <qualifiedname>RaggedDownArrayKokkos::init_start_indices_functor::mystart_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12211" column="16" bodyfile="src/matar.h" bodystart="12211" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1a9001a88d9c5c3e8e81130887f97f0d2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::init_start_indices_functor</definition>
+        <argsstring>(SArray1D tempstart_index_)</argsstring>
+        <name>init_start_indices_functor</name>
+        <qualifiedname>RaggedDownArrayKokkos::init_start_indices_functor::init_start_indices_functor</qualifiedname>
+        <param>
+          <type>SArray1D</type>
+          <declname>tempstart_index_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12212" column="7" bodyfile="src/matar.h" bodystart="12212" bodyend="12214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1ad67468bbef8aee2aea1de8c73869e234" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor::operator()</definition>
+        <argsstring>(const int index) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedDownArrayKokkos::init_start_indices_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12215" column="35" bodyfile="src/matar.h" bodystart="12215" bodyend="12217"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="12209" column="5" bodyfile="src/matar.h" bodystart="12209" bodyend="12218"/>
+    <listofallmembers>
+      <member refid="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1a9001a88d9c5c3e8e81130887f97f0d2f" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::init_start_indices_functor</scope><name>init_start_indices_functor</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1af86e50af6a2cae6e316c33d1c6c34bbf" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::init_start_indices_functor</scope><name>mystart_index_</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1init__start__indices__functor_1ad67468bbef8aee2aea1de8c73869e234" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::init_start_indices_functor</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

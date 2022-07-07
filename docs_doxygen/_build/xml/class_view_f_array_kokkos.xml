@@ -1,0 +1,655 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_view_f_array_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>ViewFArrayKokkos</compoundname>
+    <includes refid="matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_view_f_array_kokkos_1ab861dbec89cf4ab16265a51edd93c67a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewFArrayKokkos&lt; T &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>ViewFArrayKokkos::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5702" column="12" bodyfile="src/matar.h" bodystart="5702" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_f_array_kokkos_1a3b507b8e67d3ecf384cf7647f5065269" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewFArrayKokkos&lt; T &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>ViewFArrayKokkos::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5703" column="12" bodyfile="src/matar.h" bodystart="5703" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_f_array_kokkos_1a1394e63262a3b6adc1f2db3ff9ecaf59" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewFArrayKokkos&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>ViewFArrayKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5704" column="12" bodyfile="src/matar.h" bodystart="5704" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_f_array_kokkos_1a2c8094e27c85f3395d4a8f297c3bfa97" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* ViewFArrayKokkos&lt; T &gt;::this_array_</definition>
+        <argsstring></argsstring>
+        <name>this_array_</name>
+        <qualifiedname>ViewFArrayKokkos::this_array_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5705" column="7" bodyfile="src/matar.h" bodystart="5705" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a2e2448b43e56b2ddffd5d305699e2bfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5709" column="5" bodyfile="src/matar.h" bodystart="5785" bodyend="5785"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1ad110fc87ef2808ce3c3f90823f9af699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5712" column="5" bodyfile="src/matar.h" bodystart="5790" bodyend="5795"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a1b88ccfa786cc83966cc86841d1341d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5715" column="5" bodyfile="src/matar.h" bodystart="5800" bodyend="5806"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a3591ef18d8d48fac3ffa9d0e9c826422" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1, size_t dim2)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5718" column="5" bodyfile="src/matar.h" bodystart="5811" bodyend="5819"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a9c5f0a0899492039ca44679d0553dd9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5721" column="5" bodyfile="src/matar.h" bodystart="5824" bodyend="5833"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a9b498216a2efa90b21b9487b45779a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5725" column="5" bodyfile="src/matar.h" bodystart="5838" bodyend="5848"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1adb2ba503a35fa7cba2cdfa3ad673205a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5729" column="5" bodyfile="src/matar.h" bodystart="5853" bodyend="5865"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a29f611835c765b7b2d85fa6901a661fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::ViewFArrayKokkos</definition>
+        <argsstring>(T *some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6)</argsstring>
+        <name>ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::ViewFArrayKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim0</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5733" column="5" bodyfile="src/matar.h" bodystart="5870" bodyend="5883"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a5e247fdd1fad781634dde14b1386d6ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5737" column="7" bodyfile="src/matar.h" bodystart="5888" bodyend="5892"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a6fb5260cf4350f55e2c8e82ff063e598" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5740" column="7" bodyfile="src/matar.h" bodystart="5897" bodyend="5902"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a4442e3f5e43e55ec5852d358eb6ec782" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5743" column="7" bodyfile="src/matar.h" bodystart="5907" bodyend="5914"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a66e449935e0d308ffd3f55e717b22ef7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5746" column="7" bodyfile="src/matar.h" bodystart="5919" bodyend="5929"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a38fe1d9a89c280dcf9bdfe6e3b953c9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5750" column="7" bodyfile="src/matar.h" bodystart="5934" bodyend="5946"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a0bb35b76e1bf6c526993936274ec5ba2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5754" column="7" bodyfile="src/matar.h" bodystart="5951" bodyend="5965"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1aa0c9cce685c32c42cebe55a573bd8382" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewFArrayKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewFArrayKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5758" column="7" bodyfile="src/matar.h" bodystart="5970" bodyend="5987"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a0bff36bf26ae022f5843b55f3d695a99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewFArrayKokkos&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>ViewFArrayKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5763" column="12" bodyfile="src/matar.h" bodystart="5991" bodyend="5993"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a9042718a5607ed729fc2a37a0176b6db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewFArrayKokkos&lt; T &gt;::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <qualifiedname>ViewFArrayKokkos::extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5766" column="12" bodyfile="src/matar.h" bodystart="5997" bodyend="5999"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a80226e6f96f2d1ab69bc7bfd71ea0c31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewFArrayKokkos&lt; T &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>ViewFArrayKokkos::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5769" column="12" bodyfile="src/matar.h" bodystart="6003" bodyend="6007"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1ae52cc40ce91f4cc2c9a9d3f8a5194c79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewFArrayKokkos&lt; T &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>ViewFArrayKokkos::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5772" column="12" bodyfile="src/matar.h" bodystart="6011" bodyend="6013"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a9ac1d8e1d2aa6a5e8120a8ae71dd00a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * ViewFArrayKokkos&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>ViewFArrayKokkos::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5775" column="7" bodyfile="src/matar.h" bodystart="6017" bodyend="6019"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_f_array_kokkos_1a5d58c76d355979607bc9868c7c8ed01e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewFArrayKokkos&lt; T &gt;::~ViewFArrayKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~ViewFArrayKokkos</name>
+        <qualifiedname>ViewFArrayKokkos::~ViewFArrayKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="5778" column="5" bodyfile="src/matar.h" bodystart="6023" bodyend="6023"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Kokkos version of the serial <ref refid="class_view_f_array" kindref="compound">ViewFArray</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="5699" column="1" bodyfile="src/matar.h" bodystart="5699" bodyend="5780"/>
+    <listofallmembers>
+      <member refid="class_view_f_array_kokkos_1a80226e6f96f2d1ab69bc7bfd71ea0c31" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>dims</name></member>
+      <member refid="class_view_f_array_kokkos_1ab861dbec89cf4ab16265a51edd93c67a" prot="private" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>dims_</name></member>
+      <member refid="class_view_f_array_kokkos_1a9042718a5607ed729fc2a37a0176b6db" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>extent</name></member>
+      <member refid="class_view_f_array_kokkos_1a1394e63262a3b6adc1f2db3ff9ecaf59" prot="private" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>length_</name></member>
+      <member refid="class_view_f_array_kokkos_1a5e247fdd1fad781634dde14b1386d6ce" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1a6fb5260cf4350f55e2c8e82ff063e598" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1a4442e3f5e43e55ec5852d358eb6ec782" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1a66e449935e0d308ffd3f55e717b22ef7" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1a38fe1d9a89c280dcf9bdfe6e3b953c9f" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1a0bb35b76e1bf6c526993936274ec5ba2" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1aa0c9cce685c32c42cebe55a573bd8382" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_f_array_kokkos_1ae52cc40ce91f4cc2c9a9d3f8a5194c79" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>order</name></member>
+      <member refid="class_view_f_array_kokkos_1a3b507b8e67d3ecf384cf7647f5065269" prot="private" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>order_</name></member>
+      <member refid="class_view_f_array_kokkos_1a9ac1d8e1d2aa6a5e8120a8ae71dd00a7" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>pointer</name></member>
+      <member refid="class_view_f_array_kokkos_1a0bff36bf26ae022f5843b55f3d695a99" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>size</name></member>
+      <member refid="class_view_f_array_kokkos_1a2c8094e27c85f3395d4a8f297c3bfa97" prot="private" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>this_array_</name></member>
+      <member refid="class_view_f_array_kokkos_1a2e2448b43e56b2ddffd5d305699e2bfe" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1ad110fc87ef2808ce3c3f90823f9af699" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a1b88ccfa786cc83966cc86841d1341d5" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a3591ef18d8d48fac3ffa9d0e9c826422" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a9c5f0a0899492039ca44679d0553dd9c" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a9b498216a2efa90b21b9487b45779a20" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1adb2ba503a35fa7cba2cdfa3ad673205a" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a29f611835c765b7b2d85fa6901a661fc" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>ViewFArrayKokkos</name></member>
+      <member refid="class_view_f_array_kokkos_1a5d58c76d355979607bc9868c7c8ed01e" prot="public" virt="non-virtual"><scope>ViewFArrayKokkos</scope><name>~ViewFArrayKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,352 @@
+\hypertarget{class_c_s_c_array_kokkos}{}\doxysection{CSCArray\+Kokkos\texorpdfstring{$<$}{<} T, Layout, Exec\+Space, Memory\+Traits \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_c_s_c_array_kokkos}\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+
+
+{\ttfamily \#include $<$matar.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_s_c_array_kokkos_a379ece140c22aef9ebeb589e8f4e2a41}{CSCArray\+Kokkos}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new empty Sparse Col Array object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_s_c_array_kokkos_a4764f9b2a8acaa7cdf1dc9608ca14ada}{CSCArray\+Kokkos}} (\mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ size\+\_\+t, Layout, Exec\+Space, Memory\+Traits $>$ \&start\+\_\+index, \mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \&array, \mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ size\+\_\+t, Layout, Exec\+Space, Memory\+Traits $>$ \&row\+\_\+index, size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a1b7182975f9c90978e0293c13d23fb5f}{dim1}}, size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a3a10475e3a6a329f5fcb3da41c1e1b5b}{dim2}}, const std\+::string \&tag\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Construct a new Sparse Col Array object. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos_a5e4ca59b6bc26075ffa30b14a66c92a7}{operator()}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Access A(i,j). \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}} \& \mbox{\hyperlink{class_c_s_c_array_kokkos_aa4298e515d6ed7475003f590be5fb8a4}{operator=}} (const \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}} \&temp)
+\begin{DoxyCompactList}\small\item\em Overloaded copy operator. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos_ab07cbdd13cf25b62cd6f3880951d22ce}{pointer}} () const
+\begin{DoxyCompactList}\small\item\em returns pointer to array\+\_\+ \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_abbf59fe3977f6e785a23dcee23680e1c}{stride}} (size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Same functionality as nnz(i) included for compatibility with the rest of matar. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos_ae3fec83d1b0f1d79b56edef66be56f24}{value}} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Same functionality as operator() included for compatibility with the rest of matar. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos_a94b94d16bc2f2d85653d7d979d8505e5}{get\+\_\+starts}} () const
+\begin{DoxyCompactList}\small\item\em Get the start\+\_\+index array. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a1b7182975f9c90978e0293c13d23fb5f}{dim1}} () const
+\begin{DoxyCompactList}\small\item\em Get number of rows. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a3a10475e3a6a329f5fcb3da41c1e1b5b}{dim2}} () const
+\begin{DoxyCompactList}\small\item\em Get number of columns. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos_aa0f8bd59b8454ef6e06d68bd43ace898}{begin}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em iterator notation for iterating through the non zeros values of row i. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos_a4d18b8450e13caed0aad50589c9604ea}{end}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em iterator notation for iterating through the non zeros values of row i. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a7d260201797c994eda4d28f73594f874}{begin\+\_\+index}} (size\+\_\+t i)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_a04381a54e04b6175f5f53d0a63835fa3}{end\+\_\+index}} (size\+\_\+t i)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_aebb09ef4fb5da969b651b78f80660d0f}{nnz}} (size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Get the number of non zero elements in row i. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_aa02cbe330327dcaab4360b0eb68b5a4a}{nnz}} () const
+\begin{DoxyCompactList}\small\item\em Get number of non zero elements total in array. \end{DoxyCompactList}\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos_ada579764a6a2bdee132b27b06b0b8050}{get\+\_\+val\+\_\+flat}} (size\+\_\+t k)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos_af1e02fba4c7daddab16ffa9e50a2aad0}{get\+\_\+row\+\_\+flat}} (size\+\_\+t k)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION int \mbox{\hyperlink{class_c_s_c_array_kokkos_ab56c42afa36a32a51bc0c726f62af73f}{flat\+\_\+index}} (size\+\_\+t i, size\+\_\+t j)
+\item 
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_s_c_array_kokkos_af7d81415ee45233f71a869c7e34ec118}{$\sim$\+CSCArray\+Kokkos}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a379ece140c22aef9ebeb589e8f4e2a41}\label{class_c_s_c_array_kokkos_a379ece140c22aef9ebeb589e8f4e2a41}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CSCArrayKokkos@{CSCArrayKokkos}}
+\index{CSCArrayKokkos@{CSCArrayKokkos}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CSCArrayKokkos()}{CSCArrayKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_s_c_array_kokkos}{\+::\+CSCArray\+Kokkos}}}
+
+
+
+Construct a new empty Sparse Col Array object. 
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a4764f9b2a8acaa7cdf1dc9608ca14ada}\label{class_c_s_c_array_kokkos_a4764f9b2a8acaa7cdf1dc9608ca14ada}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!CSCArrayKokkos@{CSCArrayKokkos}}
+\index{CSCArrayKokkos@{CSCArrayKokkos}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{CSCArrayKokkos()}{CSCArrayKokkos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\mbox{\hyperlink{class_c_s_c_array_kokkos}{\+::\+CSCArray\+Kokkos}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ size\+\_\+t, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{start\+\_\+index,  }\item[{\mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{array,  }\item[{\mbox{\hyperlink{class_c_array_kokkos}{CArray\+Kokkos}}$<$ size\+\_\+t, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{row\+\_\+index,  }\item[{size\+\_\+t}]{dim1,  }\item[{size\+\_\+t}]{dim2,  }\item[{const std\+::string \&}]{tag\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sparse Col Array object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & 1d array of data values in order as read top to bottom, left to right \\
+\hline
+{\em row\+\_\+index} & 1d array that marks what row each element is in \\
+\hline
+{\em start\+\_\+index} & 1d array that marks where the first element of each column starts \\
+\hline
+{\em dim1} & number of rows the matrix should have \\
+\hline
+{\em dim2} & number of columns the matrix should have \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_af7d81415ee45233f71a869c7e34ec118}\label{class_c_s_c_array_kokkos_af7d81415ee45233f71a869c7e34ec118}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!````~CSCArrayKokkos@{$\sim$CSCArrayKokkos}}
+\index{````~CSCArrayKokkos@{$\sim$CSCArrayKokkos}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$CSCArrayKokkos()}{~CSCArrayKokkos()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+\mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::$\sim$\mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_aa0f8bd59b8454ef6e06d68bd43ace898}\label{class_c_s_c_array_kokkos_aa0f8bd59b8454ef6e06d68bd43ace898}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!begin@{begin}}
+\index{begin@{begin}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::begin (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+iterator notation for iterating through the non zeros values of row i. 
+
+~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: row ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a7d260201797c994eda4d28f73594f874}\label{class_c_s_c_array_kokkos_a7d260201797c994eda4d28f73594f874}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!begin\_index@{begin\_index}}
+\index{begin\_index@{begin\_index}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{begin\_index()}{begin\_index()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::begin\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a1b7182975f9c90978e0293c13d23fb5f}\label{class_c_s_c_array_kokkos_a1b7182975f9c90978e0293c13d23fb5f}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!dim1@{dim1}}
+\index{dim1@{dim1}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{dim1()}{dim1()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::dim1}
+
+
+
+Get number of rows. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t number of rows 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a3a10475e3a6a329f5fcb3da41c1e1b5b}\label{class_c_s_c_array_kokkos_a3a10475e3a6a329f5fcb3da41c1e1b5b}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!dim2@{dim2}}
+\index{dim2@{dim2}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{dim2()}{dim2()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::dim2}
+
+
+
+Get number of columns. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t number of columns 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a4d18b8450e13caed0aad50589c9604ea}\label{class_c_s_c_array_kokkos_a4d18b8450e13caed0aad50589c9604ea}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!end@{end}}
+\index{end@{end}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::end (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+iterator notation for iterating through the non zeros values of row i. 
+
+~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: row ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a04381a54e04b6175f5f53d0a63835fa3}\label{class_c_s_c_array_kokkos_a04381a54e04b6175f5f53d0a63835fa3}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!end\_index@{end\_index}}
+\index{end\_index@{end\_index}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{end\_index()}{end\_index()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::end\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_ab56c42afa36a32a51bc0c726f62af73f}\label{class_c_s_c_array_kokkos_ab56c42afa36a32a51bc0c726f62af73f}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!flat\_index@{flat\_index}}
+\index{flat\_index@{flat\_index}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{flat\_index()}{flat\_index()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION int \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::flat\+\_\+index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_af1e02fba4c7daddab16ffa9e50a2aad0}\label{class_c_s_c_array_kokkos_af1e02fba4c7daddab16ffa9e50a2aad0}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!get\_row\_flat@{get\_row\_flat}}
+\index{get\_row\_flat@{get\_row\_flat}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{get\_row\_flat()}{get\_row\_flat()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::get\+\_\+row\+\_\+flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a94b94d16bc2f2d85653d7d979d8505e5}\label{class_c_s_c_array_kokkos_a94b94d16bc2f2d85653d7d979d8505e5}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!get\_starts@{get\_starts}}
+\index{get\_starts@{get\_starts}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{get\_starts()}{get\_starts()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::get\+\_\+starts}
+
+
+
+Get the start\+\_\+index array. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t$\ast$ \+: returns start\+\_\+index\+\_\+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_ada579764a6a2bdee132b27b06b0b8050}\label{class_c_s_c_array_kokkos_ada579764a6a2bdee132b27b06b0b8050}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!get\_val\_flat@{get\_val\_flat}}
+\index{get\_val\_flat@{get\_val\_flat}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{get\_val\_flat()}{get\_val\_flat()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::get\+\_\+val\+\_\+flat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_aa02cbe330327dcaab4360b0eb68b5a4a}\label{class_c_s_c_array_kokkos_aa02cbe330327dcaab4360b0eb68b5a4a}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::nnz}
+
+
+
+Get number of non zero elements total in array. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_aebb09ef4fb5da969b651b78f80660d0f}\label{class_c_s_c_array_kokkos_aebb09ef4fb5da969b651b78f80660d0f}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!nnz@{nnz}}
+\index{nnz@{nnz}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{nnz()}{nnz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::nnz (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+Get the number of non zero elements in row i. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: row to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t \+: size of row 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_a5e4ca59b6bc26075ffa30b14a66c92a7}\label{class_c_s_c_array_kokkos_a5e4ca59b6bc26075ffa30b14a66c92a7}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Access A(i,j). 
+
+Returns a dummy address with value 0 if A(i,j) is not allocated
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: row ~\newline
+ \\
+\hline
+{\em j} & \+: column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& \+: address of array\+\_\+ that corresponds to A(i,j) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_aa4298e515d6ed7475003f590be5fb8a4}\label{class_c_s_c_array_kokkos_aa4298e515d6ed7475003f590be5fb8a4}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \& \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$ \&}]{temp }\end{DoxyParamCaption})}
+
+
+
+Overloaded copy operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & \+: Array to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_c_s_c_array}{CSCArray}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_ab07cbdd13cf25b62cd6f3880951d22ce}\label{class_c_s_c_array_kokkos_ab07cbdd13cf25b62cd6f3880951d22ce}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{pointer()}{pointer()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T $\ast$ \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::pointer}
+
+
+
+returns pointer to array\+\_\+ 
+
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_abbf59fe3977f6e785a23dcee23680e1c}\label{class_c_s_c_array_kokkos_abbf59fe3977f6e785a23dcee23680e1c}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!stride@{stride}}
+\index{stride@{stride}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION size\+\_\+t \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::stride (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Same functionality as nnz(i) included for compatibility with the rest of matar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \+: row \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_s_c_array_kokkos_ae3fec83d1b0f1d79b56edef66be56f24}\label{class_c_s_c_array_kokkos_ae3fec83d1b0f1d79b56edef66be56f24}} 
+\index{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}!value@{value}}
+\index{value@{value}!CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$@{CSCArrayKokkos$<$ T, Layout, ExecSpace, MemoryTraits $>$}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily template$<$typename T , typename Layout , typename Exec\+Space , typename Memory\+Traits $>$ \\
+KOKKOS\+\_\+\+INLINE\+\_\+\+FUNCTION T \& \mbox{\hyperlink{class_c_s_c_array_kokkos}{CSCArray\+Kokkos}}$<$ T, Layout, Exec\+Space, Memory\+Traits $>$\+::value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+
+
+Same functionality as operator() included for compatibility with the rest of matar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row \\
+\hline
+{\em j} & column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/calvinroth/para\+Notes/\+MATAR/src/\mbox{\hyperlink{matar_8h}{matar.\+h}}\end{DoxyCompactItemize}

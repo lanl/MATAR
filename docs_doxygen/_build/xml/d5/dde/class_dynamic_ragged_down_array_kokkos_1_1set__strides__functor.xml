@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12654" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12654" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12721" column="16" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12721" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a3785244ab605fd9184c6252bf383aade" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12655" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12655" bodyend="-1"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12722" column="14" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12722" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12656" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12656" bodyend="12659"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12723" column="7" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12723" bodyend="12726"/>
       </memberdef>
       <memberdef kind="function" id="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1aec1fa3fde9b7e10e9ce52bdf89cbf15a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>KOKKOS_INLINE_FUNCTION void</type>
@@ -72,14 +72,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12660" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12660" bodyend="12662"/>
+        <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12727" column="35" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12727" bodyend="12729"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12652" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12652" bodyend="12663"/>
+    <location file="/Users/calvinroth/paraNotes/MATAR/src/matar.h" line="12719" column="5" bodyfile="/Users/calvinroth/paraNotes/MATAR/src/matar.h" bodystart="12719" bodyend="12730"/>
     <listofallmembers>
       <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1ae90d5a84ff7baad57f5d37c573077696" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>functor_strides_</name></member>
       <member refid="d5/dde/class_dynamic_ragged_down_array_kokkos_1_1set__strides__functor_1a3785244ab605fd9184c6252bf383aade" prot="public" virt="non-virtual"><scope>DynamicRaggedDownArrayKokkos::set_strides_functor</scope><name>init_stride_</name></member>

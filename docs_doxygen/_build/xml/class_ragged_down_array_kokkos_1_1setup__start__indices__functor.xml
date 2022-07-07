@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_ragged_down_array_kokkos_1_1setup__start__indices__functor" kind="class" language="C++" prot="public">
+    <compoundname>RaggedDownArrayKokkos::setup_start_indices_functor</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a2078aaf571bfac1f09fd48fe90880463" prot="public" static="no" mutable="no">
+        <type>SArray1D</type>
+        <definition>SArray1D RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor::mystart_index_</definition>
+        <argsstring></argsstring>
+        <name>mystart_index_</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_start_indices_functor::mystart_index_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12223" column="18" bodyfile="src/matar.h" bodystart="12223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1ac741331be73878102ccf7865c5fceac3" prot="public" static="no" mutable="no">
+        <type>Strides1D</type>
+        <definition>Strides1D RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor::mytemp_strides_</definition>
+        <argsstring></argsstring>
+        <name>mytemp_strides_</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_start_indices_functor::mytemp_strides_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12224" column="19" bodyfile="src/matar.h" bodystart="12224" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a974712d351da057dc9d782f768a47c8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor::setup_start_indices_functor</definition>
+        <argsstring>(SArray1D tempstart_index_, Strides1D temp_strides_)</argsstring>
+        <name>setup_start_indices_functor</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_start_indices_functor::setup_start_indices_functor</qualifiedname>
+        <param>
+          <type>SArray1D</type>
+          <declname>tempstart_index_</declname>
+        </param>
+        <param>
+          <type>Strides1D</type>
+          <declname>temp_strides_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12225" column="9" bodyfile="src/matar.h" bodystart="12225" bodyend="12228"/>
+      </memberdef>
+      <memberdef kind="function" id="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a9fa324031fe0fbec7cb6df2cbdedbd13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION void</type>
+        <definition>KOKKOS_INLINE_FUNCTION void RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::setup_start_indices_functor::operator()</definition>
+        <argsstring>(const int index, int &amp;update, bool final) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>RaggedDownArrayKokkos::setup_start_indices_functor::operator()</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>update</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>final</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="12229" column="37" bodyfile="src/matar.h" bodystart="12229" bodyend="12236"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="12221" column="5" bodyfile="src/matar.h" bodystart="12221" bodyend="12237"/>
+    <listofallmembers>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a2078aaf571bfac1f09fd48fe90880463" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_start_indices_functor</scope><name>mystart_index_</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1ac741331be73878102ccf7865c5fceac3" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_start_indices_functor</scope><name>mytemp_strides_</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a9fa324031fe0fbec7cb6df2cbdedbd13" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_start_indices_functor</scope><name>operator()</name></member>
+      <member refid="class_ragged_down_array_kokkos_1_1setup__start__indices__functor_1a974712d351da057dc9d782f768a47c8f" prot="public" virt="non-virtual"><scope>RaggedDownArrayKokkos::setup_start_indices_functor</scope><name>setup_start_indices_functor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['raggeddownarray_0',['RaggedDownArray',['../d1/d2d/class_ragged_down_array.html',1,'']]],
-  ['raggedrightarray_1',['RaggedRightArray',['../d1/da3/class_ragged_right_array.html',1,'']]],
-  ['raggedrightarrayofvectors_2',['RaggedRightArrayofVectors',['../d0/def/class_ragged_right_arrayof_vectors.html',1,'']]]
+  ['init_5fstart_5findices_5ffunctor_0',['init_start_indices_functor',['../de/d28/class_c_s_r_array_kokkos_1_1init__start__indices__functor.html',1,'CSRArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits &gt;::init_start_indices_functor'],['../d5/d72/class_ragged_down_array_kokkos_1_1init__start__indices__functor.html',1,'RaggedDownArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor'],['../dd/d69/class_ragged_right_array_kokkos_1_1init__start__indices__functor.html',1,'RaggedRightArrayKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor'],['../d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor.html',1,'RaggedRightArrayofVectorsKokkos&lt; T, Layout, ExecSpace, MemoryTraits, ILayout &gt;::init_start_indices_functor']]]
 ];

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxyfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="doxyfile.xsd" version="1.9.4" xml:lang="en-US">
   <option  id='DOXYFILE_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
-  <option  id='PROJECT_NAME' default='no' type='string'><value><![CDATA[MATAR]]></value></option>
+  <option  id='PROJECT_NAME' default='yes' type='string'><value><![CDATA["My Project"]]></value></option>
   <option  id='PROJECT_NUMBER' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='PROJECT_BRIEF' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='PROJECT_LOGO' default='yes' type='string'><value><![CDATA[]]></value></option>
-  <option  id='OUTPUT_DIRECTORY' default='no' type='string'><value><![CDATA[_build]]></value></option>
-  <option  id='CREATE_SUBDIRS' default='no' type='bool'><value>YES</value></option>
+  <option  id='OUTPUT_DIRECTORY' default='no' type='string'><value><![CDATA[/Users/calvinroth/paraNotes/MATAR/docs_doxygen/_build]]></value></option>
+  <option  id='CREATE_SUBDIRS' default='yes' type='bool'><value>NO</value></option>
   <option  id='CREATE_SUBDIRS_LEVEL' default='yes' type='int'><value>8</value></option>
   <option  id='ALLOW_UNICODE_NAMES' default='yes' type='bool'><value>NO</value></option>
   <option  id='OUTPUT_LANGUAGE' default='yes' type='string'><value>English</value></option>
@@ -28,7 +28,8 @@
   <option  id='ALWAYS_DETAILED_SEC' default='yes' type='bool'><value>NO</value></option>
   <option  id='INLINE_INHERITED_MEMB' default='yes' type='bool'><value>NO</value></option>
   <option  id='FULL_PATH_NAMES' default='yes' type='bool'><value>YES</value></option>
-  <option  id='STRIP_FROM_PATH' default='yes' type='stringlist'>
+  <option  id='STRIP_FROM_PATH' default='no' type='stringlist'>
+    <value><![CDATA[/Users/calvinroth/paraNotes/MATAR]]></value>
   </option>
   <option  id='STRIP_FROM_INC_PATH' default='yes' type='stringlist'>
   </option>
@@ -41,9 +42,11 @@
   <option  id='INHERIT_DOCS' default='yes' type='bool'><value>YES</value></option>
   <option  id='SEPARATE_MEMBER_PAGES' default='yes' type='bool'><value>NO</value></option>
   <option  id='TAB_SIZE' default='yes' type='int'><value>4</value></option>
-  <option  id='ALIASES' default='yes' type='stringlist'>
+  <option  id='ALIASES' default='no' type='stringlist'>
+    <value><![CDATA["rst=\verbatim embed:rst:leading-asterisk"]]></value>
+    <value><![CDATA[endrst=\endverbatim]]></value>
   </option>
-  <option  id='OPTIMIZE_OUTPUT_FOR_C' default='no' type='bool'><value>YES</value></option>
+  <option  id='OPTIMIZE_OUTPUT_FOR_C' default='yes' type='bool'><value>NO</value></option>
   <option  id='OPTIMIZE_OUTPUT_JAVA' default='yes' type='bool'><value>NO</value></option>
   <option  id='OPTIMIZE_FOR_FORTRAN' default='yes' type='bool'><value>NO</value></option>
   <option  id='OPTIMIZE_OUTPUT_VHDL' default='yes' type='bool'><value>NO</value></option>
@@ -65,7 +68,7 @@
   <option  id='TYPEDEF_HIDES_STRUCT' default='yes' type='bool'><value>NO</value></option>
   <option  id='LOOKUP_CACHE_SIZE' default='yes' type='int'><value>0</value></option>
   <option  id='NUM_PROC_THREADS' default='yes' type='int'><value>1</value></option>
-  <option  id='EXTRACT_ALL' default='no' type='bool'><value>YES</value></option>
+  <option  id='EXTRACT_ALL' default='yes' type='bool'><value>NO</value></option>
   <option  id='EXTRACT_PRIVATE' default='yes' type='bool'><value>NO</value></option>
   <option  id='EXTRACT_PRIV_VIRTUAL' default='yes' type='bool'><value>NO</value></option>
   <option  id='EXTRACT_PACKAGE' default='yes' type='bool'><value>NO</value></option>
@@ -118,8 +121,7 @@
   <option  id='WARN_LINE_FORMAT' default='yes' type='string'><value><![CDATA["at line $line of file $file"]]></value></option>
   <option  id='WARN_LOGFILE' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='INPUT' default='no' type='stringlist'>
-    <value><![CDATA[../src/matar.h]]></value>
-    <value><![CDATA[../README.md]]></value>
+    <value><![CDATA[../src]]></value>
   </option>
   <option  id='INPUT_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
   <option  id='FILE_PATTERNS' default='yes' type='stringlist'>
@@ -192,7 +194,7 @@
   <option  id='FILTER_SOURCE_FILES' default='yes' type='bool'><value>NO</value></option>
   <option  id='FILTER_SOURCE_PATTERNS' default='yes' type='stringlist'>
   </option>
-  <option  id='USE_MDFILE_AS_MAINPAGE' default='no' type='string'><value><![CDATA[../README.md]]></value></option>
+  <option  id='USE_MDFILE_AS_MAINPAGE' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='SOURCE_BROWSER' default='yes' type='bool'><value>NO</value></option>
   <option  id='INLINE_SOURCES' default='yes' type='bool'><value>NO</value></option>
   <option  id='STRIP_CODE_COMMENTS' default='yes' type='bool'><value>YES</value></option>
@@ -205,7 +207,7 @@
   <option  id='ALPHABETICAL_INDEX' default='yes' type='bool'><value>YES</value></option>
   <option  id='IGNORE_PREFIX' default='yes' type='stringlist'>
   </option>
-  <option  id='GENERATE_HTML' default='yes' type='bool'><value>YES</value></option>
+  <option  id='GENERATE_HTML' default='no' type='bool'><value>NO</value></option>
   <option  id='HTML_OUTPUT' default='yes' type='string'><value><![CDATA[html]]></value></option>
   <option  id='HTML_FILE_EXTENSION' default='yes' type='string'><value><![CDATA[.html]]></value></option>
   <option  id='HTML_HEADER' default='yes' type='string'><value><![CDATA[]]></value></option>
@@ -271,7 +273,7 @@
   <option  id='EXTERNAL_SEARCH_ID' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='EXTRA_SEARCH_MAPPINGS' default='yes' type='stringlist'>
   </option>
-  <option  id='GENERATE_LATEX' default='yes' type='bool'><value>YES</value></option>
+  <option  id='GENERATE_LATEX' default='no' type='bool'><value>NO</value></option>
   <option  id='LATEX_OUTPUT' default='yes' type='string'><value><![CDATA[latex]]></value></option>
   <option  id='LATEX_CMD_NAME' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='MAKEINDEX_CMD_NAME' default='yes' type='string'><value><![CDATA[makeindex]]></value></option>
@@ -316,18 +318,20 @@
   <option  id='PERLMOD_PRETTY' default='yes' type='bool'><value>YES</value></option>
   <option  id='PERLMOD_MAKEVAR_PREFIX' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='ENABLE_PREPROCESSING' default='yes' type='bool'><value>YES</value></option>
-  <option  id='MACRO_EXPANSION' default='yes' type='bool'><value>NO</value></option>
+  <option  id='MACRO_EXPANSION' default='no' type='bool'><value>YES</value></option>
   <option  id='EXPAND_ONLY_PREDEF' default='yes' type='bool'><value>NO</value></option>
   <option  id='SEARCH_INCLUDES' default='yes' type='bool'><value>YES</value></option>
   <option  id='INCLUDE_PATH' default='yes' type='stringlist'>
   </option>
   <option  id='INCLUDE_FILE_PATTERNS' default='yes' type='stringlist'>
   </option>
-  <option  id='PREDEFINED' default='yes' type='stringlist'>
+  <option  id='PREDEFINED' default='no' type='stringlist'>
+    <value><![CDATA[DOXYGEN_DOCUMENTATION_BUILD]]></value>
+    <value><![CDATA[DOXYGEN_SHOULD_SKIP_THIS]]></value>
   </option>
   <option  id='EXPAND_AS_DEFINED' default='yes' type='stringlist'>
   </option>
-  <option  id='SKIP_FUNCTION_MACROS' default='yes' type='bool'><value>YES</value></option>
+  <option  id='SKIP_FUNCTION_MACROS' default='no' type='bool'><value>NO</value></option>
   <option  id='TAGFILES' default='yes' type='stringlist'>
   </option>
   <option  id='GENERATE_TAGFILE' default='yes' type='string'><value><![CDATA[]]></value></option>

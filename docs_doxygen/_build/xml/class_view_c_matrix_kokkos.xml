@@ -1,0 +1,655 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="class_view_c_matrix_kokkos" kind="class" language="C++" prot="public">
+    <compoundname>ViewCMatrixKokkos</compoundname>
+    <includes refid="matar_8h" local="no">matar.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_view_c_matrix_kokkos_1a2d3073be4cebee78d374ca39e9bc8542" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrixKokkos&lt; T &gt;::dims_[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>dims_</name>
+        <qualifiedname>ViewCMatrixKokkos::dims_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9435" column="12" bodyfile="src/matar.h" bodystart="9435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_c_matrix_kokkos_1ac201ad29b4d1955db896b4cc6364e3d0" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrixKokkos&lt; T &gt;::order_</definition>
+        <argsstring></argsstring>
+        <name>order_</name>
+        <qualifiedname>ViewCMatrixKokkos::order_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9436" column="12" bodyfile="src/matar.h" bodystart="9436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_c_matrix_kokkos_1a31a9c46028ce9d3c6c1afac45df474b0" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ViewCMatrixKokkos&lt; T &gt;::length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <qualifiedname>ViewCMatrixKokkos::length_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9437" column="12" bodyfile="src/matar.h" bodystart="9437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_view_c_matrix_kokkos_1aa157f2c3263694aade500b6eaf03c7ba" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* ViewCMatrixKokkos&lt; T &gt;::this_matrix_</definition>
+        <argsstring></argsstring>
+        <name>this_matrix_</name>
+        <qualifiedname>ViewCMatrixKokkos::this_matrix_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9438" column="7" bodyfile="src/matar.h" bodystart="9438" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a56269b8ca2027c88671e4af429b05fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9442" column="5" bodyfile="src/matar.h" bodystart="9513" bodyend="9513"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1ab2d3d148009bc0d298c1b04167043ef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9445" column="5" bodyfile="src/matar.h" bodystart="9518" bodyend="9523"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1ac59a2e1bd1c398d4845b473f355cee63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9448" column="5" bodyfile="src/matar.h" bodystart="9528" bodyend="9535"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1ac0c21af25e67227c98154af7a8ad0993" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2, size_t dim3)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9451" column="5" bodyfile="src/matar.h" bodystart="9540" bodyend="9548"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a740daaff19fe2d8a1acc5b871590cb0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9454" column="5" bodyfile="src/matar.h" bodystart="9553" bodyend="9562"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1ad3f559f10d6e6e7197283f35cbedda22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9458" column="5" bodyfile="src/matar.h" bodystart="9567" bodyend="9577"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1af0d7bd4c66139b5bcff9613988712007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9462" column="5" bodyfile="src/matar.h" bodystart="9582" bodyend="9594"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a7f34fd8a50e7d49e759f8915857cc690" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::ViewCMatrixKokkos</definition>
+        <argsstring>(T *some_matrix, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, size_t dim7)</argsstring>
+        <name>ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::ViewCMatrixKokkos</qualifiedname>
+        <param>
+          <type>T *</type>
+          <declname>some_matrix</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim3</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim4</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim5</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim6</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dim7</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9466" column="5" bodyfile="src/matar.h" bodystart="9599" bodyend="9612"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1aadbc79e7f8bfce032a8af898a65e6d4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9470" column="7" bodyfile="src/matar.h" bodystart="9616" bodyend="9620"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a5b4de96fa6bf4d70716b0a3d0ed1a00c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9473" column="7" bodyfile="src/matar.h" bodystart="9624" bodyend="9629"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1ae20bcc59a31d6343a5f635bf5e17a495" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9476" column="7" bodyfile="src/matar.h" bodystart="9633" bodyend="9640"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1af720109e0cab62a0cfd4c81592d5038c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9479" column="7" bodyfile="src/matar.h" bodystart="9644" bodyend="9653"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a3da48f661afa917c2101b276d13ca191" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9482" column="7" bodyfile="src/matar.h" bodystart="9657" bodyend="9669"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1aadbba3228a580586feb0dc697203f5ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9485" column="7" bodyfile="src/matar.h" bodystart="9673" bodyend="9687"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a1d49fc410757e5c05aed80eb7a07ba37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T &amp;</type>
+        <definition>KOKKOS_INLINE_FUNCTION T &amp; ViewCMatrixKokkos&lt; T &gt;::operator()</definition>
+        <argsstring>(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>ViewCMatrixKokkos::operator()</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9488" column="7" bodyfile="src/matar.h" bodystart="9691" bodyend="9707"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1aa93061beb9fd0b6cba05ead862eeadd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewCMatrixKokkos&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>ViewCMatrixKokkos::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9491" column="12" bodyfile="src/matar.h" bodystart="9712" bodyend="9714"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a6a1fcd82d9bbb8ab2e3d9da15c32b687" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewCMatrixKokkos&lt; T &gt;::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <qualifiedname>ViewCMatrixKokkos::extent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9494" column="12" bodyfile="src/matar.h" bodystart="9718" bodyend="9720"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a538824c49171fe79f1b628ea426441fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewCMatrixKokkos&lt; T &gt;::dims</definition>
+        <argsstring>(size_t i) const</argsstring>
+        <name>dims</name>
+        <qualifiedname>ViewCMatrixKokkos::dims</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9497" column="12" bodyfile="src/matar.h" bodystart="9724" bodyend="9729"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a4c7fba1e8b9654c9b255d6e36a6cc776" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION size_t</type>
+        <definition>KOKKOS_INLINE_FUNCTION size_t ViewCMatrixKokkos&lt; T &gt;::order</definition>
+        <argsstring>() const</argsstring>
+        <name>order</name>
+        <qualifiedname>ViewCMatrixKokkos::order</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9500" column="12" bodyfile="src/matar.h" bodystart="9733" bodyend="9735"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1a19c9ce073b69fdade1cdb68321d04696" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION T *</type>
+        <definition>KOKKOS_INLINE_FUNCTION T * ViewCMatrixKokkos&lt; T &gt;::pointer</definition>
+        <argsstring>() const</argsstring>
+        <name>pointer</name>
+        <qualifiedname>ViewCMatrixKokkos::pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9503" column="7" bodyfile="src/matar.h" bodystart="9739" bodyend="9741"/>
+      </memberdef>
+      <memberdef kind="function" id="class_view_c_matrix_kokkos_1aa47fbeecd748aac995a4a63ba8fe7d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>KOKKOS_INLINE_FUNCTION</type>
+        <definition>KOKKOS_INLINE_FUNCTION ViewCMatrixKokkos&lt; T &gt;::~ViewCMatrixKokkos</definition>
+        <argsstring>()</argsstring>
+        <name>~ViewCMatrixKokkos</name>
+        <qualifiedname>ViewCMatrixKokkos::~ViewCMatrixKokkos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/matar.h" line="9506" column="5" bodyfile="src/matar.h" bodystart="9745" bodyend="9745"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Kokkos version of the serial <ref refid="class_view_c_matrix" kindref="compound">ViewCMatrix</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/matar.h" line="9432" column="1" bodyfile="src/matar.h" bodystart="9432" bodyend="9508"/>
+    <listofallmembers>
+      <member refid="class_view_c_matrix_kokkos_1a538824c49171fe79f1b628ea426441fb" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>dims</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a2d3073be4cebee78d374ca39e9bc8542" prot="private" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>dims_</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a6a1fcd82d9bbb8ab2e3d9da15c32b687" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>extent</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a31a9c46028ce9d3c6c1afac45df474b0" prot="private" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>length_</name></member>
+      <member refid="class_view_c_matrix_kokkos_1aadbc79e7f8bfce032a8af898a65e6d4b" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a5b4de96fa6bf4d70716b0a3d0ed1a00c" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ae20bcc59a31d6343a5f635bf5e17a495" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1af720109e0cab62a0cfd4c81592d5038c" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a3da48f661afa917c2101b276d13ca191" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1aadbba3228a580586feb0dc697203f5ca" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a1d49fc410757e5c05aed80eb7a07ba37" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>operator()</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a4c7fba1e8b9654c9b255d6e36a6cc776" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>order</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ac201ad29b4d1955db896b4cc6364e3d0" prot="private" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>order_</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a19c9ce073b69fdade1cdb68321d04696" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>pointer</name></member>
+      <member refid="class_view_c_matrix_kokkos_1aa93061beb9fd0b6cba05ead862eeadd2" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>size</name></member>
+      <member refid="class_view_c_matrix_kokkos_1aa157f2c3263694aade500b6eaf03c7ba" prot="private" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>this_matrix_</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a56269b8ca2027c88671e4af429b05fd8" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ab2d3d148009bc0d298c1b04167043ef6" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ac59a2e1bd1c398d4845b473f355cee63" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ac0c21af25e67227c98154af7a8ad0993" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a740daaff19fe2d8a1acc5b871590cb0e" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1ad3f559f10d6e6e7197283f35cbedda22" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1af0d7bd4c66139b5bcff9613988712007" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1a7f34fd8a50e7d49e759f8915857cc690" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>ViewCMatrixKokkos</name></member>
+      <member refid="class_view_c_matrix_kokkos_1aa47fbeecd748aac995a4a63ba8fe7d31" prot="public" virt="non-virtual"><scope>ViewCMatrixKokkos</scope><name>~ViewCMatrixKokkos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
