@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['host_0',['host',['../dc/dfe/class_d_f_array_kokkos.html#a8c605fe6c249c3869f325f88b297d1c7',1,'DFArrayKokkos::host()'],['../d3/d17/class_d_view_f_array_kokkos.html#aa3aee4d0c9c7940015d49b4728ee1ae2',1,'DViewFArrayKokkos::host()'],['../dc/dcd/class_d_f_matrix_kokkos.html#af94f27446e0bfcfc682227f821552846',1,'DFMatrixKokkos::host()'],['../df/d07/class_d_view_f_matrix_kokkos.html#aea62dafa28da4efac3b37375bdddeacd',1,'DViewFMatrixKokkos::host()'],['../d2/de9/class_d_c_array_kokkos.html#a2a031f428ff7187a7fd811ee2ccc9bea',1,'DCArrayKokkos::host()'],['../de/d91/class_d_view_c_array_kokkos.html#af1ac48641d772ed571acb2bb5f5c5110',1,'DViewCArrayKokkos::host()'],['../de/d50/class_d_c_matrix_kokkos.html#afb8cec6a0528652b70412a019c582c1c',1,'DCMatrixKokkos::host()'],['../d7/d05/class_d_view_c_matrix_kokkos.html#aa4d0efbc574039fc7371ef58ba06b318',1,'DViewCMatrixKokkos::host()']]]
-];

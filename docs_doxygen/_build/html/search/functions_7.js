@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['init_5fstart_5findices_5ffunctor_0',['init_start_indices_functor',['../dd/d69/class_ragged_right_array_kokkos_1_1init__start__indices__functor.html#a1125e5c4eaaf6f8ce7801a376f899f93',1,'RaggedRightArrayKokkos::init_start_indices_functor::init_start_indices_functor()'],['../d3/d33/class_ragged_right_arrayof_vectors_kokkos_1_1init__start__indices__functor.html#a340cf6b17e9217d8c2ff0427db5a18b7',1,'RaggedRightArrayofVectorsKokkos::init_start_indices_functor::init_start_indices_functor()'],['../d5/d72/class_ragged_down_array_kokkos_1_1init__start__indices__functor.html#a9001a88d9c5c3e8e81130887f97f0d2f',1,'RaggedDownArrayKokkos::init_start_indices_functor::init_start_indices_functor()'],['../de/d28/class_c_s_r_array_kokkos_1_1init__start__indices__functor.html#a023f3f8ac2d509cbf5f5cd112556b1e9',1,'CSRArrayKokkos::init_start_indices_functor::init_start_indices_functor()']]]
-];
