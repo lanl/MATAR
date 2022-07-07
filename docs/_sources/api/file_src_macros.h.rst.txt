@@ -56,11 +56,11 @@ Functions
 
 - :ref:`exhale_function_macros_8h_1a1e912a6edf6f879e8826a6c34dcee453`
 
+- :ref:`exhale_function_macros_8h_1a4c54580179260515ee230f8aa48d964d`
+
 - :ref:`exhale_function_macros_8h_1a6876766f5f54404afe637c39b8300fb7`
 
 - :ref:`exhale_function_macros_8h_1afcebbb33e6e15350916a3c72cd87b8e7`
-
-- :ref:`exhale_function_macros_8h_1a4c54580179260515ee230f8aa48d964d`
 
 - :ref:`exhale_function_macros_8h_1a10986a06c1eb4d9259e60cda5e4bf720`
 
