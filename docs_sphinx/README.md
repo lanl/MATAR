@@ -5,10 +5,15 @@
 
 ## Running
 To run the documentation program in the docs_sphinx run `sh docify.sh` this does the following 
+
     1. Runs doxygen which generates html and xml files used for the website 
+    
     2. Runs sphinx which primarily adds style headers and different page naviagation to the site 
+    
     3. Moves the output from `docs_sphinx/_build/html` to `docs/` which is where github is looking for a webiste 
+    
     4. Moves the output from `docs_sphinx/_build/html/_static` to `docs/static`. For some reason github can't find the folder `_static` but can find `static`
+    
     5. Renames the location of .css files on each page from `_static/` to static/ to account for this. 
 
 ## Known issues
