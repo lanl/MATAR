@@ -112,7 +112,7 @@ TEST(CSRArray, FlatIndex){
     voidTestArray(data, cols, rows);
     CSRArray<int> B(data, cols, rows, 4,6);   
     EXPECT_EQ(B.flat_index(3,5), 7) << "Expected the location of 3,5 to be at " << 7 ;
-    EXPECT_EQ(B.flat_index(3,0), -1) << "There shouldn't be a proper value here, we are supposed to return -1 in this case";
+    EXPECT_EQ(B.flat_index(3,0), 8) << "There shouldn't be a proper value here, we are supposed to return -1 in this case";
 
 }
 
