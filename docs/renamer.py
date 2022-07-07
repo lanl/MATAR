@@ -4,7 +4,6 @@ import sys
 def rename(path):
     files = os.listdir(path)
     for file in files:
-        print(file)
         if(file in [".", "./", "..", "../"]):
             continue
         if( os.path.isdir(file)):

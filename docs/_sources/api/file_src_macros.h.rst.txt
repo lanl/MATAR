@@ -50,11 +50,11 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_macros_8h_1a1e912a6edf6f879e8826a6c34dcee453`
-
 - :ref:`exhale_function_macros_8h_1a9990a0c765fdd023ba3afbde4d68d912`
 
 - :ref:`exhale_function_macros_8h_1a7a582b0dc380ce3b4a75620cd9582ac3`
+
+- :ref:`exhale_function_macros_8h_1a1e912a6edf6f879e8826a6c34dcee453`
 
 - :ref:`exhale_function_macros_8h_1a4c54580179260515ee230f8aa48d964d`
 
