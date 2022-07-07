@@ -1,7 +1,7 @@
 ## Requirements
 
 1. doxygen -- Built with version 1.9.4 
-2. sphinx -- Built with versin 4.5.0
+2. sphinx -- Built with version 4.5.0
 
 ## Running
 To run the documentation program in the docs_sphinx run `sh docify.sh` this does the following 
