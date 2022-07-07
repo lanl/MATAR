@@ -11604,7 +11604,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
     start_index_ = SArray1D(start_index_tag_string,dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
-      start_index_((i) = 0;
+      start_index_(i) = 0;
     });
     #else
     init_start_indices_functor execution_functor(start_index_);
@@ -12011,7 +12011,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
     start_index_ = SArray1D(start_index_tag_string,dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim1_+1, KOKKOS_CLASS_LAMBDA(const int i) {
-      start_index_((i) = 0;
+      start_index_(i) = 0;
     });
     #else
     init_start_indices_functor execution_functor(start_index_);
@@ -12300,7 +12300,7 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(
     start_index_ = SArray1D(start_index_tag_string,dim2_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dim2_+1, KOKKOS_CLASS_LAMBDA(const int i) {
-      start_index_((i) = 0;
+      start_index_(i) = 0;
     });
     #else
     init_start_indices_functor execution_functor(start_index_);

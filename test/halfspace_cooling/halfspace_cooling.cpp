@@ -1,4 +1,4 @@
-// the idea is to populate a dynamic ragged down array with the 
+// Populate a dynamic ragged down array with the 
 // temperatures from the halfspace cooling model as a function of
 // age and depth
 
@@ -27,11 +27,14 @@ int main() {
 
     Kokkos::initialize();
 {
-
-    int depth = 200;
+    // depth will need to be adjusted for larger max ages
+    // age 2000 Ma, depth 250
+    // age 3000 Ma, depth 280
+    // age 4000 Ma, depth 320
+    int depth = 200; 
     auto begin = std::chrono::high_resolution_clock::now(); // start clock
 
-    DynamicRaggedDownArray <double> dyn_ragged_down(max_age, depth); // create array
+    DynamicRaggedDownArrayKokkos <double> dyn_ragged_down(max_age+1, depth+1); // create array
 
     DO_ALL(i, 0, max_age, {
             for (int j = 0; j <= depth; j++) {
@@ -57,8 +60,6 @@ int main() {
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin);
     
-
-    //printf("Depth to mantle at %i Ma, %i \n", max_age, last_depth); 
     printf("Total time was %f seconds.\n", elapsed.count() * 1e-9);
 }
     Kokkos::finalize();
