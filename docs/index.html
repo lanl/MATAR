@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to C++ Sphinx Doxygen Breathe’s documentation! &mdash; matar  documentation</title>
+  <title>Introduction to MATAR &mdash; matar  documentation</title>
       <link rel="stylesheet" href="static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="static/graphviz.css" type="text/css" />
@@ -41,9 +41,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to C++ Sphinx Doxygen Breathe’s documentation!</a></li>
+<li><a class="reference internal" href="#">Introduction to MATAR</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a><ul>
-<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a><ul>
+<li><a class="reference internal" href="#id3">}</a></li>
+<li><a class="reference internal" href="#id6">}</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -62,7 +66,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to C++ Sphinx Doxygen Breathe’s documentation!</li>
+      <li>Introduction to MATAR</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -72,8 +76,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-c-sphinx-doxygen-breathe-s-documentation">
-<h1>Welcome to C++ Sphinx Doxygen Breathe’s documentation!<a class="headerlink" href="#welcome-to-c-sphinx-doxygen-breathe-s-documentation" title="Permalink to this headline"></a></h1>
+  <section id="introduction-to-matar">
+<h1>Introduction to MATAR<a class="headerlink" href="#introduction-to-matar" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -86,6 +90,179 @@
 </ul>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<p>&lt;p align=”center”&gt;&lt;img src=”<a class="reference external" href="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png">https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png</a>” width=”350”&gt;</p>
+<p>MATAR is a C++ library that addresses the need for simple, fast, and memory-efficient multi-dimensional data representations for dense and sparse storage that arise with numerical methods and in software applications. The data representations are designed to perform well across multiple computer architectures, including CPUs and GPUs. MATAR allows users to easily create and use intricate data representations that are also portable across disparate architectures using Kokkos. The performance aspect is achieved by forcing contiguous memory layout (or as close to contiguous as possible) for multi-dimensional and multi-size dense or sparse MATrix and ARray (hence, MATAR) types. Results show that MATAR has the capability to improve memory utilization, performance, and programmer productivity in scientific computing. This is achieved by fitting more work into the available memory, minimizing memory loads required, and by loading memory in the most efficient order.</p>
+<p>## Examples
+* [ELEMENTS](<a class="reference external" href="https://github.com/lanl/ELEMENTS/">https://github.com/lanl/ELEMENTS/</a>):   MATAR is a part of the ELEMENTS Library (LANL C# C20058) and it underpins the routines implemented in ELEMENTS.  MATAR is available in a stand-alone directory outside of the ELEMENTS directory because it can aid many code applications.  The dense and sparse storage types in MATAR are the foundation for the ELEMENTS library, which contains mathematical functions to support a very broad range of element types including: linear, quadratic, and cubic serendipity elements in 2D and 3D; high-order spectral elements; and a linear 4D element. An unstructured high-order mesh class is available in ELEMENTS and it takes advantage of MATAR for efficient access of various mesh entities.</p>
+<ul class="simple">
+<li><p>[Fierro](<a class="reference external" href="https://github.com/lanl/Fierro">https://github.com/lanl/Fierro</a>): The MATAR library underpins the Fierro code that is designed to simulate quasi-static solid mechanics problems and material dynamics problems.</p></li>
+<li><p>Simple examples are in the /test folder</p></li>
+</ul>
+<p>## Descriptions</p>
+<ul class="simple">
+<li><p>All Array MATAR types (e.g., CArray, ViewCArray, FArray, RaggedRightArray, etc.) start with an index of 0 and stop at an index of N-1, where N is the number of entries.</p></li>
+<li><p>All Matrix MATAR types  (e.g., CMatrix, ViewCMatrix, FMatrix, etc.)  start with an index of 1 and stop at an index of N, where N is the number of entries.</p></li>
+<li><p>The MATAR View types (e.g., ViewCArray, ViewCMatrix, ViewFArray, etc. ) are designed to accept a pointer to an existing 1D array and then access that 1D data as a multi-dimensional array.  The MATAR View types can also be used to slice an existing View.</p></li>
+<li><p>The C dense storage and View types (e.g., CArray, ViewCArray, CMatrix, etc.) access the data following the C/C++ language convection of having the last index in a multi-dimensional array vary the quickest.  In a 2D CArray A, the index j in A(i,j) varies first followed by the index i, so the optimal performance is achieved using the following loop ordering.</p></li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
+// Optimal use of CArray
+for (i=0,i&lt;N,i++){</p>
+<blockquote>
+<div><dl class="simple">
+<dt>for (j=0,j&lt;N,j++){</dt><dd><p>A(i,j) = 0.0;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<section id="id3">
+<h3>}<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>The F dense storage and View types (e.g., FArray, ViewFArray, FMatrix, etc.) access the data following the Fortran language convection of having the first index in a multi-dimensional array vary the quickest.  In a 2D FMatrix M, the index i in M(i,j) varies first followed by the index j, so the optimal performance is achieved using the following loop ordering.</p></li>
+</ul>
+<p><a href="#id4"><span class="problematic" id="id5">``</span></a>`
+// Optimal use of FMatrix
+for (j=1,j&lt;=N,j++){</p>
+<blockquote>
+<div><dl class="simple">
+<dt>for (i=1,i&lt;=N,i++){</dt><dd><p>M(i,j) = 0.0;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>}<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>The ragged data types (e.g., RaggedRightArray, RaggedDownArray, etc) in MATAR are special sparse storage types.  The Right access types are for R(i,j) where the number of column entries varies in width across the array.  The Down access types are for D(i,j) where the number of row entries vary in length across the array.</p></li>
+<li><p>The SparseRowArray MATAR type is the idetical to the Compressed Sparse Row (CSR) or Compressed Row Storage (CSR) respresentation.</p></li>
+<li><p>The SparseColumnArray MATAR type is identical to the Compressed Sparse Column (CSC) or Compressed Column Storage (CCS) respresentation.</p></li>
+</ul>
+<p>## Usage
+<a href="#id7"><span class="problematic" id="id8">``</span></a>`
+// create a 1D array of integers and then access as a 2D array
+int A[9];
+auto A_array = ViewCArray &lt;int&gt; (A, 3, 3); // access as A(i,j)</p>
+<p>// create a 3D array of doubles
+auto B = CArray &lt;double&gt; (3,3,3); // access as B(i,j,k)</p>
+<p>// create a slice of the 3D array at index 1
+auto C = ViewCArray &lt;double&gt; (&amp;B(1,0,0),3,3); // access as C(j,k)</p>
+<p>// create a 4D matrix of doubles, indices start at 1
+auto D = CMatrix &lt;double&gt; (10,9,8,7); // access as D(i,j,k,l)</p>
+<p>// create a 2D view of a standard array
+std::array&lt;int, 9&gt; E1d;
+auto E = ViewCArray&lt;int&gt; (&amp;E1d[0], 3, 3);
+E(0,0) = 1;  // and so on</p>
+<p>// create a ragged-right array of integers
+//
+// [1, 2, 3]
+// [4, 5]
+// [6]
+// [7, 8, 9, 10]
+//
+size_t my_strides[4] = {3, 2, 1, 4};
+RaggedRightArray &lt;int&gt; ragged(my_strides, 4);</p>
+<p>int value = 1;
+for (int i=0; i&lt;4; i++){</p>
+<blockquote>
+<div><dl class="simple">
+<dt>for (int j=0; j&lt;my_ragged.stride(i); j++){</dt><dd><p>ragged(i,j) = value;
+value++;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<p>## Cloning the code
+If your SSH keys are set in github, then from the terminal type:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">ssh://git&#64;github.com/lanl/MATAR.git</span>
+<span class="pre">`</span></code></p>
+<p>## Basic build
+The basic build is for users only interested in the serial CPU only MATAR data types.  For this build, we recommend making a folder perhaps called build then go into the build folder and type
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">cmake</span> <span class="pre">..</span>
+<span class="pre">make</span>
+<span class="pre">`</span></code>
+The compiled code will be in the build folder.</p>
+<p>## Debug basic build</p>
+<p>To build serial CPU only MATAR data types in the debug mode, please use
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">cmake</span> <span class="pre">-DCMAKE_BUILD_TYPE=Debug</span> <span class="pre">..</span>
+<span class="pre">make</span>
+<span class="pre">`</span></code>
+The debug flag includes checks on array and matrix dimensions and index bounds.</p>
+<p>## Building MATAR with Kokkos
+A suite of build scripts are provided to build MATAR with Kokkos for performance portability across computer architectures (CPUs and GPUs).  The scripts for various Kokkos backends (e.g., CUDA, HIP, OpenMP, and pthreads) are located within the scripts folder.  The provided scripts are configured for particular hardware, the user will likely need to alter the inputs to reflect their hardware.  There are three scripts in each folder that are sourced to build MATAR with Kokkos.  The scripts are
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">sourceme-env.sh</span>
+<span class="pre">kokkos-install.sh</span>
+<span class="pre">backend-cmake-build.sh</span>
+<span class="pre">`</span></code>
+The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn’t use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, running all the scripts is only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory.  The environment variables will need to be set when logging into a compute node or when changing to a different kokkos backend. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially.
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">build-it.sh</span>
+<span class="pre">`</span></code>
+Before using the build-it.sh script, the user must verify that the settings in the other scripts that build MATAR with a Kokkos backend are correctly set.  After running the build-it.sh script, the entire project is compiled and stored in a directory that is named with the respective Kokkos backend e.g., build-kokkos-cuda.  Further details are provided on the three scripts to configure and build MATAR with a Kokkos backend.</p>
+<p>### Environment configuration script
+To start, the environment variables and modules must be configured by sourcing the following script
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">sourceme-env.sh</span>
+<span class="pre">`</span></code>
+This script is where the user will load the necessary module files for their given machine/architecture combination.  This script also creates the build directory for the project e.g., build-kokkos-cuda, build-kokkos-hip, build-kokkos-openmp, etc.</p>
+<p>### Install Kokkos script
+The next step is to install Kokkos, using the version that was cloned recursively within MATAR, and configure the Kokkos build for specific hardware and a backend.
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">kokkos-install.sh</span>
+<span class="pre">`</span></code>
+Within this script, the user will need to set any Kokkos specific variables for their project. The architecture variables will need to be modified based on the architecture being used. The provided scripts are set for a particular hardware that might differ from what a user might be using.  CPU architecture information needs to be listed if running with the Kokkos serial or OpenMP backends; GPU architecture information must be listed if using a Kokkos GPU backend.  We refer the user to Kokkos compiling page to see the large list of compilation options,
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">https://github.com/kokkos/kokkos/wiki/Compiling</span>
+<span class="pre">`</span></code></p>
+<p>### CUDA compilation script
+To build the project with cuda, the last step is to type
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">cuda-cmake-build.sh</span>
+<span class="pre">`</span></code></p>
+<p>### HIP compilation script
+To build the project with hip, the last step is to type
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">hip-cmake-build.sh</span>
+<span class="pre">`</span></code></p>
+<p>### openMP compilation script
+To build the project with openMP, the last step is to type</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">openmp-cmake-build.sh</span>
+<span class="pre">`</span></code>
+The sourceme-env.sh script (the first step) sets the number of threads to 16 by default.  Changing the number of threads used with openMP requires manually setting the environment variable OMP_NUM_THREADS.</p>
+<p>### pthreads compilation script
+To build the project with ptheads, the last step is to type
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">source</span> <span class="pre">pthreads-cmake-build.sh</span>
+<span class="pre">`</span></code>
+To specify number of threads when running a code with the Kokkos pthread backend, add the following command line arguments
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">--kokkos-threads=4</span>
+<span class="pre">`</span></code></p>
+<p>### Automate build process
+A build-it.sh script is provided that runs all scripts sequentially for the user.  The build-it.sh script obviates the need to manually source each script.  The user must verify the settings are correct in each script prior to using the build-it.sh script.  If the build-it.sh script fails to build the project correctly, the user should carefully look at the loaded modules and settings for building Kokkos.</p>
+<p>## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</p>
+<p>## License
+This program is open source under the BSD-3 License.</p>
+<p>## Citation
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&#64;article{MATAR,</span>
+<span class="pre">title</span> <span class="pre">=</span> <span class="pre">&quot;{MATAR:</span> <span class="pre">A</span> <span class="pre">Performance</span> <span class="pre">Portability</span> <span class="pre">and</span> <span class="pre">Productivity</span> <span class="pre">Implementation</span> <span class="pre">of</span> <span class="pre">Data-Oriented</span> <span class="pre">Design</span> <span class="pre">with</span> <span class="pre">Kokkos}&quot;,</span>
+<span class="pre">journal</span> <span class="pre">=</span> <span class="pre">{Journal</span> <span class="pre">of</span> <span class="pre">Parallel</span> <span class="pre">and</span> <span class="pre">Distributed</span> <span class="pre">Computing},</span>
+<span class="pre">pages</span> <span class="pre">=</span> <span class="pre">{86-104},</span>
+<span class="pre">volume</span> <span class="pre">=</span> <span class="pre">{157},</span>
+<span class="pre">year</span> <span class="pre">=</span> <span class="pre">{2021},</span>
+<span class="pre">author</span> <span class="pre">=</span> <span class="pre">{Daniel</span> <span class="pre">J.</span> <span class="pre">Dunning</span> <span class="pre">and</span> <span class="pre">Nathaniel</span> <span class="pre">R.</span> <span class="pre">Morgan</span> <span class="pre">and</span> <span class="pre">Jacob</span> <span class="pre">L.</span> <span class="pre">Moore</span> <span class="pre">and</span> <span class="pre">Eappen</span> <span class="pre">Nelluvelil</span> <span class="pre">and</span> <span class="pre">Tanya</span> <span class="pre">V.</span> <span class="pre">Tafolla</span> <span class="pre">and</span> <span class="pre">Robert</span> <span class="pre">W.</span> <span class="pre">Robey},</span>
+<span class="pre">keywords</span> <span class="pre">=</span> <span class="pre">{Performance,</span> <span class="pre">Portability,</span> <span class="pre">Productivity,</span> <span class="pre">Memory</span> <span class="pre">Efficiency,</span> <span class="pre">GPUs,</span> <span class="pre">dense</span> <span class="pre">and</span> <span class="pre">sparse</span> <span class="pre">storage}</span>
+<span class="pre">`</span></code></p>
+</section>
 </section>
 </section>
 

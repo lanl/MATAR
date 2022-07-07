@@ -5137,7 +5137,7 @@ Program Listing for File matar.h
    //  end of standard MATAR data-types
    //========================================================================
    
-   #ifdef HAVE_KOKKOS
+   // #ifdef HAVE_KOKKOS
    template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
    class FArrayKokkos {
    
@@ -13454,7 +13454,7 @@ Program Listing for File matar.h
    // End of InheritedArray2L
    
    
-   #endif
+   // #endif
    
    
    
