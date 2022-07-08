@@ -21,9 +21,9 @@ if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
 
   add_executable(kokkos_csr CSRKokkos.cpp)
-  target_link_libraries(kokkos_csr matar gtest_main Kokkos::kokkos)
+  target_link_libraries(kokkos_csr matar  Kokkos::kokkos)
   add_executable(kokkos_csc CSCKokkos.cpp)
-  target_link_libraries(kokkos_csc matar gtest_main Kokkos::kokkos)
+  target_link_libraries(kokkos_csc matar Kokkos::kokkos)
 
 
   if (CUDA)
