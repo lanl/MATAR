@@ -55,15 +55,18 @@ int main(int argc, char* argv[]){
     int* values = A.pointer();
     auto a_start = A.get_starts();
     int total = 0;
-    int loc_total = 0;  
   
     RUN ({
-         printf("This matix is %d x %d\n" , A.dim1(), A.dim2(), A.dim2());
-    }); 
-    RUN ({
-         printf("nnz : %d\n", A.nnz());
+         printf("This matix is %ld x %ld \n" , A.dim1(), A.dim2());
     });
 
+    RUN ({
+         printf("nnz : %ld \n", A.nnz());
+    });
+
+
+    int loc_total = 0;  
+    loc_total += 0; // Get rid of warning
     REDUCE_SUM(i, 0, nnz,
                 loc_total, {
                     loc_total += values[i];

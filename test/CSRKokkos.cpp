@@ -38,9 +38,11 @@ int main(int argc, char* argv[]){
     auto a_start = A.get_starts();
     int total = 0;
     int loc_total = 0;  
-   
+    loc_total += 0; //Get rid of warning 
+
     RUN ({
-        printf("nnz : %d\n", A.nnz());
+        printf("A is %ld x %ld \n", A.dim1(), A.dim2());
+        printf("And has %ld non zero elements\n", A.nnz());
     });
 
     REDUCE_SUM(i, 0, nnz,
