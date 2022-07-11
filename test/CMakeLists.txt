@@ -18,8 +18,13 @@ if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
   add_executable(test_kokkos_for kokkos_for.cpp)
   add_executable(test_dual_types test_dual_types.cpp)
-
   add_definitions(-DHAVE_KOKKOS=1)
+
+  add_executable(kokkos_csr CSRKokkos.cpp)
+  target_link_libraries(kokkos_csr matar  Kokkos::kokkos)
+  add_executable(kokkos_csc CSCKokkos.cpp)
+  target_link_libraries(kokkos_csc matar Kokkos::kokkos)
+
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
@@ -53,6 +58,8 @@ add_subdirectory(laplace)
 include_directories(halfspace_cooling)
 add_subdirectory(halfspace_cooling)
 
+include_directories(watt-graph)
+add_subdirectory(watt-graph)
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
 
@@ -70,4 +77,8 @@ add_subdirectory(halfspace_cooling)
 if (TEST)
   add_subdirectory(googletest)
   add_subdirectory(test_cases)
+  add_executable(test_csr CSRArray.cpp)
+  target_link_libraries(test_csr matar gtest_main)
+  add_executable(test_csc CSCArray.cpp)
+  target_link_libraries(test_csc matar gtest_main)
 endif(TEST)
