@@ -1,14 +1,14 @@
 Introduction to MATAR 
 ======================================================
 
-.. comment 
- _Contents
-  --------
-  .. toctree::
+.. toctree::
+
   about 
   api/library_root
-  Indices and tables
-  ==================
+  
+
+Indices and tables
+==================
   * :ref:`genindex`
   * :ref:`modindex`
   * :ref:`search`
@@ -39,26 +39,27 @@ MATAR is a C++ library that addresses the need for simple, fast, and memory-effi
 * The MATAR View types (e.g., ViewCArray, ViewCMatrix, ViewFArray, etc. ) are designed to accept a pointer to an existing 1D array and then access that 1D data as a multi-dimensional array.  The MATAR View types can also be used to slice an existing View.  
 
 * The C dense storage and View types (e.g., CArray, ViewCArray, CMatrix, etc.) access the data following the C/C++ language convection of having the last index in a multi-dimensional array vary the quickest.  In a 2D CArray A, the index j in A(i,j) varies first followed by the index i, so the optimal performance is achieved using the following loop ordering.
-```::
 
+  
+ ```
   // Optimal use of CArray
   for (i=0,i<N,i++){
       for (j=0,j<N,j++){
           A(i,j) = 0.0;
       }
    }
-
+  ```
 
 * The F dense storage and View types (e.g., FArray, ViewFArray, FMatrix, etc.) access the data following the Fortran language convection of having the first index in a multi-dimensional array vary the quickest.  In a 2D FMatrix M, the index i in M(i,j) varies first followed by the index j, so the optimal performance is achieved using the following loop ordering.
 
-```
+  ```
 // Optimal use of FMatrix
 for (j=1,j<=N,j++){
     for (i=1,i<=N,i++){
         M(i,j) = 0.0;
     }
 }
-```
+  ```
 
 * The ragged data types (e.g., RaggedRightArray, RaggedDownArray, etc) in MATAR are special sparse storage types.  The Right access types are for R(i,j) where the number of column entries varies in width across the array.  The Down access types are for D(i,j) where the number of row entries vary in length across the array.
 
@@ -227,4 +228,5 @@ year = {2021},
 author = {Daniel J. Dunning and Nathaniel R. Morgan and Jacob L. Moore and Eappen Nelluvelil and Tanya V. Tafolla and Robert W. Robey},
 keywords = {Performance, Portability, Productivity, Memory Efficiency, GPUs, dense and sparse storage}
 ```
+
 
