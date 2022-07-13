@@ -70,8 +70,6 @@
              
   <section id="introduction-to-matar">
 <h1>Introduction to MATAR<a class="headerlink" href="#introduction-to-matar" title="Permalink to this headline"></a></h1>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/library_root.html">Library API</a><ul>
@@ -547,14 +545,17 @@
 </ul>
 </div>
 </section>
-</section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
+</div></blockquote>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
 <a class="reference internal image-reference" href="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png"><img alt="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png" src="https://github.com/lanl/MATAR/blob/main/MATAR_Logo.png" style="width: 350px;" /></a>
 <p>MATAR is a C++ library that addresses the need for simple, fast, and memory-efficient multi-dimensional data representations for dense and sparse storage that arise with numerical methods and in software applications. The data representations are designed to perform well across multiple computer architectures, including CPUs and GPUs. MATAR allows users to easily create and use intricate data representations that are also portable across disparate architectures using Kokkos. The performance aspect is achieved by forcing contiguous memory layout (or as close to contiguous as possible) for multi-dimensional and multi-size dense or sparse MATrix and ARray (hence, MATAR) types. Results show that MATAR has the capability to improve memory utilization, performance, and programmer productivity in scientific computing. This is achieved by fitting more work into the available memory, minimizing memory loads required, and by loading memory in the most efficient order.</p>
 <p>## Examples
@@ -570,21 +571,30 @@
 <li><p>The MATAR View types (e.g., ViewCArray, ViewCMatrix, ViewFArray, etc. ) are designed to accept a pointer to an existing 1D array and then access that 1D data as a multi-dimensional array.  The MATAR View types can also be used to slice an existing View.</p></li>
 <li><p>The C dense storage and View types (e.g., CArray, ViewCArray, CMatrix, etc.) access the data following the C/C++ language convection of having the last index in a multi-dimensional array vary the quickest.  In a 2D CArray A, the index j in A(i,j) varies first followed by the index i, so the optimal performance is achieved using the following loop ordering.</p></li>
 </ul>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
-// Optimal use of CArray
+<blockquote>
+<div><dl>
+<dt><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a></dt><dd><p>// Optimal use of CArray
 for (i=0,i&lt;N,i++){</p>
 <blockquote>
+<div><blockquote>
 <div><dl class="simple">
 <dt>for (j=0,j&lt;N,j++){</dt><dd><p>A(i,j) = 0.0;</p>
 </dd>
 </dl>
 <p>}</p>
 </div></blockquote>
-<ul class="simple">
-<li><p>The F dense storage and View types (e.g., FArray, ViewFArray, FMatrix, etc.) access the data following the Fortran language convection of having the first index in a multi-dimensional array vary the quickest.  In a 2D FMatrix M, the index i in M(i,j) varies first followed by the index j, so the optimal performance is achieved using the following loop ordering.</p></li>
+<p>}</p>
+</div></blockquote>
+<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+</dd>
+</dl>
+</div></blockquote>
+<ul>
+<li><p>The F dense storage and View types (e.g., FArray, ViewFArray, FMatrix, etc.) access the data following the Fortran language convection of having the first index in a multi-dimensional array vary the quickest.  In a 2D FMatrix M, the index i in M(i,j) varies first followed by the index j, so the optimal performance is achieved using the following loop ordering.</p>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+</li>
 </ul>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a>`
-// Optimal use of FMatrix
+<p>// Optimal use of FMatrix
 for (j=1,j&lt;=N,j++){</p>
 <blockquote>
 <div><dl class="simple">
@@ -593,13 +603,17 @@ for (j=1,j&lt;=N,j++){</p>
 </dl>
 <p>}</p>
 </div></blockquote>
+<dl class="simple">
+<dt>}</dt><dd><p><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+</dd>
+</dl>
 <ul class="simple">
 <li><p>The ragged data types (e.g., RaggedRightArray, RaggedDownArray, etc) in MATAR are special sparse storage types.  The Right access types are for R(i,j) where the number of column entries varies in width across the array.  The Down access types are for D(i,j) where the number of row entries vary in length across the array.</p></li>
 <li><p>The SparseRowArray MATAR type is the idetical to the Compressed Sparse Row (CSR) or Compressed Row Storage (CSR) respresentation.</p></li>
 <li><p>The SparseColumnArray MATAR type is identical to the Compressed Sparse Column (CSC) or Compressed Column Storage (CCS) respresentation.</p></li>
 </ul>
 <p>## Usage
-<a href="#id5"><span class="problematic" id="id6">``</span></a>`
+<a href="#id17"><span class="problematic" id="id18">``</span></a>`
 // create a 1D array of integers and then access as a 2D array
 int A[9];
 auto A_array = ViewCArray &lt;int&gt; (A, 3, 3); // access as A(i,j)</p>
@@ -633,7 +647,7 @@ value++;</p>
 <p>}</p>
 </div></blockquote>
 <p>}</p>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a></p>
+<p><a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a></p>
 <p>## Cloning the code
 If your SSH keys are set in github, then from the terminal type:
 <code class="docutils literal notranslate"><span class="pre">`</span>
@@ -722,6 +736,7 @@ This program is open source under the BSD-3 License.</p>
 <span class="pre">author</span> <span class="pre">=</span> <span class="pre">{Daniel</span> <span class="pre">J.</span> <span class="pre">Dunning</span> <span class="pre">and</span> <span class="pre">Nathaniel</span> <span class="pre">R.</span> <span class="pre">Morgan</span> <span class="pre">and</span> <span class="pre">Jacob</span> <span class="pre">L.</span> <span class="pre">Moore</span> <span class="pre">and</span> <span class="pre">Eappen</span> <span class="pre">Nelluvelil</span> <span class="pre">and</span> <span class="pre">Tanya</span> <span class="pre">V.</span> <span class="pre">Tafolla</span> <span class="pre">and</span> <span class="pre">Robert</span> <span class="pre">W.</span> <span class="pre">Robey},</span>
 <span class="pre">keywords</span> <span class="pre">=</span> <span class="pre">{Performance,</span> <span class="pre">Portability,</span> <span class="pre">Productivity,</span> <span class="pre">Memory</span> <span class="pre">Efficiency,</span> <span class="pre">GPUs,</span> <span class="pre">dense</span> <span class="pre">and</span> <span class="pre">sparse</span> <span class="pre">storage}</span>
 <span class="pre">`</span></code></p>
+</section>
 </section>
 
 
