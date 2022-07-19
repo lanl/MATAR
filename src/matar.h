@@ -12866,7 +12866,7 @@ class CSRArrayKokkos {
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
-               size_t dim1, size_t dim2, const std::string & tag_string);
+               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
     /**
@@ -13343,7 +13343,7 @@ private: // What ought to be private ?
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
-               size_t dim1, size_t dim2, const std::string & tag_string);
+               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
       /**
