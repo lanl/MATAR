@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
     
     const std::string s = "hello";   
     // Testing = op 
-    auto pre_A = CSCArrayKokkos<int>(starts, array, rows, dim1, dim2, s);
+    auto pre_A = CSCArrayKokkos<int>(array, starts,rows, dim1, dim2, s);
     auto A = pre_A;
     int* values = A.pointer();
     auto a_start = A.get_starts();

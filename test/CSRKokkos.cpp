@@ -24,13 +24,32 @@ int main(int argc, char* argv[]){
          }
     });
 
+    int column_arr[] = {0, 2, 2, 0, 1, 2};
+    CArrayKokkos<double> data(6);
+    CArrayKokkos<size_t> row(4);
+    CArrayKokkos<size_t> column(6);
+    RUN ({
+        for(size_t i =0; i < 6; i++){
+            data(i) = i+1.5;
+            column(i) = column_arr[i];
+        }
+        row(0) = 0;
+        row(1) = 2;
+        row(2) = 3;
+        row(3) = 6; 
+    });
+
+    const std::string s = "Example";
+    CSRArrayKokkos<double> E( data, row, column, 3, 3, s);
+    
+
     /*
     |1 2 0 0 0 0 0 0 0 0|
     |0 0 3 4 0 0 0 0 0 0|
     |0 0 0 0 5 6 0 0 0 0|
     */
-    const std::string s = "hello";   
-    auto pre_A = CSRArrayKokkos<int>(starts, array, columns, dim1, dim2, s);
+    /*const std::string s = "hello";   
+    auto pre_A = CSRArrayKokkos<int>(array, starts, columns, dim1, dim2, s);
     auto A = pre_A;
   
     
@@ -64,7 +83,7 @@ int main(int argc, char* argv[]){
                     }, total);    
     printf("Sum of nnz in array notation %d\n", total);
     auto ss = A.begin(0);
-    
+    */
     } Kokkos::finalize();
     return 0; 
 
