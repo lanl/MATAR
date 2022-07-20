@@ -12863,10 +12863,10 @@ class CSRArrayKokkos {
     //CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
    CSRArrayKokkos(
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
-               size_t dim1, size_t dim2, const std::string & tag_string);
+               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
     /**
@@ -13027,8 +13027,8 @@ CSRArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::CSRArrayKokkos() {}
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,  
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
                size_t dim1, size_t dim2, const std::string & tag_string){
     dim1_ = dim1;
@@ -13340,10 +13340,10 @@ private: // What ought to be private ?
       * @param dim2: number of columns the matrix should have
       */
      CSCArrayKokkos(
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
-               size_t dim1, size_t dim2, const std::string & tag_string);
+               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
       /**
@@ -13485,8 +13485,8 @@ CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos() {}
  
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos(
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
                size_t dim1, size_t dim2, const std::string & tag_string){
 
