@@ -1,6 +1,6 @@
 module purge
 ### Load environment modules here
-module load cmake
+module load cmake/3.19.2
 module load gcc/9.4.0
 module list
 

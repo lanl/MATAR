@@ -60,6 +60,10 @@ add_subdirectory(halfspace_cooling)
 
 include_directories(watt-graph)
 add_subdirectory(watt-graph)
+
+include_directories(matar_fortran)
+add_subdirectory(matar_fortran)
+
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
 
