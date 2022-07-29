@@ -11,8 +11,13 @@
 //----------------
 
 // Change to 0 or 1 as needed
-#define USE_TOLERANCE  0
 #define TRACK_PROGRESS  0
+
+#if defined HAVE_CUDA || defined HAVE_HIP
+  #define GPU 1
+#else
+  #define GPU 0
+#endif
 
 int width = 1000;
 int height = 1000;
@@ -150,11 +155,29 @@ int main(int argc, char *argv[])
 
   double begin_time_main_loop = MPI_Wtime();
   // main loop
-#if USE_TOLERANCE
-  while (worst_dt > temp_tolerance) {
+  while (worst_dt > temp_tolerance && iteration <= max_num_iterations) {
+#if !defined GPU
+    // communicate halo nodes
+    nrequests = 0;
+    if (up != -1) {
+      MPI_Irecv(halo_up.device_pointer(), halo_up.size(), MPI_DOUBLE, 
+                up, up_tag, MPI_COMM_WORLD, &requests_recv[nrequests]);
+      MPI_Isend(temperature_previous_loc.device_pointer()+(0+(0*width_loc)), 
+                halo_up_out.size(), MPI_DOUBLE, up, down_tag, MPI_COMM_WORLD, 
+                &requests_send[nrequests]);
+      nrequests++;
+    }
+
+    if (down != world_size) {
+      MPI_Irecv(halo_down.device_pointer(), halo_down.size(), MPI_DOUBLE,
+                down, down_tag, MPI_COMM_WORLD, &requests_recv[nrequests]);
+      MPI_Isend(temperature_previous_loc.device_pointer()+(0+((height_loc-1)*width_loc)),
+                halo_down_out.size(), MPI_DOUBLE, down, up_tag, MPI_COMM_WORLD, 
+                &requests_send[nrequests]);
+      nrequests++;
+    }
+
 #else
-  while (iteration <= max_num_iterations) {
-#endif
     // fill halo with data
     if (up != -1) {
       FOR_ALL(j, 0, width_loc, {
@@ -189,6 +212,7 @@ int main(int argc, char *argv[])
                 down, up_tag, MPI_COMM_WORLD, &requests_send[nrequests]);
       nrequests++;
     }
+#endif 
 
     // finite difference for internal nodes
     FOR_ALL(i, 1, height_loc-1,
@@ -207,9 +231,9 @@ int main(int argc, char *argv[])
 
     // finite difference on surface nodes
     if (up != -1) {
-
+#if defined GPU
       halo_up.update_device();
-
+#endif
       int i = 0;
       FOR_ALL(j, 1, width_loc-1, {
         temperature_loc(i,j) = 0.25 * (temperature_previous_loc(i+1,j)
@@ -220,9 +244,9 @@ int main(int argc, char *argv[])
     } // end if (up != -1)
 
     if (down != world_size) {
-
+#if defined GPU
       halo_down.update_device();
-
+#endif
       int i = height_loc-1;
       FOR_ALL(j, 1, width_loc-1, {
         temperature_loc(i,j) = 0.25 * (halo_down(j)
