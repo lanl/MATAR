@@ -9,7 +9,7 @@ MATAR is a C++ library that addresses the need for simple, fast, and memory-effi
 
 * [Fierro](https://github.com/lanl/Fierro): The MATAR library underpins the Fierro code that is designed to simulate quasi-static solid mechanics problems and material dynamics problems.  
     
-* Simple examples are in the /test folder
+* Simple examples are in the /example folder
 
 ## Descriptions
 
