@@ -64,6 +64,8 @@ add_subdirectory(watt-graph)
 include_directories(matar_fortran)
 add_subdirectory(matar_fortran)
 
+include_directories(sparsetests)
+add_subdirectory(sparsetests)
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
 
@@ -73,3 +75,4 @@ add_subdirectory(matar_fortran)
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)
 
+                                        

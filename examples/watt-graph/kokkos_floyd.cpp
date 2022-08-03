@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <Kokkos_Random.hpp>
 #include <time.h>
+#include <chrono>
 
 using gen_t = Kokkos::Random_XorShift64_Pool<DefaultExecSpace>;
 
@@ -18,8 +19,8 @@ using gen_t = Kokkos::Random_XorShift64_Pool<DefaultExecSpace>;
 void wattsStorgatzGraph(int k, int n, double p, CArrayKokkos<int> &G){
     
     gen_t rand_pool64(5374857);
-    DCArrayKokkos<double> coins(n, k);
-    DCArrayKokkos<int> offsets(n, k);
+    CArrayKokkos<double> coins(n, k);
+    CArrayKokkos<int> offsets(n, k);
     FOR_ALL(i , 0, n,
              j, 1, k+1, {
                 // Get a random number state from the pool for the active thread
@@ -29,7 +30,8 @@ void wattsStorgatzGraph(int k, int n, double p, CArrayKokkos<int> &G){
                 coins(i, j-1) = ((double) rand_gen.urand64(10000)) / 10000.0;
                 offsets(i, j-1) = rand_gen.urand64(n - 2*k) + k;
             });
-   FOR_ALL(i, 0, n,
+    Kokkos::fence();
+    FOR_ALL(i, 0, n,
            j, 1, k+1,{ 
                 // Give the state back, which will allow another thread to acquire it
                 int idx_forw = (i + j) % n;
@@ -43,10 +45,12 @@ void wattsStorgatzGraph(int k, int n, double p, CArrayKokkos<int> &G){
                     G(i, idx_forw) = 1;
                 }
              });
+    Kokkos::fence();
+    return;
 }
 
 
-void floydW(CArrayKokkos<int> G, CArrayKokkos<int> &res, int n_nodes){
+void floydW(CArrayKokkos<int> G, CArrayKokkos<float> &res, int n_nodes){
 	int k;
     FOR_ALL(i, 0, n_nodes,
             j, 0, n_nodes, {
@@ -59,23 +63,15 @@ void floydW(CArrayKokkos<int> G, CArrayKokkos<int> &res, int n_nodes){
                 j, 0, n_nodes, {
                  if(i != j){
 			
-				    int dist1 = res(i,k) + res(k,j);
-			        int dist2 = res(i,j);	
-                    if(dist1 < 0){
-                        dist1 = INT_MAX;
-                    }
-                    if(dist2 < 0){
-                        dist2 = INT_MAX;
-                    }
-                    if(dist1 < dist2){
-					    res(i,j) = dist1;
-				    }
-                }   
+				    float dist1 = res(i,k) + res(k,j);
+			        float dist2 = res(i,j);	
+                    res(i,j) = (dist1 < dist2) ? dist1 : dist2;
+                  }   
         });
     }
 }
 
-double averageDistance(CArrayKokkos<int> G, int n){
+double averageDistance(CArrayKokkos<float> G, int n){
     double total = 0;
     double loc_sum;
     REDUCE_SUM(i, 0, n,
@@ -109,28 +105,39 @@ int main(int argc, char** argv){
        k_nearest = atoi(argv[3]); 
     }
     printf("%d, %.5f, %d", node_size, rewire_p, k_nearest);
-    clock_t start = clock();    
     Kokkos::initialize(); {
+    
+    auto start = std::chrono::high_resolution_clock::now(); // start clock
     CArrayKokkos<int> G(node_size, node_size);
-    CArrayKokkos<int> results(node_size, node_size);
+    CArrayKokkos<float> results(node_size, node_size);
     FOR_ALL(i, 0, node_size,
             j, 0, node_size,{
             G(i,j) = 0;
             if(i == j){
                 results(i,j) = 0;
             } else {
-                results(i,j) = INT_MAX;
+                results(i,j) =  std::numeric_limits<double>::infinity();
             }
         });
+    
     wattsStorgatzGraph(k_nearest, node_size, rewire_p, G);
-    clock_t lap = clock();
-    printf(",%d,", 1000* (lap-start)/CLOCKS_PER_SEC); 
+    
+    auto lap = std::chrono::high_resolution_clock::now(); // start clock
+    
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap-start);
+    printf(", %.2f,", elapsed.count() * 1e-9);
     floydW(G, results, node_size);
-    clock_t lap2 = clock();
-    printf("%d,", 1000 * (lap2 - lap)/CLOCKS_PER_SEC);
+    
+    auto lap2 = std::chrono::high_resolution_clock::now(); // start clock
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap2-lap);
+    printf("%.2f,", elapsed.count() * 1e-9);
     double average_steps = averageDistance(results, node_size);
-    clock_t lap3 = clock();
-    printf("%d, %d, ", 1000* (lap3 -lap2)/CLOCKS_PER_SEC, 1000 * (lap3 - start)/CLOCKS_PER_SEC) ;
+    
+    auto lap3 = std::chrono::high_resolution_clock::now(); // start clock
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap3-lap2);
+    auto elapsed2 = std::chrono::duration_cast<std::chrono::nanoseconds>(lap3-start);
+
+    printf("%.2f, %.2f, ", elapsed.count() * 1e-9, elapsed2.count() * 1e-9);
     printf("%f\n", average_steps);	
     
     }
