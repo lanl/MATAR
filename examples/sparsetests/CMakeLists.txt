@@ -1,6 +1,24 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-#add_executable(matVec matVec.cpp)
-#add_executable(powerIter powerIter.cpp)
-#target_link_libraries(matVec matar)
-#target_link_libraries(powerIter matar)
+if (KOKKOS)
+    find_package(Kokkos REQUIRED)
+    add_definitions(-DHAVE_KOKKOS=1)
+    
+    add_executable(matVec matVec.cpp)
+    #add_executable(powerIter powerIter.cpp)
+    target_link_libraries(matVec matar Kokkos::kokkos)
+    #target_link_libraries(powerIter matar Kokkos::kokkos)
+
+
+  if (CUDA)
+    add_definitions(-DHAVE_CUDA=1)
+  elseif (HIP)
+    add_definitions(-DHAVE_HIP=1)
+  elseif (OPENMP)
+    add_definitions(-DHAVE_OPENMP=1)
+  elseif (THREADS)
+    add_definitions(-DHAVE_THREADS=1)
+  endif()
+
+endif ()
+

@@ -49,10 +49,13 @@ void renorm(CArrayKokkos<double> &b){
         //printf("Norm is %f\n", total);
 }
 
+KOKKOS_FUNCTION
 void copy(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
         int n = b.dims(0);
         FOR_ALL(i, 0, n,
-                 {b(i) = a(i);}
+                 {b(i) = a(i);
+                  a(i) = 0;
+                 }
                 );
 }
 
@@ -79,7 +82,7 @@ double l1Change(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
 }
 
 KOKKOS_FUNCTION
-double powerIter(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b, double tol, int max_iter){
+double powerIter(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b, double tol, int max_iter, int& did_converge){
         double last_totl = 4*tol;
         double my_tol = 2*tol;
         int my_iter = 0;
@@ -87,7 +90,7 @@ double powerIter(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<
         while(my_iter < max_iter && my_tol > tol){
             matVec(A, v, b);
             renorm(b);
-            if(my_iter % 20 == 0){
+            if(my_iter % 100 == 0){
                 my_tol = l1Change(b, v);
             }
             copy(b,v);
@@ -96,6 +99,11 @@ double powerIter(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<
         matVec(A,v,b);
         if(!EXPORT){
             printf("Converged in %d iterations with tol of %f\n", my_iter, my_tol);
+        }
+        if(my_iter >= max_iter && my_tol > tol){
+                did_converge = 0;
+        }else{
+                did_converge = 1;
         }
         return innerProd(v, b);
 } 
@@ -116,10 +124,13 @@ void renormSp(CArrayKokkos<double> &b){
         //printf("Norm is %f\n", total);
 }
 
+KOKKOS_FUNCTION
 void copySp(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
         int n = b.dims(0);
         FOR_ALL(i, 0, n,
-                 {b(i) = a(i);}
+                 {b(i) = a(i);
+                  a(i) = 0;
+                  }
                 );
 }
 
@@ -146,7 +157,7 @@ double l1ChangeSp(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
 }
 
 KOKKOS_FUNCTION
-double powerIterSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b, double tol, int max_iter){
+double powerIterSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b, double tol, int max_iter, int &did_converge){
         double last_totl = 4*tol;
         double my_tol = 2*tol;
         int my_iter = 0;
@@ -154,7 +165,7 @@ double powerIterSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKok
         while(my_iter < max_iter && my_tol > tol){
             matVecSp(A, v, b);
             renormSp(b);
-            if(my_iter % 20 == 0){
+            if(my_iter % 100 == 0){
                 my_tol = l1ChangeSp(b, v);
             }
             copySp(b,v);
@@ -163,6 +174,11 @@ double powerIterSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKok
         matVecSp(A,v,b);
         if(!EXPORT){
             printf("Converged in %d iterations with tol of %f\n", my_iter, my_tol);
+        }
+        if(my_iter >= max_iter && my_tol > tol){
+                did_converge = 0;
+        }else{
+                did_converge = 1;
         }
         return innerProdSp(v, b);
 } 
@@ -187,6 +203,9 @@ int main(int argc, char** argv){
         CArrayKokkos<size_t> cols(3*n-2);
         double eig1 = 0;
         double eig2 = 0;
+        double my_tol = n * (1e-07);
+        int t1 = 1;
+        int t2 = 1;
         FOR_ALL(i, 0, n, 
                  {
                    v(i) = 1;
@@ -201,7 +220,7 @@ int main(int argc, char** argv){
                     starts(i) = 2 + 3*(i-1);
                    }
                  });
-        starts(n) = 3*n-2;
+        RUN({ starts(n) = 3*n-2; });
         FOR_ALL(i, 0, n,
                 j, 0, n,{
                 if(abs(i - j) <= 1){
@@ -218,16 +237,16 @@ int main(int argc, char** argv){
                 });
         CSRArrayKokkos<double> Asp(data, starts, cols, n,n);    
         auto start = std::chrono::high_resolution_clock::now();
-        eig1 = powerIter(A, v, b1, 1e-5, 3000); 
+        eig1 = powerIter(A, v, b1, my_tol, 3000, t1); 
         auto lap = std::chrono::high_resolution_clock::now();
-        eig2 = powerIterSp(Asp, v1, b2, 1e-5, 3000);
+        eig2 = powerIterSp(Asp, v1, b2, my_tol, 3000, t2);
         auto lap2 = std::chrono::high_resolution_clock::now();
         if(!EXPORT){
             printf("Max eig is %f %f\n", eig1, eig2);
             printf("Dense took %.2e \n Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9,
                 std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9);
         } else {
-            printf("%ld, %.2e, %.2e\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9, std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9);
+            printf("%ld, %.2e, %.2e, %d, %d, %f, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9, std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9, t1, t2, eig1, eig2);
         }
     } Kokkos::finalize();
     return 0 ;
