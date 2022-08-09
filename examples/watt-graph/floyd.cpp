@@ -3,6 +3,7 @@
 #include <matar.h>
 #include <limits.h>
 #include <time.h>
+#include <chrono> 
 
 //Helper function to prefill a graph, seems generically useful
 void graphFiller(int n, int diag, int off_diag, CArray<int> &G){
