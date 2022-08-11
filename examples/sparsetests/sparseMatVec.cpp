@@ -7,19 +7,6 @@
 
 #define EXPORT true 
 
-void matVec(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
-        size_t n = A.dims(0);    
-        size_t m = A.dims(1);
-        FOR_ALL(i, 0, n,
-           {
-            for(int j = 0; j < m ; j++){
-                b(i) += A(i,j) * v(j);
-            }
-           }
-        );
-
-    Kokkos::fence();
-}
 
 void matVecSparse(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
         size_t m = A.dim2();
@@ -49,12 +36,6 @@ int main(int argc, char** argv){
         } 
     nrows = n;
     ncols = n;
-    CArrayKokkos<double> A(nrows, ncols);
-   
-    FOR_ALL(i, 0, nrows,
-            j, 0, ncols, {
-            A(i,j) = 0.0;
-            }); 
     CArrayKokkos<double> data(3*nrows);
     CArrayKokkos<size_t> starts(nrows+1);
     CArrayKokkos<size_t> cols(3*nrows);
@@ -74,9 +55,6 @@ int main(int argc, char** argv){
     FOR_ALL(i, 0, nrows,{
                     
                     if(i == nrows -2){
-                        A(i,i-1) = i ;
-                        A(i,i) = i;
-                        A(i,i+1) = i;
                         data(3*i) = i;
                         data(3*i+1) = i;
                         data(3*i+2) = i;
@@ -88,9 +66,6 @@ int main(int argc, char** argv){
                         starts(i) = 3*i;
                     }
                     else if(i == nrows -1){
-                        A(i,i-2) = i ;
-                        A(i,i-1) = i;
-                        A(i,i) = i;
                         data(3*i) = i;
                         data(3*i+1) = i;
                         data(3*i+2) = i;
@@ -102,9 +77,6 @@ int main(int argc, char** argv){
                         starts(i) = 3*i;
                     }
                     else {
-                        A(i,i) = i;
-                        A(i,i+1) = i;
-                        A(i,i+2) = i;
                         data(3*i) = i ;
                         data(3*i+1) = i;
                         data(3*i+2) = i;
@@ -123,19 +95,13 @@ int main(int argc, char** argv){
     CSRArrayKokkos<double> B (data, starts, cols, nrows, ncols);
     auto start = std::chrono::high_resolution_clock::now();
 
-    int j;
-    matVec(A,v1,b1);
-    Kokkos::fence();
-    auto lap1 = std::chrono::high_resolution_clock::now();
-    auto lap2 = std::chrono::high_resolution_clock::now();
     matVecSparse(B,v2,b2);
     Kokkos::fence(); 
-    auto lap3 = std::chrono::high_resolution_clock::now();
+    auto lap1 = std::chrono::high_resolution_clock::now();
     auto time1 =  std::chrono::duration_cast<std::chrono::nanoseconds>(lap1 - start); 
-    auto time2 =  std::chrono::duration_cast<std::chrono::nanoseconds>(lap3- lap2);
 
     if(!EXPORT){
-            RUN({ printf("Size: %ld, Dense: %.2e, Sparse: %.2e, %f, %f \n", n, time1.count() * 1e-9, time2.count() * 1e-9, b1(57980), b2(57980) ); });
+            RUN({ printf("Size: %ld,  Sparse: %.2e, %f, %f \n", n, time1.count() * 1e-9 , b1(57980), b2(57980) ); });
         } else {
                 RUN({
                     for(int i = 0; i < n; i++){
@@ -143,7 +109,7 @@ int main(int argc, char** argv){
                             printf("b1(%d) - b2(%d) = %.2e\n", i, i, b1(i)-b2(i));
                         }
                     }
-                    printf("%ld, %.2e, %.2e, %f, %f, %f \n", n, time1.count() * 1e-9, time2.count() * 1e-9, (1e-9*time1.count())/(1e-9*time2.count()), b1(25), b2(25) );
+                    printf("%ld, %.2e, %.2e, %f, %f, %f \n", n, time1.count() * 1e-9, b1(25), b2(25) );
                 }); 
        }
     }Kokkos::finalize();

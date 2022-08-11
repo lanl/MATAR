@@ -6,17 +6,7 @@
 #include <time.h>
 
 #define EXPORT true
-
-void matVec(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
-    FOR_ALL(i, 0, A.dims(0),
-        {
-            size_t m = A.dims(1);
-            for(int j = 0; j < m ; j++){
-                b(i) += A(i,j) * v(j);
-            }
-     });
-}
-
+ 
 void matVecSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
         size_t m = A.dim2();
         size_t n = A.dim1();
@@ -30,76 +20,6 @@ void matVecSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<d
         );
 }
 
-
-void renorm(CArrayKokkos<double> &b){
-        double total= 0 ; 
-        double loc_total = 0;
-        int n = b.dims(0);
-        int i = 0;
-        REDUCE_SUM(i, 0, n, 
-                loc_total, { loc_total += b(i) * b(i);}
-                , total );
-        total = 1/sqrt(total);
-        FOR_ALL(i, 0, n,
-                {b(i) *= total;}
-               );
-        //printf("Norm is %f\n", total);
-}
-
-void copy(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
-        int n = b.dims(0);
-        FOR_ALL(i, 0, n,
-                 {b(i) = a(i);
-                  a(i) = 0;
-                 }
-                );
-}
-
-double innerProd(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
-        double total = 0;
-        double loc_total = 0 ;
-        int n = b.dims(0);
-        REDUCE_SUM(i, 0, n,
-                        loc_total, {loc_total += a(i) * b(i);}
-                   , total);
-        return total; 
-}
-
-double l1Change(CArrayKokkos<double> &a, CArrayKokkos<double> &b){
-        double total = 0;
-        double loc_total = 0 ;
-        int n = b.dims(0);
-        REDUCE_SUM(i, 0, n,
-                        loc_total, {loc_total += abs(a(i) - b(i)) ; }
-                   , total);
-        return total; 
-}
-
-double powerIter(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b, double tol, int max_iter, int& did_converge){
-        double last_totl = 4*tol;
-        double my_tol = 2*tol;
-        int my_iter = 0;
-        
-        while(my_iter < max_iter && my_tol > tol){
-            matVec(A, v, b);
-            renorm(b);
-            if(my_iter % 100 == 0){
-                my_tol = l1Change(b, v);
-            }
-            copy(b,v);
-            my_iter++;
-        }
-        matVec(A,v,b);
-        if(!EXPORT){
-            printf("Converged in %d iterations with tol of %f\n", my_iter, my_tol);
-        }
-        if(my_iter >= max_iter && my_tol > tol){
-                did_converge = 0;
-        }else{
-                did_converge = 1;
-        }
-        return innerProd(v, b);
-} 
 
 void renormSp(CArrayKokkos<double> &b){
         double total= 0 ; 
@@ -181,7 +101,6 @@ int main(int argc, char** argv){
         } else{
              n = (size_t) atoi(argv[1]);
         }
-        CArrayKokkos<double> A(n,n);
         CArrayKokkos<double> v(n);
         CArrayKokkos<double> b1(n);
         CArrayKokkos<double> b2(n);
@@ -191,7 +110,7 @@ int main(int argc, char** argv){
         CArrayKokkos<size_t> cols(3*n-2);
         double eig1 = 0;
         double eig2 = 0;
-        double my_tol = n * (1e-07);
+        double my_tol = n * (1e-09);
         int t1 = 1;
         int t2 = 1;
         FOR_ALL(i, 0, n, 
@@ -212,7 +131,6 @@ int main(int argc, char** argv){
         FOR_ALL(i, 0, n,
                 j, 0, n,{
                 if(abs(i - j) <= 1){
-                    A(i,j) = i + 2*  j;
                     if(i == 0){
                         data(i+j) = i + 2*j;
                         cols(i+j) = j;
@@ -225,16 +143,13 @@ int main(int argc, char** argv){
                 });
         CSRArrayKokkos<double> Asp(data, starts, cols, n,n);    
         auto start = std::chrono::high_resolution_clock::now();
-        eig1 = powerIter(A, v, b1, my_tol, 3000, t1); 
+        eig2 = powerIterSp(Asp, v1, b2, my_tol, 10000000, t2);
         auto lap = std::chrono::high_resolution_clock::now();
-        eig2 = powerIterSp(Asp, v1, b2, my_tol, 3000, t2);
-        auto lap2 = std::chrono::high_resolution_clock::now();
         if(!EXPORT){
             printf("Max eig is %f %f\n", eig1, eig2);
-            printf("Dense took %.2e \n Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9,
-                std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9);
+            printf("Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9);
         } else {
-            printf("%ld, %.2e, %.2e, %d, %d, %f, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9, std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9, t1, t2, eig1, eig2);
+            printf("%ld, %.2e, %d, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9,  t2, eig2);
         }
     } Kokkos::finalize();
     return 0 ;

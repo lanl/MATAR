@@ -5,10 +5,13 @@ if (KOKKOS)
     add_definitions(-DHAVE_KOKKOS=1)
     
     add_executable(matVec matVec.cpp)
-    #add_executable(powerIter powerIter.cpp)
+    add_executable(powerIter powerIter.cpp)
+    add_executable(spPower sparsePowerIter.cpp)
+    add_executable(spatVec sparseMatVec.cpp)
+    target_link_libraries(spatVec matar Kokkos::kokkos)
     target_link_libraries(matVec matar Kokkos::kokkos)
-    #target_link_libraries(powerIter matar Kokkos::kokkos)
-
+    target_link_libraries(powerIter matar Kokkos::kokkos)
+    target_link_libraries(spPower matar Kokkos::kokkos)
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
