@@ -4799,7 +4799,7 @@ void CSRArray<T>::to_dense(CArray<T>& A){
 
 template<typename T>
 size_t CSRArray<T>::stride(size_t i) const {
-   assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+   assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
    return start_index_[i+i] - start_index_[i];
 
 }
@@ -4818,27 +4818,27 @@ size_t CSRArray<T>::dim2() const {
 
 template<typename T>
 T* CSRArray<T>::begin(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin()"); 
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()"); 
     size_t row_start = start_index_[i];
     return &array_[row_start];
 }
 
 template<typename T>
 T* CSRArray<T>::end(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.end()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
     size_t row_start = start_index_[i+1];
     return &array_[row_start];
 }
 
 template<typename T>
 size_t CSRArray<T>::begin_index(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin_index()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i];
 }
 
 template<typename T>
 size_t CSRArray<T>::end_index(size_t i){
-    assert(i <= nrows_ && "i is out of bounds in CSRArray.begin_index()");
+    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
     return start_index_[i+1];
 }
 
@@ -4849,7 +4849,7 @@ size_t CSRArray<T>::nnz(){
 
 template<typename T>
 size_t CSRArray<T>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+    assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
     return start_index_[i+1] - start_index_[i];
 }
 
@@ -4862,7 +4862,7 @@ T& CSRArray<T>::get_val_flat(size_t k){
 
 template<typename T>
 size_t CSRArray<T>::get_col_flat(size_t k){
-    assert(k < nnz_f && "Index k is out of bounds in CSRArray.get_col_lat()"); 
+    assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_col_lat()"); 
     return column_index_[k];
 }
 
