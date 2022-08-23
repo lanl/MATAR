@@ -8,7 +8,7 @@ on:
 
 #env:
 #  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-#  BUILD_TYPE: Release
+#  BUILD_TYPE: Debug
 
 jobs:
   # This workflow contains a single job called "build"
@@ -20,8 +20,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_config_args: "", kokkos_config_args: ""}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Release", cc: "gcc", cxx: "g++", matar_config_args: "-DKOKKOS=ON", kokkos_config_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
+        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Debug", cc: "gcc", cxx: "g++", matar_config_args: "", kokkos_config_args: ""}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Debug", cc: "gcc", cxx: "g++", matar_config_args: "-DKOKKOS=ON", kokkos_config_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
 
     steps:
     - name: Checkout repository
