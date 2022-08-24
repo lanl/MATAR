@@ -5176,14 +5176,14 @@ T* CSCArray<T>::begin(size_t i){
 
 template<typename T>
 T* CSCArray<T>::end(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.endt()");
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.endt()");
     size_t col_start = start_index_[i+1];
     return &array_[col_start];
 }
 
 template<typename T>
 size_t CSCArray<T>::begin_index(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.begin_index()");
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin_index()");
     return start_index_[i];
 }
 
@@ -13232,7 +13232,7 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::nnz() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
-    assert(i <= nrows_ && "Index i out of bounds in CSRArray.stride()"); 
+    assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()"); 
     return start_index_.data()[i+1] - start_index_.data()[i];
 }
 
@@ -13246,7 +13246,7 @@ T& CSRArrayKokkos<T,Layout,ExecSpace, MemoryTraits>::get_val_flat(size_t k) cons
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_col_flat(size_t k) const{
-    assert(k < nnz_f && "Index k is out of bounds in CSRArray.get_col_lat()"); 
+    assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_col_lat()"); 
     return column_index_.data()[k];
 }
 
@@ -13598,7 +13598,7 @@ T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin(size_t i){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.endt()");
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.endt()");
     size_t col_start = start_index_.data()[i+1];
     return &array_.data()[col_start];
 }
@@ -13606,7 +13606,7 @@ T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin_index(size_t i){
-    assert(i <= dim2s_ && "index i out of bounds at CSCArray.begin_index()");
+    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin_index()");
     return start_index_.data()[i];
 }
 
