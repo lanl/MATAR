@@ -3,6 +3,7 @@
 #include <matar.h>
 #include <limits.h>
 #include <time.h>
+#include <chrono> 
 
 //Helper function to prefill a graph, seems generically useful
 void graphFiller(int n, int diag, int off_diag, CArray<int> &G){
@@ -116,19 +117,26 @@ int main(int argc, char** argv){
        rewire_p = atof(argv[2]);
        k_nearest = atoi(argv[3]); 
     }
-    printf("%d, %.3f, %d", node_size, rewire_p, k_nearest);
-    clock_t start = clock();
+    printf("%d, %.3f, %d,", node_size, rewire_p, k_nearest);
+
+    auto start = std::chrono::high_resolution_clock::now(); // start clock
     auto G = CArray<int>(node_size, node_size);
     auto results = CArray<int> (node_size, node_size);
     wattsStorgatzGraph(k_nearest, node_size, rewire_p, G);
-    clock_t lap = clock();
-    printf(",%d,", 1000* (lap-start)/CLOCKS_PER_SEC); 
+    auto lap = std::chrono::high_resolution_clock::now(); // start clock
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap-start);
+    printf("%.2f,", elapsed.count() * 1e-9);
     floydW(G, results, node_size);
-    clock_t lap2 = clock();
-    printf("%d,", 1000 * (lap2 - lap)/CLOCKS_PER_SEC);
+    auto lap2 = std::chrono::high_resolution_clock::now(); // start clock
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap2-lap);
+    printf("%.2f,", elapsed.count() * 1e-9);
     double average_steps = averageDistance(results, node_size);
-    clock_t lap3 = clock();
-    printf("%d, %d,", 1000* (lap3 -lap2)/CLOCKS_PER_SEC, 1000 * (lap3 - start)/CLOCKS_PER_SEC) ;
+    auto lap3 = std::chrono::high_resolution_clock::now(); // start clock
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(lap3-lap2);
+    auto elapsed2 = std::chrono::duration_cast<std::chrono::nanoseconds>(lap3-start);
+
+    printf("%.2f, %.2f, ", elapsed.count() * 1e-9, elapsed2.count() * 1e-9);
+
     printf("%f\n", average_steps);	
     
 }
