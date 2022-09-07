@@ -113,6 +113,8 @@ using DefaultMemSpace  = Kokkos::Serial;
 using DefaultExecSpace = Kokkos::Serial;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
+//using DefaultExecSpace  = Kokkos::DefaultExecutionSpace;
+//using DefaultMemSpace = Kokkos::DefaultExecutionSpace::memory_space;
 
 //MACROS to make the code less scary
 #define kmalloc(size) ( Kokkos::kokkos_malloc<DefaultMemSpace>(size) )
