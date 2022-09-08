@@ -1,4 +1,4 @@
-N, Prob, K, t1, t2, t3, total_time, distance
+N, Time(Dense), Time(Sparse), Speedup, check dense, check sparse
 500, 2.76e-05, 1.82e-05, 1.512092, 75.000000, 75.000000 
 500, 2.63e-05, 1.78e-05, 1.471964, 75.000000, 75.000000 
 500, 2.70e-05, 1.83e-05, 1.470778, 75.000000, 75.000000 
