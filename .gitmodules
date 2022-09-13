@@ -4,3 +4,6 @@
 [submodule "test/googletest"]
 	path = test/googletest
 	url = https://github.com/google/googletest.git
+[submodule "examples/phaseFieldMPI/heffte"]
+	path = examples/phaseFieldMPI/heffte
+	url = https://bitbucket.org/icl/heffte.git
