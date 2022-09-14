@@ -75,6 +75,6 @@ add_subdirectory(sparsetests)
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)
 
-include_directories(phaseFieldMPI)
-add_subdirectory(phaseFieldMPI)
+#include_directories(phaseFieldMPI)
+#add_subdirectory(phaseFieldMPI)
 
