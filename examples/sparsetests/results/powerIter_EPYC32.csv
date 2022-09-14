@@ -1,4 +1,4 @@
-N, Prob, K, t1, t2, t3, total_time, distance
+N, Time(Dense), Time(Sparse), Converged Dense?, Converged Sparse?, Eigenvalue Dense, EigenValue Sparse
 100, 1.20e-02, 1.16e-02, 1, 1, 833.219765, 833.219765
 100, 1.18e-02, 1.15e-02, 1, 1, 833.219765, 833.219765
 100, 1.19e-02, 1.16e-02, 1, 1, 833.219765, 833.219765
