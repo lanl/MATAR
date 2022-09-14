@@ -2,6 +2,7 @@ module purge
 ### Load environment modules here
 module load cmake/3.19.2
 module load gcc/9.4.0
+#module load openmpi/4.1.1-gcc_9.4.0
 module list
 
 export scriptdir=`pwd`
