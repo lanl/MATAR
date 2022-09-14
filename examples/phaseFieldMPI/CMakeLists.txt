@@ -4,10 +4,35 @@ project (phasefield_mpi)
 
 
 if (KOKKOS)
+
   add_definitions(-DHAVE_KOKKOS=1)
 
   find_package(Kokkos REQUIRED)
   find_package(MPI REQUIRED)  
+
+  # heffte compilation flags
+  if (CUDA)
+    set(BUILD_SHARED_LIBS ON CACHE BOOL "")
+    set(Heffte_ENABLE_CUDA ON CACHE BOOL "")
+    set(Heffte_DISABLE_GPU_AWARE_MPI ON CACHE BOOL "")
+    #set(CUDA_TOOLKIT_ROOT_DIR <path-to-cuda-installation> CACHE PATH "")
+  elseif (HIP)
+    set(BUILD_SHARED_LIBS ON CACHE BOOL "")
+    set(Heffte_ENABLE_ROCM ON CACHE BOOL "")
+    set(Heffte_DISABLE_GPU_AWARE_MPI ON CACHE BOOL "")
+  else()
+    set(BUILD_SHARED_LIBS ON CACHE BOOL "")
+    set(Heffte_ENABLE_AVX ON CACHE BOOL "")
+    set(Heffte_ENABLE_AVX512 ON CACHE BOOL "")
+    # choose between FFTW or MKL fft libraries
+    set(Heffte_ENABLE_FFTW ON CACHE BOOL "")
+    #set(FFTW_ROOT <path-to-fftw3-installation> CACHE PATH "")
+    set(FFTW_ROOT "/vast/home/cyenusah/softwares/fftw3/fftw3_broadwell_fPIC" CACHE PATH "")
+    #set(Heffte_ENABLE_MKL ON CACHE BOOL "")
+    #set(MKL_ROOT <path-to-mkl-installation> CACHE PATH "")
+  endif()
+  include_directories(heffte)
+  add_subdirectory(heffte)
 
   add_executable(phasefield_mpi main.cpp sim_parameters.cpp heffte_fft.cpp
                  global_arrays.cpp fourier_space.cpp complex_arrays.cpp
@@ -35,10 +60,4 @@ if (KOKKOS)
   endif()
 
 
-  if (USE_FFT_SYMMETRY)
-    add_definitions(-DUSE_FFT_SYMMETRY=1)
-  endif()
-
-  include_directories(heffte)
-  add_subdirectory(heffte)
 endif()
