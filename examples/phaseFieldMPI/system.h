@@ -47,6 +47,7 @@
 #include "complex_arrays.h"
 #include "profile.h"
 #include "vtk_writer_mpi_io.h"
+#include "heffte_backends.h"
 
 struct System
 {
@@ -55,8 +56,7 @@ struct System
     int my_rank;
     int num_ranks;
     const SimParameters sp;
-    // FFT3D_R2C<heffte::backend::cufft, double> fft;
-    FFT3D_R2C<heffte::backend::fftw, double> fft;
+    FFT3D_R2C<heffte_backend, double> fft;
     GlobalArrays ga;
     ComplexArrays ca;
     FILE* total_free_energy_file;
