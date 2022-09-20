@@ -114,7 +114,7 @@ mpiSubarrayTypes(num_ranks, MPI_DATATYPE_NULL)
         MPI_Type_commit(&mpiSubarrayTypes[i]);
     }
 
-#ifdef GPU
+#if defined(CUDA) || defined(HIP)
     // on a multi-gpu system, distribute the devices across the mpi ranks
     if (heffte::gpu::device_count() > 1) {
         heffte::gpu::device_set(heffte::mpi::comm_rank(comm) % heffte::gpu::device_count());
