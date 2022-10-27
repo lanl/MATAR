@@ -5,6 +5,7 @@
 
 #include "matar.h"
 
+using namespace mtr; // matar namespace
 
 // helper type for selecting variant type set by user
 template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };

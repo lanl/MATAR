@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "matar.h"
- 
+
+using namespace mtr; // matar namespace
+
 int main() {
 
     int thread_id;

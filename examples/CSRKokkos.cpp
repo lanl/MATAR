@@ -3,7 +3,7 @@
 #include <matar.h>
 #include <limits.h>
 
-    
+using namespace mtr; // matar namespace
 
 int main(int argc, char* argv[]){
     

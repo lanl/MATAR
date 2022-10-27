@@ -5,7 +5,9 @@
 #include <chrono> 
 #include <time.h>
 
-#define EXPORT true 
+#define EXPORT true
+
+using namespace mtr; // matar namespace
 
 void matVec(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
         size_t n = A.dims(0);    

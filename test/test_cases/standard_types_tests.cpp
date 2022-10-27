@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
+using namespace mtr; // matar namespace
 
 template <typename T>
 T return_dense_type()

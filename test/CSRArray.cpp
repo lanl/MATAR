@@ -4,6 +4,8 @@
 #include <limits.h>
 #include <gtest/gtest.h> 
 
+using namespace mtr; // matar namespace
+
 void voidTestArray(CArray<int> &data, CArray<size_t> &cols, CArray<size_t> &rows){
     int i;
     for(i = 0; i < 8; i++){

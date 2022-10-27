@@ -3,6 +3,8 @@
 #include "matar.h"
 #include <string>
 
+using namespace mtr; // matar namespace
+
 class FourierSpace
 {
 public:

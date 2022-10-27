@@ -6,6 +6,8 @@
 #include <time.h>
 
 #define EXPORT true
+
+using namespace mtr; // matar namespace
  
 void matVecSp(CSRArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
         size_t m = A.dim2();

@@ -7,6 +7,8 @@
 #include <time.h>
 #include <chrono>
 
+using namespace mtr; // matar namespace
+
 using gen_t = Kokkos::Random_XorShift64_Pool<DefaultExecSpace>;
 
 

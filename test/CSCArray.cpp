@@ -2,7 +2,9 @@
 #include <math.h>
 #include <matar.h>
 #include <limits.h>
-#include <gtest/gtest.h> 
+#include <gtest/gtest.h>
+
+using namespace mtr; // matar namespace
 
 void buildTestArray(CArray<int> &data, CArray<size_t>& cols, CArray<size_t>& rows){
     int i = 0;

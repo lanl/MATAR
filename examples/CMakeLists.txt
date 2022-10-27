@@ -66,11 +66,12 @@ add_subdirectory(matar_fortran)
 
 include_directories(sparsetests)
 add_subdirectory(sparsetests)
-#include_directories(laplaceMPI)
-#add_subdirectory(laplaceMPI)
 
-#include_directories(phaseField/srcKokkosVerbose)
-#add_subdirectory(phaseField/srcKokkosVerbose)
+#include_directories(laplaceMPI) 
+#add_subdirectory(laplaceMPI)    
+
+#include_directories(phaseField/srcKokkosVerbose)  
+#add_subdirectory(phaseField/srcKokkosVerbose)  
 
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)

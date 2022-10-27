@@ -5,6 +5,8 @@
 #include "fourier_space.h"
 #include "heffte_fft.h"
 
+using namespace mtr; // matar namespace
+
 class ComplexArrays
 {
 public:
