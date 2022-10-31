@@ -1,6 +1,8 @@
 #pragma once
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 struct GlobalArrays
 {
     CArray<double> comp_all;

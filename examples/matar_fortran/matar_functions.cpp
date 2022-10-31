@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 
+using namespace mtr; // matar namespace
+
 /*
   Functions or subroutines that will be called from fortran should include "_" at the end of name. 
   Example: Given a C++ definded subroutine as "subroutineName_", 

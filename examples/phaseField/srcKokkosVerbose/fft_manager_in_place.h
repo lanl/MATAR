@@ -4,6 +4,8 @@
 
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 class FFTManagerInPlace
 {
     private:

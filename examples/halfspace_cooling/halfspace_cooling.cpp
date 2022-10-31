@@ -18,6 +18,8 @@
 #include <iostream>
 #include <matar.h>
 
+using namespace mtr; // matar namespace
+
 // set up constant parameters
 const int max_age = 1000;
 const double mantle_temp = 1350.0;

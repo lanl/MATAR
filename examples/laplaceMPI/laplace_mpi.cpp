@@ -19,6 +19,8 @@
   #define GPU 0
 #endif
 
+using namespace mtr; // matar namespace
+
 int width = 1000;
 int height = 1000;
 int max_num_iterations = 1000;

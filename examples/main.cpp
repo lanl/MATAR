@@ -2,6 +2,8 @@
 
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 int main() {
 
     printf("Hello World\n");

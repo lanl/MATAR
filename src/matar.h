@@ -155,6 +155,9 @@ using SHArray1D     = Kokkos::View<size_t *,DefaultLayout,Kokkos::HostSpace>;
 //To disable asserts, uncomment the following line
 //#define NDEBUG
 
+namespace mtr
+{
+
 
 //---Begin Standard Data Structures---
 
@@ -5283,13 +5286,24 @@ CSCArray<T>::~CSCArray() {}
 //	end of standard MATAR data-types
 //========================================================================
 
+
+} // end namespace
+
+
+
+
+#ifdef HAVE_KOKKOS
+namespace mtr
+{
+
 /*! \brief Kokkos version of the serial FArray class.
  *
  *  This is the Kokkos version of the serial FArray class. 
  *  Its usage is analagous to that of the serial FArr5class, and it is to be
  *  used in Kokkos-specific code.
  */
-#ifdef HAVE_KOKKOS
+
+
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class FArrayKokkos {
 
@@ -13860,7 +13874,10 @@ InheritedArray2L<T>::~InheritedArray2L() {}
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#endif
+} // end namespace
+
+
+#endif // end if have Kokkos
 
 
 
