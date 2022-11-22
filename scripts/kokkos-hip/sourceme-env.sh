@@ -1,9 +1,12 @@
 module purge
 ### Load environment modules here
 module load cmake
-module load clang/13.0.0
-module load rocm/4.3.1
+#module load clang/13.0.0
+module load rocm/4.5.2
+#module load rocm/5.3.0
+#module load openmpi/4.1.1-gcc_9.4.0
 module list
+
 
 export scriptdir=`pwd`
 cd ../..
