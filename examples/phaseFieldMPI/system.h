@@ -49,6 +49,8 @@
 #include "vtk_writer_mpi_io.h"
 #include "heffte_backends.h"
 
+using namespace mtr; // matar namespace
+
 struct System
 {
     const int root = 0;

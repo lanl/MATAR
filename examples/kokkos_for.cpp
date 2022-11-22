@@ -3,7 +3,7 @@
 #include <iostream>
 #include <matar.h>
 
-
+using namespace mtr; // matar namespace
 
 
 // main

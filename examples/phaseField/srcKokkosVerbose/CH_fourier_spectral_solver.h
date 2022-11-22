@@ -3,6 +3,8 @@
 #include "sim_parameters.h"
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 class CHFourierSpectralSolver
 {
     private:

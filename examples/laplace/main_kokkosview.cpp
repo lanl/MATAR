@@ -3,6 +3,8 @@
 
 #include <matar.h>
 
+using namespace mtr; // matar namespace
+
 const int width = 1000;
 const int height = 1000;
 const double temp_tolerance = 0.01;

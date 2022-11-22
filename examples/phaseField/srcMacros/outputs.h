@@ -2,6 +2,8 @@
 
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 // function to output simulation progress
 void track_progress(int iter, int* nn, DCArrayKokkos<double> &comp);
 

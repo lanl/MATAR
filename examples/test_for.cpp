@@ -5,6 +5,7 @@
 
 #include <algorithm>  // std::max, std::min, etc.
 
+using namespace mtr; // matar namespace
 
 // main
 int main(){

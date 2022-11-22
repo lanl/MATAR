@@ -2,6 +2,8 @@
 
 #include "matar.h"
 
+using namespace mtr; // matar namespace
+
 int N = 2;
 using ArrayType = CArray <int>;
 

@@ -7,6 +7,8 @@
 
 #define EXPORT true
 
+using namespace mtr; // matar namespace
+
 void matVec(CArrayKokkos<double> &A, CArrayKokkos<double> &v, CArrayKokkos<double> &b){
     FOR_ALL(i, 0, A.dims(0),
         {
