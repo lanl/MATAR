@@ -23,5 +23,5 @@ if (KOKKOS)
     #set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_THREADS)
   endif()
 
-  target_link_libraries(halfspace_cooling matar Kokkos::kokkos)
+  target_link_libraries(halfspace_cooling matar)
 endif()

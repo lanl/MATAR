@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <chrono>
 
-#include <matar.h>
-
-using namespace mtr; // matar namespace
+#include <Kokkos_Core.hpp>
 
 const int width = 1000;
 const int height = 1000;

@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-project (laplace_mpi)
+project (test_rocm)
 
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
-  find_package(MPI REQUIRED)
   
-  add_executable(laplace_mpi laplace_mpi.cpp)
+  add_executable(test_rocm SomeClass.cpp main.cpp)
 
   add_definitions(-DHAVE_KOKKOS=1)
   if (CUDA)
@@ -14,6 +13,8 @@ if (KOKKOS)
 
   elseif (HIP)
     add_definitions(-DHAVE_HIP=1)
+    #enable_language(HIP)
+    #set_source_files_properties(SomeClass.cpp SomeClass.h PROPERTIES LANGUAGE HIP)
 
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
@@ -23,5 +24,5 @@ if (KOKKOS)
 
   endif()
 
-  target_link_libraries(laplace_mpi matar MPI::MPI_CXX)
+  target_link_libraries(test_rocm matar)
 endif()

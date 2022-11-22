@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.3)
+cmake_minimum_required(VERSION 3.8)
 
 project (mtest)
 
@@ -21,9 +21,9 @@ if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
 
   add_executable(kokkos_csr CSRKokkos.cpp)
-  target_link_libraries(kokkos_csr matar  Kokkos::kokkos)
+  target_link_libraries(kokkos_csr matar)
   add_executable(kokkos_csc CSCKokkos.cpp)
-  target_link_libraries(kokkos_csc matar Kokkos::kokkos)
+  target_link_libraries(kokkos_csc matar)
 
 
   if (CUDA)
@@ -33,14 +33,14 @@ if (KOKKOS)
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
     add_executable(parallel_hello_world parallel_hello_world.cpp)
-    target_link_libraries(parallel_hello_world matar Kokkos::kokkos)
+    target_link_libraries(parallel_hello_world matar)
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
-  target_link_libraries(mtestkokkos matar Kokkos::kokkos)
+  target_link_libraries(mtestkokkos matar)
   target_link_libraries(test_kokkos_for Kokkos::kokkos)
-  target_link_libraries(test_dual_types matar Kokkos::kokkos)
+  target_link_libraries(test_dual_types matar)
 endif()
 
 
@@ -67,15 +67,17 @@ add_subdirectory(matar_fortran)
 include_directories(sparsetests)
 add_subdirectory(sparsetests)
 
-#include_directories(laplaceMPI) 
-#add_subdirectory(laplaceMPI)    
+include_directories(test_rocm)
+add_subdirectory(test_rocm)
 
-#include_directories(phaseField/srcKokkosVerbose)  
-#add_subdirectory(phaseField/srcKokkosVerbose)  
+#include_directories(laplaceMPI)
+#add_subdirectory(laplaceMPI)
+
+#include_directories(phaseField/srcKokkosVerbose)
+#add_subdirectory(phaseField/srcKokkosVerbose)
 
 #include_directories(phaseField/srcMacros)
 #add_subdirectory(phaseField/srcMacros)
 
 #include_directories(phaseFieldMPI)
 #add_subdirectory(phaseFieldMPI)
-

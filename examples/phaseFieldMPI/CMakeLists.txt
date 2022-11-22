@@ -45,22 +45,22 @@ if (KOKKOS)
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
-    target_link_libraries(phasefield_mpi matar Kokkos::kokkos Heffte MPI::MPI_CXX)
+    target_link_libraries(phasefield_mpi matar Heffte MPI::MPI_CXX)
 
   elseif (HIP)
     add_definitions(-DHAVE_HIP=1)
-    target_link_libraries(phasefield_mpi matar Kokkos::kokkos Heffte MPI::MPI_CXX)
+    target_link_libraries(phasefield_mpi matar Heffte MPI::MPI_CXX)
 
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
-    target_link_libraries(phasefield_mpi matar Kokkos::kokkos Heffte MPI::MPI_CXX)
+    target_link_libraries(phasefield_mpi matar Heffte MPI::MPI_CXX)
 
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
-    target_link_libraries(phasefield_mpi matar Kokkos::kokkos Heffte MPI::MPI_CXX)
+    target_link_libraries(phasefield_mpi matar Heffte MPI::MPI_CXX)
   
   else()
-    target_link_libraries(phasefield_mpi matar Kokkos::kokkos Heffte MPI::MPI_CXX)
+    target_link_libraries(phasefield_mpi matar Heffte MPI::MPI_CXX)
   
   endif()
 
