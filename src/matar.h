@@ -109,8 +109,8 @@ using DefaultMemSpace  = Kokkos::Experimental::HIPSpace;
 using DefaultExecSpace = Kokkos::Experimental::HIP;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #else
-using DefaultExecSpace  = Kokkos::DefaultExecutionSpace;
-using DefaultMemSpace = Kokkos::DefaultExecutionSpace::memory_space;
+using DefaultExecSpace = Kokkos::DefaultExecutionSpace;
+using DefaultMemSpace  = Kokkos::DefaultExecutionSpace::memory_space;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 
