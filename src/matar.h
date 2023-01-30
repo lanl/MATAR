@@ -276,7 +276,7 @@ public:
 template <typename T>
 FArray<T>::FArray(){
     array_ = NULL;
-    length_ = 0;
+    length_ = order_ = 0;
 }
 
 //1D
@@ -701,7 +701,7 @@ public:
 template <typename T>
 ViewFArray<T>::ViewFArray(){
   array_ = NULL;
-  length_ = 0;
+  length_ = order_ = 0;
 }
 
 //1D
@@ -1093,7 +1093,7 @@ public:
 template <typename T>
 FMatrix<T>::FMatrix(){
     matrix_ = NULL;
-    length_ = 0;
+    length_ = order_ = 0;
 }
 
 //1D
@@ -1515,7 +1515,7 @@ public:
 template <typename T>
 ViewFMatrix<T>::ViewFMatrix() {
   matrix_ = NULL;
-  length_ = 0;
+  length_ = order_ = 0;
 }
 
 //1D
@@ -2760,7 +2760,7 @@ public:
 template <typename T>
 CMatrix<T>::CMatrix() {
     matrix_ = NULL;
-    length_ = 0;
+    length_ = order_ = 0;
 }
 
 //1D
@@ -3188,7 +3188,7 @@ public:
 template <typename T>
 ViewCMatrix<T>::ViewCMatrix(){
   matrix_ = NULL;
-  length_ = 0;
+  length_ = order_ = 0;
 }
 
 //1D
@@ -3537,7 +3537,7 @@ template <typename T>
 RaggedRightArray<T>::RaggedRightArray () {
     array_ = NULL;
     start_index_ = NULL;
-    length_ = 0;
+    length_ = dim1_ = num_saved_ = 0;
 }
 
 
@@ -3789,7 +3789,7 @@ template <typename T>
 RaggedRightArrayofVectors<T>::RaggedRightArrayofVectors () {
     array_ = NULL;
     start_index_ = NULL;
-    length_ = 0;
+    length_ = dim1_ = vector_dim_ = num_saved_ = 0;
 }
 
 
@@ -4043,7 +4043,7 @@ template <typename T>
 RaggedDownArray<T>::RaggedDownArray() {
     array_ = NULL;
     start_index_ = NULL;
-    length_ = 0;
+    length_ = dim2_ = num_saved_ = 0;
 }
 
 //overload constructor with CArray 
@@ -4273,7 +4273,7 @@ template <typename T>
 DynamicRaggedRightArray<T>::DynamicRaggedRightArray () {
     array_ = NULL;
     stride_ = NULL;
-    length_ = 0;
+    length_ = dim1_ = dim2_ = 0;
 }
 
 // Overloaded constructor
@@ -4418,7 +4418,7 @@ template <typename T>
 DynamicRaggedDownArray<T>::DynamicRaggedDownArray () {
     array_ = NULL;
     stride_ = NULL;
-    length_ = 0;
+    length_ = dim1_ = dim2_ = 0;
 }
 
 // Overloaded constructor
@@ -4663,7 +4663,11 @@ class CSRArray {
 };
 
 template<typename T>
-CSRArray<T>::CSRArray(){} 
+CSRArray<T>::CSRArray(){
+    dim1_ = dim2_ = nnz_ = 0;
+    array_ = NULL;
+    column_index_ = start_index_ = NULL;
+} 
 
 template <typename T>
 CSRArray<T>::CSRArray(CArray<T> array, CArray<size_t> column_index, CArray<size_t> start_index, size_t dim1, size_t dim2 ){
@@ -5071,6 +5075,13 @@ private: // What ought to be private ?
       ~CSCArray();
 };
 
+template<typename T>
+CSCArray<T>::CSCArray(){
+    dim1_ = dim2_ = nnz_ = 0;
+    array_ = NULL;
+    row_index_ = start_index_ = NULL;
+} 
+
 template <typename T>
 CSCArray<T>::CSCArray(CArray<T> array, CArray<size_t> row_index, CArray<size_t> start_index, size_t dim1, size_t dim2 ){
     dim1_ = dim1;
@@ -5420,7 +5431,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos() {}
+FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5797,7 +5810,9 @@ public:
 // Default constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION
-ViewFArrayKokkos<T>::ViewFArrayKokkos() {}
+ViewFArrayKokkos<T>::ViewFArrayKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T>
@@ -6130,7 +6145,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos() {}
+FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6492,7 +6509,9 @@ public:
 // Default constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION
-ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {}
+ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T>
@@ -6756,6 +6775,9 @@ private:
     TArray1D this_array_;
 
 public:
+    // Data member to access host view
+    ViewFArray <T> host;
+
     DFArrayKokkos();
     
     DFArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -6827,9 +6849,6 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
-    // Data member to access host view
-    ViewFArray <T> host;
-
     // Method that update host view
     void update_host();
 
@@ -6844,7 +6863,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos() {}
+DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -7241,7 +7262,10 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {}
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {
+    length_ = order_ = 0;
+    temp_inp_array_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -7508,7 +7532,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFArrayKokkos<T,Layout,E
         temp_inp_array_ = temp.temp_inp_array_;
         this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
-	host = temp.host;
+	    host = temp.host;
     }
     
     return *this;
@@ -7674,7 +7698,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos() {}
+DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8067,7 +8093,10 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos() {}
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos() {
+    length_ = order_ = 0;
+    temp_inp_matrix_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8480,7 +8509,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {}
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8837,7 +8868,10 @@ public:
 // Default constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION
-ViewCArrayKokkos<T>::ViewCArrayKokkos() {}
+ViewCArrayKokkos<T>::ViewCArrayKokkos() {
+    length_ = order_ = 0;
+    this_array_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T>
@@ -9166,7 +9200,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos() {}
+CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9525,7 +9561,10 @@ public:
 // Default constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION
-ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){ }
+ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){
+    length_ = order_ = 0;
+    this_matrix_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T>
@@ -9779,6 +9818,9 @@ private:
     TArray1D this_array_; 
 
 public:
+    // Data member to access host view
+    ViewCArray <T> host;
+
     DCArrayKokkos();
     
     DCArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -9854,9 +9896,6 @@ public:
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const; 
 
-    // Data member to access host view
-    ViewCArray <T> host;
-
     // Method that update host view
     void update_host();
 
@@ -9871,7 +9910,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {}
+DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -10270,7 +10311,10 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos() {}
+DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos() {
+    length_ = order_ = 0;
+    temp_inp_array_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -10617,6 +10661,9 @@ private:
     TArray1D this_matrix_;
 
 public:
+    // Data member to access host view
+    ViewCMatrix <T> host;
+
     DCMatrixKokkos();
     
     DCMatrixKokkos(size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
@@ -10688,9 +10735,6 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
-    // Data member to access host view
-    ViewCMatrix <T> host;
-
     // Method that update host view
     void update_host();
 
@@ -10705,7 +10749,9 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos() {}
+DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos() {
+    length_ = order_ = 0;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -11098,7 +11144,10 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos() {}
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos() {
+    length_ = order_ = 0;
+    temp_inp_matrix_ = NULL;
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -11570,7 +11619,9 @@ public:
 }; // End of RaggedRightArray
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayKokkos() {}
+RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayKokkos() {
+    dim1_ = length_ = 0;
+}
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -11970,7 +12021,9 @@ public:
 }; // End of RaggedRightArrayofVectorsKokkos
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayofVectorsKokkos() {}
+RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayofVectorsKokkos() {
+    dim1_ = length_ = vector_dim_ = 0;
+}
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -12275,7 +12328,9 @@ public:
 }; // End of RaggedDownArray
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedDownArrayKokkos() {}
+RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedDownArrayKokkos() {
+    dim2_ = length_ = 0;
+}
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -12576,7 +12631,9 @@ public:
 
 //nothing
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos () {}
+DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRightArrayKokkos () {
+    dim1_ = dim2_ = length_ = 0;
+}
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -12751,7 +12808,9 @@ public:
 
 //nothing
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos () {}
+DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDownArrayKokkos () {
+    dim1_ = dim2_ = length_ = 0;
+}
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -13040,7 +13099,9 @@ class CSRArrayKokkos {
 };
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CSRArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::CSRArrayKokkos() {} 
+CSRArrayKokkos<T, Layout,ExecSpace, MemoryTraits>::CSRArrayKokkos() {
+    dim1_ = dim2_ = nnz_ = 0;
+} 
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
@@ -13503,7 +13564,9 @@ private: // What ought to be private ?
 };
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos() {}
+CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos() {
+    dim1_ = dim2_ = nnz_ = 0;
+}
 
  
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
