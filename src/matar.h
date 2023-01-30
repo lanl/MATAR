@@ -7264,7 +7264,7 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {
     length_ = order_ = 0;
-    inp_array = NULL;
+    temp_inp_array_ = NULL;
 }
 
 // Overloaded 1D constructor
@@ -7532,7 +7532,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFArrayKokkos<T,Layout,E
         temp_inp_array_ = temp.temp_inp_array_;
         this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
-	host = temp.host;
+	    host = temp.host;
     }
     
     return *this;
