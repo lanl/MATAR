@@ -59,7 +59,7 @@
 // -----------------------------------------
 // a macro to select the name of a macro based on the number of inputs
 #define \
-    GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, NAME,...) NAME
+    GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, NAME,...) NAME
 
 
 // -----------------------------------------
@@ -86,7 +86,7 @@
     RUN_CLASS(fcn) \
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, 1), \
                           KOKKOS_CLASS_LAMBDA(const int ijkabc){fcn} )
-			  
+              
 
 // the FOR_ALL loop
 #define \
@@ -108,7 +108,7 @@
 
 #define \
     FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
 
 
 // the DO_ALL loop
@@ -131,7 +131,7 @@
 
 #define \
     DO_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
 
 
 // the REDUCE SUM loop
@@ -156,7 +156,7 @@
 
 #define \
     REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
 
 // the DO_REDUCE_SUM loop
@@ -181,7 +181,7 @@
 
 #define \
     DO_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
 
 
 // the REDUCE MAX loop
@@ -208,7 +208,7 @@
 
 #define \
     REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
 
 
 // the DO_REDUCE_MAX loop
@@ -235,7 +235,7 @@
 
 #define \
     DO_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
 
 
 
@@ -263,7 +263,7 @@
 
 #define \
     REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
 
 
 // the DO_REDUCE MIN loop
@@ -290,7 +290,7 @@
 
 #define \
     DO_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
 
 
 
@@ -314,7 +314,7 @@ Kokkos::parallel_for( \
 
 #define \
 FOR_ALL_CLASS(...) \
-GET_MACRO(__VA_ARGS__, _12, _11, FORCLASS3D, _9, _8, FORCLASS2D, _6, _5, FORCLASS1D)(__VA_ARGS__)
+GET_MACRO(__VA_ARGS__, _13, _12, _11, FORCLASS3D, _9, _8, FORCLASS2D, _6, _5, FORCLASS1D)(__VA_ARGS__)
 
 
 // the REDUCE SUM loop
@@ -339,7 +339,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 REDUCE_SUM_CLASS(...) \
-GET_MACRO(__VA_ARGS__, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__)
+GET_MACRO(__VA_ARGS__, _13, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__)
 
 
 
@@ -368,7 +368,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 REDUCE_MAX_CLASS(...) \
-GET_MACRO(__VA_ARGS__, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__)
+GET_MACRO(__VA_ARGS__, _13, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__)
 
 
 // the REDUCE MIN loop with variables in a class
@@ -395,7 +395,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 REDUCE_MIN_CLASS(...) \
-GET_MACRO(__VA_ARGS__, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
+GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
 
 #endif
 
@@ -406,12 +406,9 @@ GET_MACRO(__VA_ARGS__, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(
 
 
 // -----------------------------------------
-// The for_all and for_reduce functions that
-// are used with the non-kokkos MACROS
+// The for_all is used for serial loops and
+// with the non-kokkos MACROS
 // -----------------------------------------
-
-#ifndef HAVE_KOKKOS
-#include <limits>  // for the max and min values of a int, double, etc.
 
 template <typename F>
 void for_all (int i_start, int i_end,
@@ -454,6 +451,136 @@ void for_all (int i_start, int i_end,
     
 }; // end for_all
 
+
+template <typename F>
+void for_all_delta (int i_start, int i_end, int i_delta,
+                    const F &lambda_fcn){
+    
+    for (int i=i_start; i<i_end; i+=i_delta){
+        lambda_fcn(i);
+    }
+    
+}; // end for_all
+
+template <typename F>
+void for_all_delta (int i_start, int i_end, int i_delta,
+                    int j_start, int j_end, int j_delta,
+                    const F &lambda_fcn){
+    
+    for (int i=i_start; i<i_end; i+=i_delta){
+        for (int j=j_start; j<j_end; j+=j_delta){
+            lambda_fcn(i,j);
+        }
+    }
+    
+}; // end for_all
+
+
+template <typename F>
+void for_all_delta (int i_start, int i_end, int i_delta,
+                    int j_start, int j_end, int j_delta,
+                    int k_start, int k_end, int k_delta,
+                    const F &lambda_fcn){
+    
+    for (int i=i_start; i<i_end; i+=i_delta){
+        for (int j=j_start; j<j_end; j+=j_delta){
+            for (int k=k_start; k<k_end; k+=k_delta){
+                lambda_fcn(i,j,k);
+            }
+        }
+    }
+    
+}; // end for_all
+
+
+
+// the FOR_LOOP
+// 1D FOR loop has 4 inputs
+#define \
+    FOR1DLOOP(i, x0, x1, fcn) \
+    for_all( (x0), (x1), \
+             [&]( const int (i) ){fcn} )
+
+// 1D FOR loop with increment has 5 inputs
+#define \
+    FOR1DLOOPDELTA(i, x0, x1, i_delta, fcn) \
+    for_all_delta( (x0), (x1), (i_delta), \
+             [&]( const int (i) ){fcn} )
+
+// 2D FOR loop has 7 inputs
+#define \
+    FOR2DLOOP(i, x0, x1, j, y0, y1, fcn)  \
+    for_all( (x0), (x1), (y0), (y1), \
+             [&]( const int (i), const int (j) ){fcn} )
+
+// 2D FOR loop with increments has 9 inputs
+#define \
+    FOR2DLOOPDELTA(i, x0, x1, i_delta, j, y0, y1, j_delta, fcn)  \
+    for_all_delta( (x0), (x1), (i_delta), (y0), (y1), (j_delta), \
+                [&]( const int (i), const int (j) ){fcn} )
+
+// 3D FOR loop has 10 inputs
+#define \
+    FOR3DLOOP(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    for_all( (x0), (x1), (y0), (y1), (z0), (z1), \
+             [&]( const int (i), const int (j), const int (k) ) {fcn} )
+
+// 3D FOR loop with increments has 13 inputs
+#define \
+    FOR3DLOOPDELTA(i, x0, x1, i_delta, j, y0, y1, j_delta, k, z0, z1, k_delta, fcn) \
+    for_all_delta( (x0), (x1), (i_delta), (y0), (y1), (j_delta), (z0), (z1), (k_delta), \
+             [&]( const int (i), const int (j), const int (k) ) {fcn} )
+
+#define \
+    FOR_LOOP(...) \
+    GET_MACRO(__VA_ARGS__, FOR3DLOOPDELTA, _12, _11, FOR3DLOOP, FOR2DLOOPDELTA, _8, FOR2DLOOP, _6, FOR1DLOOPDELTA, FOR1DLOOP)(__VA_ARGS__)
+
+
+// the DO_ALL loop
+// 1D DOloop has 4 inputs
+#define \
+    DO1DLOOP(i, x0, x1, fcn) \
+    for_all( (x0), (x1)+1, \
+             [&]( const int (i) ){fcn} )
+// 1D FOR loop with increment has 5 inputs
+#define \
+    DO1DLOOPDELTA(i, x0, x1, i_delta, fcn) \
+    for_all_delta( (x0), (x1)+1, (i_delta), \
+             [&]( const int (i) ){fcn} )
+// 2D DO loop has 7 inputs
+#define \
+    DO2DLOOP(i, x0, x1, j, y0, y1, fcn)  \
+    for_all( (x0), (x1)+1, (y0), (y1)+1, \
+             [&]( const int (i), const int (j) ){fcn} )
+// 2D FOR loop with increments has 9 inputs
+#define \
+    DO2DLOOPDELTA(i, x0, x1, i_delta, j, y0, y1, j_delta, fcn)  \
+    for_all_delta( (x0), (x1)+1, (i_delta), (y0), (y1)+1, (j_delta), \
+                [&]( const int (i), const int (j) ){fcn} )
+// 3D DO loop has 10 inputs
+#define \
+    DO3DLOOP(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    for_all( (x0), (x1)+1, (y0), (y1)+1, (z0), (z1)+1, \
+             [&]( const int (i), const int (j), const int (k) ) {fcn} )
+// 3D FOR loop with increments has 13 inputs
+#define \
+    DO3DLOOPDELTA(i, x0, x1, i_delta, j, y0, y1, j_delta, k, z0, z1, k_delta, fcn) \
+    for_all_delta( (x0), (x1)+1, (i_delta), (y0), (y1)+1, (j_delta), (z0), (z1)+1, (k_delta), \
+             [&]( const int (i), const int (j), const int (k) ) {fcn} )
+#define \
+    DO_LOOP(...) \
+    GET_MACRO(__VA_ARGS__, DO3DLOOPDELTA, _12, _11, DO3DLOOP, DO2DLOOPDELTA, _8, DO2DLOOP, _6, DO1DLOOPDELTA, DO1DLOOP)(__VA_ARGS__)
+
+
+
+
+// -----------------------------------------
+// The for_all and for_reduce functions that
+// are used with the non-kokkos MACROS
+// -----------------------------------------
+
+#ifndef HAVE_KOKKOS
+#include <limits>  // for the max and min values of a int, double, etc.
 
 // SUM
 template <typename T, typename F>
@@ -599,6 +726,7 @@ void reduce_max (int i_start, int i_end,
 
 #endif  // if not kokkos
 
+
 // -----------------------------------------
 // MACROS for none kokkos loops
 // -----------------------------------------
@@ -631,7 +759,7 @@ void reduce_max (int i_start, int i_end,
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
 
 
 // the DO_ALL loop
@@ -652,7 +780,7 @@ void reduce_max (int i_start, int i_end,
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     DO_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
 
 
 // the REDUCE loops, no kokkos
@@ -674,7 +802,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
 
 // DO_REDUCE_SUM
@@ -696,7 +824,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     DO_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
 
 
 // Reduce max
@@ -718,7 +846,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
 
 
 // DO_REDUCE_MAX
@@ -740,7 +868,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     DO_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
 
 
 // reduce min
@@ -762,7 +890,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
 
 
 // DO_REDUCE_MIN
@@ -784,7 +912,7 @@ void reduce_max (int i_start, int i_end,
 
 #define \
     DO_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
+    GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
 
 
 #endif  // if not kokkos
