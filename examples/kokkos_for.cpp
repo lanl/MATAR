@@ -229,6 +229,122 @@ int main(){
     
     printf("result min 3D matrix = %i\n", result);
 
+
+    // testing serial FOR and DO loop macros.  These
+    // serial loops work on the host or the device.
+    // the serial FOR and DO macros are intended to
+    // give the user a simple syntax to replace
+    // the for(...){} syntax
+
+    CArray <int> host_array1D(5);
+    CArray <int> host_array2D(5,5);
+    CArray <int> host_array3D(2,2,2);
+
+    FMatrix <int> host_matrix1D(3);
+    FMatrix <int> host_matrix2D(3,3);
+    FMatrix <int> host_matrix3D(3,3,3);
+
+    FOR_LOOP(i, 0, 5, {
+        host_array1D(i) = i;
+    });
+    printf("value in host array1D = \n");
+    FOR_LOOP(i, 0, 5, {
+        printf(" %d \n", host_array1D(i));
+    });
+
+    FOR_LOOP(i, 0, 5,
+             j, 0, 5, {
+        host_array2D(i,j) = i*j;
+    });
+    printf("value in host array2D = \n");
+    FOR_LOOP(i, 0, 5,
+             j, 0, 5, {
+        printf(" %d ", host_array2D(i,j));
+        if(j==4) printf("\n");
+    });
+
+    
+    FOR_LOOP(i, 0, 2,
+             j, 0, 2,
+             k, 0, 2, {
+        host_array3D(i,j,k) = i*j*k;
+    });
+    printf("value in host array3D = \n");
+    FOR_LOOP(i, 0, 2,
+             j, 0, 2,
+             k, 0, 2, {
+        printf(" %d ", host_array3D(i,j,k));
+        if(k==1) printf("\n");
+    });
+
+    DO_LOOP(i, 1, 3, {
+        host_matrix1D(i) = i;
+    });
+    printf("value in host matrix1D = \n");
+    DO_LOOP(i, 1, 3, {
+        printf(" %d \n", host_matrix1D(i));
+    });
+
+    DO_LOOP(j, 1, 3,
+            i, 1, 3, {
+        host_matrix2D(i,j) = i*j;
+    });
+    printf("value in host matrix2D = \n");
+    DO_LOOP(j, 1, 3,
+            i, 1, 3, {
+        printf(" %d ", host_matrix2D(i,j));
+        if(i==3) printf("\n");
+    });
+
+    DO_LOOP(k, 1, 3,
+            j, 1, 3,
+            i, 1, 3, {
+        host_matrix3D(i,j,k) = i*j*k;
+    });
+
+    printf("value in host matrix3D = \n");
+    DO_LOOP(k, 1, 3,
+            j, 1, 3,
+            i, 1, 3, {
+        printf(" %d ", host_matrix3D(i,j,k));
+        if(i==3) printf("\n");
+        if(j==3 && i==3 ) printf("--\n");
+    });
+
+
+    printf("testing for loop increments of 2 = \n");
+    FOR_LOOP(i, 0, 6, 2, {
+        printf(" %d \n", i);
+    });
+    printf("-- \n");
+    FOR_LOOP(i, 0, 6, 2,
+             j, 0, 6, 2, {
+        printf(" %d %d \n", i, j);
+    });
+    printf("-- \n");
+    FOR_LOOP(i, 0, 6, 2,
+             j, 0, 6, 2,
+             k, 0, 6, 2, {
+        printf(" %d %d %d \n", i, j, k);
+    });
+
+
+    printf("testing do loop increments of 2 = \n");
+    DO_LOOP(i, 1, 6, 2, {
+        printf(" %d \n", i);
+    });
+    printf("-- \n");
+    DO_LOOP(i, 1, 6, 2,
+            j, 1, 6, 2, {
+        printf(" %d %d \n", i, j);
+    });
+    printf("-- \n");
+    DO_LOOP(i, 1, 6, 2,
+            j, 1, 6, 2,
+            k, 1, 6, 2, {
+        printf(" %d %d %d \n", i, j, k);
+    });
+
     printf("done\n");
 
 }
