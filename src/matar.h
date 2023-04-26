@@ -277,6 +277,9 @@ template <typename T>
 FArray<T>::FArray(){
     array_ = NULL;
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 //1D
@@ -702,6 +705,9 @@ template <typename T>
 ViewFArray<T>::ViewFArray(){
   array_ = NULL;
   length_ = order_ = 0;
+  for (int i = 0; i < 7; i++) {
+      dims_[i] = 0;
+  }
 }
 
 //1D
@@ -1094,6 +1100,9 @@ template <typename T>
 FMatrix<T>::FMatrix(){
     matrix_ = NULL;
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 //1D
@@ -1516,6 +1525,9 @@ template <typename T>
 ViewFMatrix<T>::ViewFMatrix() {
   matrix_ = NULL;
   length_ = order_ = 0;
+  for (int i = 0; i < 7; i++) {
+      dims_[i] = 0;
+  }
 }
 
 //1D
@@ -1912,6 +1924,9 @@ template <typename T>
 CArray<T>::CArray() {
     array_ = NULL;
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 //1D
@@ -2345,6 +2360,9 @@ template <typename T>
 ViewCArray<T>::ViewCArray() {
   array_ = NULL;
   length_ = order_ = 0;
+  for (int i = 0; i < 7; i++) {
+      dims_[i] = 0;
+  }
 }
 
 //1D
@@ -2761,6 +2779,9 @@ template <typename T>
 CMatrix<T>::CMatrix() {
     matrix_ = NULL;
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 //1D
@@ -3189,6 +3210,9 @@ template <typename T>
 ViewCMatrix<T>::ViewCMatrix(){
   matrix_ = NULL;
   length_ = order_ = 0;
+  for (int i = 0; i < 7; i++) {
+      dims_[i] = 0;
+  }
 }
 
 //1D
@@ -5433,6 +5457,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -5812,6 +5839,9 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -6147,6 +6177,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -6511,6 +6544,9 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -6865,6 +6901,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -7265,6 +7304,9 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {
     length_ = order_ = 0;
     temp_inp_array_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -7700,6 +7742,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -8096,6 +8141,9 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos() {
     length_ = order_ = 0;
     temp_inp_matrix_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -8511,6 +8559,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -8871,6 +8922,9 @@ KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::ViewCArrayKokkos() {
     length_ = order_ = 0;
     this_array_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -9202,6 +9256,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -9564,6 +9621,9 @@ KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){
     length_ = order_ = 0;
     this_matrix_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -9912,6 +9972,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -10314,6 +10377,9 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos() {
     length_ = order_ = 0;
     temp_inp_array_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -10751,6 +10817,9 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos() {
     length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
@@ -11147,6 +11216,9 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos() {
     length_ = order_ = 0;
     temp_inp_matrix_ = NULL;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
