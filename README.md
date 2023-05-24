@@ -90,6 +90,7 @@ for (int i=0; i<4; i++){
 
 
 ```
+More information about the capabilities and usage of MATAR can be found in this presentation [here](https://www.researchgate.net/publication/360744549_General_purpose_GPU_programming_made_easy).
     
 ## Cloning the code
 If your SSH keys are set in github, then from the terminal type:
