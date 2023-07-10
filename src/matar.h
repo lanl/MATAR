@@ -7215,24 +7215,24 @@ private:
 public:
     DViewFArrayKokkos();
     
-    DViewFArrayKokkos(T * inp_array, size_t dim0);
+    DViewFArrayKokkos(T * inp_array, size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1);
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2);
-
-    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3);
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4);
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5);
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6);
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -7311,7 +7311,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0) {
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, const std::string& tag_string) {
     //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -7319,7 +7319,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 1;
     length_ = dim0;
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7330,7 +7330,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1) {
+DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1, const std::string& tag_string) {
     //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     //using TArray1Dtemp = TArray1D::HostMirror;
@@ -7340,7 +7340,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 2;
     length_ = (dim0 * dim1);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7351,7 +7351,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
-                              size_t dim2) {
+                              size_t dim2, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -7360,7 +7360,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 3;
     length_ = (dim0 * dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7371,7 +7371,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3) {
+                              size_t dim2, size_t dim3, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -7381,7 +7381,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 4;
     length_ = (dim0 * dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7393,7 +7393,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, 
-                              size_t dim4) {
+                              size_t dim4, const std::string& tag_string) {
 
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -7405,7 +7405,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 5;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7417,7 +7417,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, 
-                              size_t dim4, size_t dim5) {
+                              size_t dim4, size_t dim5, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -7429,7 +7429,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 6;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -7442,7 +7442,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
-                              size_t dim6) {
+                              size_t dim6, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -7455,7 +7455,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     order_ = 7;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -8052,24 +8052,24 @@ private:
 public:
     DViewFMatrixKokkos();
     
-    DViewFMatrixKokkos(T * inp_matrix, size_t dim1);
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2);
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3);
-
-    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4);
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4, size_t dim5);
+                 size_t dim4, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4, size_t dim5, size_t dim6);
+                 size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
                  size_t dim4, size_t dim5, size_t dim6,
-                 size_t dim7);
+                 size_t dim7, const std::string& tag_string = DEFAULTSTRINGMATRIX);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -8148,13 +8148,13 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1) {
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string) {
     
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8165,14 +8165,14 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2) {
+DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8183,7 +8183,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
-                              size_t dim3) {
+                              size_t dim3, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -8191,7 +8191,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8202,7 +8202,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
-                              size_t dim3, size_t dim4) {
+                              size_t dim3, size_t dim4, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -8211,7 +8211,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8223,7 +8223,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4, 
-                              size_t dim5) {
+                              size_t dim5, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -8233,7 +8233,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8245,7 +8245,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4, 
-                              size_t dim5, size_t dim6) {
+                              size_t dim5, size_t dim6, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -8256,7 +8256,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -8269,7 +8269,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4,
                               size_t dim5, size_t dim6,
-                              size_t dim7) {
+                              size_t dim7, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -8281,7 +8281,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -10288,24 +10288,24 @@ private:
 public:
     DViewCArrayKokkos();
     
-    DViewCArrayKokkos(T * inp_array, size_t dim0);
+    DViewCArrayKokkos(T * inp_array, size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1);
+    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2);
-
-    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3);
+    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4);
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5);
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6);
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -10384,7 +10384,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0) {
+DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, const std::string& tag_string) {
     //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -10392,7 +10392,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 1;
     length_ = dim0;
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10403,7 +10403,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1) {
+DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1, const std::string& tag_string) {
     //using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     //using TArray1Dtemp = TArray1D::HostMirror;
@@ -10413,7 +10413,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 2;
     length_ = (dim0 * dim1);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10424,7 +10424,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
-                              size_t dim2) {
+                              size_t dim2, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -10433,7 +10433,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 3;
     length_ = (dim0 * dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10444,7 +10444,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3) {
+                              size_t dim2, size_t dim3, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -10454,7 +10454,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 4;
     length_ = (dim0 * dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10466,7 +10466,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, 
-                              size_t dim4) {
+                              size_t dim4, const std::string& tag_string) {
 
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -10478,7 +10478,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 5;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10490,7 +10490,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, 
-                              size_t dim4, size_t dim5) {
+                              size_t dim4, size_t dim5, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -10502,7 +10502,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 6;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -10515,7 +10515,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_array, size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
-                              size_t dim6) {
+                              size_t dim6, const std::string& tag_string) {
     //using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     dims_[0] = dim0;
@@ -10528,7 +10528,7 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
     order_ = 7;
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_array_host_ = TArray1DHost(inp_array, length_);
+    this_array_host_ = TArray1DHost(tag_string, inp_array, length_);
     // Assign temp point to inp_array pointer that is passed in
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
@@ -11127,24 +11127,24 @@ private:
 public:
     DViewCMatrixKokkos();
     
-    DViewCMatrixKokkos(T * inp_matrix, size_t dim1);
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2);
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX;
 
-    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3);
-
-    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4);
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4, size_t dim5);
+                 size_t dim4, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
-                 size_t dim4, size_t dim5, size_t dim6);
+                 size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGMATRIX);
+
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
+                 size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3,
                  size_t dim4, size_t dim5, size_t dim6,
-                 size_t dim7);
+                 size_t dim7, const std::string& tag_string = DEFAULTSTRINGMATRIX);
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -11223,13 +11223,13 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1) {
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string) {
     
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11240,14 +11240,14 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2) {
+DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11258,7 +11258,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
-                              size_t dim3) {
+                              size_t dim3, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -11266,7 +11266,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11277,7 +11277,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
-                              size_t dim3, size_t dim4) {
+                              size_t dim3, size_t dim4, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -11286,7 +11286,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11298,7 +11298,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4, 
-                              size_t dim5) {
+                              size_t dim5, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -11308,7 +11308,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11320,7 +11320,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4, 
-                              size_t dim5, size_t dim6) {
+                              size_t dim5, size_t dim6, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -11331,7 +11331,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
@@ -11344,7 +11344,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2,
                               size_t dim3, size_t dim4,
                               size_t dim5, size_t dim6,
-                              size_t dim7) {
+                              size_t dim7, const std::string& tag_string) {
     
     dims_[0] = dim1;
     dims_[1] = dim2;
@@ -11356,7 +11356,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_matrix_host_ = TArray1DHost(tag_string, inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
