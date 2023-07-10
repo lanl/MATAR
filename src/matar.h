@@ -11129,7 +11129,7 @@ public:
     
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
-    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX;
+    DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGMATRIX);
 
