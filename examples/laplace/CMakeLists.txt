@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-project (laplace)
-
 if (NOT KOKKOS)
   add_executable(carray_right main_carray_right.cpp)
   add_executable(carray_wrong main_carray_wrong.cpp)
