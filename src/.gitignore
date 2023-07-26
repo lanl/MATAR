@@ -1,0 +1,5 @@
+install-kokkos-serial
+install-kokkos-openmp
+install-kokkos-cuda
+install-kokkos-cuda-amp
+install-kokkos-hip

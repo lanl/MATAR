@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
 
-project (mtest)
-
 add_executable(mtest main.cpp)
 
 if (NOT KOKKOS)
@@ -51,6 +49,9 @@ if (NOT HIP)
     include_directories(virtualFcnKokkos)
     add_subdirectory(virtualFcnKokkos)
 endif()
+
+include_directories(virtualFcnMATAR)
+add_subdirectory(virtualFcnMATAR)
 
 include_directories(laplace)
 add_subdirectory(laplace)
