@@ -8,6 +8,10 @@ endif ()
 
 add_library(matar matar.cpp matar.h)
 
+target_include_directories(matar PUBLIC 
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
 if (KOKKOS)
   set_target_properties(matar PROPERTIES COMPILE_DEFINITIONS HAVE_KOKKOS)
   if (CUDA)
