@@ -51,8 +51,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${VECTOR_CXX_FLAGS}")
 include_directories(src)
 add_subdirectory(src)
 
-include_directories(examples)
-add_subdirectory(examples)
+if (BUILD_EXAMPLES)
+    include_directories(examples)
+    add_subdirectory(examples)
+endif()
 
 if (TEST)
   include_directories(test)

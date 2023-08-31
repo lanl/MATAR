@@ -7,6 +7,7 @@ cd ${MATAR_BUILD_DIR}
 OPTIONS=(
 -D KOKKOS=ON
 -D OPENMP=ON
+-D BUILD_EXAMPLES=ON
 -D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib64/cmake/Kokkos
 )
 set -x

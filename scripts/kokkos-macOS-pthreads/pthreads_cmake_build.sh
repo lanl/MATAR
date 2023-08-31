@@ -7,6 +7,7 @@ cd ${MATAR_BUILD_DIR}
 OPTIONS=(
 -D KOKKOS=ON
 -D THREADS=ON
+-D BUILD_EXAMPLES=ON
 -D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib/cmake/Kokkos
 )
 set -x
