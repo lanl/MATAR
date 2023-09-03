@@ -14015,8 +14015,123 @@ InheritedArray2L<T>::~InheritedArray2L() {}
 
 
 
+// simple data type names
+namespace mtr
+{
+    // dense host (only cpu) types
+    template <typename T>
+    using CArrayHost = CArray <T>;
+
+    template <typename T>
+    using CMatrixHost = CMatrix <T>;
+
+    template <typename T>
+    using FArrayHost = FArray <T>;
+    
+    template <typename T>
+    using FMatrixHost = FMatrix <T>;
+
+    template <typename T>
+    using ViewCArrayHost = ViewCArray <T>;
+    
+    template <typename T>
+    using ViewCMatrixHost = ViewCMatrix <T>;
+    
+    template <typename T>
+    using ViewFArrayHost = ViewFArray <T>;
+    
+    template <typename T>
+    using ViewFMatrixHost = ViewFMatrix <T>;
 
 
+    // ragged and sparse host (only cpu) types
+    template <typename T>
+    using RaggedCArrayHost = RaggedRightArray <T>;
+
+    template <typename T>
+    using RaggedFArrayHost = RaggedDownArray <T>;
+
+    template <typename T>
+    using DynamicRaggedCArrayHost = DynamicRaggedRightArray <T>;
+
+    template <typename T>
+    using DynamicRaggedFArrayHost = DynamicRaggedDownArray <T>;
+
+    template <typename T>
+    using CSRArrayHost = CSRArray <T>;
+
+    template <typename T>
+    using CSCArrayHost = CSCArray <T>;
+
+
+} // end namespace
+
+
+#ifdef HAVE_KOKKOS
+namespace mtr
+{
+    // dense device types
+    template <typename T>
+    using CArrayDevice = CArrayKokkos <T>;
+
+    template <typename T>
+    using CMatrixDevice = CMatrixKokkos <T>;
+    
+    template <typename T>
+    using FArrayDevice = FArrayKokkos <T>;
+    
+    template <typename T>
+    using FMatrixDevice = FMatrixKokkos <T>;
+
+    template <typename T>
+    using ViewCArrayDevice = ViewCArrayKokkos <T>;
+    
+    template <typename T>
+    using ViewCMatrixDevice = ViewCMatrixKokkos <T>;
+    
+    template <typename T>
+    using ViewFArrayDevice = ViewFArrayKokkos <T>;
+    
+    template <typename T>
+    using ViewFMatrixDevice = ViewFMatrixKokkos <T>;
+    
+
+    // ragged and sparse device types
+    template <typename T>
+    using RaggedCArrayDevice = RaggedRightArrayKokkos <T>;
+
+    template <typename T>
+    using RaggedFArrayDevice = RaggedDownArrayKokkos <T>;
+
+    template <typename T>
+    using DynamicRaggedCArrayDevice = DynamicRaggedRightArrayKokkos <T>;
+    
+    template <typename T>
+    using DynamicRaggedFArrayDevice = DynamicRaggedDownArrayKokkos <T>;
+
+    template <typename T>
+    using CSRArrayDevice = CSRArrayKokkos <T>;
+    
+    template <typename T>
+    using CSCArrayDevice = CSCArrayKokkos <T>;
+
+
+    // dual dense types
+    template <typename T>
+    using CArrayDual = DCArrayKokkos <T>;
+    
+    template <typename T>
+    using CMatrixDual = DCMatrixKokkos <T>;
+    
+    template <typename T>
+    using FArrayDual = DFArrayKokkos <T>;
+    
+    template <typename T>
+    using FMatrixDual = DFMatrixKokkos <T>;
+
+
+} // end namespace
+#endif // end if have Kokkos for simple data type names
 
 
 #endif // MATAR_H
