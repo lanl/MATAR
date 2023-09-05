@@ -470,7 +470,7 @@ int main(int argc, char *argv[]) {
 	// -- functions exectuted on device inside a parallel for loop ---
 	// A parallel loop
 	FOR_ALL(i,0,1,{
-	    pass_by_ref(fmk4D); 
+	    pass_by_ref(fmk4D);
 	    pass_by_val(fmk4D);
 	});
 	Kokkos::fence();
@@ -485,7 +485,7 @@ int main(int argc, char *argv[]) {
 	FOR_ALL(i,0,1,{
 	    pass_by_ref(fmk4D);
 	});
-	Kokkos::fence();    
+	Kokkos::fence();
 
 	
 	// call a function that has kokkos parallel loops inside it
@@ -523,7 +523,7 @@ int main(int argc, char *argv[]) {
 	FOR_ALL(i,1,2,{
 	    method_a(fmk4D);
 	});
-	Kokkos::fence();  
+	Kokkos::fence();
 	
 	
 	// -----------------------
@@ -539,14 +539,14 @@ int main(int argc, char *argv[]) {
 
 	// find and execute the model selected
 	std::visit(overloaded {
-            [&fmk4D](ModelA model) { 
-	        printf("ModelA is being executed\n"); 
+            [&fmk4D](ModelA model) {
+	        printf("ModelA is being executed\n");
 		
 		model(fmk4D);
 
 	    },
-            [&fmk4D](ModelB model) { 
-	        printf("ModelB is being executed\n"); 
+            [&fmk4D](ModelB model) {
+	        printf("ModelB is being executed\n");
 		model(fmk4D);
 	    }
         }, my_model);
@@ -566,12 +566,12 @@ int main(int argc, char *argv[]) {
 	for (int mat_id=0; mat_id<3; mat_id++){
 	// find and execute the model selected
 	std::visit(overloaded {
-            [&fmk4D](ModelA model) { 
-	        printf("ModelA is being executed\n"); 
+            [&fmk4D](ModelA model) {
+	        printf("ModelA is being executed\n");
 		model(fmk4D);
 	    },
-            [&fmk4D](ModelB model) { 
-	        printf("ModelB is being executed\n"); 
+            [&fmk4D](ModelB model) {
+	        printf("ModelB is being executed\n");
 		model(fmk4D);
 	    }
         }, mat_models(mat_id));
@@ -588,24 +588,24 @@ int main(int argc, char *argv[]) {
 	
 	    // find and execute the model selected
 	    std::visit(overloaded {
-        	[&fmk4D](MethodA method) { 
+        	[&fmk4D](MethodA method) {
 	            printf("ModelA is being executed\n");
 
 		    // e.g., loop over the cells in the mesh in parallel
 		    FOR_ALL(i,1,2,{
 	        	method(fmk4D);
 	            });
-		    Kokkos::fence();  
+		    Kokkos::fence();
 
 		},
-        	[&fmk4D](MethodB method) { 
-	            printf("ModelB is being executed\n"); 
+        	[&fmk4D](MethodB method) {
+	            printf("ModelB is being executed\n");
 
 		    // e.g., loop over the cells in the mesh in parallel
 		    FOR_ALL(i,1,2,{
 	        	method(fmk4D);
 	            });
-		    Kokkos::fence();  
+		    Kokkos::fence();
 		}
             }, mat_methods(mat_id));
 	    
@@ -622,7 +622,7 @@ int main(int argc, char *argv[]) {
 	
 	printf("\nDual views\n");
 	
-	code_data_t my_code_data;  // struct with arrays of data 
+	code_data_t my_code_data;  // struct with arrays of data
 
 	
 	// create a dual view of the data held inside my_code_data struct
@@ -631,21 +631,21 @@ int main(int argc, char *argv[]) {
 	
 	printf("modifying the dual view fields on the device\n");
 	
-	// modify the values in field one on the device 
+	// modify the values in field one on the device
     	FOR_ALL(i,0,100,{
 	     field_one(i) = 12.345;
 	});
 	Kokkos::fence();
-	field_one.update_host();  // copy data from devise to the host 
+	field_one.update_host();  // copy data from devise to the host
 	
 	printf("dual view of field_one = %f, struct field_one = %f \n", field_one.host(0), my_code_data.field_one[0]);
 	
-	// modify the values in field two on the device 
+	// modify the values in field two on the device
     	FOR_ALL(i,0,200,{
 	     field_two(i) = 3;
 	});
 	Kokkos::fence();
-	field_two.update_host();  // copy data from devise to the host 
+	field_two.update_host();  // copy data from devise to the host
 	
 	printf("dual view of field_two = %i, struct field_two = %i \n", field_two.host(0), my_code_data.field_two[0]);
 	
@@ -663,7 +663,7 @@ int main(int argc, char *argv[]) {
 	
 	printf("\nDual types inside struct\n");
 	
-	// struct with MATAR arrays of data 
+	// struct with MATAR arrays of data
 	cell_data_t cell_data;  // allocate the data sizes: 10X10x10 mesh
         
 	printf("allocate dual type sizes held in struct\n");
@@ -699,24 +699,24 @@ int main(int argc, char *argv[]) {
 	framework_matar_t mtr_data;
 	
 	
-	// get the mesh dims from the framework struct
-	int mesh_dim1 = framework_data.dim1;
-	int mesh_dim2 = framework_data.dim2;
-	int mesh_dim3 = framework_data.dim3;
-	
-	printf("allocate data from the framework on the device\n");
-	mtr_data.data1  = DViewCArrayKokkos <double> (&framework_data.data1[0], 
-	    					      mesh_dim1, 
-						      mesh_dim2,
-						      mesh_dim3);
-	mtr_data.data2  = DViewCArrayKokkos <double> (&framework_data.data2[0], 
-	    					      mesh_dim1, 
-						      mesh_dim2,
-						      mesh_dim3);
-
+        // get the mesh dims from the framework struct
+        int mesh_dim1 = framework_data.dim1;
+        int mesh_dim2 = framework_data.dim2;
+        int mesh_dim3 = framework_data.dim3;
+        
+        printf("allocate data from the framework on the device\n");
+        mtr_data.data1  = DViewCArrayKokkos <double> (&framework_data.data1[0],
+                                                      mesh_dim1,
+                                                      mesh_dim2,
+                                                      mesh_dim3);
+        mtr_data.data2  = DViewCArrayKokkos <double> (&framework_data.data2[0],
+                                                      mesh_dim1,
+                                                      mesh_dim2,
+                                                      mesh_dim3);
+        
 		   
-	printf("setting the dual type values\n");
-	// set the framework values inside the struct on the device
+        printf("setting the dual type values\n");
+        // set the framework values inside the struct on the device
         FOR_ALL(i, 0, mesh_dim1,
                 j, 0, mesh_dim2,
                 k, 0, mesh_dim3,
@@ -725,25 +725,25 @@ int main(int argc, char *argv[]) {
 		   mtr_data.data2(i,j,k) = 9.2;
                 });
         Kokkos::fence();
-	
-	// update the host side
-	mtr_data.data1.update_host();
-	mtr_data.data2.update_host();
-	printf("The 1st values of framework struct arrays = %f and %f \n", framework_data.data1[0], framework_data.data2[0]);
-	// note how MATAR modified the data in the framework on the device
-	
-	// The dualView type also gives a view of the 1D framework data on the host side
-	printf("The views of 1st host values of framework data  = %f and %f \n", mtr_data.data1.host(0,0,0), mtr_data.data2.host(0,0,0));
-	
-	framework_data.data1[0] = 77.77;
-	framework_data.data1[1] = 88.88;
-	mtr_data.data1.update_device();
-	RUN({
-	    printf("value on device after update = %f, %f", mtr_data.data1(0,0,0), mtr_data.data1(0,0,1));
-	});
-	Kokkos::fence();
-	
-	printf("\n");	
+	    
+	    // update the host side
+	    mtr_data.data1.update_host();
+	    mtr_data.data2.update_host();
+	    printf("The 1st values of framework struct arrays = %f and %f \n", framework_data.data1[0], framework_data.data2[0]);
+	    // note how MATAR modified the data in the framework on the device
+	    
+	    // The dualView type also gives a view of the 1D framework data on the host side
+	    printf("The views of 1st host values of framework data  = %f and %f \n", mtr_data.data1.host(0,0,0),    mtr_data.data2.host(0,0,0));
+	    
+	    framework_data.data1[0] = 77.77;
+	    framework_data.data1[1] = 88.88;
+	    mtr_data.data1.update_device();
+	    RUN({
+	        printf("value on device after update = %f, %f", mtr_data.data1(0,0,0), mtr_data.data1(0,0,1));
+	    });
+	    Kokkos::fence();
+	    
+	    printf("\n");
 	
 	
 	
@@ -826,91 +826,104 @@ int main(int argc, char *argv[]) {
 	
 	
 	
-	printf("\nENUM\n");
-	
-	// simple enum example:
-	//    choices::myChoice enumVar;
-	//    enumVar = choices::METHOD_A; // setting the method
-	
-	// declare methods
-	MethodA my_method_a;
-	MethodB my_method_b;
+        printf("\nENUM\n");
+        
+        // simple enum example:
+        //    choices::myChoice enumVar;
+        //    enumVar = choices::METHOD_A; // setting the method
+        
+        // declare methods
+        MethodA my_method_a;
+        MethodB my_method_b;
 
 		
-	printf("CArrayKokkos of enums\n");
-	auto time_1 = std::chrono::high_resolution_clock::now();
-	CArrayKokkos <choices::myChoice> my_choices(2);
+        printf("CArrayKokkos of enums\n");
+        auto time_1 = std::chrono::high_resolution_clock::now();
+        CArrayKokkos <choices::myChoice> my_choices(2);
 	
-	// set the method on the GPU
-	RUN({
-	    my_choices(0) = choices::METHOD_A;
-	    my_choices(1) = choices::METHOD_B;
-	});
-	Kokkos::fence();  
+        // set the method on the GPU
+        RUN({
+            my_choices(0) = choices::METHOD_A;
+            my_choices(1) = choices::METHOD_B;
+        });
+        Kokkos::fence();
 	
 	
 	
- 	// e.g., loop over in parallel
-	FOR_ALL(i,1,2,{
-	    printf("selecting method\n");
-	    
-	    switch (my_choices(i))
+        // e.g., loop over in parallel
+        FOR_ALL(i,1,2,{
+            printf("selecting method\n");
+            
+            switch (my_choices(i))
             {
-        	case choices::METHOD_A:
-        	{
-        	    // do stuff
-		    printf("using method_A\n");
-		    my_method_a(fmk4D);
-        	    break;
-        	}
-		  
-        	case choices::METHOD_B:
-        	{
-        	    // do stuff
-		    printf("using method_B\n");
-		    my_method_b(fmk4D);
-        	    break;
-        	}
-		
-        	default:
-        	{
-        	  // do nothing
-        	}
+                case choices::METHOD_A:
+                {
+                    // do stuff
+                    printf("using method_A\n");
+                    my_method_a(fmk4D);
+                    break;
+                }
+                    
+                case choices::METHOD_B:
+                {
+                    // do stuff
+                    printf("using method_B\n");
+                    my_method_b(fmk4D);
+                    break;
+                }
+                    
+                default:
+                {
+                    // do nothing
+                }
             };  // end switch
-	    
-	    
-	});
-	Kokkos::fence();  
+            
+            
+        });
+        Kokkos::fence();
 	
-	auto time_2 = std::chrono::high_resolution_clock::now();
+        auto time_2 = std::chrono::high_resolution_clock::now();
 	
 	
-	std::cout << "Elapsed time in seconds: "
+        std::cout << "Elapsed time in seconds: "
                   << std::chrono::duration_cast<std::chrono::microseconds>(time_2 - time_1).count()
                   << " microsec" << std::endl;
 	
         
 	
-	printf("\nCArray of function pointers\n");
+        printf("\nCArray of function pointers\n");
 	
-	//method_ptrs;
-	CArrayKokkos < method_ptrs<FMatrixKokkos<int>> > Array_ptrs(2);
+        //method_ptrs;
+        CArrayKokkos < method_ptrs<FMatrixKokkos<int>> > Array_ptrs(2);
 	
 	
-	// set the pointer on the device e.g., GPU
-	RUN({
-	    Array_ptrs(0).fcn_ptr = sum;
-	    Array_ptrs(1).fcn_ptr = multiply;
-	});
-	Kokkos::fence();  
+        // set the pointer on the device e.g., GPU
+        RUN({
+            Array_ptrs(0).fcn_ptr = sum;
+            Array_ptrs(1).fcn_ptr = multiply;
+        });
+        Kokkos::fence();
 	
-	// use the function
-	RUN({
-	    Array_ptrs(0).fcn_ptr(fmk4D);
-	    Array_ptrs(1).fcn_ptr(fmk4D);
-	});
-	Kokkos::fence();
+        // use the function
+        RUN({
+            Array_ptrs(0).fcn_ptr(fmk4D);
+            Array_ptrs(1).fcn_ptr(fmk4D);
+        });
+        Kokkos::fence();
+        
+        
+        CArrayHost <int> a_carray_cpu(5);
+        a_carray_cpu(0) = 0;
+        printf("\nalias name value [0] on host = %d \n", a_carray_cpu(0));
 	
+        CArrayDevice <int> a_carray_device(5);
+        RUN({
+            a_carray_device(0) = 0;
+            printf("\nalias name value [0] on divice = %d \n", a_carray_device(0));
+        });
+        
+        
+        
 	
     } // end of kokkos scope
     
