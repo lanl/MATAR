@@ -16,6 +16,7 @@ CUSTOM_BUILD=$3
 
 source setup-env.sh ${SYSTEM} ${PARALLEL} ${CUSTOM_BUILD}
 if [ "$2" != "none" ]
+then
     source kokkos-install.sh ${SYSTEM} ${PARALLEL}
 fi
 source cmake_build.sh ${SYSTEM} ${PARALLEL}
