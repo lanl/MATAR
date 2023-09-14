@@ -5,7 +5,6 @@ if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
 endif ()
 
-
 add_library(matar matar.cpp matar.h)
 
 target_include_directories(matar PUBLIC 
@@ -26,4 +25,6 @@ if (KOKKOS)
 
   target_link_libraries(matar  Kokkos::kokkos)
 endif()
+
+install(TARGETS matar DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/bin)
 

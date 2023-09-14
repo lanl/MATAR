@@ -1,0 +1,2 @@
+Directory where external libraries will reside
+Actual lib files will be in bin
