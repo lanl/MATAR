@@ -1,16 +1,5 @@
 #!/bin/bash -e
 
-if [ "$1" != "hpc" ] && [ "$1" != "macos" ] && [ "$1" != "linux" ]
-then
-    echo "The first argument needs to be either hpc, macos, or linux"
-    return 1
-fi
-if [ "$2" != "cuda" ] && [ "$2" != "hip" ] && [ "$2" != "openmp" ] && [ "$2" != "pthreads" ] && [ "$2" != "serial" ] && [ "$2" != "none" ]
-then
-    echo "The second argument needs to be either cuda, hip, openmp, pthreads, serial, or none"
-    return 1
-fi
-
 rm -rf ${MATAR_BUILD_DIR} ${MATAR_INSTALL_DIR}
 mkdir -p ${MATAR_BUILD_DIR} 
 cd ${MATAR_BUILD_DIR}
@@ -89,9 +78,12 @@ ${KOKKOS_ADDITIONS[@]}
 )
 
 OPTIONS=(
+-D CMAKE_BUILD_TYPE=Release
+-D CMAKE_INSTALL_PREFIX="${MATAR_INSTALL_DIR}"
+-D CMAKE_CXX_STANDARD=17
 ${ADDITIONS[@]}
 )
-cmake "${OPTIONS[@]}" "${MATAR_SOURCE_DIR:-../}"
+cmake "${OPTIONS[@]}" -S "${MATAR_SOURCE_DIR}"
 make -j${NUM_TASKS}
 make install
 

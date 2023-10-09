@@ -1,14 +1,4 @@
 ### Make sure arguments are as we'd expect
-if [ "$1" != "hpc" ] && [ "$1" != "macos" ] && [ "$1" != "linux" ]
-then
-    echo "The first argument needs to be either hpc, macos, or linux"
-    return 1
-fi
-if [ "$2" != "cuda" ] && [ "$2" != "hip" ] && [ "$2" != "openmp" ] && [ "$2" != "pthreads" ] && [ "$2" != "serial" ] && [ "$2" != "none" ]
-then
-    echo "The second argument needs to be either cuda, hip, openmp, pthreads, serial, or none"
-    return 1
-fi
 
 ### Load environment modules here
 ### Assign names as relevant
@@ -64,12 +54,13 @@ export libdir=${basedir}/lib
 export builddir=${basedir}/${my_build}
 export installdir=${basedir}/install-kokkos
 
-export KOKKOS_SOURCE_DIR=${libdir}/kokkos
+export KOKKOS_SOURCE_DIR=${srcdir}/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos-${my_parallel}
 
 export MATAR_SOURCE_DIR=${srcdir}
 export MATAR_BUILD_DIR=${builddir}
+export MATAR_INSTALL_DIR=${installdir}/matar
 
 cd $scriptdir
 

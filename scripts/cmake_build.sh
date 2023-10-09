@@ -90,12 +90,15 @@ ${KOKKOS_ADDITIONS[@]}
 
 OPTIONS=(
 -D BUILD_EXAMPLES=ON
+-D CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR}"
+-D CMAKE_CXX_FLAGS="-I${MATAR_SOURCE_DIR}"
 ${ADDITIONS[@]}
 )
 
 set -x
 cmake "${OPTIONS[@]}" "${MATAR_BASE_DIR:-../}"
 set +x
-make -j${NUM_TASKS}
+#make -j${NUM_TASKS}
+make
 
 cd $basedir

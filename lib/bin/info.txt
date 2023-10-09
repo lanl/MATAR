@@ -1,1 +1,0 @@
-Directory where lib.a files will be 
