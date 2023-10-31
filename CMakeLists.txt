@@ -88,7 +88,7 @@ install(EXPORT MatarTargets DESTINATION lib/cmake/matar)
 install(FILES "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
               "${PROJECT_BINARY_DIR}/MatarConfig.cmake"
         DESTINATION lib/cmake/matar)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/include/ DESTINATION include)
 
 if (BUILD_EXAMPLES)
     include_directories(examples)
