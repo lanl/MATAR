@@ -1,24 +1,13 @@
 #!/bin/bash -e
 
-if [ "$1" != "hpc" ] && [ "$1" != "macos" ] && [ "$1" != "linux" ]
-then
-    echo "The first argument needs to be either hpc, macos, or linux"
-    return 1
-fi
-if [ "$2" != "cuda" ] && [ "$2" != "hip" ] && [ "$2" != "openmp" ] && [ "$2" != "pthreads" ] && [ "$2" != "serial" ] && [ "$2" != "none" ]
-then
-    echo "The second argument needs to be either cuda, hip, openmp, pthreads, serial, or none"
-    return 1
-fi
-
-rm -rf ${MATAR_BUILD_DIR}
-mkdir -p ${MATAR_BUILD_DIR}
+rm -rf ${MATAR_BUILD_DIR} ${MATAR_INSTALL_DIR}
+mkdir -p ${MATAR_BUILD_DIR} 
 cd ${MATAR_BUILD_DIR}
 
-NUM_TASKS=1
-if [ "$1" = "hpc" ]
+NUM_TASKS=32
+if [ "$1" = "macos" ]
 then
-    NUM_TASKS=32
+    NUM_TASKS=1
 fi
 
 # Kokkos flags for Cuda
@@ -35,7 +24,7 @@ HIP_ADDITIONS=(
 
 # Kokkos flags for OpenMP
 OPENMP_ADDITIONS=(
--D OPENMP=ON
+-D THREADS=ON
 )
 
 # Kokkos flags for PThreads
@@ -73,7 +62,7 @@ fi
 
 KOKKOS_ADDITIONS=(
 -D KOKKOS=ON
--D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib64/cmake/Kokkos
+#-D Kokkos_DIR=${KOKKOS_INSTALL_DIR}/lib64/cmake/Kokkos
 )
 if [ "$2" = "none" ]
 then
@@ -89,16 +78,15 @@ ${KOKKOS_ADDITIONS[@]}
 )
 
 OPTIONS=(
--D BUILD_EXAMPLES=ON
--D CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR}"
--D CMAKE_CXX_FLAGS="-I${MATAR_SOURCE_DIR}"
+-D CMAKE_BUILD_TYPE=Release
+-D CMAKE_INSTALL_PREFIX=${MATAR_INSTALL_DIR}
+-D CMAKE_PREFIX_PATH="${KOKKOS_INSTALL_DIR}"
+-D CMAKE_CXX_STANDARD=17
 ${ADDITIONS[@]}
 )
-
-set -x
-cmake "${OPTIONS[@]}" "${MATAR_BASE_DIR:-../}"
-set +x
+echo ${OPTIONS[@]}
+cmake "${OPTIONS[@]}" -S "${MATAR_SOURCE_DIR}"
 #make -j${NUM_TASKS}
-make
+#make install
 
-cd $basedir
+cd $scriptdir

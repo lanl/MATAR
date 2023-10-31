@@ -51,6 +51,44 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${VECTOR_CXX_FLAGS}")
 
 #include_directories(src)
 #add_subdirectory(src)
+add_library(matar INTERFACE)
+target_include_directories(matar INTERFACE 
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>  
+    $<INSTALL_INTERFACE:include>
+)
+
+if(KOKKOS)
+    target_link_libraries(matar INTERFACE Kokkos::kokkos)
+endif()
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
+    VERSION 1.0
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(TARGETS matar
+    EXPORT MatarTargets
+    LIBRARY DESTINATION lib COMPONENT Runtime
+    ARCHIVE DESTINATION lib COMPONENT Development
+    RUNTIME DESTINATION bin COMPONENT Runtime
+    PUBLIC_HEADER DESTINATION include COMPONENT Development
+    BUNDLE DESTINATION bin COMPONENT Runtime
+)
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    "${PROJECT_SOURCE_DIR}/cmake/MatarConfig.cmake.in"
+    "${PROJECT_BINARY_DIR}/MatarConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/matar
+)
+
+install(EXPORT MatarTargets DESTINATION lib/cmake/matar)
+install(FILES "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
+              "${PROJECT_BINARY_DIR}/MatarConfig.cmake"
+        DESTINATION lib/cmake/matar)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
 
 if (BUILD_EXAMPLES)
     include_directories(examples)

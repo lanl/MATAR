@@ -10,7 +10,7 @@ if (KOKKOS)
     add_definitions(-DHAVE_KOKKOS=1)
 
     add_executable(test_kokkos_floyd kokkos_floyd.cpp)
-    target_link_libraries(test_kokkos_floyd matar)
+    target_link_libraries(test_kokkos_floyd matar Kokkos::kokkos)
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)

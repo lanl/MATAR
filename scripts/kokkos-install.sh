@@ -1,25 +1,18 @@
 #!/bin/bash -e
 
-if [ "$1" != "hpc" ] && [ "$1" != "macos" ] && [ "$1" != "linux" ]
-then
-    echo "The first argument needs to be either hpc, macos, or linux"
-    return 1
-fi
-if [ "$2" != "cuda" ] && [ "$2" != "hip" ] && [ "$2" != "openmp" ] && [ "$2" != "pthreads" ] && [ "$2" != "serial" ] && [ "$2" != "none" ]
-then
-    echo "The second argument needs to be either cuda, hip, openmp, pthreads, serial, or none"
-    return 1
+kokkos_build_type="${1}"
+
+if [ "$kokkos_build_type" = "none" ]; then
+    "Will not install Kokkos"
+    return 0;
 fi
 
-rm -rf ${KOKKOS_BUILD_DIR} ${KOKKOS_INSTALL_DIR}
+# If all arguments are valid, you can use them in your script as needed
+echo "Kokkos Build Type: $kokkos_build_type"
+
+#echo "Removing stale Kokkos build and installation directory since these are machine dependant and don't take long to build/install"
+rm -rf ${KOKKOS_INSTALL_DIR}
 mkdir -p ${KOKKOS_BUILD_DIR} 
-cd ${KOKKOS_BUILD_DIR}
-
-NUM_TASKS=32
-if [ "$1" = "macos" ]
-then
-    NUM_TASKS=1
-fi
 
 # Kokkos flags for Cuda
 CUDA_ADDITIONS=(
@@ -46,52 +39,47 @@ PTHREADS_ADDITIONS=(
 -D Kokkos_ENABLE_THREADS=ON
 )
 
-# Empty those lists if not building
-if [ "$2" = "cuda" ]
-then
-    HIP_ADDITIONS=() 
-    PTHREADS_ADDITIONS=() 
-    OPENMP_ADDITIONS=()
-elif [ "$2" = "hip" ]
-then
-    CUDA_ADDITIONS=()
-    PTHREADS_ADDITIONS=() 
-    OPENMP_ADDITIONS=()
-elif [ "$2" = "openmp" ]
-then
-    HIP_ADDITIONS=() 
-    CUDA_ADDITIONS=()
-    PTHREADS_ADDITIONS=() 
-elif [ "$2" = "pthreads" ]
-then
-    HIP_ADDITIONS=() 
-    CUDA_ADDITIONS=()
-    OPENMP_ADDITIONS=()
-else
-    HIP_ADDITIONS=() 
-    CUDA_ADDITIONS=()
-    PTHREADS_ADDITIONS=() 
-    OPENMP_ADDITIONS=()
+# Configure kokkos using CMake
+cmake_options=(
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX="${KOKKOS_INSTALL_DIR}"
+    -D CMAKE_CXX_STANDARD=17
+    -D Kokkos_ENABLE_SERIAL=ON
+    -D Kokkos_ARCH_NATIVE=ON
+    -D Kokkos_ENABLE_TESTS=OFF
+    -D BUILD_TESTING=OFF
+)
+
+if [ "$kokkos_build_type" = "openmp" ]; then
+    cmake_options+=(
+        ${OPENMP_ADDITIONS[@]}
+    )
+elif [ "$kokkos_build_type" = "pthreads" ]; then
+    cmake_options+=(
+        ${PTHREADS_ADDITIONS[@]}
+    )
+elif [ "$kokkos_build_type" = "cuda" ]; then
+    cmake_options+=(
+        ${CUDA_ADDITIONS[@]}
+    )
+elif [ "$kokkos_build_type" = "hip" ]; then
+    cmake_options+=(
+        ${HIP_ADDITIONS[@]}
+    )
 fi
 
-ADDITIONS=(
-${CUDA_ADDITIONS[@]}
-${HIP_ADDITIONS[@]}
-${OPENMP_ADDITIONS[@]}
-${PTHREADS_ADDITIONS[@]}
-)
+# Print CMake options for reference
+echo "CMake Options: ${cmake_options[@]}"
 
-OPTIONS=(
--D CMAKE_BUILD_TYPE=Release
--D CMAKE_INSTALL_PREFIX="${KOKKOS_INSTALL_DIR}"
--D CMAKE_CXX_STANDARD=17
--D Kokkos_ENABLE_SERIAL=ON
--D Kokkos_ARCH_NATIVE=ON
-${ADDITIONS[@]}
--D BUILD_TESTING=OFF
-)
-cmake "${OPTIONS[@]}" "${KOKKOS_SOURCE_DIR:-../}"
-make -j${NUM_TASKS}
-make install
+# Configure kokkos
+cmake "${cmake_options[@]}" -B "${KOKKOS_BUILD_DIR}" -S "${KOKKOS_SOURCE_DIR}"
 
-cd $scriptdir
+# Build kokkos
+echo "Building kokkos..."
+make -C ${KOKKOS_BUILD_DIR} -j${MATAR_BUILD_CORES}
+
+# Install kokkos
+echo "Installing kokkos..."
+make -C ${KOKKOS_BUILD_DIR} install
+
+echo "kokkos installation complete."

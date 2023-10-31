@@ -9,5 +9,5 @@ if (KOKKOS)
 
   add_definitions(-DHAVE_KOKKOS=1)
 
-  target_link_libraries(halfspace_cooling matar)
+  target_link_libraries(halfspace_cooling matar Kokkos::kokkos)
 endif()

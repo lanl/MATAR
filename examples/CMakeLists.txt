@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 add_executable(mtest main.cpp)
 
 find_package(Matar REQUIRED)
@@ -16,14 +18,21 @@ if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
 
   add_executable(mtestkokkos main_kokkos.cpp)
+  target_link_libraries(mtestkokkos matar Kokkos::kokkos)
+
   add_executable(test_kokkos_for kokkos_for.cpp)
+  target_link_libraries(test_kokkos_for matar Kokkos::kokkos)
+
   add_executable(test_dual_types test_dual_types.cpp)
+  target_link_libraries(test_dual_types matar Kokkos::kokkos)
+
   add_definitions(-DHAVE_KOKKOS=1)
 
   add_executable(kokkos_csr CSRKokkos.cpp)
-  target_link_libraries(kokkos_csr matar)
+  target_link_libraries(kokkos_csr matar Kokkos::kokkos)
+
   add_executable(kokkos_csc CSCKokkos.cpp)
-  target_link_libraries(kokkos_csc matar)
+  target_link_libraries(kokkos_csc matar Kokkos::kokkos)
 
 
   if (CUDA)
@@ -33,21 +42,18 @@ if (KOKKOS)
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
     add_executable(parallel_hello_world parallel_hello_world.cpp)
-    target_link_libraries(parallel_hello_world matar)
+    target_link_libraries(parallel_hello_world matar Kokkos::kokkos)
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
-  target_link_libraries(mtestkokkos matar)
-  target_link_libraries(test_kokkos_for Kokkos::kokkos)
-  target_link_libraries(test_dual_types matar)
 endif()
 
 
 target_link_libraries(mtest matar)
 
 ### HIP Linking error, will add back in after fixed
-if (DANDBG)
+#if (DANDBG)
 if (NOT HIP)
     include_directories(virtualFcnKokkos)
     add_subdirectory(virtualFcnKokkos)
@@ -73,7 +79,7 @@ add_subdirectory(sparsetests)
 
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
-endif()
+#endif()
 
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
