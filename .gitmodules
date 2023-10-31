@@ -1,5 +1,5 @@
 [submodule "kokkos"]
-	path = lib/kokkos
+	path = src/Kokkos/kokkos
 	url = https://github.com/kokkos/kokkos
 [submodule "googletest"]
 	path = test/googletest
