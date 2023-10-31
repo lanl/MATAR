@@ -57,7 +57,7 @@ target_include_directories(matar INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-if(KOKKOS)
+if(Matar_ENABLE_KOKKOS)
     target_link_libraries(matar INTERFACE Kokkos::kokkos)
 endif()
 
