@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_executable(mtest main.cpp)
-
 find_package(Matar REQUIRED)
+
+add_executable(mtest main.cpp)
+target_link_libraries(mtest matar)
 
 if (NOT KOKKOS)
    add_executable(test_for test_for.cpp)
@@ -50,10 +51,7 @@ if (KOKKOS)
 endif()
 
 
-target_link_libraries(mtest matar)
-
 ### HIP Linking error, will add back in after fixed
-#if (DANDBG)
 if (NOT HIP)
     include_directories(virtualFcnKokkos)
     add_subdirectory(virtualFcnKokkos)
@@ -79,7 +77,6 @@ add_subdirectory(sparsetests)
 
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
-#endif()
 
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
