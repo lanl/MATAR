@@ -11,11 +11,11 @@ cmake_options=(
 
 if [ "$kokkos_build_type" = "none" ]; then
     cmake_options+=(
-        -D KOKKOS=OFF
+        -D Matar_ENABLE_KOKKOS=OFF
     )
 else
     cmake_options+=(
-        -D KOKKOS=ON
+        -D Matar_ENABLE_KOKKOS=ON
     )
 fi
 

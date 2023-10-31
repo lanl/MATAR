@@ -23,6 +23,6 @@ echo "CMake Options: ${cmake_options[@]}"
 cmake "${cmake_options[@]}" -B "${EXAMPLE_BUILD_DIR}" -S "${EXAMPLE_SOURCE_DIR}"
 
 # Build Examples
-make -C "${EXAMPLE_BUILD_DIR}" -j${EXAMPLE_BUILD_CORES}
+make -C "${EXAMPLE_BUILD_DIR}" -j${MATAR_BUILD_CORES}
 
 cd $basedir

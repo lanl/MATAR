@@ -10,7 +10,12 @@ fi
 # If all arguments are valid, you can use them in your script as needed
 echo "Kokkos Build Type: $kokkos_build_type"
 
-#echo "Removing stale Kokkos build and installation directory since these are machine dependant and don't take long to build/install"
+if [ ! -d "${KOKKOS_SOURCE_DIR}/core" ]
+then
+  echo "Missing Kokkos submodules, downloading...."
+  git submodule update --init --recursive
+fi
+
 rm -rf ${KOKKOS_INSTALL_DIR}
 mkdir -p ${KOKKOS_BUILD_DIR} 
 
