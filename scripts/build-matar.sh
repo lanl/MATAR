@@ -72,7 +72,7 @@ for arg in "$@"; do
         --execution=*)
             option="${arg#*=}"
             if [[ " ${valid_execution[*]} " == *" $option "* ]]; then
-                solver="$option"
+                execution="$option"
             else
                 echo "Error: Invalid --execution specified."
                 show_help

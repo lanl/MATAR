@@ -2,6 +2,12 @@
 
 kokkos_build_type="${1}"
 
+if [ ! -d "${EXAMPLE_SOURCE_DIR}/phaseFieldMPI/heffte" ]
+then
+  echo "Missing heffte for examples, downloading...."
+  git clone https://bitbucket.org/icl/heffte.git ${EXAMPLE_SOURCE_DIR}/phaseFieldMPI/heffte
+fi
+
 cmake_options=(
     -D CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR};${KOKKOS_INSTALL_DIR}"
 )

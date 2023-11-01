@@ -17,11 +17,9 @@ export libdir=${topdir}/lib
 export builddir=${basedir}/${my_build}
 export installdir=${basedir}/install
 
-export EXAMPLE_BASE_DIR=${basedir}
 export EXAMPLE_SOURCE_DIR=${basedir}/examples
 export EXAMPLE_BUILD_DIR=${builddir}
 
-export TEST_BASE_DIR=${basedir}
 export TEST_SOURCE_DIR=${basedir}/test
 export TEST_BUILD_DIR=${builddir}
 
