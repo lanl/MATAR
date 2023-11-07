@@ -49,8 +49,6 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${VECTOR_C_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${VECTOR_CXX_FLAGS}")
 
 
-#include_directories(src)
-#add_subdirectory(src)
 add_library(matar INTERFACE)
 target_include_directories(matar INTERFACE 
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>  
@@ -58,7 +56,10 @@ target_include_directories(matar INTERFACE
 )
 
 if(Matar_ENABLE_KOKKOS)
-    target_link_libraries(matar INTERFACE Kokkos::kokkos)
+    add_definitions(-DHAVE_KOKKOS=1)
+    if("${Matar_KOKKOS_PACKAGE}" STREQUAL "Trilinos")
+        add_definitions(-DTRILINOS_INTERFACE=1)
+    endif()
 endif()
 
 include(CMakePackageConfigHelpers)
