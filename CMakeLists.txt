@@ -56,10 +56,15 @@ target_include_directories(matar INTERFACE
 )
 
 if(Matar_ENABLE_KOKKOS)
-    add_definitions(-DHAVE_KOKKOS=1)
     if("${Matar_KOKKOS_PACKAGE}" STREQUAL "Trilinos")
+        find_package(Trilinos REQUIRED)
+        target_link_libraries(matar INTERFACE ${Trilinos_LIBRARIES})
         add_definitions(-DTRILINOS_INTERFACE=1)
+    else()
+        find_package(Kokkos REQUIRED)
+        target_link_libraries(matar INTERFACE Kokkos::kokkos)
     endif()
+    add_definitions(-DHAVE_KOKKOS=1)
 endif()
 
 include(CMakePackageConfigHelpers)

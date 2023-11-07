@@ -7,6 +7,7 @@ mkdir -p ${MATAR_BUILD_DIR}
 
 cmake_options=(
     -D CMAKE_INSTALL_PREFIX="${MATAR_INSTALL_DIR}"
+    -D CMAKE_PREFIX_PATH="${KOKKOS_INSTALL_DIR}"
 )
 
 if [ "$kokkos_build_type" = "none" ]; then
