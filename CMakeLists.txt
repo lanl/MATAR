@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 project (MATAR)
 set (CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # CMAKE_BUILD_TYPE:
 # 1. Release: `-O3 -DNDEBUG`
@@ -48,8 +49,52 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${VECTOR_C_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${VECTOR_CXX_FLAGS}")
 
 
-include_directories(src)
-add_subdirectory(src)
+add_library(matar INTERFACE)
+target_include_directories(matar INTERFACE 
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>  
+    $<INSTALL_INTERFACE:include>
+)
+
+if(Matar_ENABLE_KOKKOS)
+    if("${Matar_KOKKOS_PACKAGE}" STREQUAL "Trilinos")
+        find_package(Trilinos REQUIRED)
+        target_link_libraries(matar INTERFACE ${Trilinos_LIBRARIES})
+        add_definitions(-DTRILINOS_INTERFACE=1)
+    else()
+        find_package(Kokkos REQUIRED)
+        target_link_libraries(matar INTERFACE Kokkos::kokkos)
+    endif()
+    add_definitions(-DHAVE_KOKKOS=1)
+endif()
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
+    VERSION 1.0
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(TARGETS matar
+    EXPORT MatarTargets
+    LIBRARY DESTINATION lib COMPONENT Runtime
+    ARCHIVE DESTINATION lib COMPONENT Development
+    RUNTIME DESTINATION bin COMPONENT Runtime
+    PUBLIC_HEADER DESTINATION include COMPONENT Development
+    BUNDLE DESTINATION bin COMPONENT Runtime
+)
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    "${PROJECT_SOURCE_DIR}/cmake/MatarConfig.cmake.in"
+    "${PROJECT_BINARY_DIR}/MatarConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/matar
+)
+
+install(EXPORT MatarTargets DESTINATION lib/cmake/matar)
+install(FILES "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
+              "${PROJECT_BINARY_DIR}/MatarConfig.cmake"
+        DESTINATION lib/cmake/matar)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/include/ DESTINATION include)
 
 if (BUILD_EXAMPLES)
     include_directories(examples)

@@ -1,5 +1,1 @@
-build-kokkos-serial
-build-kokkos-openmp
-build-kokkos-cuda
-build-kokkos-cuda-amp
-build-kokkos-hip
+install-*

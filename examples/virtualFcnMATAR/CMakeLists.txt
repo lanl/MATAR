@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.1.3)
 
+find_package(Matar REQUIRED)
 
 if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
@@ -17,6 +18,6 @@ if (KOKKOS)
   endif()
 
   add_executable(virtual_fcn_test main.cpp classes.cpp)
-  target_link_libraries(virtual_fcn_test Kokkos::kokkos)
+  target_link_libraries(virtual_fcn_test matar Kokkos::kokkos)
 
 endif()

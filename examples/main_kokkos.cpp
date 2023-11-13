@@ -919,7 +919,7 @@ int main(int argc, char *argv[]) {
         CArrayDevice <int> a_carray_device(5);
         RUN({
             a_carray_device(0) = 0;
-            printf("\nalias name value [0] on divice = %d \n", a_carray_device(0));
+            printf("\nalias name value [0] on device = %d \n", a_carray_device(0));
         });
         
         

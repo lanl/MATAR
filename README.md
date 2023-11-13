@@ -124,70 +124,37 @@ kokkos-install.sh
 backend-cmake-build.sh
 ```
 The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn't use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, running all the scripts is only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory.  The environment variables will need to be set when logging into a compute node or when changing to a different kokkos backend. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially. 
+The build-it script can take up to 3 arguments (with a minimum of 2)
 ```
-build-it.sh
+source build-it.sh <environment type> <parallelism> <build directory name (optional)>
 ```
+environment has two options: 'hpc' or 'macos'
+```
+    hpc: builds by loading modules and can perform parallel builds (make -j)
+    macos: does not load anything externally and expects the environment to be set up on your mac. Additionally, the builds will all be serial (make)
+```
+parallelism has six options: 'cuda', 'hip', 'openmp', 'pthreads', 'serial', 'none'
+```
+    cuda: loads cuda module and a working gcc module pairing
+    hip: loads hip module and a working clang module pairing
+    openmp: loads gcc module and sets openmp environment variables
+    pthreads: loads gcc module and sets pthreads environment variables
+    serial and none: loads gcc module
+```
+***Note*** - compiler can be changed with the appropriate variables in *setup-env.sh*, the ones provided are simply known to work together
+
+All other scripts will be called with the appropriate arguments as a result of running build-it.
 Before using the build-it.sh script, the user must verify that the settings in the other scripts that build MATAR with a Kokkos backend are correctly set.  After running the build-it.sh script, the entire project is compiled and stored in a directory that is named with the respective Kokkos backend e.g., build-kokkos-cuda.  Further details are provided on the three scripts to configure and build MATAR with a Kokkos backend.
 
-
-### Environment configuration script
-To start, the environment variables and modules must be configured by sourcing the following script
+If you need to simply rebuild Fierro without making a new Kokkos installation, simply
 ```
-source sourceme-env.sh
+source cmake_build.sh <same args you passed to build-it>
 ```
-This script is where the user will load the necessary module files for their given machine/architecture combination.  This script also creates the build directory for the project e.g., build-kokkos-cuda, build-kokkos-hip, build-kokkos-openmp, etc.
-
-
-### Install Kokkos script
-The next step is to install Kokkos, using the version that was cloned recursively within MATAR, and configure the Kokkos build for specific hardware and a backend.  
+If you are getting back on to a machine or allocation to continue development, you will need to run
 ```
-source kokkos-install.sh
+source setup-env.sh <same args you passed to build-it>
 ```
-Within this script, the user will need to set any Kokkos specific variables for their project. The architecture variables will need to be modified based on the architecture being used. The provided scripts are set for a particular hardware that might differ from what a user might be using.  CPU architecture information needs to be listed if running with the Kokkos serial or OpenMP backends; GPU architecture information must be listed if using a Kokkos GPU backend.  We refer the user to Kokkos compiling page to see the large list of compilation options,
-```
-https://github.com/kokkos/kokkos/wiki/Compiling
-```
-
-
-
-### CUDA compilation script
-To build the project with cuda, the last step is to type
-```
-source cuda-cmake-build.sh
-```
-
-
-### HIP compilation script
-To build the project with hip, the last step is to type
-```
-source hip-cmake-build.sh
-```
-
-
-### openMP compilation script
-To build the project with openMP, the last step is to type
-
-```
-source openmp-cmake-build.sh
-```
-The sourceme-env.sh script (the first step) sets the number of threads to 16 by default.  Changing the number of threads used with openMP requires manually setting the environment variable OMP_NUM_THREADS.  
-
-
-    
-### pthreads compilation script
-To build the project with ptheads, the last step is to type
-```
-source pthreads-cmake-build.sh
-```    
-To specify number of threads when running a code with the Kokkos pthread backend, add the following command line arguments
-```
---kokkos-threads=4
-```
-
-
-### Automate build process
-A build-it.sh script is provided that runs all scripts sequentially for the user.  The build-it.sh script obviates the need to manually source each script.  The user must verify the settings are correct in each script prior to using the build-it.sh script.  If the build-it.sh script fails to build the project correctly, the user should carefully look at the loaded modules and settings for building Kokkos.   
-
+If the scripts fail to build, then carefully review the modules used and the computer architecture settings. 
 
 
 ## Contributing
