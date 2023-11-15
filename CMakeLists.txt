@@ -96,12 +96,3 @@ install(FILES "${PROJECT_BINARY_DIR}/MatarConfigVersion.cmake"
         DESTINATION lib/cmake/matar)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/include/ DESTINATION include)
 
-if (BUILD_EXAMPLES)
-    include_directories(examples)
-    add_subdirectory(examples)
-endif()
-
-if (TEST)
-  include_directories(test)
-  add_subdirectory(test)
-endif (TEST)

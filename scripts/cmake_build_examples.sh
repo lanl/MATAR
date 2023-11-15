@@ -10,6 +10,7 @@ fi
 
 cmake_options=(
     -D CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR};${KOKKOS_INSTALL_DIR}"
+    -D CMAKE_CXX_COMPILER=${KOKKOS_INSTALL_DIR}/bin/nvcc_wrapper
 )
 
 if [ "$kokkos_build_type" = "none" ]; then
