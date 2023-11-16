@@ -7026,7 +7026,7 @@ T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::ope
     // asserts
     assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride(i) && "j is out of stride bounds in RaggedRightArrayKokkos");  // die if >= stride
-    assert(j < vector_dim_ && "k is out of vector_dim bounds in RaggedRightArrayKokkos");  // die if >= vector_dim
+    assert(k < vector_dim_ && "k is out of vector_dim bounds in RaggedRightArrayKokkos");  // die if >= vector_dim
     
     return array_(j*vector_dim_ + start + k);
 } // End operator()
