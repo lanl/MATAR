@@ -117,45 +117,13 @@ The debug flag includes checks on array and matrix dimensions and index bounds.
 
 
 ## Building MATAR with Kokkos
-A suite of build scripts are provided to build MATAR with Kokkos for performance portability across computer architectures (CPUs and GPUs).  The scripts for various Kokkos backends (e.g., CUDA, HIP, OpenMP, and pthreads) are located within the scripts folder.  The provided scripts are configured for particular hardware, the user will likely need to alter the inputs to reflect their hardware.  There are three scripts in each folder that are sourced to build MATAR with Kokkos.  The scripts are
+A building script is provided to build the MATAR examples and tests, with or without Kokkos. The simplest build with all defaults can be run with
 ```
-sourceme-env.sh
-kokkos-install.sh
-backend-cmake-build.sh
+source {path-to-repo}/scripts/build-matar.sh
 ```
-The word backend denotes cuda, hip, openMP, and so forth.  Scripts are also provided to build MATAR without Kokkos, and in that case there is no backend listed since it doesn't use Kokko.  The backend-cmake-build.sh script will run cmake and make for the project.  Afterwords, the user can just runs make inside the respective build directory to compile the project.  For clarity, running all the scripts is only necessary to set up and compile the code the first time, afterwards, the use can compile the code using make in the build directory.  The environment variables will need to be set when logging into a compute node or when changing to a different kokkos backend. For all builds, a single script is provided in each script folder to automate the entire build process, it runs the three aforementioned scripts sequentially. 
-The build-it script can take up to 3 arguments (with a minimum of 2)
-```
-source build-it.sh <environment type> <parallelism> <build directory name (optional)>
-```
-environment has two options: 'hpc' or 'macos'
-```
-    hpc: builds by loading modules and can perform parallel builds (make -j)
-    macos: does not load anything externally and expects the environment to be set up on your mac. Additionally, the builds will all be serial (make)
-```
-parallelism has six options: 'cuda', 'hip', 'openmp', 'pthreads', 'serial', 'none'
-```
-    cuda: loads cuda module and a working gcc module pairing
-    hip: loads hip module and a working clang module pairing
-    openmp: loads gcc module and sets openmp environment variables
-    pthreads: loads gcc module and sets pthreads environment variables
-    serial and none: loads gcc module
-```
-***Note*** - compiler can be changed with the appropriate variables in *setup-env.sh*, the ones provided are simply known to work together
-
-All other scripts will be called with the appropriate arguments as a result of running build-it.
-Before using the build-it.sh script, the user must verify that the settings in the other scripts that build MATAR with a Kokkos backend are correctly set.  After running the build-it.sh script, the entire project is compiled and stored in a directory that is named with the respective Kokkos backend e.g., build-kokkos-cuda.  Further details are provided on the three scripts to configure and build MATAR with a Kokkos backend.
-
-If you need to simply rebuild Fierro without making a new Kokkos installation, simply
-```
-source cmake_build.sh <same args you passed to build-it>
-```
-If you are getting back on to a machine or allocation to continue development, you will need to run
-```
-source setup-env.sh <same args you passed to build-it>
-```
-If the scripts fail to build, then carefully review the modules used and the computer architecture settings. 
-
+Running with the argument ```--help``` will give a full list of all possible arguments.
+If an argument is not changed, it will be set to the default action, which can all be found from the help command
+If the scripts fail to build, then carefully review the modules used and the computer architecture settings.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
