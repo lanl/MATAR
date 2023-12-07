@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/MatarTargets.cmake")
+check_required_components("@Matar@")

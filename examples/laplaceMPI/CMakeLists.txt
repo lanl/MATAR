@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-project (laplace_mpi)
-
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
   find_package(MPI REQUIRED)
