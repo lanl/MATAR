@@ -2113,7 +2113,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
     temp_inp_array_ = inp_array;
     // Create a device copy of that host view
     this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
-    // Create host ViewFArray. Note: inp_array and this_array_host_.data() are the same pointer 
+    // Create host ViewFArray. Note: inp_array and this_array_host_.data() are the same pointer
     host = ViewFArray <T> (inp_array, dim0);
 }
 
@@ -2363,7 +2363,7 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFArrayKokkos<T,Layout,E
         temp_inp_array_ = temp.temp_inp_array_;
         this_array_host_ = temp.this_array_host_;
         this_array_ = temp.this_array_;
-	    host = temp.host;
+        host = temp.host;
     }
     
     return *this;
@@ -2949,7 +2949,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
     this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
-    // Create host ViewFMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer 
+    // Create host ViewFMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer
     host = ViewFMatrix <T> (inp_matrix, dim1);
 }
 
@@ -5358,7 +5358,7 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 3D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 3D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 3D!");
-    return this_array_(k + (j * dims_[2]) 
+    return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
 
@@ -5370,8 +5370,8 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 4D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 4D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 4D!");
-    return this_array_(l + (k * dims_[3]) 
-                         + (j * dims_[3] * dims_[2])  
+    return this_array_(l + (k * dims_[3])
+                         + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
 }
 
@@ -5385,9 +5385,9 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 5D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 5D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 5D!");
-    return this_array_(m + (l * dims_[4]) 
-                         + (k * dims_[4] * dims_[3]) 
-                         + (j * dims_[4] * dims_[3] * dims_[2]) 
+    return this_array_(m + (l * dims_[4])
+                         + (k * dims_[4] * dims_[3])
+                         + (j * dims_[4] * dims_[3] * dims_[2])
                          + (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
@@ -5402,10 +5402,10 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 6D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 6D!");
     assert(n >= 0 && n < dims_[5] && "n is out of bounds in DViewCArrayKokkos 6D!");
-    return this_array_(n + (m * dims_[5]) 
-                         + (l * dims_[5] * dims_[4])  
-                         + (k * dims_[5] * dims_[4] * dims_[3]) 
-                         + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])  
+    return this_array_(n + (m * dims_[5])
+                         + (l * dims_[5] * dims_[4])
+                         + (k * dims_[5] * dims_[4] * dims_[3])
+                         + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])
                          + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
@@ -5960,7 +5960,7 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
     KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, 
+    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n) const;
 
     KOKKOS_INLINE_FUNCTION
@@ -6032,7 +6032,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
     this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
-    // Create host ViewCMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer 
+    // Create host ViewCMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer
     host = ViewCMatrix <T> (inp_matrix, dim1);
 }
 
@@ -6187,7 +6187,7 @@ T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, siz
     assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 3D!");
     assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 3D!");
     assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 3D!");
-    return this_matrix_((k - 1) + ((j - 1) * dims_[2]) 
+    return this_matrix_((k - 1) + ((j - 1) * dims_[2])
                                 + ((i - 1) * dims_[2] * dims_[1]));
 }
 
@@ -6199,8 +6199,8 @@ T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, siz
     assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 4D!");
     assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 4D!");
     assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 4D!");
-    return this_matrix_((l - 1) + ((k - 1) * dims_[3]) 
-                                + ((j - 1) * dims_[3] * dims_[2]) 
+    return this_matrix_((l - 1) + ((k - 1) * dims_[3])
+                                + ((j - 1) * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
 }
 
@@ -7036,7 +7036,7 @@ T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::ope
     // asserts
     assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride(i) && "j is out of stride bounds in RaggedRightArrayKokkos");  // die if >= stride
-    assert(j < vector_dim_ && "k is out of vector_dim bounds in RaggedRightArrayKokkos");  // die if >= vector_dim
+    assert(k < vector_dim_ && "k is out of vector_dim bounds in RaggedRightArrayKokkos");  // die if >= vector_dim
     
     return array_(j*vector_dim_ + start + k);
 } // End operator()
