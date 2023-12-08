@@ -3190,7 +3190,7 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFMatrixKokkos<T,Layout
         temp_inp_matrix_ = temp.temp_inp_matrix_;
         this_matrix_host_ = temp.this_matrix_host_;
         this_matrix_ = temp.this_matrix_;
-	    host = temp.host;
+	host = temp.host;
     }
     
     return *this;
@@ -5071,8 +5071,8 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    TArray1D this_array_; 
-    TArray1DHost this_array_host_; 
+    TArray1D this_array_;
+    TArray1DHost this_array_host_;
     T * temp_inp_array_;
     //typename Kokkos::View<T*, Layout, ExecSpace>::HostMirror  h_this_array_;
 
@@ -5918,8 +5918,8 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    TArray1D this_matrix_; 
-    TArray1DHost this_matrix_host_; 
+    TArray1D this_matrix_;
+    TArray1DHost this_matrix_host_;
     T * temp_inp_matrix_;
 
 public:
