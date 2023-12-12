@@ -436,6 +436,29 @@ Kokkos::parallel_reduce( \
 REDUCE_MIN_CLASS(...) \
 GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
 
+#define \
+FOR_OUTER(x1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
+                        KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
+                        {fcn} )
+                        //{ i = teamMember.league_rank();fcn} )
+    //Kokkos::parallel_reduce( Kokkos::TeamPolicy<>( E, Kokkos::AUTO, 32 ), KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember, double &update ) {
+    
+#define \
+FOR_MIDDLE(j, y0, y1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j) ) \
+                        {fcn} )
+            //Kokkos::parallel_reduce( Kokkos::TeamThreadRange( teamMember, x2 ), [&] ( const int j, double &innerUpdateN ) {
+
+#define \
+FOR_INNER(k, teamMember, z0, z1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k) ) \
+                        {fcn} )
+            //Kokkos::ThreadVectorRange( teamMember, x3 ), [&] ( const int k, double &innerUpdateM ) \
+
 #endif
 
 
