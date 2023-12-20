@@ -123,8 +123,7 @@ source {path-to-repo}/scripts/build-matar.sh
 ```
 Running with the argument ```--help``` will give a full list of all possible arguments.
 If an argument is not changed, it will be set to the default action, which can all be found from the help command
-If the scripts fail to build, then carefully review the modules used and the computer architecture settings. 
-
+If the scripts fail to build, then carefully review the modules used and the computer architecture settings.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
