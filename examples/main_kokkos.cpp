@@ -925,34 +925,36 @@ int main(int argc, char *argv[]) {
         
     // Hierarchical
 
-    auto hierTest1D = CArrayKokkos <double> (32);
-    auto hierTest2D = CArrayKokkos <double> (32,32);
-    auto hierTest3D = CArrayKokkos <double> (32,32,32);
-    FOR_OUTER(32,{
+    size_t hiersize = 4;
+    auto hierTest1D = CArrayKokkos <double> (hiersize);
+    auto hierTest2D = CArrayKokkos <double> (hiersize,hiersize);
+    auto hierTest3D = CArrayKokkos <double> (hiersize,hiersize,hiersize);
+    FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
+        hierTest3D(i_i, j_j, k_k) = 0.0;
+    });
+    FOR_OUTER(hiersize,{
     //Kokkos::parallel_for( \
     //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
     //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        const int i_i = teamMember.league_rank();
-        //hierTest1D(i_i) = i_i;
-        int istart = i_i*32;//*32;
-        int iend = (i_i+1)*32;//*32;
-        FOR_MIDDLE(j_j,istart,iend,{
+        const int i_i = TEAM_RANK;
+        FOR_MIDDLE(j_j,i_i,hiersize,{
         //Kokkos::parallel_for( \
         //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) { 
-            hierTest2D(i_i,j_j) = i_i*32+j_j;
+            //hierTest2D(i_i,j_j) = i_i * (j_j+1);
         //    int jstart = j_j*32;
         //    int jend = (j_j+1)*32;
-        //    FOR_INNER(k_k, teamMember, jstart, jend, {
-        //        hierTest3D(i_i,j_j,k_k) = i_i*32*32 + j_j*32 + k_k;
-        //    });
+            FOR_INNER(k_k, i_i, j_j, {
+                printf("%d,%d,%d\n", i_i,j_j,k_k);
+                //hierTest3D(i_i,j_j,k_k) = i_i*j_j*k_k;
+            });
         });
     });
 	Kokkos::fence();
     printf("\n\n\nHierarchical\n");
-    for (int ppp = 0; ppp < 32; ppp++) {
+    for (int ppp = 0; ppp < hiersize; ppp++) {
         //printf("%f\n", hierTest3D(0,0,ppp));
-        printf("%f\n", hierTest2D(0,ppp));
-        //printf("%f\n", hierTest1D(ppp));
+        //printf("%f\n", hierTest2D(3,ppp));
+        //printf("%f\n", hierTest3D(3,3,ppp));
     }
     printf("\n\n");
 	
