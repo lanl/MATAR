@@ -932,18 +932,18 @@ int main(int argc, char *argv[]) {
     FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
         hierTest3D(i_i, j_j, k_k) = 0.0;
     });
-    FOR_OUTER(hiersize,{
+    FOR_FIRST(hiersize,{
     //Kokkos::parallel_for( \
     //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
     //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        const int i_i = TEAM_RANK;
-        FOR_MIDDLE(j_j,i_i,hiersize,{
+        const int i_i = TEAM_ID;
+        FOR_SECOND(j_j,i_i,hiersize,{
         //Kokkos::parallel_for( \
         //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) { 
             //hierTest2D(i_i,j_j) = i_i * (j_j+1);
         //    int jstart = j_j*32;
         //    int jend = (j_j+1)*32;
-            FOR_INNER(k_k, i_i, j_j, {
+            FOR_THIRD(k_k, i_i, j_j, {
                 printf("%d,%d,%d\n", i_i,j_j,k_k);
                 //hierTest3D(i_i,j_j,k_k) = i_i*j_j*k_k;
             });
