@@ -436,6 +436,33 @@ Kokkos::parallel_reduce( \
 REDUCE_MIN_CLASS(...) \
 GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
 
+#define \
+TEAM_ID \
+teamMember.league_rank()
+
+#define \
+THREAD_ID \
+teamMember.team_rank()
+
+#define \
+FOR_FIRST(x1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
+                        KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
+                        {fcn} )
+    
+#define \
+FOR_SECOND(j, y0, y1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j) ) \
+                        {fcn} )
+
+#define \
+FOR_THIRD(k, z0, z1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k) ) \
+                        {fcn} )
+
 #endif
 
 

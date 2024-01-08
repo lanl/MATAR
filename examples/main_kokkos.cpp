@@ -508,8 +508,8 @@ int main(int argc, char *argv[]) {
 	    pass_view_by_ref(viewfmk3D);
 	});
 	Kokkos::fence();
-	
-	
+
+
 	
 	// -----------------------
         // functors
@@ -923,6 +923,42 @@ int main(int argc, char *argv[]) {
         });
         
         
+    // Hierarchical
+
+    size_t hiersize = 4;
+    auto hierTest1D = CArrayKokkos <double> (hiersize);
+    auto hierTest2D = CArrayKokkos <double> (hiersize,hiersize);
+    auto hierTest3D = CArrayKokkos <double> (hiersize,hiersize,hiersize);
+    FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
+        hierTest3D(i_i, j_j, k_k) = 0.0;
+    });
+    FOR_FIRST(hiersize,{
+    //Kokkos::parallel_for( \
+    //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+    //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+        const int i_i = TEAM_ID;
+        FOR_SECOND(j_j,i_i,hiersize,{
+        //Kokkos::parallel_for( \
+        //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) { 
+            //hierTest2D(i_i,j_j) = i_i * (j_j+1);
+        //    int jstart = j_j*32;
+        //    int jend = (j_j+1)*32;
+            FOR_THIRD(k_k, i_i, j_j, {
+                printf("%d,%d,%d\n", i_i,j_j,k_k);
+                //hierTest3D(i_i,j_j,k_k) = i_i*j_j*k_k;
+            });
+        });
+    });
+	Kokkos::fence();
+    printf("\n\n\nHierarchical\n");
+    for (int ppp = 0; ppp < hiersize; ppp++) {
+        //printf("%f\n", hierTest3D(0,0,ppp));
+        //printf("%f\n", hierTest2D(3,ppp));
+        //printf("%f\n", hierTest3D(3,3,ppp));
+    }
+    printf("\n\n");
+	
+	
         
 	
     } // end of kokkos scope
