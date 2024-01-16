@@ -129,7 +129,7 @@ int main(){
     
     // DO ALL
 
-    FMatrixKokkos <int> matrix1D(10,10);
+    FMatrixKokkos <int> matrix1D(10);
 
     // Initialize matrix2D
     DO_ALL (i, 1, 10, {
@@ -192,8 +192,8 @@ int main(){
                   j, 1, 10,
                   i, 1, 10,
                   loc_max, {
-                    if(loc_max < matrix3D(i,j)){
-                       loc_max = matrix3D(i,j);
+                    if(loc_max < matrix3D(i,j,k)){
+                       loc_max = matrix3D(i,j,k);
                     }
                }, result);
     printf("result max 3D matrix = %i\n", result);
