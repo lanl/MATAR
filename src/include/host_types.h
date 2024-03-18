@@ -39,7 +39,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-//#include <assert.h>
 #include <cassert>
 #include <memory> // for shared_ptr
 
