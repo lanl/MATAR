@@ -107,9 +107,6 @@ using SArray5D     = Kokkos::View<size_t *****,DefaultLayout,DefaultExecSpace>;
 using SHArray1D     = Kokkos::View<size_t *,DefaultLayout,Kokkos::HostSpace>;
 #endif
 
-//To disable asserts, uncomment the following line
-//#define NDEBUG
-
 
 
 
