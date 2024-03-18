@@ -39,8 +39,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <assert.h>
+#include <cassert>
 #include <memory> // for shared_ptr
+
+//To disable asserts, uncomment the following line
+//#define NDEBUG
 
 
 namespace mtr
