@@ -4,18 +4,43 @@
 #include <stdlib.h>
 #include <Kokkos_Core.hpp>
 #include <sys/stat.h>
+#include <chrono> // for std::chrono functions
 
 #include "matar.h"
+
+
+
+
 
 using namespace mtr;
 
 #define TINY 1.e-16
 
+
+class Timer
+{
+private:
+    // Type aliases to make accessing nested type easier
+    using Clock = std::chrono::steady_clock;
+    using Second = std::chrono::duration<double, std::ratio<1> >;
+    
+    std::chrono::time_point<Clock> m_beg { Clock::now() };
+
+public:
+    void reset()
+    {
+        m_beg = Clock::now();
+    }
+    
+    double elapsed() const
+    {
+        return std::chrono::duration_cast<Second>(Clock::now() - m_beg).count();
+    }
+};
+
+
 void print_mat(DCArrayKokkos<double> &mat){
-
-
     mat.update_host();
-
     std::cout << std::fixed; // Use fixed-point notation
     std::cout << std::setprecision(4); // Set the precision to 2 decimal places
 
@@ -46,7 +71,6 @@ int lu_decomp_test(
     const int n)
 {
 
-
     DCArrayKokkos<double> vv = DCArrayKokkos<double>(n);
 
     parity = 1;
@@ -57,7 +81,7 @@ int lu_decomp_test(
     // double big, sum, temp; // useful storage
 
     CArrayKokkos <double> extra_double_var(2);  // big1 = extra_double_var(0), temp1 = extra_double_var(1)
-    DCArrayKokkos <int> extra_int_var(2);
+    DCArrayKokkos <int> extra_int_var(2); // Singular flag and parity int
 
     RUN({
         extra_int_var(0) = 1; // singular
@@ -79,8 +103,6 @@ int lu_decomp_test(
     });
 
     // Return if singular
-
-    // if (extra_int_var.host(0) == 0) return(0);
     extra_int_var.update_host();
     if(extra_int_var.host(0) == 0) return(0);
 
@@ -252,104 +274,167 @@ void lu_invert_test(
     }
 }
 
+// Invert a matrix using LU decomposition and back substitution
+void invert_LU(
+    DCArrayKokkos<double> &mat, 
+    DCArrayKokkos<double> &mat_inv)
+{
+    // Assumes a square matrix
+    int matrix_size = mat.dims(0);
+
+    DCArrayKokkos<double> MAT_LU = DCArrayKokkos<double>(matrix_size, matrix_size, "input_matrix_LU_decomp");
+
+    // Copy matrix into MAT_LU
+    FOR_ALL (i, 0, matrix_size,
+             j, 0, matrix_size,{
+
+        MAT_LU(i,j) = mat(i,j);
+    });
+
+    // Intermediate data
+    DCArrayKokkos<double> col_vec = DCArrayKokkos<double>(matrix_size, "least_squares_coeffs");
+    DCArrayKokkos<int> indx(matrix_size, "permutations");
+    int parity = 0;
+    
+    FOR_ALL (i, 0, matrix_size, {
+        indx(i) = 0;
+        col_vec(i) = 0.0;
+    });
+
+    int singular = 1;
+    singular = lu_decomp_test(MAT_LU, indx, parity, matrix_size); 
+
+    if(singular == 0) std::cout<<"WARNING: SINGULAR MATRIX"<<std::endl;
+
+    lu_invert_test(MAT_LU, mat_inv, col_vec, indx);
+}
+
+// Matrix multiplication C=A*B
+KOKKOS_FUNCTION
+template<typename T1>
+void rm_dense_matmul_device( T1& C, T1& A, T1& B)
+{
+    assert(C.order() == A.order() == B.order() == 2 && "Tensor order (rank) does not match 2 in matrix_multiply");
+    assert(C.dims(0) == A.dims(0) == B.dims(1) && "Tensor index 0 length mismatch in in serial_matrix_multiply");
+
+    int i_ext = A.dims(0);
+    int j_ext = A.dims(1);
+    int k_ext = B.dims(1);
+
+    for(int i = 0; i < i_ext; i++){
+        for(int k = 0; k < k_ext; k++){
+            for(int j = 0; j < j_ext; j++){
+                C(i,k) += A(i,j)*B(j,k);
+            }
+        }
+    }
+}
+
 
 int main(int argc, char* argv[])
 {
 
+    Timer t;
+
     Kokkos::initialize();
     {
 
-        std::cout << "**** Testing Linear Algebra **** " << std::endl;
 
+    int end_iter = 12;
 
-        int matrix_size = 8;
+    std::cout << "**** Testing Linear Algebra **** " << std::endl;
 
+    for(int i = 1; i < end_iter; i++){
+
+    
+        int matrix_size = pow(2,i);
+
+        
+        std::cout << "Matrix inversion size  "<<matrix_size<<"X"<<matrix_size << std::endl;
 
         // Create and initialize matrix
         DCArrayKokkos<double> MAT = DCArrayKokkos<double>(matrix_size, matrix_size, "input_matrix");
-        DCArrayKokkos<double> MAT_LU = DCArrayKokkos<double>(matrix_size, matrix_size, "input_matrix_LU_decomp");
         DCArrayKokkos<double> MAT_INV = DCArrayKokkos<double>(matrix_size, matrix_size, "input_matrix_inverse");
 
+        // Initialize matrices
         FOR_ALL (i, 0, MAT.dims(0),
                  j, 0, MAT.dims(1),{
             
             if(i > j){
                 MAT(i,j) = (double)i - (double)j;
-                MAT_LU(i,j) = (double)i - (double)j;
                 MAT_INV(i,j) = (double)i - (double)j;
             }
             if(i < j){
                 MAT(i,j) = (double)i + (double)j + 1.0;
-                MAT_LU(i,j) = (double)i + (double)j + 1.0;
                 MAT_INV(i,j) = (double)i + (double)j + 1.0;
             }
 
             if(i == j){
                 MAT(i,j) = (double)i + (double)j + 1.0;
-                MAT_LU(i,j) = (double)i + (double)j + 1.0;
                 MAT_INV(i,j) = (double)i + (double)j + 1.0;
             }
         });
 
-
-
         // Print matrix
-        std::cout<<"Printing MAT"<<std::endl;
+        // std::cout<<"Printing MAT"<<std::endl;
+        // print_mat(MAT);
 
+        t.reset();
+
+        invert_LU(MAT, MAT_INV);
+
+        // std::cout<<"Printing MAT_INV"<<std::endl;
+        // print_mat(MAT_INV);
+
+
+
+        // DCArrayKokkos<double> MAT_TEST = DCArrayKokkos<double>(matrix_size, matrix_size, "test_matrix");
+
+        // RUN({
+        //     int n = MAT_TEST.dims(0);
+        //     for(int i=0; i<n; i++){
+        //         for(int j=0; j<n; j++){
+        //             MAT_TEST(i,j) = 0.0;
+        //         }
+        //     }
+        //     rm_dense_matmul_device(MAT_TEST, MAT, MAT_INV);
+        // });
+
+        // std::cout<<"Printing MAT_TEST: MAT*MAT_INV"<<std::endl;
         // ************ WARNING: CUDA MAY NOT LIKE THIS  ************ 
-        print_mat(MAT);
+        // print_mat(MAT_TEST);
 
-        // Needed for LU decomp
-        DCArrayKokkos<double> col_vec = DCArrayKokkos<double>(matrix_size, "least_squares_coeffs");
-        DCArrayKokkos<int> indx(matrix_size, "permutations");
-        int parity = 0;
+        // RUN({
+        //     int n = MAT_TEST.dims(0);
+        //     for(int i=0; i<n; i++){
+        //         for(int j=0; j<n; j++){
+                    
+        //             if(i == j){
+        //                 if( fabs(MAT_TEST(i,j) - 1.0) >= 1E-8) std::cout<<"WRONG IDENTITY"<<std::endl;
+        //             }
+        //             else{
+        //                 if(fabs(MAT_TEST(i,j)) >= 1E-8) std::cout<<"WRONG OFF DIAGONAL = "<<MAT_TEST(i,j)<<std::endl;
+        //             }
+                    
+
+        //         }
+        //     }
+        // });
+
+        // std::cout<<"FINISHED"<<std::endl;
+        std::cout << "Time elapsed: " << t.elapsed() << " seconds\n";
         
-        FOR_ALL (i, 0, matrix_size, {
-            indx(i) = 0;
-            col_vec(i) = 0.0;
-        });
+        std::cout<<std::endl;
+        // std::cout<<std::endl;
+        // std::cout<<std::endl;
 
-        int singular = 1;
-        singular = lu_decomp_test(MAT_LU, indx, parity, matrix_size); 
-
-        if(singular == 0) std::cout<<"WARNING: SINGULAR MATRIX"<<std::endl;
-
-
-        // std::cout<<"Printing MAT_LU"<<std::endl;
-        // print_mat(MAT_LU);
-
-        lu_invert_test(MAT_LU, MAT_INV, col_vec, indx);
-
-        std::cout<<"Printing MAT_INV"<<std::endl;
-        print_mat(MAT_INV);
-
-
-        DCArrayKokkos<double> MAT_TEST = DCArrayKokkos<double>(matrix_size, matrix_size, "test_matrix");
-        RUN({
-            int n = MAT_TEST.dims(0);
-            for(int i=0; i<n; i++){
-                for(int j=0; j<n; j++){
-                    MAT_TEST(i,j) = 0.0;
-                }
-            }
-
-        
-            for(int i=0; i<n; i++){
-                for(int j=0; j<n; j++){
-                    for(int k=0; k<n; k++){
-                        MAT_TEST(i,k) += MAT(i,j)*MAT_INV(j,k);
-                    }
-                }
-            }
-        });
-
-        std::cout<<"Printing MAT_TEST: MAT*MAT_INV"<<std::endl;
-        // ************ WARNING: CUDA MAY NOT LIKE THIS  ************ 
-        print_mat(MAT_TEST);
+    }
 
     }
     Kokkos::finalize();
 
     
+
+
     return 0;
 }

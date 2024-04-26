@@ -78,6 +78,9 @@ add_subdirectory(sparsetests)
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
 
+include_directories(linear_algebra)
+add_subdirectory(linear_algebra)
+
 #include_directories(laplaceMPI)
 #add_subdirectory(laplaceMPI)
 
