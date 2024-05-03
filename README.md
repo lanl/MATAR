@@ -97,6 +97,10 @@ If your SSH keys are set in github, then from the terminal type:
 ```
 git clone --recursive ssh://git@github.com/lanl/MATAR.git    
 ```
+The code can also be cloned using
+```
+git clone --recursive https://github.com/lanl/MATAR.git
+```
 
 ## Basic build
 The basic build is for users only interested in the serial CPU only MATAR data types.  For this build, we recommend making a folder perhaps called build then go into the build folder and type
