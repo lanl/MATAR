@@ -1,4 +1,3 @@
-
 /**********************************************************************************************
  © 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
@@ -12,14 +11,11 @@
  This program is open source under the BSD-3 License.
  Redistribution and use in source and binary forms, with or without modification, are permitted
  provided that the following conditions are met:
- 
  1.  Redistributions of source code must retain the above copyright notice, this list of
  conditions and the following disclaimer.
- 
  2.  Redistributions in binary form must reproduce the above copyright notice, this list of
  conditions and the following disclaimer in the documentation and/or other materials
  provided with the distribution.
- 
  3.  Neither the name of the copyright holder nor the names of its contributors may be used
  to endorse or promote products derived from this software without specific prior
  written permission.
@@ -36,11 +32,9 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
 
-
-
 #include "system.h"
 
-void parse_command_line(int argc, char *argv[], SimParameters & sp);
+void parse_command_line(int argc, char* argv[], SimParameters& sp);
 
 int main(int argc, char* argv[])
 {
@@ -48,7 +42,6 @@ int main(int argc, char* argv[])
 
     Kokkos::initialize(argc, argv);
     { // kokkos scope
-
         // simulation parameters
         SimParameters sp;
 
@@ -57,7 +50,6 @@ int main(int argc, char* argv[])
         // Simulation system
         System sys(MPI_COMM_WORLD, sp);
         sys.solve();
-
     } // kokkos end scope
     Kokkos::finalize();
 
@@ -66,23 +58,26 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void parse_command_line(int argc, char *argv[], SimParameters & sp)
+void parse_command_line(int argc, char* argv[], SimParameters& sp)
 {
-  std::string opt;
-  int i = 1;
-  while (i < argc && argv[i][0] == '-') 
-  {
-    opt = std::string(argv[i]);
+    std::string opt;
+    int i = 1;
+    while (i < argc && argv[i][0] == '-')
+    {
+        opt = std::string(argv[i]);
 
-    if(opt == "-nx")
-      sp.nn[0] = atoi(argv[++i]);
+        if (opt == "-nx") {
+            sp.nn[0] = atoi(argv[++i]);
+        }
 
-    if(opt == "-ny")
-      sp.nn[1] = atoi(argv[++i]);
+        if (opt == "-ny") {
+            sp.nn[1] = atoi(argv[++i]);
+        }
 
-    if(opt == "-nz")
-      sp.nn[2] = atoi(argv[++i]);
+        if (opt == "-nz") {
+            sp.nn[2] = atoi(argv[++i]);
+        }
 
-    ++i;
-  }
+        ++i;
+    }
 }

@@ -11,14 +11,14 @@
  This program is open source under the BSD-3 License.
  Redistribution and use in source and binary forms, with or without modification, are permitted
  provided that the following conditions are met:
- 
+
  1.  Redistributions of source code must retain the above copyright notice, this list of
  conditions and the following disclaimer.
- 
+
  2.  Redistributions in binary form must reproduce the above copyright notice, this list of
  conditions and the following disclaimer in the documentation and/or other materials
  provided with the distribution.
- 
+
  3.  Neither the name of the copyright holder nor the names of its contributors may be used
  to endorse or promote products derived from this software without specific prior
  written permission.
@@ -35,25 +35,23 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
 
-
 #include "system.h"
 #include "stdlib.h"
 #include "string"
 
-System::System(MPI_Comm comm_, const SimParameters & sp_) :
-comm(comm_),
-my_rank(heffte::mpi::comm_rank(comm)),
-num_ranks(heffte::mpi::comm_size(comm)),
-sp(sp_),
-fft(comm, sp.nn),
-ga(sp.nn, fft.localRealBoxSizes[my_rank]),
-ca(sp, fft.localComplexBoxSizes[my_rank], fft.myComplexBox.low),
-total_free_energy_file(NULL),
-vtk_writer(comm, fft.globalRealBoxSize, fft.localRealBoxSizes[my_rank], fft.localRealBoxes[my_rank].low, "%12.6E\n")
+System::System(MPI_Comm comm_, const SimParameters& sp_) :
+    comm(comm_),
+    my_rank(heffte::mpi::comm_rank(comm)),
+    num_ranks(heffte::mpi::comm_size(comm)),
+    sp(sp_),
+    fft(comm, sp.nn),
+    ga(sp.nn, fft.localRealBoxSizes[my_rank]),
+    ca(sp, fft.localComplexBoxSizes[my_rank], fft.myComplexBox.low),
+    total_free_energy_file(NULL),
+    vtk_writer(comm, fft.globalRealBoxSize, fft.localRealBoxSizes[my_rank], fft.localRealBoxes[my_rank].low, "%12.6E\n")
 {
     // print simulation parameters
-    if (root == my_rank) 
-    {
+    if (root == my_rank) {
         sp.print();
         total_free_energy_file = fopen("total_free_energy.csv", "w");
     }
@@ -61,8 +59,7 @@ vtk_writer(comm, fft.globalRealBoxSize, fft.localRealBoxSizes[my_rank], fft.loca
 
 System::~System()
 {
-    if (root == my_rank)
-    {
+    if (root == my_rank) {
         fclose(total_free_energy_file);
     }
 }
@@ -71,31 +68,29 @@ void System::initialize_comp()
 {
     // start a non-blocking recieve
     MPI_Request request;
-    MPI_Status status;
+    MPI_Status  status;
     MPI_Irecv(ga.comp.host_pointer(), ga.comp.size(), fft.mpiType, root, 999, comm, &request);
- 
-    if (root == my_rank)
-    {
+
+    if (root == my_rank) {
         // seed random number generator
         srand(sp.iseed);
 
         for (int k = 0; k < ga.comp_all.dims(0); ++k) {
-        for (int j = 0; j < ga.comp_all.dims(1); ++j) {
-        for (int i = 0; i < ga.comp_all.dims(2); ++i) {
-            // random number between 0.0 and 1.0
-            double r = (double) rand()/RAND_MAX;
+            for (int j = 0; j < ga.comp_all.dims(1); ++j) {
+                for (int i = 0; i < ga.comp_all.dims(2); ++i) {
+                    // random number between 0.0 and 1.0
+                    double r = (double) rand() / RAND_MAX;
 
-            // initialize "comp" with stochastic thermal fluctuations
-            ga.comp_all(k,j,i) = sp.c0 + (2.0*r - 1.0)*sp.noise;
-        }
-        }
+                    // initialize "comp" with stochastic thermal fluctuations
+                    ga.comp_all(k, j, i) = sp.c0 + (2.0 * r - 1.0) * sp.noise;
+                }
+            }
         }
 
         // send subarrays to ranks
         MPI_Request requests[num_ranks];
-        MPI_Status statuses[num_ranks];
-        for (size_t i = 0; i < num_ranks; i++)
-        {
+        MPI_Status  statuses[num_ranks];
+        for (size_t i = 0; i < num_ranks; i++) {
             MPI_Isend(ga.comp_all.pointer(), 1, fft.mpiSubarrayTypes[i], i, 999, comm, &requests[i]);
         }
 
@@ -112,15 +107,15 @@ void System::initialize_comp()
 
 void System::calculate_dfdc()
 {
-    // this function calculates the derivitive of local free energy density (f) 
+    // this function calculates the derivitive of local free energy density (f)
     // with respect to composition (c) (df/dc).
 
     FOR_ALL(k, 0, ga.dfdc.dims(0),
             j, 0, ga.dfdc.dims(1),
             i, 0, ga.dfdc.dims(2), {
-        ga.dfdc(k,j,i) =   4.0 * ga.comp(k,j,i) * ga.comp(k,j,i) * ga.comp(k,j,i)
-                         - 6.0 * ga.comp(k,j,i) * ga.comp(k,j,i)
-                         + 2.0 * ga.comp(k,j,i);
+        ga.dfdc(k, j, i) =   4.0 * ga.comp(k, j, i) * ga.comp(k, j, i) * ga.comp(k, j, i)
+                           - 6.0 * ga.comp(k, j, i) * ga.comp(k, j, i)
+                           + 2.0 * ga.comp(k, j, i);
     });
     Kokkos::fence();
 }
@@ -129,30 +124,30 @@ double System::calculate_total_free_energy()
 {
     // this function calculates the total free energy of the system.
 
-    // unpack simimulation parameters needed 
+    // unpack simimulation parameters needed
     // for calculations in this function
-    double dx = sp.delta[0];
-    double dy = sp.delta[1];
-    double dz = sp.delta[2];
+    double dx    = sp.delta[0];
+    double dy    = sp.delta[1];
+    double dz    = sp.delta[2];
     double kappa = sp.kappa;
 
-    // 
+    //
     double total_energy = 0.0;
     double loc_sum = 0.0;
 
 #if 0
     // bulk free energy + interfacial energy
-    REDUCE_SUM(k, 1, ga.comp.dims(0)-1,
-               j, 1, ga.comp.dims(1)-1,
-               i, 1, ga.comp.dims(2)-1,
+    REDUCE_SUM(k, 1, ga.comp.dims(0) - 1,
+               j, 1, ga.comp.dims(1) - 1,
+               i, 1, ga.comp.dims(2) - 1,
                loc_sum, {
-           // central difference spatial derivative of comp 
-           double dcdz = (ga.comp(k+1,j,i) - ga.comp(k-1,j,i)) / (2.0 * dz);
-           double dcdy = (ga.comp(i,j+1,k) - ga.comp(i,j-1,k)) / (2.0 * dy);
-           double dcdx = (ga.comp(k,j,i+1) - ga.comp(k,j,i-1)) / (2.0 * dx);
-           loc_sum += ga.comp(k,j,i) * ga.comp(k,j,i)
-                    * (1.0 - ga.comp(k,j,i)) * (1.0 - ga.comp(k,j,i))
-                    + 0.5 * kappa * (dcdx * dcdx + dcdy * dcdy + dcdz * dcdz);
+        // central difference spatial derivative of comp
+        double dcdz = (ga.comp(k + 1, j, i) - ga.comp(k - 1, j, i)) / (2.0 * dz);
+        double dcdy = (ga.comp(i, j + 1, k) - ga.comp(i, j - 1, k)) / (2.0 * dy);
+        double dcdx = (ga.comp(k, j, i + 1) - ga.comp(k, j, i - 1)) / (2.0 * dx);
+        loc_sum    += ga.comp(k, j, i) * ga.comp(k, j, i)
+                      * (1.0 - ga.comp(k, j, i)) * (1.0 - ga.comp(k, j, i))
+                      + 0.5 * kappa * (dcdx * dcdx + dcdy * dcdy + dcdz * dcdz);
     }, total_energy);
 #endif
 
@@ -161,7 +156,7 @@ double System::calculate_total_free_energy()
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_sum, {
-           loc_sum += ga.comp(k,j,i) * ga.comp(k,j,i) * (1.0 - ga.comp(k,j,i)) * (1.0 - ga.comp(k,j,i));
+        loc_sum += ga.comp(k, j, i) * ga.comp(k, j, i) * (1.0 - ga.comp(k, j, i)) * (1.0 - ga.comp(k, j, i));
     }, total_energy);
 
     return total_energy;
@@ -184,14 +179,14 @@ void System::time_march()
     FOR_ALL(k, 0, ca.comp_img.dims(0),
             j, 0, ca.comp_img.dims(1),
             i, 0, ca.comp_img.dims(2), {
-        ca.comp_img(k,j,i,0) =   (ca.comp_img(k,j,i,0) - (sp.dt * sp.M * ca.kpow2(k,j,i)) * ca.dfdc_img(k,j,i,0))
-                               / (ca.denominator(k,j,i));
-    
-        ca.comp_img(k,j,i,1) =   (ca.comp_img(k,j,i,1) - (sp.dt * sp.M * ca.kpow2(k,j,i)) * ca.dfdc_img(k,j,i,1))
-                               / (ca.denominator(k,j,i));
+        ca.comp_img(k, j, i, 0) =   (ca.comp_img(k, j, i, 0) - (sp.dt * sp.M * ca.kpow2(k, j, i)) * ca.dfdc_img(k, j, i, 0))
+                                  / (ca.denominator(k, j, i));
+
+        ca.comp_img(k, j, i, 1) =   (ca.comp_img(k, j, i, 1) - (sp.dt * sp.M * ca.kpow2(k, j, i)) * ca.dfdc_img(k, j, i, 1))
+                                  / (ca.denominator(k, j, i));
     });
     Kokkos::fence();
-    
+
     // get backward fft of comp_img (note fft.backward was set to scale the result already.
     // you can chnage if needed in FFT3D_R2C class)
     Profile::start_barrier(Profile::fft_backward);
@@ -204,12 +199,12 @@ void System::track_progress(int iter)
 {
     // sum of comp field
     double sum_comp = 0.0;
-    double loc_sum = 0.0;
+    double loc_sum  = 0.0;
     REDUCE_SUM(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_sum, {
-                   loc_sum += ga.comp(k,j,i);
+        loc_sum += ga.comp(k, j, i);
     }, sum_comp);
 
     // max of comp field
@@ -219,9 +214,9 @@ void System::track_progress(int iter)
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_max, {
-                   if(loc_max < ga.comp(k,j,i)){
-                       loc_max = ga.comp(k,j,i);
-                   }    
+        if (loc_max < ga.comp(k, j, i)) {
+            loc_max = ga.comp(k, j, i);
+        }
     }, max_comp);
 
     // min of comp field
@@ -230,10 +225,10 @@ void System::track_progress(int iter)
     REDUCE_MIN(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
-               loc_min, {                  
-                   if(loc_min > ga.comp(k,j,i)){
-                       loc_min = ga.comp(k,j,i);
-                   }                   
+               loc_min, {
+        if (loc_min > ga.comp(k, j, i)) {
+            loc_min = ga.comp(k, j, i);
+        }
     }, min_comp);
 
     double glob_sum_comp = 0.0;
@@ -243,8 +238,7 @@ void System::track_progress(int iter)
     MPI_Reduce(&max_comp, &glob_max_comp, 1, MPI_DOUBLE, MPI_MAX, root, comm);
     MPI_Reduce(&min_comp, &glob_min_comp, 1, MPI_DOUBLE, MPI_MIN, root, comm);
 
-    if (root == my_rank)
-    {
+    if (root == my_rank) {
         printf("\n----------------------------------------------------\n");
         printf("Iteration : %d\n", iter);
         printf("Conservation of comp : %E\n", glob_sum_comp);
@@ -261,8 +255,9 @@ void System::output_total_free_energy(int iter)
     double glob_total_free_energy = 0.0;
     MPI_Reduce(&total_free_energy, &glob_total_free_energy, 1, MPI_DOUBLE, MPI_SUM, root, comm);
 
-    if (root == my_rank)
+    if (root == my_rank) {
         fprintf(total_free_energy_file, "%i,%12.6E\n", iter, glob_total_free_energy);
+    }
 }
 
 void System::solve()
@@ -281,7 +276,6 @@ void System::solve()
 
         // report simulation progress and output vtk files
         if (iter % sp.print_rate == 0) {
-
             track_progress(iter);
 
             output_total_free_energy(iter);
