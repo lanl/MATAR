@@ -95,13 +95,13 @@ int main(){
     int loc_max_value = 20000;
     int max_value = 20000;
     Kokkos::parallel_reduce(
-                            Kokkos::MDRangePolicy<Kokkos::Rank<2>>({0,0}, {10,10}),
-                            KOKKOS_LAMBDA(const int i, const int j, int& loc_max_value)
-                            {
-                                if(arr_2D(i,j) > loc_max_value){
-                    loc_max_value = arr_2D(i,j);
-                }
-                            },
+                Kokkos::MDRangePolicy<Kokkos::Rank<2>>({0,0}, {10,10}),
+                        KOKKOS_LAMBDA(const int i, const int j, int& loc_max_value)
+                        {
+                            if(arr_2D(i,j) > loc_max_value){
+                                loc_max_value = arr_2D(i,j);
+                            }
+                        },
                             Kokkos::Max<int>(max_value)
                             );
     printf("2D reduce MAX kokkos verbose : %i\n", max_value);
