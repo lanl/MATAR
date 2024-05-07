@@ -42,7 +42,7 @@
 //
 // Data type naming convetions:
 //
-//  Allocation memory or view existin memory:
+//  Allocation memory or view existing memory:
 //   View  = map data to multi-D or slice out data, no memory allocation on CPU 
 //   Blank = allocate memory on the CPU, GPU, or Both depending on specified location
 //
@@ -88,6 +88,31 @@
 
 using namespace mtr; // matar namespace 
 
+
+// Function on device to calculate y = m*x + b
+// Parallelism is done outside this function
+KOKKOS_INLINE_FUNCTION  // or KOKKOKS_FUNCTION
+double calc_line_value(double m, double x, double b){
+    return m*x + b;  
+} // end function calc_y
+
+
+// A function to calculate all y values; the parallelism is done inside this function
+void calc_line(CArrayDevice <double> &y, double m, double b, double x_start, double x_final){
+
+    int N = y.dims(0);  // use meta data on y to find N
+
+    double deltaX = (x_final - x_start)/((double)N - 1);
+
+    FOR_ALL(i,0,N,{ 
+
+        double x = x_start + deltaX*(double)i;
+
+        y(i) = calc_line_value(m,x,b); // calls the function to calculate a single y value
+
+    }); // end parallel loop
+
+} // end function calc_all_y
 
 
 // main
@@ -148,13 +173,12 @@ int main(int argc, char *argv[]) {
 
         }, result);
 
-        printf("3D reduce MAX %i\n", result);
 
 
         // ===============
-        
 
-        int N=200;  // array dimensions are NxN
+
+        int N=20;  // array dimensions are NxN
 
         // A 2D array example following the C index convention
         // indicies go from 0 to less than N, last index varies the fastest
@@ -167,6 +191,7 @@ int main(int argc, char *argv[]) {
         CArrayDevice <double> U(N,N); // upper triangular array
         CArrayDevice <double> x(N);
         CArrayDevice <double> y(N);
+
         
 
         auto time_1 = std::chrono::high_resolution_clock::now();
@@ -178,7 +203,7 @@ int main(int argc, char *argv[]) {
             A(i,j) = 1.0; 
             B(i,j) = 2.0;
 
-        });
+        }); // end parallel for
 
         FOR_ALL (i, 0, N,
                  j, 0, N,{
@@ -192,11 +217,11 @@ int main(int argc, char *argv[]) {
                 U(i,j) = 4.0;
             } // end if
 
-        });
+        }); // end parallel for
 
         FOR_ALL (i, 0, N, {
             y(i) = 4.0;
-        });
+        }); // end parallel for
 
         
         // Add two arrays together
@@ -206,7 +231,7 @@ int main(int argc, char *argv[]) {
 
             C(i,j) = A(i,j) + B(i,j);
 
-        });
+        }); // end parallel for
 
         // Multiply two arrays together
         // D = A*B
@@ -216,7 +241,7 @@ int main(int argc, char *argv[]) {
 
             D(i,j) = A(i,k)*B(k,j);
 
-        });
+        }); // end parallel for
 
         // backwards substitution
         for (int k = N-1; k>=0; k--){
@@ -248,17 +273,158 @@ int main(int argc, char *argv[]) {
                            loc_sum, {
                         loc_sum += L(i,j)*x(j);
                 }, result);
-            }
+            } // end if
 
             x(i) = (y(i)- result)/U(i,i);
         } // end for i  
 
 
+
+        // calculate y=mx+b over x=[0:25] with N subdivisions
+        double x_start = 0.0;
+        double x_final = 25.0;
+        double m = 1.0;
+        double b = 5.0;
+
+        double deltaX = (x_final- x_start)/((double)N - 1.0);
+        FOR_ALL (i, 0, N, {
+            
+            double x = x_start + ((double)i)*deltaX;
+
+            // calling a function inside a parallel loop requires the KOKKOS_FUNCTION
+            y(i) = calc_line_value(m, x, b);
+
+        }); // end parallel for
+
+        // a single function to calculate all y values
+        calc_line(y, m, b, x_start, x_final);
+
+
+
+        //   ----- Heat transfer -----
+        //          y
+        //          ^
+        //          |
+        //             T=cold
+        //           ----------T=Hot
+        //          |          |
+        //  T=cold  |          |
+        //          |          |
+        //      (0,0)----------   -> x
+        //
+
+        int length = 20;
+
+        // Parallel Jacobi solver for steady 2D heat transfer
+        CArrayDevice <double> Temp(length+2, length+2);
+        CArrayDevice <double> Temp_previous(length+2, length+2);
+
+        // heat source is bottom right corner of mesh, T=100 in that corner
+        // temperature of left wall is T_cold=0.
+        // temperature of top wall is T_cold=0.
+        const double Temp_cold = 0.0;
+        const double Temp_hot  = 100.0;
+
+
+        // initialize the inner mesh region
+        DO_ALL(i, 0, length+1,
+               j, 0, length+1, {
+                Temp_previous(i,j) = 0.0;
+                Temp(i,j) = Temp_previous(i,j);
+        }); // end parallel do
+
+        // boundaries are at i=0 and i=length+1
+        // boundaries are at j=0 and j=length+1
+
+        
+        // apply wall temperature boundary conditions to right and left walls
+        DO_ALL(k,0,length+1, {
+
+            // k is an arbitrary index for i or j directions
+            
+            // left wall is cold
+            Temp_previous(0,k) = Temp_cold;
+            Temp(0,k) = Temp_previous(0,k);
+
+
+            // right wall is linearly decreasing in temperature in the positive vertical direction
+            Temp_previous(length+1,k) =  ((double)k )*(Temp_hot - Temp_cold) /( (double)length + 1);
+            Temp(length+1,k) = Temp_previous(length+1,k);
+
+            // top wall is linearly increasing in temperature in the positive horizontal direction
+            Temp_previous(k,length+1) = ((double)k )*(Temp_hot - Temp_cold) /( (double)length + 1);
+            Temp(k,0) = Temp_previous(k,0);
+
+            // bottom wall is cold
+            Temp_previous(k,0) = Temp_cold;
+            Temp(k,length+1) = Temp_previous(k,length+1);
+
+        }); // end parallel do
+
+
+        // solve for steady-state temperature
+        double tolerance = 0.01;
+        int max_iters = 10000;
+        for(int iter=0; iter<=max_iters; iter++){
+
+            // find next temperature
+            DO_ALL(i, 1, length,
+                   j, 1, length, {
+
+                Temp(i,j) = 0.25*( Temp_previous(i+1,j) + Temp_previous(i-1,j) + Temp_previous(i,j+1) + Temp_previous(i,j-1) );
+
+            }); // end parallel for
+
+            double max_delta_temp;
+            double loc_max_delta_temp;
+            DO_REDUCE_MAX(i, 1, length,
+                          j, 1, length,
+                          loc_max_delta_temp, {
+                    
+                    // find the temperature difference between iterations
+                    double dT = fabs( Temp(i,j)-Temp_previous(i,j) );
+
+                    // get the largest dT
+                    if ( loc_max_delta_temp < dT ){
+                         loc_max_delta_temp = dT;
+                    } // end if
+
+            }, max_delta_temp);
+
+            // print the progress every 100
+            if(iter%100 == 0){
+                printf("interation = %d, max error = %f \n", iter, max_delta_temp);
+            }
+
+            // stop when we reach the specified tolerance
+            if(max_delta_temp<tolerance){
+                break;
+            }
+
+            // update temperature
+            DO_ALL(i, 1, length,
+                   j, 1, length, {
+                Temp_previous(i,j) = Temp(i,j);
+            }); // end parallel for
+
+
+        } // end for iterations
+
+
         auto time_2 = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration <double, std::milli> ms = time_2 - time_1;
-        std::cout << ms.count() << "ms\n";
- 
+        std::cout << "runtime of all tests = " << ms.count() << "ms\n";
+
+        printf("\n");
+        printf("Temperature profile\n");
+        // print temperature result
+        for(int i=length+1; i>=0; i--){
+            for (int j=0; j<=length+1; j++){
+                printf(" %5.2f ", Temp(i,j));
+            } // for j
+            printf("\n");
+        }; // for i
 
     } // end of kokkos scope
 
