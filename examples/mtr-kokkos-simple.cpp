@@ -236,11 +236,12 @@ int main(int argc, char *argv[]) {
         // Multiply two arrays together
         // D = A*B
         FOR_ALL (i, 0, N,
-                 j, 0, N,
-                 k, 0, N,{
+                 j, 0, N,{
 
-            D(i,j) = A(i,k)*B(k,j);
-
+            D(i,j) = 0.0;
+            for(int k=0; k<N; k++){
+                D(i,j) += A(i,k)*B(k,j);
+            }
         }); // end parallel for
 
         // backwards substitution
