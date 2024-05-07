@@ -129,6 +129,64 @@ Running with the argument ```--help``` will give a full list of all possible arg
 If an argument is not changed, it will be set to the default action, which can all be found from the help command
 If the scripts fail to build, then carefully review the modules used and the computer architecture settings.
 
+## Building MATAR with Anaconda
+The recommended way to build **MATAR** is inside an Anaconda environment. As a starting place, follow the steps for your platform to install [anaconda](https://docs.anaconda.com/free/anaconda/install/index.html)/[miniconda](https://docs.conda.io/en/latest/miniconda.html)/[mamba](https://mamba.readthedocs.io/en/latest/installation.html). 
+
+Open a terminal on your machine and go to a folder where you want to run the **MATAR** code. Activate a bash terminal by typing:
+```
+bash
+```
+Then create and activate an Anaconda environment by typing:  
+```
+conda create -n MATAR
+conda activate MATAR  
+```
+In this example, the enviroment is called MATAR, but any name can be used.  In some cases, the text to activate an enviroment is `source activate MATAR`.  Likewise, if an enviroment already exists, then just activate the desired environment. 
+
+Now install a compiler and cmake, which are needed to build the MATAR library.
+```
+conda install -c conda-forge "cxx-compiler=1.5.2"     
+conda install -c conda-forge "fortran-compiler=1.5.2"
+conda install cmake
+```
+By using cxx-compiler=1.5.2., it install gcc 11.  Omit the version number and gcc 12 will be installed (at this time).  If building for a GPU, it is recommended to use an older gcc version. For example, we have success using gcc 11 with CUDA 12.
+
+If running on an Nvidia GPU, install cudatoolkit by typing:
+```
+conda install -c conda-forge cudatoolkit    
+conda install -c conda-forge cudatoolkit-dev
+```
+This installs CUDA 12 (at this time).  
+
+The build script is located at
+```
+source {path-to-repo}/scripts/build-matar.sh
+```
+
+To build the MATAR library and examples with CUDA, type:
+```
+source build-matar.sh --kokkos_build_type=cuda --build_cores=16
+```
+The executables for the examples that run in parallel Nvidia GPUs using CUDA are located in:
+```
+MATAR/build-matar-cuda/bin
+```
+
+To build the MATAR library and examples with OpenMP, type:
+```
+source build-matar.sh --kokkos_build_type=openmp --build_cores=16
+```
+
+The executables for the examples that run in parallel on multi-core CPUs using OpenMP are located in:
+```
+MATAR/build-matar-openmp/bin
+```
+Using the main_kokkos.cpp executable as an example, it can be run by typing:
+```
+./mtestkokkos
+```
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
