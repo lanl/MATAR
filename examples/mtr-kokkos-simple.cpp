@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
         matrix3D = FMatrixDevice <real_t> (10,10,10); // allocate dimensions and sizes 
 
         // Array example following the Fortran index convention,
-        // indicies go from 0 to less than N, last index varies the fastest
+        // indicies go from 0 to less than N, first index varies the fastest
         FArrayDevice <int> arr3D(10,10,10);
 
 
@@ -236,11 +236,12 @@ int main(int argc, char *argv[]) {
         // Multiply two arrays together
         // D = A*B
         FOR_ALL (i, 0, N,
-                 j, 0, N,
-                 k, 0, N,{
+                 j, 0, N,{
 
-            D(i,j) = A(i,k)*B(k,j);
-
+            D(i,j) = 0.0;
+            for(int k=0; k<N; k++){
+                D(i,j) += A(i,k)*B(k,j);
+            }
         }); // end parallel for
 
         // backwards substitution
