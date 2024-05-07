@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
 
         REDUCE_SUM(i, 0, dim1,
                     j, 0, dim2 - 1,
-            oc_total, {
+            loc_total, {
                 loc_total += A(i, j);
         }, total);
         printf("Sum of nnz in array notation %d\n", total);
