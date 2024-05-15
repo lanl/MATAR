@@ -23,6 +23,10 @@ export EXAMPLE_BUILD_DIR=${builddir}
 export TEST_SOURCE_DIR=${basedir}/test
 export TEST_BUILD_DIR=${builddir}
 
+export BENCHMARK_SOURCE_DIR=${basedir}/benchmark
+export BENCHMARK_INSTALL_DIR=${basedir}/benchmark/build
+export BENCHMARK_BUILD_DIR=${builddir}
+
 export KOKKOS_SOURCE_DIR=${basedir}/src/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos

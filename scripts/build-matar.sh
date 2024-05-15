@@ -23,6 +23,7 @@ show_help() {
     echo " "
     echo "          examples                    builds examples"
     echo "          test                        builds tests"
+    echo "          benchmark                   builds benchmarks for MATAR"
     echo " "
     echo "      --kokkos_build_type             The desired kokkos parallel backend to use. The default is 'serial'"
     echo " "
@@ -52,7 +53,7 @@ build_cores="1"
 
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
-valid_execution=("examples" "test")
+valid_execution=("examples" "test" "benchmark")
 valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip")
 valid_machines=("darwin" "chicoma" "linux" "mac")
 
