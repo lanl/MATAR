@@ -4,7 +4,9 @@ if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
   find_package(MPI REQUIRED)
   
-  add_executable(laplace_mpi laplace_mpi.cpp)
+  #add_executable(laplace_mpi laplace_mpi.cpp)
+  add_executable(laplace_mpi simple_mpi.cpp)
+  add_definitions(-DHAVE_MPI=1)
 
   add_definitions(-DHAVE_KOKKOS=1)
   if (CUDA)
@@ -21,5 +23,5 @@ if (KOKKOS)
 
   endif()
 
-  target_link_libraries(laplace_mpi matar MPI::MPI_CXX)
+  target_link_libraries(laplace_mpi matar Kokkos::kokkos MPI::MPI_CXX)
 endif()

@@ -11,6 +11,7 @@ fi
 cmake_options=(
     -D CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR};${KOKKOS_INSTALL_DIR}"
     -D CMAKE_BUILD_TYPE=Release
+    -D MPI=ON
 )
 
 if [ "$kokkos_build_type" = "none" ]; then

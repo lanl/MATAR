@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.8)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(Matar REQUIRED)
+if (MPI)
+    find_package(MPI REQUIRED)
+endif()
 
 add_executable(mtest main.cpp)
 target_link_libraries(mtest matar)
@@ -69,8 +72,8 @@ add_subdirectory(halfspace_cooling)
 include_directories(watt-graph)
 add_subdirectory(watt-graph)
 
-include_directories(matar_fortran)
-add_subdirectory(matar_fortran)
+#include_directories(matar_fortran)
+#add_subdirectory(matar_fortran)
 
 include_directories(sparsetests)
 add_subdirectory(sparsetests)
@@ -78,8 +81,8 @@ add_subdirectory(sparsetests)
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
 
-#include_directories(laplaceMPI)
-#add_subdirectory(laplaceMPI)
+include_directories(laplaceMPI)
+add_subdirectory(laplaceMPI)
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)
