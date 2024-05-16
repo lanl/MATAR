@@ -61,7 +61,7 @@ static void BM_Carray_vec_vec_dot(benchmark::State& state)
 BENCHMARK(BM_CArray_1d_multiply)
 ->Unit(benchmark::kMillisecond)
 ->Name("Benchmark dot product of 2 1D CArrays of size ")
-->RangeMultiplier(2)->Range(1<<10, 1<<18);
+->RangeMultiplier(2)->Range(1<<12, 1<<20);
 
 // ------- matrix matrix multiply ------------- //
 static void BM_CArray_mat_mat_multiply(benchmark::State& state) 

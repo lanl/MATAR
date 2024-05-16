@@ -24,8 +24,6 @@ static void BM_CArrayDevice_1d_multiply(benchmark::State& state)
     });
     // Begin benchmarked section
     for (auto _ : state){
-        
-
         FOR_ALL(i, 0, size, {
             C(i) = A(i)*B(i);
         });
@@ -39,66 +37,70 @@ BENCHMARK(BM_CArrayDevice_1d_multiply)
 ->Name("Benchmark Multiplying 2 1D CArrayDevice of size ")
 ->RangeMultiplier(2)->Range(1<<12, 1<<20);
 
+// ------- vector vector dot product ------------- //
+static void BM_CArrayDevice_vec_vec_dot(benchmark::State& state) 
+{
+    int size = state.range(0);
+
+    CArrayDevice<double> A(size);
+    CArrayDevice<double> B(size);
+    double C = 0.0;
+
+    FOR_ALL(i, 0, size, {
+        A(i) = (double)i+1.0;
+        B(i) = (double)i+2.0;
+    });
 
 
-// // ------- vector vector dot product ------------- //
-// static void BM_Carray_vec_vec_dot(benchmark::State& state) 
-// {
-//     int size = state.range(0);
+    // Begin benchmarked section
+    for (auto _ : state){
 
-//     // Begin benchmarked section
-//     for (auto _ : state){
-//         CArray<double> A(size);
-//         CArray<double> B(size);
-//         double C = 0.0;
+        double loc_sum = 0;
+        double C  = 0;
+        REDUCE_SUM(i, 0, size,
+            loc_sum, {
+            loc_sum += A(i)*B(i);
+        }, C);
+    } // end benchmarked section
+}
+BENCHMARK(BM_CArrayDevice_vec_vec_dot)
+->Unit(benchmark::kMillisecond)
+->Name("Benchmark dot product of 2 1D CArrayDevice of size ")
+->RangeMultiplier(2)->Range(1<<12, 1<<20);
 
-//         for(int i = 0; i < size; i++){
-//             A(i) = (double)i+1.0;
-//             B(i) = (double)i+2.0;
-//         }
 
-//         for(int i = 0; i < size; i++){
-//             C += A(i)*B(i);
-//         }
-//     } // end benchmarked section
-// }
-// BENCHMARK(BM_CArray_1d_multiply)
-// ->Unit(benchmark::kMillisecond)
-// ->Name("Benchmark dot product of 2 1D CArrays of size ")
-// ->RangeMultiplier(2)->Range(1<<10, 1<<18);
+// ------- matrix matrix multiply ------------- //
+static void BM_CArrayDevice_mat_mat_multiply(benchmark::State& state) 
+{
+    int size = state.range(0);
 
-// // ------- matrix matrix multiply ------------- //
-// static void BM_CArray_mat_mat_multiply(benchmark::State& state) 
-// {
-//     int size = state.range(0);
+    CArrayDevice<double> A(size, size);
+    CArrayDevice<double> B(size, size);
+    CArrayDevice<double> C(size, size);
 
-//     // Begin benchmarked section
-//     for (auto _ : state){
-//         CArray<double> A(size, size);
-//         CArray<double> B(size, size);
-//         CArray<double> C(size, size);
+    FOR_ALL(i, 0, size,
+            j, 0, size, {
+        A(i,j) = (double)i+(double)j+1.0;
+        B(i,j) = (double)i+(double)j+2.0;
+        C(i,j) = 0.0;
+    });
 
-//         for(int i = 0; i < size; i++){
-//             for(int j = 0; j < size; j++){
-//                 A(i,j) = (double)i+(double)j+1.0;
-//                 B(i,j) = (double)i+(double)j+2.0;
-//                 C(i,j) = 0.0;
-//             }
-//         }
+    // Begin benchmarked section
+    for (auto _ : state){
+        
+        FOR_ALL(i, 0, size,
+                j, 0, size, {
+            for(int k = 0; k < size; k++){
+                C(i,k) += A(i,j)*B(j,k);
+            }
+        });
+    } // end benchmarked section
+}
+BENCHMARK(BM_CArrayDevice_mat_mat_multiply)
+->Unit(benchmark::kMillisecond)
+->Name("Benchmark matrix-matrix multiply of CArrayDevice of size ")
+->RangeMultiplier(2)->Range(1<<3, 1<<10);
 
-//         for(int i = 0; i < size; i++){
-//             for(int j = 0; j < size; j++){
-//                 for(int k = 0; k < size; k++){
-//                     C(i,k) += A(i,j)*B(j,k);
-//                 }
-//             }
-//         }
-//     } // end benchmarked section
-// }
-// BENCHMARK(BM_CArray_mat_mat_multiply)
-// ->Unit(benchmark::kMillisecond)
-// ->Name("Benchmark matrix-matrix multiply of CArrays of size ")
-// ->RangeMultiplier(2)->Range(1<<3, 1<<10);
 
 // Run Benchmarks
 int main(int argc, char** argv)
