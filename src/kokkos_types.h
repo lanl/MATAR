@@ -7523,7 +7523,7 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
     stride_ = SArray1D(strides_tag_string, dim1_);
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StridesInit", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
-      strides_((i) = 0;
+      strides_(i) = 0;
     });
     #else
     set_strides_functor execution_functor(0, stride_);
