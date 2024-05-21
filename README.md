@@ -186,6 +186,22 @@ Using the main_kokkos.cpp executable as an example, it can be run by typing:
 ./mtestkokkos
 ```
 
+## Running codes in parallel
+The openMP and pthread Kokkos backends require the user to specify the number of threads used to run the code in parallel. 
+To specify the number of threads with the Kokkos pthread backend, add the following command line argument when executing the code,
+```
+--kokkos-threads=4
+```
+in otherwords,
+```
+./mycode --kokkos-threads=4
+```
+The above command runs the code with fine grained parallelism using 4 threads.  For the openMP backend, set the number of threads as an environement variable; this is done by typing the following command in the terminal,
+```
+export OMP_NUM_THREADS=4
+```
+The CUDA and HIP backends do not need the number of threads specified.
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
