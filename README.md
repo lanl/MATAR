@@ -196,7 +196,22 @@ in otherwords,
 ```
 ./mycode --kokkos-threads=4
 ```
-The above command runs the code with fine grained parallelism using 4 threads.  For the openMP backend, set the number of threads as an environement variable; this is done by typing the following command in the terminal,
+The above command runs the code with fine grained parallelism using 4 threads.  In your code, ensure you pass the command line argument variables to Kokkos::initialize function as shown below here.
+```
+int main(int argc, char* argv[])
+{
+    Kokkos::initialize(argc, argv);
+
+    // coding goes here
+
+    Kokkos::finalize();
+
+    return 0;
+}
+```
+The above coding will still work if no command line arguments are given; that is key because the other kokkos backends do not need command line arguments.
+
+For the openMP backend, set the number of threads as an environement variable; this is done by typing the following command in the terminal,
 ```
 export OMP_NUM_THREADS=4
 ```
