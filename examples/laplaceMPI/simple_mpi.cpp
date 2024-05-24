@@ -54,11 +54,15 @@ int main(int argc, char *argv[])
     Kokkos::fence();
   }
 
-  if (rank == 0)
-    mca_s.mtr_send(10, 1, 99, MPI_COMM_WORLD);
-  else
-    mca_r.mtr_recv(10, 0, 99, MPI_COMM_WORLD);
-  Kokkos::fence();
+  if (rank == 0) {
+    mca_s.isend(10, 1, 99, MPI_COMM_WORLD);
+    mca_s.wait_send();
+  }
+  else {
+    mca_r.irecv(10, 0, 99, MPI_COMM_WORLD);
+    mca_r.wait_recv();
+  }
+  mca_r.barrier(MPI_COMM_WORLD);  
 
   if (rank != 0) {
     FOR_ALL(idx, 0, 10, {
