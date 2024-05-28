@@ -1,5 +1,10 @@
-## Building MATAR with Anaconda
-It is advised to use the Anaconda package manager to build the MATAR examples as follows:
+Please read the homepage documentation first. The documentation listed here repeats what is listed on the homepage and adds a few additional details to help users with building and using MATAR.
+
+We encourage developers to use Anaconda, making the build process as simple as possible. Anaconda can be installed on Mac and Linux OSs. At this time, Windows users must install Anaconda inside WSL-2. To use the anaconda package, follow the steps for your platform to install [anaconda](https://docs.anaconda.com/free/anaconda/install/index.html)/[miniconda](https://docs.conda.io/en/latest/miniconda.html)/[mamba](https://mamba.readthedocs.io/en/latest/installation.html). 
+
+
+## Building MATAR inside Anaconda
+It is advised to use the Anaconda package manager to build the MATAR examples and tests. Within a terminal, go to where you want to build MATAR, and follow the steps listed below here.
 
 1. Create an environment and activate:
 ```
