@@ -1,4 +1,4 @@
-Please read the homepage documentation first. The documentation listed here repeats what is listed on the homepage and adds a few additional details to help users with building and using MATAR.
+Please read the homepage documentation first. The documentation listed here builds on the information given on the homepage, repeats some information, and adds a few additional details to help users with using the scripts and building MATAR.
 
 We encourage developers to use Anaconda, making the build process as simple as possible. Anaconda can be installed on Mac and Linux OSs. At this time, Windows users must install Anaconda inside WSL-2. To use the anaconda package, follow the steps for your platform to install [anaconda](https://docs.anaconda.com/free/anaconda/install/index.html)/[miniconda](https://docs.conda.io/en/latest/miniconda.html)/[mamba](https://mamba.readthedocs.io/en/latest/installation.html). 
 
