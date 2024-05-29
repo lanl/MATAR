@@ -154,6 +154,15 @@ public:
     // MPI recieve wrapper
     void recv(size_t count, int dest, int tag, MPI_Comm comm);
 
+    // MPI scatter wrapper
+    void scatter(size_t send_count, size_t recv_count, int root, MPI_Comm comm);
+
+    // MPI gather wrapper
+    void gather(size_t send_count, size_t recv_count, int root, MPI_Comm comm);
+
+    // MPI allgather wrapper
+    void allgather(size_t send_count, size_t recv_count, MPI_Comm comm);
+
     // MPI send wrapper
     void isend(size_t count, int dest, int tag, MPI_Comm comm);
 
@@ -484,6 +493,27 @@ void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int d
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
     MPI_Recv(host_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
+    update_device();
+}
+
+//MPI_Scatter wrapper
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, size_t recv_count, int root, MPI_Comm comm) {
+    update_host();
+    MPI_Scatter(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, root, comm); 
+}
+
+//MPI_Gather wrapper
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, size_t recv_count, int root, MPI_Comm comm) {
+    MPI_Gather(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, root, comm); 
+    update_device();
+}
+
+//MPI_AllGather wrapper
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, size_t recv_count, MPI_Comm comm) {
+    MPI_Allgather(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, comm); 
     update_device();
 }
 

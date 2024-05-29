@@ -26,6 +26,22 @@ int height = 1000;
 int max_num_iterations = 1000;
 double temp_tolerance = 0.01;
 
+void example_gather(int world_size, int rank) {
+    int size = 9;
+    int root = 0;  
+    MPIDCArrayKokkos <float> arrA = MPIDCArrayKokkos <float> (MPI_INT, 10);
+    MPIDCArrayKokkos <float> arrB = MPIDCArrayKokkos <float> (MPI_INT, 10);
+
+    if (rank == root) {    
+        FOR_ALL(idx, 0, size, { 
+            arrA(idx) = idx+1;
+        });  
+        Kokkos::fence();
+    }
+
+    
+
+}
 
 int main(int argc, char *argv[])
 {
