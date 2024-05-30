@@ -26,21 +26,101 @@ int height = 1000;
 int max_num_iterations = 1000;
 double temp_tolerance = 0.01;
 
+// Example for the scatter and gather functions
+// All it does is take an array, split it up,
+// half the value of each chunk, and send those
+// back to be grouped again by the root
 void example_gather(int world_size, int rank) {
-    int size = 9;
-    int root = 0;  
-    MPIDCArrayKokkos <float> arrA = MPIDCArrayKokkos <float> (MPI_INT, 10);
-    MPIDCArrayKokkos <float> arrB = MPIDCArrayKokkos <float> (MPI_INT, 10);
+    int size = 12;
+    int sub_size = size / world_size;
+    MPIDCArrayKokkos <float> arrAll = MPIDCArrayKokkos <float> (MPI_FLOAT, size);
+    MPIDCArrayKokkos <float> arrSub = MPIDCArrayKokkos <float> (MPI_FLOAT, sub_size);
 
-    if (rank == root) {    
+    if (rank == ROOT) {    
         FOR_ALL(idx, 0, size, { 
-            arrA(idx) = idx+1;
+            arrAll(idx) = idx+1;
+            printf("%d) %f\n", idx, arrAll(idx));   
+        });  
+        Kokkos::fence();
+        printf("------------\n");
+    }
+
+    arrAll.scatter(sub_size, arrSub, sub_size, ROOT, MPI_COMM_WORLD); 
+
+    FOR_ALL(idx, 0, sub_size, {
+        arrSub(idx) = arrSub(idx) / 2; 
+    });
+    Kokkos::fence();
+
+    // Gather
+    /*
+    arrSub.gather(sub_size, arrAll, sub_size, ROOT, MPI_COMM_WORLD);
+    
+    if (rank == ROOT) {
+        FOR_ALL(idx, 0, size, {
+            printf("%d) %f\n", idx, arrAll(idx));   
+        });
+        Kokkos::fence();
+    }
+    */
+    // Allgather
+    arrSub.allgather(sub_size, arrAll, sub_size, MPI_COMM_WORLD);
+    
+    // A rank other than Root
+    if (rank == 1) {
+        FOR_ALL(idx, 0, size, {
+            printf("%d) %f\n", idx, arrAll(idx));   
+        });
+        Kokkos::fence();
+    }
+}
+
+// Example for sending, receiving, and broadcasting
+void example_simple_comms(int world_size, int rank) {
+    int size = 10;
+    int tag = 99;
+    MPIDCArrayKokkos <int> mca_s = MPIDCArrayKokkos <int> (MPI_INT, size);
+    MPIDCArrayKokkos <int> mca_r = MPIDCArrayKokkos <int> (MPI_INT, size);
+
+    if (rank == ROOT) {
+        FOR_ALL(idx, 0, size, { 
+            mca_s(idx) = idx+1;
         });  
         Kokkos::fence();
     }
 
-    
+    if (rank == ROOT) {
+        mca_s.isend(size, 1, tag, MPI_COMM_WORLD);
+        mca_s.wait_send();
+    }
+    else {
+        mca_r.irecv(size, 0, tag, MPI_COMM_WORLD);
+        mca_r.wait_recv();
+    }
+    mca_r.barrier(MPI_COMM_WORLD);  
 
+    if (rank != ROOT) {
+        FOR_ALL(idx, 0, size, {
+            printf("idx %d with value %d\n", idx, mca_r(idx));
+        });
+        Kokkos::fence();
+    }
+
+    if (rank == ROOT) {
+        FOR_ALL(idx, 0, size, {
+            mca_s(idx) = mca_s(idx) * 2;       
+        });
+        Kokkos::fence();
+    }
+
+    mca_s.broadcast(size, ROOT, MPI_COMM_WORLD);
+
+    if (rank != ROOT) {
+        FOR_ALL(idx, 0, size, {
+            printf("idx %d with value %d\n", idx, mca_s(idx));
+        });
+        Kokkos::fence();
+    }
 }
 
 int main(int argc, char *argv[])
@@ -59,34 +139,8 @@ int main(int argc, char *argv[])
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  // main loop
-  MPIDCArrayKokkos <int> mca_s = MPIDCArrayKokkos <int> (MPI_INT, 10);
-  MPIDCArrayKokkos <int> mca_r = MPIDCArrayKokkos <int> (MPI_INT, 10);
-
-  if (rank == 0) {
-    FOR_ALL(idx, 0, 10, { 
-        mca_s(idx) = idx+1;
-    });  
-    Kokkos::fence();
-  }
-
-  if (rank == 0) {
-    mca_s.isend(10, 1, 99, MPI_COMM_WORLD);
-    mca_s.wait_send();
-  }
-  else {
-    mca_r.irecv(10, 0, 99, MPI_COMM_WORLD);
-    mca_r.wait_recv();
-  }
-  mca_r.barrier(MPI_COMM_WORLD);  
-
-  if (rank != 0) {
-    FOR_ALL(idx, 0, 10, {
-        printf("idx %d with value %d\n", idx, mca_r(idx));
-    });
-    Kokkos::fence();
-  }
-
+  //example_gather(world_size, rank);
+  example_simple_comms(world_size, rank);
 
   // stop timing
   double end_time = MPI_Wtime();

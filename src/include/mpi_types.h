@@ -154,14 +154,17 @@ public:
     // MPI recieve wrapper
     void recv(size_t count, int dest, int tag, MPI_Comm comm);
 
+    // MPI broadcast wrapper
+    void broadcast(size_t count, int root, MPI_Comm comm);
+
     // MPI scatter wrapper
-    void scatter(size_t send_count, size_t recv_count, int root, MPI_Comm comm);
+    void scatter(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
     // MPI gather wrapper
-    void gather(size_t send_count, size_t recv_count, int root, MPI_Comm comm);
+    void gather(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
     // MPI allgather wrapper
-    void allgather(size_t send_count, size_t recv_count, MPI_Comm comm);
+    void allgather(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
 
     // MPI send wrapper
     void isend(size_t count, int dest, int tag, MPI_Comm comm);
@@ -489,6 +492,15 @@ void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int d
     MPI_Send(host_pointer(), count, mpi_datatype_, dest, tag, comm); 
 }
 
+//MPI_Bcast wrapper
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, int root, MPI_Comm comm) {
+    update_host();
+    MPI_Bcast(host_pointer(), count, mpi_datatype_, root, comm); 
+    update_device();
+}
+
+
 //MPI_Recv wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
@@ -498,23 +510,26 @@ void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int s
 
 //MPI_Scatter wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, size_t recv_count, int root, MPI_Comm comm) {
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
     update_host();
-    MPI_Scatter(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, root, comm); 
+    MPI_Scatter(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
+    recv_buffer.update_device();
 }
 
 //MPI_Gather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, size_t recv_count, int root, MPI_Comm comm) {
-    MPI_Gather(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, root, comm); 
-    update_device();
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+    update_host();
+    MPI_Gather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
+    recv_buffer.update_device();
 }
 
 //MPI_AllGather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, size_t recv_count, MPI_Comm comm) {
-    MPI_Allgather(host_pointer(), send_count, mpi_datatype_, host_pointer(), recv_count, mpi_datatype_, comm); 
-    update_device();
+void MPIDCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, MPIDCArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm) {
+    update_host();
+    MPI_Allgather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, comm); 
+    recv_buffer.update_device();
 }
 
 //MPI_Isend wrapper
