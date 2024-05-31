@@ -9,7 +9,46 @@
 using namespace mtr; // matar namespace
 
 // ------- vector vector multiply ------------- //
-static void BM_CArrayDevice_1d_multiply(benchmark::State& state) 
+static void BM_CArrayDevice_1d_multiply_internal(benchmark::State& state) 
+{
+
+    int size = state.range(0);
+
+    CArrayDevice<double> A(size);
+    CArrayDevice<double> B(size);
+    CArrayDevice<double> C(size);
+    // Initialize 
+    FOR_ALL(i, 0, size, {
+        A(i) = (double)i+1.0;
+        B(i) = (double)i+2.0;
+    });
+
+    // Begin benchmarked section
+    for (auto _ : state){
+        FOR_ALL(i, 0, size, {
+            C(i) = A(i)*B(i);
+        });
+    } // end benchmarked section
+}
+BENCHMARK(BM_CArrayDevice_1d_multiply_internal)
+->Unit(benchmark::kMillisecond)
+->Name("Benchmark Multiplying 2 1D CArrayDevice of size ")
+->RangeMultiplier(2)->Range(1<<16, 1<<22);
+
+
+// functions called INSIDE a kokkos parallel loop
+KOKKOS_FUNCTION
+static void multiply_1D_KF(
+    const CArrayDevice<double>& A, 
+    const CArrayDevice<double>& B, 
+    const CArrayDevice<double>& C,
+    const int i)
+{
+    C(i) = A(i)*B(i);
+}
+
+// ------- vector vector multiply ------------- //
+static void BM_CArrayDevice_1d_multiply_KF_call(benchmark::State& state) 
 {
 
     int size = state.range(0);
@@ -18,24 +57,69 @@ static void BM_CArrayDevice_1d_multiply(benchmark::State& state)
     CArrayDevice<double> B(size);
     CArrayDevice<double> C(size);
 
+    // Initialize
     FOR_ALL(i, 0, size, {
         A(i) = (double)i+1.0;
         B(i) = (double)i+2.0;
     });
+
     // Begin benchmarked section
     for (auto _ : state){
         FOR_ALL(i, 0, size, {
-            C(i) = A(i)*B(i);
+            multiply_1D_KF(A, B, C, i);
         });
     } // end benchmarked section
 
-    // Kokkos::finalize();
+}
+// BENCHMARK(BM_CArrayDevice_1d_multiply_KF_call)
+// ->Unit(benchmark::kMillisecond)
+// ->Name("Benchmark Multiplying 2 1D CArrayDevice via a call to a KOKKOS_FUNCTION of size ")
+// ->RangeMultiplier(2)->Range(1<<16, 1<<22);
+
+
+// functions called INSIDE a kokkos parallel loop
+KOKKOS_INLINE_FUNCTION
+static void multiply_1D_KIF(
+    const CArrayDevice<double>& A, 
+    const CArrayDevice<double>& B, 
+    const CArrayDevice<double>& C,
+    const int i)
+{
+    C(i) = A(i)*B(i);
+}
+
+// ------- vector vector multiply ------------- //
+static void BM_CArrayDevice_1d_multiply_KIF_call(benchmark::State& state) 
+{
+
+    int size = state.range(0);
+
+    CArrayDevice<double> A(size);
+    CArrayDevice<double> B(size);
+    CArrayDevice<double> C(size);
+
+    // Initialize
+    FOR_ALL(i, 0, size, {
+        A(i) = (double)i+1.0;
+        B(i) = (double)i+2.0;
+    });
+
+    // Begin benchmarked section
+    for (auto _ : state){
+        FOR_ALL(i, 0, size, {
+            multiply_1D_KIF(A, B, C, i);
+        });
+    } // end benchmarked section
 
 }
-BENCHMARK(BM_CArrayDevice_1d_multiply)
-->Unit(benchmark::kMillisecond)
-->Name("Benchmark Multiplying 2 1D CArrayDevice of size ")
-->RangeMultiplier(2)->Range(1<<12, 1<<20);
+// BENCHMARK(BM_CArrayDevice_1d_multiply_KIF_call)
+// ->Unit(benchmark::kMillisecond)
+// ->Name("Benchmark Multiplying 2 1D CArrayDevice via a call to a KOKKOS_INLINE_FUNCTION of size ")
+// ->RangeMultiplier(2)->Range(1<<16, 1<<22);
+
+
+
+
 
 // ------- vector vector dot product ------------- //
 static void BM_CArrayDevice_vec_vec_dot(benchmark::State& state) 
@@ -66,7 +150,8 @@ static void BM_CArrayDevice_vec_vec_dot(benchmark::State& state)
 BENCHMARK(BM_CArrayDevice_vec_vec_dot)
 ->Unit(benchmark::kMillisecond)
 ->Name("Benchmark dot product of 2 1D CArrayDevice of size ")
-->RangeMultiplier(2)->Range(1<<12, 1<<20);
+->RangeMultiplier(2)->Range(1<<16, 1<<22);
+
 
 
 // ------- matrix matrix multiply ------------- //
