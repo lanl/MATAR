@@ -33,8 +33,8 @@ double temp_tolerance = 0.01;
 void example_gather(int world_size, int rank) {
     int size = 12;
     int sub_size = size / world_size;
-    MPIDCArrayKokkos <float> arrAll = MPIDCArrayKokkos <float> (MPI_FLOAT, size);
-    MPIDCArrayKokkos <float> arrSub = MPIDCArrayKokkos <float> (MPI_FLOAT, sub_size);
+    MPIArrayKokkos <float> arrAll = MPIArrayKokkos <float> (MPI_FLOAT, size);
+    MPIArrayKokkos <float> arrSub = MPIArrayKokkos <float> (MPI_FLOAT, sub_size);
 
     if (rank == ROOT) {    
         FOR_ALL(idx, 0, size, { 
@@ -75,12 +75,47 @@ void example_gather(int world_size, int rank) {
     }
 }
 
+// Example for halo sending and receiving
+void example_halo_comms(int world_size, int rank) {
+    int size = 10;
+    int tag = 99;
+    
+    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (MPI_INT, size);
+
+    if (rank == ROOT) {
+        FOR_ALL(idx, 0, size, { 
+            mca_s(idx) = idx+1;
+        });  
+        Kokkos::fence();
+        mca_s.mpi_setup(1, tag, MPI_COMM_WORLD);
+    }
+    else {
+        mca_r.mpi_setup(ROOT, tag, MPI_COMM_WORLD);
+    }
+
+    if (rank == ROOT) {
+        mca_s.halo_send();
+    }
+    else {
+        mca_r.halo_recv();
+    }
+
+    if (rank != ROOT) {
+        FOR_ALL(idx, 0, size, {
+            printf("idx %d with value %d\n", idx, mca_r(idx));
+        });
+        Kokkos::fence();
+    }
+
+}
+
 // Example for sending, receiving, and broadcasting
 void example_simple_comms(int world_size, int rank) {
     int size = 10;
     int tag = 99;
-    MPIDCArrayKokkos <int> mca_s = MPIDCArrayKokkos <int> (MPI_INT, size);
-    MPIDCArrayKokkos <int> mca_r = MPIDCArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (MPI_INT, size);
 
     if (rank == ROOT) {
         FOR_ALL(idx, 0, size, { 
@@ -140,7 +175,8 @@ int main(int argc, char *argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   //example_gather(world_size, rank);
-  example_simple_comms(world_size, rank);
+  //example_simple_comms(world_size, rank);
+  example_halo_comms(world_size, rank);
 
   // stop timing
   double end_time = MPI_Wtime();
