@@ -146,6 +146,13 @@ static void BM_CArrayDevice_vec_vec_dot(benchmark::State& state)
             loc_sum += A(i)*B(i);
         }, C);
     } // end benchmarked section
+
+    std::cout <<"A.size() = " << A.size() << std::endl;
+    std::cout << "A.extent() = " << A.extent() << std::endl;
+    std::cout << "A.dims(0) = " << A.dims(0) << std::endl;
+    std::cout << "A.dims(1) = " << A.dims(1) << std::endl;
+    std::cout << "A.order() = " << A.order() << std::endl;
+
 }
 BENCHMARK(BM_CArrayDevice_vec_vec_dot)
 ->Unit(benchmark::kMillisecond)
@@ -185,6 +192,44 @@ BENCHMARK(BM_CArrayDevice_mat_mat_multiply)
 ->Unit(benchmark::kMillisecond)
 ->Name("Benchmark matrix-matrix multiply of CArrayDevice of size ")
 ->RangeMultiplier(2)->Range(1<<3, 1<<10);
+
+
+
+// ------- 6D matrix matrix multiply ------------- //
+static void BM_CArrayDevice_6D_mat_mat_multiply(benchmark::State& state) 
+{
+    int size = state.range(0);
+
+    CArrayDevice<double> A(size, size, size, size, size, size);
+    CArrayDevice<double> B(size, size, size, size, size, size);
+    CArrayDevice<double> C(size, size, size, size, size, size);
+
+    FOR_ALL(i, 0, size,
+            j, 0, size, 
+            k, 0, size,{
+        A(i, j, k, i, j, k) = (double)i+(double)j+1.0 + (double)i*(double)j + (double)k;
+        B(i, j, k, i, j, k) = (double)i+(double)j+2.0 + (double)i*(double)j + (double)k;
+        C(i, j, k, i, j, k) = 0.0;
+    });
+
+    // Begin benchmarked section
+    for (auto _ : state){
+        
+        FOR_ALL(i, 0, size,
+            j, 0, size, 
+            k, 0, size,{
+            
+            C(i, j, k, i, j, k) = A(i, j, k, i, j, k)*B(i, j, k, i, j, k);
+
+        });
+    } // end benchmarked section
+}
+BENCHMARK(BM_CArrayDevice_6D_mat_mat_multiply)
+->Unit(benchmark::kMillisecond)
+->Name("Benchmark 6D matrix-matrix multiply of CArrayDevice of size ")
+->RangeMultiplier(2)->Range(1<<3, 1<<5);
+
+
 
 
 // Run Benchmarks

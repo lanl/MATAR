@@ -3263,9 +3263,9 @@ class CArrayKokkos {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
     
 private:
-    size_t dims_[7];
-    size_t order_;
-    size_t length_;
+    const size_t dims_[7];
+    const size_t order_;
+    const size_t length_;
     TArray1D this_array_;
 
 public:
@@ -3347,94 +3347,69 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() {
-    length_ = order_ = 0;
-    for (int i = 0; i < 7; i++) {
-        dims_[i] = 0;
-    }
-}
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos() :
+dims_({0, 0, 0, 0, 0, 0, 0}), order_(0), length_(0) {}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, const std::string& tag_string) {
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, const std::string& tag_string) :
+dims_({dim0, 0, 0, 0, 0, 0, 0}), order_(1), length_(dim0) 
+{
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    order_ = 1;
-    length_ = dim0;
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) :
+dims_({dim0, dim1, 0, 0, 0, 0, 0}), order_(2), length_(dim0 * dim1) 
+{
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    order_ = 2;
-    length_ = (dim0 * dim1);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, const std::string& tag_string) {
+                              size_t dim2, const std::string& tag_string) :
+dims_({dim0, dim1, dim2, 0, 0, 0, 0}), order_(3), length_(dim0 * dim1 * dim2) 
+{
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    order_ = 3;
-    length_ = (dim0 * dim1 * dim2);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3, const std::string& tag_string) {
+                              size_t dim2, size_t dim3, const std::string& tag_string) :
+dims_({dim0, dim1, dim2, dim3, 0, 0, 0}), order_(4), length_(dim0 * dim1 * dim2 * dim3) 
+{
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    order_ = 4;
-    length_ = (dim0 * dim1 * dim2 * dim3);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
-                              size_t dim4, const std::string& tag_string) {
+                              size_t dim4, const std::string& tag_string) :
+dims_({dim0, dim1, dim2, dim3, dim4, 0, 0}), order_(5), length_(dim0 * dim1 * dim2 * dim3 * dim4) 
+{
 
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    order_ = 5;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5, const std::string& tag_string) {
+                              size_t dim4, size_t dim5, const std::string& tag_string) :
+dims_({dim0, dim1, dim2, dim3, dim4, dim5, 0}), order_(6), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5) 
+{
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    order_ = 6;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
@@ -3442,18 +3417,11 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string) {
+                              size_t dim6, const std::string& tag_string) :
+dims_({dim0, dim1, dim2, dim3, dim4, dim5, dim6}), order_(7), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5 *dim6) 
+{
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
-    order_ = 7;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+
     this_array_ = TArray1D(tag_string, length_);
 }
 
