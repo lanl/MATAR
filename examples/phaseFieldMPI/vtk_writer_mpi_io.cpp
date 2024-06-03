@@ -1,16 +1,49 @@
+/**********************************************************************************************
+ © 2020. Triad National Security, LLC. All rights reserved.
+ This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
+ National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
+ Department of Energy/National Nuclear Security Administration. All rights in the program are
+ reserved by Triad National Security, LLC, and the U.S. Department of Energy/National Nuclear
+ Security Administration. The Government is granted for itself and others acting on its behalf a
+ nonexclusive, paid-up, irrevocable worldwide license in this material to reproduce, prepare
+ derivative works, distribute copies to the public, perform publicly and display publicly, and
+ to permit others to do so.
+ This program is open source under the BSD-3 License.
+ Redistribution and use in source and binary forms, with or without modification, are permitted
+ provided that the following conditions are met:
+ 1.  Redistributions of source code must retain the above copyright notice, this list of
+ conditions and the following disclaimer.
+ 2.  Redistributions in binary form must reproduce the above copyright notice, this list of
+ conditions and the following disclaimer in the documentation and/or other materials
+ provided with the distribution.
+ 3.  Neither the name of the copyright holder nor the names of its contributors may be used
+ to endorse or promote products derived from this software without specific prior
+ written permission.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **********************************************************************************************/
 #include <vtk_writer_mpi_io.h>
 
-VTK_Writer_MPI_IO::VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int,3> & dimensions_full_array,
-    const std::array<int,3> & dimensions_subarray,
-    const std::array<int,3> & start_coordinates,
-    const char *format) :
-mpi_io_comm_(mpi_io_comm),
-dimensions_full_array_(dimensions_full_array),
-dimensions_subarray_(dimensions_subarray),
-start_coordinates_(start_coordinates),
-format_(format),
-chars_per_num_type_(MPI_DATATYPE_NULL),
-file_space_type_(MPI_DATATYPE_NULL)
+VTK_Writer_MPI_IO::VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int, 3>& dimensions_full_array,
+                                     const std::array<int, 3>& dimensions_subarray,
+                                     const std::array<int, 3>& start_coordinates,
+                                     const char* format) :
+    mpi_io_comm_(mpi_io_comm),
+    dimensions_full_array_(dimensions_full_array),
+    dimensions_subarray_(dimensions_subarray),
+    start_coordinates_(start_coordinates),
+    format_(format),
+    chars_per_num_type_(MPI_DATATYPE_NULL),
+    file_space_type_(MPI_DATATYPE_NULL)
 {
     // calculating chars_per_num based on format specified
     char s[100];
@@ -23,8 +56,8 @@ file_space_type_(MPI_DATATYPE_NULL)
 
     // create file_space_type_
     int dimensions_full_array_reordered[3] = { dimensions_full_array_[2], dimensions_full_array_[1], dimensions_full_array_[0] };
-    int dimensions_subarray_reordered[3] = { dimensions_subarray_[2], dimensions_subarray_[1], dimensions_subarray_[0] };
-    int start_coordinates_reordered[3] = { start_coordinates_[2], start_coordinates_[1], start_coordinates_[0] };
+    int dimensions_subarray_reordered[3]   = { dimensions_subarray_[2], dimensions_subarray_[1], dimensions_subarray_[0] };
+    int start_coordinates_reordered[3]     = { start_coordinates_[2], start_coordinates_[1], start_coordinates_[0] };
     MPI_Type_create_subarray(3, dimensions_full_array_reordered, dimensions_subarray_reordered,
                              start_coordinates_reordered, MPI_ORDER_C, chars_per_num_type_,
                              &file_space_type_);
@@ -37,7 +70,7 @@ VTK_Writer_MPI_IO::~VTK_Writer_MPI_IO()
     MPI_Type_free(&file_space_type_);
 }
 
-void VTK_Writer_MPI_IO::write(int iter, const double *data)
+void VTK_Writer_MPI_IO::write(int iter, const double* data)
 {
     // global array dimensions
     int nx = dimensions_full_array_[0];
@@ -47,10 +80,10 @@ void VTK_Writer_MPI_IO::write(int iter, const double *data)
     // create name of output vtk file
     char filename[50];
     sprintf(filename, "outputComp_%d.vtk", iter);
-    
+
     // for storing header_text
     std::string header_text;
-    
+
     // write vtk file heading
     char buff[300];
     sprintf(buff, "%s\n", "# vtk DataFile Version 3.0");
@@ -67,7 +100,7 @@ void VTK_Writer_MPI_IO::write(int iter, const double *data)
     header_text += buff;
     sprintf(buff, "%s %d %d %d\n", "SPACING", 1, 1, 1);
     header_text += buff;
-    sprintf(buff, "%s %d\n", "POINT_DATA", nx*ny*nz);
+    sprintf(buff, "%s %d\n", "POINT_DATA", nx * ny * nz);
     header_text += buff;
     sprintf(buff, "%s\n", "SCALARS data double");
     header_text += buff;
@@ -75,13 +108,12 @@ void VTK_Writer_MPI_IO::write(int iter, const double *data)
     header_text += buff;
 
     // for holding data converted to chars
-    const int subarray_size = dimensions_subarray_[0]*dimensions_subarray_[1]*dimensions_subarray_[2];
-    char *data_as_chars = new char[subarray_size*chars_per_num_];
+    const int subarray_size = dimensions_subarray_[0] * dimensions_subarray_[1] * dimensions_subarray_[2];
+    char*     data_as_chars = new char[subarray_size * chars_per_num_];
 
     // write data into data_as_chars
-    for (int i = 0; i < subarray_size; i++)
-    {
-        sprintf(&data_as_chars[i*chars_per_num_], format_.c_str(), data[i]);
+    for (int i = 0; i < subarray_size; i++) {
+        sprintf(&data_as_chars[i * chars_per_num_], format_.c_str(), data[i]);
     }
 
     write_mpi_io_file(filename, header_text.c_str(), data_as_chars);
@@ -89,7 +121,7 @@ void VTK_Writer_MPI_IO::write(int iter, const double *data)
     delete[] data_as_chars;
 }
 
-MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char *filename)
+MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char* filename)
 {
     int file_mode = MPI_MODE_UNIQUE_OPEN | MPI_MODE_WRONLY | MPI_MODE_CREATE;
 
@@ -107,20 +139,19 @@ MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char *filename)
     return file_handle;
 }
 
-void VTK_Writer_MPI_IO::write_mpi_io_file(const char *filename, const char* header_text, const char *data_as_chars)
+void VTK_Writer_MPI_IO::write_mpi_io_file(const char* filename, const char* header_text, const char* data_as_chars)
 {
     int my_rank;
     MPI_Comm_rank(mpi_io_comm_, &my_rank);
 
-    int header_text_size = strlen(header_text);
+    int header_text_size   = strlen(header_text);
     int data_as_chars_size = strlen(data_as_chars);
 
     // open file
     MPI_File file_handle = create_mpi_io_file(filename);
 
     // my_rank == 0 writes header of file
-    if (my_rank == 0 && header_text_size > 0)
-    {
+    if (my_rank == 0 && header_text_size > 0) {
         MPI_File_write(file_handle, header_text, header_text_size, MPI_CHAR, MPI_STATUS_IGNORE);
     }
     MPI_Barrier(mpi_io_comm_);

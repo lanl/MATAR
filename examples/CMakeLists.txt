@@ -38,6 +38,9 @@ if (KOKKOS)
   add_executable(kokkos_csc CSCKokkos.cpp)
   target_link_libraries(kokkos_csc matar Kokkos::kokkos)
 
+  add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
+  target_link_libraries(mtr_kokkos-simple matar Kokkos::kokkos)
+
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
