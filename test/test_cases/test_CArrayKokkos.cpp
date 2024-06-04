@@ -4,8 +4,6 @@
 
 using namespace mtr; // matar namespace
 
-
-
 CArrayKokkos<double> return_CArrayKokkos(int dims, std::vector<int> sizes)
 {
 
@@ -174,20 +172,12 @@ TEST(Test_CArrayKokkos, eq_overload)
 
 int main(int argc, char* argv[])
 {
-
-
     Kokkos::initialize(argc, argv);
     {  
-
         int result = 0;
-
         testing::InitGoogleTest(&argc, argv);
-
         result = RUN_ALL_TESTS();
-
         return result;
-
     }
     Kokkos::finalize();
-
 }
