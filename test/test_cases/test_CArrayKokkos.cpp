@@ -4,118 +4,171 @@
 
 using namespace mtr; // matar namespace
 
-// ************ 1D ************ //
 
-// Test size function
-TEST(Test_1D_CArrayKokkos, size)
+
+CArrayKokkos<double> return_CArrayKokkos(int dims, std::vector<int> sizes)
 {
-	const int size = 1000;
-	CArrayKokkos<double> A(size);
 
-	EXPECT_EQ(size, A.size());
+	CArrayKokkos<double> A;
+
+	if(dims == 1){
+		A = CArrayKokkos<double>(sizes[0], "A_1D_CArrayKokkos");
+	}
+	else if(dims == 2){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], "A_2D_CArrayKokkos");
+	}
+	else if(dims == 3){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], "A_3D_CArrayKokkos");
+	}
+	else if(dims == 4){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], "A_4D_CArrayKokkos");
+	}
+	else if(dims == 5){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], "A_5D_CArrayKokkos");
+	}
+	else if(dims == 6){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], sizes[5], "A_7D_CArrayKokkos");
+	}
+	else if(dims == 7){
+		A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], sizes[5], sizes[6], "A_7D_CArrayKokkos");
+	}
+	else{
+		std::cout<<"Dims must be between 1 and 7 for CArrayKokkos" << std::endl;
+	}
+	return A;
 }
 
-// Test extent function
-TEST(Test_1D_CArrayKokkos, extent)
+// Test size function
+TEST(Test_CArrayKokkos, size)
 {
-	const int size = 1000;
-	CArrayKokkos<double> A(size);
+	std::vector<int> sizes;  // Size of each dimension
+	int val = 1;  // Expected total length of data
 
-	int length = size;
-	EXPECT_EQ(length, A.extent());
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+
+		sizes.push_back(dims*2);
+
+		CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+		val*= dims*2;
+
+		EXPECT_EQ(val, A.size());
+	}
+}
+
+
+// Test extent function
+TEST(Test_CArrayKokkos, extent)
+{
+	std::vector<int> sizes; // Size of each dimension
+	int val = 1; // Expected total length of data
+
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+
+		sizes.push_back(dims*2);
+
+		CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+		val*= dims*2;
+
+		EXPECT_EQ(val, A.extent());
+	}
 }
 
 // Test dims function
-TEST(Test_1D_CArrayKokkos, dims)
+TEST(Test_CArrayKokkos, dims)
 {
-	const int size = 1000;
-	CArrayKokkos<double> A(size);
-	
-	int dims = size;
-	EXPECT_EQ(dims, A.dims(0));
 
 	// Note: extend to other dims when initialized to zero
+
+	std::vector<int> sizes;
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+
+		sizes.push_back(dims*2);
+
+		CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+
+		EXPECT_EQ(sizes[i], A.dims(i));
+	}
 }
 
 // Test order function
-TEST(Test_1D_CArrayKokkos, order)
+TEST(Test_CArrayKokkos, order)
 {
-	const int size = 1000;
-	CArrayKokkos<double> A(size);
-	
-	int order = 1;
-	EXPECT_EQ(order, A.order());
+	std::vector<int> sizes;
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+		sizes.push_back(dims*2);
+		CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+		EXPECT_EQ(dims, A.order());
+	}
 }
 
-// Test pointer function
-TEST(Test_1D_CArrayKokkos, pointer)
-{
-	const int size = 1000;
-	CArrayKokkos<double> A(size);
-
-	auto a = A.get_kokkos_view();
-
-	EXPECT_EQ(&a[0], A.pointer());
-}
-
-
-// ************ 2D ************ //
-
-// Test size function
-TEST(Test_2D_CArrayKokkos, size)
-{
-	const int size0 = 100;
-	const int size1 = 50;
-	CArrayKokkos<double> A(size0, size1);
-
-	EXPECT_EQ(size0*size1, A.size());
-}
-
-// Test extent function
-TEST(Test_2D_CArrayKokkos, extent)
-{
-	const int size0 = 100;
-	const int size1 = 50;
-	CArrayKokkos<double> A(size0, size1);
-
-	int length = size0*size1;
-	EXPECT_EQ(length, A.extent());
-}
-
-// Test dims function
-TEST(Test_2D_CArrayKokkos, dims)
-{
-	const int size0 = 100;
-	const int size1 = 50;
-	CArrayKokkos<double> A(size0, size1);
-	
-	int dims0 = size0;
-	int dims1 = size1;
-	EXPECT_EQ(dims0, A.dims(0));
-	EXPECT_EQ(dims1, A.dims(1));
-
-	// Note: extend to other dims when initialized to zero
-}
 
 // Test order function
-TEST(Test_2D_CArrayKokkos, order)
+TEST(Test_CArrayKokkos, pointer)
 {
-	const int size = 100;
-	CArrayKokkos<double> A(size, size);
-	
-	int order = 2;
-	EXPECT_EQ(order, A.order());
+	std::vector<int> sizes;
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+		sizes.push_back(dims*2);
+		CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+		auto a = A.get_kokkos_view();
+
+		EXPECT_EQ(&a[0], A.pointer());
+	}
 }
 
-// Test pointer function
-TEST(Test_2D_CArrayKokkos, pointer)
+// Add test for late initialization
+TEST(Test_CArrayKokkos, late_init)
+{
+	std::vector<int> sizes;  // Size of each dimension
+	int val = 1;  // Expected total length of data
+
+	CArrayKokkos<double> A;
+
+	for(int i = 0; i < 7; i++){
+
+		int dims = i+1;
+
+		sizes.push_back(dims*2);
+
+		A = return_CArrayKokkos(dims, sizes);
+		val*= dims*2;
+
+		EXPECT_EQ(val, A.size());
+	}
+}
+
+
+// Add test for operator = overload
+TEST(Test_CArrayKokkos, eq_overload)
 {
 	const int size = 100;
 	CArrayKokkos<double> A(size, size);
 
-	auto a = A.get_kokkos_view();
+	CArrayKokkos<double> B(size, size);
 
-	EXPECT_EQ(&a[0], A.pointer());
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			A(i,j) = (double)i + (double)j;
+		}
+	}
+
+	B = A;
+
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+
+			EXPECT_EQ(B(i,j), (double)i + (double)j);
+		}
+	}
 }
 
 
