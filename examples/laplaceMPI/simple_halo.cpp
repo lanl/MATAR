@@ -21,8 +21,9 @@ double temp_tolerance = 0.01;
 
 
 // Example for DENSE halo sending and receiving
-// Only multiple, non uniform halo communication - assumes 4 ranks for this example
-// Ranks + (size-1) = # of sends (0 sends to 1,2,3 - 1 sends to 2,3 - 2 sends to 3, 3 sends to no one)
+// Multiple, non uniform halo communication - assumes 4 ranks for this example
+// Ranks + (size-1) = # of sends 
+// 0 sends to 1,2,3 and receives from no one - 1 sends to 2,3 and receives from 0 - 2 sends to 3 and receives from 0,1, 3 sends to no one receives from all
 // Done asynchronously
 void example_nonuniform_halo_comms(int world_size, int rank) {
     int send_rank = rank + 1;
