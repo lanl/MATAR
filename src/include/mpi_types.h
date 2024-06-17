@@ -204,7 +204,7 @@ public:
     void wait_recv();
 
     // MPI barrier wrapper
-    void barrier(MPI_Comm comm);
+    //void barrier(MPI_Comm comm);
 
     // MPI send wrapper
     void halo_send();
@@ -684,10 +684,10 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
 }
 
 //MPI_Barrier wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
-    MPI_Barrier(comm); 
-}
+//template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+//void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
+//    MPI_Barrier(comm); 
+//}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION

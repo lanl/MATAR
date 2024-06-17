@@ -132,7 +132,7 @@ void example_simple_comms(int world_size, int rank) {
         mca_r.irecv(size, 0, tag, MPI_COMM_WORLD);
         mca_r.wait_recv();
     }
-    mca_r.barrier(MPI_COMM_WORLD);  
+    MATAR_MPI_BARRIER
 
     if (rank != ROOT) {
         FOR_ALL(idx, 0, size, {
@@ -161,11 +161,14 @@ void example_simple_comms(int world_size, int rank) {
 int main(int argc, char *argv[])
 {
 
-  MPI_Init(&argc, &argv);
-  Kokkos::initialize(argc, argv);
+  //MPI_Init(&argc, &argv);
+  //Kokkos::initialize(argc, argv);
+  MATAR_MPI_INIT
+  MATAR_KOKKOS_INIT
   { // kokkos scope
 
-  double begin_time_total = MPI_Wtime();
+  //double begin_time_total = MPI_Wtime();
+  double begin_time_total = MATAR_MPI_TIME
 
   int world_size,
       rank;
@@ -179,7 +182,8 @@ int main(int argc, char *argv[])
   example_halo_comms(world_size, rank);
 
   // stop timing
-  double end_time = MPI_Wtime();
+  //double end_time = MPI_Wtime();
+  double end_time = MATAR_MPI_TIME
 
   if (rank == ROOT) {
     printf("\n");
@@ -190,8 +194,10 @@ int main(int argc, char *argv[])
 
 
   } // end kokkos scope
-  Kokkos::finalize();
-  MPI_Finalize();
+  MATAR_KOKKOS_FINALIZE
+  MATAR_MPI_FINALIZE
+  //Kokkos::finalize();
+  //MPI_Finalize();
   return 0;
 }
 

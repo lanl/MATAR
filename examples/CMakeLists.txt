@@ -5,6 +5,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 find_package(Matar REQUIRED)
 if (MPI)
     find_package(MPI REQUIRED)
+    add_definitions(-DHAVE_MPI=1)
 endif()
 
 add_executable(mtest main.cpp)
