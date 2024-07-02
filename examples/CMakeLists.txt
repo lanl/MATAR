@@ -64,6 +64,10 @@ if (NOT HIP)
     add_subdirectory(virtualFcnKokkos)
 endif()
 
+# In testing, not working
+#include_directories(gArrayofgArrays)
+#add_subdirectory(gArrayofgArrays)
+
 include_directories(virtualFcnMATAR)
 add_subdirectory(virtualFcnMATAR)
 

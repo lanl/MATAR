@@ -5,7 +5,8 @@ if (KOKKOS)
   find_package(MPI REQUIRED)
   
   #add_executable(laplace_mpi laplace_mpi.cpp)
-  add_executable(laplace_mpi simple_mpi.cpp)
+  #add_executable(laplace_mpi simple_mpi.cpp)
+  add_executable(laplace_mpi mpi_mesh_test.cpp)
   #add_executable(laplace_mpi simple_halo.cpp)
   add_definitions(-DHAVE_MPI=1)
 
