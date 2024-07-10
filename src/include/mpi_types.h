@@ -590,87 +590,135 @@ MPI_Comm MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_comm() {
 //MPI_Send wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int dest, int tag, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Send(device_pointer(), count, mpi_datatype_, dest, tag, comm); 
+#else
     update_host();
     MPI_Send(host_pointer(), count, mpi_datatype_, dest, tag, comm); 
+#endif
 }
 
 //MPI_Recv wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Recv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
+#else
     MPI_Recv(host_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
     update_device();
+#endif
 }
 
 //MPI_Send halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_send() {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Send(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_); 
+#else
     update_host();
     MPI_Send(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_); 
+#endif
 }
 
 //MPI_Recv halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_recv() {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Recv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_status_); 
+#else
     MPI_Recv(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_status_); 
     update_device();
+#endif
 }
 
 //MPI_iSend halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_isend() {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Isend(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
+#else
     update_host();
     MPI_Isend(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
+#endif
 }
 
 //MPI_iRecv halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_irecv() {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Irecv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
+#else
     MPI_Irecv(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
+#endif
 }
 
 //MPI_Bcast wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, int root, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Bcast(device_pointer(), count, mpi_datatype_, root, comm); 
+#else
     update_host();
     MPI_Bcast(host_pointer(), count, mpi_datatype_, root, comm); 
     update_device();
+#endif
 }
 
 //MPI_Scatter wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Scatter(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
+#else
     update_host();
     MPI_Scatter(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
     recv_buffer.update_device();
+#endif
 }
 
 //MPI_Gather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Gather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
+#else
     update_host();
     MPI_Gather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
     recv_buffer.update_device();
+#endif
 }
 
 //MPI_AllGather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Allgather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, comm); 
+#else
     update_host();
     MPI_Allgather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, comm); 
     recv_buffer.update_device();
+#endif
 }
 
 //MPI_Isend wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::isend(size_t count, int dest, int tag, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Isend(device_pointer(), count, mpi_datatype_, dest, tag, comm, &mpi_request_); 
+#else
     update_host();
     MPI_Isend(host_pointer(), count, mpi_datatype_, dest, tag, comm, &mpi_request_); 
+#endif
 }
 
 //MPI_Irecv wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::irecv(size_t count, int source, int tag, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Irecv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_request_); 
+#else
     MPI_Irecv(host_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_request_); 
+#endif
 }
 
 //MPI_Wait wrapper for the sender
@@ -683,7 +731,9 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_send() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
     MPI_Wait(&mpi_request_, &mpi_status_); 
+#ifndef HAVE_GPU_AWARE_MPI
     update_device();
+#endif
 }
 
 //MPI_Barrier wrapper
