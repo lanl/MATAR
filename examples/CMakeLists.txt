@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.8)
 
+# --- custom targets: ---
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+if (NOT TARGET distclean)
+  # Only include distclean if it has not already been defined (by any
+  # other package that defines distclean and uses MATAR as a submodule)
+  INCLUDE(../cmake/Modules/TargetDistclean.cmake OPTIONAL)
+endif (NOT TARGET distclean)
 
 find_package(Matar REQUIRED)
 if (MPI)

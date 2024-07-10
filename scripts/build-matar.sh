@@ -3,7 +3,7 @@ show_help() {
     echo "Usage: source $(basename "$BASH_SOURCE") [OPTION]"
     echo "Valid options:"
     echo "  --execution=<examples|test>. Default is 'all'"
-    echo "  --kokkos_build_type=<none|serial|openmp|pthreads|cuda|hip>. Default is 'serial'"
+    echo "  --kokkos_build_type=<none|serial|openmp|pthreads|cuda|hip|serial_mpi|openmp_mpi|cuda_mpi|hip_mpi|>. Default is 'serial'"
     echo "  --build_action=<full-app|set-env|install-kokkos|install-matar|matar>. Default is 'full-app'"
     echo "  --machine=<darwin|chicoma|linux|mac>. Default is 'linux'"
     echo "  --build_cores=<Integers greater than 0>. Default is set 1"
@@ -33,6 +33,10 @@ show_help() {
     echo "          pthreads                    pthreads Kokkos backend"
     echo "          cuda                        Cuda Kokkos backend"
     echo "          hip                         HIP Kokkos backend"
+    echo "          serial_mpi                  Serial Kokkos backendi plus MPI"
+    echo "          openmp_mpi                  OpenMP Kokkos backendi plus MPI"
+    echo "          cuda_mpi                    Cuda Kokkos backendi plus MPI"
+    echo "          hip_mpi                     HIP Kokkos backendi plus MPI"
     echo " "
     echo "      --machine                       The machine you are building for. The default is 'linux'"
     echo " "
@@ -54,7 +58,7 @@ build_cores="1"
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
 valid_execution=("examples" "test" "benchmark")
-valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip")
+valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip" "serial_mpi" "openmp_mpi" "cuda_mpi" "hip_mpi")
 valid_machines=("darwin" "chicoma" "linux" "mac")
 
 # Parse command line arguments
@@ -154,6 +158,11 @@ source setup-env.sh ${machine} ${kokkos_build_type} ${build_cores}
 
 # Next, do action based on args
 if [ "$build_action" = "full-app" ]; then
+    rm -rf ${builddir}
+    if [ ! -d "${builddir}" ]
+    then
+        mkdir -p ${builddir}
+    fi    
     source kokkos-install.sh ${kokkos_build_type}
     source matar-install.sh ${kokkos_build_type}
     source cmake_build_${execution}.sh ${kokkos_build_type}
@@ -162,6 +171,8 @@ elif [ "$build_action" = "install-kokkos" ]; then
 elif [ "$build_action" = "install-matar" ]; then
     source matar-install.sh ${kokkos_build_type}
 elif [ "$build_action" = "matar" ]; then
+    # Clean build directory (assumes there is a stale build)
+    make -C "${EXAMPLE_BUILD_DIR}" distclean
     source cmake_build_${execution}.sh ${kokkos_build_type}
 else
     echo "No build action, only setup the environment."

@@ -31,11 +31,6 @@ IF (UNIX)
    */*/cmake_install.cmake
    install_manifest.txt
    */install_manifest.txt
-   Kokkos
-   kokkos
-   src
-   test
-   mtest
   )
   
   ADD_CUSTOM_COMMAND(

@@ -59,6 +59,10 @@ if [ "$kokkos_build_type" = "openmp" ]; then
     cmake_options+=(
         ${OPENMP_ADDITIONS[@]}
     )
+elif [ "$kokkos_build_type" = "openmp_mpi" ]; then
+    cmake_options+=(
+        ${OPENMP_ADDITIONS[@]}
+    )
 elif [ "$kokkos_build_type" = "pthreads" ]; then
     cmake_options+=(
         ${PTHREADS_ADDITIONS[@]}
@@ -67,7 +71,15 @@ elif [ "$kokkos_build_type" = "cuda" ]; then
     cmake_options+=(
         ${CUDA_ADDITIONS[@]}
     )
+elif [ "$kokkos_build_type" = "cuda_mpi" ]; then
+    cmake_options+=(
+        ${CUDA_ADDITIONS[@]}
+    )
 elif [ "$kokkos_build_type" = "hip" ]; then
+    cmake_options+=(
+        ${HIP_ADDITIONS[@]}
+    )
+elif [ "$kokkos_build_type" = "hip_mpi" ]; then
     cmake_options+=(
         ${HIP_ADDITIONS[@]}
     )

@@ -40,6 +40,8 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 #include <mpi.h>
+#include <iostream>
+#include <typeinfo>
 
 #ifdef HAVE_MPI
 namespace mtr
@@ -258,6 +260,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
     mpi_datatype_ = mpi_type;
+    std::cout << typeid(T).name() << std::endl;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

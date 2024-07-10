@@ -188,7 +188,15 @@ int main(int argc, char *argv[])
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  build_3d_box(world_size, rank);
+  //build_3d_box(world_size, rank);
+
+  auto typetestb = MPIArrayKokkos <bool> (MPI_C_BOOL, 8, 8);
+  auto typetesti = MPIArrayKokkos <int> (MPI_INT, 8, 8);
+  auto typetestd = MPIArrayKokkos <double> (MPI_DOUBLE, 8, 8);
+
+  typetestb.host(0) = false;
+  typetesti.host(0) = 8;
+  typetestd.host(0) = 8.0;
 
   // stop timing
   //double end_time = MPI_Wtime();
