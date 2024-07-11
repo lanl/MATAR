@@ -80,8 +80,8 @@ void example_halo_comms(int world_size, int rank) {
     int size = 10;
     int tag = 99;
     
-    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (MPI_INT, size);
-    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (size);
+    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (size);
 
     if (rank == ROOT) {
         FOR_ALL(idx, 0, size, { 
@@ -114,8 +114,8 @@ void example_halo_comms(int world_size, int rank) {
 void example_simple_comms(int world_size, int rank) {
     int size = 10;
     int tag = 99;
-    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (MPI_INT, size);
-    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> mca_s = MPIArrayKokkos <int> (size);
+    MPIArrayKokkos <int> mca_r = MPIArrayKokkos <int> (size);
 
     if (rank == ROOT) {
         FOR_ALL(idx, 0, size, { 

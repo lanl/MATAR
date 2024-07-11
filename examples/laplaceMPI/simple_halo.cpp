@@ -38,7 +38,7 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
     MPIArrayKokkos <int> halo1;
     MPIArrayKokkos <int> halo2;
 
-    myhalo = MPIArrayKokkos <int> (MPI_INT, size);
+    myhalo = MPIArrayKokkos <int> (size);
     if (rank == 0) {
         // send rank needs to be updated for each rank
         myhalo.mpi_setup(send_rank, tag, MPI_COMM_WORLD);
@@ -74,7 +74,7 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
         myhalo.mpi_set_tag(tag);
         myhalo.halo_isend();
 #endif
-        halo0 = MPIArrayKokkos <int> (MPI_INT, in_size);
+        halo0 = MPIArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         // Recvs
@@ -93,12 +93,12 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
 #ifdef FAST
         myhalo.halo_isend();
 #endif
-        halo0 = MPIArrayKokkos <int> (MPI_INT, in_size);
+        halo0 = MPIArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo0.halo_irecv();
 #endif
-        halo1 = MPIArrayKokkos <int> (MPI_INT, in_size+1);
+        halo1 = MPIArrayKokkos <int> (in_size+1);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo1.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
@@ -112,18 +112,18 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
     }
     else if (rank == 3) {
         myhalo.mpi_setup(send_rank, tag, MPI_COMM_WORLD);
-        halo0 = MPIArrayKokkos <int> (MPI_INT, in_size);
+        halo0 = MPIArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo0.halo_irecv();
 #endif
-        halo1 = MPIArrayKokkos <int> (MPI_INT, in_size+1);
+        halo1 = MPIArrayKokkos <int> (in_size+1);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo1.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo1.halo_irecv();
 #endif
-        halo2 = MPIArrayKokkos <int> (MPI_INT, in_size+2);
+        halo2 = MPIArrayKokkos <int> (in_size+2);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo2.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
@@ -230,8 +230,8 @@ void example_halo_comms(int world_size, int rank) {
     int s_tag = 10 * rank + 20 * s_neighbor;
     int r_tag = 20 * rank + 10 * r_neighbor;
     
-    MPIArrayKokkos <int> myhalo = MPIArrayKokkos <int> (MPI_INT, size);
-    MPIArrayKokkos <int> neibhalo = MPIArrayKokkos <int> (MPI_INT, size);
+    MPIArrayKokkos <int> myhalo = MPIArrayKokkos <int> (size);
+    MPIArrayKokkos <int> neibhalo = MPIArrayKokkos <int> (size);
 
     //printf("Rank %d rneighb %d rtag %d sneighb %d stag %d\n", rank, r_neighbor, r_tag, s_neighbor, s_tag);
 

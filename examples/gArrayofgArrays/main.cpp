@@ -31,84 +31,80 @@
  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
-#ifdef OUT_OF_PLACE_FFT
-#ifdef HAVE_CUDA
-
+#include <iostream>
 #include <stdio.h>
-#include <assert.h>
-#include <math.h>
-#include <sys/time.h>
-#include <complex.h>
+#include "matar.h"
 
-#include <cufft.h>
+using namespace mtr;
 
-// ----------------------------------------------------------------------
-// CUFFT
-
-static void fft_cufft_forward(double* input, double* output, int nn[3])
+struct thing
 {
-    int stride = 2 * nn[0] * nn[1] * nn[2];
-    int rc, i;
+    int a;
+    DCArrayKokkos <int> inner;
+};
 
-    static cufftHandle planD2Z;
-//  typedef cuComplex cufftComplex;
-    typedef cuDoubleComplex cufftDoubleComplexi;
-    typedef double cufftDoubleReal;
-    if (!planD2Z) {
-        cufftPlan3d(&planD2Z, nn[0], nn[1], nn[2], CUFFT_D2Z);
-    }
+int main(int argc, char* argv[])
+{
+    Kokkos::initialize(argc, argv);
+    { // kokkos scope
+        const size_t num_things = 4;
+        auto array_of_things = DCArrayKokkos <thing> (num_things);
 
-// #pragma acc data copy(data[0:batch*stride])
-    {
-//      printf("data1 %p\n", data);
-// #pragma acc host_data use_device(data)
-        {
-//      printf("data2 %p\n", data);
-            rc = cufftExecD2Z(planD2Z, (cufftDoubleReal*) input,
-                (cufftDoubleComplex*) output);
-            assert(rc == CUFFT_SUCCESS);
+        for (size_t i = 0; i < num_things; i++) {
+            array_of_things.host(i).inner = (DCArrayKokkos<int>*)Kokkos::kokkos_malloc(sizeof(DCArrayKokkos<int>));
         }
-    }
+        // Update device side of array of memory location on GPU
+        array_of_things.update_device();
+
+/*
+        // Create shapes using `placement new`. Even=Circle, Odd=Square. Radius=i, Length=i.
+        FOR_ALL(i, 0, num_things, {
+            new ((DCArrayKokkos*)array_of_things(i).inner) DCArrayKokkos<int>(8);
+        });
+        Kokkos::fence();
+        // Calculate Area
+        DCArrayKokkos<double> area_array(num_shapes);
+        FOR_ALL(i, 0, num_shapes, {
+            area_array(i) = shape_array(i).shape->area();
+        });
+        Kokkos::fence();
+        area_array.update_host();
+
+        // Check result
+        for (size_t i = 0; i < num_shapes; i++) {
+            double area;
+            if (i % 2 == 0) {
+                area = atan(1) * 4 * i * i;
+                if (area != area_array.host(i)) {
+                    printf("Circle radius=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                }
+            }
+            else {
+                area = i * i;
+                if (area != area_array.host(i)) {
+                    printf("Square length=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                }
+            }
+
+            if (area != area_array.host(i)) {
+                throw std::runtime_error("calculated area NOT EQUAL actual area");
+            }
+        }
+        // Destroy shapes
+        FOR_ALL(i, 0, num_things, {
+            array_of_things(i).inner->~DCArrayKokkos();
+        });
+        Kokkos::fence();
+
+        // Free GPU memory
+        for (size_t i = 0; i < num_shapes; i++) {
+            Kokkos::kokkos_free(array_of_things.host(i).inner);
+        }
+*/
+
+        printf("COMPLETED SUCCESSFULLY!!!\n");
+    } // end kokkos scope
+    Kokkos::finalize();
+
+    return 0;
 }
-
-static void fft_cufft_backward(double* input, double* output, int nn[3])
-{
-    int stride = 2 * nn[0] * nn[1] * nn[2];
-    int rc, i;
-
-    static cufftHandle planZ2D;
-//  typedef cuComplex cufftComplex;
-    typedef cuDoubleComplex cufftDoubleComplex;
-    typedef double cufftDoubleReal;
-    if (!planZ2D) {
-        cufftPlan3d(&planZ2D, nn[0], nn[1], nn[2], CUFFT_Z2D);
-    }
-
-// #pragma acc data copy(data[0:batch*stride])
-    {
-// #pragma acc host_data use_device(data)
-        rc = cufftExecZ2D(planZ2D, (cufftDoubleComplex*) input,
-            (cufftDoubleReal*) output);
-        assert(rc == CUFFT_SUCCESS);
-    }
-}
-
-// ----------------------------------------------------------------------
-
-void fftc_cufft_out_of_place_(double input[], double output[], int nn[], int* ndim, int* isign)
-{
-    // assert(*ndim == 3);
-    if (*isign == -1) {
-        fft_cufft_forward(input, output, nn);
-    }
-    else {
-        fft_cufft_backward(input, output, nn);
-    }
-}
-
-void fftc_cufft_init_out_of_place_(void)
-{
-}
-
-#endif
-#endif
