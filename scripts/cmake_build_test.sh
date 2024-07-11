@@ -2,7 +2,7 @@
 
 kokkos_build_type="${1}"
 
-if [ ! -d "${TEST_SOURCE_DIR}/phaseFieldMPI/heffte" ]
+if [ ! -d "${TEST_SOURCE_DIR}/googletest" ]
 then
   echo "Missing googletest for testing, downloading...."
   git clone https://github.com/google/googletest.git ${TEST_SOURCE_DIR}/googletest
