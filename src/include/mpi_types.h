@@ -67,6 +67,8 @@ private:
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
     TArray1D this_array_;
+    
+    void set_mpi_type();
 
 public:
     // Data member to access host view
@@ -74,22 +76,22 @@ public:
 
     MPIArrayKokkos();
     
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPIArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos (MPI_Datatype mpi_type, size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, size_t dim2,
+    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, size_t dim2,
+    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, size_t dim2,
+    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, size_t dim2,
+    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5,
                  size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
@@ -237,7 +239,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, const std::string& tag_string) {
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, const std::string& tag_string) {
     
     dims_[0] = dim0;
     order_ = 1;
@@ -245,12 +247,12 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1, const std::string& tag_string) {
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -259,12 +261,11 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
-    mpi_datatype_ = mpi_type;
-    std::cout << typeid(T).name() << std::endl;
+    set_mpi_type();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1,
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, const std::string& tag_string) {
     
     dims_[0] = dim0;
@@ -275,11 +276,11 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1,
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, const std::string& tag_string) {
     
     dims_[0] = dim0;
@@ -291,11 +292,11 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1,
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, const std::string& tag_string) {
     
@@ -309,11 +310,11 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1,
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5, const std::string& tag_string) {
     
@@ -328,11 +329,11 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi_type, size_t dim0, size_t dim1,
+MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
                               size_t dim6, const std::string& tag_string) {
@@ -349,7 +350,33 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(MPI_Datatype mpi
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
-    mpi_datatype_ = mpi_type;
+    set_mpi_type();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
+    if (typeid(T).name() == typeid(bool).name()) {
+        mpi_datatype_ = MPI_C_BOOL;
+    }
+    else if (typeid(T).name() == typeid(int).name()) {
+        mpi_datatype_ = MPI_INT;
+    }
+    else if (typeid(T).name() == typeid(long int).name()) {
+        mpi_datatype_ = MPI_LONG;
+    }
+    else if (typeid(T).name() == typeid(long long int).name()) {
+        mpi_datatype_ = MPI_LONG_LONG_INT;
+    }
+    else if (typeid(T).name() == typeid(float).name()) {
+        mpi_datatype_ = MPI_FLOAT;
+    }
+    else if (typeid(T).name() == typeid(double).name()) {
+        mpi_datatype_ = MPI_DOUBLE;
+    }
+    else {
+        printf("Your entered MPIArrayKokkos type is not a supported type for MPI communications and is being set to int\n");
+        mpi_datatype_ = MPI_INT;
+    }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

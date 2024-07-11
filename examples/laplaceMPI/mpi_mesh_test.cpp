@@ -87,7 +87,7 @@ using namespace mtr; // matar namespace
         jend = jstart +  jchunk;
 
         // --- Build nodes ---
-        auto coords = MPIArrayKokkos <double> (MPI_DOUBLE, rk_num_bins, num_points_i * kchunk * jchunk, num_dim);
+        auto coords = MPIArrayKokkos <double> (rk_num_bins, num_points_i * kchunk * jchunk, num_dim);
         // populate the point data structures
         for (int k = kstart, k_loc = 0; k < kend; k++, k_loc++) {
             for (int j = jstart, j_loc = 0; j < jend; j++, j_loc++) {
@@ -129,7 +129,7 @@ using namespace mtr; // matar namespace
         jend = jstart +  jchunk;
         // --- Build elems  ---
 
-        auto nodes_in_elem = MPIArrayKokkos <double> (MPI_DOUBLE, num_elems_i * kchunk * jchunk, 8);
+        auto nodes_in_elem = MPIArrayKokkos <double> (num_elems_i * kchunk * jchunk, 8);
         // populate the elem center data structures
         for (int k = kstart, k_loc = 0; k < kend / world_size; k++, k_loc++) {
             for (int j = kstart, j_loc = 0; j < jend; j++, j_loc++) {
@@ -188,15 +188,7 @@ int main(int argc, char *argv[])
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  //build_3d_box(world_size, rank);
-
-  auto typetestb = MPIArrayKokkos <bool> (MPI_C_BOOL, 8, 8);
-  auto typetesti = MPIArrayKokkos <int> (MPI_INT, 8, 8);
-  auto typetestd = MPIArrayKokkos <double> (MPI_DOUBLE, 8, 8);
-
-  typetestb.host(0) = false;
-  typetesti.host(0) = 8;
-  typetestd.host(0) = 8.0;
+  build_3d_box(world_size, rank);
 
   // stop timing
   //double end_time = MPI_Wtime();
