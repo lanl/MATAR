@@ -39,11 +39,10 @@
 
 #include "host_types.h"
 #include "kokkos_types.h"
-#include <mpi.h>
-#include <iostream>
 #include <typeinfo>
-
 #ifdef HAVE_MPI
+#include <mpi.h>
+
 namespace mtr
 {
 

@@ -10,10 +10,13 @@ if (NOT TARGET distclean)
   INCLUDE(../cmake/Modules/TargetDistclean.cmake OPTIONAL)
 endif (NOT TARGET distclean)
 
+set(LINKING_LIBRARIES matar)
+
 find_package(Matar REQUIRED)
 if (MPI)
     find_package(MPI REQUIRED)
     add_definitions(-DHAVE_MPI=1)
+    list(APPEND LINKING_LIBRARIES MPI::MPI_CXX)
     if (GPU_AWARE_MPI)
         add_definitions(-DHAVE_GPU_AWARE_MPI)
 #    elseif (GPU_SHARED_MEM)
@@ -21,10 +24,10 @@ if (MPI)
     endif()
 endif()
 
-add_executable(mtest main.cpp)
-target_link_libraries(mtest matar)
-
 if (NOT KOKKOS)
+    add_executable(mtest main.cpp)
+    target_link_libraries(mtest matar)
+
    add_executable(test_for test_for.cpp)
    target_link_libraries(test_for matar)
 
@@ -35,26 +38,9 @@ endif()
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
 
-  add_executable(mtestkokkos main_kokkos.cpp)
-  target_link_libraries(mtestkokkos matar Kokkos::kokkos)
-
-  add_executable(test_kokkos_for kokkos_for.cpp)
-  target_link_libraries(test_kokkos_for matar Kokkos::kokkos)
-
-  add_executable(test_dual_types test_dual_types.cpp)
-  target_link_libraries(test_dual_types matar Kokkos::kokkos)
+  list(APPEND LINKING_LIBRARIES Kokkos::kokkos)
 
   add_definitions(-DHAVE_KOKKOS=1)
-
-  add_executable(kokkos_csr CSRKokkos.cpp)
-  target_link_libraries(kokkos_csr matar Kokkos::kokkos)
-
-  add_executable(kokkos_csc CSCKokkos.cpp)
-  target_link_libraries(kokkos_csc matar Kokkos::kokkos)
-
-  add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
-  target_link_libraries(mtr_kokkos-simple matar Kokkos::kokkos)
-
 
   if (CUDA)
     add_definitions(-DHAVE_CUDA=1)
@@ -62,14 +48,36 @@ if (KOKKOS)
     add_definitions(-DHAVE_HIP=1)
   elseif (OPENMP)
     add_definitions(-DHAVE_OPENMP=1)
-    add_executable(parallel_hello_world parallel_hello_world.cpp)
-    target_link_libraries(parallel_hello_world matar Kokkos::kokkos)
   elseif (THREADS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
+  add_executable(mtestkokkos main_kokkos.cpp)
+  target_link_libraries(mtestkokkos ${LINKING_LIBRARIES})
+
+  add_executable(test_kokkos_for kokkos_for.cpp)
+  target_link_libraries(test_kokkos_for ${LINKING_LIBRARIES})
+
+  add_executable(test_dual_types test_dual_types.cpp)
+  target_link_libraries(test_dual_types ${LINKING_LIBRARIES})
+
+  add_executable(kokkos_csr CSRKokkos.cpp)
+  target_link_libraries(kokkos_csr ${LINKING_LIBRARIES})
+
+  add_executable(kokkos_csc CSCKokkos.cpp)
+  target_link_libraries(kokkos_csc ${LINKING_LIBRARIES})
+
+  add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
+  target_link_libraries(mtr_kokkos-simple ${LINKING_LIBRARIES})
+
+  if (OPENMP)
+    add_executable(parallel_hello_world parallel_hello_world.cpp)
+    target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})
+  endif()
+
 endif()
 
+if(FALSE)
 
 ### HIP Linking error, will add back in after fixed
 if (NOT HIP)
@@ -104,6 +112,7 @@ add_subdirectory(test_rocm)
 
 include_directories(laplaceMPI)
 add_subdirectory(laplaceMPI)
+endif()
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)
