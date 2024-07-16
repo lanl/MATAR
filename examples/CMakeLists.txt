@@ -26,13 +26,13 @@ endif()
 
 if (NOT KOKKOS)
     add_executable(mtest main.cpp)
-    target_link_libraries(mtest matar)
+    target_link_libraries(mtest ${LINKING_LIBRARIES})
 
    add_executable(test_for test_for.cpp)
-   target_link_libraries(test_for matar)
+   target_link_libraries(test_for ${LINKING_LIBRARIES})
 
    add_executable(test_shared_ptr test_shared_ptr.cpp)
-   target_link_libraries(test_shared_ptr matar)
+   target_link_libraries(test_shared_ptr ${LINKING_LIBRARIES})
 endif()
 
 if (KOKKOS)
@@ -77,8 +77,6 @@ if (KOKKOS)
 
 endif()
 
-if(FALSE)
-
 ### HIP Linking error, will add back in after fixed
 if (NOT HIP)
     include_directories(virtualFcnKokkos)
@@ -112,7 +110,6 @@ add_subdirectory(test_rocm)
 
 include_directories(laplaceMPI)
 add_subdirectory(laplaceMPI)
-endif()
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)

@@ -18,5 +18,5 @@ if (KOKKOS)
   endif()
 
   add_executable(matar-fortran main.f90 matar_functions.cpp)
-  target_link_libraries(matar-fortran matar)
+  target_link_libraries(matar-fortran ${LINKING_LIBRARIES})
 endif(KOKKOS)

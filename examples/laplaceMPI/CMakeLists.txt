@@ -25,5 +25,5 @@ if (KOKKOS)
 
   endif()
 
-  target_link_libraries(laplace_mpi matar Kokkos::kokkos MPI::MPI_CXX)
+  target_link_libraries(laplace_mpi ${LINKING_LIBRARIES})
 endif()
