@@ -22,7 +22,7 @@ fi
 
 if [[ "$kokkos_build_type" = *"mpi"* ]]; then
     cmake_options+=(
-        -D MPI=ON
+    -D Matar_ENABLE_MPI=ON
     )
 fi
 
