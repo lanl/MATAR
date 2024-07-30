@@ -38,8 +38,6 @@ export MATAR_INSTALL_DIR=${installdir}/matar
 export MATAR_BUILD_CORES=$build_cores
 
 # Clean stale build and install(s)
-rm -rf ${builddir}
-mkdir -p ${builddir}
 
 cd $scriptdir
 

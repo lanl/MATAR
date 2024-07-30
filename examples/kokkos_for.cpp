@@ -47,14 +47,14 @@ int main()
     // Kokkos::View<int *> arr("ARR", 10);
     CArrayKokkos<int> arr(10);
     FOR_ALL(i, 0, 10, {
-        arr(i) = 314;
+        arr(i) = i;
     });
 
     // Kokkos::View<int **> arr_2D("ARR_2D", 10,10);
     CArrayKokkos<int> arr_2D(10, 10);
     FOR_ALL(i, 0, 10,
          j, 0, 10, {
-        arr_2D(i, j) = 314;
+        arr_2D(i, j) = j * 10 + i;
     });
 
     // Kokkos::View<int ***> arr_3D("ARR_3D", 10,10,10);
@@ -62,7 +62,7 @@ int main()
     FOR_ALL(i, 0, 10,
          j, 0, 10,
          k, 0, 10, {
-        arr_3D(i, j, k) = 314;
+        arr_3D(i, j, k) = k * 10 * 10 + j * 10 + i;
     });
 
     int loc_sum = 0;

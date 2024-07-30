@@ -463,6 +463,16 @@ Kokkos::parallel_for( \
                         Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k) ) \
                         {fcn} )
 
+//Kokkos Initialize
+#define \
+    MATAR_KOKKOS_INIT \
+    Kokkos::initialize(argc, argv);
+
+//Kokkos Finalize
+#define \
+    MATAR_KOKKOS_FINALIZE \
+    Kokkos::finalize();
+
 #endif
 
 
@@ -983,6 +993,29 @@ void reduce_max (int i_start, int i_end,
 
 #endif  // if not kokkos
 
+#ifdef HAVE_MPI
+
+// MPI Init
+#define \
+    MATAR_MPI_INIT \
+    MPI_Init(&argc, &argv);
+
+// MPI Finalize
+#define \
+    MATAR_MPI_FINALIZE \
+    MPI_Finalize();
+
+// MPI Wall time
+#define \
+    MATAR_MPI_TIME \
+    MPI_Wtime();
+
+// MPI Barrier
+#define \
+    MATAR_MPI_BARRIER \
+    MPI_Barrier(MPI_COMM_WORLD);
+
+#endif
 
 
 #endif // MACROS_H

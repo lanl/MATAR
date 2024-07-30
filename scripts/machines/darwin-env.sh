@@ -13,11 +13,13 @@ myrocm="rocm"
 mympi="openmpi/3.1.6-gcc_9.4.0"
 
 module purge
-module load ${mympi}
-if [ "$kokkos_build_type" = "cuda" ]; then
+if [[ "$kokkos_build_type" = *"mpi"* ]]; then
+    module load ${mympi}
+fi
+if [[ "$kokkos_build_type" = *"cuda"* ]]; then
     module load ${mygcc}
     module load ${mycuda}
-elif [ "$kokkos_build_type" = "hip" ]; then
+elif [[ "$kokkos_build_type" = *"hip"* ]]; then
     module load ${mygcc}
     module load ${myrocm}
 else

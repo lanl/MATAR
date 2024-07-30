@@ -11,5 +11,5 @@ if (KOKKOS)
 
   add_definitions(-DHAVE_KOKKOS=1)
 
-  target_link_libraries(virttestkokkos matar Kokkos::kokkos)
+  target_link_libraries(virttestkokkos ${LINKING_LIBRARIES})
 endif()

@@ -20,6 +20,13 @@ else
     )
 fi
 
+if [[ "$kokkos_build_type" = *"mpi"* ]]; then
+    cmake_options+=(
+        -D MPI=ON
+    )
+fi
+
+
 # Print CMake options for reference
 echo "CMake Options: ${cmake_options[@]}"
 

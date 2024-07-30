@@ -81,6 +81,7 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 #include "aliases.h"
+#include "mpi_types.h"
 
 
 

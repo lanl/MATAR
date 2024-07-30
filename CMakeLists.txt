@@ -24,13 +24,6 @@ endif(NOT CMAKE_BUILD_TYPE)
 # Macros and packages
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
-# --- custom targets: ---
-if (NOT TARGET distclean)
-  # Only include distclean if it has not already been defined (by ELEMENTS or
-  # any other package that defines distclean and uses MATAR as a submodule)
-  INCLUDE(cmake/Modules/TargetDistclean.cmake OPTIONAL)
-endif (NOT TARGET distclean)
-
 find_package(Vector)
 if (CMAKE_VECTOR_NOVEC)
   set(VECTOR_C_FLAGS "${VECTOR_NOVEC_C_FLAGS}")
@@ -62,8 +55,18 @@ if(Matar_ENABLE_KOKKOS)
     else()
         find_package(Kokkos REQUIRED)
     endif()
+    if (Matar_ENABLE_MPI)
+        find_package(MPI REQUIRED)
+        add_definitions(-DHAVE_MPI=1)
+        target_link_libraries(matar INTERFACE Kokkos::kokkos MPI::MPI_CXX)
+    else()
         target_link_libraries(matar INTERFACE Kokkos::kokkos)
+    endif()
     add_definitions(-DHAVE_KOKKOS=1)
+elseif(Matar_ENABLE_MPI)
+    find_package(MPI REQUIRED)
+    target_link_libraries(matar INTERFACE MPI::MPI_CXX)
+    add_definitions(-DHAVE_MPI=1)
 endif()
 
 include(CMakePackageConfigHelpers)

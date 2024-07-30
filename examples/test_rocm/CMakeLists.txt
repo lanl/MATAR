@@ -24,5 +24,5 @@ if (KOKKOS)
 
   endif()
 
-  target_link_libraries(test_rocm matar Kokkos::kokkos)
+  target_link_libraries(test_rocm ${LINKING_LIBRARIES})
 endif()

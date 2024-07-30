@@ -17,7 +17,7 @@ if (KOKKOS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
-  add_executable(virtual_fcn_test main.cpp classes.cpp)
-  target_link_libraries(virtual_fcn_test ${LINKING_LIBRARIES})
+  add_executable(viewofview main.cpp)
+  target_link_libraries(viewofview matar Kokkos::kokkos)
 
 endif()
