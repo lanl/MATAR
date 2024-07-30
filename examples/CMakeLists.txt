@@ -14,7 +14,6 @@ set(LINKING_LIBRARIES matar)
 
 find_package(Matar REQUIRED)
 if (MPI)
-    message("We should not be here")
     find_package(MPI REQUIRED)
     add_definitions(-DHAVE_MPI=1)
     list(APPEND LINKING_LIBRARIES MPI::MPI_CXX)
