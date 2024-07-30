@@ -14,6 +14,7 @@ set(LINKING_LIBRARIES matar)
 
 find_package(Matar REQUIRED)
 if (MPI)
+    message("We should not be here")
     find_package(MPI REQUIRED)
     add_definitions(-DHAVE_MPI=1)
     list(APPEND LINKING_LIBRARIES MPI::MPI_CXX)
@@ -107,9 +108,10 @@ add_subdirectory(sparsetests)
 
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
-
-include_directories(laplaceMPI)
-add_subdirectory(laplaceMPI)
+if (MPI)
+    include_directories(laplaceMPI)
+    add_subdirectory(laplaceMPI)
+endif()
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)
