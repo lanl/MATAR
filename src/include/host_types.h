@@ -156,6 +156,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
     
     // deconstructor
     ~FArray ();
@@ -469,6 +472,15 @@ inline T* FArray<T>::pointer() const {
     return array_.get();
 }
 
+
+template <typename T>
+void FArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
+
 //delete FArray
 template <typename T>
 FArray<T>::~FArray(){}
@@ -582,6 +594,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -874,6 +889,13 @@ inline T* ViewFArray<T>::pointer() const {
     return array_;
 }
 
+template <typename T>
+void ViewFArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //---end of ViewFArray class definitions---
 
 
@@ -979,6 +1001,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
 
     // Deconstructor
     ~FMatrix ();
@@ -1292,6 +1317,13 @@ inline T* FMatrix<T>::pointer() const{
 }
 
 template <typename T>
+void FMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
+template <typename T>
 FMatrix<T>::~FMatrix() {}
 
 //----end of FMatrix class definitions----
@@ -1404,6 +1436,9 @@ public:
     
     // return matrix order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -1694,6 +1729,14 @@ template <typename T>
 inline T* ViewFMatrix<T>::pointer() const {
     return matrix_;
 }
+
+template <typename T>
+void ViewFMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
 //-----end ViewFMatrix-----
 
 
@@ -1801,6 +1844,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
 
     // Deconstructor
     ~CArray ();
@@ -2125,6 +2171,13 @@ inline T* CArray<T>::pointer() const{
     return array_.get();
 }
 
+template <typename T>
+void CArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //destructor
 template <typename T>
 CArray<T>::~CArray() {}
@@ -2237,6 +2290,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -2549,6 +2605,13 @@ inline T* ViewCArray<T>::pointer() const {
     return array_;
 }
 
+template <typename T>
+void ViewCArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //---end of ViewCArray class definitions----
 
 
@@ -2655,6 +2718,9 @@ public:
     //return pointer
     T* pointer() const;
     
+    // set values to input
+    void set_values(T val);
+
     // deconstructor
     ~CMatrix( );
         
@@ -2973,6 +3039,13 @@ inline T* CMatrix<T>::pointer() const{
     return matrix_.get();
 }
 
+template <typename T>
+void CMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
 // Destructor
 template <typename T>
 CMatrix<T>::~CMatrix(){}
@@ -3087,6 +3160,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -3381,6 +3457,13 @@ inline size_t ViewCMatrix<T>::order() const {
 template <typename T>
 inline T* ViewCMatrix<T>::pointer() const {
     return matrix_;
+}
+
+template <typename T>
+void ViewCMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
 }
 
 
