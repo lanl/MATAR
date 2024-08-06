@@ -6402,12 +6402,20 @@ public:
     //setup start indices
     void data_setup(const std::string& tag_string);
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -6726,6 +6734,36 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
     return array_;
+}
+
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_RaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+// print method implementation
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+void RaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::print() const {
+    auto host_array = Kokkos::create_mirror_view(array_);
+    Kokkos::deep_copy(host_array, array_);
+
+    int dim0 = mystrides_(0);
+    int dim1 = mystrides_(1) / dim0;  // Average dim1 size
+    int dim2 = mystrides_(2) / mystrides_(1);  // Average dim2 size
+
+    for (int i = 0; i < dim0; i++) {
+        for (int j = 0; j < dim1; j++) {
+            for (int k = 0; k < dim2; k++) {
+                printf("%.2f  ", host_array(i * dim1 * dim2 + j * dim2 + k));
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
 }
 
 // Destructor
