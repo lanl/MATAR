@@ -128,7 +128,7 @@ namespace mtr
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class FArrayKokkos {
 
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
+    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>; 
     
 private:
     size_t dims_[7];
@@ -229,6 +229,10 @@ public:
    
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     //return kokkos view
     KOKKOS_INLINE_FUNCTION
@@ -523,6 +527,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
+}
+
+// Zack: FArrayKokkos
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_array_(i) = val;
+    });
 }
 
 // Destructor
@@ -950,6 +963,10 @@ public:
    
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     //return kokkos view
     KOKKOS_INLINE_FUNCTION
@@ -1227,6 +1244,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_matrix_;
+}
+
+// Zack: FMatrixKokkos
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_matrix_(i) = val;
+    });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3334,6 +3360,10 @@ public:
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     //return the view
     KOKKOS_INLINE_FUNCTION
@@ -3608,6 +3638,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
+}
+
+//Zack
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_array_(i) = val;
+    });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4032,6 +4071,10 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
+    // set values
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
@@ -4311,6 +4354,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_matrix_;
+}
+
+// Zack: CMatrixKokkos
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_matrix_(i) = val;
+    });
 }
 
 // Deconstructor
