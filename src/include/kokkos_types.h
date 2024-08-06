@@ -529,7 +529,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpac
     return this_array_;
 }
 
-// Zack: FArrayKokkos
+// set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
@@ -1246,7 +1246,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpa
     return this_matrix_;
 }
 
-// Zack: FMatrixKokkos
+// set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
@@ -3640,7 +3640,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpac
     return this_array_;
 }
 
-//Zack
+// set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
@@ -4356,7 +4356,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpa
     return this_matrix_;
 }
 
-// Zack: CMatrixKokkos
+// set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
