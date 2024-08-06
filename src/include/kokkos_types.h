@@ -1250,7 +1250,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpa
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+    Kokkos::parallel_for("SetValues_FMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         this_matrix_(i) = val;
     });
 }
@@ -3644,7 +3644,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpac
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+    Kokkos::parallel_for("SetValues_CArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         this_array_(i) = val;
     });
 }
@@ -4360,7 +4360,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpa
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+    Kokkos::parallel_for("SetValues_CMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         this_matrix_(i) = val;
     });
 }
