@@ -43,6 +43,8 @@ int main()
     int dim1 = 3;
     int dim2 = 2;
 
+    printf("HOST TYPES");
+
     FArray <double> testing (dim0,dim1,dim2);
     ViewFArray <double> testing2 (&testing(0,0,0),3,2);
     testing.set_values(1.3);
@@ -176,4 +178,76 @@ int main()
         printf("\n");
     } 
     printf("Ragged Right Array of Vectors, CSCArray, and CSRArray are not currently tested in this file as of 8/6/24.\n");
+
+
+    printf("DUAL TYPES");
+    Kokkos::initialize();
+    {
+        DFArrayKokkos <double> DFAtest (2, 3, 4);
+        DViewFArrayKokkos <double> DVFAtest (&DFAtest(0, 0, 0), 3, 4);
+        DFAtest.set_values(1.25);
+        DVFAtest.set_values(2.34);
+        printf("DViewFArrayKokkos set_values 2.34 writing over DFArrayKokkos set_values 1.25.\n");
+        FOR_ALL(i, 0, 4,
+                j, 0, 3,
+                k, 0, 2, {
+                printf("%.2f ", DFAtest(k,j,i));
+        });
+        printf("\n");
+        FOR_ALL(i, 0, 4,
+                j, 0, 3,{
+                printf("%.2f ", DVFAtest(j,i));
+        });
+        printf("\n");
+        DFMatrixKokkos <double> DFMtest (2, 3, 4);
+        DViewFMatrixKokkos <double> DVFMtest (&DFMtest(1, 1, 1), 3, 4);
+        DFMtest.set_values(1.33);
+        DVFMtest.set_values(3.24);
+        printf("DViewFMatrixKokkos set_values 3.24 writing over DFMatrixKokkos set_values 1.33.\n");
+        FOR_ALL(i, 1, 5,
+                j, 1, 4,
+                k, 1, 3, {
+                printf("%.2f ", DFMtest(k,j,i));
+        });
+        printf("\n");
+        FOR_ALL(i, 1, 5,
+                j, 1, 4,{
+                printf("%.2f ", DVFMtest(j,i));
+        });
+        printf("\n");
+        DCArrayKokkos <double> DCAtest (2, 3, 4);
+        DViewCArrayKokkos <double> DVCAtest (&DCAtest(0, 0, 0), 3, 4);
+        DCAtest.set_values(1.53);
+        DVCAtest.set_values(2.33);
+        printf("DViewCArrayKokkos set_values 2.33 writing over DCArrayKokkos set_values 1.53.\n");
+        FOR_ALL(i, 0, 4,
+                j, 0, 3,
+                k, 0, 2, {
+                printf("%.2f ", DCAtest(k,j,i));
+        });
+        printf("\n");
+        FOR_ALL(i, 0, 4,
+                j, 0, 3,{
+                printf("%.2f ", DVCAtest(j,i));
+        });
+        printf("\n");
+        DCMatrixKokkos <double> DCMtest (2, 3, 4);
+        DViewCMatrixKokkos <double> DVCMtest (&DCMtest(1, 1, 1), 3, 4);
+        DCMtest.set_values(1.77);
+        DVCMtest.set_values(2.17);
+        printf("DViewCMatrixKokkos set_values 2.17 writing over DCMatrixKokkos set_values 1.77.\n");
+        FOR_ALL(i, 1, 5,
+                j, 1, 4,
+                k, 1, 3, {
+                printf("%.2f ", DCMtest(k,j,i));
+        });
+        printf("\n");
+        FOR_ALL(i, 1, 5,
+                j, 1, 4,{
+                printf("%.2f ", DVCMtest(j,i));
+        });
+        printf("\n");
+
+    }
+    Kokkos::finalize();    
 }

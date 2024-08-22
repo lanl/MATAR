@@ -1678,6 +1678,9 @@ public:
     // Method that update device view
     void update_device();
 
+    // set values on host to input
+    void set_values(T val);
+
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
     ~DFArrayKokkos ();
@@ -1971,6 +1974,14 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_.h_view(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFArrayKokkos() {}
 // End DFArrayKokkos
 
@@ -2080,6 +2091,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -2421,6 +2435,14 @@ void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_host_(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewFArrayKokkos() {}
 // End DViewFArrayKokkos
 
@@ -2520,6 +2542,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -2814,6 +2839,14 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_.h_view(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFMatrixKokkos() {}
 // End DFMatrixKokkos
 
@@ -2918,6 +2951,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -3245,6 +3281,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     // Deep copy of host view to device view
     deep_copy(this_matrix_, this_matrix_host_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_host_(i) = val;
+                         });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4751,6 +4795,9 @@ public:
     // Method that update device view
     void update_device();
 
+    // set values on host to input
+    void set_values(T val);
+
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
     ~DCArrayKokkos ();
@@ -5050,6 +5097,14 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_.h_view(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCArrayKokkos() {}
 // End DCArrayKokkos
 
@@ -5155,6 +5210,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -5503,6 +5561,14 @@ void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_host_(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCArrayKokkos() {}
 // End DViewCArrayKokkos
 
@@ -5602,6 +5668,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -5897,6 +5966,14 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_.h_view(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCMatrixKokkos() {}
 // End DCMatrixKokkos
 
@@ -6001,6 +6078,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -6328,6 +6408,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     // Deep copy of host view to device view
     deep_copy(this_matrix_, this_matrix_host_);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_host_(i) = val;
+                         });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
