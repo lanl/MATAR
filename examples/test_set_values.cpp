@@ -82,10 +82,10 @@ int main()
     }
     printf("\n");
     CMatrix <double> testing5 (dim0,dim1,dim2);
-    ViewCMatrix <double> testing6 (&testing5(0,0,0),3,2);
+    ViewCMatrix <double> testing6 (&testing5(1,1,1),3,2);
     testing5.set_values(1.3);
-    //testing6.set_values(2.6);
-    printf("ViewCMatrix set_values 2.6 writing over CMatrix set_values 1.3.(not writing over correctly as of 8/6/24)\n");
+    testing6.set_values(2.6);
+    printf("ViewCMatrix set_values 2.6 writing over CMatrix set_values 1.3.\n");
     for (int i = 1; i < dim0+1; i++) {
         for (int j = 1; j < dim1+1; j++) {
             for (int k = 1; k < dim2+1; k++) {
@@ -101,10 +101,10 @@ int main()
     }
     printf("\n");
     FMatrix <double> testing7 (dim0,dim1,dim2);
-    ViewFMatrix <double> testing8 (&testing7(0,0,0),3,2);
+    ViewFMatrix <double> testing8 (&testing7(1,1,1),3,2);
     testing7.set_values(1.3);
-    //testing8.set_values(2.6);
-    printf("ViewFMatrix set_values 2.6 writing over FMatrix set_values 1.3.(not writing over correctly as of 8/6/24)\n");
+    testing8.set_values(2.6);
+    printf("ViewFMatrix set_values 2.6 writing over FMatrix set_values 1.3.\n");
     for (int i = 1; i < dim2+1; i++) {
         for (int j = 1; j < dim1+1; j++) {
             for (int k = 1; k < dim0+1; k++) {
