@@ -616,6 +616,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
+    // set values on host to input
+    void set_values(T val);
+
     KOKKOS_INLINE_FUNCTION
     ~ViewFArrayKokkos();
 
@@ -863,6 +866,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewFArrayKokkos<T>::pointer() const {
     return this_array_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void ViewFArrayKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_(i) = val;
+                         });
 }
 
 template <typename T>
@@ -1321,6 +1332,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
+    // set values on host to input
+    void set_values(T val);
+
     KOKKOS_INLINE_FUNCTION
     ~ViewFMatrixKokkos();
     
@@ -1571,6 +1585,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewFMatrixKokkos<T>::pointer() const {
     return this_matrix_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void ViewFMatrixKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_(i) = val;
+                         });
 }
 
 template <typename T>
@@ -3744,6 +3766,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
+    // set values on host to input
+    void set_values(T val);
+
     KOKKOS_INLINE_FUNCTION
     ~ViewCArrayKokkos();
     
@@ -3989,6 +4014,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewCArrayKokkos<T>::pointer() const {
     return this_array_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void ViewCArrayKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_array_(i) = val;
+                         });
 }
 
 template <typename T>
@@ -4443,6 +4476,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
 
+    // set values on host to input
+    void set_values(T val);
+
     KOKKOS_INLINE_FUNCTION
     ~ViewCMatrixKokkos();
 
@@ -4685,6 +4721,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewCMatrixKokkos<T>::pointer() const {
     return this_matrix_;
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void ViewCMatrixKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         this_matrix_(i) = val;
+                         });
 }
 
 template <typename T>
@@ -6972,6 +7016,9 @@ public:
         }
     };
 
+    // set values on host to input
+    void set_values(T val);
+
     // Destructor
     KOKKOS_INLINE_FUNCTION
     ~RaggedRightArrayofVectorsKokkos ( );
@@ -7162,6 +7209,14 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokko
     return array_;
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7278,6 +7333,9 @@ public:
             update += mytemp_strides_(index);
         }
     };
+
+    // set values on host to input
+    void set_values(T val);
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7509,6 +7567,14 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout
     return array_;
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7581,6 +7647,12 @@ public:
       }
     };
     
+    // set values on host to input
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    void set_values_sparse(T val);
+
     // Destructor
     KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedRightArrayKokkos ();
@@ -7684,6 +7756,24 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<
     return array_;
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, dim1_), KOKKOS_LAMBDA(const int i){
+                         for (int j = 0; j < stride_(i); j++) {
+                            array_(dim2_*i+j) = val;
+                         }
+                         });
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -7757,6 +7847,12 @@ public:
         functor_strides_(index) = init_stride_;
       }
     };
+
+    // set values on host to input
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    void set_values_sparse(T val);
     
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7860,6 +7956,24 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, dim2_), KOKKOS_LAMBDA(const int j){
+                         for (int i = 0; i < stride_(j); i++) {
+                            array_(dim1_*j+i) = val;
+                         }
+                         });
 }
 
 // Destructor
@@ -8048,6 +8162,10 @@ class CSRArrayKokkos {
                       mystart_index_(index) = 0;
              }
     };
+
+    // set values on host to input
+    void set_values(T val);
+
     //destructor
     KOKKOS_INLINE_FUNCTION
     ~CSRArrayKokkos();
@@ -8346,6 +8464,14 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 */
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::~CSRArrayKokkos() {}
 
 // 16 CSCArrayKokkos
@@ -8515,6 +8641,10 @@ private: // What ought to be private ?
       // Convertor
       //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
       //void to_dense(FArray<T> &A);
+
+      // set values on host to input
+      void set_values(T val);
+
       // destructor
       KOKKOS_INLINE_FUNCTION
       ~CSCArrayKokkos();
@@ -8689,6 +8819,14 @@ int CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
         }
     }
     return  -1;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_LAMBDA(const int i){
+                         array_(i) = val;
+                         });
 }
 
 // Assumes that data, col_ptrs, and row_ptrs

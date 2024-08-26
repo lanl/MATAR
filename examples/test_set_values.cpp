@@ -248,6 +248,34 @@ int main()
         });
         printf("\n");
 
+        DynamicRaggedRightArrayKokkos <double> dynrightK (3,4);
+        dynrightK.stride(0) = 1;
+        dynrightK.stride(1) = 3;
+        dynrightK.stride(2) = 2;
+        dynrightK.set_values(2.14);
+        dynrightK.set_values_sparse(1.35);
+        printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                printf("%.2f  ", dynrightK(i,j));
+            }
+            printf("\n");
+        }
+        DynamicRaggedDownArrayKokkos <double> dyndownK (3,4);
+        dyndownK.stride(0) = 1;
+        dyndownK.stride(1) = 3;
+        dyndownK.stride(2) = 2;
+        dyndownK.stride(3) = 1;
+        dyndownK.set_values(2.14);
+        dyndownK.set_values_sparse(1.35);
+        printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                printf("%.2f  ", dyndownK(i,j));
+            }
+            printf("\n");
+        } 
+
     }
     Kokkos::finalize();    
 }
