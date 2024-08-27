@@ -7767,11 +7767,12 @@ void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, dim1_), KOKKOS_LAMBDA(const int i){
-                         for (int j = 0; j < stride_(i); j++) {
-                            array_(dim2_*i+j) = val;
-                         }
-                         });
+    Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+          const int i_i = teamMember.league_rank();
+           Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const int (j_j) ) {
+               array_(dim2_*i_i+j_j) = val;    
+           });
+       });
 }
 
 // Destructor
@@ -7969,11 +7970,12 @@ void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, dim2_), KOKKOS_LAMBDA(const int j){
-                         for (int i = 0; i < stride_(j); i++) {
-                            array_(dim1_*j+i) = val;
-                         }
-                         });
+    Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim2_, Kokkos::AUTO, 32 ), KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+          const int j_j = teamMember.league_rank();
+           Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(j_j) ), [&] ( const int (i_i) ) {
+               array_(dim1_*j_j+i_i) = val;    
+           });
+       });
 }
 
 // Destructor
