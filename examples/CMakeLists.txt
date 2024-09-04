@@ -111,8 +111,8 @@ add_subdirectory(sparsetests)
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
 
-#include_directories(laplaceMPI)
-#add_subdirectory(laplaceMPI)
+include_directories(laplaceMPI)
+add_subdirectory(laplaceMPI)
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)

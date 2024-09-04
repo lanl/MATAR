@@ -7165,6 +7165,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
@@ -7174,6 +7175,13 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -7459,6 +7467,37 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_RaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+// print method implementation
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+void RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::print() const {
+    auto host_array = Kokkos::create_mirror_view(array_);
+    Kokkos::deep_copy(host_array, array_);
+
+    int dim0 = mystrides_(0);
+    int dim1 = mystrides_(1) / dim0;  // Average dim1 size
+    int dim2 = mystrides_(2) / mystrides_(1);  // Average dim2 size
+
+    for (int i = 0; i < dim0; i++) {
+        for (int j = 0; j < dim1; j++) {
+            for (int k = 0; k < dim2; k++) {
+                printf("%.2f  ", host_array(i * dim1 * dim2 + j * dim2 + k));
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
+}
+
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7504,6 +7543,10 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+    
+    // set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -7634,6 +7677,15 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -7682,6 +7734,10 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[stride(j)], j=[0:N-1]
@@ -7810,6 +7866,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
     return array_;
+}
+
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
 }
 
 // Destructor
