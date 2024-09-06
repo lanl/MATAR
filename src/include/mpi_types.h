@@ -55,7 +55,7 @@ class MPIArrayKokkos {
     // this is manage
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
-private:
+protected:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)

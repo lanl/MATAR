@@ -75,7 +75,7 @@ public:
     T& operator()(size_t i) const;
 
     KOKKOS_INLINE_FUNCTION
-    PartitionMap& operator=(const MPIArrayKokkos& temp);
+    PartitionMap& operator=(const PartitionMap& temp);
 
     // GPU Method
     // Method that returns size
@@ -114,18 +114,13 @@ public:
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 PartitionMap<T,Layout,ExecSpace,MemoryTraits>::PartitionMap() {
-    length_ = order_ = 0;
-    for (int i = 0; i < 7; i++) {
-        dims_[i] = 0;
-    }
+    length_ = 0;
 }
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 PartitionMap<T,Layout,ExecSpace,MemoryTraits>::PartitionMap(size_t dim0, const std::string& tag_string) {
     
-    dims_[0] = dim0;
-    order_ = 1;
     length_ = dim0;
     this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
@@ -173,11 +168,6 @@ PartitionMap<T,Layout,ExecSpace,MemoryTraits>& PartitionMap<T,Layout,ExecSpace,M
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
-        for (int iter = 0; iter < temp.order_; iter++){
-            dims_[iter] = temp.dims_[iter];
-        } // end for
-
-        order_ = temp.order_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
         host = temp.host;
@@ -198,20 +188,6 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t PartitionMap<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t PartitionMap<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "PartitionMap order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to PartitionMap dims is out of bounds!");
-    return dims_[i];
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t PartitionMap<T,Layout,ExecSpace,MemoryTraits>::order() const {
-    return order_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

@@ -52,13 +52,24 @@ namespace mtr
 // MappedMPIArrayKokkos:  Dual type for managing distributed data on both CPU and GPU with a partition map.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class MappedMPIArrayKokkos: public MPIArrayKokkos {
+class MappedMPIArrayKokkos: MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
 
     // this is manage
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::length_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order_;  // tensor order (rank)
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_recv_rank_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_tag_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_comm_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_status_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_datatype_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_request_;
+    using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::this_array_;
     
-private:
-    PartitionMap pmap;
+protected:
+    PartitionMap<T,Layout,ExecSpace,MemoryTraits> pmap;
     
     void set_mpi_type();
 
@@ -222,7 +233,7 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos() {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(): MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>() {
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -231,7 +242,8 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string) {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string)
+    : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, tag_string) {
     
     dims_[0] = dim0;
     order_ = 1;
@@ -244,7 +256,8 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string)
+    : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -258,7 +271,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, const std::string& tag_string) {
+                              size_t dim2, const std::string& tag_string)
+                              : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
+                                dim2, tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -273,7 +288,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3, const std::string& tag_string) {
+                              size_t dim2, size_t dim3, const std::string& tag_string)
+                              : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
+                                dim2, dim3, tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -290,7 +307,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
-                              size_t dim4, const std::string& tag_string) {
+                              size_t dim4, const std::string& tag_string) 
+                              : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
+                                dim2, dim3, dim4, tag_string){
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -308,7 +327,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5, const std::string& tag_string) {
+                              size_t dim4, size_t dim5, const std::string& tag_string)
+                              : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
+                                dim2, dim3, dim4, dim5, tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -328,7 +349,9 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string) {
+                              size_t dim6, const std::string& tag_string)
+                              : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
+                                dim2, dim3, dim4, dim5, dim6, tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
