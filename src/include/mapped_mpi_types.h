@@ -1,5 +1,5 @@
-#ifndef MPI_TYPES_H
-#define MPI_TYPES_H
+#ifndef MAPPED_MPI_TYPES_H
+#define MAPPED_MPI_TYPES_H
 /**********************************************************************************************
  © 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
@@ -39,33 +39,26 @@
 
 #include "host_types.h"
 #include "kokkos_types.h"
+#include "partition_map.h"
 #include <typeinfo>
 #ifdef HAVE_MPI
 #include <mpi.h>
+#include <mpi_types.h>
 
 namespace mtr
 {
 
 /////////////////////////
-// MPIArrayKokkos:  Dual type for managing distributed data on both CPU and GPU.
+// MappedMPIArrayKokkos:  Dual type for managing distributed data on both CPU and GPU with a partition map.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class MPIArrayKokkos {
+class MappedMPIArrayKokkos: public MPIArrayKokkos {
 
     // this is manage
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
 private:
-    size_t dims_[7];
-    size_t length_;
-    size_t order_;  // tensor order (rank)
-    int mpi_recv_rank_;
-    int mpi_tag_;
-    MPI_Comm mpi_comm_;
-    MPI_Status mpi_status_;
-    MPI_Datatype mpi_datatype_;
-    MPI_Request mpi_request_;
-    TArray1D this_array_;
+    PartitionMap pmap;
     
     void set_mpi_type();
 
@@ -73,24 +66,24 @@ public:
     // Data member to access host view
     ViewCArray <T> host;
 
-    MPIArrayKokkos();
+    MappedMPIArrayKokkos();
     
-    MPIArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5,
                  size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
@@ -140,7 +133,7 @@ public:
                   size_t n, size_t o) const;
     
     KOKKOS_INLINE_FUNCTION
-    MPIArrayKokkos& operator=(const MPIArrayKokkos& temp);
+    MappedMPIArrayKokkos& operator=(const MappedMPIArrayKokkos& temp);
 
     // GPU Method
     // Method that returns size
@@ -186,13 +179,13 @@ public:
     void broadcast(size_t count, int root, MPI_Comm comm);
 
     // MPI scatter wrapper
-    void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+    void scatter(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
     // MPI gather wrapper
-    void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+    void gather(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
     // MPI allgather wrapper
-    void allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
+    void allgather(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
 
     // MPI send wrapper
     void isend(size_t count, int dest, int tag, MPI_Comm comm);
@@ -223,13 +216,13 @@ public:
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
-    ~MPIArrayKokkos ();
-}; // End of MPIArrayKokkos
+    ~MappedMPIArrayKokkos ();
+}; // End of MappedMPIArrayKokkos
 
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos() {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos() {
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -238,7 +231,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, const std::string& tag_string) {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string) {
     
     dims_[0] = dim0;
     order_ = 1;
@@ -251,7 +244,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, con
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -264,7 +257,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, const std::string& tag_string) {
     
     dims_[0] = dim0;
@@ -279,7 +272,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, const std::string& tag_string) {
     
     dims_[0] = dim0;
@@ -295,7 +288,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, const std::string& tag_string) {
     
@@ -313,7 +306,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5, const std::string& tag_string) {
     
@@ -332,7 +325,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, size_t dim1,
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
                               size_t dim6, const std::string& tag_string) {
@@ -353,7 +346,7 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPIArrayKokkos(size_t dim0, siz
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
     if (typeid(T).name() == typeid(bool).name()) {
         mpi_datatype_ = MPI_C_BOOL;
     }
@@ -373,47 +366,47 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
         mpi_datatype_ = MPI_DOUBLE;
     }
     else {
-        printf("Your entered MPIArrayKokkos type is not a supported type for MPI communications and is being set to int\n");
+        printf("Your entered MappedMPIArrayKokkos type is not a supported type for MPI communications and is being set to int\n");
         mpi_datatype_ = MPI_INT;
     }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 1D!");
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 1D!");
     return this_array_.d_view(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 2D!");
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 2D!");
     return this_array_.d_view(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MPIArrayKokkos 3D!");
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MappedMPIArrayKokkos 3D!");
     return this_array_.d_view(k + (j * dims_[2])
                                 + (i * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MPIArrayKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MPIArrayKokkos 4D!");
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MappedMPIArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MappedMPIArrayKokkos 4D!");
     return this_array_.d_view(l + (k * dims_[3])
                                 + (j * dims_[3] * dims_[2])
                                 + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -421,14 +414,14 @@ T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MPIArrayKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MPIArrayKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MPIArrayKokkos 5D!");
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MappedMPIArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MappedMPIArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MappedMPIArrayKokkos 5D!");
     return this_array_.d_view(m + (l * dims_[4])
                                 + (k * dims_[4] * dims_[3])
                                 + (j * dims_[4] * dims_[3] * dims_[2])
@@ -437,15 +430,15 @@ T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MPIArrayKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MPIArrayKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MPIArrayKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in MPIArrayKokkos 6D!");
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MappedMPIArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MappedMPIArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MappedMPIArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in MappedMPIArrayKokkos 6D!");
     return this_array_.d_view(n + (m * dims_[5])
                                 + (l * dims_[5] * dims_[4])
                                 + (k * dims_[5] * dims_[4] * dims_[3])
@@ -455,16 +448,16 @@ T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in MPIArrayKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIArrayKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MPIArrayKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MPIArrayKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MPIArrayKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MPIArrayKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in MPIArrayKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in MPIArrayKokkos 7D!");
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in MappedMPIArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in MappedMPIArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in MappedMPIArrayKokkos 7D!");
     return this_array_.d_view(o + (n * dims_[6])
                                 + (m * dims_[6] * dims_[5])
                                 + (l * dims_[6] * dims_[5] * dims_[4])
@@ -475,7 +468,7 @@ T& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const MPIArrayKokkos& temp) {
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const MappedMPIArrayKokkos& temp) {
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
@@ -501,57 +494,57 @@ MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPIArrayKokkos<T,Layout,ExecSpa
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "MPIArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to MPIArrayKokkos dims is out of bounds!");
+size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "MappedMPIArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to MappedMPIArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
     return order_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
+T* MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_array_.d_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+T* MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_.h_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
   return this_array_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
@@ -559,63 +552,63 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // a default setup, should not be used except for testing
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup() {
     mpi_recv_rank_ = 1;
     mpi_tag_ = 99;
     mpi_comm_ = MPI_COMM_WORLD;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank) {
     mpi_recv_rank_ = recv_rank;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag) {
     mpi_recv_rank_ = recv_rank;
     mpi_tag_ = tag;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag, MPI_Comm comm) {
     mpi_recv_rank_ = recv_rank;
     mpi_tag_ = tag;
     mpi_comm_ = comm;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_rank(int recv_rank) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_rank(int recv_rank) {
     mpi_recv_rank_ = recv_rank;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_tag(int tag) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_tag(int tag) {
     mpi_tag_ = tag;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_comm(MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_set_comm(MPI_Comm comm) {
     mpi_comm_ = comm;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_rank() {
+int MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_rank() {
     return mpi_recv_rank_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_tag() {
+int MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_tag() {
     return mpi_tag_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPI_Comm MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_comm() {
+MPI_Comm MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_comm() {
     return mpi_comm_;
 }
 
 //MPI_Send wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int dest, int tag, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int dest, int tag, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Send(device_pointer(), count, mpi_datatype_, dest, tag, comm); 
 #else
@@ -626,7 +619,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int des
 
 //MPI_Recv wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Recv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
 #else
@@ -637,7 +630,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int sou
 
 //MPI_Send halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_send() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_send() {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Send(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_); 
 #else
@@ -648,7 +641,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_send() {
 
 //MPI_Recv halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_recv() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_recv() {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Recv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_status_); 
 #else
@@ -659,7 +652,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_recv() {
 
 //MPI_iSend halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_isend() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_isend() {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Isend(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
 #else
@@ -670,7 +663,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_isend() {
 
 //MPI_iRecv halo wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_irecv() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_irecv() {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Irecv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
 #else
@@ -680,7 +673,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::halo_irecv() {
 
 //MPI_Bcast wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, int root, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, int root, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Bcast(device_pointer(), count, mpi_datatype_, root, comm); 
 #else
@@ -692,7 +685,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, in
 
 //MPI_Scatter wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Scatter(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
 #else
@@ -704,7 +697,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count,
 
 //MPI_Gather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Gather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
 #else
@@ -716,7 +709,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, 
 
 //MPI_AllGather wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, MappedMPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Allgather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, comm); 
 #else
@@ -728,7 +721,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_coun
 
 //MPI_Isend wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::isend(size_t count, int dest, int tag, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::isend(size_t count, int dest, int tag, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Isend(device_pointer(), count, mpi_datatype_, dest, tag, comm, &mpi_request_); 
 #else
@@ -739,7 +732,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::isend(size_t count, int de
 
 //MPI_Irecv wrapper
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::irecv(size_t count, int source, int tag, MPI_Comm comm) {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::irecv(size_t count, int source, int tag, MPI_Comm comm) {
 #ifdef HAVE_GPU_AWARE_MPI
     MPI_Irecv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_request_); 
 #else
@@ -749,13 +742,13 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::irecv(size_t count, int so
 
 //MPI_Wait wrapper for the sender
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_send() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_send() {
     MPI_Wait(&mpi_request_, &mpi_status_); 
 }
 
 //MPI_Wait wrapper for the receiver
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
     MPI_Wait(&mpi_request_, &mpi_status_); 
 #ifndef HAVE_GPU_AWARE_MPI
     update_device();
@@ -764,21 +757,21 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
 
 //MPI_Barrier wrapper
 //template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-//void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
+//void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
 //    MPI_Barrier(comm); 
 //}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPIArrayKokkos() {}
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MappedMPIArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
-// End of MPIArrayKokkos
+// End of MappedMPIArrayKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
 } // end namespace
 
 #endif // end if have MPI
 
-#endif // MPI_TYPES_H
+#endif // MAPPED_MPI_TYPES_H
 
