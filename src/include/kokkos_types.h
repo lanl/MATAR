@@ -2027,7 +2027,7 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_array_.label();
+    return this_array_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2892,7 +2892,7 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_matrix_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5185,7 +5185,7 @@ Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> DCArrayKokkos<T,Layout,Ex
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_array_.label();
+    return this_array_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6067,7 +6067,7 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_matrix_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

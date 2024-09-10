@@ -18,6 +18,9 @@ target_link_libraries(${This}
 add_executable(test_CArrayKokkos test_CArrayKokkos.cpp)
 target_link_libraries(test_CArrayKokkos matar gtest_main)
 
+add_executable(test_DCArrayKokkos test_DCArrayKokkos.cpp)
+target_link_libraries(test_DCArrayKokkos matar gtest_main)
+
 
 if (KOKKOKS)
     target_link_libraries(${This} Kokkos::kokkos)
