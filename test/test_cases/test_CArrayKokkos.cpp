@@ -25,7 +25,7 @@ CArrayKokkos<double> return_CArrayKokkos(int dims, std::vector<int> sizes)
         A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], "A_5D_CArrayKokkos");
     }
     else if(dims == 6){
-        A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], sizes[5], "A_7D_CArrayKokkos");
+        A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], sizes[5], "A_6D_CArrayKokkos");
     }
     else if(dims == 7){
         A = CArrayKokkos<double>(sizes[0], sizes[1], sizes[2], sizes[3], sizes[4], sizes[5], sizes[6], "A_7D_CArrayKokkos");
@@ -108,7 +108,7 @@ TEST(Test_CArrayKokkos, order)
 }
 
 
-// Test order function
+// Test pointer function
 TEST(Test_CArrayKokkos, pointer)
 {
     std::vector<int> sizes;
@@ -120,6 +120,29 @@ TEST(Test_CArrayKokkos, pointer)
         auto a = A.get_kokkos_view();
 
         EXPECT_EQ(&a[0], A.pointer());
+    }
+}
+
+// Test get name function
+TEST(Test_CArrayKokkos, names)
+{
+    std::vector<int> sizes;
+    std::vector <std::string> names = {
+        "A_1D_CArrayKokkos",
+        "A_2D_CArrayKokkos",
+        "A_3D_CArrayKokkos",
+        "A_4D_CArrayKokkos",
+        "A_5D_CArrayKokkos",
+        "A_6D_CArrayKokkos",
+        "A_7D_CArrayKokkos"
+    };
+
+    for(int i = 0; i < 7; i++){
+
+        int dims = i+1;
+        sizes.push_back(dims*2);
+        CArrayKokkos<double> A = return_CArrayKokkos(dims, sizes);
+        EXPECT_EQ(names[i], A.get_name());
     }
 }
 
