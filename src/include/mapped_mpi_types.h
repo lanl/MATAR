@@ -39,11 +39,12 @@
 
 #include "host_types.h"
 #include "kokkos_types.h"
-#include "partition_map.h"
 #include <typeinfo>
 #ifdef HAVE_MPI
 #include <mpi.h>
 #include <mpi_types.h>
+#include "partition_map.h"
+#include "communication_plan.h"
 
 namespace mtr
 {
@@ -55,7 +56,7 @@ template <typename T, typename Layout = DefaultLayout, typename ExecSpace = Defa
 class MappedMPIArrayKokkos: MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
 
     // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    using  TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
 
     using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_;
     using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::length_;
@@ -69,7 +70,11 @@ class MappedMPIArrayKokkos: MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
     using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::this_array_;
     
 protected:
-    PartitionMap<T,Layout,ExecSpace,MemoryTraits> pmap;
+    PartitionMap<T,Layout,ExecSpace,MemoryTraits> *pmap;
+
+    //data for arrays that own both shared and local data and aren't intended to communicate with another MATAR type
+    //This is simplifying for cases such as a local + ghost storage vector where you need to update the ghost entries
+    bool own_comms; //This Mapped MPI Array contains its own communication plan; just call array_comms()
     
     void set_mpi_type();
 
@@ -78,6 +83,11 @@ public:
     ViewCArray <T> host;
 
     MappedMPIArrayKokkos();
+    
+    //Copy Constructor
+    MappedMPIArrayKokkos(const MappedMPIArrayKokkos<T, Layout, ExecSpace,MemoryTraits> &temp){
+        *this = temp;
+    }
     
     MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 

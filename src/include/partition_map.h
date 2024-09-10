@@ -47,7 +47,7 @@ namespace mtr
 {
 
 /////////////////////////
-// PartitionMap:  Container storing local indices that belong on this process/rank as well as comms related data/functions.
+// PartitionMap:  Container storing global indices corresponding to local indices that belong on this process/rank as well as comms related data/functions.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class PartitionMap {
@@ -55,7 +55,7 @@ class PartitionMap {
     // this is manage
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
-private:
+protected:
     size_t length_;
     size_t order_;  // tensor order (rank)
     MPI_Datatype mpi_datatype_;
@@ -68,7 +68,12 @@ public:
     ViewCArray <T> host;
 
     PartitionMap();
-    
+
+    //Copy Constructor
+    PartitionMap(const PartitionMap<T, Layout, ExecSpace,MemoryTraits> &temp){
+        *this = temp;
+    }
+     
     PartitionMap(size_t length, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     KOKKOS_INLINE_FUNCTION
@@ -86,6 +91,14 @@ public:
     // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
+
+    virtual int getLocalIndex(int global_index) const {}
+
+    virtual int getGlobalIndex(int local_index) const {}
+
+    virtual bool isProcessGlobalIndex(int global_index) const {}
+
+    virtual bool isProcessLocalIndex(int local_index) const {}
 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
