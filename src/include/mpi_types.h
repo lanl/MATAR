@@ -222,7 +222,7 @@ public:
     void halo_irecv();
 
     // Deconstructor
-    KOKKOS_INLINE_FUNCTION
+    virtual KOKKOS_INLINE_FUNCTION
     ~MPIArrayKokkos ();
 }; // End of MPIArrayKokkos
 

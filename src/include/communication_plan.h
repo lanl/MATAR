@@ -87,7 +87,7 @@ public:
     CommunicationPlan& operator=(const CommunicationPlan& temp);
 
     // Deconstructor
-    KOKKOS_INLINE_FUNCTION
+    virtual KOKKOS_INLINE_FUNCTION
     ~CommunicationPlan ();
 
     virtual execute_comms(){}

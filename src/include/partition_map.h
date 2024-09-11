@@ -119,7 +119,7 @@ public:
     void update_device();
 
     // Deconstructor
-    KOKKOS_INLINE_FUNCTION
+    virtual KOKKOS_INLINE_FUNCTION
     ~PartitionMap ();
 }; // End of PartitionMap
 

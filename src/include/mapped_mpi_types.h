@@ -40,6 +40,7 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 #include <typeinfo>
+#include <memory> // for shared_ptr
 #ifdef HAVE_MPI
 #include <mpi.h>
 #include <mpi_types.h>
@@ -52,7 +53,7 @@ namespace mtr
 /////////////////////////
 // MappedMPIArrayKokkos:  Dual type for managing distributed data on both CPU and GPU with a partition map.
 /////////////////////////
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+template <typename T = long long int, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class MappedMPIArrayKokkos: MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
 
     // this is manage
@@ -70,7 +71,8 @@ class MappedMPIArrayKokkos: MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
     using  MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::this_array_;
     
 protected:
-    PartitionMap<T,Layout,ExecSpace,MemoryTraits> *pmap;
+    std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> pmap;
+    std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> comm_pmap;
 
     //data for arrays that own both shared and local data and aren't intended to communicate with another MATAR type
     //This is simplifying for cases such as a local + ghost storage vector where you need to update the ghost entries
@@ -89,24 +91,26 @@ public:
         *this = temp;
     }
     
-    MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MappedMPIArrayKokkos(size_t dim0, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+                         std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+                         size_t dim3, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+                         size_t dim3, size_t dim4, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+                         size_t dim3, size_t dim4, size_t dim5,
+                         std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, size_t dim6,
+                 std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     // These functions can setup the data needed for halo send/receives
     // Not necessary for standard MPI comms
@@ -123,6 +127,8 @@ public:
     void mpi_set_tag(int tag);
 
     void mpi_set_comm(MPI_Comm comm);
+
+    void own_comm_setup(std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
 
     int get_rank();
 
@@ -236,7 +242,7 @@ public:
     void halo_irecv();
 
     // Deconstructor
-    KOKKOS_INLINE_FUNCTION
+    virtual KOKKOS_INLINE_FUNCTION
     ~MappedMPIArrayKokkos ();
 }; // End of MappedMPIArrayKokkos
 
@@ -252,7 +258,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(): M
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, const std::string& tag_string)
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
     : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, tag_string) {
     
     dims_[0] = dim0;
@@ -266,7 +274,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string)
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
     : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string) {
     
     dims_[0] = dim0;
@@ -280,8 +290,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, const std::string& tag_string)
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
                               : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
                                 dim2, tag_string) {
     
@@ -297,8 +308,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3, const std::string& tag_string)
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
                               : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
                                 dim2, dim3, tag_string) {
     
@@ -315,9 +327,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, const std::string& tag_string) 
+MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string) 
                               : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
                                 dim2, dim3, dim4, tag_string){
     
@@ -336,8 +348,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5, const std::string& tag_string)
+                                                                            size_t dim2, size_t dim3, size_t dim4, size_t dim5,
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
                               : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
                                 dim2, dim3, dim4, dim5, tag_string) {
     
@@ -357,9 +370,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MappedMPIArrayKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string)
+                                                                            size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, 
+                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            const std::string& tag_string)
                               : MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
                                 dim2, dim3, dim4, dim5, dim6, tag_string) {
     
@@ -786,6 +799,12 @@ void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
 #ifndef HAVE_GPU_AWARE_MPI
     update_device();
 #endif
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> other_pmap) {
+    own_comms = true;
+    comm_pmap = other_pmap;
 }
 
 //MPI_Barrier wrapper
