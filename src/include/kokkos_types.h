@@ -5779,6 +5779,8 @@ void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
                          });
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 const std::string DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
