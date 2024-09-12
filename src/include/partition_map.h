@@ -49,7 +49,7 @@ namespace mtr
 /////////////////////////
 // PartitionMap:  Container storing global indices corresponding to local indices that belong on this process/rank as well as comms related data/functions.
 /////////////////////////
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+template <typename T = long long int, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class PartitionMap {
 
     // this is manage
