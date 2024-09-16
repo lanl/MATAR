@@ -6742,12 +6742,20 @@ public:
     //setup start indices
     void data_setup(const std::string& tag_string);
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
@@ -7072,13 +7080,21 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layou
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_RaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 const std::string RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
     return array_.label();
 }
-
 
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7503,6 +7519,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
@@ -7516,6 +7533,13 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -7805,13 +7829,15 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout
     return array_;
 }
 
+//set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for("SetValues_RaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         array_(i) = val;
     });
 }
+
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7868,6 +7894,10 @@ public:
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
+    
+    // set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -8006,10 +8036,11 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<
     return array_;
 }
 
+//set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         array_(i) = val;
     });
 }
@@ -8083,6 +8114,10 @@ public:
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[stride(j)], j=[0:N-1]
@@ -8221,10 +8256,11 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T
     return array_;
 }
 
+//set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         array_(i) = val;
     });
 }
