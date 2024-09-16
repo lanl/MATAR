@@ -642,6 +642,7 @@ public:
     T* pointer() const;
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
@@ -1383,6 +1384,7 @@ public:
     T* pointer() const;
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
@@ -1752,6 +1754,7 @@ public:
 
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -2179,6 +2182,7 @@ public:
 
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -2643,6 +2647,7 @@ public:
 
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -3065,6 +3070,7 @@ public:
 
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -3894,6 +3900,7 @@ public:
     T* pointer() const;
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
@@ -4628,6 +4635,7 @@ public:
     T* pointer() const;
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
@@ -4995,6 +5003,7 @@ public:
     void update_device();
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Deconstructor
@@ -5419,6 +5428,7 @@ public:
 
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -5888,6 +5898,7 @@ public:
     void update_device();
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -6309,6 +6320,7 @@ public:
     void update_device();
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Get the name of the view
@@ -7229,6 +7241,7 @@ public:
     };
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Destructor
@@ -7559,6 +7572,7 @@ public:
     };
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // Destructor
@@ -7882,9 +7896,11 @@ public:
     };
     
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // set values to only previously non-empty indices based upon stride value
+    KOKKOS_INLINE_FUNCTION
     void set_values_sparse(T val);
 
     // Destructor
@@ -8094,9 +8110,11 @@ public:
     };
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     // set values to only previously non-empty indices based upon stride value
+    KOKKOS_INLINE_FUNCTION
     void set_values_sparse(T val);
     
     // Destructor
@@ -8420,6 +8438,7 @@ class CSRArrayKokkos {
     };
 
     // set values on host to input
+    KOKKOS_INLINE_FUNCTION
     void set_values(T val);
 
     //destructor
@@ -8756,167 +8775,168 @@ private: // What ought to be private ?
     
   public:
 
-      /**
-       * @brief Construct a new empty Sparse Col Array object
-       *
-       */
-      CSCArrayKokkos();
+    /**
+    * @brief Construct a new empty Sparse Col Array object
+    *
+    */
+    CSCArrayKokkos();
 
-      /**
-      * @brief Construct a new Sparse Col Array object
-      *
-      * @param array: 1d array of data values in order as read top to bottom, left to right
-      * @param row_index: 1d array that marks what row each element is in
-      * @param start_index: 1d array that marks where the first element of each column starts
-      * @param dim1: number of rows the matrix should have
-      * @param dim2: number of columns the matrix should have
-      */
-     CSCArrayKokkos(
-               CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
-               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
+    /**
+    * @brief Construct a new Sparse Col Array object
+    *
+    * @param array: 1d array of data values in order as read top to bottom, left to right
+    * @param row_index: 1d array that marks what row each element is in
+    * @param start_index: 1d array that marks where the first element of each column starts
+    * @param dim1: number of rows the matrix should have
+    * @param dim2: number of columns the matrix should have
+    */
+    CSCArrayKokkos(
+       CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+       CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
+       CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
+       size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
-      /**
-       * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated
-       *
-       * @param i : row
-       * @param j : column
-       * @return T& : address of array_ that corresponds to A(i,j)
-       */
-      KOKKOS_INLINE_FUNCTION
-      T &operator()(size_t i, size_t j) const;
+    /**
+    * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated
+    *
+    * @param i : row
+    * @param j : column
+    * @return T& : address of array_ that corresponds to A(i,j)
+    */
+    KOKKOS_INLINE_FUNCTION
+    T &operator()(size_t i, size_t j) const;
 
-      /**
-       * @brief Overloaded copy operator
-       *
-       * @param temp : Array to copy
-       * @return CSCArray&
-       */
-      KOKKOS_INLINE_FUNCTION
-      CSCArrayKokkos &operator=(const CSCArrayKokkos &temp);
+    /**
+    * @brief Overloaded copy operator
+    *
+    * @param temp : Array to copy
+    * @return CSCArray&
+    */
+    KOKKOS_INLINE_FUNCTION
+    CSCArrayKokkos &operator=(const CSCArrayKokkos &temp);
 
-      /**
-       * @brief  returns pointer to array_
-       *
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *pointer() const;
+    /**
+    * @brief  returns pointer to array_
+    *
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *pointer() const;
 
-      /**
-       * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
-       *
-       * @param i : row
-       * @return size_t
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t stride(size_t i) const;
-      
-      /**
-       * @brief Same functionality as operator() included for compatibility with the rest of matar
-       *
-       * @param i: row
-       * @param j: column
-       * @return T&
-       */
-      KOKKOS_INLINE_FUNCTION
-      T &value(size_t i, size_t j) const;
+    /**
+    * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
+    *
+    * @param i : row
+    * @return size_t
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t stride(size_t i) const;
 
-      /**
-       * @brief Get the start_index array
-       *
-       * @return size_t* : returns start_index_
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t *get_starts() const;
+    /**
+    * @brief Same functionality as operator() included for compatibility with the rest of matar
+    *
+    * @param i: row
+    * @param j: column
+    * @return T&
+    */
+    KOKKOS_INLINE_FUNCTION
+    T &value(size_t i, size_t j) const;
 
-      /**
-       * @brief Get number of rows
-       *
-       * @return size_t  number of rows
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t dim1() const;
-      
-      /**
-       * @brief Get number of columns
-       *
-       * @return size_t number of columns
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t dim2() const;
+    /**
+    * @brief Get the start_index array
+    *
+    * @return size_t* : returns start_index_
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t *get_starts() const;
 
-      /**
-       * @brief iterator notation for iterating through the non zeros values of row i.
-       *
-       * @param i : row
-       * @return T*
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *begin(size_t i);
- 
-       /**
-       * @brief iterator notation for iterating through the non zeros values of row i.
-       *
-       * @param i : row
-       * @return T*
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *end(size_t i);
+    /**
+    * @brief Get number of rows
+    *
+    * @return size_t  number of rows
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t dim1() const;
 
-      // iterator for the raw data at row i
-      // i.e. return the index each element is the index in the 1 array
-      // This as the use of providing a reasonable way to get the column
-      // index and data value in the case you need both
-      KOKKOS_INLINE_FUNCTION
-      size_t begin_index(size_t i);
+    /**
+    * @brief Get number of columns
+    *
+    * @return size_t number of columns
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t dim2() const;
 
-      KOKKOS_INLINE_FUNCTION
-      size_t end_index(size_t i);
+    /**
+    * @brief iterator notation for iterating through the non zeros values of row i.
+    *
+    * @param i : row
+    * @return T*
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *begin(size_t i);
 
-      /**
-       * @brief Get the number of non zero elements in row i
-       *
-       * @param i : row to get
-       * @return size_t  : size of row
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t nnz(size_t i);
-      
-      /**
-       * @brief Get number of non zero elements total in array
-       *
-       * @return size_t
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t nnz() const;
+    /**
+    * @brief iterator notation for iterating through the non zeros values of row i.
+    *
+    * @param i : row
+    * @return T*
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *end(size_t i);
 
-      // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-      KOKKOS_INLINE_FUNCTION
-      T &get_val_flat(size_t k);
+    // iterator for the raw data at row i
+    // i.e. return the index each element is the index in the 1 array
+    // This as the use of providing a reasonable way to get the column
+    // index and data value in the case you need both
+    KOKKOS_INLINE_FUNCTION
+    size_t begin_index(size_t i);
 
-      KOKKOS_INLINE_FUNCTION
-      size_t get_row_flat(size_t k);
-      
-      // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-      KOKKOS_INLINE_FUNCTION
-      int flat_index(size_t i, size_t j);
+    KOKKOS_INLINE_FUNCTION
+    size_t end_index(size_t i);
 
-      // Get the name of the view
+    /**
+    * @brief Get the number of non zero elements in row i
+    *
+    * @param i : row to get
+    * @return size_t  : size of row
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t nnz(size_t i);
+
+    /**
+    * @brief Get number of non zero elements total in array
+    *
+    * @return size_t
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t nnz() const;
+
+    // Use the index into the 1d array to get what value is stored there and what is the corresponding row
+    KOKKOS_INLINE_FUNCTION
+    T &get_val_flat(size_t k);
+
+    KOKKOS_INLINE_FUNCTION
+    size_t get_row_flat(size_t k);
+
+    // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
+    KOKKOS_INLINE_FUNCTION
+    int flat_index(size_t i, size_t j);
+
+    // Get the name of the view
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
-      
-      // Convertor
-      //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
-      //void to_dense(FArray<T> &A);
 
-      // set values on host to input
-      void set_values(T val);
+    // Convertor
+    //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
+    //void to_dense(FArray<T> &A);
 
-      // destructor
-      KOKKOS_INLINE_FUNCTION
-      ~CSCArrayKokkos();
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // destructor
+    KOKKOS_INLINE_FUNCTION
+    ~CSCArrayKokkos();
 };
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
