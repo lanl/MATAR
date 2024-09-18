@@ -56,7 +56,6 @@
 #include <Tpetra_Core.hpp>
 #include <Tpetra_Map.hpp>
 #include <Tpetra_MultiVector.hpp>
-#include <Tpetra_CrsMatrix.hpp>
 #include <Kokkos_Core.hpp>
 #include "Tpetra_Details_DefaultTypes.hpp"
 #include "Tpetra_Import.hpp"
@@ -71,7 +70,7 @@ template <typename T, typename Layout = DefaultLayout, typename ExecSpace = Defa
 class TpetraMVArray: MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
 
     // this is manage
-    using  TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
 
     using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_;
     using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::length_;
@@ -112,8 +111,11 @@ class TpetraMVArray: MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
     typedef MV::dual_view_type dual_vec_array;
     
 protected:
-    std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> pmap;
-    std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> comm_pmap;
+    Teuchos::RCP<const Tpetra::Map<LO, GO, node_type>> pmap;
+    Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> comm_pmap;
+    Teuchos::RCP<MV>       tpetra_vector;
+    Teuchos::RCP<MV>       tpetra_sub_vector; //for owned comms situations
+    Teuchos::RCP<Tpetra::Import<LO, GO>> importer; // tpetra comms object
 
     //data for arrays that own both shared and local data and aren't intended to communicate with another MATAR type
     //This is simplifying for cases such as a local + ghost storage vector where you need to update the ghost entries
@@ -122,8 +124,6 @@ protected:
     void set_mpi_type();
 
 public:
-    // Data member to access host view
-    ViewCArray <T> host;
 
     TpetraMVArray();
     
@@ -131,74 +131,22 @@ public:
     TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
+    //Tpetra type only goes up to 2D access
+    TpetraMVArray(size_t dim0, Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    TpetraMVArray(size_t dim0, size_t dim1, Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
-    TpetraMVArray(size_t dim0, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    TpetraMVArray(size_t dim0, size_t dim1, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    void own_comm_setup(Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
 
-    TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                         std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                         size_t dim3, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                         size_t dim3, size_t dim4, std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                         size_t dim3, size_t dim4, size_t dim5,
-                         std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, size_t dim6,
-                 std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
-    // These functions can setup the data needed for halo send/receives
-    // Not necessary for standard MPI comms
-    void mpi_setup();
-
-    void mpi_setup(int recv_rank);
-
-    void mpi_setup(int recv_rank, int tag);
-
-    void mpi_setup(int recv_rank, int tag, MPI_Comm comm);
-
-    void mpi_set_rank(int recv_rank);
-
-    void mpi_set_tag(int tag);
-
-    void mpi_set_comm(MPI_Comm comm);
-
-    void own_comm_setup(std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
-
-    int get_rank();
-
-    int get_tag();
-
-    MPI_Comm get_comm();
+    void perform_comms();
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n, size_t o) const;
     
     KOKKOS_INLINE_FUNCTION
     TpetraMVArray& operator=(const TpetraMVArray& temp);
@@ -237,51 +185,6 @@ public:
     // Method that update device view
     void update_device();
 
-    // MPI send wrapper
-    void send(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // MPI recieve wrapper
-    void recv(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // MPI broadcast wrapper
-    void broadcast(size_t count, int root, MPI_Comm comm);
-
-    // MPI scatter wrapper
-    void scatter(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, int root, MPI_Comm comm);
-
-    // MPI gather wrapper
-    void gather(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, int root, MPI_Comm comm);
-
-    // MPI allgather wrapper
-    void allgather(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, MPI_Comm comm);
-
-    // MPI send wrapper
-    void isend(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // MPI recieve wrapper
-    void irecv(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // MPI wait wrapper for sender
-    void wait_send();
-
-    // MPI wait wrapper for receiver
-    void wait_recv();
-
-    // MPI barrier wrapper
-    //void barrier(MPI_Comm comm);
-
-    // MPI send wrapper
-    void halo_send();
-
-    // MPI recieve wrapper
-    void halo_recv();
-
-    // MPI send wrapper
-    void halo_isend();
-
-    // MPI recieve wrapper
-    void halo_irecv();
-
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraMVArray ();
@@ -300,135 +203,56 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): MappedMPIArrayK
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
                                                                             const std::string& tag_string)
-    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, tag_string) {
+    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, tag_string), pmap(input_pmap) {
     
     dims_[0] = dim0;
+    dims_[1] = 1;
     order_ = 1;
     length_ = dim0;
-    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
     set_mpi_type();
+    pmap = input_pmap;
+    tpetra_vector   = Teuchos::rcp(new MV(pmap, 1));
+    this_array_ = tpetra_vector->getWrappedDualView();
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
+                                                                            Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
                                                                             const std::string& tag_string)
-    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string) {
+    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string), pmap(input_pmap) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
     order_ = 2;
     length_ = (dim0 * dim1);
-    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1);
     set_mpi_type();
+    pmap = input_pmap;
+    tpetra_vector   = Teuchos::rcp(new MV(pmap, dim1));
+    this_array_ = tpetra_vector->getWrappedDualView();
 }
 
+// Tpetra vector argument constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1, size_t dim2,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
-                                                                            const std::string& tag_string)
-                              : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
-                                dim2, tag_string) {
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string)
+    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string), pmap(input_tpetra_vector->getMap()) {
     
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    order_ = 3;
-    length_ = (dim0 * dim1 * dim2);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2);
-    set_mpi_type();
-}
+    tpetra_vector   = input_tpetra_vector;
+    this_array_ = tpetra_vector->getWrappedDualView();
+    dims_[0] = tpetra_vector->getMap()->getLocalNumElements();
+    dims_[1] = tpetra_vector->getNumVectors();
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
-                                                                            const std::string& tag_string)
-                              : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
-                                dim2, dim3, tag_string) {
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    order_ = 4;
-    length_ = (dim0 * dim1 * dim2 * dim3);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3);
-    set_mpi_type();
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
-                                                                            const std::string& tag_string) 
-                              : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
-                                dim2, dim3, dim4, tag_string){
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    order_ = 5;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4);
-    set_mpi_type();
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
-                                                                            size_t dim2, size_t dim3, size_t dim4, size_t dim5,
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
-                                                                            const std::string& tag_string)
-                              : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
-                                dim2, dim3, dim4, dim5, tag_string) {
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    order_ = 6;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5);
-    set_mpi_type();
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
-                                                                            size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, 
-                                                                            std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> input_pmap,
-                                                                            const std::string& tag_string)
-                              : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1,
-                                dim2, dim3, dim4, dim5, dim6, tag_string) {
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
-    order_ = 7;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+    if(dims_[1]==1){
+        order_ = 1;
+    }
+    else{
+        order_ = 2;
+    }
+    length_ = (dim0 * dim1);
     set_mpi_type();
 }
 
@@ -463,7 +287,7 @@ KOKKOS_INLINE_FUNCTION
 T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraMVArray 1D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 1D!");
-    return this_array_.d_view(i);
+    return this_array_.d_view(i,0);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -472,85 +296,7 @@ T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraMVArray 2D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 2D!");
-    return this_array_.d_view(j + (i * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in TpetraMVArray 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraMVArray 3D!");
-    return this_array_.d_view(k + (j * dims_[2])
-                                + (i * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in TpetraMVArray 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraMVArray 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraMVArray 4D!");
-    return this_array_.d_view(l + (k * dims_[3])
-                                + (j * dims_[3] * dims_[2])
-                                + (i * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in TpetraMVArray 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraMVArray 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraMVArray 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraMVArray 5D!");
-    return this_array_.d_view(m + (l * dims_[4])
-                                + (k * dims_[4] * dims_[3])
-                                + (j * dims_[4] * dims_[3] * dims_[2])
-                                + (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in TpetraMVArray 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraMVArray 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraMVArray 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraMVArray 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraMVArray 6D!");
-    return this_array_.d_view(n + (m * dims_[5])
-                                + (l * dims_[5] * dims_[4])
-                                + (k * dims_[5] * dims_[4] * dims_[3])
-                                + (j * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                                + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in TpetraMVArray 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraMVArray 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraMVArray 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraMVArray 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraMVArray 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in TpetraMVArray 7D!");
-    return this_array_.d_view(o + (n * dims_[6])
-                                + (m * dims_[6] * dims_[5])
-                                + (l * dims_[6] * dims_[5] * dims_[4])
-                                + (k * dims_[6] * dims_[5] * dims_[4] * dims_[3])
-                                + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                                + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+    return this_array_.d_view(i,j);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -566,7 +312,6 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>& TpetraMVArray<T,Layout,ExecSpace
         order_ = temp.order_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
-        host = temp.host;
         mpi_recv_rank_ = temp.mpi_recv_rank_;
         mpi_tag_ = temp.mpi_tag_;
         mpi_comm_ = temp.mpi_comm_;
@@ -637,215 +382,17 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     this_array_.template sync<typename TArray1D::execution_space>();
 }
 
-// a default setup, should not be used except for testing
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_setup() {
-    mpi_recv_rank_ = 1;
-    mpi_tag_ = 99;
-    mpi_comm_ = MPI_COMM_WORLD;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank) {
-    mpi_recv_rank_ = recv_rank;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag) {
-    mpi_recv_rank_ = recv_rank;
-    mpi_tag_ = tag;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_setup(int recv_rank, int tag, MPI_Comm comm) {
-    mpi_recv_rank_ = recv_rank;
-    mpi_tag_ = tag;
-    mpi_comm_ = comm;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_set_rank(int recv_rank) {
-    mpi_recv_rank_ = recv_rank;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_set_tag(int tag) {
-    mpi_tag_ = tag;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::mpi_set_comm(MPI_Comm comm) {
-    mpi_comm_ = comm;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_rank() {
-    return mpi_recv_rank_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_tag() {
-    return mpi_tag_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPI_Comm TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_comm() {
-    return mpi_comm_;
-}
-
-//MPI_Send wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::send(size_t count, int dest, int tag, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Send(device_pointer(), count, mpi_datatype_, dest, tag, comm); 
-#else
-    update_host();
-    MPI_Send(host_pointer(), count, mpi_datatype_, dest, tag, comm); 
-#endif
-}
-
-//MPI_Recv wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::recv(size_t count, int source, int tag, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Recv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
-#else
-    MPI_Recv(host_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_status_); 
-    update_device();
-#endif
-}
-
-//MPI_Send halo wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::halo_send() {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Send(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_); 
-#else
-    update_host();
-    MPI_Send(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_); 
-#endif
-}
-
-//MPI_Recv halo wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::halo_recv() {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Recv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_status_); 
-#else
-    MPI_Recv(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_status_); 
-    update_device();
-#endif
-}
-
-//MPI_iSend halo wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::halo_isend() {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Isend(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
-#else
-    update_host();
-    MPI_Isend(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
-#endif
-}
-
-//MPI_iRecv halo wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::halo_irecv() {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Irecv(device_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
-#else
-    MPI_Irecv(host_pointer(), size(), mpi_datatype_, mpi_recv_rank_, mpi_tag_, mpi_comm_, &mpi_request_); 
-#endif
-}
-
-//MPI_Bcast wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::broadcast(size_t count, int root, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Bcast(device_pointer(), count, mpi_datatype_, root, comm); 
-#else
-    update_host();
-    MPI_Bcast(host_pointer(), count, mpi_datatype_, root, comm); 
-    update_device();
-#endif
-}
-
-//MPI_Scatter wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Scatter(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
-#else
-    update_host();
-    MPI_Scatter(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
-    recv_buffer.update_device();
-#endif
-}
-
-//MPI_Gather wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::gather(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Gather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
-#else
-    update_host();
-    MPI_Gather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
-    recv_buffer.update_device();
-#endif
-}
-
-//MPI_AllGather wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::allgather(size_t send_count, TpetraMVArray recv_buffer, size_t recv_count, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Allgather(device_pointer(), send_count, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, comm); 
-#else
-    update_host();
-    MPI_Allgather(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, comm); 
-    recv_buffer.update_device();
-#endif
-}
-
-//MPI_Isend wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::isend(size_t count, int dest, int tag, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Isend(device_pointer(), count, mpi_datatype_, dest, tag, comm, &mpi_request_); 
-#else
-    update_host();
-    MPI_Isend(host_pointer(), count, mpi_datatype_, dest, tag, comm, &mpi_request_); 
-#endif
-}
-
-//MPI_Irecv wrapper
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::irecv(size_t count, int source, int tag, MPI_Comm comm) {
-#ifdef HAVE_GPU_AWARE_MPI
-    MPI_Irecv(device_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_request_); 
-#else
-    MPI_Irecv(host_pointer(), count, mpi_datatype_, source, tag, comm, &mpi_request_); 
-#endif
-}
-
-//MPI_Wait wrapper for the sender
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::wait_send() {
-    MPI_Wait(&mpi_request_, &mpi_status_); 
-}
-
-//MPI_Wait wrapper for the receiver
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
-    MPI_Wait(&mpi_request_, &mpi_status_); 
-#ifndef HAVE_GPU_AWARE_MPI
-    update_device();
-#endif
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(std::shared_ptr<PartitionMap<T,Layout,ExecSpace,MemoryTraits>> other_pmap) {
+void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> other_pmap) {
     own_comms = true;
     comm_pmap = other_pmap;
+    importer = Teuchos::rcp(new Tpetra::Import<LO, GO>(comm_pmap, pmap));
+    tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
+    tpetra_vector->doImport(*tpetra_sub_vector, *importer, Tpetra::INSERT);
 }
 
 //MPI_Barrier wrapper
