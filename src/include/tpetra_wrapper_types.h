@@ -43,8 +43,6 @@
 #include <memory> // for shared_ptr
 #ifdef HAVE_MPI
 #include <mpi.h>
-#include <mpi_types.h>
-#include <mapped_mpi_types.h>
 #include "partition_map.h"
 #include "communication_plan.h"
 #include <Teuchos_ScalarTraits.hpp>
@@ -67,21 +65,21 @@ namespace mtr
 // TpetraMVArray:  Dual type for managing distributed data on both CPU and GPU with a partition map.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class TpetraMVArray: MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits> {
+class TpetraMVArray {
 
     // this is manage
     using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
 
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::length_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order_;  // tensor order (rank)
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_recv_rank_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_tag_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_comm_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_status_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_datatype_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_request_;
-    using  MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::this_array_;
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    int mpi_recv_rank_;
+    int mpi_tag_;
+    MPI_Comm mpi_comm_;
+    MPI_Status mpi_status_;
+    MPI_Datatype mpi_datatype_;
+    MPI_Request mpi_request_;
+    TArray1D this_array_;
     
         // Trilinos type definitions
     typedef Tpetra::Map<>::local_ordinal_type LO;
@@ -193,7 +191,7 @@ public:
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>() {
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): pmap(NULL){
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -203,9 +201,8 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): MappedMPIArrayK
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
-                                                                            Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
-                                                                            const std::string& tag_string)
-    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, tag_string), pmap(input_pmap) {
+                                                             Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
+                                                             const std::string& tag_string): pmap(input_pmap) {
     
     dims_[0] = dim0;
     dims_[1] = 1;
@@ -214,16 +211,15 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
     // Create host ViewCArray
     set_mpi_type();
     pmap = input_pmap;
-    tpetra_vector   = Teuchos::rcp(new MV(pmap, 1));
-    this_array_ = tpetra_vector->getWrappedDualView();
+    this_array_ = TArray1D(tag_string, dim0, 1);
+    tpetra_vector   = Teuchos::rcp(new MV(pmap, this_array_));
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
                                                                             Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
-                                                                            const std::string& tag_string)
-    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string), pmap(input_pmap) {
+                                                                            const std::string& tag_string): pmap(input_pmap) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
@@ -232,17 +228,17 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_
     // Create host ViewCArray
     set_mpi_type();
     pmap = input_pmap;
-    tpetra_vector   = Teuchos::rcp(new MV(pmap, dim1));
-    this_array_ = tpetra_vector->getWrappedDualView();
+    this_array_ = TArray1D(tag_string, dim0, dim1);
+    tpetra_vector   = Teuchos::rcp(new MV(pmap, this_array_));
 }
 
-// Tpetra vector argument constructor
+// Tpetra vector argument constructor: CURRENTLY DOESN'T WORK SINCE WE CANT GET DUAL VIEW FROM THE MULTIVECTOR
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string)
-    : MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>(dim0, dim1, tag_string), pmap(input_tpetra_vector->getMap()) {
+    : pmap(input_tpetra_vector->getMap()) {
     
     tpetra_vector   = input_tpetra_vector;
-    this_array_ = tpetra_vector->getWrappedDualView();
+    //this_array_ = tpetra_vector->getWrappedDualView();
     dims_[0] = tpetra_vector->getMap()->getLocalNumElements();
     dims_[1] = tpetra_vector->getNumVectors();
 
@@ -252,7 +248,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> i
     else{
         order_ = 2;
     }
-    length_ = (dim0 * dim1);
+    length_ = (dims_[0] * dims_[1]);
     set_mpi_type();
 }
 
@@ -364,7 +360,7 @@ T* TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
   return this_array_;
 }
 
