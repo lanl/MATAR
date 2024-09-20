@@ -108,8 +108,10 @@ class TpetraMVArray {
     typedef Kokkos::View<int**, array_layout, HostSpace, memory_traits> host_ivec_array;
     typedef MV::dual_view_type dual_vec_array;
     
-protected:
-    Teuchos::RCP<const Tpetra::Map<LO, GO, node_type>> pmap;
+
+public:
+    
+    Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> pmap;
     Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> comm_pmap;
     Teuchos::RCP<MV>       tpetra_vector;
     Teuchos::RCP<MV>       tpetra_sub_vector; //for owned comms situations
@@ -120,8 +122,6 @@ protected:
     bool own_comms; //This Mapped MPI Array contains its own communication plan; just call array_comms()
     
     void set_mpi_type();
-
-public:
 
     TpetraMVArray();
     
@@ -202,15 +202,15 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): pmap(NULL){
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
                                                              Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
-                                                             const std::string& tag_string): pmap(input_pmap) {
+                                                             const std::string& tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = 1;
     order_ = 1;
     length_ = dim0;
+    pmap = input_pmap;
     // Create host ViewCArray
     set_mpi_type();
-    pmap = input_pmap;
     this_array_ = TArray1D(tag_string, dim0, 1);
     tpetra_vector   = Teuchos::rcp(new MV(pmap, this_array_));
 }
@@ -219,25 +219,25 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
                                                                             Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> input_pmap,
-                                                                            const std::string& tag_string): pmap(input_pmap) {
+                                                                            const std::string& tag_string) {
     
     dims_[0] = dim0;
     dims_[1] = dim1;
+    pmap = input_pmap;
     order_ = 2;
     length_ = (dim0 * dim1);
     // Create host ViewCArray
     set_mpi_type();
-    pmap = input_pmap;
     this_array_ = TArray1D(tag_string, dim0, dim1);
     tpetra_vector   = Teuchos::rcp(new MV(pmap, this_array_));
 }
 
 // Tpetra vector argument constructor: CURRENTLY DOESN'T WORK SINCE WE CANT GET DUAL VIEW FROM THE MULTIVECTOR
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string)
-    : pmap(input_tpetra_vector->getMap()) {
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string){
     
     tpetra_vector   = input_tpetra_vector;
+    pmap = input_tpetra_vector->getMap(); 
     //this_array_ = tpetra_vector->getWrappedDualView();
     dims_[0] = tpetra_vector->getMap()->getLocalNumElements();
     dims_[1] = tpetra_vector->getNumVectors();
@@ -314,6 +314,12 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>& TpetraMVArray<T,Layout,ExecSpace
         mpi_status_ = temp.mpi_status_;
         mpi_datatype_ = temp.mpi_datatype_;
         mpi_request_ = temp.mpi_request_;
+        tpetra_vector = temp.tpetra_vector;
+        tpetra_sub_vector = temp.tpetra_sub_vector;
+        pmap = temp.pmap;
+        comm_pmap = temp.comm_pmap;
+        importer = temp.importer;
+        own_comms = temp.own_comms;
     }
     
     return *this;
@@ -382,8 +388,8 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> other_pmap) {
     own_comms = true;
     comm_pmap = other_pmap;
-    importer = Teuchos::rcp(new Tpetra::Import<LO, GO>(comm_pmap, pmap));
     tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+    importer = Teuchos::rcp(new Tpetra::Import<LO, GO>(comm_pmap, pmap));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
