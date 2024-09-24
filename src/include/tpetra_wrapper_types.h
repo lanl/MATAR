@@ -81,7 +81,7 @@ class TpetraMVArray {
     MPI_Request mpi_request_;
     TArray1D this_array_;
     
-        // Trilinos type definitions
+    // Trilinos type definitions
     typedef Tpetra::Map<>::local_ordinal_type LO;
     typedef Tpetra::Map<>::global_ordinal_type GO;
 
@@ -409,6 +409,272 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraMVArray() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of TpetraMVArray
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
+// TpetraPartitionMap:  Container storing global indices corresponding to local indices that belong on this process/rank as well as comms related data/functions.
+/////////////////////////
+template <typename T = long long int, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class TpetraPartitionMap {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+
+    // Trilinos type definitions
+    typedef Tpetra::Map<>::local_ordinal_type LO;
+    typedef Tpetra::Map<>::global_ordinal_type GO;
+
+    typedef Tpetra::MultiVector<real_t, LO, GO> MV;
+
+    typedef Kokkos::ViewTraits<LO*, Kokkos::LayoutLeft, void, void>::size_type SizeType;
+    typedef Tpetra::Details::DefaultTypes::node_type node_type;
+    using traits = Kokkos::ViewTraits<LO*, Kokkos::LayoutLeft, void, void>;
+
+    using array_layout    = typename traits::array_layout;
+    using execution_space = typename traits::execution_space;
+    using device_type     = typename traits::device_type;
+    using memory_traits   = typename traits::memory_traits;
+    using global_size_t   = Tpetra::global_size_t;
+    
+protected:
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    MPI_Datatype mpi_datatype_;
+    TArray1D this_array_;
+    
+    void set_mpi_type();
+
+public:
+
+    //pointer to wrapped Tpetra map
+    Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> tpetra_map; // map of node indices
+
+    // Data member to access host view
+    ViewCArray <T> host;
+
+    //MPI communicator
+    MPI_Comm mpi_comm_;
+
+    TpetraPartitionMap();
+
+    //Copy Constructor
+    TpetraPartitionMap(const TpetraPartitionMap<T, Layout, ExecSpace,MemoryTraits> &temp){
+        *this = temp;
+    }
+     
+    TpetraPartitionMap(size_t length, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices);
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    TpetraPartitionMap& operator=(const TpetraPartitionMap& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size() const;
+
+    // Host Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t extent() const;
+    
+    int getLocalIndex(int global_index) const;
+
+    int getGlobalIndex(int local_index) const;
+
+    bool isProcessGlobalIndex(int global_index) const;
+
+    bool isProcessLocalIndex(int local_index) const;
+
+    // Method returns the raw device pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* device_pointer() const;
+
+    // Method returns the raw host pointer of the Kokkos DualView
+    KOKKOS_INLINE_FUNCTION
+    T* host_pointer() const;
+
+    // Method returns kokkos dual view
+    KOKKOS_INLINE_FUNCTION
+    TArray1D get_kokkos_dual_view() const;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraPartitionMap ();
+}; // End of TpetraPartitionMap
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap() {
+    length_ = 0;
+}
+
+// Default constructor for contiguous index decomposition
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t dim0, const std::string& tag_string) {
+    
+    length_ = dim0;
+    mpi_comm_ = MPI_COMM_WORLD;
+    this_array_ = TArray1D(tag_string, length_);
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+    set_mpi_type();
+    
+    //tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(Teuchos::OrdinalTraits<GO>::invalid(), 0, comm));
+}
+
+// Constructor to pass matar dual view of indices
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices) {
+    
+    this_array_ = indices.get_kokkos_dual_view;
+    // Create host ViewCArray
+    host = ViewCArray <T> (this_array_.h_view.data(), indices.size());
+    set_mpi_type();
+    mpi_comm_ = MPI_COMM_WORLD;
+    
+    tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(Teuchos::OrdinalTraits<GO>::invalid(), this_array_.d_view, 0, mpi_comm_));
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
+    if (typeid(T).name() == typeid(bool).name()) {
+        mpi_datatype_ = MPI_C_BOOL;
+    }
+    else if (typeid(T).name() == typeid(int).name()) {
+        mpi_datatype_ = MPI_INT;
+    }
+    else if (typeid(T).name() == typeid(long int).name()) {
+        mpi_datatype_ = MPI_LONG;
+    }
+    else if (typeid(T).name() == typeid(long long int).name()) {
+        mpi_datatype_ = MPI_LONG_LONG_INT;
+    }
+    else if (typeid(T).name() == typeid(float).name()) {
+        mpi_datatype_ = MPI_FLOAT;
+    }
+    else if (typeid(T).name() == typeid(double).name()) {
+        mpi_datatype_ = MPI_DOUBLE;
+    }
+    else {
+        printf("Your entered TpetraPartitionMap type is not a supported type for MPI communications and is being set to int\n");
+        mpi_datatype_ = MPI_INT;
+    }
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraPartitionMap 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraPartitionMap 1D!");
+    return this_array_.d_view(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>& TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraPartitionMap& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        length_ = temp.length_;
+        this_array_ = temp.this_array_;
+        host = temp.host;
+        mpi_datatype_ = temp.mpi_datatype_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::size() const {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
+    return this_array_.d_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+    return this_array_.h_view.data();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+  return this_array_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
+}
+
+// Return local index (on this process/rank) corresponding to the input global index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getLocalIndex(int global_index) const {
+    int local_index = tpetra_map->getLocalElement(global_index);
+    return local_index;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getGlobalIndex(int local_index) const {
+    int global_index = tpetra_map->getGlobalElement(local_index);
+    return global_index;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+bool TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::isProcessGlobalIndex(int global_index) const {
+    bool belongs = tpetra_map->isNodeGlobalElement(global_index);
+    return belongs;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+bool TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::isProcessLocalIndex(int local_index) const {
+    bool belongs = tpetra_map->isNodeGlobalElement(local_index);
+    return belongs;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::~TpetraPartitionMap() {}
+
+////////////////////////////////////////////////////////////////////////////////
+// End of TpetraPartitionMap
 ////////////////////////////////////////////////////////////////////////////////
 
 } // end namespace
