@@ -520,6 +520,9 @@ MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MappedMPIArrayKokkos<T,La
         mpi_status_ = temp.mpi_status_;
         mpi_datatype_ = temp.mpi_datatype_;
         mpi_request_ = temp.mpi_request_;
+        own_comms = temp.own_comms;
+        pmap = temp.pmap;
+        comm_pmap = temp.comm_pmap;
     }
     
     return *this;

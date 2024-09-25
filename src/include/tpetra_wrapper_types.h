@@ -419,6 +419,8 @@ class TpetraPartitionMap {
 
     // this is manage
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    using TArray1D_host = Kokkos::View <T*, Layout, HostSpace, MemoryTraits>;
+    using TArray1D_dev = Kokkos::View <T*, Layout, ExecSpace, MemoryTraits>;
 
     // Trilinos type definitions
     typedef Tpetra::Map<>::local_ordinal_type LO;
@@ -449,6 +451,8 @@ public:
     //pointer to wrapped Tpetra map
     Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> tpetra_map; // map of node indices
 
+    int num_global_;
+
     // Data member to access host view
     ViewCArray <T> host;
 
@@ -462,9 +466,9 @@ public:
         *this = temp;
     }
      
-    TpetraPartitionMap(size_t length, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    //TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm_ = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices);
+    TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices, MPI_Comm mpi_comm_ = MPI_COMM_WORLD);
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -520,31 +524,31 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap() {
     length_ = 0;
 }
 
-// Default constructor for contiguous index decomposition
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t dim0, const std::string& tag_string) {
+// Constructor for contiguous index decomposition
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm_, const std::string& tag_string) {
     
-    length_ = dim0;
-    mpi_comm_ = MPI_COMM_WORLD;
-    this_array_ = TArray1D(tag_string, length_);
-    // Create host ViewCArray
-    host = ViewCArray <T> (this_array_.h_view.data(), dim0);
-    set_mpi_type();
-    
-    //tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(Teuchos::OrdinalTraits<GO>::invalid(), 0, comm));
-}
+//     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<GO>(mpi_comm_));
+//     tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>((int) global_length, 0, teuchos_comm));
+//     num_global_ = global_length;
+//     TArray1D_host indices_host = tpetra_map->getMyGlobalIndices();
+//     length_ = indices_host.size();
+//     this_array_ = TArray1D(tag_string, length_);
+//     // Create host ViewCArray
+//     //host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+//     set_mpi_type();
+// }
 
 // Constructor to pass matar dual view of indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices) {
-    
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> indices, MPI_Comm mpi_comm_) {
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<GO>(mpi_comm_));
     this_array_ = indices.get_kokkos_dual_view;
     // Create host ViewCArray
     host = ViewCArray <T> (this_array_.h_view.data(), indices.size());
     set_mpi_type();
-    mpi_comm_ = MPI_COMM_WORLD;
     
-    tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(Teuchos::OrdinalTraits<GO>::invalid(), this_array_.d_view, 0, mpi_comm_));
+    tpetra_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(Teuchos::OrdinalTraits<GO>::invalid(), this_array_.d_view, 0, teuchos_comm));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -591,6 +595,9 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>& TpetraPartitionMap<T,Layout
         this_array_ = temp.this_array_;
         host = temp.host;
         mpi_datatype_ = temp.mpi_datatype_;
+        tpetra_map = temp.tpetra_map;
+        mpi_comm_ = temp.mpi_comm_;
+        num_global_= temp.num_global_;
     }
     
     return *this;
