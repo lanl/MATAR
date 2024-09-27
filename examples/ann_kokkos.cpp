@@ -33,6 +33,7 @@
  **********************************************************************************************/
 #include <stdio.h>
 #include <array>
+#include <vector>
 #include <chrono>
 #include <math.h>
 
@@ -42,11 +43,26 @@ using namespace mtr; // matar namespace
 
 
 // =================================================================
+// Artificial Neural Network (ANN)
 //
-// Number of nodes in each layer including input and output layers
+// For a single layer, we have x_i inputs with weights_{ij}, 
+// creating y_j outputs.  We have
+//     y_j = Fcn(b_j) = Fcn( Sum_i {x_i w_{ij}} )
+// where the activation function Fcn is applied to b_j, creating 
+// outputs y_j. For multiple layers, we have
+//      b_j^l = Sum_i (x_i^{l-1} w_{ij}^l)
+// where l is a layer, and as before, an activation function is  
+// applied to b_j^l, creating outputs y_j^l.
+// 
+// =================================================================
+
+
+// =================================================================
+//
+// Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::array <size_t,5> num_nodes_in_layer = {1, 10, 20, 10, 1};
+std::vector <size_t> num_nodes_in_layer = {9, 50, 100, 300, 200, 100, 20, 6};
 
 
 
@@ -59,7 +75,7 @@ std::array <size_t,5> num_nodes_in_layer = {1, 10, 20, 10, 1};
 // array of ANN structs
 struct ANNLayer_t{
 
-    DCArrayKokkos <float> outputs;   // dims = [layer]
+    DCArrayKokkos <float> outputs;  // dims = [layer]
     DCArrayKokkos <float> weights;  // dims = [layer-1, layer]
 
 }; // end struct
@@ -73,16 +89,16 @@ struct ANNLayer_t{
 // =================================================================
 void forward_propagate_layer(DCArrayKokkos <float> inputs,
                              DCArrayKokkos <float> outputs, 
-                             CArrayKokkos <float> weights){
+                             DCArrayKokkos <float> weights){
     
-    size_t i_dim = inputs.size();
-    size_t j_dim = outputs.size();
-    FOR_ALL(j, 0, j_dim,{
+    size_t num_i = inputs.size();
+    size_t num_j = outputs.size();
+    FOR_ALL(j, 0, num_j,{
 
             float value = 0.0;
-            for(int i=0; i<i_dim; i++){
+            for(int i=0; i<num_i; i++){
                 // b_j = Sum_i {x_i w_{ij}}
-                value += weigths(i,j)*inputs(i);
+                value += weights(i,j)*inputs(i);
             } // end for
 
             // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
@@ -90,7 +106,7 @@ void forward_propagate_layer(DCArrayKokkos <float> inputs,
 
         }); // end parallel for
 
-    return 0;
+    return;
 
 }; // end function
 
@@ -105,27 +121,14 @@ int main(int argc, char* argv[])
     Kokkos::initialize(argc, argv);
     {
 
-        //------------------
-        // test of ANN
-        //
-        // For a single layer, we have x_i inputs and weights_{ij}, 
-        // creating y_j outputs.
-        //      b_j = Sum_i {x_i w_{ij}}
-        // An activation function is applied to b_j, creating output y_j. 
-        // For multiple layers, we have
-        //      b_j^l = Sum_i (x_i^{l-1} w_{ij}^l)
-        // where l is a layer and an activation function is applied to 
-        // b_j^l, creating an output y_j^l.
-        // 
-        //------------------
-
-
         // =================================================================
         // allocate arrays
         // =================================================================
 
-        num_layers = num_nodes_in_layer.size();       // includes inputs into ANN
-        CMatrix <ANNLayer_t> ANNLayers(num_layers-1); // starts at 1 and goes to n
+        // note: the num_nodes_in_layer has the inputs into the ANN, so subtract 1 for the layers
+        size_t num_layers = num_nodes_in_layer.size()-1;  
+
+        CMatrix <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
         DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
@@ -134,11 +137,11 @@ int main(int argc, char* argv[])
         // set the strides
         // layer 0 are the inputs to the ANN
         // layer n-1 are the outputs from the ANN
-        for (size_t layer=1; layer<num_layers; layer++){
+        for (size_t layer=1; layer<=num_layers; layer++){
 
             // dimensions
-            size_t num_i = num_nodes_in_layer(layer-1);
-            size_t num_j = num_nodes_in_layer(layer);
+            size_t num_i = num_nodes_in_layer[layer-1];
+            size_t num_j = num_nodes_in_layer[layer];
 
             // allocate the weights in this layer
             ANNLayers(layer).weights = DCArrayKokkos <float> (num_i, num_j); 
@@ -152,13 +155,13 @@ int main(int argc, char* argv[])
         // =================================================================
         
         // inputs to ANN
-        num_i = num_nodes_in_layer[0];
-        for (size_t i=0; i<num_i; i++) {
+        for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
             inputs.host(i) = 1.0;
         }
+        inputs.update_device();  // copy inputs to device
 
         // weights of the ANN
-        for (size_t layer=1; layer<num_layers; layer++){
+        for (size_t layer=1; layer<=num_layers; layer++){
 
             // dimensions
             size_t num_i = num_nodes_in_layer[layer-1];
@@ -175,6 +178,7 @@ int main(int argc, char* argv[])
         } // end for over layers
 
 
+
         // =================================================================
         // Use the ANN
         // =================================================================
@@ -183,39 +187,41 @@ int main(int argc, char* argv[])
 
         // forward propogate
 
-        // layer 1, hidden layer 0, uses the inputs
+        // layer 1, hidden layer 0, uses the inputs as the input values
         forward_propagate_layer(inputs,
                                 ANNLayers(1).outputs,
                                 ANNLayers(1).weights); 
 
-        // layer 2 through n
-        for (size_t layer=2; layer<num_layers; layer++){
-
-            // dimensions
-            size_t num_nodes_i_minus = num_nodes_in_layer[layer-1];
-            size_t num_nodes_i = num_nodes_in_layer[layer];
+        // layer 2 through n-1, layer n-1 goes to the output
+        for (size_t layer=2; layer<=num_layers; layer++){
 
             // go through this layer, the fcn takes(inputs, outputs, weights)
             forward_propagate_layer(ANNLayers(layer-1).outputs, 
-                                    ANNLayers(layer).outputs
+                                    ANNLayers(layer).outputs,
                                     ANNLayers(layer).weights); 
         } // end for
 
         auto time_2 = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration <float, std::milli> ms = time_2 - time_1;
-        std::cout << "runtime of ann test = " << ms.count() << "ms\n";
+        std::cout << "runtime of ANN test = " << ms.count() << "ms\n\n";
 
 
         // =================================================================
         // Copy values to host
         // =================================================================
         ANNLayers(num_layers).outputs.update_device();
-
+        
+        std::cout << "output values: \n";
+        for (size_t val=0; val<num_nodes_in_layer[num_layers]; val++){
+            std::cout << " " << ANNLayers(num_layers).outputs.host(val) << std::endl;
+        } // end for
  
     } // end of kokkos scope
 
     Kokkos::finalize();
+
+
 
     printf("\nfinished\n\n");
 
