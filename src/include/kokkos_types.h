@@ -7536,10 +7536,6 @@ public:
     
     //print values
     void print() const;
-    
-    //set values to input
-    KOKKOS_INLINE_FUNCTION
-    void set_values(T val);
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -7895,10 +7891,6 @@ public:
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
     
-    // set values to input
-    KOKKOS_INLINE_FUNCTION
-    void set_values(T val);
-    
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
     KOKKOS_INLINE_FUNCTION
@@ -8114,10 +8106,6 @@ public:
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
-    
-    //set values to input
-    KOKKOS_INLINE_FUNCTION
-    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[stride(j)], j=[0:N-1]
