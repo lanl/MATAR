@@ -42,6 +42,7 @@
 using namespace mtr; // matar namespace
 
 
+
 // =================================================================
 // Artificial Neural Network (ANN)
 //
@@ -63,6 +64,7 @@ using namespace mtr; // matar namespace
 //
 // =================================================================
 std::vector <size_t> num_nodes_in_layer = {9, 50, 100, 300, 200, 100, 20, 6};
+// {64000, 30000, 8000, 4000, 100, 25, 6}
 
 
 
@@ -87,13 +89,46 @@ struct ANNLayer_t{
 // functions
 //
 // =================================================================
-void forward_propagate_layer(DCArrayKokkos <float> inputs,
-                             DCArrayKokkos <float> outputs, 
-                             DFArrayKokkos <float> weights){
+void vec_mat_multiply(DCArrayKokkos <float> &inputs,
+                      DCArrayKokkos <float> &outputs, 
+                      DFArrayKokkos <float> &matrix){
     
-    size_t num_i = inputs.size();
-    size_t num_j = outputs.size();
+    const size_t num_i = inputs.size();
+    const size_t num_j = outputs.size();
+
+    using team_t = typename Kokkos::TeamPolicy<>::member_type;
+    Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
+                 KOKKOS_LAMBDA (const team_t& team_h) {
+
+        float sum = 0;
+        int j = team_h.league_rank();
+        Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
+                        [&] (int i, float& lsum) {
+            lsum += inputs(i)*matrix(i,j);
+        }, sum); // end parallel reduce
+
+        outputs(j) = sum; 
+
+    }); // end parallel for
+    
+    return;
+
+}; // end function
+
+
+
+void forward_propagate_layer(DCArrayKokkos <float> &inputs,
+                             DCArrayKokkos <float> &outputs, 
+                             DFArrayKokkos <float> &weights){
+    
+    const size_t num_i = inputs.size();
+    const size_t num_j = outputs.size();
+
+    
     FOR_ALL(j, 0, num_j,{
+
+
+    	//printf("thread = %d \n", omp_get_thread_num());
 
             float value = 0.0;
             for(int i=0; i<num_i; i++){
@@ -106,8 +141,41 @@ void forward_propagate_layer(DCArrayKokkos <float> inputs,
 
         }); // end parallel for
     
+    /*
+    
+    using team_t = typename Kokkos::TeamPolicy<>::member_type;
+    Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
+                 KOKKOS_LAMBDA (const team_t& team_h) {
 
+        float sum = 0;
+        int j = team_h.league_rank();
+        Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
+                        [&] (int i, float& lsum) {
+            lsum += inputs(i)*weights(i,j);
+        }, sum); // end parallel reduce
+
+        outputs(j) = 1.0/(1.0 + exp(-sum)); 
+
+    }); // end parallel for
+    
+    */
+    
     return;
+
+}; // end function
+
+
+
+void set_weights(const DFArrayKokkos <float> &weights){
+
+    const size_t num_i = weights.dims(0);
+    const size_t num_j = weights.dims(1);
+    
+	FOR_ALL(i,0,num_i,
+	        j,0,num_j, {
+		    
+		    weights(i,j) = 1.0;
+	}); // end parallel for
 
 }; // end function
 
@@ -168,15 +236,27 @@ int main(int argc, char* argv[])
             size_t num_i = num_nodes_in_layer[layer-1];
             size_t num_j = num_nodes_in_layer[layer];
 
-            // set the weights in this layer of the ANN
-            for (size_t i=0; i<num_i; i++) {
-                for (size_t j=0; j<num_j; j++){
-                    ANNLayers(layer).weights.host(i,j) = 1.0;
-                } // end for j
-            }  // end for
-            ANNLayers(layer).weights.update_device();  // copy weights to device
+
+            set_weights(ANNLayers(layer).weights);
 
         } // end for over layers
+
+
+
+        // =================================================================
+        // Testing vec matrix multiply
+        // =================================================================        
+        vec_mat_multiply(inputs,
+                         ANNLayers(1).outputs,
+                         ANNLayers(1).weights); 
+        
+        std::cout << "vec mat multiply test: \n";
+        const size_t dims_in = ANNLayers(1).weights.dims(0);
+        FOR_ALL(i,0,num_nodes_in_layer[1], {
+            if(fabs(ANNLayers(1).outputs(i) - dims_in)>= 1e-15){
+                printf("error in vec mat multiply test \n");
+            }
+        });
 
 
 
