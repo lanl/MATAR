@@ -112,7 +112,6 @@ void vec_mat_multiply(DCArrayKokkos <float> &inputs,
     }); // end parallel for
 
 
-    const size_t dims_in = ANNLayers(1).weights.dims(0);
     FOR_ALL(j,0,num_j, {
             if(fabs(outputs(j) - num_i)>= 1e-15){
                 printf("error in vec mat multiply test \n");
@@ -123,6 +122,16 @@ void vec_mat_multiply(DCArrayKokkos <float> &inputs,
 
 }; // end function
 
+KOKKOS_INLINE_FUNCTION
+float sigmoid(const float value){
+    return 1.0/(1.0 + exp(-value));  // exp2f doesn't work with CUDA
+}; // end function
+
+
+KOKKOS_INLINE_FUNCTION
+float sigmoid_prime(const float value){
+    return sigmoid(value)*(1.0 - sigmoid(value));  // exp2f doesn't work with CUDA
+}; // end function
 
 
 void forward_propagate_layer(DCArrayKokkos <float> &inputs,
@@ -145,7 +154,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
             } // end for
 
             // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
-            outputs(j) = 1.0/(1.0 + exp(-value));  // exp2f doesn't work with CUDA
+            outputs(j) = sigmoid(value);
 
         }); // end parallel for
     
