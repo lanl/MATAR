@@ -76,7 +76,7 @@ std::vector <size_t> num_nodes_in_layer = {9, 50, 100, 300, 200, 100, 20, 6};
 struct ANNLayer_t{
 
     DCArrayKokkos <float> outputs;  // dims = [layer]
-    DCArrayKokkos <float> weights;  // dims = [layer-1, layer]
+    DFArrayKokkos <float> weights;  // dims = [layer-1, layer]
 
 }; // end struct
 
@@ -89,7 +89,7 @@ struct ANNLayer_t{
 // =================================================================
 void forward_propagate_layer(DCArrayKokkos <float> inputs,
                              DCArrayKokkos <float> outputs, 
-                             DCArrayKokkos <float> weights){
+                             DFArrayKokkos <float> weights){
     
     size_t num_i = inputs.size();
     size_t num_j = outputs.size();
@@ -98,13 +98,14 @@ void forward_propagate_layer(DCArrayKokkos <float> inputs,
             float value = 0.0;
             for(int i=0; i<num_i; i++){
                 // b_j = Sum_i {x_i w_{ij}}
-                value += weights(i,j)*inputs(i);
+                value += inputs(i)*weights(i,j);
             } // end for
 
             // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
-            outputs(j) = 1.0/(1.0 + exp2f(-value));
+            outputs(j) = 1.0/(1.0 + exp(-value));  // exp2f doesn't work with CUDA
 
         }); // end parallel for
+    
 
     return;
 
@@ -144,7 +145,7 @@ int main(int argc, char* argv[])
             size_t num_j = num_nodes_in_layer[layer];
 
             // allocate the weights in this layer
-            ANNLayers(layer).weights = DCArrayKokkos <float> (num_i, num_j); 
+            ANNLayers(layer).weights = DFArrayKokkos <float> (num_i, num_j); 
             ANNLayers(layer).outputs = DCArrayKokkos <float> (num_j);
 
         } // end for
