@@ -110,6 +110,14 @@ void vec_mat_multiply(DCArrayKokkos <float> &inputs,
         outputs(j) = sum; 
 
     }); // end parallel for
+
+
+    const size_t dims_in = ANNLayers(1).weights.dims(0);
+    FOR_ALL(j,0,num_j, {
+            if(fabs(outputs(j) - num_i)>= 1e-15){
+                printf("error in vec mat multiply test \n");
+            }
+    });
     
     return;
 
@@ -142,6 +150,8 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
         }); // end parallel for
     
     /*
+
+    // For a GPU, use the nested parallelism below here
     
     using team_t = typename Kokkos::TeamPolicy<>::member_type;
     Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
@@ -159,7 +169,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
     }); // end parallel for
     
     */
-    
+
     return;
 
 }; // end function
@@ -250,13 +260,8 @@ int main(int argc, char* argv[])
                          ANNLayers(1).outputs,
                          ANNLayers(1).weights); 
         
-        std::cout << "vec mat multiply test: \n";
-        const size_t dims_in = ANNLayers(1).weights.dims(0);
-        FOR_ALL(i,0,num_nodes_in_layer[1], {
-            if(fabs(ANNLayers(1).outputs(i) - dims_in)>= 1e-15){
-                printf("error in vec mat multiply test \n");
-            }
-        });
+        std::cout << "vec mat multiply test completed \n";
+
 
 
 
