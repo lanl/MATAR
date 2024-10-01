@@ -126,8 +126,12 @@ int main(int argc, char *argv[]) {
 
         // Matrix examples following the Fortran index convention,
         // indicies go from 1 to N, first index varies the fastest
-        FMatrixDevice <real_t> matrix1D(10);    // declare and allocate a 1D matrix of size 10
-        FMatrixDevice <real_t> matrix2D(10,10); // declare and allocate a 2D matrix with sizes of 10 x 10
+        FMatrixDevice <real_t> matrix1D(10, "1D_FMatrix");    // declare and allocate a 1D matrix of size 10
+        FMatrixDevice <real_t> matrix2D(10,10, "2D_FMatrix"); // declare and allocate a 2D matrix with sizes of 10 x 10
+
+        std::cout<< "Name of 1D Matrix = "<<matrix1D.get_name()<<std::endl;
+        std::cout<< "Name of 2D Matrix = "<<matrix2D.get_name()<<std::endl;
+
 
         FMatrixDevice <real_t> matrix3D;        // declare variable and allocate sizes and dimensions later
         matrix3D = FMatrixDevice <real_t> (10,10,10); // allocate dimensions and sizes 

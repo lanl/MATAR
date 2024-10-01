@@ -238,6 +238,10 @@ public:
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
 
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
     // Destructor
     KOKKOS_INLINE_FUNCTION
     ~FArrayKokkos();
@@ -529,6 +533,14 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpac
     return this_array_;
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.label();
+}
+
+
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -628,6 +640,10 @@ public:
  
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
     ~ViewFArrayKokkos();
@@ -880,6 +896,14 @@ T* ViewFArrayKokkos<T>::pointer() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+void ViewFArrayKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_(i) = val;
+    });
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::~ViewFArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -971,6 +995,10 @@ public:
     //return kokkos view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     KOKKOS_INLINE_FUNCTION
     ~FMatrixKokkos();
@@ -1246,6 +1274,14 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpa
     return this_matrix_;
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.label();
+}
+
+
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -1346,6 +1382,10 @@ public:
  
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
     ~ViewFMatrixKokkos();
@@ -1601,6 +1641,14 @@ T* ViewFMatrixKokkos<T>::pointer() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+void ViewFMatrixKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_(i) = val;
+    });
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::~ViewFMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1703,6 +1751,16 @@ public:
 
     // Method that update device view
     void update_device();
+
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -1995,6 +2053,21 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     this_array_.template sync<typename TArray1D::execution_space>();
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.view_host().label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_.h_view(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFArrayKokkos() {}
@@ -2106,6 +2179,16 @@ public:
 
     // Method that update device view
     void update_device();
+
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -2445,6 +2528,21 @@ void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     deep_copy(this_array_, this_array_host_);
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_host_(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewFArrayKokkos() {}
@@ -2546,6 +2644,16 @@ public:
 
     // Method that update device view
     void update_device();
+
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -2838,6 +2946,21 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     this_matrix_.template sync<typename TArray1D::execution_space>();
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.view_host().label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_.h_view(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DFMatrixKokkos() {}
@@ -2944,6 +3067,16 @@ public:
 
     // Method that update device view
     void update_device();
+
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -3273,6 +3406,22 @@ void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     deep_copy(this_matrix_, this_matrix_host_);
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.label();
+}
+
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_host_(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewFMatrixKokkos() {}
@@ -3368,6 +3517,10 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -3640,6 +3793,13 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpac
     return this_array_;
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.label();
+}
+
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -3738,6 +3898,10 @@ public:
  
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
     ~ViewCArrayKokkos();
@@ -3988,6 +4152,14 @@ T* ViewCArrayKokkos<T>::pointer() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+void ViewCArrayKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_(i) = val;
+    });
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCArrayKokkos<T>::~ViewCArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4078,6 +4250,10 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view() const;
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     KOKKOS_INLINE_FUNCTION
     ~CMatrixKokkos();
@@ -4356,6 +4532,13 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpa
     return this_matrix_;
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.label();
+}
+
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -4450,6 +4633,10 @@ public:
  
     KOKKOS_INLINE_FUNCTION
     T* pointer() const;
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     KOKKOS_INLINE_FUNCTION
     ~ViewCMatrixKokkos();
@@ -4697,6 +4884,14 @@ T* ViewCMatrixKokkos<T>::pointer() const {
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
+void ViewCMatrixKokkos<T>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_(i) = val;
+    });
+}
+
+template <typename T>
+KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::~ViewCMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4797,11 +4992,19 @@ public:
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const;
 
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
     // Method that update host view
     void update_host();
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -5086,6 +5289,13 @@ Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> DCArrayKokkos<T,Layout,Ex
   return this_array_;
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.view_host().label();
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
@@ -5098,6 +5308,14 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_.h_view(i) = val;
+    });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5207,6 +5425,16 @@ public:
 
     // Method that update device view
     void update_device();
+
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -5555,6 +5783,20 @@ void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_array_host_(i) = val;
+    });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_array_.label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCArrayKokkos() {}
 // End DViewCArrayKokkos
 
@@ -5654,6 +5896,14 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -5947,6 +6197,21 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     this_matrix_.template sync<typename TArray1D::execution_space>();
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.view_host().label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_.h_view(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCMatrixKokkos() {}
@@ -6053,6 +6318,14 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
@@ -6382,6 +6655,21 @@ void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     deep_copy(this_matrix_, this_matrix_host_);
 }
 
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return this_matrix_.label();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        this_matrix_host_(i) = val;
+    });
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCMatrixKokkos() {}
@@ -6454,12 +6742,24 @@ public:
     //setup start indices
     void data_setup(const std::string& tag_string);
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -6780,6 +7080,22 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layou
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_RaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+const std::string RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
+    return array_.label();
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -6855,6 +7171,10 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -6935,6 +7255,10 @@ public:
             }
         }
     };
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7126,6 +7450,22 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokko
     return array_;
 }
 
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+        array_(i) = val;
+    });
+}
+
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+const std::string RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
+    return array_.label();
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7179,15 +7519,27 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
     
+    //return pointer
     KOKKOS_INLINE_FUNCTION
     T* pointer();
 
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
     
     KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
+    
+    //print values
+    void print() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
@@ -7242,6 +7594,10 @@ public:
             update += mytemp_strides_(index);
         }
     };
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
 
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7473,6 +7829,22 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_RaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+const std::string RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
+    return array_.label();
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -7518,6 +7890,14 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+    
+    // set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -7545,6 +7925,14 @@ public:
       }
     };
     
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    KOKKOS_INLINE_FUNCTION
+    void set_values_sparse(T val);
+
     // Destructor
     KOKKOS_INLINE_FUNCTION
     ~DynamicRaggedRightArrayKokkos ();
@@ -7648,6 +8036,32 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
+    Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+        const int i_i = teamMember.league_rank();
+        Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const int (j_j) ) {
+            array_(dim2_*i_i+j_j) = val;    
+        });
+    });
+}
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return array_.label();
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -7696,6 +8110,14 @@ public:
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+    
+    //set values to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
     
     // Overload operator() to access data as array(i,j),
     // where i=[stride(j)], j=[0:N-1]
@@ -7721,6 +8143,14 @@ public:
         functor_strides_(index) = init_stride_;
       }
     };
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    KOKKOS_INLINE_FUNCTION
+    void set_values_sparse(T val);
     
     // Destructor
     KOKKOS_INLINE_FUNCTION
@@ -7826,6 +8256,32 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T
     return array_;
 }
 
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_(i) = val;
+    });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
+    Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim2_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+        const int j_j = teamMember.league_rank();
+        Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(j_j) ), [&] ( const int (i_i) ) {
+            array_(dim1_*j_j+i_i) = val;    
+        });
+    });
+}
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return array_.label();
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -7857,7 +8313,7 @@ class CSRArrayKokkos {
     CSRArrayKokkos();
     //CSRArray(CArray<T> data, CArray<T> col_ptrs, CArray<T> row_ptrs, size_t rows, size_t cols);
 
-   CSRArrayKokkos(
+    CSRArrayKokkos(
                CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
                CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &colum_index,
@@ -8001,6 +8457,10 @@ class CSRArrayKokkos {
     // int toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t> &row_ptrs);
 
     void to_dense(CArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& A);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
     
     class init_start_indices_functor{
        public:
@@ -8012,6 +8472,11 @@ class CSRArrayKokkos {
                       mystart_index_(index) = 0;
              }
     };
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
     //destructor
     KOKKOS_INLINE_FUNCTION
     ~CSRArrayKokkos();
@@ -8240,6 +8705,13 @@ T& CSRArrayKokkos<T,Layout,ExecSpace, MemoryTraits>::get_val_flat(size_t k) cons
    return array_.data()[k];
 }
 
+// Get the name of the view
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string CSRArrayKokkos<T,Layout,ExecSpace, MemoryTraits>::get_name() const{
+    return array_.label();
+}
+
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_col_flat(size_t k) const{
@@ -8260,6 +8732,8 @@ int CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
     }
     return  -1;
 }
+
+
 
 //template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 //void CSRArrrayKokkos<T,Layout,ExecSpace, MemoryTraits>::from_dense(CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &starts,
@@ -8310,6 +8784,14 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 */
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
+        array_(i) = val;
+    });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::~CSRArrayKokkos() {}
 
 // 16 CSCArrayKokkos
@@ -8329,159 +8811,168 @@ private: // What ought to be private ?
     
   public:
 
-      /**
-       * @brief Construct a new empty Sparse Col Array object
-       *
-       */
-      CSCArrayKokkos();
+    /**
+    * @brief Construct a new empty Sparse Col Array object
+    *
+    */
+    CSCArrayKokkos();
 
-      /**
-      * @brief Construct a new Sparse Col Array object
-      *
-      * @param array: 1d array of data values in order as read top to bottom, left to right
-      * @param row_index: 1d array that marks what row each element is in
-      * @param start_index: 1d array that marks where the first element of each column starts
-      * @param dim1: number of rows the matrix should have
-      * @param dim2: number of columns the matrix should have
-      */
-     CSCArrayKokkos(
-               CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
-               CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
-               size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
+    /**
+    * @brief Construct a new Sparse Col Array object
+    *
+    * @param array: 1d array of data values in order as read top to bottom, left to right
+    * @param row_index: 1d array that marks what row each element is in
+    * @param start_index: 1d array that marks where the first element of each column starts
+    * @param dim1: number of rows the matrix should have
+    * @param dim2: number of columns the matrix should have
+    */
+    CSCArrayKokkos(
+       CArrayKokkos<T, Layout, ExecSpace, MemoryTraits> &array,
+       CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &start_index,
+       CArrayKokkos<size_t, Layout, ExecSpace, MemoryTraits> &row_index,
+       size_t dim1, size_t dim2, const std::string & tag_string = DEFAULTSTRINGARRAY);
 
 
-      /**
-       * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated
-       *
-       * @param i : row
-       * @param j : column
-       * @return T& : address of array_ that corresponds to A(i,j)
-       */
-      KOKKOS_INLINE_FUNCTION
-      T &operator()(size_t i, size_t j) const;
+    /**
+    * @brief Access A(i,j). Returns a dummy address with value 0 if A(i,j) is not allocated
+    *
+    * @param i : row
+    * @param j : column
+    * @return T& : address of array_ that corresponds to A(i,j)
+    */
+    KOKKOS_INLINE_FUNCTION
+    T &operator()(size_t i, size_t j) const;
 
-      /**
-       * @brief Overloaded copy operator
-       *
-       * @param temp : Array to copy
-       * @return CSCArray&
-       */
-      KOKKOS_INLINE_FUNCTION
-      CSCArrayKokkos &operator=(const CSCArrayKokkos &temp);
+    /**
+    * @brief Overloaded copy operator
+    *
+    * @param temp : Array to copy
+    * @return CSCArray&
+    */
+    KOKKOS_INLINE_FUNCTION
+    CSCArrayKokkos &operator=(const CSCArrayKokkos &temp);
 
-      /**
-       * @brief  returns pointer to array_
-       *
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *pointer() const;
+    /**
+    * @brief  returns pointer to array_
+    *
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *pointer() const;
 
-      /**
-       * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
-       *
-       * @param i : row
-       * @return size_t
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t stride(size_t i) const;
-      
-      /**
-       * @brief Same functionality as operator() included for compatibility with the rest of matar
-       *
-       * @param i: row
-       * @param j: column
-       * @return T&
-       */
-      KOKKOS_INLINE_FUNCTION
-      T &value(size_t i, size_t j) const;
+    /**
+    * @brief Same functionality as nnz(i) included for compatibility with the rest of matar
+    *
+    * @param i : row
+    * @return size_t
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t stride(size_t i) const;
 
-      /**
-       * @brief Get the start_index array
-       *
-       * @return size_t* : returns start_index_
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t *get_starts() const;
+    /**
+    * @brief Same functionality as operator() included for compatibility with the rest of matar
+    *
+    * @param i: row
+    * @param j: column
+    * @return T&
+    */
+    KOKKOS_INLINE_FUNCTION
+    T &value(size_t i, size_t j) const;
 
-      /**
-       * @brief Get number of rows
-       *
-       * @return size_t  number of rows
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t dim1() const;
-      
-      /**
-       * @brief Get number of columns
-       *
-       * @return size_t number of columns
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t dim2() const;
+    /**
+    * @brief Get the start_index array
+    *
+    * @return size_t* : returns start_index_
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t *get_starts() const;
 
-      /**
-       * @brief iterator notation for iterating through the non zeros values of row i.
-       *
-       * @param i : row
-       * @return T*
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *begin(size_t i);
- 
-       /**
-       * @brief iterator notation for iterating through the non zeros values of row i.
-       *
-       * @param i : row
-       * @return T*
-       */
-      KOKKOS_INLINE_FUNCTION
-      T *end(size_t i);
+    /**
+    * @brief Get number of rows
+    *
+    * @return size_t  number of rows
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t dim1() const;
 
-      // iterator for the raw data at row i
-      // i.e. return the index each element is the index in the 1 array
-      // This as the use of providing a reasonable way to get the column
-      // index and data value in the case you need both
-      KOKKOS_INLINE_FUNCTION
-      size_t begin_index(size_t i);
+    /**
+    * @brief Get number of columns
+    *
+    * @return size_t number of columns
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t dim2() const;
 
-      KOKKOS_INLINE_FUNCTION
-      size_t end_index(size_t i);
+    /**
+    * @brief iterator notation for iterating through the non zeros values of row i.
+    *
+    * @param i : row
+    * @return T*
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *begin(size_t i);
 
-      /**
-       * @brief Get the number of non zero elements in row i
-       *
-       * @param i : row to get
-       * @return size_t  : size of row
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t nnz(size_t i);
-      
-      /**
-       * @brief Get number of non zero elements total in array
-       *
-       * @return size_t
-       */
-      KOKKOS_INLINE_FUNCTION
-      size_t nnz() const;
+    /**
+    * @brief iterator notation for iterating through the non zeros values of row i.
+    *
+    * @param i : row
+    * @return T*
+    */
+    KOKKOS_INLINE_FUNCTION
+    T *end(size_t i);
 
-      // Use the index into the 1d array to get what value is stored there and what is the corresponding row
-      KOKKOS_INLINE_FUNCTION
-      T &get_val_flat(size_t k);
+    // iterator for the raw data at row i
+    // i.e. return the index each element is the index in the 1 array
+    // This as the use of providing a reasonable way to get the column
+    // index and data value in the case you need both
+    KOKKOS_INLINE_FUNCTION
+    size_t begin_index(size_t i);
 
-      KOKKOS_INLINE_FUNCTION
-      size_t get_row_flat(size_t k);
-      
-      // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
-      KOKKOS_INLINE_FUNCTION
-      int flat_index(size_t i, size_t j);
-      
-      // Convertor
-      //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
-      //void to_dense(FArray<T> &A);
-      // destructor
-      KOKKOS_INLINE_FUNCTION
-      ~CSCArrayKokkos();
+    KOKKOS_INLINE_FUNCTION
+    size_t end_index(size_t i);
+
+    /**
+    * @brief Get the number of non zero elements in row i
+    *
+    * @param i : row to get
+    * @return size_t  : size of row
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t nnz(size_t i);
+
+    /**
+    * @brief Get number of non zero elements total in array
+    *
+    * @return size_t
+    */
+    KOKKOS_INLINE_FUNCTION
+    size_t nnz() const;
+
+    // Use the index into the 1d array to get what value is stored there and what is the corresponding row
+    KOKKOS_INLINE_FUNCTION
+    T &get_val_flat(size_t k);
+
+    KOKKOS_INLINE_FUNCTION
+    size_t get_row_flat(size_t k);
+
+    // reverse map function from A(i,j) to what element of data/col_pt_ it corersponds to
+    KOKKOS_INLINE_FUNCTION
+    int flat_index(size_t i, size_t j);
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
+    // Convertor
+    //int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
+    //void to_dense(FArray<T> &A);
+
+    // set values on host to input
+    KOKKOS_INLINE_FUNCTION
+    void set_values(T val);
+
+    // destructor
+    KOKKOS_INLINE_FUNCTION
+    ~CSCArrayKokkos();
 };
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8636,6 +9127,13 @@ T& CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_val_flat(size_t k){
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
+const std::string CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_name() const{
+    return array_.label();
+}
+
+
+template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_row_flat(size_t k){
     return row_index_.data()[k];
 }
@@ -8653,6 +9151,14 @@ int CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
         }
     }
     return  -1;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+void CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
+        array_(i) = val;
+    });
 }
 
 // Assumes that data, col_ptrs, and row_ptrs
