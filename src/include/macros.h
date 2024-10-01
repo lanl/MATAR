@@ -450,12 +450,26 @@ Kokkos::parallel_for( \
                         Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
                         {fcn} )
+
+#define \
+FOR_FIRST_EASY(i, x1, fcn) \
+Kokkos::parallel_for( \
+                        Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
+                        KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
+                        {   const int i = TEAM_ID;  \
+                            fcn} )
     
 #define \
 FOR_SECOND(j, y0, y1, fcn) \
 Kokkos::parallel_for( \
                         Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j) ) \
                         {fcn} )
+
+#define \
+FOR_REDUCE_SUM_SECOND(j, y0, y1, lsum, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(result) &(lsum) ) \
+                        {fcn}, result )
 
 #define \
 FOR_THIRD(k, z0, z1, fcn) \
