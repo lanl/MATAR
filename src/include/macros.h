@@ -445,19 +445,11 @@ THREAD_ID \
 teamMember.team_rank()
 
 #define \
-FOR_FIRST(x1, fcn) \
+FOR_FIRST(i, x1, fcn) \
 Kokkos::parallel_for( \
                         Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
-                        {fcn} )
-
-#define \
-FOR_FIRST_EASY(i, x1, fcn) \
-Kokkos::parallel_for( \
-                        Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
-                        KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
-                        {   const int i = TEAM_ID;  \
-                            fcn} )
+                        { const int i = TEAM_ID; fcn} )
     
 #define \
 FOR_SECOND(j, y0, y1, fcn) \
@@ -468,7 +460,7 @@ Kokkos::parallel_for( \
 #define \
 FOR_REDUCE_SUM_SECOND(j, y0, y1, lsum, fcn, result) \
 Kokkos::parallel_reduce( \
-                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(result) &(lsum) ) \
+                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lsum) &(lsum) ) \
                         {fcn}, result )
 
 #define \
@@ -476,6 +468,12 @@ FOR_THIRD(k, z0, z1, fcn) \
 Kokkos::parallel_for( \
                         Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k) ) \
                         {fcn} )
+
+#define \
+FOR_REDUCE_SUM_THIRD(k, z0, z1, lsum, fcn, result) \
+Kokkos::parallel_reduce( \
+                        Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k), decltype(lsum) &(lsum) ) \
+                        {fcn}, result )
 
 //Kokkos Initialize
 #define \
