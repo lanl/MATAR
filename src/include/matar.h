@@ -82,7 +82,8 @@
 #include "kokkos_types.h"
 #include "aliases.h"
 #include "mpi_types.h"
-
+#include "mapped_mpi_types.h"
+#include "tpetra_wrapper_types.h"
 
 
 #endif // MATAR_H
