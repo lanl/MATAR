@@ -445,11 +445,11 @@ THREAD_ID \
 teamMember.team_rank()
 
 #define \
-FOR_FIRST(i, x1, fcn) \
+FOR_FIRST(i, x0, x1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::TeamPolicy<>( x1, Kokkos::AUTO, 32 ), \
+                        Kokkos::TeamPolicy<>( x1-x0, Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
-                        { const int i = TEAM_ID; fcn} )
+                        { const int i = TEAM_ID + x0; fcn} )
     
 #define \
 FOR_SECOND(j, y0, y1, fcn) \
