@@ -156,6 +156,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
     
     // deconstructor
     ~FArray ();
@@ -469,6 +472,15 @@ inline T* FArray<T>::pointer() const {
     return array_.get();
 }
 
+
+template <typename T>
+void FArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
+
 //delete FArray
 template <typename T>
 FArray<T>::~FArray(){}
@@ -582,6 +594,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -874,6 +889,13 @@ inline T* ViewFArray<T>::pointer() const {
     return array_;
 }
 
+template <typename T>
+void ViewFArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //---end of ViewFArray class definitions---
 
 
@@ -979,6 +1001,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
 
     // Deconstructor
     ~FMatrix ();
@@ -1292,6 +1317,13 @@ inline T* FMatrix<T>::pointer() const{
 }
 
 template <typename T>
+void FMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
+template <typename T>
 FMatrix<T>::~FMatrix() {}
 
 //----end of FMatrix class definitions----
@@ -1404,6 +1436,9 @@ public:
     
     // return matrix order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -1694,6 +1729,14 @@ template <typename T>
 inline T* ViewFMatrix<T>::pointer() const {
     return matrix_;
 }
+
+template <typename T>
+void ViewFMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
 //-----end ViewFMatrix-----
 
 
@@ -1801,6 +1844,9 @@ public:
     
     //return pointer
     T* pointer() const;
+
+    // set values to input
+    void set_values(T val);
 
     // Deconstructor
     ~CArray ();
@@ -2125,6 +2171,13 @@ inline T* CArray<T>::pointer() const{
     return array_.get();
 }
 
+template <typename T>
+void CArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //destructor
 template <typename T>
 CArray<T>::~CArray() {}
@@ -2237,6 +2290,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -2549,6 +2605,13 @@ inline T* ViewCArray<T>::pointer() const {
     return array_;
 }
 
+template <typename T>
+void ViewCArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 //---end of ViewCArray class definitions----
 
 
@@ -2655,6 +2718,9 @@ public:
     //return pointer
     T* pointer() const;
     
+    // set values to input
+    void set_values(T val);
+
     // deconstructor
     ~CMatrix( );
         
@@ -2973,6 +3039,13 @@ inline T* CMatrix<T>::pointer() const{
     return matrix_.get();
 }
 
+template <typename T>
+void CMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
 // Destructor
 template <typename T>
 CMatrix<T>::~CMatrix(){}
@@ -3087,6 +3160,9 @@ public:
     
     // return array order (rank)
     size_t order() const;
+
+    // set values to input
+    void set_values(T val);
 
     // return pointer
     T* pointer() const;
@@ -3383,6 +3459,13 @@ inline T* ViewCMatrix<T>::pointer() const {
     return matrix_;
 }
 
+template <typename T>
+void ViewCMatrix<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        matrix_[i] = val;
+    }
+}
+
 
 //----end of ViewCMatrix class definitions----
 
@@ -3443,6 +3526,9 @@ public:
     RaggedRightArray& operator+= (const size_t i);
 
     RaggedRightArray& operator= (const RaggedRightArray &temp);
+
+    // set values to input
+    void set_values(T val);
 
     // Destructor
     ~RaggedRightArray ( );
@@ -3629,6 +3715,13 @@ inline size_t* RaggedRightArray<T>::get_starts() const{
     return start_index_.get();
 }
 
+template <typename T>
+void RaggedRightArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 // Destructor
 template <typename T>
 RaggedRightArray<T>::~RaggedRightArray () {}
@@ -3695,6 +3788,9 @@ public:
     RaggedRightArrayofVectors& operator+= (const size_t i);
 
     RaggedRightArrayofVectors& operator= (const RaggedRightArrayofVectors &temp);
+
+    // set values to input
+    void set_values(T val);
 
     // Destructor
     ~RaggedRightArrayofVectors ( );
@@ -3887,6 +3983,13 @@ inline size_t* RaggedRightArrayofVectors<T>::get_starts() const{
     return start_index_.get();
 }
 
+template <typename T>
+void RaggedRightArrayofVectors<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 // Destructor
 template <typename T>
 RaggedRightArrayofVectors<T>::~RaggedRightArrayofVectors () {}
@@ -3949,6 +4052,9 @@ public:
     //overload = operator
     RaggedDownArray& operator= (const RaggedDownArray &temp);
 
+    // set values to input
+    void set_values(T val);
+
     //destructor
     ~RaggedDownArray();
 
@@ -3966,7 +4072,7 @@ RaggedDownArray<T>::RaggedDownArray() {
 template <typename T>
 RaggedDownArray<T>::RaggedDownArray( CArray <size_t> &strides_array) {
     // Length of stride array
-    //dim2_ = strides_array.size();
+    dim2_ = strides_array.size();
 
     // Create and initialize startding indices
     start_index_ = std::shared_ptr <size_t[]> (new size_t[(dim2_ + 1)]); // note the dim2+1
@@ -4131,6 +4237,13 @@ inline size_t* RaggedDownArray<T>::get_starts() const{
     return start_index_.get();
 }
 
+template <typename T>
+void RaggedDownArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
 // Destructor
 template <typename T>
 RaggedDownArray<T>::~RaggedDownArray() {}
@@ -4180,6 +4293,12 @@ public:
     // Overload copy assignment operator
     DynamicRaggedRightArray& operator= (const DynamicRaggedRightArray &temp);
     
+    // set values of array indices
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    void set_values_sparse(T val);
+
     // Destructor
     ~DynamicRaggedRightArray ();
 };
@@ -4275,6 +4394,22 @@ inline T* DynamicRaggedRightArray<T>::pointer() const{
     return array_.get();
 }
 
+template <typename T>
+void DynamicRaggedRightArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
+template <typename T>
+void DynamicRaggedRightArray<T>::set_values_sparse(T val) {
+    for(int i = 0; i < dim1_; i++) {
+        for(int j = 0; j < stride_[i]; j++) {
+            array_[dim2_*i+j] = val;
+        }
+    }
+}
+
 // Destructor
 template <typename T>
 DynamicRaggedRightArray<T>::~DynamicRaggedRightArray() {}
@@ -4324,6 +4459,12 @@ public:
 
     //return pointer
     T* pointer() const;
+
+    // set values of indices
+    void set_values(T val);
+
+    // set values to input
+    void set_values_sparse(T val);
     
     // Destructor
     ~DynamicRaggedDownArray ();
@@ -4420,6 +4561,22 @@ inline DynamicRaggedDownArray<T>& DynamicRaggedDownArray<T>::operator= (const Dy
 template <typename T>
 inline T* DynamicRaggedDownArray<T>::pointer() const{
     return array_.get();
+}
+
+template <typename T>
+void DynamicRaggedDownArray<T>::set_values(T val) {
+    for(int i = 0; i < length_; i++) {
+        array_[i] = val;
+    }
+}
+
+template <typename T>
+void DynamicRaggedDownArray<T>::set_values_sparse(T val) {
+    for(int j = 0; j < dim2_; j++) {
+        for(int i = 0; i < stride_[j]; i++) {
+            array_[dim1_*j+i] = val;
+        }
+    }
 }
 
 // Destructor
@@ -4572,6 +4729,10 @@ class CSRArray {
     int toCSC(CArray<T> &array, CArray<size_t> &start_index, CArray<size_t> &row_index);
     
     void to_dense(CArray<T>& A);
+
+    // set values to input
+    void set_values(T val);
+
     //destructor
    ~CSRArray();
 
@@ -4851,6 +5012,13 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 }
 
 template <typename T>
+void CSRArray<T>::set_values(T val) {
+    for(int i = 0; i < nnz_; i++) {
+        array_[i] = val;
+    }
+}
+
+template <typename T>
 CSRArray<T>::~CSRArray() {}
 
 // EndCSRArrayy
@@ -4987,6 +5155,10 @@ private: // What ought to be private ?
       // Convertor
       int toCSR(CArray<T> &data, CArray<size_t> &row_ptrs, CArray<size_t> &col_ptrs);
       void to_dense(FArray<T> &A);
+
+      // set values to input
+      void set_values(T val);
+
       // destructor
       ~CSCArray();
 };
@@ -5202,6 +5374,13 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
     // I return an int because I thought I might need to return an error code
     // Not sure that is true
     return 0;
+}
+
+template <typename T>
+void CSCArray<T>::set_values(T val) {
+    for(int i = 0; i < nnz_; i++) {
+        array_[i] = val;
+    }
 }
 
 template <typename T>
