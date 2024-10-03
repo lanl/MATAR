@@ -254,7 +254,7 @@ int main(int argc, char* argv[])
 
 
         // =================================================================
-        // set weights and inputs
+        // set weights, biases, and inputs
         // =================================================================
         
         // inputs to ANN
