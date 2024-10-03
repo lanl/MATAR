@@ -307,7 +307,7 @@ int main(int argc, char* argv[])
         // =================================================================
         // Copy values to host
         // =================================================================
-        ANNLayers(num_layers).outputs.update_device();
+        ANNLayers(num_layers).outputs.update_host();
         
         std::cout << "output values: \n";
         for (size_t val=0; val<num_nodes_in_layer[num_layers]; val++){
