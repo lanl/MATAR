@@ -80,6 +80,7 @@ struct ANNLayer_t{
     DCArrayKokkos <float> outputs;  // dims = [layer]
     DFArrayKokkos <float> weights;  // dims = [layer-1, layer]
 
+
 }; // end struct
 
 
@@ -129,8 +130,9 @@ float sigmoid(const float value){
 
 
 KOKKOS_INLINE_FUNCTION
-float sigmoid_prime(const float value){
-    return sigmoid(value)*(1.0 - sigmoid(value));  // exp2f doesn't work with CUDA
+float sigmoid_derivative(const float value){
+    float sigval = sigmoid(value);
+    return sigval*(1.0 - sigval);  // exp2f doesn't work with CUDA
 }; // end function
 
 
@@ -141,9 +143,9 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
 
-    
-    FOR_ALL(j, 0, num_j,{
 
+/*    
+    FOR_ALL(j, 0, num_j,{
 
     	//printf("thread = %d \n", omp_get_thread_num());
 
@@ -157,8 +159,8 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
             outputs(j) = sigmoid(value);
 
         }); // end parallel for
-    
-    /*
+*/     
+
 
     // For a GPU, use the nested parallelism below here
     
@@ -177,7 +179,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
 
     }); // end parallel for
     
-    */
+
 
     return;
 
