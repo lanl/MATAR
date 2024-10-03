@@ -63,8 +63,8 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {9, 50, 100, 300, 200, 100, 20, 6};
-// {64000, 30000, 8000, 4000, 100, 25, 6}
+std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 100, 25, 6} ;
+// {9, 50, 100, 300, 200, 100, 20, 6}
 
 
 
