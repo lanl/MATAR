@@ -79,7 +79,7 @@ struct ANNLayer_t{
 
     DCArrayKokkos <float> outputs;  // dims = [layer]
     DFArrayKokkos <float> weights;  // dims = [layer-1, layer]
-
+    DCArrayKokkos <float> biases;  // dims = [layer]  
 
 }; // end struct
 
@@ -136,9 +136,12 @@ float sigmoid_derivative(const float value){
 }; // end function
 
 
+
+
 void forward_propagate_layer(DCArrayKokkos <float> &inputs,
                              DCArrayKokkos <float> &outputs, 
-                             DFArrayKokkos <float> &weights){
+                             DFArrayKokkos <float> &weights,
+                             const DCArrayKokkos <float> &biases){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
@@ -172,7 +175,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
         int j = team_h.league_rank();
         Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
                         [&] (int i, float& lsum) {
-            lsum += inputs(i)*weights(i,j);
+            lsum += inputs(i)*weights(i,j) + biases(j);
         }, sum); // end parallel reduce
 
         outputs(j) = 1.0/(1.0 + exp(-sum)); 
@@ -185,6 +188,15 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
 
 }; // end function
 
+
+void set_biases(const DCArrayKokkos <float> &biases){
+    const size_t num_j = biases.size();
+
+    FOR_ALL(j,0,num_j, {
+		    biases(j) = 0.0;
+	}); // end parallel for
+
+}; // end function
 
 
 void set_weights(const DFArrayKokkos <float> &weights){
@@ -236,6 +248,7 @@ int main(int argc, char* argv[])
             // allocate the weights in this layer
             ANNLayers(layer).weights = DFArrayKokkos <float> (num_i, num_j); 
             ANNLayers(layer).outputs = DCArrayKokkos <float> (num_j);
+            ANNLayers(layer).biases = DCArrayKokkos <float> (num_j);
 
         } // end for
 
@@ -259,6 +272,7 @@ int main(int argc, char* argv[])
 
 
             set_weights(ANNLayers(layer).weights);
+            set_biases(ANNLayers(layer).biases);
 
         } // end for over layers
 
@@ -287,7 +301,8 @@ int main(int argc, char* argv[])
         // layer 1, hidden layer 0, uses the inputs as the input values
         forward_propagate_layer(inputs,
                                 ANNLayers(1).outputs,
-                                ANNLayers(1).weights); 
+                                ANNLayers(1).weights,
+                                ANNLayers(1).biases); 
 
         // layer 2 through n-1, layer n-1 goes to the output
         for (size_t layer=2; layer<=num_layers; layer++){
@@ -295,7 +310,8 @@ int main(int argc, char* argv[])
             // go through this layer, the fcn takes(inputs, outputs, weights)
             forward_propagate_layer(ANNLayers(layer-1).outputs, 
                                     ANNLayers(layer).outputs,
-                                    ANNLayers(layer).weights); 
+                                    ANNLayers(layer).weights,
+                                    ANNLayers(1).biases); 
         } // end for
 
         auto time_2 = std::chrono::high_resolution_clock::now();
