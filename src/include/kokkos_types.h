@@ -6647,7 +6647,7 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DViewCMatrixKokkos() {}
  *
  */
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class DynamicCArrayKokkos {
+class DynamicArrayKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
     
@@ -6659,30 +6659,31 @@ private:
     TArray1D this_array_;
 
 public:
-    DynamicCArrayKokkos();
+    DynamicArrayKokkos();
     
-    DynamicCArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DynamicArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DynamicCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
+/*
+    DynamicArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
@@ -6702,9 +6703,10 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
+*/        
     
     KOKKOS_INLINE_FUNCTION
-    DynamicCArrayKokkos& operator=(const DynamicCArrayKokkos& temp);
+    DynamicArrayKokkos& operator=(const DynamicArrayKokkos& temp);
 
     // GPU Method
     // Method that returns size
@@ -6725,8 +6727,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t order() const;
  
-    //KOKKOS_INLINE_FUNCTION
-    //void push_back() const;
+    void push_back(T value);
+ 
+    void pop();
  
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
@@ -6745,12 +6748,12 @@ public:
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
-    ~DynamicCArrayKokkos ();
-}; // End of DynamicCArrayKokkos
+    ~DynamicArrayKokkos ();
+}; // End of DynamicArrayKokkos
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos() {
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos() {
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -6760,7 +6763,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, const std::string& tag_string) {
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -6772,9 +6775,10 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
     this_array_ = TArray1D(tag_string, length_);
 }
 
+/*
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -6788,7 +6792,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1,
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -6804,7 +6808,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1,
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -6821,7 +6825,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1,
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, const std::string& tag_string) {
 
@@ -6841,7 +6845,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1,
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
@@ -6861,7 +6865,7 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t dim0, size_t dim1,
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
                               size_t dim6, const std::string& tag_string) {
@@ -6881,43 +6885,45 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCArrayKokkos(size_t
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     this_array_ = TArray1D(tag_string, length_);
 }
+*/
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 1D!");
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 1D!");
     return this_array_(i);
 }
 
+/*
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 2D!");
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 2D!");
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCArrayKokkos 3D!");
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 3D!");
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCArrayKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCArrayKokkos 4D!");
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 4D!");
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -6925,14 +6931,14 @@ T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCArrayKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCArrayKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCArrayKokkos 5D!");
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 5D!");
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -6941,15 +6947,15 @@ T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCArrayKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCArrayKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCArrayKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicCArrayKokkos 6D!");
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicArrayKokkos 6D!");
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -6959,16 +6965,16 @@ T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicCArrayKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicCArrayKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicCArrayKokkos 7D!");
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicArrayKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicArrayKokkos 7D!");
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -6976,10 +6982,11 @@ T& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
                          + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
                          + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
+*/
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     // Do nothing if the assignment is of the form x = x
@@ -7000,87 +7007,93 @@ DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicCArrayKokkos<T,Layo
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DynamicCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicCArrayKokkos dims is out of bounds!");
+size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DynamicArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicArrayKokkos dims is out of bounds!");
     return dims_actual_size_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
-    assert(i < order_ && "DynamicCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to DynamicCArrayKokkos dims is out of bounds!");
+size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
+    assert(i < order_ && "DynamicArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DynamicArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
     return order_;
 }
 
-/*
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-void DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(size_t dim_idx) const {
-    dims_actual_size_[dim_idx]++;
+void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pop() {
+    dims_actual_size_[0]--;
 }
-*/
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(T value) {
+    size_t idx = dims_actual_size_[0];
+    Kokkos::parallel_for("pushback_DynamicArrayKokkos", 1, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_array_(idx) = value;
+    });
+    dims_actual_size_[0]++;
+}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
+T* DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
+Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-const std::string DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+const std::string DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicCArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         this_array_(i) = val;
     });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DynamicCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicCArrayKokkos() {}
+DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicArrayKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
-// End of DynamicCArrayKokkos
+// End of DynamicArrayKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
-/*! \brief Dynamic version of the CArrayKokkos type.
+/*! \brief Dynamic version of the CMatrixKokkos type.
  *
  */
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class DynamicFArrayKokkos {
+class DynamicMatrixKokkos {
 
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
     
@@ -7092,30 +7105,31 @@ private:
     TArray1D this_array_;
 
 public:
-    DynamicFArrayKokkos();
+    DynamicMatrixKokkos();
     
-    DynamicFArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    DynamicMatrixKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    DynamicFArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFArrayKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
+/*
+    DynamicMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicMatrixKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    DynamicMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
+                 size_t dim3, size_t dim4, size_t dim5,
+                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
@@ -7135,9 +7149,10 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
+*/        
     
     KOKKOS_INLINE_FUNCTION
-    DynamicFArrayKokkos& operator=(const DynamicFArrayKokkos& temp);
+    DynamicMatrixKokkos& operator=(const DynamicMatrixKokkos& temp);
 
     // GPU Method
     // Method that returns size
@@ -7158,8 +7173,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t order() const;
  
-    //KOKKOS_INLINE_FUNCTION
-    //void push_back() const;
+    void push_back(T value);
+ 
+    void pop();
  
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
@@ -7178,12 +7194,12 @@ public:
 
     // Deconstructor
     KOKKOS_INLINE_FUNCTION
-    ~DynamicFArrayKokkos ();
-}; // End of DynamicFArrayKokkos
+    ~DynamicMatrixKokkos ();
+}; // End of DynamicMatrixKokkos
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos() {
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos() {
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -7193,7 +7209,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos() {
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, const std::string& tag_string) {
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -7205,9 +7221,10 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
     this_array_ = TArray1D(tag_string, length_);
 }
 
+/*
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
     dims_[0] = dim0;
@@ -7221,7 +7238,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1,
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1,
                               size_t dim2, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
     
@@ -7237,7 +7254,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1,
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
@@ -7254,7 +7271,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1,
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, const std::string& tag_string) {
 
@@ -7274,7 +7291,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1,
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
@@ -7294,7 +7311,7 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t dim0, size_t dim1,
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t dim0, size_t dim1,
                               size_t dim2, size_t dim3,
                               size_t dim4, size_t dim5,
                               size_t dim6, const std::string& tag_string) {
@@ -7314,43 +7331,45 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFArrayKokkos(size_t
     length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     this_array_ = TArray1D(tag_string, length_);
 }
+*/
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 1D!");
-    return this_array_(i);
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 1D!");
+    return this_array_((i-1));
 }
 
+/*
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 2D!");
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 2D!");
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFArrayKokkos 3D!");
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 3D!");
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFArrayKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFArrayKokkos 4D!");
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 4D!");
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -7358,14 +7377,14 @@ T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFArrayKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFArrayKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFArrayKokkos 5D!");
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 5D!");
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -7374,15 +7393,15 @@ T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFArrayKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFArrayKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFArrayKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicFArrayKokkos 6D!");
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicMatrixKokkos 6D!");
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -7392,16 +7411,16 @@ T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicFArrayKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicFArrayKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicFArrayKokkos 7D!");
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicMatrixKokkos 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicMatrixKokkos 7D!");
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -7409,10 +7428,11 @@ T& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
                          + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
                          + (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
+*/
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
     using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
     
     // Do nothing if the assignment is of the form x = x
@@ -7433,947 +7453,88 @@ DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicFArrayKokkos<T,Layo
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DynamicFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicFArrayKokkos dims is out of bounds!");
+size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "DynamicMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicMatrixKokkos dims is out of bounds!");
     return dims_actual_size_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
-    assert(i < order_ && "DynamicFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to DynamicFArrayKokkos dims is out of bounds!");
+size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
+    assert(i < order_ && "DynamicMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to DynamicMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
     return order_;
 }
 
-/*
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-void DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(size_t dim_idx) const {
-    dims_actual_size_[dim_idx]++;
+void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pop() {
+    dims_actual_size_[0]--;
 }
-*/
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(T value) {
+    size_t idx = dims_actual_size_[0];
+    Kokkos::parallel_for("pushback_DynamicMatrixKokkos", 1, KOKKOS_CLASS_LAMBDA(const int i) {
+        this_array_(idx) = value;
+    });
+    dims_actual_size_[0]++;
+}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
+T* DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
     return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
+Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
     return this_array_;
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-const std::string DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+const std::string DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicFArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
         this_array_(i) = val;
     });
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-DynamicFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicFArrayKokkos() {}
+DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicMatrixKokkos() {}
 
 ////////////////////////////////////////////////////////////////////////////////
-// End of DynamicFArrayKokkos
+// End of DynamicMatrixKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
-/*! \brief Dynamic version of the CArrayKokkos type.
- *
- */
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class DynamicCMatrixKokkos {
-
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
-    
-private:
-    size_t dims_[7];
-    size_t dims_actual_size_[7];
-    size_t order_;
-    size_t length_;
-    TArray1D this_matrix_;
-
-public:
-    DynamicCMatrixKokkos();
-    
-    DynamicCMatrixKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicCMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n, size_t o) const;
-    
-    KOKKOS_INLINE_FUNCTION
-    DynamicCMatrixKokkos& operator=(const DynamicCMatrixKokkos& temp);
-
-    // GPU Method
-    // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t size() const;
-
-    // Host Method
-    // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t extent() const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t dims(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t dims_max(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t order() const;
- 
-    //KOKKOS_INLINE_FUNCTION
-    //void push_back() const;
- 
-    // Methods returns the raw pointer (most likely GPU) of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
-    T* pointer() const;
-
-    // set values
-    void set_values(T val);
-    
-    //return the view
-    KOKKOS_INLINE_FUNCTION
-    TArray1D get_kokkos_view() const;
-
-    // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
-    const std::string get_name() const;
-
-    // Deconstructor
-    KOKKOS_INLINE_FUNCTION
-    ~DynamicCMatrixKokkos ();
-}; // End of DynamicCMatrixKokkos
-
-// Default constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos() {
-    length_ = order_ = 0;
-    for (int i = 0; i < 7; i++) {
-        dims_[i] = 0;
-        dims_actual_size_[i] = 0;
-    }
-}
-
-// Overloaded 1D constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    for (int i = 0; i < 1; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 1;
-    length_ = dim0;
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-// Overloaded 2D constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    for (int i = 0; i < 2; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 2;
-    length_ = (dim0 * dim1);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    for (int i = 0; i < 3; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 3;
-    length_ = (dim0 * dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    for (int i = 0; i < 4; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 4;
-    length_ = (dim0 * dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, const std::string& tag_string) {
-
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    for (int i = 0; i < 5; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 5;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    for (int i = 0; i < 6; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 6;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicCMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
-    for (int i = 0; i < 7; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 7;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 1D!");
-    return this_matrix_((i - 1));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 2D!");
-    return this_matrix_((j - 1) + ((i - 1) * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCMatrixKokkos 3D!");
-    return this_matrix_((k - 1) + ((j - 1) * dims_[2])
-                         + ((i - 1) * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCMatrixKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCMatrixKokkos 4D!");
-    return this_matrix_((l - 1) + ((k - 1) * dims_[3])
-                         + ((j - 1) * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCMatrixKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCMatrixKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCMatrixKokkos 5D!");
-    return this_matrix_((m - 1) + ((l - 1) * dims_[4])
-                         + ((k - 1) * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCMatrixKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCMatrixKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCMatrixKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicCMatrixKokkos 6D!");
-    return this_matrix_((n - 1) + ((m - 1) * dims_[5])
-                         + ((l - 1) * dims_[5] * dims_[4])
-                         + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicCMatrixKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicCMatrixKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicCMatrixKokkos 7D!");
-    return this_matrix_((o - 1) + ((n - 1) * dims_[6])
-                         + ((m - 1) * dims_[6] * dims_[5])
-                         + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
-                         + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    // Do nothing if the assignment is of the form x = x
-    if (this != &temp) {
-        for (int iter = 0; iter < temp.order_; iter++){
-            dims_[iter] = temp.dims_[iter];
-            dims_actual_size_[iter] = temp.dims_actual_size_[iter];
-        } // end for
-
-        order_ = temp.order_;
-        length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
-    }
-    
-    return *this;
-}
-
-// Return size
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
-    return length_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
-    return length_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DynamicCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicCMatrixKokkos dims is out of bounds!");
-    return dims_actual_size_[i];
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
-    assert(i < order_ && "DynamicCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to DynamicCMatrixKokkos dims is out of bounds!");
-    return dims_[i];
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
-    return order_;
-}
-
-/*
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-void DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(size_t dim_idx) const {
-    dims_actual_size_[dim_idx]++;
-}
-*/
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T* DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
-    return this_matrix_.data();
-}
-
-//return the stored Kokkos view
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
-    return this_matrix_;
-}
-
-// Get the name of the view
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-const std::string DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
-}
-
-// set values of array
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicCMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_matrix_(i) = val;
-    });
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-DynamicCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicCMatrixKokkos() {}
-
-////////////////////////////////////////////////////////////////////////////////
-// End of DynamicCMatrixKokkos
-////////////////////////////////////////////////////////////////////////////////
-
-/*! \brief Dynamic version of the CArrayKokkos type.
- *
- */
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class DynamicFMatrixKokkos {
-
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace, MemoryTraits>;
-    
-private:
-    size_t dims_[7];
-    size_t dims_actual_size_[7];
-    size_t order_;
-    size_t length_;
-    TArray1D this_matrix_;
-
-public:
-    DynamicFMatrixKokkos();
-    
-    DynamicFMatrixKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos (size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
-
-    DynamicFMatrixKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n) const;
-
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n, size_t o) const;
-    
-    KOKKOS_INLINE_FUNCTION
-    DynamicFMatrixKokkos& operator=(const DynamicFMatrixKokkos& temp);
-
-    // GPU Method
-    // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t size() const;
-
-    // Host Method
-    // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t extent() const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t dims(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t dims_max(size_t i) const;
-
-    KOKKOS_INLINE_FUNCTION
-    size_t order() const;
- 
-    //KOKKOS_INLINE_FUNCTION
-    //void push_back() const;
- 
-    // Methods returns the raw pointer (most likely GPU) of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
-    T* pointer() const;
-
-    // set values
-    void set_values(T val);
-    
-    //return the view
-    KOKKOS_INLINE_FUNCTION
-    TArray1D get_kokkos_view() const;
-
-    // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
-    const std::string get_name() const;
-
-    // Deconstructor
-    KOKKOS_INLINE_FUNCTION
-    ~DynamicFMatrixKokkos ();
-}; // End of DynamicFMatrixKokkos
-
-// Default constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos() {
-    length_ = order_ = 0;
-    for (int i = 0; i < 7; i++) {
-        dims_[i] = 0;
-        dims_actual_size_[i] = 0;
-    }
-}
-
-// Overloaded 1D constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    for (int i = 0; i < 1; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 1;
-    length_ = dim0;
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-// Overloaded 2D constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    for (int i = 0; i < 2; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 2;
-    length_ = (dim0 * dim1);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    for (int i = 0; i < 3; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 3;
-    length_ = (dim0 * dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    for (int i = 0; i < 4; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 4;
-    length_ = (dim0 * dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, const std::string& tag_string) {
-
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    for (int i = 0; i < 5; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 5;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    for (int i = 0; i < 6; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 6;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicFMatrixKokkos(size_t dim0, size_t dim1,
-                              size_t dim2, size_t dim3,
-                              size_t dim4, size_t dim5,
-                              size_t dim6, const std::string& tag_string) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
-    for (int i = 0; i < 7; i++) {
-        dims_actual_size_[i] = 0;
-    }
-    order_ = 7;
-    length_ = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 1D!");
-    return this_matrix_((i - 1));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 2D!");
-    return this_matrix_((j - 1) + ((i - 1) * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFMatrixKokkos 3D!");
-    return this_matrix_((k - 1) + ((j - 1) * dims_[2])
-                         + ((i - 1) * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFMatrixKokkos 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFMatrixKokkos 4D!");
-    return this_matrix_((l - 1) + ((k - 1) * dims_[3])
-                         + ((j - 1) * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFMatrixKokkos 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFMatrixKokkos 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFMatrixKokkos 5D!");
-    return this_matrix_((m - 1) + ((l - 1) * dims_[4])
-                         + ((k - 1) * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFMatrixKokkos 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFMatrixKokkos 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFMatrixKokkos 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicFMatrixKokkos 6D!");
-    return this_matrix_((n - 1) + ((m - 1) * dims_[5])
-                         + ((l - 1) * dims_[5] * dims_[4])
-                         + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
-                               size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicFMatrixKokkos 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in DynamicFMatrixKokkos 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in DynamicFMatrixKokkos 7D!");
-    return this_matrix_((o - 1) + ((n - 1) * dims_[6])
-                         + ((m - 1) * dims_[6] * dims_[5])
-                         + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
-                         + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
-                         + ((j - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2])
-                         + ((i - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& temp) {
-    using TArray1D = Kokkos::View<T *,Layout,ExecSpace>;
-    
-    // Do nothing if the assignment is of the form x = x
-    if (this != &temp) {
-        for (int iter = 0; iter < temp.order_; iter++){
-            dims_[iter] = temp.dims_[iter];
-            dims_actual_size_[iter] = temp.dims_actual_size_[iter];
-        } // end for
-
-        order_ = temp.order_;
-        length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
-    }
-    
-    return *this;
-}
-
-// Return size
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
-    return length_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
-    return length_;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DynamicFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_actual_size_[i]>0 && "Access to DynamicFMatrixKokkos dims is out of bounds!");
-    return dims_actual_size_[i];
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
-    assert(i < order_ && "DynamicFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to DynamicFMatrixKokkos dims is out of bounds!");
-    return dims_[i];
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
-    return order_;
-}
-
-/*
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-void DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::push_back(size_t dim_idx) const {
-    dims_actual_size_[dim_idx]++;
-}
-*/
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T* DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
-    return this_matrix_.data();
-}
-
-//return the stored Kokkos view
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
-    return this_matrix_;
-}
-
-// Get the name of the view
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-const std::string DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
-}
-
-// set values of array
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicFMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_matrix_(i) = val;
-    });
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-DynamicFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::~DynamicFMatrixKokkos() {}
-
-////////////////////////////////////////////////////////////////////////////////
-// End of DynamicFMatrixKokkos
-////////////////////////////////////////////////////////////////////////////////
 
 /*! \brief Kokkos version of the serial RaggedRightArray class.
  *
