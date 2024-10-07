@@ -232,7 +232,7 @@ int main()
         dynrightK.set_values(2.14);
         dynrightK.set_values_sparse(1.35);
         printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-        FOR_FIRST(i, 3, {
+        FOR_FIRST(i, 0, 3, {
             FOR_SECOND(j, 0, dynrightK.stride(i), {
                 //printf("%.2f  ", dynrightK(i,j));
             });
@@ -254,7 +254,7 @@ int main()
         dyndownK.set_values(2.14);
         dyndownK.set_values_sparse(1.35);
         printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-        FOR_FIRST(i, 4, {
+        FOR_FIRST(i, 0, 4, {
             FOR_SECOND(j, 0, dyndownK.stride(i), {
                 //printf("%.2f  ", dyndownK(i,j));
             });

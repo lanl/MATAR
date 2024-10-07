@@ -358,7 +358,7 @@ int main(int argc, char* argv[])
     FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
         hierTest3D(i_i, j_j, k_k) = 0.0;
     });
-    FOR_FIRST(i_i,hiersize, {
+    FOR_FIRST(i_i, 0, hiersize, {
         // Kokkos::parallel_for( \
         //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
         //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
@@ -391,7 +391,7 @@ int main(int argc, char* argv[])
     
     printf("\n\n\nHierarchical Reduce\n");
     //2D nesting
-    FOR_FIRST(i_i,hiersize, {
+    FOR_FIRST(i_i,0,hiersize, {
         // Kokkos::parallel_for( \
         //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
         //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
@@ -419,7 +419,7 @@ int main(int argc, char* argv[])
     
     printf("\n\n\nHierarchical Vectorized Reduce\n");
     //3D vector nesting
-    FOR_FIRST(i_i,hiersize, {
+    FOR_FIRST(i_i,0,hiersize, {
         // Kokkos::parallel_for( \
         //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
         //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
