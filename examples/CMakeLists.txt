@@ -73,6 +73,9 @@ if (KOKKOS)
   add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
   target_link_libraries(mtr_kokkos-simple ${LINKING_LIBRARIES})
 
+  add_executable(annkokkos ann_kokkos.cpp)
+  target_link_libraries(annkokkos ${LINKING_LIBRARIES})
+
   if (OPENMP)
     add_executable(parallel_hello_world parallel_hello_world.cpp)
     target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})
