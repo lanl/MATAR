@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ Â© 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -134,11 +134,11 @@ int main(int argc, char *argv[]) {
 
 
         FMatrixDevice <real_t> matrix3D;        // declare variable and allocate sizes and dimensions later
-        matrix3D = FMatrixDevice <real_t> (10,10,10); // allocate dimensions and sizes 
+        matrix3D = FMatrixDevice <real_t> (10,10,10, "mat3d"); // allocate dimensions and sizes 
 
         // Array example following the Fortran index convention,
         // indicies go from 0 to less than N, first index varies the fastest
-        FArrayDevice <int> arr3D(10,10,10);
+        FArrayDevice <int> arr3D(10,10,10, "arr3d");
 
 
         // Initialize matrix1D
@@ -182,19 +182,19 @@ int main(int argc, char *argv[]) {
         // ===============
 
 
-        int N=20;  // array dimensions are NxN
+        int N=200;  // array dimensions are NxN
 
         // A 2D array example following the C index convention
         // indicies go from 0 to less than N, last index varies the fastest
-        CArrayDevice <double> A(N,N); // dense array
-        CArrayDevice <double> B(N,N);
-        CArrayDevice <double> C(N,N);
-        CArrayDevice <double> D(N,N);
+        CArrayDevice <double> A(N,N, "A"); // dense array
+        CArrayDevice <double> B(N,N, "B");
+        CArrayDevice <double> C(N,N, "C");
+        CArrayDevice <double> D(N,N, "D");
 
-        CArrayDevice <double> L(N,N); // lower triangular array
-        CArrayDevice <double> U(N,N); // upper triangular array
-        CArrayDevice <double> x(N);
-        CArrayDevice <double> y(N);
+        CArrayDevice <double> L(N,N, "L"); // lower triangular array
+        CArrayDevice <double> U(N,N, "U"); // upper triangular array
+        CArrayDevice <double> x(N, "x");
+        CArrayDevice <double> y(N, "y");
 
         
 
@@ -249,7 +249,10 @@ int main(int argc, char *argv[]) {
         }); // end parallel for
 
         // backwards substitution
-        for (int k = N-1; k>=0; k--){
+        //for (int k = N-1; k>=0; k--){
+	    FOR_FIRST(id, 0, N,{
+	    
+	        int k = ((N-1) - id);  // make it count backwards
 
             x(k) = y(k);
             
@@ -257,31 +260,32 @@ int main(int argc, char *argv[]) {
             int result;
             // calculate dot product
             if(k<N-1){
-                REDUCE_SUM(i, k, N-1,
-                           loc_sum, {
+                FOR_REDUCE_SUM_SECOND(i, k, N-1,
+                               loc_sum, {
                         loc_sum += U(k,i)*x(i);
                 }, result);
             } // end if
             x(k) -= result;
             x(k) /= U(k,k);
-        } // end for k backwards
+        }); // end for k backwards
 
 
         // forward substitution
-        for (int i = 0; i<N; i++){
+        //for (int i = 0; i<N; i++){
+	    FOR_FIRST(i, 0, N,{
 
             int loc_sum;
             int result;
             // calculate dot product
             if(i-1>0){
-                REDUCE_SUM(j, 0, i-1,
+                FOR_REDUCE_SUM_SECOND(j, 0, i-1,
                            loc_sum, {
                         loc_sum += L(i,j)*x(j);
                 }, result);
             } // end if
 
             x(i) = (y(i)- result)/U(i,i);
-        } // end for i  
+        }); // end for i  
 
 
 
@@ -321,8 +325,8 @@ int main(int argc, char *argv[]) {
         int length = 20;
 
         // Parallel Jacobi solver for steady 2D heat transfer
-        CArrayDevice <double> Temp(length+2, length+2);
-        CArrayDevice <double> Temp_previous(length+2, length+2);
+        CArrayDual <double> Temp(length+2, length+2, "Temp");
+        CArrayDevice <double> Temp_previous(length+2, length+2, "Temp_old");
 
         // heat source is bottom right corner of mesh, T=100 in that corner
         // temperature of left wall is T_cold=0.
@@ -423,10 +427,14 @@ int main(int argc, char *argv[]) {
 
         printf("\n");
         printf("Temperature profile\n");
-        // print temperature result
+	
+	// copy values to the CPU, if on a GPU
+	Temp.update_host();
+	
+        // print temperature result on CPU
         for(int i=length+1; i>=0; i--){
             for (int j=0; j<=length+1; j++){
-                printf(" %5.2f ", Temp(i,j));
+                printf(" %5.2f ", Temp.host(i,j));
             } // for j
             printf("\n");
         }; // for i

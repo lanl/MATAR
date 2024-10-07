@@ -194,7 +194,7 @@
             (result) )
 
 #define \
-    REDUCE_SUM(...) \
+    FOR_REDUCE_SUM(...) \
     GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
 
@@ -246,7 +246,7 @@
                         Kokkos::Max< decltype(result) > ( (result) ) )
 
 #define \
-    REDUCE_MAX(...) \
+    FOR_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
 
 
@@ -301,7 +301,7 @@
                         Kokkos::Min< decltype(result) >(result) )
 
 #define \
-    REDUCE_MIN(...) \
+    FOR_REDUCE_MIN(...) \
     GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
 
 
@@ -377,7 +377,7 @@ Kokkos::parallel_reduce( \
                         (result) )
 
 #define \
-REDUCE_SUM_CLASS(...) \
+FOR_REDUCE_SUM_CLASS(...) \
 GET_MACRO(__VA_ARGS__, _13, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__)
 
 
@@ -406,7 +406,7 @@ Kokkos::parallel_reduce( \
                         Kokkos::Max< decltype(result) > ( (result) ) )
 
 #define \
-REDUCE_MAX_CLASS(...) \
+FOR_REDUCE_MAX_CLASS(...) \
 GET_MACRO(__VA_ARGS__, _13, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__)
 
 
@@ -433,7 +433,7 @@ Kokkos::parallel_reduce( \
                         Kokkos::Min< decltype(result) >(result) )
 
 #define \
-REDUCE_MIN_CLASS(...) \
+FOR_REDUCE_MIN_CLASS(...) \
 GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
 
 #define \
@@ -920,7 +920,7 @@ void reduce_max (int i_start, int i_end,
                 (result) )
 
 #define \
-    REDUCE_SUM(...) \
+    FOR_REDUCE_SUM(...) \
     GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
 
@@ -964,7 +964,7 @@ void reduce_max (int i_start, int i_end,
                 (result) )
 
 #define \
-    REDUCE_MAX(...) \
+    FOR_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
 
 
@@ -1008,7 +1008,7 @@ void reduce_max (int i_start, int i_end,
                 (result) )
 
 #define \
-    REDUCE_MIN(...) \
+    FOR_REDUCE_MIN(...) \
     GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
 
 

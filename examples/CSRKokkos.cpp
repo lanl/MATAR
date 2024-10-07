@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -96,22 +96,22 @@ int main(int argc, char* argv[])
             printf("And has %ld non zero elements\n", A.nnz());
         });
 
-        REDUCE_SUM(i, 0, nnz,
-                    loc_total, {
-                        loc_total += res[i];
+        FOR_REDUCE_SUM(i, 0, nnz,
+                       loc_total, {
+                loc_total += res[i];
                         }, total);
         printf("Sum of nnz from pointer method %d\n", total);
         total = 0;
-        REDUCE_SUM(i, 0, nnz,
-                    loc_total, {
-                        loc_total += a_start[i];
+        FOR_REDUCE_SUM(i, 0, nnz,
+                       loc_total, {
+                loc_total += a_start[i];
                         }, total);
         printf("Sum of start indices form .get_starts() %d\n", total);
        total = 0;
-        REDUCE_SUM(i, 0, dim1,
-                   j, 0, dim2,
-                    loc_total, {
-                        loc_total += A(i,j);
+        FOR_REDUCE_SUM(i, 0, dim1,
+                       j, 0, dim2,
+                       loc_total, {
+                loc_total += A(i,j);
                         }, total);
         printf("Sum of nnz in array notation %d\n", total);
         auto ss = A.begin(0);
