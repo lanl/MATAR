@@ -250,7 +250,7 @@ int main(int argc, char *argv[]) {
 
         // backwards substitution
         //for (int k = N-1; k>=0; k--){
-	FOR_FIRST(id, 0, N,{
+	    FOR_FIRST(id, 0, N,{
 	    
 	        int k = ((N-1) - id);  // make it count backwards
 
@@ -267,12 +267,12 @@ int main(int argc, char *argv[]) {
             } // end if
             x(k) -= result;
             x(k) /= U(k,k);
-    }); // end for k backwards
+        }); // end for k backwards
 
 
         // forward substitution
         //for (int i = 0; i<N; i++){
-	FOR_FIRST(i, 0, N,{
+	    FOR_FIRST(i, 0, N,{
 
             int loc_sum;
             int result;
@@ -285,7 +285,7 @@ int main(int argc, char *argv[]) {
             } // end if
 
             x(i) = (y(i)- result)/U(i,i);
-    }); // end for i  
+        }); // end for i  
 
 
 
