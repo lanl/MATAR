@@ -6729,7 +6729,7 @@ public:
  
     void push_back(T value);
  
-    void pop();
+    void pop_back();
  
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
@@ -7040,7 +7040,7 @@ size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pop() {
+void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::pop_back() {
     dims_actual_size_[0]--;
 }
 
@@ -7175,7 +7175,7 @@ public:
  
     void push_back(T value);
  
-    void pop();
+    void pop_back();
  
     // Methods returns the raw pointer (most likely GPU) of the Kokkos View
     KOKKOS_INLINE_FUNCTION
@@ -7486,7 +7486,7 @@ size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pop() {
+void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pop_back() {
     dims_actual_size_[0]--;
 }
 

@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -49,10 +49,10 @@ double calculate_total_free_energy(int* nn, double* delta, double kappa, DCArray
     //
     double total_energy = 0.0;
     double loc_sum = 0.0;
-    REDUCE_SUM(i, 1, nx - 1,
-               j, 1, ny - 1,
-               k, 1, nz - 1,
-               loc_sum, {
+    FOR_REDUCE_SUM(i, 1, nx - 1,
+                   j, 1, ny - 1,
+                   k, 1, nz - 1,
+                   loc_sum, {
         // central difference spatial derivative of comp
         double dcdx = (comp(i + 1, j, k) - comp(i - 1, j, k)) / (2.0 * dx);
         double dcdy = (comp(i, j + 1, k) - comp(i, j - 1, k)) / (2.0 * dy);

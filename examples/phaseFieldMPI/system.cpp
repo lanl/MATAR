@@ -137,7 +137,7 @@ double System::calculate_total_free_energy()
 
 #if 0
     // bulk free energy + interfacial energy
-    REDUCE_SUM(k, 1, ga.comp.dims(0) - 1,
+    FOR_REDUCE_SUM(k, 1, ga.comp.dims(0) - 1,
                j, 1, ga.comp.dims(1) - 1,
                i, 1, ga.comp.dims(2) - 1,
                loc_sum, {
@@ -152,7 +152,7 @@ double System::calculate_total_free_energy()
 #endif
 
     // bulk free energy only
-    REDUCE_SUM(k, 0, ga.comp.dims(0),
+    FOR_REDUCE_SUM(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_sum, {
@@ -200,7 +200,7 @@ void System::track_progress(int iter)
     // sum of comp field
     double sum_comp = 0.0;
     double loc_sum  = 0.0;
-    REDUCE_SUM(k, 0, ga.comp.dims(0),
+    FOR_REDUCE_SUM(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_sum, {
@@ -210,7 +210,7 @@ void System::track_progress(int iter)
     // max of comp field
     double max_comp;
     double loc_max;
-    REDUCE_MAX(k, 0, ga.comp.dims(0),
+    FOR_REDUCE_MAX(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_max, {
@@ -222,7 +222,7 @@ void System::track_progress(int iter)
     // min of comp field
     double min_comp;
     double loc_min;
-    REDUCE_MIN(k, 0, ga.comp.dims(0),
+    FOR_REDUCE_MIN(k, 0, ga.comp.dims(0),
                j, 0, ga.comp.dims(1),
                i, 0, ga.comp.dims(2),
                loc_min, {

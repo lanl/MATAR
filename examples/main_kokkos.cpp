@@ -146,10 +146,10 @@ public:
 
         // NOTE: if private vars are accessed, requires REDUCE_SUM_CLASS
         // do summation in parallel on GPU
-        REDUCE_SUM_CLASS(k, 1, 6,
-                         j, 1, 5,
-                         i, 1, 4,
-                         loc_sum, {
+        FOR_REDUCE_SUM_CLASS(k, 1, 6,
+                             j, 1, 5,
+                             i, 1, 4,
+                             loc_sum, {
             loc_sum += matrix(i, j, k, 1);
         }, val);
 
@@ -182,10 +182,10 @@ public:
 
         // NOTE: if private vars are accessed, requires REDUCE_SUM_CLASS
         // do summation in parallel on GPU
-        REDUCE_SUM_CLASS(k, 1, 6,
-                         j, 1, 5,
-                         i, 1, 4,
-                         loc_sum, {
+        FOR_REDUCE_SUM_CLASS(k, 1, 6,
+                             j, 1, 5,
+                             i, 1, 4,
+                             loc_sum, {
             loc_sum += matrix(i, j, k, 1);
         }, val);
 
@@ -960,10 +960,10 @@ void pass_by_ref_two(const FMatrixKokkos<int>& matrix)
     int val = 0;
 
     // do summation in parallel on GPU
-    REDUCE_SUM(k, 1, 6,
-               j, 1, 5,
-               i, 1, 4,
-               loc_sum, {
+    FOR_REDUCE_SUM(k, 1, 6,
+                   j, 1, 5,
+                   i, 1, 4,
+                   loc_sum, {
         loc_sum += matrix(i, j, k, 1);
     }, val);
 
