@@ -215,10 +215,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     FArrayKokkos& operator= (const FArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp);
 
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
     
     KOKKOS_INLINE_FUNCTION
@@ -500,7 +503,6 @@ size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -624,10 +626,13 @@ public:
                   size_t l, size_t m, size_t n, size_t o) const;
 
     
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -866,7 +871,6 @@ size_t ViewFArrayKokkos<T>::size() const {
 }
 
 template <typename T>
-KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::extent() const {
     return length_;
 }
@@ -969,10 +973,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     FMatrixKokkos& operator=(const FMatrixKokkos& temp);
 
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -1236,7 +1243,6 @@ size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -1362,10 +1368,13 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -1606,7 +1615,6 @@ size_t ViewFMatrixKokkos<T>::size() const {
 }
 
 template <typename T>
-KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::extent() const {
     return length_;
 }
@@ -1721,7 +1729,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -1735,7 +1742,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Method that update host view
@@ -1743,7 +1749,6 @@ public:
 
     // Method that update device view
     void update_device();
-
 
     // set values on host to input
     void set_values(T val);
@@ -1999,7 +2004,6 @@ size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -2025,7 +2029,6 @@ T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_.h_view.data();
 }
@@ -2144,7 +2147,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -2158,7 +2160,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Data member to access host view
@@ -2169,7 +2170,6 @@ public:
 
     // Method that update device view
     void update_device();
-
 
     // set values on host to input
     void set_values(T val);
@@ -2474,7 +2474,6 @@ size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -2500,7 +2499,6 @@ T* DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_host_.data();
 }
@@ -2607,7 +2605,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -2621,7 +2618,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Data member to access host view
@@ -2632,7 +2628,6 @@ public:
 
     // Method that update device view
     void update_device();
-
 
     // set values on host to input
     void set_values(T val);
@@ -2887,7 +2882,6 @@ size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -2914,7 +2908,6 @@ T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_matrix_.h_view.data();
 }
@@ -3028,7 +3021,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -3042,7 +3034,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Data member to access host view
@@ -3053,7 +3044,6 @@ public:
 
     // Method that update device view
     void update_device();
-
 
     // set values on host to input
     void set_values(T val);
@@ -3347,7 +3337,6 @@ size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -3374,7 +3363,6 @@ T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_matrix_host_.data();
 }
@@ -3481,7 +3469,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -3744,7 +3731,6 @@ size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -3866,10 +3852,13 @@ public:
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
                   size_t n, size_t o) const;
     
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -4106,7 +4095,6 @@ size_t ViewCArrayKokkos<T>::size() const {
 }
 
 template <typename T>
-KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::extent() const {
     return length_;
 }
@@ -4208,10 +4196,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     CMatrixKokkos& operator=(const CMatrixKokkos &temp);
 
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
-    
-    KOKKOS_INLINE_FUNCTION
+
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -4478,7 +4469,6 @@ size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -4597,10 +4587,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const;
 
+    // GPU Method
+    // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
 
-    KOKKOS_INLINE_FUNCTION
+    // Host Method
+    // Method that returns size
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -4833,7 +4826,6 @@ size_t ViewCMatrixKokkos<T>::size() const {
 }
 
 template <typename T>
-KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::extent() const {
     return length_;
 }
@@ -4947,7 +4939,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -4961,7 +4952,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Method returns kokkos dual view
@@ -5227,7 +5217,6 @@ size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -5253,7 +5242,6 @@ T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_.h_view.data();
 }
@@ -5374,7 +5362,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -5388,7 +5375,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Data member to access host view
@@ -5399,7 +5385,6 @@ public:
 
     // Method that update device view
     void update_device();
-
 
     // set values on host to input
     void set_values(T val);
@@ -5711,7 +5696,6 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -5737,7 +5721,6 @@ T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_host_.data();
 }
@@ -5846,7 +5829,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -5860,7 +5842,6 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
 
     // Method that update host view
@@ -6122,7 +6103,6 @@ size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -6149,7 +6129,6 @@ T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_matrix_.h_view.data();
 }
@@ -6209,6 +6188,9 @@ private:
     T * temp_inp_matrix_;
 
 public:
+    // Data member to access host view
+    ViewCMatrix <T> host;
+
     DViewCMatrixKokkos();
     
     DViewCMatrixKokkos(T * inp_matrix, size_t dim1, const std::string& tag_string = DEFAULTSTRINGMATRIX);
@@ -6263,7 +6245,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -6277,11 +6258,7 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos View
-    KOKKOS_INLINE_FUNCTION
     T* host_pointer() const;
-
-    // Data member to access host view
-    ViewCMatrix <T> host;
 
     // Method that update host view
     void update_host();
@@ -6580,7 +6557,6 @@ size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -6607,7 +6583,6 @@ T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_matrix_host_.data();
 }
@@ -6715,7 +6690,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -7012,7 +6986,6 @@ size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
@@ -7161,7 +7134,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -7458,7 +7430,6 @@ size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
