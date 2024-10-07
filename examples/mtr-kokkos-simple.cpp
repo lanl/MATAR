@@ -182,7 +182,7 @@ int main(int argc, char *argv[]) {
         // ===============
 
 
-        int N=20;  // array dimensions are NxN
+        int N=200;  // array dimensions are NxN
 
         // A 2D array example following the C index convention
         // indicies go from 0 to less than N, last index varies the fastest
