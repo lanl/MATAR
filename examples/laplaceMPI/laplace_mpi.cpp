@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -292,9 +292,9 @@ int main(int argc, char* argv[])
 
             // calculate max difference between temperature and temperature_previous
             double loc_max_value = 100.0;
-            REDUCE_MAX(i, height_index_start, height_index_end,
-               j, 1, width_loc - 1,
-               loc_max_value, {
+            FOR_REDUCE_MAX(i, height_index_start, height_index_end,
+                           j, 1, width_loc - 1,
+                           loc_max_value, {
                 double value = fabs(temperature_loc(i, j) - temperature_previous_loc(i, j));
                 if (value > loc_max_value) {
                     loc_max_value = value;

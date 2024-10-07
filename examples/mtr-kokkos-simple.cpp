@@ -257,8 +257,8 @@ int main(int argc, char *argv[]) {
             int result;
             // calculate dot product
             if(k<N-1){
-                REDUCE_SUM(i, k, N-1,
-                           loc_sum, {
+                FOR_REDUCE_SUM(i, k, N-1,
+                               loc_sum, {
                         loc_sum += U(k,i)*x(i);
                 }, result);
             } // end if
@@ -274,7 +274,7 @@ int main(int argc, char *argv[]) {
             int result;
             // calculate dot product
             if(i-1>0){
-                REDUCE_SUM(j, 0, i-1,
+                FOR_REDUCE_SUM(j, 0, i-1,
                            loc_sum, {
                         loc_sum += L(i,j)*x(j);
                 }, result);

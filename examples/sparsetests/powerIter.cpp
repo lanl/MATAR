@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -72,7 +72,7 @@ void renorm(CArrayKokkos<double>& b)
     double loc_total = 0;
     int    n = b.dims(0);
     int    i = 0;
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
                 loc_total, { loc_total += b(i) * b(i); }
         , total);
     total = 1 / sqrt(total);
@@ -98,7 +98,7 @@ double innerProd(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
     double total     = 0;
     double loc_total = 0;
     int    n = b.dims(0);
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
         loc_total, { 
             loc_total += a(i) * b(i); 
         }, total);
@@ -110,7 +110,7 @@ double l1Change(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
     double total     = 0;
     double loc_total = 0;
     int    n = b.dims(0);
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
         loc_total, { 
             loc_total += abs(a(i) - b(i)); 
         }, total);
@@ -151,7 +151,7 @@ void renormSp(CArrayKokkos<double>& b)
     double loc_total = 0;
     int    n = b.dims(0);
     int    i = 0;
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
                 loc_total, { loc_total += b(i) * b(i); }
         , total);
     total = 1 / sqrt(total);
@@ -177,7 +177,7 @@ double innerProdSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
     double total     = 0;
     double loc_total = 0;
     int    n = b.dims(0);
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
         loc_total, { 
             loc_total += a(i) * b(i); 
         }, total);
@@ -189,7 +189,7 @@ double l1ChangeSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
     double total     = 0;
     double loc_total = 0;
     int    n = b.dims(0);
-    REDUCE_SUM(i, 0, n,
+    FOR_REDUCE_SUM(i, 0, n,
         loc_total, { 
             loc_total += abs(a(i) - b(i)); 
         }, total);
