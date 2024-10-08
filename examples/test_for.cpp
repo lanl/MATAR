@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -66,7 +66,7 @@ int main()
 
     int loc_sum = 0;
     int result  = 0;
-    REDUCE_SUM(i, 0, 10,
+    FOR_REDUCE_SUM(i, 0, 10,
                loc_sum, {
         loc_sum += arr(i) * arr(i);
                }, result);
@@ -80,9 +80,9 @@ int main()
 
     loc_sum = 0;
     result  = 0;
-    REDUCE_SUM(i, 0, 10,
-               j, 0, 10,
-               loc_sum, {
+    FOR_REDUCE_SUM(i, 0, 10,
+                   j, 0, 10,
+                   loc_sum, {
         loc_sum += arr_2D(i, j) * arr_2D(i, j);
     }, result);
 
@@ -97,10 +97,10 @@ int main()
 
     loc_sum = 0;
     result  = 0;
-    REDUCE_SUM(i, 0, 10,
-               j, 0, 10,
-               k, 0, 10,
-               loc_sum, {
+    FOR_REDUCE_SUM(i, 0, 10,
+                   j, 0, 10,
+                   k, 0, 10,
+                   loc_sum, {
         loc_sum += arr_3D(i, j, k) * arr_3D(i, j, k);
     }, result);
 
@@ -116,29 +116,29 @@ int main()
     std::cout << "3D reduce : " << result << " vs. " << loc_sum << " \n";
 
     int loc_max;
-    REDUCE_MAX(i, 0, 10,
-               j, 0, 10,
-               k, 0, 10,
-               loc_max, {
+    FOR_REDUCE_MAX(i, 0, 10,
+                   j, 0, 10,
+                   k, 0, 10,
+                   loc_max, {
         loc_max = std::max<int>(arr_3D(i, j, k), loc_max);
     }, result);
 
     std::cout << "3D reduce MAX : " << result << " \n";
 
     int loc_min;
-    REDUCE_MIN(i, 0, 10,
-               j, 0, 10,
-               k, 0, 10,
-               loc_min, {
+    FOR_REDUCE_MIN(i, 0, 10,
+                   j, 0, 10,
+                   k, 0, 10,
+                   loc_min, {
         loc_min = std::min<int>(arr_3D(i, j, k), loc_min);
     }, result);
 
     std::cout << "3D reduce MIN : " << result << " \n";
 
-    REDUCE_MIN_CLASS(i, 0, 10,
-               j, 0, 10,
-               k, 0, 10,
-               loc_min, {
+    FOR_REDUCE_MIN_CLASS(i, 0, 10,
+                         j, 0, 10,
+                         k, 0, 10,
+                         loc_min, {
         loc_min = std::min<int>(arr_3D(i, j, k), loc_min);
     }, result);
 

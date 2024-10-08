@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -47,20 +47,20 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
     // sum of comp field
     double sum_comp = 0.0;
     double loc_sum  = 0.0;
-    REDUCE_SUM(i, 0, nx,
-               j, 0, ny,
-               k, 0, nz,
-               loc_sum, {
+    FOR_REDUCE_SUM(i, 0, nx,
+                   j, 0, ny,
+                   k, 0, nz,
+                   loc_sum, {
         loc_sum += comp(i, j, k);
                }, sum_comp);
 
     // max of comp field
     double max_comp;
     double loc_max;
-    REDUCE_MAX(i, 0, nx,
-               j, 0, ny,
-               k, 0, nz,
-               loc_max, {
+    FOR_REDUCE_MAX(i, 0, nx,
+                   j, 0, ny,
+                   k, 0, nz,
+                   loc_max, {
         if (loc_max < comp(i, j, k)) {
             loc_max = comp(i, j, k);
         }
@@ -70,10 +70,10 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
     // min of comp field
     double min_comp;
     double loc_min;
-    REDUCE_MIN(i, 0, nx,
-               j, 0, ny,
-               k, 0, nz,
-               loc_min, {
+    FOR_REDUCE_MIN(i, 0, nx,
+                   j, 0, ny,
+                   k, 0, nz,
+                   loc_min, {
         if (loc_min > comp(i, j, k)) {
             loc_min = comp(i, j, k);
         }
