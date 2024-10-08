@@ -89,7 +89,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     virtual int getLocalIndex(int global_index) const {}
@@ -198,7 +197,6 @@ size_t PartitionMap<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t PartitionMap<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }

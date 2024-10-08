@@ -169,7 +169,6 @@ public:
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -536,7 +535,6 @@ size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t MappedMPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
