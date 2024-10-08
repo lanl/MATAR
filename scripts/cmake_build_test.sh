@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 kokkos_build_type="${1}"
+trilinos="${2}"
 
 if [ ! -d "${TEST_SOURCE_DIR}/googletest" ]
 then
