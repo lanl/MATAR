@@ -44,7 +44,13 @@ show_help() {
     echo "          linux                       A general linux machine (that does not use modules)"
     echo "          mac                         A Mac computer. This option does not allow for cuda and hip builds, and build_cores will be set to 1"
     echo " "
-    echo "      --build_cores                   The number of build cores to be used by make and make install commands. The default is 1" 
+    echo "      --build_cores                   The number of build cores to be used by make and make install commands. The default is 1"
+    echo " "
+    echo "      --trilinos                      Decides if Trilinos is available for certain MATAR functionality"
+    echo " "
+    echo "          disabled                    Trilinos is not being used"
+    echo "          enabled                     Trilinos will be linked with MATAR to enable relevant functionality"
+    echo " "
     return 1
 }
 
@@ -54,12 +60,14 @@ execution="examples"
 machine="linux"
 kokkos_build_type="serial"
 build_cores="1"
+trilinos="disabled"
 
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
 valid_execution=("examples" "test" "benchmark")
 valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip" "serial_mpi" "openmp_mpi" "cuda_mpi" "hip_mpi")
 valid_machines=("darwin" "chicoma" "linux" "mac")
+valid_trilinos=("disabled" "enabled")
 
 # Parse command line arguments
 for arg in "$@"; do
@@ -114,6 +122,16 @@ for arg in "$@"; do
                 return 1
             fi
             ;;
+        --trilinos=*)
+            option="${arg#*=}"
+            if [[ " ${valid_trilinos[*]} " == *" $option "* ]]; then
+                trilinos="$option"
+            else
+                echo "Error: Invalid --kokkos_build_type specified."
+                show_help
+                return 1
+            fi
+            ;;
         --help)
             show_help
             return 1
@@ -150,6 +168,7 @@ echo "Build action - ${build_action}"
 echo "Execution - ${execution}"
 echo "Kokkos backend - ${kokkos_build_type}"
 echo "make -j ${build_cores}"
+echo "Trilinos - ${trilinos}"
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
@@ -162,10 +181,13 @@ if [ "$build_action" = "full-app" ]; then
     if [ ! -d "${builddir}" ]
     then
         mkdir -p ${builddir}
-    fi    
-    source kokkos-install.sh ${kokkos_build_type}
-    source matar-install.sh ${kokkos_build_type}
-    source cmake_build_${execution}.sh ${kokkos_build_type}
+    fi
+
+    if [ "$trilinos" = "disabled" ]; then    
+        source kokkos-install.sh ${kokkos_build_type}
+    fi
+    source matar-install.sh ${kokkos_build_type} ${trilinos}
+    source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos}
 elif [ "$build_action" = "install-kokkos" ]; then
     source kokkos-install.sh ${kokkos_build_type}
 elif [ "$build_action" = "install-matar" ]; then
