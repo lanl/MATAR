@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 kokkos_build_type=${1}
+trilinos=${2}
 
 rm -rf ${MATAR_INSTALL_DIR}
 mkdir -p ${MATAR_BUILD_DIR} 

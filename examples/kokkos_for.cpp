@@ -441,10 +441,62 @@ int main(int argc, char* argv[])
             //    int jend = (j_j+1)*32;
             }, result);
             hierTest2D(i_i,j_j)= result;
-            //printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i,j_j));
+            printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i,j_j));
         });
     });
     Kokkos::fence();
+
+    printf("\n\n\nHierarchical DO Reduce\n");
+    //2D nesting
+    DO_FIRST(i_i,1,hiersize-1, {
+        // Kokkos::parallel_for( \
+        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+        //const int i_i = TEAM_ID;
+        double result = 0;
+        double lsum;
+        DO_REDUCE_SUM_SECOND(j_j, i_i, hiersize-1, lsum, {
+            lsum += hierTest3D(i_i,j_j,0);
+            // Kokkos::parallel_for( \
+            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
+            //    int jstart = j_j*32;
+            //    int jend = (j_j+1)*32;
+        }, result);
+        hierTest1D(i_i)= result;
+        //printf("value at %d is %f\n", i_i, hierTest1D(i_i));
+    });
+    Kokkos::fence();
+    
+    printf("\n\n\nHierarchical Vectorized DO Reduce\n");
+    //3D vector nesting
+    DO_FIRST(i_i,0,hiersize-1, {
+        // Kokkos::parallel_for( \
+        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+        //const int i_i = TEAM_ID;
+        double result = 0;
+        double lsum;
+        DO_SECOND(j_j, i_i, hiersize-1, {
+            // Kokkos::parallel_for( \
+            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
+            //    int jstart = j_j*32;
+            //    int jend = (j_j+1)*32;
+            DO_REDUCE_SUM_THIRD(k_k, i_i, j_j-1, lsum, {
+            lsum += hierTest3D(i_i,j_j,k_k);
+            // Kokkos::parallel_for( \
+            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
+            //    int jstart = j_j*32;
+            //    int jend = (j_j+1)*32;
+            }, result);
+            hierTest2D(i_i,j_j)= result;
+            printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i,j_j));
+        });
+    });
+    Kokkos::fence();
+
     for (int ppp = 0; ppp < hiersize; ppp++) {
         //printf("%f\n", hierTest1D(ppp));
         // printf("%f\n", hierTest2D(3,ppp));
