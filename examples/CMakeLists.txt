@@ -10,9 +10,9 @@ if (NOT TARGET distclean)
   INCLUDE(../cmake/Modules/TargetDistclean.cmake OPTIONAL)
 endif (NOT TARGET distclean)
 
+find_package(Matar REQUIRED)
 set(LINKING_LIBRARIES matar)
 
-find_package(Matar REQUIRED)
 if (MPI)
     find_package(MPI REQUIRED)
     add_definitions(-DHAVE_MPI=1)
@@ -36,9 +36,43 @@ if (NOT KOKKOS)
 endif()
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  if (Matar_ENABLE_TRILINOS)
+    find_package(Trilinos REQUIRED) #new
+    # Assume if the CXX compiler exists, the rest do too.
+    if (EXISTS ${Trilinos_CXX_COMPILER})
+      set(CMAKE_CXX_COMPILER ${Trilinos_CXX_COMPILER})
+      set(CMAKE_C_COMPILER ${Trilinos_C_COMPILER})
+      set(CMAKE_Fortran_COMPILER ${Trilinos_Fortran_COMPILER})
+    endif()
+    if(NOT DISTRIBUTION)
+      # Make sure to use same compilers and flags as Trilinos
+      set(CMAKE_CXX_FLAGS  "${Trilinos_CXX_COMPILER_FLAGS} ${CMAKE_CXX_FLAGS}")
+      set(CMAKE_C_FLAGS  "${Trilinos_C_COMPILER_FLAGS} ${CMAKE_C_FLAGS}")
+      set(CMAKE_Fortran_FLAGS  "${Trilinos_Fortran_COMPILER_FLAGS} ${CMAKE_Fortran_FLAGS}")
+    endif()
 
-  list(APPEND LINKING_LIBRARIES Kokkos::kokkos)
+    message("\nFound Trilinos!  Here are the details: ")
+    message("   Trilinos_DIR = ${Trilinos_DIR}")
+    message("   Trilinos_VERSION = ${Trilinos_VERSION}")
+    message("   Trilinos_PACKAGE_LIST = ${Trilinos_PACKAGE_LIST}")
+    message("   Trilinos_LIBRARIES = ${Trilinos_LIBRARIES}")
+    message("   Trilinos_INCLUDE_DIRS = ${Trilinos_INCLUDE_DIRS}")
+    message("   Trilinos_LIBRARY_DIRS = ${Trilinos_LIBRARY_DIRS}")
+    message("   Trilinos_TPL_LIST = ${Trilinos_TPL_LIST}")
+    message("   Trilinos_TPL_INCLUDE_DIRS = ${Trilinos_TPL_INCLUDE_DIRS}")
+    message("   Trilinos_TPL_LIBRARIES = ${Trilinos_TPL_LIBRARIES}")
+    message("   Trilinos_TPL_LIBRARY_DIRS = ${Trilinos_TPL_LIBRARY_DIRS}")
+    message("   Trilinos_BUILD_SHARED_LIBS = ${Trilinos_BUILD_SHARED_LIBS}")
+    message("End of Trilinos details\n")
+
+    include_directories(${Trilinos_INCLUDE_DIRS} ${Trilinos_TPL_INCLUDE_DIRS})
+    list(APPEND LINKING_LIBRARIES Trilinos::all_selected_libs)
+    add_definitions(-DTRILINOS_INTERFACE=1)
+  else()
+    find_package(Kokkos REQUIRED) #new
+    list(APPEND LINKING_LIBRARIES Kokkos::kokkos)
+  endif()
+
 
   add_definitions(-DHAVE_KOKKOS=1)
 
@@ -75,6 +109,11 @@ if (KOKKOS)
 
   add_executable(annkokkos ann_kokkos.cpp)
   target_link_libraries(annkokkos ${LINKING_LIBRARIES})
+
+  if (Matar_ENABLE_TRILINOS)
+    #add_executable(anndistributed ann_distributed.cpp)
+    #target_link_libraries(anndistributed ${LINKING_LIBRARIES})
+  endif()
 
   if (OPENMP)
     add_executable(parallel_hello_world parallel_hello_world.cpp)

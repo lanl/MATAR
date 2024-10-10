@@ -20,9 +20,10 @@ elif [ "$trilinos" = "enabled" ]; then
     else
         Trilinos_DIR=${TRILINOS_INSTALL_DIR}/lib/cmake/Trilinos
     fi
-    cmake_options=(
+    cmake_options+=(
         -D Trilinos_DIR="$Trilinos_DIR"
         -D Matar_ENABLE_TRILINOS=ON
+        -D Matar_ENABLE_KOKKOS=ON
     )
 else
     cmake_options+=(
@@ -31,7 +32,7 @@ else
     )
 fi
 
-if [[ "$kokkos_build_type" = *"mpi"* ]]; then
+if [[ "$kokkos_build_type" = *"mpi"* ]] || [ "$trilinos" = "enabled" ]; then
     cmake_options+=(
     -D Matar_ENABLE_MPI=ON
     )

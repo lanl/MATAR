@@ -46,8 +46,7 @@ CUDA_ADDITIONS=(
 -D KokkosKernels_ENABLE_TPL_CUBLAS=ON
 -D KokkosKernels_ENABLE_TPL_CUSPARSE=ON
 -D Tpetra_ENABLE_CUDA=ON
--D Xpetra_ENABLE_Kokkos_Refactor=ON
--D MueLu_ENABLE_Kokkos_Refactor=ON
+-D MueLu_ENABLE_Kokkos_Refactor=OFF
 )
 
 # Kokkos flags for Hip
@@ -61,7 +60,6 @@ export OMPI_CXX=hipcc
 -D KokkosKernels_ENABLE_TPL_CUBLAS=OFF
 -D KokkosKernels_ENABLE_TPL_CUSPARSE=OFF
 -D Tpetra_INST_HIP=ON
--D Xpetra_ENABLE_Kokkos_Refactor=ON
 )
 
 # Kokkos flags for OpenMP
@@ -134,17 +132,17 @@ ${ADDITIONS[@]}
     #)
 #fi
 
-if [ "$kokkos_build_type" = "openmp" ]; then
+if [ "$kokkos_build_type" = "openmp" ] || [ "$kokkos_build_type" = "openmp_mpi" ]; then
     cmake_options+=(
         ${OPENMP_ADDITIONS[@]}
     )
-elif [ "$kokkos_build_type" = "cuda" ]; then
+elif [ "$kokkos_build_type" = "cuda" ] || [ "$kokkos_build_type" = "cuda_mpi" ]; then
     export OMPI_CXX=${TRILINOS_SOURCE_DIR}/packages/kokkos/bin/nvcc_wrapper
     export CUDA_LAUNCH_BLOCKING=1
     cmake_options+=(
         ${CUDA_ADDITIONS[@]}
     )
-elif [ "$kokkos_build_type" = "hip" ]; then
+elif [ "$kokkos_build_type" = *"hip"* ] || [ "$kokkos_build_type" = *"hip_mpi"* ]; then
     export OMPI_CXX=hipcc
     cmake_options+=(
         ${HIP_ADDITIONS[@]}
@@ -159,7 +157,7 @@ cmake "${cmake_options[@]}" -B "${TRILINOS_BUILD_DIR}" -S "${TRILINOS_SOURCE_DIR
 
 # Build Trilinos
 echo "Building Trilinos..."
-make -C "${TRILINOS_BUILD_DIR}" -j${FIERRO_BUILD_CORES}
+make -C "${TRILINOS_BUILD_DIR}" -j${MATAR_BUILD_CORES}
 
 # Install Trilinos
 echo "Installing Trilinos..."
