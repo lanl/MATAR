@@ -59,8 +59,8 @@ int    height = 1000;
 int    max_num_iterations = 1000;
 double temp_tolerance     = 0.01;
 
-void initialize(DCArrayKokkos<double>& temperature_previous, int height, int width);
-void track_progress(int iteration, DCArrayKokkos<double>& temperature);
+void initialize(MPIArrayKokkos<double>& temperature_previous, int height, int width);
+void track_progress(int iteration, MPIArrayKokkos<double>& temperature);
 void parse_command_line(int argc, char* argv[]);
 
 int main(int argc, char* argv[])
@@ -96,11 +96,12 @@ int main(int argc, char* argv[])
         }
         size_loc = width_loc * height_loc;
 
+
         // root should keep an array of size_loc and offset
         // for all processes
-        if (rank == ROOT) {
             all_size_loc = CArray<int>(world_size);
             offsets = CArray<int>(world_size);
+        if (rank == ROOT) {
 
             all_size_loc(ROOT) = size_loc;
             for (int i = 1; i < world_size; i++) {
@@ -119,15 +120,15 @@ int main(int argc, char* argv[])
 
         // declare arrays
         CArrayKokkos<double>  temperature_loc;
-        DCArrayKokkos<double> temperature_previous_loc;
-        DCArrayKokkos<double> temperature_previous_glob;
+        MPIArrayKokkos<double> temperature_previous_loc;
+        MPIArrayKokkos<double> temperature_previous_glob;
 
         // define and allocate arrays
         temperature_loc = CArrayKokkos<double>(height_loc, width_loc);
-        temperature_previous_loc = DCArrayKokkos<double>(height_loc, width_loc);
-        if (rank == ROOT) {
-            temperature_previous_glob = DCArrayKokkos<double>(height + 2, width + 2);
-        }
+        temperature_previous_loc = MPIArrayKokkos<double>(height_loc, width_loc);
+        //if (rank == ROOT) {
+            temperature_previous_glob = MPIArrayKokkos<double>(height + 2, width + 2);
+        //}
 
         // initialize temperature field.
         if (rank == ROOT) {
@@ -135,18 +136,35 @@ int main(int argc, char* argv[])
         }
 
         // distribut work to all processes
-        if (rank == ROOT) {
+//        if (rank == ROOT) {
+          //printf("%f\n", temperature_previous_glob.host_pointer()[offsets.pointer()[1]]);
+          ///*
+          temperature_previous_glob.scatterv(
+                            all_size_loc.pointer(), offsets.pointer(), temperature_previous_loc, 
+                            size_loc, ROOT, MPI_COMM_WORLD);
+//*/
+            //printf("%p %p %p %p\n", &temperature_previous_glob.host(0,0), &all_size_loc(0), &offsets(0), &temperature_previous_loc.host(0, 0));
+            //printf("%p %p\n", all_size_loc.pointer(), offsets.pointer());
+            /*
             temperature_previous_glob.update_host();
-            MPI_Scatterv(&temperature_previous_glob.host(0, 0), &all_size_loc(0), &offsets(0),
-                 MPI_DOUBLE, &temperature_previous_loc.host(0, 0), size_loc, MPI_DOUBLE,
-                 ROOT, MPI_COMM_WORLD);
-        }
-        else {
-            MPI_Scatterv(NULL, NULL, NULL, MPI_DOUBLE, &temperature_previous_loc.host(0, 0), size_loc,
-                 MPI_DOUBLE, ROOT, MPI_COMM_WORLD);
-        }
+                 MPI_Scatterv(
+                            temperature_previous_glob.host_pointer(), 
+                            all_size_loc.pointer(), 
+                            offsets.pointer(),
+                            MPI_DOUBLE, 
+                            temperature_previous_loc.host_pointer(), 
+                            size_loc, 
+                            MPI_DOUBLE,
+                            ROOT, 
+                            MPI_COMM_WORLD);
+            temperature_previous_loc.update_device();
+*/
+//        }
+//DAN        else {
+//DAN            MPI_Scatterv(NULL, NULL, NULL, MPI_DOUBLE, &temperature_previous_loc.host(0, 0), size_loc,
+//DAN                 MPI_DOUBLE, ROOT, MPI_COMM_WORLD);
+//DAN        }
         //
-        temperature_previous_loc.update_device();
 
         // define neighbours
         int up       = rank - 1;
@@ -157,15 +175,15 @@ int main(int argc, char* argv[])
         MPI_Request requests_send[4];
         MPI_Request requests_recv[4];
 
-        DCArrayKokkos<double> halo_up, halo_down;
-        DCArrayKokkos<double> halo_up_out, halo_down_out;
+        MPIArrayKokkos<double> halo_up, halo_down;
+        MPIArrayKokkos<double> halo_up_out, halo_down_out;
         if (up != -1) {
-            halo_up     = DCArrayKokkos<double>(width_loc);
-            halo_up_out = DCArrayKokkos<double>(width_loc);
+            halo_up     = MPIArrayKokkos<double>(width_loc);
+            halo_up_out = MPIArrayKokkos<double>(width_loc);
         }
         if (down != world_size) {
-            halo_down     = DCArrayKokkos<double>(width_loc);
-            halo_down_out = DCArrayKokkos<double>(width_loc);
+            halo_down     = MPIArrayKokkos<double>(width_loc);
+            halo_down_out = MPIArrayKokkos<double>(width_loc);
         }
 
         int height_index_start, height_index_end;
@@ -354,7 +372,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void initialize(DCArrayKokkos<double>& temperature_previous, int height, int width)
+void initialize(MPIArrayKokkos<double>& temperature_previous, int height, int width)
 {
     // initialize temperature_previous to 0.0
     FOR_ALL(i, 0, height + 2,
@@ -375,7 +393,7 @@ void initialize(DCArrayKokkos<double>& temperature_previous, int height, int wid
     });
 }
 
-void track_progress(int iteration, DCArrayKokkos<double>& temperature)
+void track_progress(int iteration, MPIArrayKokkos<double>& temperature)
 {
     printf("---------- Iteration number: %d ----------\n", iteration);
     for (int i = height - 5; i <= height; i++) {

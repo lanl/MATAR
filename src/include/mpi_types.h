@@ -188,6 +188,9 @@ public:
     // MPI scatter wrapper
     void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
+    // MPI scatterv wrapper
+    void scatterv(int *send_counts, int *offsets, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+
     // MPI gather wrapper
     void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
@@ -698,6 +701,18 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatter(size_t send_count,
 #else
     update_host();
     MPI_Scatter(host_pointer(), send_count, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
+    recv_buffer.update_device();
+#endif
+}
+
+//MPI_Scatterv wrapper
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::scatterv(int *send_counts, int *offsets, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm) {
+#ifdef HAVE_GPU_AWARE_MPI
+    MPI_Scatterv(device_pointer(), send_counts, offsets, mpi_datatype_, recv_buffer.device_pointer(), recv_count, mpi_datatype_, root, comm); 
+#else
+    update_host();
+    MPI_Scatterv(host_pointer(), send_counts, offsets, mpi_datatype_, recv_buffer.host_pointer(), recv_count, mpi_datatype_, root, comm); 
     recv_buffer.update_device();
 #endif
 }

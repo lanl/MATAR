@@ -19,6 +19,173 @@ int height = 1000;
 int max_num_iterations = 1000;
 double temp_tolerance = 0.01;
 
+// Example of DENSE halo sending and receiving
+// uses a map for global to local, to know what needs to be sent
+// simple directional comp grid
+// n = north (j-1), s = south (j+1), w = west (i-1), e = east (i+1)
+void example_comms_with_map(int world_size, int rank) {
+    // neighbor calcs
+    int n = sqrt(world_size);
+    int world_i = rank % n;
+    int world_j = rank / n;
+    int neighbors = 0;
+    int j_n = world_j - 1;
+    int j_s = world_j + 1;
+    int i_w = world_i - 1;
+    int i_e = world_i + 1;
+    if (j_n >= 0) neighbors++;
+    if (j_s < n) neighbors++;
+    if (i_w >= 0) neighbors++;
+    if (i_e < n) neighbors++;
+
+    int rank_n = j_n * n + world_i;
+    int rank_s = j_s * n + world_i;
+    int rank_w = world_j * n + i_w;
+    int rank_e = world_j * n + i_e;
+
+    int stag_n = rank * 10 + rank_n;
+    int stag_s = rank * 10 + rank_s;
+    int stag_w = rank * 10 + rank_w;
+    int stag_e = rank * 10 + rank_e;
+    int rtag_n = rank_n * 10 + rank;
+    int rtag_s = rank_s * 10 + rank;
+    int rtag_w = rank_w * 10 + rank;
+    int rtag_e = rank_e * 10 + rank;
+
+    // data setup
+    int width_loc = width / n;
+    int height_loc = height / n;
+    int halo = 2;
+    int arr_size_i = width_loc + halo * 2; //both sides of halo
+    int arr_size_j = height_loc + halo * 2;
+    DCArrayKokkos <double> my_grid = DCArrayKokkos <double> (arr_size_i, arr_size_j);
+    DCArrayKokkos <double> velocity = DCArrayKokkos <double> (arr_size_i, arr_size_j);
+    // halos
+    MPIArrayKokkos <double> send_n = MPIArrayKokkos <double> (width_loc);
+    MPIArrayKokkos <double> send_s = MPIArrayKokkos <double> (width_loc);
+    MPIArrayKokkos <double> send_w = MPIArrayKokkos <double> (height_loc);
+    MPIArrayKokkos <double> send_e = MPIArrayKokkos <double> (height_loc);
+    MPIArrayKokkos <double> recv_n = MPIArrayKokkos <double> (width_loc);
+    MPIArrayKokkos <double> recv_s = MPIArrayKokkos <double> (width_loc);
+    MPIArrayKokkos <double> recv_w = MPIArrayKokkos <double> (height_loc);
+    MPIArrayKokkos <double> recv_e = MPIArrayKokkos <double> (height_loc);
+    // setup basic
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // if halo -1, else owned so rank
+            velocity.host(ii, jj) = rank * rank;
+            if (ii < halo || jj < halo || ii >= width_loc + halo || jj >= height_loc + halo)
+                my_grid.host(ii, jj) = -1.0;
+            else
+                my_grid.host(ii, jj) = rank;
+        }
+    }
+    velocity.update_device();
+    my_grid.update_device();
+
+    // setup outer boundary (probably more efficient ways, but this is easy
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // left side
+            if (ii < halo && i_w < 0)
+                my_grid.host(ii, jj) = rank;
+            // right side
+            if (ii >= width_loc + halo && i_e >= n)
+                my_grid.host(ii, jj) = rank;
+            // top side
+            if (jj < halo && j_n < 0)
+                my_grid.host(ii, jj) = rank;
+            // bot side
+            if (jj >= height_loc + halo && j_s >= n)
+                my_grid.host(ii, jj) = rank;
+        }
+    }
+    my_grid.update_device();
+
+    // setup halo (probably more efficient ways, but this is easy
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // right neighbor halo
+            if (ii < halo && i_w >= 0)
+                my_grid.host(ii, jj) = rank_w;
+            // right side
+            if (ii >= width_loc + halo && i_e < n)
+                my_grid.host(ii, jj) = rank_e;
+            // top side
+            if (jj < halo && j_n >= 0)
+                my_grid.host(ii, jj) = rank_n;
+            // bot side
+            if (jj >= height_loc + halo && j_s < n)
+                my_grid.host(ii, jj) = rank_s;
+        }
+    }
+    my_grid.update_device();
+
+    for (int ts = 0; ts < 1; ts++) {
+
+        FOR_ALL(ii, 0+1, arr_size_i-1,
+                 jj, 0+1, arr_size_j-1, {
+                  my_grid(ii, jj) = velocity(ii-1, jj) + velocity(ii+1, jj) + velocity(ii, jj-1) + velocity(ii, jj+1);  
+        });
+        Kokkos::fence();
+
+        FOR_ALL(ii, 0, arr_size_i,
+                 jj, 0, arr_size_j, {
+                  velocity(ii, jj) = my_grid(ii, jj) * 2; 
+        });
+        Kokkos::fence();
+
+        if (j_n >= 0) {
+            FOR_ALL(hh, 0, width_loc, {
+                send_n(hh) = my_grid(hh+halo, halo+1); // third from top
+            }); 
+            Kokkos::fence();
+            send_n.isend(width_loc, rank_n, stag_n, MPI_COMM_WORLD);
+            recv_n.irecv(width_loc, rank_n, rtag_n, MPI_COMM_WORLD);
+        }
+        if (j_s < n) {
+            FOR_ALL(hh, 0, width_loc, {
+                send_s(hh) = my_grid(hh+halo, height_loc); // third from bot
+            }); 
+            Kokkos::fence();
+            send_s.isend(width_loc, rank_s, stag_s, MPI_COMM_WORLD);
+            recv_s.irecv(width_loc, rank_s, rtag_s, MPI_COMM_WORLD);
+        }
+        if (i_w >= 0) {
+            FOR_ALL(hh, 0, height_loc, {
+                send_n(hh) = my_grid(halo+1, hh+halo); // third from left
+            }); 
+            Kokkos::fence();
+            send_w.isend(width_loc, rank_w, stag_w, MPI_COMM_WORLD);
+            recv_w.irecv(width_loc, rank_w, rtag_w, MPI_COMM_WORLD);
+        }
+        if (i_e < n) {
+            FOR_ALL(hh, 0, height_loc, {
+                send_n(hh) = my_grid(halo+1, width_loc); // third from left
+            }); 
+            Kokkos::fence();
+            send_e.isend(width_loc, rank_e, stag_e, MPI_COMM_WORLD);
+            recv_e.irecv(width_loc, rank_e, rtag_e, MPI_COMM_WORLD);
+        }
+
+        if (j_n >= 0) {
+            send_n.wait_send();
+            recv_n.wait_recv();
+        }
+        if (j_s < n) {
+            send_s.wait_send();
+            recv_s.wait_recv();
+        }
+        if (i_w >= 0) {
+            send_w.wait_send();
+            recv_w.wait_recv();
+        }
+        if (i_e < n) {
+            send_e.wait_send();
+            recv_e.wait_recv();
+        }
+    }
+}
 
 // Example for DENSE halo sending and receiving
 // Multiple, non uniform halo communication - assumes 4 ranks for this example
@@ -280,7 +447,8 @@ int main(int argc, char *argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   //example_halo_comms(world_size, rank);
-  example_nonuniform_halo_comms(world_size, rank);
+  //example_nonuniform_halo_comms(world_size, rank);
+  example_comms_with_map(world_size, rank);
 
   // stop timing
   double end_time = MPI_Wtime();
