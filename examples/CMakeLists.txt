@@ -111,8 +111,8 @@ if (KOKKOS)
   target_link_libraries(annkokkos ${LINKING_LIBRARIES})
 
   if (Matar_ENABLE_TRILINOS)
-    #add_executable(anndistributed ann_distributed.cpp)
-    #target_link_libraries(anndistributed ${LINKING_LIBRARIES})
+    add_executable(anndistributed ann_distributed.cpp)
+    target_link_libraries(anndistributed ${LINKING_LIBRARIES})
   endif()
 
   if (OPENMP)
