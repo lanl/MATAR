@@ -77,12 +77,11 @@ std::vector <size_t> num_nodes_in_layer = {64000, 32000, 16000, 8000, 4000, 100,
 // array of ANN structs
 struct ANNLayer_t{
 
-    DCArrayKokkos <float> outputs;  // dims = [layer]
-    DFArrayKokkos <float> weights;  // dims = [layer-1, layer]
-    DCArrayKokkos <float> biases;  // dims = [layer]
+    TpetraPartitionMap<long long int> output_vector_map;
+    TpetraPartitionMap<long long int> weight_matrix_map;
     TpetraMVArray<real_t> distributed_outputs;
-    TpetraPartitionMap<long long int> input_vector_map, output_vector_map;
-    TpetraMVArray<real_t> distributed_weights;  
+    TpetraMVArray<real_t> distributed_weights;
+    TpetraMVArray<real_t> distributed_biases; 
 
 }; // end struct
 
@@ -93,9 +92,9 @@ struct ANNLayer_t{
 // functions
 //
 // =================================================================
-void vec_mat_multiply(DCArrayKokkos <float> &inputs,
-                      DCArrayKokkos <float> &outputs, 
-                      DFArrayKokkos <float> &matrix){
+void vec_mat_multiply(TpetraMVArray<real_t> &inputs,
+                      TpetraMVArray<real_t> &outputs, 
+                      TpetraMVArray<real_t> &matrix){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
@@ -108,16 +107,16 @@ void vec_mat_multiply(DCArrayKokkos <float> &inputs,
         int j = team_h.league_rank();
         Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
                         [&] (int i, float& lsum) {
-            lsum += inputs(i)*matrix(i,j);
+            lsum += inputs(i,0)*matrix(i,j);
         }, sum); // end parallel reduce
 
-        outputs(j) = sum; 
+        outputs(j,0) = sum; 
 
     }); // end parallel for
 
 
     FOR_ALL(j,0,num_j, {
-            if(fabs(outputs(j) - num_i)>= 1e-15){
+            if(fabs(outputs(j,0) - num_i)>= 1e-15){
                 printf("error in vec mat multiply test \n");
             }
     });
@@ -141,10 +140,10 @@ float sigmoid_derivative(const float value){
 
 
 
-void forward_propagate_layer(DCArrayKokkos <float> &inputs,
-                             DCArrayKokkos <float> &outputs, 
-                             DFArrayKokkos <float> &weights,
-                             const DCArrayKokkos <float> &biases){
+void forward_propagate_layer(TpetraMVArray<real_t> &inputs,
+                             TpetraMVArray<real_t> &outputs, 
+                             TpetraMVArray<real_t> &weights,
+                             const TpetraMVArray<real_t> &biases){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
@@ -178,10 +177,10 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
         int j = team_h.league_rank();
         Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
                         [&] (int i, float& lsum) {
-            lsum += inputs(i)*weights(i,j) + biases(j);
+            lsum += inputs(i,0)*weights(i,j) + biases(j,0);
         }, sum); // end parallel reduce
 
-        outputs(j) = 1.0/(1.0 + exp(-sum)); 
+        outputs(j,0) = 1.0/(1.0 + exp(-sum)); 
 
     }); // end parallel for
     
@@ -192,17 +191,17 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
 }; // end function
 
 
-void set_biases(const DCArrayKokkos <float> &biases){
+void set_biases(const TpetraMVArray<real_t> &biases){
     const size_t num_j = biases.size();
 
     FOR_ALL(j,0,num_j, {
-		    biases(j) = 0.0;
+		    biases(j,0) = 0.0;
 	}); // end parallel for
 
 }; // end function
 
 
-void set_weights(const DFArrayKokkos <float> &weights){
+void set_weights(const TpetraMVArray<real_t> &weights){
 
     const size_t num_i = weights.dims(0);
     const size_t num_j = weights.dims(1);
@@ -233,25 +232,29 @@ int main(int argc, char* argv[])
         // note: the num_nodes_in_layer has the inputs into the ANN, so subtract 1 for the layers
         size_t num_layers = num_nodes_in_layer.size()-1;  
 
-        CMatrix <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
+        CArray <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
-        DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
+        TpetraPartitionMap<long long int> input_vector_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]); //contiguous map constructor is the default
+        TpetraMVArray<real_t> inputs(num_nodes_in_layer[0], input_vector_map);
+        //DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
 
 
         // set the strides
         // layer 0 are the inputs to the ANN
         // layer n-1 are the outputs from the ANN
-        for (size_t layer=1; layer<=num_layers; layer++){
+        for (size_t layer=0; layer<num_layers; layer++){
 
             // dimensions
-            size_t num_i = num_nodes_in_layer[layer-1];
-            size_t num_j = num_nodes_in_layer[layer];
+            size_t num_i = num_nodes_in_layer[layer];
+            size_t num_j = num_nodes_in_layer[layer+1];
 
             // allocate the weights in this layer
-            ANNLayers(layer).weights = DFArrayKokkos <float> (num_i, num_j); 
-            ANNLayers(layer).outputs = DCArrayKokkos <float> (num_j);
-            ANNLayers(layer).biases = DCArrayKokkos <float> (num_j);
+            ANNLayers(layer).output_vector_map = TpetraPartitionMap<long long int>(num_j);
+            ANNLayers(layer).weight_matrix_map = TpetraPartitionMap<long long int>(num_i);
+            ANNLayers(layer).distributed_weights = TpetraMVArray<real_t> (num_i, num_j, ANNLayers(layer).weight_matrix_map); 
+            ANNLayers(layer).distributed_outputs = TpetraMVArray<real_t> (num_j, ANNLayers(layer).output_vector_map);
+            ANNLayers(layer).distributed_biases = TpetraMVArray<real_t> (num_j, ANNLayers(layer).output_vector_map);
 
         } // end for
 
@@ -262,20 +265,20 @@ int main(int argc, char* argv[])
         
         // inputs to ANN
         for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
-            inputs.host(i) = 1.0;
+            inputs.host(i,0) = 1.0;
         }
         inputs.update_device();  // copy inputs to device
 
         // weights of the ANN
-        for (size_t layer=1; layer<=num_layers; layer++){
+        for (size_t layer=0; layer<num_layers; layer++){
 
             // dimensions
-            size_t num_i = num_nodes_in_layer[layer-1];
-            size_t num_j = num_nodes_in_layer[layer];
+            size_t num_i = num_nodes_in_layer[layer];
+            size_t num_j = num_nodes_in_layer[layer+1];
 
 
-            set_weights(ANNLayers(layer).weights);
-            set_biases(ANNLayers(layer).biases);
+            set_weights(ANNLayers(layer).distributed_weights);
+            set_biases(ANNLayers(layer).distributed_biases);
 
         } // end for over layers
 
@@ -285,8 +288,8 @@ int main(int argc, char* argv[])
         // Testing vec matrix multiply
         // =================================================================        
         vec_mat_multiply(inputs,
-                         ANNLayers(1).outputs,
-                         ANNLayers(1).weights); 
+                         ANNLayers(0).distributed_outputs,
+                         ANNLayers(0).distributed_weights); 
         
         std::cout << "vec mat multiply test completed \n";
 
@@ -303,18 +306,18 @@ int main(int argc, char* argv[])
 
         // layer 1, hidden layer 0, uses the inputs as the input values
         forward_propagate_layer(inputs,
-                                ANNLayers(1).outputs,
-                                ANNLayers(1).weights,
-                                ANNLayers(1).biases); 
+                                ANNLayers(0).distributed_outputs,
+                                ANNLayers(0).distributed_weights,
+                                ANNLayers(0).distributed_biases); 
 
         // layer 2 through n-1, layer n-1 goes to the output
-        for (size_t layer=2; layer<=num_layers; layer++){
+        for (size_t layer=1; layer<num_layers; layer++){
 
             // go through this layer, the fcn takes(inputs, outputs, weights)
-            forward_propagate_layer(ANNLayers(layer-1).outputs, 
-                                    ANNLayers(layer).outputs,
-                                    ANNLayers(layer).weights,
-                                    ANNLayers(1).biases); 
+            forward_propagate_layer(ANNLayers(layer).distributed_outputs, 
+                                    ANNLayers(layer).distributed_outputs,
+                                    ANNLayers(layer).distributed_weights,
+                                    ANNLayers(0).distributed_biases); 
         } // end for
 
         auto time_2 = std::chrono::high_resolution_clock::now();
@@ -326,11 +329,11 @@ int main(int argc, char* argv[])
         // =================================================================
         // Copy values to host
         // =================================================================
-        ANNLayers(num_layers).outputs.update_host();
+        ANNLayers(num_layers).distributed_outputs.update_host();
         
         std::cout << "output values: \n";
         for (size_t val=0; val<num_nodes_in_layer[num_layers]; val++){
-            std::cout << " " << ANNLayers(num_layers).outputs.host(val) << std::endl;
+            std::cout << " " << ANNLayers(num_layers).distributed_outputs.host(val,0) << std::endl;
         } // end for
  
     } // end of kokkos scope
