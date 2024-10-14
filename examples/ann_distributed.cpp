@@ -146,6 +146,8 @@ void forward_propagate_layer(TpetraMVArray<real_t> &inputs,
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
 
+    //perform comms to get full input vector for row vector products on matrix
+    //VERY SIMPLE EXAMPLE OF COMMS; THIS IS A TERRIBLE WAY TO DECOMPOSE THE PROBLEM
 
 /*    
     FOR_ALL(j, 0, num_j,{
@@ -259,7 +261,8 @@ int main(int argc, char* argv[])
         // =================================================================
         
         // inputs to ANN
-        for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
+        size_t local_input_size = inputs.size();
+        for (size_t i=0; i<local_input_size; i++) {
             inputs.host(i) = 1.0;
         }
         inputs.update_device();  // copy inputs to device
@@ -312,7 +315,7 @@ int main(int argc, char* argv[])
             forward_propagate_layer(ANNLayers(layer).distributed_outputs, 
                                     ANNLayers(layer).distributed_outputs,
                                     ANNLayers(layer).distributed_weights,
-                                    ANNLayers(0).distributed_biases); 
+                                    ANNLayers(layer).distributed_biases); 
         } // end for
 
         auto time_2 = std::chrono::high_resolution_clock::now();
@@ -327,8 +330,9 @@ int main(int argc, char* argv[])
         ANNLayers(num_layers).distributed_outputs.update_host();
         
         std::cout << "output values: \n";
-        for (size_t val=0; val<num_nodes_in_layer[num_layers]; val++){
-            std::cout << " " << ANNLayers(num_layers).distributed_outputs.host(val) << std::endl;
+        size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.size();
+        for (size_t val=0; val < local_output_size; val++){
+            std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(val) << std::endl;
         } // end for
  
     } // end of kokkos scope
