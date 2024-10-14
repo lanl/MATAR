@@ -58,9 +58,10 @@ void example_comms_with_map(int world_size, int rank) {
     int halo = 2;
     int arr_size_i = width_loc + halo * 2; //both sides of halo
     int arr_size_j = height_loc + halo * 2;
-    DCArrayKokkos <double> my_grid = DCArrayKokkos <double> (arr_size_i, arr_size_j);
     DCArrayKokkos <double> velocity = DCArrayKokkos <double> (arr_size_i, arr_size_j);
+    DCArrayKokkos <double> varX = DCArrayKokkos <double> (arr_size_i, arr_size_j);
     // halos
+    /*
     MPIArrayKokkos <double> send_n = MPIArrayKokkos <double> (width_loc);
     MPIArrayKokkos <double> send_s = MPIArrayKokkos <double> (width_loc);
     MPIArrayKokkos <double> send_w = MPIArrayKokkos <double> (height_loc);
@@ -69,75 +70,77 @@ void example_comms_with_map(int world_size, int rank) {
     MPIArrayKokkos <double> recv_s = MPIArrayKokkos <double> (width_loc);
     MPIArrayKokkos <double> recv_w = MPIArrayKokkos <double> (height_loc);
     MPIArrayKokkos <double> recv_e = MPIArrayKokkos <double> (height_loc);
+    */
     // setup basic
     for (int ii = 0; ii < arr_size_i; ii++) {
         for (int jj = 0; jj < arr_size_j; jj++) {
             // if halo -1, else owned so rank
-            velocity.host(ii, jj) = rank * rank;
+            varX.host(ii, jj) = rank * rank;
             if (ii < halo || jj < halo || ii >= width_loc + halo || jj >= height_loc + halo)
-                my_grid.host(ii, jj) = -1.0;
+                velocity.host(ii, jj) = -1.0;
             else
-                my_grid.host(ii, jj) = rank;
+                velocity.host(ii, jj) = rank;
         }
     }
+    varX.update_device();
     velocity.update_device();
-    my_grid.update_device();
 
     // setup outer boundary (probably more efficient ways, but this is easy
     for (int ii = 0; ii < arr_size_i; ii++) {
         for (int jj = 0; jj < arr_size_j; jj++) {
             // left side
             if (ii < halo && i_w < 0)
-                my_grid.host(ii, jj) = rank;
+                velocity.host(ii, jj) = rank;
             // right side
             if (ii >= width_loc + halo && i_e >= n)
-                my_grid.host(ii, jj) = rank;
+                velocity.host(ii, jj) = rank;
             // top side
             if (jj < halo && j_n < 0)
-                my_grid.host(ii, jj) = rank;
+                velocity.host(ii, jj) = rank;
             // bot side
             if (jj >= height_loc + halo && j_s >= n)
-                my_grid.host(ii, jj) = rank;
+                velocity.host(ii, jj) = rank;
         }
     }
-    my_grid.update_device();
+    velocity.update_device();
 
     // setup halo (probably more efficient ways, but this is easy
     for (int ii = 0; ii < arr_size_i; ii++) {
         for (int jj = 0; jj < arr_size_j; jj++) {
             // right neighbor halo
             if (ii < halo && i_w >= 0)
-                my_grid.host(ii, jj) = rank_w;
+                velocity.host(ii, jj) = rank_w;
             // right side
             if (ii >= width_loc + halo && i_e < n)
-                my_grid.host(ii, jj) = rank_e;
+                velocity.host(ii, jj) = rank_e;
             // top side
             if (jj < halo && j_n >= 0)
-                my_grid.host(ii, jj) = rank_n;
+                velocity.host(ii, jj) = rank_n;
             // bot side
             if (jj >= height_loc + halo && j_s < n)
-                my_grid.host(ii, jj) = rank_s;
+                velocity.host(ii, jj) = rank_s;
         }
     }
-    my_grid.update_device();
+    velocity.update_device();
 
     for (int ts = 0; ts < 1; ts++) {
 
         FOR_ALL(ii, 0+1, arr_size_i-1,
                  jj, 0+1, arr_size_j-1, {
-                  my_grid(ii, jj) = velocity(ii-1, jj) + velocity(ii+1, jj) + velocity(ii, jj-1) + velocity(ii, jj+1);  
+                  velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
         });
         Kokkos::fence();
 
         FOR_ALL(ii, 0, arr_size_i,
                  jj, 0, arr_size_j, {
-                  velocity(ii, jj) = my_grid(ii, jj) * 2; 
+                  varX(ii, jj) = velocity(ii, jj) * 2; 
         });
         Kokkos::fence();
+/*
 
         if (j_n >= 0) {
             FOR_ALL(hh, 0, width_loc, {
-                send_n(hh) = my_grid(hh+halo, halo+1); // third from top
+                send_n(hh) = velocity(hh+halo, halo+1); // third from top
             }); 
             Kokkos::fence();
             send_n.isend(width_loc, rank_n, stag_n, MPI_COMM_WORLD);
@@ -145,7 +148,7 @@ void example_comms_with_map(int world_size, int rank) {
         }
         if (j_s < n) {
             FOR_ALL(hh, 0, width_loc, {
-                send_s(hh) = my_grid(hh+halo, height_loc); // third from bot
+                send_s(hh) = velocity(hh+halo, height_loc); // third from bot
             }); 
             Kokkos::fence();
             send_s.isend(width_loc, rank_s, stag_s, MPI_COMM_WORLD);
@@ -153,7 +156,7 @@ void example_comms_with_map(int world_size, int rank) {
         }
         if (i_w >= 0) {
             FOR_ALL(hh, 0, height_loc, {
-                send_n(hh) = my_grid(halo+1, hh+halo); // third from left
+                send_n(hh) = velocity(halo+1, hh+halo); // third from left
             }); 
             Kokkos::fence();
             send_w.isend(width_loc, rank_w, stag_w, MPI_COMM_WORLD);
@@ -161,7 +164,7 @@ void example_comms_with_map(int world_size, int rank) {
         }
         if (i_e < n) {
             FOR_ALL(hh, 0, height_loc, {
-                send_n(hh) = my_grid(halo+1, width_loc); // third from left
+                send_n(hh) = velocity(halo+1, width_loc); // third from left
             }); 
             Kokkos::fence();
             send_e.isend(width_loc, rank_e, stag_e, MPI_COMM_WORLD);
@@ -184,8 +187,10 @@ void example_comms_with_map(int world_size, int rank) {
             send_e.wait_send();
             recv_e.wait_recv();
         }
+*/
     }
 }
+/*
 
 // Example for DENSE halo sending and receiving
 // Multiple, non uniform halo communication - assumes 4 ranks for this example
@@ -422,13 +427,14 @@ void example_halo_comms(int world_size, int rank) {
     // Could simply asynch send, then have a blocking receive
     // Asynch send is necessary to not get a communication block
 
-///*
+
     FOR_ALL(idx, 0, size, {
         printf("Rank %d) idx %d with value %d\n", rank, idx, neibhalo(idx));
     });
     Kokkos::fence();
-//*/
+
 }
+*/
 
 int main(int argc, char *argv[])
 {
