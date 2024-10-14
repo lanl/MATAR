@@ -338,6 +338,7 @@ class TpetraMVArray {
 
     size_t dims_[2];
     size_t global_dim1_;
+    size_t submap_size_;
     size_t length_;
     size_t order_;  // tensor order (rank)
     MPI_Comm mpi_comm_;
@@ -422,6 +423,8 @@ public:
     // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
+
+    size_t submap_size() const;
 
     // Host Method
     // Method that returns size
@@ -746,6 +749,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartit
     own_comms = true;
     comm_pmap = other_pmap.tpetra_map;
     tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+    submap_size_ = comm_pmap->getLocalNumElements();
     importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(comm_pmap, pmap));
 }
 
@@ -754,12 +758,19 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP
     own_comms = true;
     comm_pmap = other_pmap;
     tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+    submap_size_ = comm_pmap->getLocalNumElements();
     importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(comm_pmap, pmap));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
     tpetra_vector->doImport(*tpetra_sub_vector, *importer, Tpetra::INSERT);
+}
+
+// Return size of the submap
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::submap_size() const {
+    return submap_size_;
 }
 
 //MPI_Barrier wrapper

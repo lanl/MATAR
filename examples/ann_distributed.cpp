@@ -76,7 +76,9 @@ std::vector <size_t> num_nodes_in_layer = {64000, 32000, 16000, 8000, 4000, 100,
 
 // array of ANN structs
 struct ANNLayer_t{
-
+    //input map will store every global id in the vector for simplificty of row-vector products in this example
+    TpetraPartitionMap<long long int> output_partition_map; //map with all comms for row-vector product
+    TpetraPartitionMap<long long int> output_unique_map; //submap of uniquely decomposed indices
     TpetraMVArray<real_t> distributed_outputs;
     TpetraMVArray<real_t> distributed_weights;
     TpetraMVArray<real_t> distributed_biases; 
@@ -235,22 +237,39 @@ int main(int argc, char* argv[])
         CArray <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
-        TpetraMVArray<real_t> inputs(num_nodes_in_layer[0]); //rows decomposed onto processes
+        TpetraPartitionMap<long long int> input_pmap, input_unique_pmap;
+        DCArrayKokkos<long long int> all_layer_indices(num_nodes_in_layer[0]);
+        FOR_ALL(i,0,num_nodes_in_layer[0], {
+            all_layer_indices = i;
+        });
+        //map of all indices in this layer to be used for row-vector product (in practice, this would not include all indices in the layer)
+        input_pmap = TpetraPartitionMap<long long int>(all_layer_indices);
+        //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
+        input_unique_pmap = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]);
+        TpetraMVArray<real_t> inputs(input_pmap); //rows decomposed onto processes
+        inputs->own_comm_setup(input_unique_pmap); //tells the vector its communicating from a subset of its own data to the rest of its data
         //DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
 
 
         // set the strides
         // layer 0 are the inputs to the ANN
         // layer n-1 are the outputs from the ANN
-        for (size_t layer=0; layer<num_layers; layer++){
+        for (size_t layer=0; layer<num_layers-1; layer++){
 
             // dimensions
             size_t num_i = num_nodes_in_layer[layer];
             size_t num_j = num_nodes_in_layer[layer+1];
+            DCArrayKokkos<long long int> all_current_layer_indices(num_nodes_in_layer[layer+1]);
+            FOR_ALL(i,0,num_nodes_in_layer[layer+1], {
+                all_current_layer_indices = i;
+            });
 
+            ANNLayers(layer).output_partition_map = TpetraPartitionMap<long long int>(all_current_layer_indices);
+            ANNLayers(layer).output_unique_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[layer+1]); 
+            ANNLayers(layer).distributed_outputs = TpetraMVArray<real_t> (ANNLayers(layer).output_partition_map);
+            ANNLayers(layer).distributed_outputs->own_comm_setup(output_unique_map);
             // allocate the weights in this layer
-            ANNLayers(layer).distributed_weights = TpetraMVArray<real_t> (num_j, num_i); 
-            ANNLayers(layer).distributed_outputs = TpetraMVArray<real_t> (num_j);
+            ANNLayers(layer).distributed_weights = TpetraMVArray<real_t> (num_j, num_i);
             ANNLayers(layer).distributed_biases = TpetraMVArray<real_t> (num_j);
 
         } // end for
@@ -261,11 +280,12 @@ int main(int argc, char* argv[])
         // =================================================================
         
         // inputs to ANN
-        size_t local_input_size = inputs.size();
+        size_t local_input_size = inputs.submap_size();
         for (size_t i=0; i<local_input_size; i++) {
             inputs.host(i) = 1.0;
         }
         inputs.update_device();  // copy inputs to device
+        inputs.perform_comms();
 
         // weights of the ANN
         for (size_t layer=0; layer<num_layers; layer++){
