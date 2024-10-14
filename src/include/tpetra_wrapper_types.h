@@ -114,7 +114,7 @@ public:
      
     TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm_ = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &indices, MPI_Comm mpi_comm_ = MPI_COMM_WORLD);
+    TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm_ = MPI_COMM_WORLD);
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -185,9 +185,9 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t g
 
 // Constructor to pass matar dual view of indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &indices, MPI_Comm mpi_comm_) {
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm_) {
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
-    tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.d_view, 0, teuchos_comm));
+    tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.get_kokkos_dual_view().d_view, 0, teuchos_comm));
     TArray1D_host host = tpetra_map->getMyGlobalIndices();
     TArray1D_dev device = tpetra_map->getMyGlobalIndicesDevice();
     set_mpi_type();

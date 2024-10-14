@@ -240,14 +240,14 @@ int main(int argc, char* argv[])
         TpetraPartitionMap<long long int> input_pmap, input_unique_pmap;
         DCArrayKokkos<long long int> all_layer_indices(num_nodes_in_layer[0]);
         FOR_ALL(i,0,num_nodes_in_layer[0], {
-            all_layer_indices = i;
+            all_layer_indices(i) = i;
         });
         //map of all indices in this layer to be used for row-vector product (in practice, this would not include all indices in the layer)
         input_pmap = TpetraPartitionMap<long long int>(all_layer_indices);
         //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
         input_unique_pmap = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]);
         TpetraMVArray<real_t> inputs(input_pmap); //rows decomposed onto processes
-        inputs->own_comm_setup(input_unique_pmap); //tells the vector its communicating from a subset of its own data to the rest of its data
+        inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a subset of its own data to the rest of its data
         //DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
 
 
@@ -261,13 +261,13 @@ int main(int argc, char* argv[])
             size_t num_j = num_nodes_in_layer[layer+1];
             DCArrayKokkos<long long int> all_current_layer_indices(num_nodes_in_layer[layer+1]);
             FOR_ALL(i,0,num_nodes_in_layer[layer+1], {
-                all_current_layer_indices = i;
+                all_current_layer_indices(i) = i;
             });
 
             ANNLayers(layer).output_partition_map = TpetraPartitionMap<long long int>(all_current_layer_indices);
             ANNLayers(layer).output_unique_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[layer+1]); 
             ANNLayers(layer).distributed_outputs = TpetraMVArray<real_t> (ANNLayers(layer).output_partition_map);
-            ANNLayers(layer).distributed_outputs->own_comm_setup(output_unique_map);
+            ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
             // allocate the weights in this layer
             ANNLayers(layer).distributed_weights = TpetraMVArray<real_t> (num_j, num_i);
             ANNLayers(layer).distributed_biases = TpetraMVArray<real_t> (num_j);
