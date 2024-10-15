@@ -63,7 +63,7 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {64000, 32000, 16000, 8000, 4000, 100, 25, 6} ;
+std::vector <size_t> num_nodes_in_layer = {32000, 16000, 8000, 4000, 100, 25, 6} ;
 // {9, 50, 100, 300, 200, 100, 20, 6}
 
 
@@ -97,7 +97,7 @@ void vec_mat_multiply(TpetraMVArray<real_t> &inputs,
                       TpetraMVArray<real_t> &matrix){
     
     const size_t num_i = inputs.size();
-    const size_t num_j = outputs.size();
+    const size_t num_j = outputs.submap_size();
 
     using team_t = typename Kokkos::TeamPolicy<>::member_type;
     Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
@@ -109,15 +109,18 @@ void vec_mat_multiply(TpetraMVArray<real_t> &inputs,
                         [&] (int i, float& lsum) {
             lsum += inputs(i)*matrix(j,i);
         }, sum); // end parallel reduce
-
-        outputs(j) = sum; 
+        int global_index = outputs.getSubMapGlobalIndex(j);
+        int local_index = outputs.getMapLocalIndex(global_index);
+        outputs(local_index) = sum;
 
     }); // end parallel for
 
 
     FOR_ALL(j,0,num_j, {
-            if(fabs(outputs(j,0) - num_i)>= 1e-15){
-                printf("error in vec mat multiply test \n");
+            int global_index = outputs.getSubMapGlobalIndex(j);
+            int local_index = outputs.getMapLocalIndex(global_index);
+            if(fabs(outputs(local_index) - num_i)>= 1e-15){
+                printf("error in vec mat multiply test at row %d of %f\n", j, fabs(outputs(local_index) - num_i));
             }
     });
     
@@ -146,7 +149,7 @@ void forward_propagate_layer(TpetraMVArray<real_t> &inputs,
                              const TpetraMVArray<real_t> &biases){
     
     const size_t num_i = inputs.size();
-    const size_t num_j = outputs.size();
+    const size_t num_j = outputs.submap_size();
 
     //perform comms to get full input vector for row vector products on matrix
     //VERY SIMPLE EXAMPLE OF COMMS; THIS IS A TERRIBLE WAY TO DECOMPOSE THE PROBLEM
@@ -181,8 +184,9 @@ void forward_propagate_layer(TpetraMVArray<real_t> &inputs,
                         [&] (int i, float& lsum) {
             lsum += inputs(i)*weights(j,i) + biases(j);
         }, sum); // end parallel reduce
-
-        outputs(j,0) = 1.0/(1.0 + exp(-sum)); 
+        int global_index = outputs.getSubMapGlobalIndex(j);
+        int local_index = outputs.getMapLocalIndex(global_index);
+        outputs(local_index) = 1.0/(1.0 + exp(-sum)); 
 
     }); // end parallel for
     
@@ -223,7 +227,10 @@ void set_weights(const TpetraMVArray<real_t> &weights){
 //
 // =================================================================
 int main(int argc, char* argv[])
-{
+{   
+    MPI_Init(&argc, &argv);
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
     Kokkos::initialize(argc, argv);
     {
 
@@ -254,9 +261,10 @@ int main(int argc, char* argv[])
         // set the strides
         // layer 0 are the inputs to the ANN
         // layer n-1 are the outputs from the ANN
-        for (size_t layer=0; layer<num_layers-1; layer++){
+        for (size_t layer=0; layer<num_layers; layer++){
 
             // dimensions
+
             size_t num_i = num_nodes_in_layer[layer];
             size_t num_j = num_nodes_in_layer[layer+1];
             DCArrayKokkos<long long int> all_current_layer_indices(num_nodes_in_layer[layer+1]);
@@ -285,15 +293,10 @@ int main(int argc, char* argv[])
             inputs.host(i) = 1.0;
         }
         inputs.update_device();  // copy inputs to device
-        inputs.perform_comms();
+        inputs.perform_comms(); //distribute to full map for row-vector product
 
         // weights of the ANN
         for (size_t layer=0; layer<num_layers; layer++){
-
-            // dimensions
-            size_t num_i = num_nodes_in_layer[layer];
-            size_t num_j = num_nodes_in_layer[layer+1];
-
 
             set_weights(ANNLayers(layer).distributed_weights);
             set_biases(ANNLayers(layer).distributed_biases);
@@ -309,7 +312,8 @@ int main(int argc, char* argv[])
                          ANNLayers(0).distributed_outputs,
                          ANNLayers(0).distributed_weights); 
         
-        std::cout << "vec mat multiply test completed \n";
+        if(process_rank==0)
+            std::cout << "vec mat multiply test completed \n";
 
 
 
@@ -330,27 +334,34 @@ int main(int argc, char* argv[])
 
         // layer 2 through n-1, layer n-1 goes to the output
         for (size_t layer=1; layer<num_layers; layer++){
-
+            
+            ANNLayers(layer-1).distributed_outputs.perform_comms(); //distribute to full map for row-vector product
             // go through this layer, the fcn takes(inputs, outputs, weights)
-            forward_propagate_layer(ANNLayers(layer).distributed_outputs, 
+            forward_propagate_layer(ANNLayers(layer-1).distributed_outputs, 
                                     ANNLayers(layer).distributed_outputs,
                                     ANNLayers(layer).distributed_weights,
-                                    ANNLayers(layer).distributed_biases); 
+                                    ANNLayers(layer).distributed_biases);
+            
         } // end for
 
         auto time_2 = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration <float, std::milli> ms = time_2 - time_1;
-        std::cout << "runtime of ANN test = " << ms.count() << "ms\n\n";
-
-
+        if(process_rank==0)
+            std::cout << "runtime of ANN test = " << ms.count() << "ms\n\n";
+        
+        
         // =================================================================
         // Copy values to host
         // =================================================================
         ANNLayers(num_layers).distributed_outputs.update_host();
+
+        if(process_rank==0)
+            std::cout << "output values: \n";
+        std::flush(std::cout);
+        MPI_Barrier(MPI_COMM_WORLD);
         
-        std::cout << "output values: \n";
-        size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.size();
+        size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.submap_size();
         for (size_t val=0; val < local_output_size; val++){
             std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(val) << std::endl;
         } // end for
@@ -358,10 +369,11 @@ int main(int argc, char* argv[])
     } // end of kokkos scope
 
     Kokkos::finalize();
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(process_rank==0)
+        printf("\nfinished\n\n");
+    MPI_Finalize();
 
-
-
-    printf("\nfinished\n\n");
 
     return 0;
 }

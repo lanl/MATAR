@@ -112,9 +112,9 @@ public:
         *this = temp;
     }
      
-    TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm_ = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm_ = MPI_COMM_WORLD);
+    TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -132,12 +132,16 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
     
+    KOKKOS_INLINE_FUNCTION
     int getLocalIndex(int global_index) const;
-
-    int getGlobalIndex(int local_index) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
+    long long int getGlobalIndex(int local_index) const;
+    
+    KOKKOS_INLINE_FUNCTION
     bool isProcessGlobalIndex(int global_index) const;
-
+    
+    KOKKOS_INLINE_FUNCTION
     bool isProcessLocalIndex(int local_index) const;
 
     // Method returns the raw device pointer of the Kokkos DualView
@@ -172,9 +176,9 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap() {
 
 //Constructor for contiguous index decomposition
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm_, const std::string& tag_string) {
-    
-    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm, const std::string& tag_string) {
+    mpi_comm_ = mpi_comm;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm));
     tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) global_length, 0, teuchos_comm));
     num_global_ = global_length;
     TArray1D_host host = tpetra_map->getMyGlobalIndices();
@@ -185,8 +189,9 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t g
 
 // Constructor to pass matar dual view of indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm_) {
-    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<T> &indices, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm));
     tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.get_kokkos_dual_view().d_view, 0, teuchos_comm));
     TArray1D_host host = tpetra_map->getMyGlobalIndices();
     TArray1D_dev device = tpetra_map->getMyGlobalIndicesDevice();
@@ -292,6 +297,7 @@ T* TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 // Return local index (on this process/rank) corresponding to the input global index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getLocalIndex(int global_index) const {
     int local_index = tpetra_map->getLocalElement(global_index);
     return local_index;
@@ -299,13 +305,15 @@ int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getLocalIndex(int globa
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getGlobalIndex(int local_index) const {
+KOKKOS_INLINE_FUNCTION
+long long int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getGlobalIndex(int local_index) const {
     int global_index = tpetra_map->getGlobalElement(local_index);
     return global_index;
 }
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 bool TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::isProcessGlobalIndex(int global_index) const {
     bool belongs = tpetra_map->isNodeGlobalElement(global_index);
     return belongs;
@@ -313,6 +321,7 @@ bool TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::isProcessGlobalIndex(i
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
 bool TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::isProcessLocalIndex(int local_index) const {
     bool belongs = tpetra_map->isNodeGlobalElement(local_index);
     return belongs;
@@ -381,10 +390,10 @@ public:
     }
 
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); partitions with unique indices per process
-    TpetraMVArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraMVArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type only goes up to 2D access; partitions along rows with unique indices per process
-    TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type for 1D case with a partition map passed in
     TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -425,6 +434,18 @@ public:
     size_t size() const;
 
     size_t submap_size() const;
+
+    KOKKOS_INLINE_FUNCTION
+    long long int getSubMapGlobalIndex(int local_index) const;
+
+    KOKKOS_INLINE_FUNCTION
+    long long int getMapGlobalIndex(int local_index) const;
+
+    KOKKOS_INLINE_FUNCTION
+    int getSubMapLocalIndex(long long int local_index) const;
+
+    KOKKOS_INLINE_FUNCTION
+    int getMapLocalIndex(long long int local_index) const;
 
     // Host Method
     // Method that returns size
@@ -474,9 +495,8 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): pmap(NULL){
 
 // Overloaded 1D constructor where you provide dimensions, partitioning is done along first dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
-                                                             const std::string& tag_string) {
-    
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
     global_dim1_ = dim0;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
@@ -492,9 +512,8 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0,
 
 // Overloaded 2D constructor where you provide dimensions, partitioning is done along first dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1,
-                                                                            const std::string& tag_string) {
-    
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
     global_dim1_ = dim0;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
@@ -512,7 +531,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap,
                                                              const std::string& tag_string) {
-    
+    mpi_comm_ = input_pmap.mpi_comm_;                                                            
     global_dim1_ = input_pmap.num_global_;
     pmap = input_pmap.tpetra_map;
     dims_[0] = pmap->getLocalNumElements();
@@ -529,7 +548,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap,
                                                               size_t dim1, const std::string& tag_string) {
-    
+    mpi_comm_ = input_pmap.mpi_comm_;
     global_dim1_ = input_pmap.num_global_;
     pmap = input_pmap.tpetra_map;
     dims_[0] = pmap->getLocalNumElements();
@@ -637,6 +656,38 @@ T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 2D!");
     return this_array_.d_view(i,j);
+}
+
+// Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalIndex(int local_index) const {
+    long long int global_index = comm_pmap->getGlobalElement(local_index);
+    return global_index;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(int local_index) const {
+    long long int global_index = pmap->getGlobalElement(local_index);
+    return global_index;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long long int global_index) const {
+    int local_index = comm_pmap->getLocalElement(global_index);
+    return local_index;
+}
+
+// Return global index corresponding to the input local (on this process/rank) index
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long int global_index) const {
+    int local_index = pmap->getLocalElement(global_index);
+    return local_index;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
