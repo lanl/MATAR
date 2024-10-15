@@ -4,7 +4,7 @@ find_package(Matar REQUIRED)
 
 if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
-  find_package(Kokkos REQUIRED)
+  #find_package(Kokkos REQUIRED)
 
   add_definitions(-DHAVE_KOKKOS=1)
   if (CUDA)
@@ -18,6 +18,6 @@ if (KOKKOS)
   endif()
 
   add_executable(viewofview main.cpp)
-  target_link_libraries(viewofview matar Kokkos::kokkos)
+  target_link_libraries(viewofview ${LINKING_LIBRARIES})
 
 endif()

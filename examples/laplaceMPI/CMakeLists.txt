@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1.3)
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  #find_package(Kokkos REQUIRED) #new
   find_package(MPI REQUIRED)
   
   #add_executable(laplace_mpi laplace_mpi.cpp)

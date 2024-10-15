@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-project (test_rocm)
+#project (test_rocm)
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  #find_package(Kokkos REQUIRED) #new
   
   add_executable(test_rocm SomeClass.cpp main.cpp)
 
