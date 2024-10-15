@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 kokkos_build_type="${1}"
+intel_mkl="${2}"
 
 # If all arguments are valid, you can use them in your script as needed
 echo "Trilinos Kokkos Build Type: $kokkos_build_type"
@@ -113,24 +114,24 @@ ${ADDITIONS[@]}
 )
 
 # Flags for building with Intel MKL library
-#INTEL_MKL_ADDITIONS=(
-#-D TPL_ENABLE_MKL=ON
-#-D BLAS_LIBRARY_NAMES="libmkl_rt.so"
-#-D BLAS_LIBRARY_DIRS="$MKLROOT/lib/intel64"
-#-D LAPACK_LIBRARY_NAMES="libmkl_rt.so"
-#-D LAPACK_LIBRARY_DIRS="$MKLROOT/lib/intel64"
-#-D MKL_LIBRARY_DIRS="$MKLROOT/lib/intel64"
-#-D MKL_LIBRARY_NAMES="mkl_rt"
-#-D MKL_INCLUDE_DIRS="$MKLROOT/include"
-#)
+INTEL_MKL_ADDITIONS=(
+-D TPL_ENABLE_MKL=ON
+-D BLAS_LIBRARY_NAMES="libmkl_rt.so"
+-D BLAS_LIBRARY_DIRS="$MKLROOT/lib/intel64"
+-D LAPACK_LIBRARY_NAMES="libmkl_rt.so"
+-D LAPACK_LIBRARY_DIRS="$MKLROOT/lib/intel64"
+-D MKL_LIBRARY_DIRS="$MKLROOT/lib/intel64"
+-D MKL_LIBRARY_NAMES="mkl_rt"
+-D MKL_INCLUDE_DIRS="$MKLROOT/include"
+)
 
-#echo "**** Intel MKL = ${intel_mkl} ****"
-#if [ "$intel_mkl" = "enabled" ]; then
-    #echo "**** assuming MKL installation at $MKLROOT ****"
-    #cmake_options+=(
-        #${INTEL_MKL_ADDITIONS[@]}
-    #)
-#fi
+echo "**** Intel MKL = ${intel_mkl} ****"
+if [ "$intel_mkl" = "enabled" ]; then
+    echo "**** assuming MKL installation at $MKLROOT ****"
+    cmake_options+=(
+        ${INTEL_MKL_ADDITIONS[@]}
+    )
+fi
 
 if [ "$kokkos_build_type" = "openmp" ] || [ "$kokkos_build_type" = "openmp_mpi" ]; then
     cmake_options+=(
