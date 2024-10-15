@@ -195,6 +195,8 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayK
     tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.get_kokkos_dual_view().d_view, 0, teuchos_comm));
     TArray1D_host host = tpetra_map->getMyGlobalIndices();
     TArray1D_dev device = tpetra_map->getMyGlobalIndicesDevice();
+    length_ = host.size();
+    num_global_ = tpetra_map->getGlobalNumElements();
     set_mpi_type();
 }
 
@@ -367,10 +369,6 @@ class TpetraMVArray {
     typedef Kokkos::View<const int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_ivec_array;
     typedef Kokkos::View<int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> host_ivec_array;
     typedef MV::dual_view_type dual_vec_array;
-    Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> pmap;
-    Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> comm_pmap;
-    Teuchos::RCP<MV>       tpetra_vector;
-    Teuchos::RCP<MV>       tpetra_sub_vector; //for owned comms situations
     Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comms object
     
 
@@ -381,6 +379,10 @@ public:
     bool own_comms; //This Mapped MPI Array contains its own communication plan; just call array_comms()
     
     void set_mpi_type();
+    Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> pmap;
+    Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> comm_pmap;
+    Teuchos::RCP<MV>       tpetra_vector;
+    Teuchos::RCP<MV>       tpetra_sub_vector; //for owned comms situations
 
     TpetraMVArray();
     
@@ -726,6 +728,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>& TpetraMVArray<T,Layout,ExecSpace
         comm_pmap = temp.comm_pmap;
         importer = temp.importer;
         own_comms = temp.own_comms;
+        submap_size_ = temp.submap_size_;
     }
     
     return *this;
@@ -799,16 +802,19 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> other_pmap) {
     own_comms = true;
     comm_pmap = other_pmap.tpetra_map;
-    tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+    int local_offset = pmap->getLocalElement((comm_pmap->getMinGlobalIndex()));
+    tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap, local_offset));
     submap_size_ = comm_pmap->getLocalNumElements();
     importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(comm_pmap, pmap));
 }
 
+//requires both pmap and other_pmap to be contiguous and for other_pmap to be a subset of pmap on every process
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap) {
     own_comms = true;
     comm_pmap = other_pmap;
-    tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap));
+    int local_offset = pmap->getLocalElement((comm_pmap->getMinGlobalIndex()));
+    tpetra_sub_vector = Teuchos::rcp(new MV(*tpetra_vector, comm_pmap, local_offset));
     submap_size_ = comm_pmap->getLocalNumElements();
     importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(comm_pmap, pmap));
 }

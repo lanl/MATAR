@@ -63,7 +63,8 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {32000, 16000, 8000, 4000, 100, 25, 6} ;
+std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 100, 25, 6} ;
+//std::vector <size_t> num_nodes_in_layer = {50, 25} ;
 // {9, 50, 100, 300, 200, 100, 20, 6}
 
 
@@ -249,14 +250,15 @@ int main(int argc, char* argv[])
         FOR_ALL(i,0,num_nodes_in_layer[0], {
             all_layer_indices(i) = i;
         });
+        all_layer_indices.update_host();  // copy inputs to device
         //map of all indices in this layer to be used for row-vector product (in practice, this would not include all indices in the layer)
         input_pmap = TpetraPartitionMap<long long int>(all_layer_indices);
+
         //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
         input_unique_pmap = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]);
         TpetraMVArray<real_t> inputs(input_pmap); //rows decomposed onto processes
-        inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a subset of its own data to the rest of its data
-        //DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
-
+        //comming from subview requires both the original map and the submap to be composed of contiguous indices
+        inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a contiguous subset of its own data
 
         // set the strides
         // layer 0 are the inputs to the ANN
@@ -264,7 +266,6 @@ int main(int argc, char* argv[])
         for (size_t layer=0; layer<num_layers; layer++){
 
             // dimensions
-
             size_t num_i = num_nodes_in_layer[layer];
             size_t num_j = num_nodes_in_layer[layer+1];
             DCArrayKokkos<long long int> all_current_layer_indices(num_nodes_in_layer[layer+1]);
@@ -275,6 +276,7 @@ int main(int argc, char* argv[])
             ANNLayers(layer).output_partition_map = TpetraPartitionMap<long long int>(all_current_layer_indices);
             ANNLayers(layer).output_unique_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[layer+1]); 
             ANNLayers(layer).distributed_outputs = TpetraMVArray<real_t> (ANNLayers(layer).output_partition_map);
+            //comming from subview requires both the original map and the submap to be composed of contiguous indices
             ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
             // allocate the weights in this layer
             ANNLayers(layer).distributed_weights = TpetraMVArray<real_t> (num_j, num_i);
@@ -289,11 +291,25 @@ int main(int argc, char* argv[])
         
         // inputs to ANN
         size_t local_input_size = inputs.submap_size();
+        //std::cout << "full_input_size " << input_pmap.num_global_ << "\n";
         for (size_t i=0; i<local_input_size; i++) {
-            inputs.host(i) = 1.0;
+            int global_index = inputs.getSubMapGlobalIndex(i);
+            int local_index = inputs.getMapLocalIndex(global_index);
+            inputs.host(local_index) = 1.0;
         }
+        
+        // //debug print
+        // std::ostream &out = std::cout;
+        // Teuchos::RCP<Teuchos::FancyOStream> fos;
+        // fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+        // inputs.tpetra_sub_vector->describe(*fos,Teuchos::VERB_EXTREME);
+        
         inputs.update_device();  // copy inputs to device
         inputs.perform_comms(); //distribute to full map for row-vector product
+
+        // for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
+        //     std::cout << "input at " << i << " is " << inputs(i) << "\n";
+        // }
 
         // weights of the ANN
         for (size_t layer=0; layer<num_layers; layer++){
@@ -354,7 +370,7 @@ int main(int argc, char* argv[])
         // =================================================================
         // Copy values to host
         // =================================================================
-        ANNLayers(num_layers).distributed_outputs.update_host();
+        ANNLayers(num_layers-1).distributed_outputs.update_host();
 
         if(process_rank==0)
             std::cout << "output values: \n";
@@ -363,7 +379,9 @@ int main(int argc, char* argv[])
         
         size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.submap_size();
         for (size_t val=0; val < local_output_size; val++){
-            std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(val) << std::endl;
+            int global_index = ANNLayers(num_layers-1).distributed_outputs.getSubMapGlobalIndex(val);
+            int local_index = ANNLayers(num_layers-1).distributed_outputs.getMapLocalIndex(global_index);
+            std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(local_index) << std::endl;
         } // end for
  
     } // end of kokkos scope
