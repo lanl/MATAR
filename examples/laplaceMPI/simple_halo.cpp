@@ -14,8 +14,8 @@
 
 using namespace mtr; // matar namespace
 
-int width = 1000;
-int height = 1000;
+int width = 8;
+int height = 8;
 int max_num_iterations = 1000;
 double temp_tolerance = 0.01;
 
@@ -58,8 +58,12 @@ void example_comms_with_map(int world_size, int rank) {
     int halo = 2;
     int arr_size_i = width_loc + halo * 2; //both sides of halo
     int arr_size_j = height_loc + halo * 2;
-    DCArrayKokkos <double> velocity = DCArrayKokkos <double> (arr_size_i, arr_size_j);
-    DCArrayKokkos <double> varX = DCArrayKokkos <double> (arr_size_i, arr_size_j);
+    MPIArrayKokkos <double> velocity = MPIArrayKokkos <double> (arr_size_i, arr_size_j, "velo");
+    DCArrayKokkos <double> varX = DCArrayKokkos <double> (arr_size_i, arr_size_j, "varX");
+
+    // new functions
+    velocity.mpi_decomp(world_size, rank, halo, MPI_COMM_WORLD);
+
     // halos
     /*
     MPIArrayKokkos <double> send_n = MPIArrayKokkos <double> (width_loc);
@@ -136,6 +140,9 @@ void example_comms_with_map(int world_size, int rank) {
                   varX(ii, jj) = velocity(ii, jj) * 2; 
         });
         Kokkos::fence();
+
+        printf("in example %d\n", velocity.extent());
+        velocity.mpi_halo_update();
 /*
 
         if (j_n >= 0) {
