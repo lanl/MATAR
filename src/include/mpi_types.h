@@ -1039,6 +1039,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size,
         send_n_ = MPIHaloKokkos <T> (dims_[0]);
         recv_n_ = MPIHaloKokkos <T> (dims_[0]);
         neighb = j_n * mpi_dim_size + world_i;
+        if (neighb < 0 || neighb >= world_size) neighb = -1;
         tag = rank * 10 + neighb;
         send_n_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
@@ -1047,6 +1048,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size,
         send_s_ = MPIHaloKokkos <T> (dims_[0]);
         recv_s_ = MPIHaloKokkos <T> (dims_[0]);
         neighb = j_s * mpi_dim_size + world_i;
+        if (neighb < 0 || neighb >= world_size) neighb = -1;
         tag = rank * 10 + neighb;
         send_s_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
@@ -1055,18 +1057,20 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size,
         send_w_ = MPIHaloKokkos <T> (dims_[1]);
         recv_w_ = MPIHaloKokkos <T> (dims_[1]);
         neighb = world_j * mpi_dim_size + i_w;
+        if (neighb < 0 || neighb >= world_size) neighb = -1;
         tag = rank * 10 + neighb;
         send_w_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
         recv_w_.mpi_setup(neighb, tag, halos, comm);
         // setup east
-        send_s_ = MPIHaloKokkos <T> (dims_[1]);
-        recv_s_ = MPIHaloKokkos <T> (dims_[1]);
+        send_e_ = MPIHaloKokkos <T> (dims_[1]);
+        recv_e_ = MPIHaloKokkos <T> (dims_[1]);
         neighb = world_j * mpi_dim_size + i_e;
+        if (neighb < 0 || neighb >= world_size) neighb = -1;
         tag = rank * 10 + neighb;
-        send_s_.mpi_setup(neighb, tag, halos, comm);
+        send_e_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
-        recv_s_.mpi_setup(neighb, tag, halos, comm);
+        recv_e_.mpi_setup(neighb, tag, halos, comm);
     }
     if (order_ == 3) {
 
@@ -1086,8 +1090,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             Kokkos::parallel_for("haloupdatenorth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1);
                 int jj = halo + (halo - 1) + hh;
-                //send_n_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
-                //printf("updating (%d,%d) with sizes (%d,%d)\n", ii, jj, dims_[0], dims_[1]);
+                send_n_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
             //send_n_.halo_isend();
@@ -1097,7 +1100,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             Kokkos::parallel_for("haloupdatesouth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo_size_y;
                 int jj = halo + (halo - 1) + hh;
-                //send_s_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
+                send_s_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
             //send_s_.halo_isend();
@@ -1107,7 +1110,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             Kokkos::parallel_for("haloupdatewest", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1) + hh;
                 int jj = halo + (halo - 1);
-                //send_w_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
+                send_w_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
             //send_w_.halo_isend();
@@ -1117,7 +1120,6 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             Kokkos::parallel_for("haloupdateeast", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1) + hh;
                 int jj = halo_size_x;
-                printf("updating %d with %d\n", hh, ii*dims_[1] + jj);
                 send_e_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
