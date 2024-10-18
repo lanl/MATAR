@@ -63,7 +63,7 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 100, 25, 6} ;
+std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000, 100} ;
 //std::vector <size_t> num_nodes_in_layer = {50, 25} ;
 // {9, 50, 100, 300, 200, 100, 20, 6}
 
@@ -383,7 +383,17 @@ int main(int argc, char* argv[])
             int local_index = ANNLayers(num_layers-1).distributed_outputs.getMapLocalIndex(global_index);
             std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(local_index) << std::endl;
         } // end for
- 
+        
+        //test repartition; assume a 10 by 10 grid of outputs from ANN
+        //assign coords to each grid point, find a partition of the grid, then repartition output layer using new map
+        TpetraMVArray<real_t> output_grid(100, 2); //array of 2D coordinates for 10 by 10 grid of points
+        //populate coords
+        FOR_ALL(i,0,output_grid.dims(0), {
+		    output_grid(i, 0) = i/10;
+            output_grid(i, 1) = i%10;
+	    }); // end parallel for
+        output_grid.repartition_vector();
+        
     } // end of kokkos scope
 
     Kokkos::finalize();

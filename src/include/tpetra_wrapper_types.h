@@ -58,6 +58,12 @@
 #include "Tpetra_Details_DefaultTypes.hpp"
 #include "Tpetra_Import.hpp"
 
+// Repartition Package
+#include <Zoltan2_XpetraMultiVectorAdapter.hpp>
+#include <Zoltan2_PartitioningProblem.hpp>
+#include <Zoltan2_PartitioningSolution.hpp>
+#include <Zoltan2_InputTraits.hpp>
+
 // Trilinos type definitions
 typedef Tpetra::Map<>::local_ordinal_type tpetra_LO;
 typedef Tpetra::Map<>::global_ordinal_type tpetra_GO;
@@ -416,6 +422,8 @@ public:
     void own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
 
     void perform_comms();
+
+    void repartition_vector(); //repartitions this vector using the zoltan2 multijagged algorithm on its data
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -822,6 +830,114 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
     tpetra_vector->doImport(*tpetra_sub_vector, *importer, Tpetra::INSERT);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
+
+    int num_dim = dims_[1];
+    int nranks, process_rank;
+    MPI_Comm_rank(mpi_comm_, &process_rank);
+    MPI_Comm_size(mpi_comm_, &nranks);
+    // construct input adapted needed by Zoltan2 problem
+    //typedef Xpetra::MultiVector<real_t, tpetra_LO, tpetra_GO, tpetra_node_type> xvector_t;
+    typedef Zoltan2::XpetraMultiVectorAdapter<MV> inputAdapter_t;
+    typedef Zoltan2::EvaluatePartition<inputAdapter_t> quality_t;
+
+    // Teuchos::RCP<xvector_t> xpetra_vector = 
+    //     Teuchos::rcp(new Xpetra::TpetraMultiVector<real_t, tpetra_LO, tpetra_GO, tpetra_node_type>(tpetra_vector));
+
+    //Teuchos::RCP<inputAdapter_t> problem_adapter =  Teuchos::rcp(new inputAdapter_t(xpetra_vector));
+    Teuchos::RCP<inputAdapter_t> problem_adapter =  Teuchos::rcp(new inputAdapter_t(tpetra_vector));
+
+    // Create parameters for an RCB problem
+
+    double tolerance = 1.05;
+
+    Teuchos::ParameterList params("Node Partition Params");
+    params.set("debug_level", "basic_status");
+    params.set("debug_procs", "0");
+    params.set("error_check_level", "debug_mode_assertions");
+
+    // params.set("algorithm", "rcb");
+    params.set("algorithm", "multijagged");
+    params.set("imbalance_tolerance", tolerance);
+    params.set("num_global_parts", nranks);
+    params.set("partitioning_objective", "minimize_cut_edge_count");
+
+    Teuchos::RCP<Zoltan2::PartitioningProblem<inputAdapter_t>> problem =
+        Teuchos::rcp(new Zoltan2::PartitioningProblem<inputAdapter_t>(&(*problem_adapter), &params));
+
+    // Solve the problem
+
+    problem->solve();
+
+    // create metric object where communicator is Teuchos default
+
+    quality_t* metricObject1 = new quality_t(&(*problem_adapter), &params, // problem1->getComm(),
+                                             &problem->getSolution());
+    // // Check the solution.
+
+    if (process_rank == 0)
+    {
+        metricObject1->printMetrics(std::cout);
+    }
+
+    if (process_rank == 0)
+    {
+        real_t imb = metricObject1->getObjectCountImbalance();
+        if (imb <= tolerance)
+        {
+            std::cout << "pass: " << imb << std::endl;
+        }
+        else
+        {
+            std::cout << "fail: " << imb << std::endl;
+        }
+        std::cout << std::endl;
+    }
+    delete metricObject1;
+
+    // // migrate rows of the vector so they correspond to the partition recommended by Zoltan2
+
+    // Teuchos::RCP<MV> partitioned_node_coords_distributed = Teuchos::rcp(new MV(map, num_dim));
+
+    // Teuchos::RCP<xvector_t> xpartitioned_node_coords_distributed =
+    //     Teuchos::rcp(new Xpetra::TpetraMultiVector<real_t, LO, GO, node_type>(partitioned_node_coords_distributed));
+
+    problem_adapter->applyPartitioningSolution(*tpetra_vector, tpetra_vector, problem->getSolution());
+    
+    pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*(tpetra_vector->getMap())));
+    // *partitioned_node_coords_distributed = Xpetra::toTpetra<real_t, LO, GO, node_type>(*xpartitioned_node_coords_distributed);
+
+    // Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> partitioned_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(*(partitioned_node_coords_distributed->getMap())));
+
+    Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> partitioned_map_one_to_one;
+    partitioned_map_one_to_one = Tpetra::createOneToOne<tpetra_LO, tpetra_GO, tpetra_node_type>(pmap);
+    //Teuchos::RCP<MV> partitioned_node_coords_one_to_one_distributed = Teuchos::rcp(new MV(partitioned_map_one_to_one, num_dim));
+
+    // Tpetra::Import<LO, GO> importer_one_to_one(partitioned_map, partitioned_map_one_to_one);
+    // partitioned_node_coords_one_to_one_distributed->doImport(*partitioned_node_coords_distributed, importer_one_to_one, Tpetra::INSERT);
+    // node_coords_distributed = partitioned_node_coords_one_to_one_distributed;
+    pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*partitioned_map_one_to_one));
+    dims_[0] = pmap->getLocalNumElements();
+    length_ = (dims_[0] * dims_[1]);
+    // // migrate density vector if this is a restart file read
+    // if (simparam.restart_file&&repartition_node_densities)
+    // {
+    //     Teuchos::RCP<MV> partitioned_node_densities_distributed = Teuchos::rcp(new MV(partitioned_map, 1));
+
+    //     // create import object using local node indices map and all indices map
+    //     Tpetra::Import<LO, GO> importer(map, partitioned_map);
+
+    //     // comms to get ghosts
+    //     partitioned_node_densities_distributed->doImport(*design_node_densities_distributed, importer, Tpetra::INSERT);
+    //     design_node_densities_distributed = partitioned_node_densities_distributed;
+    // }
+
+    // // update nlocal_nodes and node map
+    // map = partitioned_map;
+    // nlocal_nodes = map->getLocalNumElements();
 }
 
 // Return size of the submap
