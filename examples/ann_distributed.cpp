@@ -373,27 +373,51 @@ int main(int argc, char* argv[])
         ANNLayers(num_layers-1).distributed_outputs.update_host();
 
         if(process_rank==0)
-            std::cout << "output values: \n";
+            std::cout << "output values grid: \n";
         std::flush(std::cout);
         MPI_Barrier(MPI_COMM_WORLD);
-        
+        std::stringstream output_stream;
         size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.submap_size();
         for (size_t val=0; val < local_output_size; val++){
             int global_index = ANNLayers(num_layers-1).distributed_outputs.getSubMapGlobalIndex(val);
             int local_index = ANNLayers(num_layers-1).distributed_outputs.getMapLocalIndex(global_index);
-            std::cout << " " << ANNLayers(num_layers-1).distributed_outputs.host(local_index) << std::endl;
+            output_stream << " " << ANNLayers(num_layers-1).distributed_outputs.host(local_index);
+            if(val%10==0) output_stream << std::endl;
         } // end for
-        
+        std::cout << output_stream.str();
+        std::flush(std::cout);
+
         //test repartition; assume a 10 by 10 grid of outputs from ANN
         //assign coords to each grid point, find a partition of the grid, then repartition output layer using new map
         TpetraMVArray<real_t> output_grid(100, 2); //array of 2D coordinates for 10 by 10 grid of points
+        
         //populate coords
         FOR_ALL(i,0,output_grid.dims(0), {
 		    output_grid(i, 0) = i/10;
             output_grid(i, 1) = i%10;
 	    }); // end parallel for
-        output_grid.repartition_vector();
+
+        MPI_Barrier(MPI_COMM_WORLD);
+        if(process_rank==0){ 
+            std::cout << std::endl;
+            std::cout << " Map before repartitioning" << std::endl;
+        }
+        std::flush(std::cout);
+        output_grid.pmap.print();
         
+        MPI_Barrier(MPI_COMM_WORLD);
+        output_grid.repartition_vector();
+        if(process_rank==0){ 
+            std::cout << std::endl;
+            std::cout << " Map after repartitioning" << std::endl;
+        }
+        output_grid.pmap.print();
+
+        if(process_rank==0){ 
+            std::cout << std::endl;
+            std::cout << " Grid components per rank after repartitioning" << std::endl;
+        }
+        output_grid.print();
     } // end of kokkos scope
 
     Kokkos::finalize();

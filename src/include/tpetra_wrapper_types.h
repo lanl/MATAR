@@ -493,6 +493,9 @@ public:
     // Method that update device view
     void update_device();
 
+    //print vector data
+    void print() const;
+
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraMVArray ();
@@ -852,6 +855,14 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
+        std::ostream &out = std::cout;
+        Teuchos::RCP<Teuchos::FancyOStream> fos;
+        fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+        tpetra_vector->describe(*fos,Teuchos::VERB_EXTREME);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     int num_dim = dims_[1];
@@ -943,6 +954,12 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     own_comms = false; //reset submap setup now that full map is different
     dims_[0] = tpetra_pmap->getLocalNumElements();
     length_ = (dims_[0] * dims_[1]);
+
+    //copy new partitioned vector into another one constructed with our managed dual view
+    this_array_ = TArray1D(this_array_.d_view.label(), dims_[0], dims_[1]);
+    Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    managed_tpetra_vector->assign(*tpetra_vector);
+    tpetra_vector = managed_tpetra_vector;
     // // migrate density vector if this is a restart file read
     // if (simparam.restart_file&&repartition_node_densities)
     // {
