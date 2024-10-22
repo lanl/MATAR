@@ -418,6 +418,10 @@ int main(int argc, char* argv[])
             std::cout << " Grid components per rank after repartitioning" << std::endl;
         }
         output_grid.print();
+
+        //get repartitioned map to distribute new arrays with it
+        TpetraPartitionMap<long long int> partitioned_output_map = output_grid.pmap;
+        TpetraMVArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
     } // end of kokkos scope
 
     Kokkos::finalize();

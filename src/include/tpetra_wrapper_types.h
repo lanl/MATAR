@@ -367,7 +367,6 @@ class TpetraMVArray {
     
     // Trilinos type definitions
     typedef Tpetra::MultiVector<real_t, tpetra_LO, tpetra_GO> MV;
-
     typedef Kokkos::View<real_t*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
     typedef Kokkos::View<tpetra_GO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> global_indices_array;
     typedef Kokkos::View<tpetra_LO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> indices_array;
@@ -378,6 +377,7 @@ class TpetraMVArray {
     typedef Kokkos::View<const int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_ivec_array;
     typedef Kokkos::View<int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> host_ivec_array;
     typedef MV::dual_view_type dual_vec_array;
+
     Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comms object
     
 
@@ -996,6 +996,122 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraMVArray() {}
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of TpetraMVArray
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
+/* TpetraTpetraCommunicationPlan:  Class storing relevant data and functions to perform comms between two different Tpetra MATAR MPI types.
+                       The object for this class should not be reconstructed if the same comm plan is needed repeatedly; the setup is expensive.
+                       The comms routines such as execute_comms can be called repeatedly to avoid repeated setup of the plan.*/
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class TpetraCommunicationPlan {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    
+protected:
+    TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector_;
+    TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector_;
+
+    /*forward comms means communicating data to a vector that doesn't have a unique distribution of its global
+      indices amongst processes from a vector that does have a unique distribution amongst processes.
+      An example of forward comms in a finite element application would be communicating ghost data from 
+      the vector of local data.
+
+      reverse comms means communicating data to a vector that has a unique distribution of its global
+      indices amongst processes from a vector that does not have a unique distribution amongst processes.
+      An example of reverse comms in a finite element application would be communicating force contributions from ghost
+      indices via summation to the entries of the uniquely owned vector that stores final tallies of forces.
+    */
+    bool reverse_comms_flag; //default is false
+    Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comm object
+    Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> exporter; // tpetra reverse comm object
+
+public:
+    
+    enum combine_mode { INSERT, SUM, ABSMAX, REPLACE, MIN, ADD_REPLACE };
+    combine_mode combine_mode_;
+
+    TpetraCommunicationPlan();
+
+    //Copy Constructor
+    TpetraCommunicationPlan(const TpetraCommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &temp){
+        *this = temp;
+    }
+    
+    TpetraCommunicationPlan(TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                            TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
+
+    KOKKOS_INLINE_FUNCTION
+    TpetraCommunicationPlan& operator=(const TpetraCommunicationPlan& temp);
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCommunicationPlan ();
+
+    void execute_comms();
+}; // End of TpetraCommunicationPlan
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan() {
+    
+}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan(TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                            TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms, combine_mode mode) {
+    combine_mode_ = mode;
+    reverse_comms_flag = reverse_comms;
+    destination_vector_ = destination_vector;
+    source_vector_ = source_vector;
+
+    //setup Tpetra comm object
+    if(reverse_comms){
+        // create export object; completes setup
+        exporter = Teuchos::rcp(new Tpetra::Export<tpetra_LO, tpetra_GO>(source_vector_.tpetra_pmap, destination_vector_.tpetra_pmap));
+    }
+    else{
+        // create import object; completes setup
+        importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(source_vector_.tpetra_pmap, destination_vector_.tpetra_pmap));
+    }
+}
+
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraCommunicationPlan& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        reverse_comms_flag = temp.reverse_comms_flag;
+        combine_mode_ = temp.combine_mode_;
+        destination_vector_ = temp.destination_vector_;
+        source_vector_ = temp.source_vector_;
+    }
+    
+    return *this;
+}
+
+//perform comms
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
+    if(reverse_comms_flag){
+        destination_vector_.tpetra_vector->doExport(*source_vector_.tpetra_vector, *exporter, Tpetra::INSERT, true);
+    }
+    else{
+        destination_vector_.tpetra_vector->doImport(*source_vector_.tpetra_vector, *importer, Tpetra::INSERT);
+    }
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~TpetraCommunicationPlan() {}
+
+////////////////////////////////////////////////////////////////////////////////
+// End of TpetraCommunicationPlan
 ////////////////////////////////////////////////////////////////////////////////
 
 } // end namespace
