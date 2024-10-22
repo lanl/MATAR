@@ -141,7 +141,7 @@ void example_comms_with_map(int world_size, int rank) {
         });
         Kokkos::fence();
 
-        printf("in example %d\n", velocity.extent());
+        //printf("in example %d\n", velocity.extent());
         velocity.mpi_halo_update();
 /*
 

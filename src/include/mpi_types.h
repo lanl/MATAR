@@ -1087,44 +1087,84 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
         int halo_size_x = dims_[0] - (halo * 2);
         int halo_size_y = dims_[1] - (halo * 2);
         if (send_n_.get_neighbor() >= 0) {
+            // update halo with array values
             Kokkos::parallel_for("haloupdatenorth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1);
                 int jj = halo + (halo - 1) + hh;
                 send_n_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
-            //send_n_.halo_isend();
-            //recv_n_.halo_irecv();
+            send_n_.halo_isend();
+            recv_n_.halo_irecv();
+            // wait
+            send_n_.wait_send();
+            recv_n_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatenorth2", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int ii = halo + (halo - 1);
+                int jj = halo + (halo - 1) + hh;
+                this_array_.d_view(ii*dims_[1] + jj) = recv_n_(hh);
+            }); 
         }
         if (send_s_.get_neighbor() >= 0) {
+            // update halo with array values
             Kokkos::parallel_for("haloupdatesouth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo_size_y;
                 int jj = halo + (halo - 1) + hh;
                 send_s_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
             }); 
             Kokkos::fence();
-            //send_s_.halo_isend();
-            //recv_s_.halo_irecv();
+            send_s_.halo_isend();
+            recv_s_.halo_irecv();
+            // wait
+            send_s_.wait_send();
+            recv_s_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatesouth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int ii = halo_size_y;
+                int jj = halo + (halo - 1) + hh;
+                this_array_.d_view(ii*dims_[1] + jj) = recv_s_(hh);
+            }); 
         }
         if (send_w_.get_neighbor() >= 0) {
+            // update halo with array values
             Kokkos::parallel_for("haloupdatewest", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1) + hh;
                 int jj = halo + (halo - 1);
-                send_w_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
+                send_w_(hh) = this_array_.d_view(ii*dims_[1] + jj); // column depending on # of halos
             }); 
             Kokkos::fence();
-            //send_w_.halo_isend();
-            //recv_w_.halo_irecv();
+            send_w_.halo_isend();
+            recv_w_.halo_irecv();
+            // wait
+            send_w_.wait_send();
+            recv_w_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatewest", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo + (halo - 1);
+                this_array_.d_view(ii*dims_[1] + jj) = recv_w_(hh);
+            }); 
         }
         if (send_e_.get_neighbor() >= 0) {
+            // update halo with array values
             Kokkos::parallel_for("haloupdateeast", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
                 int ii = halo + (halo - 1) + hh;
                 int jj = halo_size_x;
-                send_e_(hh) = this_array_.d_view(ii*dims_[1] + jj); // row depending on # of halos
+                send_e_(hh) = this_array_.d_view(ii*dims_[1] + jj); // column depending on # of halos
             }); 
             Kokkos::fence();
-            //send_e_.halo_isend();
-            //recv_e_.halo_irecv();
+            send_e_.halo_isend();
+            recv_e_.halo_irecv();
+            // wait
+            send_e_.wait_send();
+            recv_e_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdateeast2", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo_size_x;
+                this_array_.d_view(ii*dims_[1] + jj) = recv_e_(hh);
+            }); 
         }
     }
     if (order_ == 3) {
