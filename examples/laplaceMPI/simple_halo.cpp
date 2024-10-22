@@ -89,6 +89,7 @@ void example_comms_with_map(int world_size, int rank) {
     varX.update_device();
     velocity.update_device();
 
+/*
     // setup outer boundary (probably more efficient ways, but this is easy
     for (int ii = 0; ii < arr_size_i; ii++) {
         for (int jj = 0; jj < arr_size_j; jj++) {
@@ -107,6 +108,7 @@ void example_comms_with_map(int world_size, int rank) {
         }
     }
     velocity.update_device();
+*/
 
     // setup halo (probably more efficient ways, but this is easy
     for (int ii = 0; ii < arr_size_i; ii++) {
@@ -127,22 +129,40 @@ void example_comms_with_map(int world_size, int rank) {
     }
     velocity.update_device();
 
-    for (int ts = 0; ts < 1; ts++) {
-
-        FOR_ALL(ii, 0+1, arr_size_i-1,
-                 jj, 0+1, arr_size_j-1, {
+        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
+                 jj, 0+(halo-1), arr_size_j-(halo-1), {
                   velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
+                    if (rank == 0) {
+                        printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
+                    }
         });
         Kokkos::fence();
 
-        FOR_ALL(ii, 0, arr_size_i,
-                 jj, 0, arr_size_j, {
+    for (int ts = 0; ts < 2; ts++) {
+
+        //FOR_ALL(ii, 0, arr_size_i,
+        //         jj, 0, arr_size_j, {
+        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
+                 jj, 0+(halo-1), arr_size_j-(halo-1), {
                   varX(ii, jj) = velocity(ii, jj) * 2; 
+                  velocity(ii, jj) = velocity(ii, jj) + varX(ii, jj); 
         });
         Kokkos::fence();
 
         //printf("in example %d\n", velocity.extent());
         velocity.mpi_halo_update();
+        if (rank == 0) printf("\n\n--------------\n\n\n");
+
+        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
+                 jj, 0+(halo-1), arr_size_j-(halo-1), {
+                    if (rank == 0) {
+                        printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
+                    }
+        });
+        Kokkos::fence();
+    
+        velocity.update_device();
+
 /*
 
         if (j_n >= 0) {
