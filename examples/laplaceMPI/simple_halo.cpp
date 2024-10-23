@@ -14,8 +14,8 @@
 
 using namespace mtr; // matar namespace
 
-int width = 8;
-int height = 8;
+int width = 4;
+int height = 4;
 int max_num_iterations = 1000;
 double temp_tolerance = 0.01;
 
@@ -43,6 +43,7 @@ void example_comms_with_map(int world_size, int rank) {
     int rank_w = world_j * n + i_w;
     int rank_e = world_j * n + i_e;
 
+/*
     int stag_n = rank * 10 + rank_n;
     int stag_s = rank * 10 + rank_s;
     int stag_w = rank * 10 + rank_w;
@@ -51,17 +52,21 @@ void example_comms_with_map(int world_size, int rank) {
     int rtag_s = rank_s * 10 + rank;
     int rtag_w = rank_w * 10 + rank;
     int rtag_e = rank_e * 10 + rank;
+*/
 
     // data setup
-    int width_loc = width / n;
-    int height_loc = height / n;
-    int halo = 2;
+    //int width_loc = width / n;
+    //int height_loc = height / n;
+    int width_loc = simple_decomp_row_size(world_size, rank, width);
+    int height_loc = simple_decomp_col_size(world_size, rank, height);
+    //printf("rank %d width %d height %d\n", rank, width_loc, height_loc);
+    int halo = 1;
     int arr_size_i = width_loc + halo * 2; //both sides of halo
     int arr_size_j = height_loc + halo * 2;
     MPIArrayKokkos <double> velocity = MPIArrayKokkos <double> (arr_size_i, arr_size_j, "velo");
     DCArrayKokkos <double> varX = DCArrayKokkos <double> (arr_size_i, arr_size_j, "varX");
 
-    // new functions
+    // new function
     velocity.mpi_decomp(world_size, rank, halo, MPI_COMM_WORLD);
 
     // halos
@@ -129,23 +134,25 @@ void example_comms_with_map(int world_size, int rank) {
     }
     velocity.update_device();
 
-        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
-                 jj, 0+(halo-1), arr_size_j-(halo-1), {
-                  velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
-                    if (rank == 0) {
-                        printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
-                    }
-        });
-        Kokkos::fence();
+    FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+              velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
+    });
+    Kokkos::fence();
+    FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+                if (rank == 0) {
+                    printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
+                }
+    });
+    Kokkos::fence();
 
-    for (int ts = 0; ts < 2; ts++) {
+    for (int ts = 0; ts < 1; ts++) {
 
-        //FOR_ALL(ii, 0, arr_size_i,
-        //         jj, 0, arr_size_j, {
-        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
-                 jj, 0+(halo-1), arr_size_j-(halo-1), {
+        // "update variable"
+        FOR_ALL(ii, 0, arr_size_i,
+                 jj, 0, arr_size_j, {
                   varX(ii, jj) = velocity(ii, jj) * 2; 
-                  velocity(ii, jj) = velocity(ii, jj) + varX(ii, jj); 
         });
         Kokkos::fence();
 
@@ -153,16 +160,20 @@ void example_comms_with_map(int world_size, int rank) {
         velocity.mpi_halo_update();
         if (rank == 0) printf("\n\n--------------\n\n\n");
 
-        FOR_ALL(ii, 0+(halo-1), arr_size_i-(halo-1),
-                 jj, 0+(halo-1), arr_size_j-(halo-1), {
+        FOR_ALL(ii, 1, arr_size_i-1,
+                jj, 1, arr_size_j-1, {
                     if (rank == 0) {
                         printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
                     }
         });
         Kokkos::fence();
     
-        velocity.update_device();
-
+        // "update velocity"
+        FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+              velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
+    });
+    Kokkos::fence();
 /*
 
         if (j_n >= 0) {

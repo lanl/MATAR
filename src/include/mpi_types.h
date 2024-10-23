@@ -47,6 +47,69 @@ namespace mtr
 {
 
 /////////////////////////
+// Not a class, just helping functions for all MPI
+/////////////////////////
+template <typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+size_t simple_decomp_row_size(int world_size, int rank, int big_N) {
+    int grid_size, rem, row, col, add; 
+    size_t row_size;
+    grid_size = sqrt(world_size); // assumes a square rootable world size
+    rem = big_N % grid_size; // extra points
+    row = rank / grid_size;
+    col = rank % grid_size;
+    add = (col < rem);
+    //add = col / (grid_size - rem); // 1 if we have an extra piece, 0 otherwise
+    row_size = big_N / grid_size + add;
+    return row_size;
+}
+
+template <typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+size_t simple_decomp_row_start(int world_size, int rank, int big_N) {
+    int grid_size, rem, row, col, add, sub; 
+    size_t row_size, row_start;
+    grid_size = sqrt(world_size); // assumes a square rootable world size
+    rem = big_N % grid_size; // extra points
+    row = rank / grid_size;
+    col = rank % grid_size;
+    add = (col < rem);
+    //add = col / (grid_size - rem); // 1 if we have an extra piece, 0 otherwise
+    sub = add * (grid_size - rem); // subtraction from start based on how many other ranks have an extra piece
+    row_size = big_N / grid_size + add;
+    row_start = row * row_size - sub;
+    return row_start;
+}
+
+template <typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+size_t simple_decomp_col_size(int world_size, int rank, int big_N) {
+    int grid_size, rem, row, col, add; 
+    size_t col_size;
+    grid_size = sqrt(world_size); // assumes a square rootable world size
+    rem = big_N % grid_size; // extra points
+    row = rank / grid_size;
+    col = rank % grid_size;
+    add = (row < rem);
+    //add = row / (grid_size - rem); // 1 if we have an extra piece, 0 otherwise
+    col_size = big_N / grid_size + add;
+    return col_size;
+}
+
+template <typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+size_t simple_decomp_col_start(int world_size, int rank, int big_N) {
+    int grid_size, rem, row, col, add, sub; 
+    size_t col_size, col_start;
+    grid_size = sqrt(world_size); // assumes a square rootable world size
+    rem = big_N % grid_size; // extra points
+    row = rank / grid_size;
+    col = rank % grid_size;
+    add = (row < rem);
+    //add = row / (grid_size - rem); // 1 if we have an extra piece, 0 otherwise
+    sub = add * (grid_size - rem); // subtraction from start based on how many other ranks have an extra piece
+    col_size = big_N / grid_size + add;
+    col_start = col * col_size - sub;
+    return col_start;
+}
+
+/////////////////////////
 // MPIHaloKokkos:  Really only used for internal comms in the original MPIHaloKokkos class
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
@@ -1036,37 +1099,53 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size,
         int i_e = world_i + 1;
 
         // setup north
-        send_n_ = MPIHaloKokkos <T> (dims_[0]);
-        recv_n_ = MPIHaloKokkos <T> (dims_[0]);
-        neighb = j_n * mpi_dim_size + world_i;
-        if (neighb < 0 || neighb >= world_size) neighb = -1;
+        send_n_ = MPIHaloKokkos <T> (dims_[0] - 2);
+        recv_n_ = MPIHaloKokkos <T> (dims_[0] - 2);
+        if (j_n < 0 || j_n >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = j_n * mpi_dim_size + world_i;
+        }
         tag = rank * 10 + neighb;
         send_n_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
         recv_n_.mpi_setup(neighb, tag, halos, comm);
         // setup south
-        send_s_ = MPIHaloKokkos <T> (dims_[0]);
-        recv_s_ = MPIHaloKokkos <T> (dims_[0]);
-        neighb = j_s * mpi_dim_size + world_i;
-        if (neighb < 0 || neighb >= world_size) neighb = -1;
+        send_s_ = MPIHaloKokkos <T> (dims_[0] - 2);
+        recv_s_ = MPIHaloKokkos <T> (dims_[0] - 2);
+        if (j_s < 0 || j_s >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = j_s * mpi_dim_size + world_i;
+        }
         tag = rank * 10 + neighb;
         send_s_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
         recv_s_.mpi_setup(neighb, tag, halos, comm);
         // setup west
-        send_w_ = MPIHaloKokkos <T> (dims_[1]);
-        recv_w_ = MPIHaloKokkos <T> (dims_[1]);
-        neighb = world_j * mpi_dim_size + i_w;
-        if (neighb < 0 || neighb >= world_size) neighb = -1;
+        send_w_ = MPIHaloKokkos <T> (dims_[1] - 2);
+        recv_w_ = MPIHaloKokkos <T> (dims_[1] - 2);
+        if (i_w < 0 || i_w >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = world_j * mpi_dim_size + i_w;
+        }
         tag = rank * 10 + neighb;
         send_w_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
         recv_w_.mpi_setup(neighb, tag, halos, comm);
         // setup east
-        send_e_ = MPIHaloKokkos <T> (dims_[1]);
-        recv_e_ = MPIHaloKokkos <T> (dims_[1]);
-        neighb = world_j * mpi_dim_size + i_e;
-        if (neighb < 0 || neighb >= world_size) neighb = -1;
+        send_e_ = MPIHaloKokkos <T> (dims_[1] - 2);
+        recv_e_ = MPIHaloKokkos <T> (dims_[1] - 2);
+        if (i_e < 0 || i_e >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = world_j * mpi_dim_size + i_e;
+        }
         tag = rank * 10 + neighb;
         send_e_.mpi_setup(neighb, tag, halos, comm);
         tag = neighb * 10 + rank;
@@ -1084,8 +1163,8 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
     }
     if (order_ == 2) {
         int halo = send_n_.get_halos(); // just need one of them, all have same number of halos
-        int halo_size_x = dims_[0] - (halo * 2);
-        int halo_size_y = dims_[1] - (halo * 2);
+        int halo_size_x = dims_[0] - 2; // remove outer halo ring
+        int halo_size_y = dims_[1] - 2;
         if (send_n_.get_neighbor() >= 0) {
             // update halo with array values
             Kokkos::parallel_for("haloupdatenorth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
@@ -1097,7 +1176,6 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             send_n_.halo_isend();
             recv_n_.halo_irecv();
             // wait
-            send_n_.wait_send();
             recv_n_.wait_recv();
             // update array with halo values
             Kokkos::parallel_for("haloupdatenorth2", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
@@ -1105,6 +1183,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
                 int jj = halo + (halo - 1) + hh;
                 this_array_.d_view(ii*dims_[1] + jj) = recv_n_(hh);
             }); 
+            send_n_.wait_send();
         }
         if (send_s_.get_neighbor() >= 0) {
             // update halo with array values
@@ -1117,7 +1196,6 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             send_s_.halo_isend();
             recv_s_.halo_irecv();
             // wait
-            send_s_.wait_send();
             recv_s_.wait_recv();
             // update array with halo values
             Kokkos::parallel_for("haloupdatesouth", halo_size_x, KOKKOS_CLASS_LAMBDA(const int hh) {
@@ -1125,6 +1203,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
                 int jj = halo + (halo - 1) + hh;
                 this_array_.d_view(ii*dims_[1] + jj) = recv_s_(hh);
             }); 
+            send_s_.wait_send();
         }
         if (send_w_.get_neighbor() >= 0) {
             // update halo with array values
@@ -1137,7 +1216,6 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             send_w_.halo_isend();
             recv_w_.halo_irecv();
             // wait
-            send_w_.wait_send();
             recv_w_.wait_recv();
             // update array with halo values
             Kokkos::parallel_for("haloupdatewest", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
@@ -1145,6 +1223,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
                 int jj = halo + (halo - 1);
                 this_array_.d_view(ii*dims_[1] + jj) = recv_w_(hh);
             }); 
+            send_w_.wait_send();
         }
         if (send_e_.get_neighbor() >= 0) {
             // update halo with array values
@@ -1157,7 +1236,6 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
             send_e_.halo_isend();
             recv_e_.halo_irecv();
             // wait
-            send_e_.wait_send();
             recv_e_.wait_recv();
             // update array with halo values
             Kokkos::parallel_for("haloupdateeast2", halo_size_y, KOKKOS_CLASS_LAMBDA(const int hh) {
@@ -1165,6 +1243,7 @@ void MPIArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
                 int jj = halo_size_x;
                 this_array_.d_view(ii*dims_[1] + jj) = recv_e_(hh);
             }); 
+            send_e_.wait_send();
         }
     }
     if (order_ == 3) {
