@@ -422,6 +422,17 @@ int main(int argc, char* argv[])
         //get repartitioned map to distribute new arrays with it
         TpetraPartitionMap<long long int> partitioned_output_map = output_grid.pmap;
         TpetraMVArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
+
+        //construct a unique source vector from ANN output using the subview constructor
+        //(for example's sake this is in fact a copy of the subview wrapped by the output as well)
+        TpetraMVArray<real_t> sub_output_values(ANNLayers(num_layers-1).distributed_outputs, ANNLayers(num_layers-1).distributed_outputs.comm_pmap,
+                                                 ANNLayers(num_layers-1).distributed_outputs.comm_pmap.getMinGlobalIndex());
+
+        //general communication object between two vectors/arrays
+        TpetraCommunicationPlan<real_t> output_comms(partitioned_output_values, sub_output_values);
+        output_comms.execute_comms();
+        partitioned_output_values.print();
+
     } // end of kokkos scope
 
     Kokkos::finalize();

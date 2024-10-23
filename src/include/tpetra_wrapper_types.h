@@ -145,6 +145,12 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     long long int getGlobalIndex(int local_index) const;
+
+    KOKKOS_INLINE_FUNCTION
+    long long int getMinGlobalIndex() const;
+
+    KOKKOS_INLINE_FUNCTION
+    long long int getMaxGlobalIndex() const;
     
     KOKKOS_INLINE_FUNCTION
     bool isProcessGlobalIndex(int global_index) const;
@@ -322,6 +328,22 @@ long long int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getGlobalInde
     return global_index;
 }
 
+// Return smallest global index (on this process/rank)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+long long int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getMinGlobalIndex() const {
+    int global_index = tpetra_map->getMinGlobalIndex();
+    return global_index;
+}
+
+// Return largest global index (on this process/rank)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+long long int TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::getMaxGlobalIndex() const {
+    int global_index = tpetra_map->getMaxGlobalIndex();
+    return global_index;
+}
+
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -354,7 +376,6 @@ class TpetraMVArray {
 
     // this is manage
     using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
-    using  TArray1D_host = Kokkos::View <T**, Layout, ExecSpace, MemoryTraits>;
 
     size_t dims_[2];
     size_t global_dim1_;
@@ -409,10 +430,10 @@ public:
     TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type for 1D case with a partition map passed in
-    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //2D Tpetra type with a partition map passed in
-    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); this constructor takes an RCP pointer to a Tpetra Map directly
     TpetraMVArray(Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -420,11 +441,16 @@ public:
     //Tpetra type only goes up to 2D access; this constructor takes an RCP pointer to a Tpetra Map directly
     TpetraMVArray(Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
+    //copy from a tpetra multi-vector
     TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
+    TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
+                  const TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &sub_pmap, size_t start_index);
 
     void own_comm_setup(Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
     
-    void own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
+    void own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
 
     void perform_comms();
 
@@ -549,7 +575,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_
 
 // Overloaded 1D constructor where you provide a partition map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap,
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
                                                              const std::string& tag_string) {
     mpi_comm_ = input_pmap.mpi_comm_;                                                            
     global_dim1_ = input_pmap.num_global_;
@@ -567,7 +593,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap
 
 // Overloaded 2D constructor where you provide a partition map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> input_pmap,
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
                                                               size_t dim1, const std::string& tag_string) {
     mpi_comm_ = input_pmap.mpi_comm_;
     global_dim1_ = input_pmap.num_global_;
@@ -617,6 +643,24 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<Tpetr
     set_mpi_type();
     this_array_ = TArray1D(tag_string, dims_[0], dim1);
     tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+//construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
+                const TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &sub_pmap, size_t start_index){
+    mpi_comm_ = sub_pmap.mpi_comm_;                                                            
+    global_dim1_ = sub_pmap.num_global_;
+    tpetra_pmap = sub_pmap.tpetra_map;
+    pmap = sub_pmap;
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = super_vector.dims_[1];
+    order_ = super_vector.order_;
+    length_ = dims_[0]*dims_[1];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(super_vector.this_array_, std::pair<size_t,size_t>(start_index, super_vector.this_array_.extent(0)), Kokkos::ALL());
+    tpetra_vector = Teuchos::rcp(new MV(*(super_vector.tpetra_vector), tpetra_pmap, start_index));
 }
 
 // Tpetra vector argument constructor: CURRENTLY DOESN'T WORK SINCE WE CANT GET DUAL VIEW FROM THE MULTIVECTOR
@@ -823,7 +867,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> other_pmap) {
+void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &other_pmap) {
     own_comms = true;
     tpetra_comm_pmap = other_pmap.tpetra_map;
     comm_pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_comm_pmap);
@@ -1003,7 +1047,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraMVArray() {}
                        The object for this class should not be reconstructed if the same comm plan is needed repeatedly; the setup is expensive.
                        The comms routines such as execute_comms can be called repeatedly to avoid repeated setup of the plan.*/
 /////////////////////////
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraCommunicationPlan {
 
     // this is manage
@@ -1025,7 +1069,7 @@ protected:
     */
     bool reverse_comms_flag; //default is false
     Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comm object
-    Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> exporter; // tpetra reverse comm object
+    Teuchos::RCP<Tpetra::Export<tpetra_LO, tpetra_GO>> exporter; // tpetra reverse comm object
 
 public:
     
