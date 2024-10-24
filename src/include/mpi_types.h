@@ -1209,6 +1209,30 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
     int halos = mpi_partition_.mpi_halos_;
     MPI_Comm comm = mpi_partition_.mpi_comm_;
     if (order_ == 1) {
+        int i_w = rank - 1;
+        int i_e = rank + 1;
+        mpi_partition_.send_w_ = MPIHaloKokkos <T> (1);
+        if (i_w < 0) {
+            neighb = -1;
+        }
+        else {
+            neighb = i_w;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_w_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_w_.mpi_setup(neighb, tag, halos, comm);
+        mpi_partition_.send_e_ = MPIHaloKokkos <T> (1);
+        if (i_e >= world_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = i_e;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_e_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_e_.mpi_setup(neighb, tag, halos, comm);
 
     }
     if (order_ == 2) {
@@ -1223,7 +1247,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         // setup north
         mpi_partition_.send_n_ = MPIHaloKokkos <T> (dims_[0] - 2);
         mpi_partition_.recv_n_ = MPIHaloKokkos <T> (dims_[0] - 2);
-        if (j_n < 0 || j_n >= mpi_dim_size) {
+        if (j_n < 0) {
             neighb = -1;
         }
         else {
@@ -1236,7 +1260,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         // setup south
         mpi_partition_.send_s_ = MPIHaloKokkos <T> (dims_[0] - 2);
         mpi_partition_.recv_s_ = MPIHaloKokkos <T> (dims_[0] - 2);
-        if (j_s < 0 || j_s >= mpi_dim_size) {
+        if (j_s >= mpi_dim_size) {
             neighb = -1;
         }
         else {
@@ -1249,7 +1273,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         // setup west
         mpi_partition_.send_w_ = MPIHaloKokkos <T> (dims_[1] - 2);
         mpi_partition_.recv_w_ = MPIHaloKokkos <T> (dims_[1] - 2);
-        if (i_w < 0 || i_w >= mpi_dim_size) {
+        if (i_w < 0) {
             neighb = -1;
         }
         else {
@@ -1262,7 +1286,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         // setup east
         mpi_partition_.send_e_ = MPIHaloKokkos <T> (dims_[1] - 2);
         mpi_partition_.recv_e_ = MPIHaloKokkos <T> (dims_[1] - 2);
-        if (i_e < 0 || i_e >= mpi_dim_size) {
+        if (i_e >= mpi_dim_size) {
             neighb = -1;
         }
         else {
@@ -1274,14 +1298,110 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         mpi_partition_.recv_e_.mpi_setup(neighb, tag, halos, comm);
     }
     if (order_ == 3) {
+        int mpi_dim_size = sqrt(world_size);
+        int world_i = rank % mpi_dim_size;
+        int world_j = rank / mpi_dim_size;
+        int j_n = world_j - 1;
+        int j_s = world_j + 1;
+        int i_w = world_i - 1;
+        int i_e = world_i + 1;
 
+        // setup north
+        mpi_partition_.send_n_ = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]);
+        mpi_partition_.recv_n_ = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]);
+        if (j_n < 0) {
+            neighb = -1;
+        }
+        else {
+            neighb = j_n * mpi_dim_size + world_i;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_n_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_n_.mpi_setup(neighb, tag, halos, comm);
+        // setup south
+        mpi_partition_.send_s_ = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]);
+        mpi_partition_.recv_s_ = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]);
+        if (j_s >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = j_s * mpi_dim_size + world_i;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_s_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_s_.mpi_setup(neighb, tag, halos, comm);
+        // setup west
+        mpi_partition_.send_w_ = MPIHaloKokkos <T> (dims_[1] - 2, dims_[2]);
+        mpi_partition_.recv_w_ = MPIHaloKokkos <T> (dims_[1] - 2, dims_[2]);
+        if (i_w < 0) {
+            neighb = -1;
+        }
+        else {
+            neighb = world_j * mpi_dim_size + i_w;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_w_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_w_.mpi_setup(neighb, tag, halos, comm);
+        // setup east
+        mpi_partition_.send_e_ = MPIHaloKokkos <T> (dims_[1] - 2, dims_[2]);
+        mpi_partition_.recv_e_ = MPIHaloKokkos <T> (dims_[1] - 2, dims_[2]);
+        if (i_e >= mpi_dim_size) {
+            neighb = -1;
+        }
+        else {
+            neighb = world_j * mpi_dim_size + i_e;
+        }
+        tag = rank * 10 + neighb;
+        mpi_partition_.send_e_.mpi_setup(neighb, tag, halos, comm);
+        tag = neighb * 10 + rank;
+        mpi_partition_.recv_e_.mpi_setup(neighb, tag, halos, comm);
     }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
     if (order_ == 1) {
-
+        int halo = mpi_partition_.mpi_halos_; // just need one of them, all have same number of halos
+        int halo_size_x = dims_[0] - 2; // remove outer halo ring
+        if (mpi_partition_.send_w_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdatewest", 1, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int halo_idx = halo + (halo - 1);
+                mpi_partition_.send_w_(hh) = this_array_.d_view(halo_idx);
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_w_.halo_isend();
+            mpi_partition_.recv_w_.halo_irecv();
+            // wait
+            mpi_partition_.recv_w_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatewest", 1, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int halo_idx = halo + (halo - 1);
+                this_array_.d_view(halo_idx) = mpi_partition_.recv_w_(hh);
+            }); 
+            mpi_partition_.send_w_.wait_send();
+        }
+        if (mpi_partition_.send_e_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdatewest", 1, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int halo_idx = halo_size_x;
+                mpi_partition_.send_e_(hh) = this_array_.d_view(halo_idx);
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_e_.halo_isend();
+            mpi_partition_.recv_e_.halo_irecv();
+            // wait
+            mpi_partition_.recv_e_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatewest", 1, KOKKOS_CLASS_LAMBDA(const int hh) {
+                int halo_idx = halo_size_x;
+                this_array_.d_view(halo_idx) = mpi_partition_.recv_e_(hh);
+            }); 
+            mpi_partition_.send_e_.wait_send();
+        }
     }
     if (order_ == 2) {
         int halo = mpi_partition_.mpi_halos_; // just need one of them, all have same number of halos
@@ -1369,7 +1489,90 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_halo_update() {
         }
     }
     if (order_ == 3) {
-
+        int halo = mpi_partition_.mpi_halos_; // just need one of them, all have same number of halos
+        int halo_size_x = dims_[0] - 2; // remove outer halo ring
+        int halo_size_y = dims_[1] - 2;
+        int halo_size_z = dims_[2];
+        if (mpi_partition_.send_n_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdatenorth", policy2D({0,0},{halo_size_x, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1);
+                int jj = halo + (halo - 1) + hh;
+                mpi_partition_.send_n_(hh, zz) = this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz); // row depending on # of halos
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_n_.halo_isend();
+            mpi_partition_.recv_n_.halo_irecv();
+            // wait
+            mpi_partition_.recv_n_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatenorth2", policy2D({0,0},{halo_size_x, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1);
+                int jj = halo + (halo - 1) + hh;
+                this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz) = mpi_partition_.recv_n_(hh, zz);
+            }); 
+            mpi_partition_.send_n_.wait_send();
+        }
+        if (mpi_partition_.send_s_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdatesouth", policy2D({0,0},{halo_size_x, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo_size_y;
+                int jj = halo + (halo - 1) + hh;
+                mpi_partition_.send_s_(hh, zz) = this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz); // row depending on # of halos
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_s_.halo_isend();
+            mpi_partition_.recv_s_.halo_irecv();
+            // wait
+            mpi_partition_.recv_s_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatesouth2", policy2D({0,0},{halo_size_x, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo_size_y;
+                int jj = halo + (halo - 1) + hh;
+                this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz) = mpi_partition_.recv_s_(hh, zz);
+            }); 
+            mpi_partition_.send_s_.wait_send();
+        }
+        if (mpi_partition_.send_w_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdatewest", policy2D({0,0},{halo_size_y, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo + (halo - 1);
+                mpi_partition_.send_w_(hh, zz) = this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz); // column depending on # of halos
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_w_.halo_isend();
+            mpi_partition_.recv_w_.halo_irecv();
+            // wait
+            mpi_partition_.recv_w_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdatewest2", policy2D({0,0},{halo_size_y, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo + (halo - 1);
+                this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz) = mpi_partition_.recv_w_(hh, zz);
+            }); 
+            mpi_partition_.send_w_.wait_send();
+        }
+        if (mpi_partition_.send_e_.get_neighbor() >= 0) {
+            // update halo with array values
+            Kokkos::parallel_for("haloupdateeast", policy2D({0,0},{halo_size_y, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo_size_x;
+                mpi_partition_.send_e_(hh, zz) = this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz); // column depending on # of halos
+            }); 
+            Kokkos::fence();
+            mpi_partition_.send_e_.halo_isend();
+            mpi_partition_.recv_e_.halo_irecv();
+            // wait
+            mpi_partition_.recv_e_.wait_recv();
+            // update array with halo values
+            Kokkos::parallel_for("haloupdateeast2", policy2D({0,0},{halo_size_y, halo_size_z}), KOKKOS_CLASS_LAMBDA(const int hh, const int zz) {
+                int ii = halo + (halo - 1) + hh;
+                int jj = halo_size_x;
+                this_array_.d_view(ii*dims_[1]*dims_[2] + jj*dims_[2] + zz) = mpi_partition_.recv_e_(hh, zz);
+            }); 
+            mpi_partition_.send_e_.wait_send();
+        }
     }
 }
 
