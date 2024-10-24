@@ -63,22 +63,24 @@ void example_comms_with_map(int world_size, int rank) {
     int halo = 1;
     int arr_size_i = width_loc + halo * 2; //both sides of halo
     int arr_size_j = height_loc + halo * 2;
-    MPIArrayKokkos <double> velocity = MPIArrayKokkos <double> (arr_size_i, arr_size_j, "velo");
+    MPIPartitionKokkos <double> partition_map = MPIPartitionKokkos <double> (1, world_size, rank, halo, MPI_COMM_WORLD, "pmap");
+    MPICArrayKokkos <double> velocity = MPICArrayKokkos <double> (arr_size_i, arr_size_j, "velo");
     DCArrayKokkos <double> varX = DCArrayKokkos <double> (arr_size_i, arr_size_j, "varX");
 
     // new function
-    velocity.mpi_decomp(world_size, rank, halo, MPI_COMM_WORLD);
+    //velocity.mpi_decomp(world_size, rank, halo, MPI_COMM_WORLD);
+    velocity.mpi_decomp(partition_map);
 
     // halos
     /*
-    MPIArrayKokkos <double> send_n = MPIArrayKokkos <double> (width_loc);
-    MPIArrayKokkos <double> send_s = MPIArrayKokkos <double> (width_loc);
-    MPIArrayKokkos <double> send_w = MPIArrayKokkos <double> (height_loc);
-    MPIArrayKokkos <double> send_e = MPIArrayKokkos <double> (height_loc);
-    MPIArrayKokkos <double> recv_n = MPIArrayKokkos <double> (width_loc);
-    MPIArrayKokkos <double> recv_s = MPIArrayKokkos <double> (width_loc);
-    MPIArrayKokkos <double> recv_w = MPIArrayKokkos <double> (height_loc);
-    MPIArrayKokkos <double> recv_e = MPIArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> send_n = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> send_s = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> send_w = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> send_e = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> recv_n = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> recv_s = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> recv_w = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> recv_e = MPICArrayKokkos <double> (height_loc);
     */
     // setup basic
     for (int ii = 0; ii < arr_size_i; ii++) {
@@ -243,12 +245,12 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
     int size = 5 + rank;
     int in_size = 5 + recv_rank;
 
-    MPIArrayKokkos <int> myhalo;
-    MPIArrayKokkos <int> halo0;
-    MPIArrayKokkos <int> halo1;
-    MPIArrayKokkos <int> halo2;
+    MPICArrayKokkos <int> myhalo;
+    MPICArrayKokkos <int> halo0;
+    MPICArrayKokkos <int> halo1;
+    MPICArrayKokkos <int> halo2;
 
-    myhalo = MPIArrayKokkos <int> (size);
+    myhalo = MPICArrayKokkos <int> (size);
     if (rank == 0) {
         // send rank needs to be updated for each rank
         myhalo.mpi_setup(send_rank, tag, MPI_COMM_WORLD);
@@ -284,7 +286,7 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
         myhalo.mpi_set_tag(tag);
         myhalo.halo_isend();
 #endif
-        halo0 = MPIArrayKokkos <int> (in_size);
+        halo0 = MPICArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         // Recvs
@@ -303,12 +305,12 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
 #ifdef FAST
         myhalo.halo_isend();
 #endif
-        halo0 = MPIArrayKokkos <int> (in_size);
+        halo0 = MPICArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo0.halo_irecv();
 #endif
-        halo1 = MPIArrayKokkos <int> (in_size+1);
+        halo1 = MPICArrayKokkos <int> (in_size+1);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo1.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
@@ -322,18 +324,18 @@ void example_nonuniform_halo_comms(int world_size, int rank) {
     }
     else if (rank == 3) {
         myhalo.mpi_setup(send_rank, tag, MPI_COMM_WORLD);
-        halo0 = MPIArrayKokkos <int> (in_size);
+        halo0 = MPICArrayKokkos <int> (in_size);
         halo0.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo0.halo_irecv();
 #endif
-        halo1 = MPIArrayKokkos <int> (in_size+1);
+        halo1 = MPICArrayKokkos <int> (in_size+1);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo1.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
         halo1.halo_irecv();
 #endif
-        halo2 = MPIArrayKokkos <int> (in_size+2);
+        halo2 = MPICArrayKokkos <int> (in_size+2);
         r_tag = 99 + 3 * (++recv_rank + rank);
         halo2.mpi_setup(recv_rank, r_tag, MPI_COMM_WORLD);
 #ifdef FAST
@@ -440,8 +442,8 @@ void example_halo_comms(int world_size, int rank) {
     int s_tag = 10 * rank + 20 * s_neighbor;
     int r_tag = 20 * rank + 10 * r_neighbor;
     
-    MPIArrayKokkos <int> myhalo = MPIArrayKokkos <int> (size);
-    MPIArrayKokkos <int> neibhalo = MPIArrayKokkos <int> (size);
+    MPICArrayKokkos <int> myhalo = MPICArrayKokkos <int> (size);
+    MPICArrayKokkos <int> neibhalo = MPICArrayKokkos <int> (size);
 
     //printf("Rank %d rneighb %d rtag %d sneighb %d stag %d\n", rank, r_neighbor, r_tag, s_neighbor, s_tag);
 
