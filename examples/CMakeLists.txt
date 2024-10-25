@@ -120,6 +120,11 @@ if (KOKKOS)
     target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})
   endif()
 
+  if (MPI)
+    include_directories(laplaceMPI)
+    add_subdirectory(laplaceMPI)
+  endif()
+
 endif()
 
 ### HIP Linking error, will add back in after fixed
@@ -152,11 +157,6 @@ add_subdirectory(sparsetests)
 
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
-
-if (MPI)
-   include_directories(laplaceMPI)
-   add_subdirectory(laplaceMPI)
-endif()
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)
