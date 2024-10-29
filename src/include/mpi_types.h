@@ -109,6 +109,44 @@ size_t simple_decomp_col_start(int world_size, int rank, int big_N) {
     return col_start;
 }
 
+template <typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+size_t PartitionSize(int world_size, int rank, int decomp_dim) {
+    size_t neighbors = 0;
+    if (decomp_dim == 1) {
+        int i_w = rank - 1;
+        int i_e = rank + 1;
+        if (i_w >= 0) {
+            neighbors++;
+        }
+        if (i_e < world_size) {
+            neighbors++;
+        }
+        return neighbors;
+    }
+    else if (decomp_dim == 2) {
+        int grid_size = sqrt(world_size);
+        int grid_i = rank % grid_size;
+        int grid_j = rank / grid_size;
+        int j_n = grid_j - 1;
+        int j_s = grid_j + 1;
+        int i_w = grid_i - 1;
+        int i_e = grid_i + 1;
+        if (j_n >= 0) {
+            neighbors++;
+        }
+        if (j_s < world_size) {
+            neighbors++;
+        }
+        if (i_w >= 0) {
+            neighbors++;
+        }
+        if (i_e < world_size) {
+            neighbors++;
+        }
+        return neighbors;
+    }
+}
+
 /////////////////////////
 // MPIHaloKokkos:  Really only used for internal comms in the original MPIHaloKokkos class
 /////////////////////////
@@ -787,6 +825,128 @@ MPIPartitionKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPIPartitionKokkos() {}
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////
+// MPIPartition2Kokkos:  Really only used for internal comms in the original MPIHaloKokkos class
+/////////////////////////
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class MPIPartition2Kokkos {
+
+    // this is manage
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    
+protected:
+    size_t dims_[7];
+    size_t length_;
+    size_t order_;  // tensor order (rank)
+    
+public:
+    TArray1D this_array_;
+    int mpi_world_size_;
+    int mpi_rank_;
+    int mpi_halos_;
+    MPI_Comm mpi_comm_;
+    MPIHaloKokkos <T> send_n_, send_s_, send_w_, send_e_, recv_n_, recv_s_, recv_w_, recv_e_;
+    CArray <MPIHaloKokkos <T>> sends_;
+    CArray <MPIHaloKokkos <T>> recvs_;
+
+    MPIPartition2Kokkos();
+    
+    MPIPartition2Kokkos(size_t dim0, int world_size, int rank, int halos, MPI_Comm comm, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t size() const;
+
+    size_t extent() const;
+
+    KOKKOS_INLINE_FUNCTION
+    MPIPartition2Kokkos& operator=(const MPIPartition2Kokkos& temp);
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~MPIPartition2Kokkos ();
+}; // End of MPIPartition2Kokkos
+
+
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::MPIPartition2Kokkos() {
+    length_ = order_ = 0;
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
+}
+
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::MPIPartition2Kokkos(size_t dim0, int world_size, int rank, int halos, MPI_Comm comm, const std::string& tag_string) {
+    
+    dims_[0] = dim0;
+    order_ = 1;
+    length_ = dim0;
+    this_array_ = TArray1D(tag_string, 1);
+    sends_ = CArray <MPIHaloKokkos <T>> (length_);
+    recvs_ = CArray <MPIHaloKokkos <T>> (length_);
+    mpi_world_size_ = world_size;
+    mpi_rank_ = rank;
+    mpi_halos_ = halos;
+    mpi_comm_ = comm;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in MPIPartition2Kokkos 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in MPIPartition2Kokkos 1D!");
+    return this_array_.d_view(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>& MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const MPIPartition2Kokkos& temp) {
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+        length_ = temp.length_;
+        mpi_world_size_ = temp.mpi_world_size_;
+        mpi_rank_ = temp.mpi_rank_;
+        mpi_halos_ = temp.mpi_halos_;
+        mpi_comm_ = temp.mpi_comm_;
+        this_array_ = temp.this_array_;
+        sends_ = temp.sends_;
+        recvs_ = temp.recvs_;
+    }
+    
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+size_t MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+    return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+MPIPartition2Kokkos<T,Layout,ExecSpace,MemoryTraits>::~MPIPartition2Kokkos() {}
+
+////////////////////////////////////////////////////////////////////////////////
+// End of MPIPartition2Kokkos
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
 // MPICArrayKokkos:  Dual type for managing distributed data on both CPU and GPU.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
@@ -805,7 +965,8 @@ protected:
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
     TArray1D this_array_;
-    MPIPartitionKokkos <T> mpi_partition_;
+    //MPIPartitionKokkos <T> mpi_partition_;
+    MPIPartition2Kokkos <T> mpi_partition_;
     
     void set_mpi_type();
 
@@ -898,6 +1059,8 @@ public:
 
     // set up the halo arrays
     //void mpi_decomp(int world_size, int rank, int halos, MPI_Comm comm);
+    void mpi_decomp_unstructured(MPIPartition2Kokkos <T> partition);
+
     void mpi_decomp(MPIPartitionKokkos <T> partition);
 
     // update the halo arrays and transfer data to this_array_
@@ -1199,8 +1362,150 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp_unstructured(MPIPartition2Kokkos <T> partition) {
+    mpi_partition_ = partition;
+    int neighbors = mpi_partition_.extent();
+    int neighb, tag;
+    int rank = mpi_partition_.mpi_rank_;
+    int world_size = mpi_partition_.mpi_world_size_;
+    int halos = mpi_partition_.mpi_halos_;
+    MPI_Comm comm = mpi_partition_.mpi_comm_;
+    if (order_ == 1) {
+        int nidx = 0;
+        int i_w = rank - 1;
+        int i_e = rank + 1;
+        if (i_w >= 0) {
+            neighb = i_w;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (1); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (1); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (i_e < world_size) {
+            neighb = i_e;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (1); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (1); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+    }
+    if (order_ == 2) {
+        int nidx = 0;
+        int mpi_dim_size = sqrt(world_size);
+        int world_i = rank % mpi_dim_size;
+        int world_j = rank / mpi_dim_size;
+        int j_n = world_j - 1;
+        int j_s = world_j + 1;
+        int i_w = world_i - 1;
+        int i_e = world_i + 1;
+        if (j_n >= 0) {
+            neighb = j_n * mpi_dim_size + world_i;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            //mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2); 
+            //mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            //mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2); 
+            //mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (j_s < mpi_dim_size) {
+            neighb = j_s * mpi_dim_size + world_i;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            //mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2); 
+            //mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            //mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2); 
+            //mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (i_w >= 0) {
+            neighb = world_j * mpi_dim_size + i_w;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            //mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[1] - 2); 
+            //mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            //mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[1] - 2); 
+            //mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (i_e < mpi_dim_size) {
+            neighb = world_j * mpi_dim_size + i_e;
+            printf("%d) %d\n", rank, neighb);
+            tag = rank * 10 + neighb;
+            //mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[1] - 2); 
+            //mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            //mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[1] - 2); 
+            //mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+    }
+    if (order_ == 3) {
+        int nidx = 0;
+        int mpi_dim_size = sqrt(world_size);
+        int world_i = rank % mpi_dim_size;
+        int world_j = rank / mpi_dim_size;
+        int j_n = world_j - 1;
+        int j_s = world_j + 1;
+        int i_w = world_i - 1;
+        int i_e = world_i + 1;
+        if (j_n >= 0) {
+            neighb = j_n * mpi_dim_size + world_i;
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (j_s < mpi_dim_size) {
+            neighb = j_s * mpi_dim_size + world_i;
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (i_w >= 0) {
+            neighb = world_j * mpi_dim_size + i_w;
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            nidx++;
+        }
+        if (i_e < mpi_dim_size) {
+            neighb = world_j * mpi_dim_size + i_e;
+            tag = rank * 10 + neighb;
+            mpi_partition_.sends_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.sends_(nidx).mpi_setup(neighb, tag, halos, comm); 
+            tag = neighb * 10 + rank;
+            mpi_partition_.recvs_(nidx) = MPIHaloKokkos <T> (dims_[0] - 2, dims_[2]); 
+            mpi_partition_.recvs_(nidx).mpi_setup(neighb, tag, halos, comm); 
+        }
+    }
+}
+
 //void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size, int rank, int halos, MPI_Comm comm) {
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKokkos <T> partition) {
+/*
     mpi_partition_ = partition;
     int neighbors = 0;
     int neighb, tag;
@@ -1359,6 +1664,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         tag = neighb * 10 + rank;
         mpi_partition_.recv_e_.mpi_setup(neighb, tag, halos, comm);
     }
+*/
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

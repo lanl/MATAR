@@ -23,6 +23,215 @@ double temp_tolerance = 0.01;
 // uses a map for global to local, to know what needs to be sent
 // simple directional comp grid
 // n = north (j-1), s = south (j+1), w = west (i-1), e = east (i+1)
+void example_comms_with_map_unstr(int world_size, int rank) {
+    // neighbor calcs
+    int n = sqrt(world_size);
+    int world_i = rank % n;
+    int world_j = rank / n;
+    int neighbors = 0;
+    int j_n = world_j - 1;
+    int j_s = world_j + 1;
+    int i_w = world_i - 1;
+    int i_e = world_i + 1;
+    if (j_n >= 0) neighbors++;
+    if (j_s < n) neighbors++;
+    if (i_w >= 0) neighbors++;
+    if (i_e < n) neighbors++;
+
+    int rank_n = j_n * n + world_i;
+    int rank_s = j_s * n + world_i;
+    int rank_w = world_j * n + i_w;
+    int rank_e = world_j * n + i_e;
+
+/*
+    int stag_n = rank * 10 + rank_n;
+    int stag_s = rank * 10 + rank_s;
+    int stag_w = rank * 10 + rank_w;
+    int stag_e = rank * 10 + rank_e;
+    int rtag_n = rank_n * 10 + rank;
+    int rtag_s = rank_s * 10 + rank;
+    int rtag_w = rank_w * 10 + rank;
+    int rtag_e = rank_e * 10 + rank;
+*/
+
+    // data setup
+    //int width_loc = width / n;
+    //int height_loc = height / n;
+    int width_loc = simple_decomp_row_size(world_size, rank, width);
+    int height_loc = simple_decomp_col_size(world_size, rank, height);
+    //printf("rank %d width %d height %d\n", rank, width_loc, height_loc);
+    int halo = 1;
+    int arr_size_i = width_loc + halo * 2; //both sides of halo
+    int arr_size_j = height_loc + halo * 2;
+    size_t neighbs = PartitionSize(world_size, rank, 1);
+    MPIPartition2Kokkos <double> partition_map = MPIPartition2Kokkos <double> (neighbs, world_size, rank, halo, MPI_COMM_WORLD, "pmap");
+    MPICArrayKokkos <double> velocity = MPICArrayKokkos <double> (arr_size_i, arr_size_j, "velo");
+
+    // new function
+    //velocity.mpi_decomp(world_size, rank, halo, MPI_COMM_WORLD);
+    velocity.mpi_decomp_unstructured(partition_map);
+
+#ifdef DOTHIS
+    // halos
+    /*
+    MPICArrayKokkos <double> send_n = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> send_s = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> send_w = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> send_e = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> recv_n = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> recv_s = MPICArrayKokkos <double> (width_loc);
+    MPICArrayKokkos <double> recv_w = MPICArrayKokkos <double> (height_loc);
+    MPICArrayKokkos <double> recv_e = MPICArrayKokkos <double> (height_loc);
+    */
+    // setup basic
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // if halo -1, else owned so rank
+            varX.host(ii, jj) = rank * rank;
+            if (ii < halo || jj < halo || ii >= width_loc + halo || jj >= height_loc + halo)
+                velocity.host(ii, jj) = -1.0;
+            else
+                velocity.host(ii, jj) = rank;
+        }
+    }
+    varX.update_device();
+    velocity.update_device();
+
+/*
+    // setup outer boundary (probably more efficient ways, but this is easy
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // left side
+            if (ii < halo && i_w < 0)
+                velocity.host(ii, jj) = rank;
+            // right side
+            if (ii >= width_loc + halo && i_e >= n)
+                velocity.host(ii, jj) = rank;
+            // top side
+            if (jj < halo && j_n < 0)
+                velocity.host(ii, jj) = rank;
+            // bot side
+            if (jj >= height_loc + halo && j_s >= n)
+                velocity.host(ii, jj) = rank;
+        }
+    }
+    velocity.update_device();
+*/
+
+    // setup halo (probably more efficient ways, but this is easy
+    for (int ii = 0; ii < arr_size_i; ii++) {
+        for (int jj = 0; jj < arr_size_j; jj++) {
+            // right neighbor halo
+            if (ii < halo && i_w >= 0)
+                velocity.host(ii, jj) = rank_w;
+            // right side
+            if (ii >= width_loc + halo && i_e < n)
+                velocity.host(ii, jj) = rank_e;
+            // top side
+            if (jj < halo && j_n >= 0)
+                velocity.host(ii, jj) = rank_n;
+            // bot side
+            if (jj >= height_loc + halo && j_s < n)
+                velocity.host(ii, jj) = rank_s;
+        }
+    }
+    velocity.update_device();
+
+    FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+              velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
+    });
+    Kokkos::fence();
+    FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+                if (rank == 0) {
+                    printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
+                }
+    });
+    Kokkos::fence();
+
+    for (int ts = 0; ts < 1; ts++) {
+
+        // "update variable"
+        FOR_ALL(ii, 0, arr_size_i,
+                 jj, 0, arr_size_j, {
+                  varX(ii, jj) = velocity(ii, jj) * 2; 
+        });
+        Kokkos::fence();
+
+        //printf("in example %d\n", velocity.extent());
+        velocity.mpi_halo_update();
+        if (rank == 0) printf("\n\n--------------\n\n\n");
+
+        FOR_ALL(ii, 1, arr_size_i-1,
+                jj, 1, arr_size_j-1, {
+                    if (rank == 0) {
+                        printf("(%d,%d) %f\n", ii, jj, velocity(ii, jj));
+                    }
+        });
+        Kokkos::fence();
+    
+        // "update velocity"
+        FOR_ALL(ii, 1, arr_size_i-1,
+             jj, 1, arr_size_j-1, {
+              velocity(ii, jj) = varX(ii-1, jj) + varX(ii+1, jj) + varX(ii, jj-1) + varX(ii, jj+1);  
+    });
+    Kokkos::fence();
+/*
+
+        if (j_n >= 0) {
+            FOR_ALL(hh, 0, width_loc, {
+                send_n(hh) = velocity(hh+halo, halo+1); // third from top
+            }); 
+            Kokkos::fence();
+            send_n.isend(width_loc, rank_n, stag_n, MPI_COMM_WORLD);
+            recv_n.irecv(width_loc, rank_n, rtag_n, MPI_COMM_WORLD);
+        }
+        if (j_s < n) {
+            FOR_ALL(hh, 0, width_loc, {
+                send_s(hh) = velocity(hh+halo, height_loc); // third from bot
+            }); 
+            Kokkos::fence();
+            send_s.isend(width_loc, rank_s, stag_s, MPI_COMM_WORLD);
+            recv_s.irecv(width_loc, rank_s, rtag_s, MPI_COMM_WORLD);
+        }
+        if (i_w >= 0) {
+            FOR_ALL(hh, 0, height_loc, {
+                send_n(hh) = velocity(halo+1, hh+halo); // third from left
+            }); 
+            Kokkos::fence();
+            send_w.isend(width_loc, rank_w, stag_w, MPI_COMM_WORLD);
+            recv_w.irecv(width_loc, rank_w, rtag_w, MPI_COMM_WORLD);
+        }
+        if (i_e < n) {
+            FOR_ALL(hh, 0, height_loc, {
+                send_n(hh) = velocity(halo+1, width_loc); // third from left
+            }); 
+            Kokkos::fence();
+            send_e.isend(width_loc, rank_e, stag_e, MPI_COMM_WORLD);
+            recv_e.irecv(width_loc, rank_e, rtag_e, MPI_COMM_WORLD);
+        }
+
+        if (j_n >= 0) {
+            send_n.wait_send();
+            recv_n.wait_recv();
+        }
+        if (j_s < n) {
+            send_s.wait_send();
+            recv_s.wait_recv();
+        }
+        if (i_w >= 0) {
+            send_w.wait_send();
+            recv_w.wait_recv();
+        }
+        if (i_e < n) {
+            send_e.wait_send();
+            recv_e.wait_recv();
+        }
+*/
+    }
+#endif
+}
 void example_comms_with_map(int world_size, int rank) {
     // neighbor calcs
     int n = sqrt(world_size);
@@ -494,7 +703,8 @@ int main(int argc, char *argv[])
 
   //example_halo_comms(world_size, rank);
   //example_nonuniform_halo_comms(world_size, rank);
-  example_comms_with_map(world_size, rank);
+  //example_comms_with_map(world_size, rank);
+  example_comms_with_map_unstr(world_size, rank);
 
   // stop timing
   double end_time = MPI_Wtime();

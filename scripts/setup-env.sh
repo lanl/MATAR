@@ -31,6 +31,10 @@ export KOKKOS_SOURCE_DIR=${basedir}/src/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos
 
+export KOKKOS_REMOTE_SOURCE_DIR=${basedir}/src/Kokkos/kokkos-remote-spaces
+export KOKKOS_REMOTE_BUILD_DIR=${builddir}/kokkos-remote-spaces
+export KOKKOS_REMOTE_INSTALL_DIR=${installdir}/kokkos-remote-spaces
+
 export MATAR_SOURCE_DIR=${basedir}
 export MATAR_BUILD_DIR=${builddir}/matar
 export MATAR_INSTALL_DIR=${installdir}/matar

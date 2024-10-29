@@ -28,6 +28,7 @@ fi
 if [[ "$kokkos_build_type" = *"mpi"* ]]; then
     cmake_options+=(
         -D MPI=ON
+        #-D KokkosRemote_ROOT=${KOKKOS_REMOTE_INSTALL_PATH}
     )
 fi
 

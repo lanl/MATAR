@@ -3,11 +3,13 @@ cmake_minimum_required(VERSION 3.1.3)
 if (KOKKOS)
   find_package(Kokkos REQUIRED) #new
   find_package(MPI REQUIRED)
+  find_package(KokkosRemote REQUIRED)
   
   #add_executable(laplace_mpi laplace_mpi.cpp)
   #add_executable(laplace_mpi simple_mpi.cpp)
   #add_executable(laplace_mpi mpi_mesh_test.cpp)
-  add_executable(laplace_mpi simple_halo.cpp)
+  #add_executable(laplace_mpi simple_halo.cpp)
+  add_executable(laplace_mpi remote_test.cpp)
   add_definitions(-DHAVE_MPI=1)
 
   add_definitions(-DHAVE_KOKKOS=1)

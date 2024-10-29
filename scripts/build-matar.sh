@@ -4,7 +4,7 @@ show_help() {
     echo "Valid options:"
     echo "  --execution=<examples|test>. Default is 'all'"
     echo "  --kokkos_build_type=<none|serial|openmp|pthreads|cuda|hip|serial_mpi|openmp_mpi|cuda_mpi|hip_mpi|>. Default is 'serial'"
-    echo "  --build_action=<full-app|set-env|install-kokkos|install-matar|matar>. Default is 'full-app'"
+    echo "  --build_action=<full-app|set-env|install-kokkos|install-kokkos-remote|install-matar|matar>. Default is 'full-app'"
     echo "  --machine=<darwin|chicoma|linux|mac>. Default is 'linux'"
     echo "  --build_cores=<Integers greater than 0>. Default is set 1"
     echo "  --help: Display this help message"
@@ -63,7 +63,7 @@ build_cores="1"
 trilinos="disabled"
 
 # Define arrays of valid options
-valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
+valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "install-kokkos-remote" "matar")
 valid_execution=("examples" "test" "benchmark")
 valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip" "serial_mpi" "openmp_mpi" "cuda_mpi" "hip_mpi")
 valid_machines=("darwin" "chicoma" "linux" "mac")
@@ -186,10 +186,15 @@ if [ "$build_action" = "full-app" ]; then
     if [ "$trilinos" = "disabled" ]; then    
         source kokkos-install.sh ${kokkos_build_type}
     fi
+    #if [[ "$kokkos_build_type" = *"mpi"* ]]; then
+    #    source kokkos-remote-install.sh ${kokkos_build_type}
+    #fi
     source matar-install.sh ${kokkos_build_type} ${trilinos}
     source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos}
 elif [ "$build_action" = "install-kokkos" ]; then
     source kokkos-install.sh ${kokkos_build_type}
+elif [ "$build_action" = "install-kokkos-remote" ]; then
+    source kokkos-remote-install.sh ${kokkos_build_type}
 elif [ "$build_action" = "install-matar" ]; then
     source matar-install.sh ${kokkos_build_type}
 elif [ "$build_action" = "matar" ]; then

@@ -15,6 +15,7 @@ mympi="openmpi/3.1.6-gcc_9.4.0"
 module purge
 if [[ "$kokkos_build_type" = *"mpi"* ]]; then
     module load ${mympi}
+    module load nvhpc
 fi
 if [[ "$kokkos_build_type" = *"cuda"* ]]; then
     module load ${mygcc}
