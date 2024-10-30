@@ -57,6 +57,8 @@
 #include <Kokkos_Core.hpp>
 #include "Tpetra_Details_DefaultTypes.hpp"
 #include "Tpetra_Import.hpp"
+#include "Tpetra_Details_makeColMap.hpp"
+#include "Tpetra_Import_Util2.hpp"
 
 // Repartition Package
 #include <Zoltan2_XpetraMultiVectorAdapter.hpp>
@@ -1036,23 +1038,29 @@ template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace 
 class TpetraCRSMatrix {
 
     // this is manage
-    using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
+    using  TArray1D = RaggedRightArrayKokkos<T*, Kokkos::LayoutRight, ExecSpace, MemoryTraits>;
+    using  TArray1D_Host = RaggedRightArrayKokkos<T*, Kokkos::LayoutRight, HostSpace, MemoryTraits>;
+    using  row_map_type = Kokkos::View<size_t*, ExecSpace>;
+    using  input_row_map_type = DCArrayKokkos<size_t,ExecSpace>;
+    using  values_array = Kokkos::View<T*, Kokkos::LayoutRight, ExecSpace, MemoryTraits>;
+    using  global_indices_array = Kokkos::View<tpetra_GO*, Layout, ExecSpace, MemoryTraits>;
+    using  indices_array = Kokkos::View<tpetra_LO*, Layout, ExecSpace, MemoryTraits>;
 
-    size_t dims_[2];
+    size_t dim1_;
     size_t global_dim1_;
     size_t column_map_size_;
     size_t length_;
     MPI_Comm mpi_comm_;
     MPI_Datatype mpi_datatype_;
     TArray1D this_array_;
+    row_map_type mystrides_;
+    row_map_type start_index_;
+    indices_array crs_local_indices_;
     
     // Trilinos type definitions
     typedef Tpetra::CrsMatrix<real_t, tpetra_LO, tpetra_GO> MAT; //stands for matrix
     typedef const Tpetra::CrsMatrix<real_t, tpetra_LO, tpetra_GO> const_MAT;
     typedef Tpetra::MultiVector<real_t, tpetra_LO, tpetra_GO> MV;
-    typedef Kokkos::View<real_t*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
-    typedef Kokkos::View<tpetra_GO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> global_indices_array;
-    typedef Kokkos::View<tpetra_LO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> indices_array;
     typedef MV::dual_view_type::t_dev vec_array;
     typedef MV::dual_view_type::t_host host_vec_array;
     typedef Kokkos::View<const real_t**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_vec_array;
@@ -1086,19 +1094,24 @@ public:
         *this = temp;
     }
 
-    //Tpetra type only goes up to 2D access; partitions along rows with unique indices per process
-    TpetraCRSMatrix(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    //CRS matrix constructor for banded matrix case
+    // TpetraCRSMatrix(size_t dim1, size_t dim2,
+    //                 const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //CRS matrix constructor with arbitrary row graph
+    TpetraCRSMatrix(size_t dim1, input_row_map_type input_strides, DCArrayKokkos<tpetra_GO,Layout,ExecSpace,MemoryTraits> crs_graph,
+                    TArray1D input_values, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
-    //2D Tpetra type with a partition map passed in
+    //CRS matrix constructor with arbitrary row graph and column map supplied
     TpetraCRSMatrix(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    //Tpetra type only goes up to 2D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    //CRS matric constructor with arbitrary row graph; builds column map for you and thus one less arg
     TpetraCRSMatrix(Teuchos::RCP<Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
-    T& host(size_t i, size_t j) const;
+    // T& host(size_t i, size_t j) const;
     
     KOKKOS_INLINE_FUNCTION
     TpetraCRSMatrix& operator=(const TpetraCRSMatrix& temp);
@@ -1126,7 +1139,7 @@ public:
     size_t extent() const;
 
     KOKKOS_INLINE_FUNCTION
-    size_t dims(size_t i) const;
+    size_t dim1() const;
 
     size_t global_dim() const;
  
@@ -1135,15 +1148,15 @@ public:
     T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
-    T* host_pointer() const;
+    // KOKKOS_INLINE_FUNCTION
+    // T* host_pointer() const;
 
     // Method returns kokkos dual view
     KOKKOS_INLINE_FUNCTION
-    TArray1D get_kokkos_dual_view() const;
+    Kokkos::View <T**, Layout, ExecSpace, MemoryTraits> get_kokkos_view() const;
 
-    // Method that update host view
-    void update_host();
+    // // Method that update host view
+    // void update_host();
 
     // Method that update device view
     void update_device();
@@ -1162,26 +1175,58 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(): tpetra_pmap(NULL){
     length_ = 0;
     for (int i = 0; i < 7; i++) {
-        dims_[i] = 0;
+        dim1_ = 0;
     }
 }
 
-// Overloaded 2D constructor where you provide dimensions, partitioning is done along first dimension
+// Constructor that takes local data in a matar ragged type
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t dim0, size_t dim1, const std::string& tag_string, MPI_Comm mpi_comm) {
-    // mpi_comm_ = mpi_comm;
-    // global_dim1_ = dim0;
-    // Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
-    // tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
-    // pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    // dims_[0] = tpetra_pmap->getLocalNumElements();
-    // dims_[1] = dim1;
-    // order_ = 2;
-    // length_ = (dims_[0] * dims_[1]);
-    // // Create host ViewCArray
-    // set_mpi_type();
-    // this_array_ = TArray1D(tag_string, dims_[0], dim1);
-    // tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t dim0, input_row_map_type input_strides, DCArrayKokkos<tpetra_GO,Layout,ExecSpace,MemoryTraits> crs_graph,
+                                                                  TArray1D input_values, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dim1_ = tpetra_pmap->getLocalNumElements();
+    mystrides_ = input_strides;
+    this_array_ = input_values;
+    global_indices_array input_crs_graph = crs_graph.get_kokkos_dual_view().d_view;
+
+    
+    //build column map for the global conductivity matrix
+    Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type> > colmap;
+    const Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type> > dommap = tpetra_pmap;
+
+    Tpetra::Details::makeColMap<tpetra_LO, tpetra_GO, tpetra_node_type>(colmap, tpetra_pmap, input_crs_graph.get_kokkos_dual_view().d_view, nullptr);
+    tpetra_column_pmap = colmap;
+    size_t nnz = input_crs_graph.size();
+
+    //debug print
+    //std::cout << "DOF GRAPH SIZE ON RANK " << myrank << " IS " << nnz << std::endl;
+    
+    //local indices in the graph using the constructed column map
+    crs_local_indices_ = indices_array("crs_local_indices", nnz);
+    
+    //row offsets with compatible template arguments
+        row_map_type row_offsets_pass("row_offsets", dim1_ + 1);
+        for(int ipass = 0; ipass < dim1_ + 1; ipass++){
+            row_offsets_pass(ipass) = input_values.start_index_(ipass);
+        }
+
+    size_t entrycount = 0;
+    for(int irow = 0; irow < dim1_; irow++){
+        for(int istride = 0; istride < mystrides_(irow); istride++){
+            crs_local_indices_(entrycount) = tpetra_column_pmap->getLocalElement(crs_graph(entrycount));
+            entrycount++;
+        }
+    }
+    
+    //sort values and indices
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(row_offsets_pass, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+
+    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, start_index_.d_view, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
+    tpetra_crs_matrix->fillComplete();
 }
 
 // Overloaded 2D constructor where you provide a partition map
@@ -1249,9 +1294,9 @@ void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraCRSMatrix!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraCRSMatrix!");
-    return this_array_.d_view(i,j);
+    assert(i >= 0 && i < dim1_ && "i is out of bounds in TpetraCRSMatrix!");
+    assert(j >= 0 && j < mystrides_(i) && "j is out of bounds in TpetraCRSMatrix!");
+    return this_array_(i,j);
 }
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
@@ -1286,12 +1331,12 @@ int TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long
     return local_index;
 }
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T& TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraCRSMatrix");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraCRSMatrix");
-    return this_array_.h_view(i,j);
-}
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// T& TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
+//     assert(i >= 0 && i < dim1_ && "i is out of bounds in TpetraCRSMatrix");
+//     assert(j >= 0 && j < mystrides_(i) && "j is out of bounds in TpetraCRSMatrix");
+//     return this_array_.h_view(i,j);
+// }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -1299,9 +1344,10 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>& TpetraCRSMatrix<T,Layout,ExecS
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
-        for (int iter = 0; iter < temp.order_; iter++){
-            dims_[iter] = temp.dims_[iter];
-        } // end for
+        dim1_ = temp.dim1_;
+        mystrides_ = temp.mystrides_;
+        start_index_ = temp.start_index_;
+        crs_local_indices_ = temp.crs_local_indices_;
         global_dim1_ = temp.global_dim1_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
@@ -1335,9 +1381,8 @@ size_t TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i >= 0 && dims_[i]>0 && "Access to TpetraCRSMatrix dims is out of bounds!");
-    return dims_[i];
+size_t TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::dim1() const {
+    return dim1_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1348,34 +1393,34 @@ size_t TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::global_dim() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_array_.d_view.data();
+    return this_array_.pointer();
 }
+
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// KOKKOS_INLINE_FUNCTION
+// T* TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+//     return this_array_.h_view.data();
+// }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
-    return this_array_.h_view.data();
+Kokkos::View <T**, Layout, ExecSpace, MemoryTraits> TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
+  return this_array_.get_kokkos_view();
 }
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
-  return this_array_;
-}
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+//     this_array_.template modify<typename TArray1D::execution_space>();
+//     this_array_.template sync<typename TArray1D::host_mirror_space>();
+// }
 
-    this_array_.template modify<typename TArray1D::execution_space>();
-    this_array_.template sync<typename TArray1D::host_mirror_space>();
-}
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::update_device() {
-
-    this_array_.template modify<typename TArray1D::host_mirror_space>();
-    this_array_.template sync<typename TArray1D::execution_space>();
-}
+//     this_array_.template modify<typename TArray1D::host_mirror_space>();
+//     this_array_.template sync<typename TArray1D::execution_space>();
+// }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::print() const {
