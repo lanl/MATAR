@@ -893,7 +893,7 @@ T* ViewFArrayKokkos<T>::pointer() const {
 
 template <typename T>
 void ViewFArrayKokkos<T>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_(i) = val;
     });
 }
@@ -1634,7 +1634,7 @@ T* ViewFMatrixKokkos<T>::pointer() const {
 
 template <typename T>
 void ViewFMatrixKokkos<T>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_(i) = val;
     });
 }
@@ -2053,7 +2053,7 @@ const std::string DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() con
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_.d_view(i) = val;
     });
 }
@@ -2526,7 +2526,7 @@ const std::string DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_(i) = val;
     });
 }
@@ -2942,7 +2942,7 @@ const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() co
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_.d_view(i) = val;
     });
 }
@@ -3401,7 +3401,7 @@ const std::string DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name(
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_(i) = val;
     });
 }
@@ -4133,7 +4133,7 @@ T* ViewCArrayKokkos<T>::pointer() const {
 
 template <typename T>
 void ViewCArrayKokkos<T>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_(i) = val;
     });
 }
@@ -4861,7 +4861,7 @@ T* ViewCMatrixKokkos<T>::pointer() const {
 
 template <typename T>
 void ViewCMatrixKokkos<T>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_(i) = val;
     });
 }
@@ -5287,7 +5287,7 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_.d_view(i) = val;
     });
 }
@@ -5756,7 +5756,7 @@ void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_(i) = val;
     });
 }
@@ -6177,7 +6177,7 @@ const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() co
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_.d_view(i) = val;
     });
 }
@@ -6633,7 +6633,7 @@ const std::string DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name(
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_(i) = val;
     });
 }
@@ -8310,7 +8310,7 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokko
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         array_(i) = val;
     });
 }
@@ -9624,7 +9624,7 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
         array_(i) = val;
     });
 }
@@ -9992,7 +9992,7 @@ int CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos:parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
+    Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
         array_(i) = val;
     });
 }
