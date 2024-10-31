@@ -110,9 +110,15 @@ if (KOKKOS)
   add_executable(annkokkos ann_kokkos.cpp)
   target_link_libraries(annkokkos ${LINKING_LIBRARIES})
 
+  add_executable(annkokkos_compare ann_kokkos_compare.cpp)
+  target_link_libraries(annkokkos_compare ${LINKING_LIBRARIES})
+
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
     target_link_libraries(anndistributed ${LINKING_LIBRARIES})
+    
+    add_executable(anndistributed_crs ann_distributed_crs.cpp)
+    target_link_libraries(anndistributed_crs ${LINKING_LIBRARIES})
   endif()
 
   if (OPENMP)
