@@ -61,6 +61,9 @@ if (KOKKOS)
   add_executable(test_kokkos_for kokkos_for.cpp)
   target_link_libraries(test_kokkos_for ${LINKING_LIBRARIES})
 
+  add_executable(test_kokkos_for_atomic kokkos_for_atomic.cpp)
+  target_link_libraries(test_kokkos_for_atomic ${LINKING_LIBRARIES})
+
   add_executable(test_dual_types test_dual_types.cpp)
   target_link_libraries(test_dual_types ${LINKING_LIBRARIES})
 
