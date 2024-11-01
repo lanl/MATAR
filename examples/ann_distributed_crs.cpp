@@ -81,7 +81,7 @@ struct ANNLayer_t{
     TpetraPartitionMap<long long int> output_partition_map; //map with all comms for row-vector product
     TpetraPartitionMap<long long int> output_unique_map; //submap of uniquely decomposed indices
     TpetraMVArray<real_t> distributed_outputs;
-    TpetraCRSMatrix<real_t> distributed_weights;
+    TpetraCArray<real_t> distributed_weights;
     TpetraMVArray<real_t> distributed_biases; 
 
 }; // end struct
@@ -95,7 +95,7 @@ struct ANNLayer_t{
 // =================================================================
 void vec_mat_multiply(TpetraMVArray<real_t> &inputs,
                       TpetraMVArray<real_t> &outputs, 
-                      TpetraCRSMatrix<real_t> &matrix){
+                      TpetraCArray<real_t> &matrix){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.submap_size();
@@ -146,7 +146,7 @@ float sigmoid_derivative(const float value){
 
 void forward_propagate_layer(TpetraMVArray<real_t> &inputs,
                              TpetraMVArray<real_t> &outputs, 
-                             TpetraCRSMatrix<real_t> &weights,
+                             TpetraCArray<real_t> &weights,
                              const TpetraMVArray<real_t> &biases){
     
     const size_t num_i = inputs.size();
@@ -207,10 +207,10 @@ void set_biases(const TpetraMVArray<real_t> &biases){
 }; // end function
 
 
-void set_weights(const TpetraCRSMatrix<real_t> &weights){
+void set_weights(const TpetraCArray<real_t> &weights){
 
-    const size_t num_i = weights.dim1();
-    const size_t num_j = weights.dim1();
+    const size_t num_i = weights.dims(0);
+    const size_t num_j = weights.dims(1);
     
 	FOR_ALL(i,0,num_i,
 	        j,0,num_j, {
@@ -278,7 +278,7 @@ int main(int argc, char* argv[])
             //comming from subview requires both the original map and the submap to be composed of contiguous indices
             ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
             // allocate the weights in this layer
-            ANNLayers(layer).distributed_weights = TpetraCRSMatrix<real_t> (num_j, num_i);
+            ANNLayers(layer).distributed_weights = TpetraCArray<real_t> (num_j, num_i);
             ANNLayers(layer).distributed_biases = TpetraMVArray<real_t> (num_j);
 
         } // end for
