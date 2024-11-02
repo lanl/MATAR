@@ -360,11 +360,11 @@ TpetraPartitionMap<T,Layout,ExecSpace,MemoryTraits>::~TpetraPartitionMap() {}
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////
-// TpetraMVArray:  Tpetra wrapper for a distributed multivector (several components per vector element).
+// TpetraDFArray:  Tpetra wrapper for a distributed multivector (several components per vector element).
 /////////////////////////
 
 template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
-class TpetraMVArray {
+class TpetraDFArray {
 
     // this is manage
     using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
@@ -408,33 +408,33 @@ public:
     Teuchos::RCP<MV>       tpetra_vector;
     Teuchos::RCP<MV>       tpetra_sub_vector; //for owned comms situations
 
-    TpetraMVArray();
+    TpetraDFArray();
     
     //Copy Constructor
-    TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &temp){
+    TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
 
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); partitions with unique indices per process
-    TpetraMVArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    TpetraDFArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type only goes up to 2D access; partitions along rows with unique indices per process
-    TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    TpetraDFArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type for 1D case with a partition map passed in
-    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //2D Tpetra type with a partition map passed in
-    TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); this constructor takes an RCP pointer to a Tpetra Map directly
-    TpetraMVArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //Tpetra type only goes up to 2D access; this constructor takes an RCP pointer to a Tpetra Map directly
-    TpetraMVArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
-    TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
+    TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
                   const TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &sub_pmap, size_t start_index);
 
     void own_comm_setup(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
@@ -456,7 +456,7 @@ public:
     T& host(size_t i, size_t j) const;
     
     KOKKOS_INLINE_FUNCTION
-    TpetraMVArray& operator=(const TpetraMVArray& temp);
+    TpetraDFArray& operator=(const TpetraDFArray& temp);
 
     // GPU Method
     // Method that returns size
@@ -513,13 +513,13 @@ public:
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
-    ~TpetraMVArray ();
-}; // End of TpetraMVArray
+    ~TpetraDFArray ();
+}; // End of TpetraDFArray
 
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): tpetra_pmap(NULL){
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(): tpetra_pmap(NULL){
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -528,7 +528,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(): tpetra_pmap(NUL
 
 // Overloaded 1D constructor where you provide dimensions, partitioning is done along first dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, const std::string& tag_string, MPI_Comm mpi_comm) {
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, const std::string& tag_string, MPI_Comm mpi_comm) {
     mpi_comm_ = mpi_comm;
     global_dim1_ = dim0;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
@@ -546,7 +546,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, const
 
 // Overloaded 2D constructor where you provide dimensions, partitioning is done along first dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_t dim1, const std::string& tag_string, MPI_Comm mpi_comm) {
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, const std::string& tag_string, MPI_Comm mpi_comm) {
     mpi_comm_ = mpi_comm;
     global_dim1_ = dim0;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
@@ -564,7 +564,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(size_t dim0, size_
 
 // Overloaded 1D constructor where you provide a partition map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
                                                              const std::string& tag_string) {
     mpi_comm_ = input_pmap.mpi_comm_;                                                            
     global_dim1_ = input_pmap.num_global_;
@@ -582,7 +582,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap
 
 // Overloaded 2D constructor where you provide a partition map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
                                                               size_t dim1, const std::string& tag_string) {
     mpi_comm_ = input_pmap.mpi_comm_;
     global_dim1_ = input_pmap.num_global_;
@@ -600,7 +600,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(TpetraPartitionMap
 
 // Overloaded 1D constructor taking an RPC pointer to a Tpetra Map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
                                                               const std::string& tag_string) {
     
     global_dim1_ = input_pmap->getGlobalNumElements();
@@ -618,7 +618,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<const
 
 // Overloaded 2D constructor taking an RPC pointer to a Tpetra Map
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
                                                               size_t dim1, const std::string& tag_string) {
     
     global_dim1_ = input_pmap->getGlobalNumElements();
@@ -636,7 +636,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<const
 
 //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(const TpetraMVArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
                 const TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &sub_pmap, size_t start_index){
     mpi_comm_ = sub_pmap.mpi_comm_;                                                            
     global_dim1_ = sub_pmap.num_global_;
@@ -654,7 +654,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(const TpetraMVArra
 
 // Tpetra vector argument constructor: CURRENTLY DOESN'T WORK SINCE WE CANT GET DUAL VIEW FROM THE MULTIVECTOR
 // template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string){
+// TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<MV> input_tpetra_vector, const std::string& tag_string){
     
 //     tpetra_vector   = input_tpetra_vector;
 //     tpetra_pmap = input_tpetra_vector->getMap(); 
@@ -673,7 +673,7 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::TpetraMVArray(const TpetraMVArra
 // }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
     if (typeid(T).name() == typeid(bool).name()) {
         mpi_datatype_ = MPI_C_BOOL;
     }
@@ -693,32 +693,32 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
         mpi_datatype_ = MPI_DOUBLE;
     }
     else {
-        printf("Your entered TpetraMVArray type is not a supported type for MPI communications and is being set to int\n");
+        printf("Your entered TpetraDFArray type is not a supported type for MPI communications and is being set to int\n");
         mpi_datatype_ = MPI_INT;
     }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraMVArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 1D!");
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraDFArray 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 1D!");
     return this_array_.d_view(i,0);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraMVArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 2D!");
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraDFArray 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 2D!");
     return this_array_.d_view(i,j);
 }
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalIndex(int local_index) const {
+long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_comm_pmap->getGlobalElement(local_index);
     return global_index;
 }
@@ -726,7 +726,7 @@ long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalInd
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(int local_index) const {
+long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_pmap->getGlobalElement(local_index);
     return global_index;
 }
@@ -734,7 +734,7 @@ long long int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long long int global_index) const {
+int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_comm_pmap->getLocalElement(global_index);
     return local_index;
 }
@@ -742,29 +742,29 @@ int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long lon
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-int TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long int global_index) const {
+int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_pmap->getLocalElement(global_index);
     return local_index;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraMVArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 1D!");
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraDFArray 1D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 1D!");
     return this_array_.h_view(i,0);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraMVArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraMVArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraMVArray 2D!");
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraDFArray 2D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 2D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 2D!");
     return this_array_.h_view(i,j);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>& TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraMVArray& temp) {
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraDFArray& temp) {
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
@@ -794,69 +794,69 @@ TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>& TpetraMVArray<T,Layout,ExecSpace
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::size() const {
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::extent() const {
     return length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "TpetraMVArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to TpetraMVArray dims is out of bounds!");
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "TpetraDFArray order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to TpetraDFArray dims is out of bounds!");
     return dims_[i];
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::global_dim() const {
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::global_dim() const {
     return global_dim1_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::order() const {
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::order() const {
     return order_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
+T* TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
     return this_array_.d_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-T* TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+T* TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
     return this_array_.h_view.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
   return this_array_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &other_pmap) {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &other_pmap) {
     own_comms = true;
     tpetra_comm_pmap = other_pmap.tpetra_map;
     comm_pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_comm_pmap);
@@ -868,7 +868,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(TpetraPartit
 
 //requires both tpetra_pmap and other_pmap to be contiguous and for other_pmap to be a subset of tpetra_pmap on every process
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap) {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap) {
     own_comms = true;
     tpetra_comm_pmap = other_pmap;
     comm_pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_comm_pmap);
@@ -879,7 +879,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::own_comm_setup(Teuchos::RCP
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
     if(own_comms){
         tpetra_vector->doImport(*tpetra_sub_vector, *importer, Tpetra::INSERT);
     }
@@ -888,7 +888,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
         std::ostream &out = std::cout;
         Teuchos::RCP<Teuchos::FancyOStream> fos;
         fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
@@ -896,7 +896,7 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     int num_dim = dims_[1];
     int nranks, process_rank;
@@ -1013,22 +1013,22 @@ void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
 // Return size of the submap
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-size_t TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::submap_size() const {
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::submap_size() const {
     return submap_size_;
 }
 
 //MPI_Barrier wrapper
 //template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-//void TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
+//void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::barrier(MPI_Comm comm) {
 //    MPI_Barrier(comm); 
 //}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-TpetraMVArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraMVArray() {}
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraDFArray() {}
 
 ////////////////////////////////////////////////////////////////////////////////
-// End of TpetraMVArray
+// End of TpetraDFArray
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////
@@ -1164,7 +1164,7 @@ public:
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraCArray ();
-}; // End of TpetraMVArray
+}; // End of TpetraDFArray
 
 
 // Default constructor
@@ -1292,7 +1292,7 @@ void TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraMVArray 1D!");
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraDFArray 1D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraCArray 1D!");
     return this_array_(i);
 }
@@ -1300,7 +1300,7 @@ T& TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraMVArray 2D!");
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraDFArray 2D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraCArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraCArray 2D!");
     return this_array_(i,j);
@@ -1378,8 +1378,8 @@ size_t TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::size() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "TpetraMVArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to TpetraMVArray dims is out of bounds!");
+    assert(i < order_ && "TpetraDFArray order (rank) does not match constructor, dim[i] does not exist!");
+    assert(i >= 0 && dims_[i]>0 && "Access to TpetraDFArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -1554,7 +1554,7 @@ public:
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraCRSMatrix ();
-}; // End of TpetraMVArray
+}; // End of TpetraDFArray
 
 
 // Default constructor
@@ -1890,8 +1890,8 @@ class TpetraCommunicationPlan {
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
 protected:
-    TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector_;
-    TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector_;
+    TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector_;
+    TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector_;
 
     /*forward comms means communicating data to a vector that doesn't have a unique distribution of its global
       indices amongst processes from a vector that does have a unique distribution amongst processes.
@@ -1919,8 +1919,8 @@ public:
         *this = temp;
     }
     
-    TpetraCommunicationPlan(TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
-                            TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
+    TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                            TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
 
     KOKKOS_INLINE_FUNCTION
     TpetraCommunicationPlan& operator=(const TpetraCommunicationPlan& temp);
@@ -1941,8 +1941,8 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPla
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan(TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
-                            TpetraMVArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms, combine_mode mode) {
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                            TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms, combine_mode mode) {
     combine_mode_ = mode;
     reverse_comms_flag = reverse_comms;
     destination_vector_ = destination_vector;
