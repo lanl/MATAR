@@ -1038,7 +1038,8 @@ template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace 
 class TpetraCArray {
 
     // this is managed
-    using  TArray1D = CArrayKokkos<T, Kokkos::LayoutRight, ExecSpace, MemoryTraits>;
+    //using  TArray1D = CArrayKokkos<T, Kokkos::LayoutRight, ExecSpace, MemoryTraits>;
+    using TArray1D = Kokkos::View <T*, Layout, ExecSpace, MemoryTraits>;
     using  TArray1D_Host = CArrayKokkos<T, Kokkos::LayoutRight, HostSpace, MemoryTraits>;
 
     using  row_map_type = Kokkos::View<size_t*, ExecSpace>;
@@ -1193,7 +1194,8 @@ TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::TpetraCArray(size_t global_dim0, 
     dims_[1] = dim1;
     order_ = 2;
 
-    this_array_ = TArray1D(dims_[0], dims_[1], "tag_string");
+    //this_array_ = TArray1D(dims_[0], dims_[1], "tag_string");
+    this_array_ = TArray1D("tag_string", dims_[0]*dims_[1]);
     size_t nnz = dims_[0]*dims_[1];
 
     //assign indices 0 to dim1-1 since tpetra constructor still needs a graph
@@ -1244,9 +1246,9 @@ TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::TpetraCArray(size_t global_dim0, 
     });
     
     //sort values and indices
-    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(row_offsets_pass, crs_local_indices_, this_array_.get_kokkos_view());
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(row_offsets_pass, crs_local_indices_, this_array_);
 
-    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, row_offsets_pass, crs_local_indices_, this_array_.get_kokkos_view()));
+    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, row_offsets_pass, crs_local_indices_, this_array_));
     tpetra_crs_matrix->fillComplete();
 }
 
@@ -1303,7 +1305,7 @@ T& TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j)
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraDFArray 2D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraCArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraCArray 2D!");
-    return this_array_(i,j);
+    return this_array_(i*dims_[1] + j);
 }
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
@@ -1391,13 +1393,13 @@ size_t TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::global_dim() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_array_.pointer();
+    return this_array_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View <T**, Layout, ExecSpace, MemoryTraits> TpetraCArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
-  return this_array_.get_kokkos_view();
+  return this_array_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
