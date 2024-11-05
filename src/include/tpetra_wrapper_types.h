@@ -372,7 +372,7 @@ class TpetraDFArray {
     size_t dims_[2];
     size_t global_dim1_;
     size_t submap_size_;
-    size_t length_;
+    size_t length_, component_length_;
     size_t order_;  // tensor order (rank)
     MPI_Comm mpi_comm_;
     MPI_Datatype mpi_datatype_;
@@ -418,8 +418,27 @@ public:
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); partitions with unique indices per process
     TpetraDFArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
-    //Tpetra type only goes up to 2D access; partitions along rows with unique indices per process
+    //Tpetra type for 2D case; partitions along rows with unique indices per process
     TpetraDFArray(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //Tpetra type for 3D case; partitions along rows with unique indices per process
+    TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //Tpetra type for 4D case; partitions along rows with unique indices per process
+    TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //Tpetra type for 5D case; partitions along rows with unique indices per process
+    TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //Tpetra type for 6D case; partitions along rows with unique indices per process
+    TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    
+    //Tpetra type for 7D case; partitions along rows with unique indices per process
+    TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     //Tpetra type for 1D case with a partition map passed in
     TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -451,9 +470,42 @@ public:
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
 
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator() (size_t i, size_t j, size_t k,
+                   size_t l) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator() (size_t i, size_t j, size_t k,
+                   size_t l, size_t m) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator() (size_t i, size_t j, size_t k,
+                   size_t l, size_t m, size_t n) const;
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator() (size_t i, size_t j, size_t k,
+                   size_t l, size_t m, size_t n, size_t o) const;
+
     T& host(size_t i) const;
 
     T& host(size_t i, size_t j) const;
+
+    T& host(size_t i, size_t j, size_t k) const;
+
+    T& host(size_t i, size_t j, size_t k,
+            size_t l) const;
+    
+    T& host(size_t i, size_t j, size_t k,
+            size_t l, size_t m) const;
+    
+    T& host(size_t i, size_t j, size_t k,
+            size_t l, size_t m, size_t n) const;
+
+    T& host(size_t i, size_t j, size_t k,
+            size_t l, size_t m, size_t n, size_t o) const;
     
     KOKKOS_INLINE_FUNCTION
     TpetraDFArray& operator=(const TpetraDFArray& temp);
@@ -520,7 +572,7 @@ public:
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(): tpetra_pmap(NULL){
-    length_ = order_ = 0;
+    length_ = order_ = component_length_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -538,9 +590,10 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, const
     dims_[1] = 1;
     order_ = 1;
     length_ = dims_[0];
+    component_length_ = 1;
     // Create host ViewCArray
     set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], 1);
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
     tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
 }
 
@@ -556,9 +609,123 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     dims_[1] = dim1;
     order_ = 2;
     length_ = (dims_[0] * dims_[1]);
+    component_length_ = dims_[1];
     // Create host ViewCArray
     set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], dim1);
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 3D constructor where you provide dimensions, partitioning is done along first dimension
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dims_[0] * dims_[1] * dims_[2]);
+    component_length_ = dims_[1] * dims_[2];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 4D constructor where you provide dimensions, partitioning is done along first dimension
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dims_[0] * dims_[1] * dims_[2]* dims_[3]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 5D constructor where you provide dimensions, partitioning is done along first dimension
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                                                              size_t dim4, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3]* dims_[4]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 6D constructor where you provide dimensions, partitioning is done along first dimension
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                                                              size_t dim4, size_t dim5, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 7D constructor where you provide dimensions, partitioning is done along first dimension
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                                                              size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string, MPI_Comm mpi_comm) {
+    mpi_comm_ = mpi_comm;
+    global_dim1_ = dim0;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 6;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
     tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
 }
 
@@ -698,6 +865,7 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
     }
 }
 
+//1D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
@@ -706,6 +874,7 @@ T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     return this_array_.d_view(i,0);
 }
 
+//2D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
@@ -713,6 +882,84 @@ T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 2D!");
     return this_array_.d_view(i,j);
+}
+
+// 3D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in TpetraDFArray 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 3D!");
+    return this_array_.d_view(i, j + (k * dims_[1]));
+}
+
+// 4D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in TpetraDFArray 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 4D!");
+    return this_array_.d_view(i, j + (k * dims_[1])
+                              + (l * dims_[1] * dims_[2]));
+}
+
+// 5D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in TpetraDFArray 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 5D!");
+    return this_array_.d_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3]));
+}
+
+// 6D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in TpetraDFArray 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDFArray 6D!");
+    return this_array_.d_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3])
+                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+// 7D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in TpetraDFArray 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDFArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in TpetraDFArray 7D!");
+    return this_array_.d_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3])
+                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                         + (o * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
 }
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
@@ -747,6 +994,7 @@ int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long i
     return local_index;
 }
 
+//1D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i) const {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraDFArray 1D!");
@@ -754,12 +1002,86 @@ T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i) const {
     return this_array_.h_view(i,0);
 }
 
+//2D
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in TpetraDFArray 2D!");
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 2D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 2D!");
     return this_array_.h_view(i,j);
+}
+
+// 3D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in TpetraDFArray 3D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 3D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 3D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 3D!");
+    return this_array_.h_view(i, j + (k * dims_[1]));
+}
+
+// 4D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in TpetraDFArray 4D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 4D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 4D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 4D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 4D!");
+    return this_array_.h_view(i, j + (k * dims_[1])
+                              + (l * dims_[1] * dims_[2]));
+}
+
+// 5D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size_t k, size_t l,
+                               size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in TpetraDFArray 5D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 5D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 5D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 5D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 5D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 5D!");
+    return this_array_.h_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3]));
+}
+
+// 6D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in TpetraDFArray 6D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 6D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 6D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 6D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 6D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 6D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDFArray 6D!");
+    return this_array_.h_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3])
+                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+}
+
+// 7D
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size_t k, size_t l,
+                               size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in TpetraDFArray 7D!");
+    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDFArray 7D!");
+    assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDFArray 7D!");
+    assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDFArray 7D!");
+    assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDFArray 7D!");
+    assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDFArray 7D!");
+    assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDFArray 7D!");
+    assert(o >= 0 && o < dims_[6] && "o is out of bounds in TpetraDFArray 7D!");
+    return this_array_.h_view(i, j + (k * dims_[1])
+                         + (l * dims_[1] * dims_[2])
+                         + (m * dims_[1] * dims_[2] * dims_[3])
+                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4])
+                         + (o * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -774,6 +1096,7 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
         global_dim1_ = temp.global_dim1_;
         order_ = temp.order_;
         length_ = temp.length_;
+        component_length_ = temp.component_length_;
         this_array_ = temp.this_array_;
         mpi_comm_ = temp.mpi_comm_;
         mpi_datatype_ = temp.mpi_datatype_;
