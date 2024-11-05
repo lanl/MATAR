@@ -369,7 +369,7 @@ class TpetraDFArray {
     // this is manage
     using  TArray1D = Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits>;
 
-    size_t dims_[2];
+    size_t dims_[7];
     size_t global_dim1_;
     size_t submap_size_;
     size_t length_, component_length_;
@@ -415,6 +415,7 @@ public:
         *this = temp;
     }
 
+    /* Default Contigous Map Constructors*/
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); partitions with unique indices per process
     TpetraDFArray(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
@@ -440,21 +441,93 @@ public:
     TpetraDFArray(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
                   size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
+    /* Specified Map Constructors*/
     //Tpetra type for 1D case with a partition map passed in
-    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //2D Tpetra type with a partition map passed in
-    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    //3D Tpetra type with a partition map passed in
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1,
+                  size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //4D Tpetra type with a partition map passed in
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //5D Tpetra type with a partition map passed in
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //6D Tpetra type with a partition map passed in
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //7D Tpetra type with a partition map passed in
+    TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //Tpetra type for 1D case(still allocates dim0 by 1 using **T); this constructor takes an RCP pointer to a Tpetra Map directly
-    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     //Tpetra type only goes up to 2D access; this constructor takes an RCP pointer to a Tpetra Map directly
-    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    //Tpetra type only goes up to 3D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1,
+                  size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //Tpetra type only goes up to 4D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //Tpetra type only goes up to 5D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //Tpetra type only goes up to 6D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    //Tpetra type only goes up to 7D access; this constructor takes an RCP pointer to a Tpetra Map directly
+    TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap, size_t dim1, size_t dim2, size_t dim3,
+                  size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
     //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
     TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
                   const TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &sub_pmap, size_t start_index);
+
+    // 1D array setup
+    void data_setup(const std::string& tag_string);
+
+    // 2D array setup
+    void data_setup( size_t dim1,
+                const std::string& tag_string);
+
+    // 3D array setup
+    void data_setup( size_t dim1, size_t dim2,
+                const std::string& tag_string);
+
+    // 4D array setup
+    void data_setup( size_t dim1, size_t dim2, size_t dim3,
+                const std::string& tag_string);
+
+    // 5D array setup
+    void data_setup( size_t dim1, size_t dim2, size_t dim3,
+                size_t dim4, const std::string& tag_string);
+
+    // 6D array setup
+    void data_setup( size_t dim1, size_t dim2, size_t dim3,
+                size_t dim4, size_t dim5, const std::string& tag_string);
+
+    // 7D array setup
+    void data_setup(size_t dim1, size_t dim2, size_t dim3,
+                size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string);
 
     void own_comm_setup(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> other_pmap); //only call if the map in the arg is a uniquely owned submap of the arrays map
     
@@ -573,6 +646,7 @@ public:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(): tpetra_pmap(NULL){
     length_ = order_ = component_length_ = 0;
+    own_comms = false;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -586,15 +660,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, const
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = 1;
-    order_ = 1;
-    length_ = dims_[0];
-    component_length_ = 1;
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(tag_string);
 }
 
 // Overloaded 2D constructor where you provide dimensions, partitioning is done along first dimension
@@ -605,15 +672,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    order_ = 2;
-    length_ = (dims_[0] * dims_[1]);
-    component_length_ = dims_[1];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, tag_string);
 }
 
 // Overloaded 3D constructor where you provide dimensions, partitioning is done along first dimension
@@ -624,16 +684,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    order_ = 3;
-    length_ = (dims_[0] * dims_[1] * dims_[2]);
-    component_length_ = dims_[1] * dims_[2];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, dim2, tag_string);
 }
 
 // Overloaded 4D constructor where you provide dimensions, partitioning is done along first dimension
@@ -644,17 +696,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    order_ = 4;
-    length_ = (dims_[0] * dims_[1] * dims_[2]* dims_[3]);
-    component_length_ = dims_[1] * dims_[2] * dims_[3];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, tag_string);
 }
 
 // Overloaded 5D constructor where you provide dimensions, partitioning is done along first dimension
@@ -666,18 +709,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    order_ = 5;
-    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3]* dims_[4]);
-    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, tag_string);
 }
 
 // Overloaded 6D constructor where you provide dimensions, partitioning is done along first dimension
@@ -689,19 +722,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    order_ = 6;
-    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]);
-    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, tag_string);
 }
 
 // Overloaded 7D constructor where you provide dimensions, partitioning is done along first dimension
@@ -713,20 +735,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(size_t dim0, size_
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim0, 0, teuchos_comm));
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
-    order_ = 6;
-    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6]);
-    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
 }
 
 // Overloaded 1D constructor where you provide a partition map
@@ -737,14 +747,8 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap
     global_dim1_ = input_pmap.num_global_;
     tpetra_pmap = input_pmap.tpetra_map;
     pmap = input_pmap;
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = 1;
-    order_ = 1;
-    length_ = dims_[0];
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], 1);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(tag_string);
 }
 
 // Overloaded 2D constructor where you provide a partition map
@@ -755,14 +759,70 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap
     global_dim1_ = input_pmap.num_global_;
     tpetra_pmap = input_pmap.tpetra_map;
     pmap = input_pmap;
-    dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = dim1;
-    order_ = 2;
-    length_ = (dims_[0] * dims_[1]);
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], dim1);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, tag_string);
+}
+
+// Overloaded 3D constructor where you provide a partition map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                                                              size_t dim1, size_t dim2, const std::string& tag_string) {
+    mpi_comm_ = input_pmap.mpi_comm_;
+    global_dim1_ = input_pmap.num_global_;
+    tpetra_pmap = input_pmap.tpetra_map;
+    pmap = input_pmap;
+    own_comms = false;
+    data_setup(dim1, dim2, tag_string);
+}
+
+// Overloaded 4D constructor where you provide a partition map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
+    mpi_comm_ = input_pmap.mpi_comm_;
+    global_dim1_ = input_pmap.num_global_;
+    tpetra_pmap = input_pmap.tpetra_map;
+    pmap = input_pmap;
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, tag_string);
+}
+
+// Overloaded 5D constructor where you provide a partition map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) {
+    mpi_comm_ = input_pmap.mpi_comm_;
+    global_dim1_ = input_pmap.num_global_;
+    tpetra_pmap = input_pmap.tpetra_map;
+    pmap = input_pmap;
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, tag_string);
+}
+
+// Overloaded 6D constructor where you provide a partition map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                              size_t dim5, const std::string& tag_string) {
+    mpi_comm_ = input_pmap.mpi_comm_;
+    global_dim1_ = input_pmap.num_global_;
+    tpetra_pmap = input_pmap.tpetra_map;
+    pmap = input_pmap;
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, tag_string);
+}
+
+// Overloaded 7D constructor where you provide a partition map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(TpetraPartitionMap<long long int,Layout,ExecSpace,MemoryTraits> &input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                              size_t dim5, size_t dim6, const std::string& tag_string) {
+    mpi_comm_ = input_pmap.mpi_comm_;
+    global_dim1_ = input_pmap.num_global_;
+    tpetra_pmap = input_pmap.tpetra_map;
+    pmap = input_pmap;
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
 }
 
 // Overloaded 1D constructor taking an RPC pointer to a Tpetra Map
@@ -771,16 +831,10 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const
                                                               const std::string& tag_string) {
     
     global_dim1_ = input_pmap->getGlobalNumElements();
-    dims_[0] = input_pmap->getLocalNumElements();
-    dims_[1] = 1;
-    order_ = 1;
-    length_ = dims_[0];
     tpetra_pmap = input_pmap;
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], 1);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(tag_string);
 }
 
 // Overloaded 2D constructor taking an RPC pointer to a Tpetra Map
@@ -789,16 +843,72 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const
                                                               size_t dim1, const std::string& tag_string) {
     
     global_dim1_ = input_pmap->getGlobalNumElements();
-    dims_[0] = input_pmap->getLocalNumElements();
-    dims_[1] = dim1;
     tpetra_pmap = input_pmap;
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
-    order_ = 2;
-    length_ = (dims_[0] * dims_[1]);
-    // Create host ViewCArray
-    set_mpi_type();
-    this_array_ = TArray1D(tag_string, dims_[0], dim1);
-    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+    own_comms = false;
+    data_setup(dim1, tag_string);
+}
+
+// Overloaded 3D constructor taking an RPC pointer to a Tpetra Map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                                                              size_t dim1, size_t dim2, const std::string& tag_string) {
+    
+    global_dim1_ = input_pmap->getGlobalNumElements();
+    tpetra_pmap = input_pmap;
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    own_comms = false;
+    data_setup(dim1, dim2, tag_string);
+}
+
+// Overloaded 4D constructor taking an RPC pointer to a Tpetra Map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
+    
+    global_dim1_ = input_pmap->getGlobalNumElements();
+    tpetra_pmap = input_pmap;
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, tag_string);
+}
+
+// Overloaded 5D constructor taking an RPC pointer to a Tpetra Map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) {
+    
+    global_dim1_ = input_pmap->getGlobalNumElements();
+    tpetra_pmap = input_pmap;
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, tag_string);
+}
+
+// Overloaded 6D constructor taking an RPC pointer to a Tpetra Map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                              size_t dim5, const std::string& tag_string) {
+    
+    global_dim1_ = input_pmap->getGlobalNumElements();
+    tpetra_pmap = input_pmap;
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, tag_string);
+}
+
+// Overloaded 7D constructor taking an RPC pointer to a Tpetra Map
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_pmap,
+                                                              size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                              size_t dim5, size_t dim6, const std::string& tag_string) {
+    
+    global_dim1_ = input_pmap->getGlobalNumElements();
+    tpetra_pmap = input_pmap;
+    pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
+    own_comms = false;
+    data_setup(dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
 }
 
 //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
@@ -838,6 +948,128 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(const TpetraDFArra
 //     length_ = (dims_[0] * dims_[1]);
 //     set_mpi_type();
 // }
+
+// Overloaded 1D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(const std::string& tag_string) {
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = 1;
+    order_ = 1;
+    length_ = dims_[0];
+    component_length_ = 1;
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 2D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, const std::string& tag_string) {
+
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    order_ = 2;
+    length_ = (dims_[0] * dims_[1]);
+    component_length_ = dims_[1];
+    // Create host ViewCArray
+    //set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 3D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, size_t dim2, const std::string& tag_string) {
+
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_ = 3;
+    length_ = (dims_[0] * dims_[1] * dims_[2]);
+    component_length_ = dims_[1] * dims_[2];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 4D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
+
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_ = 4;
+    length_ = (dims_[0] * dims_[1] * dims_[2]* dims_[3]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 5D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, size_t dim2, size_t dim3,
+                                                           size_t dim4, const std::string& tag_string) {
+
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_ = 5;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3]* dims_[4]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 6D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, size_t dim2, size_t dim3,
+                                                           size_t dim4, size_t dim5, const std::string& tag_string) {
+
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_ = 6;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
+
+// Overloaded 7D array setup
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, size_t dim2, size_t dim3,size_t dim4, size_t dim5, size_t dim6,
+                                                           const std::string& tag_string) {
+    
+    dims_[0] = tpetra_pmap->getLocalNumElements();
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_ = 6;
+    length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6]);
+    component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6];
+    // Create host ViewCArray
+    set_mpi_type();
+    this_array_ = TArray1D(tag_string, dims_[0], component_length_);
+    tpetra_vector   = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
+}
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
@@ -1309,10 +1541,10 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     pmap = TpetraPartitionMap<tpetra_GO,Layout,ExecSpace,MemoryTraits>(tpetra_pmap);
     own_comms = false; //reset submap setup now that full map is different
     dims_[0] = tpetra_pmap->getLocalNumElements();
-    length_ = (dims_[0] * dims_[1]);
+    length_ = (dims_[0] * component_length_);
 
     //copy new partitioned vector into another one constructed with our managed dual view
-    this_array_ = TArray1D(this_array_.d_view.label(), dims_[0], dims_[1]);
+    this_array_ = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
     Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
     managed_tpetra_vector->assign(*tpetra_vector);
     tpetra_vector = managed_tpetra_vector;
