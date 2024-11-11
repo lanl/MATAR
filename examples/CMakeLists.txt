@@ -119,6 +119,9 @@ if (KOKKOS)
     
     add_executable(anndistributed_crs ann_distributed_crs.cpp)
     target_link_libraries(anndistributed_crs ${LINKING_LIBRARIES})
+
+    add_executable(test_tpetra_farray test_tpetra_farray.cpp)
+    target_link_libraries(test_tpetra_farray ${LINKING_LIBRARIES})
   endif()
 
   if (OPENMP)
