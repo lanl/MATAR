@@ -213,7 +213,7 @@ namespace { // (anonymous)
         Kokkos::HostSpace>::accessible,
       typename ExecSpace::device_type,
       typename Kokkos::DualView<T*, ExecSpace>::host_mirror_space>::type host_exec_space;
-    typedef Kokkos::LayoutLeft array_layout;
+    typedef Kokkos::LayoutRight array_layout;
     typedef Kokkos::View<T*, array_layout, host_exec_space,
                          Kokkos::MemoryUnmanaged> view_type;
 
@@ -294,12 +294,7 @@ namespace { // (anonymous)
     const size_t LDA = strides[1];
     const size_t numRows = dv.extent (0);
 
-    if (LDA == 0) {
-      return (numRows == 0) ? size_t (1) : numRows;
-    }
-    else {
-      return LDA;
-    }
+    return numRows;
   }
 
   template<class ViewType>
@@ -924,7 +919,7 @@ namespace Tpetra {
     const impl_scalar_type* const X_in_raw =
       reinterpret_cast<const impl_scalar_type*> (data.getRawPtr ());
     Kokkos::View<const impl_scalar_type**,
-      Kokkos::LayoutLeft,
+      Kokkos::LayoutRight,
       Kokkos::HostSpace,
       Kokkos::MemoryUnmanaged> X_in_orig (X_in_raw, LDA, numVecs);
     const Kokkos::pair<size_t, size_t> rowRng (0, lclNumRows);
@@ -1783,7 +1778,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     bool reallocated = false;
 
     using IST = impl_scalar_type;
-    using DV = Kokkos::DualView<IST*, Kokkos::LayoutLeft, buffer_device_type>;
+    using DV = Kokkos::DualView<IST*, Kokkos::LayoutRight, buffer_device_type>;
 
     // Conditions for aliasing memory:
     // - When both sides of the dual view are in the same memory
@@ -3759,7 +3754,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
   get1dCopy (const Teuchos::ArrayView<Scalar>& A, const size_t LDA) const
   {
     using IST = impl_scalar_type;
-    using input_view_type = Kokkos::View<IST**, Kokkos::LayoutLeft,
+    using input_view_type = Kokkos::View<IST**, Kokkos::LayoutRight,
                                          Kokkos::HostSpace,
                                          Kokkos::MemoryUnmanaged>;
     const char tfecfFuncName[] = "get1dCopy: ";
@@ -4840,7 +4835,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     using MV = LRMultiVector<ST, LO, GO, NT>;
     using IST = typename MV::impl_scalar_type;
     using input_view_type =
-      Kokkos::View<const IST**, Kokkos::LayoutLeft,
+      Kokkos::View<const IST**, Kokkos::LayoutRight,
         Kokkos::HostSpace, Kokkos::MemoryUnmanaged>;
     using pair_type = std::pair<LO, LO>;
 
@@ -4879,7 +4874,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     using MV = LRMultiVector<ST, LO, GO, NT>;
     using IST = typename MV::impl_scalar_type;
     using output_view_type =
-      Kokkos::View<IST**, Kokkos::LayoutLeft,
+      Kokkos::View<IST**, Kokkos::LayoutRight,
         Kokkos::HostSpace, Kokkos::MemoryUnmanaged>;
     using pair_type = std::pair<LO, LO>;
 

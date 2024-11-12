@@ -1126,7 +1126,7 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDCArray 3D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDCArray 3D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 3D!");
-    return this_array_.d_view(i, j + (k * dims_[1]));
+    return this_array_.d_view(i, j * dims_[2] + k);
 }
 
 // 4D
@@ -1138,8 +1138,7 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDCArray 4D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 4D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 4D!");
-    return this_array_.d_view(i, j + (k * dims_[1])
-                              + (l * dims_[1] * dims_[2]));
+    return this_array_.d_view(i, j * dims_[2] * dims_[3] + k * dims_[3] + l);
 }
 
 // 5D
@@ -1153,9 +1152,8 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 5D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 5D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 5D!");
-    return this_array_.d_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3]));
+    return this_array_.d_view(i, j * dims_[2] * dims_[3] * dims_[4] +
+                              k * dims_[3] * dims_[4] + l * dims_[4] + m);
 }
 
 // 6D
@@ -1170,10 +1168,9 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 6D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 6D!");
     assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDCArray 6D!");
-    return this_array_.d_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3])
-                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+    return this_array_.d_view(i, j * dims_[2] * dims_[3] * dims_[4]* dims_[5] +
+                              k * dims_[3] * dims_[4]* dims_[5] + l * dims_[4]* dims_[5] +
+                              m* dims_[5] + n);
 }
 
 // 7D
@@ -1189,11 +1186,9 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 7D!");
     assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDCArray 7D!");
     assert(o >= 0 && o < dims_[6] && "o is out of bounds in TpetraDCArray 7D!");
-    return this_array_.d_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3])
-                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4])
-                         + (o * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+    return this_array_.d_view(i,  j * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6] +
+                              k * dims_[3] * dims_[4]* dims_[5] * dims_[6] + l * dims_[4]* dims_[5] * dims_[6] +
+                              m* dims_[5] * dims_[6] + n * dims_[6] + o);
 }
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
@@ -1252,7 +1247,7 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size
     assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraDCArray 3D!");
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDCArray 3D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 3D!");
-    return this_array_.h_view(i, j + (k * dims_[1]));
+    return this_array_.h_view(i, j * dims_[2] + k);
 }
 
 // 4D
@@ -1263,8 +1258,7 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size
     assert(j >= 0 && j < dims_[1] && "j is out of bounds in TpetraDCArray 4D!");
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 4D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 4D!");
-    return this_array_.h_view(i, j + (k * dims_[1])
-                              + (l * dims_[1] * dims_[2]));
+    return this_array_.h_view(i, j * dims_[2] * dims_[3] + k * dims_[3] + l);
 }
 
 // 5D
@@ -1277,9 +1271,8 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size
     assert(k >= 0 && k < dims_[2] && "k is out of bounds in TpetraDCArray 5D!");
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 5D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 5D!");
-    return this_array_.h_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3]));
+    return this_array_.h_view(i, j * dims_[2] * dims_[3] * dims_[4] +
+                              k * dims_[3] * dims_[4] + l * dims_[4] + m);
 }
 
 // 6D
@@ -1293,10 +1286,9 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size
     assert(l >= 0 && l < dims_[3] && "l is out of bounds in TpetraDCArray 6D!");
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 6D!");
     assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDCArray 6D!");
-    return this_array_.h_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3])
-                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+    return this_array_.h_view(i, j * dims_[2] * dims_[3] * dims_[4]* dims_[5] +
+                              k * dims_[3] * dims_[4]* dims_[5] + l * dims_[4]* dims_[5] +
+                              m* dims_[5] + n);
 }
 
 // 7D
@@ -1311,11 +1303,9 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j, size
     assert(m >= 0 && m < dims_[4] && "m is out of bounds in TpetraDCArray 7D!");
     assert(n >= 0 && n < dims_[5] && "n is out of bounds in TpetraDCArray 7D!");
     assert(o >= 0 && o < dims_[6] && "o is out of bounds in TpetraDCArray 7D!");
-    return this_array_.h_view(i, j + (k * dims_[1])
-                         + (l * dims_[1] * dims_[2])
-                         + (m * dims_[1] * dims_[2] * dims_[3])
-                         + (n * dims_[1] * dims_[2] * dims_[3] * dims_[4])
-                         + (o * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+    return this_array_.h_view(i,  j * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6] +
+                              k * dims_[3] * dims_[4]* dims_[5] * dims_[6] + l * dims_[4]* dims_[5] * dims_[6] +
+                              m* dims_[5] * dims_[6] + n * dims_[6] + o);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

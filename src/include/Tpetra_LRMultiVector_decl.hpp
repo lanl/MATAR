@@ -27,6 +27,7 @@
 #include "Kokkos_InnerProductSpaceTraits.hpp"
 #include "Tpetra_KokkosRefactor_Details_MultiVectorLocalDeepCopy.hpp"
 #include "Tpetra_Access.hpp"
+#include "Tpetra_LR_WrappedDualView.hpp"
 #include "Tpetra_Details_WrappedDualView.hpp"
 #include <type_traits>
 
@@ -447,7 +448,7 @@ namespace Tpetra {
     using dual_view_type = Kokkos::DualView<impl_scalar_type**,
                                             Kokkos::LayoutRight,
                                             device_type>;
-    using wrapped_dual_view_type = Details::WrappedDualView<dual_view_type>;
+    using wrapped_dual_view_type = Details::LRWrappedDualView<dual_view_type>;
 
     using host_view_type = typename dual_view_type::t_host;
     using device_view_type = typename dual_view_type::t_dev;
