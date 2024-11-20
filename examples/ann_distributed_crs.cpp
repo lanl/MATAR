@@ -78,11 +78,11 @@ std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000,
 // array of ANN structs
 struct ANNLayer_t{
     //input map will store every global id in the vector for simplificty of row-vector products in this example
-    TpetraPartitionMap<long long int> output_partition_map; //map with all comms for row-vector product
-    TpetraPartitionMap<long long int> output_unique_map; //submap of uniquely decomposed indices
-    TpetraDFArray<real_t> distributed_outputs;
+    TpetraPartitionMap<> output_partition_map; //map with all comms for row-vector product
+    TpetraPartitionMap<> output_unique_map; //submap of uniquely decomposed indices
+    TpetraDCArray<real_t> distributed_outputs;
     TpetraDCArray<real_t> distributed_weights;
-    TpetraDFArray<real_t> distributed_biases; 
+    TpetraDCArray<real_t> distributed_biases; 
 
 }; // end struct
 
@@ -93,8 +93,8 @@ struct ANNLayer_t{
 // functions
 //
 // =================================================================
-void vec_mat_multiply(TpetraDFArray<real_t> &inputs,
-                      TpetraDFArray<real_t> &outputs, 
+void vec_mat_multiply(TpetraDCArray<real_t> &inputs,
+                      TpetraDCArray<real_t> &outputs, 
                       TpetraDCArray<real_t> &matrix){
     
     const size_t num_i = inputs.size();
@@ -144,10 +144,10 @@ float sigmoid_derivative(const float value){
 
 
 
-void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
-                             TpetraDFArray<real_t> &outputs, 
+void forward_propagate_layer(TpetraDCArray<real_t> &inputs,
+                             TpetraDCArray<real_t> &outputs, 
                              TpetraDCArray<real_t> &weights,
-                             const TpetraDFArray<real_t> &biases){
+                             const TpetraDCArray<real_t> &biases){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.submap_size();
@@ -199,7 +199,7 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
 }; // end function
 
 
-void set_biases(const TpetraDFArray<real_t> &biases){
+void set_biases(const TpetraDCArray<real_t> &biases){
     const size_t num_j = biases.size();
 
     FOR_ALL(j,0,num_j, {
@@ -246,18 +246,18 @@ int main(int argc, char* argv[])
         CArray <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
-        TpetraPartitionMap<long long int> input_pmap, input_unique_pmap;
+        TpetraPartitionMap<> input_pmap, input_unique_pmap;
         DCArrayKokkos<long long int> all_layer_indices(num_nodes_in_layer[0]);
         FOR_ALL(i,0,num_nodes_in_layer[0], {
             all_layer_indices(i) = i;
         });
         all_layer_indices.update_host();  // copy inputs to device
         //map of all indices in this layer to be used for row-vector product (in practice, this would not include all indices in the layer)
-        input_pmap = TpetraPartitionMap<long long int>(all_layer_indices);
+        input_pmap = TpetraPartitionMap<>(all_layer_indices);
 
         //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
-        input_unique_pmap = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]);
-        TpetraDFArray<real_t> inputs(input_pmap); //rows decomposed onto processes
+        input_unique_pmap = TpetraPartitionMap<>(num_nodes_in_layer[0]);
+        TpetraDCArray<real_t> inputs(input_pmap); //rows decomposed onto processes
         //comming from subview requires both the original map and the submap to be composed of contiguous indices
         inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a contiguous subset of its own data
 
@@ -274,14 +274,14 @@ int main(int argc, char* argv[])
                 all_current_layer_indices(i) = i;
             });
 
-            ANNLayers(layer).output_partition_map = TpetraPartitionMap<long long int>(all_current_layer_indices);
-            ANNLayers(layer).output_unique_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[layer+1]); 
-            ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
+            ANNLayers(layer).output_partition_map = TpetraPartitionMap<>(all_current_layer_indices);
+            ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]); 
+            ANNLayers(layer).distributed_outputs = TpetraDCArray<real_t> (ANNLayers(layer).output_partition_map);
             //comming from subview requires both the original map and the submap to be composed of contiguous indices
             ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
             // allocate the weights in this layer
             ANNLayers(layer).distributed_weights = TpetraDCArray<real_t> (num_j, num_i);
-            ANNLayers(layer).distributed_biases = TpetraDFArray<real_t> (num_j);
+            ANNLayers(layer).distributed_biases = TpetraDCArray<real_t> (num_j);
 
         } // end for
 
@@ -392,7 +392,7 @@ int main(int argc, char* argv[])
 
         //test repartition; assume a 10 by 10 grid of outputs from ANN
         //assign coords to each grid point, find a partition of the grid, then repartition output layer using new map
-        TpetraDFArray<real_t> output_grid(100, 2); //array of 2D coordinates for 10 by 10 grid of points
+        TpetraDCArray<real_t> output_grid(100, 2); //array of 2D coordinates for 10 by 10 grid of points
         
         //populate coords
         FOR_ALL(i,0,output_grid.dims(0), {
@@ -423,16 +423,16 @@ int main(int argc, char* argv[])
         output_grid.print();
 
         //get repartitioned map to distribute new arrays with it
-        TpetraPartitionMap<long long int> partitioned_output_map = output_grid.pmap;
-        TpetraDFArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
+        TpetraPartitionMap<> partitioned_output_map = output_grid.pmap;
+        TpetraDCArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
 
         //construct a unique source vector from ANN output using the subview constructor
         //(for example's sake this is in fact a copy of the subview wrapped by the output as well)
-        TpetraDFArray<real_t> sub_output_values(ANNLayers(num_layers-1).distributed_outputs, ANNLayers(num_layers-1).distributed_outputs.comm_pmap,
+        TpetraDCArray<real_t> sub_output_values(ANNLayers(num_layers-1).distributed_outputs, ANNLayers(num_layers-1).distributed_outputs.comm_pmap,
                                                  ANNLayers(num_layers-1).distributed_outputs.comm_pmap.getMinGlobalIndex());
 
         //general communication object between two vectors/arrays
-        TpetraCommunicationPlan<real_t> output_comms(partitioned_output_values, sub_output_values);
+        TpetraLRCommunicationPlan<real_t> output_comms(partitioned_output_values, sub_output_values);
         output_comms.execute_comms();
         partitioned_output_values.print();
 

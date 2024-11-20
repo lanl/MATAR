@@ -78,8 +78,8 @@ std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000,
 // array of ANN structs
 struct ANNLayer_t{
     //input map will store every global id in the vector for simplificty of row-vector products in this example
-    TpetraPartitionMap<long long int> output_partition_map; //map with all comms for row-vector product
-    TpetraPartitionMap<long long int> output_unique_map; //submap of uniquely decomposed indices
+    TpetraPartitionMap<> output_partition_map; //map with all comms for row-vector product
+    TpetraPartitionMap<> output_unique_map; //submap of uniquely decomposed indices
     TpetraDFArray<real_t> distributed_outputs;
     TpetraDFArray<real_t> distributed_weights;
     TpetraDFArray<real_t> distributed_biases; 
@@ -247,17 +247,17 @@ int main(int argc, char* argv[])
         CArray <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
-        TpetraPartitionMap<long long int> input_pmap, input_unique_pmap;
+        TpetraPartitionMap<> input_pmap, input_unique_pmap;
         DCArrayKokkos<long long int> all_layer_indices(num_nodes_in_layer[0]);
         FOR_ALL(i,0,num_nodes_in_layer[0], {
             all_layer_indices(i) = i;
         });
         all_layer_indices.update_host();  // copy inputs to device
         //map of all indices in this layer to be used for row-vector product (in practice, this would not include all indices in the layer)
-        input_pmap = TpetraPartitionMap<long long int>(all_layer_indices);
+        input_pmap = TpetraPartitionMap<>(all_layer_indices);
 
         //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
-        input_unique_pmap = TpetraPartitionMap<long long int>(num_nodes_in_layer[0]);
+        input_unique_pmap = TpetraPartitionMap<>(num_nodes_in_layer[0]);
         TpetraDFArray<real_t> inputs(input_pmap); //rows decomposed onto processes
         //comming from subview requires both the original map and the submap to be composed of contiguous indices
         inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a contiguous subset of its own data
@@ -275,8 +275,8 @@ int main(int argc, char* argv[])
                 all_current_layer_indices(i) = i;
             });
 
-            ANNLayers(layer).output_partition_map = TpetraPartitionMap<long long int>(all_current_layer_indices);
-            ANNLayers(layer).output_unique_map = TpetraPartitionMap<long long int>(num_nodes_in_layer[layer+1]); 
+            ANNLayers(layer).output_partition_map = TpetraPartitionMap<>(all_current_layer_indices);
+            ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]); 
             ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
             //comming from subview requires both the original map and the submap to be composed of contiguous indices
             ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
@@ -422,7 +422,7 @@ int main(int argc, char* argv[])
         output_grid.print();
 
         //get repartitioned map to distribute new arrays with it
-        TpetraPartitionMap<long long int> partitioned_output_map = output_grid.pmap;
+        TpetraPartitionMap<> partitioned_output_map = output_grid.pmap;
         TpetraDFArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
 
         //construct a unique source vector from ANN output using the subview constructor

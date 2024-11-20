@@ -304,12 +304,7 @@ namespace { // (anonymous)
     const size_t LDA = view.stride (1);
     const size_t numRows = view.extent (0);
 
-    if (LDA == 0) {
-      return (numRows == 0) ? size_t (1) : numRows;
-    }
-    else {
-      return LDA;
-    }
+    return numRows;
   }
 
   template <class impl_scalar_type, class buffer_device_type>
