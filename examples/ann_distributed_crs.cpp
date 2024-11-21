@@ -409,7 +409,7 @@ int main(int argc, char* argv[])
         output_grid.pmap.print();
         
         MPI_Barrier(MPI_COMM_WORLD);
-        output_grid.repartition_vector();
+        //output_grid.repartition_vector();
         if(process_rank==0){ 
             std::cout << std::endl;
             std::cout << " Map after repartitioning" << std::endl;

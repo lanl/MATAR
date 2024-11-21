@@ -1037,7 +1037,7 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, siz
     dims_[4] = dim4;
     dims_[5] = dim5;
     dims_[6] = dim6;
-    order_ = 6;
+    order_ = 7;
     length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6]);
     component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6];
     // Create host ViewCArray
@@ -2254,7 +2254,7 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::data_setup(size_t dim1, siz
     dims_[4] = dim4;
     dims_[5] = dim5;
     dims_[6] = dim6;
-    order_ = 6;
+    order_ = 7;
     length_ = (dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6]);
     component_length_ = dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5] * dims_[6];
     // Create host ViewCArray
