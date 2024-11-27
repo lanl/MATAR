@@ -19,6 +19,11 @@ else
     cmake_options+=(
         -D Matar_ENABLE_KOKKOS=ON
     )
+    if [ "$kokkos_build_type" = "cuda" ]; then
+        cmake_options+=(
+            -D Matar_CUDA_BUILD=ON
+        )
+    fi
 fi
 
 if [[ "$kokkos_build_type" = *"mpi"* ]]; then
