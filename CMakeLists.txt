@@ -49,6 +49,9 @@ target_include_directories(matar INTERFACE
 )
 
 if(Matar_ENABLE_KOKKOS)
+    if(Matar_CUDA_BUILD)
+        find_package(CUDAToolkit REQUIRED)
+    endif()
     if("${Matar_KOKKOS_PACKAGE}" STREQUAL "Trilinos")
         find_package(Trilinos REQUIRED)
         add_definitions(-DTRILINOS_INTERFACE=1)
