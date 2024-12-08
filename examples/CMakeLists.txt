@@ -125,6 +125,9 @@ if (KOKKOS)
 
     add_executable(test_tpetra_carray test_tpetra_carray.cpp)
     target_link_libraries(test_tpetra_carray ${LINKING_LIBRARIES})
+
+    add_executable(test_tpetra_mesh test_tpetra_mesh.cpp)
+    target_link_libraries(test_tpetra_mesh ${LINKING_LIBRARIES})
   endif()
 
   if (OPENMP)
