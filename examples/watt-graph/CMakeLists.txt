@@ -7,7 +7,7 @@ if (NOT KOKKOS)
 endif()
 
 if (KOKKOS)
-    find_package(Kokkos REQUIRED)
+    #find_package(Kokkos REQUIRED)
     add_definitions(-DHAVE_KOKKOS=1)
 
     add_executable(test_kokkos_floyd kokkos_floyd.cpp)

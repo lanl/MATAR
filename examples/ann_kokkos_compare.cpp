@@ -63,7 +63,7 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000, 100} ;
+std::vector <size_t> num_nodes_in_layer = {32000, 16000, 8000, 4000, 100, 25, 6} ;
 // {9, 50, 100, 300, 200, 100, 20, 6}
 
 
@@ -77,9 +77,9 @@ std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000,
 // array of ANN structs
 struct ANNLayer_t{
 
-    DCArrayKokkos <float> outputs;  // dims = [layer]
-    DFArrayKokkos <float> weights;  // dims = [layer-1, layer]
-    DCArrayKokkos <float> biases;  // dims = [layer]  
+    Kokkos::View <float*> outputs;  // dims = [layer]
+    Kokkos::View <float*> weights;  // dims = [layer-1, layer]
+    Kokkos::View <float*> biases;  // dims = [layer]
 
 }; // end struct
 
@@ -90,9 +90,9 @@ struct ANNLayer_t{
 // functions
 //
 // =================================================================
-void vec_mat_multiply(DCArrayKokkos <float> &inputs,
-                      DCArrayKokkos <float> &outputs, 
-                      DFArrayKokkos <float> &matrix){
+void vec_mat_multiply(Kokkos::View <float*> &inputs,
+                      Kokkos::View <float*> &outputs, 
+                      Kokkos::View <float*> &matrix){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
@@ -105,7 +105,7 @@ void vec_mat_multiply(DCArrayKokkos <float> &inputs,
         int j = team_h.league_rank();
         Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
                         [&] (int i, float& lsum) {
-            lsum += inputs(i)*matrix(i,j);
+            lsum += inputs(i)*matrix(i+j*num_i);
         }, sum); // end parallel reduce
 
         outputs(j) = sum; 
@@ -138,16 +138,16 @@ float sigmoid_derivative(const float value){
 
 
 
-void forward_propagate_layer(DCArrayKokkos <float> &inputs,
-                             DCArrayKokkos <float> &outputs, 
-                             DFArrayKokkos <float> &weights,
-                             const DCArrayKokkos <float> &biases){
+void forward_propagate_layer(Kokkos::View <float*> &inputs,
+                             Kokkos::View <float*> &outputs, 
+                             Kokkos::View <float*> &weights,
+                             const Kokkos::View <float*> &biases){
     
     const size_t num_i = inputs.size();
     const size_t num_j = outputs.size();
 
 
-    /*
+
     FOR_ALL(j, 0, num_j,{
 
     	//printf("thread = %d \n", omp_get_thread_num());
@@ -155,18 +155,18 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
             float value = 0.0;
             for(int i=0; i<num_i; i++){
                 // b_j = Sum_i {x_i w_{ij}}
-                value += inputs(i)*weights(i,j);
+                value += inputs(i)*weights(i+j*num_i);
             } // end for
 
             // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
             outputs(j) = sigmoid(value);
 
         }); // end parallel for
-    */
+    
 
 
     // For a GPU, use the nested parallelism below here
-    
+    /*
     using team_t = typename Kokkos::TeamPolicy<>::member_type;
     Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
                  KOKKOS_LAMBDA (const team_t& team_h) {
@@ -181,7 +181,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
         outputs(j) = 1.0/(1.0 + exp(-sum)); 
 
     }); // end parallel for
-    
+    */
 
 
     return;
@@ -189,7 +189,7 @@ void forward_propagate_layer(DCArrayKokkos <float> &inputs,
 }; // end function
 
 
-void set_biases(const DCArrayKokkos <float> &biases){
+void set_biases(const Kokkos::View <float*> &biases){
     const size_t num_j = biases.size();
 
     FOR_ALL(j,0,num_j, {
@@ -199,15 +199,13 @@ void set_biases(const DCArrayKokkos <float> &biases){
 }; // end function
 
 
-void set_weights(const DFArrayKokkos <float> &weights){
+void set_weights(const Kokkos::View <float*> &weights, int num_i, int num_j){
 
-    const size_t num_i = weights.dims(0);
-    const size_t num_j = weights.dims(1);
     
 	FOR_ALL(i,0,num_i,
 	        j,0,num_j, {
 		    
-		    weights(i,j) = 1.0;
+		    weights(i+j*num_i) = 1.0;
 	}); // end parallel for
 
 }; // end function
@@ -233,7 +231,7 @@ int main(int argc, char* argv[])
         CMatrix <ANNLayer_t> ANNLayers(num_layers); // starts at 1 and goes to num_layers
 
         // input and ouput values to ANN
-        DCArrayKokkos <float> inputs(num_nodes_in_layer[0]);
+        Kokkos::View <float*> inputs("inputs", num_nodes_in_layer[0]);
 
 
         // set the strides
@@ -246,9 +244,9 @@ int main(int argc, char* argv[])
             size_t num_j = num_nodes_in_layer[layer];
 
             // allocate the weights in this layer
-            ANNLayers(layer).weights = DFArrayKokkos <float> (num_i, num_j); 
-            ANNLayers(layer).outputs = DCArrayKokkos <float> (num_j);
-            ANNLayers(layer).biases = DCArrayKokkos <float> (num_j);
+            ANNLayers(layer).weights = Kokkos::View <float*> ("weights", num_i*num_j); 
+            ANNLayers(layer).outputs = Kokkos::View <float*> ("outputs", num_j);
+            ANNLayers(layer).biases = Kokkos::View <float*> ("biases", num_j);
 
         } // end for
 
@@ -258,10 +256,9 @@ int main(int argc, char* argv[])
         // =================================================================
         
         // inputs to ANN
-        for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
-            inputs.host(i) = 1.0;
-        }
-        inputs.update_device();  // copy inputs to device
+        FOR_ALL(i,0,num_nodes_in_layer[0], {
+		    inputs(i) = 1.0;
+	    }); // end parallel for
 
         // weights of the ANN
         for (size_t layer=1; layer<=num_layers; layer++){
@@ -271,7 +268,7 @@ int main(int argc, char* argv[])
             size_t num_j = num_nodes_in_layer[layer];
 
 
-            set_weights(ANNLayers(layer).weights);
+            set_weights(ANNLayers(layer).weights, num_i, num_j);
             set_biases(ANNLayers(layer).biases);
 
         } // end for over layers
@@ -324,11 +321,11 @@ int main(int argc, char* argv[])
         // =================================================================
         // Copy values to host
         // =================================================================
-        ANNLayers(num_layers).outputs.update_host();
+        //ANNLayers(num_layers).outputs.update_host();
         
         std::cout << "output values: \n";
         for (size_t val=0; val<num_nodes_in_layer[num_layers]; val++){
-            std::cout << " " << ANNLayers(num_layers).outputs.host(val) << std::endl;
+            //std::cout << " " << ANNLayers(num_layers).outputs.host(val) << std::endl;
         } // end for
  
     } // end of kokkos scope
