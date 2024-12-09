@@ -30,6 +30,11 @@ else
         -D Matar_ENABLE_KOKKOS=ON
         -D CMAKE_PREFIX_PATH="${KOKKOS_INSTALL_DIR}"
     )
+    if [ "$kokkos_build_type" = "cuda" ]; then
+        cmake_options+=(
+            -D Matar_CUDA_BUILD=ON
+        )
+    fi
 fi
 
 if [[ "$kokkos_build_type" = *"mpi"* ]] || [ "$trilinos" = "enabled" ]; then
