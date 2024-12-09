@@ -22,6 +22,7 @@ else
     if [ "$kokkos_build_type" = "cuda" ]; then
         cmake_options+=(
             -D Matar_CUDA_BUILD=ON
+            #-D CUDAToolkit_ROOT=$PREFIX
         )
     fi
 fi
