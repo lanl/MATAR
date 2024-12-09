@@ -40,7 +40,6 @@
 #include <set>
 
 #include "matar.h"
-#include "Kokkos_DualView.hpp"
 
 using namespace mtr; // matar namespace
 
