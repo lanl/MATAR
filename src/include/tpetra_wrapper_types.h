@@ -354,17 +354,17 @@ class TpetraDCArray {
     TArray1D this_array_;
     
     // Trilinos type definitions
-    typedef Tpetra::LRMultiVector<real_t, tpetra_LO, tpetra_GO> MV; //stands for MultiVector
-    typedef Kokkos::View<real_t*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
+    typedef typename Tpetra::LRMultiVector<T, tpetra_LO, tpetra_GO> MV; //stands for MultiVector
+    typedef typename Kokkos::View<T*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
     typedef Kokkos::View<tpetra_GO*, Layout, tpetra_device_type, tpetra_memory_traits> global_indices_array;
     typedef Kokkos::View<tpetra_LO*, Layout, tpetra_device_type, tpetra_memory_traits> indices_array;
-    typedef MV::dual_view_type::t_dev vec_array;
-    typedef MV::dual_view_type::t_host host_vec_array;
-    typedef Kokkos::View<const real_t**, Layout, HostSpace, tpetra_memory_traits> const_host_vec_array;
-    typedef Kokkos::View<const real_t**, Layout, tpetra_device_type, tpetra_memory_traits> const_vec_array;
+    typedef typename MV::dual_view_type::t_dev vec_array;
+    typedef typename MV::dual_view_type::t_host host_vec_array;
+    typedef typename Kokkos::View<const T**, Layout, HostSpace, tpetra_memory_traits> const_host_vec_array;
+    typedef typename Kokkos::View<const T**, Layout, tpetra_device_type, tpetra_memory_traits> const_vec_array;
     typedef Kokkos::View<const int**, Layout, HostSpace, tpetra_memory_traits> const_host_ivec_array;
     typedef Kokkos::View<int**, Layout, HostSpace, tpetra_memory_traits> host_ivec_array;
-    typedef MV::dual_view_type dual_vec_array;
+    typedef typename MV::dual_view_type dual_vec_array;
 
     Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comms object
     
@@ -1571,17 +1571,15 @@ class TpetraDFArray {
     TArray1D this_array_;
     
     // Trilinos type definitions
-    typedef Tpetra::MultiVector<real_t, tpetra_LO, tpetra_GO> MV; //stands for MultiVector
-    typedef Kokkos::View<real_t*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
+    typedef typename Tpetra::MultiVector<T, tpetra_LO, tpetra_GO> MV; //stands for MultiVector
+    typedef typename  Kokkos::View<T*, Kokkos::LayoutRight, tpetra_device_type, tpetra_memory_traits> values_array;
     typedef Kokkos::View<tpetra_GO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> global_indices_array;
     typedef Kokkos::View<tpetra_LO*, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> indices_array;
-    typedef MV::dual_view_type::t_dev vec_array;
-    typedef MV::dual_view_type::t_host host_vec_array;
-    typedef Kokkos::View<const real_t**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_vec_array;
-    typedef Kokkos::View<const real_t**, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> const_vec_array;
-    typedef Kokkos::View<const int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_ivec_array;
-    typedef Kokkos::View<int**, tpetra_array_layout, HostSpace, tpetra_memory_traits> host_ivec_array;
-    typedef MV::dual_view_type dual_vec_array;
+    typedef typename MV::dual_view_type::t_dev vec_array;
+    typedef typename MV::dual_view_type::t_host host_vec_array;
+    typedef typename Kokkos::View<const T**, tpetra_array_layout, HostSpace, tpetra_memory_traits> const_host_vec_array;
+    typedef typename Kokkos::View<const T**, tpetra_array_layout, tpetra_device_type, tpetra_memory_traits> const_vec_array;
+    typedef typename MV::dual_view_type dual_vec_array;
 
     Teuchos::RCP<Tpetra::Import<tpetra_LO, tpetra_GO>> importer; // tpetra comms object
     
