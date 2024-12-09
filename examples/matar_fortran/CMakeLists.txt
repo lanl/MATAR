@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.18)
 
 # specify languages that project will use here
-project(matar-fortran LANGUAGES CXX Fortran)
+#project(matar-fortran LANGUAGES CXX Fortran)
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  #find_package(Kokkos REQUIRED) #new
 
   add_definitions(-DHAVE_KOKKOS=1)
   if (CUDA)
