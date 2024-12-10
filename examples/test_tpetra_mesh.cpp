@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
         MPI_Barrier(MPI_COMM_WORLD);
         std::chrono::duration <float, std::milli> ms = time_2 - time_1;
         if(process_rank==0)
-            std::cout << "Finished. Runtime was " << ms.count() << std::endl;
+            std::cout << "Finished. Runtime was " << ms.count() << " ms" << std::endl;
     } // end of kokkos scope
     Kokkos::finalize();
     MPI_Finalize();
