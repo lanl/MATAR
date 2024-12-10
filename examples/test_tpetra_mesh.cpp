@@ -111,8 +111,6 @@ void run_test(mesh_data &mesh)
     for(int itimestep = 0; itimestep < ntimesteps; itimestep++){
         FOR_ALL(ielem,0,mesh.rnum_elem, {
                 for(int inode=0; inode < 8; inode++){
-                    //recall that nodes in elem is storing global indices in this implementation
-                    //you may just want to store local indices in your case to avoid the map call
                     int local_node_index = nodes_in_elem_distributed(ielem,inode);
                     for(int idim=0; idim < num_dim; idim++){
                         all_node_coords_distributed(local_node_index, idim) += constant_velocity*timestep;
