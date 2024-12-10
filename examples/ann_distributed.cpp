@@ -340,6 +340,7 @@ int main(int argc, char* argv[])
         // Use the ANN
         // =================================================================
         MPI_Barrier(MPI_COMM_WORLD);
+        Kokkos::fence();
         auto time_1 = std::chrono::high_resolution_clock::now();
 
         // forward propogate
@@ -361,6 +362,7 @@ int main(int argc, char* argv[])
                                     ANNLayers(layer).distributed_biases);
             
         } // end for
+        Kokkos::fence();
         MPI_Barrier(MPI_COMM_WORLD);
         auto time_2 = std::chrono::high_resolution_clock::now();
 

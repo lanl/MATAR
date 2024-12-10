@@ -55,6 +55,7 @@ struct mesh_data {
 
 void setup_maps(mesh_data &mesh);
 void read_mesh_vtk(const char* MESH,mesh_data &mesh);
+void run_test(mesh_data &mesh);
 
 int main(int argc, char* argv[])
 {   
@@ -72,12 +73,53 @@ int main(int argc, char* argv[])
         //setup ghost maps
         setup_maps(mesh);
 
+        //compute something; barriers for timer
+        MPI_Barrier(MPI_COMM_WORLD);
+        Kokkos::fence();
+        
+        auto time_1 = std::chrono::high_resolution_clock::now();
+        run_test(mesh);
+        auto time_2 = std::chrono::high_resolution_clock::now();
+
+        Kokkos::fence();
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        MPI_Barrier(MPI_COMM_WORLD);
+        std::chrono::duration <float, std::milli> ms = time_2 - time_1;
+        if(process_rank==0)
+            std::cout << "Finished. Runtime was " << ms.count() << std::endl;
     } // end of kokkos scope
     Kokkos::finalize();
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(process_rank==0)
-        printf("\nfinished\n\n");
     MPI_Finalize();
+}
+
+/* ----------------------------------------------------------------------
+   Construct maps containing ghost nodes
+------------------------------------------------------------------------- */
+void run_test(mesh_data &mesh)
+{   
+    int  num_dim = mesh.num_dim;
+    TpetraDFArray<double> all_node_coords_distributed = mesh.all_node_coords_distributed;
+    TpetraDFArray<long long int> nodes_in_elem_distributed = mesh.nodes_in_elem_distributed;
+    TpetraPartitionMap<> all_node_map = mesh.nodes_in_elem_distributed.pmap;
+    int ntimesteps = 1000;
+    real_t constant_velocity = 0.0001;
+    real_t timestep = 0.001;
+
+    //arbitrary calculation done by looping over all local elements for all timesteps
+    //this loops over all ghosts as well to test load balancing
+    for(int itimestep = 0; itimestep < ntimesteps; itimestep++){
+        FOR_ALL(ielem,0,mesh.rnum_elem, {
+                for(int inode=0; inode < 8; inode++){
+                    //recall that nodes in elem is storing global indices in this implementation
+                    //you may just want to store local indices in your case to avoid the map call
+                    int local_node_index = nodes_in_elem_distributed(ielem,inode);
+                    for(int idim=0; idim < num_dim; idim++){
+                        all_node_coords_distributed(local_node_index, idim) += constant_velocity*timestep;
+                    }
+                }
+        });
+    }
 }
 
 /* ----------------------------------------------------------------------
@@ -196,6 +238,7 @@ void setup_maps(mesh_data &mesh)
     nall_nodes = nlocal_nodes + nghost_nodes;
     // CArrayKokkos<GO, array_layout, device_type, memory_traits> all_node_indices(nall_nodes, "all_node_indices");
     DCArrayKokkos<long long int, Kokkos::LayoutLeft> all_node_indices(nall_nodes, "all_node_indices");
+    //map.print();
     for (int i = 0; i < nall_nodes; i++)
     {
         if (i < nlocal_nodes)
@@ -206,8 +249,10 @@ void setup_maps(mesh_data &mesh)
         {
             all_node_indices.host(i) = ghost_nodes.host(i - nlocal_nodes);
         }
+        //if(all_node_indices.host(i) < 0)
+        //std::cout << "NEGATIVE INDEX AT " << i << " WITH LOCAL NODE COUNT " << nlocal_nodes << " " << all_node_indices.host(i) << " " << std::endl;
     }
-    all_node_indices.update_host();
+    all_node_indices.update_device();
     // debug print of node indices
     // for(int inode=0; inode < index_counter; inode++)
     // std::cout << " my_reduced_global_indices " << my_reduced_global_indices(inode) <<std::endl;
@@ -226,6 +271,23 @@ void setup_maps(mesh_data &mesh)
 
     // comms to get ghosts coords initialized
     ghost_comms.execute_comms();
+
+    //initialize 0:nlocal-1 data in the all vector since the comms just set nlocal:nall via the subview
+    FOR_ALL(inode,0,nlocal_nodes, {
+        for (int idim=0; idim < num_dim; idim++){
+            mesh.all_node_coords_distributed(inode,idim) = mesh.node_coords_distributed(inode,idim);
+        }
+    });
+    mesh.all_node_coords_distributed.update_host();
+
+    //convert nodes in elem to local node ids to avoid excessive map conversion calls
+    FOR_ALL(ielem,0,mesh.rnum_elem, {
+        for(int inode=0; inode < 8; inode++){
+            //recall that nodes in elem is storing global indices in this implementation
+            //you may just want to store local indices in your case to avoid the map call
+            nodes_in_elem_distributed(ielem,inode) = all_node_map.getLocalIndex(nodes_in_elem_distributed(ielem,inode));
+        }
+    });
 
     // std::cout << "number of patches = " << mesh->num_patches() << std::endl;
     if (process_rank == 0)
@@ -320,11 +382,6 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
 
     //map of the distributed node coordinates vector
     TpetraPartitionMap<> map = mesh.node_coords_distributed.pmap;
-
-    // set the local number of nodes on this process
-    mesh.nlocal_nodes = nlocal_nodes = mesh.node_coords_distributed.dims(0);
-
-    //std::cout << "Num nodes assigned to task " << process_rank << " = " << nlocal_nodes << std::endl;
 
     // read the initial mesh coordinates
     /*only task 0 reads in nodes and elements from the input file
@@ -433,6 +490,8 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     mesh.node_coords_distributed.repartition_vector();
     //reset our local map variable to the repartitioned map
     map = mesh.node_coords_distributed.pmap;
+    // set the local number of nodes on this process
+    mesh.nlocal_nodes = nlocal_nodes = mesh.node_coords_distributed.dims(0);
 
     // synchronize device data
 
