@@ -117,11 +117,9 @@ void run_test(mesh_data &mesh)
                 //compute arbitrary scaling function that adds node coords and divides by sqrt of square sum
                 for(int inode=0; inode < 8; inode++){
                     int local_node_index = nodes_in_elem_distributed(ielem,inode);
-                    if(local_node_index < nlocal_nodes){
-                        for(int idim=0; idim < num_dim; idim++){
-                            sum += node_coords_distributed(local_node_index, idim);
-                            square_sum += node_coords_distributed(local_node_index, idim)*node_coords_distributed(local_node_index, idim);
-                        }
+                    for(int idim=0; idim < num_dim; idim++){
+                        sum += node_coords_distributed(local_node_index, idim);
+                        square_sum += node_coords_distributed(local_node_index, idim)*node_coords_distributed(local_node_index, idim);
                     }
                 }
 
