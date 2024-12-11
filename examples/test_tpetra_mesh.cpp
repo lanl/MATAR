@@ -105,7 +105,6 @@ void run_test(mesh_data &mesh)
     TpetraPartitionMap<> all_node_map = mesh.nodes_in_elem_distributed.pmap;
     size_t nlocal_nodes = mesh.nlocal_nodes;
     int ntimesteps = 1000;
-    real_t constant_velocity = 0.0001;
     real_t timestep = 0.001;
 
     //arbitrary calculation done by looping over all local elements for all timesteps
