@@ -3717,6 +3717,12 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraCommunicationPla
         combine_mode_ = temp.combine_mode_;
         destination_vector_ = temp.destination_vector_;
         source_vector_ = temp.source_vector_;
+        if(reverse_comms_flag){
+            exporter = temp.exporter;
+        }
+        else{
+            importer = temp.importer;
+        }
     }
     
     return *this;
@@ -3833,6 +3839,12 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraLRCommunicatio
         combine_mode_ = temp.combine_mode_;
         destination_vector_ = temp.destination_vector_;
         source_vector_ = temp.source_vector_;
+        if(reverse_comms_flag){
+            exporter = temp.exporter;
+        }
+        else{
+            importer = temp.importer;
+        }
     }
     
     return *this;
