@@ -112,11 +112,25 @@ void run_test(mesh_data &mesh)
     //this loops over all ghosts as well to test load balancing
     for(int itimestep = 0; itimestep < ntimesteps; itimestep++){
         FOR_ALL(ielem,0,mesh.rnum_elem, {
+                real_t sum = 0;
+                real_t square_sum = 0;
+                //compute arbitrary scaling function that adds node coords and divides by sqrt of square sum
                 for(int inode=0; inode < 8; inode++){
                     int local_node_index = nodes_in_elem_distributed(ielem,inode);
                     if(local_node_index < nlocal_nodes){
                         for(int idim=0; idim < num_dim; idim++){
-                            node_coords_distributed(local_node_index, idim) += constant_velocity*timestep;
+                            sum += node_coords_distributed(local_node_index, idim);
+                            square_sum += node_coords_distributed(local_node_index, idim)*node_coords_distributed(local_node_index, idim);
+                        }
+                    }
+                }
+
+                //update coords based on evaluated element sum function
+                for(int inode=0; inode < 8; inode++){
+                    int local_node_index = nodes_in_elem_distributed(ielem,inode);
+                    if(local_node_index < nlocal_nodes){
+                        for(int idim=0; idim < num_dim; idim++){
+                            node_coords_distributed(local_node_index, idim) += sum/sqrt(square_sum)*timestep;
                         }
                     }
                 }
