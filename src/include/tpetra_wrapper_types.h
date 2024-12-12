@@ -116,6 +116,7 @@ public:
     TpetraPartitionMap();
 
     //Copy Constructor
+    KOKKOS_INLINE_FUNCTION
     TpetraPartitionMap(const TpetraPartitionMap<ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
@@ -374,6 +375,7 @@ public:
     TpetraDCArray();
     
     //Copy Constructor
+    KOKKOS_INLINE_FUNCTION
     TpetraDCArray(const TpetraDCArray<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
@@ -1270,6 +1272,11 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDCArray<T,Layout,ExecSpace
         for (int iter = 0; iter < temp.order_; iter++){
             dims_[iter] = temp.dims_[iter];
         } // end for
+
+        if(temp.order_==1){
+            dims_[1] = 1;
+        }
+
         global_dim1_ = temp.global_dim1_;
         order_ = temp.order_;
         length_ = temp.length_;
@@ -1581,6 +1588,7 @@ public:
     TpetraDFArray();
     
     //Copy Constructor
+    KOKKOS_INLINE_FUNCTION
     TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
@@ -2487,6 +2495,11 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
         for (int iter = 0; iter < temp.order_; iter++){
             dims_[iter] = temp.dims_[iter];
         } // end for
+
+        if(temp.order_==1){
+            dims_[1] = 1;
+        }
+        
         global_dim1_ = temp.global_dim1_;
         order_ = temp.order_;
         length_ = temp.length_;
@@ -2807,6 +2820,7 @@ public:
     TpetraCRSMatrix();
     
     //Copy Constructor
+    KOKKOS_INLINE_FUNCTION
     TpetraCRSMatrix(const TpetraCRSMatrix<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }

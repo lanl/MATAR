@@ -63,7 +63,7 @@ using namespace mtr; // matar namespace
 // Number of nodes in each layer including inputs and outputs
 //
 // =================================================================
-std::vector <size_t> num_nodes_in_layer = {64000, 30000, 8000, 4000, 2000, 1000, 100} ;
+std::vector <size_t> num_nodes_in_layer = {32000, 16000, 8000, 4000, 2000, 1000, 100} ;
 //std::vector <size_t> num_nodes_in_layer = {50, 25} ;
 // {9, 50, 100, 300, 200, 100, 20, 6}
 
@@ -80,9 +80,11 @@ struct ANNLayer_t{
     //input map will store every global id in the vector for simplificty of row-vector products in this example
     TpetraPartitionMap<> output_partition_map; //map with all comms for row-vector product
     TpetraPartitionMap<> output_unique_map; //submap of uniquely decomposed indices
+    TpetraDFArray<real_t> distributed_output_row;
     TpetraDFArray<real_t> distributed_outputs;
     TpetraDFArray<real_t> distributed_weights;
-    TpetraDFArray<real_t> distributed_biases; 
+    TpetraDFArray<real_t> distributed_biases;
+    TpetraCommunicationPlan<real_t> output_comms;
 
 }; // end struct
 
@@ -110,18 +112,14 @@ void vec_mat_multiply(TpetraDFArray<real_t> &inputs,
                         [&] (int i, float& lsum) {
             lsum += inputs(i)*matrix(j,i);
         }, sum); // end parallel reduce
-        int global_index = outputs.getSubMapGlobalIndex(j);
-        int local_index = outputs.getMapLocalIndex(global_index);
-        outputs(local_index) = sum;
+        outputs(j) = sum;
 
     }); // end parallel for
 
 
     FOR_ALL(j,0,num_j, {
-            int global_index = outputs.getSubMapGlobalIndex(j);
-            int local_index = outputs.getMapLocalIndex(global_index);
-            if(fabs(outputs(local_index) - num_i)>= 1e-15){
-                printf("error in vec mat multiply test at row %d of %f\n", j, fabs(outputs(local_index) - num_i));
+            if(fabs(outputs(j) - num_i)>= 1e-15){
+                printf("error in vec mat multiply test at row %d of %f\n", j, fabs(outputs(j) - num_i));
             }
     });
     
@@ -150,11 +148,10 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
                              const TpetraDFArray<real_t> &biases){
     
     const size_t num_i = inputs.size();
-    const size_t num_j = outputs.submap_size();
-
+    const size_t num_j = outputs.size();
+    //inputs.print();
     //perform comms to get full input vector for row vector products on matrix
     //VERY SIMPLE EXAMPLE OF COMMS; THIS IS A NONIDEAL WAY TO DECOMPOSE THE PROBLEM
-
     
     FOR_ALL(j, 0, num_j,{
 
@@ -167,9 +164,7 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
             } // end for
 
             // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
-            int global_index = outputs.getSubMapGlobalIndex(j);
-            int local_index = outputs.getMapLocalIndex(global_index);
-            outputs(local_index) = 1.0/(1.0 + exp(-value)); 
+            outputs(j) = 1.0/(1.0 + exp(-value)); 
 
     }); // end parallel for
      
@@ -256,9 +251,10 @@ int main(int argc, char* argv[])
 
         //map that decomposes indices of this onto set of processes uniquely (used to demonstrate comms for above)
         input_unique_pmap = TpetraPartitionMap<>(num_nodes_in_layer[0]);
-        TpetraDFArray<real_t> inputs(input_pmap); //rows decomposed onto processes
+        TpetraDFArray<real_t> inputs_row(input_pmap); //rows decomposed onto processes
+        long long int min_index = input_pmap.getLocalIndex(input_unique_pmap.getMinGlobalIndex());
+        TpetraDFArray<real_t> inputs(inputs_row, input_unique_pmap, min_index); //rows decomposed onto processes
         //comming from subview requires both the original map and the submap to be composed of contiguous indices
-        inputs.own_comm_setup(input_unique_pmap); //tells the vector its communicating from a contiguous subset of its own data
 
         // set the strides
         // layer 0 are the inputs to the ANN
@@ -275,9 +271,13 @@ int main(int argc, char* argv[])
 
             ANNLayers(layer).output_partition_map = TpetraPartitionMap<>(all_current_layer_indices);
             ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]);
-            ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
+            ANNLayers(layer).distributed_output_row = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
             //comming from subview requires both the original map and the submap to be composed of contiguous indices
-            ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
+            min_index = ANNLayers(layer).output_partition_map.getLocalIndex(ANNLayers(layer).output_unique_map.getMinGlobalIndex());
+            ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).distributed_output_row, ANNLayers(layer).output_unique_map, min_index);
+            //comm object between unique mapped output and full output row view
+            ANNLayers(layer).output_comms = TpetraCommunicationPlan<real_t>(ANNLayers(layer).distributed_output_row, ANNLayers(layer).distributed_outputs);
+
             // allocate the weights in this layer
             ANNLayers(layer).distributed_weights = TpetraDFArray<real_t> (num_j, num_i);
             ANNLayers(layer).distributed_biases = TpetraDFArray<real_t> (num_j);
@@ -290,12 +290,10 @@ int main(int argc, char* argv[])
         // =================================================================
         
         // inputs to ANN
-        size_t local_input_size = inputs.submap_size();
+        size_t local_input_size = inputs.size();
         //std::cout << "full_input_size " << input_pmap.num_global_ << "\n";
         for (size_t i=0; i<local_input_size; i++) {
-            int global_index = inputs.getSubMapGlobalIndex(i);
-            int local_index = inputs.getMapLocalIndex(global_index);
-            inputs.host(local_index) = 1.0;
+            inputs.host(i) = 1.0;
         }
         
         // //debug print
@@ -305,7 +303,8 @@ int main(int argc, char* argv[])
         // inputs.tpetra_sub_vector->describe(*fos,Teuchos::VERB_EXTREME);
         
         inputs.update_device();  // copy inputs to device
-        inputs.perform_comms(); //distribute to full map for row-vector product
+        TpetraCommunicationPlan<real_t> input_comms(inputs_row, inputs);
+        input_comms.execute_comms(); //distribute to full map for row-vector product
         //inputs.print();
 
         // for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
@@ -325,15 +324,15 @@ int main(int argc, char* argv[])
         // =================================================================
         // Testing vec matrix multiply
         // =================================================================        
-        vec_mat_multiply(inputs,
-                         ANNLayers(0).distributed_outputs,
-                         ANNLayers(0).distributed_weights); 
+        // vec_mat_multiply(inputs_row,
+        //                  ANNLayers(0).distributed_outputs,
+        //                  ANNLayers(0).distributed_weights); 
         
         if(process_rank==0)
             std::cout << "vec mat multiply test completed \n";
 
 
-
+        //inputs_row.print();
 
         // =================================================================
         // Use the ANN
@@ -345,7 +344,7 @@ int main(int argc, char* argv[])
         // forward propogate
 
         // layer 1, hidden layer 0, uses the inputs as the input values
-        forward_propagate_layer(inputs,
+        forward_propagate_layer(inputs_row,
                                 ANNLayers(0).distributed_outputs,
                                 ANNLayers(0).distributed_weights,
                                 ANNLayers(0).distributed_biases); 
@@ -353,9 +352,9 @@ int main(int argc, char* argv[])
         // layer 2 through n-1, layer n-1 goes to the output
         for (size_t layer=1; layer<num_layers; layer++){
             
-            ANNLayers(layer-1).distributed_outputs.perform_comms(); //distribute to full map for row-vector product
+            ANNLayers(layer-1).output_comms.execute_comms(); //distribute to full map for row-vector product
             // go through this layer, the fcn takes(inputs, outputs, weights)
-            forward_propagate_layer(ANNLayers(layer-1).distributed_outputs, 
+            forward_propagate_layer(ANNLayers(layer-1).distributed_output_row, 
                                     ANNLayers(layer).distributed_outputs,
                                     ANNLayers(layer).distributed_weights,
                                     ANNLayers(layer).distributed_biases);
@@ -390,6 +389,8 @@ int main(int argc, char* argv[])
 		    output_grid(i, 0) = i/10;
             output_grid(i, 1) = i%10;
 	    }); // end parallel for
+
+        output_grid.update_host();
 
         MPI_Barrier(MPI_COMM_WORLD);
         if(process_rank==0){ 
