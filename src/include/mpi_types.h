@@ -965,8 +965,8 @@ protected:
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
     TArray1D this_array_;
-    //MPIPartitionKokkos <T> mpi_partition_;
-    MPIPartition2Kokkos <T> mpi_partition_;
+    MPIPartitionKokkos <T> mpi_partition_;
+    //MPIPartition2Kokkos <T> mpi_partition_;
     
     void set_mpi_type();
 
@@ -1059,7 +1059,7 @@ public:
 
     // set up the halo arrays
     //void mpi_decomp(int world_size, int rank, int halos, MPI_Comm comm);
-    void mpi_decomp_unstructured(MPIPartition2Kokkos <T> partition);
+    //void mpi_decomp_unstructured(MPIPartition2Kokkos <T> partition);
 
     void mpi_decomp(MPIPartitionKokkos <T> partition);
 
@@ -1361,6 +1361,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::wait_recv() {
 #endif
 }
 
+/*
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp_unstructured(MPIPartition2Kokkos <T> partition) {
     mpi_partition_ = partition;
@@ -1501,11 +1502,11 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp_unstructured(M
         }
     }
 }
+*/
 
 //void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(int world_size, int rank, int halos, MPI_Comm comm) {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKokkos <T> partition) {
-/*
     mpi_partition_ = partition;
     int neighbors = 0;
     int neighb, tag;
@@ -1664,7 +1665,6 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::mpi_decomp(MPIPartitionKo
         tag = neighb * 10 + rank;
         mpi_partition_.recv_e_.mpi_setup(neighb, tag, halos, comm);
     }
-*/
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
