@@ -25,6 +25,14 @@ then
     mkdir -p ${TRILINOS_BUILD_DIR} 
 fi
 
+
+if [ "$kokkos_build_type" = "cuda" ] || [ "$kokkos_build_type" = "cuda_mpi" ]; then
+    export OMPI_CXX=${TRILINOS_SOURCE_DIR}/packages/kokkos/bin/nvcc_wrapper
+    export CUDA_LAUNCH_BLOCKING=1
+elif [ "$kokkos_build_type" = *"hip"* ] || [ "$kokkos_build_type" = *"hip_mpi"* ]; then
+    export OMPI_CXX=hipcc
+fi
+
 #check if Trilinos library files were installed, install them otherwise.
 [ -d "${TRILINOS_BUILD_DIR}/lib" ] && echo "Directory ${TRILINOS_BUILD_DIR}/lib exists, assuming successful installation; delete build folder and run build script again if there was an environment error that has been corrected."
 
@@ -138,13 +146,10 @@ if [ "$kokkos_build_type" = "openmp" ] || [ "$kokkos_build_type" = "openmp_mpi" 
         ${OPENMP_ADDITIONS[@]}
     )
 elif [ "$kokkos_build_type" = "cuda" ] || [ "$kokkos_build_type" = "cuda_mpi" ]; then
-    export OMPI_CXX=${TRILINOS_SOURCE_DIR}/packages/kokkos/bin/nvcc_wrapper
-    export CUDA_LAUNCH_BLOCKING=1
     cmake_options+=(
         ${CUDA_ADDITIONS[@]}
     )
 elif [ "$kokkos_build_type" = *"hip"* ] || [ "$kokkos_build_type" = *"hip_mpi"* ]; then
-    export OMPI_CXX=hipcc
     cmake_options+=(
         ${HIP_ADDITIONS[@]}
     )

@@ -142,22 +142,16 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
     
-    KOKKOS_INLINE_FUNCTION
     int getLocalIndex(int global_index) const;
     
-    KOKKOS_INLINE_FUNCTION
     long long int getGlobalIndex(int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getMinGlobalIndex() const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getMaxGlobalIndex() const;
     
-    KOKKOS_INLINE_FUNCTION
     bool isProcessGlobalIndex(int global_index) const;
     
-    KOKKOS_INLINE_FUNCTION
     bool isProcessLocalIndex(int local_index) const;
 
     // Method returns the raw device pointer of the Kokkos DualView
@@ -280,7 +274,6 @@ void TpetraPartitionMap<ExecSpace,MemoryTraits>::print() const {
 
 // Return local index (on this process/rank) corresponding to the input global index
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 int TpetraPartitionMap<ExecSpace,MemoryTraits>::getLocalIndex(int global_index) const {
     int local_index = tpetra_map->getLocalElement(global_index);
     return local_index;
@@ -288,7 +281,6 @@ int TpetraPartitionMap<ExecSpace,MemoryTraits>::getLocalIndex(int global_index) 
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getGlobalIndex(int local_index) const {
     int global_index = tpetra_map->getGlobalElement(local_index);
     return global_index;
@@ -296,7 +288,6 @@ long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getGlobalIndex(int loc
 
 // Return smallest global index (on this process/rank)
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getMinGlobalIndex() const {
     int global_index = tpetra_map->getMinGlobalIndex();
     return global_index;
@@ -304,7 +295,6 @@ long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getMinGlobalIndex() co
 
 // Return largest global index (on this process/rank)
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getMaxGlobalIndex() const {
     int global_index = tpetra_map->getMaxGlobalIndex();
     return global_index;
@@ -312,7 +302,6 @@ long long int TpetraPartitionMap<ExecSpace,MemoryTraits>::getMaxGlobalIndex() co
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 bool TpetraPartitionMap<ExecSpace,MemoryTraits>::isProcessGlobalIndex(int global_index) const {
     bool belongs = tpetra_map->isNodeGlobalElement(global_index);
     return belongs;
@@ -320,7 +309,6 @@ bool TpetraPartitionMap<ExecSpace,MemoryTraits>::isProcessGlobalIndex(int global
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 bool TpetraPartitionMap<ExecSpace,MemoryTraits>::isProcessLocalIndex(int local_index) const {
     bool belongs = tpetra_map->isNodeGlobalElement(local_index);
     return belongs;
@@ -565,16 +553,12 @@ public:
 
     size_t submap_size() const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getSubMapGlobalIndex(int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getMapGlobalIndex(int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     int getSubMapLocalIndex(long long int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     int getMapLocalIndex(long long int local_index) const;
 
     // Host Method
@@ -1166,7 +1150,6 @@ T& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_comm_pmap->getGlobalElement(local_index);
     return global_index;
@@ -1174,7 +1157,6 @@ long long int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalInd
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_pmap->getGlobalElement(local_index);
     return global_index;
@@ -1182,7 +1164,6 @@ long long int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_comm_pmap->getLocalElement(global_index);
     return local_index;
@@ -1190,7 +1171,6 @@ int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long lon
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 int TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_pmap->getLocalElement(global_index);
     return local_index;
@@ -1780,16 +1760,12 @@ public:
 
     size_t submap_size() const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getSubMapGlobalIndex(int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     long long int getMapGlobalIndex(int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     int getSubMapLocalIndex(long long int local_index) const;
 
-    KOKKOS_INLINE_FUNCTION
     int getMapLocalIndex(long long int local_index) const;
 
     // Host Method
@@ -2386,7 +2362,6 @@ T& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_comm_pmap->getGlobalElement(local_index);
     return global_index;
@@ -2394,7 +2369,6 @@ long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapGlobalInd
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(int local_index) const {
     long long int global_index = tpetra_pmap->getGlobalElement(local_index);
     return global_index;
@@ -2402,7 +2376,6 @@ long long int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapGlobalIndex(
 
 // Return global index corresponding to the input local (on this process/rank) index for the sub map this vector comms from
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_comm_pmap->getLocalElement(global_index);
     return local_index;
@@ -2410,7 +2383,6 @@ int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getSubMapLocalIndex(long lon
 
 // Return global index corresponding to the input local (on this process/rank) index
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 int TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::getMapLocalIndex(long long int global_index) const {
     int local_index = tpetra_pmap->getLocalElement(global_index);
     return local_index;

@@ -153,7 +153,7 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
     const size_t num_j = outputs.submap_size();
 
     //perform comms to get full input vector for row vector products on matrix
-    //VERY SIMPLE EXAMPLE OF COMMS; THIS IS A TERRIBLE WAY TO DECOMPOSE THE PROBLEM
+    //VERY SIMPLE EXAMPLE OF COMMS; THIS IS A NONIDEAL WAY TO DECOMPOSE THE PROBLEM
 
     
     FOR_ALL(j, 0, num_j,{
@@ -173,8 +173,6 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
 
     }); // end parallel for
      
-
-
     // For a GPU, use the nested parallelism below here
     /*
     using team_t = typename Kokkos::TeamPolicy<>::member_type;
@@ -276,7 +274,7 @@ int main(int argc, char* argv[])
             });
 
             ANNLayers(layer).output_partition_map = TpetraPartitionMap<>(all_current_layer_indices);
-            ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]); 
+            ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]);
             ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
             //comming from subview requires both the original map and the submap to be composed of contiguous indices
             ANNLayers(layer).distributed_outputs.own_comm_setup(ANNLayers(layer).output_unique_map);
@@ -308,6 +306,7 @@ int main(int argc, char* argv[])
         
         inputs.update_device();  // copy inputs to device
         inputs.perform_comms(); //distribute to full map for row-vector product
+        //inputs.print();
 
         // for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
         //     std::cout << "input at " << i << " is " << inputs(i) << "\n";
@@ -380,16 +379,7 @@ int main(int argc, char* argv[])
         //     std::cout << "output values grid: \n";
         std::flush(std::cout);
         MPI_Barrier(MPI_COMM_WORLD);
-        std::stringstream output_stream;
-        size_t local_output_size = ANNLayers(num_layers-1).distributed_outputs.submap_size();
-        for (size_t val=0; val < local_output_size; val++){
-            int global_index = ANNLayers(num_layers-1).distributed_outputs.getSubMapGlobalIndex(val);
-            int local_index = ANNLayers(num_layers-1).distributed_outputs.getMapLocalIndex(global_index);
-            output_stream << " " << ANNLayers(num_layers-1).distributed_outputs.host(local_index);
-            if(val%10==0) output_stream << std::endl;
-        } // end for
-        std::cout << output_stream.str();
-        std::flush(std::cout);
+        ANNLayers(num_layers-1).distributed_outputs.print();
 
         //test repartition; assume a 10 by 10 grid of outputs from ANN
         //assign coords to each grid point, find a partition of the grid, then repartition output layer using new map

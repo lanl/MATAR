@@ -300,14 +300,15 @@ void setup_maps(mesh_data &mesh)
     mesh.ghost_comms.execute_comms();
 
     //convert nodes in elem to local node ids to avoid excessive map conversion calls
-    FOR_ALL(ielem,0,mesh.rnum_elem, {
+    for(int ielem = 0; ielem < mesh.rnum_elem; ielem++) {
         for(int inode=0; inode < 8; inode++){
             //recall that nodes in elem is storing global indices in this implementation
             //you may just want to store local indices in your case to avoid the map call
-            nodes_in_elem_distributed(ielem,inode) = all_node_map.getLocalIndex(nodes_in_elem_distributed(ielem,inode));
+            nodes_in_elem_distributed.host(ielem,inode) = all_node_map.getLocalIndex(nodes_in_elem_distributed.host(ielem,inode));
         }
-    });
+    }
 
+    nodes_in_elem_distributed.update_device();
     // std::cout << "number of patches = " << mesh->num_patches() << std::endl;
     if (process_rank == 0)
     {

@@ -8,6 +8,7 @@ show_help() {
     echo "  --machine=<darwin|chicoma|linux|mac>. Default is 'linux'"
     echo "  --intel_mkl=<enabled|disabled>. Default is 'disabled'"
     echo "  --build_cores=<Integers greater than 0>. Default is set 1"
+    echo "  --trilinos=<enabled|disabled>. Default is 'disabled'"
     echo "  --help: Display this help message"
     echo " "
     echo " "
