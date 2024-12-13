@@ -1500,6 +1500,8 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
     managed_tpetra_vector->assign(*tpetra_vector);
     tpetra_vector = managed_tpetra_vector;
+    this_array_.modify_device();
+    this_array_.sync_host();
     // // migrate density vector if this is a restart file read
     // if (simparam.restart_file&&repartition_node_densities)
     // {
@@ -2499,7 +2501,7 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
         if(temp.order_==1){
             dims_[1] = 1;
         }
-        
+
         global_dim1_ = temp.global_dim1_;
         order_ = temp.order_;
         length_ = temp.length_;
@@ -2723,6 +2725,8 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
     managed_tpetra_vector->assign(*tpetra_vector);
     tpetra_vector = managed_tpetra_vector;
+    this_array_.modify_device();
+    this_array_.sync_host();
     // // migrate density vector if this is a restart file read
     // if (simparam.restart_file&&repartition_node_densities)
     // {
@@ -3336,6 +3340,7 @@ void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     else{
         destination_vector_.tpetra_vector->doImport(*source_vector_.tpetra_vector, *importer, Tpetra::INSERT);
     }
+    destination_vector_.update_host();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3458,6 +3463,7 @@ void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms()
     else{
         destination_vector_.tpetra_vector->doImport(*source_vector_.tpetra_vector, *importer, Tpetra::INSERT);
     }
+    destination_vector_.update_host();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

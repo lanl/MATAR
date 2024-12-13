@@ -385,9 +385,10 @@ int main(int argc, char* argv[])
         TpetraDFArray<real_t> output_grid(100, 2); //array of 2D coordinates for 10 by 10 grid of points
         
         //populate coords
+        long long int min_global = output_grid.pmap.getMinGlobalIndex();
         FOR_ALL(i,0,output_grid.dims(0), {
-		    output_grid(i, 0) = i/10;
-            output_grid(i, 1) = i%10;
+		    output_grid(i, 0) = (min_global + i)/10;
+            output_grid(i, 1) = (min_global + i)%10;
 	    }); // end parallel for
 
         output_grid.update_host();
@@ -418,14 +419,9 @@ int main(int argc, char* argv[])
         TpetraPartitionMap<> partitioned_output_map = output_grid.pmap;
         TpetraDFArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
 
-        //construct a unique source vector from ANN output using the subview constructor
-        //(for example's sake this is in fact a copy of the subview wrapped by the output as well)
-        TpetraDFArray<real_t> sub_output_values(ANNLayers(num_layers-1).distributed_outputs, ANNLayers(num_layers-1).distributed_outputs.comm_pmap,
-                                                 ANNLayers(num_layers-1).distributed_outputs.comm_pmap.getMinGlobalIndex());
-
         //general communication object between two vectors/arrays
-        TpetraCommunicationPlan<real_t> output_comms(partitioned_output_values, sub_output_values);
-        output_comms.execute_comms();
+        TpetraCommunicationPlan<real_t> output_grid_comms(partitioned_output_values, ANNLayers(num_layers-1).distributed_outputs);
+        output_grid_comms.execute_comms();
         partitioned_output_values.print();
 
     } // end of kokkos scope
