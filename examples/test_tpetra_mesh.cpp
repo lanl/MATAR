@@ -242,7 +242,7 @@ void setup_maps(mesh_data &mesh)
         // std::cout << "{" << i + 1 << "," << global2local_map.get(ghost_nodes(i)) + 1 << "}" << std::endl;
     }
 
-    ghost_nodes.update_host();
+    ghost_nodes.update_device();
 
     // create a Map for ghost node indices
     TpetraPartitionMap<> ghost_node_map = TpetraPartitionMap<>(ghost_nodes);
