@@ -880,10 +880,18 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDCArray(const TpetraDCArra
     global_dim1_ = sub_pmap.num_global_;
     tpetra_pmap = sub_pmap.tpetra_map;
     pmap = sub_pmap;
+    own_comms = false;
     dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = super_vector.dims_[1];
+    for (int iter = 1; iter < super_vector.order_; iter++){
+            dims_[iter] = super_vector.dims_[iter];
+        } // end for
+
+    if(super_vector.order_==1){
+        dims_[1] = 1;
+    }
     order_ = super_vector.order_;
-    length_ = dims_[0]*dims_[1];
+    component_length_ = super_vector.component_length_;
+    length_ = dims_[0]*component_length_;
     // Create host ViewCArray
     set_mpi_type();
     this_array_ = TArray1D(super_vector.this_array_, std::pair<size_t,size_t>(start_index, super_vector.this_array_.extent(0)), Kokkos::ALL());
@@ -2095,10 +2103,18 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(const TpetraDFArra
     global_dim1_ = sub_pmap.num_global_;
     tpetra_pmap = sub_pmap.tpetra_map;
     pmap = sub_pmap;
+    own_comms = false;
     dims_[0] = tpetra_pmap->getLocalNumElements();
-    dims_[1] = super_vector.dims_[1];
+    for (int iter = 1; iter < super_vector.order_; iter++){
+            dims_[iter] = super_vector.dims_[iter];
+        } // end for
+
+    if(super_vector.order_==1){
+        dims_[1] = 1;
+    }
     order_ = super_vector.order_;
-    length_ = dims_[0]*dims_[1];
+    component_length_ = super_vector.component_length_;
+    length_ = dims_[0]*component_length_;
     // Create host ViewCArray
     set_mpi_type();
     this_array_ = TArray1D(super_vector.this_array_, std::pair<size_t,size_t>(start_index, super_vector.this_array_.extent(0)), Kokkos::ALL());
@@ -3235,9 +3251,6 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::~TpetraCRSMatrix() {}
 /////////////////////////
 template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraCommunicationPlan {
-
-    // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
 protected:
     TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector_;
@@ -3335,10 +3348,10 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraCommunicationPla
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
-        destination_vector_.tpetra_vector->doExport(*source_vector_.tpetra_vector, *exporter, Tpetra::INSERT, true);
+        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);
     }
     else{
-        destination_vector_.tpetra_vector->doImport(*source_vector_.tpetra_vector, *importer, Tpetra::INSERT);
+        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
     }
     destination_vector_.update_host();
 }
@@ -3358,9 +3371,6 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~TpetraCommunicationPl
 /////////////////////////
 template <typename T, typename Layout = Kokkos::LayoutRight, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraLRCommunicationPlan {
-
-    // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
     
 protected:
     TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> destination_vector_;
@@ -3458,10 +3468,10 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraLRCommunicatio
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
-        destination_vector_.tpetra_vector->doExport(*source_vector_.tpetra_vector, *exporter, Tpetra::INSERT, true);
+        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);
     }
     else{
-        destination_vector_.tpetra_vector->doImport(*source_vector_.tpetra_vector, *importer, Tpetra::INSERT);
+        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
     }
     destination_vector_.update_host();
 }
