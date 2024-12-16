@@ -1514,25 +1514,20 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     //copy new partitioned vector into another one constructed with our managed dual view
     this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
-    Teuchos::RCP<MV> tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
     tpetra_vector->assign(*temp_tpetra_vector);
     this_array_ = this_array_temp;
-    // // migrate density vector if this is a restart file read
-    // if (simparam.restart_file&&repartition_node_densities)
-    // {
-    //     Teuchos::RCP<MV> partitioned_node_densities_distributed = Teuchos::rcp(new MV(partitioned_map, 1));
-
-    //     // create import object using local node indices map and all indices map
-    //     Tpetra::Import<LO, GO> importer(map, partitioned_map);
-
-    //     // comms to get ghosts
-    //     partitioned_node_densities_distributed->doImport(*design_node_densities_distributed, importer, Tpetra::INSERT);
-    //     design_node_densities_distributed = partitioned_node_densities_distributed;
-    // }
-
-    // // update nlocal_nodes and node map
-    // map = partitioned_map;
-    // nlocal_nodes = map->getLocalNumElements();
+    
+    //for whatever reason, when using one process the device contains the updated data, when using several the host does
+    //so we need this if block
+    if(nranks==1){
+        this_array_.template modify<typename TArray1D::execution_space>();
+        this_array_.template sync<typename TArray1D::host_mirror_space>();
+    }
+    else{
+        this_array_.template modify<typename TArray1D::host_mirror_space>();
+        this_array_.template sync<typename TArray1D::execution_space>();
+    }
 }
 
 // Return size of the submap
@@ -2754,25 +2749,21 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     //copy new partitioned vector into another one constructed with our managed dual view
     this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
-    Teuchos::RCP<MV> tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
     tpetra_vector->assign(*temp_tpetra_vector);
     this_array_ = this_array_temp;
-    // // migrate density vector if this is a restart file read
-    // if (simparam.restart_file&&repartition_node_densities)
-    // {
-    //     Teuchos::RCP<MV> partitioned_node_densities_distributed = Teuchos::rcp(new MV(partitioned_map, 1));
 
-    //     // create import object using local node indices map and all indices map
-    //     Tpetra::Import<LO, GO> importer(map, partitioned_map);
+    //for whatever reason, when using one process the device contains the updated data, when using several the host does
+    //so we need this if block
+    if(nranks==1){
+        this_array_.template modify<typename TArray1D::execution_space>();
+        this_array_.template sync<typename TArray1D::host_mirror_space>();
+    }
+    else{
+        this_array_.template modify<typename TArray1D::host_mirror_space>();
+        this_array_.template sync<typename TArray1D::execution_space>();
+    }
 
-    //     // comms to get ghosts
-    //     partitioned_node_densities_distributed->doImport(*design_node_densities_distributed, importer, Tpetra::INSERT);
-    //     design_node_densities_distributed = partitioned_node_densities_distributed;
-    // }
-
-    // // update nlocal_nodes and node map
-    // map = partitioned_map;
-    // nlocal_nodes = map->getLocalNumElements();
 }
 
 // Return size of the submap

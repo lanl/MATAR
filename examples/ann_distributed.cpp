@@ -405,7 +405,6 @@ int main(int argc, char* argv[])
         
         MPI_Barrier(MPI_COMM_WORLD);
         output_grid.repartition_vector();
-        output_grid.update_host();
         if(process_rank==0){ 
             std::cout << std::endl;
             std::cout << " Map after repartitioning" << std::endl;
@@ -416,7 +415,7 @@ int main(int argc, char* argv[])
             std::cout << std::endl;
             std::cout << " Grid components per rank after repartitioning" << std::endl;
         }
-        output_grid.update_device();
+
         output_grid.print();
 
         //example to get repartitioned map to distribute new arrays with it
