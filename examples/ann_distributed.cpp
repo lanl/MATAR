@@ -253,7 +253,7 @@ int main(int argc, char* argv[])
         input_unique_pmap = TpetraPartitionMap<>(num_nodes_in_layer[0]);
         TpetraDFArray<real_t> inputs_row(input_pmap); //rows decomposed onto processes
         long long int min_index = input_pmap.getLocalIndex(input_unique_pmap.getMinGlobalIndex());
-        TpetraDFArray<real_t> inputs(inputs_row, input_unique_pmap, min_index); //rows decomposed onto processes
+        TpetraDFArray<real_t> inputs(input_unique_pmap); //rows decomposed onto processes
         //comming from subview requires both the original map and the submap to be composed of contiguous indices
 
         // set the strides
@@ -272,9 +272,7 @@ int main(int argc, char* argv[])
             ANNLayers(layer).output_partition_map = TpetraPartitionMap<>(all_current_layer_indices);
             ANNLayers(layer).output_unique_map = TpetraPartitionMap<>(num_nodes_in_layer[layer+1]);
             ANNLayers(layer).distributed_output_row = TpetraDFArray<real_t> (ANNLayers(layer).output_partition_map);
-            //comming from subview requires both the original map and the submap to be composed of contiguous indices
-            min_index = ANNLayers(layer).output_partition_map.getLocalIndex(ANNLayers(layer).output_unique_map.getMinGlobalIndex());
-            ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).distributed_output_row, ANNLayers(layer).output_unique_map, min_index);
+            ANNLayers(layer).distributed_outputs = TpetraDFArray<real_t> (ANNLayers(layer).output_unique_map);
             //comm object between unique mapped output and full output row view
             ANNLayers(layer).output_comms = TpetraCommunicationPlan<real_t>(ANNLayers(layer).distributed_output_row, ANNLayers(layer).distributed_outputs);
 
@@ -305,6 +303,7 @@ int main(int argc, char* argv[])
         inputs.update_device();  // copy inputs to device
         TpetraCommunicationPlan<real_t> input_comms(inputs_row, inputs);
         input_comms.execute_comms(); //distribute to full map for row-vector product
+        inputs_row.update_device();
         //inputs.print();
 
         // for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
@@ -352,7 +351,9 @@ int main(int argc, char* argv[])
         // layer 2 through n-1, layer n-1 goes to the output
         for (size_t layer=1; layer<num_layers; layer++){
             
+            ANNLayers(layer-1).distributed_outputs.update_host();
             ANNLayers(layer-1).output_comms.execute_comms(); //distribute to full map for row-vector product
+            ANNLayers(layer-1).distributed_output_row.update_device();
             // go through this layer, the fcn takes(inputs, outputs, weights)
             forward_propagate_layer(ANNLayers(layer-1).distributed_output_row, 
                                     ANNLayers(layer).distributed_outputs,
@@ -392,6 +393,7 @@ int main(int argc, char* argv[])
 	    }); // end parallel for
 
         output_grid.update_host();
+        //output_grid.print();
 
         MPI_Barrier(MPI_COMM_WORLD);
         if(process_rank==0){ 
@@ -403,6 +405,7 @@ int main(int argc, char* argv[])
         
         MPI_Barrier(MPI_COMM_WORLD);
         output_grid.repartition_vector();
+        output_grid.update_host();
         if(process_rank==0){ 
             std::cout << std::endl;
             std::cout << " Map after repartitioning" << std::endl;
@@ -413,16 +416,12 @@ int main(int argc, char* argv[])
             std::cout << std::endl;
             std::cout << " Grid components per rank after repartitioning" << std::endl;
         }
+        output_grid.update_device();
         output_grid.print();
 
-        //get repartitioned map to distribute new arrays with it
+        //example to get repartitioned map to distribute new arrays with it
         TpetraPartitionMap<> partitioned_output_map = output_grid.pmap;
-        TpetraDFArray<real_t> partitioned_output_values(partitioned_output_map, "partitioned output values");
-
-        //general communication object between two vectors/arrays
-        TpetraCommunicationPlan<real_t> output_grid_comms(partitioned_output_values, ANNLayers(num_layers-1).distributed_outputs);
-        output_grid_comms.execute_comms();
-        partitioned_output_values.print();
+        TpetraDFArray<real_t> partitioned_array(partitioned_output_map, "partitioned output values");
 
     } // end of kokkos scope
 

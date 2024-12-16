@@ -1483,19 +1483,28 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     // Teuchos::RCP<xvector_t> xpartitioned_node_coords_distributed =
     //     Teuchos::rcp(new Xpetra::TpetraMultiVector<real_t, LO, GO, node_type>(partitioned_node_coords_distributed));
 
-    problem_adapter->applyPartitioningSolution(*tpetra_vector, tpetra_vector, problem->getSolution());
+    TArray1D this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
+    Teuchos::RCP<MV> temp_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    problem_adapter->applyPartitioningSolution(*tpetra_vector, temp_tpetra_vector, problem->getSolution());
     
-    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*(tpetra_vector->getMap())));
+    // std::ostream &out = std::cout;
+    // Teuchos::RCP<Teuchos::FancyOStream> fos;
+    // fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+    // temp_tpetra_vector->describe(*fos,Teuchos::VERB_EXTREME);
+    // temp_tpetra_vector->getMap()->describe(*fos,Teuchos::VERB_EXTREME);
+    
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*(temp_tpetra_vector->getMap())));
+    tpetra_vector = temp_tpetra_vector;
     // *partitioned_node_coords_distributed = Xpetra::toTpetra<real_t, LO, GO, node_type>(*xpartitioned_node_coords_distributed);
 
     // Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> partitioned_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(*(partitioned_node_coords_distributed->getMap())));
 
     Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> partitioned_map_one_to_one;
     partitioned_map_one_to_one = Tpetra::createOneToOne<tpetra_LO, tpetra_GO, tpetra_node_type>(tpetra_pmap);
-    //Teuchos::RCP<MV> partitioned_node_coords_one_to_one_distributed = Teuchos::rcp(new MV(partitioned_map_one_to_one, num_dim));
+    temp_tpetra_vector = Teuchos::rcp(new MV(partitioned_map_one_to_one, num_dim));
 
-    // Tpetra::Import<LO, GO> importer_one_to_one(partitioned_map, partitioned_map_one_to_one);
-    // partitioned_node_coords_one_to_one_distributed->doImport(*partitioned_node_coords_distributed, importer_one_to_one, Tpetra::INSERT);
+    Tpetra::Import<tpetra_LO, tpetra_GO> importer_one_to_one(tpetra_vector->getMap(), partitioned_map_one_to_one);
+    temp_tpetra_vector->doImport(*tpetra_vector, importer_one_to_one, Tpetra::INSERT);
     // node_coords_distributed = partitioned_node_coords_one_to_one_distributed;
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*partitioned_map_one_to_one));
     pmap = TpetraPartitionMap<ExecSpace,MemoryTraits>(tpetra_pmap);
@@ -1504,12 +1513,10 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     length_ = (dims_[0] * component_length_);
 
     //copy new partitioned vector into another one constructed with our managed dual view
-    this_array_ = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
-    Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
-    managed_tpetra_vector->assign(*tpetra_vector);
-    tpetra_vector = managed_tpetra_vector;
-    this_array_.modify_device();
-    this_array_.sync_host();
+    this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
+    Teuchos::RCP<MV> tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    tpetra_vector->assign(*temp_tpetra_vector);
+    this_array_ = this_array_temp;
     // // migrate density vector if this is a restart file read
     // if (simparam.restart_file&&repartition_node_densities)
     // {
@@ -2715,20 +2722,29 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     // Teuchos::RCP<xvector_t> xpartitioned_node_coords_distributed =
     //     Teuchos::rcp(new Xpetra::TpetraMultiVector<real_t, LO, GO, node_type>(partitioned_node_coords_distributed));
-
-    problem_adapter->applyPartitioningSolution(*tpetra_vector, tpetra_vector, problem->getSolution());
     
-    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*(tpetra_vector->getMap())));
+    TArray1D this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
+    Teuchos::RCP<MV> temp_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    problem_adapter->applyPartitioningSolution(*tpetra_vector, temp_tpetra_vector, problem->getSolution());
+    
+    // std::ostream &out = std::cout;
+    // Teuchos::RCP<Teuchos::FancyOStream> fos;
+    // fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+    // temp_tpetra_vector->describe(*fos,Teuchos::VERB_EXTREME);
+    // temp_tpetra_vector->getMap()->describe(*fos,Teuchos::VERB_EXTREME);
+    
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*(temp_tpetra_vector->getMap())));
+    tpetra_vector = temp_tpetra_vector;
     // *partitioned_node_coords_distributed = Xpetra::toTpetra<real_t, LO, GO, node_type>(*xpartitioned_node_coords_distributed);
 
     // Teuchos::RCP<Tpetra::Map<LO, GO, node_type>> partitioned_map = Teuchos::rcp(new Tpetra::Map<LO, GO, node_type>(*(partitioned_node_coords_distributed->getMap())));
 
     Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> partitioned_map_one_to_one;
     partitioned_map_one_to_one = Tpetra::createOneToOne<tpetra_LO, tpetra_GO, tpetra_node_type>(tpetra_pmap);
-    //Teuchos::RCP<MV> partitioned_node_coords_one_to_one_distributed = Teuchos::rcp(new MV(partitioned_map_one_to_one, num_dim));
+    temp_tpetra_vector = Teuchos::rcp(new MV(partitioned_map_one_to_one, num_dim));
 
-    // Tpetra::Import<LO, GO> importer_one_to_one(partitioned_map, partitioned_map_one_to_one);
-    // partitioned_node_coords_one_to_one_distributed->doImport(*partitioned_node_coords_distributed, importer_one_to_one, Tpetra::INSERT);
+    Tpetra::Import<tpetra_LO, tpetra_GO> importer_one_to_one(tpetra_vector->getMap(), partitioned_map_one_to_one);
+    temp_tpetra_vector->doImport(*tpetra_vector, importer_one_to_one, Tpetra::INSERT);
     // node_coords_distributed = partitioned_node_coords_one_to_one_distributed;
     tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(*partitioned_map_one_to_one));
     pmap = TpetraPartitionMap<ExecSpace,MemoryTraits>(tpetra_pmap);
@@ -2737,12 +2753,10 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     length_ = (dims_[0] * component_length_);
 
     //copy new partitioned vector into another one constructed with our managed dual view
-    this_array_ = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
-    Teuchos::RCP<MV> managed_tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_));
-    managed_tpetra_vector->assign(*tpetra_vector);
-    tpetra_vector = managed_tpetra_vector;
-    this_array_.modify_device();
-    this_array_.sync_host();
+    this_array_temp = TArray1D(this_array_.d_view.label(), dims_[0], component_length_);
+    Teuchos::RCP<MV> tpetra_vector = Teuchos::rcp(new MV(tpetra_pmap, this_array_temp));
+    tpetra_vector->assign(*temp_tpetra_vector);
+    this_array_ = this_array_temp;
     // // migrate density vector if this is a restart file read
     // if (simparam.restart_file&&repartition_node_densities)
     // {

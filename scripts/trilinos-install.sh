@@ -56,6 +56,7 @@ CUDA_ADDITIONS=(
 -D KokkosKernels_ENABLE_TPL_CUSPARSE=ON
 -D Tpetra_ENABLE_CUDA=ON
 -D MueLu_ENABLE_Kokkos_Refactor=OFF
+-D Tpetra_ASSUME_GPU_AWARE_MPI:BOOL=FALSE
 )
 
 # Kokkos flags for Hip
@@ -69,6 +70,7 @@ export OMPI_CXX=hipcc
 -D KokkosKernels_ENABLE_TPL_CUBLAS=OFF
 -D KokkosKernels_ENABLE_TPL_CUSPARSE=OFF
 -D Tpetra_INST_HIP=ON
+-D Tpetra_ASSUME_GPU_AWARE_MPI:BOOL=FALSE
 )
 
 # Kokkos flags for OpenMP

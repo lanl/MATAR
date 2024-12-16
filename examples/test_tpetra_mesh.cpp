@@ -56,7 +56,7 @@ struct mesh_data {
 
 void setup_maps(mesh_data &mesh);
 void read_mesh_vtk(const char* MESH,mesh_data &mesh);
-void run_test(mesh_data &mesh);
+real_t run_test(mesh_data &mesh);
 
 int main(int argc, char* argv[])
 {   
@@ -77,9 +77,10 @@ int main(int argc, char* argv[])
         //compute something; barriers for timer
         MPI_Barrier(MPI_COMM_WORLD);
         Kokkos::fence();
-        
+
+        real_t checksum;
         auto time_1 = std::chrono::high_resolution_clock::now();
-        run_test(mesh);
+        checksum = run_test(mesh);
         auto time_2 = std::chrono::high_resolution_clock::now();
 
         Kokkos::fence();
@@ -87,8 +88,10 @@ int main(int argc, char* argv[])
         
         MPI_Barrier(MPI_COMM_WORLD);
         std::chrono::duration <float, std::milli> ms = time_2 - time_1;
-        if(process_rank==0)
+        if(process_rank==0){
             std::cout << "Finished. Runtime was " << ms.count() << " ms" << std::endl;
+            std::cout << "FEA checksum value is " << checksum << std::endl;
+        }
     } // end of kokkos scope
     Kokkos::finalize();
     MPI_Finalize();
@@ -97,9 +100,10 @@ int main(int argc, char* argv[])
 /* ----------------------------------------------------------------------
    Construct maps containing ghost nodes
 ------------------------------------------------------------------------- */
-void run_test(mesh_data &mesh)
+real_t run_test(mesh_data &mesh)
 {   
     int  num_dim = mesh.num_dim;
+    TpetraDFArray<double> all_node_coords_distributed = mesh.all_node_coords_distributed;
     TpetraDFArray<double> node_coords_distributed = mesh.node_coords_distributed;
     TpetraDFArray<long long int> nodes_in_elem_distributed = mesh.nodes_in_elem_distributed;
     TpetraPartitionMap<> all_node_map = mesh.nodes_in_elem_distributed.pmap;
@@ -109,7 +113,11 @@ void run_test(mesh_data &mesh)
 
     //arbitrary calculation done by looping over all local elements for all timesteps
     //this loops over all ghosts as well to test load balancing
+
+    //storage for per element update quantity
     for(int itimestep = 0; itimestep < ntimesteps; itimestep++){
+        real_t local_driver = 0;
+        real_t global_driver = 0;
         FOR_ALL(ielem,0,mesh.rnum_elem, {
                 real_t sum = 0;
                 real_t square_sum = 0;
@@ -117,24 +125,50 @@ void run_test(mesh_data &mesh)
                 for(int inode=0; inode < 8; inode++){
                     int local_node_index = nodes_in_elem_distributed(ielem,inode);
                     for(int idim=0; idim < num_dim; idim++){
-                        sum += node_coords_distributed(local_node_index, idim);
-                        square_sum += node_coords_distributed(local_node_index, idim)*node_coords_distributed(local_node_index, idim);
+                        sum += all_node_coords_distributed(local_node_index, idim);
+                        square_sum += all_node_coords_distributed(local_node_index, idim)*all_node_coords_distributed(local_node_index, idim);
                     }
                 }
 
-                //update coords based on evaluated element sum function
-                for(int inode=0; inode < 8; inode++){
-                    int local_node_index = nodes_in_elem_distributed(ielem,inode);
-                    if(local_node_index < nlocal_nodes){
-                        for(int idim=0; idim < num_dim; idim++){
-                            node_coords_distributed(local_node_index, idim) += sum/sqrt(square_sum)*timestep;
-                        }
-                    }
-                }
         });
+        Kokkos::fence();
+
+        REDUCE_SUM_CLASS(ielem, 0, mesh.rnum_elem, IE_loc_sum, {
+        IE_loc_sum += elem_mass(elem_gid) * elem_sie(rk_level, elem_gid);
+        }, IE_sum);
+        
+        FOR_ALL(inode,0,mesh.nlocal_nodes, {
+            //update coords based on evaluated element sum function
+            if(local_node_index < nlocal_nodes){
+                for(int idim=0; idim < num_dim; idim++){
+                    //node_coords_distributed(local_node_index, idim) += sum/sqrt(square_sum)*timestep;
+                    node_coords_distributed(local_node_index, idim) += global_driver*timestep;
+                }
+            }
+        });
+        Kokkos::fence();
+        mesh.node_coords_distributed.update_host();
+        //update ghosts
+        mesh.ghost_comms.execute_comms();
+        mesh.all_node_coords_distributed.update_device();
     }
-    //update ghosts
-    mesh.ghost_comms.execute_comms();
+
+    //perform checksum
+    DCArrayKokkos<real_t> local_value(1);
+    local_value.host(0) = 0;
+    local_value.update_device();
+    FOR_ALL(inode,0,nlocal_nodes, {
+        for(int idim=0; idim < num_dim; idim++){
+            local_value(0) += node_coords_distributed(inode, idim)*node_coords_distributed(inode, idim);
+        }
+    });
+    Kokkos::fence();
+
+    local_value.update_host();
+    real_t local_sum = local_value.host(0);
+    real_t global_sum = 0;
+    MPI_Allreduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+    return global_sum;
 }
 
 /* ----------------------------------------------------------------------
@@ -276,10 +310,11 @@ void setup_maps(mesh_data &mesh)
     TpetraPartitionMap<> all_node_map = TpetraPartitionMap<>(all_node_indices);
 
     // create distributed multivector of the (local + ghost) node coords
-    mesh.all_node_coords_distributed = TpetraDFArray<double>(all_node_map, num_dim);
+    mesh.all_node_coords_distributed = TpetraDFArray<double>(all_node_map, num_dim, "all_node_coords");
 
     // create distributed multivector of the ghost node coords as a subview of the all vector
-    mesh.ghost_node_coords_distributed = TpetraDFArray<double>(mesh.all_node_coords_distributed, ghost_node_map, nlocal_nodes);
+    //mesh.ghost_node_coords_distributed = TpetraDFArray<double>(mesh.all_node_coords_distributed, ghost_node_map, nlocal_nodes);
+    mesh.ghost_node_coords_distributed = TpetraDFArray<double>(ghost_node_map, num_dim, "ghost_node_coords");
 
     //initialize 0:nlocal-1 data in the all vector
     FOR_ALL(inode,0,nlocal_nodes, {
@@ -287,18 +322,21 @@ void setup_maps(mesh_data &mesh)
             mesh.all_node_coords_distributed(inode,idim) = mesh.node_coords_distributed(inode,idim);
         }
     });
-    mesh.all_node_coords_distributed.update_host();
+    Kokkos::fence();
 
+    mesh.all_node_coords_distributed.update_host();
+    
     //set local node array to be a subview of the all node array to avoid carrying duplicate memory
     mesh.node_coords_distributed = TpetraDFArray<double>(mesh.all_node_coords_distributed, map, 0);
     node_coords_distributed = mesh.node_coords_distributed; //reset local variable
 
     // create communication object between ghosts and unique local data
-    mesh.ghost_comms = TpetraCommunicationPlan<real_t>(mesh.ghost_node_coords_distributed, mesh.node_coords_distributed);
+    mesh.ghost_comms = TpetraCommunicationPlan<real_t>(mesh.all_node_coords_distributed, mesh.node_coords_distributed);
 
     // comms to get ghosts coords initialized
     mesh.ghost_comms.execute_comms();
-
+    mesh.all_node_coords_distributed.update_device();
+    
     //convert nodes in elem to local node ids to avoid excessive map conversion calls
     for(int ielem = 0; ielem < mesh.rnum_elem; ielem++) {
         for(int inode=0; inode < 8; inode++){
@@ -307,8 +345,8 @@ void setup_maps(mesh_data &mesh)
             nodes_in_elem_distributed.host(ielem,inode) = all_node_map.getLocalIndex(nodes_in_elem_distributed.host(ielem,inode));
         }
     }
-
-    nodes_in_elem_distributed.update_device();
+    
+    mesh.nodes_in_elem_distributed.update_device();
     // std::cout << "number of patches = " << mesh->num_patches() << std::endl;
     if (process_rank == 0)
     {
@@ -332,7 +370,6 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     int global_negative_index_found = 0;
 
     size_t read_index_start, node_rid, elem_gid;
-    size_t strain_count;
     size_t nlocal_nodes, rnum_elem, max_nodes_per_element;
     size_t buffer_nlines = 100000;
     size_t num_nodes, num_elem;
@@ -507,7 +544,7 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     }
     // repartition node distribution
     mesh.node_coords_distributed.update_device();
-    mesh.node_coords_distributed.repartition_vector();
+    //mesh.node_coords_distributed.repartition_vector();
     //reset our local map variable to the repartitioned map
     map = mesh.node_coords_distributed.pmap;
     // set the local number of nodes on this process
@@ -574,8 +611,8 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     int assign_flag;
 
     // dynamic buffer used to store elements before we know how many this rank needs
-    std::vector<size_t> element_temp(buffer_nlines * elem_words_per_line);
-    std::vector<size_t> global_indices_temp(buffer_nlines);
+    std::vector<long long int> element_temp(buffer_nlines * elem_words_per_line);
+    std::vector<long long int> global_indices_temp(buffer_nlines);
     size_t buffer_max = buffer_nlines * elem_words_per_line;
     size_t indices_buffer_max = buffer_nlines;
 
@@ -759,8 +796,8 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     mesh.nodes_in_elem_distributed.update_device();
 
     // delete temporary element connectivity and index storage
-    std::vector<size_t>().swap(element_temp);
-    std::vector<size_t>().swap(global_indices_temp);
+    std::vector<long long int>().swap(element_temp);
+    std::vector<long long int>().swap(global_indices_temp);
 
     // debug print
     /*
