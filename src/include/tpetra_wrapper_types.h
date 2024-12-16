@@ -3358,7 +3358,6 @@ void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     else{
         destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
     }
-    destination_vector_.update_host();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3478,7 +3477,6 @@ void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms()
     else{
         destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
     }
-    destination_vector_.update_host();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

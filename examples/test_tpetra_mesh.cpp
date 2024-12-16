@@ -110,14 +110,16 @@ real_t run_test(mesh_data &mesh)
     size_t nlocal_nodes = mesh.nlocal_nodes;
     int ntimesteps = 1000;
     real_t timestep = 0.001;
+    real_t constant_driver = 0.001;
 
     //arbitrary calculation done by looping over all local elements for all timesteps
     //this loops over all ghosts as well to test load balancing
 
-    //storage for per element update quantity
     for(int itimestep = 0; itimestep < ntimesteps; itimestep++){
         real_t local_driver = 0;
         real_t global_driver = 0;
+        
+        //loop to test element load balancing; resulting per elem values aren't used to keep this example simple and free of inverse connectivity structures
         FOR_ALL(ielem,0,mesh.rnum_elem, {
                 real_t sum = 0;
                 real_t square_sum = 0;
@@ -132,18 +134,13 @@ real_t run_test(mesh_data &mesh)
 
         });
         Kokkos::fence();
-
-        REDUCE_SUM_CLASS(ielem, 0, mesh.rnum_elem, IE_loc_sum, {
-        IE_loc_sum += elem_mass(elem_gid) * elem_sie(rk_level, elem_gid);
-        }, IE_sum);
         
+        //loop to test node update and comms
         FOR_ALL(inode,0,mesh.nlocal_nodes, {
             //update coords based on evaluated element sum function
-            if(local_node_index < nlocal_nodes){
-                for(int idim=0; idim < num_dim; idim++){
-                    //node_coords_distributed(local_node_index, idim) += sum/sqrt(square_sum)*timestep;
-                    node_coords_distributed(local_node_index, idim) += global_driver*timestep;
-                }
+            for(int idim=0; idim < num_dim; idim++){
+                //node_coords_distributed(local_node_index, idim) += sum/sqrt(square_sum)*timestep;
+                node_coords_distributed(inode, idim) += constant_driver*timestep;
             }
         });
         Kokkos::fence();
@@ -154,18 +151,15 @@ real_t run_test(mesh_data &mesh)
     }
 
     //perform checksum
-    DCArrayKokkos<real_t> local_value(1);
-    local_value.host(0) = 0;
-    local_value.update_device();
-    FOR_ALL(inode,0,nlocal_nodes, {
-        for(int idim=0; idim < num_dim; idim++){
-            local_value(0) += node_coords_distributed(inode, idim)*node_coords_distributed(inode, idim);
+    real_t local_sum = 0;
+    real_t threads_sum = 0;
+    FOR_REDUCE_SUM(inode, 0, nlocal_nodes, threads_sum, {
+        for(int idim = 0; idim < num_dim; idim++){
+            threads_sum += node_coords_distributed(inode, idim) * node_coords_distributed(inode, idim);
         }
-    });
+    }, local_sum);
     Kokkos::fence();
 
-    local_value.update_host();
-    real_t local_sum = local_value.host(0);
     real_t global_sum = 0;
     MPI_Allreduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
     return global_sum;
@@ -544,7 +538,7 @@ void read_mesh_vtk(const char* MESH, mesh_data &mesh)
     }
     // repartition node distribution
     mesh.node_coords_distributed.update_device();
-    //mesh.node_coords_distributed.repartition_vector();
+    mesh.node_coords_distributed.repartition_vector();
     //reset our local map variable to the repartitioned map
     map = mesh.node_coords_distributed.pmap;
     // set the local number of nodes on this process
