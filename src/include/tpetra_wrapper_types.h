@@ -1520,13 +1520,11 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
     
     //for whatever reason, when using one process the device contains the updated data, when using several the host does
     //so we need this if block
-    if(nranks==1){
-        this_array_.template modify<typename TArray1D::execution_space>();
-        this_array_.template sync<typename TArray1D::host_mirror_space>();
+    if(this_array_.template need_sync<typename TArray1D::execution_space>()){
+        this_array_.template sync<typename TArray1D::execution_space>();
     }
     else{
-        this_array_.template modify<typename TArray1D::host_mirror_space>();
-        this_array_.template sync<typename TArray1D::execution_space>();
+        this_array_.template sync<typename TArray1D::host_mirror_space>();
     }
 }
 
@@ -2755,13 +2753,11 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::repartition_vector() {
 
     //for whatever reason, when using one process the device contains the updated data, when using several the host does
     //so we need this if block
-    if(nranks==1){
-        this_array_.template modify<typename TArray1D::execution_space>();
-        this_array_.template sync<typename TArray1D::host_mirror_space>();
+    if(this_array_.template need_sync<typename TArray1D::execution_space>()){
+        this_array_.template sync<typename TArray1D::execution_space>();
     }
     else{
-        this_array_.template modify<typename TArray1D::host_mirror_space>();
-        this_array_.template sync<typename TArray1D::execution_space>();
+        this_array_.template sync<typename TArray1D::host_mirror_space>();
     }
 
 }
