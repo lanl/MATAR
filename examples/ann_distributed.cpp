@@ -167,25 +167,26 @@ void forward_propagate_layer(TpetraDFArray<real_t> &inputs,
             outputs(j) = 1.0/(1.0 + exp(-value)); 
 
     }); // end parallel for
-     
+
     // For a GPU, use the nested parallelism below here
     /*
-    using team_t = typename Kokkos::TeamPolicy<>::member_type;
-    Kokkos::parallel_for ("MatVec", Kokkos::TeamPolicy<> (num_j, Kokkos::AUTO),
-                 KOKKOS_LAMBDA (const team_t& team_h) {
+    // FOR_FIRST(j, 0, num_j,{
 
-        float sum = 0;
-        int j = team_h.league_rank();
-        Kokkos::parallel_reduce (Kokkos::TeamThreadRange (team_h, num_i),
-                        [&] (int i, float& lsum) {
-            lsum += inputs(i)*weights(j,i) + biases(j);
-        }, sum); // end parallel reduce
-        int global_index = outputs.getSubMapGlobalIndex(j);
-        int local_index = outputs.getMapLocalIndex(global_index);
-        outputs(local_index) = 1.0/(1.0 + exp(-sum)); 
+    // 	//printf("thread = %d \n", omp_get_thread_num());
+    //     float value = 0.0;
+    //     float lsum = 0.0;
+    //     FOR_REDUCE_SUM_SECOND(i, 0, num_i, lsum,{
+    //         // b_j = Sum_i {x_i w_{ij}}
+    //         lsum += inputs(i)*weights(i,j);
+    //     }, value); // end for
 
-    }); // end parallel for
-    */
+    //     // apply activation function, sigmoid on a float, y_j = Fcn(b_j)
+    //     outputs(j) = 1.0/(1.0 + exp(-value)); 
+
+    // }); // end parallel for
+     */
+    
+   
 
 
     return;
