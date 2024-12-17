@@ -85,6 +85,12 @@ using tpetra_global_size_t   = Tpetra::global_size_t;
 namespace mtr
 {
 
+//forward declarations for friendship
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraCommunicationPlan;
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraLRCommunicationPlan;
+
 /////////////////////////
 // TpetraPartitionMap:  Container storing global indices corresponding to local indices that belong on this process/rank as well as comms related data/functions.
 /////////////////////////
@@ -360,6 +366,7 @@ class TpetraDCArray {
 
 public:
     
+    friend class TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>;
     //data for arrays that own both shared and local data and aren't intended to communicate with another MATAR type
     //This is simplifying for cases such as a local + ghost storage vector where you need to update the ghost entries
     bool own_comms; //This Mapped MPI Array contains its own communication plan; just call array_comms()
@@ -1582,7 +1589,7 @@ class TpetraDFArray {
     
 
 public:
-    
+    friend class TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>;
     //data for arrays that own both shared and local data and aren't intended to communicate with another MATAR type
     //This is simplifying for cases such as a local + ghost storage vector where you need to update the ghost entries
     bool own_comms; //This Mapped MPI Array contains its own communication plan; just call array_comms()
@@ -3349,10 +3356,22 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraCommunicationPla
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
-        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);
+        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);\
+        if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
+        }
+        else{
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::host_mirror_space>();
+        }
     }
     else{
         destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
+        if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
+        }
+        else{
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::host_mirror_space>();
+        }
     }
 }
 
@@ -3469,9 +3488,21 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
         destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);
+        if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
+        }
+        else{
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::host_mirror_space>();
+        }
     }
     else{
         destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
+        if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
+        }
+        else{
+            destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::host_mirror_space>();
+        }
     }
 }
 

@@ -303,7 +303,6 @@ int main(int argc, char* argv[])
         inputs.update_device();  // copy inputs to device
         TpetraCommunicationPlan<real_t> input_comms(inputs_row, inputs);
         input_comms.execute_comms(); //distribute to full map for row-vector product
-        inputs_row.update_device();
         //inputs.print();
 
         // for (size_t i=0; i<num_nodes_in_layer[0]; i++) {
@@ -353,7 +352,6 @@ int main(int argc, char* argv[])
             
             ANNLayers(layer-1).distributed_outputs.update_host();
             ANNLayers(layer-1).output_comms.execute_comms(); //distribute to full map for row-vector product
-            ANNLayers(layer-1).distributed_output_row.update_device();
             // go through this layer, the fcn takes(inputs, outputs, weights)
             forward_propagate_layer(ANNLayers(layer-1).distributed_output_row, 
                                     ANNLayers(layer).distributed_outputs,
