@@ -31,6 +31,10 @@ export KOKKOS_SOURCE_DIR=${basedir}/src/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos
 
+export TRILINOS_SOURCE_DIR=${basedir}/lib/Trilinos
+export TRILINOS_BUILD_DIR=${TRILINOS_SOURCE_DIR}/build-${kokkos_build_type}
+export TRILINOS_INSTALL_DIR=${TRILINOS_BUILD_DIR}
+
 export MATAR_SOURCE_DIR=${basedir}
 export MATAR_BUILD_DIR=${builddir}/matar
 export MATAR_INSTALL_DIR=${installdir}/matar
