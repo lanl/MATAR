@@ -15,7 +15,7 @@ if (NOT KOKKOS)
 endif()
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  #find_package(Kokkos REQUIRED) #new
 
   add_executable(kokkosview main_kokkosview.cpp)
   add_executable(carraykokkos_default_indexing main_carraykokkos_default_indexing.cpp)

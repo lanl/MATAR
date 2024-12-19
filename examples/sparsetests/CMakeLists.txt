@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1.3)
 
 if (KOKKOS)
-    find_package(Kokkos REQUIRED)
+    #find_package(Kokkos REQUIRED)
     add_definitions(-DHAVE_KOKKOS=1)
     
     add_executable(matVec matVec.cpp)

@@ -6,7 +6,9 @@ show_help() {
     echo "  --kokkos_build_type=<none|serial|openmp|pthreads|cuda|hip|serial_mpi|openmp_mpi|cuda_mpi|hip_mpi|>. Default is 'serial'"
     echo "  --build_action=<full-app|set-env|install-kokkos|install-matar|matar>. Default is 'full-app'"
     echo "  --machine=<darwin|chicoma|linux|mac>. Default is 'linux'"
+    echo "  --intel_mkl=<enabled|disabled>. Default is 'disabled'"
     echo "  --build_cores=<Integers greater than 0>. Default is set 1"
+    echo "  --trilinos=<enabled|disabled>. Default is 'disabled'"
     echo "  --help: Display this help message"
     echo " "
     echo " "
@@ -44,6 +46,11 @@ show_help() {
     echo "          linux                       A general linux machine (that does not use modules)"
     echo "          mac                         A Mac computer. This option does not allow for cuda and hip builds, and build_cores will be set to 1"
     echo " "
+    echo "      --intel_mkl                     Decides whether to build Trilinos using the Intel MKL library"
+    echo " "
+    echo "          enabled                     Links and builds Trilinos with the Intel MKL library"
+    echo "          disabled                    Links and builds Trilinos using LAPACK and BLAS"
+    echo " "
     echo "      --build_cores                   The number of build cores to be used by make and make install commands. The default is 1"
     echo " "
     echo "      --trilinos                      Decides if Trilinos is available for certain MATAR functionality"
@@ -61,6 +68,7 @@ machine="linux"
 kokkos_build_type="serial"
 build_cores="1"
 trilinos="disabled"
+intel_mkl="disabled"
 
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
@@ -68,6 +76,7 @@ valid_execution=("examples" "test" "benchmark")
 valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip" "serial_mpi" "openmp_mpi" "cuda_mpi" "hip_mpi")
 valid_machines=("darwin" "chicoma" "linux" "mac")
 valid_trilinos=("disabled" "enabled")
+valid_intel_mkl=("disabled" "enabled")
 
 # Parse command line arguments
 for arg in "$@"; do
@@ -132,6 +141,16 @@ for arg in "$@"; do
                 return 1
             fi
             ;;
+        --intel_mkl=*)
+            option="${arg#*=}"
+            if [[ " ${valid_intel_mkl[*]} " == *" $option "* ]]; then
+                intel_mkl="$option"
+            else
+                echo "Error: Invalid --intel_mkl specified."
+                show_help
+                return 1
+            fi
+            ;;
         --help)
             show_help
             return 1
@@ -162,6 +181,12 @@ if [ "$machine" = "mac" ] && [ $build_cores -ne 1 ]; then
     # Nothing to do, default is already 1
 fi
 
+if [ "$trilinos" = "enabled" ] && [ "$kokkos_build_type" = "none" ]; then
+    echo "Error: Kokkos none cannot be requested with Trilinos"
+    show_help
+    return 1
+fi
+
 
 echo "Building based on these argument options:"
 echo "Build action - ${build_action}"
@@ -169,6 +194,7 @@ echo "Execution - ${execution}"
 echo "Kokkos backend - ${kokkos_build_type}"
 echo "make -j ${build_cores}"
 echo "Trilinos - ${trilinos}"
+echo "Intel MKL library - ${intel_mkl}"
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
@@ -185,6 +211,8 @@ if [ "$build_action" = "full-app" ]; then
 
     if [ "$trilinos" = "disabled" ]; then    
         source kokkos-install.sh ${kokkos_build_type}
+    elif [ "$trilinos" = "enabled" ]; then    
+        source trilinos-install.sh ${kokkos_build_type}  ${intel_mkl}
     fi
     source matar-install.sh ${kokkos_build_type} ${trilinos}
     source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos}

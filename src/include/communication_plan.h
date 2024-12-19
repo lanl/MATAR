@@ -90,7 +90,7 @@ public:
     virtual KOKKOS_INLINE_FUNCTION
     ~CommunicationPlan ();
 
-    virtual execute_comms(){}
+    virtual void execute_comms(){}
 }; // End of CommunicationPlan
 
 
@@ -113,7 +113,7 @@ CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& CommunicationPlan<T,Layout,E
     
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
-        reverse_comms_flag = reverse_comms_flag;
+        reverse_comms_flag = temp.reverse_comms_flag;
     }
     
     return *this;

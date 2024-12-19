@@ -4,7 +4,7 @@ find_package(Matar REQUIRED)
 
 if (KOKKOS)
   add_definitions(-DHAVE_KOKKOS=1)
-  find_package(Kokkos REQUIRED)
+  #find_package(Kokkos REQUIRED)
 
   add_definitions(-DHAVE_KOKKOS=1)
   if (CUDA)

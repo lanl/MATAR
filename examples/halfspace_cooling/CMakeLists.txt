@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1.3)
 find_package(Matar REQUIRED)
 
 if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
+  #find_package(Kokkos REQUIRED) #new
   
   add_executable(halfspace_cooling halfspace_cooling.cpp)
 

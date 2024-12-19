@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.1.3)
 
-project (phasefield_mpi)
+#project (phasefield_mpi)
 
 
 if (KOKKOS)
 
   add_definitions(-DHAVE_KOKKOS=1)
 
-  find_package(Kokkos REQUIRED)
+  #find_package(Kokkos REQUIRED)
   find_package(MPI REQUIRED)  
 
   # heffte compilation flags
