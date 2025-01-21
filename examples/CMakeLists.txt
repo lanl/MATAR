@@ -40,6 +40,9 @@ if (NOT KOKKOS)
 endif()
 
 if (KOKKOS)
+  if (CUDA)
+    find_package(CUDAToolkit REQUIRED)
+  endif()
   find_package(Kokkos REQUIRED) #new
 
   list(APPEND LINKING_LIBRARIES Kokkos::kokkos)
@@ -97,8 +100,8 @@ endif()
 #include_directories(gArrayofgArrays)
 #add_subdirectory(gArrayofgArrays)
 
-include_directories(virtualFcnMATAR)
-add_subdirectory(virtualFcnMATAR)
+#include_directories(virtualFcnMATAR)
+#add_subdirectory(virtualFcnMATAR)
 
 include_directories(laplace)
 add_subdirectory(laplace)
@@ -115,8 +118,10 @@ add_subdirectory(watt-graph)
 include_directories(sparsetests)
 add_subdirectory(sparsetests)
 
-include_directories(test_rocm)
-add_subdirectory(test_rocm)
+if (HIP)
+    include_directories(test_rocm)
+    add_subdirectory(test_rocm)
+endif()
 
 if (MPI)
    include_directories(laplaceMPI)

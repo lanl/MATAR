@@ -23,6 +23,11 @@ else
     cmake_options+=(
         -D KOKKOS=ON
     )
+    if [[ "$kokkos_build_type" = *"cuda"* ]]; then
+        cmake_options+=(
+            -D CUDA=ON
+        )
+    fi
 fi
 
 if [[ "$kokkos_build_type" = *"mpi"* ]]; then
