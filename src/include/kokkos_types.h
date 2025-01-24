@@ -1661,6 +1661,7 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
+    bool   lock_ = false;
     TArray1D this_array_;
 
 public:
@@ -1743,6 +1744,12 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // Method that locks updates
+    void lock_update();
+
+    // Method that unlocks updates
+    void unlock_update();
 
 
     // set values on host to input
@@ -1985,7 +1992,8 @@ DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DFArrayKokkos<T,Layout,ExecSpace
         order_ = temp.order_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
-    host = temp.host;
+        host = temp.host;
+        lock_ = temp.lock_;
     }
     
     return *this;
@@ -2032,14 +2040,14 @@ T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
-
+    if (lock_) return;
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
-
+    if (lock_) return;
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
 }
@@ -2056,6 +2064,16 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_.d_view(i) = val;
     });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::lock_update() {
+    lock_ = true;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::unlock_update() {
+    lock_ = false;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2550,6 +2568,7 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
+    bool   lock_ = false;
     TArray1D this_matrix_;
 
 public:
@@ -2632,6 +2651,12 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // Method that locks updates
+    void lock_update();
+
+    // Method that unlocks updates
+    void unlock_update();
 
 
     // set values on host to input
@@ -2873,7 +2898,8 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DFMatrixKokkos<T,Layout,ExecSpa
         order_ = temp.order_;
         length_ = temp.length_;
         this_matrix_ = temp.this_matrix_;
-    host = temp.host;
+        host = temp.host;
+        lock_ = temp.lock_;
     }
     
     return *this;
@@ -2921,14 +2947,14 @@ T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
-
+    if (lock_) return;
     this_matrix_.template modify<typename TArray1D::execution_space>();
     this_matrix_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
-
+    if (lock_) return;
     this_matrix_.template modify<typename TArray1D::host_mirror_space>();
     this_matrix_.template sync<typename TArray1D::execution_space>();
 }
@@ -2945,6 +2971,16 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_.d_view(i) = val;
     });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::lock_update() {
+    lock_ = true;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::unlock_update() {
+    lock_ = false;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4887,6 +4923,7 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
+    bool   lock_ = false;
     TArray1D this_array_;
 
 public:
@@ -4977,6 +5014,12 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // Method that locks updates
+    void lock_update();
+
+    // Method that unlocks updates
+    void unlock_update();
 
     // set values on host to input
     void set_values(T val);
@@ -5214,6 +5257,7 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& DCArrayKokkos<T,Layout,ExecSpace
         length_ = temp.length_;
         this_array_ = temp.this_array_;
         host = temp.host;
+        lock_ = temp.lock_;
     }
     
     return *this;
@@ -5273,14 +5317,14 @@ const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() con
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
-
+    if (lock_) return;
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
-
+    if (lock_) return;
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
 }
@@ -5290,6 +5334,16 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_array_.d_view(i) = val;
     });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::lock_update() {
+    lock_ = true;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::unlock_update() {
+    lock_ = false;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5786,6 +5840,7 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
+    bool   lock_ = false;
     TArray1D this_matrix_;
 
 public:
@@ -5868,6 +5923,12 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // Method that locks updates
+    void lock_update();
+
+    // Method that unlocks updates
+    void unlock_update();
 
     // set values on host to input
     void set_values(T val);
@@ -6109,6 +6170,7 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DCMatrixKokkos<T,Layout,ExecSpa
         length_ = temp.length_;
         this_matrix_ = temp.this_matrix_;
         host = temp.host;
+        lock_ = temp.lock_;
     }
     
     return *this;
@@ -6156,14 +6218,14 @@ T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
-
+    if (lock_) return;
     this_matrix_.template modify<typename TArray1D::execution_space>();
     this_matrix_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
-
+    if (lock_) return;
     this_matrix_.template modify<typename TArray1D::host_mirror_space>();
     this_matrix_.template sync<typename TArray1D::execution_space>();
 }
@@ -6180,6 +6242,16 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
         this_matrix_.d_view(i) = val;
     });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::lock_update() {
+    lock_ = true;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::unlock_update() {
+    lock_ = false;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
