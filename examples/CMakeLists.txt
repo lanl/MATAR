@@ -113,6 +113,9 @@ if (KOKKOS)
   add_executable(annkokkos_compare ann_kokkos_compare.cpp)
   target_link_libraries(annkokkos_compare ${LINKING_LIBRARIES})
 
+  #add_executable(ompperftest ompperftest.cpp)
+  #target_link_libraries(ompperftest ${LINKING_LIBRARIES})
+
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
     target_link_libraries(anndistributed ${LINKING_LIBRARIES})
