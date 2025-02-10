@@ -10,8 +10,8 @@ then
 fi
 
 cmake_options=(
-    -D CMAKE_BUILD_TYPE=Release
-    #-D CMAKE_BUILD_TYPE=Debug
+    #-D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_BUILD_TYPE=Debug
 )
 
 if [ "$kokkos_build_type" = "none" ]; then

@@ -2040,6 +2040,7 @@ T* DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
@@ -2047,6 +2048,7 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
@@ -2947,6 +2949,7 @@ T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_matrix_.template modify<typename TArray1D::execution_space>();
     this_matrix_.template sync<typename TArray1D::host_mirror_space>();
@@ -2954,6 +2957,7 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_matrix_.template modify<typename TArray1D::host_mirror_space>();
     this_matrix_.template sync<typename TArray1D::execution_space>();
@@ -5317,6 +5321,7 @@ const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() con
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_array_.template modify<typename TArray1D::execution_space>();
     this_array_.template sync<typename TArray1D::host_mirror_space>();
@@ -5324,6 +5329,7 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_array_.template modify<typename TArray1D::host_mirror_space>();
     this_array_.template sync<typename TArray1D::execution_space>();
@@ -6218,6 +6224,7 @@ T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_matrix_.template modify<typename TArray1D::execution_space>();
     this_matrix_.template sync<typename TArray1D::host_mirror_space>();
@@ -6225,6 +6232,7 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
     this_matrix_.template modify<typename TArray1D::host_mirror_space>();
     this_matrix_.template sync<typename TArray1D::execution_space>();
