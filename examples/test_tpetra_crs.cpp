@@ -65,11 +65,37 @@ void TpetraCRSMatrixExample()
     
     if(process_rank==0)
         printf("\n====================Running TpetraCRSMatrix example====================\n");
+    
+    //construct a row map over MPI ranks
+    long long int n = 100; //global dimension
+    TpetraPartitionMap<> input_pmap(n);
+    int nlocal = input_pmap.size();
 
-    int n = 20; //global dimension
+    //construct strides, index graph, and values arrays
+    DCArrayKokkos<size_t, Kokkos::LayoutRight> matrix_strides(nlocal, "matrix_strides");
+    //set strides; map is contiguous so Trilinos leaves device view of map empty (BE WARNED)
+    const long long int min_global_index = input_pmap.getMinGlobalIndex();
+    FOR_ALL(i, 0, nlocal,{
+        matrix_strides(i) = (min_global_index+i) + 1;
+    });
 
-    //distributed dual array with layout left
-    TpetraCRSMatrix<double> mymatrix();
+    //global indices array
+    RaggedRightArrayKokkos<size_t, Kokkos::LayoutRight> input_csr(matrix_strides);
+    FOR_ALL(i, 0, nlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_csr(i,j) = j;
+        }
+    });
+
+    //values array
+    RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides);
+    FOR_ALL(i, 0, nlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_values(i,j) = 3*(min_global_index+j);
+        }
+    });
+    TpetraCRSMatrix<double> mymatrix(input_pmap, matrix_strides, input_csr, input_values);
+    mymatrix.print();
 
     // //local size
     // int nlocal = myarray.size();
