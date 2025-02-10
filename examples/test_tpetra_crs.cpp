@@ -80,21 +80,22 @@ void TpetraCRSMatrixExample()
     });
 
     //global indices array
-    RaggedRightArrayKokkos<size_t, Kokkos::LayoutRight> input_csr(matrix_strides);
+    RaggedRightArrayKokkos<long long int, Kokkos::LayoutRight> input_crs(matrix_strides,"graph_indices");
     FOR_ALL(i, 0, nlocal,{
         for(int j = 0; j < matrix_strides(i); j++){
-            input_csr(i,j) = j;
+            input_crs(i,j) = j;
         }
     });
 
     //values array
-    RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides);
+    RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides,"ragged_values");
     FOR_ALL(i, 0, nlocal,{
         for(int j = 0; j < matrix_strides(i); j++){
             input_values(i,j) = 3*(min_global_index+j);
         }
     });
-    TpetraCRSMatrix<double> mymatrix(input_pmap, matrix_strides, input_csr, input_values);
+    TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides, input_crs, input_values);
+    //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix.print();
 
     // //local size
