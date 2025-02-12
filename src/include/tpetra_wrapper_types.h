@@ -2804,6 +2804,7 @@ class TpetraCRSMatrix {
     using  values_array = Kokkos::View<T*, Kokkos::LayoutRight, ExecSpace, MemoryTraits>;
     using  global_indices_array = Kokkos::View<tpetra_GO*, Layout, ExecSpace, MemoryTraits>;
     using  indices_array = Kokkos::View<tpetra_LO*, Layout, ExecSpace, MemoryTraits>;
+    using  indices_array_dview = Kokkos::DualView<tpetra_LO*, Layout, ExecSpace, MemoryTraits>;
 
     size_t dim1_;
     size_t global_dim1_;
@@ -2814,7 +2815,6 @@ class TpetraCRSMatrix {
     TArray1D this_array_;
     row_map_type mystrides_;
     row_map_type start_index_;
-    indices_array crs_local_indices_;
     
     // Trilinos type definitions
     typedef Tpetra::CrsMatrix<real_t, tpetra_LO, tpetra_GO> MAT; //stands for matrix
@@ -3022,26 +3022,22 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t dim1, i
     //std::cout << "DOF GRAPH SIZE ON RANK " << myrank << " IS " << nnz << std::endl;
     
     //local indices in the graph using the constructed column map
-    crs_local_indices_ = indices_array("crs_local_indices", nnz);
-    
-    //row offsets with compatible template arguments
-        row_map_type row_offsets_pass("row_offsets", dim1_ + 1);
-        for(int ipass = 0; ipass < dim1_ + 1; ipass++){
-            row_offsets_pass(ipass) = input_values.start_index_(ipass);
-        }
+    indices_array_dview  crs_local_indices_ = indices_array_dview("crs_local_indices", nnz);
 
     size_t entrycount = 0;
     for(int irow = 0; irow < dim1_; irow++){
-        for(int istride = 0; istride < mystrides_(irow); istride++){
-            crs_local_indices_(entrycount) = tpetra_column_pmap->getLocalElement(crs_graph(entrycount));
+        for(int istride = 0; istride < input_strides.get_kokkos_dual_view().h_view(irow); istride++){
+            crs_local_indices_.h_view(entrycount) = tpetra_column_pmap->getLocalElement(crs_graph(entrycount));
             entrycount++;
         }
     }
+    crs_local_indices_.template modify<typename indices_array::host_mirror_space>();
+    crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(row_offsets_pass, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
-    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, start_index_.d_view, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
+    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();
 }
 
@@ -3073,26 +3069,23 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(TpetraPartitio
     //std::cout << "DOF GRAPH SIZE ON RANK " << myrank << " IS " << nnz << std::endl;
     
     //local indices in the graph using the constructed column map
-    crs_local_indices_ = indices_array("crs_local_indices", nnz);
-    
-    //row offsets with compatible template arguments
-        row_map_type row_offsets_pass("row_offsets", dim1_ + 1);
-        for(int ipass = 0; ipass < dim1_ + 1; ipass++){
-            row_offsets_pass(ipass) = input_values.start_index_(ipass);
-        }
+    indices_array_dview  crs_local_indices_ = indices_array_dview("crs_local_indices", nnz);
 
     size_t entrycount = 0;
     for(int irow = 0; irow < dim1_; irow++){
-        for(int istride = 0; istride < mystrides_(irow); istride++){
-            crs_local_indices_(entrycount) = tpetra_column_pmap->getLocalElement(input_crs_graph(entrycount));
+        for(int istride = 0; istride < input_strides.get_kokkos_dual_view().h_view(irow); istride++){
+            crs_local_indices_.h_view(entrycount) = tpetra_column_pmap->getLocalElement(input_crs_graph(entrycount));
             entrycount++;
         }
     }
+
+    crs_local_indices_.template modify<typename indices_array::host_mirror_space>();
+    crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(row_offsets_pass, crs_local_indices_, this_array_.get_kokkos_view());
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
-    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_, this_array_.get_kokkos_view()));
+    tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();
 }
 
@@ -3179,7 +3172,6 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>& TpetraCRSMatrix<T,Layout,ExecS
         dim1_ = temp.dim1_;
         mystrides_ = temp.mystrides_;
         start_index_ = temp.start_index_;
-        crs_local_indices_ = temp.crs_local_indices_;
         global_dim1_ = temp.global_dim1_;
         length_ = temp.length_;
         this_array_ = temp.this_array_;
