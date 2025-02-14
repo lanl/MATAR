@@ -67,8 +67,12 @@ int main(int argc, char* argv[])
 }
 
 void TpetraFArrayOneDimensionExample()
-{
-    printf("\n====================Running 1D TpetraFarray example====================\n");
+{   
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    
+    if(process_rank==0)
+        printf("\n====================Running 1D TpetraFarray example====================\n");
 
     int n = 20; //global dimension
 
@@ -79,7 +83,8 @@ void TpetraFArrayOneDimensionExample()
     int nlocal = myarray.size();
 
     // set values on host copy of data
-    printf("Printing host copy of data (should be global ids):\n");
+    if(process_rank==0)
+        printf("Printing host copy of data (should be global ids):\n");
     for (int i = 0; i < nlocal; i++) {
         //set each array element to the corresponding global index
         //we get global indices using a partition map member in the array
@@ -98,7 +103,8 @@ void TpetraFArrayOneDimensionExample()
     });
     myarray.update_host();
     Kokkos::fence();
-    printf("---Data multiplied by 2 on device---\n");
+    if(process_rank==0)
+        printf("---Data multiplied by 2 on device---\n");
 
     // Print host copy of data
     myarray.print();
@@ -106,8 +112,11 @@ void TpetraFArrayOneDimensionExample()
 }
 
 void TpetraFArrayTwoDimensionExample()
-{
-    printf("\n====================Running 2D TpetraFarray example====================\n");
+{   
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    if(process_rank==0)
+        printf("\n====================Running 2D TpetraFarray example====================\n");
 
     int nx = 20; //global dimension
     int ny = 5;
@@ -119,7 +128,8 @@ void TpetraFArrayTwoDimensionExample()
     int nxlocal = myarray.dims(0);
 
     // set values on host copy of data
-    printf("Printing host copy of data (should be global ids):\n");
+    if(process_rank==0)
+        printf("Printing host copy of data (should be global ids):\n");
     for (int i = 0; i < nxlocal; i++) {
         for (int j = 0; j < ny; j++){
             //set each array element to a computed global degree of freedom index
@@ -141,7 +151,8 @@ void TpetraFArrayTwoDimensionExample()
     });
     myarray.update_host();
     Kokkos::fence();
-    printf("---Data multiplied by 2 on device---\n");
+    if(process_rank==0)
+        printf("---Data multiplied by 2 on device---\n");
 
     // Print host copy of data
     myarray.print();
@@ -150,7 +161,10 @@ void TpetraFArrayTwoDimensionExample()
 
 void TpetraFArraySevenDimensionExample()
 {
-    printf("\n====================Running 7D TpetraFarray example====================\n");
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    if(process_rank==0)
+        printf("\n====================Running 7D TpetraFarray example====================\n");
 
     int nx = 20; //global dimension
     int ny = 3;
@@ -167,7 +181,8 @@ void TpetraFArraySevenDimensionExample()
     int nxlocal = myarray.dims(0);
 
     // set values on host copy of data
-    printf("Printing host copy of data (should be global ids):\n");
+    if(process_rank==0)
+        printf("Printing host copy of data (should be global ids):\n");
     for (int i = 0; i < nxlocal; i++) {
         for (int j = 0; j < ny; j++){
             for (int k = 0; k < nz; k++){
@@ -210,7 +225,8 @@ void TpetraFArraySevenDimensionExample()
     });
     myarray.update_host();
     Kokkos::fence();
-    printf("---Data multiplied by 2 on device---\n");
+    if(process_rank==0)
+        printf("---Data multiplied by 2 on device---\n");
 
     // Print host copy of data
     myarray.print();

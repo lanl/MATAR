@@ -8279,8 +8279,8 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
     //allocate start indices
-    std::string append_indices_string("start_indices");
-    std::string append_array_string("array");
+    std::string append_indices_string("_start_indices");
+    std::string append_array_string("_array");
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
@@ -8710,8 +8710,8 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
 
     //allocate start indices
-    std::string append_indices_string("start_indices");
-    std::string append_array_string("array");
+    std::string append_indices_string("_start_indices");
+    std::string append_array_string("_array");
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
@@ -9027,8 +9027,8 @@ RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedDownArrayK
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(const std::string& tag_string) {
     //allocate start indices
-    std::string append_indices_string("start_indices");
-    std::string append_array_string("array");
+    std::string append_indices_string("_start_indices");
+    std::string append_array_string("_array");
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
