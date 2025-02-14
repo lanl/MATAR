@@ -756,6 +756,47 @@ int main(int argc, char* argv[])
         RaggedRightArrayKokkos<int> lower_tri(some_strides);
 
         // -----------------------
+        // DRaggedRightArray
+        // -----------------------
+        printf("\nRagged Right Array\n");
+        // testing ragged initialized with CArrayKokkos for strides
+        CArrayKokkos<size_t> some_strides_d(4);
+
+        // create a lower-triangular array
+        RUN({
+            some_strides_d(0) = 1;
+            some_strides_d(1) = 2;
+            some_strides_d(2) = 3;
+            some_strides_d(3) = 4;
+        });
+
+        DRaggedRightArrayKokkos<int> lower_tri_d(some_strides_d);
+        FOR1D(j, 0, 1, {
+            lower_tri_d(0, j) = 0 + j;
+        });
+        FOR1D(j, 0, 2, {
+            lower_tri_d(1, j) = 1 + j;
+        });
+        FOR1D(j, 0, 3, {
+            lower_tri_d(2, j) = 3 + j;
+        });
+        FOR1D(j, 0, 4, {
+            lower_tri_d(3, j) = 6 + j;
+        });
+        Kokkos::fence();
+        lower_tri_d.update_host();
+        Kokkos::fence();
+
+        printf("DanielRagged\n");
+        int cccount = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < i+1; j++) {
+                printf("%d ", lower_tri_d.get_kokkos_dual_view().h_view(cccount++));
+            }
+            printf("\n");
+        }
+
+        // -----------------------
         // CArray view
         // -----------------------
 
