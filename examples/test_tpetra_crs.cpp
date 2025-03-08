@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
     Kokkos::initialize();
     {
-        // Run TpetraFArray 1D example
+        // Run TpetraCRS example
         TpetraCRSMatrixExample();
     } // end of kokkos scope
     Kokkos::finalize();
@@ -64,7 +64,7 @@ void TpetraCRSMatrixExample()
     MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
     
     if(process_rank==0)
-        printf("\n====================Running TpetraCRSMatrix example====================\n");
+        printf("\n====================Running TpetraCRSMatrix example with map argument====================\n");
     
     //construct a row map over MPI ranks
     long long int n = 100; //global dimension
@@ -98,34 +98,10 @@ void TpetraCRSMatrixExample()
     //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix.print();
 
-    // //local size
-    // int nlocal = myarray.size();
-
-    // // set values on host copy of data
-    // if(process_rank==0)
-    //     printf("Printing host copy of data (should be global ids):\n");
-    // for (int i = 0; i < nlocal; i++) {
-    //     //set each array element to the corresponding global index
-    //     //we get global indices using a partition map member in the array
-    //     myarray.host(i) = myarray.pmap.getGlobalIndex(i);
-    // }
-
-    // myarray.update_device();
-
-    // // Print host copy of data
-    // myarray.print();
-    // Kokkos::fence();
-
-    // // Manupulate data on device and update host
-    // FOR_ALL(i, 0, nlocal,{
-    //     myarray(i) = 2*myarray(i);
-    // });
-    // myarray.update_host();
-    // Kokkos::fence();
-    // if(process_rank==0)
-    //     printf("---Data multiplied by 2 on device---\n");
-
-    // // Print host copy of data
-    // myarray.print();
-    // Kokkos::fence();
+    //test case that doesnt pass a map object
+    if(process_rank==0)
+        printf("\n====================Running TpetraCRSMatrix example with local dim argument====================\n");
+    TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix2(nlocal, matrix_strides, input_crs, input_values);
+    //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
+    mymatrix2.print();
 }

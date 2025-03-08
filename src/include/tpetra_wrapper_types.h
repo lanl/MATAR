@@ -2862,8 +2862,9 @@ public:
     // TpetraCRSMatrix(size_t global_dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     // Constructor that takes local data in a matar ragged type and build map from rows of that (unfinished)
-    TpetraCRSMatrix(size_t dim1, input_row_map_type input_strides, DCArrayKokkos<tpetra_GO,Layout,ExecSpace,MemoryTraits> crs_graph,
-                    TArray1D input_values, const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
+    TpetraCRSMatrix(size_t local_dim1, input_row_map_type input_strides,
+                    input_row_graph_type crs_graph, TArray1D input_values,
+                    const std::string& tag_string = DEFAULTSTRINGARRAY, MPI_Comm mpi_comm = MPI_COMM_WORLD);
 
     // Constructor that takes local data in a matar ragged type and a row partition map (avoids multiple copies partition map data)
     TpetraCRSMatrix(TpetraPartitionMap<ExecSpace,MemoryTraits> &input_pmap, input_row_map_type input_strides,
@@ -2997,26 +2998,27 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(): tpetra_pmap
 
 // Constructor that takes local data in a matar ragged type
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t dim1, input_row_map_type input_strides, DCArrayKokkos<tpetra_GO,Layout,ExecSpace,MemoryTraits> crs_graph,
-                                                                  TArray1D input_values, const std::string& tag_string, MPI_Comm mpi_comm) {
+TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t local_dim1, input_row_map_type input_strides,
+                                                                  input_row_graph_type crs_graph, TArray1D input_values,
+                                                                  const std::string& tag_string, MPI_Comm mpi_comm) {
     mpi_comm_ = mpi_comm;
-    global_dim1_ = dim1;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm_));
-    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>((long long int) dim1, 0, teuchos_comm));
+    tpetra_pmap = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), local_dim1, 0, teuchos_comm));
     pmap = TpetraPartitionMap<ExecSpace,MemoryTraits>(tpetra_pmap);
-    dim1_ = tpetra_pmap->getLocalNumElements();
-    mystrides_ = input_strides;
+    global_dim1_ = pmap.num_global_;
+    dim1_ = local_dim1;
+    mystrides_ = input_strides.get_kokkos_dual_view().d_view;
     this_array_ = input_values;
-    global_indices_array input_crs_graph = crs_graph.get_kokkos_dual_view().d_view;
+    global_indices_array input_crs_graph = crs_graph.get_kokkos_view();
 
     
     //build column map for the global conductivity matrix
     Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type> > colmap;
     const Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type> > dommap = tpetra_pmap;
 
-    Tpetra::Details::makeColMap<tpetra_LO, tpetra_GO, tpetra_node_type>(colmap, tpetra_pmap, input_crs_graph.get_kokkos_dual_view().d_view, nullptr);
+    Tpetra::Details::makeColMap<tpetra_LO, tpetra_GO, tpetra_node_type>(colmap, tpetra_pmap, input_crs_graph, nullptr);
     tpetra_column_pmap = colmap;
-    size_t nnz = input_crs_graph.size();
+    size_t nnz = crs_graph.size();
 
     //debug print
     //std::cout << "DOF GRAPH SIZE ON RANK " << myrank << " IS " << nnz << std::endl;
@@ -3027,7 +3029,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t dim1, i
     size_t entrycount = 0;
     for(int irow = 0; irow < dim1_; irow++){
         for(int istride = 0; istride < input_strides.get_kokkos_dual_view().h_view(irow); istride++){
-            crs_local_indices_.h_view(entrycount) = tpetra_column_pmap->getLocalElement(crs_graph(entrycount));
+            crs_local_indices_.h_view(entrycount) = tpetra_column_pmap->getLocalElement(input_crs_graph(entrycount));
             entrycount++;
         }
     }
