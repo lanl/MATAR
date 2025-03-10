@@ -41,6 +41,8 @@ using namespace mtr; // matar namespace
 
 void TpetraCRSMatrixExample();
 
+void TpetraCRSMatrixMultiplyExample();
+
 int main(int argc, char* argv[])
 {   
     MPI_Init(&argc, &argv);
@@ -50,6 +52,7 @@ int main(int argc, char* argv[])
     {
         // Run TpetraCRS example
         TpetraCRSMatrixExample();
+        TpetraCRSMatrixMultiplyExample();
     } // end of kokkos scope
     Kokkos::finalize();
     MPI_Barrier(MPI_COMM_WORLD);
@@ -104,4 +107,67 @@ void TpetraCRSMatrixExample()
     TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix2(nlocal, matrix_strides, input_crs, input_values);
     //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix2.print();
+}
+
+void TpetraCRSMatrixMultiplyExample()
+{   
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    if(process_rank==0)
+        printf("\n====================Running Matrix Multiply example====================\n");
+
+    int nx = 100; //global dimension
+    int ny = 5;
+
+    //distributed (first dimension gets distributed) dual array with layout left
+    TpetraDFArray<double> myarray(nx, ny);
+
+    //local size
+    int nxlocal = myarray.dims(0);
+
+    // set values on host copy of data
+    for (int i = 0; i < nxlocal; i++) {
+        for (int j = 0; j < ny; j++){
+            //set each array element to a computed global degree of freedom index
+            //we get global indices for dim0 using a partition map member in the array
+            myarray.host(i,j) = ny*myarray.pmap.getGlobalIndex(i) + j;
+        }
+    }
+    myarray.update_device();
+
+    //currently the operator allocates the result vector; so leave unallocated
+    TpetraDFArray<double> result;
+
+    //construct matrix
+    //construct strides, index graph, and values arrays
+    DCArrayKokkos<size_t, Kokkos::LayoutRight> matrix_strides(nxlocal, "matrix_strides");
+    //set strides; map is contiguous so Trilinos leaves device view of map empty (BE WARNED)
+    const long long int min_global_index = myarray.pmap.getMinGlobalIndex();
+    FOR_ALL(i, 0, nxlocal,{
+        matrix_strides(i) = (min_global_index+i) + 1;
+    });
+
+    //global indices array
+    RaggedRightArrayKokkos<long long int, Kokkos::LayoutRight> input_crs(matrix_strides,"graph_indices");
+    FOR_ALL(i, 0, nxlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_crs(i,j) = j;
+        }
+    });
+
+    //values array
+    RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides,"ragged_values");
+    FOR_ALL(i, 0, nxlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_values(i,j) = 3*(min_global_index+j);
+        }
+    });
+
+    TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(nxlocal, matrix_strides, input_crs, input_values);
+    
+    if(process_rank==0)
+        printf("multiplication result:\n");
+    //perform multiplication
+    result = mymatrix*myarray;
+    result.print();
 }
