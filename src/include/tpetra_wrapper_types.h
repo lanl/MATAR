@@ -1559,6 +1559,10 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraDCArray() {}
 // TpetraDFArray:  Tpetra wrapper for a distributed multivector (several components per vector element).
 /////////////////////////
 
+//forward declare matrix multiplication functors
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraCRSMatrixMultFunc;
+
 template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraDFArray {
 
@@ -1777,6 +1781,8 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     TpetraDFArray& operator=(const TpetraDFArray& temp);
+
+    TpetraDFArray& operator=(const TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits>& func);
 
     // GPU Method
     // Method that returns size
@@ -2542,6 +2548,15 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
         own_comms = temp.own_comms;
         submap_size_ = temp.submap_size_;
     }
+    
+    return *this;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits>& temp) {
+    
+    // Do not allocate data for the result vector if this FArray already did so
     
     return *this;
 }
@@ -3570,6 +3585,37 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~TpetraLRCommunicati
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of TpetraLRCommunicationPlan
+////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
+// TpetraCRSMatrixMultFunc:  CRS Matrix-Vector Multiply functor.
+/////////////////////////
+
+template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraCRSMatrixMultFunc {
+    
+
+public:
+
+    std::shared_ptr<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>> A_;
+    std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> X_;
+
+    TpetraCRSMatrixMultFunc();
+
+    // Constructor that takes in A matrix and X vector; Y vector is supplied to apply function
+    TpetraCRSMatrixMultFunc(std::shared_ptr<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>> A,
+                            std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> X);
+
+    // Method that update device view
+    void apply_function(std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> Y);
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCRSMatrixMultFunc ();
+}; // End of TpetraCRSMatrix
+
+////////////////////////////////////////////////////////////////////////////////
+// End of TpetraCRSMatrixMultFunc
 ////////////////////////////////////////////////////////////////////////////////
 
 } // end namespace
