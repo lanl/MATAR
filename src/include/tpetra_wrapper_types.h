@@ -180,6 +180,7 @@ public:
 template <typename ExecSpace, typename MemoryTraits>
 TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap() {
     length_ = 0;
+    tpetra_map = Teuchos::null;
 }
 
 //Constructor for contiguous index decomposition
@@ -618,6 +619,7 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDCArray(): tpetra_pmap(NUL
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
+    tpetra_vector = Teuchos::null;
 }
 
 // Overloaded 1D constructor where you provide dimensions, partitioning is done along first dimension
@@ -1782,7 +1784,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     TpetraDFArray& operator=(const TpetraDFArray& temp);
 
-    TpetraDFArray& operator=(const TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits>& func);
+    TpetraDFArray& operator=(const TpetraCRSMatrixMultFunc<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>& func);
 
     // GPU Method
     // Method that returns size
@@ -1847,6 +1849,7 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::TpetraDFArray(): tpetra_pmap(NUL
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
+    tpetra_vector = Teuchos::null;
 }
 
 // Overloaded 1D constructor where you provide dimensions, partitioning is done along first dimension
@@ -2554,9 +2557,44 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits>& temp) {
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraCRSMatrixMultFunc<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>& temp) {
     
-    // Do not allocate data for the result vector if this FArray already did so
+    // Allocate data for the result vector if it hasnt been preallocated
+    if(tpetra_vector==Teuchos::null){
+        //pmap object
+        TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = temp.A_->pmap;
+        switch (temp.X_->order()) {
+            case 1:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map);
+                break;
+            case 2:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1));
+                break;
+            case 3:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2));
+                break;
+            case 4:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3));
+                break;
+            case 5:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
+                                                                                    temp.X_->dims(4));
+                break;
+            case 6:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
+                                                                                    temp.X_->dims(4), temp.X_->dims(5));
+                break;
+            case 7:
+                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
+                                                                                    temp.X_->dims(4), temp.X_->dims(5), temp.X_->dims(6));
+                break;
+            default:
+                std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+                break;
+        }
+    }
+
+    temp.apply_function(this);
     
     return *this;
 }
@@ -2896,7 +2934,8 @@ public:
     KOKKOS_INLINE_FUNCTION
     TpetraCRSMatrix& operator=(const TpetraCRSMatrix& temp);
 
-    TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
+    //TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
+    TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
 
     // GPU Method
     // Method that returns size
@@ -2959,6 +2998,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(): tpetra_pmap
     for (int i = 0; i < 7; i++) {
         dim1_ = 0;
     }
+    tpetra_crs_matrix = Teuchos::null;
 }
 
 // // Constructor that takes local data in a matar ragged type
@@ -3277,44 +3317,52 @@ void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::print() const {
         tpetra_crs_matrix->describe(*fos,Teuchos::VERB_EXTREME);
 }
 
-//currently allocates memory for the destination vector (no need to allocate it yourself just assign to a default TpetraDFArray)
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp) {
+// //currently allocates memory for the destination vector (no need to allocate it yourself just assign to a default TpetraDFArray)
+// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+// KOKKOS_INLINE_FUNCTION
+// TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp) {
 
-    //allocate destination vector
-    switch (temp.order()) {
-        case 1:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap);
-            break;
-        case 2:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1));
-            break;
-        case 3:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2));
-            break;
-        case 4:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3));
-            break;
-        case 5:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
-                                                                                temp.dims(4));
-            break;
-        case 6:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
-                                                                                temp.dims(4), temp.dims(5));
-            break;
-        case 7:
-            destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
-                                                                                temp.dims(4), temp.dims(5), temp.dims(6));
-            break;
-        default:
-            std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
-            break;
-    }
+//     //allocate destination vector
+//     switch (temp.order()) {
+//         case 1:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap);
+//             break;
+//         case 2:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1));
+//             break;
+//         case 3:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2));
+//             break;
+//         case 4:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3));
+//             break;
+//         case 5:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
+//                                                                                 temp.dims(4));
+//             break;
+//         case 6:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
+//                                                                                 temp.dims(4), temp.dims(5));
+//             break;
+//         case 7:
+//             destination_vector = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(this->pmap, temp.dims(1), temp.dims(2), temp.dims(3),
+//                                                                                 temp.dims(4), temp.dims(5), temp.dims(6));
+//             break;
+//         default:
+//             std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+//             break;
+//     }
   
-  tpetra_crs_matrix->apply(*(temp.tpetra_vector),*(destination_vector.tpetra_vector));
-  return destination_vector;
+//   tpetra_crs_matrix->apply(*(temp.tpetra_vector),*(destination_vector.tpetra_vector));
+//   return destination_vector;
+// }
+
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp) {
+  
+  TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> matrix_func(this, &temp);
+  return matrix_func;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3597,22 +3645,26 @@ class TpetraCRSMatrixMultFunc {
 
 public:
 
-    std::shared_ptr<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>> A_;
-    std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> X_;
+    const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A_;
+    const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X_;
 
-    TpetraCRSMatrixMultFunc();
+    TpetraCRSMatrixMultFunc(){}
 
     // Constructor that takes in A matrix and X vector; Y vector is supplied to apply function
-    TpetraCRSMatrixMultFunc(std::shared_ptr<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>> A,
-                            std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> X);
+    TpetraCRSMatrixMultFunc(const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A,
+                            const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X) : A_(A), X_(X) {}
 
     // Method that update device view
-    void apply_function(std::shared_ptr<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>> Y);
+    void apply_function(TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* Y) const {
+        //matrix multiplication function in Trilinos
+        (*A_).tpetra_crs_matrix->apply(*((*X_).tpetra_vector),*((*Y).tpetra_vector));
+    }
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
-    ~TpetraCRSMatrixMultFunc ();
+    ~TpetraCRSMatrixMultFunc (){}
 }; // End of TpetraCRSMatrix
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of TpetraCRSMatrixMultFunc
