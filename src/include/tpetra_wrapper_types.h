@@ -3060,7 +3060,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t local_d
     crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    //Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
     tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();
@@ -3108,7 +3108,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(TpetraPartitio
     crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    //Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
     tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();

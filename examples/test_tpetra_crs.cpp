@@ -97,13 +97,30 @@ void TpetraCRSMatrixExample()
             input_values(i,j) = 3*j;
         }
     });
+
+    //NOTE! the constructor resorts the crs graph since Trilinos requires this; the values in each row are likely
+    //in different places (in the same row) afterwards but the correspondence to global column ID is always preserved
     TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides, input_crs, input_values);
     //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix.print();
 
-    //test case that doesnt pass a map object
+    //test case that doesnt pass a map object; reset inputs since the graph and values array were resorted for Trilinos compatibility
     if(process_rank==0)
         printf("\n====================Running TpetraCRSMatrix example with local dim argument====================\n");
+
+    //global indices array
+    FOR_ALL(i, 0, nlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_crs(i,j) = j;
+        }
+    });
+
+    //values array
+    FOR_ALL(i, 0, nlocal,{
+        for(int j = 0; j < matrix_strides(i); j++){
+            input_values(i,j) = 3*j;
+        }
+    });
     TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix2(nlocal, matrix_strides, input_crs, input_values);
     //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix2.print();
