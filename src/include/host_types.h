@@ -5388,6 +5388,23 @@ CSCArray<T>::~CSCArray() {}
 
 // End of CSCArray
 
+////////////////////////////////////////////////
+// OperatorFunctor:  Base class for math functors.
+////////////////////////////////////////////////
+
+class OperatorFunctor {
+    
+public:
+
+    OperatorFunctor(){}
+
+    // Method that update device view
+    virtual void apply_function(void* Y) const {}
+
+    // Deconstructor
+    ~OperatorFunctor (){}
+}; // End of TpetraCRSMatrix
+
 
 //=======================================================================
 //    end of standard MATAR data-types

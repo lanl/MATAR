@@ -94,7 +94,7 @@ void TpetraCRSMatrixExample()
     RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides,"ragged_values");
     FOR_ALL(i, 0, nlocal,{
         for(int j = 0; j < matrix_strides(i); j++){
-            input_values(i,j) = 3*(min_global_index+j);
+            input_values(i,j) = 3*j;
         }
     });
     TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides, input_crs, input_values);
@@ -159,7 +159,7 @@ void TpetraCRSMatrixMultiplyExample()
     RaggedRightArrayKokkos<double, Kokkos::LayoutRight> input_values(matrix_strides,"ragged_values");
     FOR_ALL(i, 0, nxlocal,{
         for(int j = 0; j < matrix_strides(i); j++){
-            input_values(i,j) = 3*(min_global_index+j);
+            input_values(i,j) = 3*j;
         }
     });
 

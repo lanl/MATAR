@@ -1784,7 +1784,7 @@ public:
     KOKKOS_INLINE_FUNCTION
     TpetraDFArray& operator=(const TpetraDFArray& temp);
 
-    TpetraDFArray& operator=(const TpetraCRSMatrixMultFunc<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>& func);
+    TpetraDFArray& operator=(const std::shared_ptr<OperatorFunctor> func);
 
     // GPU Method
     // Method that returns size
@@ -2557,44 +2557,9 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const TpetraCRSMatrixMultFunc<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>& temp) {
-    
-    // Allocate data for the result vector if it hasnt been preallocated
-    if(tpetra_vector==Teuchos::null){
-        //pmap object
-        TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = temp.A_->pmap;
-        switch (temp.X_->order()) {
-            case 1:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map);
-                break;
-            case 2:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1));
-                break;
-            case 3:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2));
-                break;
-            case 4:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3));
-                break;
-            case 5:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
-                                                                                    temp.X_->dims(4));
-                break;
-            case 6:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
-                                                                                    temp.X_->dims(4), temp.X_->dims(5));
-                break;
-            case 7:
-                *this = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, temp.X_->dims(1), temp.X_->dims(2), temp.X_->dims(3),
-                                                                                    temp.X_->dims(4), temp.X_->dims(5), temp.X_->dims(6));
-                break;
-            default:
-                std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
-                break;
-        }
-    }
+TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const std::shared_ptr<OperatorFunctor> temp) {
 
-    temp.apply_function(this);
+    temp->apply_function(this);
     
     return *this;
 }
@@ -2935,7 +2900,7 @@ public:
     TpetraCRSMatrix& operator=(const TpetraCRSMatrix& temp);
 
     //TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
-    TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
+    std::shared_ptr<OperatorFunctor> operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp);
 
     // GPU Method
     // Method that returns size
@@ -3095,7 +3060,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(size_t local_d
     crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+    //Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
     tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();
@@ -3143,7 +3108,7 @@ TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::TpetraCRSMatrix(TpetraPartitio
     crs_local_indices_.template sync<typename indices_array::execution_space>();
     
     //sort values and indices
-    Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
+    //Tpetra::Import_Util::sortCrsEntries<row_map_type, indices_array, values_array>(input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view());
 
     tpetra_crs_matrix = Teuchos::rcp(new MAT(tpetra_pmap, tpetra_column_pmap, input_values.start_index_, crs_local_indices_.d_view, this_array_.get_kokkos_view()));
     tpetra_crs_matrix->fillComplete();
@@ -3359,10 +3324,9 @@ void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::print() const {
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp) {
+std::shared_ptr<OperatorFunctor> TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::operator*(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>& temp) {
   
-  TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits> matrix_func(this, &temp);
-  return matrix_func;
+  return  std::make_shared<TpetraCRSMatrixMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &temp);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3640,7 +3604,7 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~TpetraLRCommunicati
 /////////////////////////
 
 template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
-class TpetraCRSMatrixMultFunc {
+class TpetraCRSMatrixMultFunc : public OperatorFunctor {
     
 
 public:
@@ -3648,14 +3612,52 @@ public:
     const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A_;
     const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X_;
 
-    TpetraCRSMatrixMultFunc(){}
+    TpetraCRSMatrixMultFunc() : OperatorFunctor() {}
 
     // Constructor that takes in A matrix and X vector; Y vector is supplied to apply function
     TpetraCRSMatrixMultFunc(const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A,
-                            const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X) : A_(A), X_(X) {}
+                            const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X) : OperatorFunctor(), A_(A), X_(X) {}
 
     // Method that update device view
-    void apply_function(TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* Y) const {
+    void apply_function(void* vY) const {
+
+        TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* Y = static_cast<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>*>(vY);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Y->tpetra_vector==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = A_->pmap;
+            switch (X_->order()) {
+                case 1:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map);
+                    break;
+                case 2:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1));
+                    break;
+                case 3:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2));
+                    break;
+                case 4:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3));
+                    break;
+                case 5:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4));
+                    break;
+                case 6:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5));
+                    break;
+                case 7:
+                    *Y = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5), X_->dims(6));
+                    break;
+                default:
+                    std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+                    break;
+            }
+        }
+
         //matrix multiplication function in Trilinos
         (*A_).tpetra_crs_matrix->apply(*((*X_).tpetra_vector),*((*Y).tpetra_vector));
     }
