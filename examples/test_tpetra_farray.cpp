@@ -42,6 +42,7 @@ using namespace mtr; // matar namespace
 void TpetraFArrayOneDimensionExample();
 void TpetraFArrayTwoDimensionExample();
 void TpetraFArraySevenDimensionExample();
+void TpetraFArrayAddExample();
 
 int main(int argc, char* argv[])
 {   
@@ -58,6 +59,9 @@ int main(int argc, char* argv[])
 
         // Run TpetraFArray 7D example
         TpetraFArraySevenDimensionExample();
+        
+        // Run TpetraFArray Addition example
+        TpetraFArrayAddExample();
     } // end of kokkos scope
     Kokkos::finalize();
     MPI_Barrier(MPI_COMM_WORLD);
@@ -230,5 +234,55 @@ void TpetraFArraySevenDimensionExample()
 
     // Print host copy of data
     myarray.print();
+    Kokkos::fence();
+}
+
+void TpetraFArrayAddExample()
+{   
+    int process_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    if(process_rank==0)
+        printf("\n====================Running 2D TpetraFarray example====================\n");
+
+    int nx = 20; //global dimension
+    int ny = 5;
+
+    //distributed (first dimension gets distributed) dual array with layout left
+    TpetraDFArray<double> myarray(nx, ny);
+
+    //local size
+    int nxlocal = myarray.dims(0);
+
+    // set values on host copy of data
+    if(process_rank==0)
+        printf("Printing host copy of data (should be global ids):\n");
+    for (int i = 0; i < nxlocal; i++) {
+        for (int j = 0; j < ny; j++){
+            //set each array element to a computed global degree of freedom index
+            //we get global indices for dim0 using a partition map member in the array
+            myarray.host(i,j) = ny*myarray.pmap.getGlobalIndex(i) + j;
+        }
+    }
+
+    myarray.update_device();
+
+    // Print host copy of data
+    //myarray.print();
+    Kokkos::fence();
+
+    TpetraDFArray<double> myarray2(nx, ny);
+    // Manupulate data on device and update host
+    FOR_ALL(i, 0, nxlocal,
+            j, 0, ny,{
+        myarray2(i,j) = 2*myarray(i,j);
+    });
+    myarray2.update_host();
+    Kokkos::fence();
+    if(process_rank==0)
+        printf("---Data after additition on device---\n");
+    TpetraDFArray<double> myresult = myarray + myarray2;
+    // Print host copy of data
+    myresult.update_host();
+    myresult.print();
     Kokkos::fence();
 }

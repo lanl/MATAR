@@ -152,9 +152,6 @@ void TpetraCRSMatrixMultiplyExample()
     }
     myarray.update_device();
 
-    //currently the operator allocates the result vector; so leave unallocated
-    TpetraDFArray<double> result;
-
     //construct matrix
     //construct strides, index graph, and values arrays
     DCArrayKokkos<size_t, Kokkos::LayoutRight> matrix_strides(nxlocal, "matrix_strides");
@@ -184,7 +181,9 @@ void TpetraCRSMatrixMultiplyExample()
     
     if(process_rank==0)
         printf("multiplication result:\n");
-    //perform multiplication
-    result = mymatrix*myarray;
+
+    //perform multiplication; currently the operator can allocate the result vector for you if it wasnt already
+    TpetraDFArray<double> result = mymatrix*myarray;
+    result.update_host();
     result.print();
 }
