@@ -6918,10 +6918,10 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
                                                                                         const std::string& tag_string) {
     //construct strides dual view using device input
     dim1_ = strides_array.size();
-    mystrides_host_ = Strides1D::t_host("host_strides", dim1_);
+    mystrides_host_ = typename Strides1D::t_host("host_strides", dim1_);
     //requires host synchronization before building dual view wrapper
     Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_ = Strides1D(mystrides_host_, strides_array.get_kokkos_view());
+    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
     mystrides_dev_ = mystrides_.view_device();
     data_setup(tag_string);
 } // End constructor
