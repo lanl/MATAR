@@ -791,7 +791,7 @@ int main(int argc, char* argv[])
         int cccount = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < i+1; j++) {
-                printf("%d ", lower_tri_d.get_kokkos_dual_view().h_view(cccount++));
+                printf("%d ", lower_tri_d.host(i, j));
             }
             printf("\n");
         }
