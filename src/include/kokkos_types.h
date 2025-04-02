@@ -10709,7 +10709,7 @@ public:
     
     // Overload copy assignment operator
     KOKKOS_INLINE_FUNCTION
-    DDynamicRaggedRightArrayKokkos& operator= (const DDynamicRaggedRightArrayKokkos &temp);
+    DDynamicRaggedRightArrayKokkos& operator= (const DDynamicRaggedRightArrayKokkos& temp);
     
     // set values on host to input
     void set_values(T val);
@@ -10811,16 +10811,16 @@ T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host(size_t 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
-       DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
+       DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& temp)
 {
     
     if( this != &temp) {
         dim1_ = temp.dim1_;
         dim2_ = temp.dim2_;
         length_ = temp.length_;
-        mystrides_ = temp.stride_;
-        mystrides_dev_ = temp.stride_dev_;
-        mystrides_host_ = temp.stride_host_;
+        mystrides_ = temp.mystrides_;
+        mystrides_dev_ = temp.mystrides_dev_;
+        mystrides_host_ = temp.mystrides_host_;
         array_ = temp.array_;
         array_dev_ = temp.array_dev_;
         array_host_ = temp.array_host_;

@@ -739,6 +739,36 @@ int main(int argc, char* argv[])
         Kokkos::fence();
 
         // -----------------------
+        // DDynamicRaggedRightArray
+        // -----------------------
+
+        printf("\nDual Dynamic Ragged Right Array\n");
+        DDynamicRaggedRightArrayKokkos<int> ddrrak;
+        ddrrak = DDynamicRaggedRightArrayKokkos<int>(size_i, size_j);
+
+        Kokkos::parallel_for("DDRRAKTest", size_i, KOKKOS_LAMBDA(const int i) {
+            for (int j = 0; j < (i % size_j) + 1; j++) {
+                ddrrak.stride(i)++;
+                ddrrak(i, j) = j;
+                // printf("(%i) stride is %d\n", i, j);
+            }
+        });
+        Kokkos::fence();
+
+        printf("\ntesting macro FOR_ALL\n");
+
+        // testing MATAR FOR_ALL loop
+        DDynamicRaggedRightArrayKokkos<int> my_ddyn_ragged(size_i, size_j);
+        FOR_ALL(i, 0, size_i, {
+            for (int j = 0; j <= (i % size_j); j++) {
+                my_ddyn_ragged.stride(i)++;
+                my_ddyn_ragged(i, j) = j;
+                printf(" ddyn_ragged_right error = %i \n", my_ddyn_ragged(i, j) - ddrrak(i, j));
+            } // end for
+        }); // end parallel for
+        Kokkos::fence();
+
+        // -----------------------
         // RaggedRightArray
         // -----------------------
         printf("\nRagged Right Array\n");
