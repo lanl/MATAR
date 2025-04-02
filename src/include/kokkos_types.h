@@ -10675,6 +10675,9 @@ public:
     
     // overload constructor
     DDynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    //setup start indices
+    void data_setup();
     
     // A method to return or set the stride size
     KOKKOS_INLINE_FUNCTION
@@ -10746,17 +10749,25 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedR
     mystrides_ = SArray1D(strides_tag_string, dim1_);
     mystrides_dev_ = mystrides_.view_device();
     mystrides_host_ = mystrides_.view_host();
-    Kokkos::parallel_for("StridesInit", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
-      mystrides_dev_(i) = 0;
-    });
 
-    mystrides_.template modify<typename Strides1D::execution_space>();
-    mystrides_.template sync<typename Strides1D::host_mirror_space>();
-
+    data_setup();
     //allocate view
     array_ = TArray1D(array_tag_string, length_);
     array_host_ = array_.view_host();
     array_dev_ = array_.view_device();
+}
+
+//setup start indices
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::data_setup() {
+
+    Kokkos::parallel_for("StridesInit", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
+        mystrides_dev_(i) = 0;
+      });
+  
+      mystrides_.template modify<typename Strides1D::execution_space>();
+      mystrides_.template sync<typename Strides1D::host_mirror_space>();
+  
 }
 
 // A method to set the stride size for row i
