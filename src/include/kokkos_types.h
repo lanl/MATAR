@@ -10647,7 +10647,6 @@ template <typename T, typename Layout = DefaultLayout, typename ExecSpace = Defa
 class DDynamicRaggedRightArrayKokkos {
 
     using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
-    using SArray1D = Kokkos::DualView<size_t *,Layout, ExecSpace, MemoryTraits>;
     using Strides1D = Kokkos::DualView<size_t *,Layout, ExecSpace, MemoryTraits>;
     // this is always unmanaged
     using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
@@ -10702,6 +10701,12 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // Method that update host view
+    void update_strides_host();
+
+    // Method that update device view
+    void update_strides_device();
     
     // Overload operator() to access data as array(i,j),
     // where i=[0:N-1], j=[stride(i)]
@@ -10746,7 +10751,7 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedR
     temp_copy_string = tag_string;
     std::string array_tag_string = temp_copy_string.append(append_array_string);
 
-    mystrides_ = SArray1D(strides_tag_string, dim1_);
+    mystrides_ = Strides1D(strides_tag_string, dim1_);
     mystrides_dev_ = mystrides_.view_device();
     mystrides_host_ = mystrides_.view_host();
 
@@ -10877,6 +10882,20 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_dev
 
     array_.template modify<typename TArray1D::host_mirror_space>();
     array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_strides_host() {
+
+    mystrides_.template modify<typename Strides1D::execution_space>();
+    mystrides_.template sync<typename Strides1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_strides_device() {
+
+    mystrides_.template modify<typename Strides1D::host_mirror_space>();
+    mystrides_.template sync<typename Strides1D::execution_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
