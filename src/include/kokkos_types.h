@@ -10642,6 +10642,257 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~CSCArrayKokkos() {}
 
+// Dual Dynamic Ragged Right Array
+template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
+class DDynamicRaggedRightArrayKokkos {
+
+    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    using SArray1D = Kokkos::DualView<size_t *,Layout, ExecSpace, MemoryTraits>;
+    using Strides1D = Kokkos::DualView<size_t *,Layout, ExecSpace, MemoryTraits>;
+    // this is always unmanaged
+    using TArray1DHost = Kokkos::View<T*, Layout, HostSpace, MemoryUnmanaged>;
+    typename ExecSpace::memory_space memspace;
+    
+    
+private:
+    TArray1D array_;
+    typename TArray1D::t_dev array_dev_;
+    typename TArray1D::t_host array_host_;
+    Strides1D mystrides_;
+    typename Strides1D::t_dev mystrides_dev_;
+    typename Strides1D::t_host mystrides_host_;
+    
+    
+    size_t dim1_;
+    size_t dim2_;
+    size_t length_;
+    
+public:
+    // Default constructor
+    DDynamicRaggedRightArrayKokkos ();
+    
+    //--- 2D array access of a ragged right array ---
+    
+    // overload constructor
+    DDynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    
+    // A method to return or set the stride size
+    KOKKOS_INLINE_FUNCTION
+    size_t& stride(size_t i) const;
+
+    size_t& stride_host(size_t i) const;
+    
+    // A method to return the size
+    KOKKOS_INLINE_FUNCTION
+    size_t size() const;
+
+    //return the view
+    KOKKOS_INLINE_FUNCTION
+    TArray1D get_kokkos_dual_view();
+
+    // Get the name of the view
+    KOKKOS_INLINE_FUNCTION
+    const std::string get_name() const;
+
+    // Method that update host view
+    void update_host();
+
+    // Method that update device view
+    void update_device();
+    
+    // Overload operator() to access data as array(i,j),
+    // where i=[0:N-1], j=[stride(i)]
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j) const;
+    
+    T& host(size_t i, size_t j) const;
+    
+    // Overload copy assignment operator
+    KOKKOS_INLINE_FUNCTION
+    DDynamicRaggedRightArrayKokkos& operator= (const DDynamicRaggedRightArrayKokkos &temp);
+    
+    // set values on host to input
+    void set_values(T val);
+
+    // set values to only previously non-empty indices based upon stride value
+    void set_values_sparse(T val);
+
+    // Destructor
+    KOKKOS_INLINE_FUNCTION
+    ~DDynamicRaggedRightArrayKokkos ();
+};
+
+//nothing
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedRightArrayKokkos () {
+    dim1_ = dim2_ = length_ = 0;
+}
+
+// Overloaded constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedRightArrayKokkos (size_t dim1, size_t dim2, const std::string& tag_string) {
+    // The dimensions of the array;
+    dim1_  = dim1;
+    dim2_  = dim2;
+    length_ = dim1*dim2;
+    
+    std::string append_stride_string("strides");
+    std::string append_array_string("array");
+    std::string temp_copy_string = tag_string;
+    std::string strides_tag_string = temp_copy_string.append(append_stride_string);
+    temp_copy_string = tag_string;
+    std::string array_tag_string = temp_copy_string.append(append_array_string);
+
+    mystrides_ = SArray1D(strides_tag_string, dim1_);
+    mystrides_dev_ = mystrides_.view_device();
+    mystrides_host_ = mystrides_.view_host();
+    Kokkos::parallel_for("StridesInit", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
+      mystrides_dev_(i) = 0;
+    });
+
+    mystrides_.template modify<typename Strides1D::execution_space>();
+    mystrides_.template sync<typename Strides1D::host_mirror_space>();
+
+    //allocate view
+    array_ = TArray1D(array_tag_string, length_);
+    array_host_ = array_.view_host();
+    array_dev_ = array_.view_device();
+}
+
+// A method to set the stride size for row i
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(size_t i) const {
+    return mystrides_dev_(i);
+}
+
+// A method to set the stride size for row i
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride_host(size_t i) const {
+    return mystrides_host_(i);
+}
+
+//return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
+    return length_;
+}
+
+// Overload operator() to access data as array(i,j),
+// where i=[0:N-1], j=[0:stride(i)]
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DDynamicRaggedRightKokkos");  // die if >= dim1
+    assert(j < mystrides_dev_(i) && "j is out of stride bounds in DDynamicRaggedRightKokkos");  // die if >= dim2
+    // Cannot assert on Kokkos View
+    //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
+    
+    return array_dev_(j + i*dim2_);
+}
+
+// Overload operator() to access data as array(i,j),
+// where i=[0:N-1], j=[0:stride(i)]
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
+    // Asserts
+    assert(i < dim1_ && "i is out of dim1 bounds in DDynamicRaggedRightKokkos");  // die if >= dim1
+    assert(j < mystrides_host_(i) && "j is out of stride bounds in DDynamicRaggedRightKokkos");  // die if >= dim2
+    // Cannot assert on Kokkos View
+    //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
+    
+    return array_host_(j + i*dim2_);
+}
+
+//overload = operator
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
+       DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator= (const DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp)
+{
+    
+    if( this != &temp) {
+        dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        length_ = temp.length_;
+        mystrides_ = temp.stride_;
+        mystrides_dev_ = temp.stride_dev_;
+        mystrides_host_ = temp.stride_host_;
+        array_ = temp.array_;
+        array_dev_ = temp.array_dev_;
+        array_host_ = temp.array_host_;
+        /*
+        #ifdef HAVE_CLASS_LAMBDA
+        Kokkos::parallel_for("StrideZeroOut", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
+            stride_(i) = 0;
+        });
+        #else
+        stride_zero_functor execution_functor;
+        Kokkos::parallel_for("StrideZeroOut", dim1_, execution_functor);
+        #endif
+        */
+    }
+    
+    return *this;
+}
+
+//return the stored Kokkos view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits> DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() {
+    return array_;
+}
+
+//set values to input
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
+    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_dev_(i) = val;
+    });
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+
+    array_.template modify<typename TArray1D::execution_space>();
+    array_.template sync<typename TArray1D::host_mirror_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+
+    array_.template modify<typename TArray1D::host_mirror_space>();
+    array_.template sync<typename TArray1D::execution_space>();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_sparse(T val) {
+    // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+    //     const int i_i = teamMember.league_rank();
+    //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const int (j_j) ) {
+    //         array_(dim2_*i_i+j_j) = val;    
+    //     });
+    // });
+    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
+        array_dev_(i) = val;
+    });
+}
+// Get the name of the view
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+const std::string DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
+    return array_.label();
+}
+
+// Destructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DDynamicRaggedRightArrayKokkos() {
+}
+
 //////////////////////////
 // Inherited Class Array
 //////////////////////////
