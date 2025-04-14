@@ -1360,7 +1360,13 @@ std::shared_ptr<OperatorFunctor> TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 std::shared_ptr<OperatorFunctor> TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator*(const real_t& scalar) {
   
-  return  std::make_shared<TpetraCArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &scalar);
+  return  std::make_shared<TpetraCArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, scalar);
+}
+
+//non-member multiply by a scalar (this enables the other operator order scalar * TpetraDCArray rather than TpetraDCArray * scalar)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar, TpetraDCArray<T,Layout,ExecSpace,MemoryTraits> X) {
+  return  X*scalar;
 }
 
 // Return size
@@ -2642,7 +2648,13 @@ std::shared_ptr<OperatorFunctor> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>:
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 std::shared_ptr<OperatorFunctor> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator*(const real_t& scalar) {
   
-  return  std::make_shared<TpetraFArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &scalar);
+  return  std::make_shared<TpetraFArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, scalar);
+}
+
+//non-member multiply by a scalar (this enables the other operator order scalar * TpetraDFArray rather than TpetraDFArray * scalar)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar, TpetraDFArray<T,Layout,ExecSpace,MemoryTraits> X) {
+  return  X*scalar;
 }
 
 // Return size
