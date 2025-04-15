@@ -4038,6 +4038,47 @@ public:
     ~TpetraCRSMatrixVecMultFunc (){}
 }; // End of TpetraCRSMatrixVecMultFunc
 
+/////////////////////////
+// TpetraCRSMatrixScalarMultFunc:  CRS Matrix-scalar Multiply functor.
+/////////////////////////
+
+template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraCRSMatrixScalarMultFunc : public OperatorFunctor {
+    
+
+public:
+
+    const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A_;
+    const real_t scalar_;
+
+    TpetraCRSMatrixScalarMultFunc() : OperatorFunctor() {}
+
+    // Constructor that takes in A matrix and X vector; Y vector is supplied to apply function
+    TpetraCRSMatrixScalarMultFunc(const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A,
+                            const real_t& scalar) : OperatorFunctor(), A_(A), scalar_(scalar) {}
+
+    // Method that update device view
+    void apply_function(void* vY) const {
+
+        TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* Y = static_cast<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>*>(vY);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Y->tpetra_crs_matrix==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = A_->pmap;
+            
+        }
+
+        //matrix multiplication function in Trilinos
+        (*A_).tpetra_crs_matrix->scale(scalar_);
+        *Y = *A_;
+    }
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCRSMatrixScalarMultFunc (){}
+}; // End of TpetraCRSMatrixVecMultFunc
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // End of TpetraCRSMatrixVecMultFunc
