@@ -334,6 +334,13 @@ TpetraPartitionMap<ExecSpace,MemoryTraits>::~TpetraPartitionMap() {}
 // TpetraDCArray:  Tpetra wrapper for a distributed multivector (several components per vector element).
 /////////////////////////
 
+//forward declare vector op functors
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraCArrayAddFunc;
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraCArrayScalarMultFunc;
+
 template <typename T, typename Layout = Kokkos::LayoutRight, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraDCArray {
 
@@ -385,6 +392,10 @@ public:
     //Copy Constructor
     KOKKOS_INLINE_FUNCTION
     TpetraDCArray(const TpetraDCArray<T, Layout, ExecSpace,MemoryTraits> &temp){
+        *this = temp;
+    }
+
+    TpetraDCArray(const std::shared_ptr<OperatorFunctor> temp){
         *this = temp;
     }
 
@@ -555,6 +566,14 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     TpetraDCArray& operator=(const TpetraDCArray& temp);
+
+    TpetraDCArray& operator=(const std::shared_ptr<OperatorFunctor> func);
+
+    std::shared_ptr<OperatorFunctor> operator+(const TpetraDCArray& temp);
+
+    std::shared_ptr<OperatorFunctor> operator-(const TpetraDCArray& temp);
+    
+    std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar);
 
     // GPU Method
     // Method that returns size
@@ -1315,6 +1334,41 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDCArray<T,Layout,ExecSpace
     return *this;
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator= (const std::shared_ptr<OperatorFunctor> temp) {
+
+    temp->apply_function(this);
+    
+    return *this;
+}
+
+//add a vector
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator+(const TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>& temp) {
+  
+  return  std::make_shared<TpetraCArrayAddFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &temp, 1);
+}
+
+//subtract a vector
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator-(const TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>& temp) {
+  
+  return  std::make_shared<TpetraCArrayAddFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &temp, -1);
+}
+
+//multiply by a scalar
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::operator*(const real_t& scalar) {
+  
+  return  std::make_shared<TpetraCArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, scalar);
+}
+
+//non-member multiply by a scalar (this enables the other operator order scalar * TpetraDCArray rather than TpetraDCArray * scalar)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar, TpetraDCArray<T,Layout,ExecSpace,MemoryTraits> X) {
+  return  X*scalar;
+}
+
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -1565,6 +1619,9 @@ TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::~TpetraDCArray() {}
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 class TpetraFArrayAddFunc;
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+class TpetraFArrayScalarMultFunc;
+
 template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
 class TpetraDFArray {
 
@@ -1793,6 +1850,8 @@ public:
     std::shared_ptr<OperatorFunctor> operator+(const TpetraDFArray& temp);
 
     std::shared_ptr<OperatorFunctor> operator-(const TpetraDFArray& temp);
+
+    std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar);
 
     // GPU Method
     // Method that returns size
@@ -2571,16 +2630,31 @@ TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& TpetraDFArray<T,Layout,ExecSpace
     return *this;
 }
 
+//add a vector
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 std::shared_ptr<OperatorFunctor> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator+(const TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& temp) {
   
   return  std::make_shared<TpetraFArrayAddFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &temp, 1);
 }
 
+//subtract a vector
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 std::shared_ptr<OperatorFunctor> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator-(const TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>& temp) {
   
   return  std::make_shared<TpetraFArrayAddFunc<T,Layout,ExecSpace,MemoryTraits>>(this, &temp, -1);
+}
+
+//multiply by a scalar
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::operator*(const real_t& scalar) {
+  
+  return  std::make_shared<TpetraFArrayScalarMultFunc<T,Layout,ExecSpace,MemoryTraits>>(this, scalar);
+}
+
+//non-member multiply by a scalar (this enables the other operator order scalar * TpetraDFArray rather than TpetraDFArray * scalar)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+std::shared_ptr<OperatorFunctor> operator*(const real_t& scalar, TpetraDFArray<T,Layout,ExecSpace,MemoryTraits> X) {
+  return  X*scalar;
 }
 
 // Return size
@@ -3624,6 +3698,142 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~TpetraLRCommunicati
 ////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////
+// TpetraCArrayAddFunc:  Multi-vector added to another Multi-vector.
+/////////////////////////
+
+template <typename T, typename Layout = Kokkos::LayoutRight, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraCArrayAddFunc : public OperatorFunctor {
+    
+public:
+
+    const TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>* X_;
+    const TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>* Y_;
+    int sign_;
+
+    TpetraCArrayAddFunc() : OperatorFunctor() {}
+
+    // Constructor that takes in X and Y vector; sign allows us to use the same func for subtraction
+    TpetraCArrayAddFunc(const TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>* X,
+                        const TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>* Y, int sign) : OperatorFunctor(), X_(X), Y_(Y), sign_(sign) {}
+
+    // Method that update device view
+    void apply_function(void* vZ) const {
+
+        TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>* Z = static_cast<TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>*>(vZ);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Z->tpetra_vector==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = X_->pmap;
+            switch (X_->order()) {
+                case 1:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map);
+                    break;
+                case 2:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1));
+                    break;
+                case 3:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2));
+                    break;
+                case 4:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3));
+                    break;
+                case 5:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4));
+                    break;
+                case 6:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5));
+                    break;
+                case 7:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5), X_->dims(6));
+                    break;
+                default:
+                    std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+                    break;
+            }
+        }
+
+        //vector axpy function in Trilinos
+        (*Z).tpetra_vector->update(1, *((*X_).tpetra_vector), sign_, *((*Y_).tpetra_vector), 0);
+    }
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCArrayAddFunc (){}
+}; // End of TpetraCArrayAddFunc
+
+/////////////////////////
+// TpetraCArrayScalarMultFunc:  Multi-vector multiplied by a scalar.
+/////////////////////////
+
+template <typename T, typename Layout = Kokkos::LayoutRight, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraCArrayScalarMultFunc : public OperatorFunctor {
+    
+public:
+
+    const TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>* X_;
+    const real_t scalar_;
+    int sign_;
+
+    TpetraCArrayScalarMultFunc() : OperatorFunctor() {}
+
+    // Constructor that takes in X and Y vector; sign allows us to use the same func for subtraction
+    TpetraCArrayScalarMultFunc(const TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>* X, const real_t scalar) : OperatorFunctor(), X_(X), scalar_(scalar) {}
+
+    // Method that update device view
+    void apply_function(void* vZ) const {
+
+        TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>* Z = static_cast<TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>*>(vZ);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Z->tpetra_vector==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = X_->pmap;
+            switch (X_->order()) {
+                case 1:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map);
+                    break;
+                case 2:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1));
+                    break;
+                case 3:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2));
+                    break;
+                case 4:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3));
+                    break;
+                case 5:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4));
+                    break;
+                case 6:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5));
+                    break;
+                case 7:
+                    *Z = TpetraDCArray<T,Kokkos::LayoutRight,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5), X_->dims(6));
+                    break;
+                default:
+                    std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+                    break;
+            }
+        }
+
+        //matrix multiplication function in Trilinos
+        (*X_).tpetra_vector->scale(scalar_);
+        *Z = *X_;
+    }
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCArrayScalarMultFunc (){}
+}; // End of TpetraCArrayScalarMultFunc
+
+/////////////////////////
 // TpetraFArrayAddFunc:  Multi-vector added to another Multi-vector.
 /////////////////////////
 
@@ -3682,14 +3892,82 @@ public:
             }
         }
 
-        //matrix multiplication function in Trilinos
+        //vector axpy function in Trilinos
         (*Z).tpetra_vector->update(1, *((*X_).tpetra_vector), sign_, *((*Y_).tpetra_vector), 0);
     }
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraFArrayAddFunc (){}
-}; // End of TpetraCRSMatrix
+}; // End of TpetraFArrayAddFunc
+
+/////////////////////////
+// TpetraFArrayScalarMultFunc:  Multi-vector multiplied by a scalar.
+/////////////////////////
+
+template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraFArrayScalarMultFunc : public OperatorFunctor {
+    
+public:
+
+    const TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>* X_;
+    const real_t scalar_;
+    int sign_;
+
+    TpetraFArrayScalarMultFunc() : OperatorFunctor() {}
+
+    // Constructor that takes in X and Y vector; sign allows us to use the same func for subtraction
+    TpetraFArrayScalarMultFunc(const TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* X, const real_t scalar) : OperatorFunctor(), X_(X), scalar_(scalar) {}
+
+    // Method that update device view
+    void apply_function(void* vZ) const {
+
+        TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>* Z = static_cast<TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>*>(vZ);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Z->tpetra_vector==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = X_->pmap;
+            switch (X_->order()) {
+                case 1:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map);
+                    break;
+                case 2:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1));
+                    break;
+                case 3:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2));
+                    break;
+                case 4:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3));
+                    break;
+                case 5:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4));
+                    break;
+                case 6:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5));
+                    break;
+                case 7:
+                    *Z = TpetraDFArray<T,Kokkos::LayoutLeft,ExecSpace,MemoryTraits>(row_map, X_->dims(1), X_->dims(2), X_->dims(3),
+                                                                                        X_->dims(4), X_->dims(5), X_->dims(6));
+                    break;
+                default:
+                    std::cout << "incorrect vector argument for matrix multiply; order not between 1-7";
+                    break;
+            }
+        }
+
+        //matrix multiplication function in Trilinos
+        (*X_).tpetra_vector->scale(scalar_);
+        *Z = *X_;
+    }
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraFArrayScalarMultFunc (){}
+}; // End of TpetraFArrayScalarMultFunc
 
 
 /////////////////////////
