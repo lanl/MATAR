@@ -3,3 +3,5 @@ benchmark/benchmark*
 build-matar-*
 install/*
 heffte/
+docs_doxygen/
+docs_sphinx/
