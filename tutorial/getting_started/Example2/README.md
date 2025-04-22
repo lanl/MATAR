@@ -42,7 +42,7 @@ The example compares:
 
 ### Language Integration
 - When working with C/C++ code: Prefer CArray
-- When working with Fortran code: Prefer FArray
+- When working with Fortran/Matlab code: Prefer FArray
 - When using mixed language environments: Choose based on dominant access pattern
 
 ## Example Features
