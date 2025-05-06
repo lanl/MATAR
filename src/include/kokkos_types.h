@@ -10480,7 +10480,7 @@ CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecS
     if(this != temp) {
         nnz_ = temp.nnz_;
         dim2_ = temp.dim2_;
-        dim1_ = temp.dim1_;;
+        dim1_ = temp.dim1_;
         
         start_index_ = temp.start_index_;
         row_index_ = temp.row_index_;
