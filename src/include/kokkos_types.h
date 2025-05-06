@@ -10483,7 +10483,7 @@ CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecS
         dim1_ = temp.dim1_;;
         
         start_index_ = temp.start_index_;
-        row_index_ = temp.row_row_index_;
+        row_index_ = temp.row_index_;
         array_ = temp.array_;
     }
     return *this;
