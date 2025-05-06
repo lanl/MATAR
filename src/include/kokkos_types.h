@@ -6946,7 +6946,7 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     length_ = 0;
 }
 
-// Overloaded constructor
+// Overloaded constructor for CArrayKokkos   
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
     CArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
@@ -6991,7 +6991,33 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     data_setup(tag_string);
 } // End constructor
 
+// Overloaded constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    CArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
+    size_t dim2,
+    size_t dim3,
+    const std::string& tag_string) {
 
+
+    //construct strides dual view using device input
+    dims_[0] = strides_array.size();
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+
+    // Resize the strides array to the new length
+    for (size_t i = 0; i < strides_array.size(); i++) {
+        strides_array.host(i) = strides_array.host(i)*dims_[1]*dims_[2];
+    }
+    strides_array.update_device();
+    
+    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    //requires host synchronization before building dual view wrapper
+    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
+    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    mystrides_dev_ = mystrides_.view_device();
+    data_setup(tag_string);
+} // End constructor
 
 
 
@@ -8917,7 +8943,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::s
         });
     #else
     finalize_stride_functor execution_functor(start_index_);
-    Kokkos::parallel_scan("StartValues", dim1_,execution_functor);
+    Kokkos::parallel_scan("StartValues", dim1_, execution_functor);
     #endif
     Kokkos::fence();
 }
