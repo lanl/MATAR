@@ -53,93 +53,119 @@ int main(int argc, char* argv[])
     {
        
         // -----------------------
-        // DDynamicRaggedRightArray
+        // DDynamicRaggedRightArray Scalar
         // -----------------------
 
         printf("\nDual Dynamic Ragged Right Array test 1D \n");
-        DRaggedRightArrayKokkos<int> ddrrak1D;
+        DRaggedRightArrayKokkos<int> drrak1D;
 
         // testing ragged initialized with CArrayKokkos for strides
-        CArrayKokkos<size_t> some_strides(4);
+        int num_strides = 3;
+        CArrayKokkos<size_t> some_strides(num_strides);
 
-        // create a lower-triangular array
-        RUN({
-            some_strides(0) = 1;
-            some_strides(1) = 3;
-            some_strides(2) = 5;
-            some_strides(3) = 7;
+        FOR_ALL(i, 0, num_strides, {
+            some_strides(i) = i+1;
+            std::cout << "some_strides(i): " << some_strides(i) << std::endl;
         });
 
-
-        ddrrak1D = DRaggedRightArrayKokkos<int>(some_strides, "test_1D");
-
-
-
-
-
-
-
-        // printf("\nDual Dynamic Ragged Right Array test 2D \n");
-        // DRaggedRightArrayKokkos<int> ddrrak2D;
-
-        // // testing ragged initialized with CArrayKokkos for strides
-        // CArrayKokkos<size_t> some_strides(4);
-
-        // // create a lower-triangular array
-        // RUN({
-        //     some_strides(0) = 1;
-        //     some_strides(1) = 3;
-        //     some_strides(2) = 5;
-        //     some_strides(3) = 7;
-        // });
-
-
-        // ddrrak2D = DDynamicRaggedRightArrayKokkos<int>(some_strides, 9, "test_2D");
-
-
-
-
-
-
-
-        // printf("\nDual Dynamic Ragged Right Array test 3D \n");
-        // DDynamicRaggedRightArrayKokkos<int> ddrrak3D;
-
-        // // testing ragged initialized with CArrayKokkos for strides
-        // CArrayKokkos<size_t> some_strides(4);
-
-        // // create a lower-triangular array
-        // RUN({
-        //     some_strides(0) = 1;
-        //     some_strides(1) = 3;
-        //     some_strides(2) = 5;
-        //     some_strides(3) = 7;
-        // });
-
-
-        // ddrrak3D = DDynamicRaggedRightArrayKokkos<int>(some_strides, 3, 3, "test_3D");
-
-        // Kokkos::parallel_for("DDRRAKTest", size_i, KOKKOS_LAMBDA(const int i) {
-        //     for (int j = 0; j < (i % size_j) + 1; j++) {
-        //         ddrrak.stride(i)++;
-        //         ddrrak(i, j) = j;
-        //         // printf("(%i) stride is %d\n", i, j);
-        //     }
-        // });
-        // Kokkos::fence();
-
-        // printf("\ntesting macro FOR_ALL\n");
-
-        // // testing MATAR FOR_ALL loop
-        // DDynamicRaggedRightArrayKokkos<int> my_ddyn_ragged(size_i, size_j);
-        // FOR_ALL(i, 0, size_i, {
-        //     for (int j = 0; j <= (i % size_j); j++) {
-        //         my_ddyn_ragged.stride(i)++;
-        //         my_ddyn_ragged(i, j) = j;
-        //         printf(" ddyn_ragged_right error = %i \n", my_ddyn_ragged(i, j) - ddrrak(i, j));
-        //     } // end for
-        // }); // end parallel for
         Kokkos::fence();
+
+        drrak1D = DRaggedRightArrayKokkos<int>(some_strides, "test_1D");
+        drrak1D.update_host();
+
+        std::cout << "Array length: " << drrak1D.size() << std::endl;
+        FOR_ALL(i, 0, num_strides,{
+            for(int j = 0; j < drrak1D.stride(i); j++) {
+                drrak1D(i, j) = j;
+            }
+        });
+
+        drrak1D.update_host();
+
+        for(int i = 0; i < num_strides; i++) {
+            for(int j = 0; j < drrak1D.stride_host(i); j++) {
+                if(drrak1D.host(i, j) != j) {
+                    printf("Error: drrak1D(i, j) = %d, expected %d\n", drrak1D.host(i, j), j);
+                }
+            }
+        }
+        std::cout << "test_1D passed" << std::endl;
+        Kokkos::fence();
+
+
+        // -----------------------
+        // DDynamicRaggedRightArray Vector
+        // -----------------------
+
+        printf("\nDual Dynamic Ragged Right Array test 2D \n");
+        DRaggedRightArrayKokkos<int> drrak2D;
+        size_t dim2D = 3;
+
+
+        drrak2D = DRaggedRightArrayKokkos<int>(some_strides, dim2D, "test_2D");
+
+
+        FOR_ALL(i, 0, num_strides,{
+            for(int j = 0; j < drrak2D.stride(i); j++) {
+                for(int k = 0; k < dim2D; k++) {
+
+                    drrak2D(i, j, k) = j+k;
+                }
+            }
+        });
+
+        drrak2D.update_host();
+
+        for(int i = 0; i < num_strides; i++) {
+            for(int j = 0; j < drrak2D.stride_host(i); j++) {
+                for(int k = 0; k < dim2D; k++) {
+                    if(drrak2D.host(i, j, k) != j+k) {
+                        printf("Error: drrak2D(i, j, k) = %d, expected %d\n", drrak2D.host(i, j, k), j+k);
+                    }
+                }
+            }
+        }
+        std::cout << "test_2D passed" << std::endl;
+        Kokkos::fence();
+
+
+        // -----------------------
+        // DDynamicRaggedRightArray Tensor
+        // -----------------------
+
+        printf("\nDual Dynamic Ragged Right Array test 3D \n");
+        DRaggedRightArrayKokkos<int> drrak3D;
+
+
+        drrak3D = DRaggedRightArrayKokkos<int>(some_strides, dim2D, dim2D, "test_3D");
+
+
+        FOR_ALL(i, 0, num_strides,{
+            for(int j = 0; j < drrak3D.stride(i); j++) {
+                for(int k = 0; k < dim2D; k++) {
+                    for(int l = 0; l < dim2D; l++) {
+                        drrak3D(i, j, k, l) = j+k+l;
+                    }
+                }
+            }
+        });
+
+        drrak3D.update_host();
+
+        for(int i = 0; i < num_strides; i++) {
+            for(int j = 0; j < drrak3D.stride_host(i); j++) {
+                for(int k = 0; k < dim2D; k++) {
+                    for(int l = 0; l < dim2D; l++) {
+                        if(drrak3D.host(i, j, k, l) != j+k+l) {
+                            printf("Error: drrak3D(i, j, k, l) = %d, expected %d\n", drrak3D.host(i, j, k, l), j+k+l);
+                        }
+                    }
+                }
+            }
+        }
+        std::cout << "test_3D passed" << std::endl;
+        Kokkos::fence();
+
 
        
 
