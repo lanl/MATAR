@@ -6745,8 +6745,6 @@ private:
     TArray1D this_array_; // 1D Array storing the data
     typename TArray1D::t_dev this_array_dev_;
     typename TArray1D::t_host this_array_host_;
-    
-
 
     size_t dims_[3]; // Note: dims_[0] is always the stride length accounting for size of other dimensions
     // size_t dim1_;
@@ -6779,11 +6777,7 @@ public:
     DRaggedRightArrayKokkos(DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array, const std::string& tag_string = DEFAULTSTRINGARRAY);
     DRaggedRightArrayKokkos(DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
     DRaggedRightArrayKokkos(DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
-    // Overload constructor for a ViewCArray scalar, vector, and tensor
-    DRaggedRightArrayKokkos(ViewCArray<size_t> &strides_array, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    DRaggedRightArrayKokkos(ViewCArray<size_t> &strides_array, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    DRaggedRightArrayKokkos(ViewCArray<size_t> &strides_array, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
     
     // Overloaded constructor for a traditional array for scalar, vector, and tensor 
     DRaggedRightArrayKokkos(size_t* strides_array, size_t some_dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -7029,33 +7023,144 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
 
 
 
-// Overloaded constructor for DCArrayKokkos
+
+
+// Overloaded constructor for DCArrayKokkos for scalar     
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
-                                                                                        const std::string& tag_string) {
-    mystrides_ = strides_array.get_kokkos_dual_view();
-    mystrides_host_ = mystrides_.view_host();
-    mystrides_dev_ = mystrides_.view_device();
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
+    const std::string& tag_string) {
+    //construct strides dual view using device input
     dims_[0] = strides_array.size();
+    dims_[1] = 0;
+    dims_[2] = 0;
+    
+    block_length_ = 1;
+
+    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    //requires host synchronization before building dual view wrapper
+    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
+    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    mystrides_dev_ = mystrides_.view_device();
     data_setup(tag_string);
 } // End constructor
 
-// Overloaded constructor
+// Overloaded constructor for DCArrayKokkos for vector
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(ViewCArray<size_t> &strides_array,
-                                                                                         const std::string& tag_string) {
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
+    size_t dim2,
+    const std::string& tag_string) {
+
+    //construct strides dual view using device input
+    dims_[0] = strides_array.size();
+    dims_[1] = dim2;
+    dims_[2] = 0;
+
+    block_length_ = dim2;
+
+    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    //requires host synchronization before building dual view wrapper
+    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
+    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    mystrides_dev_ = mystrides_.view_device();
+    data_setup(tag_string);
 } // End constructor
 
-// Overloaded constructor
+// Overloaded constructor for DCArrayKokkos for rank 2 tensor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(size_t* strides_array,  size_t some_dim1,
-                                                                                        const std::string& tag_string) {
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    DCArrayKokkos<size_t,ILayout,ExecSpace,MemoryTraits> &strides_array,
+    size_t dim2,
+    size_t dim3,
+    const std::string& tag_string) {
+
+    //construct strides dual view using device input
+    dims_[0] = strides_array.size();
+    dims_[1] = dim2;
+    dims_[2] = dim3;
+
+    block_length_ = dim2*dim3;  
+    
+    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    //requires host synchronization before building dual view wrapper
+    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
+    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    mystrides_dev_ = mystrides_.view_device();
+    data_setup(tag_string);
+} // End constructor
+
+
+
+
+
+
+
+
+// Overloaded constructor for a raw array of scalar strides
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    size_t* strides_array,  
+    size_t some_dim1, // size of strides_array
+    const std::string& tag_string) {
+
     mystrides_.h_view.assign_data(strides_array);
     mystrides_.template modify<typename Strides1D::host_mirror_space>();
     mystrides_.template sync<typename Strides1D::execution_space>();
+
     dims_[0] = some_dim1;
+    dims_[1] = 0;
+    dims_[2] = 0;
+
+    block_length_ = 1;
+    
     data_setup(tag_string);
 } // End constructor
+
+// Overloaded constructor for a raw array of vector strides
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    size_t* strides_array,  
+    size_t some_dim1, // size of strides_array
+    size_t some_dim2,
+    const std::string& tag_string) {
+
+    mystrides_.h_view.assign_data(strides_array);
+    mystrides_.template modify<typename Strides1D::host_mirror_space>();
+    mystrides_.template sync<typename Strides1D::execution_space>();
+
+    dims_[0] = some_dim1;
+    dims_[1] = some_dim2;
+    dims_[2] = 0;
+
+    block_length_ = some_dim2;
+    
+    data_setup(tag_string);
+} // End constructor
+
+// Overloaded constructor for a raw array of tensor strides
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
+    size_t* strides_array,  
+    size_t some_dim1, // size of strides_array
+    size_t some_dim2,
+    size_t some_dim3,
+    const std::string& tag_string) {
+
+    mystrides_.h_view.assign_data(strides_array);
+    mystrides_.template modify<typename Strides1D::host_mirror_space>();
+    mystrides_.template sync<typename Strides1D::execution_space>();
+
+    dims_[0] = some_dim1;
+    dims_[1] = some_dim2;
+    dims_[2] = some_dim3;
+
+    block_length_ = some_dim2*some_dim3;
+    
+    data_setup(tag_string);
+} // End constructor
+
+
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7110,8 +7215,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     Kokkos::parallel_reduce("LengthSetup", dims_[0], length_functor, length_);
     #endif
     
-    
-    
+
     mystrides_.template modify<typename Strides1D::execution_space>();
     mystrides_.template sync<typename Strides1D::host_mirror_space>();
     start_index_.template modify<typename Strides1D::execution_space>();

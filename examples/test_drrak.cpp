@@ -65,7 +65,6 @@ int main(int argc, char* argv[])
 
         FOR_ALL(i, 0, num_strides, {
             some_strides(i) = i+1;
-            std::cout << "some_strides(i): " << some_strides(i) << std::endl;
         });
 
         Kokkos::fence();
@@ -165,9 +164,6 @@ int main(int argc, char* argv[])
         }
         std::cout << "test_3D passed" << std::endl;
         Kokkos::fence();
-
-
-       
 
     } // end of kokkos scope
 
