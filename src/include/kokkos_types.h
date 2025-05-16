@@ -39,8 +39,6 @@
 
 #include "host_types.h"
 
-#define HAVE_KOKKOS 
-
 #ifdef HAVE_KOKKOS
 #include <Kokkos_Core.hpp>
 #include <Kokkos_DualView.hpp>
@@ -6747,9 +6745,7 @@ private:
     typename TArray1D::t_host this_array_host_;
 
     size_t dims_[3]; // Note: dims_[0] is always the stride length accounting for size of other dimensions
-    // size_t dim1_;
     size_t length_; // Total length of 1D array storing the data
-    
     size_t block_length_; // Length of the contiguous block of data in the 1D array
 
     
@@ -7021,10 +7017,6 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     data_setup(tag_string);
 } // End constructor
 
-
-
-
-
 // Overloaded constructor for DCArrayKokkos for scalar     
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
@@ -7090,13 +7082,6 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     data_setup(tag_string);
 } // End constructor
 
-
-
-
-
-
-
-
 // Overloaded constructor for a raw array of scalar strides
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightArrayKokkos(
@@ -7159,8 +7144,6 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     
     data_setup(tag_string);
 } // End constructor
-
-
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7234,7 +7217,6 @@ size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(
     assert(i < (dims_[0]) && "i is greater than dims_[0] in DRaggedRightArray");
     return mystrides_dev_(i);
 }
-
 
 // A method to return the size of each dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7344,11 +7326,6 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     return this_array_dev_(index_1D);
 } // End operator()
 
-
-
-
-
-
 // Overload host operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7399,8 +7376,6 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     
     return this_array_host_(index_1D);
 } // End operator()
-
-
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
