@@ -279,10 +279,18 @@ void TpetraFArrayAddExample()
     myarray2.update_host();
     Kokkos::fence();
     if(process_rank==0)
-        printf("---Data after additition on device---\n");
+        printf("---Data after additition---\n");
     TpetraDFArray<double> myresult = myarray + myarray2;
     // Print host copy of data
     myresult.update_host();
     myresult.print();
+
+    //scalar multiplication example
+    myarray = 2.0*myarray;
+    if(process_rank==0)
+        printf("---Scalar multiplication example---\n");
+    myarray.update_host();
+    myarray.print();
+
     Kokkos::fence();
 }
