@@ -92,6 +92,10 @@ if (KOKKOS)
   add_executable(mtestkokkos main_kokkos.cpp)
   target_link_libraries(mtestkokkos ${LINKING_LIBRARIES})
 
+
+  add_executable(drrak_test test_drrak.cpp)
+  target_link_libraries(drrak_test ${LINKING_LIBRARIES})
+
   add_executable(test_kokkos_for kokkos_for.cpp)
   target_link_libraries(test_kokkos_for ${LINKING_LIBRARIES})
 
