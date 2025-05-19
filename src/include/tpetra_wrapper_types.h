@@ -3463,18 +3463,27 @@ protected:
 
 public:
     
-    enum combine_mode { INSERT, SUM, ABSMAX, REPLACE, MIN, ADD_REPLACE };
+enum combine_mode { SUM, INSERT, REPLACE, ABSMAX, ZERO, ADD_ASSIGN };
     combine_mode combine_mode_;
 
     TpetraCommunicationPlan();
 
     //Copy Constructor
-    TpetraCommunicationPlan(const TpetraCommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &temp){
+    TpetraCommunicationPlan(const TpetraCommunicationPlan<T, Layout, ExecSpace, MemoryTraits> &temp){
         *this = temp;
     }
     
+    /*This constructor sets up the importer/exporter; this can be expensive and should be avoided if another TpetraCommunicationPlan exists with the same maps
+    but different vectors (only the vector dims are different not the row distribution) */
     TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
                             TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
+    
+    /*This constructor copies the importer/exporter of another TpetraCommunicationPlan to avoid the associated setup costs; the vectors of this TpetraCommunicationPlan
+    MUST use the same maps as the vectors in the other TpetraCommunicationPlan and the same reverse comms flag */
+    TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                            TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector,
+                            const TpetraCommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &other,
+                            combine_mode mode=INSERT);
 
     KOKKOS_INLINE_FUNCTION
     TpetraCommunicationPlan& operator=(const TpetraCommunicationPlan& temp);
@@ -3493,7 +3502,8 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPla
     
 }
 
-// Overloaded 1D constructor
+/*This constructor sets up the importer/exporter; this can be expensive and should be avoided if another TpetraCommunicationPlan exists with the same maps
+but different vectors (only the vector dims are different not the row distribution) */
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
                             TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms, combine_mode mode) {
@@ -3503,13 +3513,36 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPla
     source_vector_ = source_vector;
 
     //setup Tpetra comm object
-    if(reverse_comms){
+    if(reverse_comms_flag){
         // create export object; completes setup
         exporter = Teuchos::rcp(new Tpetra::Export<tpetra_LO, tpetra_GO>(source_vector_.tpetra_pmap, destination_vector_.tpetra_pmap));
     }
     else{
         // create import object; completes setup
         importer = Teuchos::rcp(new Tpetra::Import<tpetra_LO, tpetra_GO>(source_vector_.tpetra_pmap, destination_vector_.tpetra_pmap));
+    }
+}
+
+/*This constructor copies the importer/exporter of another TpetraCommunicationPlan to avoid the associated setup costs; the vectors of this TpetraCommunicationPlan
+MUST use the same maps as the vectors in the other TpetraCommunicationPlan and the same reverse comms flag */
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraCommunicationPlan(TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                                                                                  TpetraDFArray<T, Layout, ExecSpace, MemoryTraits> source_vector,
+                                                                                  const TpetraCommunicationPlan<T, Layout, ExecSpace, MemoryTraits> &other,
+                                                                                  combine_mode mode) {
+    combine_mode_ = mode;
+    reverse_comms_flag = other.reverse_comms_flag;
+    destination_vector_ = destination_vector;
+    source_vector_ = source_vector;
+
+    //setup Tpetra comm object
+    if(reverse_comms_flag){
+        // create export object; completes setup
+        exporter = other.exporter;
+    }
+    else{
+        // create import object; completes setup
+        importer = other.importer;
     }
 }
 
@@ -3539,7 +3572,7 @@ TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraCommunicationPla
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
-        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);\
+        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, (Tpetra::CombineMode) combine_mode_, true);\
         if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
             destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
         }
@@ -3548,7 +3581,7 @@ void TpetraCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
         }
     }
     else{
-        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
+        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, (Tpetra::CombineMode) combine_mode_);
         if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
             destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
         }
@@ -3594,7 +3627,7 @@ protected:
 
 public:
     
-    enum combine_mode { INSERT, SUM, ABSMAX, REPLACE, MIN, ADD_REPLACE };
+    enum combine_mode { SUM, INSERT, REPLACE, ABSMAX, ZERO, ADD_ASSIGN };
     combine_mode combine_mode_;
 
     TpetraLRCommunicationPlan();
@@ -3603,9 +3636,18 @@ public:
     TpetraLRCommunicationPlan(const TpetraLRCommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &temp){
         *this = temp;
     }
-    
+
+    /*This constructor sets up the importer/exporter; this can be expensive and should be avoided if another TpetraCommunicationPlan exists with the same maps
+    but different vectors (only the vector dims are different not the row distribution) */
     TpetraLRCommunicationPlan(TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
-                            TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
+                              TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> source_vector, bool reverse_comms=false, combine_mode mode=INSERT);
+
+    /*This constructor copies the importer/exporter of another TpetraCommunicationPlan to avoid the associated setup costs; the vectors of this TpetraCommunicationPlan
+    MUST use the same maps as the vectors in the other TpetraCommunicationPlan and the same reverse_comms flag */
+    TpetraLRCommunicationPlan(TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                              TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> source_vector,
+                              const TpetraLRCommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &other,
+                              combine_mode mode=INSERT);
 
     KOKKOS_INLINE_FUNCTION
     TpetraLRCommunicationPlan& operator=(const TpetraLRCommunicationPlan& temp);
@@ -3644,6 +3686,29 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraLRCommunicatio
     }
 }
 
+/*This constructor copies the importer/exporter of another TpetraCommunicationPlan to avoid the associated setup costs; the vectors of this TpetraCommunicationPlan
+MUST use the same maps as the vectors in the other TpetraCommunicationPlan and the same reverse_comms flag */
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::TpetraLRCommunicationPlan(TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> destination_vector,
+                                                                                    TpetraDCArray<T, Layout, ExecSpace, MemoryTraits> source_vector,
+                                                                                    const TpetraLRCommunicationPlan<T, Layout, ExecSpace, MemoryTraits> &other,
+                                                                                    combine_mode mode) {
+    combine_mode_ = mode;
+    reverse_comms_flag = other.reverse_comms_flag;
+    destination_vector_ = destination_vector;
+    source_vector_ = source_vector;
+
+    //setup Tpetra comm object
+    if(reverse_comms_flag){
+        // create export object; completes setup
+        exporter = other.exporter;
+    }
+    else{
+        // create import object; completes setup
+        importer = other.importer;
+    }
+}
+
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
@@ -3670,7 +3735,7 @@ TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& TpetraLRCommunicatio
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms(){
     if(reverse_comms_flag){
-        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, Tpetra::INSERT, true);
+        destination_vector_.tpetra_vector->doExport(*(source_vector_.tpetra_vector), *exporter, (Tpetra::CombineMode) combine_mode_, true);
         if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
             destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
         }
@@ -3679,7 +3744,7 @@ void TpetraLRCommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::execute_comms()
         }
     }
     else{
-        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, Tpetra::INSERT);
+        destination_vector_.tpetra_vector->doImport(*(source_vector_.tpetra_vector), *importer, (Tpetra::CombineMode) combine_mode_);
         if(destination_vector_.this_array_.template need_sync<typename decltype(destination_vector_)::TArray1D::execution_space>()){
             destination_vector_.this_array_.template sync<typename decltype(destination_vector_)::TArray1D::execution_space>();
         }
@@ -4036,6 +4101,47 @@ public:
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
     ~TpetraCRSMatrixVecMultFunc (){}
+}; // End of TpetraCRSMatrixVecMultFunc
+
+/////////////////////////
+// TpetraCRSMatrixScalarMultFunc:  CRS Matrix-scalar Multiply functor.
+/////////////////////////
+
+template <typename T, typename Layout = tpetra_array_layout, typename ExecSpace = tpetra_execution_space, typename MemoryTraits = tpetra_memory_traits>
+class TpetraCRSMatrixScalarMultFunc : public OperatorFunctor {
+    
+
+public:
+
+    const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A_;
+    const real_t scalar_;
+
+    TpetraCRSMatrixScalarMultFunc() : OperatorFunctor() {}
+
+    // Constructor that takes in A matrix and X vector; Y vector is supplied to apply function
+    TpetraCRSMatrixScalarMultFunc(const TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* A,
+                            const real_t& scalar) : OperatorFunctor(), A_(A), scalar_(scalar) {}
+
+    // Method that update device view
+    void apply_function(void* vY) const {
+
+        TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>* Y = static_cast<TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>*>(vY);
+        // Allocate data for the result vector if it hasnt been preallocated
+
+        if(Y->tpetra_crs_matrix==Teuchos::null){
+            //pmap object
+            TpetraPartitionMap<ExecSpace,MemoryTraits> row_map = A_->pmap;
+            
+        }
+
+        //matrix multiplication function in Trilinos
+        (*A_).tpetra_crs_matrix->scale(scalar_);
+        *Y = *A_;
+    }
+
+    // Deconstructor
+    virtual KOKKOS_INLINE_FUNCTION
+    ~TpetraCRSMatrixScalarMultFunc (){}
 }; // End of TpetraCRSMatrixVecMultFunc
 
 
