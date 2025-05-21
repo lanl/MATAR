@@ -10767,7 +10767,7 @@ size_t* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_starts() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp){
-    if(this != temp) {
+    if(this != &temp) {
         nnz_ = temp.nnz_;
         dim2_ = temp.dim2_;
         dim1_ = temp.dim1_;
