@@ -6,4 +6,4 @@ heffte/
 docs_doxygen/
 docs_sphinx/
 tutorial/getting_started/Example0/build_*
-tutorial/getting_started/Example0/install_*
+tutorial/getting_started/Example0/install*
