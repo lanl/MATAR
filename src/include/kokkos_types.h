@@ -7279,7 +7279,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     size_t start = start_index_dev_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
     
     return this_array_dev_(j + start);
@@ -7334,7 +7334,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     size_t start = start_index_host_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
     
     return this_array_host_(j + start);
