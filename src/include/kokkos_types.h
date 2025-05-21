@@ -7279,7 +7279,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     size_t start = start_index_dev_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
     
     return this_array_dev_(j + start);
@@ -7334,7 +7334,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     size_t start = start_index_host_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
     assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
     
     return this_array_host_(j + start);
@@ -10723,17 +10723,22 @@ CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos(
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j) const {
-    size_t col_start = start_index_[j];
-    size_t col_end = start_index_[j + 1];
+    // Check if the indices are within bounds
+    assert(i < dim1_ && "i is out of bounds in CSCArray.operator(i,j)");
+    assert(j < dim2_ && "j is out of bounds in CSCArray.operator(i,j)");
+
+    size_t col_start = start_index_.data()[j];
+    size_t col_end = start_index_.data()[j + 1];
     size_t k;
-    for(k =0; k < col_end - col_start;k++){
-        if(row_index_[col_start + k] == i){
-                return array_.data()[col_start + k];
+
+    for(k = 0; k < col_end - col_start; k++){
+        if(row_index_.data()[col_start + k] == i){
+            return array_.data()[col_start + k];
         }
     }
-    //return array_.data()[nnz_];
+    // printf("NULL");
     miss_[0] = (T) NULL;
-    return miss_[0];
+    return miss_[0];    
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -10751,7 +10756,7 @@ T& CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j) 
     size_t k;
     for(k =0; k < col_end - col_start;k++){
         if(row_index_.data()[col_start + k] == i){
-                return array_.data()[col_start + k];
+            return array_.data()[col_start + k];
         }
     }
     miss_[0] = (T) NULL;
@@ -10767,10 +10772,11 @@ size_t* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_starts() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits> &temp){
-    if(this != temp) {
+    if(this != &temp) {
         nnz_ = temp.nnz_;
-        dim2_ = temp.dim2_;
         dim1_ = temp.dim1_;
+        dim2_ = temp.dim2_;
+        miss_ = temp.miss_;
         
         start_index_ = temp.start_index_;
         row_index_ = temp.row_index_;
