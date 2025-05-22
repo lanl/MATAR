@@ -4173,7 +4173,7 @@ T* ViewCArrayKokkos<T>::pointer() const {
 template <typename T>
 void ViewCArrayKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_array_(i) = val;
+        this_array_[i] = val;
     });
 }
 
