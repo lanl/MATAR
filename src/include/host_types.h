@@ -317,7 +317,7 @@ template <typename T>
 T& FArray<T>::operator()(size_t i) const
 {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in FArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 1D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 1D!");
     return array_[i];
 }
 
@@ -327,8 +327,8 @@ T& FArray<T>::operator()(size_t i,
                          size_t j) const
 {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in FArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 2D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 2D!");
+    assert(j < dims_[1] && "j is out of bounds in FArray 2D!");
     return array_[i + j*dims_[0]];
 }
 
@@ -339,9 +339,9 @@ T& FArray<T>::operator()(size_t i,
                          size_t k) const
 {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in FArray 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in Farray 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 3D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 3D!");
+    assert(j < dims_[1] && "j is out of bounds in Farray 3D!");
+    assert(k < dims_[2] && "k is out of bounds in FArray 3D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]];
 }
@@ -354,10 +354,10 @@ T& FArray<T>::operator()(size_t i,
                          size_t l) const
 {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in FArray 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 4D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 4D!");
+    assert(j < dims_[1] && "j is out of bounds in FArray 4D!");
+    assert(k < dims_[2] && "k is out of bounds in FArray 4D!");
+    assert(l < dims_[3] && "l is out of bounds in FArray 4D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]];
@@ -372,11 +372,11 @@ T& FArray<T>::operator()(size_t i,
                          size_t m) const
 {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in FArray 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 5D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 5D!");
+    assert(j < dims_[1] && "j is out of bounds in FArray 5D!");
+    assert(k < dims_[2] && "k is out of bounds in FArray 5D!");
+    assert(l < dims_[3] && "l is out of bounds in FArray 5D!");
+    assert(m < dims_[4] && "m is out of bounds in FArray 5D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -393,12 +393,12 @@ T& FArray<T>::operator()(size_t i,
                          size_t n) const
 {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in FArray 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in FArray 6D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 6D!");
+    assert(j < dims_[1] && "j is out of bounds in FArray 6D!");
+    assert(k < dims_[2] && "k is out of bounds in FArray 6D!");
+    assert(l < dims_[3] && "l is out of bounds in FArray 6D!");
+    assert(m < dims_[4] && "m is out of bounds in FArray 6D!");
+    assert(n < dims_[5] && "n is out of bounds in FArray 6D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -417,13 +417,13 @@ T& FArray<T>::operator()(size_t i,
                          size_t o) const
 {
     assert(order_ == 7 && "Tensor order (rank) does not match constructor in FArray 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in FArray 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in FArray 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in FArray 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in FArray 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in FArray 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in FArray 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in FArray 7D!");
+    assert(i < dims_[0] && "i is out of bounds in FArray 7D!");
+    assert(j < dims_[1] && "j is out of bounds in FArray 7D!");
+    assert(k < dims_[2] && "k is out of bounds in FArray 7D!");
+    assert(l < dims_[3] && "l is out of bounds in FArray 7D!");
+    assert(m < dims_[4] && "m is out of bounds in FArray 7D!");
+    assert(n < dims_[5] && "n is out of bounds in FArray 7D!");
+    assert(o < dims_[6] && "o is out of bounds in FArray 7D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -457,7 +457,7 @@ inline size_t FArray<T>::size() const {
 template <typename T>
 inline size_t FArray<T>::dims(size_t i) const {
     assert(i < order_ && "FArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to FArray dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to FArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -745,7 +745,7 @@ template <typename T>
 T& ViewFArray<T>::operator()(size_t i) const
 {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewFArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 1D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 1D!");
     return array_[i];
 }
 
@@ -755,8 +755,8 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t j) const
 {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewFArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 2D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 2D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 2D!");
     return array_[i + j*dims_[0]];
 }
 
@@ -767,9 +767,9 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t k) const
 {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewFArray 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 3D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 3D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 3D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewFArray 3D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]];
 }
@@ -782,10 +782,10 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t l) const
 {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewFArray 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 4D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 4D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 4D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 4D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 4D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 4D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewFArray 4D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewFArray 4D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]];
@@ -800,11 +800,11 @@ T& ViewFArray<T>::operator()(size_t i,
                              size_t m) const
 {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewFArray 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 5D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 5D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 5D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewFArray 5D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewFArray 5D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewFArray 5D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -821,12 +821,12 @@ T& ViewFArray<T>:: operator()(size_t i,
                               size_t n) const
 {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewFArray 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 6D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 6D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 6D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewFArray 6D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewFArray 6D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewFArray 6D!");
+    assert(n < dims_[5] && "n is out of bounds in ViewFArray 6D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -845,13 +845,13 @@ T& ViewFArray<T>:: operator()(size_t i,
                               size_t o) const
 {
     assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewFArray 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewFArray 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewFArray 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewFArray 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewFArray 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewFArray 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewFArray 7D!");
-    assert(o >= 0 && o < dims_[6] && "n is out of bounds in ViewFArray 7D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewFArray 7D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewFArray 7D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewFArray 7D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewFArray 7D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewFArray 7D!");
+    assert(n < dims_[5] && "n is out of bounds in ViewFArray 7D!");
+    assert(o < dims_[6] && "n is out of bounds in ViewFArray 7D!");
     return array_[i + j*dims_[0]
                     + k*dims_[0]*dims_[1]
                     + l*dims_[0]*dims_[1]*dims_[2]
@@ -870,7 +870,7 @@ void ViewFArray<T>::operator=(M do_this_math){
 template <typename T>
 inline size_t ViewFArray<T>::dims(size_t i) const {
     assert(i < order_ && "ViewFArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to ViewFArray dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to ViewFArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -1302,7 +1302,7 @@ template <typename T>
 inline size_t FMatrix<T>::dims(size_t i) const {
     i--; // i starts at 1
     assert(i < order_ && "FMatrix order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to FMatrix dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to FMatrix dims is out of bounds!");
     return dims_[i];
 }
 
@@ -1716,7 +1716,7 @@ template <typename T>
 inline size_t ViewFMatrix<T>::dims(size_t i) const {
     i--; // i starts at 1
     assert(i < order_ && "ViewFMatrix order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to ViewFMatrix dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to ViewFMatrix dims is out of bounds!");
     return dims_[i];
 }
 
@@ -2003,7 +2003,7 @@ template <typename T>
 inline T& CArray<T>::operator() (size_t i) const
 {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in CArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 1D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 1D!");
 
     return array_[i];
 }
@@ -2014,8 +2014,8 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t j) const
 {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in CArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 2D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 2D!");
+    assert(j < dims_[1] && "j is out of bounds in CArray 2D!");
     
     return array_[j + (i *  dims_[1])];
 }
@@ -2027,9 +2027,9 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t k) const
 {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in CArray 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in Carray 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 3D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 3D!");
+    assert(j < dims_[1] && "j is out of bounds in Carray 3D!");
+    assert(k < dims_[2] && "k is out of bounds in CArray 3D!");
     
     return array_[k + (j * dims_[2])
                     + (i * dims_[2] *  dims_[1])];
@@ -2043,10 +2043,10 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t l) const
 {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in CArray 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 4D");  // die if >= dim0
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 4D");  // die if >= dim1
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 4D");  // die if >= dim2
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 4D");  // die if >= dim3
+    assert(i < dims_[0] && "i is out of bounds in CArray 4D");  // die if >= dim0
+    assert(j < dims_[1] && "j is out of bounds in CArray 4D");  // die if >= dim1
+    assert(k < dims_[2] && "k is out of bounds in CArray 4D");  // die if >= dim2
+    assert(l < dims_[3] && "l is out of bounds in CArray 4D");  // die if >= dim3
 
     return array_[l + (k * dims_[3])
                     + (j * dims_[3] * dims_[2])
@@ -2062,11 +2062,11 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t m) const
 {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in CArray 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 5D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 5D!");
+    assert(j < dims_[1] && "j is out of bounds in CArray 5D!");
+    assert(k < dims_[2] && "k is out of bounds in CArray 5D!");
+    assert(l < dims_[3] && "l is out of bounds in CArray 5D!");
+    assert(m < dims_[4] && "m is out of bounds in CArray 5D!");
     
     return array_[m + (l * dims_[4])
                     + (k * dims_[4] * dims_[3])
@@ -2084,12 +2084,12 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t n) const
 {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in CArray 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in CArray 6D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 6D!");
+    assert(j < dims_[1] && "j is out of bounds in CArray 6D!");
+    assert(k < dims_[2] && "k is out of bounds in CArray 6D!");
+    assert(l < dims_[3] && "l is out of bounds in CArray 6D!");
+    assert(m < dims_[4] && "m is out of bounds in CArray 6D!");
+    assert(n < dims_[5] && "n is out of bounds in CArray 6D!");
     
     return array_[n + (m * dims_[5])
                     + (l * dims_[5] * dims_[4])
@@ -2109,13 +2109,13 @@ inline T& CArray<T>::operator() (size_t i,
                                  size_t o) const
 {
     assert(order_ == 7 && "Tensor order (rank) does not match constructor in CArray 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in CArray 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in CArray 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in CArray 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in CArray 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in CArray 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in CArray 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in CArray 7D!");
+    assert(i < dims_[0] && "i is out of bounds in CArray 7D!");
+    assert(j < dims_[1] && "j is out of bounds in CArray 7D!");
+    assert(k < dims_[2] && "k is out of bounds in CArray 7D!");
+    assert(l < dims_[3] && "l is out of bounds in CArray 7D!");
+    assert(m < dims_[4] && "m is out of bounds in CArray 7D!");
+    assert(n < dims_[5] && "n is out of bounds in CArray 7D!");
+    assert(o < dims_[6] && "o is out of bounds in CArray 7D!");
     
     return array_[o + (n * dims_[6])
                     + (m * dims_[6] * dims_[5])
@@ -2156,7 +2156,7 @@ inline size_t CArray<T>::size() const {
 template <typename T>
 inline size_t CArray<T>::dims(size_t i) const {
     assert(i < order_ && "CArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to CArray dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to CArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -2439,7 +2439,7 @@ template <typename T>
 inline T& ViewCArray<T>::operator()(size_t i) const
 {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewCArray 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 1D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 1D!");
     
     return array_[i];
 }
@@ -2463,8 +2463,8 @@ inline T& ViewCArray<T>::operator()(size_t i,
 {
    
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewCArray 2D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 2D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 2D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 2D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewCArray 2D!");
     
     return array_[j + (i *  dims_[1])];
 }
@@ -2476,9 +2476,9 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t k) const
 {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewCArray 3D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 3D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCarray 3D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 3D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 3D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewCarray 3D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewCArray 3D!");
     
     return array_[k + (j * dims_[2])
                     + (i * dims_[2] *  dims_[1])];
@@ -2492,10 +2492,10 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t l) const
 {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewCArray 4D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 4D");  // die if >= dim0
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 4D");  // die if >= dim1
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 4D");  // die if >= dim2
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 4D");  // die if >= dim3
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 4D");  // die if >= dim0
+    assert(j < dims_[1] && "j is out of bounds in ViewCArray 4D");  // die if >= dim1
+    assert(k < dims_[2] && "k is out of bounds in ViewCArray 4D");  // die if >= dim2
+    assert(l < dims_[3] && "l is out of bounds in ViewCArray 4D");  // die if >= dim3
     
     return array_[l + (k * dims_[3])
                     + (j * dims_[3] * dims_[2])
@@ -2511,11 +2511,11 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t m) const
 {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewCArray 5D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 5D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 5D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 5D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 5D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 5D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 5D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewCArray 5D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewCArray 5D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewCArray 5D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewCArray 5D!");
     
     return array_[m + (l * dims_[4])
                     + (k * dims_[4] * dims_[3])
@@ -2533,12 +2533,12 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t n) const
 {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewCArray 6D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 6D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 6D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 6D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 6D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 6D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewCArray 6D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 6D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewCArray 6D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewCArray 6D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewCArray 6D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewCArray 6D!");
+    assert(n < dims_[5] && "n is out of bounds in ViewCArray 6D!");
     
     return array_[n + (m * dims_[5])
                     + (l * dims_[5] * dims_[4])
@@ -2558,13 +2558,13 @@ inline T& ViewCArray<T>::operator()(size_t i,
                                     size_t o) const
 {
     assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewCArray 7D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in ViewCArray 7D!");
-    assert(j >= 0 && j < dims_[1] && "j is out of bounds in ViewCArray 7D!");
-    assert(k >= 0 && k < dims_[2] && "k is out of bounds in ViewCArray 7D!");
-    assert(l >= 0 && l < dims_[3] && "l is out of bounds in ViewCArray 7D!");
-    assert(m >= 0 && m < dims_[4] && "m is out of bounds in ViewCArray 7D!");
-    assert(n >= 0 && n < dims_[5] && "n is out of bounds in ViewCArray 7D!");
-    assert(o >= 0 && o < dims_[6] && "o is out of bounds in ViewCArray 7D!");
+    assert(i < dims_[0] && "i is out of bounds in ViewCArray 7D!");
+    assert(j < dims_[1] && "j is out of bounds in ViewCArray 7D!");
+    assert(k < dims_[2] && "k is out of bounds in ViewCArray 7D!");
+    assert(l < dims_[3] && "l is out of bounds in ViewCArray 7D!");
+    assert(m < dims_[4] && "m is out of bounds in ViewCArray 7D!");
+    assert(n < dims_[5] && "n is out of bounds in ViewCArray 7D!");
+    assert(o < dims_[6] && "o is out of bounds in ViewCArray 7D!");
     
     return array_[o + (n * dims_[6])
                     + (m * dims_[6] * dims_[5])
@@ -2591,7 +2591,7 @@ inline size_t ViewCArray<T>::size() const {
 template <typename T>
 inline size_t ViewCArray<T>::dims(size_t i) const {
     assert(i < order_ && "ViewCArray order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to ViewCArray dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to ViewCArray dims is out of bounds!");
     return dims_[i];
 }
 
@@ -3025,7 +3025,7 @@ template <typename T>
 inline size_t CMatrix<T>::dims(size_t i) const {
     i--; // i starts at 1
     assert(i < order_ && "CMatrix order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to CMatrix dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to CMatrix dims is out of bounds!");
     return dims_[i];
 }
 
@@ -3445,7 +3445,7 @@ template <typename T>
 inline size_t ViewCMatrix<T>::dims(size_t i) const {
     i--; // i starts at 1
     assert(i < order_ && "ViewCMatrix order (rank) does not match constructor, dim[i] does not exist!");
-    assert(i >= 0 && dims_[i]>0 && "Access to ViewCMatrix dims is out of bounds!");
+    assert(dims_[i]>0 && "Access to ViewCMatrix dims is out of bounds!");
     return dims_[i];
 }
 
