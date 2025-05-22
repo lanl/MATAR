@@ -1,5 +1,5 @@
 /**********************************************************************************************
- � 2020. Triad National Security, LLC. All rights reserved.
+ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -31,30 +31,53 @@
  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
+
+/**
+ * @file MATAR_data.cpp
+ * @brief Example demonstrating MATAR's data-oriented design and performance portability features
+ * 
+ * This example showcases MATAR's core data structures and design philosophy:
+ * 1. Data-oriented design: Structures are organized around data access patterns rather than objects
+ * 2. Performance portability: Code runs efficiently across different architectures (CPU, GPU, etc.)
+ * 3. Memory layout control: Support for both C-style (row-major) and F-style (column-major) layouts
+ * 4. Unified interface: Consistent API for both dense and sparse data structures
+ * 
+ * Key concepts demonstrated:
+ * - Dense arrays (C-style and F-style)
+ * - Array views for flexible data access
+ * - Dual arrays for host/device memory management
+ * - Sparse matrix formats (CSC)
+ * - Parallel operations using Kokkos
+ */
+
 #include <stdio.h>
 #include <iostream>
 #include <matar.h>
-
 #include <algorithm>  // std::max, std::min, etc.
 
 using namespace mtr; // matar namespace
 
-// main
 int main()
 {
-
+    // Initialize Kokkos runtime for performance portability
     Kokkos::initialize();
     {
-
     // =========================
     // Dense Data Types
     // =========================
-
-    //  Dense Arrays (C-style)
+    
+    /**
+     * C-style Arrays (Row-major layout)
+     * - First index varies slowest in memory
+     * - Natural for C/C++ programmers
+     * - Good for row-wise access patterns
+     */
     CArrayDevice<int> carr_dev_1D(10);
     CArrayDevice<int> carr_dev_2D(10, 10);
     CArrayDevice<int> carr_dev_3D(10, 10, 10);
 
+    // FOR_ALL is a MATAR macro that creates a parallel loop
+    // It automatically handles device execution
     FOR_ALL(i, 0, 10, {
         carr_dev_1D(i) = i;
     });     
@@ -70,31 +93,48 @@ int main()
         carr_dev_3D(i, j, k) = i+j+k;
     });
     
-    // Dense Arrays (F-style): First index varies fastest
+    // set_values() provides a convenient way to initialize arrays
+
+    carr_dev_1D.set_values(10);
+    carr_dev_2D.set_values(10);
+    carr_dev_3D.set_values(10);
+
+    /**
+     * F-style Arrays (Column-major layout)
+     * - First index varies fastest in memory
+     * - Natural for Fortran/Matlab programmers
+     * - Good for column-wise access patterns
+     */
     FArrayDevice<int> farr_dev_1D(10);
     FArrayDevice<int> farr_dev_2D(10, 10);
     FArrayDevice<int> farr_dev_3D(10, 10, 10);
 
+    // Note the different index order in F-style arrays
     FOR_ALL(i, 0, 10, {
         farr_dev_1D(i) = i;
     }); 
 
     FOR_ALL(i, 0, 10,
             j, 0, 10, {
-        farr_dev_2D(j, i) = i+j;
+        farr_dev_2D(j, i) = i+j;  // Note: j,i instead of i,j
     }); 
 
     FOR_ALL(i, 0, 10,
             j, 0, 10,
             k, 0, 10, {
-        farr_dev_3D(k, j, i) = i+j+k;
+        farr_dev_3D(k, j, i) = i+j+k;  // Note: k,j,i instead of i,j,k
     }); 
 
-    // Views of C-style MATAR arrays
+    /**
+     * Array Views
+     * - Provide flexible access to existing data
+     * - No data copying, just different access patterns
+     * - Can reinterpret 1D arrays as multi-dimensional
+     */
     ViewCArrayDevice<int> view_carr_dev_1D(carr_dev_1D.pointer(), 10);
-    ViewCArrayDevice<int> view_carr_dev_2D(carr_dev_2D.pointer(), 10, 10);
-    ViewCArrayDevice<int> view_carr_dev_3D(carr_dev_3D.pointer(), 10, 10, 10);
 
+
+    // Example of using views to modify data
     FOR_ALL(i, 0, 10, {
         view_carr_dev_1D(i) -= i;
         if (view_carr_dev_1D(i) != 0) {
@@ -102,35 +142,8 @@ int main()
         }
     });     
 
-    FOR_ALL(i, 0, 10,
-            j, 0, 10, {
-        view_carr_dev_2D(i, j) -= i+j;
-        if (view_carr_dev_2D(i, j) != 0) {
-            printf("view_carr_dev_2D(%d, %d) = %d\n", i, j, view_carr_dev_2D(i, j));
-        }
-    });
-    
-    FOR_ALL(i, 0, 10,
-            j, 0, 10,
-            k, 0, 10, {
-        view_carr_dev_3D(i, j, k) -= i+j+k;
-        if (view_carr_dev_3D(i, j, k) != 0) {
-            printf("view_carr_dev_3D(%d, %d, %d) = %d\n", i, j, k, view_carr_dev_3D(i, j, k));
-        }
-    });
-
-    // Views of C-style C++ arrays (requires pointer to first index of the array)
+    // Example of viewing a 1D array as 2D
     int some_array[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-    ViewCArrayDevice<int> view_some_array(&some_array[0], 9);
-
-    FOR_ALL(i, 0, 9, {
-        view_some_array(i) -= i;
-        if (view_some_array(i) != 0) {
-            printf("view_some_array(%d) = %d\n", i, view_some_array(i));
-        }
-    });
-
-    // Using views to treat 1D arrays as N-dimensional arrays
     ViewCArrayDevice<int> view_some_array_2D(&some_array[0], 3, 3);
 
     FOR_ALL(i, 0, 3,
@@ -171,44 +184,122 @@ int main()
         }
     }); 
 
-    CArrayKokkos<int> tmp_array;
-    tmp_array = CArrayKokkos<int>(10, "temp_array");
+    /**
+     * Dual Arrays
+     * - Exist on both host (CPU) and device (GPU)
+     * - Automatic memory management
+     * - Explicit data transfer control
+     */
+    CArrayDual<int> d_carr_1D(10);
+    CArrayDual<int> d_carr_2D(10, 10);
+    CArrayDual<int> d_carr_3D(10, 10, 10);
+    
+    // Initialize on host
+    for (int i = 0; i < 10; i++) {
+        d_carr_1D.host(i) = i;
+        for(int j = 0; j < 10; j++) {
+            d_carr_2D.host(i, j) = i+j;
+            for(int k = 0; k < 10; k++) {
+                d_carr_3D.host(i, j, k) = i+j+k;
+            }
+        }
+    }
 
+    // Explicit data transfer to device
+    d_carr_1D.update_device();
+    d_carr_2D.update_device();
+    d_carr_3D.update_device();
+
+    /**
+     * Reduction Operations
+     * - Parallel sum reduction example
+     * - FOR_REDUCE_SUM macro handles parallel reduction
+     * - Results are automatically combined
+     */
+    int loc_sum_1D = 0;
+    int sum_1D = 0;     
+    FOR_REDUCE_SUM(i, 0, 10,
+                   loc_sum_1D, {
+        loc_sum_1D += d_carr_1D(i);
+    }, sum_1D); 
+
+    printf("Sum of d_carr_1D on the device: %d\n", sum_1D);
+
+    int loc_sum_2D = 0;     
+    int sum_2D = 0;
+    FOR_REDUCE_SUM(i, 0, 10,
+                   j, 0, 10,
+                   loc_sum_2D, {
+        loc_sum_2D += d_carr_2D(i, j);
+    }, sum_2D);
+
+    printf("Sum of d_carr_2D on the device: %d\n", sum_2D);
+
+    int loc_sum_3D = 0;     
+    int sum_3D = 0;
+    FOR_REDUCE_SUM(i, 0, 10,
+                   j, 0, 10,
+                   k, 0, 10,    
+                   loc_sum_3D, {
+        loc_sum_3D += d_carr_3D(i, j, k);
+    }, sum_3D);
+
+    printf("Sum of d_carr_3D on the device: %d\n", sum_3D);
+
+
+    // =========================
     // Sparse Data Types
-    // Compressed Sparse Column (CSC) format
+    // =========================
+
+    /**
+     * Compressed Sparse Column (CSC) Format
+     * - Efficient for column-wise operations
+     * - Good for sparse matrices with many zeros
+     * - Three arrays store the data:
+     *   1. values: Non-zero elements
+     *   2. rows: Row indices of non-zero elements
+     *   3. starts: Starting index of each column
+     */
+    size_t nnz  = 8; // number of non-zero elements
+    size_t dim1 = 3; // number of rows
+    size_t dim2 = 10; // number of columns
+    
+    // Example sparse matrix:
     /*
     |1 2 2 0 0 0 0 0 0 0|
     |0 0 3 4 0 0 0 0 0 0|
     |0 0 0 0 5 6 0 0 0 14|
     */ 
-    size_t nnz  = 8; // number of non-zero elements
-    size_t dim1 = 3; // number of rows
-    size_t dim2 = 10; // number of columns
-    CArrayKokkos<size_t> starts(dim2 + 1); // 1d array that marks where the first element of each column starts
-    CArrayKokkos<size_t> rows(nnz); // 1d array that marks what row each element is in
-    CArrayKokkos<int>    values(nnz); // 1d array of data values in order as read top to bottom, left to right
+    
+    CArrayKokkos<size_t> starts(dim2 + 1); // Column start indices
+    CArrayKokkos<size_t> rows(nnz);        // Row indices
+    CArrayKokkos<int>    values(nnz);      // Non-zero values
+    
+    // Initialize the sparse matrix
     RUN({ 
-        starts(0) = 0;
-        starts(1) = 1;
-        starts(2) = 2;
-        starts(3) = 4;
-        starts(4) = 5;
-        starts(5) = 6;
-        starts(6) = 7;
-        starts(7) = 7;
-        starts(8) = 7;
-        starts(9) = 8;
-        starts(10)= 8;
+        starts(0) = 0;  // First column starts at index 0
+        starts(1) = 1;  // Second column starts at index 1
+        starts(2) = 2;  // Third column starts at index 2
+        starts(3) = 4;  // Fourth column starts at index 4
+        starts(4) = 5;  // Fifth column starts at index 5
+        starts(5) = 6;  // Sixth column starts at index 6
+        starts(6) = 7;  // Seventh column starts at index 7
+        starts(7) = 7;  // Eighth column starts at index 7
+        starts(8) = 7;  // Ninth column starts at index 7
+        starts(9) = 8;  // Tenth column starts at index 8
+        starts(10)= 8;  // End of last column
 
-        rows(0) = 0;
-        rows(1) = 0;
-        rows(2) = 0;
-        rows(3) = 1;
-        rows(4) = 1;
-        rows(5) = 2;
-        rows(6) = 2;
-        rows(7) = 1;
+        // Row indices for each non-zero element
+        rows(0) = 0;  // First element is in row 0
+        rows(1) = 0;  // Second element is in row 0
+        rows(2) = 0;  // Third element is in row 0
+        rows(3) = 1;  // Fourth element is in row 1
+        rows(4) = 1;  // Fifth element is in row 1
+        rows(5) = 2;  // Sixth element is in row 2
+        rows(6) = 2;  // Seventh element is in row 2
+        rows(7) = 1;  // Eighth element is in row 1
         
+        // Values of non-zero elements
         values(0) = 1;
         values(1) = 2;
         values(2) = 2;
@@ -219,64 +310,26 @@ int main()
         values(7) = 14;
     });
 
+    // Create CSC array from the components
+    CSCArrayDevice<int> csc_dev(values, starts, rows, dim1, dim2, "CSC_Array");
 
-    CSCArrayDevice<int>csc_dev(values, starts, rows, dim1, dim2, "CSC_Array");
-
-
+    // Print matrix information
     RUN({
-        printf("This matix is %ld x %ld \n", csc_dev.dim1(), csc_dev.dim2());
-    });
-
-    RUN({
+        printf("This matrix is %ld x %ld \n", csc_dev.dim1(), csc_dev.dim2());
         printf("nnz : %ld \n", csc_dev.nnz());
     });
 
-    // Print the matrix
+    // Print the matrix in dense format
+    // Note: this is done inside of a RUN block to ensure portability. 
+    //       If you try to print the matrix outside of a RUN block, it will not work for GPU builds
     RUN({
         for (size_t i = 0; i < csc_dev.dim1(); i++) {
             for (size_t j = 0; j < csc_dev.dim2(); j++) {
                 printf("%d ", csc_dev(i, j));
             }
-        printf("\n");
+            printf("\n");
         }
     });
-
-    // Print the matric again, outside of a RUN block
-    printf("\n");
-    for (size_t i = 0; i < csc_dev.dim1(); i++) {
-        for (size_t j = 0; j < csc_dev.dim2(); j++) {
-            printf("%d ", csc_dev(i, j));
-        }
-        printf("\n");
-    }
-
-
-
-
-
-
-
-    // int loc_total = 0;
-    // loc_total += 0; // Get rid of warning
-    // FOR_REDUCE_SUM(i, 0, nnz,
-    //                 loc_total, {
-    //         loc_total += values[i];
-    // }, total);
-    // printf("Sum of nnz from pointer method %d\n", total);
-    // total = 0;
-    // FOR_REDUCE_SUM(i, 0, nnz,
-    //                 loc_total, {
-    //         loc_total += a_start[i];
-    // }, total);
-    // printf("Sum of start indices form .get_starts() %d\n", total);
-    // total = 0;
-
-    // FOR_REDUCE_SUM(i, 0, dim1,
-    //                 j, 0, dim2 - 1,
-    //     loc_total, {
-    //         loc_total += A(i, j);
-    // }, total);
-    // printf("Sum of nnz in array notation %d\n", total);
 
     }
     Kokkos::finalize(); 
