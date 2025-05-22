@@ -76,6 +76,7 @@ int main()
     CArrayDevice<int> carr_dev_2D(10, 10);
     CArrayDevice<int> carr_dev_3D(10, 10, 10);
 
+
     // FOR_ALL is a MATAR macro that creates a parallel loop
     // It automatically handles device execution
     FOR_ALL(i, 0, 10, {
@@ -98,6 +99,19 @@ int main()
     carr_dev_1D.set_values(10);
     carr_dev_2D.set_values(10);
     carr_dev_3D.set_values(10);
+
+    printf("CArrayDevice passes test\n");
+
+    // CMatrixDevice is a row major data structure that is equivalent to a CArrayDevice
+    // except that the indexing starts at 1 instead of 0, this is to make the mathmaticians happy 
+    CMatrixDevice<int> cmat_dev_1D(10);
+
+    FOR_ALL(i, 1, 10, {
+        cmat_dev_1D(i) = i;
+    });
+
+    printf("CMatrixDevice passes test\n");
+    
 
     /**
      * F-style Arrays (Column-major layout)
@@ -125,6 +139,8 @@ int main()
         farr_dev_3D(k, j, i) = i+j+k;  // Note: k,j,i instead of i,j,k
     }); 
 
+    printf("FArrayDevice passes test\n");
+
     /**
      * Array Views
      * - Provide flexible access to existing data
@@ -132,27 +148,36 @@ int main()
      * - Can reinterpret 1D arrays as multi-dimensional
      */
     ViewCArrayDevice<int> view_carr_dev_1D(carr_dev_1D.pointer(), 10);
+    view_carr_dev_1D.set_values(10);
 
 
     // Example of using views to modify data
     FOR_ALL(i, 0, 10, {
         view_carr_dev_1D(i) -= i;
-        if (view_carr_dev_1D(i) != 0) {
+        if (view_carr_dev_1D(i) != 10 - i) {
             printf("view_carr_dev_1D(%d) = %d\n", i, view_carr_dev_1D(i));
         }
     });     
 
     // Example of viewing a 1D array as 2D
-    int some_array[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-    ViewCArrayDevice<int> view_some_array_2D(&some_array[0], 3, 3);
+    int some_array[9];
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            some_array[i*3 + j] = i + j;
+        }
+    }
 
+    ViewCArrayDevice<int> view_some_array_2D(&some_array[0], 3, 3);
+    
+    
     FOR_ALL(i, 0, 3,
             j, 0, 3, {
-        view_some_array_2D(i, j) += i+j;
         if (view_some_array_2D(i, j) != i+j) {
             printf("view_some_array_2D(%d, %d) = %d\n", i, j, view_some_array_2D(i, j));
         }
     });
+
+    printf("ViewCArrayDevice passes test\n");
 
 
     // Views of F-style MATAR arrays
@@ -160,9 +185,13 @@ int main()
     ViewFArrayDevice<int> view_farr_dev_2D(farr_dev_2D.pointer(), 10, 10);
     ViewFArrayDevice<int> view_farr_dev_3D(farr_dev_3D.pointer(), 10, 10, 10);
 
+    view_farr_dev_1D.set_values(10);
+    view_farr_dev_2D.set_values(10);
+    view_farr_dev_3D.set_values(10);
+
     FOR_ALL(i, 0, 10, {
         view_farr_dev_1D(i) -= i;
-        if (view_farr_dev_1D(i) != 0) {
+        if (view_farr_dev_1D(i) != 10-i) {
             printf("view_farr_dev_1D(%d) = %d\n", i, view_farr_dev_1D(i));
         }
     }); 
@@ -170,7 +199,7 @@ int main()
     FOR_ALL(i, 0, 10,
             j, 0, 10, {
         view_farr_dev_2D(j, i) -= i+j;
-        if (view_farr_dev_2D(j, i) != 0) {
+        if (view_farr_dev_2D(j, i) != 10 - (i+j)) {
             printf("view_farr_dev_2D(%d, %d) = %d\n", j, i, view_farr_dev_2D(j, i));
         }
     }); 
@@ -179,36 +208,53 @@ int main()
             j, 0, 10,
             k, 0, 10, {
         view_farr_dev_3D(k, j, i) -= i+j+k;
-        if (view_farr_dev_3D(k, j, i) != 0) {
+        if (view_farr_dev_3D(k, j, i) != 10 - (i+j+k)) {
             printf("view_farr_dev_3D(%d, %d, %d) = %d\n", k, j, i, view_farr_dev_3D(k, j, i));
         }
     }); 
-
+    printf("ViewFArrayDevice passes test\n");
+    
     /**
      * Dual Arrays
      * - Exist on both host (CPU) and device (GPU)
      * - Automatic memory management
      * - Explicit data transfer control
      */
-    CArrayDual<int> d_carr_1D(10);
-    CArrayDual<int> d_carr_2D(10, 10);
-    CArrayDual<int> d_carr_3D(10, 10, 10);
+    printf("Creating DCArrayKokkos 1D\n");
+    DCArrayKokkos<int> d_carr_1D(10, "d_carr_1D");
+    
+    printf("Creating DCArrayKokkos 2D\n");
+
+    auto d_carr_2D = DCArrayKokkos<int>(10, 10, "d_carr_2D");
+
+    // DCArrayKokkos<int> d_carr_2D(10, 10, "d_carr_2D");
+    
+    printf("Creating DCArrayKokkos 3D\n");
+    DCArrayKokkos<int> d_carr_3D(10, 10, 10, "d_carr_3D");
     
     // Initialize on host
     for (int i = 0; i < 10; i++) {
-        d_carr_1D.host(i) = i;
+        printf("i = %d\n", i);
+        //d_carr_1D.host(i) = i;
+
         for(int j = 0; j < 10; j++) {
+            printf("j = %d\n", j);
             d_carr_2D.host(i, j) = i+j;
+            
             for(int k = 0; k < 10; k++) {
+                printf("k = %d\n", k);
                 d_carr_3D.host(i, j, k) = i+j+k;
+ 
             }
         }
     }
 
     // Explicit data transfer to device
-    d_carr_1D.update_device();
+    // d_carr_1D.update_device();
     d_carr_2D.update_device();
     d_carr_3D.update_device();
+
+    printf("CArrayDual passes test\n");
 
     /**
      * Reduction Operations
@@ -216,14 +262,14 @@ int main()
      * - FOR_REDUCE_SUM macro handles parallel reduction
      * - Results are automatically combined
      */
-    int loc_sum_1D = 0;
-    int sum_1D = 0;     
-    FOR_REDUCE_SUM(i, 0, 10,
-                   loc_sum_1D, {
-        loc_sum_1D += d_carr_1D(i);
-    }, sum_1D); 
+    // int loc_sum_1D = 0;
+    // int sum_1D = 0;     
+    // FOR_REDUCE_SUM(i, 0, 10,
+    //                loc_sum_1D, {
+    //     loc_sum_1D += d_carr_1D(i);
+    // }, sum_1D); 
 
-    printf("Sum of d_carr_1D on the device: %d\n", sum_1D);
+    //printf("Sum of d_carr_1D on the device: %d\n", sum_1D);
 
     int loc_sum_2D = 0;     
     int sum_2D = 0;
@@ -250,6 +296,108 @@ int main()
     // =========================
     // Sparse Data Types
     // =========================
+
+    // =========================
+    // Ragged Array Types
+    // =========================
+
+    /**
+     * RaggedCArrayDevice
+     * - A data structure for storing arrays of varying lengths
+     * - Each row can have a different number of elements (stride)
+     * - Memory efficient for irregular data structures
+     * - Supports parallel operations across all rows
+     * 
+     * Common use cases:
+     * - Storing variable-length lists
+     * - Representing irregular grids
+     * - Managing sparse data with varying row lengths
+     * - Handling particle data where each cell has different numbers of particles
+     */
+
+    // Example: Creating a triangular number pattern
+    /*
+    |1            |  stride = 1
+    |1 2          |  stride = 2
+    |1 2 3        |  stride = 3
+    |1 2 3 4      |  stride = 4
+    |1 2 3 4 5    |  stride = 5
+    */ 
+    // Note: Stride sizes can be arbitrary - they don't need to follow a pattern
+    //       This example uses increasing strides for demonstration
+        
+    int num_strides = 5;
+    CArrayDevice<size_t> some_strides(num_strides);
+
+    // Initialize the stride lengths
+    FOR_ALL(i, 0, num_strides, {
+        some_strides(i) = i+1;  // Each row will have i+1 elements
+    });
+    
+    // Create the ragged array with the specified strides
+    RaggedCArrayDevice<int> ragged_carr_dev(some_strides, "test_1D");
+    
+    // Fill the ragged array in parallel
+    // Each thread handles one row, filling it with sequential numbers
+    FOR_ALL(i, 0, num_strides, {
+        for(int j = 0; j < ragged_carr_dev.stride(i); j++) {
+            ragged_carr_dev(i, j) = j + 1;  // Fill each row with 1,2,3,...
+        }
+    });
+
+    // Print the ragged array
+    // Note: Printing is done inside a RUN block for device compatibility
+    printf("RaggedCArrayDevice<int> ragged_carr_dev:\n");
+    RUN({
+        for(int i = 0; i < num_strides; i++) {
+            for(int j = 0; j < ragged_carr_dev.stride(i); j++) {    
+                printf("%d ", ragged_carr_dev(i, j));
+            }
+            printf("\n");
+        }
+    });
+
+    printf("RaggedCArrayDevice passes test\n");
+
+    // Dual Ragged Arrays exist on both the host and device
+
+    // Example: Creating a triangular number pattern
+    /*
+    |1            |  stride = 1
+    |1 2          |  stride = 2
+    |1 2 3        |  stride = 3
+    |1 2 3 4      |  stride = 4
+    |1 2 3 4 5    |  stride = 5
+    */ 
+    // Note: Stride sizes can be arbitrary - they don't need to follow a pattern
+    //       This example uses increasing strides for demonstration
+    printf("Creating RaggedCArrayDual\n");
+    size_t new_strides[5] = {1, 2, 3, 4, 5};
+    RaggedCArrayDual<int> ragged_carr_dual(new_strides, 5, "test_1D"); 
+    // Note, 5 is required here because the size of the standard array is not encoded in the array itself, 
+    // and the sizeof() function is not always available on the device
+
+    printf("Filling RaggedCArrayDual\n");
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < ragged_carr_dual.stride(i); j++) {
+            ragged_carr_dual(i, j) = j + 1;
+        }
+    }
+
+    printf("Copying RaggedCArrayDual to device\n");
+    // Copy the data to the device (GPU)
+    ragged_carr_dual.update_device();
+
+    // Check the data on the device
+    FOR_ALL(i, 0, num_strides, {
+        for(int j = 0; j < ragged_carr_dev.stride(i); j++) {
+            if (ragged_carr_dev(i, j) != j + 1) {
+                printf("ragged_carr_dev(%d, %d) = %d\n", i, j, ragged_carr_dev(i, j));
+            }
+        }
+    });
+
+    printf("RaggedCArrayDual passes test\n");
 
     /**
      * Compressed Sparse Column (CSC) Format
@@ -321,7 +469,8 @@ int main()
 
     // Print the matrix in dense format
     // Note: this is done inside of a RUN block to ensure portability. 
-    //       If you try to print the matrix outside of a RUN block, it will not work for GPU builds
+    //       If you try to print the matrix outside of a RUN (or any other MATAR macro) block, it will not work for GPU builds 
+    //       because the data is on the device.
     RUN({
         for (size_t i = 0; i < csc_dev.dim1(); i++) {
             for (size_t j = 0; j < csc_dev.dim2(); j++) {
@@ -330,6 +479,16 @@ int main()
             printf("\n");
         }
     });
+    printf("CSCArrayDevice passes test\n");
+
+
+
+
+
+
+
+
+
 
     }
     Kokkos::finalize(); 

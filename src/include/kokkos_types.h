@@ -893,7 +893,7 @@ T* ViewFArrayKokkos<T>::pointer() const {
 template <typename T>
 void ViewFArrayKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_array_(i) = val;
+        this_array_[i] = val;
     });
 }
 
@@ -4173,7 +4173,7 @@ T* ViewCArrayKokkos<T>::pointer() const {
 template <typename T>
 void ViewCArrayKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_array_(i) = val;
+        this_array_[i] = val;
     });
 }
 
@@ -5045,13 +5045,17 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
-    
+    printf("Creating DCArrayKokkos 1D\n");
     dims_[0] = dim0;
     order_ = 1;
     length_ = dim0;
+    printf("before this_array_\n");
     this_array_ = TArray1D(tag_string, length_);
+    printf("after this_array_\n");
     // Create host ViewCArray
+    printf("before host\n");
     host = ViewCArray <T> (this_array_.h_view.data(), dim0);
+    printf("after host\n");
 }
 
 // Overloaded 2D constructor
@@ -7089,16 +7093,27 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     size_t some_dim1, // size of strides_array
     const std::string& tag_string) {
 
-    mystrides_.h_view.assign_data(strides_array);
+    // Create a new DualView for mystrides_ with proper size
+    mystrides_ = Strides1D("mystrides", some_dim1);
+    
+    // Get host view and copy data
+    for(size_t i = 0; i < some_dim1; i++) {
+        mystrides_.h_view(i) = strides_array[i];
+    }
+
+    // Mark host as modified and sync to device
     mystrides_.template modify<typename Strides1D::host_mirror_space>();
     mystrides_.template sync<typename Strides1D::execution_space>();
+
+    // Set device view
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
 
     dims_[0] = some_dim1;
     dims_[1] = 0;
     dims_[2] = 0;
 
     block_length_ = 1;
-    
     data_setup(tag_string);
 } // End constructor
 
@@ -7110,9 +7125,21 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     size_t some_dim2,
     const std::string& tag_string) {
 
-    mystrides_.h_view.assign_data(strides_array);
+    // Create a new DualView for mystrides_ with proper size
+    mystrides_ = Strides1D("mystrides", some_dim1);
+    
+    // Get host view and copy data
+    for(size_t i = 0; i < some_dim1; i++) {
+        mystrides_.h_view(i) = strides_array[i];
+    }
+
+    // Mark host as modified and sync to device
     mystrides_.template modify<typename Strides1D::host_mirror_space>();
     mystrides_.template sync<typename Strides1D::execution_space>();
+
+    // Set device view
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
 
     dims_[0] = some_dim1;
     dims_[1] = some_dim2;
@@ -7132,9 +7159,21 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     size_t some_dim3,
     const std::string& tag_string) {
 
-    mystrides_.h_view.assign_data(strides_array);
+    // Create a new DualView for mystrides_ with proper size
+    mystrides_ = Strides1D("mystrides", some_dim1);
+    
+    // Get host view and copy data
+    for(size_t i = 0; i < some_dim1; i++) {
+        mystrides_.h_view(i) = strides_array[i];
+    }
+
+    // Mark host as modified and sync to device
     mystrides_.template modify<typename Strides1D::host_mirror_space>();
     mystrides_.template sync<typename Strides1D::execution_space>();
+
+    // Set device view
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
 
     dims_[0] = some_dim1;
     dims_[1] = some_dim2;
@@ -7161,6 +7200,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     start_index_dev_ = start_index_.view_device();
     start_index_host_ = start_index_.view_host();
     
+    printf("Initializing start indices\n");
     // Initialize the start indices to 0
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dims_[0] + 1, KOKKOS_CLASS_LAMBDA(const int i) {
@@ -7170,7 +7210,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     init_start_indices_functor execution_functor(start_index_);
     Kokkos::parallel_for("StartValuesInit", dims_[0] + 1, execution_functor);
     #endif
-
+    printf("Finished initializing start indices\n");
     // Setup the start indices
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_scan("StartValuesSetup", dims_[0], KOKKOS_CLASS_LAMBDA(const int i, int& update, const bool final) {
@@ -7185,7 +7225,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     setup_start_indices_functor setup_execution_functor(start_index_, mystrides_, block_length_);
     Kokkos::parallel_scan("StartValuesSetup", dims_[0], setup_execution_functor);
     #endif
-
+    printf("Finished setting up start indices\n");
     //compute length of the storage
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_reduce("LengthSetup", dims_[0], KOKKOS_CLASS_LAMBDA(const int i, int& update) {

@@ -131,6 +131,9 @@ namespace mtr
     using RaggedCArrayDevice = RaggedRightArrayKokkos <T>;
 
     template <typename T>
+    using RaggedCArrayDual = DRaggedRightArrayKokkos <T>;
+
+    template <typename T>
     using RaggedFArrayDevice = RaggedDownArrayKokkos <T>;
 
     template <typename T>
