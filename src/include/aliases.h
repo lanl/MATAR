@@ -180,8 +180,8 @@ namespace mtr
 
 #ifdef HAVE_KOKKOS
 #define MATAR_FENCE() Kokkos::fence()
-#define MATAR_INITIALIZE(...)  Kokkos::initialize(__VA_ARGS__){
-#define MATAR_FINALIZE() }Kokkos::finalize();
+#define MATAR_INITIALIZE(...)  Kokkos::initialize(__VA_ARGS__)
+#define MATAR_FINALIZE() Kokkos::finalize();
 #else
 #define MATAR_FENCE()
 #define MATAR_INITIALIZE(...) {
