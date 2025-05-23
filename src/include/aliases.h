@@ -184,8 +184,8 @@ namespace mtr
 #define MATAR_FINALIZE() Kokkos::finalize();
 #else
 #define MATAR_FENCE()
-#define MATAR_INITIALIZE(...) {
-#define MATAR_FINALIZE() }
+#define MATAR_INITIALIZE(...)
+#define MATAR_FINALIZE()
 #endif
 
 #endif // ALIASES_H
