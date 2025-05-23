@@ -131,6 +131,9 @@ namespace mtr
     using RaggedCArrayDevice = RaggedRightArrayKokkos <T>;
 
     template <typename T>
+    using RaggedCArrayDual = DRaggedRightArrayKokkos <T>;
+
+    template <typename T>
     using RaggedFArrayDevice = RaggedDownArrayKokkos <T>;
 
     template <typename T>
@@ -174,5 +177,15 @@ namespace mtr
 
 } // end namespace
 #endif // end if have Kokkos for simple data type names
+
+#ifdef HAVE_KOKKOS
+#define MATAR_FENCE() Kokkos::fence()
+#define MATAR_INITIALIZE(...)  Kokkos::initialize(__VA_ARGS__)
+#define MATAR_FINALIZE() Kokkos::finalize();
+#else
+#define MATAR_FENCE()
+#define MATAR_INITIALIZE(...)
+#define MATAR_FINALIZE()
+#endif
 
 #endif // ALIASES_H
