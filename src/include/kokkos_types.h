@@ -5045,17 +5045,13 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
-    printf("Creating DCArrayKokkos 1D\n");
     dims_[0] = dim0;
     order_ = 1;
     length_ = dim0;
-    printf("before this_array_\n");
     this_array_ = TArray1D(tag_string, length_);
-    printf("after this_array_\n");
+
     // Create host ViewCArray
-    printf("before host\n");
     host = ViewCArray <T> (this_array_.h_view.data(), dim0);
-    printf("after host\n");
 }
 
 // Overloaded 2D constructor
@@ -7200,7 +7196,6 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     start_index_dev_ = start_index_.view_device();
     start_index_host_ = start_index_.view_host();
     
-    printf("Initializing start indices\n");
     // Initialize the start indices to 0
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_for("StartValuesInit", dims_[0] + 1, KOKKOS_CLASS_LAMBDA(const int i) {
@@ -7210,7 +7205,6 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     init_start_indices_functor execution_functor(start_index_);
     Kokkos::parallel_for("StartValuesInit", dims_[0] + 1, execution_functor);
     #endif
-    printf("Finished initializing start indices\n");
     // Setup the start indices
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_scan("StartValuesSetup", dims_[0], KOKKOS_CLASS_LAMBDA(const int i, int& update, const bool final) {
@@ -7225,7 +7219,6 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     setup_start_indices_functor setup_execution_functor(start_index_, mystrides_, block_length_);
     Kokkos::parallel_scan("StartValuesSetup", dims_[0], setup_execution_functor);
     #endif
-    printf("Finished setting up start indices\n");
     //compute length of the storage
     #ifdef HAVE_CLASS_LAMBDA
     Kokkos::parallel_reduce("LengthSetup", dims_[0], KOKKOS_CLASS_LAMBDA(const int i, int& update) {
@@ -7270,7 +7263,6 @@ size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dim(siz
 
 // A method to return the stride size on the host space
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_host(size_t i) const {
     // Ensure that i is within bounds
     assert(i < (dims_[0]) && "i is greater than dims_[0] in DRaggedRightArray");
@@ -10776,7 +10768,6 @@ T& CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size
             return array_.data()[col_start + k];
         }
     }
-    // printf("NULL");
     miss_[0] = (T) NULL;
     return miss_[0];    
 }
@@ -11120,7 +11111,6 @@ size_t& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride(
 
 // A method to set the stride size for row i
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 size_t& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::stride_host(size_t i) const {
     return mystrides_host_(i);
 }
