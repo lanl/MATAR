@@ -48,7 +48,7 @@
  * - Dual arrays for efficient host/device memory management
  * - Sparse matrix formats (CSC)
  * - Ragged arrays for irregular data structures
- * - Parallel operations using Kokkos
+ * - Parallel operations using MATAR (generally via Kokkos)
  * - Device synchronization and memory management
  */
 
@@ -62,11 +62,11 @@ using namespace mtr; // matar namespace
 int main()
 {
     /**
-     * Initialize Kokkos runtime
-     * This is required before any Kokkos operations can be performed.
+     * Initialize MATAR runtime (generally Kokkos::initialize())
+     * This is required before any MATAR operations can be performed.
      * It sets up the execution environment based on the available hardware.
      */
-    Kokkos::initialize();
+    MATAR_INITIALIZE();
     {
     // =========================
     // Dense Data Types
@@ -260,7 +260,7 @@ int main()
      *   3. Compute on device
      *   4. Transfer results back to host
      *
-     * CArrayDual = Dual C-style Array using Kokkos backend
+     * CArrayDual = Dual C-style Array
      */
     CArrayDual<int> d_carr_1D(10, "d_carr_1D");           // Name parameter helps with debugging
     CArrayDual<int> d_carr_2D(10, 10, "d_carr_2D");
@@ -300,7 +300,6 @@ int main()
      * - Common patterns: sum, min, max
      * - FOR_REDUCE_SUM macro handles the details of parallel reduction
      * - Each thread processes some elements and maintains a local sum
-     * - Kokkos combines all local sums efficiently
      */
     
     // Local variable to hold partial sums during reduction
@@ -309,7 +308,7 @@ int main()
     int sum_1D = 0;     
     
     // Parallel reduction over 1D array
-    // Note: local_sum_1D is used internally by Kokkos and needed for the pattern
+    // Note: local_sum_1D is used internally by MATAR 
     FOR_REDUCE_SUM(i, 0, 10,
                    loc_sum_1D, {
         loc_sum_1D += d_carr_1D(i);  // Add each element to local sum
@@ -515,9 +514,9 @@ int main()
     */ 
     
     // Allocate arrays for CSC representation
-    CArrayKokkos<size_t> starts(dim2 + 1); // Column start indices (length = #cols + 1)
-    CArrayKokkos<size_t> rows(nnz);        // Row indices for each non-zero
-    CArrayKokkos<int>    values(nnz);      // Values of non-zeros
+    CArrayDevice<size_t> starts(dim2 + 1); // Column start indices (length = #cols + 1)
+    CArrayDevice<size_t> rows(nnz);        // Row indices for each non-zero
+    CArrayDevice<int>    values(nnz);      // Values of non-zeros
     
     // Initialize the sparse matrix components
     // RUN executes once on device
@@ -585,15 +584,15 @@ int main()
     MATAR_FENCE();
     printf("CSCArrayDevice passes test\n");
 
-    } // End of Kokkos scope
+    } // End of MATAR runtime scope
     
     /**
-     * Finalize Kokkos runtime
+     * Finalize MATAR runtime runtime (generally Kokkos::finalize())
      * - Cleans up resources and ensures proper program termination
-     * - Required after all Kokkos operations are complete
-     * - Placed outside the Kokkos scope to ensure all operations finish first
+     * - Required after all MATAR runtime operations are complete
+     * - Placed outside the MATAR runtime scope to ensure all operations finish first
      */
-    Kokkos::finalize(); 
+    MATAR_FINALIZE();
 
     std::cout << "MATAR data types demonstration completed successfully" << std::endl;
     return 0;
