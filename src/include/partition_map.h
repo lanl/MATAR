@@ -92,13 +92,13 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t extent() const;
 
-    virtual int getLocalIndex(int global_index) const {}
+    virtual int getLocalIndex(int global_index) const {return 0;}
 
-    virtual int getGlobalIndex(int local_index) const {}
+    virtual int getGlobalIndex(int local_index) const {return 0;}
 
-    virtual bool isProcessGlobalIndex(int global_index) const {}
+    virtual bool isProcessGlobalIndex(int global_index) const {return 0;}
 
-    virtual bool isProcessLocalIndex(int local_index) const {}
+    virtual bool isProcessLocalIndex(int local_index) const {return 0;}
 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
