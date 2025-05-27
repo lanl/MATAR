@@ -6,7 +6,7 @@
 // Required for MATAR data structures
 using namespace mtr; 
 
-#define MATRIX_SIZE 1024
+#define MATRIX_SIZE 1000
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     FOR_ALL(i, 0, MATRIX_SIZE,
             j, 0, MATRIX_SIZE,
             k, 0, MATRIX_SIZE, {
-        C(i,j) += A(i,k) * B(k,j);
+        C(i,j) += A(i,k) * B(k,j); // NOTE: This is fast, but wrong!  Why?
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing

@@ -68,15 +68,13 @@ int main(int argc, char* argv[])
     Timer timer;
     timer.start();
 
-    // Perform C = A * B using fully parallel approach
-    // Note: This implementation matches memory layouts for optimal performance
-    // A is row-major (CArray), B is column-major (FArray), and C is row-major (CArray)
+    // Perform C = A * B
     FOR_ALL(i, 0, MATRIX_SIZE,
-            j, 0, MATRIX_SIZE, 
-            k, 0, MATRIX_SIZE, {
-        // Each thread atomically adds its contribution to the final result
-        // This avoids race conditions in the fully parallel implementation
-        Kokkos::atomic_add(&C(i,j), A(i,k) * B(k,j));
+            j, 0, MATRIX_SIZE,{
+
+        for(int k = 0; k < MATRIX_SIZE; k++){
+            C(i,j) += A(i,k) * B(k,j); // NOTE: This is inherently thread safe, and faster than the atomic add approach
+        }
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing

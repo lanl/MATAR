@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
     Timer timer;
     timer.start();
 
-    // Perform C = A * B, HINT:  C(i,j) += A(i,k) * B(k,j);
+    // Perform C = A * B, HINT:  C(i,j) += A(i,k) * B(k,j); (indical notation is nice)
     FOR_ALL(i, 0, MATRIX_SIZE,
             j, 0, MATRIX_SIZE,
             k, 0, MATRIX_SIZE, {
