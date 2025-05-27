@@ -182,6 +182,8 @@ void TpetraCArraySevenDimensionExample()
 
     //distributed (first dimension gets distributed) dual array with layout left
     TpetraDCArray<double> myarray(nx, ny, nz, nu, ns, nt, nw);
+    //init
+    myarray.set_values(0);
 
     //local size
     int nxlocal = myarray.dims(0);

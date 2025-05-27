@@ -124,6 +124,9 @@ void TpetraCRSMatrixExample()
     TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix2(nlocal, matrix_strides, input_crs, input_values);
     //TpetraCRSMatrix<double, Kokkos::LayoutRight> mymatrix(input_pmap, matrix_strides);
     mymatrix2.print();
+
+    //reset all values
+    mymatrix2.set_values(0);
 }
 
 void TpetraCRSMatrixMultiplyExample()
