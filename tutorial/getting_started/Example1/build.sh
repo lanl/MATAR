@@ -13,7 +13,7 @@ fi
 # Function to display usage
 usage() {
     echo "Usage: $0 [-t build_type] [-d] [-v]"
-    echo "build_type options: serial, openmp, pthreads, cuda, hip"
+    echo "build_type options: all, serial, openmp, pthreads, cuda, hip"
     echo "  -t    Specify build type (required)"
     echo "  -d    Enable debug build (optional)"
     echo "  -v    Enable vectorization verbose output (optional)"
@@ -46,99 +46,76 @@ fi
 
 # Get the directory where this script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KOKKOS_INSTALL_SCRIPT="../kokkos-install.sh"
-BUILD_DIR="${SCRIPT_DIR}/build_${build_type}"
-KOKKOS_INSTALL_DIR="${SCRIPT_DIR}/kokkos_${build_type}"
 
-# Create build directory
-mkdir -p "${BUILD_DIR}"
+# Function to build a specific backend
+build_backend() {
+    local backend=$1
+    local build_dir="${SCRIPT_DIR}/build_${backend}"
+    
+    echo "===================================================="
+    echo "Building MATAR example with ${backend} backend"
+    echo "===================================================="
+    
+    # Create build directory
+    mkdir -p "${build_dir}"
+    cd "${build_dir}"
+    
+    # Set CMake options based on flags
+    CMAKE_OPTIONS="-DKokkos_BACKEND=${backend}"
+    
+    if [ "$debug" = "true" ]; then
+        CMAKE_OPTIONS="${CMAKE_OPTIONS} -DDEBUG_BUILD=ON"
+        echo "Debug build enabled"
+    fi
+    
+    if [ "$vector_verbose" = "true" ]; then
+        CMAKE_OPTIONS="${CMAKE_OPTIONS} -DVECTOR_VERBOSE=ON"
+        echo "Vectorization verbose output enabled"
+    fi
+    
+    # Configure with CMake
+    echo "Running CMake with options: ${CMAKE_OPTIONS}"
+    cmake ${CMAKE_OPTIONS} ..
+    
+    # Build
+    echo "Building with make..."
+    make -j$(nproc)
+    
+    echo "Build for ${backend} completed!"
+    echo "Executable: ${build_dir}/matmul"
+    echo ""
+}
 
-# Add after KOKKOS_INSTALL_SCRIPT definition
-if [ ! -f "${KOKKOS_INSTALL_SCRIPT}" ]; then
-    echo "Error: Could not find kokkos-install.sh at ${KOKKOS_INSTALL_SCRIPT}"
-    exit 1
-fi
-
-# First, install Kokkos with the specified build type
-echo "Installing Kokkos with ${build_type} backend..."
-cd "${SCRIPT_DIR}"  # Ensure we're in the right directory
-if [ "$debug" = "true" ]; then
-    bash "${KOKKOS_INSTALL_SCRIPT}" -t "${build_type}" -d -p "${SCRIPT_DIR}/install"
+# Build based on the selected option
+if [ "${build_type}" = "all" ]; then
+    # Build all available backends
+    BACKENDS=("serial" "openmp" "pthreads")
+    
+    # Add CUDA if available
+    if command -v nvcc &> /dev/null; then
+        BACKENDS+=("cuda")
+    else
+        echo "CUDA not found, skipping CUDA backend build"
+    fi
+    
+    # Add HIP if available
+    if command -v hipcc &> /dev/null; then
+        BACKENDS+=("hip")
+    else
+        echo "HIP not found, skipping HIP backend build"
+    fi
+    
+    # Build each backend
+    for backend in "${BACKENDS[@]}"; do
+        build_backend "${backend}"
+    done
+    
+    echo "All builds completed!"
 else
-    bash "${KOKKOS_INSTALL_SCRIPT}" -t "${build_type}" -p "${SCRIPT_DIR}/install"
+    # Build a single backend
+    build_backend "${build_type}"
 fi
 
-# Source the Kokkos environment
-source install/setup_env.sh
-
-# Create CMakeLists.txt for the example
-cat > "${SCRIPT_DIR}/CMakeLists.txt" << EOF
-cmake_minimum_required(VERSION 3.16)
-project(MATARExample1 CXX)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(CMAKE_MODULE_PATH  ${SCRIPT_DIR}/../../../cmake/Modules)
-include(${SCRIPT_DIR}/../../../cmake/Modules/FindVector.cmake) # OPTIONAL
-
-# Find Kokkos
-find_package(CUDAToolkit REQUIRED)
-find_package(Kokkos REQUIRED)
-
-add_definitions(-DHAVE_KOKKOS=1)
-
-# Set multiple potential include paths to find MATAR
-include_directories(
-  "${SCRIPT_DIR}/../../../src/include"
-)
-
-message(STATUS "CMAKE_SOURCE_DIR absolute path: ${CMAKE_SOURCE_DIR}")
-message(STATUS "SCRIPT_DIR absolute path: ${SCRIPT_DIR}")
-message(STATUS "Primary MATAR include path: ${SCRIPT_DIR}/../MATAR")
-
-# Set compiler flags for vectorization
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_FLAGS} -O3 -fstrict-aliasing  -march=native -mtune=native   -ftree-vectorize -mprefer-vector-width=512  -fno-trapping-math -fno-math-errno  -fopenmp-simd")
-EOF
-
-# Add vectorization verbose flags if requested
-if [ "$vector_verbose" = "true" ]; then
-    cat >> "${SCRIPT_DIR}/CMakeLists.txt" << EOF
-# Enable vectorization verbose output
-set(CMAKE_CXX_FLAGS "\${CMAKE_CXX_FLAGS} \${VECTOR_CXX_VERBOSE}")
-message(STATUS "Enabling vectorization verbose output")
-EOF
-fi
-
-# Complete the CMakeLists.txt
-cat >> "${SCRIPT_DIR}/CMakeLists.txt" << EOF
-
-# Uncomment to debug if MATAR directory is not found
-# if(NOT EXISTS "${SCRIPT_DIR}/../MATAR")
-#     message(FATAL_ERROR "MATAR directory not found at: ${SCRIPT_DIR}/../MATAR")
-# endif()
-
-# Display final compiler flags
-message(STATUS "Final CXX compiler flags: \${CMAKE_CXX_FLAGS}")
-
-# Create the executable
-add_executable(matmul matmul.cpp)
-target_link_libraries(matmul Kokkos::kokkos)
-EOF
-
-# Build the example
-echo "Building matmul example..."
-cd "${BUILD_DIR}"
-
-# Configure with CMake
-cmake -DCMAKE_PREFIX_PATH="${SCRIPT_DIR}/install" -DCMAKE_INCLUDE_PATH="${SCRIPT_DIR}/../MATAR" ..
-
-# Build
-make -j$(nproc)
-
-echo "Build completed!"
-echo "The executable can be found at: ${BUILD_DIR}/matmul"
-echo ""
-echo "To run the example:"
-echo "cd ${BUILD_DIR}"
+echo "To run an example:"
+echo "cd build_<backend>"
 echo "./matmul" 
