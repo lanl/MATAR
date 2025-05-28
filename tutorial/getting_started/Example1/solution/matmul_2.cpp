@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
     // Create arrays on the device, where the device is either the CPU or GPU depending on how it is compiled
     CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
-    FArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
+    CArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
     CArrayDevice<int> C(MATRIX_SIZE, MATRIX_SIZE);
 
     // Initialize arrays (NOTE: This is on the device)
