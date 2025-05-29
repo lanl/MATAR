@@ -116,7 +116,7 @@ namespace { // (anonymous)
   /// \return The allocated Kokkos::DualView.
   template<class ST, class LO, class GO, class NT>
   typename Tpetra::LRMultiVector<ST, LO, GO, NT>::wrapped_dual_view_type
-  allocDualView (const size_t lclNumRows,
+  LRallocDualView (const size_t lclNumRows,
                  const size_t numCols,
                  const bool zeroOut = true,
                  const bool allowPadding = false)
@@ -183,7 +183,7 @@ namespace { // (anonymous)
       TEUCHOS_TEST_FOR_EXCEPTION
         (static_cast<size_t> (d_view.extent (0)) != lclNumRows ||
          static_cast<size_t> (d_view.extent (1)) != numCols, std::logic_error,
-         "allocDualView: d_view's dimensions actual dimensions do not match "
+         "LRallocDualView: d_view's dimensions actual dimensions do not match "
          "requested dimensions.  d_view is " << d_view.extent (0) << " x " <<
          d_view.extent (1) << "; requested " << lclNumRows << " x " << numCols
          << ".  Please report this bug to the Tpetra developers.");
@@ -197,7 +197,7 @@ namespace { // (anonymous)
   // T: The type of the entries of the View.
   // ExecSpace: The Kokkos execution space.
   template<class T, class ExecSpace>
-  struct MakeUnmanagedView {
+  struct LRMakeUnmanagedView {
     // The 'false' part of the branch carefully ensures that this
     // won't attempt to use a host execution space that hasn't been
     // initialized.  For example, if Kokkos::OpenMP is disabled and
@@ -231,7 +231,7 @@ namespace { // (anonymous)
 
   template<class WrappedDualViewType>
   WrappedDualViewType
-  takeSubview (const WrappedDualViewType& X,
+  LRtakeSubview (const WrappedDualViewType& X,
                const std::pair<size_t, size_t>& rowRng,
                const Kokkos::ALL_t& colRng)
 
@@ -242,7 +242,7 @@ namespace { // (anonymous)
 
   template<class WrappedDualViewType>
   WrappedDualViewType
-  takeSubview (const WrappedDualViewType& X,
+  LRtakeSubview (const WrappedDualViewType& X,
                const Kokkos::ALL_t& rowRng,
                const std::pair<size_t, size_t>& colRng)
   {
@@ -259,7 +259,7 @@ namespace { // (anonymous)
 
   template<class WrappedDualViewType>
   WrappedDualViewType
-  takeSubview (const WrappedDualViewType& X,
+  LRtakeSubview (const WrappedDualViewType& X,
                const std::pair<size_t, size_t>& rowRng,
                const std::pair<size_t, size_t>& colRng)
   {
@@ -283,7 +283,7 @@ namespace { // (anonymous)
 
   template<class WrappedOrNotDualViewType>
   size_t
-  getDualViewStride (const WrappedOrNotDualViewType& dv)
+  LRgetDualViewStride (const WrappedOrNotDualViewType& dv)
   {
     // FIXME (mfh 15 Mar 2019) DualView doesn't have a stride
     // method yet, but its Views do.
@@ -299,7 +299,7 @@ namespace { // (anonymous)
 
   template<class ViewType>
   size_t
-  getViewStride (const ViewType& view)
+  LRgetViewStride (const ViewType& view)
   {
     const size_t LDA = view.stride (1);
     const size_t numRows = view.extent (0);
@@ -309,7 +309,7 @@ namespace { // (anonymous)
 
   template <class impl_scalar_type, class buffer_device_type>
   bool
-  runKernelOnHost ( 
+  LRrunKernelOnHost ( 
     Kokkos::DualView<impl_scalar_type*, buffer_device_type> imports 
   )
   {
@@ -327,7 +327,7 @@ namespace { // (anonymous)
 
   template <class SC, class LO, class GO, class NT>
   bool
-  runKernelOnHost (const ::Tpetra::LRMultiVector<SC, LO, GO, NT>& X)
+  LRrunKernelOnHost (const ::Tpetra::LRMultiVector<SC, LO, GO, NT>& X)
   {
     if (! X.need_sync_device ()) {
       return false; // most up-to-date on device
@@ -342,7 +342,7 @@ namespace { // (anonymous)
 
   template <class SC, class LO, class GO, class NT>
   void
-  multiVectorNormImpl (typename ::Tpetra::LRMultiVector<SC, LO, GO, NT>::mag_type norms[],
+  LRmultiVectorNormImpl (typename ::Tpetra::LRMultiVector<SC, LO, GO, NT>::mag_type norms[],
                        ::Tpetra::LRMultiVector<SC, LO, GO, NT>& X,
                        const ::Tpetra::Details::EWhichNorm whichNorm)
   {
@@ -359,7 +359,7 @@ namespace { // (anonymous)
     const bool isConstantStride = X.isConstantStride ();
     const bool isDistributed = X.isDistributed ();
 
-    const bool runOnHost = runKernelOnHost (X);
+    const bool runOnHost = LRrunKernelOnHost (X);
     if (runOnHost) {
       using view_type    = typename dual_view_type::t_host;
       using array_layout = typename view_type::array_layout;
@@ -388,10 +388,10 @@ namespace Tpetra {
 
   namespace Details {
     template <typename DstView, typename SrcView>
-    struct AddAssignFunctor {
+    struct LRAddAssignFunctor {
       // This functor would be better as a lambda, but CUDA cannot compile
       // lambdas in protected functions.  It compiles fine with the functor.
-      AddAssignFunctor(DstView &tgt_, SrcView &src_) : tgt(tgt_), src(src_) {}
+      LRAddAssignFunctor(DstView &tgt_, SrcView &src_) : tgt(tgt_), src(src_) {}
 
       KOKKOS_INLINE_FUNCTION void
       operator () (const size_t k) const { tgt(k) += src(k); }
@@ -424,7 +424,7 @@ namespace Tpetra {
     ::Tpetra::Details::ProfilingRegion region ("Tpetra::MV ctor (map,numVecs,zeroOut)");
 
     const size_t lclNumRows = this->getLocalLength ();
-    view_ = allocDualView<Scalar, LocalOrdinal, GlobalOrdinal, Node> (lclNumRows, numVecs, zeroOut);
+    view_ = LRallocDualView<Scalar, LocalOrdinal, GlobalOrdinal, Node> (lclNumRows, numVecs, zeroOut);
   }
 
   template <class Scalar, class LocalOrdinal, class GlobalOrdinal, class Node>
@@ -470,7 +470,7 @@ namespace Tpetra {
     const size_t lclNumRows_map = map.is_null () ? size_t (0) :
       map->getLocalNumElements ();
     const size_t lclNumRows_view = view.extent (0);
-    const size_t LDA = getDualViewStride (view_);
+    const size_t LDA = LRgetDualViewStride (view_);
 
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows_map || lclNumRows_map != lclNumRows_view,
@@ -506,7 +506,7 @@ namespace Tpetra {
     const size_t lclNumRows_map = map.is_null () ? size_t (0) :
       map->getLocalNumElements ();
     const size_t lclNumRows_view = view.extent (0);
-    const size_t LDA = getDualViewStride (view);
+    const size_t LDA = LRgetDualViewStride (view);
 
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows_map || lclNumRows_map != lclNumRows_view,
@@ -544,7 +544,7 @@ namespace Tpetra {
 
     ::Tpetra::Details::ProfilingRegion region ("Tpetra::MV ctor (map,d_view)");
 
-    const size_t LDA = getViewStride (d_view);
+    const size_t LDA = LRgetViewStride (d_view);
     const size_t lclNumRows = map->getLocalNumElements ();
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows, std::invalid_argument, "Map does not match "
@@ -585,7 +585,7 @@ namespace Tpetra {
   {
     const char tfecfFuncName[] = "LRMultiVector(map,view,origView): ";
 
-    const size_t LDA = getDualViewStride (origView);
+    const size_t LDA = LRgetDualViewStride (origView);
     const size_t lclNumRows = this->getLocalLength (); // comes from the Map
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC(
       LDA < lclNumRows, std::invalid_argument, "The input Kokkos::DualView's "
@@ -675,7 +675,7 @@ namespace Tpetra {
 
     // If extent(1) is 0, the stride might be 0.  BLAS doesn't like
     // zero strides, so modify in that case.
-    const size_t LDA = getDualViewStride (view);
+    const size_t LDA = LRgetDualViewStride (view);
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows, std::invalid_argument,
        "LDA = " << LDA << " < this->getLocalLength() = " << lclNumRows << ".");
@@ -692,7 +692,7 @@ namespace Tpetra {
       //
       const std::pair<size_t, size_t> colRng (whichVectors[0],
                                               whichVectors[0] + 1);
-      view_ = takeSubview (view_, ALL (), colRng);
+      view_ = LRtakeSubview (view_, ALL (), colRng);
       // whichVectors_.size() == 0 means "constant stride."
       whichVectors_.clear ();
     }
@@ -759,7 +759,7 @@ namespace Tpetra {
 
     // If extent(1) is 0, the stride might be 0.  BLAS doesn't like
     // zero strides, so modify in that case.
-    const size_t LDA = getDualViewStride (view);
+    const size_t LDA = LRgetDualViewStride (view);
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows, std::invalid_argument,
        "LDA = " << LDA << " < this->getLocalLength() = " << lclNumRows << ".");
@@ -776,7 +776,7 @@ namespace Tpetra {
       //
       const std::pair<size_t, size_t> colRng (whichVectors[0],
                                               whichVectors[0] + 1);
-      view_ = takeSubview (view_, ALL (), colRng);
+      view_ = LRtakeSubview (view_, ALL (), colRng);
       // whichVectors_.size() == 0 means "constant stride."
       whichVectors_.clear ();
     }
@@ -848,7 +848,7 @@ namespace Tpetra {
 
     // If extent(1) is 0, the stride might be 0.  BLAS doesn't like
     // zero strides, so modify in that case.
-    const size_t LDA = getDualViewStride (origView);
+    const size_t LDA = LRgetDualViewStride (origView);
     TEUCHOS_TEST_FOR_EXCEPTION_CLASS_FUNC
       (LDA < lclNumRows, std::invalid_argument, "Map and DualView origView "
        "do not match.  LDA = " << LDA << " < this->getLocalLength() = " <<
@@ -866,8 +866,8 @@ namespace Tpetra {
       // offsetView works correctly.
       const std::pair<size_t, size_t> colRng (whichVectors[0],
                                               whichVectors[0] + 1);
-      view_ = takeSubview (view_, ALL (), colRng);
-      //      origView_ = takeSubview (origView_, ALL (), colRng);
+      view_ = LRtakeSubview (view_, ALL (), colRng);
+      //      origView_ = LRtakeSubview (origView_, ALL (), colRng);
       // whichVectors_.size() == 0 means "constant stride."
       whichVectors_.clear ();
     }
@@ -904,7 +904,7 @@ namespace Tpetra {
          "map->getLocalNumElements () = " << minNumEntries << ".");
     }
 
-    this->view_ = allocDualView<Scalar, LO, GO, Node> (lclNumRows, numVecs);
+    this->view_ = LRallocDualView<Scalar, LO, GO, Node> (lclNumRows, numVecs);
     //Note: X_out will be completely overwritten
     auto X_out = this->getLocalViewDevice(Access::OverwriteAll);
 
@@ -973,7 +973,7 @@ namespace Tpetra {
         << ".");
     }
 
-    view_ = allocDualView<Scalar, LO, GO, Node> (lclNumRows, numVecs);
+    view_ = LRallocDualView<Scalar, LO, GO, Node> (lclNumRows, numVecs);
     auto X_out = this->getLocalViewDevice(Access::ReadWrite);
 
     // Make sure that the type of a single input column has the same
@@ -1030,7 +1030,7 @@ namespace Tpetra {
   LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::
   getStride () const
   {
-    return isConstantStride () ? getDualViewStride (view_) : size_t (0);
+    return isConstantStride () ? LRgetDualViewStride (view_) : size_t (0);
   }
 
   template <class Scalar, class LocalOrdinal, class GlobalOrdinal, class Node>
@@ -1100,7 +1100,7 @@ namespace Tpetra {
 
     // We've already called checkSizes(), so this cast must succeed.
     MV& sourceMV = const_cast<MV &>(dynamic_cast<const MV&> (sourceObj));
-    const bool copyOnHost = runKernelOnHost(sourceMV);
+    const bool copyOnHost = LRrunKernelOnHost(sourceMV);
     const char longFuncNameHost[] = "Tpetra::LRMultiVector::copyAndPermute[Host]";
     const char longFuncNameDevice[] = "Tpetra::LRMultiVector::copyAndPermute[Device]";
     const char tfecfFuncName[] = "copyAndPermute: ";
@@ -1184,7 +1184,7 @@ namespace Tpetra {
             using range_t = 
                   Kokkos::RangePolicy<execution_space, size_t>;
             range_t rp(space, 0,numSameIDs);
-            Tpetra::Details::AddAssignFunctor<decltype(tgt_j), decltype(src_j)>
+            Tpetra::Details::LRAddAssignFunctor<decltype(tgt_j), decltype(src_j)>
                     aaf(tgt_j, src_j);
             Kokkos::parallel_for(rp, aaf);
           }
@@ -1212,7 +1212,7 @@ namespace Tpetra {
             using range_t = 
                   Kokkos::RangePolicy<execution_space, size_t>;
             range_t rp(space, 0,numSameIDs);
-            Tpetra::Details::AddAssignFunctor<decltype(tgt_j), decltype(src_j)>
+            Tpetra::Details::LRAddAssignFunctor<decltype(tgt_j), decltype(src_j)>
                     aaf(tgt_j, src_j);
             Kokkos::parallel_for(rp, aaf);
           }
@@ -1484,7 +1484,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     // We've already called checkSizes(), so this cast must succeed.
     MV& sourceMV = const_cast<MV&>(dynamic_cast<const MV&> (sourceObj));
 
-    const bool packOnHost = runKernelOnHost(sourceMV);
+    const bool packOnHost = LRrunKernelOnHost(sourceMV);
     const char longFuncNameHost[] = "Tpetra::LRMultiVector::packAndPrepare[Host]";
     const char longFuncNameDevice[] = "Tpetra::LRMultiVector::packAndPrepare[Device]";
     const char tfecfFuncName[] = "packAndPrepare: ";
@@ -1877,7 +1877,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     using Kokkos::Compat::getKokkosViewDeepCopy;
     using std::endl;
 
-    const bool unpackOnHost = runKernelOnHost(imports);
+    const bool unpackOnHost = LRrunKernelOnHost(imports);
 
     const char longFuncNameHost[] = "Tpetra::LRMultiVector::unpackAndCombine[Host]";
     const char longFuncNameDevice[] = "Tpetra::LRMultiVector::unpackAndCombine[Device]";
@@ -2206,7 +2206,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
 
     template<class RV>
     void
-    gblDotImpl (const RV& dotsOut,
+    LRgblDotImpl (const RV& dotsOut,
                 const Teuchos::RCP<const Teuchos::Comm<int> >& comm,
                 const bool distributed)
     {
@@ -2334,7 +2334,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     execution_space exec_space_instance = execution_space();
     exec_space_instance.fence();
 
-    gblDotImpl (dotsOut, comm, this->isDistributed ());
+    LRgblDotImpl (dotsOut, comm, this->isDistributed ());
   }
 
   namespace { // (anonymous)
@@ -2700,7 +2700,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     // avoids sync'ing, which could violate users' expectations.
     //
     // If we need sync to device, then host has the most recent version.
-    const bool runOnHost = runKernelOnHost(*this);
+    const bool runOnHost = LRrunKernelOnHost(*this);
     if (! runOnHost) {
       auto X = this->getLocalViewDevice(Access::OverwriteAll);
       if (this->isConstantStride ()) {
@@ -2791,7 +2791,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
       const size_t numCols = this->getNumVectors ();
 
       if (origNumRows != newNumRows || view_.extent (1) != numCols) {
-        view_ = allocDualView<ST, LO, GO, Node> (newNumRows, numCols);
+        view_ = LRallocDualView<ST, LO, GO, Node> (newNumRows, numCols);
       }
     }
     else if (newMap.is_null ()) { // Case 2: current Map is nonnull, new Map is null
@@ -2799,7 +2799,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
       // have 0 rows.  Keep the number of columns as before.
       const size_t newNumRows = static_cast<size_t> (0);
       const size_t numCols = this->getNumVectors ();
-      view_ = allocDualView<ST, LO, GO, Node> (newNumRows, numCols);
+      view_ = LRallocDualView<ST, LO, GO, Node> (newNumRows, numCols);
     }
 
     this->map_ = newMap;
@@ -3398,7 +3398,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     const range_type rowRng
       (rowOffset, rowOffset + newNumRows);
 
-    wrapped_dual_view_type newView = takeSubview (X.view_, rowRng, ALL ());
+    wrapped_dual_view_type newView = LRtakeSubview (X.view_, rowRng, ALL ());
 
     // NOTE (mfh 06 Jan 2015) Work-around to deal with Kokkos not
     // handling subviews of degenerate Views quite so well.  For some
@@ -3408,7 +3408,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     if (newView.extent (0) == 0 &&
         newView.extent (1) != X.view_.extent (1)) {
       newView =
-        allocDualView<Scalar, LO, GO, Node> (0, X.getNumVectors ());
+        LRallocDualView<Scalar, LO, GO, Node> (0, X.getNumVectors ());
     }
 
     MV subViewMV = X.isConstantStride () ?
@@ -3581,7 +3581,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     const std::pair<size_t, size_t> rows (0, lclNumRows);
     if (colRng.size () == 0) {
       const std::pair<size_t, size_t> cols (0, 0); // empty range
-      wrapped_dual_view_type X_sub = takeSubview (this->view_, ALL (), cols);
+      wrapped_dual_view_type X_sub = LRtakeSubview (this->view_, ALL (), cols);
       X_ret = rcp (new MV (this->getMap (), X_sub));
     }
     else {
@@ -3589,7 +3589,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
       if (isConstantStride ()) {
         const std::pair<size_t, size_t> cols (colRng.lbound (),
                                               colRng.ubound () + 1);
-        wrapped_dual_view_type X_sub = takeSubview (this->view_, ALL (), cols);
+        wrapped_dual_view_type X_sub = LRtakeSubview (this->view_, ALL (), cols);
         X_ret = rcp (new MV (this->getMap (), X_sub));
       }
       else {
@@ -3598,7 +3598,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
           // constant stride, even though this LRMultiVector does not.
           const std::pair<size_t, size_t> col (whichVectors_[0] + colRng.lbound (),
                                                whichVectors_[0] + colRng.ubound () + 1);
-          wrapped_dual_view_type X_sub = takeSubview (view_, ALL (), col);
+          wrapped_dual_view_type X_sub = LRtakeSubview (view_, ALL (), col);
           X_ret = rcp (new MV (this->getMap (), X_sub));
         }
         else {
@@ -3685,7 +3685,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
     const size_t jj = X.isConstantStride () ?
       static_cast<size_t> (j) :
       static_cast<size_t> (X.whichVectors_[j]);
-    this->view_ = takeSubview (X.view_, Kokkos::ALL (), range_type (jj, jj+1));
+    this->view_ = LRtakeSubview (X.view_, Kokkos::ALL (), range_type (jj, jj+1));
 
     // mfh 31 Jul 2017: It would be unwise to execute concurrent
     // Export or Import operations with different subviews of a
@@ -4536,13 +4536,13 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
   namespace Details
   {
     template<typename ViewType>
-    void print_vector(Teuchos::FancyOStream & out, const char* prefix, const ViewType& v)
+    void LRprint_vector(Teuchos::FancyOStream & out, const char* prefix, const ViewType& v)
     {
       using std::endl;
       static_assert(Kokkos::SpaceAccessibility<Kokkos::HostSpace, typename ViewType::memory_space>::accessible,
-          "Tpetra::LRMultiVector::localDescribeToString: Details::print_vector should be given a host-accessible view.");
+          "Tpetra::LRMultiVector::localDescribeToString: Details::LRprint_vector should be given a host-accessible view.");
       static_assert(ViewType::rank == 2,
-          "Tpetra::LRMultiVector::localDescribeToString: Details::print_vector should be given a rank-2 view.");
+          "Tpetra::LRMultiVector::localDescribeToString: Details::LRprint_vector should be given a rank-2 view.");
       // The square braces [] and their contents are in Matlab
       // format, so users may copy and paste directly into Matlab.
       out << "Values("<<prefix<<"): " << std::endl
@@ -4626,11 +4626,11 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
 
         if(X_dev.data() == X_host.data()) {
           // One single allocation
-          Details::print_vector(out,"unified",X_host);
+          Details::LRprint_vector(out,"unified",X_host);
         }
         else {          
-          Details::print_vector(out,"host",X_host);
-          Details::print_vector(out,"dev",X_dev);
+          Details::LRprint_vector(out,"host",X_host);
+          Details::LRprint_vector(out,"dev",X_dev);
         }
       }
     } 
@@ -4930,7 +4930,7 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
 //
 
 #ifdef HAVE_TPETRACORE_TEUCHOSNUMERICS
-#  define TPETRA_MULTIVECTOR_INSTANT(SCALAR,LO,GO,NODE) \
+#  define TPETRA_LRMULTIVECTOR_INSTANT(SCALAR,LO,GO,NODE) \
   template class LRMultiVector< SCALAR , LO , GO , NODE >; \
   template LRMultiVector< SCALAR , LO , GO , NODE > createCopy( const LRMultiVector< SCALAR , LO , GO , NODE >& src); \
   template Teuchos::RCP<LRMultiVector< SCALAR , LO , GO , NODE > > createMultiVector (const Teuchos::RCP<const Map<LO, GO, NODE> >& map, size_t numVectors); \
@@ -4938,14 +4938,14 @@ void LRMultiVector<Scalar, LocalOrdinal, GlobalOrdinal, Node>::copyAndPermute(
   template void deep_copy (Teuchos::SerialDenseMatrix<int, SCALAR>& dst, const LRMultiVector<SCALAR, LO, GO, NODE>& src);
 
 #else
-#  define TPETRA_MULTIVECTOR_INSTANT(SCALAR,LO,GO,NODE) \
+#  define TPETRA_LRMULTIVECTOR_INSTANT(SCALAR,LO,GO,NODE) \
   template class LRMultiVector< SCALAR , LO , GO , NODE >; \
   template LRMultiVector< SCALAR , LO , GO , NODE > createCopy( const LRMultiVector< SCALAR , LO , GO , NODE >& src);
 
 #endif // HAVE_TPETRACORE_TEUCHOSNUMERICS
 
 
-#define TPETRA_MULTIVECTOR_CONVERT_INSTANT(SO,SI,LO,GO,NODE) \
+#define TPETRA_LRMULTIVECTOR_CONVERT_INSTANT(SO,SI,LO,GO,NODE) \
   \
   template Teuchos::RCP< LRMultiVector< SO , LO , GO , NODE > >   \
                 LRMultiVector< SI , LO , GO , NODE >::convert< SO > () const;
