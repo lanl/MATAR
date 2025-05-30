@@ -6829,7 +6829,7 @@ public:
 
     // Method to return the dimensions of the array
     KOKKOS_INLINE_FUNCTION
-    size_t dim(size_t i) const;
+    size_t dims(size_t i) const;
     
     //setup start indices
     void data_setup(const std::string& tag_string);
@@ -7252,7 +7252,7 @@ size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(
 // A method to return the size of each dimension
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
-size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dim(size_t i) const {
+size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
     // Ensure that i is within bounds
     assert(i > 0 && "i is less than 0 in the DRaggedRightArrayKokkos class");
     assert(i < 3 && "i is greater than 2 in the DRaggedRightArrayKokkos class");
