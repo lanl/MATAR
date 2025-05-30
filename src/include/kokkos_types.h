@@ -6755,6 +6755,7 @@ public:
     Strides1D mystrides_;
     typename Strides1D::t_dev mystrides_dev_;
     typename Strides1D::t_host mystrides_host_;
+    
     StartArray start_index_;
     typename StartArray::t_dev start_index_dev_;
     typename StartArray::t_host start_index_host_;
@@ -7029,11 +7030,10 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
     
     block_length_ = 1;
 
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
-    //requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
-    mystrides_dev_ = mystrides_.view_device();
+    mystrides_ = strides_array.get_kokkos_dual_view();
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
+    
     data_setup(tag_string);
 } // End constructor
 
@@ -7051,11 +7051,10 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
 
     block_length_ = dim2;
 
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
-    //requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
-    mystrides_dev_ = mystrides_.view_device();
+    mystrides_ = strides_array.get_kokkos_dual_view();
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
+
     data_setup(tag_string);
 } // End constructor
 
@@ -7074,11 +7073,10 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::DRaggedRightAr
 
     block_length_ = dim2*dim3;  
     
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
-    //requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_ = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
-    mystrides_dev_ = mystrides_.view_device();
+    mystrides_ = strides_array.get_kokkos_dual_view();
+    mystrides_dev_ = mystrides_.d_view;
+    mystrides_host_ = mystrides_.h_view;
+
     data_setup(tag_string);
 } // End constructor
 
