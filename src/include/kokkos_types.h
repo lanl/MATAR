@@ -6823,7 +6823,7 @@ public:
 
     // method to return total size
     KOKKOS_INLINE_FUNCTION
-    size_t size(){
+    size_t size() const{
         return length_;
     }
 
@@ -8931,7 +8931,7 @@ public:
 
     // method to return total size
     KOKKOS_INLINE_FUNCTION
-    size_t size(){
+    size_t size() const{
       return length_;
     }
     
