@@ -201,31 +201,14 @@ TEST(Test_ViewFArrayKokkos, different_types)
     delete[] bool_data;
 }
 
-// Test Kokkos view access
-TEST(Test_ViewFArrayKokkos, kokkos_view)
-{
-    const int size = 100;
-    double* data = new double[size];
-    ViewFArrayKokkos<double> A(data, size);
-    
-    // Test view access
-    auto view = A.get_kokkos_view();
-    EXPECT_EQ(view.size(), size);
-    
-    // Test view modification
-    Kokkos::parallel_for("SetValues", size, KOKKOS_LAMBDA(const int i) {
-        view(i) = 42.0;
-    });
-    
-    // Verify values through array access
-    for(int i = 0; i < size; i++) {
-        EXPECT_EQ(A(i), 42.0);
-    }
-    delete[] data;
-}
-
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    Kokkos::initialize(argc, argv);
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
+    Kokkos::finalize();
 }

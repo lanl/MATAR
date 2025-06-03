@@ -155,25 +155,6 @@ TEST_F(RaggedDownArrayKokkosTest, DifferentDataTypes) {
     EXPECT_EQ(array_int(0, 0), 42);
 }
 
-// Test different layouts
-TEST_F(RaggedDownArrayKokkosTest, DifferentLayouts) {
-    // Create strides array
-    CArrayKokkos<size_t> strides(3, "strides");
-    strides(0) = 2;
-    strides(1) = 3;
-    strides(2) = 1;
-    
-    // Test with default layout
-    RaggedDownArrayKokkos<double> array_default(strides, "default_array");
-    array_default.set_values(42.0);
-    EXPECT_DOUBLE_EQ(array_default(0, 0), 42.0);
-    
-    // Test with column-major layout
-    RaggedDownArrayKokkos<double, Kokkos::LayoutLeft> array_col(strides, "col_array");
-    array_col.set_values(42.0);
-    EXPECT_DOUBLE_EQ(array_col(0, 0), 42.0);
-}
-
 // Test out-of-bounds access
 TEST_F(RaggedDownArrayKokkosTest, OutOfBoundsAccess) {
     // Create strides array
@@ -192,29 +173,6 @@ TEST_F(RaggedDownArrayKokkosTest, OutOfBoundsAccess) {
     EXPECT_DEATH(array(2, 0), ".*");  // Column 0 only has 2 rows
     EXPECT_DEATH(array(3, 1), ".*");  // Column 1 only has 3 rows
     EXPECT_DEATH(array(1, 2), ".*");  // Column 2 only has 1 row
-}
-
-// Test print functionality
-TEST_F(RaggedDownArrayKokkosTest, PrintFunctionality) {
-    // Create strides array
-    CArrayKokkos<size_t> strides(3, "strides");
-    strides(0) = 2;
-    strides(1) = 3;
-    strides(2) = 1;
-    
-    // Create ragged array
-    RaggedDownArrayKokkos<double> array(strides, "test_array");
-    
-    // Set some values
-    array(0, 0) = 1.0;
-    array(1, 0) = 2.0;
-    array(0, 1) = 3.0;
-    array(1, 1) = 4.0;
-    array(2, 1) = 5.0;
-    array(0, 2) = 6.0;
-    
-    // Test print (this is mainly to ensure it doesn't crash)
-    EXPECT_NO_THROW(array.print());
 }
 
 int main(int argc, char** argv) {

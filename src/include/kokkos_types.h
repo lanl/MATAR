@@ -1634,7 +1634,7 @@ T* ViewFMatrixKokkos<T>::pointer() const {
 template <typename T>
 void ViewFMatrixKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_(i) = val;
+        this_matrix_[i] = val;
     });
 }
 
@@ -4901,7 +4901,7 @@ T* ViewCMatrixKokkos<T>::pointer() const {
 template <typename T>
 void ViewCMatrixKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_(i) = val;
+        this_matrix_[i] = val;
     });
 }
 
@@ -6846,7 +6846,7 @@ public:
     T* device_pointer() const;
 
     //print values
-    void print() const;
+    // void print() const;
     
     //set values to input
     void set_values(T val);
@@ -8525,10 +8525,13 @@ public:
     TArray1D get_kokkos_view();
     
     //print values
-    void print() const;
+    // void print() const;
     
     //set values to input
     void set_values(T val);
+
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
 
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
@@ -8711,7 +8714,7 @@ size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(s
     return mystrides_(i);
 }
 
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
     assert(i == 0 && "RaggedRightArrayKokkos dims only supports dims(0)!");
@@ -9317,9 +9320,6 @@ public:
     KOKKOS_INLINE_FUNCTION
     RaggedDownArrayKokkos& operator= (const RaggedDownArrayKokkos &temp);
     
-    //print values
-    void print() const;
-
     // Kokkos views of strides and start indices
     Strides1D mystrides_;
     SArray1D start_index_;

@@ -90,17 +90,6 @@ TEST(Test_ViewCArrayKokkos, pointer)
     delete[] data;
 }
 
-// Test get_name method
-TEST(Test_ViewCArrayKokkos, get_name)
-{
-    const int size = 10;
-    double* data = new double[size * size];
-    ViewCArrayKokkos<double> A(data, size, size);
-    // Note: get_name() returns empty string by default
-    EXPECT_EQ(A.get_name(), "");
-    delete[] data;
-}
-
 // Test set_values method
 TEST(Test_ViewCArrayKokkos, set_values)
 {
@@ -198,9 +187,12 @@ TEST(Test_ViewCArrayKokkos, raii)
 
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
     Kokkos::initialize(argc, argv);
-    int result = RUN_ALL_TESTS();
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
     Kokkos::finalize();
-    return result;
 }

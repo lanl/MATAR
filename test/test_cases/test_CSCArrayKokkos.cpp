@@ -217,7 +217,14 @@ TEST_F(CSCArrayKokkosTest, NameManagement) {
     EXPECT_EQ(csc.get_name(), "test_csc");
 }
 
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+int main(int argc, char* argv[])
+{
+    Kokkos::initialize(argc, argv);
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
+    Kokkos::finalize();
 }

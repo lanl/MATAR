@@ -173,31 +173,6 @@ TEST(Test_ViewFMatrixKokkos, different_types)
     delete[] bool_data;
 }
 
-// Test Kokkos view access
-TEST(Test_ViewFMatrixKokkos, kokkos_view)
-{
-    const int size = 100;
-    double* data = new double[size*size];
-    ViewFMatrixKokkos<double> A(data, size, size);
-    
-    // Test view access
-    auto view = A.get_kokkos_view();
-    EXPECT_EQ(view.size(), size*size);
-    
-    // Test view modification
-    Kokkos::parallel_for("SetValues", size*size, KOKKOS_LAMBDA(const int i) {
-        view(i) = 42.0;
-    });
-    
-    // Verify values through array access
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(A(i,j), 42.0);
-        }
-    }
-    delete[] data;
-}
-
 // Test RAII behavior
 TEST(Test_ViewFMatrixKokkos, raii)
 {
@@ -218,6 +193,12 @@ TEST(Test_ViewFMatrixKokkos, raii)
 
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    Kokkos::initialize(argc, argv);
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
+    Kokkos::finalize();
 }

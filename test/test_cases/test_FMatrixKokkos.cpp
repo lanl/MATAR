@@ -275,6 +275,13 @@ TEST(Test_FMatrixKokkos, raii)
 
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    Kokkos::initialize(argc, argv);
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
+    Kokkos::finalize();
 }
+

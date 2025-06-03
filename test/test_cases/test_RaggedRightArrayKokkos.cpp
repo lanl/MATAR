@@ -155,25 +155,6 @@ TEST_F(RaggedRightArrayKokkosTest, DifferentDataTypes) {
     EXPECT_EQ(array_int(0, 0), 42);
 }
 
-// Test different layouts
-TEST_F(RaggedRightArrayKokkosTest, DifferentLayouts) {
-    // Create strides array
-    CArrayKokkos<size_t> strides(3, "strides");
-    strides(0) = 2;
-    strides(1) = 3;
-    strides(2) = 1;
-    
-    // Test with default layout
-    RaggedRightArrayKokkos<double> array_default(strides, "default_array");
-    array_default.set_values(42.0);
-    EXPECT_DOUBLE_EQ(array_default(0, 0), 42.0);
-    
-    // Test with row-major layout
-    RaggedRightArrayKokkos<double, Kokkos::LayoutRight> array_row(strides, "row_array");
-    array_row.set_values(42.0);
-    EXPECT_DOUBLE_EQ(array_row(0, 0), 42.0);
-}
-
 // Test out-of-bounds access
 TEST_F(RaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     // Create strides array

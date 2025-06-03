@@ -236,9 +236,12 @@ TEST(Test_DCMatrixKokkos, lock_unlock_update)
 
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
     Kokkos::initialize(argc, argv);
-    int result = RUN_ALL_TESTS();
+    {  
+        int result = 0;
+        testing::InitGoogleTest(&argc, argv);
+        result = RUN_ALL_TESTS();
+        return result;
+    }
     Kokkos::finalize();
-    return result;
 }
