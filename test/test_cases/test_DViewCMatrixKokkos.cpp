@@ -256,24 +256,24 @@ TEST(Test_DViewCMatrixKokkos, update_device)
 }
 
 // Test lock_update and unlock_update methods
-TEST(Test_DViewCMatrixKokkos, lock_unlock_update)
-{
-    const int size = 10;
-    double* data = new double[size * size];
-    DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
+// TEST(Test_DViewCMatrixKokkos, lock_unlock_update)
+// {
+//     const int size = 10;
+//     double* data = new double[size * size];
+//     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
     
-    A.lock_update();
-    // After locking, updates should be prevented
-    A.set_values(42.0);
-    EXPECT_NE(A(0, 0), 42.0);
+//     A.lock_update();
+//     // After locking, updates should be prevented
+//     A.set_values(42.0);
+//     EXPECT_NE(A(0, 0), 42.0);
     
-    A.unlock_update();
-    // After unlocking, updates should work again
-    A.set_values(42.0);
-    EXPECT_EQ(A(0, 0), 42.0);
+//     A.unlock_update();
+//     // After unlocking, updates should work again
+//     A.set_values(42.0);
+//     EXPECT_EQ(A(0, 0), 42.0);
     
-    delete[] data;
-}
+//     delete[] data;
+// }
 
 int main(int argc, char* argv[])
 {

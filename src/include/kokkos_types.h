@@ -8711,6 +8711,15 @@ size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(s
     return mystrides_(i);
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
+    assert(i == 0 && "RaggedRightArrayKokkos dims only supports dims(0)!");
+    return dim1_;
+
+}
+
+
 // Method to build the stride (non-Kokkos push back)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -9298,6 +9307,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
     // Get the name of the view
     KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
@@ -9610,6 +9622,13 @@ const std::string RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>
     return array_.label();
 }
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
+    assert(i != 0 && "RaggedDownArrayKokkos only supports dims(0) to get size of the strides");
+    return dim2_;
+}
+
 // Destructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
@@ -9867,6 +9886,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
 
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
     //return the view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_view();
@@ -9958,6 +9980,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < 3 && "DynamicRaggedDownArrayKokkos dims only supports dims(0) or dims(1)!");
+    if(i == 0) return dim1_;
+    if(i == 1) return dim2_;
 }
 
 // overload operator () to access data as an array(i,j)

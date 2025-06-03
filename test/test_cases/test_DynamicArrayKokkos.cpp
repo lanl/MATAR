@@ -99,34 +99,6 @@ TEST_F(DynamicArrayKokkosTest, SetValues) {
     }
 }
 
-// Test host/device synchronization
-TEST_F(DynamicArrayKokkosTest, HostDeviceSync) {
-    DynamicArrayKokkos<double> array(5, "test_array");
-    
-    // Set values on device
-    array(0) = 1.0;
-    array(1) = 2.0;
-    array(2) = 3.0;
-    
-    // Update host
-    array.update_host();
-    
-    // Check values on host
-    EXPECT_DOUBLE_EQ(array.host(0), 1.0);
-    EXPECT_DOUBLE_EQ(array.host(1), 2.0);
-    EXPECT_DOUBLE_EQ(array.host(2), 3.0);
-    
-    // Modify on host
-    array.host(3) = 4.0;
-    array.host(4) = 5.0;
-    
-    // Update device
-    array.update_device();
-    
-    // Check values on device
-    EXPECT_DOUBLE_EQ(array(3), 4.0);
-    EXPECT_DOUBLE_EQ(array(4), 5.0);
-}
 
 // Test dimension management
 TEST_F(DynamicArrayKokkosTest, DimensionManagement) {

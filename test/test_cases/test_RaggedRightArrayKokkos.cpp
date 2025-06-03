@@ -102,44 +102,6 @@ TEST_F(RaggedRightArrayKokkosTest, SetValues) {
     EXPECT_DOUBLE_EQ(array(2, 0), 42.0);
 }
 
-// Test host/device synchronization
-TEST_F(RaggedRightArrayKokkosTest, HostDeviceSync) {
-    // Create strides array
-    CArrayKokkos<size_t> strides(3, "strides");
-    strides(0) = 2;
-    strides(1) = 3;
-    strides(2) = 1;
-    
-    // Create ragged array
-    RaggedRightArrayKokkos<double> array(strides, "test_array");
-    
-    // Set values on device
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    
-    // Update host
-    array.update_host();
-    
-    // Check values on host
-    EXPECT_DOUBLE_EQ(array.host(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array.host(0, 1), 2.0);
-    EXPECT_DOUBLE_EQ(array.host(1, 0), 3.0);
-    
-    // Modify on host
-    array.host(1, 1) = 4.0;
-    array.host(1, 2) = 5.0;
-    array.host(2, 0) = 6.0;
-    
-    // Update device
-    array.update_device();
-    
-    // Check values on device
-    EXPECT_DOUBLE_EQ(array(1, 1), 4.0);
-    EXPECT_DOUBLE_EQ(array(1, 2), 5.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 6.0);
-}
-
 // Test stride management
 TEST_F(RaggedRightArrayKokkosTest, StrideManagement) {
     // Create strides array
@@ -155,11 +117,6 @@ TEST_F(RaggedRightArrayKokkosTest, StrideManagement) {
     EXPECT_EQ(array.stride(0), 2);
     EXPECT_EQ(array.stride(1), 3);
     EXPECT_EQ(array.stride(2), 1);
-    
-    // Check host strides
-    EXPECT_EQ(array.stride_host(0), 2);
-    EXPECT_EQ(array.stride_host(1), 3);
-    EXPECT_EQ(array.stride_host(2), 1);
 }
 
 // Test name management

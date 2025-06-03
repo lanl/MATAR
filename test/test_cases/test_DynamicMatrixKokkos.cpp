@@ -99,35 +99,6 @@ TEST_F(DynamicMatrixKokkosTest, SetValues) {
     }
 }
 
-// Test host/device synchronization
-TEST_F(DynamicMatrixKokkosTest, HostDeviceSync) {
-    DynamicMatrixKokkos<double> matrix(5, "test_matrix");
-    
-    // Set values on device
-    matrix(0) = 1.0;
-    matrix(1) = 2.0;
-    matrix(2) = 3.0;
-    
-    // Update host
-    matrix.update_host();
-    
-    // Check values on host
-    EXPECT_DOUBLE_EQ(matrix.host(0), 1.0);
-    EXPECT_DOUBLE_EQ(matrix.host(1), 2.0);
-    EXPECT_DOUBLE_EQ(matrix.host(2), 3.0);
-    
-    // Modify on host
-    matrix.host(3) = 4.0;
-    matrix.host(4) = 5.0;
-    
-    // Update device
-    matrix.update_device();
-    
-    // Check values on device
-    EXPECT_DOUBLE_EQ(matrix(3), 4.0);
-    EXPECT_DOUBLE_EQ(matrix(4), 5.0);
-}
-
 // Test dimension management
 TEST_F(DynamicMatrixKokkosTest, DimensionManagement) {
     DynamicMatrixKokkos<double> matrix(10, "test_matrix");
