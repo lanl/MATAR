@@ -1,5 +1,5 @@
-#include "matar.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
+#include <matar.h>
 #include <stdio.h>
 
 using namespace mtr; // matar namespace
@@ -173,9 +173,4 @@ TEST_F(RaggedDownArrayKokkosTest, OutOfBoundsAccess) {
     EXPECT_DEATH(array(2, 0), ".*");  // Column 0 only has 2 rows
     EXPECT_DEATH(array(3, 1), ".*");  // Column 1 only has 3 rows
     EXPECT_DEATH(array(1, 2), ".*");  // Column 2 only has 1 row
-}
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }

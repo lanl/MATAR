@@ -1,8 +1,5 @@
-#include "matar.h"
-#include "gtest/gtest.h"
-#include <stdio.h>
-
-using namespace mtr; // matar namespace
+#include <gtest/gtest.h>
+#include <matar.h>
 
 using namespace mtr;
 
@@ -10,8 +7,8 @@ class CSCArrayKokkosTest : public ::testing::Test {
 protected:
     void SetUp() override {
         // Common setup code for all tests
-        dim1 = 4;  // rows
-        dim2 = 4;  // columns
+        dim1 = 4;  // number of rows
+        dim2 = 4;  // number of columns
         nnz = 6;   // number of non-zero elements
     }
 
@@ -215,16 +212,4 @@ TEST_F(CSCArrayKokkosTest, NameManagement) {
 
     // Test name management
     EXPECT_EQ(csc.get_name(), "test_csc");
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
 }

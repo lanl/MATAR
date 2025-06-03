@@ -1,5 +1,5 @@
-#include "matar.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
+#include <matar.h>
 #include <stdio.h>
 
 using namespace mtr; // matar namespace
@@ -199,16 +199,4 @@ TEST(Test_ViewFArrayKokkos, different_types)
     C.set_values(true);
     EXPECT_EQ(true, C(5));
     delete[] bool_data;
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
 }

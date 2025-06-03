@@ -174,8 +174,3 @@ TEST_F(RaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     EXPECT_DEATH(array(1, 3), ".*");  // Row 1 only has 3 columns
     EXPECT_DEATH(array(2, 1), ".*");  // Row 2 only has 1 column
 }
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
