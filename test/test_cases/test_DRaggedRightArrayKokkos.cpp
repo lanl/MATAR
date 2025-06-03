@@ -30,7 +30,7 @@ TEST_F(DRaggedRightArrayKokkosTest, DefaultConstructor) {
 // Test constructor with CArrayKokkos strides
 TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithCArrayKokkos) {
     // Create strides array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides( 3);
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -52,7 +52,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithCArrayKokkos) {
 // Test constructor with DCArrayKokkos strides
 TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithDCArrayKokkos) {
     // Create strides array
-    DCArrayKokkos<size_t> strides("strides", 3);
+    DCArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -94,7 +94,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithRawArray) {
 // Test 2D array access
 TEST_F(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
     // Create strides array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -125,7 +125,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
 // Test host access
 TEST_F(DRaggedRightArrayKokkosTest, HostAccess) {
     // Create strides array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -164,7 +164,7 @@ TEST_F(DRaggedRightArrayKokkosTest, HostAccess) {
 // Test vector constructor
 TEST_F(DRaggedRightArrayKokkosTest, VectorConstructor) {
     // Create strides array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -196,7 +196,7 @@ TEST_F(DRaggedRightArrayKokkosTest, VectorConstructor) {
 // Test tensor constructor
 TEST_F(DRaggedRightArrayKokkosTest, TensorConstructor) {
     // Create strides array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -228,7 +228,7 @@ TEST_F(DRaggedRightArrayKokkosTest, TensorConstructor) {
 // Test copy assignment
 TEST_F(DRaggedRightArrayKokkosTest, CopyAssignment) {
     // Create first array
-    CArrayKokkos<size_t> strides1("strides1", 3);
+    CArrayKokkos<size_t> strides1(3, "strides1");
     strides1(0) = 2;
     strides1(1) = 3;
     strides1(2) = 1;
@@ -236,7 +236,7 @@ TEST_F(DRaggedRightArrayKokkosTest, CopyAssignment) {
     array1.set_values(1.0);
     
     // Create second array
-    CArrayKokkos<size_t> strides2("strides2", 3);
+    CArrayKokkos<size_t> strides2(3, "strides2");
     strides2(0) = 2;
     strides2(1) = 3;
     strides2(2) = 1;
@@ -258,7 +258,7 @@ TEST_F(DRaggedRightArrayKokkosTest, CopyAssignment) {
 // Test get_name
 TEST_F(DRaggedRightArrayKokkosTest, GetName) {
     // Create array with custom name
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     DRaggedRightArrayKokkos<double> array(strides, "test_array");
     
     // Check name
@@ -268,7 +268,7 @@ TEST_F(DRaggedRightArrayKokkosTest, GetName) {
 // Test set_values
 TEST_F(DRaggedRightArrayKokkosTest, SetValues) {
     // Create array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -289,7 +289,7 @@ TEST_F(DRaggedRightArrayKokkosTest, SetValues) {
 // Test stride_host
 TEST_F(DRaggedRightArrayKokkosTest, StrideHost) {
     // Create array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;
@@ -304,7 +304,7 @@ TEST_F(DRaggedRightArrayKokkosTest, StrideHost) {
 // Test device_pointer and host_pointer
 TEST_F(DRaggedRightArrayKokkosTest, Pointers) {
     // Create array
-    CArrayKokkos<size_t> strides("strides", 3);
+    CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
     strides(1) = 3;
     strides(2) = 1;

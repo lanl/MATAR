@@ -7545,7 +7545,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_value
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 const std::string DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
-    return this_array_.label();
+    return this_array_.h_view.label();
 }
 
 // Destructor
@@ -11039,6 +11039,12 @@ public:
     T& operator()(size_t i, size_t j) const;
     
     T& host(size_t i, size_t j) const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t dim1() const;
+
+    KOKKOS_INLINE_FUNCTION
+    size_t dim2() const;
     
     // Overload copy assignment operator
     KOKKOS_INLINE_FUNCTION
@@ -11118,6 +11124,19 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const{
     return length_;
+}
+
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dim2() const {
+    return dim2_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dim1() const{
+    return dim1_;
 }
 
 // Overload operator() to access data as array(i,j),
@@ -11238,7 +11257,7 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return array_.label();
+    return array_.view_host().label();
 }
 
 // Destructor

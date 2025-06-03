@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-#include <Kokkos_Core.hpp>
-#include <kokkos_types.h>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
 #include <vector>
 
 using namespace mtr; // matar namespace

@@ -1,5 +1,8 @@
-#include <gtest/gtest.h>
-#include <matar.h>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
+
+using namespace mtr; // matar namespace
 
 using namespace mtr;
 

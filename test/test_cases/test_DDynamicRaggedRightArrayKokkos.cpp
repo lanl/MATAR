@@ -172,7 +172,7 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, KokkosViewAccess) {
     auto view = array.get_kokkos_dual_view();
 
     // Verify view is not null
-    EXPECT_NE(view.data(), nullptr);
+    EXPECT_NE(view.h_view.data(), nullptr);
 }
 
 int main(int argc, char** argv) {

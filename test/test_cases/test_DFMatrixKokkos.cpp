@@ -34,7 +34,7 @@ TEST(Test_DFMatrixKokkos, default_constructor)
     DFMatrixKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.order(), 0);
-    EXPECT_EQ(A.pointer(), nullptr);
+    EXPECT_EQ(A.host_pointer(), nullptr);
 }
 
 // Test size function
@@ -76,7 +76,7 @@ TEST(Test_DFMatrixKokkos, pointer)
 {
     const int size = 100;
     DFMatrixKokkos<double> A(size, size);
-    EXPECT_NE(A.pointer(), nullptr);
+    EXPECT_NE(A.host_pointer(), nullptr);
 }
 
 // Test get_name function
@@ -97,7 +97,7 @@ TEST(Test_DFMatrixKokkos, late_init)
     A = DFMatrixKokkos<double>(size, size);
     EXPECT_EQ(size*size, A.size());
     EXPECT_EQ(2, A.order());
-    EXPECT_NE(A.pointer(), nullptr);
+    EXPECT_NE(A.host_pointer(), nullptr);
 }
 
 // Test assignment operator

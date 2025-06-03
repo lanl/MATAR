@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-#include "kokkos_types.h"
-#include <Kokkos_Core.hpp>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
 
 using namespace mtr; // matar namespace
 
@@ -99,21 +99,24 @@ TEST_F(CSRArrayKokkosTest, IteratorFunctions) {
     CArrayKokkos<size_t> column(nnz);
     
     // Initialize data
-    Kokkos::parallel_for("InitData", nnz, KOKKOS_LAMBDA(const int i) {
+    FOR_ALL(i, 0, nnz,{
         data(i) = i + 1.5;
         column(i) = i % 3;
     });
     
     // Initialize row pointers
-    Kokkos::parallel_for("InitRow", dim1 + 1, KOKKOS_LAMBDA(const int i) {
+    FOR_ALL(i, 0, nnz,{
         row(i) = i * 2;
     });
-    
+
+
     CSRArrayKokkos<double> csr(data, row, column, dim1, dim2, "test_csr");
+
+
     
     // Test begin/end iterators
-    EXPECT_EQ(csr.begin(0), data.data());  // First row starts at beginning
-    EXPECT_EQ(csr.end(0), data.data() + 2);  // First row ends at index 2
+    EXPECT_EQ(csr.begin(0), &data(0));  // First row starts at beginning
+    EXPECT_EQ(csr.end(0), &data(2));  // First row ends at index 2
     
     // Test begin_index/end_index
     EXPECT_EQ(csr.begin_index(0), 0);  // First row starts at index 0

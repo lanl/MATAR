@@ -34,7 +34,7 @@ TEST(Test_DFArrayKokkos, default_constructor)
     DFArrayKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.order(), 0);
-    EXPECT_EQ(A.pointer(), nullptr);
+    EXPECT_EQ(A.host_pointer(), nullptr);
 }
 
 // Test size function
@@ -76,7 +76,7 @@ TEST(Test_DFArrayKokkos, pointer)
 {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
-    EXPECT_NE(A.pointer(), nullptr);
+    EXPECT_NE(A.host_pointer(), nullptr);
 }
 
 // Test get_name function

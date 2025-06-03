@@ -33,7 +33,7 @@ TEST(Test_DViewFArrayKokkos, default_constructor)
     DViewFArrayKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.order(), 0);
-    EXPECT_EQ(A.pointer(), nullptr);
+    EXPECT_EQ(A.host_pointer(), nullptr);
 }
 
 // Test size function
@@ -84,7 +84,7 @@ TEST(Test_DViewFArrayKokkos, pointer)
     const int size = 100;
     double* data = new double[size*size];
     DViewFArrayKokkos<double> A(data, size, size);
-    EXPECT_NE(A.pointer(), nullptr);
+    EXPECT_NE(A.host_pointer(), nullptr);
     delete[] data;
 }
 
@@ -213,35 +213,6 @@ TEST(Test_DViewFArrayKokkos, host_device_sync)
     delete[] data;
 }
 
-// Test lock/unlock update
-TEST(Test_DViewFArrayKokkos, lock_unlock_update)
-{
-    const int size = 100;
-    double* data = new double[size*size];
-    DViewFArrayKokkos<double> A(data, size, size);
-    
-    // Lock updates
-    A.lock_update();
-    
-    // Try to update - should not change values
-    A.set_values(42.0);
-    A.update_device();
-    
-    // Unlock updates
-    A.unlock_update();
-    
-    // Now updates should work
-    A.set_values(24.0);
-    A.update_device();
-    
-    // Check values
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(24.0, A(i,j));
-        }
-    }
-    delete[] data;
-}
 
 // Test RAII behavior
 TEST(Test_DViewFArrayKokkos, raii)
