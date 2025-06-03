@@ -3,6 +3,8 @@
 #include <kokkos_types.h>
 #include <vector>
 
+using namespace mtr; // matar namespace
+
 // Helper function to create and return a CMatrixKokkos object
 CMatrixKokkos<double> return_CMatrixKokkos(int dims, std::vector<int> sizes, const std::string& tag_string = "test_matrix")
 {

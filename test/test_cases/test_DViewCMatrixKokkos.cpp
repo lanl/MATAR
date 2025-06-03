@@ -1,7 +1,11 @@
-#include <gtest/gtest.h>
-#include <Kokkos_Core.hpp>
-#include <kokkos_types.h>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
 #include <vector>
+
+using namespace mtr; // matar namespace
+
+
 
 // Helper function to create and return a DViewCMatrixKokkos object
 DViewCMatrixKokkos<double> return_DViewCMatrixKokkos(int dims, std::vector<int> sizes, double* data, const std::string& tag_string = "test_matrix")

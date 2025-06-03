@@ -2,6 +2,8 @@
 #include "kokkos_types.h"
 #include <Kokkos_Core.hpp>
 
+using namespace mtr; // matar namespace
+
 // Test fixture for CSRArrayKokkos tests
 class CSRArrayKokkosTest : public ::testing::Test {
 protected:

@@ -1,7 +1,10 @@
-#include <gtest/gtest.h>
-#include <Kokkos_Core.hpp>
-#include <kokkos_types.h>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
 #include <vector>
+
+using namespace mtr; // matar namespace
+
 
 // Helper function to create and return a ViewCArrayKokkos object
 ViewCArrayKokkos<double> return_ViewCArrayKokkos(int dims, std::vector<int> sizes, double* data)

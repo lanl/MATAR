@@ -1,6 +1,9 @@
-#include <gtest/gtest.h>
-#include "kokkos_types.h"
-#include <Kokkos_Core.hpp>
+#include "matar.h"
+#include "gtest/gtest.h"
+#include <stdio.h>
+
+using namespace mtr; // matar namespace
+
 
 // Test fixture for DRaggedRightArrayKokkos tests
 class DRaggedRightArrayKokkosTest : public ::testing::Test {
