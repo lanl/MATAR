@@ -62,9 +62,9 @@ TEST(Test_ViewFMatrixKokkos, dims)
     const int size = 100;
     double* data = new double[size*size*size];
     ViewFMatrixKokkos<double> A(data, size, size, size);
-    EXPECT_EQ(size, A.dims(0));
     EXPECT_EQ(size, A.dims(1));
     EXPECT_EQ(size, A.dims(2));
+    EXPECT_EQ(size, A.dims(3));
     delete[] data;
 }
 
@@ -96,8 +96,8 @@ TEST(Test_ViewFMatrixKokkos, set_values)
     ViewFMatrixKokkos<double> A(data, size, size);
     
     A.set_values(42.0);
-    for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
+    for(int i = 1; i <= size; i++){
+        for(int j = 1; j <= size; j++){
             EXPECT_EQ(42.0, A(i,j));
         }
     }
@@ -112,17 +112,17 @@ TEST(Test_ViewFMatrixKokkos, operator_access)
     ViewFMatrixKokkos<double> A(data, size, size, size);
     
     // Test 3D access
-    for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
-            for(int k = 0; k < size; k++){
+    for(int i = 1; i <= size; i++){
+        for(int j = 1; j <= size; j++){
+            for(int k = 1; k <= size; k++){
                 A(i,j,k) = i*100 + j*10 + k;
             }
         }
     }
     
-    for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
-            for(int k = 0; k < size; k++){
+    for(int i = 1; i <= size; i++){
+        for(int j = 1; j <= size; j++){
+            for(int k = 1; k <= size; k++){
                 EXPECT_EQ(i*100 + j*10 + k, A(i,j,k));
             }
         }

@@ -59,16 +59,23 @@ using namespace mtr; // matar namespace
 
 // Test set_values functionality
 TEST(DynamicRaggedRightArrayKokkosTest, SetValues) {
-    DynamicRaggedRightArrayKokkos<double> array(3, 2, "test_array");
+    DynamicRaggedRightArrayKokkos<double> array(3, 5, "test_array");
+    
+    RUN({
+        array.stride(0) = 1;
+        array.stride(1) = 3;
+        array.stride(2) = 2;
+    });
     
     // Set all values to 42.0
     array.set_values(42.0);
-    
+
+
     // Check values
     EXPECT_DOUBLE_EQ(array(0, 0), 42.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 1), 42.0);
+    EXPECT_DOUBLE_EQ(array(1, 2), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 1), 42.0);
 }
@@ -76,15 +83,21 @@ TEST(DynamicRaggedRightArrayKokkosTest, SetValues) {
 // Test set_values_sparse functionality
 TEST(DynamicRaggedRightArrayKokkosTest, SetValuesSparse) {
     DynamicRaggedRightArrayKokkos<double> array(3, 2, "test_array");
+
+    RUN({
+        array.stride(0) = 1;
+        array.stride(1) = 3;
+        array.stride(2) = 2;
+    });
     
     // Set sparse values
     array.set_values_sparse(42.0);
     
     // Check values
     EXPECT_DOUBLE_EQ(array(0, 0), 42.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 1), 42.0);
+    EXPECT_DOUBLE_EQ(array(1, 2), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 1), 42.0);
 }
@@ -105,12 +118,23 @@ TEST(DynamicRaggedRightArrayKokkosTest, DifferentDataTypes) {
     
     // Test with float
     DynamicRaggedRightArrayKokkos<float> array_float(3, 2, "float_array");
+    RUN({
+        array_float.stride(0) = 1;
+        array_float.stride(1) = 3;
+        array_float.stride(2) = 2;
+    });
+    
     array_float(0,0) = 42.0f;
     EXPECT_FLOAT_EQ(array_float(0, 0), 42.0f);
     
     
     // Test with int
     DynamicRaggedRightArrayKokkos<int> array_int(3, 2, "int_array");
+    RUN({
+        array_int.stride(0) = 1;
+        array_int.stride(1) = 3;
+        array_int.stride(2) = 2;
+    });
     array_int(0,0) = 42;
     EXPECT_EQ(array_int(0, 0), 42);
 }

@@ -112,20 +112,17 @@ TEST(Test_ViewCArrayKokkos, operator_access)
     
     // Test 1D access
     data[0] = 1.0;
-    EXPECT_EQ(A(0), 1.0);
+    EXPECT_DEATH(A(0), ".*");
     
     // Test 3D access
     data[size * size + size + 1] = 2.0;
     EXPECT_EQ(A(1, 1, 1), 2.0);
     
     // Test 5D access
-    data[size * size * size * size + size * size * size + size * size + size + 1] = 3.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1), 3.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
     
     // Test 7D access
-    data[size * size * size * size * size * size + size * size * size * size * size + 
-         size * size * size * size + size * size * size + size * size + size + 1] = 4.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1, 1, 1), 4.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1), ".*");
     
     delete[] data;
 }

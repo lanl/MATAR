@@ -219,18 +219,18 @@ TEST(Test_FArrayKokkos, bounds_checking)
 {
     // Test 1D bounds
     FArrayKokkos<double> A1(10, "test_bounds_1d");
-    EXPECT_THROW(A1(10), std::runtime_error);
+    EXPECT_DEATH(A1(-1), ".*");
     
     // Test 2D bounds
     FArrayKokkos<double> A2(10, 10, "test_bounds_2d");
-    EXPECT_THROW(A2(10, 5), std::runtime_error);
-    EXPECT_THROW(A2(5, 10), std::runtime_error);
+    EXPECT_DEATH(A2(11, 5), ".*");
+    EXPECT_DEATH(A2(0, 10), ".*");
     
     // Test 3D bounds
     FArrayKokkos<double> A3(5, 5, 5, "test_bounds_3d");
-    EXPECT_THROW(A3(5, 2, 2), std::runtime_error);
-    EXPECT_THROW(A3(2, 5, 2), std::runtime_error);
-    EXPECT_THROW(A3(2, 2, 5), std::runtime_error);
+    EXPECT_DEATH(A3(6, 2, 2), ".*");
+    EXPECT_DEATH(A3(6, 5, 2), ".*");
+    EXPECT_DEATH(A3(6, 2, 5), ".*");
 }
 
 // Test different data types

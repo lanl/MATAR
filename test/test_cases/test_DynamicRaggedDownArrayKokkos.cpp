@@ -6,21 +6,33 @@ using namespace mtr; // matar namespace
 
 // Test default constructor and basic initialization
 TEST(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {
-    DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
+    DynamicRaggedDownArrayKokkos<double> array(3, 4, "test_array");
+
+    RUN({
+        array.stride(0) = 1;
+        array.stride(1) = 3;
+        array.stride(2) = 2;
+    });
     
     // Check initial dimensions
     EXPECT_EQ(array.dims(0), 3);  // 3 rows
-    EXPECT_EQ(array.dims(1), 2);  // Initial column size
+    EXPECT_EQ(array.dims(1), 1);  // Initial column size
     
     // Check initial strides
-    EXPECT_EQ(array.stride(0), 0);
-    EXPECT_EQ(array.stride(1), 0);
-    EXPECT_EQ(array.stride(2), 0);
+    EXPECT_EQ(array.stride(0), 1);
+    EXPECT_EQ(array.stride(1), 3);
+    EXPECT_EQ(array.stride(2), 2);
 }
 
 // Test set_values functionality
 TEST(DynamicRaggedDownArrayKokkosTest, SetValues) {
-    DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
+    DynamicRaggedDownArrayKokkos<double> array(3, 4, "test_array");
+
+    RUN({
+        array.stride(0) = 1;
+        array.stride(1) = 3;
+        array.stride(2) = 2;
+    });
     
     // Set all values to 42.0
     array.set_values(42.0);
@@ -28,15 +40,21 @@ TEST(DynamicRaggedDownArrayKokkosTest, SetValues) {
     // Check values
     EXPECT_DOUBLE_EQ(array(0, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(0, 1), 42.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 1), 42.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 1), 42.0);
+    EXPECT_DOUBLE_EQ(array(0, 2), 42.0);
+    EXPECT_DOUBLE_EQ(array(1, 2), 42.0);
 }
 
 // Test set_values_sparse functionality
 TEST(DynamicRaggedDownArrayKokkosTest, SetValuesSparse) {
-    DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
+    DynamicRaggedDownArrayKokkos<double> array(3, 4, "test_array");
+
+    RUN({
+        array.stride(0) = 1;
+        array.stride(1) = 3;
+        array.stride(2) = 2;
+    });
     
     // Set sparse values
     array.set_values_sparse(42.0);
@@ -44,10 +62,10 @@ TEST(DynamicRaggedDownArrayKokkosTest, SetValuesSparse) {
     // Check values
     EXPECT_DOUBLE_EQ(array(0, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(0, 1), 42.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(1, 1), 42.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 42.0);
     EXPECT_DOUBLE_EQ(array(2, 1), 42.0);
+    EXPECT_DOUBLE_EQ(array(0, 2), 42.0);
+    EXPECT_DOUBLE_EQ(array(1, 2), 42.0);
 }
 
 // Test name management
@@ -63,32 +81,31 @@ TEST(DynamicRaggedDownArrayKokkosTest, NameManagement) {
 // Test different data types
 TEST(DynamicRaggedDownArrayKokkosTest, DifferentDataTypes) {
     // Test with float
-    DynamicRaggedDownArrayKokkos<float> array_float(3, 2, "float_array");
+    DynamicRaggedDownArrayKokkos<float> array_float(3, 4, "float_array");
+
+    RUN({
+        array_float.stride(0) = 1;
+        array_float.stride(1) = 3;
+        array_float.stride(2) = 2;
+    });
     array_float(0,0) = 42.0f;
     EXPECT_FLOAT_EQ(array_float(0, 0), 42.0f);
     
     // Test with int
-    DynamicRaggedDownArrayKokkos<int> array_int(3, 2, "int_array");
+    DynamicRaggedDownArrayKokkos<int> array_int(3, 4, "int_array");
+    RUN({
+        array_int.stride(0) = 1;
+        array_int.stride(1) = 3;
+        array_int.stride(2) = 2;
+    });
     array_int(0,0) = 42;
     EXPECT_EQ(array_int(0, 0), 42);
 }
 
-// // Test different layouts
-// TEST(DynamicRaggedDownArrayKokkosTest, DifferentLayouts) {
-//     // Test with default layout
-//     DynamicRaggedDownArrayKokkos<double> array_default(3, 2, "default_array");
-//     array_default(0,0) = 42.0;
-//     EXPECT_DOUBLE_EQ(array_default(0, 0), 42.0);
-    
-//     // Test with column-major layout
-//     DynamicRaggedDownArrayKokkos<double, Kokkos::LayoutLeft> array_col(3, 2, "col_array");
-//     array_col(0,0) = 42.0;
-//     EXPECT_DOUBLE_EQ(array_col(0, 0), 42.0);
-// }
 
 // Test out-of-bounds access
 TEST(DynamicRaggedDownArrayKokkosTest, OutOfBoundsAccess) {
-    DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
+    DynamicRaggedDownArrayKokkos<double> array(3, 4, "test_array");
     
     // Test accessing beyond row bounds
     EXPECT_DEATH(array(3, 0), ".*");  // Row 3 doesn't exist

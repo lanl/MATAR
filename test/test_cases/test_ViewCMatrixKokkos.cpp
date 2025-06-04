@@ -63,9 +63,9 @@ TEST(Test_ViewCMatrixKokkos, dims)
     const int size = 10;
     double* data = new double[size * size * size];
     ViewCMatrixKokkos<double> A(data, size, size, size);
-    EXPECT_EQ(A.dims(0), size);
     EXPECT_EQ(A.dims(1), size);
     EXPECT_EQ(A.dims(2), size);
+    EXPECT_EQ(A.dims(3), size);
     delete[] data;
 }
 
@@ -110,25 +110,20 @@ TEST(Test_ViewCMatrixKokkos, operator_access)
     ViewCMatrixKokkos<double> A(data, size, size, size);
     
     // Test 1D access
-    data[0] = 1.0;
-    EXPECT_EQ(A(0), 1.0);
+    EXPECT_DEATH(A(0), ".*");
     
     // Test 2D access
-    data[size + 1] = 2.0;
-    EXPECT_EQ(A(1, 1), 2.0);
+    EXPECT_DEATH(A(1, 1), ".*");
     
     // Test 3D access
     data[size * size + size + 1] = 3.0;
     EXPECT_EQ(A(1, 1, 1), 3.0);
     
     // Test 5D access
-    data[size * size * size * size + size * size * size + size * size + size + 1] = 4.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1), 4.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
     
     // Test 7D access
-    data[size * size * size * size * size * size + size * size * size * size * size + 
-         size * size * size * size + size * size * size + size * size + size + 1] = 5.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1, 1, 1), 5.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1), ".*");
     
     delete[] data;
 }
@@ -141,7 +136,7 @@ TEST(Test_ViewCMatrixKokkos, bounds_checking)
     ViewCMatrixKokkos<double> A(data, size, size);
     
     // Test out of bounds access
-    EXPECT_DEATH(A(size, size), ".*");
+    EXPECT_DEATH(A(0, 0), ".*");
     EXPECT_DEATH(A(10000, 10000), ".*");
     
     delete[] data;
@@ -200,7 +195,7 @@ TEST(Test_ViewCMatrixKokkos, copy_constructor)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
+    EXPECT_EQ(B(1, 1), A(1, 1));
     
     delete[] data;
 }
@@ -218,7 +213,7 @@ TEST(Test_ViewCMatrixKokkos, assignment_operator)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
+    EXPECT_EQ(B(1, 1), A(1, 1));
     
     delete[] data;
 }
