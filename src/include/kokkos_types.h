@@ -9643,7 +9643,7 @@ const std::string RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
-    assert(i != 0 && "RaggedDownArrayKokkos only supports dims(0) to get size of the strides");
+    assert(i == 0 && "RaggedDownArrayKokkos only supports dims(0) to get size of the strides");
     return dim2_;
 }
 
