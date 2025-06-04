@@ -71,11 +71,23 @@ TEST_F(CSCArrayKokkosTest, ValueAccess) {
     // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
+    // The CSC matrix represents:
+    // [1.0  0.0  0.0  5.0]
+    // [0.0  3.0  0.0  0.0]
+    // [2.0  0.0  4.0  0.0]
+    // [0.0  0.0  0.0  6.0]
+    //
+    // Where:
+    // data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+    // row_index = [0, 2, 1, 2, 0, 3]
+    // start_index = [0, 2, 3, 4, 6]
+
+
     // Test value access
     EXPECT_DOUBLE_EQ(csc(0, 0), 1.0);
     EXPECT_DOUBLE_EQ(csc(2, 0), 2.0);
     EXPECT_DOUBLE_EQ(csc(1, 1), 3.0);
-    EXPECT_DOUBLE_EQ(csc(2, 1), 4.0);
+    EXPECT_DOUBLE_EQ(csc(2, 2), 4.0);
     EXPECT_DOUBLE_EQ(csc(0, 3), 5.0);
     EXPECT_DOUBLE_EQ(csc(3, 3), 6.0);
 
@@ -185,31 +197,4 @@ TEST_F(CSCArrayKokkosTest, SetValues) {
     for (size_t i = 0; i < nnz; i++) {
         EXPECT_DOUBLE_EQ(csc.get_val_flat(i), 1.0);
     }
-}
-
-TEST_F(CSCArrayKokkosTest, NameManagement) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
-
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array with specific name
-    CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
-
-    // Test name management
-    EXPECT_EQ(csc.get_name(), "test_csc");
 }

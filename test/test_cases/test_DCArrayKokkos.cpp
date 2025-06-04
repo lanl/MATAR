@@ -265,18 +265,18 @@ TEST(Test_DCArrayKokkos, bounds_checking)
 {
     // Test 1D bounds
     DCArrayKokkos<double> A1(10, "test_bounds_1d");
-    EXPECT_THROW(A1.host(10), std::runtime_error);
+    EXPECT_DEATH(A1.host(10), "");
     
     // Test 2D bounds
     DCArrayKokkos<double> A2(10, 10, "test_bounds_2d");
-    EXPECT_THROW(A2.host(10, 5), std::runtime_error);
-    EXPECT_THROW(A2.host(5, 10), std::runtime_error);
+    EXPECT_DEATH(A2.host(10, 5), "");
+    EXPECT_DEATH(A2.host(5, 10), "");
     
     // Test 3D bounds
     DCArrayKokkos<double> A3(5, 5, 5, "test_bounds_3d");
-    EXPECT_THROW(A3.host(5, 2, 2), std::runtime_error);
-    EXPECT_THROW(A3.host(2, 5, 2), std::runtime_error);
-    EXPECT_THROW(A3.host(2, 2, 5), std::runtime_error);
+    EXPECT_DEATH(A3.host(5, 2, 2), "");
+    EXPECT_DEATH(A3.host(2, 5, 2), "");
+    EXPECT_DEATH(A3.host(2, 2, 5), "");
 }
 
 // Test different data types
@@ -305,16 +305,4 @@ TEST(Test_DCArrayKokkos, different_types)
     for(int i = 0; i < 10; i++) {
         EXPECT_TRUE(A_bool.host(i));
     }
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
 }

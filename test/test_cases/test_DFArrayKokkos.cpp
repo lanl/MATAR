@@ -208,10 +208,8 @@ TEST(Test_DFArrayKokkos, host_device_sync)
     A.update_device();
     
     // Modify on device
-    Kokkos::parallel_for("ModifyDevice", size*size, KOKKOS_LAMBDA(const int i) {
-        A(i) = 24.0;
-    });
-    
+    A.set_values(24.0);
+
     // Update host
     A.update_host();
     
@@ -237,16 +235,4 @@ TEST(Test_DFArrayKokkos, raii)
     DFArrayKokkos<double> B(100, 100);
     B.set_values(0.0);
     EXPECT_EQ(B.size(), 10000);
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
 }

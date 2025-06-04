@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <Kokkos_Core.hpp>
+#include "matar.h"
 
 int main(int argc, char** argv) {
     Kokkos::initialize(argc, argv);

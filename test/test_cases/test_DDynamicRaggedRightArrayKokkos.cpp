@@ -7,6 +7,7 @@ using namespace mtr; // matar namespace
 
 class DDynamicRaggedRightArrayKokkosTest : public ::testing::Test {
 protected:
+    size_t dim1, dim2;
     void SetUp() override {
         // Common setup code for all tests
         dim1 = 4;  // number of rows
@@ -17,7 +18,7 @@ protected:
         // Common cleanup code for all tests
     }
 
-    size_t dim1, dim2;
+    
 };
 
 TEST_F(DDynamicRaggedRightArrayKokkosTest, Constructor) {
@@ -48,6 +49,11 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, ValueAccess) {
     // Create DDynamicRaggedRightArrayKokkos
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
 
+
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
+
     // Set some values
     array(0, 0) = 1.0;
     array(0, 1) = 2.0;
@@ -77,6 +83,10 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValues) {
     // Create DDynamicRaggedRightArrayKokkos
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
 
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
+
     // Set some initial values
     array(0, 0) = 1.0;
     array(0, 1) = 2.0;
@@ -101,6 +111,10 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValuesSparse) {
     // Create DDynamicRaggedRightArrayKokkos
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
 
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
+
     // Set some initial values
     array(0, 0) = 1.0;
     array(0, 1) = 2.0;
@@ -124,6 +138,10 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValuesSparse) {
 TEST_F(DDynamicRaggedRightArrayKokkosTest, UpdateFunctions) {
     // Create DDynamicRaggedRightArrayKokkos
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
+
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
 
     // Set some values
     array(0, 0) = 1.0;
@@ -152,6 +170,10 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, NameManagement) {
     // Create DDynamicRaggedRightArrayKokkos with specific name
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
 
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
+
     // Test name management
     EXPECT_EQ(array.get_name(), "test_array");
 }
@@ -159,6 +181,10 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, NameManagement) {
 TEST_F(DDynamicRaggedRightArrayKokkosTest, KokkosViewAccess) {
     // Create DDynamicRaggedRightArrayKokkos
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
+
+    FOR_ALL(i, 0, dim1, {
+        array.stride(i) = dim2;
+    }); // end parallel for
 
     // Set some values
     array(0, 0) = 1.0;
@@ -173,16 +199,4 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, KokkosViewAccess) {
 
     // Verify view is not null
     EXPECT_NE(view.h_view.data(), nullptr);
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
 }

@@ -4,22 +4,8 @@
 
 using namespace mtr; // matar namespace
 
-// Test fixture for DynamicRaggedDownArrayKokkos tests
-class DynamicRaggedDownArrayKokkosTest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        // Initialize Kokkos
-        Kokkos::initialize();
-    }
-
-    void TearDown() override {
-        // Finalize Kokkos
-        Kokkos::finalize();
-    }
-};
-
 // Test default constructor and basic initialization
-TEST_F(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {
+TEST(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     
     // Check initial dimensions
@@ -33,7 +19,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {
 }
 
 // Test set_values functionality
-TEST_F(DynamicRaggedDownArrayKokkosTest, SetValues) {
+TEST(DynamicRaggedDownArrayKokkosTest, SetValues) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     
     // Set all values to 42.0
@@ -49,7 +35,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, SetValues) {
 }
 
 // Test set_values_sparse functionality
-TEST_F(DynamicRaggedDownArrayKokkosTest, SetValuesSparse) {
+TEST(DynamicRaggedDownArrayKokkosTest, SetValuesSparse) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     
     // Set sparse values
@@ -65,7 +51,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, SetValuesSparse) {
 }
 
 // Test name management
-TEST_F(DynamicRaggedDownArrayKokkosTest, NameManagement) {
+TEST(DynamicRaggedDownArrayKokkosTest, NameManagement) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     EXPECT_EQ(array.get_name(), "test_array");
     
@@ -75,7 +61,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, NameManagement) {
 }
 
 // Test different data types
-TEST_F(DynamicRaggedDownArrayKokkosTest, DifferentDataTypes) {
+TEST(DynamicRaggedDownArrayKokkosTest, DifferentDataTypes) {
     // Test with float
     DynamicRaggedDownArrayKokkos<float> array_float(3, 2, "float_array");
     array_float(0,0) = 42.0f;
@@ -88,7 +74,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, DifferentDataTypes) {
 }
 
 // // Test different layouts
-// TEST_F(DynamicRaggedDownArrayKokkosTest, DifferentLayouts) {
+// TEST(DynamicRaggedDownArrayKokkosTest, DifferentLayouts) {
 //     // Test with default layout
 //     DynamicRaggedDownArrayKokkos<double> array_default(3, 2, "default_array");
 //     array_default(0,0) = 42.0;
@@ -101,7 +87,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, DifferentDataTypes) {
 // }
 
 // Test out-of-bounds access
-TEST_F(DynamicRaggedDownArrayKokkosTest, OutOfBoundsAccess) {
+TEST(DynamicRaggedDownArrayKokkosTest, OutOfBoundsAccess) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     
     // Test accessing beyond row bounds
@@ -112,7 +98,7 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, OutOfBoundsAccess) {
 }
 
 // Test get_kokkos_view
-TEST_F(DynamicRaggedDownArrayKokkosTest, GetKokkosDualView) {
+TEST(DynamicRaggedDownArrayKokkosTest, GetKokkosDualView) {
     DynamicRaggedDownArrayKokkos<double> array(3, 2, "test_array");
     
     // Get the dual view
@@ -120,9 +106,4 @@ TEST_F(DynamicRaggedDownArrayKokkosTest, GetKokkosDualView) {
     
     // Check that the view is valid
     EXPECT_TRUE(view.data() != nullptr);
-}
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }

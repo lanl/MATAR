@@ -303,15 +303,3 @@ TEST(Test_FArrayKokkos, raii)
     B.set_values(0.0);
     EXPECT_EQ(B.size(), 100);
 }
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
-}

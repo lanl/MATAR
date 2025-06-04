@@ -4,23 +4,8 @@
 
 using namespace mtr; // matar namespace
 
-
-// Test fixture for DRaggedRightArrayKokkos tests
-class DRaggedRightArrayKokkosTest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        // Initialize Kokkos
-        Kokkos::initialize();
-    }
-
-    void TearDown() override {
-        // Finalize Kokkos
-        Kokkos::finalize();
-    }
-};
-
 // Test default constructor
-TEST_F(DRaggedRightArrayKokkosTest, DefaultConstructor) {
+TEST(DRaggedRightArrayKokkosTest, DefaultConstructor) {
     DRaggedRightArrayKokkos<double> array;
     EXPECT_EQ(array.dims(0), 0);
     EXPECT_EQ(array.dims(1), 0);
@@ -28,7 +13,7 @@ TEST_F(DRaggedRightArrayKokkosTest, DefaultConstructor) {
 }
 
 // Test constructor with CArrayKokkos strides
-TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithCArrayKokkos) {
+TEST(DRaggedRightArrayKokkosTest, ConstructorWithCArrayKokkos) {
     // Create strides array
     CArrayKokkos<size_t> strides( 3);
     strides(0) = 2;
@@ -50,7 +35,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithCArrayKokkos) {
 }
 
 // Test constructor with DCArrayKokkos strides
-TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithDCArrayKokkos) {
+TEST(DRaggedRightArrayKokkosTest, ConstructorWithDCArrayKokkos) {
     // Create strides array
     DCArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -73,7 +58,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithDCArrayKokkos) {
 }
 
 // Test constructor with raw array strides
-TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithRawArray) {
+TEST(DRaggedRightArrayKokkosTest, ConstructorWithRawArray) {
     // Create strides array
     size_t strides[3] = {2, 3, 1};
     
@@ -92,7 +77,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ConstructorWithRawArray) {
 }
 
 // Test 2D array access
-TEST_F(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
+TEST(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -123,7 +108,7 @@ TEST_F(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
 }
 
 // Test host access
-TEST_F(DRaggedRightArrayKokkosTest, HostAccess) {
+TEST(DRaggedRightArrayKokkosTest, HostAccess) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -162,7 +147,7 @@ TEST_F(DRaggedRightArrayKokkosTest, HostAccess) {
 }
 
 // Test vector constructor
-TEST_F(DRaggedRightArrayKokkosTest, VectorConstructor) {
+TEST(DRaggedRightArrayKokkosTest, VectorConstructor) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -194,7 +179,7 @@ TEST_F(DRaggedRightArrayKokkosTest, VectorConstructor) {
 }
 
 // Test tensor constructor
-TEST_F(DRaggedRightArrayKokkosTest, TensorConstructor) {
+TEST(DRaggedRightArrayKokkosTest, TensorConstructor) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -226,7 +211,7 @@ TEST_F(DRaggedRightArrayKokkosTest, TensorConstructor) {
 }
 
 // Test copy assignment
-TEST_F(DRaggedRightArrayKokkosTest, CopyAssignment) {
+TEST(DRaggedRightArrayKokkosTest, CopyAssignment) {
     // Create first array
     CArrayKokkos<size_t> strides1(3, "strides1");
     strides1(0) = 2;
@@ -256,7 +241,7 @@ TEST_F(DRaggedRightArrayKokkosTest, CopyAssignment) {
 }
 
 // Test get_name
-TEST_F(DRaggedRightArrayKokkosTest, GetName) {
+TEST(DRaggedRightArrayKokkosTest, GetName) {
     // Create array with custom name
     CArrayKokkos<size_t> strides(3, "strides");
     DRaggedRightArrayKokkos<double> array(strides, "test_array");
@@ -266,7 +251,7 @@ TEST_F(DRaggedRightArrayKokkosTest, GetName) {
 }
 
 // Test set_values
-TEST_F(DRaggedRightArrayKokkosTest, SetValues) {
+TEST(DRaggedRightArrayKokkosTest, SetValues) {
     // Create array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -287,7 +272,7 @@ TEST_F(DRaggedRightArrayKokkosTest, SetValues) {
 }
 
 // Test stride_host
-TEST_F(DRaggedRightArrayKokkosTest, StrideHost) {
+TEST(DRaggedRightArrayKokkosTest, StrideHost) {
     // Create array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -302,7 +287,7 @@ TEST_F(DRaggedRightArrayKokkosTest, StrideHost) {
 }
 
 // Test device_pointer and host_pointer
-TEST_F(DRaggedRightArrayKokkosTest, Pointers) {
+TEST(DRaggedRightArrayKokkosTest, Pointers) {
     // Create array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -314,8 +299,3 @@ TEST_F(DRaggedRightArrayKokkosTest, Pointers) {
     EXPECT_NE(array.device_pointer(), nullptr);
     EXPECT_NE(array.host_pointer(), nullptr);
 }
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-} 

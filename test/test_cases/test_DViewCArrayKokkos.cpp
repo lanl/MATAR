@@ -5,8 +5,6 @@
 
 using namespace mtr; // matar namespace
 
-
-
 // Helper function to create and return a DViewCArrayKokkos object
 DViewCArrayKokkos<double> return_DViewCArrayKokkos(int dims, std::vector<int> sizes, double* data, const std::string& tag_string = "test_array")
 {
@@ -88,6 +86,7 @@ TEST(Test_DViewCArrayKokkos, get_name)
     double* data = new double[size * size];
     DViewCArrayKokkos<double> A(data, size, size, "test_array");
     EXPECT_EQ(A.get_name(), "test_array");
+    
     delete[] data;
 }
 
@@ -112,25 +111,20 @@ TEST(Test_DViewCArrayKokkos, operator_access)
     DViewCArrayKokkos<double> A(data, size, size, size, "test_array");
     
     // Test 1D access
-    data[0] = 1.0;
-    EXPECT_EQ(A(0), 1.0);
+    EXPECT_DEATH(A(0), ".*");
     
     // Test 2D access
-    data[size + 1] = 2.0;
-    EXPECT_EQ(A(1, 1), 2.0);
+    EXPECT_DEATH(A(1, 1), ".*");
     
     // Test 3D access
     data[size * size + size + 1] = 3.0;
     EXPECT_EQ(A(1, 1, 1), 3.0);
     
     // Test 5D access
-    data[size * size * size * size + size * size * size + size * size + size + 1] = 4.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1), 4.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
     
     // Test 7D access
-    data[size * size * size * size * size * size + size * size * size * size * size + 
-         size * size * size * size + size * size * size + size * size + size + 1] = 5.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1, 1, 1), 5.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1), ".*");
     
     delete[] data;
 }
@@ -270,15 +264,3 @@ TEST(Test_DViewCArrayKokkos, update_device)
     
 //     delete[] data;
 // }
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
-}

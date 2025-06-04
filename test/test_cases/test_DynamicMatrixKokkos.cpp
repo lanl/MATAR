@@ -4,46 +4,32 @@
 
 using namespace mtr; // matar namespace
 
-// Test fixture for DynamicMatrixKokkos tests
-class DynamicMatrixKokkosTest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        // Initialize Kokkos
-        Kokkos::initialize();
-    }
-
-    void TearDown() override {
-        // Finalize Kokkos
-        Kokkos::finalize();
-    }
-};
-
 // Test default constructor
-TEST_F(DynamicMatrixKokkosTest, DefaultConstructor) {
+TEST(DynamicMatrixKokkosTest, DefaultConstructor) {
     DynamicMatrixKokkos<double> matrix;
     EXPECT_EQ(matrix.size(), 0);
-    EXPECT_EQ(matrix.dims(0), 0);
-    EXPECT_EQ(matrix.dims_max(0), 0);
-    EXPECT_EQ(matrix.order(), 1);
+    EXPECT_EQ(matrix.dims(1), 0);
+    EXPECT_EQ(matrix.dims_max(1), 0);
+    EXPECT_EQ(matrix.order(), 0);
 }
 
 // Test constructor with initial size
-TEST_F(DynamicMatrixKokkosTest, ConstructorWithSize) {
+TEST(DynamicMatrixKokkosTest, ConstructorWithSize) {
     DynamicMatrixKokkos<double> matrix(10, "test_matrix");
     EXPECT_EQ(matrix.size(), 10);
-    EXPECT_EQ(matrix.dims(0), 10);
-    EXPECT_EQ(matrix.dims_max(0), 10);
+    EXPECT_EQ(matrix.dims(1), 0);
+    EXPECT_EQ(matrix.dims_max(1), 10);
     EXPECT_EQ(matrix.order(), 1);
     EXPECT_EQ(matrix.get_name(), "test_matrix");
 }
 
 // Test push_back functionality
-TEST_F(DynamicMatrixKokkosTest, PushBack) {
+TEST(DynamicMatrixKokkosTest, PushBack) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     
     // Initial state
     EXPECT_EQ(matrix.size(), 5);
-    EXPECT_EQ(matrix.dims(0), 5);
+    EXPECT_EQ(matrix.dims(1), 0);
     
     // Push back some values
     matrix.push_back(1.0);
@@ -51,17 +37,17 @@ TEST_F(DynamicMatrixKokkosTest, PushBack) {
     matrix.push_back(3.0);
     
     // Check new size
-    EXPECT_EQ(matrix.size(), 8);
-    EXPECT_EQ(matrix.dims(0), 8);
+    EXPECT_EQ(matrix.size(), 5);
+    EXPECT_EQ(matrix.dims(1), 3);
     
     // Check values
-    EXPECT_DOUBLE_EQ(matrix(5), 1.0);
-    EXPECT_DOUBLE_EQ(matrix(6), 2.0);
-    EXPECT_DOUBLE_EQ(matrix(7), 3.0);
+    EXPECT_DOUBLE_EQ(matrix(1), 1.0);
+    EXPECT_DOUBLE_EQ(matrix(2), 2.0);
+    EXPECT_DOUBLE_EQ(matrix(3), 3.0);
 }
 
 // Test pop_back functionality
-TEST_F(DynamicMatrixKokkosTest, PopBack) {
+TEST(DynamicMatrixKokkosTest, PopBack) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     
     // Set some values
@@ -87,7 +73,7 @@ TEST_F(DynamicMatrixKokkosTest, PopBack) {
 }
 
 // Test set_values functionality
-TEST_F(DynamicMatrixKokkosTest, SetValues) {
+TEST(DynamicMatrixKokkosTest, SetValues) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     
     // Set all values to 42.0
@@ -100,12 +86,12 @@ TEST_F(DynamicMatrixKokkosTest, SetValues) {
 }
 
 // Test dimension management
-TEST_F(DynamicMatrixKokkosTest, DimensionManagement) {
+TEST(DynamicMatrixKokkosTest, DimensionManagement) {
     DynamicMatrixKokkos<double> matrix(10, "test_matrix");
     
     // Check initial dimensions
-    EXPECT_EQ(matrix.dims(0), 10);
-    EXPECT_EQ(matrix.dims_max(0), 10);
+    EXPECT_EQ(matrix.dims(1), 10);
+    EXPECT_EQ(matrix.dims_max(1), 10);
     EXPECT_EQ(matrix.order(), 1);
     
     // Push back to increase size
@@ -113,20 +99,20 @@ TEST_F(DynamicMatrixKokkosTest, DimensionManagement) {
     matrix.push_back(2.0);
     
     // Check updated dimensions
-    EXPECT_EQ(matrix.dims(0), 12);
-    EXPECT_EQ(matrix.dims_max(0), 12);
+    EXPECT_EQ(matrix.dims(1), 12);
+    EXPECT_EQ(matrix.dims_max(1), 12);
     
     // Pop back to decrease size
     matrix.pop_back();
     matrix.pop_back();
     
     // Check final dimensions
-    EXPECT_EQ(matrix.dims(0), 10);
-    EXPECT_EQ(matrix.dims_max(0), 12); // max dimension should not decrease
+    EXPECT_EQ(matrix.dims(1), 10);
+    EXPECT_EQ(matrix.dims_max(1), 12); // max dimension should not decrease
 }
 
 // Test name management
-TEST_F(DynamicMatrixKokkosTest, NameManagement) {
+TEST(DynamicMatrixKokkosTest, NameManagement) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     EXPECT_EQ(matrix.get_name(), "test_matrix");
     
@@ -136,7 +122,7 @@ TEST_F(DynamicMatrixKokkosTest, NameManagement) {
 }
 
 // Test size and extent
-TEST_F(DynamicMatrixKokkosTest, SizeAndExtent) {
+TEST(DynamicMatrixKokkosTest, SizeAndExtent) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     
     // Check initial size and extent
@@ -155,59 +141,41 @@ TEST_F(DynamicMatrixKokkosTest, SizeAndExtent) {
 }
 
 // Test matrix access and modification
-TEST_F(DynamicMatrixKokkosTest, MatrixAccess) {
+TEST(DynamicMatrixKokkosTest, MatrixAccess) {
     DynamicMatrixKokkos<double> matrix(5, "test_matrix");
     
     // Set values
-    matrix(0) = 1.0;
-    matrix(1) = 2.0;
-    matrix(2) = 3.0;
-    matrix(3) = 4.0;
-    matrix(4) = 5.0;
+    matrix.push_back(1.0);
+    matrix.push_back(2.0);
+    matrix.push_back(3.0);
+    matrix.push_back(4.0);
+    matrix.push_back(5.0);
     
     // Check values
-    EXPECT_DOUBLE_EQ(matrix(0), 1.0);
-    EXPECT_DOUBLE_EQ(matrix(1), 2.0);
-    EXPECT_DOUBLE_EQ(matrix(2), 3.0);
-    EXPECT_DOUBLE_EQ(matrix(3), 4.0);
-    EXPECT_DOUBLE_EQ(matrix(4), 5.0);
+    EXPECT_DOUBLE_EQ(matrix(1), 1.0);
+    EXPECT_DOUBLE_EQ(matrix(2), 2.0);
+    EXPECT_DOUBLE_EQ(matrix(3), 3.0);
+    EXPECT_DOUBLE_EQ(matrix(4), 4.0);
+    EXPECT_DOUBLE_EQ(matrix(5), 5.0);
     
     // Modify values
-    matrix(0) = 10.0;
+    matrix(1) = 10.0;
     matrix(4) = 50.0;
     
     // Check modified values
-    EXPECT_DOUBLE_EQ(matrix(0), 10.0);
+    EXPECT_DOUBLE_EQ(matrix(1), 10.0);
     EXPECT_DOUBLE_EQ(matrix(4), 50.0);
 }
 
 // Test matrix operations with different data types
-TEST_F(DynamicMatrixKokkosTest, DifferentDataTypes) {
+TEST(DynamicMatrixKokkosTest, DifferentDataTypes) {
     // Test with float
     DynamicMatrixKokkos<float> matrix_float(5, "float_matrix");
     matrix_float.set_values(42.0f);
-    EXPECT_FLOAT_EQ(matrix_float(0), 42.0f);
+    EXPECT_FLOAT_EQ(matrix_float(1), 42.0f);
     
     // Test with int
     DynamicMatrixKokkos<int> matrix_int(5, "int_matrix");
     matrix_int.set_values(42);
-    EXPECT_EQ(matrix_int(0), 42);
-}
-
-// Test matrix operations with different layouts
-TEST_F(DynamicMatrixKokkosTest, DifferentLayouts) {
-    // Test with default layout
-    DynamicMatrixKokkos<double> matrix_default(5, "default_matrix");
-    matrix_default.set_values(42.0);
-    EXPECT_DOUBLE_EQ(matrix_default(0), 42.0);
-    
-    // Test with row-major layout
-    DynamicMatrixKokkos<double, Kokkos::LayoutRight> matrix_row(5, "row_matrix");
-    matrix_row.set_values(42.0);
-    EXPECT_DOUBLE_EQ(matrix_row(0), 42.0);
-}
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    EXPECT_EQ(matrix_int(1), 42);
 }

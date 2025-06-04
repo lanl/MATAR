@@ -5,8 +5,6 @@
 
 using namespace mtr; // matar namespace
 
-
-
 // Helper function to create and return a DViewCMatrixKokkos object
 DViewCMatrixKokkos<double> return_DViewCMatrixKokkos(int dims, std::vector<int> sizes, double* data, const std::string& tag_string = "test_matrix")
 {
@@ -48,7 +46,7 @@ TEST(Test_DViewCMatrixKokkos, constructor_1d)
     EXPECT_EQ(A.size(), size);
     EXPECT_EQ(A.extent(), size);
     EXPECT_EQ(A.order(), 1);
-    EXPECT_EQ(A.dims(0), size);
+    EXPECT_EQ(A.dims(1), size);
     delete[] data;
 }
 
@@ -61,8 +59,8 @@ TEST(Test_DViewCMatrixKokkos, constructor_2d)
     EXPECT_EQ(A.size(), size * size);
     EXPECT_EQ(A.extent(), size * size);
     EXPECT_EQ(A.order(), 2);
-    EXPECT_EQ(A.dims(0), size);
     EXPECT_EQ(A.dims(1), size);
+    EXPECT_EQ(A.dims(2), size);
     delete[] data;
 }
 
@@ -75,9 +73,9 @@ TEST(Test_DViewCMatrixKokkos, constructor_3d)
     EXPECT_EQ(A.size(), size * size * size);
     EXPECT_EQ(A.extent(), size * size * size);
     EXPECT_EQ(A.order(), 3);
-    EXPECT_EQ(A.dims(0), size);
     EXPECT_EQ(A.dims(1), size);
     EXPECT_EQ(A.dims(2), size);
+    EXPECT_EQ(A.dims(3), size);
     delete[] data;
 }
 
@@ -100,8 +98,8 @@ TEST(Test_DViewCMatrixKokkos, set_values)
     A.set_values(42.0);
     
     // Check if all values are set correctly
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
+    for(int i = 1; i <= size; i++) {
+        for(int j = 1; j <= size; j++) {
             EXPECT_EQ(A(i, j), 42.0);
         }
     }
@@ -116,24 +114,20 @@ TEST(Test_DViewCMatrixKokkos, operator_access)
     DViewCMatrixKokkos<double> A(data, size, size, size, "test_matrix");
     
     // Test 1D access
-    A(0) = 1.0;
-    EXPECT_EQ(A(0), 1.0);
+    EXPECT_DEATH(A(0), ".*");
     
     // Test 2D access
-    A(1, 1) = 2.0;
-    EXPECT_EQ(A(1, 1), 2.0);
+    EXPECT_DEATH(A(1, 1), ".*");
     
     // Test 3D access
     A(1, 1, 1) = 3.0;
     EXPECT_EQ(A(1, 1, 1), 3.0);
     
     // Test 5D access
-    A(1, 1, 1, 1, 1) = 4.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1), 4.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
     
     // Test 7D access
-    A(1, 1, 1, 1, 1, 1, 1) = 5.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1, 1, 1), 5.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1), ".*");
     
     delete[] data;
 }
@@ -146,7 +140,7 @@ TEST(Test_DViewCMatrixKokkos, bounds_checking)
     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
     
     // Test out of bounds access
-    EXPECT_DEATH(A(size, size), ".*");
+    EXPECT_DEATH(A(0, 0), ".*");
     EXPECT_DEATH(A(10000, 10000), ".*");
     
     delete[] data;
@@ -161,21 +155,21 @@ TEST(Test_DViewCMatrixKokkos, different_types)
     int* data_int = new int[size * size];
     DViewCMatrixKokkos<int> A(data_int, size, size, "test_matrix");
     A.set_values(42);
-    EXPECT_EQ(A(0, 0), 42);
+    EXPECT_EQ(A(1, 1), 42);
     delete[] data_int;
     
     // Test with float
     float* data_float = new float[size * size];
     DViewCMatrixKokkos<float> B(data_float, size, size, "test_matrix");
     B.set_values(42.0f);
-    EXPECT_FLOAT_EQ(B(0, 0), 42.0f);
+    EXPECT_FLOAT_EQ(B(1, 1), 42.0f);
     delete[] data_float;
     
     // Test with bool
     bool* data_bool = new bool[size * size];
     DViewCMatrixKokkos<bool> C(data_bool, size, size, "test_matrix");
     C.set_values(true);
-    EXPECT_EQ(C(0, 0), true);
+    EXPECT_EQ(C(1, 1), true);
     delete[] data_bool;
 }
 
@@ -187,7 +181,7 @@ TEST(Test_DViewCMatrixKokkos, raii)
     {
         DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
         A.set_values(42.0);
-        EXPECT_EQ(A(0, 0), 42.0);
+        EXPECT_EQ(A(1, 1), 42.0);
     } // A goes out of scope here
     delete[] data;
 }
@@ -204,7 +198,7 @@ TEST(Test_DViewCMatrixKokkos, copy_constructor)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
+    EXPECT_EQ(B(1, 1), A(1, 1));
     
     delete[] data;
 }
@@ -223,7 +217,7 @@ TEST(Test_DViewCMatrixKokkos, assignment_operator)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
+    EXPECT_EQ(B(1, 1), A(1, 1));
     
     delete[] data;
     delete[] data2;
@@ -238,7 +232,7 @@ TEST(Test_DViewCMatrixKokkos, update_host)
     A.set_values(42.0);
     A.update_host();
     // After update_host, host data should be synchronized
-    EXPECT_EQ(A(0, 0), 42.0);
+    EXPECT_EQ(A(1, 1), 42.0);
     delete[] data;
 }
 
@@ -251,7 +245,7 @@ TEST(Test_DViewCMatrixKokkos, update_device)
     A.set_values(42.0);
     A.update_device();
     // After update_device, device data should be synchronized
-    EXPECT_EQ(A(0, 0), 42.0);
+    EXPECT_EQ(A(1, 1), 42.0);
     delete[] data;
 }
 
@@ -274,16 +268,3 @@ TEST(Test_DViewCMatrixKokkos, update_device)
     
 //     delete[] data;
 // }
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
-}
-

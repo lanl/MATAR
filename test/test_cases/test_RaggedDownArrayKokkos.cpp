@@ -4,22 +4,8 @@
 
 using namespace mtr; // matar namespace
 
-// Test fixture for RaggedDownArrayKokkos tests
-class RaggedDownArrayKokkosTest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        // Initialize Kokkos
-        Kokkos::initialize();
-    }
-
-    void TearDown() override {
-        // Finalize Kokkos
-        Kokkos::finalize();
-    }
-};
-
 // Test constructor with strides array
-TEST_F(RaggedDownArrayKokkosTest, ConstructorWithStrides) {
+TEST(RaggedDownArrayKokkosTest, ConstructorWithStrides) {
     // Create a strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;  // First column has 2 elements
@@ -37,7 +23,7 @@ TEST_F(RaggedDownArrayKokkosTest, ConstructorWithStrides) {
 }
 
 // Test constructor with raw strides array
-TEST_F(RaggedDownArrayKokkosTest, ConstructorWithRawStrides) {
+TEST(RaggedDownArrayKokkosTest, ConstructorWithRawStrides) {
     // Create raw strides array
     size_t strides[3] = {2, 3, 1};
     
@@ -52,7 +38,7 @@ TEST_F(RaggedDownArrayKokkosTest, ConstructorWithRawStrides) {
 }
 
 // Test array access and modification
-TEST_F(RaggedDownArrayKokkosTest, ArrayAccess) {
+TEST(RaggedDownArrayKokkosTest, ArrayAccess) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -80,7 +66,7 @@ TEST_F(RaggedDownArrayKokkosTest, ArrayAccess) {
 }
 
 // Test set_values functionality
-TEST_F(RaggedDownArrayKokkosTest, SetValues) {
+TEST(RaggedDownArrayKokkosTest, SetValues) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -103,7 +89,7 @@ TEST_F(RaggedDownArrayKokkosTest, SetValues) {
 }
 
 // Test stride management
-TEST_F(RaggedDownArrayKokkosTest, StrideManagement) {
+TEST(RaggedDownArrayKokkosTest, StrideManagement) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -120,7 +106,7 @@ TEST_F(RaggedDownArrayKokkosTest, StrideManagement) {
 }
 
 // Test name management
-TEST_F(RaggedDownArrayKokkosTest, NameManagement) {
+TEST(RaggedDownArrayKokkosTest, NameManagement) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -137,7 +123,7 @@ TEST_F(RaggedDownArrayKokkosTest, NameManagement) {
 }
 
 // Test different data types
-TEST_F(RaggedDownArrayKokkosTest, DifferentDataTypes) {
+TEST(RaggedDownArrayKokkosTest, DifferentDataTypes) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;
@@ -156,7 +142,7 @@ TEST_F(RaggedDownArrayKokkosTest, DifferentDataTypes) {
 }
 
 // Test out-of-bounds access
-TEST_F(RaggedDownArrayKokkosTest, OutOfBoundsAccess) {
+TEST(RaggedDownArrayKokkosTest, OutOfBoundsAccess) {
     // Create strides array
     CArrayKokkos<size_t> strides(3, "strides");
     strides(0) = 2;

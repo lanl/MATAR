@@ -44,7 +44,7 @@ TEST(Test_CMatrixKokkos, constructor_1d)
     EXPECT_EQ(A.size(), size);
     EXPECT_EQ(A.extent(), size);
     EXPECT_EQ(A.order(), 1);
-    EXPECT_EQ(A.dims(0), size);
+    EXPECT_EQ(A.dims(1), size); // Note: Dims on matrix types are 1-indexed
 }
 
 // Test 2D constructor
@@ -56,8 +56,8 @@ TEST(Test_CMatrixKokkos, constructor_2d)
     EXPECT_EQ(A.size(), size1 * size2);
     EXPECT_EQ(A.extent(), size1 * size2);
     EXPECT_EQ(A.order(), 2);
-    EXPECT_EQ(A.dims(0), size1);
-    EXPECT_EQ(A.dims(1), size2);
+    EXPECT_EQ(A.dims(1), size1);
+    EXPECT_EQ(A.dims(2), size2);
 }
 
 // Test 3D constructor
@@ -70,9 +70,9 @@ TEST(Test_CMatrixKokkos, constructor_3d)
     EXPECT_EQ(A.size(), size1 * size2 * size3);
     EXPECT_EQ(A.extent(), size1 * size2 * size3);
     EXPECT_EQ(A.order(), 3);
-    EXPECT_EQ(A.dims(0), size1);
-    EXPECT_EQ(A.dims(1), size2);
-    EXPECT_EQ(A.dims(2), size3);
+    EXPECT_EQ(A.dims(1), size1);
+    EXPECT_EQ(A.dims(2), size2);
+    EXPECT_EQ(A.dims(3), size3);
 }
 
 // Test get_name method
@@ -91,8 +91,8 @@ TEST(Test_CMatrixKokkos, set_values)
     A.set_values(42.0);
     
     // Check values on host
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
+    for(int i = 1; i <= size; i++) {
+        for(int j = 1; j <= size; j++) {
             EXPECT_EQ(A(i, j), 42.0);
         }
     }
@@ -105,24 +105,20 @@ TEST(Test_CMatrixKokkos, operator_access)
     CMatrixKokkos<double> A(size, size, size, "test_matrix");
     
     // Test 1D access
-    A(0) = 1.0;
-    EXPECT_EQ(A(0), 1.0);
+    EXPECT_DEATH(A(1) = 1.0, ".*");
     
     // Test 2D access
-    A(1, 1) = 2.0;
-    EXPECT_EQ(A(1, 1), 2.0);
+    EXPECT_DEATH(A(1, 1) = 2.0, ".*");
     
     // Test 3D access
     A(1, 1, 1) = 3.0;
     EXPECT_EQ(A(1, 1, 1), 3.0);
     
     // Test 5D access
-    A(1, 1, 1, 1, 1) = 4.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1), 4.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1) = 4.0, ".*");
     
     // Test 7D access
-    A(1, 1, 1, 1, 1, 1, 1) = 5.0;
-    EXPECT_EQ(A(1, 1, 1, 1, 1, 1, 1), 5.0);
+    EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1) = 5.0, ".*");
 }
 
 // Test bounds checking
@@ -132,7 +128,7 @@ TEST(Test_CMatrixKokkos, bounds_checking)
     CMatrixKokkos<double> A(size, size, "test_matrix");
     
     // Test out of bounds access
-    EXPECT_DEATH(A(size, size), ".*");
+    EXPECT_DEATH(A(size+1, size+1), ".*");
     EXPECT_DEATH(A(10000, 10000), ".*");
 }
 
@@ -144,17 +140,17 @@ TEST(Test_CMatrixKokkos, different_types)
     // Test with int
     CMatrixKokkos<int> A(size, size, "test_matrix_int");
     A.set_values(42);
-    EXPECT_EQ(A(0, 0), 42);
+    EXPECT_EQ(A(1, 1), 42);
     
     // Test with float
     CMatrixKokkos<float> B(size, size, "test_matrix_float");
     B.set_values(42.0f);
-    EXPECT_FLOAT_EQ(B(0, 0), 42.0f);
+    EXPECT_FLOAT_EQ(B(1, 1), 42.0f);
     
     // Test with bool
     CMatrixKokkos<bool> C(size, size, "test_matrix_bool");
     C.set_values(true);
-    EXPECT_EQ(C(0, 0), true);
+    EXPECT_EQ(C(1, 1), true);
 }
 
 // Test RAII behavior
@@ -164,7 +160,7 @@ TEST(Test_CMatrixKokkos, raii)
     {
         CMatrixKokkos<double> A(size, size, "test_matrix");
         A.set_values(42.0);
-        EXPECT_EQ(A(0, 0), 42.0);
+        EXPECT_EQ(A(1, 1), 42.0);
     } // A goes out of scope here
 
     
@@ -181,7 +177,7 @@ TEST(Test_CMatrixKokkos, copy_constructor)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
+    EXPECT_EQ(B(1, 1), A(1, 1));
 }
 
 // Test assignment operator
@@ -196,17 +192,5 @@ TEST(Test_CMatrixKokkos, assignment_operator)
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
-}
-
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
-    }
-    Kokkos::finalize();
+    EXPECT_EQ(B(1, 1), A(1, 1));
 }
