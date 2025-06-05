@@ -116,7 +116,7 @@ TEST(Test_ViewCMatrixKokkos, operator_access)
     EXPECT_DEATH(A(1, 1), ".*");
     
     // Test 3D access
-    data[size * size + size + 1] = 3.0;
+    data[0] = 3.0;
     EXPECT_EQ(A(1, 1, 1), 3.0);
     
     // Test 5D access

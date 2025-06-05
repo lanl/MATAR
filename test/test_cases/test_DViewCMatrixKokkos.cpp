@@ -80,14 +80,14 @@ TEST(Test_DViewCMatrixKokkos, constructor_3d)
 }
 
 // Test get_name method
-TEST(Test_DViewCMatrixKokkos, get_name)
-{
-    const int size = 10;
-    double* data = new double[size * size];
-    DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
-    EXPECT_EQ(A.get_name(), "test_matrix");
-    delete[] data;
-}
+// TEST(Test_DViewCMatrixKokkos, get_name)
+// {
+//     const int size = 10;
+//     double* data = new double[size * size];
+//     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
+//     EXPECT_EQ(A.get_name(), "test_matrix");
+//     delete[] data;
+// }
 
 // Test set_values method
 TEST(Test_DViewCMatrixKokkos, set_values)

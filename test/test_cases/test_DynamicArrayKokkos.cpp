@@ -76,10 +76,10 @@ TEST(DynamicArrayKokkosTest, SetValues) {
     DynamicArrayKokkos<double> array(5, "test_array");
     
     // Set all values to 42.0
-    array.set_values(42.0);
+    array.set_values(42.0, 5);
     
     // Check values
-    for (size_t i = 0; i < array.size(); i++) {
+    for (size_t i = 0; i < array.dims(0); i++) {
         EXPECT_DOUBLE_EQ(array(i), 42.0);
     }
 }
@@ -90,7 +90,7 @@ TEST(DynamicArrayKokkosTest, DimensionManagement) {
     DynamicArrayKokkos<double> array(10, "test_array");
     
     // Check initial dimensions
-    EXPECT_EQ(array.dims(0), 10);
+    EXPECT_EQ(array.dims(0), 0);
     EXPECT_EQ(array.dims_max(0), 10);
     EXPECT_EQ(array.order(), 1);
     
@@ -99,16 +99,16 @@ TEST(DynamicArrayKokkosTest, DimensionManagement) {
     array.push_back(2.0);
     
     // Check updated dimensions
-    EXPECT_EQ(array.dims(0), 12);
-    EXPECT_EQ(array.dims_max(0), 12);
+    EXPECT_EQ(array.dims(0), 2);
+    EXPECT_EQ(array.dims_max(0), 10);
     
     // Pop back to decrease size
     array.pop_back();
     array.pop_back();
     
     // Check final dimensions
-    EXPECT_EQ(array.dims(0), 10);
-    EXPECT_EQ(array.dims_max(0), 12); // max dimension should not decrease
+    EXPECT_EQ(array.dims(0), 0);
+    EXPECT_EQ(array.dims_max(0), 10); 
 }
 
 // Test name management
@@ -131,8 +131,9 @@ TEST(DynamicArrayKokkosTest, SizeAndExtent) {
     
     // Push back to increase size
     array.push_back(1.0);
-    EXPECT_EQ(array.size(), 6);
-    EXPECT_EQ(array.extent(), 6);
+    EXPECT_EQ(array.dims(0), 1);
+    EXPECT_EQ(array.size(), 5);
+    EXPECT_EQ(array.extent(), 5);
     
     // Pop back to decrease size
     array.pop_back();
@@ -145,11 +146,11 @@ TEST(DynamicArrayKokkosTest, ArrayAccess) {
     DynamicArrayKokkos<double> array(5, "test_array");
     
     // Set values
-    array(0) = 1.0;
-    array(1) = 2.0;
-    array(2) = 3.0;
-    array(3) = 4.0;
-    array(4) = 5.0;
+    array.push_back(1.0);
+    array.push_back(2.0);
+    array.push_back(3.0);
+    array.push_back(4.0);
+    array.push_back(5.0);
     
     // Check values
     EXPECT_DOUBLE_EQ(array(0), 1.0);

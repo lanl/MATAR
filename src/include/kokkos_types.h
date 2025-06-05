@@ -651,6 +651,7 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewFArrayKokkos<T>::ViewFArrayKokkos() {
     length_ = order_ = 0;
+    this_array_ = nullptr;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -1388,6 +1389,7 @@ public:
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {
+    this_matrix_ = nullptr;
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -7205,7 +7207,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
-    std::string this_array_tag_string = temp_copy_string.append(append_this_array_string);
+    
 
     start_index_ = StartArray(start_index_tag_string, dims_[0] + 1);
     start_index_dev_ = start_index_.view_device();
@@ -7252,7 +7254,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setu
     start_index_.template modify<typename Strides1D::execution_space>();
     start_index_.template sync<typename Strides1D::host_mirror_space>();
     //allocate view
-    this_array_ = TArray1D(this_array_tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     this_array_dev_ = this_array_.view_device();
     this_array_host_ = this_array_.view_host();
 }
@@ -7667,7 +7669,7 @@ public:
     T* pointer() const;
 
     // set values
-    void set_values(T val);
+    void set_values(T val, int count = -1);
     
     //return the view
     KOKKOS_INLINE_FUNCTION
@@ -7823,6 +7825,7 @@ KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 1D!");
     assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 1D!");
+    assert(i < dims_actual_size_[0] && "i is out of bounds in DynamicArrayKokkos 1D dims_actual_size!");
     return this_array_(i);
 }
 
@@ -8006,10 +8009,20 @@ const std::string DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name(
 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_array_(i) = val;
-    });
+void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val, int count) {
+    assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
+
+    if (count == -1) { // Only set values for the actual size of the array
+        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
+            this_array_(i) = val;
+        });
+    }
+    else { // Set values for a specific number of elements
+        dims_actual_size_[0] = count; // Update the actual size of the array
+        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
+            this_array_(i) = val;
+        });
+    }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8113,7 +8126,7 @@ public:
     T* pointer() const;
 
     // set values
-    void set_values(T val);
+    void set_values(T val, int count = -1);
     
     //return the view
     KOKKOS_INLINE_FUNCTION
@@ -8269,6 +8282,8 @@ KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 1D!");
     assert(i <= dims_[0] && "i is out of bounds in DynamicMatrixKokkos 1D!");
+    assert(i > 0 && "i cannot be 0 in DynamicMatrixKokkos 1D!");
+    assert(i <= dims_actual_size_[0] && "i is out of bounds in DynamicArrayKokkos 1D dims_actual_size!");
     return this_array_((i-1));
 }
 
@@ -8454,10 +8469,21 @@ const std::string DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name
 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_array_(i) = val;
-    });
+void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val, int count) {
+    assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
+
+    if (count == -1) { // Only set values for the actual size of the array
+        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
+            this_array_(i) = val;
+        });
+    }
+    else { // Set values for a specific number of elements
+        
+        dims_actual_size_[0] = count;
+        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
+            this_array_(i) = val;
+        });
+    }
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8682,7 +8708,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
-    std::string array_tag_string = temp_copy_string.append(append_array_string);
+
 
     start_index_ = SArray1D(start_index_tag_string,dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
@@ -8721,7 +8747,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
     #endif
 
     //allocate view
-    array_ = TArray1D(array_tag_string, length_);
+    array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -9122,7 +9148,6 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
-    std::string array_tag_string = temp_copy_string.append(append_array_string);
 
     start_index_ = SArray1D(start_index_tag_string,dim1_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
@@ -9161,7 +9186,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
     #endif
 
     //allocate view
-    array_ = TArray1D(array_tag_string, length_);
+    array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -9438,7 +9463,6 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(
     std::string temp_copy_string = tag_string;
     std::string start_index_tag_string = temp_copy_string.append(append_indices_string);
     temp_copy_string = tag_string;
-    std::string array_tag_string = temp_copy_string.append(append_array_string);
 
     start_index_ = SArray1D(start_index_tag_string,dim2_ + 1);
     #ifdef HAVE_CLASS_LAMBDA
@@ -9477,7 +9501,7 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(
     #endif
 
     //allocate view
-    array_ = TArray1D(array_tag_string, length_);
+    array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -9753,7 +9777,6 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
     std::string temp_copy_string = tag_string;
     std::string strides_tag_string = temp_copy_string.append(append_stride_string);
     temp_copy_string = tag_string;
-    std::string array_tag_string = temp_copy_string.append(append_array_string);
 
     stride_ = SArray1D(strides_tag_string, dim1_);
     #ifdef HAVE_CLASS_LAMBDA
@@ -9766,7 +9789,7 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
     #endif
 
     //allocate view
-    array_ = TArray1D(array_tag_string, length_);
+    array_ = TArray1D(tag_string, length_);
 }
 
 // A method to set the stride size for row i
@@ -9970,7 +9993,7 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDown
     std::string temp_copy_string = tag_string;
     std::string strides_tag_string = temp_copy_string.append(append_stride_string);
     temp_copy_string = tag_string;
-    std::string array_tag_string = temp_copy_string.append(append_array_string);
+
 
     stride_ = SArray1D(strides_tag_string, dim2_);
     #ifdef HAVE_CLASS_LAMBDA
@@ -9983,7 +10006,7 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDown
     #endif
 
     //allocate view
-    array_ = TArray1D(array_tag_string, length_);
+    array_ = TArray1D(tag_string, length_);
 }
 
 // A method to set the stride size for column j
@@ -11125,11 +11148,9 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedR
     length_ = dim1*dim2;
     
     std::string append_stride_string("_strides");
-    // std::string append_array_string("array");
     std::string temp_copy_string = tag_string;
     std::string strides_tag_string = temp_copy_string.append(append_stride_string);
-    // temp_copy_string = tag_string;
-    // std::string array_tag_string = temp_copy_string.append(append_array_string);
+
 
     mystrides_ = Strides1D(strides_tag_string, dim1_);
     mystrides_dev_ = mystrides_.view_device();

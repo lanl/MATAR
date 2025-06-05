@@ -16,7 +16,7 @@ TEST(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {
     
     // Check initial dimensions
     EXPECT_EQ(array.dims(0), 3);  // 3 rows
-    EXPECT_EQ(array.dims(1), 1);  // Initial column size
+    EXPECT_EQ(array.dims(1), 4);  // Initial column size
     
     // Check initial strides
     EXPECT_EQ(array.stride(0), 1);

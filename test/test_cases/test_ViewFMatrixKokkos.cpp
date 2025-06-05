@@ -142,7 +142,7 @@ TEST(Test_ViewFMatrixKokkos, bounds_checking)
     EXPECT_EQ(42.0, A(5,5));
     
     // Test invalid access - should throw
-    EXPECT_DEATH(A(size,size), ".*");
+    EXPECT_DEATH(A(0,0), ".*");
     delete[] data;
 }
 

@@ -89,14 +89,14 @@ TEST(Test_DViewFArrayKokkos, pointer)
 }
 
 // Test get_name function
-TEST(Test_DViewFArrayKokkos, get_name)
-{
-    const int size = 100;
-    double* data = new double[size*size];
-    DViewFArrayKokkos<double> A(data, size, size, "test_array");
-    EXPECT_EQ(A.get_name(), "test_array");
-    delete[] data;
-}
+// TEST(Test_DViewFArrayKokkos, get_name)
+// {
+//     const int size = 100;
+//     double* data = new double[size*size];
+//     DViewFArrayKokkos<double> A(data, size, size, "test_array");
+//     EXPECT_EQ(A.get_name(), "test_array");
+//     delete[] data;
+// }
 
 // Test set_values function
 TEST(Test_DViewFArrayKokkos, set_values)

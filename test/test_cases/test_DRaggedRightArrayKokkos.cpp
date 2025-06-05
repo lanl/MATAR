@@ -247,7 +247,7 @@ TEST(DRaggedRightArrayKokkosTest, GetName) {
     DRaggedRightArrayKokkos<double> array(strides, "test_array");
     
     // Check name
-    EXPECT_EQ(array.get_name(), "test_arrayarray");
+    EXPECT_EQ(array.get_name(), "test_array");
 }
 
 // Test set_values

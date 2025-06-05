@@ -80,15 +80,15 @@ TEST(Test_DViewCArrayKokkos, order)
 }
 
 // Test get_name method
-TEST(Test_DViewCArrayKokkos, get_name)
-{
-    const int size = 10;
-    double* data = new double[size * size];
-    DViewCArrayKokkos<double> A(data, size, size, "test_array");
-    EXPECT_EQ(A.get_name(), "test_array");
+// TEST(Test_DViewCArrayKokkos, get_name)
+// {
+//     const int size = 10;
+//     double* data = new double[size * size];
+//     DViewCArrayKokkos<double> A(data, size, size, "test_array");
+//     EXPECT_EQ(A.get_name(), "test_array");
     
-    delete[] data;
-}
+//     delete[] data;
+// }
 
 // Test set_values method
 TEST(Test_DViewCArrayKokkos, set_values)

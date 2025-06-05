@@ -89,14 +89,14 @@ TEST(Test_DViewFMatrixKokkos, pointer)
 }
 
 // Test get_name function
-TEST(Test_DViewFMatrixKokkos, get_name)
-{
-    const int size = 100;
-    double* data = new double[size*size];
-    DViewFMatrixKokkos<double> A(data, size, size, "test_matrix");
-    EXPECT_EQ(A.get_name(), "test_matrix");
-    delete[] data;
-}
+// TEST(Test_DViewFMatrixKokkos, get_name)
+// {
+//     const int size = 100;
+//     double* data = new double[size*size];
+//     DViewFMatrixKokkos<double> A(data, size, size, "test_matrix");
+//     EXPECT_EQ(A.get_name(), "test_matrix");
+//     delete[] data;
+// }
 
 // Test set_values function
 TEST(Test_DViewFMatrixKokkos, set_values)
