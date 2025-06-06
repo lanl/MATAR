@@ -4225,23 +4225,6 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
-    
-    // Copy constructor
-    // KOKKOS_INLINE_FUNCTION
-    // CMatrixKokkos(const CMatrixKokkos &temp) {
-    //     // Copy dimensions
-    //     for (int iter = 0; iter < 7; iter++) {
-    //         dims_[iter] = temp.dims_[iter];
-    //     }
-        
-    //     // Copy other member variables
-    //     order_ = temp.order_;
-    //     length_ = temp.length_;
-        
-    //     // Create new View with same dimensions
-    //     this_matrix_ = temp.this_matrix_;
-    // }
-
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i, size_t j) const;
