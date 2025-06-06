@@ -53,10 +53,10 @@ int main(int argc, char* argv[])
     {
        
         // -----------------------
-        // DDynamicRaggedRightArray Scalar with CArrayKokkos
+        // DRaggedRightArray Scalar with CArrayKokkos
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 1D \n");
+        printf("\nDRaggedRightArray test 1D \n");
         DRaggedRightArrayKokkos<int> drrak1D;
 
         // testing ragged initialized with CArrayKokkos for strides
@@ -93,10 +93,10 @@ int main(int argc, char* argv[])
 
 
         // -----------------------
-        // DDynamicRaggedRightArray Scalar with DCArrayKokkos
+        // DRaggedRightArray Scalar with DCArrayKokkos
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 1D \n");
+        printf("\nDRaggedRightArray test 1D \n");
         DRaggedRightArrayKokkos<int> drrak1D_d;
 
         // testing ragged initialized with CArrayKokkos for strides
@@ -142,15 +142,11 @@ int main(int argc, char* argv[])
         Kokkos::fence();
 
 
-
-
-
-
         // -----------------------
-        // DDynamicRaggedRightArray Vector
+        // DRaggedRightArray Vector
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 2D \n");
+        printf("\nDRaggedRightArray test 2D \n");
         DRaggedRightArrayKokkos<int> drrak2D;
         size_t dim2D = 3;
 
@@ -183,10 +179,10 @@ int main(int argc, char* argv[])
 
 
         // -----------------------
-        // DDynamicRaggedRightArray Tensor
+        // DRaggedRightArray Tensor
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 3D \n");
+        printf("\nDRaggedRightArray test 3D \n");
         DRaggedRightArrayKokkos<int> drrak3D;
 
 

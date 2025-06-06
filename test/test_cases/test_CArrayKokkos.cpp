@@ -192,15 +192,97 @@ TEST(Test_CArrayKokkos, eq_overload)
     }
 }
 
-
-int main(int argc, char* argv[])
+// Test set_values function
+TEST(Test_CArrayKokkos, set_values)
 {
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
+    const int size = 100;
+    CArrayKokkos<double> A(size, "test_array");
+    A.set_values(42.0);
+    
+    for(int i = 0; i < size; i++) {
+        EXPECT_EQ(A(i), 42.0);
     }
-    Kokkos::finalize();
+}
+
+// Test operator() overloads for different dimensions
+TEST(Test_CArrayKokkos, operator_access)
+{
+    // Test 1D access
+    CArrayKokkos<double> A1(10, "test_1d");
+    A1(5) = 42.0;
+    EXPECT_EQ(A1(5), 42.0);
+    
+    // Test 2D access
+    CArrayKokkos<double> A2(10, 10, "test_2d");
+    A2(5, 5) = 42.0;
+    EXPECT_EQ(A2(5, 5), 42.0);
+    
+    // Test 3D access
+    CArrayKokkos<double> A3(10, 10, 10, "test_3d");
+    A3(5, 5, 5) = 42.0;
+    EXPECT_EQ(A3(5, 5, 5), 42.0);
+    
+    // Test 4D access
+    CArrayKokkos<double> A4(5, 5, 5, 5, "test_4d");
+    A4(2, 2, 2, 2) = 42.0;
+    EXPECT_EQ(A4(2, 2, 2, 2), 42.0);
+    
+    // Test 5D access
+    CArrayKokkos<double> A5(3, 3, 3, 3, 3, "test_5d");
+    A5(1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A5(1, 1, 1, 1, 1), 42.0);
+    
+    // Test 6D access
+    CArrayKokkos<double> A6(2, 2, 2, 2, 2, 2, "test_6d");
+    A6(1, 1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A6(1, 1, 1, 1, 1, 1), 42.0);
+    
+    // Test 7D access
+    CArrayKokkos<double> A7(2, 2, 2, 2, 2, 2, 2, "test_7d");
+    A7(1, 1, 1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A7(1, 1, 1, 1, 1, 1, 1), 42.0);
+}
+
+// Test bounds checking
+TEST(Test_CArrayKokkos, bounds_checking)
+{
+    // Test 1D bounds
+    CArrayKokkos<double> A1(10, "test_bounds_1d");
+    EXPECT_DEATH(A1(110), ".*");
+    
+    // Test 2D bounds
+    CArrayKokkos<double> A2(10, 10, "test_bounds_2d");
+    EXPECT_DEATH(A2(100, 5), ".*");
+    EXPECT_DEATH(A2(50, 10), ".*");
+    
+    // Test 3D bounds
+    CArrayKokkos<double> A3(5, 5, 5, "test_bounds_3d");
+    EXPECT_DEATH(A3(50, 2, 2), ".*");
+    EXPECT_DEATH(A3(20, 5, 2), ".*");
+    EXPECT_DEATH(A3(26, 2, 5), ".*");
+}
+
+// Test different data types
+TEST(Test_CArrayKokkos, different_types)
+{
+    // Test with int
+    CArrayKokkos<int> A_int(10, "test_int");
+    A_int.set_values(42);
+    for(int i = 0; i < 10; i++) {
+        EXPECT_EQ(A_int(i), 42);
+    }
+    
+    // Test with float
+    CArrayKokkos<float> A_float(10, "test_float");
+    A_float.set_values(42.0f);
+    for(int i = 0; i < 10; i++) {
+        EXPECT_FLOAT_EQ(A_float(i), 42.0f);
+    }
+    
+    // Test with bool
+    CArrayKokkos<bool> A_bool(10, "test_bool");
+    A_bool.set_values(true);
+    for(int i = 0; i < 10; i++) {
+        EXPECT_TRUE(A_bool(i));
+    }
 }

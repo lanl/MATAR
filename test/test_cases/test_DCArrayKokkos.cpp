@@ -164,29 +164,145 @@ TEST(Test_DCArrayKokkos, eq_overload)
 
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            A(i,j) = (double)i + (double)j;
+            A.host(i,j) = (double)i + (double)j;
         }
     }
+
+    A.update_device();
 
     B = A;
 
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
 
-            EXPECT_EQ(B(i,j), (double)i + (double)j);
+            EXPECT_EQ(B.host(i,j), (double)i + (double)j);
         }
     }
 }
 
-
-int main(int argc, char* argv[])
+// Test set_values function on host
+TEST(Test_DCArrayKokkos, set_values)
 {
-    Kokkos::initialize(argc, argv);
-    {  
-        int result = 0;
-        testing::InitGoogleTest(&argc, argv);
-        result = RUN_ALL_TESTS();
-        return result;
+    const int size = 100;
+    DCArrayKokkos<double> A(size, "test_array");
+    A.set_values(42.0);
+    A.update_host();
+
+    for(int i = 0; i < size; i++) {
+        EXPECT_EQ(A.host(i), 42.0);
     }
-    Kokkos::finalize();
+}
+
+// Test operator() overloads for different dimensions
+TEST(Test_DCArrayKokkos, operator_access)
+{
+    // Test 1D access
+    DCArrayKokkos<double> A1(10, "test_1d");
+    A1.host(5) = 42.0;
+    EXPECT_EQ(A1.host(5), 42.0);
+    
+    // Test 2D access
+    DCArrayKokkos<double> A2(10, 10, "test_2d");
+    A2.host(5, 5) = 42.0;
+    EXPECT_EQ(A2.host(5, 5), 42.0);
+    
+    // Test 3D access
+    DCArrayKokkos<double> A3(10, 10, 10, "test_3d");
+    A3.host(5, 5, 5) = 42.0;
+    EXPECT_EQ(A3.host(5, 5, 5), 42.0);
+    
+    // Test 4D access
+    DCArrayKokkos<double> A4(5, 5, 5, 5, "test_4d");
+    A4.host(2, 2, 2, 2) = 42.0;
+    EXPECT_EQ(A4.host(2, 2, 2, 2), 42.0);
+    
+    // Test 5D access
+    DCArrayKokkos<double> A5(3, 3, 3, 3, 3, "test_5d");
+    A5.host(1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A5.host(1, 1, 1, 1, 1), 42.0);
+    
+    // Test 6D access
+    DCArrayKokkos<double> A6(2, 2, 2, 2, 2, 2, "test_6d");
+    A6.host(1, 1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A6.host(1, 1, 1, 1, 1, 1), 42.0);
+    
+    // Test 7D access
+    DCArrayKokkos<double> A7(2, 2, 2, 2, 2, 2, 2, "test_7d");
+    A7.host(1, 1, 1, 1, 1, 1, 1) = 42.0;
+    EXPECT_EQ(A7.host(1, 1, 1, 1, 1, 1, 1), 42.0);
+}
+
+// Test host and device updates
+TEST(Test_DCArrayKokkos, host_device_updates)
+{
+    const int size = 100;
+    DCArrayKokkos<double> A(size, "test_updates");
+    
+    // Set values on host
+    for(int i = 0; i < size; i++) {
+        A(i) = static_cast<double>(i);
+    }
+    
+    // Update device
+    A.update_device();
+    
+    // Modify values on device
+    FOR_ALL(i, 0, size, {
+        A(i) = A(i) * 2.0;
+    });
+    
+    // Update host
+    A.update_host();
+    
+    // Verify values on host
+    for(int i = 0; i < size; i++) {
+        EXPECT_EQ(A.host(i), static_cast<double>(i) * 2.0);
+    }
+}
+
+// Test bounds checking
+TEST(Test_DCArrayKokkos, bounds_checking)
+{
+    // Test 1D bounds
+    DCArrayKokkos<double> A1(10, "test_bounds_1d");
+    EXPECT_DEATH(A1.host(10), "");
+    
+    // Test 2D bounds
+    DCArrayKokkos<double> A2(10, 10, "test_bounds_2d");
+    EXPECT_DEATH(A2.host(10, 5), "");
+    EXPECT_DEATH(A2.host(5, 10), "");
+    
+    // Test 3D bounds
+    DCArrayKokkos<double> A3(5, 5, 5, "test_bounds_3d");
+    EXPECT_DEATH(A3.host(5, 2, 2), "");
+    EXPECT_DEATH(A3.host(2, 5, 2), "");
+    EXPECT_DEATH(A3.host(2, 2, 5), "");
+}
+
+// Test different data types
+TEST(Test_DCArrayKokkos, different_types)
+{
+    // Test with int
+    DCArrayKokkos<int> A_int(10, "test_int");
+    A_int.set_values(42);
+    A_int.update_host();
+    for(int i = 0; i < 10; i++) {
+        EXPECT_EQ(A_int.host(i), 42);
+    }
+    
+    // Test with float
+    DCArrayKokkos<float> A_float(10, "test_float");
+    A_float.set_values(42.0f);
+    A_float.update_host();
+    for(int i = 0; i < 10; i++) {
+        EXPECT_FLOAT_EQ(A_float.host(i), 42.0f);
+    }
+    
+    // Test with bool
+    DCArrayKokkos<bool> A_bool(10, "test_bool");
+    A_bool.set_values(true);
+    A_bool.update_host();
+    for(int i = 0; i < 10; i++) {
+        EXPECT_TRUE(A_bool.host(i));
+    }
 }
