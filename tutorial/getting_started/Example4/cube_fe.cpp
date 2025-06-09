@@ -24,9 +24,11 @@ CArrayDual<double> deformation_gradient(num_elements, dimensions, dimensions);
 // Element stiffness matrix (Ke)
 CArrayDevice<double> Ke(num_elements, num_nodes_per_elem*dimensions, num_nodes_per_elem*dimensions);
 // Element force vector (fe)
-CArrahDevice<double> fe(num_elements, num_nodes_per_elem*dimensions);
+CArrayDevice<double> fe(num_elements, num_nodes_per_elem*dimensions);
 // Solution displacement vector (ue)
-CArrahDevice<double> ue(num_elements, num_nodes_per_elem*dimensions);
+CArrayDevice<double> ue(num_elements, num_nodes_per_elem*dimensions);
+
+
 
 
 
@@ -56,6 +58,25 @@ int main(int argc, char* argv[])
     MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
 
+    init_data();
+
+    double mu = 80e9;      // Shear modulus
+    double lambda = 120e9; // First Lamé parameter (unused here)
+
+    
+
+
+
+
+    }
+    MATAR_FINALIZE();
+
+    return 0;
+}
+
+
+void init_data(){
+
     // Set the quadrature points and weights for the 1D case
     auto leg_points_1D = CArrayDevice<double> (quadrature_order);
     auto leg_weights_1D = CArrayDevice<double> (quadrature_order);
@@ -81,16 +102,19 @@ int main(int argc, char* argv[])
             quadrature_weights(elem_id, gauss_lid) = leg_weights_1D(i)*leg_weights_1D(j)*leg_weights_1D(k); // NOTE: This is the product of the weights for the 1D case
     });
 
-    initialize_coordinates(coordinates);
+    FOR_ALL(elem_id, 0, num_elements,
+            node_lid, 0, 8,
+            j, 0, dimensions, {
+            initial_coordinates(elem_id, node_lid, j) = ref_nodes(node_lid, j);
+    });
 
 
+    updated_coordinates.set_values(0.0);
+    Ke.set_values(0.0);
+    fe.set_values(0.0);
+    ue.set_values(0.0);
 
 
-
-    }
-    MATAR_FINALIZE();
-
-    return 0;
 }
 
 
@@ -139,16 +163,6 @@ void legendre_weights_1D(
     } // end if
 } // end of legendre_weights_1D function
 
-void initialize_coordinates(CArrayDual<double> &coordinates){
-    
-    FOR_ALL(elem_id, 0, num_elements,
-            node_lid, 0, 8,
-            j, 0, dimensions, {
-            coordinates(elem_id, node_lid, j) = ref_nodes(node_lid, j);
-    });
-} // end of initialize_coordinates function
-
-
 void basis_functions(CArrayDual<double> &basis_functions){
     
     FOR_ALL(elem_id, 0, num_elements,
@@ -167,6 +181,7 @@ void apply_deformation(const CArrayDual<double> &F) {
     FOR_ALL(elem_id, 0, num_elements,
             node_lid, 0, num_nodes_per_elem,
             j, 0, dimensions, {
+                
                 updated_coordinates(elem_id, node_lid, j) = 0.0;
                 
                 for (int k = 0; k < dimensions; ++k){
