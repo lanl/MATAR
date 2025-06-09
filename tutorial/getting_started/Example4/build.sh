@@ -82,7 +82,7 @@ build_backend() {
     make -j$(nproc)
     
     echo "Build for ${backend} completed!"
-    echo "Executable: ${build_dir}/matmul"
+    echo "Executable: ${build_dir}/heat"
     echo ""
 }
 
@@ -118,4 +118,4 @@ fi
 
 echo "To run an example:"
 echo "cd build_<backend>"
-echo "./MATAR_data" 
+echo "./cube_fe" 
