@@ -8,18 +8,26 @@
 using namespace mtr; 
 
 int num_elements = 1;
-int num_nodes_per_elem = 8;
+int num_nodes_per_elem = 8; // 8 NODE HEX
 int quadrature_order = 2; // Accurate to 2N-1
 int dimensions = 3;
 int num_gauss_in_elem = quadrature_order*dimensions;
 
-CArrayDual<double> coordinates(num_elements, num_nodes_per_elem, dimensions);
-CArrayDual<double> velocities(num_elements, num_nodes_per_elem, dimensions);
-CArrayDual<double> forces(num_elements, num_nodes_per_elem, dimensions);
-
-
+CArrayDual<double> initial_coordinates(num_elements, num_nodes_per_elem, dimensions);
+CArrayDual<double> updated_coordinates(num_elements, num_nodes_per_elem, dimensions);
 CArrayDevice<double> quadrature_points(num_elements, quadrature_order*dimensions);
 CArrayDevice<double> quadrature_weights(num_elements, quadrature_order*dimensions);
+
+
+CArrayDual<double> deformation_gradient(num_elements, dimensions, dimensions);
+
+// Element stiffness matrix (Ke)
+CArrayDevice<double> Ke(num_elements, num_nodes_per_elem*dimensions, num_nodes_per_elem*dimensions);
+// Element force vector (fe)
+CArrahDevice<double> fe(num_elements, num_nodes_per_elem*dimensions);
+// Solution displacement vector (ue)
+CArrahDevice<double> ue(num_elements, num_nodes_per_elem*dimensions);
+
 
 
 double ref_node_array[8*3] = 
@@ -138,8 +146,6 @@ void initialize_coordinates(CArrayDual<double> &coordinates){
             j, 0, dimensions, {
             coordinates(elem_id, node_lid, j) = ref_nodes(node_lid, j);
     });
-
-    FOR_ALL(i, 0, num_elements,
 } // end of initialize_coordinates function
 
 
@@ -154,7 +160,76 @@ void basis_functions(CArrayDual<double> &basis_functions){
     });
 }
 
+// Applies a given 3x3 deformation gradient tensor F to the initial nodal coordinates.
+// F: 3x3 deformation gradient
+void apply_deformation(const CArrayDual<double> &F) {
+    
+    FOR_ALL(elem_id, 0, num_elements,
+            node_lid, 0, num_nodes_per_elem,
+            j, 0, dimensions, {
+                updated_coordinates(elem_id, node_lid, j) = 0.0;
+                
+                for (int k = 0; k < dimensions; ++k){
+                    updated_coordinates(elem_id, node_lid, j) += F(elem_id, j, k) * initial_coordinates(elem_id, node_lid, k);
+                }
+    });
+}
 
 
+// Computes the derivatives of the shape functions for an 8-node hexahedral element
+// with respect to the local coordinates xi, eta, zeta.
+// xi, eta, zeta: local coordinates in the reference element [-1,1]
+// dN_dxi: output array containing shape function derivatives [8 nodes][3 components]
+void shape_function_derivatives(double xi, double eta, double zeta, double dN_dxi[8][3]) {
+    for (int i = 0; i < 8; ++i) {
+        double sx = (i & 1) ? 1 : -1;
+        double sy = (i & 2) ? 1 : -1;
+        double sz = (i & 4) ? 1 : -1;
+
+        dN_dxi[i][0] = 0.125 * sx * (1 + sy * eta) * (1 + sz * zeta);
+        dN_dxi[i][1] = 0.125 * sy * (1 + sx * xi)  * (1 + sz * zeta);
+        dN_dxi[i][2] = 0.125 * sz * (1 + sx * xi)  * (1 + sy * eta);
+    }
+}
 
 
+void shape_function_derivatives(CArrayDevice<double> &ref_position, CArrayDual<double> &dN_dxi) {
+    for (int i = 0; i < 8; ++i) {
+        double sx = (i & 1) ? 1 : -1;
+        double sy = (i & 2) ? 1 : -1;
+        double sz = (i & 4) ? 1 : -1;
+
+        dN_dxi(i,0) = 0.125 * sx * (1 + sy * ref_position(1)) * (1 + sz * ref_position(2));
+        dN_dxi(i,1) = 0.125 * sy * (1 + sx * ref_position(0))  * (1 + sz * ref_position(2));
+        dN_dxi(i,2) = 0.125 * sz * (1 + sx * ref_position(0))  * (1 + sy * ref_position(1));
+    }
+}
+
+/**************************************************************************************//**
+*  mat_inverse is a light weight function for inverting a 3X3 matrix. 
+*****************************************************************************************/
+void mat_inverse(
+    ViewCArray <double> &mat_inv,
+    ViewCArray <double> &matrix){
+
+    // computes the inverse of a matrix m
+    double det_a = matrix(0, 0) * (matrix(1, 1) * matrix(2, 2) - matrix(2, 1) * matrix(1, 2)) -
+                   matrix(0, 1) * (matrix(1, 0) * matrix(2, 2) - matrix(1, 2) * matrix(2, 0)) +
+                   matrix(0, 2) * (matrix(1, 0) * matrix(2, 1) - matrix(1, 1) * matrix(2, 0));
+
+    if (fabs(det_a) < 1e-12) return false;
+
+    double invdet = 1.0 / det_a;
+
+    mat_inv(0, 0) = (matrix(1, 1) * matrix(2, 2) - matrix(2, 1) * matrix(1, 2)) * invdet;
+    mat_inv(0, 1) = (matrix(0, 2) * matrix(2, 1) - matrix(0, 1) * matrix(2, 2)) * invdet;
+    mat_inv(0, 2) = (matrix(0, 1) * matrix(1, 2) - matrix(0, 2) * matrix(1, 1)) * invdet;
+    mat_inv(1, 0) = (matrix(1, 2) * matrix(2, 0) - matrix(1, 0) * matrix(2, 2)) * invdet;
+    mat_inv(1, 1) = (matrix(0, 0) * matrix(2, 2) - matrix(0, 2) * matrix(2, 0)) * invdet;
+    mat_inv(1, 2) = (matrix(1, 0) * matrix(0, 2) - matrix(0, 0) * matrix(1, 2)) * invdet;
+    mat_inv(2, 0) = (matrix(1, 0) * matrix(2, 1) - matrix(2, 0) * matrix(1, 1)) * invdet;
+    mat_inv(2, 1) = (matrix(2, 0) * matrix(0, 1) - matrix(0, 0) * matrix(2, 1)) * invdet;
+    mat_inv(2, 2) = (matrix(0, 0) * matrix(1, 1) - matrix(1, 0) * matrix(0, 1)) * invdet;
+
+    return true;
+}
